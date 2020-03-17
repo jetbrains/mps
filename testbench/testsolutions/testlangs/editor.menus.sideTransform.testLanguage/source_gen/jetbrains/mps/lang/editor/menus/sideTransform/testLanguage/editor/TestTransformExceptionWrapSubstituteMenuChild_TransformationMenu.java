@@ -24,9 +24,10 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
-import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
 import jetbrains.mps.lang.editor.menus.transformation.SubstituteMenuItemAsActionItem;
+import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
+import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
+import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
@@ -36,7 +37,6 @@ import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.apache.log4j.Logger;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
-import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -101,29 +101,44 @@ public class TestTransformExceptionWrapSubstituteMenuChild_TransformationMenu ex
       throw new RuntimeException("Intentional exception - ignore this");
     }
 
+    private class SMIasTMI extends SubstituteMenuItemAsActionItem implements SideTransformCompletionActionItem {
+
+      private final SNode targetNode;
+      private final TransformationMenuContext _context;
+      private final SubstituteItemProxy wrappedItem;
+
+      public SMIasTMI(SubstituteMenuItem substituteItem, SNode targetNode, TransformationMenuContext tctx) {
+        super(substituteItem);
+        this.targetNode = targetNode;
+        this._context = tctx;
+        wrappedItem = new SubstituteItemProxy(substituteItem);
+      }
+
+      @Override
+      public void execute(@NotNull String pattern) {
+        SNode createdNode = getSubstituteItem().createNode(pattern);
+      }
+
+      @Override
+      public void customize(String pattern, EditorMenuItemStyle style) {
+        super.customize(pattern, style);
+        if (targetNode != null) {
+          EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
+          CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
+          EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
+          for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
+            customizer.customize(style, compositeContext);
+          }
+
+        }
+      }
+
+    }
+
+
     @Override
     protected TransformationMenuItem createTransformationItem(final SNode targetNode, final SubstituteMenuItem item, final TransformationMenuContext _context) {
-      final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
-      return new SubstituteMenuItemAsActionItem(item) {
-        @Override
-        public void execute(@NotNull String pattern) {
-          SNode createdNode = item.createNode(pattern);
-        }
-
-        @Override
-        public void customize(String pattern, EditorMenuItemStyle style) {
-          super.customize(pattern, style);
-          if (targetNode != null) {
-            EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
-            CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
-            EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
-            for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
-              customizer.customize(style, compositeContext);
-            }
-
-          }
-        }
-      };
+      return new SMIasTMI(item, targetNode, _context);
     }
   }
   private class TMP_Action_u021up_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {

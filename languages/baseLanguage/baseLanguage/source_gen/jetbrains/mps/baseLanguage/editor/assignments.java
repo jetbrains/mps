@@ -23,10 +23,11 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
-import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
 import jetbrains.mps.lang.editor.menus.transformation.SubstituteMenuItemAsActionItem;
+import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
+import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.baseLanguage.actions.PrecedenceUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
@@ -100,39 +101,54 @@ public class assignments extends TransformationMenuBase {
     }
 
 
+    private class SMIasTMI extends SubstituteMenuItemAsActionItem implements SideTransformCompletionActionItem {
+
+      private final SNode targetNode;
+      private final TransformationMenuContext _context;
+      private final SubstituteItemProxy wrappedItem;
+
+      public SMIasTMI(SubstituteMenuItem substituteItem, SNode targetNode, TransformationMenuContext tctx) {
+        super(substituteItem);
+        this.targetNode = targetNode;
+        this._context = tctx;
+        wrappedItem = new SubstituteItemProxy(substituteItem);
+      }
+
+      @Override
+      public void execute(@NotNull String pattern) {
+        SNode createdNode = getSubstituteItem().createNode(pattern);
+        SNode source = PrecedenceUtil.getTargetForLeftTransform(_context.getNode(), createdNode);
+        // since BaseAssignmentExpressions are right-associative we should LT parent 
+        // BaseAssignmentExpressions or it's lValue depenting on current position 
+        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(source), CONCEPTS.BaseAssignmentExpression$oO) && Objects.equals(SNodeOperations.getContainingLink(source), LINKS.lValue$J0D4)) {
+          source = SNodeOperations.cast(SNodeOperations.getParent(source), CONCEPTS.BaseAssignmentExpression$oO);
+        }
+        SNodeOperations.replaceWithAnother(source, createdNode);
+        SLinkOperations.setTarget(createdNode, LINKS.rValue$J0E2, source);
+        PrecedenceUtil.parenthesiseIfNecessary(createdNode);
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+      }
+
+      @Override
+      public void customize(String pattern, EditorMenuItemStyle style) {
+        super.customize(pattern, style);
+        if (targetNode != null) {
+          EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
+          CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
+          EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
+          for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
+            customizer.customize(style, compositeContext);
+          }
+
+        }
+      }
+
+    }
+
+
     @Override
     protected TransformationMenuItem createTransformationItem(final SNode targetNode, final SubstituteMenuItem item, final TransformationMenuContext _context) {
-      final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
-      return new SubstituteMenuItemAsActionItem(item) {
-        @Override
-        public void execute(@NotNull String pattern) {
-          SNode createdNode = item.createNode(pattern);
-          SNode source = PrecedenceUtil.getTargetForLeftTransform(_context.getNode(), createdNode);
-          // since BaseAssignmentExpressions are right-associative we should LT parent 
-          // BaseAssignmentExpressions or it's lValue depenting on current position 
-          if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(source), CONCEPTS.BaseAssignmentExpression$oO) && Objects.equals(SNodeOperations.getContainingLink(source), LINKS.lValue$J0D4)) {
-            source = SNodeOperations.cast(SNodeOperations.getParent(source), CONCEPTS.BaseAssignmentExpression$oO);
-          }
-          SNodeOperations.replaceWithAnother(source, createdNode);
-          SLinkOperations.setTarget(createdNode, LINKS.rValue$J0E2, source);
-          PrecedenceUtil.parenthesiseIfNecessary(createdNode);
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
-        }
-
-        @Override
-        public void customize(String pattern, EditorMenuItemStyle style) {
-          super.customize(pattern, style);
-          if (targetNode != null) {
-            EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
-            CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
-            EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
-            for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
-              customizer.customize(style, compositeContext);
-            }
-
-          }
-        }
-      };
+      return new SMIasTMI(item, targetNode, _context);
     }
   }
   public class TMP_WrapSM_egrkpv_a1 extends WrapSubstituteMenuTransformationMenuPart {
@@ -160,32 +176,47 @@ public class assignments extends TransformationMenuBase {
     }
 
 
+    private class SMIasTMI extends SubstituteMenuItemAsActionItem implements SideTransformCompletionActionItem {
+
+      private final SNode targetNode;
+      private final TransformationMenuContext _context;
+      private final SubstituteItemProxy wrappedItem;
+
+      public SMIasTMI(SubstituteMenuItem substituteItem, SNode targetNode, TransformationMenuContext tctx) {
+        super(substituteItem);
+        this.targetNode = targetNode;
+        this._context = tctx;
+        wrappedItem = new SubstituteItemProxy(substituteItem);
+      }
+
+      @Override
+      public void execute(@NotNull String pattern) {
+        SNode createdNode = getSubstituteItem().createNode(pattern);
+        SNodeOperations.replaceWithAnother(_context.getNode(), createdNode);
+        SLinkOperations.setTarget(createdNode, LINKS.lValue$J0D4, _context.getNode());
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+      }
+
+      @Override
+      public void customize(String pattern, EditorMenuItemStyle style) {
+        super.customize(pattern, style);
+        if (targetNode != null) {
+          EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
+          CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
+          EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
+          for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
+            customizer.customize(style, compositeContext);
+          }
+
+        }
+      }
+
+    }
+
+
     @Override
     protected TransformationMenuItem createTransformationItem(final SNode targetNode, final SubstituteMenuItem item, final TransformationMenuContext _context) {
-      final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
-      return new SubstituteMenuItemAsActionItem(item) {
-        @Override
-        public void execute(@NotNull String pattern) {
-          SNode createdNode = item.createNode(pattern);
-          SNodeOperations.replaceWithAnother(_context.getNode(), createdNode);
-          SLinkOperations.setTarget(createdNode, LINKS.lValue$J0D4, _context.getNode());
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
-        }
-
-        @Override
-        public void customize(String pattern, EditorMenuItemStyle style) {
-          super.customize(pattern, style);
-          if (targetNode != null) {
-            EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
-            CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
-            EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
-            for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
-              customizer.customize(style, compositeContext);
-            }
-
-          }
-        }
-      };
+      return new SMIasTMI(item, targetNode, _context);
     }
   }
 

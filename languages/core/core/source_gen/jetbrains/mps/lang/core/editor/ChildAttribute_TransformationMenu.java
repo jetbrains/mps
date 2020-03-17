@@ -26,9 +26,10 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.lang.core.behavior.ChildAttribute__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
-import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
 import jetbrains.mps.lang.editor.menus.transformation.SubstituteMenuItemAsActionItem;
+import jetbrains.mps.nodeEditor.cellMenu.SubstituteCompletionActionItem;
+import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
+import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
@@ -96,32 +97,47 @@ public class ChildAttribute_TransformationMenu extends TransformationMenuBase {
       return SNodeOperations.getParent(_context.getNode());
     }
 
+    private class SMIasTMI extends SubstituteMenuItemAsActionItem implements SubstituteCompletionActionItem {
+
+      private final SNode targetNode;
+      private final TransformationMenuContext _context;
+      private final SubstituteItemProxy wrappedItem;
+
+      public SMIasTMI(SubstituteMenuItem substituteItem, SNode targetNode, TransformationMenuContext tctx) {
+        super(substituteItem);
+        this.targetNode = targetNode;
+        this._context = tctx;
+        wrappedItem = new SubstituteItemProxy(substituteItem);
+      }
+
+      @Override
+      public void execute(@NotNull String pattern) {
+        SNode createdNode = getSubstituteItem().createNode(pattern);
+        SNodeOperations.getParent(_context.getNode()).insertChildAfter(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(_context.getNode()), createdNode, _context.getNode());
+        SNodeOperations.deleteNode(_context.getNode());
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+      }
+
+      @Override
+      public void customize(String pattern, EditorMenuItemStyle style) {
+        super.customize(pattern, style);
+        if (targetNode != null) {
+          EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
+          CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
+          EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
+          for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
+            customizer.customize(style, compositeContext);
+          }
+
+        }
+      }
+
+    }
+
+
     @Override
     protected TransformationMenuItem createTransformationItem(final SNode targetNode, final SubstituteMenuItem item, final TransformationMenuContext _context) {
-      final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
-      return new SubstituteMenuItemAsActionItem(item) {
-        @Override
-        public void execute(@NotNull String pattern) {
-          SNode createdNode = item.createNode(pattern);
-          SNodeOperations.getParent(_context.getNode()).insertChildAfter(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(_context.getNode()), createdNode, _context.getNode());
-          SNodeOperations.deleteNode(_context.getNode());
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
-        }
-
-        @Override
-        public void customize(String pattern, EditorMenuItemStyle style) {
-          super.customize(pattern, style);
-          if (targetNode != null) {
-            EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
-            CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
-            EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
-            for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
-              customizer.customize(style, compositeContext);
-            }
-
-          }
-        }
-      };
+      return new SMIasTMI(item, targetNode, _context);
     }
   }
 }

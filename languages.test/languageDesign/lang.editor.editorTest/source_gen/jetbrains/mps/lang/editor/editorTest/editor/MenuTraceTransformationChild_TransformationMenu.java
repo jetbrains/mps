@@ -46,9 +46,9 @@ import jetbrains.mps.lang.editor.menus.transformation.SubMenuMenuTransformationM
 import jetbrains.mps.lang.editor.menus.transformation.WrapSubstituteMenuTransformationMenuPart;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.lang.editor.menus.substitute.NamedSubstituteMenuLookup;
-import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
-import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
 import jetbrains.mps.lang.editor.menus.transformation.SubstituteMenuItemAsActionItem;
+import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
+import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -483,29 +483,44 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
     }
 
 
+    private class SMIasTMI extends SubstituteMenuItemAsActionItem implements SideTransformCompletionActionItem {
+
+      private final SNode targetNode;
+      private final TransformationMenuContext _context;
+      private final SubstituteItemProxy wrappedItem;
+
+      public SMIasTMI(SubstituteMenuItem substituteItem, SNode targetNode, TransformationMenuContext tctx) {
+        super(substituteItem);
+        this.targetNode = targetNode;
+        this._context = tctx;
+        wrappedItem = new SubstituteItemProxy(substituteItem);
+      }
+
+      @Override
+      public void execute(@NotNull String pattern) {
+        SNode createdNode = getSubstituteItem().createNode(pattern);
+      }
+
+      @Override
+      public void customize(String pattern, EditorMenuItemStyle style) {
+        super.customize(pattern, style);
+        if (targetNode != null) {
+          EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
+          CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
+          EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
+          for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
+            customizer.customize(style, compositeContext);
+          }
+
+        }
+      }
+
+    }
+
+
     @Override
     protected TransformationMenuItem createTransformationItem(final SNode targetNode, final SubstituteMenuItem item, final TransformationMenuContext _context) {
-      final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
-      return new SubstituteMenuItemAsActionItem(item) {
-        @Override
-        public void execute(@NotNull String pattern) {
-          SNode createdNode = item.createNode(pattern);
-        }
-
-        @Override
-        public void customize(String pattern, EditorMenuItemStyle style) {
-          super.customize(pattern, style);
-          if (targetNode != null) {
-            EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
-            CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
-            EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
-            for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
-              customizer.customize(style, compositeContext);
-            }
-
-          }
-        }
-      };
+      return new SMIasTMI(item, targetNode, _context);
     }
   }
 

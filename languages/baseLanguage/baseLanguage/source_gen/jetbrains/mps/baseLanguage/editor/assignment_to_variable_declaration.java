@@ -27,10 +27,11 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
-import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
 import jetbrains.mps.lang.editor.menus.transformation.SubstituteMenuItemAsActionItem;
+import jetbrains.mps.nodeEditor.cellMenu.SubstituteCompletionActionItem;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
+import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -137,40 +138,55 @@ public class assignment_to_variable_declaration extends TransformationMenuBase {
       }
 
 
+      private class SMIasTMI extends SubstituteMenuItemAsActionItem implements SubstituteCompletionActionItem {
+
+        private final SNode targetNode;
+        private final TransformationMenuContext _context;
+        private final SubstituteItemProxy wrappedItem;
+
+        public SMIasTMI(SubstituteMenuItem substituteItem, SNode targetNode, TransformationMenuContext tctx) {
+          super(substituteItem);
+          this.targetNode = targetNode;
+          this._context = tctx;
+          wrappedItem = new SubstituteItemProxy(substituteItem);
+        }
+
+        @Override
+        public void execute(@NotNull String pattern) {
+          SNode createdNode = getSubstituteItem().createNode(pattern);
+          SNode rValue = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BaseAssignmentExpression$oO), LINKS.rValue$J0E2);
+          SNode varstmt = SNodeOperations.replaceWithNewChild(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode())), CONCEPTS.LocalVariableDeclarationStatement$BI);
+          SNode var = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"));
+          SLinkOperations.setTarget(varstmt, LINKS.localVariableDeclaration$O0D0, var);
+          SLinkOperations.setTarget(var, LINKS.type$pLrO, createdNode);
+          SLinkOperations.setTarget(var, LINKS.initializer$KgD, rValue);
+          SelectionUtil.selectCell(_context.getEditorContext(), var, SelectionManager.FIRST_ERROR_CELL);
+        }
+
+        @Override
+        public void customize(String pattern, EditorMenuItemStyle style) {
+          super.customize(pattern, style);
+          if (targetNode != null) {
+            EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
+            CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
+            EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
+            for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
+              customizer.customize(style, compositeContext);
+            }
+
+          }
+        }
+
+        @Override
+        public String getShortDescriptionText(@NotNull String pattern) {
+          return "Local variable declaration";
+        }
+      }
+
+
       @Override
       protected TransformationMenuItem createTransformationItem(final SNode targetNode, final SubstituteMenuItem item, final TransformationMenuContext _context) {
-        final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
-        return new SubstituteMenuItemAsActionItem(item) {
-          @Override
-          public void execute(@NotNull String pattern) {
-            SNode createdNode = item.createNode(pattern);
-            SNode rValue = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BaseAssignmentExpression$oO), LINKS.rValue$J0E2);
-            SNode varstmt = SNodeOperations.replaceWithNewChild(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode())), CONCEPTS.LocalVariableDeclarationStatement$BI);
-            SNode var = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"));
-            SLinkOperations.setTarget(varstmt, LINKS.localVariableDeclaration$O0D0, var);
-            SLinkOperations.setTarget(var, LINKS.type$pLrO, createdNode);
-            SLinkOperations.setTarget(var, LINKS.initializer$KgD, rValue);
-            SelectionUtil.selectCell(_context.getEditorContext(), var, SelectionManager.FIRST_ERROR_CELL);
-          }
-
-          @Override
-          public void customize(String pattern, EditorMenuItemStyle style) {
-            super.customize(pattern, style);
-            if (targetNode != null) {
-              EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
-              CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
-              EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
-              for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
-                customizer.customize(style, compositeContext);
-              }
-
-            }
-          }
-          @Override
-          public String getShortDescriptionText(@NotNull String pattern) {
-            return "Local variable declaration";
-          }
-        };
+        return new SMIasTMI(item, targetNode, _context);
       }
     }
   }

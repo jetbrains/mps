@@ -181,6 +181,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
       case 0:
         if (true) {
           switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.editor.test.generation.editor.TestContextActionsToolMenu":
+              return Arrays.asList(new TransformationMenu[]{new TestContextActionsToolMenu()});
             case "jetbrains.mps.lang.editor.test.generation.editor.TestTargetTransformationMenu":
               return Arrays.asList(new TransformationMenu[]{new TestTargetTransformationMenu()});
             default:

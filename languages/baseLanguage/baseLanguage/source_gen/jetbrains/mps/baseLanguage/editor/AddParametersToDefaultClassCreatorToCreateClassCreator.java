@@ -32,9 +32,10 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
-import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
 import jetbrains.mps.lang.editor.menus.transformation.SubstituteMenuItemAsActionItem;
+import jetbrains.mps.nodeEditor.cellMenu.SubstituteCompletionActionItem;
+import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
+import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.baseLanguage.scopes.MethodResolveUtil;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -139,34 +140,49 @@ public class AddParametersToDefaultClassCreatorToCreateClassCreator extends Tran
       }
 
 
+      private class SMIasTMI extends SubstituteMenuItemAsActionItem implements SubstituteCompletionActionItem {
+
+        private final SNode targetNode;
+        private final TransformationMenuContext _context;
+        private final SubstituteItemProxy wrappedItem;
+
+        public SMIasTMI(SubstituteMenuItem substituteItem, SNode targetNode, TransformationMenuContext tctx) {
+          super(substituteItem);
+          this.targetNode = targetNode;
+          this._context = tctx;
+          wrappedItem = new SubstituteItemProxy(substituteItem);
+        }
+
+        @Override
+        public void execute(@NotNull String pattern) {
+          SNode createdNode = getSubstituteItem().createNode(pattern);
+          SNode cc = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.ClassCreator$yU);
+          SLinkOperations.setTarget(cc, LINKS.baseMethodDeclaration$$A7i, Sequence.fromIterable(constructorsWithParams).first());
+          ListSequence.fromList(SLinkOperations.getChildren(cc, LINKS.actualArgument$$A7L)).addElement(createdNode);
+          MethodResolveUtil.replaceFromEditor(cc);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.LAST_EDITABLE_CELL, -1);
+        }
+
+        @Override
+        public void customize(String pattern, EditorMenuItemStyle style) {
+          super.customize(pattern, style);
+          if (targetNode != null) {
+            EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
+            CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
+            EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
+            for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
+              customizer.customize(style, compositeContext);
+            }
+
+          }
+        }
+
+      }
+
+
       @Override
       protected TransformationMenuItem createTransformationItem(final SNode targetNode, final SubstituteMenuItem item, final TransformationMenuContext _context) {
-        final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
-        return new SubstituteMenuItemAsActionItem(item) {
-          @Override
-          public void execute(@NotNull String pattern) {
-            SNode createdNode = item.createNode(pattern);
-            SNode cc = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.ClassCreator$yU);
-            SLinkOperations.setTarget(cc, LINKS.baseMethodDeclaration$$A7i, Sequence.fromIterable(constructorsWithParams).first());
-            ListSequence.fromList(SLinkOperations.getChildren(cc, LINKS.actualArgument$$A7L)).addElement(createdNode);
-            MethodResolveUtil.replaceFromEditor(cc);
-            SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.LAST_EDITABLE_CELL, -1);
-          }
-
-          @Override
-          public void customize(String pattern, EditorMenuItemStyle style) {
-            super.customize(pattern, style);
-            if (targetNode != null) {
-              EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
-              CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
-              EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
-              for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
-                customizer.customize(style, compositeContext);
-              }
-
-            }
-          }
-        };
+        return new SMIasTMI(item, targetNode, _context);
       }
     }
   }
