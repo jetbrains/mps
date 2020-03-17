@@ -10571,10 +10571,7 @@
             </node>
           </node>
           <node concept="3y3z36" id="5DYpX5HRV8w" role="3clFbw">
-            <node concept="2YIFZM" id="5DYpX5HS02e" role="3uHU7w">
-              <ref role="37wK5l" to="b0pz:~JavaLanguageLevel.getDefault()" resolve="getDefault" />
-              <ref role="1Pybhc" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
-            </node>
+            <node concept="10Nm6u" id="kw_SAXUljN" role="3uHU7w" />
             <node concept="2OqwBi" id="5DYpX5HRV8y" role="3uHU7B">
               <node concept="37vLTw" id="5DYpX5HRV8z" role="2Oq$k0">
                 <ref role="3cqZAo" node="33oJVYhgCCY" resolve="descriptor" />
