@@ -28,7 +28,7 @@ public class check_StaticInterfaceMethodCall_NonTypesystemRule extends AbstractN
     }
 
     JavaLanguageLevel languageLevel = new BaseLanguageEnvironmentHelper().getLanguageLevel(staticMethodCall);
-    if (!(languageLevel.isAtLeast(JavaLanguageLevel.JAVA_8))) {
+    if (!(JavaLanguageLevel.JAVA_8.covers(languageLevel))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(staticMethodCall, "Static interface method invocations can be used only since Java 8. Current java language level:" + languageLevel.getCompactDescription(), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7510080655530197744", null, errorTarget);

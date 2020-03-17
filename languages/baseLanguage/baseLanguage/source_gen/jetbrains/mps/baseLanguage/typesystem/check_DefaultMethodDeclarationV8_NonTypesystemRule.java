@@ -21,7 +21,7 @@ public class check_DefaultMethodDeclarationV8_NonTypesystemRule extends Abstract
   }
   public void applyRule(final SNode modifier, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     JavaLanguageLevel languageLevel = new BaseLanguageEnvironmentHelper().getLanguageLevel(modifier);
-    if (!(languageLevel.isAtLeast(JavaLanguageLevel.JAVA_8))) {
+    if (!(JavaLanguageLevel.JAVA_8.covers(languageLevel))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(modifier, "Default methods can be used only since Java 8. Current java language level:" + languageLevel.getCompactDescription(), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3845357643094222575", null, errorTarget);

@@ -27,7 +27,7 @@ public class check_StaticInterfaceMethodDeclarationV8_NonTypesystemRule extends 
     }
 
     JavaLanguageLevel languageLevel = new BaseLanguageEnvironmentHelper().getLanguageLevel(intfc);
-    if (!(languageLevel.isAtLeast(JavaLanguageLevel.JAVA_8))) {
+    if (!(JavaLanguageLevel.JAVA_8.covers(languageLevel))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(intfc, "Static interface methods can be used only since Java 8. Current java language level:" + languageLevel.getCompactDescription(), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2722105966026702891", null, errorTarget);

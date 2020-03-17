@@ -40,7 +40,6 @@ import jetbrains.mps.ide.ui.dialogs.properties.MPSPropertiesConfigurable;
 import jetbrains.mps.ide.ui.dialogs.properties.PropertiesBundle;
 import jetbrains.mps.ide.ui.dialogs.properties.tabs.BaseTab;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
-import jetbrains.mps.migration.global.ProjectMigrationWithOptions.Option;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.facets.JavaLanguageLevel;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
@@ -48,6 +47,7 @@ import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionKind;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.ui.persistence.FacetTab;
 
@@ -67,11 +67,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 // FIXME #apply() shall not deal with ModuleDescriptor directly, instead, JavaModuleFacet.save() shall put that there (better yet,
 // to memento, not to be different from other facets, provided we don't use isCompileInMPS and getKind directly from descriptor)
@@ -83,8 +81,37 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
   private JBCheckBox myCompileInMPS;
   private JBCheckBox myExternalIdeaCompile;
   private ComboBox<SolutionKind> mySolutionKind;
-  private ComboBox<Optional<JavaLanguageLevel>> myLanguageLevel;
+  private ComboBox<LanguageLevelPresentation> myLanguageLevel;
   private JBLabel myUpdateModelRoots;
+
+  private final class LanguageLevelPresentation {
+    @Nullable
+    public final JavaLanguageLevel myValue;
+    private LanguageLevelPresentation(@Nullable JavaLanguageLevel value) {
+      myValue = value;
+    }
+    @Override
+    public String toString() {
+      if (myValue == null) {
+        return "Default (" + JavaLanguageLevel.getDefault(myCompileInMPS.isSelected()).getCompactDescription() + ")";
+      } else {
+        return myValue.getFullDescription();
+      }
+    }
+    @Override
+    public boolean equals(Object o) {
+      if (o instanceof LanguageLevelPresentation) {
+        LanguageLevelPresentation that = (LanguageLevelPresentation) o;
+        return myValue == that.myValue;
+      } else {
+        return false;
+      }
+    }
+    @Override
+    public int hashCode() {
+      return myValue != null ? myValue.hashCode() : 0;
+    }
+  }
 
   private final JavaModuleFacetImpl myJavaModuleFacet;
 
@@ -120,9 +147,6 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       if (RuntimeFlags.isInternalMode()) {
         myExternalIdeaCompile = new JBCheckBox(PropertiesBundle.message("facet.java.compileinidea"), descriptor.needsExternalIdeaCompile());
         myExternalIdeaCompile.setEnabled(!myCompileInMPS.isSelected());
-        myCompileInMPS.addChangeListener(e -> {
-          myExternalIdeaCompile.setEnabled(!myCompileInMPS.isSelected());
-        });
         JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT), false);
         p.add(myCompileInMPS);
         p.add(myExternalIdeaCompile);
@@ -135,12 +159,20 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
                                           GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
 
       JBLabel languageLevelLabel = new JBLabel("Language level:");
-      List<Optional<JavaLanguageLevel>> values = new ArrayList<>();
+      List<LanguageLevelPresentation> values = new ArrayList<>();
+      values.add(new LanguageLevelPresentation(null));
       for (JavaLanguageLevel value : JavaLanguageLevel.values()) {
-        values.add(Optional.of(value));
+        values.add(new LanguageLevelPresentation(value));
       }
-      myLanguageLevel = new ComboBox<>(new DefaultComboBoxModel<>(values.toArray((Optional<JavaLanguageLevel>[]) new Optional[]{})));
-      myLanguageLevel.setSelectedItem(Optional.ofNullable(descriptor.getJavaLanguageLevel()));
+      myLanguageLevel = new ComboBox<>(new DefaultComboBoxModel<>(values.toArray(new LanguageLevelPresentation[]{})));
+      myLanguageLevel.setSelectedItem(new LanguageLevelPresentation(descriptor.getJavaLanguageLevel()));
+
+      myCompileInMPS.addChangeListener(e -> {
+        if (RuntimeFlags.isInternalMode()) {
+          myExternalIdeaCompile.setEnabled(!myCompileInMPS.isSelected());
+        }
+        myLanguageLevel.setModel(myLanguageLevel.getModel());
+      });
 
       advancedTab.add(languageLevelLabel,
                       new GridConstraints(row, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED,
@@ -256,7 +288,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       if (myExternalIdeaCompile != null) {
         solutionCheck |= descriptor.needsExternalIdeaCompile() != myExternalIdeaCompile.isSelected();
       }
-      solutionCheck |= !Optional.ofNullable(descriptor.getJavaLanguageLevel()).equals(myLanguageLevel.getSelectedItem());
+      solutionCheck |= !new LanguageLevelPresentation(descriptor.getJavaLanguageLevel()).equals(myLanguageLevel.getSelectedItem());
     }
 
     // Any change in table model will require re-save, even if state in the end is the same, to simplify this check.
@@ -270,7 +302,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       assert descriptor != null;
       descriptor.setCompileInMPS(myCompileInMPS.isSelected());
       descriptor.setKind((SolutionKind) mySolutionKind.getSelectedItem());
-      descriptor.setJavaLanguageLevel(((Optional<JavaLanguageLevel>) myLanguageLevel.getSelectedItem()).orElse(null));
+      descriptor.setJavaLanguageLevel(((LanguageLevelPresentation) myLanguageLevel.getSelectedItem()).myValue);
       if (myExternalIdeaCompile != null) {
         descriptor.setNeedsExternalIdeaCompile(myExternalIdeaCompile.isSelected());
       }

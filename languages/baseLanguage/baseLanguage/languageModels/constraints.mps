@@ -536,38 +536,7 @@
             </node>
           </node>
           <node concept="3clFbH" id="2n6RfgDZKv5" role="3cqZAp" />
-          <node concept="3cpWs8" id="2n6RfgDZ$0x" role="3cqZAp">
-            <node concept="3cpWsn" id="2n6RfgDZ$0y" role="3cpWs9">
-              <property role="TrG5h" value="languageLevel" />
-              <node concept="3uibUv" id="2n6RfgDZ$0z" role="1tU5fm">
-                <ref role="3uigEE" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
-              </node>
-              <node concept="2OqwBi" id="2n6RfgDZ$0$" role="33vP2m">
-                <node concept="2ShNRf" id="2n6RfgDZ$0_" role="2Oq$k0">
-                  <node concept="HV5vD" id="2n6RfgDZ$0A" role="2ShVmc">
-                    <ref role="HV5vE" to="pz2c:7$LYU9arBWF" resolve="BaseLanguageEnvironmentHelper" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="2n6RfgDZ$0B" role="2OqNvi">
-                  <ref role="37wK5l" to="pz2c:jlPzbWisGb" resolve="getLanguageLevel" />
-                  <node concept="2rP1CM" id="2n6RfgDZLQS" role="37wK5m" />
-                </node>
-              </node>
-            </node>
-          </node>
           <node concept="3clFbJ" id="2n6RfgDZ$0D" role="3cqZAp">
-            <node concept="2OqwBi" id="2n6RfgDZOcC" role="3clFbw">
-              <node concept="37vLTw" id="2n6RfgDZOcD" role="2Oq$k0">
-                <ref role="3cqZAo" node="2n6RfgDZ$0y" resolve="languageLevel" />
-              </node>
-              <node concept="liA8E" id="2n6RfgDZOcE" role="2OqNvi">
-                <ref role="37wK5l" to="b0pz:~JavaLanguageLevel.isAtLeast(jetbrains.mps.project.facets.JavaLanguageLevel)" resolve="isAtLeast" />
-                <node concept="Rm8GO" id="2n6RfgDZOcF" role="37wK5m">
-                  <ref role="Rm8GQ" to="b0pz:~JavaLanguageLevel.JAVA_8" resolve="JAVA_8" />
-                  <ref role="1Px2BO" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
-                </node>
-              </node>
-            </node>
             <node concept="3clFbS" id="2n6RfgDZNxx" role="3clFbx">
               <node concept="3cpWs6" id="5Vvmn_QkhtQ" role="3cqZAp">
                 <node concept="37vLTw" id="5Vvmn_QkhtR" role="3cqZAk">
@@ -619,6 +588,26 @@
                         </node>
                       </node>
                     </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="7$np8hI$1eQ" role="3clFbw">
+              <node concept="Rm8GO" id="2n6RfgDZOcF" role="2Oq$k0">
+                <ref role="Rm8GQ" to="b0pz:~JavaLanguageLevel.JAVA_8" resolve="JAVA_8" />
+                <ref role="1Px2BO" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
+              </node>
+              <node concept="liA8E" id="7$np8hI$1Q6" role="2OqNvi">
+                <ref role="37wK5l" to="b0pz:~JavaLanguageLevel.covers(jetbrains.mps.project.facets.JavaLanguageLevel)" resolve="covers" />
+                <node concept="2OqwBi" id="2n6RfgDZ$0$" role="37wK5m">
+                  <node concept="2ShNRf" id="2n6RfgDZ$0_" role="2Oq$k0">
+                    <node concept="HV5vD" id="2n6RfgDZ$0A" role="2ShVmc">
+                      <ref role="HV5vE" to="pz2c:7$LYU9arBWF" resolve="BaseLanguageEnvironmentHelper" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="2n6RfgDZ$0B" role="2OqNvi">
+                    <ref role="37wK5l" to="pz2c:jlPzbWisGb" resolve="getLanguageLevel" />
+                    <node concept="2rP1CM" id="2n6RfgDZLQS" role="37wK5m" />
                   </node>
                 </node>
               </node>
@@ -5063,30 +5052,30 @@
       <node concept="3clFbS" id="147CB3QsUmK" role="2VODD2">
         <node concept="3clFbF" id="3ltt6sv6LhC" role="3cqZAp">
           <node concept="1Wc70l" id="7btLLcgYBCa" role="3clFbG">
-            <node concept="2OqwBi" id="3ltt6sv79Jn" role="3uHU7B">
-              <node concept="2OqwBi" id="3ltt6sv6NL4" role="2Oq$k0">
-                <node concept="2ShNRf" id="3ltt6sv6Lng" role="2Oq$k0">
-                  <node concept="HV5vD" id="3ltt6sv6NrD" role="2ShVmc">
-                    <ref role="HV5vE" to="pz2c:7$LYU9arBWF" resolve="BaseLanguageEnvironmentHelper" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="3ltt6sv6O2e" role="2OqNvi">
-                  <ref role="37wK5l" to="pz2c:jlPzbWisGb" resolve="getLanguageLevel" />
-                  <node concept="EsrRn" id="3ltt6sv6O8V" role="37wK5m" />
-                </node>
-              </node>
-              <node concept="liA8E" id="7btLLcgY$3r" role="2OqNvi">
-                <ref role="37wK5l" to="b0pz:~JavaLanguageLevel.isAtLeast(jetbrains.mps.project.facets.JavaLanguageLevel)" resolve="isAtLeast" />
-                <node concept="Rm8GO" id="7btLLcgYBgw" role="37wK5m">
-                  <ref role="Rm8GQ" to="b0pz:~JavaLanguageLevel.JAVA_8" resolve="JAVA_8" />
-                  <ref role="1Px2BO" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
-                </node>
-              </node>
-            </node>
             <node concept="2YIFZM" id="147CB3QsUmM" role="3uHU7w">
               <ref role="37wK5l" node="1LqCkvsb8i0" resolve="isInNonStaticClasssifierContext" />
               <ref role="1Pybhc" node="1LqCkvsb8hT" resolve="ConstraintsUtil" />
               <node concept="nLn13" id="147CB3QsUmN" role="37wK5m" />
+            </node>
+            <node concept="2OqwBi" id="7$np8hI$4Fx" role="3uHU7B">
+              <node concept="Rm8GO" id="7btLLcgYBgw" role="2Oq$k0">
+                <ref role="Rm8GQ" to="b0pz:~JavaLanguageLevel.JAVA_8" resolve="JAVA_8" />
+                <ref role="1Px2BO" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
+              </node>
+              <node concept="liA8E" id="7$np8hI$5fJ" role="2OqNvi">
+                <ref role="37wK5l" to="b0pz:~JavaLanguageLevel.covers(jetbrains.mps.project.facets.JavaLanguageLevel)" resolve="covers" />
+                <node concept="2OqwBi" id="3ltt6sv6NL4" role="37wK5m">
+                  <node concept="2ShNRf" id="3ltt6sv6Lng" role="2Oq$k0">
+                    <node concept="HV5vD" id="3ltt6sv6NrD" role="2ShVmc">
+                      <ref role="HV5vE" to="pz2c:7$LYU9arBWF" resolve="BaseLanguageEnvironmentHelper" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="3ltt6sv6O2e" role="2OqNvi">
+                    <ref role="37wK5l" to="pz2c:jlPzbWisGb" resolve="getLanguageLevel" />
+                    <node concept="EsrRn" id="3ltt6sv6O8V" role="37wK5m" />
+                  </node>
+                </node>
+              </node>
             </node>
           </node>
         </node>

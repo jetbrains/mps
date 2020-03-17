@@ -81,8 +81,7 @@ public class StaticMethodCall_Constraints extends BaseConstraintsDescriptor {
             }
             Scope visibleClassifiersScope = ClassifierScopes.getVisibleClassifiersScope(_context.getContextNode(), true);
 
-            JavaLanguageLevel languageLevel = new BaseLanguageEnvironmentHelper().getLanguageLevel(_context.getContextNode());
-            if (languageLevel.isAtLeast(JavaLanguageLevel.JAVA_8)) {
+            if (JavaLanguageLevel.JAVA_8.covers(new BaseLanguageEnvironmentHelper().getLanguageLevel(_context.getContextNode()))) {
               return visibleClassifiersScope;
             } else {
               return new FilteringScope(visibleClassifiersScope) {

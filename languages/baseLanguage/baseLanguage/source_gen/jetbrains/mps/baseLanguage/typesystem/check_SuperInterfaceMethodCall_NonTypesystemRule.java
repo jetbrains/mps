@@ -21,7 +21,7 @@ public class check_SuperInterfaceMethodCall_NonTypesystemRule extends AbstractNo
   }
   public void applyRule(final SNode superInterfaceMethodCall, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     JavaLanguageLevel languageLevel = new BaseLanguageEnvironmentHelper().getLanguageLevel(superInterfaceMethodCall);
-    if (!(languageLevel.isAtLeast(JavaLanguageLevel.JAVA_8))) {
+    if (!(JavaLanguageLevel.JAVA_8.covers(languageLevel))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(superInterfaceMethodCall, "Super interface method invocations can be used only since Java 8. Current java language level:" + languageLevel.getCompactDescription(), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2722105966026746113", null, errorTarget);
