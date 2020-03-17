@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:acd963df-05cb-4d3c-ae72-bfc5c052a222(jetbrains.mps.ide.java.testMaterial.annotations.user)" doNotGenerate="true">
+<model ref="r:acd963df-05cb-4d3c-ae72-bfc5c052a222(jetbrains.mps.ide.java.testMaterial.annotations.user)">
   <persistence version="9" />
+  <attribute name="doNotGenerate" value="true" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
   </languages>
   <imports>
     <import index="ygig" ref="r:34fd912a-e1ab-4cd8-b902-62b5e223065f(jetbrains.mps.ide.java.testMaterial.annotations)" />

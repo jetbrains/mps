@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="5pdnep9uq4omr4brz96oklimknfx13b">
+<product version="3" modelHash="-d1xd2ojx9d3agulawebjgrnhg096dxr">
   <files names="MigrateInterfaceMethods.java:MigrationDescriptor.java:RemoveJDK8Language.java" />
 </product>
 

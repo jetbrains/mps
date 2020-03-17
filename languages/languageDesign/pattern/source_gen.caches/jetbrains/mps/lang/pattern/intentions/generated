@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-3ogln63705m769ctp4uxltcneawyc73">
+<product version="3" modelHash="btkn1e3sk7l945f6zwwpw02d9ml7izy">
   <files names="CreateActionAsPattern_Intention.java:CreateAsPattern_Intention.java:CreateListPattern_Intention.java:CreateOrPattern_Intention.java:CreatePatternVariable_Intention.java:CreatePropertyPatternVariable_Intention.java:CreateWildcardPattern_Intention.java:IntentionsDescriptor.java" />
 </product>
 

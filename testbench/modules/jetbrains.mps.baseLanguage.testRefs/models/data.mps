@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:83830430-11ab-43c1-b57b-a12f13d84af1(jetbrains.mps.baseLanguage.testRefs.data)" doNotGenerate="true">
+<model ref="r:83830430-11ab-43c1-b57b-a12f13d84af1(jetbrains.mps.baseLanguage.testRefs.data)">
   <persistence version="9" />
+  <attribute name="doNotGenerate" value="true" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="b654d0ef-8981-4c92-8304-246f1dfe4618" name="jetbrains.mps.baseLanguage.testRefs.testLang" version="0" />
   </languages>
   <imports>

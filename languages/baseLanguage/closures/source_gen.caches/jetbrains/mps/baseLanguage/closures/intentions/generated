@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="1yc3b6fd2hqk83bepcj30l1h4zrztk0">
+<product version="3" modelHash="-3fjld5xrn8fqlpox16ru5l4hn7jrcwi">
   <files names="IntentionsDescriptor.java:ToggleMultiLine_Intention.java:add_throws_to_FunctionType_Intention.java:replace_invokeOperation_with_compactInvoke_Intention.java" />
 </product>
 

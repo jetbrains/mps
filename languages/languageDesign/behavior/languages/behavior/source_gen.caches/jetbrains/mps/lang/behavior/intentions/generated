@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-dphr8pnu5a54atnmkor5kunc4ecjeaf">
+<product version="3" modelHash="-8asqdnwosdzqk6t4r8i79gnl1q3c1ba">
   <files names="IntentionsDescriptor.java:RemoveTVD_Intention.java:ToggleConceptAbstract_Intention.java:ToggleConceptMethodAbstract_Intention.java:ToggleConceptMethodVirtual_Intention.java:ToggleMethodStatic_Intention.java" />
 </product>
 

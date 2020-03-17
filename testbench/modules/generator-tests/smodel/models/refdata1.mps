@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:c850a08e-438b-4a8e-9ce5-5acf32b55cff(jetbrains.mps.test.smodel.refdata1)" doNotGenerate="true">
+<model ref="r:c850a08e-438b-4a8e-9ce5-5acf32b55cff(jetbrains.mps.test.smodel.refdata1)">
   <persistence version="9" />
+  <attribute name="doNotGenerate" value="true" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
   </languages>
   <imports>
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
