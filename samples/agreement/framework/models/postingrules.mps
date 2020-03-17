@@ -16,6 +16,9 @@
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
+        <child id="8118189177080264854" name="classes" index="nSUat" />
+      </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1224573963862" name="jetbrains.mps.baseLanguage.structure.EnumValuesExpression" flags="nn" index="uiWXb">
         <reference id="1224573974191" name="enumClass" index="uiZuM" />
@@ -40,16 +43,8 @@
         <child id="1083245396908" name="enumConstant" index="Qtgdg" />
       </concept>
       <concept id="1083245299891" name="jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration" flags="ig" index="QsSxf" />
-      <concept id="1164879751025" name="jetbrains.mps.baseLanguage.structure.TryCatchStatement" flags="nn" index="SfApY">
-        <child id="1164879758292" name="body" index="SfCbr" />
-        <child id="1164903496223" name="catchClause" index="TEbGg" />
-      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
-      </concept>
-      <concept id="1164903280175" name="jetbrains.mps.baseLanguage.structure.CatchClause" flags="nn" index="TDmWw">
-        <child id="1164903359218" name="catchBody" index="TDEfX" />
-        <child id="1164903359217" name="throwable" index="TDEfY" />
       </concept>
       <concept id="1070462154015" name="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" flags="ig" index="Wx3nA" />
       <concept id="1070475354124" name="jetbrains.mps.baseLanguage.structure.ThisExpression" flags="nn" index="Xjq3P" />
@@ -57,6 +52,7 @@
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
+      <concept id="4952749571008284462" name="jetbrains.mps.baseLanguage.structure.CatchVariable" flags="ng" index="XOnhg" />
       <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
@@ -161,6 +157,10 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
+      <concept id="3093926081414150598" name="jetbrains.mps.baseLanguage.structure.MultipleCatchClause" flags="ng" index="3uVAMA">
+        <child id="8276990574895933173" name="catchBody" index="1zc67A" />
+        <child id="8276990574895933172" name="throwable" index="1zc67B" />
+      </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1184950988562" name="jetbrains.mps.baseLanguage.structure.ArrayCreator" flags="nn" index="3$_iS1">
         <child id="1184951007469" name="componentType" index="3$_nBY" />
@@ -179,6 +179,10 @@
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+        <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
+        <child id="8276990574886367508" name="body" index="1zxBo7" />
+      </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
         <child id="1163668914799" name="condition" index="3K4Cdx" />
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
@@ -1975,25 +1979,8 @@
             </node>
           </node>
         </node>
-        <node concept="SfApY" id="5E$kzZSw8Qr" role="3cqZAp">
-          <node concept="TDmWw" id="5E$kzZSw8Qs" role="TEbGg">
-            <node concept="3clFbS" id="5E$kzZSw8Qt" role="TDEfX">
-              <node concept="YS8fn" id="5E$kzZSw8Qu" role="3cqZAp">
-                <node concept="2ShNRf" id="5E$kzZSw8Qv" role="YScLw">
-                  <node concept="1pGfFk" id="5E$kzZSw8Qw" role="2ShVmc">
-                    <ref role="37wK5l" node="5E$kzZSw8nK" resolve="MissingPostingRuleException" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWsn" id="5E$kzZSw8Qx" role="TDEfY">
-              <property role="TrG5h" value="e" />
-              <node concept="3uibUv" id="5E$kzZSw8Qy" role="1tU5fm">
-                <ref role="3uigEE" to="wyt6:~IllegalArgumentException" resolve="IllegalArgumentException" />
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbS" id="5E$kzZSw8Qz" role="SfCbr">
+        <node concept="3J1_TO" id="5E$kzZSw8Qr" role="3cqZAp">
+          <node concept="3clFbS" id="5E$kzZSw8Qz" role="1zxBo7">
             <node concept="3cpWs6" id="5E$kzZSw8Q$" role="3cqZAp">
               <node concept="10QFUN" id="5E$kzZSw8Q_" role="3cqZAk">
                 <node concept="2OqwBi" id="5E$kzZSw8QA" role="10QFUP">
@@ -2014,6 +2001,26 @@
                 </node>
                 <node concept="3uibUv" id="5E$kzZSw8QG" role="10QFUM">
                   <ref role="3uigEE" node="5E$kzZSw8UC" resolve="PostingRule" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3uVAMA" id="5E$kzZSw8Qs" role="1zxBo5">
+            <node concept="XOnhg" id="5E$kzZSw8Qx" role="1zc67B">
+              <property role="3TUv4t" value="false" />
+              <property role="TrG5h" value="e" />
+              <node concept="nSUau" id="xvs04dItp9" role="1tU5fm">
+                <node concept="3uibUv" id="5E$kzZSw8Qy" role="nSUat">
+                  <ref role="3uigEE" to="wyt6:~IllegalArgumentException" resolve="IllegalArgumentException" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbS" id="5E$kzZSw8Qt" role="1zc67A">
+              <node concept="YS8fn" id="5E$kzZSw8Qu" role="3cqZAp">
+                <node concept="2ShNRf" id="5E$kzZSw8Qv" role="YScLw">
+                  <node concept="1pGfFk" id="5E$kzZSw8Qw" role="2ShVmc">
+                    <ref role="37wK5l" node="5E$kzZSw8nK" resolve="MissingPostingRuleException" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -3958,9 +3965,30 @@
             </node>
           </node>
           <node concept="3clFbS" id="5E$kzZSw9jH" role="2LFqv$">
-            <node concept="SfApY" id="5E$kzZSw9jI" role="3cqZAp">
-              <node concept="TDmWw" id="5E$kzZSw9jJ" role="TEbGg">
-                <node concept="3clFbS" id="5E$kzZSw9jK" role="TDEfX">
+            <node concept="3J1_TO" id="5E$kzZSw9jI" role="3cqZAp">
+              <node concept="3clFbS" id="5E$kzZSw9jR" role="1zxBo7">
+                <node concept="3clFbF" id="5E$kzZSw9jS" role="3cqZAp">
+                  <node concept="2OqwBi" id="5E$kzZSw9jT" role="3clFbG">
+                    <node concept="37vLTw" id="3GM_nagTBVd" role="2Oq$k0">
+                      <ref role="3cqZAo" node="5E$kzZSw9jF" resolve="event" />
+                    </node>
+                    <node concept="liA8E" id="5E$kzZSw9jV" role="2OqNvi">
+                      <ref role="37wK5l" node="5E$kzZSw8k6" resolve="process" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3uVAMA" id="5E$kzZSw9jJ" role="1zxBo5">
+                <node concept="XOnhg" id="5E$kzZSw9jP" role="1zc67B">
+                  <property role="3TUv4t" value="false" />
+                  <property role="TrG5h" value="e" />
+                  <node concept="nSUau" id="xvs04dItoZ" role="1tU5fm">
+                    <node concept="3uibUv" id="5E$kzZSw9jQ" role="nSUat">
+                      <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbS" id="5E$kzZSw9jK" role="1zc67A">
                   <node concept="3clFbF" id="5E$kzZSw9jL" role="3cqZAp">
                     <node concept="1rXfSq" id="4hiugqyzgxX" role="3clFbG">
                       <ref role="37wK5l" node="5E$kzZSw9jc" resolve="logProcessingError" />
@@ -3970,24 +3998,6 @@
                       <node concept="37vLTw" id="3GM_nagTwxm" role="37wK5m">
                         <ref role="3cqZAo" node="5E$kzZSw9jP" resolve="e" />
                       </node>
-                    </node>
-                  </node>
-                </node>
-                <node concept="3cpWsn" id="5E$kzZSw9jP" role="TDEfY">
-                  <property role="TrG5h" value="e" />
-                  <node concept="3uibUv" id="5E$kzZSw9jQ" role="1tU5fm">
-                    <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbS" id="5E$kzZSw9jR" role="SfCbr">
-                <node concept="3clFbF" id="5E$kzZSw9jS" role="3cqZAp">
-                  <node concept="2OqwBi" id="5E$kzZSw9jT" role="3clFbG">
-                    <node concept="37vLTw" id="3GM_nagTBVd" role="2Oq$k0">
-                      <ref role="3cqZAo" node="5E$kzZSw9jF" resolve="event" />
-                    </node>
-                    <node concept="liA8E" id="5E$kzZSw9jV" role="2OqNvi">
-                      <ref role="37wK5l" node="5E$kzZSw8k6" resolve="process" />
                     </node>
                   </node>
                 </node>

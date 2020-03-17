@@ -17,6 +17,9 @@
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
+        <child id="8118189177080264854" name="classes" index="nSUat" />
+      </concept>
       <concept id="5279705229678483897" name="jetbrains.mps.baseLanguage.structure.FloatingPointFloatConstant" flags="nn" index="2$xPTn">
         <property id="5279705229678483899" name="value" index="2$xPTl" />
       </concept>
@@ -48,16 +51,8 @@
         <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
         <reference id="1144432896254" name="enumClass" index="1Px2BO" />
       </concept>
-      <concept id="1164879751025" name="jetbrains.mps.baseLanguage.structure.TryCatchStatement" flags="nn" index="SfApY">
-        <child id="1164879758292" name="body" index="SfCbr" />
-        <child id="1164903496223" name="catchClause" index="TEbGg" />
-      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
-      </concept>
-      <concept id="1164903280175" name="jetbrains.mps.baseLanguage.structure.CatchClause" flags="nn" index="TDmWw">
-        <child id="1164903359218" name="catchBody" index="TDEfX" />
-        <child id="1164903359217" name="throwable" index="TDEfY" />
       </concept>
       <concept id="1070462154015" name="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" flags="ig" index="Wx3nA" />
       <concept id="1070475354124" name="jetbrains.mps.baseLanguage.structure.ThisExpression" flags="nn" index="Xjq3P" />
@@ -65,6 +60,7 @@
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
+      <concept id="4952749571008284462" name="jetbrains.mps.baseLanguage.structure.CatchVariable" flags="ng" index="XOnhg" />
       <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
       <concept id="1164991038168" name="jetbrains.mps.baseLanguage.structure.ThrowStatement" flags="nn" index="YS8fn">
         <child id="1164991057263" name="throwable" index="YScLw" />
@@ -182,11 +178,19 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
+      <concept id="3093926081414150598" name="jetbrains.mps.baseLanguage.structure.MultipleCatchClause" flags="ng" index="3uVAMA">
+        <child id="8276990574895933173" name="catchBody" index="1zc67A" />
+        <child id="8276990574895933172" name="throwable" index="1zc67B" />
+      </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+        <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
+        <child id="8276990574886367508" name="body" index="1zxBo7" />
+      </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
         <child id="1163668914799" name="condition" index="3K4Cdx" />
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
@@ -1011,38 +1015,8 @@
             </node>
           </node>
           <node concept="3clFbS" id="3jCxiSsHc96" role="3clFbx">
-            <node concept="SfApY" id="3jCxiSsHc97" role="3cqZAp">
-              <node concept="TDmWw" id="3jCxiSsHc98" role="TEbGg">
-                <node concept="3clFbS" id="3jCxiSsHc99" role="TDEfX">
-                  <node concept="3clFbF" id="3jCxiSsHc9a" role="3cqZAp">
-                    <node concept="37vLTI" id="3jCxiSsHc9b" role="3clFbG">
-                      <node concept="2OqwBi" id="3jCxiSsHc9c" role="37vLTJ">
-                        <node concept="2OwXpG" id="3jCxiSsHc9d" role="2OqNvi">
-                          <ref role="2Oxat5" node="3jCxiSsHc8N" resolve="state" />
-                        </node>
-                        <node concept="Xjq3P" id="3jCxiSsHc9e" role="2Oq$k0" />
-                      </node>
-                      <node concept="Rm8GO" id="3jCxiSsHc9f" role="37vLTx">
-                        <ref role="1Px2BO" node="3jCxiSsHbVQ" resolve="YieldingIterator.State" />
-                        <ref role="Rm8GQ" node="3jCxiSsHc8F" resolve="AT_END" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="YS8fn" id="3jCxiSsHc9g" role="3cqZAp">
-                    <node concept="37vLTw" id="3GM_nagTv9S" role="YScLw">
-                      <ref role="3cqZAo" node="3jCxiSsHc9i" resolve="ex" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="3cpWsn" id="3jCxiSsHc9i" role="TDEfY">
-                  <property role="TrG5h" value="ex" />
-                  <property role="3TUv4t" value="false" />
-                  <node concept="3uibUv" id="3jCxiSsHc9j" role="1tU5fm">
-                    <ref role="3uigEE" node="3jCxiSsHc7O" resolve="DelayedException" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbS" id="3jCxiSsHc9k" role="SfCbr">
+            <node concept="3J1_TO" id="3jCxiSsHc97" role="3cqZAp">
+              <node concept="3clFbS" id="3jCxiSsHc9k" role="1zxBo7">
                 <node concept="3clFbF" id="3jCxiSsHc9l" role="3cqZAp">
                   <node concept="37vLTI" id="3jCxiSsHc9m" role="3clFbG">
                     <node concept="2OqwBi" id="3jCxiSsHc9n" role="37vLTJ">
@@ -1068,6 +1042,38 @@
                           <ref role="Rm8GQ" node="3jCxiSsHc8F" resolve="AT_END" />
                         </node>
                       </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3uVAMA" id="3jCxiSsHc98" role="1zxBo5">
+                <node concept="XOnhg" id="3jCxiSsHc9i" role="1zc67B">
+                  <property role="3TUv4t" value="false" />
+                  <property role="TrG5h" value="ex" />
+                  <node concept="nSUau" id="xvs04dGAKW" role="1tU5fm">
+                    <node concept="3uibUv" id="3jCxiSsHc9j" role="nSUat">
+                      <ref role="3uigEE" node="3jCxiSsHc7O" resolve="DelayedException" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbS" id="3jCxiSsHc99" role="1zc67A">
+                  <node concept="3clFbF" id="3jCxiSsHc9a" role="3cqZAp">
+                    <node concept="37vLTI" id="3jCxiSsHc9b" role="3clFbG">
+                      <node concept="2OqwBi" id="3jCxiSsHc9c" role="37vLTJ">
+                        <node concept="2OwXpG" id="3jCxiSsHc9d" role="2OqNvi">
+                          <ref role="2Oxat5" node="3jCxiSsHc8N" resolve="state" />
+                        </node>
+                        <node concept="Xjq3P" id="3jCxiSsHc9e" role="2Oq$k0" />
+                      </node>
+                      <node concept="Rm8GO" id="3jCxiSsHc9f" role="37vLTx">
+                        <ref role="1Px2BO" node="3jCxiSsHbVQ" resolve="YieldingIterator.State" />
+                        <ref role="Rm8GQ" node="3jCxiSsHc8F" resolve="AT_END" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="YS8fn" id="3jCxiSsHc9g" role="3cqZAp">
+                    <node concept="37vLTw" id="3GM_nagTv9S" role="YScLw">
+                      <ref role="3cqZAo" node="3jCxiSsHc9i" resolve="ex" />
                     </node>
                   </node>
                 </node>
@@ -1175,9 +1181,53 @@
               <ref role="Rm8GQ" node="3jCxiSsHc8G" resolve="UNKNOWN" />
             </node>
             <node concept="3clFbS" id="3jCxiSsHcaa" role="3Kbo56">
-              <node concept="SfApY" id="3jCxiSsHcab" role="3cqZAp">
-                <node concept="TDmWw" id="3jCxiSsHcac" role="TEbGg">
-                  <node concept="3clFbS" id="3jCxiSsHcad" role="TDEfX">
+              <node concept="3J1_TO" id="3jCxiSsHcab" role="3cqZAp">
+                <node concept="3clFbS" id="3jCxiSsHcav" role="1zxBo7">
+                  <node concept="3clFbJ" id="3jCxiSsHcaw" role="3cqZAp">
+                    <node concept="3fqX7Q" id="3jCxiSsHcax" role="3clFbw">
+                      <node concept="2OqwBi" id="3jCxiSsHcay" role="3fr31v">
+                        <node concept="Xjq3P" id="3jCxiSsHcaz" role="2Oq$k0" />
+                        <node concept="liA8E" id="3jCxiSsHca$" role="2OqNvi">
+                          <ref role="37wK5l" node="3jCxiSsHcbd" resolve="moveToNext" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3clFbS" id="3jCxiSsHca_" role="3clFbx">
+                      <node concept="3clFbF" id="3jCxiSsHcaA" role="3cqZAp">
+                        <node concept="37vLTI" id="3jCxiSsHcaB" role="3clFbG">
+                          <node concept="2OqwBi" id="3jCxiSsHcaC" role="37vLTJ">
+                            <node concept="2OwXpG" id="3jCxiSsHcaD" role="2OqNvi">
+                              <ref role="2Oxat5" node="3jCxiSsHc8N" resolve="state" />
+                            </node>
+                            <node concept="Xjq3P" id="3jCxiSsHcaE" role="2Oq$k0" />
+                          </node>
+                          <node concept="Rm8GO" id="3jCxiSsHcaF" role="37vLTx">
+                            <ref role="1Px2BO" node="3jCxiSsHbVQ" resolve="YieldingIterator.State" />
+                            <ref role="Rm8GQ" node="3jCxiSsHc8F" resolve="AT_END" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="YS8fn" id="3jCxiSsHcaG" role="3cqZAp">
+                        <node concept="2ShNRf" id="3jCxiSsHcaH" role="YScLw">
+                          <node concept="1pGfFk" id="3jCxiSsHcaI" role="2ShVmc">
+                            <ref role="37wK5l" to="33ny:~NoSuchElementException.&lt;init&gt;()" resolve="NoSuchElementException" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3uVAMA" id="3jCxiSsHcac" role="1zxBo5">
+                  <node concept="XOnhg" id="3jCxiSsHcat" role="1zc67B">
+                    <property role="3TUv4t" value="false" />
+                    <property role="TrG5h" value="ex" />
+                    <node concept="nSUau" id="xvs04dGAKU" role="1tU5fm">
+                      <node concept="3uibUv" id="3jCxiSsHcau" role="nSUat">
+                        <ref role="3uigEE" node="3jCxiSsHc7O" resolve="DelayedException" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3clFbS" id="3jCxiSsHcad" role="1zc67A">
                     <node concept="3clFbF" id="3jCxiSsHcae" role="3cqZAp">
                       <node concept="37vLTI" id="3jCxiSsHcaf" role="3clFbG">
                         <node concept="2OqwBi" id="3jCxiSsHcag" role="37vLTJ">
@@ -1209,48 +1259,6 @@
                       <node concept="2ShNRf" id="3jCxiSsHcar" role="YScLw">
                         <node concept="1pGfFk" id="3jCxiSsHcas" role="2ShVmc">
                           <ref role="37wK5l" to="33ny:~NoSuchElementException.&lt;init&gt;()" resolve="NoSuchElementException" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="3cpWsn" id="3jCxiSsHcat" role="TDEfY">
-                    <property role="TrG5h" value="ex" />
-                    <property role="3TUv4t" value="false" />
-                    <node concept="3uibUv" id="3jCxiSsHcau" role="1tU5fm">
-                      <ref role="3uigEE" node="3jCxiSsHc7O" resolve="DelayedException" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="3clFbS" id="3jCxiSsHcav" role="SfCbr">
-                  <node concept="3clFbJ" id="3jCxiSsHcaw" role="3cqZAp">
-                    <node concept="3fqX7Q" id="3jCxiSsHcax" role="3clFbw">
-                      <node concept="2OqwBi" id="3jCxiSsHcay" role="3fr31v">
-                        <node concept="Xjq3P" id="3jCxiSsHcaz" role="2Oq$k0" />
-                        <node concept="liA8E" id="3jCxiSsHca$" role="2OqNvi">
-                          <ref role="37wK5l" node="3jCxiSsHcbd" resolve="moveToNext" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3clFbS" id="3jCxiSsHca_" role="3clFbx">
-                      <node concept="3clFbF" id="3jCxiSsHcaA" role="3cqZAp">
-                        <node concept="37vLTI" id="3jCxiSsHcaB" role="3clFbG">
-                          <node concept="2OqwBi" id="3jCxiSsHcaC" role="37vLTJ">
-                            <node concept="2OwXpG" id="3jCxiSsHcaD" role="2OqNvi">
-                              <ref role="2Oxat5" node="3jCxiSsHc8N" resolve="state" />
-                            </node>
-                            <node concept="Xjq3P" id="3jCxiSsHcaE" role="2Oq$k0" />
-                          </node>
-                          <node concept="Rm8GO" id="3jCxiSsHcaF" role="37vLTx">
-                            <ref role="1Px2BO" node="3jCxiSsHbVQ" resolve="YieldingIterator.State" />
-                            <ref role="Rm8GQ" node="3jCxiSsHc8F" resolve="AT_END" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="YS8fn" id="3jCxiSsHcaG" role="3cqZAp">
-                        <node concept="2ShNRf" id="3jCxiSsHcaH" role="YScLw">
-                          <node concept="1pGfFk" id="3jCxiSsHcaI" role="2ShVmc">
-                            <ref role="37wK5l" to="33ny:~NoSuchElementException.&lt;init&gt;()" resolve="NoSuchElementException" />
-                          </node>
                         </node>
                       </node>
                     </node>

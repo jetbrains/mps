@@ -309,6 +309,14 @@
         <property id="8575328350543493365" name="message" index="huDt6" />
         <property id="2423417345669755629" name="filter" index="1eyWvh" />
       </concept>
+      <concept id="8703179436979359251" name="jetbrains.mps.lang.core.structure.MigrationAnnotation" flags="ng" index="1tp6A5">
+        <property id="8703179436979359252" name="createdByScript" index="1tp6A2" />
+      </concept>
+      <concept id="8703179436979359238" name="jetbrains.mps.lang.core.structure.ReviewMigration" flags="ng" index="1tp6Ag">
+        <property id="8703179436979359239" name="reasonShort" index="1tp6Ah" />
+        <property id="8703179436979359240" name="todo" index="1tp6Au" />
+        <property id="8703179436979359241" name="readableId" index="1tp6Av" />
+      </concept>
       <concept id="3717301156197626279" name="jetbrains.mps.lang.core.structure.BasePlaceholder" flags="ng" index="3DQ70j">
         <child id="3717301156197626301" name="content" index="3DQ709" />
       </concept>
@@ -5149,6 +5157,12 @@
         <node concept="3clFbS" id="2wB1LSHYorX" role="9aQI4">
           <node concept="SfApY" id="2wB1LSHYsZh" role="3cqZAp">
             <node concept="3clFbS" id="2wB1LSHYsZm" role="SfCbr" />
+            <node concept="1tp6Ag" id="xvs04dIvuR" role="lGtFl">
+              <property role="1tp6A2" value="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)/10" />
+              <property role="1tp6Ah" value="unknown attributes" />
+              <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.core.structure.BaseCommentAttribute" />
+              <property role="1tp6Av" value="Migrate 'try' statements" />
+            </node>
             <node concept="1X3_iC" id="2wB1LSHYt0X" role="lGtFl">
               <property role="3V$3am" value="catchClause" />
               <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025/1164903496223" />

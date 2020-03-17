@@ -103,12 +103,10 @@
       </concept>
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
-      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
-      <concept id="1153952380246" name="jetbrains.mps.baseLanguage.structure.TryStatement" flags="nn" index="2GUZhq">
-        <child id="1153952416686" name="body" index="2GV8ay" />
-        <child id="1153952429843" name="finallyBody" index="2GVbov" />
-        <child id="1164903700860" name="catchClause" index="TEXxN" />
+      <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
+        <child id="8118189177080264854" name="classes" index="nSUat" />
       </concept>
+      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
       </concept>
@@ -123,16 +121,8 @@
         <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
         <reference id="1144432896254" name="enumClass" index="1Px2BO" />
       </concept>
-      <concept id="1164879751025" name="jetbrains.mps.baseLanguage.structure.TryCatchStatement" flags="nn" index="SfApY">
-        <child id="1164879758292" name="body" index="SfCbr" />
-        <child id="1164903496223" name="catchClause" index="TEbGg" />
-      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
-      </concept>
-      <concept id="1164903280175" name="jetbrains.mps.baseLanguage.structure.CatchClause" flags="nn" index="TDmWw">
-        <child id="1164903359218" name="catchBody" index="TDEfX" />
-        <child id="1164903359217" name="throwable" index="TDEfY" />
       </concept>
       <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
         <child id="1137022507850" name="body" index="2VODD2" />
@@ -141,6 +131,7 @@
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
+      <concept id="4952749571008284462" name="jetbrains.mps.baseLanguage.structure.CatchVariable" flags="ng" index="XOnhg" />
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
@@ -216,6 +207,13 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
+      <concept id="3093926081414150598" name="jetbrains.mps.baseLanguage.structure.MultipleCatchClause" flags="ng" index="3uVAMA">
+        <child id="8276990574895933173" name="catchBody" index="1zc67A" />
+        <child id="8276990574895933172" name="throwable" index="1zc67B" />
+      </concept>
+      <concept id="8276990574909231788" name="jetbrains.mps.baseLanguage.structure.FinallyClause" flags="ng" index="1wplmZ">
+        <child id="8276990574909234106" name="finallyBody" index="1wplMD" />
+      </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
@@ -225,6 +223,11 @@
       </concept>
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
+      </concept>
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+        <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
+        <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
+        <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
@@ -1034,27 +1037,8 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="2GUZhq" id="4KDfkUwMpbH" role="3cqZAp">
-                    <node concept="TDmWw" id="vgcurb$RBJ" role="TEXxN">
-                      <node concept="3cpWsn" id="vgcurb$RBK" role="TDEfY">
-                        <property role="TrG5h" value="ex" />
-                        <node concept="3uibUv" id="vgcurb$RKp" role="1tU5fm">
-                          <ref role="3uigEE" to="wyt6:~RuntimeException" resolve="RuntimeException" />
-                        </node>
-                      </node>
-                      <node concept="3clFbS" id="vgcurb$RBM" role="TDEfX">
-                        <node concept="RRSsy" id="3jYQuSB37vX" role="3cqZAp">
-                          <property role="RRSoG" value="gZ5fh_4/error" />
-                          <node concept="Xl_RD" id="vgcurb$RYH" role="RRSoy">
-                            <property role="Xl_RC" value="error processing test project" />
-                          </node>
-                          <node concept="37vLTw" id="vgcurb$RYJ" role="RRSow">
-                            <ref role="3cqZAo" node="vgcurb$RBK" resolve="ex" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3clFbS" id="4KDfkUwMpbI" role="2GV8ay">
+                  <node concept="3J1_TO" id="4KDfkUwMpbH" role="3cqZAp">
+                    <node concept="3clFbS" id="4KDfkUwMpbI" role="1zxBo7">
                       <node concept="3clFbF" id="4KDfkUwMpbJ" role="3cqZAp">
                         <node concept="37vLTI" id="4KDfkUwMpbK" role="3clFbG">
                           <node concept="37vLTw" id="3GM_nagTsBc" role="37vLTJ">
@@ -1072,14 +1056,38 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="3clFbS" id="4KDfkUwMpbQ" role="2GVbov">
-                      <node concept="3clFbF" id="4KDfkUwMpbR" role="3cqZAp">
-                        <node concept="2OqwBi" id="4KDfkUwMpbS" role="3clFbG">
-                          <node concept="37vLTw" id="3GM_nagTvHU" role="2Oq$k0">
-                            <ref role="3cqZAo" node="4KDfkUwMpb$" resolve="proInd" />
+                    <node concept="3uVAMA" id="vgcurb$RBJ" role="1zxBo5">
+                      <node concept="XOnhg" id="vgcurb$RBK" role="1zc67B">
+                        <property role="3TUv4t" value="false" />
+                        <property role="TrG5h" value="ex" />
+                        <node concept="nSUau" id="xvs04dHtOe" role="1tU5fm">
+                          <node concept="3uibUv" id="vgcurb$RKp" role="nSUat">
+                            <ref role="3uigEE" to="wyt6:~RuntimeException" resolve="RuntimeException" />
                           </node>
-                          <node concept="liA8E" id="4KDfkUwMpbU" role="2OqNvi">
-                            <ref role="37wK5l" to="xygl:~ProgressIndicator.popState()" resolve="popState" />
+                        </node>
+                      </node>
+                      <node concept="3clFbS" id="vgcurb$RBM" role="1zc67A">
+                        <node concept="RRSsy" id="3jYQuSB37vX" role="3cqZAp">
+                          <property role="RRSoG" value="gZ5fh_4/error" />
+                          <node concept="Xl_RD" id="vgcurb$RYH" role="RRSoy">
+                            <property role="Xl_RC" value="error processing test project" />
+                          </node>
+                          <node concept="37vLTw" id="vgcurb$RYJ" role="RRSow">
+                            <ref role="3cqZAo" node="vgcurb$RBK" resolve="ex" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="1wplmZ" id="xvs04dHtOE" role="1zxBo6">
+                      <node concept="3clFbS" id="4KDfkUwMpbQ" role="1wplMD">
+                        <node concept="3clFbF" id="4KDfkUwMpbR" role="3cqZAp">
+                          <node concept="2OqwBi" id="4KDfkUwMpbS" role="3clFbG">
+                            <node concept="37vLTw" id="3GM_nagTvHU" role="2Oq$k0">
+                              <ref role="3cqZAo" node="4KDfkUwMpb$" resolve="proInd" />
+                            </node>
+                            <node concept="liA8E" id="4KDfkUwMpbU" role="2OqNvi">
+                              <ref role="37wK5l" to="xygl:~ProgressIndicator.popState()" resolve="popState" />
+                            </node>
                           </node>
                         </node>
                       </node>
@@ -1718,8 +1726,8 @@
                     </node>
                   </node>
                 </node>
-                <node concept="SfApY" id="1w$c60CEqV4" role="3cqZAp">
-                  <node concept="3clFbS" id="1w$c60CEqV6" role="SfCbr">
+                <node concept="3J1_TO" id="1w$c60CEqV4" role="3cqZAp">
+                  <node concept="3clFbS" id="1w$c60CEqV6" role="1zxBo7">
                     <node concept="3cpWs8" id="nUYGvAK48Y" role="3cqZAp">
                       <node concept="3cpWsn" id="nUYGvAK48Z" role="3cpWs9">
                         <property role="TrG5h" value="pathBuilder" />
@@ -1985,14 +1993,17 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="TDmWw" id="1w$c60CEqV7" role="TEbGg">
-                    <node concept="3cpWsn" id="1w$c60CEqV9" role="TDEfY">
+                  <node concept="3uVAMA" id="1w$c60CEqV7" role="1zxBo5">
+                    <node concept="XOnhg" id="1w$c60CEqV9" role="1zc67B">
+                      <property role="3TUv4t" value="false" />
                       <property role="TrG5h" value="ex" />
-                      <node concept="3uibUv" id="4WwUR8hvcrX" role="1tU5fm">
-                        <ref role="3uigEE" to="o3n2:1AfwOXhIPFt" resolve="RelativePathHelper.PathException" />
+                      <node concept="nSUau" id="xvs04dHtOg" role="1tU5fm">
+                        <node concept="3uibUv" id="4WwUR8hvcrX" role="nSUat">
+                          <ref role="3uigEE" to="o3n2:1AfwOXhIPFt" resolve="RelativePathHelper.PathException" />
+                        </node>
                       </node>
                     </node>
-                    <node concept="3clFbS" id="1w$c60CEqVd" role="TDEfX">
+                    <node concept="3clFbS" id="1w$c60CEqVd" role="1zc67A">
                       <node concept="RRSsy" id="3jYQuSB39K6" role="3cqZAp">
                         <property role="RRSoG" value="gZ5fh_4/error" />
                         <node concept="Xl_RD" id="4WwUR8hvcxY" role="RRSoy">
@@ -2272,8 +2283,8 @@
                     </node>
                   </node>
                 </node>
-                <node concept="SfApY" id="7vU6U505wul" role="3cqZAp">
-                  <node concept="3clFbS" id="7vU6U505wum" role="SfCbr">
+                <node concept="3J1_TO" id="7vU6U505wul" role="3cqZAp">
+                  <node concept="3clFbS" id="7vU6U505wum" role="1zxBo7">
                     <node concept="3cpWs8" id="nUYGvAJkXV" role="3cqZAp">
                       <node concept="3cpWsn" id="nUYGvAJkXW" role="3cpWs9">
                         <property role="TrG5h" value="pathBuilder" />
@@ -2537,14 +2548,17 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="TDmWw" id="7vU6U505wuE" role="TEbGg">
-                    <node concept="3cpWsn" id="7vU6U505wuF" role="TDEfY">
+                  <node concept="3uVAMA" id="7vU6U505wuE" role="1zxBo5">
+                    <node concept="XOnhg" id="7vU6U505wuF" role="1zc67B">
+                      <property role="3TUv4t" value="false" />
                       <property role="TrG5h" value="ex" />
-                      <node concept="3uibUv" id="4WwUR8huU7g" role="1tU5fm">
-                        <ref role="3uigEE" to="o3n2:1AfwOXhIPFt" resolve="RelativePathHelper.PathException" />
+                      <node concept="nSUau" id="xvs04dHtOi" role="1tU5fm">
+                        <node concept="3uibUv" id="4WwUR8huU7g" role="nSUat">
+                          <ref role="3uigEE" to="o3n2:1AfwOXhIPFt" resolve="RelativePathHelper.PathException" />
+                        </node>
                       </node>
                     </node>
-                    <node concept="3clFbS" id="7vU6U505wuH" role="TDEfX">
+                    <node concept="3clFbS" id="7vU6U505wuH" role="1zc67A">
                       <node concept="RRSsy" id="3jYQuSB39Kk" role="3cqZAp">
                         <property role="RRSoG" value="gZ5fh_4/error" />
                         <node concept="Xl_RD" id="7vU6U505wuK" role="RRSoy">

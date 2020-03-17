@@ -48,10 +48,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1153952380246" name="jetbrains.mps.baseLanguage.structure.TryStatement" flags="nn" index="2GUZhq">
-        <child id="1153952416686" name="body" index="2GV8ay" />
-        <child id="1153952429843" name="finallyBody" index="2GVbov" />
-      </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
       </concept>
@@ -171,6 +167,9 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
+      <concept id="8276990574909231788" name="jetbrains.mps.baseLanguage.structure.FinallyClause" flags="ng" index="1wplmZ">
+        <child id="8276990574909234106" name="finallyBody" index="1wplMD" />
+      </concept>
       <concept id="1081855346303" name="jetbrains.mps.baseLanguage.structure.BreakStatement" flags="nn" index="3zACq4" />
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
@@ -180,6 +179,10 @@
       </concept>
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
+      </concept>
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+        <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
+        <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
@@ -666,8 +669,8 @@
             </node>
           </node>
         </node>
-        <node concept="2GUZhq" id="6TUx0SkZO51" role="3cqZAp">
-          <node concept="3clFbS" id="6TUx0SkZO52" role="2GV8ay">
+        <node concept="3J1_TO" id="6TUx0SkZO51" role="3cqZAp">
+          <node concept="3clFbS" id="6TUx0SkZO52" role="1zxBo7">
             <node concept="3cpWs8" id="6nZFR1wLsji" role="3cqZAp">
               <node concept="3cpWsn" id="6nZFR1wLsjj" role="3cpWs9">
                 <property role="TrG5h" value="modelImportsQuery" />
@@ -1089,14 +1092,16 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbS" id="6TUx0SkZO54" role="2GVbov">
-            <node concept="3clFbF" id="6TUx0SkZO55" role="3cqZAp">
-              <node concept="2OqwBi" id="6TUx0SkZO57" role="3clFbG">
-                <node concept="37vLTw" id="2BHiRxgm6TJ" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6hha$XdHaWt" resolve="monitor" />
-                </node>
-                <node concept="liA8E" id="6TUx0SkZO5b" role="2OqNvi">
-                  <ref role="37wK5l" to="yyf4:~ProgressMonitor.done()" resolve="done" />
+          <node concept="1wplmZ" id="xvs04dIQst" role="1zxBo6">
+            <node concept="3clFbS" id="6TUx0SkZO54" role="1wplMD">
+              <node concept="3clFbF" id="6TUx0SkZO55" role="3cqZAp">
+                <node concept="2OqwBi" id="6TUx0SkZO57" role="3clFbG">
+                  <node concept="37vLTw" id="2BHiRxgm6TJ" role="2Oq$k0">
+                    <ref role="3cqZAo" node="6hha$XdHaWt" resolve="monitor" />
+                  </node>
+                  <node concept="liA8E" id="6TUx0SkZO5b" role="2OqNvi">
+                    <ref role="37wK5l" to="yyf4:~ProgressMonitor.done()" resolve="done" />
+                  </node>
                 </node>
               </node>
             </node>

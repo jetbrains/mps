@@ -51,6 +51,9 @@
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
+        <child id="8118189177080264854" name="classes" index="nSUat" />
+      </concept>
       <concept id="1173175405605" name="jetbrains.mps.baseLanguage.structure.ArrayAccessExpression" flags="nn" index="AH0OO">
         <child id="1173175577737" name="index" index="AHEQo" />
         <child id="1173175590490" name="array" index="AHHXb" />
@@ -72,20 +75,13 @@
         <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
         <reference id="1144432896254" name="enumClass" index="1Px2BO" />
       </concept>
-      <concept id="1164879751025" name="jetbrains.mps.baseLanguage.structure.TryCatchStatement" flags="nn" index="SfApY">
-        <child id="1164879758292" name="body" index="SfCbr" />
-        <child id="1164903496223" name="catchClause" index="TEbGg" />
-      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
-      </concept>
-      <concept id="1164903280175" name="jetbrains.mps.baseLanguage.structure.CatchClause" flags="nn" index="TDmWw">
-        <child id="1164903359218" name="catchBody" index="TDEfX" />
-        <child id="1164903359217" name="throwable" index="TDEfY" />
       </concept>
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
+      <concept id="4952749571008284462" name="jetbrains.mps.baseLanguage.structure.CatchVariable" flags="ng" index="XOnhg" />
       <concept id="1182160077978" name="jetbrains.mps.baseLanguage.structure.AnonymousClassCreator" flags="nn" index="YeOm9">
         <child id="1182160096073" name="cls" index="YeSDq" />
       </concept>
@@ -180,9 +176,17 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
+      <concept id="3093926081414150598" name="jetbrains.mps.baseLanguage.structure.MultipleCatchClause" flags="ng" index="3uVAMA">
+        <child id="8276990574895933173" name="catchBody" index="1zc67A" />
+        <child id="8276990574895933172" name="throwable" index="1zc67B" />
+      </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
+      </concept>
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+        <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
+        <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
@@ -303,8 +307,8 @@
       <property role="TrG5h" value="checkTests" />
       <node concept="3cqZAl" id="5vTxdEzyTYo" role="3clF45" />
       <node concept="3clFbS" id="5vTxdEzyTYp" role="3clF47">
-        <node concept="SfApY" id="5vTxdEzyTYq" role="3cqZAp">
-          <node concept="3clFbS" id="5vTxdEzyTYr" role="SfCbr">
+        <node concept="3J1_TO" id="5vTxdEzyTYq" role="3cqZAp">
+          <node concept="3clFbS" id="5vTxdEzyTYr" role="1zxBo7">
             <node concept="3cpWs8" id="5vTxdEzyTYs" role="3cqZAp">
               <node concept="3cpWsn" id="5vTxdEzyTYt" role="3cpWs9">
                 <property role="TrG5h" value="testNodes" />
@@ -849,14 +853,17 @@
               </node>
             </node>
           </node>
-          <node concept="TDmWw" id="5vTxdEzyU0g" role="TEbGg">
-            <node concept="3cpWsn" id="5vTxdEzyU0h" role="TDEfY">
+          <node concept="3uVAMA" id="5vTxdEzyU0g" role="1zxBo5">
+            <node concept="XOnhg" id="5vTxdEzyU0h" role="1zc67B">
+              <property role="3TUv4t" value="false" />
               <property role="TrG5h" value="e" />
-              <node concept="3uibUv" id="5vTxdEzyU0i" role="1tU5fm">
-                <ref role="3uigEE" to="3v5a:~ExecutionException" resolve="ExecutionException" />
+              <node concept="nSUau" id="xvs04dIvvu" role="1tU5fm">
+                <node concept="3uibUv" id="5vTxdEzyU0i" role="nSUat">
+                  <ref role="3uigEE" to="3v5a:~ExecutionException" resolve="ExecutionException" />
+                </node>
               </node>
             </node>
-            <node concept="3clFbS" id="5vTxdEzyU0j" role="TDEfX">
+            <node concept="3clFbS" id="5vTxdEzyU0j" role="1zc67A">
               <node concept="3xETmq" id="5vTxdEzyU0k" role="3cqZAp">
                 <node concept="3_1$Yv" id="5vTxdEzyU0l" role="3_9lra">
                   <node concept="2OqwBi" id="5vTxdEzyU0m" role="3_1BAH">
@@ -1013,8 +1020,8 @@
       <property role="TrG5h" value="startAndTerminate" />
       <node concept="3cqZAl" id="5vTxdEzz101" role="3clF45" />
       <node concept="3clFbS" id="5vTxdEzz102" role="3clF47">
-        <node concept="SfApY" id="5vTxdEzz103" role="3cqZAp">
-          <node concept="3clFbS" id="5vTxdEzz104" role="SfCbr">
+        <node concept="3J1_TO" id="5vTxdEzz103" role="3cqZAp">
+          <node concept="3clFbS" id="5vTxdEzz104" role="1zxBo7">
             <node concept="3cpWs8" id="5vTxdEzz10f" role="3cqZAp">
               <node concept="3cpWsn" id="5vTxdEzz10g" role="3cpWs9">
                 <property role="TrG5h" value="runState" />
@@ -1444,14 +1451,17 @@
               </node>
             </node>
           </node>
-          <node concept="TDmWw" id="5vTxdEzz11T" role="TEbGg">
-            <node concept="3cpWsn" id="5vTxdEzz11U" role="TDEfY">
+          <node concept="3uVAMA" id="5vTxdEzz11T" role="1zxBo5">
+            <node concept="XOnhg" id="5vTxdEzz11U" role="1zc67B">
+              <property role="3TUv4t" value="false" />
               <property role="TrG5h" value="e" />
-              <node concept="3uibUv" id="5vTxdEzz11V" role="1tU5fm">
-                <ref role="3uigEE" to="3v5a:~ExecutionException" resolve="ExecutionException" />
+              <node concept="nSUau" id="xvs04dIvvw" role="1tU5fm">
+                <node concept="3uibUv" id="5vTxdEzz11V" role="nSUat">
+                  <ref role="3uigEE" to="3v5a:~ExecutionException" resolve="ExecutionException" />
+                </node>
               </node>
             </node>
-            <node concept="3clFbS" id="5vTxdEzz11W" role="TDEfX">
+            <node concept="3clFbS" id="5vTxdEzz11W" role="1zc67A">
               <node concept="3xETmq" id="5vTxdEzz11X" role="3cqZAp">
                 <node concept="3_1$Yv" id="5vTxdEzz11Y" role="3_9lra">
                   <node concept="2OqwBi" id="5vTxdEzz11Z" role="3_1BAH">
@@ -1466,8 +1476,17 @@
               </node>
             </node>
           </node>
-          <node concept="TDmWw" id="5vTxdEzACAH" role="TEbGg">
-            <node concept="3clFbS" id="5vTxdEzACAI" role="TDEfX">
+          <node concept="3uVAMA" id="5vTxdEzACAH" role="1zxBo5">
+            <node concept="XOnhg" id="5vTxdEzACAJ" role="1zc67B">
+              <property role="3TUv4t" value="false" />
+              <property role="TrG5h" value="e" />
+              <node concept="nSUau" id="xvs04dIvvy" role="1tU5fm">
+                <node concept="3uibUv" id="5vTxdEzACAK" role="nSUat">
+                  <ref role="3uigEE" to="wyt6:~InterruptedException" resolve="InterruptedException" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbS" id="5vTxdEzACAI" role="1zc67A">
               <node concept="3xETmq" id="5vTxdEzADpI" role="3cqZAp">
                 <node concept="3_1$Yv" id="5vTxdEzADpJ" role="3_9lra">
                   <node concept="2OqwBi" id="5vTxdEzADpK" role="3_1BAH">
@@ -1479,12 +1498,6 @@
                     </node>
                   </node>
                 </node>
-              </node>
-            </node>
-            <node concept="3cpWsn" id="5vTxdEzACAJ" role="TDEfY">
-              <property role="TrG5h" value="e" />
-              <node concept="3uibUv" id="5vTxdEzACAK" role="1tU5fm">
-                <ref role="3uigEE" to="wyt6:~InterruptedException" resolve="InterruptedException" />
               </node>
             </node>
           </node>
@@ -1657,8 +1670,8 @@
       <property role="TrG5h" value="checkTests" />
       <node concept="3cqZAl" id="5XEoQWrnL6" role="3clF45" />
       <node concept="3clFbS" id="5XEoQWrnL7" role="3clF47">
-        <node concept="SfApY" id="5XEoQWrnL8" role="3cqZAp">
-          <node concept="3clFbS" id="5XEoQWrnL9" role="SfCbr">
+        <node concept="3J1_TO" id="5XEoQWrnL8" role="3cqZAp">
+          <node concept="3clFbS" id="5XEoQWrnL9" role="1zxBo7">
             <node concept="3cpWs8" id="5XEoQWrnLa" role="3cqZAp">
               <node concept="3cpWsn" id="5XEoQWrnLb" role="3cpWs9">
                 <property role="TrG5h" value="testNodes" />
@@ -1967,14 +1980,17 @@
               </node>
             </node>
           </node>
-          <node concept="TDmWw" id="5XEoQWrnMY" role="TEbGg">
-            <node concept="3cpWsn" id="5XEoQWrnMZ" role="TDEfY">
+          <node concept="3uVAMA" id="5XEoQWrnMY" role="1zxBo5">
+            <node concept="XOnhg" id="5XEoQWrnMZ" role="1zc67B">
+              <property role="3TUv4t" value="false" />
               <property role="TrG5h" value="e" />
-              <node concept="3uibUv" id="5XEoQWrnN0" role="1tU5fm">
-                <ref role="3uigEE" to="3v5a:~ExecutionException" resolve="ExecutionException" />
+              <node concept="nSUau" id="xvs04dIvv$" role="1tU5fm">
+                <node concept="3uibUv" id="5XEoQWrnN0" role="nSUat">
+                  <ref role="3uigEE" to="3v5a:~ExecutionException" resolve="ExecutionException" />
+                </node>
               </node>
             </node>
-            <node concept="3clFbS" id="5XEoQWrnN1" role="TDEfX">
+            <node concept="3clFbS" id="5XEoQWrnN1" role="1zc67A">
               <node concept="3xETmq" id="5XEoQWrnN2" role="3cqZAp">
                 <node concept="3_1$Yv" id="5XEoQWrnN3" role="3_9lra">
                   <node concept="2OqwBi" id="5XEoQWrnN4" role="3_1BAH">

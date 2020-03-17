@@ -27,6 +27,9 @@
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
+        <child id="8118189177080264854" name="classes" index="nSUat" />
+      </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
         <child id="1188214630783" name="value" index="2B76xF" />
@@ -49,21 +52,14 @@
         <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
         <reference id="1144432896254" name="enumClass" index="1Px2BO" />
       </concept>
-      <concept id="1164879751025" name="jetbrains.mps.baseLanguage.structure.TryCatchStatement" flags="nn" index="SfApY">
-        <child id="1164879758292" name="body" index="SfCbr" />
-        <child id="1164903496223" name="catchClause" index="TEbGg" />
-      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
-      </concept>
-      <concept id="1164903280175" name="jetbrains.mps.baseLanguage.structure.CatchClause" flags="nn" index="TDmWw">
-        <child id="1164903359218" name="catchBody" index="TDEfX" />
-        <child id="1164903359217" name="throwable" index="TDEfY" />
       </concept>
       <concept id="1070462154015" name="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" flags="ig" index="Wx3nA" />
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
+      <concept id="4952749571008284462" name="jetbrains.mps.baseLanguage.structure.CatchVariable" flags="ng" index="XOnhg" />
       <concept id="1182160077978" name="jetbrains.mps.baseLanguage.structure.AnonymousClassCreator" flags="nn" index="YeOm9">
         <child id="1182160096073" name="cls" index="YeSDq" />
       </concept>
@@ -151,6 +147,10 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
+      <concept id="3093926081414150598" name="jetbrains.mps.baseLanguage.structure.MultipleCatchClause" flags="ng" index="3uVAMA">
+        <child id="8276990574895933173" name="catchBody" index="1zc67A" />
+        <child id="8276990574895933172" name="throwable" index="1zc67B" />
+      </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
@@ -160,6 +160,10 @@
       </concept>
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
+      </concept>
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+        <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
+        <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
         <child id="1163668914799" name="condition" index="3K4Cdx" />
@@ -552,35 +556,8 @@
             </node>
           </node>
         </node>
-        <node concept="SfApY" id="1AxNPWQ_Y6" role="3cqZAp">
-          <node concept="TDmWw" id="1AxNPWQ_Y7" role="TEbGg">
-            <node concept="3clFbS" id="1AxNPWQ_Y8" role="TDEfX">
-              <node concept="3clFbF" id="1AxNPWQ_Y9" role="3cqZAp">
-                <node concept="2OqwBi" id="1AxNPWQ_Ya" role="3clFbG">
-                  <node concept="37vLTw" id="2BHiRxeodjI" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1AxNPWQ_W4" resolve="LOG" />
-                  </node>
-                  <node concept="liA8E" id="1AxNPWQ_Yc" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
-                    <node concept="Xl_RD" id="1AxNPWQ_Yd" role="37wK5m">
-                      <property role="Xl_RC" value="error saving options" />
-                    </node>
-                    <node concept="37vLTw" id="3GM_nagT$kM" role="37wK5m">
-                      <ref role="3cqZAo" node="1AxNPWQ_Yf" resolve="e" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWsn" id="1AxNPWQ_Yf" role="TDEfY">
-              <property role="TrG5h" value="e" />
-              <property role="3TUv4t" value="false" />
-              <node concept="3uibUv" id="1AxNPWQ_Yg" role="1tU5fm">
-                <ref role="3uigEE" to="ogzp:~CantSaveSomethingException" resolve="CantSaveSomethingException" />
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbS" id="1AxNPWQ_Yh" role="SfCbr">
+        <node concept="3J1_TO" id="1AxNPWQ_Y6" role="3cqZAp">
+          <node concept="3clFbS" id="1AxNPWQ_Yh" role="1zxBo7">
             <node concept="3cpWs8" id="1AxNPWQ_Yi" role="3cqZAp">
               <node concept="3cpWsn" id="1AxNPWQ_Yj" role="3cpWs9">
                 <property role="TrG5h" value="soXML" />
@@ -717,6 +694,35 @@
               </node>
             </node>
           </node>
+          <node concept="3uVAMA" id="1AxNPWQ_Y7" role="1zxBo5">
+            <node concept="XOnhg" id="1AxNPWQ_Yf" role="1zc67B">
+              <property role="3TUv4t" value="false" />
+              <property role="TrG5h" value="e" />
+              <node concept="nSUau" id="xvs04dI_uO" role="1tU5fm">
+                <node concept="3uibUv" id="1AxNPWQ_Yg" role="nSUat">
+                  <ref role="3uigEE" to="ogzp:~CantSaveSomethingException" resolve="CantSaveSomethingException" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbS" id="1AxNPWQ_Y8" role="1zc67A">
+              <node concept="3clFbF" id="1AxNPWQ_Y9" role="3cqZAp">
+                <node concept="2OqwBi" id="1AxNPWQ_Ya" role="3clFbG">
+                  <node concept="37vLTw" id="2BHiRxeodjI" role="2Oq$k0">
+                    <ref role="3cqZAo" node="1AxNPWQ_W4" resolve="LOG" />
+                  </node>
+                  <node concept="liA8E" id="1AxNPWQ_Yc" role="2OqNvi">
+                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
+                    <node concept="Xl_RD" id="1AxNPWQ_Yd" role="37wK5m">
+                      <property role="Xl_RC" value="error saving options" />
+                    </node>
+                    <node concept="37vLTw" id="3GM_nagT$kM" role="37wK5m">
+                      <ref role="3cqZAo" node="1AxNPWQ_Yf" resolve="e" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
         </node>
         <node concept="3cpWs6" id="1AxNPWQ_Z4" role="3cqZAp">
           <node concept="37vLTw" id="3GM_nagTuNs" role="3cqZAk">
@@ -746,55 +752,8 @@
         </node>
       </node>
       <node concept="3clFbS" id="1AxNPWQ_Zd" role="3clF47">
-        <node concept="SfApY" id="1AxNPWQ_Zn" role="3cqZAp">
-          <node concept="TDmWw" id="1AxNPWQ_Zo" role="TEbGg">
-            <node concept="3clFbS" id="1AxNPWQ_Zp" role="TDEfX">
-              <node concept="3clFbF" id="1AxNPWQ_Zq" role="3cqZAp">
-                <node concept="37vLTI" id="1AxNPWQ_Zr" role="3clFbG">
-                  <node concept="37vLTw" id="2BHiRxeuftQ" role="37vLTJ">
-                    <ref role="3cqZAo" node="1AxNPWQ_VK" resolve="myDefaultOptions" />
-                  </node>
-                  <node concept="1rXfSq" id="4hiugqyzfa2" role="37vLTx">
-                    <ref role="37wK5l" node="1AxNPWQ_X8" resolve="createDefaultSearchOptions" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbF" id="1AxNPWQ_Zz" role="3cqZAp">
-                <node concept="2OqwBi" id="1AxNPWQ_Z$" role="3clFbG">
-                  <node concept="37vLTw" id="2BHiRxeuncK" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1AxNPWQ_VB" resolve="myDefaultFinders" />
-                  </node>
-                  <node concept="liA8E" id="1AxNPWQ_ZA" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:~HashMap.clear()" resolve="clear" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbF" id="1AxNPWQ_ZB" role="3cqZAp">
-                <node concept="2OqwBi" id="1AxNPWQ_ZC" role="3clFbG">
-                  <node concept="37vLTw" id="2BHiRxeoq7H" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1AxNPWQ_W4" resolve="LOG" />
-                  </node>
-                  <node concept="liA8E" id="1AxNPWQ_ZE" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
-                    <node concept="Xl_RD" id="1AxNPWQ_ZF" role="37wK5m">
-                      <property role="Xl_RC" value="error reading options" />
-                    </node>
-                    <node concept="37vLTw" id="3GM_nagTsd$" role="37wK5m">
-                      <ref role="3cqZAo" node="1AxNPWQ_ZH" resolve="e" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWsn" id="1AxNPWQ_ZH" role="TDEfY">
-              <property role="TrG5h" value="e" />
-              <property role="3TUv4t" value="false" />
-              <node concept="3uibUv" id="1AxNPWQ_ZI" role="1tU5fm">
-                <ref role="3uigEE" to="ogzp:~CantLoadSomethingException" resolve="CantLoadSomethingException" />
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbS" id="1AxNPWQ_ZJ" role="SfCbr">
+        <node concept="3J1_TO" id="1AxNPWQ_Zn" role="3cqZAp">
+          <node concept="3clFbS" id="1AxNPWQ_ZJ" role="1zxBo7">
             <node concept="3cpWs8" id="1AxNPWQ_ZK" role="3cqZAp">
               <node concept="3cpWsn" id="1AxNPWQ_ZL" role="3cpWs9">
                 <property role="TrG5h" value="soXML" />
@@ -927,6 +886,55 @@
                       <node concept="37vLTw" id="3GM_nagT$1$" role="37wK5m">
                         <ref role="3cqZAo" node="1AxNPWQA0g" resolve="opt" />
                       </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3uVAMA" id="1AxNPWQ_Zo" role="1zxBo5">
+            <node concept="XOnhg" id="1AxNPWQ_ZH" role="1zc67B">
+              <property role="3TUv4t" value="false" />
+              <property role="TrG5h" value="e" />
+              <node concept="nSUau" id="xvs04dI_uQ" role="1tU5fm">
+                <node concept="3uibUv" id="1AxNPWQ_ZI" role="nSUat">
+                  <ref role="3uigEE" to="ogzp:~CantLoadSomethingException" resolve="CantLoadSomethingException" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbS" id="1AxNPWQ_Zp" role="1zc67A">
+              <node concept="3clFbF" id="1AxNPWQ_Zq" role="3cqZAp">
+                <node concept="37vLTI" id="1AxNPWQ_Zr" role="3clFbG">
+                  <node concept="37vLTw" id="2BHiRxeuftQ" role="37vLTJ">
+                    <ref role="3cqZAo" node="1AxNPWQ_VK" resolve="myDefaultOptions" />
+                  </node>
+                  <node concept="1rXfSq" id="4hiugqyzfa2" role="37vLTx">
+                    <ref role="37wK5l" node="1AxNPWQ_X8" resolve="createDefaultSearchOptions" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="1AxNPWQ_Zz" role="3cqZAp">
+                <node concept="2OqwBi" id="1AxNPWQ_Z$" role="3clFbG">
+                  <node concept="37vLTw" id="2BHiRxeuncK" role="2Oq$k0">
+                    <ref role="3cqZAo" node="1AxNPWQ_VB" resolve="myDefaultFinders" />
+                  </node>
+                  <node concept="liA8E" id="1AxNPWQ_ZA" role="2OqNvi">
+                    <ref role="37wK5l" to="33ny:~HashMap.clear()" resolve="clear" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="1AxNPWQ_ZB" role="3cqZAp">
+                <node concept="2OqwBi" id="1AxNPWQ_ZC" role="3clFbG">
+                  <node concept="37vLTw" id="2BHiRxeoq7H" role="2Oq$k0">
+                    <ref role="3cqZAo" node="1AxNPWQ_W4" resolve="LOG" />
+                  </node>
+                  <node concept="liA8E" id="1AxNPWQ_ZE" role="2OqNvi">
+                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
+                    <node concept="Xl_RD" id="1AxNPWQ_ZF" role="37wK5m">
+                      <property role="Xl_RC" value="error reading options" />
+                    </node>
+                    <node concept="37vLTw" id="3GM_nagTsd$" role="37wK5m">
+                      <ref role="3cqZAo" node="1AxNPWQ_ZH" resolve="e" />
                     </node>
                   </node>
                 </node>

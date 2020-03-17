@@ -37,10 +37,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1153952380246" name="jetbrains.mps.baseLanguage.structure.TryStatement" flags="nn" index="2GUZhq">
-        <child id="1153952416686" name="body" index="2GV8ay" />
-        <child id="1153952429843" name="finallyBody" index="2GVbov" />
-      </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
       </concept>
@@ -120,6 +116,9 @@
         <reference id="1107535924139" name="classifier" index="3uigEE" />
         <child id="1109201940907" name="parameter" index="11_B2D" />
       </concept>
+      <concept id="8276990574909231788" name="jetbrains.mps.baseLanguage.structure.FinallyClause" flags="ng" index="1wplmZ">
+        <child id="8276990574909234106" name="finallyBody" index="1wplMD" />
+      </concept>
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
@@ -128,6 +127,10 @@
       </concept>
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
+      </concept>
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+        <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
+        <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
@@ -593,8 +596,8 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="2GUZhq" id="mDYNhtwUXY" role="3cqZAp">
-                    <node concept="3clFbS" id="mDYNhtwUY0" role="2GV8ay">
+                  <node concept="3J1_TO" id="mDYNhtwUXY" role="3cqZAp">
+                    <node concept="3clFbS" id="mDYNhtwUY0" role="1zxBo7">
                       <node concept="3clFbF" id="mDYNhtwV4Z" role="3cqZAp">
                         <node concept="2OqwBi" id="mDYNhtwVa2" role="3clFbG">
                           <node concept="37vLTw" id="mDYNhtwV4X" role="2Oq$k0">
@@ -619,14 +622,16 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="3clFbS" id="mDYNhtwUY1" role="2GVbov">
-                      <node concept="3clFbF" id="mDYNhtwWlM" role="3cqZAp">
-                        <node concept="2OqwBi" id="mDYNhtwWs9" role="3clFbG">
-                          <node concept="37vLTw" id="mDYNhtwWlL" role="2Oq$k0">
-                            <ref role="3cqZAo" node="mDYNhtwT1g" resolve="context" />
-                          </node>
-                          <node concept="liA8E" id="mDYNhtwWwJ" role="2OqNvi">
-                            <ref role="37wK5l" to="u78q:~TypeCheckingContext.resetIsNonTypesystemComputation()" resolve="resetIsNonTypesystemComputation" />
+                    <node concept="1wplmZ" id="xvs04dGAo_" role="1zxBo6">
+                      <node concept="3clFbS" id="mDYNhtwUY1" role="1wplMD">
+                        <node concept="3clFbF" id="mDYNhtwWlM" role="3cqZAp">
+                          <node concept="2OqwBi" id="mDYNhtwWs9" role="3clFbG">
+                            <node concept="37vLTw" id="mDYNhtwWlL" role="2Oq$k0">
+                              <ref role="3cqZAo" node="mDYNhtwT1g" resolve="context" />
+                            </node>
+                            <node concept="liA8E" id="mDYNhtwWwJ" role="2OqNvi">
+                              <ref role="37wK5l" to="u78q:~TypeCheckingContext.resetIsNonTypesystemComputation()" resolve="resetIsNonTypesystemComputation" />
+                            </node>
                           </node>
                         </node>
                       </node>

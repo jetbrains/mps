@@ -73,6 +73,9 @@
       </concept>
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
+        <child id="8118189177080264854" name="classes" index="nSUat" />
+      </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1239714755177" name="jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation" flags="nn" index="2$Kvd9">
         <child id="1239714902950" name="expression" index="2$L3a6" />
@@ -92,10 +95,6 @@
         <reference id="1188214555875" name="key" index="2B6OnR" />
         <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
-      <concept id="1153952380246" name="jetbrains.mps.baseLanguage.structure.TryStatement" flags="nn" index="2GUZhq">
-        <child id="1153952416686" name="body" index="2GV8ay" />
-        <child id="1153952429843" name="finallyBody" index="2GVbov" />
-      </concept>
       <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
         <reference id="2820489544401957798" name="classifier" index="HV5vE" />
       </concept>
@@ -113,16 +112,8 @@
         <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
         <reference id="1144432896254" name="enumClass" index="1Px2BO" />
       </concept>
-      <concept id="1164879751025" name="jetbrains.mps.baseLanguage.structure.TryCatchStatement" flags="nn" index="SfApY">
-        <child id="1164879758292" name="body" index="SfCbr" />
-        <child id="1164903496223" name="catchClause" index="TEbGg" />
-      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
-      </concept>
-      <concept id="1164903280175" name="jetbrains.mps.baseLanguage.structure.CatchClause" flags="nn" index="TDmWw">
-        <child id="1164903359218" name="catchBody" index="TDEfX" />
-        <child id="1164903359217" name="throwable" index="TDEfY" />
       </concept>
       <concept id="1070462154015" name="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" flags="ig" index="Wx3nA">
         <property id="6468716278899126575" name="isVolatile" index="2dlcS1" />
@@ -133,6 +124,7 @@
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
+      <concept id="4952749571008284462" name="jetbrains.mps.baseLanguage.structure.CatchVariable" flags="ng" index="XOnhg" />
       <concept id="1182160077978" name="jetbrains.mps.baseLanguage.structure.AnonymousClassCreator" flags="nn" index="YeOm9">
         <child id="1182160096073" name="cls" index="YeSDq" />
       </concept>
@@ -268,6 +260,13 @@
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
       <concept id="1214918800624" name="jetbrains.mps.baseLanguage.structure.PostfixIncrementExpression" flags="nn" index="3uNrnE" />
+      <concept id="3093926081414150598" name="jetbrains.mps.baseLanguage.structure.MultipleCatchClause" flags="ng" index="3uVAMA">
+        <child id="8276990574895933173" name="catchBody" index="1zc67A" />
+        <child id="8276990574895933172" name="throwable" index="1zc67B" />
+      </concept>
+      <concept id="8276990574909231788" name="jetbrains.mps.baseLanguage.structure.FinallyClause" flags="ng" index="1wplmZ">
+        <child id="8276990574909234106" name="finallyBody" index="1wplMD" />
+      </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
@@ -277,6 +276,11 @@
       </concept>
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
+      </concept>
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+        <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
+        <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
+        <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
         <child id="1163668914799" name="condition" index="3K4Cdx" />
@@ -3397,8 +3401,8 @@
                                   </node>
                                 </node>
                               </node>
-                              <node concept="SfApY" id="ECLZhknrtN" role="3cqZAp">
-                                <node concept="3clFbS" id="ECLZhknrtP" role="SfCbr">
+                              <node concept="3J1_TO" id="ECLZhknrtN" role="3cqZAp">
+                                <node concept="3clFbS" id="ECLZhknrtP" role="1zxBo7">
                                   <node concept="3cpWs8" id="ECLZhkngFw" role="3cqZAp">
                                     <node concept="3cpWsn" id="ECLZhkngFx" role="3cpWs9">
                                       <property role="TrG5h" value="testClass" />
@@ -3441,8 +3445,17 @@
                                     </node>
                                   </node>
                                 </node>
-                                <node concept="TDmWw" id="ECLZhknrtQ" role="TEbGg">
-                                  <node concept="3clFbS" id="ECLZhknrtS" role="TDEfX">
+                                <node concept="3uVAMA" id="ECLZhknrtQ" role="1zxBo5">
+                                  <node concept="XOnhg" id="ECLZhknrtU" role="1zc67B">
+                                    <property role="3TUv4t" value="false" />
+                                    <property role="TrG5h" value="e" />
+                                    <node concept="nSUau" id="xvs04dIv9H" role="1tU5fm">
+                                      <node concept="3uibUv" id="ECLZhknrRh" role="nSUat">
+                                        <ref role="3uigEE" to="wyt6:~ClassNotFoundException" resolve="ClassNotFoundException" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                  <node concept="3clFbS" id="ECLZhknrtS" role="1zc67A">
                                     <node concept="RRSsy" id="3jYQuSB37nT" role="3cqZAp">
                                       <property role="RRSoG" value="gZ5fksE/warn" />
                                       <node concept="3cpWs3" id="ECLZhkntQp" role="RRSoy">
@@ -3458,12 +3471,6 @@
                                           </node>
                                         </node>
                                       </node>
-                                    </node>
-                                  </node>
-                                  <node concept="3cpWsn" id="ECLZhknrtU" role="TDEfY">
-                                    <property role="TrG5h" value="e" />
-                                    <node concept="3uibUv" id="ECLZhknrRh" role="1tU5fm">
-                                      <ref role="3uigEE" to="wyt6:~ClassNotFoundException" resolve="ClassNotFoundException" />
                                     </node>
                                   </node>
                                 </node>
@@ -3523,8 +3530,8 @@
                                   </node>
                                 </node>
                               </node>
-                              <node concept="SfApY" id="1Wxy7WpiDXj" role="3cqZAp">
-                                <node concept="3clFbS" id="1Wxy7WpiDXl" role="SfCbr">
+                              <node concept="3J1_TO" id="1Wxy7WpiDXj" role="3cqZAp">
+                                <node concept="3clFbS" id="1Wxy7WpiDXl" role="1zxBo7">
                                   <node concept="3clFbF" id="1Wxy7Wpiv_y" role="3cqZAp">
                                     <node concept="2OqwBi" id="1Wxy7WpiwkV" role="3clFbG">
                                       <node concept="37vLTw" id="1Wxy7Wpiv_w" role="2Oq$k0">
@@ -3555,14 +3562,17 @@
                                     </node>
                                   </node>
                                 </node>
-                                <node concept="TDmWw" id="1Wxy7WpiDXm" role="TEbGg">
-                                  <node concept="3cpWsn" id="1Wxy7WpiDXo" role="TDEfY">
+                                <node concept="3uVAMA" id="1Wxy7WpiDXm" role="1zxBo5">
+                                  <node concept="XOnhg" id="1Wxy7WpiDXo" role="1zc67B">
+                                    <property role="3TUv4t" value="false" />
                                     <property role="TrG5h" value="ex" />
-                                    <node concept="3uibUv" id="1Wxy7WpiIgI" role="1tU5fm">
-                                      <ref role="3uigEE" to="wyt6:~ClassNotFoundException" resolve="ClassNotFoundException" />
+                                    <node concept="nSUau" id="xvs04dIv9J" role="1tU5fm">
+                                      <node concept="3uibUv" id="1Wxy7WpiIgI" role="nSUat">
+                                        <ref role="3uigEE" to="wyt6:~ClassNotFoundException" resolve="ClassNotFoundException" />
+                                      </node>
                                     </node>
                                   </node>
-                                  <node concept="3clFbS" id="1Wxy7WpiDXs" role="TDEfX">
+                                  <node concept="3clFbS" id="1Wxy7WpiDXs" role="1zc67A">
                                     <node concept="RRSsy" id="1Wxy7WpiJh_" role="3cqZAp">
                                       <property role="RRSoG" value="gZ5fksE/warn" />
                                       <node concept="3cpWs3" id="1Wxy7WpiJhC" role="RRSoy">
@@ -3729,8 +3739,8 @@
         </node>
       </node>
       <node concept="3clFbS" id="61uE6zXlIqV" role="3clF47">
-        <node concept="2GUZhq" id="1nB28sh8HD" role="3cqZAp">
-          <node concept="3clFbS" id="1nB28sh8HF" role="2GV8ay">
+        <node concept="3J1_TO" id="1nB28sh8HD" role="3cqZAp">
+          <node concept="3clFbS" id="1nB28sh8HF" role="1zxBo7">
             <node concept="3clFbF" id="61uE6zXlJ4l" role="3cqZAp">
               <node concept="2YIFZM" id="61uE6zXlJdJ" role="3clFbG">
                 <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
@@ -3750,14 +3760,16 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbS" id="1nB28sh8HG" role="2GVbov">
-            <node concept="3clFbF" id="61uE6zXlKHf" role="3cqZAp">
-              <node concept="2YIFZM" id="61uE6zXlKIT" role="3clFbG">
-                <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
-                <ref role="37wK5l" to="fyhk:~RuntimeFlags.setTestMode(jetbrains.mps.TestMode)" resolve="setTestMode" />
-                <node concept="Rm8GO" id="61uE6zXlKMf" role="37wK5m">
-                  <ref role="Rm8GQ" to="fyhk:~TestMode.NONE" resolve="NONE" />
-                  <ref role="1Px2BO" to="fyhk:~TestMode" resolve="TestMode" />
+          <node concept="1wplmZ" id="xvs04dIvaB" role="1zxBo6">
+            <node concept="3clFbS" id="1nB28sh8HG" role="1wplMD">
+              <node concept="3clFbF" id="61uE6zXlKHf" role="3cqZAp">
+                <node concept="2YIFZM" id="61uE6zXlKIT" role="3clFbG">
+                  <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
+                  <ref role="37wK5l" to="fyhk:~RuntimeFlags.setTestMode(jetbrains.mps.TestMode)" resolve="setTestMode" />
+                  <node concept="Rm8GO" id="61uE6zXlKMf" role="37wK5m">
+                    <ref role="Rm8GQ" to="fyhk:~TestMode.NONE" resolve="NONE" />
+                    <ref role="1Px2BO" to="fyhk:~TestMode" resolve="TestMode" />
+                  </node>
                 </node>
               </node>
             </node>

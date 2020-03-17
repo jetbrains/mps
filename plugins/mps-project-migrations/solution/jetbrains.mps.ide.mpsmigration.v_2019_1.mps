@@ -22,6 +22,9 @@
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
+        <child id="8118189177080264854" name="classes" index="nSUat" />
+      </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
@@ -36,21 +39,14 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
-      <concept id="1164879751025" name="jetbrains.mps.baseLanguage.structure.TryCatchStatement" flags="nn" index="SfApY">
-        <child id="1164879758292" name="body" index="SfCbr" />
-        <child id="1164903496223" name="catchClause" index="TEbGg" />
-      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
-      </concept>
-      <concept id="1164903280175" name="jetbrains.mps.baseLanguage.structure.CatchClause" flags="nn" index="TDmWw">
-        <child id="1164903359218" name="catchBody" index="TDEfX" />
-        <child id="1164903359217" name="throwable" index="TDEfY" />
       </concept>
       <concept id="1070475587102" name="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" flags="nn" index="XkiVB" />
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
+      <concept id="4952749571008284462" name="jetbrains.mps.baseLanguage.structure.CatchVariable" flags="ng" index="XOnhg" />
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
@@ -146,6 +142,10 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
+      <concept id="3093926081414150598" name="jetbrains.mps.baseLanguage.structure.MultipleCatchClause" flags="ng" index="3uVAMA">
+        <child id="8276990574895933173" name="catchBody" index="1zc67A" />
+        <child id="8276990574895933172" name="throwable" index="1zc67B" />
+      </concept>
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
@@ -154,6 +154,10 @@
       </concept>
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
+      </concept>
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+        <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
+        <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
@@ -763,37 +767,8 @@
                                 </node>
                               </node>
                             </node>
-                            <node concept="SfApY" id="2PoksLtmqjH" role="3cqZAp">
-                              <node concept="TDmWw" id="2PoksLtmqjI" role="TEbGg">
-                                <node concept="3clFbS" id="2PoksLtmqjJ" role="TDEfX">
-                                  <node concept="RRSsy" id="2PoksLtmzWP" role="3cqZAp">
-                                    <property role="RRSoG" value="gZ5fh_4/error" />
-                                    <node concept="3cpWs3" id="2PoksLtmqjQ" role="RRSoy">
-                                      <node concept="Xl_RD" id="2PoksLtmqjR" role="3uHU7B">
-                                        <property role="Xl_RC" value="Error re-saving model " />
-                                      </node>
-                                      <node concept="2OqwBi" id="2PoksLtmqjS" role="3uHU7w">
-                                        <node concept="37vLTw" id="2PoksLtmyeC" role="2Oq$k0">
-                                          <ref role="3cqZAo" node="2PoksLtms_s" resolve="model" />
-                                        </node>
-                                        <node concept="liA8E" id="2PoksLtmqjU" role="2OqNvi">
-                                          <ref role="37wK5l" to="mhbf:~SModel.getName()" resolve="getName" />
-                                        </node>
-                                      </node>
-                                    </node>
-                                    <node concept="37vLTw" id="2PoksLtmw7a" role="RRSow">
-                                      <ref role="3cqZAo" node="2PoksLtmqjW" resolve="ex" />
-                                    </node>
-                                  </node>
-                                </node>
-                                <node concept="3cpWsn" id="2PoksLtmqjW" role="TDEfY">
-                                  <property role="TrG5h" value="ex" />
-                                  <node concept="3uibUv" id="2PoksLtmqjX" role="1tU5fm">
-                                    <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="3clFbS" id="2PoksLtmqjY" role="SfCbr">
+                            <node concept="3J1_TO" id="2PoksLtmqjH" role="3cqZAp">
+                              <node concept="3clFbS" id="2PoksLtmqjY" role="1zxBo7">
                                 <node concept="3SKdUt" id="2PoksLtmqjZ" role="3cqZAp">
                                   <node concept="1PaTwC" id="ATZLwXojUZ" role="1aUNEU">
                                     <node concept="3oM_SD" id="ATZLwXojV0" role="1PaTwD">
@@ -871,6 +846,38 @@
                                           <ref role="37wK5l" to="mhbf:~EditableSModel.save()" resolve="save" />
                                         </node>
                                       </node>
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="3uVAMA" id="2PoksLtmqjI" role="1zxBo5">
+                                <node concept="XOnhg" id="2PoksLtmqjW" role="1zc67B">
+                                  <property role="3TUv4t" value="false" />
+                                  <property role="TrG5h" value="ex" />
+                                  <node concept="nSUau" id="xvs04dHW$Z" role="1tU5fm">
+                                    <node concept="3uibUv" id="2PoksLtmqjX" role="nSUat">
+                                      <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="3clFbS" id="2PoksLtmqjJ" role="1zc67A">
+                                  <node concept="RRSsy" id="2PoksLtmzWP" role="3cqZAp">
+                                    <property role="RRSoG" value="gZ5fh_4/error" />
+                                    <node concept="3cpWs3" id="2PoksLtmqjQ" role="RRSoy">
+                                      <node concept="Xl_RD" id="2PoksLtmqjR" role="3uHU7B">
+                                        <property role="Xl_RC" value="Error re-saving model " />
+                                      </node>
+                                      <node concept="2OqwBi" id="2PoksLtmqjS" role="3uHU7w">
+                                        <node concept="37vLTw" id="2PoksLtmyeC" role="2Oq$k0">
+                                          <ref role="3cqZAo" node="2PoksLtms_s" resolve="model" />
+                                        </node>
+                                        <node concept="liA8E" id="2PoksLtmqjU" role="2OqNvi">
+                                          <ref role="37wK5l" to="mhbf:~SModel.getName()" resolve="getName" />
+                                        </node>
+                                      </node>
+                                    </node>
+                                    <node concept="37vLTw" id="2PoksLtmw7a" role="RRSow">
+                                      <ref role="3cqZAo" node="2PoksLtmqjW" resolve="ex" />
                                     </node>
                                   </node>
                                 </node>
@@ -1339,37 +1346,8 @@
                                 </node>
                               </node>
                             </node>
-                            <node concept="SfApY" id="6xZP_SSXgz_" role="3cqZAp">
-                              <node concept="TDmWw" id="6xZP_SSXgzA" role="TEbGg">
-                                <node concept="3clFbS" id="6xZP_SSXgzB" role="TDEfX">
-                                  <node concept="RRSsy" id="6xZP_SSXgzC" role="3cqZAp">
-                                    <property role="RRSoG" value="gZ5fh_4/error" />
-                                    <node concept="3cpWs3" id="6xZP_SSXgzD" role="RRSoy">
-                                      <node concept="Xl_RD" id="6xZP_SSXgzE" role="3uHU7B">
-                                        <property role="Xl_RC" value="Error re-saving model " />
-                                      </node>
-                                      <node concept="2OqwBi" id="6xZP_SSXgzF" role="3uHU7w">
-                                        <node concept="37vLTw" id="6xZP_SSXgzG" role="2Oq$k0">
-                                          <ref role="3cqZAo" node="6xZP_SSXgzw" resolve="model" />
-                                        </node>
-                                        <node concept="liA8E" id="6xZP_SSXgzH" role="2OqNvi">
-                                          <ref role="37wK5l" to="mhbf:~SModel.getName()" resolve="getName" />
-                                        </node>
-                                      </node>
-                                    </node>
-                                    <node concept="37vLTw" id="6xZP_SSXgzI" role="RRSow">
-                                      <ref role="3cqZAo" node="6xZP_SSXgzJ" resolve="ex" />
-                                    </node>
-                                  </node>
-                                </node>
-                                <node concept="3cpWsn" id="6xZP_SSXgzJ" role="TDEfY">
-                                  <property role="TrG5h" value="ex" />
-                                  <node concept="3uibUv" id="6xZP_SSXgzK" role="1tU5fm">
-                                    <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="3clFbS" id="6xZP_SSXgzL" role="SfCbr">
+                            <node concept="3J1_TO" id="6xZP_SSXgz_" role="3cqZAp">
+                              <node concept="3clFbS" id="6xZP_SSXgzL" role="1zxBo7">
                                 <node concept="3SKdUt" id="6xZP_SSXgzM" role="3cqZAp">
                                   <node concept="1PaTwC" id="ATZLwXojVs" role="1aUNEU">
                                     <node concept="3oM_SD" id="ATZLwXojVt" role="1PaTwD">
@@ -1447,6 +1425,38 @@
                                           <ref role="37wK5l" to="mhbf:~EditableSModel.save()" resolve="save" />
                                         </node>
                                       </node>
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="3uVAMA" id="6xZP_SSXgzA" role="1zxBo5">
+                                <node concept="XOnhg" id="6xZP_SSXgzJ" role="1zc67B">
+                                  <property role="3TUv4t" value="false" />
+                                  <property role="TrG5h" value="ex" />
+                                  <node concept="nSUau" id="xvs04dHW_1" role="1tU5fm">
+                                    <node concept="3uibUv" id="6xZP_SSXgzK" role="nSUat">
+                                      <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="3clFbS" id="6xZP_SSXgzB" role="1zc67A">
+                                  <node concept="RRSsy" id="6xZP_SSXgzC" role="3cqZAp">
+                                    <property role="RRSoG" value="gZ5fh_4/error" />
+                                    <node concept="3cpWs3" id="6xZP_SSXgzD" role="RRSoy">
+                                      <node concept="Xl_RD" id="6xZP_SSXgzE" role="3uHU7B">
+                                        <property role="Xl_RC" value="Error re-saving model " />
+                                      </node>
+                                      <node concept="2OqwBi" id="6xZP_SSXgzF" role="3uHU7w">
+                                        <node concept="37vLTw" id="6xZP_SSXgzG" role="2Oq$k0">
+                                          <ref role="3cqZAo" node="6xZP_SSXgzw" resolve="model" />
+                                        </node>
+                                        <node concept="liA8E" id="6xZP_SSXgzH" role="2OqNvi">
+                                          <ref role="37wK5l" to="mhbf:~SModel.getName()" resolve="getName" />
+                                        </node>
+                                      </node>
+                                    </node>
+                                    <node concept="37vLTw" id="6xZP_SSXgzI" role="RRSow">
+                                      <ref role="3cqZAo" node="6xZP_SSXgzJ" resolve="ex" />
                                     </node>
                                   </node>
                                 </node>

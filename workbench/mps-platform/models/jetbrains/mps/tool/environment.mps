@@ -54,6 +54,9 @@
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
+        <child id="8118189177080264854" name="classes" index="nSUat" />
+      </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1239709250944" name="jetbrains.mps.baseLanguage.structure.PrefixIncrementExpression" flags="nn" index="2$rviw" />
       <concept id="1239714755177" name="jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation" flags="nn" index="2$Kvd9">
@@ -80,16 +83,8 @@
         <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
         <reference id="1144432896254" name="enumClass" index="1Px2BO" />
       </concept>
-      <concept id="1164879751025" name="jetbrains.mps.baseLanguage.structure.TryCatchStatement" flags="nn" index="SfApY">
-        <child id="1164879758292" name="body" index="SfCbr" />
-        <child id="1164903496223" name="catchClause" index="TEbGg" />
-      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
-      </concept>
-      <concept id="1164903280175" name="jetbrains.mps.baseLanguage.structure.CatchClause" flags="nn" index="TDmWw">
-        <child id="1164903359218" name="catchBody" index="TDEfX" />
-        <child id="1164903359217" name="throwable" index="TDEfY" />
       </concept>
       <concept id="1070462154015" name="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" flags="ig" index="Wx3nA">
         <property id="6468716278899126575" name="isVolatile" index="2dlcS1" />
@@ -99,6 +94,7 @@
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
+      <concept id="4952749571008284462" name="jetbrains.mps.baseLanguage.structure.CatchVariable" flags="ng" index="XOnhg" />
       <concept id="1182160077978" name="jetbrains.mps.baseLanguage.structure.AnonymousClassCreator" flags="nn" index="YeOm9">
         <child id="1182160096073" name="cls" index="YeSDq" />
       </concept>
@@ -225,6 +221,10 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
+      <concept id="3093926081414150598" name="jetbrains.mps.baseLanguage.structure.MultipleCatchClause" flags="ng" index="3uVAMA">
+        <child id="8276990574895933173" name="catchBody" index="1zc67A" />
+        <child id="8276990574895933172" name="throwable" index="1zc67B" />
+      </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
@@ -238,6 +238,10 @@
       <concept id="1144231330558" name="jetbrains.mps.baseLanguage.structure.ForStatement" flags="nn" index="1Dw8fO">
         <child id="1144231399730" name="condition" index="1Dwp0S" />
         <child id="1144231408325" name="iteration" index="1Dwrff" />
+      </concept>
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+        <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
+        <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="1221737317277" name="jetbrains.mps.baseLanguage.structure.StaticInitializer" flags="lg" index="1Pe0a1">
@@ -2941,32 +2945,8 @@
                       <property role="od$2w" value="false" />
                       <property role="DiZV1" value="false" />
                       <node concept="3clFbS" id="5lgc1fDHib8" role="3clF47">
-                        <node concept="SfApY" id="5lgc1fDHib9" role="3cqZAp">
-                          <node concept="TDmWw" id="5lgc1fDHiba" role="TEbGg">
-                            <node concept="3clFbS" id="5lgc1fDHibb" role="TDEfX">
-                              <node concept="3clFbF" id="5lgc1fDHibc" role="3cqZAp">
-                                <node concept="2OqwBi" id="2u34iHEuG4z" role="3clFbG">
-                                  <node concept="37vLTw" id="2u34iHEuFRP" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="4_TMdeLkOor" resolve="exc" />
-                                  </node>
-                                  <node concept="liA8E" id="2u34iHEuG7p" role="2OqNvi">
-                                    <ref role="37wK5l" to="18ew:~Reference.set(java.lang.Object)" resolve="set" />
-                                    <node concept="37vLTw" id="2u34iHEuGip" role="37wK5m">
-                                      <ref role="3cqZAo" node="5lgc1fDHibi" resolve="e" />
-                                    </node>
-                                  </node>
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="3cpWsn" id="5lgc1fDHibi" role="TDEfY">
-                              <property role="TrG5h" value="e" />
-                              <property role="3TUv4t" value="false" />
-                              <node concept="3uibUv" id="5lgc1fDHibj" role="1tU5fm">
-                                <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="3clFbS" id="5lgc1fDHibk" role="SfCbr">
+                        <node concept="3J1_TO" id="5lgc1fDHib9" role="3cqZAp">
+                          <node concept="3clFbS" id="5lgc1fDHibk" role="1zxBo7">
                             <node concept="RRSsy" id="3jYQuSB36Wm" role="3cqZAp">
                               <property role="RRSoG" value="h1akgim/info" />
                               <node concept="3cpWs3" id="5lgc1fDHibm" role="RRSoy">
@@ -3013,6 +2993,32 @@
                                   </node>
                                   <node concept="liA8E" id="1_ERPxYOVVh" role="2OqNvi">
                                     <ref role="37wK5l" to="18ew:~Reference.get()" resolve="get" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="3uVAMA" id="5lgc1fDHiba" role="1zxBo5">
+                            <node concept="XOnhg" id="5lgc1fDHibi" role="1zc67B">
+                              <property role="3TUv4t" value="false" />
+                              <property role="TrG5h" value="e" />
+                              <node concept="nSUau" id="xvs04dIxy5" role="1tU5fm">
+                                <node concept="3uibUv" id="5lgc1fDHibj" role="nSUat">
+                                  <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="3clFbS" id="5lgc1fDHibb" role="1zc67A">
+                              <node concept="3clFbF" id="5lgc1fDHibc" role="3cqZAp">
+                                <node concept="2OqwBi" id="2u34iHEuG4z" role="3clFbG">
+                                  <node concept="37vLTw" id="2u34iHEuFRP" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="4_TMdeLkOor" resolve="exc" />
+                                  </node>
+                                  <node concept="liA8E" id="2u34iHEuG7p" role="2OqNvi">
+                                    <ref role="37wK5l" to="18ew:~Reference.set(java.lang.Object)" resolve="set" />
+                                    <node concept="37vLTw" id="2u34iHEuGip" role="37wK5m">
+                                      <ref role="3cqZAo" node="5lgc1fDHibi" resolve="e" />
+                                    </node>
                                   </node>
                                 </node>
                               </node>
@@ -3432,8 +3438,8 @@
               <ref role="37wK5l" to="bd8o:~Application.invokeAndWait(java.lang.Runnable,com.intellij.openapi.application.ModalityState)" resolve="invokeAndWait" />
               <node concept="1bVj0M" id="2LiUEk8pil4" role="37wK5m">
                 <node concept="3clFbS" id="2LiUEk8pil5" role="1bW5cS">
-                  <node concept="SfApY" id="69OmYVxkBnm" role="3cqZAp">
-                    <node concept="3clFbS" id="69OmYVxkBno" role="SfCbr">
+                  <node concept="3J1_TO" id="69OmYVxkBnm" role="3cqZAp">
+                    <node concept="3clFbS" id="69OmYVxkBno" role="1zxBo7">
                       <node concept="3clFbF" id="2P80UC067dX" role="3cqZAp">
                         <node concept="2YIFZM" id="2P80UC06cWN" role="3clFbG">
                           <ref role="1Pybhc" to="anz6:~PlatformTestUtil" resolve="PlatformTestUtil" />
@@ -3441,14 +3447,17 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="TDmWw" id="69OmYVxkBnp" role="TEbGg">
-                      <node concept="3cpWsn" id="69OmYVxkBnr" role="TDEfY">
+                    <node concept="3uVAMA" id="69OmYVxkBnp" role="1zxBo5">
+                      <node concept="XOnhg" id="69OmYVxkBnr" role="1zc67B">
+                        <property role="3TUv4t" value="false" />
                         <property role="TrG5h" value="e" />
-                        <node concept="3uibUv" id="69OmYVxkBDu" role="1tU5fm">
-                          <ref role="3uigEE" to="wyt6:~InterruptedException" resolve="InterruptedException" />
+                        <node concept="nSUau" id="xvs04dIxyb" role="1tU5fm">
+                          <node concept="3uibUv" id="69OmYVxkBDu" role="nSUat">
+                            <ref role="3uigEE" to="wyt6:~InterruptedException" resolve="InterruptedException" />
+                          </node>
                         </node>
                       </node>
-                      <node concept="3clFbS" id="69OmYVxkBnv" role="TDEfX">
+                      <node concept="3clFbS" id="69OmYVxkBnv" role="1zc67A">
                         <node concept="YS8fn" id="69OmYVxkBUF" role="3cqZAp">
                           <node concept="2ShNRf" id="69OmYVxkC06" role="YScLw">
                             <node concept="YeOm9" id="3oT7WQ90wrp" role="2ShVmc">
@@ -3791,32 +3800,8 @@
                   <node concept="3cpWs6" id="78Cs0exs$sY" role="3cqZAp" />
                 </node>
               </node>
-              <node concept="SfApY" id="78Cs0exs$tc" role="3cqZAp">
-                <node concept="TDmWw" id="78Cs0exs$td" role="TEbGg">
-                  <node concept="3clFbS" id="78Cs0exs$t7" role="TDEfX">
-                    <node concept="YS8fn" id="78Cs0exs$tb" role="3cqZAp">
-                      <node concept="2ShNRf" id="78Cs0exs_Mw" role="YScLw">
-                        <node concept="1pGfFk" id="78Cs0exs_Nn" role="2ShVmc">
-                          <ref role="37wK5l" node="3oT7WQ90bB6" resolve="IdeaEnvironment.InterruptedWhileWaitingForPostStartupException" />
-                          <node concept="Xl_RD" id="78Cs0exs_No" role="37wK5m">
-                            <property role="Xl_RC" value="Caught exception while waiting for the post startup activities" />
-                          </node>
-                          <node concept="37vLTw" id="78Cs0exs_Np" role="37wK5m">
-                            <ref role="3cqZAo" node="78Cs0exs$t3" resolve="e" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="3cpWsn" id="78Cs0exs$t3" role="TDEfY">
-                    <property role="3TUv4t" value="false" />
-                    <property role="TrG5h" value="e" />
-                    <node concept="3uibUv" id="78Cs0exs$t5" role="1tU5fm">
-                      <ref role="3uigEE" to="wyt6:~InterruptedException" resolve="InterruptedException" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="3clFbS" id="78Cs0exs$t0" role="SfCbr">
+              <node concept="3J1_TO" id="78Cs0exs$tc" role="3cqZAp">
+                <node concept="3clFbS" id="78Cs0exs$t0" role="1zxBo7">
                   <node concept="3clFbF" id="78Cs0exs$t1" role="3cqZAp">
                     <node concept="2OqwBi" id="78Cs0exsD30" role="3clFbG">
                       <node concept="37vLTw" id="78Cs0exsD2Z" role="2Oq$k0">
@@ -3834,6 +3819,32 @@
                         </node>
                         <node concept="37vLTw" id="7JMs__iKiR$" role="37wK5m">
                           <ref role="3cqZAo" node="7JMs__iKew2" resolve="units" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3uVAMA" id="78Cs0exs$td" role="1zxBo5">
+                  <node concept="XOnhg" id="78Cs0exs$t3" role="1zc67B">
+                    <property role="3TUv4t" value="false" />
+                    <property role="TrG5h" value="e" />
+                    <node concept="nSUau" id="xvs04dIxyj" role="1tU5fm">
+                      <node concept="3uibUv" id="78Cs0exs$t5" role="nSUat">
+                        <ref role="3uigEE" to="wyt6:~InterruptedException" resolve="InterruptedException" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3clFbS" id="78Cs0exs$t7" role="1zc67A">
+                    <node concept="YS8fn" id="78Cs0exs$tb" role="3cqZAp">
+                      <node concept="2ShNRf" id="78Cs0exs_Mw" role="YScLw">
+                        <node concept="1pGfFk" id="78Cs0exs_Nn" role="2ShVmc">
+                          <ref role="37wK5l" node="3oT7WQ90bB6" resolve="IdeaEnvironment.InterruptedWhileWaitingForPostStartupException" />
+                          <node concept="Xl_RD" id="78Cs0exs_No" role="37wK5m">
+                            <property role="Xl_RC" value="Caught exception while waiting for the post startup activities" />
+                          </node>
+                          <node concept="37vLTw" id="78Cs0exs_Np" role="37wK5m">
+                            <ref role="3cqZAo" node="78Cs0exs$t3" resolve="e" />
+                          </node>
                         </node>
                       </node>
                     </node>

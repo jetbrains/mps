@@ -461,6 +461,9 @@
       </concept>
       <concept id="7024111702304501416" name="jetbrains.mps.baseLanguage.structure.OrAssignmentExpression" flags="nn" index="3vZ8r8" />
       <concept id="7024111702304495340" name="jetbrains.mps.baseLanguage.structure.MulAssignmentExpression" flags="nn" index="3vZbUc" />
+      <concept id="8276990574909231788" name="jetbrains.mps.baseLanguage.structure.FinallyClause" flags="ng" index="1wplmZ">
+        <child id="8276990574909234106" name="finallyBody" index="1wplMD" />
+      </concept>
       <concept id="1184950988562" name="jetbrains.mps.baseLanguage.structure.ArrayCreator" flags="nn" index="3$_iS1">
         <child id="1184951007469" name="componentType" index="3$_nBY" />
         <child id="1184952969026" name="dimensionExpression" index="3$GQph" />
@@ -485,6 +488,7 @@
       </concept>
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
+        <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
@@ -726,6 +730,14 @@
       </concept>
       <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
         <property id="2423417345669755629" name="filter" index="1eyWvh" />
+      </concept>
+      <concept id="8703179436979359251" name="jetbrains.mps.lang.core.structure.MigrationAnnotation" flags="ng" index="1tp6A5">
+        <property id="8703179436979359252" name="createdByScript" index="1tp6A2" />
+      </concept>
+      <concept id="8703179436979359238" name="jetbrains.mps.lang.core.structure.ReviewMigration" flags="ng" index="1tp6Ag">
+        <property id="8703179436979359239" name="reasonShort" index="1tp6Ah" />
+        <property id="8703179436979359240" name="todo" index="1tp6Au" />
+        <property id="8703179436979359241" name="readableId" index="1tp6Av" />
       </concept>
       <concept id="779128492853369165" name="jetbrains.mps.lang.core.structure.SideTransformInfo" flags="ng" index="1KehLL">
         <property id="779128492853934523" name="cellId" index="1K8rM7" />
@@ -12328,16 +12340,19 @@
               <property role="LIFWd" value="Collection_zedcwq_a" />
             </node>
           </node>
-          <node concept="SfApY" id="2tTgVY$$Iac" role="3cqZAp">
-            <node concept="3clFbS" id="2tTgVY$$Iad" role="SfCbr" />
-            <node concept="TDmWw" id="2tTgVY$$Iak" role="TEbGg">
-              <node concept="3cpWsn" id="2tTgVY$$Ial" role="TDEfY">
+          <node concept="3J1_TO" id="2tTgVY$$Iac" role="3cqZAp">
+            <node concept="3clFbS" id="2tTgVY$$Iad" role="1zxBo7" />
+            <node concept="3uVAMA" id="2tTgVY$$Iak" role="1zxBo5">
+              <node concept="XOnhg" id="2tTgVY$$Ial" role="1zc67B">
+                <property role="3TUv4t" value="false" />
                 <property role="TrG5h" value="e" />
-                <node concept="3uibUv" id="2tTgVY$$Iam" role="1tU5fm">
-                  <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
+                <node concept="nSUau" id="xvs04dIvd3" role="1tU5fm">
+                  <node concept="3uibUv" id="2tTgVY$$Iam" role="nSUat">
+                    <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
+                  </node>
                 </node>
               </node>
-              <node concept="3clFbS" id="2tTgVY$$Ian" role="TDEfX" />
+              <node concept="3clFbS" id="2tTgVY$$Ian" role="1zc67A" />
             </node>
           </node>
         </node>
@@ -35132,6 +35147,12 @@
               </node>
             </node>
             <node concept="3clFbS" id="434bMCwsRIU" role="2GVbov" />
+            <node concept="1tp6Ag" id="xvs04dIve2" role="lGtFl">
+              <property role="1tp6A2" value="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)/10" />
+              <property role="1tp6Ah" value="unknown attributes" />
+              <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.test.structure.AnonymousCellAnnotation" />
+              <property role="1tp6Av" value="Migrate 'try' statements" />
+            </node>
             <node concept="LIFWc" id="5$HBxhc1P60" role="lGtFl">
               <property role="ZRATv" value="true" />
               <property role="OXtK3" value="true" />
@@ -35272,6 +35293,12 @@
               </node>
             </node>
             <node concept="3clFbS" id="434bMCwsS6P" role="2GVbov" />
+            <node concept="1tp6Ag" id="xvs04dIve3" role="lGtFl">
+              <property role="1tp6A2" value="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)/10" />
+              <property role="1tp6Ah" value="unknown attributes" />
+              <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.test.structure.AnonymousCellAnnotation" />
+              <property role="1tp6Av" value="Migrate 'try' statements" />
+            </node>
             <node concept="LIFWc" id="5$HBxhc1P8g" role="lGtFl">
               <property role="ZRATv" value="true" />
               <property role="OXtK3" value="true" />
@@ -35412,6 +35439,12 @@
               </node>
             </node>
             <node concept="3clFbS" id="434bMCwsT7k" role="2GVbov" />
+            <node concept="1tp6Ag" id="xvs04dIve4" role="lGtFl">
+              <property role="1tp6A2" value="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)/10" />
+              <property role="1tp6Ah" value="unknown attributes" />
+              <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.test.structure.AnonymousCellAnnotation" />
+              <property role="1tp6Av" value="Migrate 'try' statements" />
+            </node>
             <node concept="LIFWc" id="5$HBxhc1OOk" role="lGtFl">
               <property role="ZRATv" value="true" />
               <property role="OXtK3" value="true" />
@@ -35550,8 +35583,8 @@
     <node concept="1qefOq" id="2aQPn0Pn9pS" role="25YQFr">
       <node concept="9aQIb" id="434bMCwsThT" role="1qenE9">
         <node concept="3clFbS" id="434bMCwsThU" role="9aQI4">
-          <node concept="2GUZhq" id="434bMCwsTBj" role="3cqZAp">
-            <node concept="3clFbS" id="434bMCwsTBo" role="2GV8ay">
+          <node concept="3J1_TO" id="434bMCwsTBj" role="3cqZAp">
+            <node concept="3clFbS" id="434bMCwsTBo" role="1zxBo7">
               <node concept="3clFbF" id="434bMCwsTBp" role="3cqZAp">
                 <node concept="2OqwBi" id="434bMCwsTBq" role="3clFbG">
                   <node concept="10M0yZ" id="434bMCwsTBr" role="2Oq$k0">
@@ -35567,7 +35600,9 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbS" id="434bMCwsTBu" role="2GVbov" />
+            <node concept="1wplmZ" id="xvs04dIve6" role="1zxBo6">
+              <node concept="3clFbS" id="434bMCwsTBu" role="1wplMD" />
+            </node>
           </node>
         </node>
       </node>
@@ -35640,8 +35675,8 @@
     <node concept="1qefOq" id="2aQPn0Pn9pT" role="25YQFr">
       <node concept="9aQIb" id="434bMCwsTRO" role="1qenE9">
         <node concept="3clFbS" id="434bMCwsTRP" role="9aQI4">
-          <node concept="2GUZhq" id="434bMCwsTRQ" role="3cqZAp">
-            <node concept="3clFbS" id="434bMCwsTRR" role="2GV8ay">
+          <node concept="3J1_TO" id="434bMCwsTRQ" role="3cqZAp">
+            <node concept="3clFbS" id="434bMCwsTRR" role="1zxBo7">
               <node concept="3clFbF" id="434bMCwsTRS" role="3cqZAp">
                 <node concept="2OqwBi" id="434bMCwsTRT" role="3clFbG">
                   <node concept="10M0yZ" id="434bMCwsTRU" role="2Oq$k0">
@@ -35657,7 +35692,9 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbS" id="434bMCwsTRX" role="2GVbov" />
+            <node concept="1wplmZ" id="xvs04dIve8" role="1zxBo6">
+              <node concept="3clFbS" id="434bMCwsTRX" role="1wplMD" />
+            </node>
           </node>
         </node>
       </node>
@@ -35844,17 +35881,8 @@
     <node concept="1qefOq" id="2aQPn0Pn9pV" role="25YQFr">
       <node concept="9aQIb" id="434bMCwsVdg" role="1qenE9">
         <node concept="3clFbS" id="434bMCwsVdh" role="9aQI4">
-          <node concept="2GUZhq" id="434bMCwsVL3" role="3cqZAp">
-            <node concept="TDmWw" id="434bMCwsVL8" role="TEXxN">
-              <node concept="3cpWsn" id="434bMCwsVL9" role="TDEfY">
-                <property role="TrG5h" value="e" />
-                <node concept="3uibUv" id="434bMCwsVLa" role="1tU5fm">
-                  <ref role="3uigEE" to="wyt6:~RuntimeException" resolve="RuntimeException" />
-                </node>
-              </node>
-              <node concept="3clFbS" id="434bMCwsVLb" role="TDEfX" />
-            </node>
-            <node concept="3clFbS" id="434bMCwsVLc" role="2GV8ay">
+          <node concept="3J1_TO" id="434bMCwsVL3" role="3cqZAp">
+            <node concept="3clFbS" id="434bMCwsVLc" role="1zxBo7">
               <node concept="3clFbF" id="434bMCwsVLd" role="3cqZAp">
                 <node concept="2OqwBi" id="434bMCwsVLe" role="3clFbG">
                   <node concept="10M0yZ" id="434bMCwsVLf" role="2Oq$k0">
@@ -35870,7 +35898,21 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbS" id="434bMCwsVLi" role="2GVbov" />
+            <node concept="3uVAMA" id="434bMCwsVL8" role="1zxBo5">
+              <node concept="XOnhg" id="434bMCwsVL9" role="1zc67B">
+                <property role="3TUv4t" value="false" />
+                <property role="TrG5h" value="e" />
+                <node concept="nSUau" id="xvs04dIvd5" role="1tU5fm">
+                  <node concept="3uibUv" id="434bMCwsVLa" role="nSUat">
+                    <ref role="3uigEE" to="wyt6:~RuntimeException" resolve="RuntimeException" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="434bMCwsVLb" role="1zc67A" />
+            </node>
+            <node concept="1wplmZ" id="xvs04dIvea" role="1zxBo6">
+              <node concept="3clFbS" id="434bMCwsVLi" role="1wplMD" />
+            </node>
           </node>
         </node>
       </node>
@@ -35952,17 +35994,8 @@
     <node concept="1qefOq" id="2aQPn0Pn9pW" role="25YQFr">
       <node concept="9aQIb" id="434bMCwsW41" role="1qenE9">
         <node concept="3clFbS" id="434bMCwsW42" role="9aQI4">
-          <node concept="2GUZhq" id="434bMCwsWl1" role="3cqZAp">
-            <node concept="TDmWw" id="434bMCwsWl6" role="TEXxN">
-              <node concept="3cpWsn" id="434bMCwsWl7" role="TDEfY">
-                <property role="TrG5h" value="e" />
-                <node concept="3uibUv" id="434bMCwsWl8" role="1tU5fm">
-                  <ref role="3uigEE" to="wyt6:~RuntimeException" resolve="RuntimeException" />
-                </node>
-              </node>
-              <node concept="3clFbS" id="434bMCwsWl9" role="TDEfX" />
-            </node>
-            <node concept="3clFbS" id="434bMCwsWla" role="2GV8ay">
+          <node concept="3J1_TO" id="434bMCwsWl1" role="3cqZAp">
+            <node concept="3clFbS" id="434bMCwsWla" role="1zxBo7">
               <node concept="3clFbF" id="434bMCwsWlb" role="3cqZAp">
                 <node concept="2OqwBi" id="434bMCwsWlc" role="3clFbG">
                   <node concept="10M0yZ" id="434bMCwsWld" role="2Oq$k0">
@@ -35978,7 +36011,21 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbS" id="434bMCwsWlg" role="2GVbov" />
+            <node concept="3uVAMA" id="434bMCwsWl6" role="1zxBo5">
+              <node concept="XOnhg" id="434bMCwsWl7" role="1zc67B">
+                <property role="3TUv4t" value="false" />
+                <property role="TrG5h" value="e" />
+                <node concept="nSUau" id="xvs04dIvd7" role="1tU5fm">
+                  <node concept="3uibUv" id="434bMCwsWl8" role="nSUat">
+                    <ref role="3uigEE" to="wyt6:~RuntimeException" resolve="RuntimeException" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="434bMCwsWl9" role="1zc67A" />
+            </node>
+            <node concept="1wplmZ" id="xvs04dIvec" role="1zxBo6">
+              <node concept="3clFbS" id="434bMCwsWlg" role="1wplMD" />
+            </node>
           </node>
         </node>
       </node>
@@ -36060,17 +36107,8 @@
     <node concept="1qefOq" id="2aQPn0Pn9pX" role="25YQFr">
       <node concept="9aQIb" id="434bMCwsX53" role="1qenE9">
         <node concept="3clFbS" id="434bMCwsX54" role="9aQI4">
-          <node concept="2GUZhq" id="434bMCwsXmm" role="3cqZAp">
-            <node concept="TDmWw" id="434bMCwsXmn" role="TEXxN">
-              <node concept="3cpWsn" id="434bMCwsXmo" role="TDEfY">
-                <property role="TrG5h" value="e" />
-                <node concept="3uibUv" id="434bMCwsXmp" role="1tU5fm">
-                  <ref role="3uigEE" to="wyt6:~IllegalStateException" resolve="IllegalStateException" />
-                </node>
-              </node>
-              <node concept="3clFbS" id="434bMCwsXmq" role="TDEfX" />
-            </node>
-            <node concept="3clFbS" id="434bMCwsXmv" role="2GV8ay">
+          <node concept="3J1_TO" id="434bMCwsXmm" role="3cqZAp">
+            <node concept="3clFbS" id="434bMCwsXmv" role="1zxBo7">
               <node concept="3clFbF" id="434bMCwsXmw" role="3cqZAp">
                 <node concept="2OqwBi" id="434bMCwsXmx" role="3clFbG">
                   <node concept="10M0yZ" id="434bMCwsXmy" role="2Oq$k0">
@@ -36086,7 +36124,21 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbS" id="434bMCwsXm_" role="2GVbov" />
+            <node concept="3uVAMA" id="434bMCwsXmn" role="1zxBo5">
+              <node concept="XOnhg" id="434bMCwsXmo" role="1zc67B">
+                <property role="3TUv4t" value="false" />
+                <property role="TrG5h" value="e" />
+                <node concept="nSUau" id="xvs04dIvd9" role="1tU5fm">
+                  <node concept="3uibUv" id="434bMCwsXmp" role="nSUat">
+                    <ref role="3uigEE" to="wyt6:~IllegalStateException" resolve="IllegalStateException" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="434bMCwsXmq" role="1zc67A" />
+            </node>
+            <node concept="1wplmZ" id="xvs04dIvee" role="1zxBo6">
+              <node concept="3clFbS" id="434bMCwsXm_" role="1wplMD" />
+            </node>
           </node>
         </node>
       </node>
@@ -36342,8 +36394,8 @@
     <node concept="1qefOq" id="2aQPn0Pn9pZ" role="25YQFr">
       <node concept="9aQIb" id="434bMCwsZ$5" role="1qenE9">
         <node concept="3clFbS" id="434bMCwsZ$6" role="9aQI4">
-          <node concept="SfApY" id="434bMCwsZRB" role="3cqZAp">
-            <node concept="3clFbS" id="434bMCwsZRC" role="SfCbr">
+          <node concept="3J1_TO" id="434bMCwsZRB" role="3cqZAp">
+            <node concept="3clFbS" id="434bMCwsZRC" role="1zxBo7">
               <node concept="3clFbF" id="434bMCwsZRD" role="3cqZAp">
                 <node concept="2OqwBi" id="434bMCwsZRE" role="3clFbG">
                   <node concept="10M0yZ" id="434bMCwsZRF" role="2Oq$k0">
@@ -36359,23 +36411,29 @@
                 </node>
               </node>
             </node>
-            <node concept="TDmWw" id="434bMCwsZRM" role="TEbGg">
-              <node concept="3cpWsn" id="434bMCwsZRN" role="TDEfY">
+            <node concept="3uVAMA" id="434bMCwsZRM" role="1zxBo5">
+              <node concept="XOnhg" id="434bMCwsZRN" role="1zc67B">
+                <property role="3TUv4t" value="false" />
                 <property role="TrG5h" value="e" />
-                <node concept="3uibUv" id="434bMCwsZRO" role="1tU5fm">
-                  <ref role="3uigEE" to="wyt6:~RuntimeException" resolve="RuntimeException" />
+                <node concept="nSUau" id="xvs04dIvdb" role="1tU5fm">
+                  <node concept="3uibUv" id="434bMCwsZRO" role="nSUat">
+                    <ref role="3uigEE" to="wyt6:~RuntimeException" resolve="RuntimeException" />
+                  </node>
                 </node>
               </node>
-              <node concept="3clFbS" id="434bMCwsZRP" role="TDEfX" />
+              <node concept="3clFbS" id="434bMCwsZRP" role="1zc67A" />
             </node>
-            <node concept="TDmWw" id="434bMCwsZRQ" role="TEbGg">
-              <node concept="3cpWsn" id="434bMCwsZRR" role="TDEfY">
+            <node concept="3uVAMA" id="434bMCwsZRQ" role="1zxBo5">
+              <node concept="XOnhg" id="434bMCwsZRR" role="1zc67B">
+                <property role="3TUv4t" value="false" />
                 <property role="TrG5h" value="e" />
-                <node concept="3uibUv" id="434bMCwsZRS" role="1tU5fm">
-                  <ref role="3uigEE" to="wyt6:~Error" resolve="Error" />
+                <node concept="nSUau" id="xvs04dIvdd" role="1tU5fm">
+                  <node concept="3uibUv" id="434bMCwsZRS" role="nSUat">
+                    <ref role="3uigEE" to="wyt6:~Error" resolve="Error" />
+                  </node>
                 </node>
               </node>
-              <node concept="3clFbS" id="434bMCwsZRT" role="TDEfX" />
+              <node concept="3clFbS" id="434bMCwsZRT" role="1zc67A" />
             </node>
           </node>
         </node>
@@ -36654,8 +36712,8 @@
     <node concept="1qefOq" id="2aQPn0Pn9q1" role="25YQFr">
       <node concept="9aQIb" id="434bMCwt1ze" role="1qenE9">
         <node concept="3clFbS" id="434bMCwt1zf" role="9aQI4">
-          <node concept="SfApY" id="434bMCwt214" role="3cqZAp">
-            <node concept="3clFbS" id="434bMCwt215" role="SfCbr">
+          <node concept="3J1_TO" id="434bMCwt214" role="3cqZAp">
+            <node concept="3clFbS" id="434bMCwt215" role="1zxBo7">
               <node concept="3clFbF" id="434bMCwt216" role="3cqZAp">
                 <node concept="2OqwBi" id="434bMCwt217" role="3clFbG">
                   <node concept="10M0yZ" id="434bMCwt218" role="2Oq$k0">
@@ -36671,23 +36729,29 @@
                 </node>
               </node>
             </node>
-            <node concept="TDmWw" id="434bMCwt21b" role="TEbGg">
-              <node concept="3cpWsn" id="434bMCwt21c" role="TDEfY">
+            <node concept="3uVAMA" id="434bMCwt21b" role="1zxBo5">
+              <node concept="XOnhg" id="434bMCwt21c" role="1zc67B">
+                <property role="3TUv4t" value="false" />
                 <property role="TrG5h" value="e" />
-                <node concept="3uibUv" id="434bMCwt21d" role="1tU5fm">
-                  <ref role="3uigEE" to="wyt6:~IllegalStateException" resolve="IllegalStateException" />
+                <node concept="nSUau" id="xvs04dIvdf" role="1tU5fm">
+                  <node concept="3uibUv" id="434bMCwt21d" role="nSUat">
+                    <ref role="3uigEE" to="wyt6:~IllegalStateException" resolve="IllegalStateException" />
+                  </node>
                 </node>
               </node>
-              <node concept="3clFbS" id="434bMCwt21e" role="TDEfX" />
+              <node concept="3clFbS" id="434bMCwt21e" role="1zc67A" />
             </node>
-            <node concept="TDmWw" id="434bMCwt21f" role="TEbGg">
-              <node concept="3cpWsn" id="434bMCwt21g" role="TDEfY">
+            <node concept="3uVAMA" id="434bMCwt21f" role="1zxBo5">
+              <node concept="XOnhg" id="434bMCwt21g" role="1zc67B">
+                <property role="3TUv4t" value="false" />
                 <property role="TrG5h" value="e" />
-                <node concept="3uibUv" id="434bMCwt21h" role="1tU5fm">
-                  <ref role="3uigEE" to="wyt6:~RuntimeException" resolve="RuntimeException" />
+                <node concept="nSUau" id="xvs04dIvdh" role="1tU5fm">
+                  <node concept="3uibUv" id="434bMCwt21h" role="nSUat">
+                    <ref role="3uigEE" to="wyt6:~RuntimeException" resolve="RuntimeException" />
+                  </node>
                 </node>
               </node>
-              <node concept="3clFbS" id="434bMCwt21i" role="TDEfX" />
+              <node concept="3clFbS" id="434bMCwt21i" role="1zc67A" />
             </node>
           </node>
         </node>
@@ -67010,6 +67074,12 @@
                 <node concept="3clFbH" id="4ZFm$8TrC5T" role="3cqZAp" />
               </node>
               <node concept="3clFbS" id="4ZFm$8TrC5U" role="2GVbov" />
+              <node concept="1tp6Ag" id="xvs04dIvdZ" role="lGtFl">
+                <property role="1tp6A2" value="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)/10" />
+                <property role="1tp6Ah" value="unknown attributes" />
+                <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.test.structure.AnonymousCellAnnotation" />
+                <property role="1tp6Av" value="Migrate 'try' statements" />
+              </node>
               <node concept="LIFWc" id="5$HBxhbYNLf" role="lGtFl">
                 <property role="ZRATv" value="true" />
                 <property role="OXtK3" value="true" />
@@ -68645,6 +68715,12 @@
                 </node>
               </node>
               <node concept="3clFbS" id="4ZFm$8TrXD7" role="2GVbov" />
+              <node concept="1tp6Ag" id="xvs04dIve0" role="lGtFl">
+                <property role="1tp6A2" value="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)/10" />
+                <property role="1tp6Ah" value="unknown attributes" />
+                <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.test.structure.AnonymousCellAnnotation" />
+                <property role="1tp6Av" value="Migrate 'try' statements" />
+              </node>
               <node concept="LIFWc" id="5$HBxhc00HD" role="lGtFl">
                 <property role="LIFWa" value="0" />
                 <property role="OXtK3" value="true" />
@@ -68683,6 +68759,12 @@
                     </node>
                   </node>
                 </node>
+              </node>
+              <node concept="1tp6Ag" id="xvs04dIvdG" role="lGtFl">
+                <property role="1tp6A2" value="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)/10" />
+                <property role="1tp6Ah" value="unknown attributes" />
+                <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.test.structure.AnonymousCellAnnotation" />
+                <property role="1tp6Av" value="Migrate 'try' statements" />
               </node>
               <node concept="LIFWc" id="5$HBxhbVjH$" role="lGtFl">
                 <property role="ZRATv" value="true" />
@@ -70200,6 +70282,12 @@
           <node concept="3clFbS" id="4ZFm$8TrgKA" role="3clF47">
             <node concept="SfApY" id="4ZFm$8Trhfr" role="3cqZAp">
               <node concept="3clFbS" id="4ZFm$8Trhfs" role="SfCbr" />
+              <node concept="1tp6Ag" id="xvs04dIvdH" role="lGtFl">
+                <property role="1tp6A2" value="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)/10" />
+                <property role="1tp6Ah" value="unknown attributes" />
+                <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.test.structure.AnonymousCellAnnotation" />
+                <property role="1tp6Av" value="Migrate 'try' statements" />
+              </node>
               <node concept="LIFWc" id="4ZFm$8Trht1" role="lGtFl">
                 <property role="ZRATv" value="true" />
                 <property role="OXtK3" value="true" />
@@ -71540,6 +71628,12 @@
                 </node>
               </node>
               <node concept="3clFbS" id="4ZFm$8TrCA7" role="2GVbov" />
+              <node concept="1tp6Ag" id="xvs04dIve1" role="lGtFl">
+                <property role="1tp6A2" value="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)/10" />
+                <property role="1tp6Ah" value="unknown attributes" />
+                <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.test.structure.AnonymousCellAnnotation" />
+                <property role="1tp6Av" value="Migrate 'try' statements" />
+              </node>
               <node concept="LIFWc" id="5$HBxhc17LQ" role="lGtFl">
                 <property role="LIFWa" value="0" />
                 <property role="OXtK3" value="true" />
@@ -72110,6 +72204,12 @@
           <node concept="3clFbS" id="4ZFm$8Trcdf" role="3clF47">
             <node concept="SfApY" id="4ZFm$8Trcdg" role="3cqZAp">
               <node concept="3clFbS" id="4ZFm$8Trcdh" role="SfCbr" />
+              <node concept="1tp6Ag" id="xvs04dIvdI" role="lGtFl">
+                <property role="1tp6A2" value="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)/10" />
+                <property role="1tp6Ah" value="unknown attributes" />
+                <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.test.structure.AnonymousCellAnnotation" />
+                <property role="1tp6Av" value="Migrate 'try' statements" />
+              </node>
               <node concept="LIFWc" id="4ZFm$8Trcrm" role="lGtFl">
                 <property role="ZRATv" value="true" />
                 <property role="OXtK3" value="true" />

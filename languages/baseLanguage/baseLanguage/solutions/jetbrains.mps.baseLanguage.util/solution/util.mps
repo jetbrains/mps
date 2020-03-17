@@ -51,6 +51,9 @@
       </concept>
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
+        <child id="8118189177080264854" name="classes" index="nSUat" />
+      </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1224573963862" name="jetbrains.mps.baseLanguage.structure.EnumValuesExpression" flags="nn" index="uiWXb">
         <reference id="1224573974191" name="enumClass" index="uiZuM" />
@@ -80,22 +83,15 @@
       <concept id="1201385106094" name="jetbrains.mps.baseLanguage.structure.PropertyReference" flags="nn" index="2S8uIT">
         <reference id="1201385237847" name="property" index="2S8YL0" />
       </concept>
-      <concept id="1164879751025" name="jetbrains.mps.baseLanguage.structure.TryCatchStatement" flags="nn" index="SfApY">
-        <child id="1164879758292" name="body" index="SfCbr" />
-        <child id="1164903496223" name="catchClause" index="TEbGg" />
-      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
-      </concept>
-      <concept id="1164903280175" name="jetbrains.mps.baseLanguage.structure.CatchClause" flags="nn" index="TDmWw">
-        <child id="1164903359218" name="catchBody" index="TDEfX" />
-        <child id="1164903359217" name="throwable" index="TDEfY" />
       </concept>
       <concept id="1070462154015" name="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" flags="ig" index="Wx3nA" />
       <concept id="1070475354124" name="jetbrains.mps.baseLanguage.structure.ThisExpression" flags="nn" index="Xjq3P" />
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
+      <concept id="4952749571008284462" name="jetbrains.mps.baseLanguage.structure.CatchVariable" flags="ng" index="XOnhg" />
       <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
@@ -207,6 +203,10 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
+      <concept id="3093926081414150598" name="jetbrains.mps.baseLanguage.structure.MultipleCatchClause" flags="ng" index="3uVAMA">
+        <child id="8276990574895933173" name="catchBody" index="1zc67A" />
+        <child id="8276990574895933172" name="throwable" index="1zc67B" />
+      </concept>
       <concept id="1202065242027" name="jetbrains.mps.baseLanguage.structure.DefaultGetAccessor" flags="ng" index="3wEZqW" />
       <concept id="1202077725299" name="jetbrains.mps.baseLanguage.structure.DefaultSetAccessor" flags="ng" index="3xqBd$">
         <child id="1202077744034" name="visibility" index="3xqFEP" />
@@ -214,6 +214,10 @@
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
+      </concept>
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+        <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
+        <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
         <child id="1163668914799" name="condition" index="3K4Cdx" />
@@ -2695,28 +2699,8 @@
             </node>
           </node>
         </node>
-        <node concept="SfApY" id="1BOVr2ZeOj6" role="3cqZAp">
-          <node concept="TDmWw" id="1BOVr2ZeOj7" role="TEbGg">
-            <node concept="3clFbS" id="1BOVr2ZeOj2" role="TDEfX">
-              <node concept="YS8fn" id="1BOVr2ZeOj5" role="3cqZAp">
-                <node concept="2ShNRf" id="1BOVr2ZeQ8G" role="YScLw">
-                  <node concept="1pGfFk" id="1BOVr2ZeQ90" role="2ShVmc">
-                    <ref role="37wK5l" to="wyt6:~RuntimeException.&lt;init&gt;(java.lang.Throwable)" resolve="RuntimeException" />
-                    <node concept="37vLTw" id="1BOVr2ZeQ91" role="37wK5m">
-                      <ref role="3cqZAo" node="1BOVr2ZeOiY" resolve="e" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWsn" id="1BOVr2ZeOiY" role="TDEfY">
-              <property role="TrG5h" value="e" />
-              <node concept="3uibUv" id="1BOVr2ZeOj0" role="1tU5fm">
-                <ref role="3uigEE" to="wyt6:~ClassNotFoundException" resolve="ClassNotFoundException" />
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbS" id="1BOVr2ZeOiP" role="SfCbr">
+        <node concept="3J1_TO" id="1BOVr2ZeOj6" role="3cqZAp">
+          <node concept="3clFbS" id="1BOVr2ZeOiP" role="1zxBo7">
             <node concept="3cpWs6" id="1BOVr2ZeOiQ" role="3cqZAp">
               <node concept="2OqwBi" id="1BOVr2ZeOiR" role="3cqZAk">
                 <node concept="1eOMI4" id="1BOVr2ZeOiV" role="2Oq$k0">
@@ -2733,6 +2717,29 @@
                   <ref role="37wK5l" to="j8aq:~ReloadableModule.getClass(java.lang.String)" resolve="getClass" />
                   <node concept="37vLTw" id="1BOVr2Znd_U" role="37wK5m">
                     <ref role="3cqZAo" node="1BOVr2ZmNJs" resolve="className" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3uVAMA" id="1BOVr2ZeOj7" role="1zxBo5">
+            <node concept="XOnhg" id="1BOVr2ZeOiY" role="1zc67B">
+              <property role="3TUv4t" value="false" />
+              <property role="TrG5h" value="e" />
+              <node concept="nSUau" id="xvs04dGAK3" role="1tU5fm">
+                <node concept="3uibUv" id="1BOVr2ZeOj0" role="nSUat">
+                  <ref role="3uigEE" to="wyt6:~ClassNotFoundException" resolve="ClassNotFoundException" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbS" id="1BOVr2ZeOj2" role="1zc67A">
+              <node concept="YS8fn" id="1BOVr2ZeOj5" role="3cqZAp">
+                <node concept="2ShNRf" id="1BOVr2ZeQ8G" role="YScLw">
+                  <node concept="1pGfFk" id="1BOVr2ZeQ90" role="2ShVmc">
+                    <ref role="37wK5l" to="wyt6:~RuntimeException.&lt;init&gt;(java.lang.Throwable)" resolve="RuntimeException" />
+                    <node concept="37vLTw" id="1BOVr2ZeQ91" role="37wK5m">
+                      <ref role="3cqZAo" node="1BOVr2ZeOiY" resolve="e" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -2793,28 +2800,8 @@
             </node>
           </node>
         </node>
-        <node concept="SfApY" id="1BOVr2ZeWM0" role="3cqZAp">
-          <node concept="TDmWw" id="1BOVr2ZeWM1" role="TEbGg">
-            <node concept="3clFbS" id="1BOVr2ZeWLX" role="TDEfX">
-              <node concept="YS8fn" id="1BOVr2ZeWLZ" role="3cqZAp">
-                <node concept="2ShNRf" id="1BOVr2ZeXBz" role="YScLw">
-                  <node concept="1pGfFk" id="1BOVr2ZeXB_" role="2ShVmc">
-                    <ref role="37wK5l" to="wyt6:~RuntimeException.&lt;init&gt;(java.lang.Throwable)" resolve="RuntimeException" />
-                    <node concept="37vLTw" id="1BOVr2ZnGIX" role="37wK5m">
-                      <ref role="3cqZAo" node="1BOVr2ZeWLT" resolve="e" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWsn" id="1BOVr2ZeWLT" role="TDEfY">
-              <property role="TrG5h" value="e" />
-              <node concept="3uibUv" id="1BOVr2ZeWLV" role="1tU5fm">
-                <ref role="3uigEE" to="wyt6:~NoSuchFieldException" resolve="NoSuchFieldException" />
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbS" id="1BOVr2ZeWLN" role="SfCbr">
+        <node concept="3J1_TO" id="1BOVr2ZeWM0" role="3cqZAp">
+          <node concept="3clFbS" id="1BOVr2ZeWLN" role="1zxBo7">
             <node concept="3clFbF" id="1BOVr2ZeWLO" role="3cqZAp">
               <node concept="37vLTI" id="1BOVr2ZeWLP" role="3clFbG">
                 <node concept="37vLTw" id="1BOVr2ZeWLQ" role="37vLTJ">
@@ -2845,8 +2832,40 @@
               </node>
             </node>
           </node>
-          <node concept="TDmWw" id="1BOVr2ZeWMf" role="TEbGg">
-            <node concept="3clFbS" id="1BOVr2ZeWMb" role="TDEfX">
+          <node concept="3uVAMA" id="1BOVr2ZeWM1" role="1zxBo5">
+            <node concept="XOnhg" id="1BOVr2ZeWLT" role="1zc67B">
+              <property role="3TUv4t" value="false" />
+              <property role="TrG5h" value="e" />
+              <node concept="nSUau" id="xvs04dGAK5" role="1tU5fm">
+                <node concept="3uibUv" id="1BOVr2ZeWLV" role="nSUat">
+                  <ref role="3uigEE" to="wyt6:~NoSuchFieldException" resolve="NoSuchFieldException" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbS" id="1BOVr2ZeWLX" role="1zc67A">
+              <node concept="YS8fn" id="1BOVr2ZeWLZ" role="3cqZAp">
+                <node concept="2ShNRf" id="1BOVr2ZeXBz" role="YScLw">
+                  <node concept="1pGfFk" id="1BOVr2ZeXB_" role="2ShVmc">
+                    <ref role="37wK5l" to="wyt6:~RuntimeException.&lt;init&gt;(java.lang.Throwable)" resolve="RuntimeException" />
+                    <node concept="37vLTw" id="1BOVr2ZnGIX" role="37wK5m">
+                      <ref role="3cqZAo" node="1BOVr2ZeWLT" resolve="e" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3uVAMA" id="1BOVr2ZeWMf" role="1zxBo5">
+            <node concept="XOnhg" id="1BOVr2ZeWM7" role="1zc67B">
+              <property role="3TUv4t" value="false" />
+              <property role="TrG5h" value="e" />
+              <node concept="nSUau" id="xvs04dGAK7" role="1tU5fm">
+                <node concept="3uibUv" id="1BOVr2ZeWM9" role="nSUat">
+                  <ref role="3uigEE" to="wyt6:~IllegalAccessException" resolve="IllegalAccessException" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbS" id="1BOVr2ZeWMb" role="1zc67A">
               <node concept="YS8fn" id="1BOVr2ZeWMd" role="3cqZAp">
                 <node concept="2ShNRf" id="1BOVr2ZeX_K" role="YScLw">
                   <node concept="1pGfFk" id="1BOVr2ZeX_M" role="2ShVmc">
@@ -2856,12 +2875,6 @@
                     </node>
                   </node>
                 </node>
-              </node>
-            </node>
-            <node concept="3cpWsn" id="1BOVr2ZeWM7" role="TDEfY">
-              <property role="TrG5h" value="e" />
-              <node concept="3uibUv" id="1BOVr2ZeWM9" role="1tU5fm">
-                <ref role="3uigEE" to="wyt6:~IllegalAccessException" resolve="IllegalAccessException" />
               </node>
             </node>
           </node>

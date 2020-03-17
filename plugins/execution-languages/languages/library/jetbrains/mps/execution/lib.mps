@@ -54,6 +54,9 @@
       </concept>
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
+        <child id="8118189177080264854" name="classes" index="nSUat" />
+      </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
@@ -71,16 +74,8 @@
       <concept id="1197029447546" name="jetbrains.mps.baseLanguage.structure.FieldReferenceOperation" flags="nn" index="2OwXpG">
         <reference id="1197029500499" name="fieldDeclaration" index="2Oxat5" />
       </concept>
-      <concept id="1164879751025" name="jetbrains.mps.baseLanguage.structure.TryCatchStatement" flags="nn" index="SfApY">
-        <child id="1164879758292" name="body" index="SfCbr" />
-        <child id="1164903496223" name="catchClause" index="TEbGg" />
-      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
-      </concept>
-      <concept id="1164903280175" name="jetbrains.mps.baseLanguage.structure.CatchClause" flags="nn" index="TDmWw">
-        <child id="1164903359218" name="catchBody" index="TDEfX" />
-        <child id="1164903359217" name="throwable" index="TDEfY" />
       </concept>
       <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
         <child id="1137022507850" name="body" index="2VODD2" />
@@ -88,6 +83,7 @@
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
+      <concept id="4952749571008284462" name="jetbrains.mps.baseLanguage.structure.CatchVariable" flags="ng" index="XOnhg" />
       <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
@@ -191,9 +187,17 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
+      <concept id="3093926081414150598" name="jetbrains.mps.baseLanguage.structure.MultipleCatchClause" flags="ng" index="3uVAMA">
+        <child id="8276990574895933173" name="catchBody" index="1zc67A" />
+        <child id="8276990574895933172" name="throwable" index="1zc67B" />
+      </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
+      </concept>
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+        <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
+        <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
         <child id="1163668914799" name="condition" index="3K4Cdx" />
@@ -724,8 +728,8 @@
                 <ref role="37wK5l" to="w1kc:~ModelAccessHelper.runReadAction(jetbrains.mps.util.Computable)" resolve="runReadAction" />
                 <node concept="1bVj0M" id="1MVY3kFBrqr" role="37wK5m">
                   <node concept="3clFbS" id="1MVY3kFBrqs" role="1bW5cS">
-                    <node concept="SfApY" id="5QqGGkvpVAx" role="3cqZAp">
-                      <node concept="3clFbS" id="5QqGGkvpVAz" role="SfCbr">
+                    <node concept="3J1_TO" id="5QqGGkvpVAx" role="3cqZAp">
+                      <node concept="3clFbS" id="5QqGGkvpVAz" role="1zxBo7">
                         <node concept="3cpWs8" id="1MVY3kFBbTk" role="3cqZAp">
                           <node concept="3cpWsn" id="1MVY3kFBbTl" role="3cpWs9">
                             <property role="TrG5h" value="ptr" />
@@ -809,14 +813,17 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="TDmWw" id="5QqGGkvpVA$" role="TEbGg">
-                        <node concept="3cpWsn" id="5QqGGkvpVAA" role="TDEfY">
+                      <node concept="3uVAMA" id="5QqGGkvpVA$" role="1zxBo5">
+                        <node concept="XOnhg" id="5QqGGkvpVAA" role="1zc67B">
+                          <property role="3TUv4t" value="false" />
                           <property role="TrG5h" value="ex" />
-                          <node concept="3uibUv" id="5QqGGkvpVND" role="1tU5fm">
-                            <ref role="3uigEE" to="wyt6:~IllegalArgumentException" resolve="IllegalArgumentException" />
+                          <node concept="nSUau" id="xvs04dHlnW" role="1tU5fm">
+                            <node concept="3uibUv" id="5QqGGkvpVND" role="nSUat">
+                              <ref role="3uigEE" to="wyt6:~IllegalArgumentException" resolve="IllegalArgumentException" />
+                            </node>
                           </node>
                         </node>
-                        <node concept="3clFbS" id="5QqGGkvpVAE" role="TDEfX">
+                        <node concept="3clFbS" id="5QqGGkvpVAE" role="1zc67A">
                           <node concept="3cpWs8" id="1MVY3kFC7l0" role="3cqZAp">
                             <node concept="3cpWsn" id="1MVY3kFC7l1" role="3cpWs9">
                               <property role="TrG5h" value="m" />
@@ -1356,8 +1363,8 @@
                 <ref role="37wK5l" to="w1kc:~ModelAccessHelper.runReadAction(jetbrains.mps.util.Computable)" resolve="runReadAction" />
                 <node concept="1bVj0M" id="1MVY3kFBRpO" role="37wK5m">
                   <node concept="3clFbS" id="1MVY3kFBRpP" role="1bW5cS">
-                    <node concept="SfApY" id="1MVY3kFBRpQ" role="3cqZAp">
-                      <node concept="3clFbS" id="1MVY3kFBRpR" role="SfCbr">
+                    <node concept="3J1_TO" id="1MVY3kFBRpQ" role="3cqZAp">
+                      <node concept="3clFbS" id="1MVY3kFBRpR" role="1zxBo7">
                         <node concept="3cpWs8" id="1MVY3kFBRpS" role="3cqZAp">
                           <node concept="3cpWsn" id="1MVY3kFBRpT" role="3cpWs9">
                             <property role="TrG5h" value="ptr" />
@@ -1440,14 +1447,17 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="TDmWw" id="1MVY3kFBRqr" role="TEbGg">
-                        <node concept="3cpWsn" id="1MVY3kFBRqs" role="TDEfY">
+                      <node concept="3uVAMA" id="1MVY3kFBRqr" role="1zxBo5">
+                        <node concept="XOnhg" id="1MVY3kFBRqs" role="1zc67B">
+                          <property role="3TUv4t" value="false" />
                           <property role="TrG5h" value="ex" />
-                          <node concept="3uibUv" id="1MVY3kFBRqt" role="1tU5fm">
-                            <ref role="3uigEE" to="wyt6:~IllegalArgumentException" resolve="IllegalArgumentException" />
+                          <node concept="nSUau" id="xvs04dHlnY" role="1tU5fm">
+                            <node concept="3uibUv" id="1MVY3kFBRqt" role="nSUat">
+                              <ref role="3uigEE" to="wyt6:~IllegalArgumentException" resolve="IllegalArgumentException" />
+                            </node>
                           </node>
                         </node>
-                        <node concept="3clFbS" id="1MVY3kFBRqu" role="TDEfX">
+                        <node concept="3clFbS" id="1MVY3kFBRqu" role="1zc67A">
                           <node concept="3cpWs8" id="1MVY3kFC3o5" role="3cqZAp">
                             <node concept="3cpWsn" id="1MVY3kFC3o6" role="3cpWs9">
                               <property role="TrG5h" value="m" />
@@ -1556,8 +1566,8 @@
             </node>
           </node>
         </node>
-        <node concept="SfApY" id="6kCKyyMzL2P" role="3cqZAp">
-          <node concept="3clFbS" id="6kCKyyMzL2R" role="SfCbr">
+        <node concept="3J1_TO" id="6kCKyyMzL2P" role="3cqZAp">
+          <node concept="3clFbS" id="6kCKyyMzL2R" role="1zxBo7">
             <node concept="3cpWs6" id="1_xVpohXN6Y" role="3cqZAp">
               <node concept="2OqwBi" id="1_xVpohXNTq" role="3cqZAk">
                 <node concept="2YIFZM" id="1_xVpohXNMs" role="2Oq$k0">
@@ -1573,14 +1583,17 @@
               </node>
             </node>
           </node>
-          <node concept="TDmWw" id="6kCKyyMzL2S" role="TEbGg">
-            <node concept="3cpWsn" id="6kCKyyMzL2U" role="TDEfY">
+          <node concept="3uVAMA" id="6kCKyyMzL2S" role="1zxBo5">
+            <node concept="XOnhg" id="6kCKyyMzL2U" role="1zc67B">
+              <property role="3TUv4t" value="false" />
               <property role="TrG5h" value="problem" />
-              <node concept="3uibUv" id="6kCKyyMzRxA" role="1tU5fm">
-                <ref role="3uigEE" to="dush:~PersistenceFacade$IncorrectModelReferenceFormatException" resolve="PersistenceFacade.IncorrectModelReferenceFormatException" />
+              <node concept="nSUau" id="xvs04dHlo0" role="1tU5fm">
+                <node concept="3uibUv" id="6kCKyyMzRxA" role="nSUat">
+                  <ref role="3uigEE" to="dush:~PersistenceFacade$IncorrectModelReferenceFormatException" resolve="PersistenceFacade.IncorrectModelReferenceFormatException" />
+                </node>
               </node>
             </node>
-            <node concept="3clFbS" id="6kCKyyMzL2Y" role="TDEfX">
+            <node concept="3clFbS" id="6kCKyyMzL2Y" role="1zc67A">
               <node concept="RRSsy" id="6kCKyyMzRt_" role="3cqZAp">
                 <property role="RRSoG" value="gZ5fksE/warn" />
                 <node concept="3cpWs3" id="6kCKyyMzSo2" role="RRSoy">
@@ -1597,14 +1610,17 @@
               </node>
             </node>
           </node>
-          <node concept="TDmWw" id="6kCKyyMzSR8" role="TEbGg">
-            <node concept="3cpWsn" id="6kCKyyMzSR9" role="TDEfY">
+          <node concept="3uVAMA" id="6kCKyyMzSR8" role="1zxBo5">
+            <node concept="XOnhg" id="6kCKyyMzSR9" role="1zc67B">
+              <property role="3TUv4t" value="false" />
               <property role="TrG5h" value="problem" />
-              <node concept="3uibUv" id="6kCKyyMzTfE" role="1tU5fm">
-                <ref role="3uigEE" to="dush:~PersistenceFacade$IncorrectNodeIdFormatException" resolve="PersistenceFacade.IncorrectNodeIdFormatException" />
+              <node concept="nSUau" id="xvs04dHlo2" role="1tU5fm">
+                <node concept="3uibUv" id="6kCKyyMzTfE" role="nSUat">
+                  <ref role="3uigEE" to="dush:~PersistenceFacade$IncorrectNodeIdFormatException" resolve="PersistenceFacade.IncorrectNodeIdFormatException" />
+                </node>
               </node>
             </node>
-            <node concept="3clFbS" id="6kCKyyMzSRb" role="TDEfX">
+            <node concept="3clFbS" id="6kCKyyMzSRb" role="1zc67A">
               <node concept="RRSsy" id="6kCKyyMzS_P" role="3cqZAp">
                 <property role="RRSoG" value="gZ5fksE/warn" />
                 <node concept="3cpWs3" id="6kCKyyMzS_Q" role="RRSoy">

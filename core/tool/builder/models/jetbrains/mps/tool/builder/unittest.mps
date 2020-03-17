@@ -28,6 +28,9 @@
       </concept>
       <concept id="1153417849900" name="jetbrains.mps.baseLanguage.structure.GreaterThanOrEqualsExpression" flags="nn" index="2d3UOw" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
+        <child id="8118189177080264854" name="classes" index="nSUat" />
+      </concept>
       <concept id="1076505808687" name="jetbrains.mps.baseLanguage.structure.WhileStatement" flags="nn" index="2$JKZl">
         <child id="1076505808688" name="condition" index="2$JKZa" />
       </concept>
@@ -48,22 +51,15 @@
       <concept id="1197029447546" name="jetbrains.mps.baseLanguage.structure.FieldReferenceOperation" flags="nn" index="2OwXpG">
         <reference id="1197029500499" name="fieldDeclaration" index="2Oxat5" />
       </concept>
-      <concept id="1164879751025" name="jetbrains.mps.baseLanguage.structure.TryCatchStatement" flags="nn" index="SfApY">
-        <child id="1164879758292" name="body" index="SfCbr" />
-        <child id="1164903496223" name="catchClause" index="TEbGg" />
-      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
-      </concept>
-      <concept id="1164903280175" name="jetbrains.mps.baseLanguage.structure.CatchClause" flags="nn" index="TDmWw">
-        <child id="1164903359218" name="catchBody" index="TDEfX" />
-        <child id="1164903359217" name="throwable" index="TDEfY" />
       </concept>
       <concept id="1070462154015" name="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" flags="ig" index="Wx3nA" />
       <concept id="1070475354124" name="jetbrains.mps.baseLanguage.structure.ThisExpression" flags="nn" index="Xjq3P" />
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
+      <concept id="4952749571008284462" name="jetbrains.mps.baseLanguage.structure.CatchVariable" flags="ng" index="XOnhg" />
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
@@ -157,11 +153,19 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
+      <concept id="3093926081414150598" name="jetbrains.mps.baseLanguage.structure.MultipleCatchClause" flags="ng" index="3uVAMA">
+        <child id="8276990574895933173" name="catchBody" index="1zc67A" />
+        <child id="8276990574895933172" name="throwable" index="1zc67B" />
+      </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+        <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
+        <child id="8276990574886367508" name="body" index="1zxBo7" />
+      </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
         <child id="1163668914799" name="condition" index="3K4Cdx" />
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
@@ -2755,8 +2759,8 @@
       <node concept="3clFbS" id="2doG_VG7MaC" role="3clF47">
         <node concept="3clFbJ" id="2doG_VG7MaD" role="3cqZAp">
           <node concept="3clFbS" id="2doG_VG7MaE" role="3clFbx">
-            <node concept="SfApY" id="2doG_VG7MaF" role="3cqZAp">
-              <node concept="3clFbS" id="2doG_VG7MaG" role="SfCbr">
+            <node concept="3J1_TO" id="2doG_VG7MaF" role="3cqZAp">
+              <node concept="3clFbS" id="2doG_VG7MaG" role="1zxBo7">
                 <node concept="3clFbF" id="2doG_VG7MaH" role="3cqZAp">
                   <node concept="37vLTI" id="2doG_VG7MaI" role="3clFbG">
                     <node concept="2OqwBi" id="2doG_VG7MaJ" role="37vLTJ">
@@ -2777,14 +2781,17 @@
                   </node>
                 </node>
               </node>
-              <node concept="TDmWw" id="2doG_VG7MaP" role="TEbGg">
-                <node concept="3cpWsn" id="2doG_VG7MaQ" role="TDEfY">
+              <node concept="3uVAMA" id="2doG_VG7MaP" role="1zxBo5">
+                <node concept="XOnhg" id="2doG_VG7MaQ" role="1zc67B">
+                  <property role="3TUv4t" value="false" />
                   <property role="TrG5h" value="ignore" />
-                  <node concept="3uibUv" id="2doG_VG7MaR" role="1tU5fm">
-                    <ref role="3uigEE" to="zf81:~UnknownHostException" resolve="UnknownHostException" />
+                  <node concept="nSUau" id="xvs04dGy_O" role="1tU5fm">
+                    <node concept="3uibUv" id="2doG_VG7MaR" role="nSUat">
+                      <ref role="3uigEE" to="zf81:~UnknownHostException" resolve="UnknownHostException" />
+                    </node>
                   </node>
                 </node>
-                <node concept="3clFbS" id="2doG_VG7MaS" role="TDEfX" />
+                <node concept="3clFbS" id="2doG_VG7MaS" role="1zc67A" />
               </node>
             </node>
           </node>

@@ -87,10 +87,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1153952380246" name="jetbrains.mps.baseLanguage.structure.TryStatement" flags="nn" index="2GUZhq">
-        <child id="1153952416686" name="body" index="2GV8ay" />
-        <child id="1153952429843" name="finallyBody" index="2GVbov" />
-      </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
       </concept>
@@ -224,6 +220,9 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
+      <concept id="8276990574909231788" name="jetbrains.mps.baseLanguage.structure.FinallyClause" flags="ng" index="1wplmZ">
+        <child id="8276990574909234106" name="finallyBody" index="1wplMD" />
+      </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
@@ -233,6 +232,10 @@
       </concept>
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
+      </concept>
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+        <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
+        <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
         <child id="1163668914799" name="condition" index="3K4Cdx" />
@@ -2077,8 +2080,8 @@
             </node>
           </node>
         </node>
-        <node concept="2GUZhq" id="4$0H1w_YZKk" role="3cqZAp">
-          <node concept="3clFbS" id="4$0H1w_YZKl" role="2GV8ay">
+        <node concept="3J1_TO" id="4$0H1w_YZKk" role="3cqZAp">
+          <node concept="3clFbS" id="4$0H1w_YZKl" role="1zxBo7">
             <node concept="3cpWs8" id="34otMr4yB22" role="3cqZAp">
               <node concept="3cpWsn" id="34otMr4yB23" role="3cpWs9">
                 <property role="TrG5h" value="model" />
@@ -2304,18 +2307,20 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbS" id="4$0H1w_YZKn" role="2GVbov">
-            <node concept="3clFbJ" id="3KCC4i_49ai" role="3cqZAp">
-              <node concept="3clFbS" id="3KCC4i_49ak" role="3clFbx">
-                <node concept="3clFbF" id="4$0H1w_YZKo" role="3cqZAp">
-                  <node concept="2YIFZM" id="4$0H1w_YZKp" role="3clFbG">
-                    <ref role="1Pybhc" to="w1kc:~SReference" resolve="SReference" />
-                    <ref role="37wK5l" to="w1kc:~SReference.enableLogging()" resolve="enableLogging" />
+          <node concept="1wplmZ" id="xvs04dGAIE" role="1zxBo6">
+            <node concept="3clFbS" id="4$0H1w_YZKn" role="1wplMD">
+              <node concept="3clFbJ" id="3KCC4i_49ai" role="3cqZAp">
+                <node concept="3clFbS" id="3KCC4i_49ak" role="3clFbx">
+                  <node concept="3clFbF" id="4$0H1w_YZKo" role="3cqZAp">
+                    <node concept="2YIFZM" id="4$0H1w_YZKp" role="3clFbG">
+                      <ref role="1Pybhc" to="w1kc:~SReference" resolve="SReference" />
+                      <ref role="37wK5l" to="w1kc:~SReference.enableLogging()" resolve="enableLogging" />
+                    </node>
                   </node>
                 </node>
-              </node>
-              <node concept="37vLTw" id="3KCC4i_49ci" role="3clFbw">
-                <ref role="3cqZAo" node="3KCC4i_48bC" resolve="needToEnableLogging" />
+                <node concept="37vLTw" id="3KCC4i_49ci" role="3clFbw">
+                  <ref role="3cqZAo" node="3KCC4i_48bC" resolve="needToEnableLogging" />
+                </node>
               </node>
             </node>
           </node>

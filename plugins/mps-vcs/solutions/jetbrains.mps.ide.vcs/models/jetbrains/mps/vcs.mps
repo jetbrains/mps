@@ -58,6 +58,9 @@
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
+        <child id="8118189177080264854" name="classes" index="nSUat" />
+      </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1173175405605" name="jetbrains.mps.baseLanguage.structure.ArrayAccessExpression" flags="nn" index="AH0OO">
         <child id="1173175577737" name="index" index="AHEQo" />
@@ -77,21 +80,14 @@
         <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
         <reference id="1144432896254" name="enumClass" index="1Px2BO" />
       </concept>
-      <concept id="1164879751025" name="jetbrains.mps.baseLanguage.structure.TryCatchStatement" flags="nn" index="SfApY">
-        <child id="1164879758292" name="body" index="SfCbr" />
-        <child id="1164903496223" name="catchClause" index="TEbGg" />
-      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
-      </concept>
-      <concept id="1164903280175" name="jetbrains.mps.baseLanguage.structure.CatchClause" flags="nn" index="TDmWw">
-        <child id="1164903359218" name="catchBody" index="TDEfX" />
-        <child id="1164903359217" name="throwable" index="TDEfY" />
       </concept>
       <concept id="1070462154015" name="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" flags="ig" index="Wx3nA" />
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
+      <concept id="4952749571008284462" name="jetbrains.mps.baseLanguage.structure.CatchVariable" flags="ng" index="XOnhg" />
       <concept id="1182160077978" name="jetbrains.mps.baseLanguage.structure.AnonymousClassCreator" flags="nn" index="YeOm9">
         <child id="1182160096073" name="cls" index="YeSDq" />
       </concept>
@@ -207,6 +203,10 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
+      <concept id="3093926081414150598" name="jetbrains.mps.baseLanguage.structure.MultipleCatchClause" flags="ng" index="3uVAMA">
+        <child id="8276990574895933173" name="catchBody" index="1zc67A" />
+        <child id="8276990574895933172" name="throwable" index="1zc67B" />
+      </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1184950988562" name="jetbrains.mps.baseLanguage.structure.ArrayCreator" flags="nn" index="3$_iS1">
         <child id="1184951007469" name="componentType" index="3$_nBY" />
@@ -217,6 +217,10 @@
       </concept>
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
+      </concept>
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+        <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
+        <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1206629501431" name="jetbrains.mps.baseLanguage.structure.InstanceInitializer" flags="lg" index="3KIgzJ">
         <child id="1206629521979" name="statementList" index="3KIlGz" />
@@ -584,32 +588,8 @@
             </node>
           </node>
         </node>
-        <node concept="SfApY" id="38_6U8fKv87" role="3cqZAp">
-          <node concept="TDmWw" id="38_6U8fKv88" role="TEbGg">
-            <node concept="3clFbS" id="38_6U8fKv89" role="TDEfX">
-              <node concept="3clFbF" id="38_6U8fKv8a" role="3cqZAp">
-                <node concept="2OqwBi" id="38_6U8fKv8b" role="3clFbG">
-                  <node concept="37vLTw" id="2BHiRxeojh$" role="2Oq$k0">
-                    <ref role="3cqZAo" node="38_6U8fKv5T" resolve="LOG" />
-                  </node>
-                  <node concept="liA8E" id="38_6U8fKv8d" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
-                    <node concept="10Nm6u" id="4t57iE9Wv4n" role="37wK5m" />
-                    <node concept="37vLTw" id="3GM_nagT_7Y" role="37wK5m">
-                      <ref role="3cqZAo" node="38_6U8fKv8f" resolve="e" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWsn" id="38_6U8fKv8f" role="TDEfY">
-              <property role="TrG5h" value="e" />
-              <node concept="3uibUv" id="38_6U8fKv8g" role="1tU5fm">
-                <ref role="3uigEE" to="jlcu:~VcsException" resolve="VcsException" />
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbS" id="38_6U8fKv8h" role="SfCbr">
+        <node concept="3J1_TO" id="38_6U8fKv87" role="3cqZAp">
+          <node concept="3clFbS" id="38_6U8fKv8h" role="1zxBo7">
             <node concept="3clFbF" id="38_6U8fKv8i" role="3cqZAp">
               <node concept="2OqwBi" id="38_6U8fKv8j" role="3clFbG">
                 <node concept="37vLTw" id="3GM_nagTwfl" role="2Oq$k0">
@@ -631,6 +611,33 @@
                   <node concept="2ShNRf" id="38_6U8fKv8q" role="37wK5m">
                     <node concept="1pGfFk" id="38_6U8fKv8r" role="2ShVmc">
                       <ref role="37wK5l" node="38_6U8fKv4k" resolve="MPSVcsManager.StubChangeListManagerGate" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3uVAMA" id="38_6U8fKv88" role="1zxBo5">
+            <node concept="XOnhg" id="38_6U8fKv8f" role="1zc67B">
+              <property role="3TUv4t" value="false" />
+              <property role="TrG5h" value="e" />
+              <node concept="nSUau" id="xvs04dHYDy" role="1tU5fm">
+                <node concept="3uibUv" id="38_6U8fKv8g" role="nSUat">
+                  <ref role="3uigEE" to="jlcu:~VcsException" resolve="VcsException" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbS" id="38_6U8fKv89" role="1zc67A">
+              <node concept="3clFbF" id="38_6U8fKv8a" role="3cqZAp">
+                <node concept="2OqwBi" id="38_6U8fKv8b" role="3clFbG">
+                  <node concept="37vLTw" id="2BHiRxeojh$" role="2Oq$k0">
+                    <ref role="3cqZAo" node="38_6U8fKv5T" resolve="LOG" />
+                  </node>
+                  <node concept="liA8E" id="38_6U8fKv8d" role="2OqNvi">
+                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
+                    <node concept="10Nm6u" id="4t57iE9Wv4n" role="37wK5m" />
+                    <node concept="37vLTw" id="3GM_nagT_7Y" role="37wK5m">
+                      <ref role="3cqZAo" node="38_6U8fKv8f" resolve="e" />
                     </node>
                   </node>
                 </node>
@@ -2405,8 +2412,8 @@
             </node>
           </node>
         </node>
-        <node concept="SfApY" id="4gQ5MKiFOJx" role="3cqZAp">
-          <node concept="3clFbS" id="4gQ5MKiFOJz" role="SfCbr">
+        <node concept="3J1_TO" id="4gQ5MKiFOJx" role="3cqZAp">
+          <node concept="3clFbS" id="4gQ5MKiFOJz" role="1zxBo7">
             <node concept="3cpWs8" id="4gQ5MKiEXXn" role="3cqZAp">
               <node concept="3cpWsn" id="4gQ5MKiEXXo" role="3cpWs9">
                 <property role="3TUv4t" value="false" />
@@ -2477,14 +2484,17 @@
               </node>
             </node>
           </node>
-          <node concept="TDmWw" id="4gQ5MKiFOJ$" role="TEbGg">
-            <node concept="3cpWsn" id="4gQ5MKiFOJA" role="TDEfY">
+          <node concept="3uVAMA" id="4gQ5MKiFOJ$" role="1zxBo5">
+            <node concept="XOnhg" id="4gQ5MKiFOJA" role="1zc67B">
+              <property role="3TUv4t" value="false" />
               <property role="TrG5h" value="e" />
-              <node concept="3uibUv" id="4gQ5MKiFRq_" role="1tU5fm">
-                <ref role="3uigEE" to="yt4f:~InvalidDiffRequestException" resolve="InvalidDiffRequestException" />
+              <node concept="nSUau" id="xvs04dHYD$" role="1tU5fm">
+                <node concept="3uibUv" id="4gQ5MKiFRq_" role="nSUat">
+                  <ref role="3uigEE" to="yt4f:~InvalidDiffRequestException" resolve="InvalidDiffRequestException" />
+                </node>
               </node>
             </node>
-            <node concept="3clFbS" id="4gQ5MKiFOJE" role="TDEfX">
+            <node concept="3clFbS" id="4gQ5MKiFOJE" role="1zc67A">
               <node concept="RRSsy" id="3jYQuSB39JS" role="3cqZAp">
                 <property role="RRSoG" value="gZ5fh_4/error" />
                 <node concept="Xl_RD" id="4gQ5MKiFSrf" role="RRSoy" />
