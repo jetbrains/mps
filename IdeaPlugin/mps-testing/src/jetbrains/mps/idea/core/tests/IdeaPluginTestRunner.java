@@ -46,7 +46,7 @@ public class IdeaPluginTestRunner extends Suite {
   }
 
   private static List<Runner> getRunners(Class<?> klass, RunnerBuilder builder) throws InitializationError {
-    Assert.assertNull("Tests control headless setting through system property", System.getProperty("java.awt.headless"));
+    Assert.assertNull("Tests control headless setting through system property; environment shall not specify any value for 'java.awt.headless'.", System.getProperty("java.awt.headless"));
     System.setProperty("java.awt.headless", Boolean.FALSE.toString());
     Assert.assertFalse("100+ editor tests would fail in headless mode", GraphicsEnvironment.isHeadless());
     List<Runner> result = new ArrayList<>();

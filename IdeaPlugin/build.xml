@@ -414,7 +414,6 @@
       <jvmarg value="-Didea.log.perf.stats=false"/>
       <formatter type="xml"/>
       <sysproperty key="jdk.home.path" value="${jdkPath}"/>
-      <sysproperty key="java.awt.headless" value="false"/>
       <sysproperty key="idea.platform.prefix" value="Idea"/>
       <sysproperty key="idea.config.path" value="${test.platform.sandbox.dir}/config"/>
       <sysproperty key="idea.system.path" value="${test.platform.sandbox.dir}/system"/>
