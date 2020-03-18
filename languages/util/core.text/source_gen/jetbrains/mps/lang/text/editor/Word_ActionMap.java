@@ -13,15 +13,21 @@ import jetbrains.mps.lang.text.behavior.Word__BehaviorDescriptor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.ide.datatransfer.SNodeTransferable;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.datatransfer.PasteNodeData;
+import java.util.List;
+import java.util.Objects;
+import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.text.behavior.IHoldLines__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
-import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
@@ -45,31 +51,72 @@ public class Word_ActionMap {
           SelectionUtil.selectCell(editorContext, lastWord, SelectionManager.LAST_CELL);
         }
         if (dataFromClipboard instanceof SNodeTransferable) {
-          SNode currentNode = node;
+          final Wrappers._T<SNode> currentNode = new Wrappers._T<SNode>(node);
           PasteNodeData pasteData = ((SNodeTransferable) dataFromClipboard).createNodeData();
-          for (SNode n : pasteData.getNodes()) {
+          List<SNode> data = pasteData.getNodes();
+
+          final Wrappers._T<SNode> currentLine = new Wrappers._T<SNode>(SNodeOperations.getNodeAncestor(currentNode.value, CONCEPTS.Line$w3, false, false));
+          final boolean copyMultipleLinesToMultipleLines = data.size() > 1 && SNodeOperations.isInstanceOf(((SNode) data.get(0)), CONCEPTS.Line$w3) && SNodeOperations.getContainingLink(currentLine.value).isMultiple();
+
+          for (SNode n : data) {
             if (SNodeOperations.isInstanceOf(n, CONCEPTS.Word$AM)) {
-              SNode copy = SNodeOperations.copyNode(n);
-              SNodeOperations.insertNextSiblingChild(currentNode, copy);
-              currentNode = copy;
+              SNode copy = SNodeOperations.cast(SNodeOperations.copyNode(n), CONCEPTS.TextElement$Ue);
+              SNodeOperations.insertNextSiblingChild(currentNode.value, copy);
+              currentNode.value = copy;
             } else if (SNodeOperations.isInstanceOf(n, CONCEPTS.Line$w3)) {
-              Iterable<SNode> copies = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(n, CONCEPTS.Line$w3), LINKS.elements$eRew)).select(new ISelector<SNode, SNode>() {
-                public SNode select(SNode it) {
-                  return SNodeOperations.copyNode(it);
+              if (copyMultipleLinesToMultipleLines) {
+                if (Objects.equals(n, data.get(0))) {
+                  TextEditorHelper.insertLineIntoLines(currentLine.value, currentNode.value, SNodeOperations.copyNode(SNodeOperations.as(n, CONCEPTS.Line$w3)));
+                } else {
+                  currentLine.value = SNodeOperations.as(SNodeOperations.insertNextSiblingChild(currentLine.value, SNodeOperations.copyNode(SNodeOperations.as(n, CONCEPTS.Line$w3))), CONCEPTS.Line$w3);
                 }
-              });
-              for (SNode element : copies) {
-                SNodeOperations.insertNextSiblingChild(currentNode, element);
-                currentNode = element;
+              } else {
+                Line__BehaviorDescriptor.merge_id1YnOZxAMHtO.invoke(currentLine.value, SNodeOperations.cast(n, CONCEPTS.Line$w3), currentNode.value);
               }
+            } else if (SNodeOperations.isInstanceOf(n, CONCEPTS.IHoldLines$hX)) {
+              if (ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(SNodeOperations.as(n, CONCEPTS.IHoldLines$hX))).count() == 0) {
+                return;
+              }
+              if (ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(SNodeOperations.as(n, CONCEPTS.IHoldLines$hX))).count() == 1) {
+                Iterable<SNode> copies = ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(SNodeOperations.as(n, CONCEPTS.IHoldLines$hX))).getElement(0), LINKS.elements$eRew)).select(new ISelector<SNode, SNode>() {
+                  public SNode select(SNode it) {
+                    return SNodeOperations.copyNode(it);
+                  }
+                });
+                for (SNode element : copies) {
+                  SNodeOperations.insertNextSiblingChild(currentNode.value, element);
+                  currentNode.value = element;
+                }
+              } else {
+                if (SNodeOperations.getContainingLink(currentLine.value).isMultiple()) {
+                  final Wrappers._boolean firstLine = new Wrappers._boolean(true);
+                  ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(SNodeOperations.as(n, CONCEPTS.IHoldLines$hX))).visitAll(new IVisitor<SNode>() {
+                    public void visit(SNode line) {
+                      if (firstLine.value) {
+                        firstLine.value = false;
+                        TextEditorHelper.insertLineIntoLines(currentLine.value, currentNode.value, SNodeOperations.copyNode(line));
+                      } else {
+                        currentLine.value = SNodeOperations.as(SNodeOperations.insertNextSiblingChild(currentLine.value, SNodeOperations.copyNode(line)), CONCEPTS.Line$w3);
+                      }
+                    }
+                  });
+                } else {
+                  ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(SNodeOperations.as(n, CONCEPTS.IHoldLines$hX))).visitAll(new IVisitor<SNode>() {
+                    public void visit(SNode line) {
+                      Line__BehaviorDescriptor.merge_id1YnOZxAMHtO.invoke(currentLine.value, line, currentNode.value);
+                    }
+                  });
+                }
+              }
+
             } else {
               SNode wrapper = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, "jetbrains.mps.lang.text.structure.NodeWrapperElement"));
               SLinkOperations.setTarget(wrapper, LINKS.node$daCF, n);
-              SNodeOperations.insertNextSiblingChild(currentNode, wrapper);
-              currentNode = wrapper;
+              SNodeOperations.insertNextSiblingChild(currentNode.value, wrapper);
+              currentNode.value = wrapper;
             }
           }
-          SelectionUtil.selectCell(editorContext, currentNode, SelectionManager.LAST_CELL);
+          SelectionUtil.selectCell(editorContext, currentNode.value, SelectionManager.LAST_CELL);
         }
         if (isEmptyString(SPropertyOperations.getString(node, PROPS.value$cK70))) {
           SNodeOperations.deleteNode(node);
@@ -193,6 +240,8 @@ public class Word_ActionMap {
   private static final class CONCEPTS {
     /*package*/ static final SConcept Word$AM = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
     /*package*/ static final SConcept Line$w3 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
+    /*package*/ static final SConcept TextElement$Ue = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
+    /*package*/ static final SInterfaceConcept IHoldLines$hX = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6b2f47401707d876L, "jetbrains.mps.lang.text.structure.IHoldLines");
   }
 
   private static final class PROPS {

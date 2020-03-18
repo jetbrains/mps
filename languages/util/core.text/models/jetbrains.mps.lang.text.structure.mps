@@ -18,6 +18,7 @@
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
         <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
       </concept>
+      <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ" />
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
@@ -91,6 +92,9 @@
     <node concept="PrWs8" id="2cLqkTm6vgi" role="PzmwI">
       <ref role="PrY4T" to="tpck:3xhyJYa45Zm" resolve="IPlaceholderContent" />
     </node>
+    <node concept="PrWs8" id="6GJhO0n9ZL6" role="PzmwI">
+      <ref role="PrY4T" node="6GJhO0n1XxQ" resolve="IHoldLines" />
+    </node>
     <node concept="1TJgyj" id="2cLqkTm6weS" role="1TKVEi">
       <property role="IQ2ns" value="2535923850359210936" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -129,6 +133,10 @@
     <node concept="PrWs8" id="2I7VK7MCAM4" role="PzmwI">
       <ref role="PrY4T" to="tpck:1V3wYmOJsDm" resolve="IDontApplyTypesystemRules" />
     </node>
+  </node>
+  <node concept="PlHQZ" id="6GJhO0n1XxQ">
+    <property role="EcuMT" value="7723470226553559158" />
+    <property role="TrG5h" value="IHoldLines" />
   </node>
 </model>
 

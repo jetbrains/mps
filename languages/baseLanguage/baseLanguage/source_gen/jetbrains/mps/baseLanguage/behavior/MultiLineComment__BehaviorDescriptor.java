@@ -34,8 +34,9 @@ public final class MultiLineComment__BehaviorDescriptor extends BaseBHDescriptor
 
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> isTODOComment_id1oNltBa72kg = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isTODOComment").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1oNltBa72kg").build();
+  public static final SMethod<List<SNode>> getLines_id6GJhO0n1Xys = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getLines").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6GJhO0n1Xys").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, isTODOComment_id1oNltBa72kg);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, isTODOComment_id1oNltBa72kg, getLines_id6GJhO0n1Xys);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.lines$VaYR)).isEmpty()) {
@@ -60,7 +61,7 @@ public final class MultiLineComment__BehaviorDescriptor extends BaseBHDescriptor
       public boolean accept(SNode l) {
         return (l != null) && ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$eRew)).isNotEmpty() && ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$eRew)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode w) {
-            return SNodeOperations.isInstanceOf(w, CONCEPTS.Word$AM) && isNotEmptyString(trim_dm2sa1_a0a0a0a0a0a0a0a0a0a0a0a0k(SPropertyOperations.getString(SNodeOperations.cast(w, CONCEPTS.Word$AM), PROPS.value$cK70)));
+            return SNodeOperations.isInstanceOf(w, CONCEPTS.Word$AM) && isNotEmptyString(trim_dm2sa1_a0a0a0a0a0a0a0a0a0a0a0a0l(SPropertyOperations.getString(SNodeOperations.cast(w, CONCEPTS.Word$AM), PROPS.value$cK70)));
           }
         });
       }
@@ -76,6 +77,9 @@ public final class MultiLineComment__BehaviorDescriptor extends BaseBHDescriptor
       }
     }
     return false;
+  }
+  /*package*/ static List<SNode> getLines_id6GJhO0n1Xys(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getChildren(__thisNode__, LINKS.lines$VaYR);
   }
 
   /*package*/ MultiLineComment__BehaviorDescriptor() {
@@ -97,6 +101,8 @@ public final class MultiLineComment__BehaviorDescriptor extends BaseBHDescriptor
         return (T) ((Scope) getScope_id52_Geb4QDV$(node, (SAbstractConcept) parameters[0], (SNode) parameters[1]));
       case 1:
         return (T) ((Boolean) isTODOComment_id1oNltBa72kg(node));
+      case 2:
+        return (T) ((List<SNode>) getLines_id6GJhO0n1Xys(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -128,7 +134,7 @@ public final class MultiLineComment__BehaviorDescriptor extends BaseBHDescriptor
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
   }
-  public static String trim_dm2sa1_a0a0a0a0a0a0a0a0a0a0a0a0k(String str) {
+  public static String trim_dm2sa1_a0a0a0a0a0a0a0a0a0a0a0a0l(String str) {
     return (str == null ? null : str.trim());
   }
 
