@@ -7,6 +7,7 @@ import com.intellij.openapi.wm.CustomStatusBarWidget;
 import com.intellij.openapi.wm.StatusBar;
 import com.intellij.openapi.wm.StatusBar.Anchors;
 import com.intellij.openapi.wm.StatusBarWidget;
+import com.intellij.openapi.wm.StatusBarWidgetFactory;
 import com.intellij.openapi.wm.StatusBarWidgetProvider;
 import com.intellij.openapi.wm.impl.status.TextPanel;
 import com.intellij.ui.Gray;
@@ -17,6 +18,7 @@ import com.intellij.util.ui.UIUtil;
 import com.intellij.util.ui.update.Activatable;
 import com.intellij.util.ui.update.UiNotifyConnector;
 import jetbrains.mps.ide.project.ProjectHelper;
+import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -33,7 +35,7 @@ import java.awt.event.MouseListener;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-public final class LoadedModelsPanel extends TextPanel implements StatusBarWidgetProvider, CustomStatusBarWidget, Activatable {
+public final class LoadedModelsPanel extends TextPanel implements StatusBarWidgetFactory, CustomStatusBarWidget, Activatable {
   public static final String WIDGET_ID = "Models";
   private static final Color USED_COLOR = JBColor.namedColor("MemoryIndicator.usedBackground", new JBColor(Gray._185, Gray._110));
 
@@ -163,15 +165,37 @@ public final class LoadedModelsPanel extends TextPanel implements StatusBarWidge
     return loaded + " of " + max;
   }
 
-  @Nullable
+  @NotNull
   @Override
-  public StatusBarWidget getWidget(@NotNull Project project) {
-    return new LoadedModelsPanel();
+  public String getId() {
+    return "LoadedModels";
+  }
+
+  @Nls
+  @NotNull
+  @Override
+  public String getDisplayName() {
+    return "Loaded Models Indicator";
+  }
+
+  @Override
+  public boolean isAvailable(@NotNull Project project) {
+    return true;
   }
 
   @NotNull
   @Override
-  public String getAnchor() {
-    return Anchors.before(IdeNotificationArea.WIDGET_ID);
+  public StatusBarWidget createWidget(@NotNull Project project) {
+    return new LoadedModelsPanel();
+  }
+
+  @Override
+  public void disposeWidget(@NotNull StatusBarWidget widget) {
+
+  }
+
+  @Override
+  public boolean canBeEnabledOn(@NotNull StatusBar statusBar) {
+    return true;
   }
 }
