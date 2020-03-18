@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="5n8eupf80w6z4gi09rqx9mlznikxivf">
+<product version="3" modelHash="6h4q3f9bc3q69p140hd3or267s856lp">
   <files names="AddNecessaryParenthsToNotExpressions.java:AddReturnTypeToConstructorDeclaration.java:MigrateTryStatement.java:MigrationDescriptor.java:Pattern_5idd3j_a0a6.java:Pattern_5idd3j_a1a6.java:Pattern_5idd3j_a2a6.java:Pattern_5idd3j_a3a6.java:Pattern_88yha8_a0a6.java:Pattern_88yha8_a1a6.java:Pattern_fbexqr_a0a5.java:RemoveUsagesOfDeprecatedProperty.java:Remove_IBLDeprecatable_IsDeprecated_Property.java:ReplaceDeprecatedVarReferencesWithVariableReference.java:ReplaceOldCommentWithGenericComment_CommentedStatementsBlock.java:ReplaceSingleLineCommentsWithGenericComments.java:SetIsAbstractPropertyInInterfaceMethods.java:UpdateSingleLineCommentToUseLinePerComment.java:UpdateSingleLineCommentToUseTextLang.java" />
 </product>
 
