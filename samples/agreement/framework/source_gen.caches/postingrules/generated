@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-115m1lbcbxo4t3qx7m7ta3nc8ga6o9c" parametersHash="a7y06d854is3tqvgak3b8mgxsuvqmq7">
+<product version="3" modelHash="-115m1lbcbxo4t3qx7m7ta3nc8ga6o9c">
   <files names="Account.java:AccountType.java:AccountingEvent.java:AccountingException.java:AccountingTransaction.java:Adjustment.java:AgreementRegistry.java:AmountFormulaPR.java:Customer.java:Entry.java:EventList.java:EventType.java:MissingPostingRuleException.java:MonetaryEvent.java:MultiplyByRatePR.java:PoorCapPR.java:PostingRule.java:ServiceAgreement.java:Subject.java:TaxEvent.java:Usage.java" />
 </product>
 

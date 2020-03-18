@@ -242,7 +242,6 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
-      <concept id="1164879751025" name="jetbrains.mps.baseLanguage.structure.TryCatchStatement" flags="nn" index="SfApY" />
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
       </concept>
@@ -6515,7 +6514,23 @@
         </node>
         <node concept="3clFbJ" id="4TtYrYGuXo4" role="3cqZAp">
           <node concept="3clFbS" id="4TtYrYGuXo9" role="3clFbx">
-            <node concept="SfApY" id="4TtYrYGuXoa" role="3cqZAp">
+            <node concept="3J1_TO" id="7TQy9_BL3_j" role="3cqZAp">
+              <node concept="3clFbS" id="4TtYrYGuXoq" role="1zxBo7">
+                <node concept="3cpWs6" id="7vA4555Mfhj" role="3cqZAp">
+                  <node concept="2OqwBi" id="7vA4555MgbU" role="3cqZAk">
+                    <node concept="liA8E" id="7vA4555MgbV" role="2OqNvi">
+                      <ref role="37wK5l" to="kt01:~Transferable.getTransferData(java.awt.datatransfer.DataFlavor)" resolve="getTransferData" />
+                      <node concept="10M0yZ" id="7vA4555MgbW" role="37wK5m">
+                        <ref role="3cqZAo" to="dp1x:5tGs5KqKj8z" resolve="sNode" />
+                        <ref role="1PxDUh" to="dp1x:5tGs5KqKiwp" resolve="SModelDataFlavor" />
+                      </node>
+                    </node>
+                    <node concept="37vLTw" id="7vA4555MgbX" role="2Oq$k0">
+                      <ref role="3cqZAo" node="4TtYrYGuXn$" resolve="contents" />
+                    </node>
+                  </node>
+                </node>
+              </node>
               <node concept="3uVAMA" id="4TtYrYGuXob" role="1zxBo5">
                 <node concept="XOnhg" id="4TtYrYGuXof" role="1zc67B">
                   <property role="3TUv4t" value="false" />
@@ -6548,22 +6563,6 @@
                   </node>
                 </node>
               </node>
-              <node concept="3clFbS" id="4TtYrYGuXoq" role="1zxBo7">
-                <node concept="3cpWs6" id="7vA4555Mfhj" role="3cqZAp">
-                  <node concept="2OqwBi" id="7vA4555MgbU" role="3cqZAk">
-                    <node concept="liA8E" id="7vA4555MgbV" role="2OqNvi">
-                      <ref role="37wK5l" to="kt01:~Transferable.getTransferData(java.awt.datatransfer.DataFlavor)" resolve="getTransferData" />
-                      <node concept="10M0yZ" id="7vA4555MgbW" role="37wK5m">
-                        <ref role="3cqZAo" to="dp1x:5tGs5KqKj8z" resolve="sNode" />
-                        <ref role="1PxDUh" to="dp1x:5tGs5KqKiwp" resolve="SModelDataFlavor" />
-                      </node>
-                    </node>
-                    <node concept="37vLTw" id="7vA4555MgbX" role="2Oq$k0">
-                      <ref role="3cqZAo" node="4TtYrYGuXn$" resolve="contents" />
-                    </node>
-                  </node>
-                </node>
-              </node>
             </node>
           </node>
           <node concept="2OqwBi" id="4TtYrYGuXo5" role="3clFbw">
@@ -6581,7 +6580,23 @@
         </node>
         <node concept="3clFbJ" id="2r7r$RFK2LF" role="3cqZAp">
           <node concept="3clFbS" id="2r7r$RFK2LG" role="3clFbx">
-            <node concept="SfApY" id="2r7r$RFK2LH" role="3cqZAp">
+            <node concept="3J1_TO" id="7TQy9_BL3lY" role="3cqZAp">
+              <node concept="3clFbS" id="2r7r$RFK2LI" role="1zxBo7">
+                <node concept="3cpWs6" id="7vA4555MgG6" role="3cqZAp">
+                  <node concept="2OqwBi" id="7vA4555Mhvl" role="3cqZAk">
+                    <node concept="liA8E" id="7vA4555Mhvm" role="2OqNvi">
+                      <ref role="37wK5l" to="kt01:~Transferable.getTransferData(java.awt.datatransfer.DataFlavor)" resolve="getTransferData" />
+                      <node concept="10M0yZ" id="7vA4555Mhvn" role="37wK5m">
+                        <ref role="3cqZAo" to="kt01:~DataFlavor.stringFlavor" resolve="stringFlavor" />
+                        <ref role="1PxDUh" to="kt01:~DataFlavor" resolve="DataFlavor" />
+                      </node>
+                    </node>
+                    <node concept="37vLTw" id="7vA4555Mhvo" role="2Oq$k0">
+                      <ref role="3cqZAo" node="4TtYrYGuXn$" resolve="contents" />
+                    </node>
+                  </node>
+                </node>
+              </node>
               <node concept="3uVAMA" id="2r7r$RFK2M2" role="1zxBo5">
                 <node concept="XOnhg" id="2r7r$RFK2M6" role="1zc67B">
                   <property role="3TUv4t" value="false" />
@@ -6611,22 +6626,6 @@
                 <node concept="3clFbS" id="2r7r$RFK2Mb" role="1zc67A">
                   <node concept="3cpWs6" id="2r7r$RFK2Mc" role="3cqZAp">
                     <node concept="10Nm6u" id="2r7r$RFK2Md" role="3cqZAk" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbS" id="2r7r$RFK2LI" role="1zxBo7">
-                <node concept="3cpWs6" id="7vA4555MgG6" role="3cqZAp">
-                  <node concept="2OqwBi" id="7vA4555Mhvl" role="3cqZAk">
-                    <node concept="liA8E" id="7vA4555Mhvm" role="2OqNvi">
-                      <ref role="37wK5l" to="kt01:~Transferable.getTransferData(java.awt.datatransfer.DataFlavor)" resolve="getTransferData" />
-                      <node concept="10M0yZ" id="7vA4555Mhvn" role="37wK5m">
-                        <ref role="3cqZAo" to="kt01:~DataFlavor.stringFlavor" resolve="stringFlavor" />
-                        <ref role="1PxDUh" to="kt01:~DataFlavor" resolve="DataFlavor" />
-                      </node>
-                    </node>
-                    <node concept="37vLTw" id="7vA4555Mhvo" role="2Oq$k0">
-                      <ref role="3cqZAo" node="4TtYrYGuXn$" resolve="contents" />
-                    </node>
                   </node>
                 </node>
               </node>
