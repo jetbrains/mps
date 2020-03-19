@@ -24,6 +24,7 @@
       <concept id="6593674873639474400" name="jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModules_Options" flags="ng" index="24cAiW">
         <child id="6593674873639478221" name="haltonfailure" index="24c_eh" />
         <child id="6593674873635848987" name="requiredPlugins" index="24YFd7" />
+        <child id="1688667350638517006" name="compressArgs" index="XX84c" />
       </concept>
       <concept id="6593674873635848984" name="jetbrains.mps.build.mps.tests.structure.RequiredPlugin" flags="ng" index="24YFd4">
         <reference id="6593674873635848985" name="plugin" index="24YFd5" />
@@ -269,7 +270,13 @@
     </node>
     <node concept="22LTRH" id="30QAtkedoZS" role="1hWBAP">
       <property role="TrG5h" value="execution" />
-      <node concept="24cAiW" id="5I1s5NvQ4SV" role="24cAkG" />
+      <node concept="24cAiW" id="5I1s5NvQ4SV" role="24cAkG">
+        <node concept="NbPM2" id="1tJmw8EBzLa" role="XX84c">
+          <node concept="3Mxwew" id="1tJmw8EBzL9" role="3MwsjC">
+            <property role="3MwjfP" value="true" />
+          </node>
+        </node>
+      </node>
       <node concept="22LTRM" id="30QAtkedoZT" role="22LTRK">
         <ref role="22LTRN" node="30QAtkedp05" resolve="jetbrains.mps.execution.impl.tests" />
       </node>
@@ -3838,7 +3845,13 @@
     </node>
     <node concept="22LTRH" id="2LuGVbI_yF5" role="1hWBAP">
       <property role="TrG5h" value="build" />
-      <node concept="24cAiW" id="5I1s5NvQ4SY" role="24cAkG" />
+      <node concept="24cAiW" id="5I1s5NvQ4SY" role="24cAkG">
+        <node concept="NbPM2" id="1tJmw8EBzL6" role="XX84c">
+          <node concept="3Mxwew" id="1tJmw8EBzL5" role="3MwsjC">
+            <property role="3MwjfP" value="true" />
+          </node>
+        </node>
+      </node>
       <node concept="22LTRM" id="2LuGVbI__1o" role="22LTRK">
         <ref role="22LTRN" node="2LuGVbI_yZD" resolve="jetbrains.mps.build.tests" />
       </node>
@@ -12140,7 +12153,14 @@
         <ref role="398BVh" node="6IYCYtgo1oD" resolve="mps_home" />
       </node>
     </node>
-    <node concept="55IIr" id="6IYCYtgo1oa" role="auvoZ" />
+    <node concept="55IIr" id="6IYCYtgo1oa" role="auvoZ">
+      <node concept="2Ry0Ak" id="1tJmw8EVW3y" role="iGT6I">
+        <property role="2Ry0Am" value="build" />
+        <node concept="2Ry0Ak" id="1tJmw8EVW3_" role="2Ry0An">
+          <property role="2Ry0Am" value="tests" />
+        </node>
+      </node>
+    </node>
     <node concept="1l3spV" id="6IYCYtgo1ob" role="1l3spN">
       <node concept="L2wRC" id="6IYCYtgo1pT" role="39821P">
         <ref role="L2wRA" node="6IYCYtgo1p6" resolve="jetbrains.mps.lang.test.test" />

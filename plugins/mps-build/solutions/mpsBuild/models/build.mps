@@ -24144,11 +24144,6 @@
             <ref role="3bR37D" node="7Kfy9QB6Lh2" resolve="jetbrains.mps.refactoring.runtime" />
           </node>
         </node>
-        <node concept="1SiIV0" id="5a4DEsORIfT" role="3bR37C">
-          <node concept="3bR9La" id="5a4DEsORIfU" role="1SiIV1">
-            <ref role="3bR37D" node="1ZViq9oppal" resolve="jetbrains.mps.make.facets" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="7t1q1U$1s4y" role="3bR37C">
           <node concept="3bR9La" id="7t1q1U$1s4z" role="1SiIV1">
             <ref role="3bR37D" node="1H905DlDUSw" resolve="MPS.OpenAPI" />
@@ -24235,10 +24230,9 @@
             </node>
           </node>
         </node>
-        <node concept="1SiIV0" id="4_zjhpmM0K_" role="3bR37C">
-          <node concept="3bR9La" id="4_zjhpmM0KA" role="1SiIV1">
-            <property role="3bR36h" value="true" />
-            <ref role="3bR37D" node="7Kfy9QB6LgO" resolve="jetbrains.mps.make" />
+        <node concept="1SiIV0" id="1tJmw8EIhl4" role="3bR37C">
+          <node concept="3bR9La" id="1tJmw8EIhl5" role="1SiIV1">
+            <ref role="3bR37D" node="4NXyWdSDd9c" resolve="jetbrains.mps.project" />
           </node>
         </node>
       </node>
