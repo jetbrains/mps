@@ -35,7 +35,6 @@ import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.persistence.java.library.JavaClassStubsModelRoot;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.StubSolution;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
@@ -63,7 +62,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-public abstract class StubSolutionIdea extends StubSolution {
+public abstract class StubSolutionIdea extends Solution {
   private final VFSManager myVFSManager;
 
   private final RootSetChangedListener myRootSetChangedListener = new RootSetChangedListener() {
@@ -116,6 +115,7 @@ public abstract class StubSolutionIdea extends StubSolution {
   }
 
   public static Solution newInstanceForJdk(Sdk sdk, MPSModuleOwner moduleOwner, SRepositoryExt repository, @NotNull VFSManager vfsManager) {
+    // FIXME in fact, with ClassStubRootConfiguration in place, don't need to replace JDK solution any more, just need to provide proper roots
     SolutionDescriptor descriptor = createDescriptor("JDK", ((SdkModificator) sdk).getRoots(OrderRootType.CLASSES), true, vfsManager);
 
     // giving the SDK the hard-coded module id
@@ -316,11 +316,6 @@ public abstract class StubSolutionIdea extends StubSolution {
   private static class JdkStubSolution extends SdkStubSolution {
     JdkStubSolution(SolutionDescriptor descriptor, VFSManager vfsManager, @NotNull Sdk jdk) {
       super(descriptor, vfsManager, jdk, null);
-    }
-
-    @Override
-    protected void updateBootstrapSolutionLibraries() {
-      // intentionally no-op, "JDK" solution is managed here, not through CommonPaths
     }
 
     @Override

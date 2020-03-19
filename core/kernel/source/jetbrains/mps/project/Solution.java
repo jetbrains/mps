@@ -16,35 +16,17 @@
 package jetbrains.mps.project;
 
 import jetbrains.mps.classloading.CustomClassLoadingFacet;
-import jetbrains.mps.java.stub.PackageScopeControl;
 import jetbrains.mps.module.ReloadableModuleBase;
-import jetbrains.mps.persistence.MementoImpl;
-import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.project.io.DescriptorIO;
 import jetbrains.mps.project.io.DescriptorIOFacade;
-import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionKind;
-import jetbrains.mps.reloading.CommonPaths;
-import jetbrains.mps.smodel.BootstrapLanguages;
-import jetbrains.mps.util.ClassType;
-import jetbrains.mps.util.MacroHelper.MacroNoHelper;
-import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.QualifiedPath;
-import jetbrains.mps.vfs.VFSManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import org.jetbrains.mps.openapi.persistence.Memento;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Solution extends ReloadableModuleBase {
   private SolutionDescriptor mySolutionDescriptor;
@@ -102,19 +84,6 @@ public class Solution extends ReloadableModuleBase {
   @Override
   public boolean isReadOnly() {
     return super.isReadOnly() || getModuleDescriptor().isReadOnlyStubModule();
-  }
-
-  @Override
-  public void updateModelsSet() {
-    updateBootstrapSolutionLibraries();
-    super.updateModelsSet();
-  }
-
-  @Hack
-  protected void updateBootstrapSolutionLibraries() {
-    // idea plugin wants to turn it off sometimes, when it knows better what jdk is and what platform is
-
-    // FIXME deal with IDEA plugin
   }
 
   public String toString() {
