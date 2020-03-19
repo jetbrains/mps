@@ -2275,6 +2275,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.lang.editor.multiple.tests" />
         <property role="3LESm3" value="3c41aa01-5120-470c-8122-06f284bc0419" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources_and_tests" />
         <node concept="3rtmxn" id="EpEP7iiijJ" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iiijK" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iiijL" role="3LXTna">
@@ -2354,6 +2355,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.lang.editor.tests" />
         <property role="3LESm3" value="7597197a-bad8-4672-9806-215a3efe8740" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources_and_tests" />
         <node concept="3rtmxn" id="EpEP7iihQq" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iihQr" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iihQs" role="3LXTna">
@@ -2460,6 +2462,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.lang.editor.ide.tests" />
         <property role="3LESm3" value="ffd5bec8-b3f8-478a-81d2-95f525dcdc97" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources_and_tests" />
         <node concept="55IIr" id="24G41jEwC70" role="3LF7KH">
           <node concept="2Ry0Ak" id="24G41jEwCdI" role="iGT6I">
             <property role="2Ry0Am" value="languages.test" />
@@ -3344,7 +3347,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.baseLanguage.tuples.test" />
         <property role="3LESm3" value="993e3b08-9f44-43cf-b983-e474ac66855b" />
-        <property role="aoJFB" value="eYcmk9QOli/sources" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources_and_tests" />
         <node concept="55IIr" id="QfMQtuJPwo" role="3LF7KH">
           <node concept="2Ry0Ak" id="QfMQtuJPwp" role="iGT6I">
             <property role="2Ry0Am" value="testbench" />
@@ -3396,7 +3399,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="collections_unittest" />
         <property role="3LESm3" value="39a1a79d-8ae2-4e54-a86a-8f7b9e17e2fe" />
-        <property role="aoJFB" value="eYcmk9QOli/sources" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources_and_tests" />
         <node concept="55IIr" id="QfMQtuMyro" role="3LF7KH">
           <node concept="2Ry0Ak" id="QfMQtuMyrp" role="iGT6I">
             <property role="2Ry0Am" value="testbench" />
@@ -3529,7 +3532,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="collections_trove.test" />
         <property role="3LESm3" value="fb186431-2788-490b-9e84-c2b84ef0ca77" />
-        <property role="aoJFB" value="eYcmk9QOli/sources" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources_and_tests" />
         <node concept="55IIr" id="QfMQtuMyuT" role="3LF7KH">
           <node concept="2Ry0Ak" id="QfMQtuMyuU" role="iGT6I">
             <property role="2Ry0Am" value="testbench" />
@@ -5667,7 +5670,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.lang.smodel.unittest" />
         <property role="3LESm3" value="d51c8d2d-7b6e-4d93-9eee-b55b04c5886b" />
-        <property role="aoJFB" value="eYcmk9QOli/sources" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources_and_tests" />
         <node concept="55IIr" id="5oxhKpzUPAd" role="3LF7KH">
           <node concept="2Ry0Ak" id="5oxhKpzUPCj" role="iGT6I">
             <property role="2Ry0Am" value="testbench" />
