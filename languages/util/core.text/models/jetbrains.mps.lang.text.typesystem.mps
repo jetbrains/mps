@@ -145,9 +145,17 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+      <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
+        <property id="709746936026609031" name="linkId" index="3V$3ak" />
+        <property id="709746936026609029" name="role_DebugInfo" index="3V$3am" />
+      </concept>
+      <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
+        <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -372,29 +380,33 @@
   <node concept="18kY7G" id="1$d6K2hF9KO">
     <property role="TrG5h" value="check_Line" />
     <node concept="3clFbS" id="1$d6K2hF9KP" role="18ibNy">
-      <node concept="3clFbJ" id="1$d6K2hF9NV" role="3cqZAp">
-        <node concept="2OqwBi" id="1$d6K2hFbIb" role="3clFbw">
-          <node concept="2OqwBi" id="1$d6K2hF9Y0" role="2Oq$k0">
-            <node concept="1YBJjd" id="1$d6K2hF9P7" role="2Oq$k0">
-              <ref role="1YBMHb" node="1$d6K2hF9KR" resolve="line" />
+      <node concept="1X3_iC" id="5Zs5dOlhAXi" role="lGtFl">
+        <property role="3V$3am" value="statement" />
+        <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
+        <node concept="3clFbJ" id="1$d6K2hF9NV" role="8Wnug">
+          <node concept="2OqwBi" id="1$d6K2hFbIb" role="3clFbw">
+            <node concept="2OqwBi" id="1$d6K2hF9Y0" role="2Oq$k0">
+              <node concept="1YBJjd" id="1$d6K2hF9P7" role="2Oq$k0">
+                <ref role="1YBMHb" node="1$d6K2hF9KR" resolve="line" />
+              </node>
+              <node concept="3Tsc0h" id="1$d6K2hFa6b" role="2OqNvi">
+                <ref role="3TtcxE" to="zqge:2cLqkTm6J5B" resolve="elements" />
+              </node>
             </node>
-            <node concept="3Tsc0h" id="1$d6K2hFa6b" role="2OqNvi">
-              <ref role="3TtcxE" to="zqge:2cLqkTm6J5B" resolve="elements" />
-            </node>
+            <node concept="1v1jN8" id="1$d6K2hFdmr" role="2OqNvi" />
           </node>
-          <node concept="1v1jN8" id="1$d6K2hFdmr" role="2OqNvi" />
-        </node>
-        <node concept="3clFbS" id="1$d6K2hF9NX" role="3clFbx">
-          <node concept="2MkqsV" id="1$d6K2hG5bS" role="3cqZAp">
-            <node concept="Xl_RD" id="1$d6K2hG5bU" role="2MkJ7o">
-              <property role="Xl_RC" value="Line with no words" />
-            </node>
-            <node concept="1YBJjd" id="1$d6K2hG5bV" role="1urrMF">
-              <ref role="1YBMHb" node="1$d6K2hF9KR" resolve="line" />
-            </node>
-            <node concept="3Cnw8n" id="1$d6K2hG5bW" role="1urrFz">
-              <property role="ARO6o" value="true" />
-              <ref role="QpYPw" node="1$d6K2hFdAp" resolve="AddWordToEmptyLine" />
+          <node concept="3clFbS" id="1$d6K2hF9NX" role="3clFbx">
+            <node concept="2MkqsV" id="1$d6K2hG5bS" role="3cqZAp">
+              <node concept="Xl_RD" id="1$d6K2hG5bU" role="2MkJ7o">
+                <property role="Xl_RC" value="Line with no words" />
+              </node>
+              <node concept="1YBJjd" id="1$d6K2hG5bV" role="1urrMF">
+                <ref role="1YBMHb" node="1$d6K2hF9KR" resolve="line" />
+              </node>
+              <node concept="3Cnw8n" id="1$d6K2hG5bW" role="1urrFz">
+                <property role="ARO6o" value="true" />
+                <ref role="QpYPw" node="1$d6K2hFdAp" resolve="AddWordToEmptyLine" />
+              </node>
             </node>
           </node>
         </node>
