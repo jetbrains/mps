@@ -16363,7 +16363,7 @@
   
   <target name="java.compile.java.modules.cycle.1" depends="java.compile.mps-generator, fetchDependencies">
     <mkdir dir="${build.tmp}/java.modules.cycle.1" />
-    <javac destdir="${build.tmp}/java.modules.cycle.1" fork="true" encoding="utf8" memorymaximumsize="1024m" nowarn="true" includeantruntime="false">
+    <javac destdir="${build.tmp}/java.modules.cycle.1" fork="false" encoding="utf8" nowarn="true" includeantruntime="false">
       <compilerarg value="-Xlint:none" />
       <src>
         <pathelement path="${mps_home}/core/make-runtime/source" />
@@ -17525,7 +17525,7 @@
   
   <target name="java.compile.java.modules.cycle.2" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.jetbrains.mps.analyzers.runtime, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-ui, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.regexp.runtime, java.compile.jetbrains.mps.lang.descriptor.aspects, fetchDependencies">
     <mkdir dir="${build.tmp}/java.modules.cycle.2" />
-    <javac destdir="${build.tmp}/java.modules.cycle.2" fork="true" encoding="utf8" memorymaximumsize="1024m" nowarn="true" includeantruntime="false">
+    <javac destdir="${build.tmp}/java.modules.cycle.2" fork="false" encoding="utf8" nowarn="true" includeantruntime="false">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/languages/baseLanguage/baseLanguage/source_gen" />
@@ -21934,7 +21934,7 @@
   
   <target name="java.compile.java.modules.cycle.3" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.jetbrains.mps.analyzers.runtime, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-ui, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.traceable, java.compile.jetbrains.mps.lang.sharedConcepts, java.compile.jetbrains.mps.lang.structure, java.compile.jetbrains.mps.baseLanguage.classifiers, java.compile.jetbrains.mps.baseLanguage.closures, java.compile.jetbrains.mps.baseLanguage.collections, java.compile.jetbrains.mps.lang.constraints, java.compile.jetbrains.mps.lang.editor, java.compile.jetbrains.mps.lang.modelapi, java.compile.jetbrains.mps.lang.smodel, java.compile.jetbrains.mps.lang.descriptor, java.compile.jetbrains.mps.lang.project, fetchDependencies">
     <mkdir dir="${build.tmp}/java.modules.cycle.3" />
-    <javac destdir="${build.tmp}/java.modules.cycle.3" fork="true" encoding="utf8" memorymaximumsize="1024m" nowarn="true" includeantruntime="false">
+    <javac destdir="${build.tmp}/java.modules.cycle.3" fork="false" encoding="utf8" nowarn="true" includeantruntime="false">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/languages/languageDesign/context/source_gen" />
@@ -22251,7 +22251,7 @@
   
   <target name="java.compile.java.modules.cycle.4" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-typesystem, java.compile.mps-editor, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-ui, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.context.defs, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.traceable, java.compile.jetbrains.mps.lang.constraints.rules, java.compile.jetbrains.mps.lang.constraints.rules.kinds, java.compile.jetbrains.mps.lang.constraints.rules.kinds#1867733327984468203, java.compile.jetbrains.mps.lang.constraints.rules.skeleton, java.compile.jetbrains.mps.lang.constraints.rules.skeleton#1867733327984464082, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.structure, fetchDependencies">
     <mkdir dir="${build.tmp}/java.modules.cycle.4" />
-    <javac destdir="${build.tmp}/java.modules.cycle.4" fork="true" encoding="utf8" memorymaximumsize="1024m" nowarn="true" includeantruntime="false">
+    <javac destdir="${build.tmp}/java.modules.cycle.4" fork="false" encoding="utf8" nowarn="true" includeantruntime="false">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/languages/languageDesign/context.defs/generator/source_gen" />
@@ -22478,7 +22478,7 @@
   
   <target name="java.compile.java.modules.cycle.5" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.jetbrains.mps.analyzers.runtime, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-ui, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.dataFlow, java.compile.jetbrains.mps.lang.dataFlow.analyzers, java.compile.jetbrains.mps.lang.pattern, java.compile.jetbrains.mps.lang.pattern#1174810948060, java.compile.jetbrains.mps.lang.quotation, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.structure, java.compile.jetbrains.mps.lang.traceable, java.compile.jetbrains.mps.baseLanguage#1129914002933, java.compile.jetbrains.mps.lang.descriptor#9020561928507175817, java.compile.jetbrains.mps.lang.project, fetchDependencies">
     <mkdir dir="${build.tmp}/java.modules.cycle.5" />
-    <javac destdir="${build.tmp}/java.modules.cycle.5" fork="true" encoding="utf8" memorymaximumsize="1024m" nowarn="true" includeantruntime="false">
+    <javac destdir="${build.tmp}/java.modules.cycle.5" fork="false" encoding="utf8" nowarn="true" includeantruntime="false">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/languages/languageDesign/analyzers/generator/source_gen" />
@@ -29648,7 +29648,7 @@
   
   <target name="java.compile.java.modules.cycle.6" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.jetbrains.mps.analyzers.runtime, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-ui, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.classifiers, java.compile.jetbrains.mps.baseLanguage.closures, java.compile.jetbrains.mps.baseLanguage.collections, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.baseLanguage.tuples, java.compile.jetbrains.mps.lang.checkedName, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.plugin, java.compile.jetbrains.mps.lang.project, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.structure, java.compile.jetbrains.mps.lang.traceable, fetchDependencies">
     <mkdir dir="${build.tmp}/java.modules.cycle.6" />
-    <javac destdir="${build.tmp}/java.modules.cycle.6" fork="true" encoding="utf8" memorymaximumsize="1024m" nowarn="true" includeantruntime="false">
+    <javac destdir="${build.tmp}/java.modules.cycle.6" fork="false" encoding="utf8" nowarn="true" includeantruntime="false">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/languages/languageDesign/make/languages/facet/source_gen" />
@@ -29817,7 +29817,7 @@
   
   <target name="java.compile.java.modules.cycle.7" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-typesystem, java.compile.mps-editor, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-ui, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.classifiers, java.compile.jetbrains.mps.baseLanguage.closures, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.baseLanguage.tuples, java.compile.jetbrains.mps.lang.checkedName, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor#9020561928507175817, java.compile.jetbrains.mps.lang.plugin, java.compile.jetbrains.mps.lang.project, java.compile.jetbrains.mps.lang.traceable, java.compile.jetbrains.mps.make.facet, java.compile.jetbrains.mps.make.script, fetchDependencies">
     <mkdir dir="${build.tmp}/java.modules.cycle.7" />
-    <javac destdir="${build.tmp}/java.modules.cycle.7" fork="true" encoding="utf8" memorymaximumsize="1024m" nowarn="true" includeantruntime="false">
+    <javac destdir="${build.tmp}/java.modules.cycle.7" fork="false" encoding="utf8" nowarn="true" includeantruntime="false">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/languages/languageDesign/make/languages/facet/generator/source_gen" />

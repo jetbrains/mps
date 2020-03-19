@@ -188,7 +188,8 @@ public class QueriesGenerated extends QueryProviderBase {
     }
     SNode project = SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$BF);
     MacroHelper macroHelper = new MacroHelper.MacroContext(project, _context).getMacros(project);
-    return isNotEmptyString(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$xNNT), LINKS.compressArgs$PEmG), macroHelper));
+    String text = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$xNNT), LINKS.compressArgs$PEmG), macroHelper);
+    return "true".equals(text);
   }
   private final Map<String, SourceNodesQuery> snsqMethods = new HashMap<String, SourceNodesQuery>();
   {
