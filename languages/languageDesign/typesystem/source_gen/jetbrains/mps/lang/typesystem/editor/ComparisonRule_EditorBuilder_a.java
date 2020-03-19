@@ -351,7 +351,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createConstant_8() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "supertypes {");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "rule {");
     editorCell.setCellId("Constant_c2v57n_d1b0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);

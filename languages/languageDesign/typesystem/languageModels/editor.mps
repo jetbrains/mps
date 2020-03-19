@@ -2648,7 +2648,7 @@
             </node>
           </node>
           <node concept="3F0ifn" id="4NE36LgpoVU" role="3EZMnx">
-            <property role="3F0ifm" value="supertypes {" />
+            <property role="3F0ifm" value="rule {" />
             <node concept="VPM3Z" id="4NE36Lgpp0K" role="3F10Kt" />
           </node>
           <node concept="3EZMnI" id="4NE36LgplWX" role="3EZMnx">
