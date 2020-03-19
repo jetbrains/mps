@@ -344,8 +344,6 @@
       <modulePath path="$PROJECT_DIR$/plugins/testModules/testSubtyping/languages/testSubtypingA/testSubtypingA.mpl" folder="tests.subtyping" />
       <modulePath path="$PROJECT_DIR$/plugins/testModules/testSubtyping/languages/testSubtypingB/testSubtypingB.mpl" folder="tests.subtyping" />
       <modulePath path="$PROJECT_DIR$/plugins/testModules/testSubtyping/solutions/testSubtypingTest/testSubtypingTest.msd" folder="tests.subtyping" />
-      <modulePath path="$PROJECT_DIR$/samples/CustomTestCases/languages/jetbrains.mps.samples.CustomTestCases/jetbrains.mps.samples.CustomTestCases.mpl" folder="samples.customTestcases" />
-      <modulePath path="$PROJECT_DIR$/samples/CustomTestCases/languages/jetbrains.mps.samples.CustomTestCases/sandbox/jetbrains.mps.samples.CustomTestCases.sandbox.msd" folder="samples.customTestcases" />
       <modulePath path="$PROJECT_DIR$/samples/_theSimplestLanguage/languages/theSimplestLanguage/jetbrains.mps.samples.theSimplestLanguage.mpl" folder="samples.theSimplestLanguage" />
       <modulePath path="$PROJECT_DIR$/samples/_theSimplestLanguage/solutions/jetbrains.mps.samples.theSimplestLanguage.sandbox/jetbrains.mps.samples.theSimplestLanguage.sandbox.msd" folder="samples.theSimplestLanguage" />
       <modulePath path="$PROJECT_DIR$/samples/agreement/agreementLanguage/jetbrains.mps.samples.agreementLanguage.mpl" folder="samples" />
@@ -375,6 +373,8 @@
       <modulePath path="$PROJECT_DIR$/samples/customAspect/solutions/SampleCustomAspect.build/SampleCustomAspect.build.msd" folder="samples.customAspect" />
       <modulePath path="$PROJECT_DIR$/samples/customAspect/solutions/jetbrains.mps.samples.customAspect.documentation.pluginSolution/jetbrains.mps.samples.customAspect.documentation.pluginSolution.msd" folder="samples.customAspect" />
       <modulePath path="$PROJECT_DIR$/samples/customAspect/solutions/jetbrains.mps.samples.customAspect.documentation.runtime/jetbrains.mps.samples.customAspect.documentation.runtime.msd" folder="samples.customAspect" />
+      <modulePath path="$PROJECT_DIR$/samples/customTestCases/languages/jetbrains.mps.samples.CustomTestCases/jetbrains.mps.samples.CustomTestCases.mpl" folder="samples.customTestCases" />
+      <modulePath path="$PROJECT_DIR$/samples/customTestCases/languages/jetbrains.mps.samples.CustomTestCases/sandbox/jetbrains.mps.samples.CustomTestCases.sandbox.msd" folder="samples.customTestCases" />
       <modulePath path="$PROJECT_DIR$/samples/customizedDebugger/languages/jetbrains.mps.samples.customizedDebugger.Bottomline/jetbrains.mps.samples.customizedDebugger.Bottomline.mpl" folder="samples.customizedDebugger" />
       <modulePath path="$PROJECT_DIR$/samples/customizedDebugger/languages/jetbrains.mps.samples.customizedDebugger.Bottomline/sandbox/jetbrains.mps.samples.customizedDebugger.Bottomline.sandbox.msd" folder="samples.customizedDebugger" />
       <modulePath path="$PROJECT_DIR$/samples/customizedDebugger/languages/jetbrains.mps.samples.customizedDebugger.Highlevel/jetbrains.mps.samples.customizedDebugger.Highlevel.mpl" folder="samples.customizedDebugger" />
