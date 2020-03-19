@@ -5419,9 +5419,6 @@
       <node concept="tCFHf" id="1TFxXPONz$_" role="ftvYc">
         <ref role="tCJdB" node="1TFxXPONz$F" resolve="ReloadAll" />
       </node>
-      <node concept="tCFHf" id="hv3CAjef7S" role="ftvYc">
-        <ref role="tCJdB" node="6RhlgZFAC47" resolve="InternalReactivateEDTExecutorQueue" />
-      </node>
     </node>
     <node concept="tT9cl" id="1TFxXPONz$E" role="2f5YQi">
       <ref role="tU$_T" to="tprs:hyf4LYI" resolve="Tools" />
