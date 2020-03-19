@@ -78,6 +78,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.addEditorCell(createConstant_1());
     editorCell.addEditorCell(createRefNode_0());
     editorCell.addEditorCell(createConstant_2());
+    editorCell.addEditorCell(createRefNode_1());
+    editorCell.addEditorCell(createConstant_3());
     editorCell.addEditorCell(createRefNodeList_0());
     return editorCell;
   }
@@ -149,8 +151,72 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
   }
   private EditorCell createConstant_2() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "load additional idea plugins:");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "compress args (experimental)");
     editorCell.setCellId("Constant_htktt1_c1a");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createRefNode_1() {
+    SingleRoleCellProvider provider = new compressArgsSingleRoleHandler_htktt1_d1a(myNode, LINKS.compressArgs$PEmG, getEditorContext());
+    return provider.createCell();
+  }
+  private static class compressArgsSingleRoleHandler_htktt1_d1a extends SingleRoleCellProvider {
+    @NotNull
+    private SNode myNode;
+
+    public compressArgsSingleRoleHandler_htktt1_d1a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+      super(containmentLink, context);
+      myNode = ownerNode;
+    }
+
+    @Override
+    @NotNull
+    public SNode getNode() {
+      return myNode;
+    }
+
+    protected EditorCell createChildCell(SNode child) {
+      EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.compressArgs$PEmG, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.compressArgs$PEmG, child));
+      installCellInfo(child, editorCell, false);
+      return editorCell;
+    }
+
+
+
+    private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
+      if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
+        editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
+      }
+      if (editorCell.getSRole() == null) {
+        editorCell.setSRole(LINKS.compressArgs$PEmG);
+      }
+      Style style = new StyleImpl();
+      style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
+      editorCell.getStyle().putAll(style);
+    }
+    @Override
+    protected EditorCell createEmptyCell() {
+      getCellFactory().pushCellContext();
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.compressArgs$PEmG));
+      try {
+        EditorCell editorCell = super.createEmptyCell();
+        editorCell.setCellId("empty_compressArgs");
+        installCellInfo(null, editorCell, true);
+        setCellContext(editorCell);
+        return editorCell;
+      } finally {
+        getCellFactory().popCellContext();
+      }
+    }
+    protected String getNoTargetText() {
+      return "false";
+    }
+  }
+  private EditorCell createConstant_3() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "load additional idea plugins:");
+    editorCell.setCellId("Constant_htktt1_e1a");
     Style style = new StyleImpl();
     new keywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
@@ -158,7 +224,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new requiredPluginsListHandler_htktt1_d1a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new requiredPluginsListHandler_htktt1_f1a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_requiredPlugins");
     Style style = new StyleImpl();
@@ -168,11 +234,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setSRole(handler.getElementSRole());
     return editorCell;
   }
-  private static class requiredPluginsListHandler_htktt1_d1a extends RefNodeListHandler {
+  private static class requiredPluginsListHandler_htktt1_f1a extends RefNodeListHandler {
     @NotNull
     private SNode myNode;
 
-    public requiredPluginsListHandler_htktt1_d1a(SNode ownerNode, EditorContext context) {
+    public requiredPluginsListHandler_htktt1_f1a(SNode ownerNode, EditorContext context) {
       super(context, false);
       myNode = ownerNode;
     }
@@ -195,7 +261,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(requiredPluginsListHandler_htktt1_d1a.this.getNode(), LINKS.requiredPlugins$I9bc));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(requiredPluginsListHandler_htktt1_f1a.this.getNode(), LINKS.requiredPlugins$I9bc));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -251,6 +317,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink haltonfailure$JTP8 = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5b81705cdfb323cdL, "haltonfailure");
+    /*package*/ static final SContainmentLink compressArgs$PEmG = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x176f5a022a9bdb0eL, "compressArgs");
     /*package*/ static final SContainmentLink requiredPlugins$I9bc = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5b81705cdf7bc31bL, "requiredPlugins");
   }
 
