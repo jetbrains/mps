@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-fghmuak5pvm3eyfhdu2qiun7kztt4l">
+<product version="3" modelHash="98kio6wkmuoq34sjj00a9ooehrynucr">
   <files names="AddWordToEmptyLine_QuickFix.java:RemoveSpacesFromWord_QuickFix.java:TurnWordIntoLink_QuickFix.java:TypesystemDescriptor.java:check_Line_NonTypesystemRule.java:check_Word_NonTypesystemRule.java" />
 </product>
 
