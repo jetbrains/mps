@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -162,6 +162,11 @@ public class MPSIndexableFileSet extends AbstractProjectComponent implements Ind
   }
 
   private static boolean isIgnored(VirtualFile file, ProjectRootManagerEx manager) {
-    return FileTypeManager.getInstance().isFileIgnored(file.getName()) || manager.getFileIndex().isExcluded(file);
+    // With ProjectAdditionalRoots, introduced in aa52356c706f932f7a01f62abdcade9c42793753, reporting module locations as 'excluded' locations
+    // to help IDEA understand the files are part of the project, check isExcluded that used to be here prevents indexing of model files.
+    // As I don't see any justification to care about files excluded from indexing here at all (it should be IDEA to do this check, if needed)
+    // and there's no clear backtrace why it has been introduced here, I decided it's find for now just to ignore the check here rather than to
+    // supply module roots as 'not excluded' from ProjectAdditionalRoots. After all, it's not that straightforward, see the class for reasons to make roots 'excluded'
+    return FileTypeManager.getInstance().isFileIgnored(file.getName()) /*|| manager.getFileIndex().isExcluded(file)*/;
   }
 }
