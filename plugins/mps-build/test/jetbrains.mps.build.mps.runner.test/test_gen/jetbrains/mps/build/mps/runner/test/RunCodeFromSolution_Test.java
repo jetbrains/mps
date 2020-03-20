@@ -67,11 +67,13 @@ public class RunCodeFromSolution_Test extends EnvironmentAwareTestCase {
     process.addProcessListener(new ProcessAdapter() {
       @Override
       public void onTextAvailable(ProcessEvent event, Key key) {
+        if (isEmptyString(event.getText())) {
+          return;
+        }
         if (ProcessOutputTypes.STDERR.equals(key)) {
-          // print errors 
-          System.err.print("test>>> " + event.getText());
+          System.err.print("test error >>> " + event.getText());
         } else {
-          System.out.print("test>>> " + event.getText());
+          System.out.print("test >>> " + event.getText());
         }
       }
     });
@@ -87,4 +89,7 @@ public class RunCodeFromSolution_Test extends EnvironmentAwareTestCase {
     okFile.delete();
   }
 
+  private static boolean isEmptyString(String str) {
+    return str == null || str.length() == 0;
+  }
 }
