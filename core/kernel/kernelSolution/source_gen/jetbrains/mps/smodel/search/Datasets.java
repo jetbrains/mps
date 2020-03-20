@@ -20,12 +20,11 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.event.SModelPropertyEvent;
 import java.util.Map;
 import java.util.List;
-import java.util.Collections;
+import jetbrains.mps.util.FlattenIterable;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.HashMap;
 import java.util.Arrays;
-import jetbrains.mps.util.FlattenIterable;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -36,12 +35,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
     @Override
     public DataSet create(ConceptAndSuperConceptsCache ownerCache) {
       return new ConceptsDataSet(ownerCache);
-    }
-  };
-  /*package*/ static final AbstractCache.DataSetCreator<ConceptAndSuperConceptsCache> PROPDECL_CACHE_CREATOR = new AbstractCache.DataSetCreator<ConceptAndSuperConceptsCache>() {
-    @Override
-    public DataSet create(ConceptAndSuperConceptsCache ownerCache) {
-      return new PropertyDeclarationsDataSet(ownerCache);
     }
   };
   /*package*/ static final AbstractCache.DataSetCreator<ConceptAndSuperConceptsCache> LINKDECL_CACHE_CREATOR = new AbstractCache.DataSetCreator<ConceptAndSuperConceptsCache>() {
@@ -147,91 +140,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
     public void propertyChanged(SModelPropertyEvent event) {
     }
   }
-  /*package*/ static class PropertyDeclarationsDataSet extends DataSet {
-    public static final String ID = "PROPERTY_DECLARATIONS_DATASET";
-    private Map<String, SNode> myPropertyByName = null;
-    private List<SNode> myProperties = null;
-    private Set<SNode> myDependsOnNodes;
-    public PropertyDeclarationsDataSet(AbstractCache ownerCache) {
-      super(ID, ownerCache, DataSet.DefaultNodeChangedProcessing.DROP_DATA_SET);
-    }
-    @Override
-    public Set<SNode> getDependsOnNodes() {
-      return myDependsOnNodes;
-    }
-    public SNode getPropertyDeclarationByName(String name) {
-      return (myPropertyByName == null ? null : myPropertyByName.get(name));
-    }
-    public List<SNode> getPropertyDeclarations() {
-      return (myProperties == null ? Collections.<SNode>emptyList() : new ArrayList<SNode>(myProperties));
-    }
-    @Override
-    protected void init() {
-      List<SNode> allProperties = new ArrayList<SNode>();
-      myPropertyByName = null;
-      myProperties = null;
-      SNode[] concepts = ((ConceptAndSuperConceptsCache) getOwnerCache()).getConcepts();
-      //  iterate bottom-up 
-      for (int i = concepts.length - 1; i >= 0; i--) {
-        for (SNode prop : SLinkOperations.getChildren(concepts[i], LINKS.propertyDeclaration$lL73)) {
-          allProperties.add(prop);
-          String name = SPropertyOperations.getString(prop, PROPS.name$tAp1);
-          if (name == null) {
-            continue;
-          }
-          if (myPropertyByName != null && myPropertyByName.containsKey(name)) {
-            //  properties can not be "overridden" 
-            continue;
-          }
-          if (myProperties == null) {
-            myProperties = new ArrayList<SNode>(1);
-          }
-          myProperties.add(prop);
-          if (myPropertyByName == null) {
-            myPropertyByName = new HashMap<String, SNode>();
-          }
-          myPropertyByName.put(name, prop);
-        }
-      }
-      //  depends on concepts and link declarations 
-      myDependsOnNodes = new HashSet<SNode>();
-      myDependsOnNodes.addAll(Arrays.asList(concepts));
-      for (SNode prop : allProperties) {
-        myDependsOnNodes.add(prop);
-      }
-    }
-    @Override
-    public void childAdded(SModelChildEvent event) {
-      // ------event handling 
-      SNode parent = event.getParent();
-      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$UN)) {
-        //  don't process adding of smth. to concept unless it is property-declaration 
-        if (isPropertyDeclarationRole(event)) {
-          super.childAdded(event);
-        }
-      }
-    }
-    @Override
-    public void childRemoved(SModelChildEvent event) {
-      SNode parent = event.getParent();
-      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$UN)) {
-        //  don't process removing of smth. from concept unless it is property-declaration 
-        if (isPropertyDeclarationRole(event)) {
-          super.childRemoved(event);
-        }
-      }
-    }
-    private boolean isPropertyDeclarationRole(SModelChildEvent event) {
-      return LINKS.propertyDeclaration$lL73.equals(event.getAggregationLink());
-    }
-    @Override
-    public void propertyChanged(SModelPropertyEvent event) {
-      //  don't process unless it is property name 
-      if (CONCEPTS.PropertyDeclaration$c5.equals(event.getNode().getConcept())) {
-        super.propertyChanged(event);
-      }
-    }
-  }
   /*package*/ static class LinkDeclarationsDataSet extends DataSet {
     public static final String ID = "LINK_DECLARATIONS_DATASET";
     private Map<String, SNode> myLinkByRole = null;
@@ -245,7 +153,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     public Set<SNode> getDependsOnNodes() {
       return myDependsOnNodes;
     }
-    public SNode getLinkDeclarationByRole(String role) {
+    private SNode getLinkDeclarationByRole(String role) {
       return (myLinkByRole == null ? null : myLinkByRole.get(role));
     }
     public SNode getMostSpecificLinkDeclarationByRole(String role) {
@@ -261,9 +169,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
         return linkDeclaration;
       }
       return mostSpecificLinkDeclaration;
-    }
-    public List<SNode> getLinkDeclarationsExcludingOverridden() {
-      return (myMostSpecificLinks == null ? Collections.<SNode>emptyList() : new ArrayList<SNode>(myMostSpecificLinks));
     }
     @Override
     protected void init() {
@@ -374,7 +279,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
     /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
     /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
     /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SConcept PropertyDeclaration$c5 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
   }
 
   private static final class LINKS {
@@ -382,13 +286,11 @@ import org.jetbrains.mps.openapi.language.SProperty;
     /*package*/ static final SContainmentLink implements$oQDh = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
     /*package*/ static final SReferenceLink intfc$fO5 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
     /*package*/ static final SContainmentLink extends$3Y1p = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
-    /*package*/ static final SContainmentLink propertyDeclaration$lL73 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
     /*package*/ static final SContainmentLink linkDeclaration$lL6$ = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
     /*package*/ static final SReferenceLink specializedLink$3uH0 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98051c244L, "specializedLink");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty role$r_O$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
   }
 }

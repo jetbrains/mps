@@ -11,7 +11,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.HashSet;
-import java.util.List;
 
 /**
  * * Should be thread safe.
@@ -57,25 +56,9 @@ public class ConceptAndSuperConceptsCache extends AbstractCache {
     Datasets.ConceptsDataSet dataSet = (Datasets.ConceptsDataSet) getDataSet(Datasets.ConceptsDataSet.ID, Datasets.CONCEPTS_CACHE_CREATOR);
     return dataSet.getConcepts();
   }
-  public SNode getPropertyDeclarationByName(String name) {
-    Datasets.PropertyDeclarationsDataSet dataSet = (Datasets.PropertyDeclarationsDataSet) getDataSet(Datasets.PropertyDeclarationsDataSet.ID, Datasets.PROPDECL_CACHE_CREATOR);
-    return dataSet.getPropertyDeclarationByName(name);
-  }
-  public List<SNode> getPropertyDeclarations() {
-    Datasets.PropertyDeclarationsDataSet dataSet = (Datasets.PropertyDeclarationsDataSet) getDataSet(Datasets.PropertyDeclarationsDataSet.ID, Datasets.PROPDECL_CACHE_CREATOR);
-    return dataSet.getPropertyDeclarations();
-  }
-  public SNode getLinkDeclarationByRole(String role) {
-    Datasets.LinkDeclarationsDataSet dataSet = (Datasets.LinkDeclarationsDataSet) getDataSet(Datasets.LinkDeclarationsDataSet.ID, Datasets.LINKDECL_CACHE_CREATOR);
-    return dataSet.getLinkDeclarationByRole(role);
-  }
   public SNode getMostSpecificLinkDeclarationByRole(String role) {
     Datasets.LinkDeclarationsDataSet dataSet = (Datasets.LinkDeclarationsDataSet) getDataSet(Datasets.LinkDeclarationsDataSet.ID, Datasets.LINKDECL_CACHE_CREATOR);
     return dataSet.getMostSpecificLinkDeclarationByRole(role);
-  }
-  public List<SNode> getLinkDeclarationsExcludingOverridden() {
-    Datasets.LinkDeclarationsDataSet dataSet = (Datasets.LinkDeclarationsDataSet) getDataSet(Datasets.LinkDeclarationsDataSet.ID, Datasets.LINKDECL_CACHE_CREATOR);
-    return dataSet.getLinkDeclarationsExcludingOverridden();
   }
   public static ConceptAndSuperConceptsCache getInstance(SNode topConcept) {
     if (topConcept == null) {

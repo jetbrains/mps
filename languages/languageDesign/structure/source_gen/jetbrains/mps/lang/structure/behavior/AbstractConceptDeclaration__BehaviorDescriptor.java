@@ -39,7 +39,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.lang.behavior.behavior.ConceptMethodDeclaration__BehaviorDescriptor;
-import jetbrains.mps.smodel.search.ConceptAndSuperConceptsCache;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import java.util.LinkedHashSet;
@@ -261,7 +260,21 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
     return abstractMethods;
   }
   /*package*/ static List<SNode> getLinkDeclarations_idhEwILKK(@NotNull SNode __thisNode__) {
-    return (List<SNode>) ConceptAndSuperConceptsCache.getInstance(__thisNode__).getLinkDeclarationsExcludingOverridden();
+    // aka ConceptAndSuperConceptsCache.getLinkDeclarationsExcludingOverridden 
+
+    List<SNode> allLinks = Sequence.fromIterable(SLinkOperations.collectMany(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(__thisNode__, ((boolean) true)), LINKS.linkDeclaration$lL6$)).distinct().toListSequence();
+    final Set<SNode> overridden = SetSequence.fromSet(new HashSet<SNode>());
+    // here I imply concepts are sorted from top to bottom, i.e. this concept coming first, its immediate superconcepts next and so on up to BaseConcept. 
+    // therefore, the moment we get to a link declaration that has been overridden in a subconcept, we expect it to be recorded in the 'overridden' set. 
+    //  
+    // add() gives null if collection hasn't been modified, we use this to remove a link which specializes a link that has been already specialized by another link,  
+    // presumably in a subconcept (i.e. more specific). add() != null means we've seen specialized link for the first time, recorded it for removal once we get to it, and keep specialization as is.  
+    ListSequence.fromList(allLinks).removeWhere(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return SetSequence.fromSet(overridden).contains(it) || ((SLinkOperations.getTarget(it, LINKS.specializedLink$3uH0) != null) && SetSequence.fromSet(overridden).addElement(SLinkOperations.getTarget(it, LINKS.specializedLink$3uH0)) == null);
+      }
+    });
+    return allLinks;
   }
   /*package*/ static List<SNode> getReferenceLinkDeclarations_idhEwILL0(@NotNull SNode __thisNode__) {
     List<SNode> links = AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(__thisNode__);
@@ -280,7 +293,7 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
     }).toListSequence();
   }
   /*package*/ static List<SNode> getPropertyDeclarations_idhEwILLM(@NotNull SNode __thisNode__) {
-    return (List<SNode>) ConceptAndSuperConceptsCache.getInstance(__thisNode__).getPropertyDeclarations();
+    return Sequence.fromIterable(SLinkOperations.collectMany(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(__thisNode__, ((boolean) true)), LINKS.propertyDeclaration$lL73)).distinct().toListSequence();
   }
   /*package*/ static boolean isSubconceptOf_id73yVtVlWOga(@NotNull SNode __thisNode__, SNode superconcept) {
     if (SNodeOperations.is(superconcept, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"))) {
@@ -479,5 +492,8 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
     /*package*/ static final SReferenceLink overriddenMethod$6dmw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
     /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
     /*package*/ static final SReferenceLink concept$v6ns = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
+    /*package*/ static final SContainmentLink linkDeclaration$lL6$ = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
+    /*package*/ static final SReferenceLink specializedLink$3uH0 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98051c244L, "specializedLink");
+    /*package*/ static final SContainmentLink propertyDeclaration$lL73 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
   }
 }
