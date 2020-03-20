@@ -28,9 +28,7 @@ import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import com.intellij.util.ui.update.Activatable;
 import com.intellij.util.ui.update.UiNotifyConnector;
-import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.icons.MPSIcons.ProjectPane;
-import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.Nls;
@@ -51,7 +49,7 @@ import java.awt.event.MouseListener;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-public final class LoadedModelsPanel extends TextPanel implements StatusBarWidgetFactory, CustomStatusBarWidget, Activatable {
+public final class LoadedModelsPanel extends TextPanel implements CustomStatusBarWidget, Activatable {
   public static final String WIDGET_ID = "Models";
   private static final Color USED_COLOR = JBColor.namedColor("MemoryIndicator.usedBackground", new JBColor(Gray._185, Gray._110));
 
@@ -181,37 +179,38 @@ public final class LoadedModelsPanel extends TextPanel implements StatusBarWidge
     return loaded + " of " + max + "       "; // last spaces make a place for icon
   }
 
-  @NotNull
-  @Override
-  public String getId() {
-    return "LoadedModels";
-  }
+  public static final class WidgetFactory implements StatusBarWidgetFactory {
+    @NotNull
+    @Override
+    public String getId() {
+      return "LoadedModels";
+    }
 
-  @Nls
-  @NotNull
-  @Override
-  public String getDisplayName() {
-    return "Loaded Models Indicator";
-  }
+    @Nls
+    @NotNull
+    @Override
+    public String getDisplayName() {
+      return "Loaded Models Indicator";
+    }
 
-  @Override
-  public boolean isAvailable(@NotNull Project project) {
-    return ProjectHelper.fromIdeaProject(project) != null;
-  }
+    @Override
+    public boolean isAvailable(@NotNull Project project) {
+      return ProjectHelper.fromIdeaProject(project) != null;
+    }
 
-  @NotNull
-  @Override
-  public StatusBarWidget createWidget(@NotNull Project project) {
-    return new LoadedModelsPanel(ProjectHelper.fromIdeaProject(project));
-  }
+    @NotNull
+    @Override
+    public StatusBarWidget createWidget(@NotNull Project project) {
+      return new LoadedModelsPanel(ProjectHelper.fromIdeaProject(project));
+    }
 
-  @Override
-  public void disposeWidget(@NotNull StatusBarWidget widget) {
+    @Override
+    public void disposeWidget(@NotNull StatusBarWidget widget) {
+    }
 
-  }
-
-  @Override
-  public boolean canBeEnabledOn(@NotNull StatusBar statusBar) {
-    return true;
+    @Override
+    public boolean canBeEnabledOn(@NotNull StatusBar statusBar) {
+      return true;
+    }
   }
 }
