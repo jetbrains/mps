@@ -9,14 +9,15 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import java.util.Objects;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -31,9 +32,17 @@ public class check_PropertyDeclaration_NonTypesystemRule extends AbstractNonType
       return;
     }
     SNode concept = SNodeOperations.getNodeAncestor(prop, CONCEPTS.AbstractConceptDeclaration$UN, false, false);
-    // here we imply findPropertyDeclarations uses specific order to discover declared properties in a concept's hierarchy, namely from superconcepts first, with properties of leaf concepts coming last 
-    SNode propInConcept = AbstractConceptDeclaration__BehaviorDescriptor.findPropertyDeclaration_idhK3S4A1.invoke(concept, SPropertyOperations.getString(prop, PROPS.name$tAp1));
-    if (prop != propInConcept) {
+    List<SNode> otherProps = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(concept)).where(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return it != prop;
+      }
+    }).toListSequence();
+    SNode propInConcept = ListSequence.fromList(otherProps).findFirst(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), SPropertyOperations.getString(prop, PROPS.name$tAp1));
+      }
+    });
+    if (propInConcept != null) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(prop, "property '" + SPropertyOperations.getString(prop, PROPS.name$tAp1) + "' is already declared in " + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(propInConcept, CONCEPTS.AbstractConceptDeclaration$UN, false, false), PROPS.name$tAp1), "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1212182341577", null, errorTarget);
@@ -42,9 +51,9 @@ public class check_PropertyDeclaration_NonTypesystemRule extends AbstractNonType
     }
     // check constant names generated in adapters 
     final String name = NameUtil.toConstantName(SPropertyOperations.getString(prop, PROPS.name$tAp1));
-    SNode node = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(concept)).findFirst(new IWhereFilter<SNode>() {
+    SNode node = ListSequence.fromList(otherProps).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != prop && Objects.equals(name, NameUtil.toConstantName(SPropertyOperations.getString(it, PROPS.name$tAp1)));
+        return Objects.equals(name, NameUtil.toConstantName(SPropertyOperations.getString(it, PROPS.name$tAp1)));
       }
     });
     if ((node != null)) {
