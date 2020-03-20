@@ -56,10 +56,6 @@ public class ConceptAndSuperConceptsCache extends AbstractCache {
     Datasets.ConceptsDataSet dataSet = (Datasets.ConceptsDataSet) getDataSet(Datasets.ConceptsDataSet.ID, Datasets.CONCEPTS_CACHE_CREATOR);
     return dataSet.getConcepts();
   }
-  public SNode getMostSpecificLinkDeclarationByRole(String role) {
-    Datasets.LinkDeclarationsDataSet dataSet = (Datasets.LinkDeclarationsDataSet) getDataSet(Datasets.LinkDeclarationsDataSet.ID, Datasets.LINKDECL_CACHE_CREATOR);
-    return dataSet.getMostSpecificLinkDeclarationByRole(role);
-  }
   public static ConceptAndSuperConceptsCache getInstance(SNode topConcept) {
     if (topConcept == null) {
       return null;

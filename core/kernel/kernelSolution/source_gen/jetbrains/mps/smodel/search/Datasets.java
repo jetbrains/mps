@@ -18,16 +18,8 @@ import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.smodel.event.SModelChildEvent;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.event.SModelPropertyEvent;
-import java.util.Map;
-import java.util.List;
-import jetbrains.mps.util.FlattenIterable;
-import java.util.ArrayList;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import java.util.HashMap;
-import java.util.Arrays;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
-import org.jetbrains.mps.openapi.language.SProperty;
 
 @GeneratedClass(node = "r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)/8484262519286305935", model = "r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)")
 /*package*/ class Datasets {
@@ -35,12 +27,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
     @Override
     public DataSet create(ConceptAndSuperConceptsCache ownerCache) {
       return new ConceptsDataSet(ownerCache);
-    }
-  };
-  /*package*/ static final AbstractCache.DataSetCreator<ConceptAndSuperConceptsCache> LINKDECL_CACHE_CREATOR = new AbstractCache.DataSetCreator<ConceptAndSuperConceptsCache>() {
-    @Override
-    public DataSet create(ConceptAndSuperConceptsCache ownerCache) {
-      return new LinkDeclarationsDataSet(ownerCache);
     }
   };
   /*package*/ Datasets() {
@@ -140,140 +126,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
     public void propertyChanged(SModelPropertyEvent event) {
     }
   }
-  /*package*/ static class LinkDeclarationsDataSet extends DataSet {
-    public static final String ID = "LINK_DECLARATIONS_DATASET";
-    private Map<String, SNode> myLinkByRole = null;
-    private Map<SNode, SNode> myMostSpecificLinkBySpecializedLink = null;
-    private List<SNode> myMostSpecificLinks = null;
-    private Set<SNode> myDependsOnNodes;
-    public LinkDeclarationsDataSet(AbstractCache ownerCache) {
-      super(ID, ownerCache, DataSet.DefaultNodeChangedProcessing.DROP_DATA_SET);
-    }
-    @Override
-    public Set<SNode> getDependsOnNodes() {
-      return myDependsOnNodes;
-    }
-    private SNode getLinkDeclarationByRole(String role) {
-      return (myLinkByRole == null ? null : myLinkByRole.get(role));
-    }
-    public SNode getMostSpecificLinkDeclarationByRole(String role) {
-      SNode linkDeclaration = getLinkDeclarationByRole(role);
-      if (linkDeclaration == null) {
-        return null;
-      }
-      if (myMostSpecificLinkBySpecializedLink == null) {
-        return linkDeclaration;
-      }
-      SNode mostSpecificLinkDeclaration = myMostSpecificLinkBySpecializedLink.get(linkDeclaration);
-      if (mostSpecificLinkDeclaration == null) {
-        return linkDeclaration;
-      }
-      return mostSpecificLinkDeclaration;
-    }
-    @Override
-    protected void init() {
-      myLinkByRole = null;
-      SNode[] concepts = ((ConceptAndSuperConceptsCache) getOwnerCache()).getConcepts();
-      FlattenIterable<SNode> allLinks = new FlattenIterable<SNode>(new ArrayList<Iterable<SNode>>(concepts.length));
-      for (SNode concept : concepts) {
-        Iterable<SNode> list = SLinkOperations.getChildren(concept, LINKS.linkDeclaration$lL6$);
-        allLinks.add(list);
-        for (SNode link : list) {
-          String role1 = SPropertyOperations.getString(link, PROPS.role$r_O$);
-          if (role1 == null) {
-            continue;
-          }
-          if (myLinkByRole != null && myLinkByRole.containsKey(role1)) {
-            continue;
-          }
-          if (myLinkByRole == null) {
-            myLinkByRole = new HashMap<String, SNode>();
-          }
-          myLinkByRole.put(role1, link);
-        }
-      }
-      Map<SNode, SNode> specializedLinks = new HashMap<SNode, SNode>();
-      for (SNode link : allLinks) {
-        SNode specializedLink = SLinkOperations.getTarget(link, LINKS.specializedLink$3uH0);
-        if (specializedLink != null) {
-          specializedLinks.put(specializedLink, link);
-        }
-      }
-      myMostSpecificLinkBySpecializedLink = null;
-      myMostSpecificLinks = null;
-      for (SNode link : allLinks) {
-        SNode moreSpecificLink = specializedLinks.get(link);
-        if (moreSpecificLink == null) {
-          if (myMostSpecificLinks == null) {
-            myMostSpecificLinks = new ArrayList<SNode>(5);
-          }
-          myMostSpecificLinks.add(link);
-        } else {
-          while (moreSpecificLink != null) {
-            if (myMostSpecificLinkBySpecializedLink == null) {
-              myMostSpecificLinkBySpecializedLink = new HashMap<SNode, SNode>();
-            }
-            myMostSpecificLinkBySpecializedLink.put(link, moreSpecificLink);
-            moreSpecificLink = specializedLinks.get(moreSpecificLink);
-          }
-        }
-      }
-      //  depends on concepts and link declarations 
-      myDependsOnNodes = new HashSet<SNode>();
-      myDependsOnNodes.addAll(Arrays.asList(concepts));
-      for (SNode link : allLinks) {
-        myDependsOnNodes.add(link);
-      }
-    }
-    @Override
-    public void childAdded(SModelChildEvent event) {
-      //  event handling 
-      SNode parent = event.getParent();
-      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$UN)) {
-        //  don't process adding of smth. to concept unless it is link-declaration 
-        if (isLinkDeclarationRole(event)) {
-          super.childAdded(event);
-        }
-      }
-    }
-    @Override
-    public void childRemoved(SModelChildEvent event) {
-      SNode parent = event.getParent();
-      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$UN)) {
-        //  don't process removing of smth. from concept unless it is link-declaration 
-        if (isLinkDeclarationRole(event)) {
-          super.childRemoved(event);
-        }
-      }
-    }
-    private boolean isLinkDeclarationRole(SModelChildEvent event) {
-      return LINKS.linkDeclaration$lL6$.equals(event.getAggregationLink());
-    }
-    @Override
-    public void propertyChanged(SModelPropertyEvent event) {
-      //  don't process unless it is link's role 
-      if (!(PROPS.role$r_O$.equals(event.getProperty()))) {
-        return;
-      }
-      String oldRole = event.getOldPropertyValue();
-      if (oldRole != null) {
-        if (myLinkByRole != null) {
-          myLinkByRole.remove(oldRole);
-        }
-      }
-      String newRole = event.getNewPropertyValue();
-      if (newRole == null) {
-        return;
-      }
-      if (myLinkByRole == null) {
-        myLinkByRole = new HashMap<String, SNode>();
-        myLinkByRole.put(newRole, event.getNode());
-      } else
-      if (!(myLinkByRole.containsKey(newRole))) {
-        myLinkByRole.put(newRole, event.getNode());
-      }
-    }
-  }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
@@ -286,11 +138,5 @@ import org.jetbrains.mps.openapi.language.SProperty;
     /*package*/ static final SContainmentLink implements$oQDh = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
     /*package*/ static final SReferenceLink intfc$fO5 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
     /*package*/ static final SContainmentLink extends$3Y1p = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
-    /*package*/ static final SContainmentLink linkDeclaration$lL6$ = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
-    /*package*/ static final SReferenceLink specializedLink$3uH0 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98051c244L, "specializedLink");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty role$r_O$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
   }
 }

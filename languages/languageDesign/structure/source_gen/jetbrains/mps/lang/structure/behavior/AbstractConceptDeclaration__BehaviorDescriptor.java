@@ -76,7 +76,7 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
   public static final SMethod<Boolean> isSubconceptOf_id73yVtVlWOga = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSubconceptOf").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("73yVtVlWOga").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<List<SNode>> getImmediateSuperconcepts_idhMuxyK2 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getImmediateSuperconcepts").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hMuxyK2").build();
   public static final SMethod<Iterable<SNode>> getAllSuperConcepts_id2A8AB0rAWpG = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getAllSuperConcepts").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2A8AB0rAWpG").build(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
-  /*package*/ static final SMethod<Void> collectSuperConcepts_id2A8AB0rB3NH = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectSuperConcepts").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("2A8AB0rB3NH").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""));
+  /*package*/ static final SMethod<Void> collectSuperConcepts_id2A8AB0rB3NH = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectSuperConcepts").modifiers(SModifiersImpl.create(1, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("2A8AB0rB3NH").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""));
   public static final SMethod<SNode> computeInHierarchy_id3CiBrVcn5fe = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("computeInHierarchy").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3CiBrVcn5fe").build(SMethodBuilder.createJavaParameter((Class<_FunctionTypes._return_P1_E0<? extends SNode, ? super SNode>>) ((Class) Object.class), ""));
   public static final SMethod<Pair<Set<SNode>, Set<SNode>>> getInLanguageAndNotInLanguageAncestors_id54xSEBmK0MK = new SMethodBuilder<Pair<Set<SNode>, Set<SNode>>>(new SJavaCompoundTypeImpl(Pair.class)).name("getInLanguageAndNotInLanguageAncestors").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("54xSEBmK0MK").build();
   public static final SMethod<Boolean> is_id4MKjpUYmGW0 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("is").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4MKjpUYmGW0").build(SMethodBuilder.createJavaParameter(SAbstractConcept.class, ""));
@@ -267,11 +267,14 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
     // here I imply concepts are sorted from top to bottom, i.e. this concept coming first, its immediate superconcepts next and so on up to BaseConcept. 
     // therefore, the moment we get to a link declaration that has been overridden in a subconcept, we expect it to be recorded in the 'overridden' set. 
     //  
-    // add() gives null if collection hasn't been modified, we use this to remove a link which specializes a link that has been already specialized by another link,  
-    // presumably in a subconcept (i.e. more specific). add() != null means we've seen specialized link for the first time, recorded it for removal once we get to it, and keep specialization as is.  
+    // Two scenarios in mind: given (C1.r1), (C2.r2) and (C3.r3), C3 extends C2 extends C1; first scenario is transitive, r2 specializes r1, r3 specializes r2;  
+    // second when both r2 and r3 specialize r1. For C3, there'd be 1 link declaration in the first scenario, namely {r3}, while for the second case it would be {r3,r2} 
     ListSequence.fromList(allLinks).removeWhere(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SetSequence.fromSet(overridden).contains(it) || ((SLinkOperations.getTarget(it, LINKS.specializedLink$3uH0) != null) && SetSequence.fromSet(overridden).addElement(SLinkOperations.getTarget(it, LINKS.specializedLink$3uH0)) == null);
+        if ((SLinkOperations.getTarget(it, LINKS.specializedLink$3uH0) != null)) {
+          SetSequence.fromSet(overridden).addElement(SLinkOperations.getTarget(it, LINKS.specializedLink$3uH0));
+        }
+        return SetSequence.fromSet(overridden).contains(it);
       }
     });
     return allLinks;
@@ -303,19 +306,20 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
   }
   /*package*/ static Iterable<SNode> getAllSuperConcepts_id2A8AB0rAWpG(@NotNull SNode __thisNode__, boolean includeSelf) {
     Set<SNode> concepts = SetSequence.fromSet(new LinkedHashSet<SNode>());
-    AbstractConceptDeclaration__BehaviorDescriptor.collectSuperConcepts_id2A8AB0rB3NH.invoke(__thisNode__, __thisNode__, concepts);
-    if (!(includeSelf)) {
-      SetSequence.fromSet(concepts).removeElement(__thisNode__);
+    if (includeSelf) {
+      SetSequence.fromSet(concepts).addElement(__thisNode__);
     }
+    AbstractConceptDeclaration__BehaviorDescriptor.collectSuperConcepts_id2A8AB0rB3NH.invoke(__thisNode__.getConcept(), __thisNode__, concepts);
+    // getImmediateSuperconcepts for an interface declaration doesn't give BaseConcept, while it's necessary when we'd like to access BaseConcept properties and links 
+    // for a node with type of pure interface (e.g. DotExpression.operation:IOperation.virtualPackage) 
+    SetSequence.fromSet(concepts).addElement(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"));
     return concepts;
   }
-  /*package*/ static void collectSuperConcepts_id2A8AB0rB3NH(@NotNull SNode __thisNode__, SNode concept, Set<SNode> result) {
-    if (SetSequence.fromSet(result).contains(concept) || (concept == null)) {
-      return;
-    }
-    SetSequence.fromSet(result).addElement(concept);
-    for (SNode superConcept : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(concept))) {
-      AbstractConceptDeclaration__BehaviorDescriptor.collectSuperConcepts_id2A8AB0rB3NH.invoke(__thisNode__, superConcept, result);
+  /*package*/ static void collectSuperConcepts_id2A8AB0rB3NH(@NotNull SAbstractConcept __thisConcept__, SNode concept, Set<SNode> result) {
+    List<SNode> seq = AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(concept);
+    SetSequence.fromSet(result).addSequence(ListSequence.fromList(seq));
+    for (SNode superConcept : ListSequence.fromList(seq)) {
+      AbstractConceptDeclaration__BehaviorDescriptor.collectSuperConcepts_id2A8AB0rB3NH.invoke(__thisConcept__, superConcept, result);
     }
   }
   /*package*/ static SNode computeInHierarchy_id3CiBrVcn5fe(@NotNull SNode __thisNode__, _FunctionTypes._return_P1_E0<? extends SNode, ? super SNode> predicate) {
@@ -419,9 +423,6 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
         return (T) ((Boolean) isSubconceptOf_id73yVtVlWOga(node, (SNode) parameters[0]));
       case 19:
         return (T) ((Iterable<SNode>) getAllSuperConcepts_id2A8AB0rAWpG(node, ((boolean) (Boolean) parameters[0])));
-      case 20:
-        collectSuperConcepts_id2A8AB0rB3NH(node, (SNode) parameters[0], (Set<SNode>) parameters[1]);
-        return null;
       case 21:
         return (T) ((SNode) computeInHierarchy_id3CiBrVcn5fe(node, (_FunctionTypes._return_P1_E0<? extends SNode, ? super SNode>) parameters[0]));
       case 22:
@@ -440,6 +441,9 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 20:
+        collectSuperConcepts_id2A8AB0rB3NH(concept, (SNode) parameters[0], (Set<SNode>) parameters[1]);
+        return null;
       default:
         throw new BHMethodNotFoundException(this, method);
     }

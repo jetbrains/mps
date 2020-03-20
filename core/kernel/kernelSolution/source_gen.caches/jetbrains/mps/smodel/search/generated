@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="pqfccscp5y84xgu9abxsp2ybcairys">
-  <files names="ConceptAndSuperConceptsCache.java:ConceptAndSuperConceptsScope.java:Datasets.java" />
+<product version="3" modelHash="-danop3v6as4nugu1xr7t1y5ll2ed4a8">
+  <files names="ConceptAndSuperConceptsCache.java:ConceptAndSuperConceptsScope.java:Datasets.java:LinkDeclarationLookup.java" />
 </product>
 

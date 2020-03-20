@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,17 +15,15 @@
  */
 package jetbrains.mps.smodel.constraints;
 
-import jetbrains.mps.kernel.model.SModelUtil;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.scope.ErrorScope;
 import jetbrains.mps.scope.FilteringByConceptScope;
 import jetbrains.mps.scope.ModelPlusImportedScope;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.language.ConceptRegistryUtil;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
-import jetbrains.mps.smodel.search.ConceptAndSuperConceptsCache;
+import jetbrains.mps.smodel.search.LinkDeclarationLookup;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
@@ -36,7 +34,6 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
-import org.jetbrains.mps.openapi.module.SModule;
 
 /**
  * Abstraction to capture constraints-related stuff about references.
@@ -196,32 +193,11 @@ public abstract class ReferenceDescriptor {
     private static SAbstractConcept getLinkTarget(@NotNull SReferenceLink genuineLink, @NotNull SAbstractConcept concreteConcept) {
       // TODO for now, link target is calculated using language sources.
       //      it will be possible to do it without sources when information about link specialization will be generated.
-      SNode conceptDeclaration = concreteConcept.getDeclarationNode();
-
-      SNode linkDeclaration = conceptDeclaration == null ? null :
-                              ConceptAndSuperConceptsCache.getInstance(conceptDeclaration).getMostSpecificLinkDeclarationByRole(genuineLink.getName());
-
-      final SNode linkDeclarationTarget = SModelUtil.getLinkDeclarationTarget(linkDeclaration);
-      if (linkDeclarationTarget != null) {
-        SAbstractConcept concept = MetaAdapterByDeclaration.getConcept(linkDeclarationTarget);
-        if (concept != null) {
-          return concept;
-        }
-      }
-
-      return genuineLink.getTargetConcept();
+      return new LinkDeclarationLookup(concreteConcept).getMostSpecificLinkTarget(genuineLink);
     }
 
     private SModel getModel() {
       return myContextNode.getModel();
-    }
-
-    private SModule getModule() {
-      SModel model = getModel();
-      if (model == null) {
-        return null;
-      }
-      return model.getModule();
     }
   }
 }

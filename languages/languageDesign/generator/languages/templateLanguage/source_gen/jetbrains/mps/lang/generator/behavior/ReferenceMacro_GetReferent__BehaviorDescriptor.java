@@ -18,8 +18,9 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
-import jetbrains.mps.smodel.search.ConceptAndSuperConceptsCache;
+import jetbrains.mps.smodel.search.LinkDeclarationLookup;
 import jetbrains.mps.baseLanguage.behavior.ConceptFunction__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -29,7 +30,6 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class ReferenceMacro_GetReferent__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fe485cc9bL, "jetbrains.mps.lang.generator.structure.ReferenceMacro_GetReferent");
@@ -62,16 +62,9 @@ public final class ReferenceMacro_GetReferent__BehaviorDescriptor extends BaseBH
   }
   /*package*/ static SNode fromMacro_id2I_OWQO_cV$(@NotNull SNode __thisNode__, SNode refMacro) {
     SNode attributedNode = SNodeOperations.getParent(refMacro);
-    // todo rewrite using S-entities 
-    String linkRole = LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(refMacro).getName();
+    SReferenceLink link = LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(refMacro);
     // here we are still looking at language sources because there is no information about specialized links in compiled language 
-    ConceptAndSuperConceptsCache cache = ConceptAndSuperConceptsCache.getInstance(SNodeOperations.getConceptDeclaration(attributedNode));
-    if (cache == null) {
-      // no idea how come we face null for conceptNode here, yet we do, see MPS-31006. 
-      // attributedNode could not be null, hence it's conceptNode that wasn't found. 
-      return null;
-    }
-    return SNodeOperations.cast(cache.getMostSpecificLinkDeclarationByRole(linkRole), CONCEPTS.LinkDeclaration$bA);
+    return new LinkDeclarationLookup(SNodeOperations.getConcept(attributedNode)).getMostSpecificLinkDeclarationFor(link);
   }
   /*package*/ static SNode fromRefReductionRule_id2I_OWQO_d$v(@NotNull SNode __thisNode__, SNode reductionRule) {
     return SLinkOperations.getTarget(reductionRule, LINKS.link$Qix9);
@@ -171,7 +164,6 @@ public final class ReferenceMacro_GetReferent__BehaviorDescriptor extends BaseBH
     /*package*/ static final SConcept ReferenceMacro$nk = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd7f44d616L, "jetbrains.mps.lang.generator.structure.ReferenceMacro");
     /*package*/ static final SConcept ReferenceReductionRule$Lk = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7786936d61b8dafaL, "jetbrains.mps.lang.generator.structure.ReferenceReductionRule");
     /*package*/ static final SInterfaceConcept IResolveInfo$c2 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, "jetbrains.mps.lang.core.structure.IResolveInfo");
-    /*package*/ static final SConcept LinkDeclaration$bA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration");
     /*package*/ static final SConcept TemplateQueryBase$Si = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11b4d0ca830L, "jetbrains.mps.lang.generator.structure.TemplateQueryBase");
     /*package*/ static final SConcept TemplateFunctionParameter_outputNode$5F = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x113d50d6be6L, "jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_outputNode");
     /*package*/ static final SConcept TemplateFunctionParameter_generationContext$$M = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0e3L, "jetbrains.mps.lang.generator.generationContext.structure.TemplateFunctionParameter_generationContext");
