@@ -193,7 +193,6 @@
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
-      <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
         <child id="1163668914799" name="condition" index="3K4Cdx" />
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
@@ -218,7 +217,6 @@
         <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
-      <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
       </concept>
@@ -302,34 +300,6 @@
       <concept id="31378964227347002" name="jetbrains.mps.baseLanguage.collections.structure.SelectNotNullOperation" flags="ng" index="1KnU$U" />
     </language>
   </registry>
-  <node concept="3HP615" id="41J4moeYtGn">
-    <property role="TrG5h" value="IReferenceInfoResolver" />
-    <node concept="3Tm1VV" id="41J4moeY$63" role="1B3o_S" />
-    <node concept="3clFb_" id="41J4moeY$64" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="resolve" />
-      <node concept="3Tm1VV" id="41J4moeY$65" role="1B3o_S" />
-      <node concept="3Tqbb2" id="4KI3VLZ$3Ib" role="3clF45" />
-      <node concept="37vLTG" id="41J4moeY$67" role="3clF46">
-        <property role="TrG5h" value="referenceInfo" />
-        <node concept="17QB3L" id="4KI3VLZ$3Ia" role="1tU5fm" />
-      </node>
-      <node concept="37vLTG" id="41J4moeY$69" role="3clF46">
-        <property role="TrG5h" value="targetModelReference" />
-        <node concept="3uibUv" id="41J4moeY$6a" role="1tU5fm">
-          <ref role="3uigEE" to="mhbf:~SModelReference" resolve="SModelReference" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="41J4moeY$6b" role="3clF47" />
-      <node concept="P$JXv" id="4KI3VLZ$3If" role="lGtFl">
-        <node concept="TZ5HA" id="4KI3VLZ$3Ig" role="TZ5H$">
-          <node concept="1dT_AC" id="4KI3VLZ$3In" role="1dT_Ay">
-            <property role="1dT_AB" value="* Finds node by referenceInfo and optional targetModelReference." />
-          </node>
-        </node>
-      </node>
-    </node>
-  </node>
   <node concept="312cEu" id="7mY9WXbe3ew">
     <property role="TrG5h" value="ConceptAndSuperConceptsScope" />
     <property role="1sVAO0" value="false" />

@@ -17,16 +17,6 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
-  <root nodeRef="r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)/4642948870877862679">
-    <file name="IReferenceInfoResolver.java">
-      <node id="4642948870877888900" at="14,0,15,0" concept="8" trace="resolve#(Ljava/lang/String;Lorg/jetbrains/mps/openapi/model/SModelReference;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="4642948870877888900" at="14,0,15,0">
-        <var name="referenceInfo" id="4642948870877888903" />
-        <var name="targetModelReference" id="4642948870877888905" />
-      </scope>
-      <unit id="4642948870877862679" at="9,0,16,0" name="jetbrains.mps.smodel.search.IReferenceInfoResolver" />
-    </file>
-  </root>
   <root nodeRef="r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)/8484262519286281120">
     <file name="ConceptAndSuperConceptsScope.java">
       <node id="8484262519286281123" at="19,0,20,0" concept="5" trace="myTopConcept" />
