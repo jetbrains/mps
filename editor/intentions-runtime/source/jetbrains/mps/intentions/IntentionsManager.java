@@ -373,9 +373,21 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
         if (isAncestor && !intentionFactory.isAvailableInChildNodes()) {
           continue;
         }
-        if (!filter.accept(intentionFactory) || !intentionFactory.isApplicable(node, editorContext)) {
+
+        if (!filter.accept(intentionFactory)) {
           continue;
         }
+
+        boolean isApplicable = false;
+        try {
+          isApplicable = intentionFactory.isApplicable(node, editorContext);
+        } catch (Throwable t) {
+          LOG.error("Failed to evaluate isApplicable for " + intentionFactory.getClass().getName(), t);
+        }
+        if (!isApplicable) {
+          continue;
+        }
+
         if (!visitor.visit(intentionFactory)) {
           return false;
         }
