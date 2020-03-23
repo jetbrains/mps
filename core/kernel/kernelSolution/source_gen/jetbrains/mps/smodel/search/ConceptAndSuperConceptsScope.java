@@ -12,7 +12,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.Collections;
 import java.util.ArrayList;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)/8484262519286281120", model = "r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)")
 public class ConceptAndSuperConceptsScope extends Scope {
@@ -60,15 +64,17 @@ public class ConceptAndSuperConceptsScope extends Scope {
       return Collections.<SNode>emptyList();
     }
     List<SNode> result = new ArrayList<SNode>();
-    //  filter by condition 
-    for (SNode node : ConceptAndSuperConceptsCache.getInstance(myTopConcept).getConcepts()) {
-      if (node == null) {
-        continue;
-      }
+    for (SNode node : ((Iterable<SNode>) BHReflection.invoke0(myTopConcept, CONCEPTS.AbstractConceptDeclaration$UN, SMethodTrimmedId.create("getAllSuperConcepts", CONCEPTS.AbstractConceptDeclaration$UN, "2A8AB0rAWpG"), ((boolean) true)))) {
+      // FIXME why do we collect *all* children, including InterfaceConceptReference of implements/extends, ACD.helpURL and CD.icon? 
+      // I suppose all we need here is linkDeclaration + propertyDeclaration, both available in node<ACD> we've got here 
       for (SNode n : SNodeUtil.getDescendants(node, condition, true)) {
         result.add(n);
       }
     }
     return result;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }
