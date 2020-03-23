@@ -14,6 +14,7 @@
     <import index="2apo" ref="r:20ab6a94-5179-4062-a795-403815374f72(CloneModule.test.test@tests)" />
     <import index="q08g" ref="r:7da8cb5d-b937-4ac8-a4e8-0f345dfd2711(jetbrains.mps.refactoring.test.test@tests)" />
     <import index="8ytb" ref="r:0fc0617b-a58c-4b18-af63-dc67be77023b(mps.test.findusages@tests)" />
+    <import index="5lan" ref="r:4201854c-2b50-4609-9031-1ebdf87d3bf7(JavaCompilationXmlConflict.test.test@tests)" />
   </imports>
   <registry>
     <language id="9f846aef-4e4a-4a84-828e-7e83fe2697f2" name="jetbrains.mps.build.mps.testManifest">
@@ -59,6 +60,9 @@
     </node>
     <node concept="2Uj$md" id="3XdPonscwMG" role="2Uj_Yd">
       <ref role="2Uj$mc" to="2apo:6rP_NjK3fBF" resolve="CloneModule" />
+    </node>
+    <node concept="2Uj$md" id="LYpJ$oNJI3" role="2Uj_Yd">
+      <ref role="2Uj$mc" to="5lan:6rP_NjK3fBF" resolve="JavaCompilationXmlConflict" />
     </node>
     <node concept="2Uj$md" id="3iBi5uuKAAO" role="2Uj_Yd">
       <ref role="2Uj$mc" to="q08g:6rP_NjK3fBF" resolve="RefactoringTest" />
