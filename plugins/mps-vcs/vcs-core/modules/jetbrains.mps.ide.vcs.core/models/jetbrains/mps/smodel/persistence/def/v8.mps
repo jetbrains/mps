@@ -353,23 +353,6 @@
         <ref role="3uigEE" to="5fzo:~IModelWriter" resolve="IModelWriter" />
       </node>
     </node>
-    <node concept="3clFb_" id="31beu34diRQ" role="jymVt">
-      <property role="TrG5h" value="getHashProvider" />
-      <property role="DiZV1" value="false" />
-      <property role="od$2w" value="false" />
-      <node concept="2AHcQZ" id="31beu34diRR" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-      <node concept="3clFbS" id="31beu34diRS" role="3clF47">
-        <node concept="3cpWs6" id="31beu34diRT" role="3cqZAp">
-          <node concept="10Nm6u" id="2SXhbDxUaG7" role="3cqZAk" />
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="31beu34diRV" role="1B3o_S" />
-      <node concept="3uibUv" id="31beu34diRW" role="3clF45">
-        <ref role="3uigEE" to="5fzo:~IHashProvider" resolve="IHashProvider" />
-      </node>
-    </node>
     <node concept="3clFb_" id="31beu34diRX" role="jymVt">
       <property role="TrG5h" value="getModelReaderHandler" />
       <property role="DiZV1" value="false" />

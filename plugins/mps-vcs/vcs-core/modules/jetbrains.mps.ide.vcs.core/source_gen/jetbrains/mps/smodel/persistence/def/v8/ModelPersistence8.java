@@ -7,7 +7,6 @@ import jetbrains.mps.smodel.persistence.def.IModelPersistence;
 import jetbrains.mps.smodel.persistence.def.IModelWriter;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.SModelHeader;
-import jetbrains.mps.smodel.persistence.def.IHashProvider;
 import jetbrains.mps.util.xml.XMLSAXHandler;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
@@ -23,10 +22,6 @@ public class ModelPersistence8 implements IModelPersistence {
   }
   @Override
   public IModelWriter getModelWriter(@Nullable SModelHeader header) {
-    return null;
-  }
-  @Override
-  public IHashProvider getHashProvider() {
     return null;
   }
   @Override
