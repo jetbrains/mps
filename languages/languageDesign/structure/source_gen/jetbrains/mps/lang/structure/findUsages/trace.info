@@ -949,25 +949,26 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959028e(jetbrains.mps.lang.structure.findUsages)/7252137123778528263">
     <file name="ConceptMRO.java">
-      <node id="7889865066412871082" at="13,0,14,0" concept="14" trace="BASECONCEPT_WRAP" />
-      <node id="7889865066412878088" at="18,43,19,78" concept="11" />
-      <node id="7889865066412882471" at="20,5,21,109" concept="10" />
-      <node id="5611832130673753817" at="21,109,22,29" concept="0" />
-      <node id="5611832130673783448" at="23,65,24,20" concept="11" />
-      <node id="7889865066412898186" at="25,5,26,33" concept="5" />
-      <node id="7889865066412912662" at="26,33,27,48" concept="11" />
-      <node id="7889865066412875112" at="17,96,20,5" concept="8" />
-      <node id="5611832130673671360" at="22,29,25,5" concept="8" />
-      <node id="7889865066412864469" at="15,0,29,0" concept="9" trace="calcLinearization0#(Ljetbrains/mps/lang/structure/findUsages/AbstractConceptWrap;)Ljava/util/List;" />
-      <scope id="7889865066412875114" at="18,43,19,78" />
-      <scope id="5611832130673671362" at="23,65,24,20" />
-      <scope id="7889865066412864482" at="17,96,27,48">
+      <node id="7889865066412871082" at="14,0,15,0" concept="14" trace="BASECONCEPT_WRAP" />
+      <node id="7889865066412878088" at="19,43,20,78" concept="11" />
+      <node id="7889865066412882471" at="21,5,22,121" concept="10" />
+      <node id="5611832130673753817" at="22,121,23,29" concept="0" />
+      <node id="5611832130673783448" at="24,65,25,20" concept="11" />
+      <node id="7889865066412898186" at="26,5,27,33" concept="5" />
+      <node id="7889865066412912662" at="27,33,28,48" concept="11" />
+      <node id="7889865066412875112" at="18,142,21,5" concept="8" />
+      <node id="5611832130673671360" at="23,29,26,5" concept="8" />
+      <node id="7889865066412864469" at="16,0,30,0" concept="9" trace="calcLinearizationImpl#(Ljetbrains/mps/lang/structure/findUsages/AbstractConceptWrap;Ljava/util/Set;)Ljava/util/List;" />
+      <scope id="7889865066412875114" at="19,43,20,78" />
+      <scope id="5611832130673671362" at="24,65,25,20" />
+      <scope id="7889865066412864482" at="18,142,28,48">
         <var name="result" id="7889865066412882472" />
       </scope>
-      <scope id="7889865066412864469" at="15,0,29,0">
+      <scope id="7889865066412864469" at="16,0,30,0">
         <var name="concept" id="7889865066412864474" />
+        <var name="visited" id="5977034131796418475" />
       </scope>
-      <unit id="7252137123778528263" at="12,0,30,0" name="jetbrains.mps.lang.structure.findUsages.ConceptMRO" />
+      <unit id="7252137123778528263" at="13,0,31,0" name="jetbrains.mps.lang.structure.findUsages.ConceptMRO" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959028e(jetbrains.mps.lang.structure.findUsages)/7252137123778553237">

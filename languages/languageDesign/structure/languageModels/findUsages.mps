@@ -2255,7 +2255,7 @@
     </node>
     <node concept="3clFb_" id="6PYrBB1jnfl" role="jymVt">
       <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="calcLinearization0" />
+      <property role="TrG5h" value="calcLinearizationImpl" />
       <property role="DiZV1" value="false" />
       <property role="od$2w" value="false" />
       <node concept="3Tmbuc" id="6PYrBB1jnfm" role="1B3o_S" />
@@ -2271,6 +2271,18 @@
           <ref role="3uigEE" node="6i$L4D_fAml" resolve="AbstractConceptWrap" />
         </node>
         <node concept="2AHcQZ" id="6PYrBB1jnfs" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="5bMGe0c75YF" role="3clF46">
+        <property role="TrG5h" value="visited" />
+        <node concept="3uibUv" id="5bMGe0c79ds" role="1tU5fm">
+          <ref role="3uigEE" to="33ny:~Set" resolve="Set" />
+          <node concept="3uibUv" id="5bMGe0c79lG" role="11_B2D">
+            <ref role="3uigEE" node="6i$L4D_fAml" resolve="AbstractConceptWrap" />
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="5bMGe0c79BZ" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
@@ -2315,9 +2327,12 @@
               <node concept="1pGfFk" id="6PYrBB1jt9q" role="2ShVmc">
                 <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;(java.util.Collection)" resolve="ArrayList" />
                 <node concept="3nyPlj" id="6PYrBB1jrCD" role="37wK5m">
-                  <ref role="37wK5l" to="manl:~AbstractC3StarAncestorResolutionOrder.calcLinearization0(jetbrains.mps.core.aspects.behaviour.api.AbstractConceptLike)" resolve="calcLinearization0" />
+                  <ref role="37wK5l" to="manl:~AbstractC3StarAncestorResolutionOrder.calcLinearizationImpl(jetbrains.mps.core.aspects.behaviour.api.AbstractConceptLike,java.util.Set)" resolve="calcLinearizationImpl" />
                   <node concept="37vLTw" id="6PYrBB1jrCE" role="37wK5m">
                     <ref role="3cqZAo" node="6PYrBB1jnfq" resolve="concept" />
+                  </node>
+                  <node concept="37vLTw" id="5bMGe0c7b7i" role="37wK5m">
+                    <ref role="3cqZAo" node="5bMGe0c75YF" resolve="visited" />
                   </node>
                 </node>
                 <node concept="3uibUv" id="6PYrBB1jtqs" role="1pMfVU">

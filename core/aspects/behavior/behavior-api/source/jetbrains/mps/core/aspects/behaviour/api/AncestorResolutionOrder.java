@@ -18,6 +18,7 @@ package jetbrains.mps.core.aspects.behaviour.api;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * API for a concept ancestors' resolution order

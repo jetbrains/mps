@@ -17,37 +17,47 @@ package jetbrains.mps.core.aspects.behaviour.api;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
-import org.jetbrains.mps.annotations.ImmutableReturn;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
  * Supposed to be used when one needs to invoke {@link #calcLinearization} for the same concepts several times
+ *
+ * @author apyshkin
  */
 public abstract class CachingAncestorResolutionOrder<C extends AbstractConceptLike> implements AncestorResolutionOrder<C> {
   private final ConcurrentMap<C, List<C>> myConcept2Linearization = new ConcurrentHashMap<>();
 
   @NotNull
-  @Override
-  @ImmutableReturn
-  public List<C> calcLinearization(@NotNull C concept) {
+  public final List<C> calcLinearization(@NotNull C concept) {
+    return calcLinearizationWithMemoization(concept, new HashSet<>());
+  }
+
+  @NotNull
+  protected final List<C> calcLinearizationWithMemoization(@NotNull C concept, @NotNull Set<C> met) {
     if (myConcept2Linearization.containsKey(concept)) {
       return myConcept2Linearization.get(concept);
     }
-    @Immutable List<C> linearization = calcLinearization0(concept);
-    myConcept2Linearization.putIfAbsent(concept, linearization);
-    return linearization;
+    if (met.add(concept)) {
+      @Immutable List<C> linearization = calcLinearizationImpl(concept, met); // potentially calculating a few times
+      myConcept2Linearization.putIfAbsent(concept, linearization);
+      return myConcept2Linearization.get(concept);
+    } else {
+      // encountered a cycle
+      return Collections.emptyList();
+    }
   }
 
   /**
-   * we cache the result of this
-   * @see AncestorResolutionOrder#calcLinearization(AbstractConceptLike)
+   * we cache the result of this in #myConcept2Linearization
    */
-  @ImmutableReturn
   @NotNull
-  protected abstract List<C> calcLinearization0(@NotNull C concept);
+  protected abstract List<C> calcLinearizationImpl(@NotNull C concept, @NotNull Set<C> met);
 
   /**
    * call it before calculating

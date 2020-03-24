@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -106,7 +107,7 @@ public abstract class BaseBHDescriptor implements BHDescriptor {
     myVTable = new SMethodVirtualTable(getDeclaredMethods());
     List<SAbstractConcept> ancestors = myAncestorCache.getAncestorsInvocationOrder();
     for (SAbstractConcept ancestor : ancestors) {
-      if (ancestor != myConcept) {
+      if (!Objects.equals(ancestor, myConcept)) {
         BHDescriptor bhDescriptor = getBHDescriptor(ancestor);
         myVTable.merge(bhDescriptor);
         mySuperVTable.merge(bhDescriptor);
@@ -209,7 +210,7 @@ public abstract class BaseBHDescriptor implements BHDescriptor {
     if (parameters.length > 0) {
       throw new IllegalArgumentException("For now one cannot pass arguments to a behavior constructor");
     }
-    if (constructor.getConcept() != getConcept()) {
+    if (!Objects.equals(constructor.getConcept(), getConcept())) {
       throw new IllegalArgumentException("Concept of the passed constructor and the concept of the descriptor must coincide");
     }
     SNode node = SModelUtil_new.instantiateConceptDeclaration(myConcept, model, null, false);
