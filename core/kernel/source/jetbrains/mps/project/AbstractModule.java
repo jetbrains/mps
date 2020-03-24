@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -439,9 +439,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   }
 
   protected ModuleFacetBase setupFacet(ModuleFacetBase facet, Memento memento) {
-    if (!facet.setModule(this)) {
-      return null;
-    }
     facet.load(memento != null ? memento : new MementoImpl());
     facet.attach();
     return facet;
@@ -475,12 +472,9 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
         LOG.warn(String.format("no registered factory for a facet with type=`%s'", facetType));
         continue;
       }
-      // FIXME once #create() is gone, don't forget to fix setupFacet() not to invoke setModule(), as it's already set from factory's create(SModule)
-      SModuleFacet newFacet = factory.create();
-      if (newFacet == null) {
-        newFacet = factory.create(this);
-      }
+      SModuleFacet newFacet = factory.create(this);
       if (!(newFacet instanceof ModuleFacetBase)) {
+        // FIXME review setupFacet logic (especially overrides). I'd rather perform load() for all and attach in case it's ModuleFacetBase, but not error
         LOG.error("broken facet factory: " + factory.getClass().getName());
         continue;
       }

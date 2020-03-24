@@ -55,7 +55,6 @@ import com.intellij.util.ui.ItemRemovable;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.extapi.module.FacetsRegistry;
-import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.findUsages.CompositeFinder;
 import jetbrains.mps.icons.MPSIcons.General;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
@@ -1580,14 +1579,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
       if (myCheckBox.isSelected()) {
         if (myFacet == null) {
           final FacetsRegistry facetRegistry = myMPSProject.getComponent(FacetsRegistry.class);
-          myFacet = facetRegistry.getFacetFactory(myFacetType).create();
-          if (myFacet instanceof ModuleFacetBase) {
-            // XXX why do we need to set module here, and why do we ignore return value?
-            // FIXME this is compatibility branch, delete once 2018.3 is out, new code shall implement FF.create(SModule)
-            ((ModuleFacetBase) myFacet).setModule(myModule);
-          } else if (myFacet == null) {
-            myFacet = facetRegistry.getFacetFactory(myFacetType).create(myModule);
-          }
+          myFacet = facetRegistry.getFacetFactory(myFacetType).create(myModule);
         }
         if (myFacetTab == null) {
           myFacetTab = myFacetTabsPersistence.getFacetTab(myFacet);
