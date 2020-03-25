@@ -16,7 +16,6 @@
 package jetbrains.mps.persistence;
 
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
-import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.JDOMUtil;
@@ -147,8 +146,7 @@ public final class PersistenceUtil {
   }
 
   public static Element saveModelToXml(@NotNull final SModel model, @NotNull ModelFactoryService modelFactoryService) {
-    // XXX no idea why not getFactoryByType(), but didn't change myself as not clear whether to use PLAIN_XML or PER_ROOT_XML type given use of MODEL ds kind
-    ModelFactory factory = modelFactoryService.getDefaultModelFactory(PreinstalledDataSourceTypes.MODEL);
+    ModelFactory factory = modelFactoryService.getFactoryByType(PreinstalledModelFactoryTypes.PLAIN_XML);
     try {
       SAXBuilder saxBuilder = new SAXBuilder();
       Element rootElement = saxBuilder.build(modelAsStream(model, factory)).getRootElement();

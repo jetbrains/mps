@@ -107,15 +107,21 @@ public class JpsMPSRepositoryFacade implements MPSModuleOwner {
     myRepository.getModelAccess().runWriteAction(new Runnable() {
       @Override
       public void run() {
-        long start = System.nanoTime();
-        initRepository(context,
-          context.getBuilderParameter(MPSMakeConstants.MPS_LANGUAGES.toString()),
-          context.getBuilderParameter(MPSMakeConstants.MPS_REPOSITORY.toString()));
+        try {
+          long start = System.nanoTime();
+          initRepository(context,
+                         context.getBuilderParameter(MPSMakeConstants.MPS_LANGUAGES.toString()),
+                         context.getBuilderParameter(MPSMakeConstants.MPS_REPOSITORY.toString()));
 
-        initProject(context);
+          initProject(context);
 
-        if (MPSCompilerUtil.isTracingMode()) {
-          context.processMessage(new CompilerMessage(MPSMakeConstants.BUILDER_ID, Kind.INFO, String.format("MPS loaded in %d ms", (System.nanoTime() - start) / 1000000)));
+          if (MPSCompilerUtil.isTracingMode()) {
+            context.processMessage(
+                new CompilerMessage(MPSMakeConstants.BUILDER_ID, Kind.INFO, String.format("MPS loaded in %d ms", (System.nanoTime() - start) / 1000000)));
+          }
+        } catch (Exception ex) {
+          context.processMessage(CompilerMessage.createInternalBuilderError(MPSMakeConstants.BUILDER_ID, ex));
+          // fall-through, it doesn't make sense to attempt init() once again
         }
         isInitialized = true;
       }
