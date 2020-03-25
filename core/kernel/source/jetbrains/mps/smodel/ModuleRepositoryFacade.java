@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -363,11 +363,12 @@ public final class ModuleRepositoryFacade implements CoreComponent, ModuleInstan
       // XXX FWIW, MPSModuleRepository.unregisterModule and unregisterModules keep symmetric knowledge what generator modules to remove along with the language
       //     i.e. here we assume there could be no generator module w/o source language, there we remove all generators with the given source language (not
       //     'directly owned' only).
-      String msg =
-          String.format("Can't register generator %s for not yet known language module %s", descriptor.getNamespace(), descriptor.getSourceLanguage());
-      throw new IllegalStateException(msg);
-    }
-    if (false == module instanceof Language) {
+      if (LOG.isInfoEnabled()) {
+        String msg =
+            String.format("Register generator %s for not yet known language module %s", descriptor.getNamespace(), descriptor.getSourceLanguage());
+        LOG.info(msg);
+      }
+    } else if (false == module instanceof Language) {
       String msg = String.format("Module %s specified as source language of generator %s in not a Language module", descriptor.getSourceLanguage(), descriptor.getNamespace());
       throw new IllegalStateException(msg);
     }

@@ -35,15 +35,6 @@ public interface IModelPersistence {
    */
   IModelWriter getModelWriter(@Nullable SModelHeader header);
 
-  /**
-   * @deprecated not in use, no reason to implement
-   */
-  @Deprecated
-  @ToRemove(version = 2019.3)
-  default IHashProvider getHashProvider() {
-    return null;
-  }
-
   XMLSAXHandler<ModelLoadResult> getModelReaderHandler(ModelLoadingState state, SModelHeader header);
 
   XMLSAXHandler<List<LineContent>> getLineToContentMapReaderHandler();

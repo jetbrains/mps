@@ -37,6 +37,7 @@
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
       </concept>
       <concept id="1068498886294" name="jetbrains.mps.baseLanguage.structure.AssignmentExpression" flags="nn" index="37vLTI" />
+      <concept id="1225271369338" name="jetbrains.mps.baseLanguage.structure.IsEmptyOperation" flags="nn" index="17RlXB" />
       <concept id="1225271408483" name="jetbrains.mps.baseLanguage.structure.IsNotEmptyOperation" flags="nn" index="17RvpY" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
@@ -53,7 +54,9 @@
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
-      <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6" />
+      <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6">
+        <child id="1068581517676" name="expression" index="3cqZAk" />
+      </concept>
       <concept id="1068581242864" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" flags="nn" index="3cpWs8">
         <child id="1068581242865" name="localVariableDeclaration" index="3cpWs9" />
       </concept>
@@ -841,9 +844,34 @@
     </node>
     <node concept="9MYSb" id="2EZ251g0R9y" role="33IsuW">
       <node concept="3clFbS" id="2EZ251g0R9z" role="2VODD2">
-        <node concept="3clFbF" id="2EZ251g0R9$" role="3cqZAp">
-          <node concept="Xl_RD" id="2EZ251g0R9_" role="3clFbG">
-            <property role="Xl_RC" value="xml" />
+        <node concept="3clFbJ" id="6EZFicHAys_" role="3cqZAp">
+          <node concept="3clFbS" id="6EZFicHAysB" role="3clFbx">
+            <node concept="3cpWs6" id="6EZFicHA$3L" role="3cqZAp">
+              <node concept="Xl_RD" id="6EZFicHA$3N" role="3cqZAk">
+                <property role="Xl_RC" value="xml" />
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="6EZFicHAzp5" role="3clFbw">
+            <node concept="2OqwBi" id="6EZFicHAyFu" role="2Oq$k0">
+              <node concept="117lpO" id="6EZFicHAyuo" role="2Oq$k0" />
+              <node concept="3TrcHB" id="6EZFicHAyQi" role="2OqNvi">
+                <ref role="3TsBF5" to="iuxj:6EZFicH$DRV" resolve="fileExtension" />
+              </node>
+            </node>
+            <node concept="17RlXB" id="6EZFicHAzEn" role="2OqNvi" />
+          </node>
+          <node concept="9aQIb" id="6EZFicHA$fY" role="9aQIa">
+            <node concept="3clFbS" id="6EZFicHA$fZ" role="9aQI4">
+              <node concept="3cpWs6" id="6EZFicHA$hP" role="3cqZAp">
+                <node concept="2OqwBi" id="6EZFicHA$_P" role="3cqZAk">
+                  <node concept="117lpO" id="6EZFicHA$qk" role="2Oq$k0" />
+                  <node concept="3TrcHB" id="6EZFicHA$UU" role="2OqNvi">
+                    <ref role="3TsBF5" to="iuxj:6EZFicH$DRV" resolve="fileExtension" />
+                  </node>
+                </node>
+              </node>
+            </node>
           </node>
         </node>
       </node>

@@ -91,6 +91,9 @@ public class DefaultSubstituteMenuItem implements SubstituteMenuItem {
 
   @Override
   public boolean isAcceptable(String pattern, SubstitutionAcceptable acceptable) {
+    SNode type = getType(pattern);
+    if (type != null) return acceptable.acceptType(type);
+
     SNode node = createNode(pattern);
     if (node == null) {
       return false;

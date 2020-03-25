@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.persistence.def.IModelWriter;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.persistence.def.v4.IModelReader;
-import jetbrains.mps.smodel.persistence.def.IHashProvider;
 import jetbrains.mps.util.xml.XMLSAXHandler;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
@@ -27,10 +26,6 @@ public class ModelPersistence7 extends ModelPersistence6 {
   }
   @Override
   public IModelReader getModelReader() {
-    return null;
-  }
-  @Override
-  public IHashProvider getHashProvider() {
     return null;
   }
   @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package org.jetbrains.mps.openapi.module;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -68,17 +67,6 @@ public abstract class FacetsFacade {
   public abstract void removeFactory(FacetFactory factory);
 
   public interface FacetFactory {
-    // FIXME why cast to ModuleFacetBase.setModule when we can pass SModule right into #create() here?
-
-    /**
-     * @deprecated override {@link #create(SModule)} instead.
-     */
-    @Deprecated
-    @ToRemove(version = 2018.3)
-    default SModuleFacet create() {
-      return null;
-    }
-
     /**
      * @since 2018.3
      */
@@ -89,9 +77,7 @@ public abstract class FacetsFacade {
     /**
      * @since 2018.3
      */
-    default SModuleFacet create(@NotNull SModule module) {
-      return create();
-    }
+    SModuleFacet create(@NotNull SModule module);
 
     /**
      * @return user readable name for UI

@@ -223,6 +223,11 @@
     <property role="34LRSv" value="xml file" />
     <property role="EcuMT" value="6666499814681515200" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="6EZFicH$DRV" role="1TKVEl">
+      <property role="IQ2nx" value="7692057055172140539" />
+      <property role="TrG5h" value="fileExtension" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
     <node concept="1TJgyj" id="5M4a$b5j9j1" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="document" />

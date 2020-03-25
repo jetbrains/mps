@@ -60,6 +60,7 @@
         <module reference="cddf55b3-117e-46ec-837c-ff50eb7b89b0(jetbrains.mps.lang.feedback.problem.childAndProp)" version="1" />
         <module reference="44c243c8-2bf1-4d2a-bb59-fa9c2385049b(jetbrains.mps.lang.feedback.problem.childAndProp#01)" version="0" />
         <module reference="aaaaf3e2-decf-4e97-bf80-9109eab759ee(jetbrains.mps.lang.feedback.problem.legacy-constraints)" version="0" />
+        <module reference="3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem.rt)" version="0" />
         <module reference="2bdcefec-ba49-4b32-ab50-ebc7a41d5090(jetbrains.mps.lang.smodel#1139186730696)" version="0" />
       </dependencyVersions>
       <mapping-priorities />

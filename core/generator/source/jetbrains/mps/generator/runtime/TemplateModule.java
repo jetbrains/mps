@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ import jetbrains.mps.smodel.language.GeneratorRuntime;
 import org.jetbrains.mps.openapi.language.SLanguage;
 
 import java.util.Collection;
-import java.util.Set;
 
 /**
  * evgeny, 3/10/11
@@ -47,12 +46,6 @@ public interface TemplateModule extends GeneratorRuntime {
    * Employed generators do not contribute their reduction rules (other than those involved through $SWITCH$ call of invoked template)
    */
   Collection<TemplateModule> getEmployedGenerators();
-
-  /**
-   * Languages we wrote queries in
-   * XXX is there need for these in generator runtime? or just in Generator SModule?
-   */
-  Set<SLanguage> getQueryLanguages();
 
   /**
    * Languages this generator might produce. Exact set of languages used in generator outcome depends on actual execution and

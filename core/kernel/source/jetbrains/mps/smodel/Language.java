@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -183,6 +183,20 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
     validateExtends();
   }
 
+  @Override
+  public void attach(@NotNull SRepository repository) {
+    super.attach(repository);
+    final SLanguage mineDeployedIdentity = MetaAdapterFactory.getLanguage(getModuleReference());
+    for (Generator generator : new ModuleRepositoryFacade(repository).getAllModules(Generator.class)) {
+      if (!mineDeployedIdentity.equals(generator.sourceLanguage())) {
+        continue;
+      }
+      generator.setSourceLanguageInstance(this);
+    }
+  }
+
+
+
   /*
    * Update repository generator modules associated with this language with descriptors known to the language (registers new generators, if necessary)
    * This is another place in addition to ModulesMiner that knows about language-generator MD containment
@@ -225,11 +239,12 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
       }
     }
     // stale generator modules are unregistered from all owners
-    // here we assume generator modules could not exist without their language (which is true now provided Generator cons takes Language instance)
-    // therefore we unregister even generator modules the language doesn't own (see existingGenerators initialization, above).
-    // FIXME has to be reviewed for standalone generators. With SLanguage instead of source language module, we might want to let them be as is.
-    //       Alternatively, may use some package-local initialization method to pass new language module instance there.
+    // here we assume standalone generator modules could exist without their language
+    // therefore we unregister only generator modules that are not standalone, assuming they originally came from MD of this very language.
     for (Generator stale : existingGenerators) {
+      if (stale.getModuleDescriptor().isStandaloneModule()) {
+        continue;
+      }
       mrf.unregisterModule(stale);
     }
   }

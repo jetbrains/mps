@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.core.platform;
 
-import jetbrains.mps.cache.CachesManager;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.ComponentPlugin;
@@ -143,7 +142,6 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
     myLanguageRegistry = init(new LanguageRegistry(myClassLoaderManager));
     myConceptRegistry = init(new ConceptRegistry(myLanguageRegistry));
     init(new ConceptDescendantsCache(myModuleRepository, myLanguageRegistry));
-    init(new CachesManager(myClassLoaderManager, myModuleRepository));
     init(new DescriptorModelComponent(myModuleRepository,
                                       new LanguageDescriptorModelProvider(myLanguageRegistry),
                                       new GeneratorDescriptorModelProvider(),

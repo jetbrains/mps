@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,14 +18,13 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
-import jetbrains.mps.vfs.IFile;
 
 /**
  * INTENDED FOR INTERNAL USE, TESTS ONLY.
  */
 public final class TestLanguage extends Language {
-  private TestLanguage(LanguageDescriptor descriptor, IFile file) {
-    super(descriptor, file);
+  private TestLanguage(LanguageDescriptor descriptor) {
+    super(descriptor, null);
   }
 
   @Override
@@ -40,14 +39,16 @@ public final class TestLanguage extends Language {
    * Factory for a Language, deemed for use solely in tests.
    */
   public static Language newInstance(SRepositoryExt repo, LanguageDescriptor descriptor, MPSModuleOwner moduleOwner) {
-    Language newLanguage = new TestLanguage(descriptor, null);
+    Language newLanguage = new TestLanguage(descriptor);
 
     Language language = repo.registerModule(newLanguage, moduleOwner);
-    if (language == newLanguage && !descriptor.getGenerators().isEmpty()) {
+    assert language == newLanguage;
+    if (!descriptor.getGenerators().isEmpty()) {
+      final ModuleInstanceFactory mif = new ModuleRepositoryFacade(repo);
       // FIXME ModuleRepositoryFacade shall deal with SRepository instance and keep the knowledge what to do with a registered module,
       // shall not duplicate it here. MRF shall instantiate module instance classes (won't need TestLanguage nor public Generator)
       for (GeneratorDescriptor gd : descriptor.getGenerators()) {
-        repo.registerModule(new Generator(language, gd), moduleOwner);
+        repo.registerModule(mif.instantiate(gd, null), moduleOwner);
       }
     }
     return language;

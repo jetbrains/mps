@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -103,20 +103,6 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
 
   @Nullable
   Collection<SNode> trySwitch(SNodeReference _switch, TemplateContext context) throws GenerationException;
-
-  /**
-   * @deprecated This method implies instances of TemplateDeclaration rt class are per-invocation (well, technically, one could implement this method
-   *             in a way to keep cache of TD instances and to configure them with arguments on each apply, it's just more natural to
-   *             keep TD instances in the place we call this applyTemplate from, like TemplateProcessor's CALL/INCLUDE macros).
-   *             However, it's fine as frontend for generated code and perhaps, shall stay as one, while interpreted code might
-   *             get alternative facility to access cacheable TD instances. Nevertheless, existing API is bad, templateNode and context
-   *             are just to report errors, which could be done by caller, if necessary.
-   *             Besides, mix of Collection and List in API is inconvenient.
-   *             Has been replaced with {@link #findTemplate(TemplateDeclarationKey, SNodeReference)}.
-   */
-  @Deprecated
-  @ToRemove(version = 2018.2)
-  Collection<SNode> applyTemplate(@NotNull SNodeReference templateDeclaration, @NotNull SNodeReference templateNode, @NotNull TemplateContext context, Object... arguments) throws GenerationException;
 
   /**
    * Retrieve reusable runtime instance that represents TemplateDeclaration. Clients may keep an instance for subsequent reuse during the

@@ -29,7 +29,6 @@ import jetbrains.mps.smodel.persistence.lines.LineContent;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.util.StringUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.xml.BreakParseSAXException;
 import jetbrains.mps.util.xml.XMLSAXHandler;
 import org.apache.log4j.LogManager;
@@ -45,7 +44,6 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -299,15 +297,6 @@ public class ModelPersistence {
     }
   }
 
-
-  /**
-   * @deprecated use {@link #index(InputStream, Callback)} instead
-   */
-  @Deprecated
-  @ToRemove(version = 0)
-  public static void index(byte[] data, Callback newConsumer) throws IOException {
-    index(new ByteArrayInputStream(data), newConsumer);
-  }
 
   private static void assertMarkSupported(InputStream stream) {
     // Both BufferedInputStream and ByteArrayInputStream do support marks, latter without limit.

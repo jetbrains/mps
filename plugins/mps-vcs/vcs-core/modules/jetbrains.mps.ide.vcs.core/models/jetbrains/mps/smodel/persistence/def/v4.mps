@@ -253,23 +253,6 @@
     <node concept="3uibUv" id="4BapoMDsMHD" role="EKbjA">
       <ref role="3uigEE" node="4BapoMDsMz7" resolve="IPersistenceWithReader" />
     </node>
-    <node concept="3clFb_" id="p9Lm3R6FZL" role="jymVt">
-      <property role="TrG5h" value="getHashProvider" />
-      <property role="DiZV1" value="false" />
-      <property role="od$2w" value="false" />
-      <node concept="2AHcQZ" id="p9Lm3R6FZM" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-      <node concept="3clFbS" id="p9Lm3R6FZN" role="3clF47">
-        <node concept="3cpWs6" id="p9Lm3R6FZO" role="3cqZAp">
-          <node concept="10Nm6u" id="4BapoMDsgP5" role="3cqZAk" />
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="p9Lm3R6FZQ" role="1B3o_S" />
-      <node concept="3uibUv" id="p9Lm3R6FZR" role="3clF45">
-        <ref role="3uigEE" to="5fzo:~IHashProvider" resolve="IHashProvider" />
-      </node>
-    </node>
     <node concept="3clFb_" id="p9Lm3R6FZS" role="jymVt">
       <property role="TrG5h" value="getModelReaderHandler" />
       <property role="DiZV1" value="false" />

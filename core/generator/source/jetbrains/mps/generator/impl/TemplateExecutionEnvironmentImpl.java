@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ import jetbrains.mps.generator.GenerationCanceledException;
 import jetbrains.mps.generator.GenerationTrace;
 import jetbrains.mps.generator.GenerationTracerUtil;
 import jetbrains.mps.generator.IGeneratorLogger;
-import jetbrains.mps.generator.impl.interpreted.TemplateCall;
 import jetbrains.mps.generator.impl.query.GeneratorQueryProvider;
 import jetbrains.mps.generator.impl.reference.PostponedReference;
 import jetbrains.mps.generator.impl.reference.ReferenceInfo_Macro;
@@ -213,43 +212,6 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
     }
     // no switch-case found for the inputNode - continue with templateNode under the $switch$
     return null;
-  }
-
-  // XXX Now that I've checked old API works with both new interpreted and old generated templates,
-  //     shall check new API works with old generated templates. Then, change generated code to match new API
-  //     and check new API works ok.
-  //   ? how to check old API works fine with new generated code? Try to use new API from within applyTemplates()?
-  //     What if I regenerate first, to see if old api works with newly generated code?
-  // It's more important to check how new API works with old templates as it's a case we likely to face.
-  //     Old code either invokes same old code, or new one, interpreted or generated. For MPS-distributed generated
-  //     templates, there'd be no assert in loadTemplates and proper TemplateDeclaration2.getParameterNames to
-  //     handle arguments, i.e. the path already verified for interpreted.
-  // For a new invocation API to tell whether template is new or old, we can either use newly introduced method in TM to
-  //     access TD (missing method means loadTemplates have to be used, or a 'version' field in TD along with
-  //     relaxed assert (no-op implementation) and flagged TC to ignore
-
-  @Override
-  public Collection<SNode> applyTemplate(@NotNull SNodeReference templateDeclaration, @NotNull SNodeReference templateNode, @NotNull TemplateContext context, Object... arguments) throws GenerationException {
-    // (1) applyTemplate() invoked from interpreter (can change this by not using the method from interpreter)
-    //     (a) invoked template declaration is new and expects arguments in TC (e.g. interpreted TD)
-    //     (b) invoked template declaration is old and expects args at construction time, changes TC itself
-    //         can assume TC comes with proper values and flag TC to ignore subsequent subContext(Map).
-    //         caller can supply arguments[] of a proper length with null values.
-    // (2) applyTemplate() invoked from generated code or code that doesn't pass values through TC
-    //     (a) invoked template declaration is new and expects arguments in TC (e.g. interpreted TD
-    //         CAN I DO ANYTHING, provided I have no idea about parameter names? Can add a method to tell names for migration purposes
-    //           i.e. need to tell old TD from a new one. An interface with getParameterNames():String[] as indicator?
-    //           mangle TC with names and values
-    //     (b) invoked template declaration is old (means cross-compiled-generator template call) and expects args at construction time, changes TC itself
-    TemplateDeclaration templateDeclarationInstance = findTemplate(TemplateIdentity.fromPointer(templateDeclaration, null), templateNode);
-    TemplateCall callSite = new TemplateCall(templateDeclarationInstance.getParameterNames(), arguments);
-    if (callSite.argumentsMismatch()) {
-      getLogger().error(templateDeclaration, "number of arguments doesn't match template", GeneratorUtil.describeInput(context));
-      // fall-though, as it's the way it was in TemplateDeclarationInterpreted
-    }
-    // context may keep a mapping label (e.g. from outer $INCLUDE$ label template)
-    context = callSite.prepareCallContext(context);
-    return templateDeclarationInstance.apply(this, context);
   }
 
   @NotNull

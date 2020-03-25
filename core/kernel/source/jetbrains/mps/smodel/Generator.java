@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.module.ReloadableModuleBase;
 import jetbrains.mps.module.SDependencyImpl;
 import jetbrains.mps.project.ModelsAutoImportsManager.AutoImportsContributor;
-import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.io.DescriptorIO;
 import jetbrains.mps.project.io.DescriptorIOFacade;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
@@ -54,30 +53,23 @@ public class Generator extends ReloadableModuleBase {
    * @deprecated have to use SLanguage to facilitate standalone generator modules
    */
   @Deprecated
-  @NotNull private Language mySourceLanguage;
+  private Language mySourceLanguage;
   /**
    * though SLanguage is runtime identity, and here we deal with source model presentation (where SModuleReference would be better
    * match to represent source language module), I stick to SLanguage as it's pretty much the same as SModuleReference anyway, and, perhaps,
    * we would need to add generators to deployed languages some day. Besides, as long as we use SModule instances for deployed modules as well,
    * it's convenient to have SLanguage here for that purpose, too.
    */
-  @NotNull private SLanguage mySourceLanguage0;
+  @NotNull
+  private SLanguage mySourceLanguage0;
 
   private GeneratorDescriptor myGeneratorDescriptor;
-
-  public Generator(@NotNull Language sourceLanguage, @NotNull GeneratorDescriptor generatorDescriptor) {
-    super(sourceLanguage.getDescriptorFile());
-    mySourceLanguage = sourceLanguage;
-    mySourceLanguage0 = MetaAdapterFactory.getLanguage(sourceLanguage.getModuleReference());
-    myGeneratorDescriptor = generatorDescriptor;
-    setModuleReference(myGeneratorDescriptor.getModuleReference());
-  }
 
   /**
    * this is pretty much how generator instantiation would look like (once we drop Language module).
    * with this, we support standalone generators story
    */
-  /*package*/ Generator(@NotNull SLanguage sourceLanguage, @NotNull GeneratorDescriptor generatorDescriptor, @Nullable IFile descriptorFile, @NotNull Language langModuleToBeRemoved) {
+  /*package*/ Generator(@NotNull SLanguage sourceLanguage, @NotNull GeneratorDescriptor generatorDescriptor, @Nullable IFile descriptorFile, @Nullable Language langModuleToBeRemoved) {
     super(descriptorFile);
     mySourceLanguage = langModuleToBeRemoved;
     mySourceLanguage0 = sourceLanguage;
@@ -89,13 +81,31 @@ public class Generator extends ReloadableModuleBase {
   @Override
   public void attach(@NotNull SRepository repository) {
     super.attach(repository);
-    mySourceLanguage.register(this);
+    if (mySourceLanguage != null) {
+      mySourceLanguage.register(this);
+    }
   }
 
   @Override
   public void dispose() {
-    mySourceLanguage.unregister(this);
+    if (mySourceLanguage != null) {
+      mySourceLanguage.unregister(this);
+    }
     super.dispose();
+  }
+
+  /*package*/ void setSourceLanguageInstance(@Nullable Language language) {
+    if (language == null && mySourceLanguage != null) {
+      // XXX perhaps, shall unregister regardless of language == null.
+      //     Is it possible that Generator instance had mySourceLanguage module set != null, and then re-set to another != null, without null in between?
+      mySourceLanguage.unregister(this);
+      mySourceLanguage = null;
+    }
+    if (language != null) {
+      assert sourceLanguage().equals(MetaAdapterFactory.getLanguage(language.getModuleReference()));
+      mySourceLanguage = language;
+      mySourceLanguage.register(this);
+    }
   }
 
   public List<SModel> getOwnTemplateModels() {
@@ -116,7 +126,7 @@ public class Generator extends ReloadableModuleBase {
 
   @Override
   public IFile getModuleSourceDir() {
-    return mySourceLanguage.getModuleSourceDir();
+    return mySourceLanguage == null ? null : mySourceLanguage.getModuleSourceDir();
   }
 
   @Override
@@ -131,7 +141,11 @@ public class Generator extends ReloadableModuleBase {
       // base setModuleDescriptor() does reloadAfterDescriptorChange()
       return;
     }
-    LanguageDescriptor languageDescriptor = getSourceLanguage().getModuleDescriptor();
+    if (mySourceLanguage == null) {
+      // this module lost its source language connection (or never had one), can not update anything
+      return;
+    }
+    LanguageDescriptor languageDescriptor = mySourceLanguage.getModuleDescriptor();
     int index = languageDescriptor.getGenerators().indexOf(getModuleDescriptor());
     if (index != -1) {
       languageDescriptor.getGenerators().remove(index);
@@ -142,7 +156,7 @@ public class Generator extends ReloadableModuleBase {
     // generators, not only directly owned, I keep this call outside of index != -1 check.
     // In any case, it's odd to do anything about source language in doSetModuleDescriptor() operation this one has to be focused on MD change, rather than
     // to care about source language reload, shall fix this as standalone generator story evolves.
-    getSourceLanguage().reloadAfterDescriptorChange();
+    mySourceLanguage.reloadAfterDescriptorChange();
   }
 
   public String getAlias() {
@@ -160,9 +174,12 @@ public class Generator extends ReloadableModuleBase {
   /**
    * @deprecated Hard link to Language module makes Generator modules inflexible and bound to Language presence.
    *             Use {@link #sourceLanguage()} instead
+   *             XXX what's the contract of the method, is it supposed to give source language of a generator that is part of a language or
+   *             for it shall give Language for standalone generator as well?
    */
   @Deprecated
   @ToRemove(version = 2019.1)
+  @Nullable
   public Language getSourceLanguage() {
     return mySourceLanguage;
   }
@@ -196,7 +213,10 @@ public class Generator extends ReloadableModuleBase {
         Logger.getLogger(getClass()).error("Save failed", ex);
       }
     } else {
-      mySourceLanguage.save();
+      if (mySourceLanguage != null) {
+        // FIXME odd...
+        mySourceLanguage.save();
+      }
     }
   }
 
@@ -206,8 +226,8 @@ public class Generator extends ReloadableModuleBase {
     final SRepository repo = getRepository();
 
     // generator sees its source language
-    rv.add(new SDependencyImpl(mySourceLanguage.getModuleReference(), repo, SDependencyScope.DEFAULT, false));
-    for (SModuleReference rt : mySourceLanguage.getRuntimeModulesReferences()) {
+    rv.add(new SDependencyImpl(mySourceLanguage0.getSourceModuleReference(), repo, SDependencyScope.DEFAULT, false));
+    for (SModuleReference rt : mySourceLanguage0.getLanguageRuntimes()) {
       rv.add(new SDependencyImpl(rt, repo, SDependencyScope.RUNTIME, false));
     }
 
@@ -251,9 +271,11 @@ public class Generator extends ReloadableModuleBase {
     @Override
     public Set<SModel> getAutoImportedModels(SModule contextGenerator, SModel model) {
       // likely, one needs to reference concepts of the source language:
-      if (SModelStereotype.isGeneratorModel(model)) {
+      if (SModelStereotype.isGeneratorModel(model) && contextGenerator.getRepository() != null) {
+        final SModuleReference sourceLangRef = ((Generator) contextGenerator).sourceLanguage().getSourceModuleReference();
+        SModule langModule = sourceLangRef == null ? null : sourceLangRef.resolve(contextGenerator.getRepository());
         // FIXME MM, please tell me what to use instead! SModuleOperations.getAspect(SModule, "structure") isn't nice alternative for hand-written code.
-        SModel structureAspect = LanguageAspect.STRUCTURE.get(((Generator) contextGenerator).getSourceLanguage());
+        SModel structureAspect = langModule instanceof Language ? LanguageAspect.STRUCTURE.get(((Language) langModule)) : null;
         if (structureAspect != null) {
           // XXX when source language used to be 'used language', we've imported all extended languages as well. Shall we
           // import structures of extended language modules here as well?

@@ -315,6 +315,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a4L);
     b.origin("r:64db3a92-5968-4a73-b456-34504a2d97a6(jetbrains.mps.core.xml.structure)/6666499814681515200");
     b.version(2);
+    b.property("fileExtension", 0x6abfad232d929dfbL).type(PrimitiveTypeId.STRING).origin("7692057055172140539").done();
     b.aggregate("document", 0x5c842a42c54c94c1L).target(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5e2f66f285946ac9L).optional(false).ordered(true).multiple(false).origin("6666499814681515201").done();
     b.alias("xml file");
     return b.create();

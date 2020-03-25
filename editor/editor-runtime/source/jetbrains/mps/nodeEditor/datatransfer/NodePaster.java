@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +18,11 @@ package jetbrains.mps.nodeEditor.datatransfer;
 import jetbrains.mps.datatransfer.DataTransferManager;
 import jetbrains.mps.datatransfer.PasteEnv;
 import jetbrains.mps.datatransfer.PastePlaceHint;
-import jetbrains.mps.kernel.model.SModelUtil;
 import jetbrains.mps.nodeEditor.SNodeEditorUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.smodel.SNodeUtil;
-import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
-import jetbrains.mps.smodel.search.ConceptAndSuperConceptsCache;
+import jetbrains.mps.smodel.search.LinkDeclarationLookup;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -266,20 +264,9 @@ public class NodePaster {
     }
   }
 
-  @Nullable
+  @NotNull
   private SAbstractConcept getSpecifiedConcept(@NotNull SNode pasteNode, @NotNull SContainmentLink link) {
-    SNode conceptNode = pasteNode.getConcept().getDeclarationNode();
-    if (conceptNode == null) {
-      return null;
-    }
-
-    SNode linkNode =
-        ConceptAndSuperConceptsCache.getInstance(conceptNode).getMostSpecificLinkDeclarationByRole(link.getName());
-    if (linkNode == null) {
-      return null;
-    }
-
-    return MetaAdapterByDeclaration.getConcept(SModelUtil.getLinkDeclarationTarget(linkNode));
+    return new LinkDeclarationLookup(pasteNode.getConcept()).getMostSpecificLinkTarget(link);
   }
 
   private boolean canPasteToParent(SNode anchorNode, SContainmentLink link, boolean exactly) {

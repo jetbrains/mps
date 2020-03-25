@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,10 @@
  */
 package jetbrains.mps.persistence;
 
-import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
-import jetbrains.mps.generator.ModelDigestUtil;
 import jetbrains.mps.persistence.MetaModelInfoProvider.MetaInfoLoadingOption;
 import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.StuffedMetaModelInfo;
@@ -33,9 +31,6 @@ import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
-import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.util.annotation.ToRemove;
-import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -51,7 +46,6 @@ import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.ModelFactoryType;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.ModelLoadingOption;
-import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
@@ -59,12 +53,9 @@ import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import static org.jetbrains.mps.openapi.persistence.MFProblem.NO_PROBLEM;
 
@@ -261,55 +252,6 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
   @Override
   public List<DataSourceType> getPreferredDataSourceTypes() {
     return Collections.singletonList(PreinstalledDataSourceTypes.MPS);
-  }
-
-  /**
-   * @deprecated unused, no reason to keep
-   */
-  @Deprecated
-  @ToRemove(version = 2019.3)
-  public static Map<String, String> getDigestMap(@NotNull MultiStreamDataSource source, String streamName) {
-    InputStream is = null;
-    try {
-      is = source.openInputStream(streamName);
-      return getDigestMap(new InputStreamReader(is, FileUtil.DEFAULT_CHARSET));
-    } catch (IOException e) {
-      /* ignore */
-    } finally {
-      FileUtil.closeFileSafe(is);
-    }
-    return null;
-  }
-
-  /**
-   * @deprecated unused, no reason to keep
-   */
-  @Deprecated
-  @ToRemove(version = 2019.3)
-  public static Map<String, String> getDigestMap(@NotNull StreamDataSource source) {
-    InputStream is = null;
-    try {
-      is = source.openInputStream();
-      return getDigestMap(new InputStreamReader(is, FileUtil.DEFAULT_CHARSET));
-    } catch (IOException e) {
-      /* ignore */
-    } finally {
-      FileUtil.closeFileSafe(is);
-    }
-    return null;
-  }
-
-  /**
-   * @deprecated unused, no reason to keep
-   */
-  @Deprecated
-  @ToRemove(version = 2019.3)
-  public static Map<String, String> getDigestMap(Reader input) {
-    try {
-      return Collections.singletonMap(GeneratableSModel.FILE, ModelDigestUtil.hashText(input));
-    } catch (IOException | IllegalStateException ex) {
-      return null;
-    }
   }
 
   /**

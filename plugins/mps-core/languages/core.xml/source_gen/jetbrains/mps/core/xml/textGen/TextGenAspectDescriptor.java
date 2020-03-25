@@ -10,8 +10,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.text.rt.TextGenModelOutline;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class TextGenAspectDescriptor extends TextGenAspectBase {
   private final LanguageConceptSwitch myIndex = new LanguageConceptSwitch();
@@ -82,10 +84,21 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     return node.getName();
   }
   private static String getFileExtension_XmlFile(SNode node) {
-    return "xml";
+    if (isEmptyString(SPropertyOperations.getString(node, PROPS.fileExtension$KaCu))) {
+      return "xml";
+    } else {
+      return SPropertyOperations.getString(node, PROPS.fileExtension$KaCu);
+    }
+  }
+  private static boolean isEmptyString(String str) {
+    return str == null || str.length() == 0;
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept XmlFile$Ew = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54c94c0L, "jetbrains.mps.core.xml.structure.XmlFile");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty fileExtension$KaCu = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54c94c0L, 0x6abfad232d929dfbL, "fileExtension");
   }
 }

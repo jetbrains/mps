@@ -92,13 +92,6 @@ public class MigrationRegistryImpl extends AbstractProjectComponent implements M
       if (!(new VersionFixer(myMpsProject, module, true).areDepsSatisfied())) {
         return false;
       }
-      if (!((module instanceof AbstractModule))) {
-        continue;
-      }
-      ModuleDescriptor descriptor = ((AbstractModule) module).getModuleDescriptor();
-      if (descriptor != null && descriptor.getLoadException() != null) {
-        continue;
-      }
     }
 
     for (SModule module : Sequence.fromIterable(modules)) {
@@ -111,7 +104,8 @@ public class MigrationRegistryImpl extends AbstractProjectComponent implements M
   }
 
   public void doUpdateImportVersions(SModule module) {
-    if (!(new VersionFixer(myMpsProject, module, true).areDepsSatisfied())) {
+    final VersionFixer vf = new VersionFixer(myMpsProject, module, true);
+    if (!(vf.areDepsSatisfied())) {
       return;
     }
     if (!((module instanceof AbstractModule))) {
@@ -122,9 +116,9 @@ public class MigrationRegistryImpl extends AbstractProjectComponent implements M
       return;
     }
 
-    new VersionFixer(myMpsProject, module, true).updateImportVersions();
+    vf.updateImportVersions();
     if (module instanceof AbstractModule) {
-      (as_ufn3ol_a0a0a0g0n(module, AbstractModule.class)).save();
+      (as_ufn3ol_a0a0a0h0n(module, AbstractModule.class)).save();
     }
   }
 
@@ -359,7 +353,7 @@ public class MigrationRegistryImpl extends AbstractProjectComponent implements M
     return result;
   }
 
-  private static <T> T as_ufn3ol_a0a0a0g0n(Object o, Class<T> type) {
+  private static <T> T as_ufn3ol_a0a0a0h0n(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
   private static <T> T as_ufn3ol_a0a0a5a0a0a0a1a02(Object o, Class<T> type) {

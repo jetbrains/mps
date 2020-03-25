@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,6 @@ import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.util.PathManager;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
 import jetbrains.mps.vfs.FileSystem;
@@ -121,7 +120,7 @@ public final class ModulesMiner {
       if (IFileUtil.isJarFile(file)) {
         readModuleDescriptorsFromJarFile(file);
       } else {
-        tryLoadModuleDescriptor(file);
+        readModuleDescriptorsFromRegularFile(file);
       }
     }
     return this;
@@ -320,37 +319,6 @@ public final class ModulesMiner {
     return false;
   }
 
-  /**
-   * Attempts to load module descriptor from file.
-   * Updates {@link #getCollectedModules()} collection.
-   * NOTE: single file could trigger more than one module loaded (e.g. lang.mpl loads generators), returned value
-   * is the 'primary' module, i.e. language. Other loaded modules are available in {@link #getCollectedModules()}
-   *
-   * Note, loading a file with language module not necessarily triggers loading of respective generators, only language source
-   * module would pick generator modules up. Deployed language doesn't load generators.
-   *
-   * @deprecated Please do not use this method, it gonna fade away. With few modules coming from the same file, its API is not handy.
-   *             With mps/2019.3 branch, there's no use in mbeddr (mpsutil/spreferences has been refactored)
-   *
-   * @param file descriptor file to parse for module information
-   * @return handle for descriptor loaded from file
-   */
-  @NotNull
-  @Deprecated
-  @ToRemove(version = 2019.3)
-  public ModuleHandle loadModuleHandle(@NotNull IFile file) {
-    ArrayList<ModuleHandle> pre = new ArrayList<>(myOutcome);
-    if (tryLoadModuleDescriptor(file)) {
-      ArrayList<ModuleHandle> post = new ArrayList<>(myOutcome);
-      if (post.size() > pre.size()) {
-        // take the first one added. Assumes myOutcome is a list, and the first one discovered is therefore the one added at pre.size() index
-        return post.get(pre.size());
-      }
-      // fall-through
-    }
-    return new ModuleHandle(file, null);
-  }
-
   private void fillOutcome(ModuleHandle moduleHandle, boolean isSourceNotDeployment) {
     myOutcome.add(moduleHandle);
     // Deployed Language and Generator modules have their own DD now, and their modules either listed (almost) directly, in GenerateTask (till the moment
@@ -369,11 +337,8 @@ public final class ModulesMiner {
    * if file points to deployment descriptor, loads DD and descriptor of source module, if any.
    * Updates excludes and outcome state of this miner.
    * Expects file (not directory) as an input.
-   * XXX when {@link #loadModuleHandle(IFile)} gone, could get inlined into {@link #collectModules(IFile)}
-   *
-   * @return true if an attempt to read module has been made ({@code false} means no reason to expect any change in the state).
    */
-  private boolean tryLoadModuleDescriptor(IFile file) {
+  private void readModuleDescriptorsFromRegularFile(IFile file) {
     String filePath = file.getPath();
     if (filePath.endsWith(SLASH_META_INF_MODULE_XML)) {
       IFile moduleHome;
@@ -385,9 +350,9 @@ public final class ModulesMiner {
         // Instead, assume META-INF/module.xml is at the root of a module location (which if generally the case).
         moduleHome = file.getParent().getParent();
       }
-      return tryModuleFromDeploymentDescriptor(moduleHome, file);
+      tryModuleFromDeploymentDescriptor(moduleHome, file);
     } else {
-      return trySourceModuleDescriptorsFromFile(file);
+      trySourceModuleDescriptorsFromFile(file);
     }
   }
 

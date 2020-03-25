@@ -4,7 +4,6 @@ package jetbrains.mps.smodel.persistence.def.v4;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.smodel.persistence.def.IModelPersistence;
-import jetbrains.mps.smodel.persistence.def.IHashProvider;
 import jetbrains.mps.util.xml.XMLSAXHandler;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
@@ -16,10 +15,6 @@ import org.jetbrains.annotations.Nullable;
 
 @GeneratedClass(node = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)/453110257780703213", model = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)")
 public class ModelPersistence4 implements IModelPersistence, IPersistenceWithReader {
-  @Override
-  public IHashProvider getHashProvider() {
-    return null;
-  }
   @Override
   public XMLSAXHandler<ModelLoadResult> getModelReaderHandler(ModelLoadingState state, SModelHeader header) {
     return null;

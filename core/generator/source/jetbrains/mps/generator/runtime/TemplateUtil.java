@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,9 +23,7 @@ import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_R
 import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_SimpleRef;
 import jetbrains.mps.project.structure.modules.mappingpriorities.MappingPriorityRule;
 import jetbrains.mps.project.structure.modules.mappingpriorities.RuleType;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.util.ArrayList;
@@ -100,20 +98,6 @@ public class TemplateUtil {
 
   public static <T> Collection<T> asCollection(final T... objects) {
     return Arrays.asList(objects);
-  }
-
-  /**
-   * @throws IllegalArgumentException if actual number of arguments doesn't match expected
-   */
-  @ToRemove(version = 2018.3)
-  public static void assertTemplateParametersCount(SNodeReference template, int expected, int actual) throws IllegalArgumentException {
-    // We no longer assert params count as we pass fixed Object[10] array to legacy generated code when loading templates through old API
-    // (TemplateModel.loadTemplates) to be invoked with new API that doesn't tell us exact number of arguments it would push into TC later.
-    // Remove this method altogether once TM.loadTemplate gone.
-//    if (expected != actual) {
-//      final String msg = String.format("Wrong number of arguments for template %s. Expected %d, actual count is %d", template, 0, actual);
-//      throw new IllegalArgumentException(msg);
-//    }
   }
 
   public static TemplateMappingPriorityRule createStrictlyBeforeRule(TemplateMappingConfigRef left, TemplateMappingConfigRef right) {

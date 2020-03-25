@@ -26,6 +26,7 @@ import com.intellij.openapi.editor.EditorFactory;
 import com.intellij.openapi.editor.colors.EditorColors;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
+import com.intellij.openapi.editor.colors.FontPreferences;
 import jetbrains.mps.nodeEditor.EditorSettings.MyState;
 import jetbrains.mps.nodeEditor.cells.EditorFontMetricsImpl;
 import jetbrains.mps.nodeEditor.cells.FontRegistry;
@@ -373,9 +374,9 @@ public class EditorSettings implements ApplicationComponent, PersistentStateComp
 
   @SuppressWarnings("WeakerAccess")
   public static class MyState {
-    public String fontFamily = "JetBrains Mono";
-    public int fontSize = 13;
-    public double lineSpacing = 1.0;
+    public String fontFamily = FontPreferences.DEFAULT_FONT_NAME;
+    public int fontSize = FontPreferences.DEFAULT_FONT_SIZE;
+    public double lineSpacing = FontPreferences.DEFAULT_LINE_SPACING;
 
     public int textWidth = 500;
     public boolean useAntialiasing = true;

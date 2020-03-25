@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -135,6 +135,7 @@ public class TestModuleFactoryBase implements TestModuleFactory {
     generatorDescriptor.setNamespace(TEST_PREFIX_GENERATOR + "_" + getNewId() + "_" + uuid);
     generatorDescriptor.setId(ModuleId.fromString(uuid));
     LanguageDescriptor languageDescriptor = createLanguageDescriptor();
+    generatorDescriptor.setSourceLanguage(languageDescriptor.getModuleReference());
     languageDescriptor.getGenerators().add(generatorDescriptor);
     return createLanguageFromDescriptor(languageDescriptor);
   }
