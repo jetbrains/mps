@@ -28,8 +28,8 @@ import jetbrains.mps.util.ComputeRunnable;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.annotations.Internal;
+import org.jetbrains.mps.openapi.model.SModel;
 
 import java.math.BigDecimal;
 
@@ -116,11 +116,6 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
   // Smartest way is to drop these caches altogether.
   private Runnable wrapWithModelWriteDispatch(Runnable r) {
     return myWriteActionDispatcher.wrap(r);
-  }
-
-  @Override
-  public void flushEventQueue() {
-    myEDTExecutor.flushEventsQueue();
   }
 
   @ToRemove(version = 201)

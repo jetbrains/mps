@@ -16,7 +16,6 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.annotation.ToRemove;
 
 /**
  * Evgeny Gryaznov, Sep 3, 2010
@@ -53,11 +52,4 @@ public interface ModelCommandExecutor {
    * Run write asynchronously, in EDT thread
    */
   void runWriteInEDT(Runnable r); // == openapi.ModelAccess
-
-  /**
-   * @deprecated with no contract, what could justify its use?
-   */
-  @Deprecated
-  @ToRemove(version = 3.3)
-  void flushEventQueue();
 }
