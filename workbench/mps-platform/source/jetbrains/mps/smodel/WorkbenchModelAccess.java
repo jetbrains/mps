@@ -273,7 +273,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
       throw new IllegalModelAccessException("deadlock prevention: can not elevate model read to a command");
     }
 
-    if (isInsideCommand()) {
+    if (isCommandAction()) {
       // no apparent reason to go long way and to notify IDEA's CommandProcessor.
       // Besides, and it's IMPORTANT, wrapTopCommandRunnable() and UndoContextSetup expect runnable to be the top command
       // as they use it to configure undo context, which is not the thing we'd like to do for an executeCommand() inside another executeCommand().

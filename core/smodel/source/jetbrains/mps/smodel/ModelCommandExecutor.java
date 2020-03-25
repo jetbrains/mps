@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.smodel;
 
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.annotation.ToRemove;
-import org.jetbrains.mps.openapi.module.ModelAccess;
 
 /**
  * Evgeny Gryaznov, Sep 3, 2010
@@ -54,14 +53,6 @@ public interface ModelCommandExecutor {
    * Run write asynchronously, in EDT thread
    */
   void runWriteInEDT(Runnable r); // == openapi.ModelAccess
-
-  // there's 1 use in mbeddr
-  /**
-   * @deprecated Use {@link ModelAccess#isCommandAction()} instead
-   */
-  @Deprecated
-  @ToRemove(version = 2018.3)
-  boolean isInsideCommand(); // openapi.ModelAccess#isCommandAction
 
   /**
    * @deprecated with no contract, what could justify its use?

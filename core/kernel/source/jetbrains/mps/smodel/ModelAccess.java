@@ -131,12 +131,6 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
     return myReadWriteLock.isWriteLockedByCurrentThread();
   }
 
-  @Override
-  public final boolean isInsideCommand() {
-    // to cease along with ModelCommandExecutor
-    return canWrite() && myCommandActionDispatcher.isInsideAction();
-  }
-
   // ExecuteCommandStatement with repo == null generates into executeCommand(Runnable)
   // left abstract method (though could have deleted method) as there might be references from MPS code to the implementation that used to be here
   @Override
@@ -157,7 +151,7 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
 
   @Override
   public boolean isCommandAction() {
-    return isInsideCommand();
+    return canWrite() && myCommandActionDispatcher.isInsideAction();
   }
 
   protected void onCommandStarted() {
@@ -171,8 +165,8 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
   @Nullable
   @Override
   public ModelCommandContext getCommandContext(SModel model) {
-    // isInsideCommand might be excessive, just want to make sure there's not access to MCC from a thread other than the command one.
-    return isInsideCommand() ? myCommandContextProvider.get(model, getUndoHandler(model)) : null;
+    // isCommandAction might be excessive, just want to make sure there's not access to MCC from a thread other than the command one.
+    return isCommandAction() ? myCommandContextProvider.get(model, getUndoHandler(model)) : null;
   }
 
   @Nullable
