@@ -57,21 +57,6 @@ public final class PersistenceUtil {
   private PersistenceUtil() {
   }
 
-  /**
-   * Try to load a model using a default {@link org.jetbrains.mps.openapi.persistence.ModelFactory}
-   * identified by <code>extension</code> from supplied textual <code>content</code>.
-   *
-   * @return <code>null</code> if fails to load model from the content supplied (either model read error, no model factory for the extension, or factory
-   * doesn't support textual content)
-   */
-  @Nullable
-  public static SModel loadModel(@NotNull String content) {
-    @SuppressWarnings("ConstantConditions")
-    @NotNull ModelFactory factory = getModelFactoryService().getFactoryByType(PreinstalledModelFactoryTypes.PLAIN_XML);
-    byte[] bytes = content.getBytes(FileUtil.DEFAULT_CHARSET);
-    return loadModel(bytes, factory);
-  }
-
   @NotNull
   private static ModelFactoryService getModelFactoryService() {
     return ModelFactoryService.getInstance();
@@ -91,6 +76,7 @@ public final class PersistenceUtil {
       model.load();
       return model;
     } catch (ModelLoadException | IOException ex) {
+      LOG.error("loadModel", ex);
       return null;
     }
   }
@@ -280,6 +266,10 @@ public final class PersistenceUtil {
     @Override
     public DataSourceType getType() {
       return null;
+    }
+
+    public byte[] getContentBytes() {
+      return myStream.toByteArray();
     }
 
     public InputStream getContentAsStream() {

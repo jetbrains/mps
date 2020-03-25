@@ -37,9 +37,8 @@
     <import index="4it6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.loading(MPS.Core/)" />
     <import index="i290" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.java.stub(MPS.Core/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
-    <import index="iyvn" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.persistence.datasource(MPS.Core/)" />
-    <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" implicit="true" />
-    <import index="bxo2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence.datasource(MPS.OpenAPI/)" implicit="true" />
+    <import index="ends" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.persistence(MPS.Core/)" />
+    <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
@@ -225,13 +224,6 @@
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1081855346303" name="jetbrains.mps.baseLanguage.structure.BreakStatement" flags="nn" index="3zACq4" />
-      <concept id="1184950988562" name="jetbrains.mps.baseLanguage.structure.ArrayCreator" flags="nn" index="3$_iS1">
-        <child id="1184951007469" name="componentType" index="3$_nBY" />
-        <child id="1184952969026" name="dimensionExpression" index="3$GQph" />
-      </concept>
-      <concept id="1184952934362" name="jetbrains.mps.baseLanguage.structure.DimensionExpression" flags="nn" index="3$GHV9">
-        <child id="1184953288404" name="expression" index="3$I4v7" />
-      </concept>
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
@@ -261,6 +253,9 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
       <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
+      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
+        <reference id="1116615189566" name="classifier" index="3VsUkX" />
+      </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
       <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
         <reference id="1170346070688" name="classifier" index="1Y3XeK" />
@@ -3763,26 +3758,36 @@
         <node concept="3cpWs8" id="6BljlJl_vAq" role="3cqZAp">
           <node concept="3cpWsn" id="6BljlJl_vAr" role="3cpWs9">
             <property role="TrG5h" value="serialized" />
-            <node concept="3uibUv" id="6BljlJl_vAk" role="1tU5fm">
-              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+            <node concept="10Q1$e" id="1uv9cOmOejz" role="1tU5fm">
+              <node concept="10PrrI" id="1uv9cOmOe8m" role="10Q1$1" />
             </node>
-            <node concept="2YIFZM" id="6BljlJl_vAs" role="33vP2m">
+            <node concept="2YIFZM" id="1uv9cOmObH0" role="33vP2m">
+              <ref role="37wK5l" to="pa15:~PersistenceUtil.modelAsBytes(org.jetbrains.mps.openapi.model.SModel,org.jetbrains.mps.openapi.persistence.ModelFactory)" resolve="modelAsBytes" />
               <ref role="1Pybhc" to="pa15:~PersistenceUtil" resolve="PersistenceUtil" />
-              <ref role="37wK5l" to="pa15:~PersistenceUtil.saveModel(org.jetbrains.mps.openapi.model.SModel,java.lang.String)" resolve="saveModel" />
-              <node concept="2OqwBi" id="2cKUqfNY9X5" role="37wK5m">
-                <node concept="37vLTw" id="2cKUqfNY9OC" role="2Oq$k0">
+              <node concept="2OqwBi" id="1uv9cOmObH1" role="37wK5m">
+                <node concept="37vLTw" id="1uv9cOmObH2" role="2Oq$k0">
                   <ref role="3cqZAo" node="2cKUqfNY6Fh" resolve="helper" />
                 </node>
-                <node concept="liA8E" id="2cKUqfNYbe5" role="2OqNvi">
+                <node concept="liA8E" id="1uv9cOmObH3" role="2OqNvi">
                   <ref role="37wK5l" node="6BljlJl_mDD" resolve="getTestModel" />
                 </node>
               </node>
-              <node concept="2OqwBi" id="2cKUqfNYcHi" role="37wK5m">
-                <node concept="37vLTw" id="2cKUqfNYcyr" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2cKUqfNY6Fh" resolve="helper" />
+              <node concept="2OqwBi" id="1uv9cOmOc77" role="37wK5m">
+                <node concept="2OqwBi" id="1uv9cOmObQP" role="2Oq$k0">
+                  <node concept="1jxXqW" id="1uv9cOmObQQ" role="2Oq$k0" />
+                  <node concept="liA8E" id="1uv9cOmObQR" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
+                    <node concept="3VsKOn" id="1uv9cOmObQS" role="37wK5m">
+                      <ref role="3VsUkX" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
+                    </node>
+                  </node>
                 </node>
-                <node concept="liA8E" id="2cKUqfNYe5j" role="2OqNvi">
-                  <ref role="37wK5l" node="3ofMfJ51Maa" resolve="getDefaultExt" />
+                <node concept="liA8E" id="1uv9cOmOcrw" role="2OqNvi">
+                  <ref role="37wK5l" to="ends:~ModelFactoryService.getFactoryByType(org.jetbrains.mps.openapi.persistence.ModelFactoryType)" resolve="getFactoryByType" />
+                  <node concept="Rm8GO" id="1uv9cOmOcy3" role="37wK5m">
+                    <ref role="Rm8GQ" to="pa15:~PreinstalledModelFactoryTypes.PLAIN_XML" resolve="PLAIN_XML" />
+                    <ref role="1Px2BO" to="pa15:~PreinstalledModelFactoryTypes" resolve="PreinstalledModelFactoryTypes" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -3798,17 +3803,8 @@
                 <node concept="2ShNRf" id="6bWILpQS94r" role="37wK5m">
                   <node concept="1pGfFk" id="6bWILpQS94s" role="2ShVmc">
                     <ref role="37wK5l" to="guwi:~ByteArrayInputStream.&lt;init&gt;(byte[])" resolve="ByteArrayInputStream" />
-                    <node concept="2OqwBi" id="6bWILpQS94t" role="37wK5m">
-                      <node concept="liA8E" id="6bWILpQS94u" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~String.getBytes(java.nio.charset.Charset)" resolve="getBytes" />
-                        <node concept="10M0yZ" id="6bWILpQS94v" role="37wK5m">
-                          <ref role="1PxDUh" to="18ew:~FileUtil" resolve="FileUtil" />
-                          <ref role="3cqZAo" to="18ew:~FileUtil.DEFAULT_CHARSET" resolve="DEFAULT_CHARSET" />
-                        </node>
-                      </node>
-                      <node concept="37vLTw" id="6bWILpQS94w" role="2Oq$k0">
-                        <ref role="3cqZAo" node="6BljlJl_vAr" resolve="serialized" />
-                      </node>
+                    <node concept="37vLTw" id="6bWILpQS94w" role="37wK5m">
+                      <ref role="3cqZAo" node="6BljlJl_vAr" resolve="serialized" />
                     </node>
                   </node>
                 </node>
@@ -4111,101 +4107,18 @@
                 </node>
               </node>
             </node>
-            <node concept="3cpWs8" id="7dMyuCdlDC" role="3cqZAp">
-              <node concept="3cpWsn" id="7dMyuCdlDD" role="3cpWs9">
-                <property role="TrG5h" value="contentStream" />
-                <node concept="3uibUv" id="7dMyuCdh5e" role="1tU5fm">
-                  <ref role="3uigEE" to="guwi:~InputStream" resolve="InputStream" />
-                </node>
-                <node concept="2OqwBi" id="7dMyuCdlDE" role="33vP2m">
-                  <node concept="37vLTw" id="7dMyuCdlDF" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6BljlJlyNnx" resolve="dataSource" />
-                  </node>
-                  <node concept="liA8E" id="7dMyuCdlDG" role="2OqNvi">
-                    <ref role="37wK5l" to="pa15:~PersistenceUtil$InMemoryStreamDataSource.getContentAsStream()" resolve="getContentAsStream" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbH" id="7dMyuCdPSl" role="3cqZAp" />
             <node concept="3cpWs8" id="7dMyuCeUR3" role="3cqZAp">
               <node concept="3cpWsn" id="7dMyuCeUR4" role="3cpWs9">
                 <property role="TrG5h" value="content" />
                 <node concept="10Q1$e" id="7dMyuCeUQU" role="1tU5fm">
                   <node concept="10PrrI" id="7dMyuCeUQX" role="10Q1$1" />
                 </node>
-                <node concept="10Nm6u" id="7dMyuCfJXM" role="33vP2m" />
-              </node>
-            </node>
-            <node concept="3J1_TO" id="7dMyuCek8b" role="3cqZAp">
-              <node concept="3clFbS" id="7dMyuCek8c" role="1zxBo7">
-                <node concept="3cpWs8" id="7dMyuCe4RL" role="3cqZAp">
-                  <node concept="3cpWsn" id="7dMyuCe4RM" role="3cpWs9">
-                    <property role="TrG5h" value="contentSize" />
-                    <node concept="10Oyi0" id="7dMyuCe4RK" role="1tU5fm" />
-                    <node concept="2OqwBi" id="7dMyuCe4RN" role="33vP2m">
-                      <node concept="37vLTw" id="7dMyuCe4RO" role="2Oq$k0">
-                        <ref role="3cqZAo" node="7dMyuCdlDD" resolve="contentStream" />
-                      </node>
-                      <node concept="liA8E" id="7dMyuCe4RP" role="2OqNvi">
-                        <ref role="37wK5l" to="guwi:~InputStream.available()" resolve="available" />
-                      </node>
-                    </node>
+                <node concept="2OqwBi" id="UuW5xb08Gf" role="33vP2m">
+                  <node concept="37vLTw" id="UuW5xb08ng" role="2Oq$k0">
+                    <ref role="3cqZAo" node="6BljlJlyNnx" resolve="dataSource" />
                   </node>
-                </node>
-                <node concept="3clFbF" id="7dMyuCf2w9" role="3cqZAp">
-                  <node concept="37vLTI" id="7dMyuCf2wb" role="3clFbG">
-                    <node concept="2ShNRf" id="7dMyuCeUR5" role="37vLTx">
-                      <node concept="3$_iS1" id="7dMyuCeUR6" role="2ShVmc">
-                        <node concept="3$GHV9" id="7dMyuCeUR7" role="3$GQph">
-                          <node concept="37vLTw" id="7dMyuCeUR8" role="3$I4v7">
-                            <ref role="3cqZAo" node="7dMyuCe4RM" resolve="contentSize" />
-                          </node>
-                        </node>
-                        <node concept="10PrrI" id="7dMyuCeUR9" role="3$_nBY" />
-                      </node>
-                    </node>
-                    <node concept="37vLTw" id="7dMyuCf2wf" role="37vLTJ">
-                      <ref role="3cqZAo" node="7dMyuCeUR4" resolve="content" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="3clFbF" id="7dMyuCdHIx" role="3cqZAp">
-                  <node concept="2OqwBi" id="7dMyuCdI5K" role="3clFbG">
-                    <node concept="37vLTw" id="7dMyuCdHIv" role="2Oq$k0">
-                      <ref role="3cqZAo" node="7dMyuCdlDD" resolve="contentStream" />
-                    </node>
-                    <node concept="liA8E" id="7dMyuCdPzU" role="2OqNvi">
-                      <ref role="37wK5l" to="guwi:~InputStream.read(byte[])" resolve="read" />
-                      <node concept="37vLTw" id="7dMyuCeURa" role="37wK5m">
-                        <ref role="3cqZAo" node="7dMyuCeUR4" resolve="content" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="3uVAMA" id="7dMyuCek87" role="1zxBo5">
-                <node concept="XOnhg" id="7dMyuCek89" role="1zc67B">
-                  <property role="3TUv4t" value="false" />
-                  <property role="TrG5h" value="e" />
-                  <node concept="nSUau" id="xvs04dIv7N" role="1tU5fm">
-                    <node concept="3uibUv" id="7dMyuCek8a" role="nSUat">
-                      <ref role="3uigEE" to="guwi:~IOException" resolve="IOException" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="3clFbS" id="7dMyuCek88" role="1zc67A">
-                  <node concept="3xETmq" id="7dMyuCfh$E" role="3cqZAp">
-                    <node concept="3_1$Yv" id="7dMyuCfoUw" role="3_9lra">
-                      <node concept="2OqwBi" id="7dMyuCfwud" role="3_1BAH">
-                        <node concept="37vLTw" id="7dMyuCfwfH" role="2Oq$k0">
-                          <ref role="3cqZAo" node="7dMyuCek89" resolve="e" />
-                        </node>
-                        <node concept="liA8E" id="7dMyuCfx0e" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~Throwable.getMessage()" resolve="getMessage" />
-                        </node>
-                      </node>
-                    </node>
+                  <node concept="liA8E" id="1uv9cOmO0AU" role="2OqNvi">
+                    <ref role="37wK5l" to="pa15:~PersistenceUtil$InMemoryStreamDataSource.getContentBytes()" resolve="getContentBytes" />
                   </node>
                 </node>
               </node>
@@ -4334,6 +4247,24 @@
           </node>
         </node>
         <node concept="3clFbH" id="2cKUqfNYkRn" role="3cqZAp" />
+        <node concept="3cpWs8" id="2V$T3DVDt4F" role="3cqZAp">
+          <node concept="3cpWsn" id="2V$T3DVDt4G" role="3cpWs9">
+            <property role="TrG5h" value="mfsvc" />
+            <property role="3TUv4t" value="true" />
+            <node concept="3uibUv" id="2V$T3DVDt1_" role="1tU5fm">
+              <ref role="3uigEE" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
+            </node>
+            <node concept="2OqwBi" id="2V$T3DVDt4H" role="33vP2m">
+              <node concept="1jxXqW" id="2V$T3DVDt4I" role="2Oq$k0" />
+              <node concept="liA8E" id="2V$T3DVDt4J" role="2OqNvi">
+                <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
+                <node concept="3VsKOn" id="2V$T3DVDt4K" role="37wK5m">
+                  <ref role="3VsUkX" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3SKdUt" id="6BljlJlz5ZF" role="3cqZAp">
           <node concept="1PaTwC" id="ATZLwXopqF" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXopqG" role="1PaTwD">
@@ -4476,26 +4407,6 @@
                 </node>
               </node>
             </node>
-            <node concept="3cpWs8" id="6BljlJl_Tgw" role="3cqZAp">
-              <node concept="3cpWsn" id="6BljlJl_Tgx" role="3cpWs9">
-                <property role="TrG5h" value="notUpgradedContent" />
-                <node concept="3uibUv" id="6BljlJl_Tgr" role="1tU5fm">
-                  <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-                </node>
-                <node concept="2OqwBi" id="6BljlJl_Tgy" role="33vP2m">
-                  <node concept="37vLTw" id="6BljlJl_Tgz" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6BljlJl_k2Q" resolve="notUpgradedData" />
-                  </node>
-                  <node concept="liA8E" id="6BljlJl_Tg$" role="2OqNvi">
-                    <ref role="37wK5l" to="pa15:~PersistenceUtil$InMemoryStreamDataSource.getContent(java.lang.String)" resolve="getContent" />
-                    <node concept="10M0yZ" id="6BljlJl_Tg_" role="37wK5m">
-                      <ref role="3cqZAo" to="18ew:~FileUtil.DEFAULT_CHARSET_NAME" resolve="DEFAULT_CHARSET_NAME" />
-                      <ref role="1PxDUh" to="18ew:~FileUtil" resolve="FileUtil" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
             <node concept="3cpWs8" id="6BljlJl_UzE" role="3cqZAp">
               <node concept="3cpWsn" id="6BljlJl_UzF" role="3cpWs9">
                 <property role="TrG5h" value="notUpgradedModel" />
@@ -4506,9 +4417,26 @@
                   <node concept="10QFUN" id="6BljlJl_Z94" role="1eOMHV">
                     <node concept="2YIFZM" id="6BljlJl_Z90" role="10QFUP">
                       <ref role="1Pybhc" to="pa15:~PersistenceUtil" resolve="PersistenceUtil" />
-                      <ref role="37wK5l" to="pa15:~PersistenceUtil.loadModel(java.lang.String)" resolve="loadModel" />
-                      <node concept="37vLTw" id="6BljlJl_Z91" role="37wK5m">
-                        <ref role="3cqZAo" node="6BljlJl_Tgx" resolve="notUpgradedContent" />
+                      <ref role="37wK5l" to="pa15:~PersistenceUtil.loadModel(byte[],org.jetbrains.mps.openapi.persistence.ModelFactory)" resolve="loadModel" />
+                      <node concept="2OqwBi" id="1uv9cOmO9a_" role="37wK5m">
+                        <node concept="37vLTw" id="1uv9cOmO8Y6" role="2Oq$k0">
+                          <ref role="3cqZAo" node="6BljlJl_k2Q" resolve="notUpgradedData" />
+                        </node>
+                        <node concept="liA8E" id="1uv9cOmO9g6" role="2OqNvi">
+                          <ref role="37wK5l" to="pa15:~PersistenceUtil$InMemoryStreamDataSource.getContentBytes()" resolve="getContentBytes" />
+                        </node>
+                      </node>
+                      <node concept="2OqwBi" id="1uv9cOmO9vm" role="37wK5m">
+                        <node concept="37vLTw" id="1uv9cOmO9vn" role="2Oq$k0">
+                          <ref role="3cqZAo" node="2V$T3DVDt4G" resolve="mfsvc" />
+                        </node>
+                        <node concept="liA8E" id="1uv9cOmO9vo" role="2OqNvi">
+                          <ref role="37wK5l" to="ends:~ModelFactoryService.getFactoryByType(org.jetbrains.mps.openapi.persistence.ModelFactoryType)" resolve="getFactoryByType" />
+                          <node concept="Rm8GO" id="1uv9cOmO9vp" role="37wK5m">
+                            <ref role="Rm8GQ" to="pa15:~PreinstalledModelFactoryTypes.PLAIN_XML" resolve="PLAIN_XML" />
+                            <ref role="1Px2BO" to="pa15:~PreinstalledModelFactoryTypes" resolve="PreinstalledModelFactoryTypes" />
+                          </node>
+                        </node>
                       </node>
                     </node>
                     <node concept="3uibUv" id="6BljlJl_Z8Z" role="10QFUM">
@@ -4598,26 +4526,6 @@
                 </node>
               </node>
             </node>
-            <node concept="3cpWs8" id="6BljlJl_XDu" role="3cqZAp">
-              <node concept="3cpWsn" id="6BljlJl_XDv" role="3cpWs9">
-                <property role="TrG5h" value="upgradedContent" />
-                <node concept="3uibUv" id="6BljlJl_XDw" role="1tU5fm">
-                  <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-                </node>
-                <node concept="2OqwBi" id="6BljlJl_XDx" role="33vP2m">
-                  <node concept="37vLTw" id="6BljlJl_XTZ" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6BljlJl_VsQ" resolve="upgradedData" />
-                  </node>
-                  <node concept="liA8E" id="6BljlJl_XDz" role="2OqNvi">
-                    <ref role="37wK5l" to="pa15:~PersistenceUtil$InMemoryStreamDataSource.getContent(java.lang.String)" resolve="getContent" />
-                    <node concept="10M0yZ" id="6BljlJl_XD$" role="37wK5m">
-                      <ref role="1PxDUh" to="18ew:~FileUtil" resolve="FileUtil" />
-                      <ref role="3cqZAo" to="18ew:~FileUtil.DEFAULT_CHARSET_NAME" resolve="DEFAULT_CHARSET_NAME" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
             <node concept="3cpWs8" id="6BljlJl_XDB" role="3cqZAp">
               <node concept="3cpWsn" id="6BljlJl_XDC" role="3cpWs9">
                 <property role="TrG5h" value="upgradedModel" />
@@ -4628,9 +4536,26 @@
                   <node concept="10QFUN" id="6BljlJl_Zf7" role="1eOMHV">
                     <node concept="2YIFZM" id="6BljlJl_Zf3" role="10QFUP">
                       <ref role="1Pybhc" to="pa15:~PersistenceUtil" resolve="PersistenceUtil" />
-                      <ref role="37wK5l" to="pa15:~PersistenceUtil.loadModel(java.lang.String)" resolve="loadModel" />
-                      <node concept="37vLTw" id="6BljlJl_Zf4" role="37wK5m">
-                        <ref role="3cqZAo" node="6BljlJl_XDv" resolve="upgradedContent" />
+                      <ref role="37wK5l" to="pa15:~PersistenceUtil.loadModel(byte[],org.jetbrains.mps.openapi.persistence.ModelFactory)" resolve="loadModel" />
+                      <node concept="2OqwBi" id="1uv9cOmO1hE" role="37wK5m">
+                        <node concept="37vLTw" id="1uv9cOmO1Cq" role="2Oq$k0">
+                          <ref role="3cqZAo" node="6BljlJl_VsQ" resolve="upgradedData" />
+                        </node>
+                        <node concept="liA8E" id="1uv9cOmO1EA" role="2OqNvi">
+                          <ref role="37wK5l" to="pa15:~PersistenceUtil$InMemoryStreamDataSource.getContentBytes()" resolve="getContentBytes" />
+                        </node>
+                      </node>
+                      <node concept="2OqwBi" id="1uv9cOmO22A" role="37wK5m">
+                        <node concept="37vLTw" id="1uv9cOmO1R6" role="2Oq$k0">
+                          <ref role="3cqZAo" node="2V$T3DVDt4G" resolve="mfsvc" />
+                        </node>
+                        <node concept="liA8E" id="1uv9cOmO4EX" role="2OqNvi">
+                          <ref role="37wK5l" to="ends:~ModelFactoryService.getFactoryByType(org.jetbrains.mps.openapi.persistence.ModelFactoryType)" resolve="getFactoryByType" />
+                          <node concept="Rm8GO" id="1uv9cOmO6MT" role="37wK5m">
+                            <ref role="Rm8GQ" to="pa15:~PreinstalledModelFactoryTypes.PLAIN_XML" resolve="PLAIN_XML" />
+                            <ref role="1Px2BO" to="pa15:~PreinstalledModelFactoryTypes" resolve="PreinstalledModelFactoryTypes" />
+                          </node>
+                        </node>
                       </node>
                     </node>
                     <node concept="3uibUv" id="6BljlJl_Zf2" role="10QFUM">
@@ -5265,26 +5190,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="3ofMfJ51NEu" role="jymVt" />
-    <node concept="3clFb_" id="3ofMfJ51Maa" role="jymVt">
-      <property role="TrG5h" value="getDefaultExt" />
-      <node concept="3uibUv" id="3ofMfJ51Mac" role="3clF45">
-        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-      </node>
-      <node concept="3clFbS" id="3ofMfJ51M96" role="3clF47">
-        <node concept="3cpWs6" id="3ofMfJ51M9_" role="3cqZAp">
-          <node concept="2OqwBi" id="5RlXihw7pET" role="3cqZAk">
-            <node concept="10M0yZ" id="5RlXihw7okO" role="2Oq$k0">
-              <ref role="3cqZAo" to="iyvn:~PreinstalledDataSourceTypes.MPS" resolve="MPS" />
-              <ref role="1PxDUh" to="iyvn:~PreinstalledDataSourceTypes" resolve="PreinstalledDataSourceTypes" />
-            </node>
-            <node concept="liA8E" id="5RlXihw7vqm" role="2OqNvi">
-              <ref role="37wK5l" to="bxo2:~FileExtensionDataSourceType.getFileExtension()" resolve="getFileExtension" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="WyclBLQkO$" role="jymVt" />
     <node concept="2YIFZL" id="3ofMfJ4YUE5" role="jymVt">
       <property role="TrG5h" value="assertListsEqual" />
       <property role="DiZV1" value="false" />
@@ -5769,7 +5674,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="WyclBLQANY" role="jymVt" />
-    <node concept="3Tm1VV" id="2cKUqfNX$dt" role="1B3o_S" />
     <node concept="3UR2Jj" id="2cKUqfNXMmQ" role="lGtFl">
       <node concept="TZ5HA" id="3ofMfJ4ZKbb" role="TZ5H$">
         <node concept="1dT_AC" id="3ofMfJ4ZKbc" role="1dT_Ay">
