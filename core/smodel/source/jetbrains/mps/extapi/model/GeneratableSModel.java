@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,25 +15,12 @@
  */
 package jetbrains.mps.extapi.model;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SModel;
 
 /**
  * evgeny, 2/14/13
  */
 public interface GeneratableSModel extends SModel {
-  /**
-   * @deprecated of no use for MPS
-   */
-  @Deprecated
-  @ToRemove(version = 2019.1)
-  String HEADER = "header";
-  /**
-   * @deprecated of no use for MPS
-   */
-  @Deprecated
-  @ToRemove(version = 2019.1)
-  String FILE = "model";
 
   /**
    * Generally, {@link #isDoNotGenerate() doNotGenerate} is a primary reason to generate (or not) the model.
