@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,6 +57,8 @@ public interface PersistenceVersionAware extends SModel {
    *
    * fixme: kind of strange method considering that the design implies that model and modelfactory are isolated concepts. we have MF#save(SModel, DataSource),
    * fixme: meaning that any ModelFactory can save any model to the data source it supports [AP]
+   *  [artem] Disagree it's strange and contradicts the model/modelfactory separation. The method doesn't imply one can't save the model using any other suitable
+   *          MF, it just helps to discover MF that served as last known 'proved' model source, the one we read model from.
    */
   @Nullable
   ModelFactory getModelFactory();

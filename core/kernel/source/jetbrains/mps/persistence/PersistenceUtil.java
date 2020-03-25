@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,9 @@
 package jetbrains.mps.persistence;
 
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
-import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromURL;
-import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
-import jetbrains.mps.extapi.persistence.datasource.URLNotSupportedException;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.JDOMUtil;
-import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jdom.Element;
@@ -39,6 +35,7 @@ import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.ModelSaveException;
 import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
+import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 
@@ -48,11 +45,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
-import java.net.URL;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
-import static java.util.Collections.singletonMap;
 
 /**
  * evgeny, 3/6/13
@@ -107,39 +101,31 @@ public final class PersistenceUtil {
     return loadModel(content, getModelFactoryService().getFactoryByType(PreinstalledModelFactoryTypes.BINARY));
   }
 
-  public static SModel loadModel(@NotNull IFile file) {
-    try {
-      URL url = file.getUrl();
-      DataSourceFactoryFromURL dataSourceFactory = getDataSourceFactory(url);
-      if (dataSourceFactory == null) {
-        return null;
-      }
-      DataSource dataSource = dataSourceFactory.create(url);
-      if (dataSource.getType() == null) {
-        return null;
-      }
-      ModelFactory factory = getModelFactoryService().getDefaultModelFactory(dataSource.getType());
-      if (factory == null) {
-        return null;
-      }
-      SModel model = factory.load(dataSource, ContentOption.CONTENT_ONLY);
-      model.load();
-      return model;
-    } catch (ModelLoadException | IOException | URLNotSupportedException e) {
-      LOG.error("", e);
+  @Nullable
+  public static SModel loadModel(@NotNull DataSource dataSource, @NotNull ModelFactoryService modelFactoryService) {
+    final ModelFactory mf = modelFactoryService.getDefaultModelFactory(dataSource.getType());
+    if (mf == null) {
       return null;
     }
+    return loadModel(dataSource, mf);
   }
 
-  @Nullable
-  private static DataSourceFactoryFromURL getDataSourceFactory(@NotNull URL url) {
-    DataSourceFactoryRuleService service = DataSourceFactoryRuleService.getInstance();
-    DataSourceFactoryFromURL dataSourceFactory = service.getFactory(url);
-    if (dataSourceFactory == null) {
-      LOG.error("Data Source Factory is not found for " + url);
+  public static SModel loadModel(@NotNull DataSource dataSource, @NotNull ModelFactory modelFactory) {
+    if (dataSource.getType() == null) {
       return null;
     }
-    return dataSourceFactory;
+    if (!modelFactory.supports(dataSource)) {
+      return null;
+    }
+    final SModel model;
+    try {
+      model = modelFactory.load(dataSource, ContentOption.CONTENT_ONLY);
+      model.load();
+      return model;
+    } catch (UnsupportedDataSourceException | ModelLoadException e) {
+      LOG.error("loadModel", e);
+      return null;
+    }
   }
 
   public static String saveModel(final SModel model, String extension) {

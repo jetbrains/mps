@@ -197,8 +197,6 @@
     <import index="hfuk" ref="r:b25dd364-bc3f-4a66-97d1-262009610c5e(jetbrains.mps.make)" />
     <import index="ncw5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util.annotation(MPS.Core/)" />
     <import index="al1t" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.diagnostic(MPS.IDEA/)" />
-    <import index="tp2q" ref="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)" />
-    <import index="tp2u" ref="r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)" />
     <import index="22ra" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.update(MPS.Editor/)" implicit="true" />
     <import index="ov6m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui.messages(MPS.IDEA/)" implicit="true" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
@@ -34114,20 +34112,43 @@
           </node>
         </node>
         <node concept="3clFbH" id="4v5Pbjn75oV" role="3cqZAp" />
+        <node concept="3cpWs8" id="46IaplaxpZQ" role="3cqZAp">
+          <node concept="3cpWsn" id="46IaplaxpZR" role="3cpWs9">
+            <property role="TrG5h" value="modelFactoryService" />
+            <property role="3TUv4t" value="true" />
+            <node concept="3uibUv" id="46IaplaxpZS" role="1tU5fm">
+              <ref role="3uigEE" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
+            </node>
+            <node concept="2OqwBi" id="46IaplaxpZT" role="33vP2m">
+              <node concept="2OqwBi" id="46Iaplaxquu" role="2Oq$k0">
+                <node concept="2WthIp" id="46Iaplaxqux" role="2Oq$k0" />
+                <node concept="1DTwFV" id="46Iaplaxquz" role="2OqNvi">
+                  <ref role="2WH_rO" node="6HwFPBgWQe" resolve="project" />
+                </node>
+              </node>
+              <node concept="liA8E" id="46IaplaxpZV" role="2OqNvi">
+                <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
+                <node concept="3VsKOn" id="46IaplaxpZW" role="37wK5m">
+                  <ref role="3VsUkX" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="46Iaplaxp9m" role="3cqZAp" />
         <node concept="3cpWs8" id="4v5Pbjn0oxL" role="3cqZAp">
           <node concept="3cpWsn" id="4v5Pbjn0oxM" role="3cpWs9">
             <property role="TrG5h" value="binaryFactory" />
             <node concept="2OqwBi" id="4v5Pbjn0tG0" role="33vP2m">
               <node concept="liA8E" id="4v5Pbjn0v36" role="2OqNvi">
-                <ref role="37wK5l" to="dush:~PersistenceFacade.getModelFactory(java.lang.String)" resolve="getModelFactory" />
-                <node concept="10M0yZ" id="4v5Pbjn0vGC" role="37wK5m">
-                  <ref role="3cqZAo" to="z1c3:~MPSExtentions.MODEL_BINARY" resolve="MODEL_BINARY" />
-                  <ref role="1PxDUh" to="z1c3:~MPSExtentions" resolve="MPSExtentions" />
+                <ref role="37wK5l" to="ends:~ModelFactoryService.getFactoryByType(org.jetbrains.mps.openapi.persistence.ModelFactoryType)" resolve="getFactoryByType" />
+                <node concept="Rm8GO" id="46IaplaxsrJ" role="37wK5m">
+                  <ref role="Rm8GQ" to="pa15:~PreinstalledModelFactoryTypes.BINARY" resolve="BINARY" />
+                  <ref role="1Px2BO" to="pa15:~PreinstalledModelFactoryTypes" resolve="PreinstalledModelFactoryTypes" />
                 </node>
               </node>
-              <node concept="2YIFZM" id="4v5Pbjn0t0X" role="2Oq$k0">
-                <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
-                <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
+              <node concept="37vLTw" id="46IaplaxraW" role="2Oq$k0">
+                <ref role="3cqZAo" node="46IaplaxpZR" resolve="modelFactoryService" />
               </node>
             </node>
             <node concept="3uibUv" id="4v5Pbjn0oxN" role="1tU5fm">
@@ -34204,9 +34225,17 @@
                           <property role="TrG5h" value="newModel" />
                           <node concept="2YIFZM" id="4v5Pbjn1PB_" role="33vP2m">
                             <ref role="1Pybhc" to="pa15:~PersistenceUtil" resolve="PersistenceUtil" />
-                            <ref role="37wK5l" to="pa15:~PersistenceUtil.loadModel(jetbrains.mps.vfs.IFile)" resolve="loadModel" />
-                            <node concept="37vLTw" id="4v5Pbjn6G4S" role="37wK5m">
-                              <ref role="3cqZAo" node="4v5Pbjn6fe5" resolve="oldFile" />
+                            <ref role="37wK5l" to="pa15:~PersistenceUtil.loadModel(org.jetbrains.mps.openapi.persistence.DataSource,jetbrains.mps.extapi.persistence.ModelFactoryService)" resolve="loadModel" />
+                            <node concept="2OqwBi" id="46Iaplaxo8C" role="37wK5m">
+                              <node concept="2GrUjf" id="46IaplaxnGe" role="2Oq$k0">
+                                <ref role="2Gs0qQ" node="63zBYr2A2mL" resolve="smodel" />
+                              </node>
+                              <node concept="liA8E" id="46IaplaxoC6" role="2OqNvi">
+                                <ref role="37wK5l" to="mhbf:~SModel.getSource()" resolve="getSource" />
+                              </node>
+                            </node>
+                            <node concept="37vLTw" id="46IaplaxsGy" role="37wK5m">
+                              <ref role="3cqZAo" node="46IaplaxpZR" resolve="modelFactoryService" />
                             </node>
                           </node>
                           <node concept="3uibUv" id="4v5Pbjn1HVX" role="1tU5fm">
@@ -37840,6 +37869,26 @@
         </node>
         <node concept="3clFbH" id="38LNA6Kbjrn" role="3cqZAp" />
         <node concept="3clFbH" id="38LNA6Kbjrv" role="3cqZAp" />
+        <node concept="3cpWs8" id="46IaplawQ$d" role="3cqZAp">
+          <node concept="3cpWsn" id="46IaplawQ$e" role="3cpWs9">
+            <property role="TrG5h" value="modelFactoryService" />
+            <property role="3TUv4t" value="true" />
+            <node concept="3uibUv" id="46IaplawP4u" role="1tU5fm">
+              <ref role="3uigEE" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
+            </node>
+            <node concept="2OqwBi" id="46IaplawQ$f" role="33vP2m">
+              <node concept="37vLTw" id="46IaplawQ$g" role="2Oq$k0">
+                <ref role="3cqZAo" node="5_KwrLBqB0G" resolve="mpsProject" />
+              </node>
+              <node concept="liA8E" id="46IaplawQ$h" role="2OqNvi">
+                <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
+                <node concept="3VsKOn" id="46IaplawQ$i" role="37wK5m">
+                  <ref role="3VsUkX" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="38LNA6Kbjrw" role="3cqZAp">
           <node concept="2OqwBi" id="38LNA6Kbjrx" role="3clFbG">
             <node concept="liA8E" id="38LNA6Kbjry" role="2OqNvi">
@@ -37939,9 +37988,17 @@
                           <property role="TrG5h" value="newModel" />
                           <node concept="2YIFZM" id="38LNA6KbjrQ" role="33vP2m">
                             <ref role="1Pybhc" to="pa15:~PersistenceUtil" resolve="PersistenceUtil" />
-                            <ref role="37wK5l" to="pa15:~PersistenceUtil.loadModel(jetbrains.mps.vfs.IFile)" resolve="loadModel" />
-                            <node concept="37vLTw" id="38LNA6KbjrR" role="37wK5m">
-                              <ref role="3cqZAo" node="38LNA6KbjrE" resolve="oldFile" />
+                            <ref role="37wK5l" to="pa15:~PersistenceUtil.loadModel(org.jetbrains.mps.openapi.persistence.DataSource,jetbrains.mps.extapi.persistence.ModelFactoryService)" resolve="loadModel" />
+                            <node concept="2OqwBi" id="46IaplaxkFl" role="37wK5m">
+                              <node concept="2GrUjf" id="46Iaplaxk0_" role="2Oq$k0">
+                                <ref role="2Gs0qQ" node="38LNA6KbjrB" resolve="smodel" />
+                              </node>
+                              <node concept="liA8E" id="46Iaplaxlya" role="2OqNvi">
+                                <ref role="37wK5l" to="mhbf:~SModel.getSource()" resolve="getSource" />
+                              </node>
+                            </node>
+                            <node concept="37vLTw" id="46Iaplaxmw4" role="37wK5m">
+                              <ref role="3cqZAo" node="46IaplawQ$e" resolve="modelFactoryService" />
                             </node>
                           </node>
                           <node concept="3uibUv" id="38LNA6KbjrS" role="1tU5fm">
@@ -38138,16 +38195,8 @@
                                 <ref role="3uigEE" to="dush:~ModelFactory" resolve="ModelFactory" />
                               </node>
                               <node concept="2OqwBi" id="1lS_qvrho4o" role="33vP2m">
-                                <node concept="2OqwBi" id="5_KwrLBqQO3" role="2Oq$k0">
-                                  <node concept="37vLTw" id="5_KwrLBqQ0t" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="5_KwrLBqB0G" resolve="mpsProject" />
-                                  </node>
-                                  <node concept="liA8E" id="5_KwrLBqTrC" role="2OqNvi">
-                                    <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
-                                    <node concept="3VsKOn" id="5_KwrLBqUPj" role="37wK5m">
-                                      <ref role="3VsUkX" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
-                                    </node>
-                                  </node>
+                                <node concept="37vLTw" id="46IaplawQ$j" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="46IaplawQ$e" resolve="modelFactoryService" />
                                 </node>
                                 <node concept="liA8E" id="1lS_qvrho4q" role="2OqNvi">
                                   <ref role="37wK5l" to="ends:~ModelFactoryService.getFactoryByType(org.jetbrains.mps.openapi.persistence.ModelFactoryType)" resolve="getFactoryByType" />

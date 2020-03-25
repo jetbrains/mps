@@ -106,6 +106,7 @@ public class ConvertToFilePerRootPersistence_Action extends BaseAction {
     final SRepository repo = mpsProject.getRepository();
 
 
+    final ModelFactoryService modelFactoryService = mpsProject.getComponent(ModelFactoryService.class);
     repo.getModelAccess().runWriteAction(new Runnable() {
       public void run() {
         // see MPS-18743 
@@ -117,7 +118,7 @@ public class ConvertToFilePerRootPersistence_Action extends BaseAction {
             continue;
           }
 
-          SModel newModel = PersistenceUtil.loadModel(oldFile);
+          SModel newModel = PersistenceUtil.loadModel(smodel.getSource(), modelFactoryService);
           if (newModel == null) {
             if (LOG.isEnabledFor(Level.ERROR)) {
               LOG.error("cannot read " + smodel);
@@ -140,7 +141,7 @@ public class ConvertToFilePerRootPersistence_Action extends BaseAction {
           try {
             DataSource newDataSource = new DataSourceFactoryBridge((FileBasedModelRoot) modelRoot, mpsProject.getComponent(DataSourceFactoryRuleService.class)).createPerRootDataSource(newModel.getName(), null).getDataSource();
             SModule module = smodel.getModule();
-            ModelFactory filePerRootFactory = mpsProject.getComponent(ModelFactoryService.class).getFactoryByType(PreinstalledModelFactoryTypes.PER_ROOT_XML);
+            ModelFactory filePerRootFactory = modelFactoryService.getFactoryByType(PreinstalledModelFactoryTypes.PER_ROOT_XML);
             if (filePerRootFactory == null) {
               throw new IOException("Could not find any per-root persistence model factory");
             }

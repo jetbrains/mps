@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.extapi.persistence.datasource;
 
 import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
@@ -41,32 +40,16 @@ import java.util.List;
 @Singleton
 public final class DataSourceFactoryRuleService implements CoreComponent  {
   private final Deque<DataSourceFactoryRule> myFactoryRules = new LinkedList<>(); // stack
-  private static DataSourceFactoryRuleService ourInstance;
 
   public DataSourceFactoryRuleService() {
   }
 
   @Override
   public void init() {
-    if (ourInstance != null) {
-      throw new IllegalStateException("Already initialized");
-    }
-    ourInstance = this;
   }
 
   @Override
   public void dispose() {
-    ourInstance = null;
-  }
-
-  /**
-   * @deprecated Use {@link jetbrains.mps.components.ComponentHost#findComponent(Class) MPS standard mechanism} to access component instances
-   */
-  @NotNull
-  @Deprecated
-  @ToRemove(version = 2018.2)
-  public static synchronized DataSourceFactoryRuleService getInstance() {
-    return ourInstance;
   }
 
   @Internal
