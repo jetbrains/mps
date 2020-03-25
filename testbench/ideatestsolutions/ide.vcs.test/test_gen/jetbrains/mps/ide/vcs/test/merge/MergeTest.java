@@ -6,7 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.junit.Before;
 import jetbrains.mps.vcs.diff.merge.MergeTemporaryModel;
-import jetbrains.mps.persistence.PersistenceUtil;
 import org.junit.BeforeClass;
 import jetbrains.mps.RuntimeFlags;
 import org.junit.AfterClass;
@@ -68,11 +67,8 @@ public class MergeTest extends ChangesTestBase {
         myBaseModel = MergeTemporaryModel.readonlyCloneOf(getTestModel());
       }
     });
-    // FIXME is there real need to go through String when we can use MTM.writeableCloneOf()? 
-    //       I left strings for now just to make sure persistance of a detached model doesn't need model access! 
-    String baseString = PersistenceUtil.saveModel(myBaseModel, getDefaultExt());
-    myMineModel = PersistenceUtil.loadModel(baseString);
-    myTheirsModel = PersistenceUtil.loadModel(baseString);
+    myMineModel = MergeTemporaryModel.writableCloneOf(myBaseModel);
+    myTheirsModel = MergeTemporaryModel.writableCloneOf(myBaseModel);
   }
 
   @BeforeClass
