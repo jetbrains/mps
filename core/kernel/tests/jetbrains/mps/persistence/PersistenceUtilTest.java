@@ -192,7 +192,7 @@ public class PersistenceUtilTest implements EnvironmentAware {
 
   @Nullable
   private SModel loadModelFromXml(Element xml) {
-    return PersistenceUtil.loadModelFromXml(xml);
+    return PersistenceUtil.loadModelFromXml(xml, myModelFactoryService);
   }
 
   @Nullable

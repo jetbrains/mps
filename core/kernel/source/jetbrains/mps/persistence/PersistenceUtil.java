@@ -137,14 +137,6 @@ public final class PersistenceUtil {
     return null;
   }
 
-  /**
-   * @deprecated use the one with {@code ModelFactoryService argument}
-   */
-  @Deprecated
-  public static Element saveModelToXml(final SModel model) {
-    return saveModelToXml(model, getModelFactoryService());
-  }
-
   public static Element saveModelToXml(@NotNull final SModel model, @NotNull ModelFactoryService modelFactoryService) {
     ModelFactory factory = modelFactoryService.getFactoryByType(PreinstalledModelFactoryTypes.PLAIN_XML);
     try {
@@ -158,8 +150,28 @@ public final class PersistenceUtil {
     return null;
   }
 
-  public static SModel loadModelFromXml(final Element element) {
-    return loadModel(JDOMUtil.asString(new org.jdom.Document(element)));
+  @Nullable
+  public static SModel loadModelFromXml(@NotNull final Element element, @NotNull ModelFactoryService modelFactoryService) {
+    try {
+      // in fact, could have saved some extra tact by using XMLOutputter with raw format instead of pretty one by default in JDOMUtil
+      final byte[] doc = JDOMUtil.printDocument(new org.jdom.Document(element));
+      ModelFactory factory = modelFactoryService.getFactoryByType(PreinstalledModelFactoryTypes.PLAIN_XML);
+      // don't want to use loadModel(DataSource, ModelFactory) here as DataSource.getType is undefined for ByteArrayInputSource,
+      final SModel model = factory.load(new ByteArrayInputSource(doc), ContentOption.CONTENT_ONLY);
+      model.load();
+      return model;
+    } catch (ModelLoadException | IOException ex) {
+      LOG.error(ex);
+    }
+    return null;
+  }
+
+  /**
+   * Make a copy of original model going through serialization/de-serialization of a model using most feature-rich persistence
+   */
+  public static SModel detachedCopyThroughPersistence(SModel model, ModelFactoryService modelFactoryService) {
+    // FIXME need better implementation, this one is just to replace client code by capturing intention
+    return loadModelFromXml(saveModelToXml(model, modelFactoryService), modelFactoryService);
   }
 
   @Nullable

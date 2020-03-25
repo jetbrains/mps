@@ -175,15 +175,19 @@ public class ConsoleTool extends BaseTabbedProjectTool implements PersistentStat
     MyState result = new MyState();
     for (BaseConsoleTab tab : ListSequence.fromList(myTabs)) {
       if (!(getContentManager().getContent(tab).isPinned())) {
-        break;
+        continue;
       }
       TabState tabState = new TabState();
-      tabState.historyXml = new Element("tab").addContent(tab.saveHistory());
       tabState.title = tab.getTitle();
-      tabState.isHistoryTab = !(tab instanceof DialogConsoleTab);
-      if (tabState.historyXml == null || tabState.title == null) {
-        break;
+      if (tabState.title == null) {
+        continue;
       }
+      Element tabHistory = tab.saveHistory();
+      if (tabHistory == null) {
+        continue;
+      }
+      tabState.historyXml = new Element("tab").addContent(tabHistory);
+      tabState.isHistoryTab = !(tab instanceof DialogConsoleTab);
       result.tabs.add(tabState);
     }
     return result;
