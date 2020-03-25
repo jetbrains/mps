@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,7 @@ public abstract class LightBulbMenu extends JLabel implements TooltipComponent {
     setBorder(new EmptyBorder(0, 2, 1, 2));
     setBackground(Color.WHITE);
 
-    setToolTipText("Click or press Alt+Enter");
+    setToolTipText("Click or press");
     putClientProperty(HelpTooltipManager.SHORTCUT_PROPERTY, "Alt + Enter");
 
     setPreferredSize(new Dimension(getWidth(), getHeight()));

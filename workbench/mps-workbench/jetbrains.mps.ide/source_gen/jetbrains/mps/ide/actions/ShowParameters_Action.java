@@ -101,7 +101,10 @@ public class ShowParameters_Action extends BaseAction {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("editing.showParameters");
     ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        Point point = new Point(((EditorCell) MapSequence.fromMap(_params).get("cell")).getCaretX(), ((EditorCell) MapSequence.fromMap(_params).get("cell")).getY());
+        // Try to show tooltip over caret or in case of active selection - over the middle of the cell 
+        int caretRelativePosition = ((EditorCell) MapSequence.fromMap(_params).get("cell")).getCaretX() - ((EditorCell) MapSequence.fromMap(_params).get("cell")).getX();
+        boolean isCaretInsideCell = caretRelativePosition >= 0 && caretRelativePosition <= ((EditorCell) MapSequence.fromMap(_params).get("cell")).getWidth();
+        Point point = new Point((isCaretInsideCell ? ((EditorCell) MapSequence.fromMap(_params).get("cell")).getCaretX() : ((EditorCell) MapSequence.fromMap(_params).get("cell")).getX() + ((EditorCell) MapSequence.fromMap(_params).get("cell")).getWidth() / 2), ((EditorCell) MapSequence.fromMap(_params).get("cell")).getY());
         EditorCell currentCell = ((EditorCell) MapSequence.fromMap(_params).get("cell"));
         while (currentCell != null) {
           ParametersInformation parametersInformation = currentCell.getStyle().get(StyleAttributes.PARAMETERS_INFORMATION);

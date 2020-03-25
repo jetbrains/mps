@@ -8,10 +8,10 @@ import jetbrains.mps.ide.tooltips.TooltipComponent;
 import java.util.Map;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import org.jetbrains.mps.openapi.module.SRepository;
+import java.awt.event.MouseAdapter;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import java.awt.Dimension;
-import java.awt.event.MouseAdapter;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.LinkedHashMap;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -26,9 +26,6 @@ import javax.swing.JViewport;
 import java.awt.event.MouseEvent;
 import java.awt.Point;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import java.awt.event.MouseListener;
 
 @GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4652592318748337778", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class DiffEditorSeparator extends JComponent implements TooltipComponent {
@@ -37,6 +34,7 @@ public class DiffEditorSeparator extends JComponent implements TooltipComponent 
   private Map<ChangeGroup, Tuples._2<Bounds, Bounds>> myGroupsWithBounds;
   private Map<ChangeGroup, String> myChangeGroupDescriptions;
   private final SRepository myRepoWithChanges;
+  private final MouseAdapter myMouseAdapter = new MouseAdapter() {};
 
   public DiffEditorSeparator(SRepository repoWithChanges, ChangeGroupLayout changeGroupLayout) {
     myChangeGroupLayout = changeGroupLayout;
@@ -61,9 +59,7 @@ public class DiffEditorSeparator extends JComponent implements TooltipComponent 
       }
     });
     // this allows com.intellij.ide.IdeTooltipManager#eventDispatched to get notification for events over this component and draw tool tip with text from getToolTipText method 
-    this.addMouseListener(new MouseAdapter() {
-
-    });
+    this.addMouseListener(this.myMouseAdapter);
   }
 
   private void ensureBoundsCalculated() {
@@ -95,6 +91,7 @@ public class DiffEditorSeparator extends JComponent implements TooltipComponent 
       }
     });
   }
+
   @Override
   protected void paintComponent(Graphics g) {
     synchronized (this) {
@@ -114,6 +111,7 @@ public class DiffEditorSeparator extends JComponent implements TooltipComponent 
       }
     }
   }
+
   private void invalidateAndRepaint() {
     synchronized (this) {
       myGroupsWithBounds = null;
@@ -121,12 +119,15 @@ public class DiffEditorSeparator extends JComponent implements TooltipComponent 
     }
     repaint();
   }
+
   private JViewport getLeftViewport() {
     return myChangeGroupLayout.getLeftComponent().getViewport();
   }
+
   private JViewport getRightViewport() {
     return myChangeGroupLayout.getRightComponent().getViewport();
   }
+
   private int getOffset(JViewport viewport) {
     return -viewport.getViewPosition().y + myChangeGroupLayout.getEditorVerticalOffset();
   }
@@ -160,12 +161,9 @@ public class DiffEditorSeparator extends JComponent implements TooltipComponent 
 
   public void dispose() {
     // TODO: remove? 
-    Sequence.fromIterable(Sequence.fromArray(this.getMouseListeners())).visitAll(new IVisitor<MouseListener>() {
-      public void visit(MouseListener it) {
-        DiffEditorSeparator.this.removeMouseListener(it);
-      }
-    });
+    this.removeMouseListener(myMouseAdapter);
   }
+
   private int vectorProduct(int left, int right, int x, int y) {
     int x1 = getWidth();
     int y1 = right - left;
