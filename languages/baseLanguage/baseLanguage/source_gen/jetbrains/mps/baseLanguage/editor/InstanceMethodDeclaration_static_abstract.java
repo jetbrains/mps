@@ -141,7 +141,7 @@ public class InstanceMethodDeclaration_static_abstract extends TransformationMen
 
         @Override
         public boolean canExecute(@NotNull String pattern) {
-          return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isAbstract$cU_H)) && !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isFinal$I$Qu));
+          return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isAbstract$cU_H));
         }
 
 
@@ -238,7 +238,6 @@ public class InstanceMethodDeclaration_static_abstract extends TransformationMen
 
   private static final class PROPS {
     /*package*/ static final SProperty isAbstract$cU_H = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
-    /*package*/ static final SProperty isFinal$I$Qu = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
   }
 
   private static final class LINKS {
