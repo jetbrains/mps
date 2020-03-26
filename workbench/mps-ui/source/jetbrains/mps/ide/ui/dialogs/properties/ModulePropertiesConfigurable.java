@@ -1527,8 +1527,10 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
             tab.apply();
           }
           myModuleDescriptor.addFacetDescriptor(facet);
+          checkBox.created();
         } else if (checkBox.isExistingToRemove()) {
           myModuleDescriptor.removeFacetDescriptor(checkBox.getFacet());
+          checkBox.existingRemoved();
         }
       }
     }
@@ -1538,7 +1540,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
   /*package*/ class FacetCheckBox implements ItemListener, Comparable<FacetCheckBox> {
     private final JBCheckBox myCheckBox;
     private final String myFacetType;
-    private final boolean myExisting;
+    private boolean myExisting;
     private final Tab myAnchorTab;
     private Tab myFacetTab;
     private SModuleFacet myFacet;
@@ -1569,6 +1571,18 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
       // created and still checked in UI
       // (myFacet stays != null once created, even if newly created facet is unchecked, to preserve page values)
       return !myExisting && myFacet != null && myCheckBox.isSelected();
+    }
+
+    // tell the checkbox that it's 'existingToRemove' state has been honoured. Still, we don't forget myFacet as user may want to revert back
+    // (e.g. uncheck facet, Apply, check back, Apply again)
+    /*package*/ void existingRemoved() {
+      assert myExisting;
+      myExisting = false;
+    }
+
+    /*package*/ void created() {
+      assert !myExisting;
+      myExisting = true;
     }
 
     @Override
