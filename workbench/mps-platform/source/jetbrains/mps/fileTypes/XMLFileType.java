@@ -28,7 +28,7 @@ public class XMLFileType extends LanguageFileType {
   private final Icon myIcon;
 
   public XMLFileType(String name, String description, String extension, Icon icon) {
-    super(XMLLanguage.INSTANCE);
+    super(XMLLanguage.INSTANCE, true);
     myName = name;
     myDescription = description;
     myDefaultExt = extension;
