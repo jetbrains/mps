@@ -9,15 +9,16 @@ import jetbrains.mps.workbench.action.ActionAccess;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.extapi.persistence.FileDataSource;
-import org.jetbrains.mps.openapi.model.EditableSModel;
-import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.actionSystem.CommonDataKeys;
 import org.jetbrains.mps.openapi.persistence.DataSource;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import org.jetbrains.mps.openapi.persistence.NullDataSource;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.project.MPSProject;
+import org.jetbrains.mps.openapi.persistence.ModelFactory;
+import jetbrains.mps.persistence.PersistenceVersionAware;
 import jetbrains.mps.persistence.PersistenceUtil;
+import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import java.util.List;
 import com.intellij.diff.contents.DiffContent;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -34,7 +35,7 @@ public class ShowDifferencesWithModelOnDisk_Action extends BaseAction {
   public ShowDifferencesWithModelOnDisk_Action() {
     super("Show Differences with Model on Disk", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    this.setActionAccess(ActionAccess.READ_PROJECT);
   }
   @Override
   public boolean isDumbAware() {
@@ -42,7 +43,8 @@ public class ShowDifferencesWithModelOnDisk_Action extends BaseAction {
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    setEnabledState(event.getPresentation(), ((SModel) MapSequence.fromMap(_params).get("model")).getSource() instanceof FileDataSource && ((SModel) MapSequence.fromMap(_params).get("model")) instanceof EditableSModel);
+    DataSource ds = event.getData(MPSCommonDataKeys.MODEL).getSource();
+    setEnabledState(event.getPresentation(), ds.getType() != null && !(NullDataSource.NullDataSourceType.INSTANCE.equals(ds.getType())) && event.getData(MPSCommonDataKeys.MODEL) instanceof EditableSModel);
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
@@ -51,7 +53,6 @@ public class ShowDifferencesWithModelOnDisk_Action extends BaseAction {
     }
     {
       SModel p = event.getData(MPSCommonDataKeys.MODEL);
-      MapSequence.fromMap(_params).put("model", p);
       if (p == null) {
         return false;
       }
@@ -60,8 +61,7 @@ public class ShowDifferencesWithModelOnDisk_Action extends BaseAction {
       }
     }
     {
-      Project p = event.getData(CommonDataKeys.PROJECT);
-      MapSequence.fromMap(_params).put("project", p);
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
       if (p == null) {
         return false;
       }
@@ -70,12 +70,21 @@ public class ShowDifferencesWithModelOnDisk_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    DataSource datasource = ((SModel) MapSequence.fromMap(_params).get("model")).getSource();
-    assert datasource instanceof FileDataSource;
-    SModel diskModel = PersistenceUtil.loadModel(((FileDataSource) datasource).getFile());
-    List<DiffContent> contents = ListSequence.fromListAndArray(new ArrayList<DiffContent>(), new ModelDiffContent(diskModel), new ModelDiffContent(((SModel) MapSequence.fromMap(_params).get("model"))));
+    SModel inMemoryModel = event.getData(MPSCommonDataKeys.MODEL);
+    ModelFactory modelFactory = null;
+    if (inMemoryModel instanceof PersistenceVersionAware) {
+      modelFactory = ((PersistenceVersionAware) inMemoryModel).getModelFactory();
+    }
+    DataSource datasource = inMemoryModel.getSource();
+    SModel diskModel;
+    if (modelFactory == null) {
+      diskModel = PersistenceUtil.loadModel(datasource, event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(ModelFactoryService.class));
+    } else {
+      diskModel = PersistenceUtil.loadModel(datasource, modelFactory);
+    }
+    List<DiffContent> contents = ListSequence.fromListAndArray(new ArrayList<DiffContent>(), new ModelDiffContent(diskModel), new ModelDiffContent(inMemoryModel));
     List<String> titles = ListSequence.fromListAndArray(new ArrayList<String>(), "Disk", "Memory");
-    DiffRequest request = new SimpleDiffRequest(((SModel) MapSequence.fromMap(_params).get("model")).getName() + "", contents, titles);
-    DiffManager.getInstance().showDiff(((Project) MapSequence.fromMap(_params).get("project")), request);
+    DiffRequest request = new SimpleDiffRequest(inMemoryModel.getName() + "", contents, titles);
+    DiffManager.getInstance().showDiff(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), request);
   }
 }

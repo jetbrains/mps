@@ -94,6 +94,7 @@
       <concept id="1203071646776" name="jetbrains.mps.lang.plugin.structure.ActionDeclaration" flags="ng" index="sE7Ow">
         <property id="1211298967294" name="outsideCommandExecution" index="72QZ$" />
         <property id="1205250923097" name="caption" index="2uzpH1" />
+        <property id="7458746815261976739" name="requiredAccess" index="2YLI8m" />
         <property id="997079742910640235" name="fillActionContext" index="1teQrl" />
         <property id="1213273179528" name="description" index="1WHSii" />
         <child id="1203083196627" name="updateBlock" index="tmbBb" />
@@ -1488,9 +1489,28 @@
     <property role="TrG5h" value="ShowDifferencesWithModelOnDisk" />
     <property role="3GE5qa" value="Actions" />
     <property role="2uzpH1" value="Show Differences with Model on Disk" />
-    <property role="1teQrl" value="true" />
+    <property role="2YLI8m" value="6u2MFnph2yg/read" />
     <node concept="tkhdA" id="5YG5KSKXSff" role="tmbBb">
       <node concept="3clFbS" id="5YG5KSKXSfg" role="2VODD2">
+        <node concept="3cpWs8" id="46Iaplavz7y" role="3cqZAp">
+          <node concept="3cpWsn" id="46Iaplavz7z" role="3cpWs9">
+            <property role="TrG5h" value="ds" />
+            <node concept="3uibUv" id="46Iaplavz2P" role="1tU5fm">
+              <ref role="3uigEE" to="dush:~DataSource" resolve="DataSource" />
+            </node>
+            <node concept="2OqwBi" id="46Iaplavz7$" role="33vP2m">
+              <node concept="liA8E" id="46Iaplavz7_" role="2OqNvi">
+                <ref role="37wK5l" to="mhbf:~SModel.getSource()" resolve="getSource" />
+              </node>
+              <node concept="2OqwBi" id="46Iaplavz7A" role="2Oq$k0">
+                <node concept="2WthIp" id="46Iaplavz7B" role="2Oq$k0" />
+                <node concept="1DTwFV" id="46Iaplavz7C" role="2OqNvi">
+                  <ref role="2WH_rO" node="6ySnuJfjgDN" resolve="model" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="5YG5KSKY1aX" role="3cqZAp">
           <node concept="1rXfSq" id="5YG5KSKY1aV" role="3clFbG">
             <ref role="37wK5l" to="7bx7:~BaseAction.setEnabledState(com.intellij.openapi.actionSystem.Presentation,boolean)" resolve="setEnabledState" />
@@ -1512,20 +1532,36 @@
                   </node>
                 </node>
               </node>
-              <node concept="2ZW3vV" id="5YG5KSKY0Em" role="3uHU7B">
-                <node concept="3uibUv" id="5YG5KSKY0En" role="2ZW6by">
-                  <ref role="3uigEE" to="ends:~FileDataSource" resolve="FileDataSource" />
-                </node>
-                <node concept="2OqwBi" id="5YG5KSKY0Eo" role="2ZW6bz">
-                  <node concept="liA8E" id="5YG5KSKY0Ep" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SModel.getSource()" resolve="getSource" />
-                  </node>
-                  <node concept="2OqwBi" id="5YG5KSKY0Eq" role="2Oq$k0">
-                    <node concept="2WthIp" id="5YG5KSKY0Er" role="2Oq$k0" />
-                    <node concept="1DTwFV" id="5YG5KSKY0Es" role="2OqNvi">
-                      <ref role="2WH_rO" node="6ySnuJfjgDN" resolve="model" />
+              <node concept="1Wc70l" id="46IaplavN_Q" role="3uHU7B">
+                <node concept="3fqX7Q" id="46IaplavQ7n" role="3uHU7w">
+                  <node concept="2OqwBi" id="46IaplavQ7p" role="3fr31v">
+                    <node concept="Rm8GO" id="46IaplavQ7q" role="2Oq$k0">
+                      <ref role="Rm8GQ" to="dush:~NullDataSource$NullDataSourceType.INSTANCE" resolve="INSTANCE" />
+                      <ref role="1Px2BO" to="dush:~NullDataSource$NullDataSourceType" resolve="NullDataSource.NullDataSourceType" />
+                    </node>
+                    <node concept="liA8E" id="46IaplavQ7r" role="2OqNvi">
+                      <ref role="37wK5l" to="wyt6:~Enum.equals(java.lang.Object)" resolve="equals" />
+                      <node concept="2OqwBi" id="46IaplavQ7s" role="37wK5m">
+                        <node concept="37vLTw" id="46IaplavQ7t" role="2Oq$k0">
+                          <ref role="3cqZAo" node="46Iaplavz7z" resolve="ds" />
+                        </node>
+                        <node concept="liA8E" id="46IaplavQ7u" role="2OqNvi">
+                          <ref role="37wK5l" to="dush:~DataSource.getType()" resolve="getType" />
+                        </node>
+                      </node>
                     </node>
                   </node>
+                </node>
+                <node concept="3y3z36" id="46IaplavNdB" role="3uHU7B">
+                  <node concept="2OqwBi" id="46IaplavMHY" role="3uHU7B">
+                    <node concept="37vLTw" id="46IaplavMo0" role="2Oq$k0">
+                      <ref role="3cqZAo" node="46Iaplavz7z" resolve="ds" />
+                    </node>
+                    <node concept="liA8E" id="46IaplavN2I" role="2OqNvi">
+                      <ref role="37wK5l" to="dush:~DataSource.getType()" resolve="getType" />
+                    </node>
+                  </node>
+                  <node concept="10Nm6u" id="46IaplavNuy" role="3uHU7w" />
                 </node>
               </node>
             </node>
@@ -1535,6 +1571,63 @@
     </node>
     <node concept="tnohg" id="6ySnuJfjgCQ" role="tncku">
       <node concept="3clFbS" id="6ySnuJfjgCR" role="2VODD2">
+        <node concept="3cpWs8" id="46IaplawqWr" role="3cqZAp">
+          <node concept="3cpWsn" id="46IaplawqWs" role="3cpWs9">
+            <property role="TrG5h" value="inMemoryModel" />
+            <node concept="3uibUv" id="46IaplawqT_" role="1tU5fm">
+              <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
+            </node>
+            <node concept="2OqwBi" id="46IaplawqWt" role="33vP2m">
+              <node concept="2WthIp" id="46IaplawqWu" role="2Oq$k0" />
+              <node concept="1DTwFV" id="46IaplawqWv" role="2OqNvi">
+                <ref role="2WH_rO" node="6ySnuJfjgDN" resolve="model" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="46IaplawtTX" role="3cqZAp">
+          <node concept="3cpWsn" id="46IaplawtTY" role="3cpWs9">
+            <property role="TrG5h" value="modelFactory" />
+            <node concept="3uibUv" id="46IaplawtTx" role="1tU5fm">
+              <ref role="3uigEE" to="dush:~ModelFactory" resolve="ModelFactory" />
+            </node>
+            <node concept="10Nm6u" id="46IaplawufZ" role="33vP2m" />
+          </node>
+        </node>
+        <node concept="3clFbJ" id="46IaplawqNn" role="3cqZAp">
+          <node concept="3clFbS" id="46IaplawqNp" role="3clFbx">
+            <node concept="3clFbF" id="46IaplawtWm" role="3cqZAp">
+              <node concept="37vLTI" id="46IaplawtWo" role="3clFbG">
+                <node concept="2OqwBi" id="46IaplawtTZ" role="37vLTx">
+                  <node concept="1eOMI4" id="46IaplawtU0" role="2Oq$k0">
+                    <node concept="10QFUN" id="46IaplawtU1" role="1eOMHV">
+                      <node concept="3uibUv" id="46IaplawtU2" role="10QFUM">
+                        <ref role="3uigEE" to="pa15:~PersistenceVersionAware" resolve="PersistenceVersionAware" />
+                      </node>
+                      <node concept="37vLTw" id="46IaplawtU3" role="10QFUP">
+                        <ref role="3cqZAo" node="46IaplawqWs" resolve="inMemoryModel" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="46IaplawtU4" role="2OqNvi">
+                    <ref role="37wK5l" to="pa15:~PersistenceVersionAware.getModelFactory()" resolve="getModelFactory" />
+                  </node>
+                </node>
+                <node concept="37vLTw" id="46IaplawtWs" role="37vLTJ">
+                  <ref role="3cqZAo" node="46IaplawtTY" resolve="modelFactory" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2ZW3vV" id="46IaplawrZl" role="3clFbw">
+            <node concept="3uibUv" id="46Iaplawsp_" role="2ZW6by">
+              <ref role="3uigEE" to="pa15:~PersistenceVersionAware" resolve="PersistenceVersionAware" />
+            </node>
+            <node concept="37vLTw" id="46IaplawrKA" role="2ZW6bz">
+              <ref role="3cqZAo" node="46IaplawqWs" resolve="inMemoryModel" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="6z2l4wac7g7" role="3cqZAp">
           <node concept="3cpWsn" id="6z2l4wac7g8" role="3cpWs9">
             <property role="TrG5h" value="datasource" />
@@ -1542,25 +1635,12 @@
               <ref role="3uigEE" to="dush:~DataSource" resolve="DataSource" />
             </node>
             <node concept="2OqwBi" id="6z2l4wac9Jv" role="33vP2m">
-              <node concept="2OqwBi" id="6z2l4wac7IA" role="2Oq$k0">
-                <node concept="2WthIp" id="6z2l4wac7ID" role="2Oq$k0" />
-                <node concept="1DTwFV" id="6z2l4wac7IF" role="2OqNvi">
-                  <ref role="2WH_rO" node="6ySnuJfjgDN" resolve="model" />
-                </node>
+              <node concept="37vLTw" id="46IaplawqWx" role="2Oq$k0">
+                <ref role="3cqZAo" node="46IaplawqWs" resolve="inMemoryModel" />
               </node>
               <node concept="liA8E" id="6z2l4wacaAB" role="2OqNvi">
                 <ref role="37wK5l" to="mhbf:~SModel.getSource()" resolve="getSource" />
               </node>
-            </node>
-          </node>
-        </node>
-        <node concept="1gVbGN" id="6z2l4waccnm" role="3cqZAp">
-          <node concept="2ZW3vV" id="6z2l4wacdWd" role="1gVkn0">
-            <node concept="3uibUv" id="6z2l4waceGi" role="2ZW6by">
-              <ref role="3uigEE" to="ends:~FileDataSource" resolve="FileDataSource" />
-            </node>
-            <node concept="37vLTw" id="6z2l4waccZA" role="2ZW6bz">
-              <ref role="3cqZAo" node="6z2l4wac7g8" resolve="datasource" />
             </node>
           </node>
         </node>
@@ -1570,22 +1650,62 @@
             <node concept="3uibUv" id="6z2l4wacpgL" role="1tU5fm">
               <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
             </node>
-            <node concept="2YIFZM" id="6z2l4wacpgY" role="33vP2m">
-              <ref role="37wK5l" to="pa15:~PersistenceUtil.loadModel(jetbrains.mps.vfs.IFile)" resolve="loadModel" />
-              <ref role="1Pybhc" to="pa15:~PersistenceUtil" resolve="PersistenceUtil" />
-              <node concept="2OqwBi" id="6z2l4wacpgZ" role="37wK5m">
-                <node concept="1eOMI4" id="6z2l4wacph0" role="2Oq$k0">
-                  <node concept="10QFUN" id="6z2l4wacph1" role="1eOMHV">
-                    <node concept="3uibUv" id="6z2l4wacph2" role="10QFUM">
-                      <ref role="3uigEE" to="ends:~FileDataSource" resolve="FileDataSource" />
+          </node>
+        </node>
+        <node concept="3clFbJ" id="46Iaplawy4Z" role="3cqZAp">
+          <node concept="3clFbS" id="46Iaplawy51" role="3clFbx">
+            <node concept="3clFbF" id="46Iaplawxzg" role="3cqZAp">
+              <node concept="37vLTI" id="46Iaplawxzi" role="3clFbG">
+                <node concept="2YIFZM" id="6z2l4wacpgY" role="37vLTx">
+                  <ref role="1Pybhc" to="pa15:~PersistenceUtil" resolve="PersistenceUtil" />
+                  <ref role="37wK5l" to="pa15:~PersistenceUtil.loadModel(org.jetbrains.mps.openapi.persistence.DataSource,jetbrains.mps.extapi.persistence.ModelFactoryService)" resolve="loadModel" />
+                  <node concept="37vLTw" id="46Iaplawvd0" role="37wK5m">
+                    <ref role="3cqZAo" node="6z2l4wac7g8" resolve="datasource" />
+                  </node>
+                  <node concept="2OqwBi" id="46Iaplaw$Ht" role="37wK5m">
+                    <node concept="2OqwBi" id="46IaplawzLF" role="2Oq$k0">
+                      <node concept="2WthIp" id="46IaplawzLI" role="2Oq$k0" />
+                      <node concept="1DTwFV" id="46IaplawzLK" role="2OqNvi">
+                        <ref role="2WH_rO" node="1O1cPuvVkur" resolve="mpsProject" />
+                      </node>
                     </node>
-                    <node concept="37vLTw" id="6z2l4wacph3" role="10QFUP">
-                      <ref role="3cqZAo" node="6z2l4wac7g8" resolve="datasource" />
+                    <node concept="liA8E" id="46Iaplaw___" role="2OqNvi">
+                      <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
+                      <node concept="3VsKOn" id="46IaplawA67" role="37wK5m">
+                        <ref role="3VsUkX" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
+                      </node>
                     </node>
                   </node>
                 </node>
-                <node concept="liA8E" id="6z2l4wacph4" role="2OqNvi">
-                  <ref role="37wK5l" to="ends:~FileDataSource.getFile()" resolve="getFile" />
+                <node concept="37vLTw" id="46Iaplawxzm" role="37vLTJ">
+                  <ref role="3cqZAo" node="6z2l4wacpgX" resolve="diskModel" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbC" id="46IaplawyBX" role="3clFbw">
+            <node concept="10Nm6u" id="46IaplawyN4" role="3uHU7w" />
+            <node concept="37vLTw" id="46IaplawyeL" role="3uHU7B">
+              <ref role="3cqZAo" node="46IaplawtTY" resolve="modelFactory" />
+            </node>
+          </node>
+          <node concept="9aQIb" id="46IaplawyRn" role="9aQIa">
+            <node concept="3clFbS" id="46IaplawyRo" role="9aQI4">
+              <node concept="3clFbF" id="46IaplawzkE" role="3cqZAp">
+                <node concept="37vLTI" id="46IaplawzkF" role="3clFbG">
+                  <node concept="2YIFZM" id="46IaplawzkG" role="37vLTx">
+                    <ref role="1Pybhc" to="pa15:~PersistenceUtil" resolve="PersistenceUtil" />
+                    <ref role="37wK5l" to="pa15:~PersistenceUtil.loadModel(org.jetbrains.mps.openapi.persistence.DataSource,org.jetbrains.mps.openapi.persistence.ModelFactory)" resolve="loadModel" />
+                    <node concept="37vLTw" id="46IaplawzkH" role="37wK5m">
+                      <ref role="3cqZAo" node="6z2l4wac7g8" resolve="datasource" />
+                    </node>
+                    <node concept="37vLTw" id="46IaplawzkI" role="37wK5m">
+                      <ref role="3cqZAo" node="46IaplawtTY" resolve="modelFactory" />
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="46IaplawzkJ" role="37vLTJ">
+                    <ref role="3cqZAo" node="6z2l4wacpgX" resolve="diskModel" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -1615,11 +1735,8 @@
                 <node concept="2ShNRf" id="wriWL6V6ss" role="HW$Y0">
                   <node concept="1pGfFk" id="wriWL6Va4l" role="2ShVmc">
                     <ref role="37wK5l" to="24bc:~ModelDiffContent.&lt;init&gt;(org.jetbrains.mps.openapi.model.SModel)" resolve="ModelDiffContent" />
-                    <node concept="2OqwBi" id="wriWL6V$ly" role="37wK5m">
-                      <node concept="2WthIp" id="wriWL6V$l_" role="2Oq$k0" />
-                      <node concept="1DTwFV" id="wriWL6V$lB" role="2OqNvi">
-                        <ref role="2WH_rO" node="6ySnuJfjgDN" resolve="model" />
-                      </node>
+                    <node concept="37vLTw" id="46IaplawqWw" role="37wK5m">
+                      <ref role="3cqZAo" node="46IaplawqWs" resolve="inMemoryModel" />
                     </node>
                   </node>
                 </node>
@@ -1659,11 +1776,8 @@
                 <node concept="3cpWs3" id="wriWL6VqCd" role="37wK5m">
                   <node concept="Xl_RD" id="wriWL6VqCt" role="3uHU7w" />
                   <node concept="2OqwBi" id="wriWL6VpnW" role="3uHU7B">
-                    <node concept="2OqwBi" id="wriWL6VoRM" role="2Oq$k0">
-                      <node concept="2WthIp" id="wriWL6VoRP" role="2Oq$k0" />
-                      <node concept="1DTwFV" id="wriWL6VoRR" role="2OqNvi">
-                        <ref role="2WH_rO" node="6ySnuJfjgDN" resolve="model" />
-                      </node>
+                    <node concept="37vLTw" id="46IaplawqWy" role="2Oq$k0">
+                      <ref role="3cqZAo" node="46IaplawqWs" resolve="inMemoryModel" />
                     </node>
                     <node concept="liA8E" id="wriWL6VpIo" role="2OqNvi">
                       <ref role="37wK5l" to="mhbf:~SModel.getName()" resolve="getName" />
@@ -1688,10 +1802,15 @@
             </node>
             <node concept="liA8E" id="wriWL6Vmlm" role="2OqNvi">
               <ref role="37wK5l" to="yt4f:~DiffManager.showDiff(com.intellij.openapi.project.Project,com.intellij.diff.requests.DiffRequest)" resolve="showDiff" />
-              <node concept="2OqwBi" id="wriWL6Vxza" role="37wK5m">
-                <node concept="2WthIp" id="wriWL6Vxzd" role="2Oq$k0" />
-                <node concept="1DTwFV" id="wriWL6Vxzf" role="2OqNvi">
-                  <ref role="2WH_rO" node="1O1cPuvVkur" resolve="project" />
+              <node concept="2OqwBi" id="46IaplawBVI" role="37wK5m">
+                <node concept="2OqwBi" id="wriWL6Vxza" role="2Oq$k0">
+                  <node concept="2WthIp" id="wriWL6Vxzd" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="wriWL6Vxzf" role="2OqNvi">
+                    <ref role="2WH_rO" node="1O1cPuvVkur" resolve="mpsProject" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="46IaplawCR8" role="2OqNvi">
+                  <ref role="37wK5l" to="z1c4:~MPSProject.getProject()" resolve="getProject" />
                 </node>
               </node>
               <node concept="37vLTw" id="wriWL6Vmln" role="37wK5m">
@@ -1709,8 +1828,8 @@
       <node concept="3dZWAM" id="6I7igKOqsR3" role="1oa70y" />
     </node>
     <node concept="1DS2jV" id="1O1cPuvVkur" role="1NuT2Z">
-      <property role="TrG5h" value="project" />
-      <ref role="1DUlNI" to="qkt:~CommonDataKeys.PROJECT" resolve="PROJECT" />
+      <property role="TrG5h" value="mpsProject" />
+      <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
       <node concept="1oajcY" id="7HZe2EwZDiW" role="1oa70y" />
     </node>
   </node>

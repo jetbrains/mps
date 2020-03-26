@@ -13,6 +13,7 @@ import jetbrains.mps.util.Computable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.persistence.PersistenceUtil;
+import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.junit.Assert;
@@ -77,13 +78,10 @@ public class ChangesCalculationTest extends ChangesTestBase {
       public SModel compute() {
         SModel testModel = SPointerOperations.resolveModel(PersistenceFacade.getInstance().createModelReference("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)"), repo);
         // make an identical clone of original model, and keep it detached from a repository to avoid model access control 
-        SModel detachedCopy = PersistenceUtil.loadModelFromXml(PersistenceUtil.saveModelToXml(testModel));
-        // XXX can't save/load myTestModel out of this model read as there'd be no information about stub concepts (saveModelToXml needs to write that) 
-        //     We can try to deal with that using MetaInfoLoadingOption.KEEP_READ option, but it's not easy to pass one into PersistenceUtil 
-        myReferenceModel = PersistenceUtil.loadModelFromXml(PersistenceUtil.saveModelToXml(testModel));
-        return detachedCopy;
+        return PersistenceUtil.detachedCopyThroughPersistence(testModel, ourProject.getComponent(ModelFactoryService.class));
       }
     });
+    myReferenceModel = PersistenceUtil.detachedCopyThroughPersistence(myTestModel, ourProject.getComponent(ModelFactoryService.class));
     myRootNode = ListSequence.fromList(SModelOperations.roots(myTestModel, CONCEPTS.ClassConcept$IY)).first();
     myRootNodeId = myRootNode.getNodeId();
     Assert.assertEquals("[sanity]", "Root", SPropertyOperations.getString(myRootNode, PROPS.name$tAp1));

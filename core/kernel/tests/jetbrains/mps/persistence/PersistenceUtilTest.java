@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.persistence;
 
+import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.smodel.SModelId;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.TrivialModelDescriptor;
@@ -22,6 +23,7 @@ import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -37,10 +39,12 @@ import java.util.Objects;
 public class PersistenceUtilTest implements EnvironmentAware {
 
   private Environment myEnvironment;
+  private ModelFactoryService myModelFactoryService;
 
   @Override
   public void setEnvironment(@NotNull Environment env) {
     myEnvironment = env;
+    myModelFactoryService = env.getPlatform().findComponent(ModelFactoryService.class);
   }
 
   /*package*/ Environment getEnvironment() {
@@ -123,56 +127,76 @@ public class PersistenceUtilTest implements EnvironmentAware {
   @Test
   public void binaryModelPersistence() {
     SModel original = createTestModel();
-    byte[] saved = PersistenceUtil.saveBinaryModel(original);
-    SModel loaded = PersistenceUtil.loadBinaryModel(saved);
+    byte[] saved = saveBinaryModel(original);
+    SModel loaded = loadBinaryModel(saved);
     Assert.assertTrue(modelsEquals(original, loaded));
   }
 
   @Test
   public void doubleBinary() {
     SModel original = createTestModel();
-    byte[] saved1 = PersistenceUtil.saveBinaryModel(original);
-    SModel loaded1 = PersistenceUtil.loadBinaryModel(saved1);
-    byte[] saved2 = PersistenceUtil.saveBinaryModel(loaded1);
-    SModel loaded2 = PersistenceUtil.loadBinaryModel(saved2);
+    byte[] saved1 = saveBinaryModel(original);
+    SModel loaded1 = loadBinaryModel(saved1);
+    byte[] saved2 = saveBinaryModel(loaded1);
+    SModel loaded2 = loadBinaryModel(saved2);
     Assert.assertTrue(modelsEquals(original, loaded2));
   }
 
   @Test
   public void xmlModelPersistence() {
     SModel original = createTestModel();
-    Element saved = PersistenceUtil.saveModelToXml(original);
-    SModel loaded = PersistenceUtil.loadModelFromXml(saved);
+    Element saved = saveModelToXml(original);
+    SModel loaded = loadModelFromXml(saved);
     Assert.assertTrue(modelsEquals(original, loaded));
   }
 
   @Test
   public void doubleXml() {
     SModel original = createTestModel();
-    Element saved1 = PersistenceUtil.saveModelToXml(original);
-    SModel loaded1 = PersistenceUtil.loadModelFromXml(saved1);
-    Element saved2 = PersistenceUtil.saveModelToXml(loaded1);
-    SModel loaded2 = PersistenceUtil.loadModelFromXml(saved2);
+    Element saved1 = saveModelToXml(original);
+    SModel loaded1 = loadModelFromXml(saved1);
+    Element saved2 = saveModelToXml(loaded1);
+    SModel loaded2 = loadModelFromXml(saved2);
     Assert.assertTrue(modelsEquals(original, loaded2));
   }
 
   @Test
   public void binaryToXml() {
     SModel original = createTestModel();
-    byte[] binary = PersistenceUtil.saveBinaryModel(original);
-    SModel loadedFromBinary = PersistenceUtil.loadBinaryModel(binary);
-    Element savedToXml = PersistenceUtil.saveModelToXml(loadedFromBinary);
-    SModel loadedFromXml = PersistenceUtil.loadModelFromXml(savedToXml);
+    byte[] binary = saveBinaryModel(original);
+    SModel loadedFromBinary = loadBinaryModel(binary);
+    Element savedToXml = saveModelToXml(loadedFromBinary);
+    SModel loadedFromXml = loadModelFromXml(savedToXml);
     Assert.assertTrue(modelsEquals(original, loadedFromXml));
   }
 
   @Test
   public void xmlToBinary() {
     SModel original = createTestModel();
-    Element xml = PersistenceUtil.saveModelToXml(original);
-    SModel loadedFromXml = PersistenceUtil.loadModelFromXml(xml);
-    byte[] savedToBinary = PersistenceUtil.saveBinaryModel(loadedFromXml);
-    SModel loadedFromBinary = PersistenceUtil.loadBinaryModel(savedToBinary);
+    Element xml = saveModelToXml(original);
+    SModel loadedFromXml = loadModelFromXml(xml);
+    byte[] savedToBinary = saveBinaryModel(loadedFromXml);
+    SModel loadedFromBinary = loadBinaryModel(savedToBinary);
     Assert.assertTrue(modelsEquals(original, loadedFromBinary));
+  }
+
+  @Nullable
+  private SModel loadBinaryModel(byte[] content) {
+    return PersistenceUtil.loadModel(content, myModelFactoryService.getFactoryByType(PreinstalledModelFactoryTypes.BINARY));
+  }
+
+  @Nullable
+  private byte[] saveBinaryModel(SModel model) {
+    return PersistenceUtil.modelAsBytes(model, myModelFactoryService.getFactoryByType(PreinstalledModelFactoryTypes.BINARY));
+  }
+
+  @Nullable
+  private SModel loadModelFromXml(Element xml) {
+    return PersistenceUtil.loadModelFromXml(xml, myModelFactoryService);
+  }
+
+  @Nullable
+  private Element saveModelToXml(SModel model) {
+    return PersistenceUtil.saveModelToXml(model, myModelFactoryService);
   }
 }

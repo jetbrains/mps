@@ -76,6 +76,7 @@ import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.persistence.PersistenceUtil;
+import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.module.SearchScope;
@@ -412,7 +413,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         try {
-          result.value = (myModel == null ? null : PersistenceUtil.saveModelToXml(myModel));
+          result.value = (myModel == null ? null : PersistenceUtil.saveModelToXml(myModel, myProject.getComponent(ModelFactoryService.class)));
         } catch (Exception e) {
           if (LOG.isEnabledFor(Level.WARN)) {
             LOG.warn("Error on console model saving", e);
@@ -423,12 +424,13 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     return result.value;
   }
 
+  @Nullable
   protected SModel loadHistoryModel(Element state) {
     if (state == null) {
       return null;
     }
     try {
-      final Wrappers._T<SModel> loadedModel = new Wrappers._T<SModel>(PersistenceUtil.loadModelFromXml(state));
+      final Wrappers._T<SModel> loadedModel = new Wrappers._T<SModel>(PersistenceUtil.loadModelFromXml(state, myProject.getComponent(ModelFactoryService.class)));
       ListSequence.fromList(SModelOperations.nodes(loadedModel.value, null)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return !(it.getConcept().isValid());

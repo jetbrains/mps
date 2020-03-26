@@ -18,7 +18,6 @@ import jetbrains.mps.persistence.PersistenceUtil;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import java.io.IOException;
 import junit.framework.Assert;
-import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import java.util.List;
 import java.util.Comparator;
 import java.util.ArrayList;
@@ -29,7 +28,7 @@ import java.util.Arrays;
  * Note the difference between supported persistence and vcs persistence.
  * For info, read doc comments in ModelPersistence/VCSPersistenceSupport classes
  */
-public class TestPersistenceHelper {
+/*package*/ class TestPersistenceHelper {
   /**
    * should be changed to ModelPersistence.firstSupportedVersion
    */
@@ -80,10 +79,6 @@ public class TestPersistenceHelper {
 
   /*package*/ SModelBase getTestModel() {
     return myTestModel;
-  }
-
-  /*package*/ String getDefaultExt() {
-    return PreinstalledDataSourceTypes.MPS.getFileExtension();
   }
 
   /*package*/ static <C> String assertListsEqual(List<C> expectedList, List<C> actualList, String name) {

@@ -12,9 +12,10 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.persistence.PersistenceUtil;
+import jetbrains.mps.extapi.persistence.ModelFactoryService;
+import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import java.io.ByteArrayInputStream;
-import jetbrains.mps.util.FileUtil;
 import java.io.IOException;
 import junit.framework.Assert;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
@@ -22,7 +23,6 @@ import jetbrains.mps.java.stub.JavaPackageNameStub;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SNodeId;
 import jetbrains.mps.smodel.SNodePointer;
-import java.io.InputStream;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.persistence.ByteArrayInputSource;
@@ -82,10 +82,10 @@ public class TestPersistence_Test extends BaseTransformationTest {
     public void test_testLastVersionIndexing() throws Exception {
       TestPersistenceHelper helper = new TestPersistenceHelper(myProject.getRepository());
       CollectCallback c = new CollectCallback();
-      String serialized = PersistenceUtil.saveModel(helper.getTestModel(), helper.getDefaultExt());
+      byte[] serialized = PersistenceUtil.modelAsBytes(helper.getTestModel(), myProject.getComponent(ModelFactoryService.class).getFactoryByType(PreinstalledModelFactoryTypes.PLAIN_XML));
 
       try {
-        ModelPersistence.index(new ByteArrayInputStream(serialized.getBytes(FileUtil.DEFAULT_CHARSET)), c);
+        ModelPersistence.index(new ByteArrayInputStream(serialized), c);
       } catch (IOException e) {
         Assert.fail(e.getMessage());
       }
@@ -102,16 +102,7 @@ public class TestPersistence_Test extends BaseTransformationTest {
       for (int i = TestPersistenceHelper.START_PERSISTENCE_TEST_VERSION; i <= ModelPersistence.LAST_VERSION; ++i) {
         PersistenceUtil.InMemoryStreamDataSource dataSource = new PersistenceUtil.InMemoryStreamDataSource();
         helper.saveTestModelInPersistence(dataSource, i);
-        InputStream contentStream = dataSource.getContentAsStream();
-
-        byte[] content = null;
-        try {
-          int contentSize = contentStream.available();
-          content = new byte[contentSize];
-          contentStream.read(content);
-        } catch (IOException e) {
-          Assert.fail(e.getMessage());
-        }
+        byte[] content = dataSource.getContentBytes();
         ModelLoadResult result = ModelPersistence.readModel(SModelHeader.create(i), new ByteArrayInputSource(content), ModelLoadingState.FULLY_LOADED);
 
         Assert.assertTrue(result.getState() == ModelLoadingState.FULLY_LOADED);
@@ -122,6 +113,7 @@ public class TestPersistence_Test extends BaseTransformationTest {
     public void test_testPersistenceUpgrade() throws Exception {
       TestPersistenceHelper helper = new TestPersistenceHelper(myProject.getRepository());
 
+      final ModelFactoryService mfsvc = myProject.getComponent(ModelFactoryService.class);
       // tests that it's possible to upgrade to the latest persistence from any supported persistence 
       for (int fromVersion = TestPersistenceHelper.START_PERSISTENCE_TEST_VERSION; fromVersion < ModelPersistence.LAST_VERSION; fromVersion++) {
         // prepare data source in requested version 
@@ -129,16 +121,14 @@ public class TestPersistence_Test extends BaseTransformationTest {
         helper.saveTestModelInPersistence(notUpgradedData, fromVersion);
 
         // load model from source version 
-        String notUpgradedContent = notUpgradedData.getContent(FileUtil.DEFAULT_CHARSET_NAME);
-        SModelBase notUpgradedModel = ((SModelBase) PersistenceUtil.loadModel(notUpgradedContent));
+        SModelBase notUpgradedModel = ((SModelBase) PersistenceUtil.loadModel(notUpgradedData.getContentBytes(), mfsvc.getFactoryByType(PreinstalledModelFactoryTypes.PLAIN_XML)));
 
         // save model in last persistence 
         PersistenceUtil.InMemoryStreamDataSource upgradedData = new PersistenceUtil.InMemoryStreamDataSource();
         ModelPersistence.saveModel(notUpgradedModel.getSModel(), upgradedData, ModelPersistence.LAST_VERSION);
 
         // load model in last persistence from saved 
-        String upgradedContent = upgradedData.getContent(FileUtil.DEFAULT_CHARSET_NAME);
-        SModelBase upgradedModel = ((SModelBase) PersistenceUtil.loadModel(upgradedContent));
+        SModelBase upgradedModel = ((SModelBase) PersistenceUtil.loadModel(upgradedData.getContentBytes(), mfsvc.getFactoryByType(PreinstalledModelFactoryTypes.PLAIN_XML)));
 
         // do test 
         this.assertDeepModelEquals(notUpgradedModel.getSModel(), upgradedModel.getSModel());

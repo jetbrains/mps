@@ -61,10 +61,6 @@ class DefaultModelAccess extends ModelAccess {
   }
 
   @Override
-  public void flushEventQueue() {
-  }
-
-  @Override
   public void runReadInEDT(final Runnable r) {
     SwingUtilities.invokeLater(() -> runReadAction(r));
   }

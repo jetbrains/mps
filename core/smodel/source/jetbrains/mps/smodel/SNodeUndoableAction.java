@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SNode;
 
 public abstract class SNodeUndoableAction implements UndoItem {
@@ -44,15 +43,6 @@ public abstract class SNodeUndoableAction implements UndoItem {
    */
   public VFSChange getAssociatedVfsChange() {
     return VFSChange.NOT_CHANGED;
-  }
-
-  /**
-   * @deprecated since MPS 2017.3 use {@link #getAssociatedVfsChange()} instead.
-   */
-  @Deprecated
-  @ToRemove(version = 2017.3)
-  public boolean isGlobal() {
-    return false;
   }
 
   public enum VFSChange {

@@ -35,7 +35,6 @@
     <classNode dependClassName="java.util.Comparator" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.extapi.model.SModelBase" />
-    <classNode dependClassName="jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations" />
     <classNode dependClassName="jetbrains.mps.persistence.PersistenceUtil" />
     <classNode dependClassName="jetbrains.mps.smodel.CopyUtil" />
@@ -55,7 +54,6 @@
   <dependency className="tests.testPersistence.test.TestPersistence_Test">
     <classNode dependClassName="java.io.ByteArrayInputStream" />
     <classNode dependClassName="java.io.IOException" />
-    <classNode dependClassName="java.io.InputStream" />
     <classNode dependClassName="java.lang.Exception" />
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
@@ -72,6 +70,7 @@
     <classNode dependClassName="java.util.Set" />
     <classNode dependClassName="jetbrains.mps.MPSLaunch" />
     <classNode dependClassName="jetbrains.mps.extapi.model.SModelBase" />
+    <classNode dependClassName="jetbrains.mps.extapi.persistence.ModelFactoryService" />
     <classNode dependClassName="jetbrains.mps.java.stub.JavaPackageNameStub" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.BaseTestBody" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.RunWithCommand" />
@@ -79,6 +78,7 @@
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.TransformationTest" />
     <classNode dependClassName="jetbrains.mps.persistence.ByteArrayInputSource" />
     <classNode dependClassName="jetbrains.mps.persistence.PersistenceUtil" />
+    <classNode dependClassName="jetbrains.mps.persistence.PreinstalledModelFactoryTypes" />
     <classNode dependClassName="jetbrains.mps.smodel.ImplicitImportsLegacyHolder" />
     <classNode dependClassName="jetbrains.mps.smodel.SModel" />
     <classNode dependClassName="jetbrains.mps.smodel.SModelHeader" />
@@ -90,7 +90,6 @@
     <classNode dependClassName="jetbrains.mps.smodel.loading.ModelLoadResult" />
     <classNode dependClassName="jetbrains.mps.smodel.loading.ModelLoadingState" />
     <classNode dependClassName="jetbrains.mps.smodel.persistence.def.ModelPersistence" />
-    <classNode dependClassName="jetbrains.mps.util.FileUtil" />
     <classNode dependClassName="jetbrains.mps.util.IterableUtil" />
     <classNode dependClassName="junit.framework.Assert" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />

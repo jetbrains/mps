@@ -46,18 +46,9 @@
     <import index="jlcu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs(MPS.IDEA/)" />
     <import index="fyhk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps(MPS.Core/)" />
     <import index="bmv6" ref="r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)" />
-    <import index="g3l6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.model(MPS.Core/)" />
     <import index="pa15" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.persistence(MPS.Core/)" />
-    <import index="jkm4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui(MPS.IDEA/)" />
-    <import index="qyr2" ref="r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)" />
-    <import index="ni5j" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.regex(JDK/)" />
-    <import index="uvcm" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vfs.newvfs(MPS.IDEA/)" />
-    <import index="vxxo" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure.concept(MPS.Core/)" />
-    <import index="e8bb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
-    <import index="vybg" ref="r:21cf9f47-5464-40f2-9509-d94ba20bfe82(simpleModel)" />
     <import index="1k94" ref="r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)" />
-    <import index="3ebz" ref="r:c7fd1483-2eda-4417-bb41-aecb48302c10(jetbrains.mps.testbench)" />
     <import index="bqeu" ref="r:e71f8bf8-158e-40c6-bd90-ff2f1a21d867(jetbrains.mps.ide.vcs.test.testdiff)" />
     <import index="sxph" ref="r:f9cefa7f-7dcc-422d-acd3-c452503bcca5(jetbrains.mps.ide.vcs.test.testdiff2)" />
     <import index="z1c4" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
@@ -2941,153 +2932,13 @@
             </node>
           </node>
         </node>
-        <node concept="3SKdUt" id="523_aD7Vb$P" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXoojL" role="1aUNEU">
-            <node concept="3oM_SD" id="ATZLwXoojM" role="1PaTwD">
-              <property role="3oM_SC" value="FIXME" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXoojN" role="1PaTwD">
-              <property role="3oM_SC" value="is" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXoojO" role="1PaTwD">
-              <property role="3oM_SC" value="there" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXoojP" role="1PaTwD">
-              <property role="3oM_SC" value="real" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXoojQ" role="1PaTwD">
-              <property role="3oM_SC" value="need" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXoojR" role="1PaTwD">
-              <property role="3oM_SC" value="to" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXoojS" role="1PaTwD">
-              <property role="3oM_SC" value="go" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXoojT" role="1PaTwD">
-              <property role="3oM_SC" value="through" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXoojU" role="1PaTwD">
-              <property role="3oM_SC" value="String" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXoojV" role="1PaTwD">
-              <property role="3oM_SC" value="when" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXoojW" role="1PaTwD">
-              <property role="3oM_SC" value="we" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXoojX" role="1PaTwD">
-              <property role="3oM_SC" value="can" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXoojY" role="1PaTwD">
-              <property role="3oM_SC" value="use" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXoojZ" role="1PaTwD">
-              <property role="3oM_SC" value="MTM.writeableCloneOf()?" />
-            </node>
-          </node>
-        </node>
-        <node concept="3SKdUt" id="523_aD7Vdnt" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXook0" role="1aUNEU">
-            <node concept="3oM_SD" id="ATZLwXook1" role="1PaTwD">
-              <property role="3oM_SC" value="" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXook2" role="1PaTwD">
-              <property role="3oM_SC" value="" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXook3" role="1PaTwD">
-              <property role="3oM_SC" value="" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXook4" role="1PaTwD">
-              <property role="3oM_SC" value="" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXook5" role="1PaTwD">
-              <property role="3oM_SC" value="" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXook6" role="1PaTwD">
-              <property role="3oM_SC" value="" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXook7" role="1PaTwD">
-              <property role="3oM_SC" value="I" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXook8" role="1PaTwD">
-              <property role="3oM_SC" value="left" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXook9" role="1PaTwD">
-              <property role="3oM_SC" value="strings" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXooka" role="1PaTwD">
-              <property role="3oM_SC" value="for" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXookb" role="1PaTwD">
-              <property role="3oM_SC" value="now" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXookc" role="1PaTwD">
-              <property role="3oM_SC" value="just" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXookd" role="1PaTwD">
-              <property role="3oM_SC" value="to" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXooke" role="1PaTwD">
-              <property role="3oM_SC" value="make" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXookf" role="1PaTwD">
-              <property role="3oM_SC" value="sure" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXookg" role="1PaTwD">
-              <property role="3oM_SC" value="persistance" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXookh" role="1PaTwD">
-              <property role="3oM_SC" value="of" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXooki" role="1PaTwD">
-              <property role="3oM_SC" value="a" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXookj" role="1PaTwD">
-              <property role="3oM_SC" value="detached" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXookk" role="1PaTwD">
-              <property role="3oM_SC" value="model" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXookl" role="1PaTwD">
-              <property role="3oM_SC" value="doesn't" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXookm" role="1PaTwD">
-              <property role="3oM_SC" value="need" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXookn" role="1PaTwD">
-              <property role="3oM_SC" value="model" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXooko" role="1PaTwD">
-              <property role="3oM_SC" value="access!" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="5I4lmHcxDi0" role="3cqZAp">
-          <node concept="3cpWsn" id="5I4lmHcxDi1" role="3cpWs9">
-            <property role="TrG5h" value="baseString" />
-            <node concept="3uibUv" id="5I4lmHcxDi2" role="1tU5fm">
-              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-            </node>
-            <node concept="2YIFZM" id="5I4lmHcxDi3" role="33vP2m">
-              <ref role="1Pybhc" to="pa15:~PersistenceUtil" resolve="PersistenceUtil" />
-              <ref role="37wK5l" to="pa15:~PersistenceUtil.saveModel(org.jetbrains.mps.openapi.model.SModel,java.lang.String)" resolve="saveModel" />
-              <node concept="37vLTw" id="523_aD7UP9r" role="37wK5m">
-                <ref role="3cqZAo" node="523_aD7UojE" resolve="myBaseModel" />
-              </node>
-              <node concept="1rXfSq" id="5I4lmHcxDi5" role="37wK5m">
-                <ref role="37wK5l" node="7HgS$VkbA$F" resolve="getDefaultExt" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="5I4lmHcxDi6" role="3cqZAp">
           <node concept="37vLTI" id="5I4lmHcxDi7" role="3clFbG">
-            <node concept="2YIFZM" id="5I4lmHcxDi8" role="37vLTx">
-              <ref role="1Pybhc" to="pa15:~PersistenceUtil" resolve="PersistenceUtil" />
-              <ref role="37wK5l" to="pa15:~PersistenceUtil.loadModel(java.lang.String)" resolve="loadModel" />
-              <node concept="37vLTw" id="5I4lmHcxDi9" role="37wK5m">
-                <ref role="3cqZAo" node="5I4lmHcxDi1" resolve="baseString" />
+            <node concept="2YIFZM" id="4Ehe6tfJPdx" role="37vLTx">
+              <ref role="37wK5l" to="bmv6:59Mw_8gDwR3" resolve="writableCloneOf" />
+              <ref role="1Pybhc" to="bmv6:1m2uLwrRQWq" resolve="MergeTemporaryModel" />
+              <node concept="37vLTw" id="4Ehe6tfJPsm" role="37wK5m">
+                <ref role="3cqZAo" node="523_aD7UojE" resolve="myBaseModel" />
               </node>
             </node>
             <node concept="37vLTw" id="5I4lmHcxEsa" role="37vLTJ">
@@ -3097,15 +2948,15 @@
         </node>
         <node concept="3clFbF" id="5I4lmHcxDib" role="3cqZAp">
           <node concept="37vLTI" id="5I4lmHcxDic" role="3clFbG">
-            <node concept="2YIFZM" id="5I4lmHcxDid" role="37vLTx">
-              <ref role="1Pybhc" to="pa15:~PersistenceUtil" resolve="PersistenceUtil" />
-              <ref role="37wK5l" to="pa15:~PersistenceUtil.loadModel(java.lang.String)" resolve="loadModel" />
-              <node concept="37vLTw" id="5I4lmHcxDie" role="37wK5m">
-                <ref role="3cqZAo" node="5I4lmHcxDi1" resolve="baseString" />
-              </node>
-            </node>
             <node concept="37vLTw" id="5I4lmHcxF0o" role="37vLTJ">
               <ref role="3cqZAo" node="5I4lmHcxCpp" resolve="myTheirsModel" />
+            </node>
+            <node concept="2YIFZM" id="4Ehe6tfJQsP" role="37vLTx">
+              <ref role="1Pybhc" to="bmv6:1m2uLwrRQWq" resolve="MergeTemporaryModel" />
+              <ref role="37wK5l" to="bmv6:59Mw_8gDwR3" resolve="writableCloneOf" />
+              <node concept="37vLTw" id="4Ehe6tfJQsQ" role="37wK5m">
+                <ref role="3cqZAo" node="523_aD7UojE" resolve="myBaseModel" />
+              </node>
             </node>
           </node>
         </node>
@@ -5897,191 +5748,51 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="3cpWs8" id="6pjhMZUTuqL" role="3cqZAp">
-                      <node concept="3cpWsn" id="6pjhMZUTuqM" role="3cpWs9">
-                        <property role="TrG5h" value="detachedCopy" />
-                        <node concept="3uibUv" id="6pjhMZUTuqK" role="1tU5fm">
-                          <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
-                        </node>
-                        <node concept="2YIFZM" id="6pjhMZUTuqN" role="33vP2m">
-                          <ref role="1Pybhc" to="pa15:~PersistenceUtil" resolve="PersistenceUtil" />
-                          <ref role="37wK5l" to="pa15:~PersistenceUtil.loadModelFromXml(org.jdom.Element)" resolve="loadModelFromXml" />
-                          <node concept="2YIFZM" id="6pjhMZUTuqO" role="37wK5m">
-                            <ref role="1Pybhc" to="pa15:~PersistenceUtil" resolve="PersistenceUtil" />
-                            <ref role="37wK5l" to="pa15:~PersistenceUtil.saveModelToXml(org.jetbrains.mps.openapi.model.SModel)" resolve="saveModelToXml" />
-                            <node concept="37vLTw" id="6pjhMZUTuqP" role="37wK5m">
-                              <ref role="3cqZAo" node="6pjhMZUTgro" resolve="testModel" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3SKdUt" id="6pjhMZV1FCH" role="3cqZAp">
-                      <node concept="1PaTwC" id="ATZLwXool5" role="1aUNEU">
-                        <node concept="3oM_SD" id="ATZLwXool6" role="1PaTwD">
-                          <property role="3oM_SC" value="XXX" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXool7" role="1PaTwD">
-                          <property role="3oM_SC" value="can't" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXool8" role="1PaTwD">
-                          <property role="3oM_SC" value="save/load" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXool9" role="1PaTwD">
-                          <property role="3oM_SC" value="myTestModel" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoola" role="1PaTwD">
-                          <property role="3oM_SC" value="out" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolb" role="1PaTwD">
-                          <property role="3oM_SC" value="of" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolc" role="1PaTwD">
-                          <property role="3oM_SC" value="this" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoold" role="1PaTwD">
-                          <property role="3oM_SC" value="model" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoole" role="1PaTwD">
-                          <property role="3oM_SC" value="read" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolf" role="1PaTwD">
-                          <property role="3oM_SC" value="as" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolg" role="1PaTwD">
-                          <property role="3oM_SC" value="there'd" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolh" role="1PaTwD">
-                          <property role="3oM_SC" value="be" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXooli" role="1PaTwD">
-                          <property role="3oM_SC" value="no" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolj" role="1PaTwD">
-                          <property role="3oM_SC" value="information" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolk" role="1PaTwD">
-                          <property role="3oM_SC" value="about" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXooll" role="1PaTwD">
-                          <property role="3oM_SC" value="stub" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolm" role="1PaTwD">
-                          <property role="3oM_SC" value="concepts" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXooln" role="1PaTwD">
-                          <property role="3oM_SC" value="(saveModelToXml" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolo" role="1PaTwD">
-                          <property role="3oM_SC" value="needs" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolp" role="1PaTwD">
-                          <property role="3oM_SC" value="to" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolq" role="1PaTwD">
-                          <property role="3oM_SC" value="write" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolr" role="1PaTwD">
-                          <property role="3oM_SC" value="that)" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3SKdUt" id="6pjhMZV1JLv" role="3cqZAp">
-                      <node concept="1PaTwC" id="ATZLwXools" role="1aUNEU">
-                        <node concept="3oM_SD" id="ATZLwXoolt" role="1PaTwD">
-                          <property role="3oM_SC" value="" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolu" role="1PaTwD">
-                          <property role="3oM_SC" value="" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolv" role="1PaTwD">
-                          <property role="3oM_SC" value="" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolw" role="1PaTwD">
-                          <property role="3oM_SC" value="" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolx" role="1PaTwD">
-                          <property role="3oM_SC" value="We" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXooly" role="1PaTwD">
-                          <property role="3oM_SC" value="can" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolz" role="1PaTwD">
-                          <property role="3oM_SC" value="try" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXool$" role="1PaTwD">
-                          <property role="3oM_SC" value="to" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXool_" role="1PaTwD">
-                          <property role="3oM_SC" value="deal" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolA" role="1PaTwD">
-                          <property role="3oM_SC" value="with" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolB" role="1PaTwD">
-                          <property role="3oM_SC" value="that" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolC" role="1PaTwD">
-                          <property role="3oM_SC" value="using" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolD" role="1PaTwD">
-                          <property role="3oM_SC" value="MetaInfoLoadingOption.KEEP_READ" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolE" role="1PaTwD">
-                          <property role="3oM_SC" value="option," />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolF" role="1PaTwD">
-                          <property role="3oM_SC" value="but" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolG" role="1PaTwD">
-                          <property role="3oM_SC" value="it's" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolH" role="1PaTwD">
-                          <property role="3oM_SC" value="not" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolI" role="1PaTwD">
-                          <property role="3oM_SC" value="easy" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolJ" role="1PaTwD">
-                          <property role="3oM_SC" value="to" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolK" role="1PaTwD">
-                          <property role="3oM_SC" value="pass" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolL" role="1PaTwD">
-                          <property role="3oM_SC" value="one" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolM" role="1PaTwD">
-                          <property role="3oM_SC" value="into" />
-                        </node>
-                        <node concept="3oM_SD" id="ATZLwXoolN" role="1PaTwD">
-                          <property role="3oM_SC" value="PersistenceUtil" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3clFbF" id="6pjhMZUVIcS" role="3cqZAp">
-                      <node concept="37vLTI" id="6pjhMZUVJpZ" role="3clFbG">
-                        <node concept="37vLTw" id="6pjhMZUVIcQ" role="37vLTJ">
-                          <ref role="3cqZAo" node="6pjhMZUVnmb" resolve="myReferenceModel" />
-                        </node>
-                        <node concept="2YIFZM" id="6pjhMZUVJJ4" role="37vLTx">
-                          <ref role="1Pybhc" to="pa15:~PersistenceUtil" resolve="PersistenceUtil" />
-                          <ref role="37wK5l" to="pa15:~PersistenceUtil.loadModelFromXml(org.jdom.Element)" resolve="loadModelFromXml" />
-                          <node concept="2YIFZM" id="6pjhMZUVJJ5" role="37wK5m">
-                            <ref role="1Pybhc" to="pa15:~PersistenceUtil" resolve="PersistenceUtil" />
-                            <ref role="37wK5l" to="pa15:~PersistenceUtil.saveModelToXml(org.jetbrains.mps.openapi.model.SModel)" resolve="saveModelToXml" />
-                            <node concept="37vLTw" id="6pjhMZV1G3A" role="37wK5m">
-                              <ref role="3cqZAo" node="6pjhMZUTgro" resolve="testModel" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                    </node>
                     <node concept="3cpWs6" id="6pjhMZUU3O$" role="3cqZAp">
-                      <node concept="37vLTw" id="6pjhMZUU3OB" role="3cqZAk">
-                        <ref role="3cqZAo" node="6pjhMZUTuqM" resolve="detachedCopy" />
+                      <node concept="2YIFZM" id="2wbxkK4rgDD" role="3cqZAk">
+                        <ref role="37wK5l" to="pa15:~PersistenceUtil.detachedCopyThroughPersistence(org.jetbrains.mps.openapi.model.SModel,jetbrains.mps.extapi.persistence.ModelFactoryService)" resolve="detachedCopyThroughPersistence" />
+                        <ref role="1Pybhc" to="pa15:~PersistenceUtil" resolve="PersistenceUtil" />
+                        <node concept="37vLTw" id="2wbxkK4rgDE" role="37wK5m">
+                          <ref role="3cqZAo" node="6pjhMZUTgro" resolve="testModel" />
+                        </node>
+                        <node concept="2OqwBi" id="2wbxkK4rgDF" role="37wK5m">
+                          <node concept="37vLTw" id="2wbxkK4rgDG" role="2Oq$k0">
+                            <ref role="3cqZAo" node="nUYGvAYA1H" resolve="ourProject" />
+                          </node>
+                          <node concept="liA8E" id="2wbxkK4rgDH" role="2OqNvi">
+                            <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
+                            <node concept="3VsKOn" id="2wbxkK4rgDI" role="37wK5m">
+                              <ref role="3VsUkX" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
+                            </node>
+                          </node>
+                        </node>
                       </node>
                     </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="6pjhMZUVIcS" role="3cqZAp">
+          <node concept="37vLTI" id="6pjhMZUVJpZ" role="3clFbG">
+            <node concept="37vLTw" id="6pjhMZUVIcQ" role="37vLTJ">
+              <ref role="3cqZAo" node="6pjhMZUVnmb" resolve="myReferenceModel" />
+            </node>
+            <node concept="2YIFZM" id="2wbxkK4rgWC" role="37vLTx">
+              <ref role="37wK5l" to="pa15:~PersistenceUtil.detachedCopyThroughPersistence(org.jetbrains.mps.openapi.model.SModel,jetbrains.mps.extapi.persistence.ModelFactoryService)" resolve="detachedCopyThroughPersistence" />
+              <ref role="1Pybhc" to="pa15:~PersistenceUtil" resolve="PersistenceUtil" />
+              <node concept="37vLTw" id="2wbxkK4rh8L" role="37wK5m">
+                <ref role="3cqZAo" node="6pjhMZUTqoG" resolve="myTestModel" />
+              </node>
+              <node concept="2OqwBi" id="2wbxkK4rhsX" role="37wK5m">
+                <node concept="37vLTw" id="2wbxkK4rhtc" role="2Oq$k0">
+                  <ref role="3cqZAo" node="nUYGvAYA1H" resolve="ourProject" />
+                </node>
+                <node concept="liA8E" id="2wbxkK4rhsY" role="2OqNvi">
+                  <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
+                  <node concept="3VsKOn" id="2wbxkK4rhsZ" role="37wK5m">
+                    <ref role="3VsUkX" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
                   </node>
                 </node>
               </node>

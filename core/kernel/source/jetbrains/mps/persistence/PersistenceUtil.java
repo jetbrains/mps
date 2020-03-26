@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,9 @@
 package jetbrains.mps.persistence;
 
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
-import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromURL;
-import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
-import jetbrains.mps.extapi.persistence.datasource.URLNotSupportedException;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.JDOMUtil;
-import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jdom.Element;
@@ -39,6 +35,7 @@ import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.ModelSaveException;
 import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
+import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 
@@ -48,11 +45,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
-import java.net.URL;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
-import static java.util.Collections.singletonMap;
 
 /**
  * evgeny, 3/6/13
@@ -61,21 +55,6 @@ public final class PersistenceUtil {
   private static final Logger LOG = LogManager.getLogger(PersistenceUtil.class);
 
   private PersistenceUtil() {
-  }
-
-  /**
-   * Try to load a model using a default {@link org.jetbrains.mps.openapi.persistence.ModelFactory}
-   * identified by <code>extension</code> from supplied textual <code>content</code>.
-   *
-   * @return <code>null</code> if fails to load model from the content supplied (either model read error, no model factory for the extension, or factory
-   * doesn't support textual content)
-   */
-  @Nullable
-  public static SModel loadModel(@NotNull String content) {
-    @SuppressWarnings("ConstantConditions")
-    @NotNull ModelFactory factory = getModelFactoryService().getFactoryByType(PreinstalledModelFactoryTypes.PLAIN_XML);
-    byte[] bytes = content.getBytes(FileUtil.DEFAULT_CHARSET);
-    return loadModel(bytes, factory);
   }
 
   @NotNull
@@ -97,49 +76,36 @@ public final class PersistenceUtil {
       model.load();
       return model;
     } catch (ModelLoadException | IOException ex) {
+      LOG.error("loadModel", ex);
       return null;
     }
   }
 
   @Nullable
-  public static SModel loadBinaryModel(final byte[] content) {
-    //noinspection ConstantConditions
-    return loadModel(content, getModelFactoryService().getFactoryByType(PreinstalledModelFactoryTypes.BINARY));
+  public static SModel loadModel(@NotNull DataSource dataSource, @NotNull ModelFactoryService modelFactoryService) {
+    final ModelFactory mf = modelFactoryService.getDefaultModelFactory(dataSource.getType());
+    if (mf == null) {
+      return null;
+    }
+    return loadModel(dataSource, mf);
   }
 
-  public static SModel loadModel(@NotNull IFile file) {
+  public static SModel loadModel(@NotNull DataSource dataSource, @NotNull ModelFactory modelFactory) {
+    if (dataSource.getType() == null) {
+      return null;
+    }
+    if (!modelFactory.supports(dataSource)) {
+      return null;
+    }
+    final SModel model;
     try {
-      URL url = file.getUrl();
-      DataSourceFactoryFromURL dataSourceFactory = getDataSourceFactory(url);
-      if (dataSourceFactory == null) {
-        return null;
-      }
-      DataSource dataSource = dataSourceFactory.create(url);
-      if (dataSource.getType() == null) {
-        return null;
-      }
-      ModelFactory factory = getModelFactoryService().getDefaultModelFactory(dataSource.getType());
-      if (factory == null) {
-        return null;
-      }
-      SModel model = factory.load(dataSource, ContentOption.CONTENT_ONLY);
+      model = modelFactory.load(dataSource, ContentOption.CONTENT_ONLY);
       model.load();
       return model;
-    } catch (ModelLoadException | IOException | URLNotSupportedException e) {
-      LOG.error("", e);
+    } catch (UnsupportedDataSourceException | ModelLoadException e) {
+      LOG.error("loadModel", e);
       return null;
     }
-  }
-
-  @Nullable
-  private static DataSourceFactoryFromURL getDataSourceFactory(@NotNull URL url) {
-    DataSourceFactoryRuleService service = DataSourceFactoryRuleService.getInstance();
-    DataSourceFactoryFromURL dataSourceFactory = service.getFactory(url);
-    if (dataSourceFactory == null) {
-      LOG.error("Data Source Factory is not found for " + url);
-      return null;
-    }
-    return dataSourceFactory;
   }
 
   public static String saveModel(final SModel model, String extension) {
@@ -157,10 +123,11 @@ public final class PersistenceUtil {
     return null;
   }
 
-  public static Element saveModelToXml(final SModel model) {
+  public static Element saveModelToXml(@NotNull final SModel model, @NotNull ModelFactoryService modelFactoryService) {
+    ModelFactory factory = modelFactoryService.getFactoryByType(PreinstalledModelFactoryTypes.PLAIN_XML);
     try {
       SAXBuilder saxBuilder = new SAXBuilder();
-      Element rootElement = saxBuilder.build(modelContentAsStream(model, MPSExtentions.MODEL)).getRootElement();
+      Element rootElement = saxBuilder.build(modelAsStream(model, factory)).getRootElement();
       rootElement.detach();
       return rootElement;
     } catch (IOException | JDOMException e) {
@@ -169,12 +136,32 @@ public final class PersistenceUtil {
     return null;
   }
 
-  public static SModel loadModelFromXml(final Element element) {
-    return loadModel(JDOMUtil.asString(new org.jdom.Document(element)));
+  @Nullable
+  public static SModel loadModelFromXml(@NotNull final Element element, @NotNull ModelFactoryService modelFactoryService) {
+    try {
+      // in fact, could have saved some extra tact by using XMLOutputter with raw format instead of pretty one by default in JDOMUtil
+      final byte[] doc = JDOMUtil.printDocument(new org.jdom.Document(element));
+      ModelFactory factory = modelFactoryService.getFactoryByType(PreinstalledModelFactoryTypes.PLAIN_XML);
+      // don't want to use loadModel(DataSource, ModelFactory) here as DataSource.getType is undefined for ByteArrayInputSource,
+      final SModel model = factory.load(new ByteArrayInputSource(doc), ContentOption.CONTENT_ONLY);
+      model.load();
+      return model;
+    } catch (ModelLoadException | IOException ex) {
+      LOG.error(ex);
+    }
+    return null;
   }
 
-  public static byte[] saveBinaryModel(final SModel model) {
-    ModelFactory factory = getModelFactoryService().getFactoryByType(PreinstalledModelFactoryTypes.BINARY);
+  /**
+   * Make a copy of original model going through serialization/de-serialization of a model using most feature-rich persistence
+   */
+  public static SModel detachedCopyThroughPersistence(SModel model, ModelFactoryService modelFactoryService) {
+    // FIXME need better implementation, this one is just to replace client code by capturing intention
+    return loadModelFromXml(saveModelToXml(model, modelFactoryService), modelFactoryService);
+  }
+
+  @Nullable
+  public static byte[] modelAsBytes(@NotNull final SModel model, @NotNull ModelFactory factory) {
     try {
       InMemoryStreamDataSource source = new InMemoryStreamDataSource();
       factory.save(model, source);
@@ -189,8 +176,7 @@ public final class PersistenceUtil {
    * Serialize model with a persistence identified by extension and provide access to serialized content through InputStream.
    * @return empty stream in case serialization failed. Caller is responsible to close the stream.
    */
-  public static InputStream modelContentAsStream(final SModel model, String extension) {
-    ModelFactory factory = getModelFactoryService().getDefaultModelFactory(FileExtensionDataSourceType.of(extension));
+  private static InputStream modelAsStream(final SModel model, @Nullable ModelFactory factory) {
     if (factory != null) {
       try {
         InMemoryStreamDataSource source = new InMemoryStreamDataSource();
@@ -202,21 +188,6 @@ public final class PersistenceUtil {
       }
     }
     return new ByteArrayInputStream(new byte[0]);
-  }
-
-  public static String savePerRootModel(final SModel model, String name) {
-    ModelFactory factory = getModelFactoryService().getFactoryByType(PreinstalledModelFactoryTypes.PER_ROOT_XML);
-    if (factory == null) {
-      return null;
-    }
-    try {
-      InMemoryMultiStreamDataSource source = new InMemoryMultiStreamDataSource();
-      factory.save(model, source);
-      return source.getContent(name, FileUtil.DEFAULT_CHARSET_NAME);
-    } catch (ModelSaveException | IOException e) {
-      LOG.error(e);
-    }
-    return null;
   }
 
   public static String savePerRootModel(final SModel model, boolean isHeader) {
@@ -295,6 +266,10 @@ public final class PersistenceUtil {
     @Override
     public DataSourceType getType() {
       return null;
+    }
+
+    public byte[] getContentBytes() {
+      return myStream.toByteArray();
     }
 
     public InputStream getContentAsStream() {

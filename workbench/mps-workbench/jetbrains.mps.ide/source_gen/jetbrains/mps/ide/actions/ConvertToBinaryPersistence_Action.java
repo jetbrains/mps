@@ -18,14 +18,15 @@ import jetbrains.mps.extapi.persistence.FileDataSource;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.persistence.PersistenceUtil;
 import org.apache.log4j.Level;
 import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.project.MPSExtentions;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.extapi.model.SModelBase;
@@ -94,7 +95,9 @@ public class ConvertToBinaryPersistence_Action extends BaseAction {
     });
     final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository();
 
-    final ModelFactory binaryFactory = PersistenceFacade.getInstance().getModelFactory(MPSExtentions.MODEL_BINARY);
+    final ModelFactoryService modelFactoryService = ((MPSProject) MapSequence.fromMap(_params).get("project")).getComponent(ModelFactoryService.class);
+
+    final ModelFactory binaryFactory = modelFactoryService.getFactoryByType(PreinstalledModelFactoryTypes.BINARY);
 
     repo.getModelAccess().runWriteAction(new Runnable() {
       public void run() {
@@ -103,7 +106,7 @@ public class ConvertToBinaryPersistence_Action extends BaseAction {
 
         for (SModel smodel : Sequence.fromIterable(seq)) {
           IFile oldFile = ((FileDataSource) smodel.getSource()).getFile();
-          SModel newModel = PersistenceUtil.loadModel(oldFile);
+          SModel newModel = PersistenceUtil.loadModel(smodel.getSource(), modelFactoryService);
           if (newModel == null) {
             if (LOG.isEnabledFor(Level.ERROR)) {
               LOG.error("cannot read " + smodel);
