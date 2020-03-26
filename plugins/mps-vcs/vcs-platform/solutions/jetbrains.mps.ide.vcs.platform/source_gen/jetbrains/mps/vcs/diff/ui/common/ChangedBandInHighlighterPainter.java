@@ -26,10 +26,12 @@ public class ChangedBandInHighlighterPainter extends DiffFoldingAreaPainter {
   protected void paintInLocalCoordinates(Graphics g) {
     for (ChangeGroup changeGroup : ListSequence.fromList(getChangeGroupLayout().getChangeGroups())) {
       g.setColor(ChangeColors.get(changeGroup.getChangeType()));
+      int x = -getLeftHighlighter().getFoldingLineX();
+      int width = getLeftHighlighter().getPreferredSize().width;
       Bounds bounds = changeGroup.getBounds(isHighlightLeft());
-      int foldingLineX = getLeftHighlighter().getFoldingLineX();
-      int x = -foldingLineX;
-      g.fillRect(x, (int) bounds.start(), getLeftHighlighter().getPreferredSize().width, bounds.length());
+      int height = (bounds.length() == 1 ? 2 : bounds.length());
+      int y = (bounds.length() == 1 ? (int) bounds.start() - 1 : (int) bounds.start());
+      g.fillRect(x, y, width, height);
     }
   }
 
