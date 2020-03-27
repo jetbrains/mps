@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ import com.intellij.icons.AllIcons.Nodes;
 import jetbrains.mps.extapi.model.TransientSModel;
 import jetbrains.mps.icons.MPSIcons.Nodes.Models;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
-import jetbrains.mps.ide.ui.tree.SortUtil.SModelComparator;
+import jetbrains.mps.util.SModelNameComparator;
 import jetbrains.mps.ide.ui.tree.TextTreeNode;
 import jetbrains.mps.ide.ui.tree.TreeNodeTextSource;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
@@ -96,7 +96,7 @@ public class SModelsSubtree {
   private List<SModelTreeNode> getRootModelTreeNodes(Collection<SModel> models) {
     List<SModelTreeNode> result = new ArrayList<>();
     ArrayList<SModel> sortedModels = new ArrayList<>(models);
-    sortedModels.sort(new SModelComparator());
+    sortedModels.sort(new SModelNameComparator());
     if (myWithModelsAsNamespace) {
       // note, despite next code looks very similar to #buildTreeNodes(), can't combine as there's different TreeNodeTextSource in new SModelTreeNode
       ArrayList<SModel> subfolderModels = new ArrayList<>();

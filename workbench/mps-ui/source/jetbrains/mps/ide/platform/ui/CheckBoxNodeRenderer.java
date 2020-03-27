@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 package jetbrains.mps.ide.platform.ui;
-
-import jetbrains.mps.util.annotation.ToRemove;
 
 import javax.swing.AbstractCellEditor;
 import javax.swing.Icon;
@@ -94,7 +92,7 @@ public class CheckBoxNodeRenderer implements TreeCellRenderer {
 
       myCheckBox.setEnabled(enabled);
 
-      myIconLabel.setIcon(userObject.getIcon(expanded));
+      myIconLabel.setIcon(userObject.getIcon());
       myTextLabel.setText(userObject.getText());
       myCheckBox.setSelected(userObject.isSelected());
 
@@ -120,12 +118,6 @@ public class CheckBoxNodeRenderer implements TreeCellRenderer {
   }
 
   public interface NodeData {
-    /**
-     * Implement and use {@link NodeData#getIcon()} instead
-     */
-    @Deprecated
-    @ToRemove(version = 2019.1)
-    default Icon getIcon(boolean expanded){return getIcon();}
     default Icon getIcon(){return null;}
     String getText();
 
