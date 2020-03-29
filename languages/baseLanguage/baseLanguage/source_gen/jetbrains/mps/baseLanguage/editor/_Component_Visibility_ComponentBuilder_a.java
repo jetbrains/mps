@@ -108,7 +108,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       style.set(StyleAttributes.EDITABLE, true);
       editorCell.getStyle().putAll(style);
       editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.IVisible$6G, "jetbrains.mps.baseLanguage.editor.Empty_Visibility_TransformtaionMenu"));
-      editorCell.setDefaultText("/*package*/");
+      editorCell.setDefaultText("*package*");
       editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
       return editorCell;
     }
