@@ -15,12 +15,18 @@
  */
 package jetbrains.mps.smodel;
 
+import com.intellij.openapi.application.ApplicationManager;
+import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
 import org.junit.Assert;
+import org.junit.Assume;
 import org.junit.Test;
 
+import java.time.temporal.ChronoUnit;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -82,6 +88,7 @@ public class EDTExecutorInternalTest {
 
   @Test
   public void flushTasksTest() throws InterruptedException {
+    Assume.assumeTrue(ApplicationManager.getApplication().isUnitTestMode());
     LOG.info("My thread is " + Thread.currentThread());
     Logger logger = LogManager.getLogger(EDTExecutorInternal.class);
     logger.setLevel(Level.TRACE);
@@ -111,46 +118,54 @@ public class EDTExecutorInternalTest {
 
   @Test
   public void contractForFlagBruteForceTest() throws InterruptedException {
-    Logger logger = LogManager.getLogger(EDTExecutorInternal.class);
-    logger.setLevel(Level.DEBUG);
-//    logger.addAppender(new ConsoleAppender(new PatternLayout(PatternLayout.DEFAULT_CONVERSION_PATTERN)));
+    LogManager.getLogger(EDTExecutorInternal.class).setLevel(Level.TRACE);
+    LOG.removeAllAppenders();
+    LOG.addAppender(new ConsoleAppender(new PatternLayout(PatternLayout.TTCC_CONVERSION_PATTERN)));
     EDTExecutorInternal edtExecutorInternal = new EDTExecutorInternal();
-    ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+    int nThreads = Runtime.getRuntime().availableProcessors();
+    ExecutorService pool = Executors.newFixedThreadPool(nThreads);
     Collection<Callable<Boolean>> taskList = new ArrayList<>();
     ThreadLocalRandom random = ThreadLocalRandom.current();
     AtomicBoolean deadlockDetected = new AtomicBoolean();
-    final int N_ITERATIONS = 50000;
+    final int N_ITERATIONS = 20000;
     for (int iter = 0; iter < N_ITERATIONS; ++iter) {
+      final int finalIter = iter;
       taskList.add(() -> {
         if (deadlockDetected.get()) return false;
         edtExecutorInternal.scheduleTask(() -> {
           int kth = random.nextInt(10);
-          LOG.info("I know what the " + kth + "-th fibonacci number is: " + fib(kth) + " (" + Thread.currentThread() + ")");
+          LOG.info("Iteration #" + finalIter + ": the " + kth + "-th fibonacci number is: " + fib(kth) + " (" + Thread.currentThread() + ")");
           return true;
         });
-        Thread.sleep(3);
+        TimeUnit.MILLISECONDS.sleep(3);
         return true;
       });
       Semaphore semaphore = new Semaphore(0);
       int permits = 10;
       for (int i = 0; i < permits; ++i) {
+        int finalI = i;
         taskList.add(() -> {
           if (deadlockDetected.get()) return false;
+          LOG.info("Iteration #" + finalIter + ", task #" + finalI + ": scheduling (" + Thread.currentThread() + "; " + semaphore + ")");
+          Instant then = Instant.now();
           edtExecutorInternal.scheduleTask(() -> {
             int nextNum = random.nextInt(5, 15);
-            LOG.info("I found that the " + nextNum + "-th fibonacci number is " + fib(nextNum) + " (" + Thread.currentThread() + "; " + semaphore + ")");
+            LOG.info("Iteration #" + finalIter + ", task #" + finalI + ": in " + ChronoUnit.MILLIS.between(then, Instant.now()) + "ms it was found that the " + nextNum +
+                     " - th fibonacci number is " + fib(nextNum) + " (" + Thread.currentThread() + "; " + semaphore + ")");
             semaphore.release();
             return true;
           });
+          TimeUnit.MILLISECONDS.sleep(5);
           return true;
         });
       }
 
       taskList.add(() -> {
         if (deadlockDetected.get()) return false;
-        boolean result = semaphore.tryAcquire(permits, 10, TimeUnit.SECONDS);
+        LOG.info("Iteration #" + finalIter + ": Trying to acquire " + semaphore);
+        boolean result = semaphore.tryAcquire(permits, 30, TimeUnit.SECONDS);
         if (result) {
-          LOG.info("Acquired " + semaphore);
+          LOG.info("Iteration #" + finalIter + ": Acquired " + semaphore);
         } else {
           LOG.error("Could not acquire " + semaphore);
           deadlockDetected.set(true);
@@ -169,11 +184,15 @@ public class EDTExecutorInternalTest {
         Assert.fail();
       }
     }
+    LOG.info("Flushing tasks");
     edtExecutorInternal.flushTasks();
+    LOG.info("Tasks are flushed");
     if (edtExecutorInternal.isFlushScheduled()) {
       Assert.fail("The flush is still scheduled");
     }
 
     new ExecutorServiceShutdownHelper(pool).shutdownAndAwaitTermination(5000);
+    LogManager.getLogger(EDTExecutorInternal.class).setLevel(Level.INFO);
   }
 }
+
