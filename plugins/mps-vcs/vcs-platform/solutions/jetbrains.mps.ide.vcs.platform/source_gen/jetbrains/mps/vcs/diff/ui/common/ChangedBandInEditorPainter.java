@@ -6,14 +6,18 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.nodeEditor.AbstractAdditionalPainter;
 import java.awt.Graphics;
 import jetbrains.mps.nodeEditor.EditorComponent;
+import java.awt.Color;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 
 @GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/9069855453354398005", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
-public class ChangedBandInEditorPainter extends AbstractAdditionalPainter<ChangeEditorMessage> {
+public class ChangedBandInEditorPainter extends AbstractAdditionalPainter<ChangeGroupLayout> {
 
-  private final ChangeEditorMessage myMessage;
+  private ChangeGroupLayout myChangeGroupLayout;
+  private final boolean myIsLeftEditor;
 
-  public ChangedBandInEditorPainter(ChangeEditorMessage message) {
-    myMessage = message;
+  public ChangedBandInEditorPainter(ChangeGroupLayout changeGroupLayout, boolean isLeftEditor) {
+    myChangeGroupLayout = changeGroupLayout;
+    myIsLeftEditor = isLeftEditor;
   }
 
   @Override
@@ -30,13 +34,38 @@ public class ChangedBandInEditorPainter extends AbstractAdditionalPainter<Change
     return true;
   }
 
-  @Override
-  public void paintBackground(Graphics graphics, EditorComponent component) {
-    myMessage.drawBandInEditor(graphics, component);
+  public static ChangedBandInEditorPainter addTo(DiffEditor diffEditor, ChangeGroupLayout changeGroupLayout, boolean inspector) {
+    EditorComponent editorComponent = diffEditor.getEditorComponent(inspector);
+    ChangedBandInEditorPainter painter = new ChangedBandInEditorPainter(changeGroupLayout, diffEditor.isLeftEditor());
+    editorComponent.addAdditionalPainter(painter);
+    return painter;
   }
 
   @Override
-  public ChangeEditorMessage getItem() {
-    return myMessage;
+  public void paintBackground(Graphics graphics, EditorComponent component) {
+    Color prevGroupColor = null;
+    int prevGroupBottomLineY = -1;
+    for (ChangeGroup changeGroup : ListSequence.fromList(myChangeGroupLayout.getChangeGroups())) {
+      Color color = ChangeColors.get(changeGroup.getChangeType());
+      graphics.setColor(color);
+      int x = 0;
+      int width = component.getWidth();
+      Bounds bounds = changeGroup.getBounds(myIsLeftEditor);
+      int y = (bounds.length() == 1 ? (int) bounds.start() - 1 : (int) bounds.start());
+      int height = (bounds.length() == 1 ? 2 : bounds.length());
+      graphics.fillRect(x, y, width, height);
+      // separate changes with the same color 
+      if (y == prevGroupBottomLineY && color.equals(prevGroupColor)) {
+        graphics.setColor(component.getBackground());
+        graphics.fillRect(x, y, width, 1);
+      }
+      prevGroupColor = color;
+      prevGroupBottomLineY = y + height;
+    }
+  }
+
+  @Override
+  public ChangeGroupLayout getItem() {
+    return myChangeGroupLayout;
   }
 }

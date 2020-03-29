@@ -50,6 +50,7 @@ import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import jetbrains.mps.vcs.diff.ui.common.ChangedBandInHighlighterPainter;
+import jetbrains.mps.vcs.diff.ui.common.ChangedBandInEditorPainter;
 import jetbrains.mps.smodel.SModelOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -170,10 +171,30 @@ public class RootDifferencePane implements IHighlighter {
     }
     @Override
     public void process(@NotNull DiffDividerDrawUtil.DividerPaintable.Handler handler) {
+      Color prevGroupColor = null;
+      int prevLeftEnd = -1;
+      int prevRightEnd = -1;
       for (IMapping<ChangeGroup, Tuples._2<Bounds, Bounds>> groupWithBounds : MapSequence.fromMap(myTopSeparator.getGroupsWithBounds())) {
         Bounds left = groupWithBounds.value()._0();
         Bounds right = groupWithBounds.value()._1();
-        if (!(handler.process((int) left.start() + 1, (int) left.end() + 1, (int) right.start() + 1, (int) right.end() + 1, ChangeColors.get(groupWithBounds.key().getChangeType()), null, false))) {
+        int leftStart = (int) left.start() + 1;
+        int leftEnd = (int) left.end() + 1;
+        int rightStart = (int) right.start() + 1;
+        int rightEnd = (int) right.end() + 1;
+        Color color = ChangeColors.get(groupWithBounds.key().getChangeType());
+        // separate changes with the same color 
+        if (color.equals(prevGroupColor)) {
+          if (leftStart == prevLeftEnd) {
+            leftStart++;
+          }
+          if (rightStart == prevRightEnd) {
+            rightStart++;
+          }
+        }
+        prevLeftEnd = leftEnd;
+        prevRightEnd = rightEnd;
+        prevGroupColor = color;
+        if (!(handler.process(leftStart, leftEnd, rightStart, rightEnd, color, null, false))) {
           return;
         }
       }
@@ -250,6 +271,8 @@ public class RootDifferencePane implements IHighlighter {
       myTopSeparator = separator;
       ChangedBandInHighlighterPainter.addTo(myOldEditor, layout, inspector);
       ChangedBandInHighlighterPainter.addTo(myNewEditor, layout, inspector);
+      ChangedBandInEditorPainter.addTo(myOldEditor, layout, inspector);
+      ChangedBandInEditorPainter.addTo(myNewEditor, layout, inspector);
     }
     if (!(SModelOperations.isReadOnly(myChangeSet.getNewModel()))) {
       DiffButtonsPainter.addTo(this, myOldEditor, layout, inspector);

@@ -5,7 +5,9 @@ package jetbrains.mps.vcs.diff.ui.common;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import java.awt.Graphics;
+import java.awt.Color;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import com.intellij.ui.ColorUtil;
 
 @GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/6043487962111894810", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class ChangedBandInHighlighterPainter extends DiffFoldingAreaPainter {
@@ -13,34 +15,38 @@ public class ChangedBandInHighlighterPainter extends DiffFoldingAreaPainter {
   public ChangedBandInHighlighterPainter(EditorComponent editorComponent, ChangeGroupLayout changeGroupLayout) {
     super(editorComponent, changeGroupLayout);
   }
-
-
-
   @Override
   public int getWeight() {
     return 0;
   }
-
-
   @Override
   protected void paintInLocalCoordinates(Graphics g) {
+    Color prevGroupColor = null;
+    int prevGroupBottomLineY = -1;
     for (ChangeGroup changeGroup : ListSequence.fromList(getChangeGroupLayout().getChangeGroups())) {
-      g.setColor(ChangeColors.get(changeGroup.getChangeType()));
+      Color color = ChangeColors.get(changeGroup.getChangeType());
+      // Make color a bit transparent to make the folding line be visible. This should be replaced by painting under the folding line 
+      color = ColorUtil.withAlpha(color, 0.75f);
+      g.setColor(color);
       int x = -getLeftHighlighter().getFoldingLineX();
       int width = getLeftHighlighter().getPreferredSize().width;
       Bounds bounds = changeGroup.getBounds(isHighlightLeft());
       int height = (bounds.length() == 1 ? 2 : bounds.length());
       int y = (bounds.length() == 1 ? (int) bounds.start() - 1 : (int) bounds.start());
       g.fillRect(x, y, width, height);
+      // separate changes with the same color 
+      if (y == prevGroupBottomLineY && color.equals(prevGroupColor)) {
+        g.setColor(getLeftHighlighter().getBackground());
+        g.fillRect(x, y, width, 1);
+      }
+      prevGroupColor = color;
+      prevGroupBottomLineY = y + height;
     }
   }
-
   public static ChangedBandInHighlighterPainter addTo(DiffEditor diffEditor, ChangeGroupLayout changeGroupLayout, boolean inspector) {
     EditorComponent editorComponent = diffEditor.getEditorComponent(inspector);
     ChangedBandInHighlighterPainter painter = new ChangedBandInHighlighterPainter(editorComponent, changeGroupLayout);
     editorComponent.getLeftEditorHighlighter().addFoldingAreaPainter(painter);
     return painter;
   }
-
-
 }

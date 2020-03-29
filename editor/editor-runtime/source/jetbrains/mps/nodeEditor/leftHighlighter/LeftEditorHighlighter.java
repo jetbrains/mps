@@ -284,9 +284,9 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
 
   private void paintBackgroundAndFoldingLine(Graphics g, Rectangle clipBounds) {
     Graphics2D g2d = (Graphics2D) g;
-    g.setColor(getBackground());
+    g.setColor(myRightToLeft ? getEditorComponent().getBackground() : getBackground());
     g.fillRect(clipBounds.x, clipBounds.y, Math.min(clipBounds.width, myFoldingLineX - clipBounds.x), clipBounds.height);
-    g.setColor(getEditorComponent().getBackground());
+    g.setColor(myRightToLeft ? getBackground() : getEditorComponent().getBackground());
     g.fillRect(Math.max(clipBounds.x, myFoldingLineX), clipBounds.y, clipBounds.width - Math.max(0, myFoldingLineX - clipBounds.x), clipBounds.height);
 
     // same as in EditorComponent.paint() method
