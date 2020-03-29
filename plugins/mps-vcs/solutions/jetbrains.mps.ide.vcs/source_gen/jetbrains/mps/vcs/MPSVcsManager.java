@@ -22,9 +22,6 @@ import com.intellij.openapi.vcs.VcsException;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.vcs.platform.mergedriver.MergeDriverNotification;
 import com.intellij.openapi.vcs.VcsListener;
-import jetbrains.mps.InternalFlag;
-import jetbrains.mps.ide.vcs.SourceRevision;
-import jetbrains.mps.vcs.concrete.MPSSourceRevision;
 import com.intellij.openapi.vcs.FileStatusManager;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -100,9 +97,6 @@ public class MPSVcsManager implements ProjectComponent {
       }
     };
     myMessageBusConnection.subscribe(ProjectLevelVcsManager.VCS_CONFIGURATION_CHANGED, vcsListener);
-    if (InternalFlag.isInternalMode()) {
-      SourceRevision.setProvider(new MPSSourceRevision());
-    }
     FileStatusManager.getInstance(myProject).addFileStatusListener(myFileStatusListener);
   }
   @Override

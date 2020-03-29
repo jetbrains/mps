@@ -12,7 +12,8 @@ import com.intellij.openapi.vfs.VirtualFileManagerListener;
 import jetbrains.mps.ide.platform.watching.ReloadListener;
 
 /**
- * Monitors and {@link jetbrains.mps.vcs.suspicious.PlatformActivityTracker#isProcessingAllowed() tells} if it's ok to perform our VCS operations (i.e. if no other backround platform VCS job is running and VFS is ready for action
+ * Monitors and {@link jetbrains.mps.vcs.suspicious.PlatformActivityTracker#isProcessingAllowed() tells} if it's ok to perform our VCS operations (i.e. if no other background platform VCS job is running and VFS is ready for action
+ * With SuspiciousModelIndex gone, not in use any more, left as a reminder to check if newly introduced ModelMergeConflictTracker shall make use of it.
  */
 @GeneratedClass(node = "r:e74490a1-7013-47e5-9f40-14c310c80a86(jetbrains.mps.vcs.suspicious)/4707157387247635742", model = "r:e74490a1-7013-47e5-9f40-14c310c80a86(jetbrains.mps.vcs.suspicious)")
 /*package*/ class PlatformActivityTracker {

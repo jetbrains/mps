@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,17 +15,9 @@
  */
 package jetbrains.mps.extapi.model;
 
-import jetbrains.mps.messages.IMessage;
-import jetbrains.mps.messages.MessageKind;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SModel.Problem;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * evgeny, 2/26/13
@@ -40,15 +32,6 @@ public class PersistenceProblem implements SModel.Problem {
   private final int column;
   private final SNodeReference anchor;
 
-  /**
-   * @deprecated use alternative with {@link SNodeReference node reference} for anchor
-   */
-  @Deprecated
-  @ToRemove(version = 2018.2)
-  public PersistenceProblem(Kind kind, String text, String location, boolean error, int line, int column, SNode anchor) {
-    this(kind, text, location, error, line, column, anchor == null ? null : anchor.getReference());
-  }
-
   public PersistenceProblem(Kind kind, String text, String location, boolean error, int line, int column, @Nullable SNodeReference anchor) {
     this.myKind = kind;
     this.text = text;
@@ -60,7 +43,7 @@ public class PersistenceProblem implements SModel.Problem {
   }
 
   public PersistenceProblem(Kind kind, String text, String location, boolean error) {
-    this(kind, text, location, error, -1, -1, (SNodeReference) null);
+    this(kind, text, location, error, -1, -1, null);
   }
 
   @Override
@@ -97,22 +80,5 @@ public class PersistenceProblem implements SModel.Problem {
   @Override
   public SNodeReference getAnchorNode() {
     return anchor;
-  }
-
-  /**
-   * @deprecated not in use, is it worth to keep?
-   */
-  @Deprecated
-  @ToRemove(version = 2018.2)
-  public static Problem fromIMessage(SModelData model, Kind kind, IMessage message) {
-    if (message == null) {
-      return null;
-    }
-
-    SNodeReference anchor =  message.getHintObject() instanceof SNodeReference? (SNodeReference) message.getHintObject() : null;
-    if (anchor == null && message.getHintObject() instanceof SNode) {
-      anchor = ((SNode) message.getHintObject()).getReference();
-    }
-    return new PersistenceProblem(kind, message.getText(), null, message.getKind() == MessageKind.ERROR, -1, -1, anchor);
   }
 }

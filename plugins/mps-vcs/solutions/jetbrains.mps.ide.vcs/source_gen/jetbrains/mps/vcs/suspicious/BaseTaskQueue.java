@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * With SuspiciousModelIndex gone, not in use any more Have to decide if there's any use for the class or not.
+ * 
  * Package-local as we don't need it outside now. If found useful, could be generalized, parameterized with
  * Condition and lambda that takes collection of T and made public.
  * Use {@link jetbrains.mps.vcs.suspicious.BaseTaskQueue#start(long, TimeUnit) } and {@link jetbrains.mps.vcs.suspicious.BaseTaskQueue#stop() } to control queue lifecycle

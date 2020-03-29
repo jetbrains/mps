@@ -11958,7 +11958,7 @@
       <property role="2ru_X1" value="true" />
       <ref role="1NtTu8" to="tpee:h9B3oxE" resolve="visibility" />
       <node concept="3F0ifn" id="71jmo988VgW" role="2ruayu">
-        <property role="ilYzB" value="/*package*/" />
+        <property role="ilYzB" value="*package*" />
         <node concept="A1WHu" id="71jmo989ynu" role="3vIgyS">
           <ref role="A1WHt" node="71jmo988VgY" resolve="Empty_Visibility_TransformtaionMenu" />
         </node>

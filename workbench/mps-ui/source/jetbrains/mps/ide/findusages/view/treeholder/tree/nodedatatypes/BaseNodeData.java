@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,10 +18,8 @@ package jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes;
 import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 import jetbrains.mps.ide.findusages.IExternalizeable;
-import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItemRole;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -92,15 +90,6 @@ public abstract class BaseNodeData implements IExternalizeable {
     return myCaption;
   }
 
-  /**
-   * @deprecated use {@link #getCaption()} and {@link #getAdditionalInfo()} instead
-   */
-  @ToRemove(version = 2019.2)
-  @Deprecated
-  public String getText(TextOptions options) {
-    return getCaption();
-  }
-
   @Nullable
   public String getAdditionalInfo() {
     return myAdditionalInfo;
@@ -112,15 +101,6 @@ public abstract class BaseNodeData implements IExternalizeable {
 
   protected final void additionalInfo(@Nullable String text) {
     myAdditionalInfo = text;
-  }
-
-  /**
-   * @deprecated use {@link #getCaption()}  instead. there are no longer html tags in the values
-   */
-  @Deprecated
-  @ToRemove(version = 2019.2)
-  public String getPlainText() {
-    return myCaption.replaceAll("<[^>]*>", "");
   }
 
   public boolean isInvalid() {

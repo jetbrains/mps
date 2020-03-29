@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.pom.Navigatable;
 import com.intellij.ui.LayeredIcon;
 import jetbrains.mps.icons.MPSIcons.Nodes;
-import jetbrains.mps.ide.findusages.view.treeholder.tree.DataNode;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.DataTree;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.nodedatatypes.AbstractResultNodeData;
@@ -37,7 +36,6 @@ import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.ModelReadRunnable;
 import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.coverage.gnu.trove.THashMap;
@@ -576,17 +574,6 @@ public class UsagesTree extends MPSTree {
     /*package*/ void setSubresultsCount(int subresultsCount) {
       mySubresultsCount = subresultsCount;
     }
-
-    /**
-     * @deprecated use {@link #getUsageData()} instead. No reason to expose our failure to build proper API and data structures (yes, DataNode hierarchy was a mistake)
-     */
-    @Override
-    @Deprecated
-    @ToRemove(version = 2019.2)
-    public DataNode getUserObject() {
-      return new DataNode(getUsageData());
-    }
-
 
     // flatten elements associated with the node and its children, recursively.
     /*package*/ Stream<BaseNodeData> getNodeDataStream() {

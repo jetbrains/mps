@@ -25,7 +25,6 @@ import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.util.JDOMUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.Logger;
 import org.jdom.Document;
@@ -164,18 +163,6 @@ public final class TraceInfoCache {
 
   public CacheGenerator newCacheGenerator(@Nullable DebugInfo newInfo) {
     return new CacheGen(newInfo);
-  }
-
-  /**
-   * @return new instance for each call
-   * @deprecated instead, create a new instance for a series of trace.info access. We don't track these files any more, it's up to caller to decide
-   * lifespan of the cache.
-   */
-  @Deprecated
-  @ToRemove(version = 2017.2)
-  public static TraceInfoCache getInstance() {
-    // numerous uses in mbeddr, 0 uses in MPS
-    return new TraceInfoCache();
   }
 
   private class CacheGen implements CacheGenerator {

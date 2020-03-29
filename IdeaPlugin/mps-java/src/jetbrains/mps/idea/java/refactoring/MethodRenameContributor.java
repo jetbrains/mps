@@ -18,7 +18,6 @@ import java.util.Arrays;
 /**
  * danilla 6/4/13
  */
-
 public class MethodRenameContributor implements RenameRefactoringContributor {
   private static final Logger LOG = Logger.getInstance("#jetbrains.mps.idea.core.refactoring.MethodRenameContributor");
 
@@ -50,7 +49,7 @@ public class MethodRenameContributor implements RenameRefactoringContributor {
       return;
     }
 
-    IRefactoring psiAwareRefactoring = new PsiMethodRenameRefactoringWrapper();
+    IRefactoring psiAwareRefactoring = new PsiMethodRenameRefactoringWrapper(RefactoringAccessEx.getInstance());
 
     RefactoringAccessEx.getInstance().getRefactoringFacade().execute(RefactoringContext.createRefactoringContext(
       psiAwareRefactoring,

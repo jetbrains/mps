@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,20 +19,16 @@ import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.project.structure.modules.Copyable;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.io.MementoStreamUtil;
 import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
-import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.persistence.Memento;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.Collections;
 
 @Immutable
 public final class ModelRootDescriptor implements Copyable<ModelRootDescriptor> {
@@ -96,13 +92,9 @@ public final class ModelRootDescriptor implements Copyable<ModelRootDescriptor> 
     return (myType != null ? myType.hashCode() : 0) + 17 * myMemento.hashCode();
   }
 
-  public static ModelRootDescriptor addJavaStubModelRoot(IFile file) {
-    return addJavaStubModelRoot(file, Collections.emptyList());
-  }
-
   /**
-   * Same as {@link #addJavaStubModelRoot(IFile, Collection)}, just takes {@code java.io.File} not to force clients to look up
-   * instance of {@code jetbrains.mps.vfs.IFileSystem}
+   * Takes {@code java.io.File} not to force clients to look up instance of {@code jetbrains.mps.vfs.IFileSystem}
+   * @return {@code null} if one of supplied descriptors has been updated with the path, or new descriptor if none matched
    */
   public static ModelRootDescriptor addJavaStubModelRoot(File file, final Collection<ModelRootDescriptor> modelRootDescriptors) {
     String path = file.getParentFile().getAbsolutePath();
@@ -110,16 +102,6 @@ public final class ModelRootDescriptor implements Copyable<ModelRootDescriptor> 
     return implAddRoot(path, name, modelRootDescriptors);
   }
 
-  /**
-   * There only 1 use of the method, in Solution.updateBootstrapSolutionLibraries(), does that justify its existence?
-   * @return {@code null} if one of supplied descriptors has been updated with the path, or new descriptor if none matched
-   */
-  @Nullable
-  public static ModelRootDescriptor addJavaStubModelRoot(IFile file, final Collection<ModelRootDescriptor> modelRootDescriptors) {
-    final String path = file.getParent().getPath();
-    final String name = file.getName();
-    return implAddRoot(path, name, modelRootDescriptors);
-  }
 
   private static ModelRootDescriptor implAddRoot(String path, String name, final Collection<ModelRootDescriptor> modelRootDescriptors) {
     for (ModelRootDescriptor descriptor : modelRootDescriptors) {
@@ -135,21 +117,5 @@ public final class ModelRootDescriptor implements Copyable<ModelRootDescriptor> 
     Memento child = m.createChild(FileBasedModelRoot.SOURCE_ROOTS);
     child.put(FileBasedModelRoot.LOCATION, name);
     return new ModelRootDescriptor(PersistenceRegistry.JAVA_CLASSES_ROOT, m);
-  }
-
-  @Deprecated
-  @ToRemove(version = 2019.2)
-  @Nullable
-  //use addSourceRoot instead
-  public static ModelRootDescriptor getJavaStubsModelRoot(IFile file, final Collection<ModelRootDescriptor> modelRootDescriptors) {
-    return addJavaStubModelRoot(file, modelRootDescriptors);
-  }
-
-  @Deprecated
-  @ToRemove(version = 2019.2)
-  @Nullable
-  //use addSourceRoot instead
-  public static ModelRootDescriptor getJavaStubsModelRoot(IFile file) {
-    return addJavaStubModelRoot(file);
   }
 }

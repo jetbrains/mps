@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ package jetbrains.mps.ide.ui.tree.module;
 import jetbrains.mps.generator.TransientModelsModule;
 import jetbrains.mps.generator.TransientModelsModule.TransientSModelDescriptor;
 import jetbrains.mps.icons.MPSIcons.Nodes;
-import jetbrains.mps.ide.ui.tree.SortUtil.SModelComparator;
+import jetbrains.mps.util.SModelNameComparator;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode.LongModelNameText;
 import jetbrains.mps.project.Project;
@@ -63,7 +63,7 @@ public class TransientModelsTreeNode extends ProjectModuleTreeNode {
     final LongModelNameText fullModelName = new LongModelNameText();
     GroupByForkBranchNamespaceBuilder treeBuilder = new GroupByForkBranchNamespaceBuilder();
     ArrayList<SModel> sortedModels = new ArrayList<>(IterableUtil.asCollection(getModule().getModels()));
-    Collections.sort(sortedModels, new SModelComparator());
+    Collections.sort(sortedModels, new SModelNameComparator());
     sortedModels.stream().map(m -> new SModelTreeNode(m, fullModelName)).forEach(treeBuilder::addNode);
     treeBuilder.fillNode(this);
   }

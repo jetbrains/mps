@@ -54,6 +54,7 @@ import com.intellij.util.ui.AbstractTableCellEditor;
 import com.intellij.util.ui.ItemRemovable;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
+import jetbrains.mps.VisibleModuleRegistry;
 import jetbrains.mps.extapi.module.FacetsRegistry;
 import jetbrains.mps.findUsages.CompositeFinder;
 import jetbrains.mps.icons.MPSIcons.General;
@@ -68,7 +69,6 @@ import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.ide.generator.GenPlanPickPanel;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.ui.dialogs.properties.choosers.CommonChoosers;
-import jetbrains.mps.ide.ui.dialogs.properties.creators.ModelChooser;
 import jetbrains.mps.ide.ui.dialogs.properties.editors.RuleTypeEditor;
 import jetbrains.mps.ide.ui.dialogs.properties.genpriorities.GeneratorPrioritiesTree;
 import jetbrains.mps.ide.ui.dialogs.properties.input.ModuleCollector;
@@ -179,6 +179,10 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Queue;
 import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
   private final ModuleDescriptor myModuleDescriptor;
@@ -824,7 +828,16 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
 
       ToolbarDecorator decoratorForAccessories = ToolbarDecorator.createDecorator(accessoriesTable);
       decoratorForAccessories.setAddAction(anActionButton -> {
-        List<SModelReference> list = new ModelChooser(myMPSProject).compute();
+        List<SModelReference> models = new ModelAccessHelper(myMPSProject.getModelAccess()).runReadAction(new Computable<List<SModelReference>>() {
+          @Override
+          public List<SModelReference> compute() {
+            // AddAccessoryModel_Action builds same scope using FilteredGlobalScope, I like this more as it's expressive and shows what's in the scope
+            final Predicate<SModule> isVisible = VisibleModuleRegistry.getInstance()::isVisible;
+            final Stream<SModule> visibleModules = StreamSupport.stream(myMPSProject.getRepository().getModules().spliterator(), false).filter(isVisible);
+            return visibleModules.flatMap(m -> StreamSupport.stream(m.getModels().spliterator(), false)).map(SModel::getReference).collect(Collectors.toList());
+          }
+        });
+        List<SModelReference> list = CommonChoosers.showDialogModelCollectionChooser(ProjectHelper.toIdeaProject(myMPSProject), models, null);
         for (SModelReference reference : list) {
           myAccessoriesModelsTableModel.addItem(reference);
         }
@@ -1527,8 +1540,10 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
             tab.apply();
           }
           myModuleDescriptor.addFacetDescriptor(facet);
+          checkBox.created();
         } else if (checkBox.isExistingToRemove()) {
           myModuleDescriptor.removeFacetDescriptor(checkBox.getFacet());
+          checkBox.existingRemoved();
         }
       }
     }
@@ -1538,7 +1553,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
   /*package*/ class FacetCheckBox implements ItemListener, Comparable<FacetCheckBox> {
     private final JBCheckBox myCheckBox;
     private final String myFacetType;
-    private final boolean myExisting;
+    private boolean myExisting;
     private final Tab myAnchorTab;
     private Tab myFacetTab;
     private SModuleFacet myFacet;
@@ -1569,6 +1584,18 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
       // created and still checked in UI
       // (myFacet stays != null once created, even if newly created facet is unchecked, to preserve page values)
       return !myExisting && myFacet != null && myCheckBox.isSelected();
+    }
+
+    // tell the checkbox that it's 'existingToRemove' state has been honoured. Still, we don't forget myFacet as user may want to revert back
+    // (e.g. uncheck facet, Apply, check back, Apply again)
+    /*package*/ void existingRemoved() {
+      assert myExisting;
+      myExisting = false;
+    }
+
+    /*package*/ void created() {
+      assert !myExisting;
+      myExisting = true;
     }
 
     @Override

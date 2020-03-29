@@ -17,6 +17,7 @@ package jetbrains.mps.smodel;
 
 import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.extapi.model.ModelWithAttributes;
+import jetbrains.mps.extapi.model.PersistenceProblem;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.LazyLoadFacility;
@@ -27,12 +28,13 @@ import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel.Problem.Kind;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.function.BiConsumer;
-
 
 public class DefaultSModelDescriptor extends LazyEditableSModelBase implements GeneratableSModel, PersistenceVersionAware, ModelWithAttributes {
   private static final String MODEL_FOLDER_FOR_GENERATION = "useModelFolderForGeneration";
@@ -72,7 +74,7 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
       result = myPersistence.readModel(myHeader, state);
     } catch (ModelReadException e) {
       LOG.warning(String.format("Failed to load model %s: %s", getSource().getLocation(), e.toString()));
-      SuspiciousModelHandler.getHandler().handleSuspiciousModel(this, false);
+      fireProblemsDetected(Collections.singleton(new PersistenceProblem(Kind.Load, e.toString(), getSource().getLocation(), true)));
       InvalidDefaultSModel newModel = new InvalidDefaultSModel(getReference(), e);
       return new ModelLoadResult(newModel, ModelLoadingState.NOT_LOADED);
     }
@@ -202,7 +204,7 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
       myHeader = myPersistence.readHeader();
     } catch (ModelReadException e) {
       myTimestampTracker.updateTimestamp(getSource());
-      SuspiciousModelHandler.getHandler().handleSuspiciousModel(this, false);
+      fireProblemsDetected(Collections.singleton(new PersistenceProblem(Kind.Load, e.toString(), getSource().getLocation(), true)));
       return;
     }
 
