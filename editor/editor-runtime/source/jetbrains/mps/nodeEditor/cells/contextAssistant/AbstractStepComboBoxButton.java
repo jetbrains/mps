@@ -48,16 +48,12 @@ import java.awt.event.MouseMotionListener;
 /**
  * A combo-box button that shows menu based on a {@link ListPopupStep}. Copied from {@link com.intellij.openapi.actionSystem.ex.ComboBoxAction} and simplified.
  */
-abstract class AbstractStepComboBoxButton extends JButton implements UserActivityProviderComponent {
+abstract class AbstractStepComboBoxButton extends ContextAssistantButton implements UserActivityProviderComponent {
   private boolean myForcePressed = false;
   private JBPopup myPopup;
 
   AbstractStepComboBoxButton(String text) {
-    this();
-    setText(text + " \u25be"); // BLACK DOWN-POINTING SMALL TRIANGLE (U+25BE)
-  }
-
-  private AbstractStepComboBoxButton() {
+    super(text + " \u25be");
     setModel(new MyButtonModel());
     setHorizontalAlignment(LEFT);
     putClientProperty("styleCombo", Boolean.TRUE);
@@ -65,7 +61,6 @@ abstract class AbstractStepComboBoxButton extends JButton implements UserActivit
     Insets margins = getMargin();
     setMargin(JBUI.insets(margins.top, 2, margins.bottom, 2));
 
-    setFont(UIUtil.getLabelFont());
     setOpaque(true);
 
     InputMap inputMap = getInputMap();
