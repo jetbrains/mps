@@ -26,7 +26,6 @@ public class ChangedBandInHighlighterPainter extends DiffFoldingAreaPainter {
     int prevGroupBottomLineY = -1;
     for (ChangeGroup changeGroup : ListSequence.fromList(getChangeGroupLayout().getChangeGroups())) {
       Color color = ChangeColors.get(changeGroup.getChangeType());
-      // Make color a bit transparent to make the folding line be visible. This should be replaced by painting under the folding line 
       g.setColor(color);
       int x = -getLeftHighlighter().getFoldingLineX();
       int width = getLeftHighlighter().getPreferredSize().width;
