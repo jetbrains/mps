@@ -640,7 +640,9 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
         } else {
           FullCopyFacility copyFacility = new FullCopyFacility(env);
           SNode copiedNode = copyFacility.copyInputNode(newInputNode);
-          addOutputNodeByInputAndTemplateNode(newInputNode, templateId, copiedNode);
+          // XXX I wonder if there's any sense recording output node for a template under COPY-SRC.
+          //     Got puzzled by the code while investigating MPS-31826. The code dates back to 2007 and it's impossible to figure out the reason behind it
+          //  addOutputNodeByInputAndTemplateNode(newInputNode, templateId, copiedNode);
           if (mappingName != null) {
             registerMappingLabel(newInputNode, mappingName, copiedNode);
           }
