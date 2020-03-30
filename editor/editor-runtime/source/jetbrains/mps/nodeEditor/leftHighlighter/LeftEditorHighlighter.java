@@ -267,27 +267,27 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
   @Override
   public void paintComponent(Graphics g) {
     Rectangle clipBounds = g.getClipBounds();
-    paintBackgroundAndFoldingLine(g, clipBounds);
+    paintBackground(g, clipBounds);
+    paintFoldingLine(g, clipBounds);
     paintTextColumns(g, clipBounds);
     paintIconRenderers(g, clipBounds);
     paintFoldingArea(g, clipBounds);
   }
 
-  private void paintFoldingArea(Graphics g, Rectangle clipBounds) {
-    if (!hasIntersection(getFoldingAreaOffset(), getFoldingAreaWidth(), clipBounds)) {
-      return;
-    }
-    for (AbstractFoldingAreaPainter painter : myFoldingAreaPainters) {
-      painter.paint(g);
-    }
-  }
-
-  private void paintBackgroundAndFoldingLine(Graphics g, Rectangle clipBounds) {
+  private void paintBackground(Graphics g, Rectangle clipBounds) {
     Graphics2D g2d = (Graphics2D) g;
+    // Strip to left of the folding line
     g.setColor(myRightToLeft ? getEditorComponent().getBackground() : getBackground());
     g.fillRect(clipBounds.x, clipBounds.y, Math.min(clipBounds.width, myFoldingLineX - clipBounds.x), clipBounds.height);
+    // Strip to the right of the folding line
     g.setColor(myRightToLeft ? getBackground() : getEditorComponent().getBackground());
     g.fillRect(Math.max(clipBounds.x, myFoldingLineX), clipBounds.y, clipBounds.width - Math.max(0, myFoldingLineX - clipBounds.x), clipBounds.height);
+
+    paintFoldingAreaBackGround(g, clipBounds);
+  }
+
+  private void paintFoldingLine(Graphics g, Rectangle clipBounds) {
+    Graphics2D g2d = (Graphics2D) g;
 
     // same as in EditorComponent.paint() method
     EditorCell deepestCell = myEditorComponent.getDeepestSelectedCell();
@@ -311,6 +311,30 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
     // COLORS: Remove hardcoded color
     UIUtil.drawVDottedLine(g2d, myFoldingLineX, clipBounds.y, clipBounds.y + clipBounds.height, getBackground(), Color.gray);
   }
+
+  private void paintFoldingAreaBackGround(Graphics g, Rectangle clipBounds) {
+    if (!hasIntersection(getFoldingAreaOffset(), getFoldingAreaWidth(), clipBounds)) {
+      return;
+    }
+    for (AbstractFoldingAreaPainter painter : myFoldingAreaPainters) {
+      if (painter.isBackgroundPainter()) {
+        painter.paint(g);
+      }
+    }
+  }
+
+  private void paintFoldingArea(Graphics g, Rectangle clipBounds) {
+    if (!hasIntersection(getFoldingAreaOffset(), getFoldingAreaWidth(), clipBounds)) {
+      return;
+    }
+    for (AbstractFoldingAreaPainter painter : myFoldingAreaPainters) {
+      if (!painter.isBackgroundPainter()) {
+        painter.paint(g);
+      }
+    }
+  }
+
+
 
   private void paintIconRenderers(final Graphics g, Rectangle clipBounds) {
     if (!hasIntersection(getIconRenderersOffset(), myIconRenderersWidth, clipBounds)) {
