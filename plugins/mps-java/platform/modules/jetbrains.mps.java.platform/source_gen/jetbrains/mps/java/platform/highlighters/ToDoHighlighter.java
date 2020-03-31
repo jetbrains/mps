@@ -22,6 +22,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.event.SModelPropertyEvent;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 @GeneratedClass(node = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)/6316328094634559825", model = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)")
 public class ToDoHighlighter extends BaseEventProcessingEditorChecker {
@@ -39,6 +40,11 @@ public class ToDoHighlighter extends BaseEventProcessingEditorChecker {
     for (SNode textCommentPart : SNodeOperations.getNodeDescendants(node, CONCEPTS.TextCommentPart$lb, false, new SAbstractConcept[]{})) {
       if (((boolean) (Boolean) BHReflection.invoke0(textCommentPart, CONCEPTS.CommentPart$kd, SMethodTrimmedId.create("isToDo", null, "6hHyb3YSGHZ")))) {
         SetSequence.fromSet(messages).addElement(new ToDoMessage(textCommentPart, SPropertyOperations.getString(textCommentPart, PROPS.text$AaEw), this));
+      }
+    }
+    for (SNode textComment : SNodeOperations.getNodeDescendants(node, CONCEPTS.IComment$kc, false, new SAbstractConcept[]{})) {
+      if (((boolean) (Boolean) BHReflection.invoke0(textComment, CONCEPTS.IComment$kc, SMethodTrimmedId.create("isTODOComment", CONCEPTS.IComment$kc, "fB3l7ZufMD")))) {
+        SetSequence.fromSet(messages).addElement(new ToDoMessage(textComment, ((String) BHReflection.invoke0(textComment, CONCEPTS.IComment$kc, SMethodTrimmedId.create("getTextualRepresentation", null, "fB3l80ylIb"))), this));
       }
     }
     return new UpdateResult.Completed(true, messages);
@@ -65,5 +71,6 @@ public class ToDoHighlighter extends BaseEventProcessingEditorChecker {
     /*package*/ static final SConcept RemarkStatement$SN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, "jetbrains.mps.baseLanguage.structure.RemarkStatement");
     /*package*/ static final SConcept CommentPart$kd = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3bL, "jetbrains.mps.baseLanguage.structure.CommentPart");
     /*package*/ static final SConcept TextCommentPart$lb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
+    /*package*/ static final SInterfaceConcept IComment$kc = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3e70d51ff33226dL, "jetbrains.mps.baseLanguage.structure.IComment");
   }
 }
