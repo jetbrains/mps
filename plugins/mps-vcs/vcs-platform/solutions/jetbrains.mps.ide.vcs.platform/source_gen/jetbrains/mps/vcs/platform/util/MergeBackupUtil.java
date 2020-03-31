@@ -42,12 +42,12 @@ public class MergeBackupUtil {
     FileUtil.delete(tmpDir);
     return zipfile;
   }
-  public static void packMergeResult(File file, String fileName, String resultContent) {
+  public static void packMergeResult(File file, String fileName, byte[] resultContent) {
     try {
       File tmp = FileUtil.createTmpDir();
       ZipUtil.extract(file, tmp, null);
       //  copy merge result 
-      FileUtil.writeFile(new File(tmp + File.separator + fileName + ".result"), resultContent);
+      FileUtil.write(new File(tmp + File.separator + fileName + ".result"), resultContent);
       //  copy logfiles 
       File logsDir = new File(PathManager.getLogPath());
       File[] logfiles = logsDir.listFiles(new FilenameFilter() {

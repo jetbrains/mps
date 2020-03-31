@@ -43,15 +43,13 @@ import jetbrains.mps.progress.ProgressMonitorAdapter;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.persistence.PersistenceUtil;
+import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import jetbrains.mps.persistence.PersistenceVersionAware;
 import jetbrains.mps.ide.ThreadUtils;
 import com.intellij.openapi.application.ApplicationManager;
-import jetbrains.mps.util.FileUtil;
 import java.io.IOException;
 import com.intellij.openapi.vcs.changes.VcsDirtyScopeManager;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 
 @GeneratedClass(node = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)/7075964554776710007", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
 public class ConflictingModelsUtil {
@@ -187,7 +185,7 @@ public class ConflictingModelsUtil {
         for (final VirtualFile file : ListSequence.fromList(myConflictedModelFiles)) {
           monitor.step(file.getCanonicalPath());
 
-          final IFile iFile = FileSystem.getInstance().getFile(file.getPath());
+          IFile iFile = FileSystem.getInstance().getFile(file.getPath());
           final Wrappers._T<String> ext = new Wrappers._T<String>(file.getExtension());
           if (FilePerRootDataSource.isPerRootPersistenceFile(iFile)) {
             ext.value = MPSExtentions.MODEL;
@@ -244,7 +242,7 @@ public class ConflictingModelsUtil {
           if (LOG.isInfoEnabled()) {
             LOG.info("no conflicting changes in " + SModelOperations.getModelName(baseModel.value));
           }
-          final Wrappers._T<String> resultContent = new Wrappers._T<String>(null);
+          final Wrappers._T<byte[]> resultContent = new Wrappers._T<byte[]>(null);
           ma.runReadAction(new Runnable() {
             public void run() {
               mergeSession.value.applyChanges(mergeSession.value.getAllChanges());
@@ -256,11 +254,7 @@ public class ConflictingModelsUtil {
                 }
               } else {
                 try {
-                  if (FilePerRootDataSource.isPerRootPersistenceFile(iFile)) {
-                    resultContent.value = PersistenceUtil.savePerRootModel(resultModel, file.getExtension().equals(MPSExtentions.MODEL_HEADER));
-                  } else {
-                    resultContent.value = PersistenceUtil.saveModel(resultModel, ext.value);
-                  }
+                  resultContent.value = VCSPersistenceUtil.saveModel(resultModel, file.getExtension(), ext.value);
                 } catch (Throwable error) {
                   // this can be when saving in 9 persistence after merge with 8 persistence => leave it for UI merge 
                   if (baseModel.value instanceof PersistenceVersionAware && resultModel instanceof PersistenceVersionAware && ((PersistenceVersionAware) baseModel.value).getPersistenceVersion() == 8 && ((PersistenceVersionAware) resultModel).getPersistenceVersion() == 9) {
@@ -270,7 +264,6 @@ public class ConflictingModelsUtil {
                       LOG.error("Cannot save merge resulting model " + SModelOperations.getModelName(resultModel), error);
                     }
                   }
-
                 }
               }
             }
@@ -283,7 +276,7 @@ public class ConflictingModelsUtil {
                 ApplicationManager.getApplication().runWriteAction(new Runnable() {
                   public void run() {
                     try {
-                      file.setBinaryContent(resultContent.value.getBytes(FileUtil.DEFAULT_CHARSET));
+                      file.setBinaryContent(resultContent.value);
                       isWritten.value = true;
                     } catch (IOException e) {
                       if (LOG.isEnabledFor(Level.ERROR)) {
