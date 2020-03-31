@@ -215,14 +215,16 @@ final class EDTExecutorInternal implements Disposable {
       LOG.error("Timer is null, could not run tasks", new Throwable());
     } else {
       while (true) {
+        int size;
         try (CloseableLock ignored = myLock.lock()) {
-          if (myTaskQueue.isEmpty()) {
+          size = myTaskQueue.size();
+          if (size == 0) {
             LOG.trace("the task queue is empty, aborting the flush");
-            break;
+            return;
           }
         }
         LOG.trace(String.format("flushing tasks: %d ms left", timer.getDelay(TimeUnit.MILLISECONDS)));
-        flushNTasks(timer, myTaskQueue.size());
+        flushNTasks(timer, size);
         if (timer.isDone()) {
           LOG.trace("also exiting by timer");
           return;
