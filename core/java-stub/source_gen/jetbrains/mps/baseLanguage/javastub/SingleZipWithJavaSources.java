@@ -7,6 +7,7 @@ import java.io.File;
 import org.eclipse.jdt.internal.compiler.impl.CompilerOptions;
 import java.util.zip.ZipFile;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.HashMap;
 import java.io.IOException;
 import org.apache.log4j.Logger;
@@ -45,6 +46,7 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
   };
   private ZipFile myZipFile;
   private Map<String, Documentation> myClassToDoc;
+  private final AtomicInteger myZipGuard = new AtomicInteger(0);
 
   public SingleZipWithJavaSources(File zipFile) {
     myZipFileName = zipFile;
@@ -58,28 +60,37 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
 
   @Override
   public void acquire() {
-    assert myZipFile == null : "Shall release the supplier first";
-    try {
-      myZipFile = new ZipFile(myZipFileName);
-      myClassToDoc = new HashMap<String, Documentation>();
-    } catch (IOException ex) {
-      Logger.getLogger(SingleZipWithJavaSources.class).info(String.format("%s failed", SingleZipWithJavaSources.class.getSimpleName()), ex);
+    if (myZipGuard.getAndIncrement() > 0) {
+      return;
+    }
+    synchronized (this) {
+      try {
+        myZipFile = new ZipFile(myZipFileName);
+        myClassToDoc = new HashMap<String, Documentation>();
+      } catch (IOException ex) {
+        Logger.getLogger(SingleZipWithJavaSources.class).info(String.format("%s failed", SingleZipWithJavaSources.class.getSimpleName()), ex);
+      }
     }
   }
 
   @Override
   public void release() {
+    if (myZipGuard.decrementAndGet() > 0) {
+      return;
+    }
     if (myZipFile == null) {
       return;
     }
-    try {
-      myZipFile.close();
-    } catch (IOException ex) {
-      Logger.getLogger(SingleZipWithJavaSources.class).info(String.format("%s failed", SingleZipWithJavaSources.class.getSimpleName()), ex);
+    synchronized (this) {
+      try {
+        myZipFile.close();
+      } catch (IOException ex) {
+        Logger.getLogger(SingleZipWithJavaSources.class).info(String.format("%s failed", SingleZipWithJavaSources.class.getSimpleName()), ex);
+      }
+      myZipFile = null;
+      myClassToDoc.clear();
+      myClassToDoc = null;
     }
-    myZipFile = null;
-    myClassToDoc.clear();
-    myClassToDoc = null;
   }
 
   @Override
