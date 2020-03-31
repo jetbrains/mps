@@ -16,9 +16,7 @@
 package jetbrains.mps.persistence;
 
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
-import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.JDOMUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jdom.Element;
@@ -37,7 +35,6 @@ import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
-import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -55,11 +52,6 @@ public final class PersistenceUtil {
   private static final Logger LOG = LogManager.getLogger(PersistenceUtil.class);
 
   private PersistenceUtil() {
-  }
-
-  @NotNull
-  private static ModelFactoryService getModelFactoryService() {
-    return ModelFactoryService.getInstance();
   }
 
   /**
@@ -106,26 +98,6 @@ public final class PersistenceUtil {
       LOG.error("loadModel", e);
       return null;
     }
-  }
-
-  /**
-   * @deprecated
-   */
-  @Deprecated
-  @ToRemove(version = 0)
-  public static String saveModel(final SModel model, String extension) {
-    ModelFactory factory = getModelFactoryService().getDefaultModelFactory(FileExtensionDataSourceType.of(extension));
-    if (factory == null) {
-      return null;
-    }
-    try {
-      InMemoryStreamDataSource source = new InMemoryStreamDataSource();
-      factory.save(model, source);
-      return source.getContent(FileUtil.DEFAULT_CHARSET_NAME);
-    } catch (ModelSaveException | IOException e) {
-      LOG.error(e);
-    }
-    return null;
   }
 
   public static Element saveModelToXml(@NotNull final SModel model, @NotNull ModelFactoryService modelFactoryService) {

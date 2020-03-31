@@ -60,7 +60,7 @@
     <import index="g1qu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.ui(MPS.IDEA/)" />
     <import index="j86o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.impl(MPS.IDEA/)" />
     <import index="l8al" ref="f57286e3-4e19-4d8d-8045-3900761f6530/java:git4idea.commands(jetbrains.mps.git4idea.stubs/)" />
-    <import index="bxo2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence.datasource(MPS.OpenAPI/)" implicit="true" />
+    <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
   <registry>
@@ -164,6 +164,7 @@
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534370425" name="jetbrains.mps.baseLanguage.structure.IntegerType" flags="in" index="10Oyi0" />
+      <concept id="1070534604311" name="jetbrains.mps.baseLanguage.structure.ByteType" flags="in" index="10PrrI" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
       <concept id="1070534760951" name="jetbrains.mps.baseLanguage.structure.ArrayType" flags="in" index="10Q1$e">
         <child id="1070534760952" name="componentType" index="10Q1$1" />
@@ -2728,29 +2729,6 @@
             </node>
           </node>
         </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="7HgS$VkdhY8" role="jymVt" />
-    <node concept="3clFb_" id="7HgS$VkbA$F" role="jymVt">
-      <property role="TrG5h" value="getDefaultExt" />
-      <property role="DiZV1" value="false" />
-      <property role="od$2w" value="false" />
-      <node concept="3clFbS" id="7HgS$VkbA$G" role="3clF47">
-        <node concept="3cpWs6" id="7HgS$VkbA$H" role="3cqZAp">
-          <node concept="2OqwBi" id="4i_jb5gVlSM" role="3cqZAk">
-            <node concept="10M0yZ" id="4i_jb5gVkHX" role="2Oq$k0">
-              <ref role="3cqZAo" to="iyvn:~PreinstalledDataSourceTypes.MPS" resolve="MPS" />
-              <ref role="1PxDUh" to="iyvn:~PreinstalledDataSourceTypes" resolve="PreinstalledDataSourceTypes" />
-            </node>
-            <node concept="liA8E" id="4i_jb5gVneH" role="2OqNvi">
-              <ref role="37wK5l" to="bxo2:~FileExtensionDataSourceType.getFileExtension()" resolve="getFileExtension" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="7HgS$VkdcHs" role="1B3o_S" />
-      <node concept="3uibUv" id="7HgS$VkbA$O" role="3clF45">
-        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
     </node>
   </node>
@@ -10204,21 +10182,55 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="3oQv0AQbVxX" role="3cqZAp">
+          <node concept="3cpWsn" id="3oQv0AQbVxY" role="3cpWs9">
+            <property role="TrG5h" value="xmlPersistence" />
+            <node concept="3uibUv" id="3oQv0AQbVxZ" role="1tU5fm">
+              <ref role="3uigEE" to="dush:~ModelFactory" resolve="ModelFactory" />
+            </node>
+            <node concept="2OqwBi" id="3oQv0AQbXPK" role="33vP2m">
+              <node concept="2OqwBi" id="3oQv0AQbX40" role="2Oq$k0">
+                <node concept="2OqwBi" id="3oQv0AQbWwC" role="2Oq$k0">
+                  <node concept="37vLTw" id="3oQv0AQbVZN" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3Y8TONRHzY$" resolve="myEnv" />
+                  </node>
+                  <node concept="liA8E" id="3oQv0AQbWQS" role="2OqNvi">
+                    <ref role="37wK5l" to="79ha:8Pnvxgloc_" resolve="getPlatform" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="3oQv0AQbXlP" role="2OqNvi">
+                  <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
+                  <node concept="3VsKOn" id="3oQv0AQbXyO" role="37wK5m">
+                    <ref role="3VsUkX" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="3oQv0AQbYjk" role="2OqNvi">
+                <ref role="37wK5l" to="ends:~ModelFactoryService.getFactoryByType(org.jetbrains.mps.openapi.persistence.ModelFactoryType)" resolve="getFactoryByType" />
+                <node concept="Rm8GO" id="3oQv0AQbYyM" role="37wK5m">
+                  <ref role="Rm8GQ" to="pa15:~PreinstalledModelFactoryTypes.PLAIN_XML" resolve="PLAIN_XML" />
+                  <ref role="1Px2BO" to="pa15:~PreinstalledModelFactoryTypes" resolve="PreinstalledModelFactoryTypes" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="7HgS$VkfQ$m" role="3cqZAp">
           <node concept="3cpWsn" id="7HgS$VkfQ$n" role="3cpWs9">
             <property role="TrG5h" value="changedContent" />
-            <node concept="2YIFZM" id="7HgS$VkfQ$p" role="33vP2m">
-              <ref role="37wK5l" to="pa15:~PersistenceUtil.saveModel(org.jetbrains.mps.openapi.model.SModel,java.lang.String)" resolve="saveModel" />
+            <property role="3TUv4t" value="true" />
+            <node concept="2YIFZM" id="3oQv0AQbSD5" role="33vP2m">
+              <ref role="37wK5l" to="pa15:~PersistenceUtil.modelAsBytes(org.jetbrains.mps.openapi.model.SModel,org.jetbrains.mps.openapi.persistence.ModelFactory)" resolve="modelAsBytes" />
               <ref role="1Pybhc" to="pa15:~PersistenceUtil" resolve="PersistenceUtil" />
-              <node concept="37vLTw" id="7HgS$VkfQQF" role="37wK5m">
+              <node concept="37vLTw" id="3oQv0AQbSD6" role="37wK5m">
                 <ref role="3cqZAo" node="7HgS$VkfPgP" resolve="modelCopy2Change" />
               </node>
-              <node concept="1rXfSq" id="7HgS$VkfQ$r" role="37wK5m">
-                <ref role="37wK5l" node="7HgS$VkbA$F" resolve="getDefaultExt" />
+              <node concept="37vLTw" id="3oQv0AQbYZx" role="37wK5m">
+                <ref role="3cqZAo" node="3oQv0AQbVxY" resolve="xmlPersistence" />
               </node>
             </node>
-            <node concept="3uibUv" id="7HgS$VkfQ$o" role="1tU5fm">
-              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+            <node concept="10Q1$e" id="3oQv0AQbTNq" role="1tU5fm">
+              <node concept="10PrrI" id="3oQv0AQbTwH" role="10Q1$1" />
             </node>
           </node>
         </node>
@@ -10248,17 +10260,8 @@
                                     </node>
                                     <node concept="liA8E" id="3oUomEoN4Zy" role="2OqNvi">
                                       <ref role="37wK5l" to="jlff:~VirtualFile.setBinaryContent(byte[])" resolve="setBinaryContent" />
-                                      <node concept="2OqwBi" id="3oUomEoN4Zz" role="37wK5m">
-                                        <node concept="37vLTw" id="7HgS$VkfRkV" role="2Oq$k0">
-                                          <ref role="3cqZAo" node="7HgS$VkfQ$n" resolve="changedContent" />
-                                        </node>
-                                        <node concept="liA8E" id="3oUomEoN4ZB" role="2OqNvi">
-                                          <ref role="37wK5l" to="wyt6:~String.getBytes(java.nio.charset.Charset)" resolve="getBytes" />
-                                          <node concept="10M0yZ" id="3oUomEoN4ZC" role="37wK5m">
-                                            <ref role="1PxDUh" to="18ew:~FileUtil" resolve="FileUtil" />
-                                            <ref role="3cqZAo" to="18ew:~FileUtil.DEFAULT_CHARSET" resolve="DEFAULT_CHARSET" />
-                                          </node>
-                                        </node>
+                                      <node concept="37vLTw" id="7HgS$VkfRkV" role="37wK5m">
+                                        <ref role="3cqZAo" node="7HgS$VkfQ$n" resolve="changedContent" />
                                       </node>
                                     </node>
                                   </node>
