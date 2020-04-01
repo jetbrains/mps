@@ -48,7 +48,6 @@
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="3qmy" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.classloading(MPS.Core/)" />
     <import index="3a50" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide(MPS.Platform/)" />
-    <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
     <import index="z1c4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="thjj" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.featureStatistics(MPS.IDEA/)" />
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
@@ -76,6 +75,7 @@
     <import index="9w4s" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util(MPS.IDEA/)" />
     <import index="jkny" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.wm(MPS.IDEA/)" />
     <import index="89o2" ref="r:5f19c5cc-325c-485a-b033-20949d89a6f0(jetbrains.mps.baseLanguage.util.plugin.refactorings)" />
+    <import index="4hrd" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.vfs(MPS.Platform/)" implicit="true" />
     <import index="lwvz" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.selection(MPS.Editor/)" implicit="true" />
   </imports>
   <registry>
@@ -230,9 +230,6 @@
       <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
-      </concept>
-      <concept id="1164991038168" name="jetbrains.mps.baseLanguage.structure.ThrowStatement" flags="nn" index="YS8fn">
-        <child id="1164991057263" name="throwable" index="YScLw" />
       </concept>
       <concept id="1081256982272" name="jetbrains.mps.baseLanguage.structure.InstanceOfExpression" flags="nn" index="2ZW3vV">
         <child id="1081256993305" name="classType" index="2ZW6by" />
@@ -1052,6 +1049,7 @@
     <property role="3GE5qa" value="Actions" />
     <property role="2uzpH1" value="Get Model Contents from Source" />
     <property role="1teQrl" value="true" />
+    <property role="1WHSii" value="Fill existing model with nodes extracted from Java source files" />
     <node concept="1DS2jV" id="1bRM4HyGOHv" role="1NuT2Z">
       <property role="TrG5h" value="frame" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.FRAME" resolve="FRAME" />
@@ -1165,8 +1163,7 @@
                 <ref role="3cqZAo" node="5Lde3eor59z" resolve="dialog" />
               </node>
               <node concept="liA8E" id="3jGGvHIizRd" role="2OqNvi">
-                <ref role="37wK5l" to="3fkn:~FileChooserDialog.choose(com.intellij.openapi.vfs.VirtualFile,com.intellij.openapi.project.Project)" resolve="choose" />
-                <node concept="10Nm6u" id="3jGGvHIizRe" role="37wK5m" />
+                <ref role="37wK5l" to="3fkn:~FileChooserDialog.choose(com.intellij.openapi.project.Project,com.intellij.openapi.vfs.VirtualFile...)" resolve="choose" />
                 <node concept="37vLTw" id="3jGGvHIizRf" role="37wK5m">
                   <ref role="3cqZAo" node="5Lde3eorD7f" resolve="ideaProject" />
                 </node>
@@ -1230,20 +1227,22 @@
                   <ref role="3cqZAo" node="3jGGvHIlLKW" resolve="chosenIFiles" />
                 </node>
                 <node concept="TSZUe" id="3jGGvHImFNi" role="2OqNvi">
-                  <node concept="2OqwBi" id="3jGGvHImG41" role="25WWJ7">
-                    <node concept="2YIFZM" id="3jGGvHImFVG" role="2Oq$k0">
-                      <ref role="37wK5l" to="3ju5:~FileSystem.getInstance()" resolve="getInstance" />
-                      <ref role="1Pybhc" to="3ju5:~FileSystem" resolve="FileSystem" />
+                  <node concept="2OqwBi" id="5wz67X6oz3G" role="25WWJ7">
+                    <node concept="2OqwBi" id="5wz67X6ownt" role="2Oq$k0">
+                      <node concept="2OqwBi" id="5wz67X6ovAG" role="2Oq$k0">
+                        <node concept="2WthIp" id="5wz67X6ovAJ" role="2Oq$k0" />
+                        <node concept="1DTwFV" id="5wz67X6ovAL" role="2OqNvi">
+                          <ref role="2WH_rO" node="MCyGswquVm" resolve="mpsProject" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="5wz67X6oyhB" role="2OqNvi">
+                        <ref role="37wK5l" to="z1c3:~MPSProject.getFileSystem()" resolve="getFileSystem" />
+                      </node>
                     </node>
-                    <node concept="liA8E" id="3jGGvHImGRg" role="2OqNvi">
-                      <ref role="37wK5l" to="3ju5:~FileSystem.getFile(java.lang.String)" resolve="getFile" />
-                      <node concept="2OqwBi" id="3jGGvHInwAM" role="37wK5m">
-                        <node concept="2GrUjf" id="3jGGvHInw4Z" role="2Oq$k0">
-                          <ref role="2Gs0qQ" node="3jGGvHImtSC" resolve="vfile" />
-                        </node>
-                        <node concept="liA8E" id="3jGGvHIn_oi" role="2OqNvi">
-                          <ref role="37wK5l" to="jlff:~VirtualFile.getPath()" resolve="getPath" />
-                        </node>
+                    <node concept="liA8E" id="5wz67X6o$CU" role="2OqNvi">
+                      <ref role="37wK5l" to="4hrd:~IdeaFileSystem.fromVirtualFile(com.intellij.openapi.vfs.VirtualFile)" resolve="fromVirtualFile" />
+                      <node concept="2GrUjf" id="5wz67X6o$Ye" role="37wK5m">
+                        <ref role="2Gs0qQ" node="3jGGvHImtSC" resolve="vfile" />
                       </node>
                     </node>
                   </node>
@@ -1352,72 +1351,21 @@
                         </node>
                       </node>
                       <node concept="3clFbS" id="3jGGvHIv0YT" role="3clF47">
-                        <node concept="3J1_TO" id="3jGGvHIvkhI" role="3cqZAp">
-                          <node concept="3clFbS" id="3jGGvHIvkhK" role="1zxBo7">
-                            <node concept="3clFbF" id="3jGGvHIvaG_" role="3cqZAp">
-                              <node concept="2OqwBi" id="3jGGvHIuFPt" role="3clFbG">
-                                <node concept="37vLTw" id="3jGGvHIvdjl" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="3jGGvHIuta$" resolve="parser" />
-                                </node>
-                                <node concept="liA8E" id="3jGGvHIuI5s" role="2OqNvi">
-                                  <ref role="37wK5l" to="rkxj:2Uk7YSyAdm5" resolve="convertToMps" />
-                                  <node concept="37vLTw" id="5Wd5tR1DgSp" role="37wK5m">
-                                    <ref role="3cqZAo" node="5Wd5tR1CDoh" resolve="ifilesToParse" />
-                                  </node>
-                                  <node concept="2ShNRf" id="3jGGvHIvf6k" role="37wK5m">
-                                    <node concept="1pGfFk" id="3jGGvHIvjsX" role="2ShVmc">
-                                      <ref role="37wK5l" to="mk90:~ProgressMonitorAdapter.&lt;init&gt;(com.intellij.openapi.progress.ProgressIndicator)" resolve="ProgressMonitorAdapter" />
-                                      <node concept="37vLTw" id="3jGGvHIvjEe" role="37wK5m">
-                                        <ref role="3cqZAo" node="3jGGvHIv0YQ" resolve="indicator" />
-                                      </node>
-                                    </node>
-                                  </node>
-                                </node>
-                              </node>
+                        <node concept="3clFbF" id="3jGGvHIvaG_" role="3cqZAp">
+                          <node concept="2OqwBi" id="3jGGvHIuFPt" role="3clFbG">
+                            <node concept="37vLTw" id="3jGGvHIvdjl" role="2Oq$k0">
+                              <ref role="3cqZAo" node="3jGGvHIuta$" resolve="parser" />
                             </node>
-                            <node concept="3clFbH" id="3jGGvHIvkhJ" role="3cqZAp" />
-                          </node>
-                          <node concept="3uVAMA" id="3jGGvHIvkhL" role="1zxBo5">
-                            <node concept="XOnhg" id="3jGGvHIvkhN" role="1zc67B">
-                              <property role="3TUv4t" value="false" />
-                              <property role="TrG5h" value="e" />
-                              <node concept="nSUau" id="xvs04dHR_9" role="1tU5fm">
-                                <node concept="3uibUv" id="3jGGvHIvlZZ" role="nSUat">
-                                  <ref role="3uigEE" to="rkxj:31WmxQNAJEi" resolve="JavaParseException" />
-                                </node>
+                            <node concept="liA8E" id="3jGGvHIuI5s" role="2OqNvi">
+                              <ref role="37wK5l" to="rkxj:2Uk7YSyAdm5" resolve="convertToMps" />
+                              <node concept="37vLTw" id="5Wd5tR1DgSp" role="37wK5m">
+                                <ref role="3cqZAo" node="5Wd5tR1CDoh" resolve="ifilesToParse" />
                               </node>
-                            </node>
-                            <node concept="3clFbS" id="3jGGvHIvkhR" role="1zc67A">
-                              <node concept="YS8fn" id="3jGGvHIvsAC" role="3cqZAp">
-                                <node concept="2ShNRf" id="3jGGvHIvtUa" role="YScLw">
-                                  <node concept="1pGfFk" id="3jGGvHIvvWK" role="2ShVmc">
-                                    <ref role="37wK5l" to="wyt6:~RuntimeException.&lt;init&gt;(java.lang.Throwable)" resolve="RuntimeException" />
-                                    <node concept="37vLTw" id="3jGGvHIvx3X" role="37wK5m">
-                                      <ref role="3cqZAo" node="3jGGvHIvkhN" resolve="e" />
-                                    </node>
-                                  </node>
-                                </node>
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="3uVAMA" id="3jGGvHIvor$" role="1zxBo5">
-                            <node concept="XOnhg" id="3jGGvHIvor_" role="1zc67B">
-                              <property role="3TUv4t" value="false" />
-                              <property role="TrG5h" value="e" />
-                              <node concept="nSUau" id="xvs04dHR_b" role="1tU5fm">
-                                <node concept="3uibUv" id="3jGGvHIvp$S" role="nSUat">
-                                  <ref role="3uigEE" to="guwi:~IOException" resolve="IOException" />
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="3clFbS" id="3jGGvHIvorB" role="1zc67A">
-                              <node concept="YS8fn" id="3jGGvHIvysz" role="3cqZAp">
-                                <node concept="2ShNRf" id="3jGGvHIvys$" role="YScLw">
-                                  <node concept="1pGfFk" id="3jGGvHIvys_" role="2ShVmc">
-                                    <ref role="37wK5l" to="wyt6:~RuntimeException.&lt;init&gt;(java.lang.Throwable)" resolve="RuntimeException" />
-                                    <node concept="37vLTw" id="3jGGvHIvzY7" role="37wK5m">
-                                      <ref role="3cqZAo" node="3jGGvHIvor_" resolve="e" />
-                                    </node>
+                              <node concept="2ShNRf" id="3jGGvHIvf6k" role="37wK5m">
+                                <node concept="1pGfFk" id="3jGGvHIvjsX" role="2ShVmc">
+                                  <ref role="37wK5l" to="mk90:~ProgressMonitorAdapter.&lt;init&gt;(com.intellij.openapi.progress.ProgressIndicator)" resolve="ProgressMonitorAdapter" />
+                                  <node concept="37vLTw" id="3jGGvHIvjEe" role="37wK5m">
+                                    <ref role="3cqZAo" node="3jGGvHIv0YQ" resolve="indicator" />
                                   </node>
                                 </node>
                               </node>

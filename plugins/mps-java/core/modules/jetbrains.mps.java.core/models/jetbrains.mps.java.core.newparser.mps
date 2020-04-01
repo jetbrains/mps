@@ -36,7 +36,6 @@
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
     <import index="yyf4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.util(MPS.OpenAPI/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
-    <import index="u78q" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typesystem.inference(MPS.Core/)" />
     <import index="g3l6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.model(MPS.Core/)" />
     <import index="ends" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.persistence(MPS.Core/)" />
     <import index="pa15" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.persistence(MPS.Core/)" />
@@ -51,7 +50,6 @@
     <import index="mk8z" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
     <import index="i5cy" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)" />
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
-    <import index="jqf9" ref="r:c97f7798-14e8-47eb-b3f8-b032ba7575c4(jetbrains.mps.baseLanguage.jdk8.structure)" />
     <import index="i8bi" ref="r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)" implicit="true" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" implicit="true" />
   </imports>
@@ -23702,22 +23700,6 @@
   </node>
   <node concept="312cEu" id="2Uk7YSyAbP9">
     <property role="TrG5h" value="JavaToMpsConverter" />
-    <node concept="Wx3nA" id="2Uk7YSyCjqj" role="jymVt">
-      <property role="TrG5h" value="LOG" />
-      <property role="3TUv4t" value="true" />
-      <node concept="2YIFZM" id="2Uk7YSyCtaP" role="33vP2m">
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-        <node concept="3VsKOn" id="2Uk7YSyCtaQ" role="37wK5m">
-          <ref role="3VsUkX" node="2Uk7YSyAbP9" resolve="JavaToMpsConverter" />
-        </node>
-      </node>
-      <node concept="3uibUv" id="2Uk7YSyCxsM" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
-      </node>
-      <node concept="3Tm6S6" id="2Uk7YSyCjqn" role="1B3o_S" />
-    </node>
-    <node concept="2tJIrI" id="2Uk7YSyHR$p" role="jymVt" />
     <node concept="312cEg" id="2Uk7YSyHXeC" role="jymVt">
       <property role="34CwA1" value="false" />
       <property role="eg7rD" value="false" />
@@ -25379,11 +25361,12 @@
           <ref role="3uigEE" to="yyf4:~ProgressMonitor" resolve="ProgressMonitor" />
         </node>
       </node>
-      <node concept="3uibUv" id="2Uk7YSz8ejn" role="Sfmx6">
-        <ref role="3uigEE" node="31WmxQNAJEi" resolve="JavaParseException" />
-      </node>
-      <node concept="3uibUv" id="2Uk7YSz8m4v" role="Sfmx6">
-        <ref role="3uigEE" to="guwi:~IOException" resolve="IOException" />
+      <node concept="P$JXv" id="5wz67X6p_iU" role="lGtFl">
+        <node concept="TZ5HA" id="5wz67X6p_iV" role="TZ5H$">
+          <node concept="1dT_AC" id="5wz67X6p_iW" role="1dT_Ay">
+            <property role="1dT_AB" value="Error reporting goes into message handler supplied at construction" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="640OLg_vqXq" role="jymVt" />
