@@ -17,6 +17,7 @@ package jetbrains.mps.smodel.runtime;
 
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.IOperationContext;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 public interface ReferenceScopeProvider {
@@ -25,9 +26,18 @@ public interface ReferenceScopeProvider {
     return null;
   }
 
-  boolean hasPresentation();
+  // see getPresentation(), below
+  @ToRemove(version = 2020.1)
+  default boolean hasPresentation() {
+    return false;
+  }
 
-  String getPresentation(IOperationContext operationContext, ReferencePresentationContext _context);
+  // In 19.3, there were template fragments that generate overrides for the method, (two calls for BaseScopeProvider), templates removed in 2020.1
+  // left for binary compatibility with code generated in 19.3; drop once 2020.1 is out
+  @ToRemove(version = 2020.1)
+  default String getPresentation(IOperationContext operationContext, ReferencePresentationContext _context) {
+    throw new UnsupportedOperationException();
+  }
 
   /**
    * For convenience navigation from errors in search scope to the checking function

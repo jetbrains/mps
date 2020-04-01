@@ -26,6 +26,9 @@
         <property id="1225118929411" name="build" index="YLPcu" />
         <property id="1225118933224" name="comment" index="YLQ7P" />
       </concept>
+      <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
+        <property id="7862711839422615217" name="text" index="t5JxN" />
+      </concept>
       <concept id="6054523464626862044" name="jetbrains.mps.lang.structure.structure.AttributeInfo_IsMultiple" flags="ng" index="tn0Fv">
         <property id="6054523464626875854" name="value" index="tnX3d" />
       </concept>
@@ -178,6 +181,9 @@
       <property role="20kJfa" value="presentation" />
       <property role="IQ2ns" value="3906442776579556548" />
       <ref role="20lvS9" node="3oQug8hq$j1" resolve="ConstraintFunction_ReferentSearchScope_Presentation" />
+      <node concept="t5JxF" id="387fCKVtkeC" role="lGtFl">
+        <property role="t5JxN" value="ignored by generator" />
+      </node>
     </node>
     <node concept="1TJgyj" id="gVkmjE9" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -250,6 +256,9 @@
       <property role="20kJfa" value="presentation" />
       <property role="IQ2ns" value="3906442776579628834" />
       <ref role="20lvS9" node="3oQug8hq$j1" resolve="ConstraintFunction_ReferentSearchScope_Presentation" />
+      <node concept="t5JxF" id="387fCKVtkep" role="lGtFl">
+        <property role="t5JxN" value="ignored by generator" />
+      </node>
     </node>
     <node concept="1TJgyi" id="gREPwNM" role="1TKVEl">
       <property role="TrG5h" value="description" />

@@ -26,8 +26,9 @@ public final class Word__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
 
   public static final SMethod<SNode> normalize_id3yV2h2COV$s = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("normalize").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3yV2h2COV$s").build();
+  public static final SMethod<String> getTextualRepresentation_idfB3l81it7u = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextualRepresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("fB3l81it7u").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(normalize_id3yV2h2COV$s);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(normalize_id3yV2h2COV$s, getTextualRepresentation_idfB3l81it7u);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SPropertyOperations.assign(__thisNode__, PROPS.value$cK70, "");
@@ -50,6 +51,9 @@ public final class Word__BehaviorDescriptor extends BaseBHDescriptor {
     }
     return __thisNode__;
   }
+  /*package*/ static String getTextualRepresentation_idfB3l81it7u(@NotNull SNode __thisNode__) {
+    return (isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.value$cK70)) ? SPropertyOperations.getString(__thisNode__, PROPS.value$cK70) : "");
+  }
 
   /*package*/ Word__BehaviorDescriptor() {
   }
@@ -68,6 +72,8 @@ public final class Word__BehaviorDescriptor extends BaseBHDescriptor {
     switch (methodIndex) {
       case 0:
         return (T) ((SNode) normalize_id3yV2h2COV$s(node));
+      case 1:
+        return (T) ((String) getTextualRepresentation_idfB3l81it7u(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -95,6 +101,9 @@ public final class Word__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+  private static boolean isNotEmptyString(String str) {
+    return str != null && str.length() > 0;
   }
 
   private static final class PROPS {

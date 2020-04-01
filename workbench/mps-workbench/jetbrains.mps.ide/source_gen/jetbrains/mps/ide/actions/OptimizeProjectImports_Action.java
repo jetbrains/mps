@@ -19,6 +19,7 @@ import jetbrains.mps.progress.ProgressMonitorAdapter;
 import com.intellij.util.WaitForProgressToShow;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.project.OptimizeImportsHelper;
+import jetbrains.mps.project.ModelsAutoImportsManager;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.progress.ProgressManager;
@@ -71,7 +72,7 @@ public class OptimizeProjectImports_Action extends BaseAction {
             }
           });
           final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository();
-          final OptimizeImportsHelper helper = new OptimizeImportsHelper(repo);
+          final OptimizeImportsHelper helper = new OptimizeImportsHelper(repo, ((MPSProject) MapSequence.fromMap(_params).get("project")).getComponent(ModelsAutoImportsManager.class));
           ApplicationManager.getApplication().invokeAndWait(new Runnable() {
             public void run() {
               repo.getModelAccess().executeCommand(new Runnable() {

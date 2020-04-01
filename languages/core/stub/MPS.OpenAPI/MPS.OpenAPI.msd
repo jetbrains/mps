@@ -4,7 +4,7 @@
   <models>
     <modelRoot type="java_classes">
       <sourceRoot path="${mps_home}/lib/mps-openapi.jar" />
-      <Sources zip="${mps_home}/lib/MPS-src.zip"/>
+      <Sources zipPath="${mps_home}/lib/MPS-src.zip"/>
     </modelRoot>
   </models>
   <facets>

@@ -2443,8 +2443,7 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.CommentPart__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.IClassifierMember__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.MultiLineComment__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.SingleLineComment__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.IComment__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.ANNOTATION_StyleKey" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.BLOCK_COMMENT_StyleKey" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.BRACES_StyleKey" />

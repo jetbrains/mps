@@ -260,6 +260,7 @@ public class ClassifierUpdater {
         BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(decl)), CONCEPTS.FieldDeclaration$Ps, SMethodTrimmedId.create("markLoadedNodeAsDeprecated", CONCEPTS.FieldDeclaration$Ps, "5H8W9_ECA0g"), decl);
       }
 
+      updateFieldJavadoc(decl, field);
 
       ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$oYX5)).addElement(decl);
     }

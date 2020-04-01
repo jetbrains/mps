@@ -32,13 +32,16 @@ import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.NodeRepresentatorBase;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.ide.icons.IdeIcons;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5426495936043638617", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
@@ -112,7 +115,11 @@ public class TodoViewer extends JPanel {
     @NotNull
     @Override
     public String getPresentation(SNode node) {
-      return SPropertyOperations.getString(SNodeOperations.as(node, CONCEPTS.TextCommentPart$lb), PROPS.text$AaEw);
+      SNode n = node;
+      if (SNodeOperations.isInstanceOf(n, CONCEPTS.TextCommentPart$lb)) {
+        return SPropertyOperations.getString(SNodeOperations.as(node, CONCEPTS.TextCommentPart$lb), PROPS.text$AaEw);
+      }
+      return ((String) BHReflection.invoke0(SNodeOperations.as(node, CONCEPTS.IComment$kc), CONCEPTS.IComment$kc, SMethodTrimmedId.create("getTextualRepresentation", null, "fB3l80ylIb")));
     }
     @Override
     public String getResultsText(TextOptions options) {
@@ -140,6 +147,7 @@ public class TodoViewer extends JPanel {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept TextCommentPart$lb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
+    /*package*/ static final SInterfaceConcept IComment$kc = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3e70d51ff33226dL, "jetbrains.mps.baseLanguage.structure.IComment");
   }
 
   private static final class PROPS {

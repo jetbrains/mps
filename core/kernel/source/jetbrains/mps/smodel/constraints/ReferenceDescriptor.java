@@ -52,15 +52,6 @@ public abstract class ReferenceDescriptor {
   abstract public Scope getScope();
 
   /**
-   * @return null if there is no presentation for reference
-   * @deprecated uses only in the editor
-   */
-  @Nullable
-  @Deprecated
-  @ToRemove(version = 3.5)
-  abstract public String getReferencePresentation(SNode targetNode, boolean visible, boolean smartRef, boolean inEditor);
-
-  /**
    * @deprecated this class shall not expose its implementation detail, otherwise there's no point in its presence.
    * refactor the single use and remove this method, it's our internal api.
    * Perhaps, we need a distinct validator object?
@@ -152,21 +143,6 @@ public abstract class ReferenceDescriptor {
         LOG.error(t, myContextNode);
         return new ErrorScope("can't create search scope for link `" + myReferenceLink + "' in '" + myNodeConcept.getName() + "'", t);
       }
-    }
-
-    @Override
-    @Nullable
-    @Deprecated
-    @ToRemove(version = 3.5)
-    public String getReferencePresentation(SNode targetNode, boolean visible, boolean smartRef, boolean inEditor) {
-      if (myScopeProvider == null || !myScopeProvider.hasPresentation()) {
-        return null;
-      }
-
-      final PresentationReferentConstraintsContextImpl c =
-          new PresentationReferentConstraintsContextImpl(myContextNode, myContainmentLink, myPosition, myReferenceNode, myLinkTarget,
-                                                         targetNode, visible, smartRef, inEditor);
-      return myScopeProvider.getPresentation(null, c);
     }
 
     @Override

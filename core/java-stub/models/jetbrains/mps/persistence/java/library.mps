@@ -2166,7 +2166,7 @@
                   <node concept="liA8E" id="7vMfhZe8n3W" role="2OqNvi">
                     <ref role="37wK5l" to="dush:~Memento.get(java.lang.String)" resolve="get" />
                     <node concept="Xl_RD" id="7vMfhZe8n3X" role="37wK5m">
-                      <property role="Xl_RC" value="zip" />
+                      <property role="Xl_RC" value="zipPath" />
                     </node>
                   </node>
                 </node>

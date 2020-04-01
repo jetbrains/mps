@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,6 @@
  */
 package jetbrains.mps.smodel.action;
 
-import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
-import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
@@ -54,66 +51,28 @@ public interface IReferentPresentationProvider {
 
   /**
    * 3.4->3.5 compatibility method. after 3.5 use {@link #DEFAULT_PRESENTATION} instead
+   * [artem] In 2020.1 the method is referenced in editor templates, can not replace it with the constant.
    */
   @ToRemove(version = 2017.2)
   static IReferentPresentationProvider getDefaultPresentation(@NotNull SReferenceLink link) {
-    return (referenceNode, referentNode) -> {
-      String legacyPresentation =
-          ModelConstraints.getReferenceDescriptor(referenceNode, link).getReferencePresentation(referentNode, false, false, true);
-      if (legacyPresentation != null) {
-        return legacyPresentation;
-      }
-      return NodePresentationUtil.presentation(referentNode, referenceNode);
-    };
+    return DEFAULT_PRESENTATION;
   }
 
   /**
    * 3.4->3.5 compatibility method. after 3.5 use {@link #DEFAULT_MATCHING_TEXT} instead
+   * TODO check if the method is referenced in editor templates, replace two uses in hand-written code with the constance if not
    */
   @ToRemove(version = 2017.2)
   static IReferentPresentationProvider getDefaultMatchingText(@NotNull SReferenceLink link) {
-    return (referenceNode, referentNode) -> {
-      String legacyMatchingText =
-          ModelConstraints.getReferenceDescriptor(referenceNode, link).getReferencePresentation(referentNode, false, false, false);
-      if (legacyMatchingText != null) {
-        return legacyMatchingText;
-      }
-      return NodePresentationUtil.matchingText(referentNode, referenceNode);
-    };
-  }
-
-  /**
-   * @deprecated use {@link #getDefaultMatchingText(SReferenceLink)} (for 3.4->3.5 compatibility) instead
-   */
-  @Deprecated
-  @ToRemove(version = 3.5)
-  static IReferentPresentationProvider getDefaultMatchingText(@NotNull SNode linkDeclaration) {
-    SReferenceLink link = MetaAdapterByDeclaration.getReferenceLink(SModelUtil.getGenuineLinkDeclaration(linkDeclaration));
-    return link.isValid() ? getDefaultMatchingText(link) : DEFAULT_MATCHING_TEXT;
+    return DEFAULT_MATCHING_TEXT;
   }
 
   /**
    * 3.4->3.5 compatibility method. after 3.5 use {@link #DEFAULT_VISIBLE_MATCHING_TEXT} instead
+   * TODO check if the method is referenced in editor templates, replace two uses in hand-written code with the constance if not
    */
   @ToRemove(version = 2017.2)
   static IReferentPresentationProvider getDefaultVisibleMatchingText(@NotNull SReferenceLink link) {
-    return (referenceNode, referentNode) -> {
-      String legacyMatchingText =
-          ModelConstraints.getReferenceDescriptor(referenceNode, link).getReferencePresentation(referentNode, true, false, false);
-      if (legacyMatchingText != null) {
-        return legacyMatchingText;
-      }
-      return NodePresentationUtil.visibleMatchingText(referentNode, referenceNode);
-    };
-  }
-
-  /**
-   * @deprecated use {@link #getDefaultVisibleMatchingText(SReferenceLink)} (for 3.4->3.5 compatibility) instead
-   */
-  @Deprecated
-  @ToRemove(version = 3.5)
-  static IReferentPresentationProvider getDefaultVisibleMatchingText(@NotNull SNode linkDeclaration) {
-    SReferenceLink link = MetaAdapterByDeclaration.getReferenceLink(SModelUtil.getGenuineLinkDeclaration(linkDeclaration));
-    return link.isValid() ? getDefaultVisibleMatchingText(link) : DEFAULT_VISIBLE_MATCHING_TEXT;
+    return DEFAULT_VISIBLE_MATCHING_TEXT;
   }
 }

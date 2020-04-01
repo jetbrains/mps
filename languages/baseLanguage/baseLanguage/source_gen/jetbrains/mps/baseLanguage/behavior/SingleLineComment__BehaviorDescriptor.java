@@ -38,10 +38,9 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<Iterable<SNode>> getCommentedNodes_id3$Sh7m_tmZE = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getCommentedNode").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3$Sh7m_tmZE").build();
   public static final SMethod<Void> parseAndAddWordsIntoLines_id45vN3dBFprj = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("parseAndAddWordsIntoLines").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("45vN3dBFprj").build(SMethodBuilder.createJavaParameter(String.class, ""));
   public static final SMethod<Void> parseAndAddWords_id13gAna0o0W6 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("parseAndAddWords").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("13gAna0o0W6").build(SMethodBuilder.createJavaParameter(String.class, ""));
-  public static final SMethod<Boolean> isTODOComment_idRbAU21$c$g = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isTODOComment").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("RbAU21$c$g").build();
   public static final SMethod<List<SNode>> getLines_id6GJhO0n1Xys = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getLines").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6GJhO0n1Xys").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectUncaughtMethodThrowables_id4Gt7ANIVH8f, getScope_id52_Geb4QDV$, getCommentedNodes_id3$Sh7m_tmZE, parseAndAddWordsIntoLines_id45vN3dBFprj, parseAndAddWords_id13gAna0o0W6, isTODOComment_idRbAU21$c$g, getLines_id6GJhO0n1Xys);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectUncaughtMethodThrowables_id4Gt7ANIVH8f, getScope_id52_Geb4QDV$, getCommentedNodes_id3$Sh7m_tmZE, parseAndAddWordsIntoLines_id45vN3dBFprj, parseAndAddWords_id13gAna0o0W6, getLines_id6GJhO0n1Xys);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SNode l = SNodeFactoryOperations.setNewChild(__thisNode__, LINKS.line$32mp, null);
@@ -103,20 +102,6 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
       SPropertyOperations.assign(word, PROPS.value$cK70, w);
     }
   }
-  /*package*/ static boolean isTODOComment_idRbAU21$c$g(@NotNull SNode __thisNode__) {
-    SNode firstLine = (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.text$BOhB)).isEmpty() ? SLinkOperations.getTarget(__thisNode__, LINKS.line$32mp) : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.text$BOhB)).first());
-    if ((firstLine != null) && ListSequence.fromList(SLinkOperations.getChildren(firstLine, LINKS.elements$eRew)).isNotEmpty()) {
-      SNode firstElement = ListSequence.fromList(SLinkOperations.getChildren(firstLine, LINKS.elements$eRew)).first();
-      if (SNodeOperations.isInstanceOf(firstElement, CONCEPTS.Word$AM)) {
-        String text = SPropertyOperations.getString(SNodeOperations.cast(firstElement, CONCEPTS.Word$AM), PROPS.value$cK70);
-        if (text != null) {
-          text = text.trim().toLowerCase();
-          return text.startsWith("todo") || text.startsWith("fix");
-        }
-      }
-    }
-    return false;
-  }
   /*package*/ static List<SNode> getLines_id6GJhO0n1Xys(@NotNull SNode __thisNode__) {
     return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, LINKS.line$32mp));
   }
@@ -150,8 +135,6 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
         parseAndAddWords_id13gAna0o0W6(node, (String) parameters[0]);
         return null;
       case 5:
-        return (T) ((Boolean) isTODOComment_idRbAU21$c$g(node));
-      case 6:
         return (T) ((List<SNode>) getLines_id6GJhO0n1Xys(node));
       default:
         throw new BHMethodNotFoundException(this, method);

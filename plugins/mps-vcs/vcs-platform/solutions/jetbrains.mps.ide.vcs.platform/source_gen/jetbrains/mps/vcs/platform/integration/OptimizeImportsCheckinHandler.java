@@ -30,6 +30,7 @@ import com.intellij.openapi.progress.ProgressIndicator;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import com.intellij.util.WaitForProgressToShow;
 import jetbrains.mps.project.OptimizeImportsHelper;
+import jetbrains.mps.project.ModelsAutoImportsManager;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import org.jetbrains.mps.openapi.model.EditableSModel;
@@ -77,7 +78,9 @@ public class OptimizeImportsCheckinHandler extends CheckinHandler {
     if (getSettings().OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT && mpsProject != null) {
       final SRepository repository = mpsProject.getRepository();
       SModelFileTracker modelFileTracker = SModelFileTracker.getInstance(repository);
+      // FIXME there's getVirtualFiles that we can make use of to get IFile, provided there's access to project FS through MPSProject 
       Collection<File> affectedFiles = myPanel.getFiles();
+      // XXX getFiles gives deleted files as well (unlike getVirtualFiles), are we sure we'd need to use this method?!  
       final List<SModel> affectedModels = new ArrayList<SModel>();
       for (File file : affectedFiles) {
         SModel model = modelFileTracker.findModel(FileSystem.getInstance().getFile(file.getAbsolutePath()));
@@ -99,7 +102,7 @@ public class OptimizeImportsCheckinHandler extends CheckinHandler {
               }
             });
 
-            final OptimizeImportsHelper helper = new OptimizeImportsHelper(repository);
+            final OptimizeImportsHelper helper = new OptimizeImportsHelper(repository, mpsProject.getComponent(ModelsAutoImportsManager.class));
             ApplicationManager.getApplication().invokeAndWait(new Runnable() {
               public void run() {
                 repository.getModelAccess().executeCommand(new Runnable() {

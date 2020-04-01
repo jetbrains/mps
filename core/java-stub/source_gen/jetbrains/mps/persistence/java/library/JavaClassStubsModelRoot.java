@@ -85,7 +85,7 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
     }
     Memento srcSpec = memento.getChild("Sources");
     if (srcSpec != null) {
-      String srcZip = srcSpec.get("zip");
+      String srcZip = srcSpec.get("zipPath");
       if (srcZip != null) {
         // don't want to bother with MementoWithFS and/or where to take FileSystem from to use IFile, stick to java.io 
         File zipFile = new File(srcZip);

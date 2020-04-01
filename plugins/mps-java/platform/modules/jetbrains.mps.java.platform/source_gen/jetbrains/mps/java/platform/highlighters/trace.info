@@ -377,61 +377,70 @@
   </root>
   <root nodeRef="r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)/6316328094634559825">
     <file name="ToDoHighlighter.java">
-      <node id="2102711303277716970" at="28,0,29,0" concept="5" trace="myRemarkStatement_value" />
-      <node id="2102711303277884296" at="29,0,30,0" concept="5" trace="myTextCommentPart_text" />
-      <node id="6316328094634608446" at="31,134,32,90" concept="10" />
-      <node id="6316328094634608453" at="32,90,33,49" concept="10" />
-      <node id="6316328094634608471" at="35,167,36,137" concept="4" />
-      <node id="6316328094634608486" at="40,153,41,154" concept="4" />
-      <node id="6316328094634608507" at="43,5,44,54" concept="11" />
-      <node id="6316328094634559912" at="48,86,49,41" concept="10" />
-      <node id="2102711303278051826" at="50,74,51,73" concept="11" />
-      <node id="2102711303278231414" at="53,74,54,72" concept="11" />
-      <node id="6316328094634559950" at="55,5,56,17" concept="11" />
-      <node id="6316328094634559825" at="60,0,61,0" concept="14" trace="value$ATQL" />
-      <node id="6316328094634559825" at="61,0,62,0" concept="14" trace="text$AaEw" />
-      <node id="6316328094634559825" at="65,0,66,0" concept="14" trace="RemarkStatement$SN" />
-      <node id="6316328094634559825" at="66,0,67,0" concept="14" trace="CommentPart$kd" />
-      <node id="6316328094634559825" at="67,0,68,0" concept="14" trace="TextCommentPart$lb" />
-      <node id="6316328094634608466" at="34,129,37,7" concept="8" />
-      <node id="6316328094634608484" at="39,138,42,7" concept="8" />
-      <node id="6316328094634559918" at="49,41,52,5" concept="8" />
-      <node id="6316328094634559934" at="52,5,55,5" concept="8" />
-      <node id="6316328094634608457" at="33,49,38,5" concept="7" />
-      <node id="6316328094634608482" at="38,5,43,5" concept="7" />
-      <node id="6316328094634559908" at="47,0,58,0" concept="9" trace="needsUpdateAfterPropertyEvent#(Ljetbrains/mps/smodel/event/SModelPropertyEvent;)Z" />
-      <node id="6316328094634587589" at="30,0,46,0" concept="9" trace="update#(Ljetbrains/mps/nodeEditor/EditorComponent;ZZLjetbrains/mps/util/Cancellable;)Ljetbrains/mps/nodeEditor/checking/UpdateResult;" />
-      <scope id="6316328094634608470" at="35,167,36,137" />
-      <scope id="6316328094634608485" at="40,153,41,154" />
-      <scope id="6316328094634559923" at="50,74,51,73" />
-      <scope id="6316328094634559935" at="53,74,54,72" />
-      <scope id="6316328094634608465" at="34,129,37,7" />
-      <scope id="6316328094634608483" at="39,138,42,7" />
-      <scope id="6316328094634608457" at="33,49,38,5">
+      <node id="2102711303277716970" at="29,0,30,0" concept="5" trace="myRemarkStatement_value" />
+      <node id="2102711303277884296" at="30,0,31,0" concept="5" trace="myTextCommentPart_text" />
+      <node id="6316328094634608446" at="32,134,33,90" concept="10" />
+      <node id="6316328094634608453" at="33,90,34,49" concept="10" />
+      <node id="6316328094634608471" at="36,167,37,137" concept="4" />
+      <node id="6316328094634608486" at="41,153,42,154" concept="4" />
+      <node id="281208147577369193" at="46,168,47,226" concept="4" />
+      <node id="6316328094634608507" at="49,5,50,54" concept="11" />
+      <node id="6316328094634559912" at="54,86,55,41" concept="10" />
+      <node id="2102711303278051826" at="56,74,57,73" concept="11" />
+      <node id="2102711303278231414" at="59,74,60,72" concept="11" />
+      <node id="6316328094634559950" at="61,5,62,17" concept="11" />
+      <node id="6316328094634559825" at="66,0,67,0" concept="14" trace="value$ATQL" />
+      <node id="6316328094634559825" at="67,0,68,0" concept="14" trace="text$AaEw" />
+      <node id="6316328094634559825" at="71,0,72,0" concept="14" trace="RemarkStatement$SN" />
+      <node id="6316328094634559825" at="72,0,73,0" concept="14" trace="CommentPart$kd" />
+      <node id="6316328094634559825" at="73,0,74,0" concept="14" trace="TextCommentPart$lb" />
+      <node id="6316328094634559825" at="74,0,75,0" concept="14" trace="IComment$kc" />
+      <node id="6316328094634608466" at="35,129,38,7" concept="8" />
+      <node id="6316328094634608484" at="40,138,43,7" concept="8" />
+      <node id="281208147577369191" at="45,127,48,7" concept="8" />
+      <node id="6316328094634559918" at="55,41,58,5" concept="8" />
+      <node id="6316328094634559934" at="58,5,61,5" concept="8" />
+      <node id="6316328094634608457" at="34,49,39,5" concept="7" />
+      <node id="6316328094634608482" at="39,5,44,5" concept="7" />
+      <node id="281208147577369189" at="44,5,49,5" concept="7" />
+      <node id="6316328094634559908" at="53,0,64,0" concept="9" trace="needsUpdateAfterPropertyEvent#(Ljetbrains/mps/smodel/event/SModelPropertyEvent;)Z" />
+      <node id="6316328094634587589" at="31,0,52,0" concept="9" trace="update#(Ljetbrains/mps/nodeEditor/EditorComponent;ZZLjetbrains/mps/util/Cancellable;)Ljetbrains/mps/nodeEditor/checking/UpdateResult;" />
+      <scope id="6316328094634608470" at="36,167,37,137" />
+      <scope id="6316328094634608485" at="41,153,42,154" />
+      <scope id="281208147577369192" at="46,168,47,226" />
+      <scope id="6316328094634559923" at="56,74,57,73" />
+      <scope id="6316328094634559935" at="59,74,60,72" />
+      <scope id="6316328094634608465" at="35,129,38,7" />
+      <scope id="6316328094634608483" at="40,138,43,7" />
+      <scope id="281208147577369190" at="45,127,48,7" />
+      <scope id="6316328094634608457" at="34,49,39,5">
         <var name="remark" id="6316328094634608458" />
       </scope>
-      <scope id="6316328094634608482" at="38,5,43,5">
+      <scope id="6316328094634608482" at="39,5,44,5">
         <var name="textCommentPart" id="6316328094634608505" />
       </scope>
-      <scope id="6316328094634559911" at="48,86,56,17">
+      <scope id="281208147577369189" at="44,5,49,5">
+        <var name="textComment" id="281208147577369212" />
+      </scope>
+      <scope id="6316328094634559911" at="54,86,62,17">
         <var name="node" id="6316328094634559913" />
       </scope>
-      <scope id="6316328094634559908" at="47,0,58,0">
+      <scope id="6316328094634559908" at="53,0,64,0">
         <var name="propertyEvent" id="6316328094634559953" />
       </scope>
-      <scope id="6316328094634587602" at="31,134,44,54">
+      <scope id="6316328094634587602" at="32,134,50,54">
         <var name="messages" id="6316328094634608447" />
         <var name="node" id="6316328094634608454" />
       </scope>
-      <scope id="6316328094634587589" at="30,0,46,0">
+      <scope id="6316328094634587589" at="31,0,52,0">
         <var name="applyQuickFixes" id="6316328094634587598" />
         <var name="cancellable" id="6316328094634587600" />
         <var name="editorComponent" id="6316328094634587594" />
         <var name="incremental" id="6316328094634587596" />
       </scope>
-      <unit id="6316328094634559825" at="59,0,63,0" name="jetbrains.mps.java.platform.highlighters.ToDoHighlighter$PROPS" />
-      <unit id="6316328094634559825" at="64,0,69,0" name="jetbrains.mps.java.platform.highlighters.ToDoHighlighter$CONCEPTS" />
-      <unit id="6316328094634559825" at="26,0,70,0" name="jetbrains.mps.java.platform.highlighters.ToDoHighlighter" />
+      <unit id="6316328094634559825" at="65,0,69,0" name="jetbrains.mps.java.platform.highlighters.ToDoHighlighter$PROPS" />
+      <unit id="6316328094634559825" at="70,0,76,0" name="jetbrains.mps.java.platform.highlighters.ToDoHighlighter$CONCEPTS" />
+      <unit id="6316328094634559825" at="27,0,77,0" name="jetbrains.mps.java.platform.highlighters.ToDoHighlighter" />
     </file>
   </root>
   <root nodeRef="r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)/8432634623182578830">

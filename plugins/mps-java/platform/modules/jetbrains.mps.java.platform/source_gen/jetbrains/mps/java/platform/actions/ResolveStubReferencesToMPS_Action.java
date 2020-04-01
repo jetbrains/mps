@@ -14,6 +14,9 @@ import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.java.platform.util.StubResolver;
+import jetbrains.mps.project.OptimizeImportsHelper;
+import jetbrains.mps.project.ModelsAutoImportsManager;
+import jetbrains.mps.progress.EmptyProgressMonitor;
 
 @GeneratedClass(node = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/5175352797999992329", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
 public class ResolveStubReferencesToMPS_Action extends BaseAction {
@@ -53,5 +56,7 @@ public class ResolveStubReferencesToMPS_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     new StubResolver(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository()).resolveInModels(event.getData(MPSCommonDataKeys.MODELS));
+    OptimizeImportsHelper oiHelper = new OptimizeImportsHelper(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository(), event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(ModelsAutoImportsManager.class));
+    oiHelper.optimizeModelsImports(event.getData(MPSCommonDataKeys.MODELS), new EmptyProgressMonitor());
   }
 }

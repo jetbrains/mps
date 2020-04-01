@@ -26,17 +26,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 public class BaseScopeProvider implements ReferenceScopeProvider {
 
   @Override
-  public boolean hasPresentation() {
-    return false;
-  }
-
-  @Override
-  public String getPresentation(IOperationContext operationContext, ReferencePresentationContext _context) {
-    // there are still template fragments that generate overrides for the method, see BaseScopeProvider and ConstraintFunction_ReferentSearchScope_Presentation
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
   public SNodeReference getSearchScopeValidatorNode() {
     return null;
   }

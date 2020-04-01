@@ -13,8 +13,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.LINE_COMMEN
 import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.TODO_StyleKey;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.CommentPart__BehaviorDescriptor;
-import jetbrains.mps.baseLanguage.behavior.SingleLineComment__BehaviorDescriptor;
-import jetbrains.mps.baseLanguage.behavior.MultiLineComment__BehaviorDescriptor;
+import jetbrains.mps.baseLanguage.behavior.IComment__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.BLOCK_COMMENT_StyleKey;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.DOC_COMMENT_StyleKey;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.DOC_TAG_StyleKey;
@@ -589,7 +588,7 @@ public class BaseLanguageStyle_StyleSheet {
     }
 
     private boolean _StyleParameter_QueryFunction_the604_a0e() {
-      return (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.TextCommentPart$lb) && (boolean) CommentPart__BehaviorDescriptor.isToDo_id6hHyb3YSGHZ.invoke(SNodeOperations.as(getNode(), CONCEPTS.TextCommentPart$lb))) || (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.SingleLineComment$jI) && (boolean) SingleLineComment__BehaviorDescriptor.isTODOComment_idRbAU21$c$g.invoke(SNodeOperations.cast(getNode(), CONCEPTS.SingleLineComment$jI))) || (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.MultiLineComment$8s) && (boolean) MultiLineComment__BehaviorDescriptor.isTODOComment_id1oNltBa72kg.invoke(SNodeOperations.cast(getNode(), CONCEPTS.MultiLineComment$8s)));
+      return (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.TextCommentPart$lb) && (boolean) CommentPart__BehaviorDescriptor.isToDo_id6hHyb3YSGHZ.invoke(SNodeOperations.as(getNode(), CONCEPTS.TextCommentPart$lb))) || (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.IComment$kc) && (boolean) IComment__BehaviorDescriptor.isTODOComment_idfB3l7ZufMD.invoke(SNodeOperations.cast(getNode(), CONCEPTS.IComment$kc)));
     }
   }
   public static class BlockCommentStyleClass extends AbstractStyleClass {
@@ -1140,8 +1139,7 @@ public class BaseLanguageStyle_StyleSheet {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept TextCommentPart$lb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
-    /*package*/ static final SConcept SingleLineComment$jI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment");
-    /*package*/ static final SConcept MultiLineComment$8s = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, "jetbrains.mps.baseLanguage.structure.MultiLineComment");
+    /*package*/ static final SInterfaceConcept IComment$kc = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3e70d51ff33226dL, "jetbrains.mps.baseLanguage.structure.IComment");
     /*package*/ static final SConcept StaticMethodDeclaration$eX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
     /*package*/ static final SInterfaceConcept ClassifierMember$9F = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
     /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");

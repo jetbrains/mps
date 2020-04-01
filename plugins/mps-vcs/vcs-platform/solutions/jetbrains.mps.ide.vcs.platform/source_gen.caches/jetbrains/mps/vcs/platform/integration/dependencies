@@ -256,6 +256,7 @@
     <classNode dependClassName="jetbrains.mps.ide.ThreadUtils" />
     <classNode dependClassName="jetbrains.mps.ide.project.ProjectHelper" />
     <classNode dependClassName="jetbrains.mps.progress.ProgressMonitorAdapter" />
+    <classNode dependClassName="jetbrains.mps.project.ModelsAutoImportsManager" />
     <classNode dependClassName="jetbrains.mps.project.OptimizeImportsHelper" />
     <classNode dependClassName="jetbrains.mps.project.Project" />
     <classNode dependClassName="jetbrains.mps.smodel.SModelFileTracker" />

@@ -7754,7 +7754,7 @@
                       <property role="3oM_SC" value="is" />
                     </node>
                     <node concept="3oM_SD" id="ATZLwXnPaG" role="1PaTwD">
-                      <property role="3oM_SC" value="operang" />
+                      <property role="3oM_SC" value="operand" />
                     </node>
                     <node concept="3oM_SD" id="ATZLwXnPaH" role="1PaTwD">
                       <property role="3oM_SC" value="(&quot;left&quot;" />
@@ -8181,7 +8181,7 @@
                       <property role="3oM_SC" value="is" />
                     </node>
                     <node concept="3oM_SD" id="ATZLwXnPby" role="1PaTwD">
-                      <property role="3oM_SC" value="rhigh" />
+                      <property role="3oM_SC" value="right" />
                     </node>
                     <node concept="3oM_SD" id="ATZLwXnPbz" role="1PaTwD">
                       <property role="3oM_SC" value="child" />

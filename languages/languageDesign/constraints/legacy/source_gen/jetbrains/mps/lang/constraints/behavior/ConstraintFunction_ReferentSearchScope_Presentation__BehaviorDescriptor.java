@@ -5,46 +5,24 @@ package jetbrains.mps.lang.constraints.behavior;
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
-import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
-import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.baseLanguage.behavior.ConceptFunction__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.builder.SNodeBuilder;
 
 public final class ConstraintFunction_ReferentSearchScope_Presentation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x36367902116a44c1L, "jetbrains.mps.lang.constraints.structure.ConstraintFunction_ReferentSearchScope_Presentation");
 
-  public static final SMethod<List<SConcept>> getParameterConcepts_id2xELmDxyi2v = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2xELmDxyi2v").build();
-  public static final SMethod<SNode> getExpectedReturnType_idhEwIGRD = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedReturnType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIGRD").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameterConcepts_id2xELmDxyi2v, getExpectedReturnType_idhEwIGRD);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.ConstraintFunction_ReferentSearchScope_AbstractBase$by);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConstraintFunctionParameter_parameterNode$xu);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConstraintFunctionParameter_inEditor$yY);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConstraintFunctionParameter_smartReference$im);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConstraintFunctionParameter_visible$3O);
-    return result;
-  }
-  /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_fpe947_a0a1();
-  }
 
   /*package*/ ConstraintFunction_ReferentSearchScope_Presentation__BehaviorDescriptor() {
   }
@@ -61,10 +39,6 @@ public final class ConstraintFunction_ReferentSearchScope_Presentation__Behavior
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 0:
-        return (T) ((List<SConcept>) getParameterConcepts_id2xELmDxyi2v(node));
-      case 1:
-        return (T) ((SNode) getExpectedReturnType_idhEwIGRD(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -92,19 +66,5 @@ public final class ConstraintFunction_ReferentSearchScope_Presentation__Behavior
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
-  }
-  private static SNode _quotation_createNode_fpe947_a0a1() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType")).getResult();
-    return quotedNode_1;
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept ConstraintFunction_ReferentSearchScope_AbstractBase$by = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b81d516b4L, "jetbrains.mps.lang.constraints.structure.ConstraintFunction_ReferentSearchScope_AbstractBase");
-    /*package*/ static final SConcept ConstraintFunctionParameter_parameterNode$xu = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x36367902116a29ccL, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_parameterNode");
-    /*package*/ static final SConcept ConstraintFunctionParameter_inEditor$yY = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x3fb59c48ff4b8cfdL, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_inEditor");
-    /*package*/ static final SConcept ConstraintFunctionParameter_smartReference$im = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x5df04ce71509adfdL, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_smartReference");
-    /*package*/ static final SConcept ConstraintFunctionParameter_visible$3O = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x5df04ce71509adf4L, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_visible");
   }
 }

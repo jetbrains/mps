@@ -21,6 +21,7 @@ import com.intellij.openapi.progress.ProgressIndicator;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import com.intellij.util.WaitForProgressToShow;
 import jetbrains.mps.project.OptimizeImportsHelper;
+import jetbrains.mps.project.ModelsAutoImportsManager;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.Language;
@@ -86,7 +87,7 @@ public class OptimizeModuleImports_Action extends BaseAction {
             public void run() {
             }
           });
-          final OptimizeImportsHelper helper = new OptimizeImportsHelper(repo);
+          final OptimizeImportsHelper helper = new OptimizeImportsHelper(repo, ((MPSProject) MapSequence.fromMap(_params).get("project")).getComponent(ModelsAutoImportsManager.class));
           for (final SModule module : ((List<SModule>) MapSequence.fromMap(_params).get("modules"))) {
             monitor.step("Optimizing imports of the " + module);
             ApplicationManager.getApplication().invokeAndWait(new Runnable() {

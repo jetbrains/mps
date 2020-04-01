@@ -11,9 +11,18 @@ import java.util.Map;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.annotations.NotNull;
+import java.util.ArrayList;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.smodel.SModelStereotype;
+import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.java.platform.util.StubResolver;
-import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.project.OptimizeImportsHelper;
+import jetbrains.mps.project.ModelsAutoImportsManager;
 import jetbrains.mps.progress.EmptyProgressMonitor;
+import jetbrains.mps.classloading.ClassLoaderManager;
 
 @GeneratedClass(node = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/4326588611400152009", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
 public class ResolveStubReferencesToMPSGlobal_Action extends BaseAction {
@@ -43,7 +52,22 @@ public class ResolveStubReferencesToMPSGlobal_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    new StubResolver(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository()).resolveInProject(event.getData(MPSCommonDataKeys.MPS_PROJECT));
-    ClassLoaderManager.getInstance().reloadAll(new EmptyProgressMonitor());
+    ArrayList<SModel> models = new ArrayList<SModel>();
+    for (SModule module : ListSequence.fromList(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProjectModulesWithGenerators())) {
+      if (module.isReadOnly()) {
+        continue;
+      }
+      for (SModel model : Sequence.fromIterable(module.getModels())) {
+        if (!(SModelStereotype.isStubModel(model)) && model instanceof EditableSModel) {
+          models.add(model);
+        }
+      }
+    }
+    new StubResolver(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository()).resolveInModels(models);
+    OptimizeImportsHelper oiHelper = new OptimizeImportsHelper(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository(), event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(ModelsAutoImportsManager.class));
+    oiHelper.optimizeModelsImports(models, new EmptyProgressMonitor());
+
+    // FIXME what's the reason to reload modules here? Expecting optimized model imports to affect module dependencies?!  
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(ClassLoaderManager.class).reloadAll(new EmptyProgressMonitor());
   }
 }

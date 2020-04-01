@@ -30,10 +30,6 @@ import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.kernel.model.MissingDependenciesFixer;
-import jetbrains.mps.project.OptimizeImportsHelper;
-import jetbrains.mps.project.MPSProject;
-import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
@@ -116,7 +112,6 @@ public class StubResolver {
 
     int cnt = StubResolver.resolveReferences(toResolve, models);
 
-    new OptimizeImportsHelper(myContextRepository).optimizeModelImports(model);
     if (LOG.isInfoEnabled()) {
       LOG.info(cnt + " stub references were re-resolved in model " + SModelOperations.getModelName(model) + ". (" + ListSequence.fromList(toResolve).count() + ")");
     }
@@ -128,19 +123,7 @@ public class StubResolver {
     }
   }
 
-  public void resolveInProject(MPSProject project) {
-    for (SModule module : ListSequence.fromList(project.getProjectModulesWithGenerators())) {
-      if (module.isReadOnly()) {
-        continue;
-      }
-      for (SModel model : Sequence.fromIterable(module.getModels())) {
-        if (!(SModelStereotype.isStubModel(model)) && model instanceof EditableSModel) {
-          resolveInModel(model);
-        }
-      }
-    }
-  }
-  public static int resolveReferences(List<SReference> toResolve, Map<SModelReference, SModelReference> models) {
+  private static int resolveReferences(List<SReference> toResolve, Map<SModelReference, SModelReference> models) {
     int cnt = 0;
     boolean found;
     do {

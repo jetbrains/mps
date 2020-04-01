@@ -6,7 +6,7 @@
       <sourceRoot path="${mps_home}/lib/mps-editor.jar" />
       <sourceRoot path="${mps_home}/lib/mps-editor-api.jar" />
       <sourceRoot path="${mps_home}/lib/mps-editor-runtime.jar" />
-      <Sources zip="${mps_home}/lib/MPS-src.zip"/>
+      <Sources zipPath="${mps_home}/lib/MPS-src.zip"/>
     </modelRoot>
   </models>
   <facets>

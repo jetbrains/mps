@@ -7,6 +7,7 @@ import java.io.File;
 import org.eclipse.jdt.internal.compiler.impl.CompilerOptions;
 import java.util.zip.ZipFile;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.HashMap;
 import java.io.IOException;
 import org.apache.log4j.Logger;
@@ -45,6 +46,7 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
   };
   private ZipFile myZipFile;
   private Map<String, Documentation> myClassToDoc;
+  private final AtomicInteger myZipGuard = new AtomicInteger(0);
 
   public SingleZipWithJavaSources(File zipFile) {
     myZipFileName = zipFile;
@@ -58,28 +60,37 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
 
   @Override
   public void acquire() {
-    assert myZipFile == null : "Shall release the supplier first";
-    try {
-      myZipFile = new ZipFile(myZipFileName);
-      myClassToDoc = new HashMap<String, Documentation>();
-    } catch (IOException ex) {
-      Logger.getLogger(SingleZipWithJavaSources.class).info(String.format("%s failed", SingleZipWithJavaSources.class.getSimpleName()), ex);
+    if (myZipGuard.getAndIncrement() > 0) {
+      return;
+    }
+    synchronized (this) {
+      try {
+        myZipFile = new ZipFile(myZipFileName);
+        myClassToDoc = new HashMap<String, Documentation>();
+      } catch (IOException ex) {
+        Logger.getLogger(SingleZipWithJavaSources.class).info(String.format("%s failed", SingleZipWithJavaSources.class.getSimpleName()), ex);
+      }
     }
   }
 
   @Override
   public void release() {
+    if (myZipGuard.decrementAndGet() > 0) {
+      return;
+    }
     if (myZipFile == null) {
       return;
     }
-    try {
-      myZipFile.close();
-    } catch (IOException ex) {
-      Logger.getLogger(SingleZipWithJavaSources.class).info(String.format("%s failed", SingleZipWithJavaSources.class.getSimpleName()), ex);
+    synchronized (this) {
+      try {
+        myZipFile.close();
+      } catch (IOException ex) {
+        Logger.getLogger(SingleZipWithJavaSources.class).info(String.format("%s failed", SingleZipWithJavaSources.class.getSimpleName()), ex);
+      }
+      myZipFile = null;
+      myClassToDoc.clear();
+      myClassToDoc = null;
     }
-    myZipFile = null;
-    myClassToDoc.clear();
-    myClassToDoc = null;
   }
 
   @Override
@@ -130,33 +141,39 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
   @Nullable
   private Documentation buildFor(char[] contents, TypeDeclaration typeDecl) {
     String classDoc = javadocLinesAsString(typeDecl.javadoc, contents);
-    HashMap<String, String> fieldName2Doc = new HashMap<String, String>();
-    for (FieldDeclaration fd : typeDecl.fields) {
-      String fieldDoc = javadocLinesAsString(fd.javadoc, contents);
-      if (fieldDoc != null) {
-        fieldName2Doc.put(new String(fd.name), fieldDoc);
+    HashMap<String, String> fieldName2Doc = null;
+    if (typeDecl.fields != null) {
+      fieldName2Doc = new HashMap<String, String>();
+      for (FieldDeclaration fd : typeDecl.fields) {
+        String fieldDoc = javadocLinesAsString(fd.javadoc, contents);
+        if (fieldDoc != null) {
+          fieldName2Doc.put(new String(fd.name), fieldDoc);
+        }
       }
     }
-    HashMap<String, String> method2Doc = new HashMap<String, String>();
-    for (AbstractMethodDeclaration md : typeDecl.methods) {
-      String methodDoc = javadocLinesAsString(md.javadoc, contents);
-      if (methodDoc == null) {
-        continue;
-      }
-      StringBuilder methodSig = new StringBuilder();
-      methodSig.append(md.selector);
-      methodSig.append('(');
-      if (md.arguments != null && md.arguments.length > 0) {
-        for (Argument a : md.arguments) {
-          methodSig.append(a.type.getLastToken());
-          methodSig.append(',');
+    HashMap<String, String> method2Doc = null;
+    if (typeDecl.methods != null) {
+      method2Doc = new HashMap<String, String>();
+      for (AbstractMethodDeclaration md : typeDecl.methods) {
+        String methodDoc = javadocLinesAsString(md.javadoc, contents);
+        if (methodDoc == null) {
+          continue;
         }
-        methodSig.setLength(methodSig.length() - 1);
-      }
-      methodSig.append(')');
-      if (md.isMethod()) {
-        methodSig.append(':');
-        methodSig.append(((MethodDeclaration) md).returnType.getLastToken());
+        StringBuilder methodSig = new StringBuilder();
+        methodSig.append(md.selector);
+        methodSig.append('(');
+        if (md.arguments != null && md.arguments.length > 0) {
+          for (Argument a : md.arguments) {
+            methodSig.append(a.type.getLastToken());
+            methodSig.append(',');
+          }
+          methodSig.setLength(methodSig.length() - 1);
+        }
+        methodSig.append(')');
+        if (md.isMethod()) {
+          methodSig.append(':');
+          methodSig.append(((MethodDeclaration) md).returnType.getLastToken());
+        }
       }
     }
     // FIXME caller has to look into memberTypes if it needs to 

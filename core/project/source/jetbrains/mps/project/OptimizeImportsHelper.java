@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@ import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -47,15 +48,27 @@ import java.util.Set;
 // FIXME (3) sort dependencies by name, group by kind(SDependencyScope) to make dependencies look uniform and easy to grasp.
 // FIXME (4) Refactor the class, reporting and breathe some OOP in here
 public class OptimizeImportsHelper {
-  private static final Logger LOG = LogManager.getLogger(OptimizeImportsHelper.class);
-
   private final SRepository myRepository;
+  private final ModelsAutoImportsManager myAutoImports;
 
   /**
    * @param repository -- is a context repository which contains the modules/models the client want to resolve
+   * @deprecated
    */
+  @Deprecated
+  @ToRemove(version = 2020.1)
   public OptimizeImportsHelper(@NotNull SRepository repository) {
     myRepository = repository;
+    myAutoImports = null;
+  }
+
+  /**
+   * @param repository -- is a context repository which contains the modules/models the client want to resolve
+   * @param autoImports -- optional provider for imports that are treated as omni-present/required for a model
+   */
+  public OptimizeImportsHelper(@NotNull SRepository repository, @Nullable ModelsAutoImportsManager autoImports) {
+    myRepository = repository;
+    myAutoImports = autoImports;
   }
 
   //----public optimizeX methods--------
@@ -223,7 +236,7 @@ public class OptimizeImportsHelper {
 
     Set<SModuleReference> unusedDevkits = new HashSet<>();
     for (SModuleReference devkitRef : ((jetbrains.mps.smodel.SModelInternal) modelDescriptor).importedDevkits()) {
-      if (ModelsAutoImportsManager.getDevKits(modelDescriptor.getModule(), modelDescriptor).contains(devkitRef)) {
+      if (myAutoImports != null && myAutoImports.getDevkitsToImport(modelDescriptor.getModule(), modelDescriptor).contains(devkitRef)) {
         continue;
       }
       if (isUnusedDevkitRef(result, devkitRef)) {
@@ -248,9 +261,11 @@ public class OptimizeImportsHelper {
     result.myUsedModels.addAll(modelScanner.getCrossModelReferences());
 
     // add auto imports as dependencies
-    result.myUsedLanguages.addAll(ModelsAutoImportsManager.getLanguages(model.getModule(), model));
-    for (SModel m : ModelsAutoImportsManager.getAutoImportedModels(model.getModule(), model)) {
-      result.addUsedModel(m.getReference());
+    if (myAutoImports != null) {
+      result.myUsedLanguages.addAll(myAutoImports.getLanguagesToImport(model.getModule(), model));
+      for (SModel m : myAutoImports.getModelsToImport(model.getModule(), model)) {
+        result.addUsedModel(m.getReference());
+      }
     }
 
     return result;

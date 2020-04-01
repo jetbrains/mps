@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,24 +47,6 @@ public final class ModelsAutoImportsManager implements CoreComponent {
     ourInstance = null;
   }
 
-  /**
-   * @deprecated use {@link jetbrains.mps.components.ComponentHost#findComponent(Class)} and instance method {@link #register(AutoImportsContributor)} instead
-   */
-  @Deprecated
-  @ToRemove(version = 2018.3)
-  public static void registerContributor(AutoImportsContributor contributor) {
-    ourInstance.register(contributor);
-  }
-
-  /**
-   * @deprecated use {@link jetbrains.mps.components.ComponentHost#findComponent(Class)} and instance method {@link #unregister(AutoImportsContributor)} instead
-   */
-  @Deprecated
-  @ToRemove(version = 2018.3)
-  public static void unregisterContributor(AutoImportsContributor contributor) {
-    ourInstance.unregister(contributor);
-  }
-
   public void register(AutoImportsContributor contributor) {
     contributors.add(contributor);
   }
@@ -73,15 +55,7 @@ public final class ModelsAutoImportsManager implements CoreComponent {
     contributors.remove(contributor);
   }
 
-  /**
-   * @deprecated use {@link jetbrains.mps.components.ComponentHost#findComponent(Class)} and instance method {@link #getModelsToImport(SModule, SModel)} instead
-   */
-  @Deprecated
-  @ToRemove(version = 2018.3)
-  public static Set<SModel> getAutoImportedModels(SModule contextModule, SModel model) {
-    return ourInstance.getModelsToImport(contextModule, model);
-  }
-
+  // FIXME uses suggest SModuleReference is enough, why do I keep SModel here?!
   public Set<SModel> getModelsToImport(SModule contextModule, SModel model) {
     Set<SModel> result = new HashSet<>();
     for (AutoImportsContributor contributor : contributors) {
@@ -92,15 +66,6 @@ public final class ModelsAutoImportsManager implements CoreComponent {
     return result;
   }
 
-  /**
-   * @deprecated use {@link jetbrains.mps.components.ComponentHost#findComponent(Class)} and instance method {@link #getLanguagesToImport(SModule, SModel)} instead
-   */
-  @Deprecated
-  @ToRemove(version = 2018.3)
-  public static Set<SLanguage> getLanguages(SModule contextModule, SModel model) {
-    return ourInstance.getLanguagesToImport(contextModule, model);
-  }
-
   public Set<SLanguage> getLanguagesToImport(SModule contextModule, SModel model) {
     Set<SLanguage> result = new HashSet<>();
     for (AutoImportsContributor contributor : contributors) {
@@ -109,15 +74,6 @@ public final class ModelsAutoImportsManager implements CoreComponent {
       }
     }
     return result;
-  }
-
-  /**
-   * @deprecated use {@link jetbrains.mps.components.ComponentHost#findComponent(Class)} and instance method {@link #getDevkitsToImport(SModule, SModel)} instead
-   */
-  @Deprecated
-  @ToRemove(version = 2018.3)
-  public static Set<SModuleReference> getDevKits(SModule contextModule, SModel forModel) {
-    return ourInstance.getDevkitsToImport(contextModule, forModel);
   }
 
   public Set<SModuleReference> getDevkitsToImport(SModule contextModule, SModel forModel) {
@@ -131,6 +87,7 @@ public final class ModelsAutoImportsManager implements CoreComponent {
   }
 
   /**
+   * In use in the single place, SModuleOperations.createModelWithAdjustments(), which is extensively used throughout MPS code (26 uses to date) and in mbeddr (6 uses)
    * @deprecated use {@link jetbrains.mps.components.ComponentHost#findComponent(Class)} and instance method {@link #performImports(SModule, SModel)} instead
    */
   @Deprecated
@@ -152,42 +109,22 @@ public final class ModelsAutoImportsManager implements CoreComponent {
     }
   }
 
-  public static abstract class AutoImportsContributor<ModuleType extends SModule> {
+  public static abstract class AutoImportsContributor{
 
-    /**
-     * @deprecated Use generic {@link #isApplicable(SModule)} instead, and stop parameterising
-     *             the class with ModuleType, it's to be removed after 2018.3 (signature of
-     *             all the methods of this class will use SModule then). It's not possible
-     *             to change {@code ModuleType contextModule} to {@code SModule contextModule}
-     *             right away as it breaks compile-time code compatibility.
-     */
-    @Deprecated
-    @ToRemove(version = 2018.3)
-    public Class<ModuleType> getApplicableSModuleClass() {
-      return null;
-    }
+    public abstract boolean isApplicable(SModule module);
 
-    /**
-     * IMPORTANT! THIS METHOD HAS DEFAULT IMPLEMENTATION FOR TRANSITION PERIOD
-     *            AND TO BECOME ABSTRACT IN NEXT RELEASE. PLEASE OVERRIDE!
-     */
-    public boolean isApplicable(SModule module) {
-      Class<ModuleType> applicableSModuleClass = getApplicableSModuleClass();
-      return applicableSModuleClass != null && applicableSModuleClass.isInstance(module);
-    }
-
-    public Set<SModel> getAutoImportedModels(ModuleType contextModule, SModel model) {
+    public Set<SModel> getAutoImportedModels(SModule contextModule, SModel model) {
       // XXX SModel return value implies we resolve models somehow, not nice compared to
       //     SLanguage and SModuleReference of other methods.
       return Collections.emptySet();
     }
 
     @NotNull
-    public Collection<SLanguage> getLanguages(ModuleType contextModule, SModel model) {
+    public Collection<SLanguage> getLanguages(SModule contextModule, SModel model) {
       return Collections.emptyList();
     }
 
-    public Collection<SModuleReference> getDevKits(ModuleType contextModule, SModel forModel) {
+    public Collection<SModuleReference> getDevKits(SModule contextModule, SModel forModel) {
       return Collections.emptyList();
     }
   }

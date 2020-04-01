@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="21clmszkbme3nuvnid1q132vxmi6dve">
-  <files names="BehaviorAspectDescriptor.java:IHoldLines__BehaviorDescriptor.java:Line__BehaviorDescriptor.java:Text__BehaviorDescriptor.java:Word__BehaviorDescriptor.java" />
+<product version="3" modelHash="-1gw104yr49tw6zublkn13x55vk8rmkj">
+  <files names="BehaviorAspectDescriptor.java:IHoldLines__BehaviorDescriptor.java:Line__BehaviorDescriptor.java:NodeWrapperElement__BehaviorDescriptor.java:TextElement__BehaviorDescriptor.java:Text__BehaviorDescriptor.java:Word__BehaviorDescriptor.java" />
 </product>
 

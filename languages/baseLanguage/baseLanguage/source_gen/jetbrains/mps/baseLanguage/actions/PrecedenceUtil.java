@@ -37,7 +37,7 @@ public class PrecedenceUtil {
         break;
       }
       if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$6a) && Objects.equals(targetContainingLink, LINKS.operand$Lcrr)) {
-        // if parent expression is DotExpression and target is operang ("left" part of the expression) 
+        // if parent expression is DotExpression and target is operand ("left" part of the expression) 
         // then we should rather transform current target 
         break;
       }
@@ -57,7 +57,7 @@ public class PrecedenceUtil {
         break;
       }
       if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BinaryOperation$vf) && Objects.equals(SNodeOperations.getContainingLink(targetNode), LINKS.rightExpression$rxBl)) {
-        // if parent expression is BinaryOperation having higher priority and target is rhigh child of it 
+        // if parent expression is BinaryOperation having higher priority and target is right child of it 
         // then we should rather transform current target and add additional parenthesis around resulting expression 
         break;
       }
