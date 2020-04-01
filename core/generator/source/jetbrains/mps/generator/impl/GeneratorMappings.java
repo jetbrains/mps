@@ -73,6 +73,13 @@ public final class GeneratorMappings {
 
   // add methods
 
+  /*
+   recording output node for a template node traces back to 2007's RuleUtil (c2ebb2dbd9eb3b2607006768c84d3921b02fd7c5), with vague 'fixing some problems"
+   I see no reason to perform this mapping in case we do have input node, the only scenario (and the reason I left the code but not wiped it) is when a
+   new root is created (think QueriesGenerated) and referenced directly from templates. MPS+mbeddr are fine without this, this make me think there's
+   another mechanism that helps to address CreateRoot scenario (I highly doubt we use MLs in all such cases). Unless I know how does template references
+   to newly created roots get resolved, I prefer to keep this method and myTemplateNodeIdToOutputNodeMap here
+   */
   void addOutputNodeByTemplateNode(String templateNodeId, @NotNull SNode outputNode) {
     if (myTemplateNodeIdToOutputNodeMap.putIfAbsent(templateNodeId, outputNode) != null) {
       myTemplateNodeIdToOutputNodeMap.put(templateNodeId, this);
@@ -154,11 +161,12 @@ public final class GeneratorMappings {
     // todo: is not unique
     // todo: generator should report error on attempt to obtain not unique output-node
     addOutputNodeByInputAndTemplateNode(templateContext.getInput(), templateNodeId, outputNode);
+    // ~38 cases in MPS itself when it's important, mostly for tests
     for (SNode historyInputNode : templateContext.getInputHistory()) {
       Pair<String,SNode> key = new Pair<>(templateNodeId, historyInputNode);
       myTemplateNodeIdAndInputNodeToOutputNodeMap.putIfAbsent(key, outputNode);
     }
-    addOutputNodeByTemplateNode(templateNodeId, outputNode);
+//    addOutputNodeByTemplateNode(templateNodeId, outputNode);
   }
 
   // find methods
