@@ -495,8 +495,8 @@
   <root nodeRef="r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/6930463558351181264">
     <file name="NewModelFromSource_Action.java">
       <node id="6930463558351181264" at="51,0,52,0" concept="12" trace="ICON" />
-      <node id="6930463558351181264" at="53,38,54,114" concept="13" />
-      <node id="6930463558351181264" at="54,114,55,35" concept="3" />
+      <node id="6930463558351181264" at="53,38,54,131" concept="13" />
+      <node id="6930463558351181264" at="54,131,55,35" concept="3" />
       <node id="6930463558351181264" at="55,35,56,40" concept="3" />
       <node id="6930463558351181264" at="59,32,60,16" concept="9" />
       <node id="6618196938926253020" at="64,94,65,19" concept="9" />

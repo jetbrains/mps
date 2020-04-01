@@ -16,6 +16,7 @@ import java.util.List;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.messages.IMessageHandler;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -66,7 +67,6 @@ import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromName;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
-import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import org.jetbrains.mps.openapi.model.SModelName;
 import jetbrains.mps.persistence.ModelCannotBeCreatedException;
 import org.jetbrains.annotations.NotNull;
@@ -108,25 +108,36 @@ public class JavaToMpsConverter {
   private boolean wasDefaultPkg = false;
   private int myRootCount = 0;
 
-  private IMessageHandler myMessageHandler;
+  /**
+   * not null when converter is supposed to create new models. Perhaps, could be replaced right with ModelFactory for caller to control format of
+   * newly created models with BL nodes, however, this converter is the one to know its supported DataSourceType (see MyDataSourceFactory, below),
+   * hence I'm afraid to expose control over MF to outer code.
+   * The only use of the service is guarded by myCreateInplace, there's 1 scenario in ConvertPackageToMode action in mps-idea plugin that uses this.
+   */
+  private final ModelFactoryService myModelFactoryService;
+  private final IMessageHandler myMessageHandler;
 
   public JavaToMpsConverter(SModule module, SRepository repository, IMessageHandler messageHandler) {
-    this(module, repository, false, false, messageHandler);
+    this(module, repository, false, false, null, messageHandler);
   }
 
   public Set<SNode> getRootsBuilt() {
     return Collections.<SNode>unmodifiableSet(SetSequence.fromSetWithValues(new HashSet<SNode>(), myAttachedRoots));
   }
 
-  public JavaToMpsConverter(SModule module, SRepository repository, boolean perRoot, boolean inPlace, IMessageHandler messageHandler) {
+  public JavaToMpsConverter(SModule module, SRepository repository, boolean perRoot, boolean inPlace, ModelFactoryService modelFactoryService, IMessageHandler messageHandler) {
     // currently perRoot==false and inPlace==true doesn't make it in-place 
     // because of how DefaultModelRoot is implemented 
     myModule = module;
     myCreatePerRoot = perRoot;
     myCreateInplace = inPlace;
+    if (inPlace && modelFactoryService == null) {
+      throw new IllegalArgumentException("When inPlace == true, converted needs ModelFactoryService to access proper ModelFactory implementation for new models");
+    }
     myRepository = repository;
     myModelAccess = repository.getModelAccess();
     myMessageHandler = messageHandler;
+    myModelFactoryService = modelFactoryService;
   }
 
   public JavaToMpsConverter(SModel model, SRepository repository, IMessageHandler messageHandler) {
@@ -135,6 +146,7 @@ public class JavaToMpsConverter {
     myRepository = repository;
     myModelAccess = repository.getModelAccess();
     myMessageHandler = messageHandler;
+    myModelFactoryService = null;
   }
 
   public void saveAll() {
@@ -172,8 +184,6 @@ public class JavaToMpsConverter {
     }
 
     parseProgress.done();
-
-    int rootCount = 0;
 
     // now we attach the models and try to resolve 
 
@@ -1079,7 +1089,7 @@ public class JavaToMpsConverter {
       }
       try {
         DataSourceFactoryFromName dataSourceFactory = new MyDataSourceFactory(pkgDir);
-        ModelFactory modelFactory = ModelFactoryService.getInstance().getDefaultModelFactory(dataSourceFactory.getType());
+        ModelFactory modelFactory = myModelFactoryService.getDefaultModelFactory(dataSourceFactory.getType());
         SModelName newModelName = new SModelName(pkgFqName);
         modelDescr = modelRoot.createModel(newModelName, sourceRoot, dataSourceFactory, modelFactory);
       } catch (ModelCannotBeCreatedException e) {

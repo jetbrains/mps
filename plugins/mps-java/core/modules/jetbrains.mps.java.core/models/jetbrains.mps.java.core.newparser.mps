@@ -415,6 +415,7 @@
       <concept id="5858074156537516430" name="jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag" flags="ng" index="x79VA">
         <property id="5858074156537516431" name="text" index="x79VB" />
       </concept>
+      <concept id="6832197706140896242" name="jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment" flags="ng" index="z59LJ" />
       <concept id="6832197706140518104" name="jetbrains.mps.baseLanguage.javadoc.structure.DocMethodParameterReference" flags="ng" index="zr_55" />
       <concept id="6832197706140518103" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseParameterReference" flags="ng" index="zr_5a">
         <reference id="6832197706140518108" name="param" index="zr_51" />
@@ -23940,11 +23941,41 @@
       </node>
     </node>
     <node concept="2tJIrI" id="4jM0fS496GB" role="jymVt" />
+    <node concept="312cEg" id="5wz67X6u2VB" role="jymVt">
+      <property role="TrG5h" value="myModelFactoryService" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="5wz67X6u2VC" role="1B3o_S" />
+      <node concept="3uibUv" id="5wz67X6u2VE" role="1tU5fm">
+        <ref role="3uigEE" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
+      </node>
+      <node concept="z59LJ" id="5wz67X6v1Im" role="lGtFl">
+        <node concept="TZ5HA" id="5wz67X6v1In" role="TZ5H$">
+          <node concept="1dT_AC" id="5wz67X6v1Io" role="1dT_Ay">
+            <property role="1dT_AB" value="not null when converter is supposed to create new models. Perhaps, could be replaced right with ModelFactory for caller to control format of" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5wz67X6v4LE" role="TZ5H$">
+          <node concept="1dT_AC" id="5wz67X6v4LF" role="1dT_Ay">
+            <property role="1dT_AB" value="newly created models with BL nodes, however, this converter is the one to know its supported DataSourceType (see MyDataSourceFactory, below)," />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5wz67X6vs1I" role="TZ5H$">
+          <node concept="1dT_AC" id="5wz67X6vs1J" role="1dT_Ay">
+            <property role="1dT_AB" value="hence I'm afraid to expose control over MF to outer code." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5wz67X6vAzg" role="TZ5H$">
+          <node concept="1dT_AC" id="5wz67X6vAzh" role="1dT_Ay">
+            <property role="1dT_AB" value="The only use of the service is guarded by myCreateInplace, there's 1 scenario in ConvertPackageToMode action in mps-idea plugin that uses this." />
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="312cEg" id="4jM0fS49goD" role="jymVt">
       <property role="34CwA1" value="false" />
       <property role="eg7rD" value="false" />
       <property role="TrG5h" value="myMessageHandler" />
-      <property role="3TUv4t" value="false" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="4jM0fS49bXF" role="1B3o_S" />
       <node concept="3uibUv" id="4jM0fS49llX" role="1tU5fm">
         <ref role="3uigEE" to="et5u:~IMessageHandler" resolve="IMessageHandler" />
@@ -23968,6 +23999,7 @@
           <node concept="3clFbT" id="3jMdymaR3Rm" role="37wK5m">
             <property role="3clFbU" value="false" />
           </node>
+          <node concept="10Nm6u" id="5wz67X6vGHK" role="37wK5m" />
           <node concept="37vLTw" id="4jM0fS496F$" role="37wK5m">
             <ref role="3cqZAo" node="4jM0fS48ZxV" resolve="messageHandler" />
           </node>
@@ -24102,6 +24134,31 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbJ" id="5wz67X6vGTv" role="3cqZAp">
+          <node concept="3clFbS" id="5wz67X6vGTx" role="3clFbx">
+            <node concept="YS8fn" id="5wz67X6vI5L" role="3cqZAp">
+              <node concept="2ShNRf" id="5wz67X6vI9S" role="YScLw">
+                <node concept="1pGfFk" id="5wz67X6vKUt" role="2ShVmc">
+                  <ref role="37wK5l" to="wyt6:~IllegalArgumentException.&lt;init&gt;(java.lang.String)" resolve="IllegalArgumentException" />
+                  <node concept="Xl_RD" id="5wz67X6vL2u" role="37wK5m">
+                    <property role="Xl_RC" value="When inPlace == true, converted needs ModelFactoryService to access proper ModelFactory implementation for new models" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="1Wc70l" id="5wz67X6vHuL" role="3clFbw">
+            <node concept="3clFbC" id="5wz67X6vHWn" role="3uHU7w">
+              <node concept="10Nm6u" id="5wz67X6vI0O" role="3uHU7w" />
+              <node concept="37vLTw" id="5wz67X6vHBF" role="3uHU7B">
+                <ref role="3cqZAo" node="5wz67X6tWOg" resolve="modelFactoryService" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="5wz67X6vH4J" role="3uHU7B">
+              <ref role="3cqZAo" node="3jMdymaQnNJ" resolve="inPlace" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="76A3MtuYwHz" role="3cqZAp">
           <node concept="37vLTI" id="76A3MtuZHsx" role="3clFbG">
             <node concept="37vLTw" id="76A3MtuZO$o" role="37vLTx">
@@ -24137,6 +24194,16 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="5wz67X6u2VF" role="3cqZAp">
+          <node concept="37vLTI" id="5wz67X6u2VH" role="3clFbG">
+            <node concept="37vLTw" id="5wz67X6u2VK" role="37vLTJ">
+              <ref role="3cqZAo" node="5wz67X6u2VB" resolve="myModelFactoryService" />
+            </node>
+            <node concept="37vLTw" id="5wz67X6u2VL" role="37vLTx">
+              <ref role="3cqZAo" node="5wz67X6tWOg" resolve="modelFactoryService" />
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="3Tm1VV" id="2Uk7YSyUTcv" role="1B3o_S" />
       <node concept="37vLTG" id="2Uk7YSyV9es" role="3clF46">
@@ -24158,6 +24225,12 @@
       <node concept="37vLTG" id="3jMdymaQnNJ" role="3clF46">
         <property role="TrG5h" value="inPlace" />
         <node concept="10P_77" id="3jMdymaQC06" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="5wz67X6tWOg" role="3clF46">
+        <property role="TrG5h" value="modelFactoryService" />
+        <node concept="3uibUv" id="5wz67X6tWOh" role="1tU5fm">
+          <ref role="3uigEE" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
+        </node>
       </node>
       <node concept="37vLTG" id="4jM0fS496lb" role="3clF46">
         <property role="TrG5h" value="messageHandler" />
@@ -24227,6 +24300,14 @@
             </node>
             <node concept="37vLTw" id="2ETmHUYtuem" role="37vLTJ">
               <ref role="3cqZAo" node="4jM0fS49goD" resolve="myMessageHandler" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="5wz67X6uSPf" role="3cqZAp">
+          <node concept="37vLTI" id="5wz67X6uY_U" role="3clFbG">
+            <node concept="10Nm6u" id="5wz67X6v102" role="37vLTx" />
+            <node concept="37vLTw" id="5wz67X6uSPd" role="37vLTJ">
+              <ref role="3cqZAo" node="5wz67X6u2VB" resolve="myModelFactoryService" />
             </node>
           </node>
         </node>
@@ -24588,16 +24669,6 @@
           </node>
         </node>
         <node concept="3clFbH" id="2Uk7YSyB1DN" role="3cqZAp" />
-        <node concept="3cpWs8" id="76A3MtudX9f" role="3cqZAp">
-          <node concept="3cpWsn" id="76A3MtudX9i" role="3cpWs9">
-            <property role="TrG5h" value="rootCount" />
-            <node concept="10Oyi0" id="76A3MtudX9d" role="1tU5fm" />
-            <node concept="3cmrfG" id="76A3Mtue$TK" role="33vP2m">
-              <property role="3cmrfH" value="0" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbH" id="76A3MtuaPJI" role="3cqZAp" />
         <node concept="3SKdUt" id="2Uk7YSyAdxW" role="3cqZAp">
           <node concept="1PaTwC" id="ATZLwXohqz" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXohq$" role="1PaTwD">
@@ -33078,9 +33149,8 @@
                       <ref role="3uigEE" to="dush:~ModelFactory" resolve="ModelFactory" />
                     </node>
                     <node concept="2OqwBi" id="7l6b$Kx0LYD" role="33vP2m">
-                      <node concept="2YIFZM" id="7l6b$Kx0LP4" role="2Oq$k0">
-                        <ref role="37wK5l" to="ends:~ModelFactoryService.getInstance()" resolve="getInstance" />
-                        <ref role="1Pybhc" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
+                      <node concept="37vLTw" id="5wz67X6vzt8" role="2Oq$k0">
+                        <ref role="3cqZAo" node="5wz67X6u2VB" resolve="myModelFactoryService" />
                       </node>
                       <node concept="liA8E" id="7l6b$Kx0M80" role="2OqNvi">
                         <ref role="37wK5l" to="ends:~ModelFactoryService.getDefaultModelFactory(org.jetbrains.mps.openapi.persistence.datasource.DataSourceType)" resolve="getDefaultModelFactory" />

@@ -397,6 +397,7 @@
   </dependency>
   <dependency className="jetbrains.mps.java.core.newparser.JavaToMpsConverter">
     <classNode dependClassName="java.io.IOException" />
+    <classNode dependClassName="java.lang.IllegalArgumentException" />
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.Runnable" />

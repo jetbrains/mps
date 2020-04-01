@@ -1777,7 +1777,7 @@
     <property role="2uzpH1" value="Models from Java Sources" />
     <property role="3GE5qa" value="Actions" />
     <property role="1teQrl" value="true" />
-    <property role="1WHSii" value="Adds stub models to context module from selected Java source files" />
+    <property role="1WHSii" value="Adds BaseLanguage-authored models to context module from selected Java source files" />
     <node concept="2XrIbr" id="60HWYcsjXnh" role="32lrUH">
       <property role="TrG5h" value="getStereotype" />
       <node concept="17QB3L" id="60HWYcsjXni" role="3clF45" />

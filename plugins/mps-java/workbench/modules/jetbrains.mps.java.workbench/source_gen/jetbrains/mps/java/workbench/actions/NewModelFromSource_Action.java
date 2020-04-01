@@ -51,7 +51,7 @@ public class NewModelFromSource_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public NewModelFromSource_Action() {
-    super("Models from Java Sources", "Adds stub models to context module from selected Java source files", ICON);
+    super("Models from Java Sources", "Adds BaseLanguage-authored models to context module from selected Java source files", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }
