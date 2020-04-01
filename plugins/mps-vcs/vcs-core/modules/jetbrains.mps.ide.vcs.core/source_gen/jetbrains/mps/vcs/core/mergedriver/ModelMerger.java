@@ -19,6 +19,7 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
+import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import java.io.File;
 import jetbrains.mps.vcs.util.MergeDriverBackupUtil;
@@ -116,7 +117,7 @@ import jetbrains.mps.extapi.model.SModelData;
           LOG.info(String.format("%s: Saving merged model...", myModelName));
         }
         updateMetaModelInfo(resultModel, baseModel, localModel, latestModel);
-        resultBytes = VCSPersistenceUtil.saveModel(resultModel, myExtension, ext);
+        resultBytes = VCSPersistenceUtil.saveModel(myPlatform.findComponent(ModelFactoryService.class), resultModel, myExtension, ext);
         if (resultBytes == null) {
           if (LOG.isEnabledFor(Level.ERROR)) {
             LOG.error("Error while saving result model");

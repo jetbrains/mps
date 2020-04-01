@@ -2950,19 +2950,6 @@
             <node concept="17QB3L" id="2TzypFyLJi6" role="1tU5fm" />
           </node>
         </node>
-        <node concept="3cpWs8" id="3oQv0AQ98Sf" role="3cqZAp">
-          <node concept="3cpWsn" id="3oQv0AQ98Sg" role="3cpWs9">
-            <property role="TrG5h" value="modelFactorySvc" />
-            <property role="3TUv4t" value="true" />
-            <node concept="3uibUv" id="3oQv0AQ91Oa" role="1tU5fm">
-              <ref role="3uigEE" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
-            </node>
-            <node concept="2YIFZM" id="3oQv0AQ98Sh" role="33vP2m">
-              <ref role="1Pybhc" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
-              <ref role="37wK5l" to="ends:~ModelFactoryService.getInstance()" resolve="getInstance" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbJ" id="13cOvvwFxf4" role="3cqZAp">
           <node concept="3clFbS" id="13cOvvwFxf7" role="3clFbx">
             <node concept="3SKdUt" id="7zbsrrwk5Jy" role="3cqZAp">
@@ -2988,8 +2975,8 @@
               <node concept="37vLTI" id="2BK$teW8lHv" role="3clFbG">
                 <node concept="1rXfSq" id="3oQv0AQ8Si4" role="37vLTx">
                   <ref role="37wK5l" node="3oQv0AQ8DL2" resolve="savePerRootModel" />
-                  <node concept="37vLTw" id="3oQv0AQ98Si" role="37wK5m">
-                    <ref role="3cqZAo" node="3oQv0AQ98Sg" resolve="modelFactorySvc" />
+                  <node concept="37vLTw" id="5wz67X6y5iZ" role="37wK5m">
+                    <ref role="3cqZAo" node="5wz67X6y3h2" resolve="modelFactorySvc" />
                   </node>
                   <node concept="37vLTw" id="3oQv0AQ6bO1" role="37wK5m">
                     <ref role="3cqZAo" node="3oQv0AQ5VyS" resolve="model" />
@@ -3019,8 +3006,8 @@
                 <node concept="37vLTI" id="13cOvvwL24W" role="3clFbG">
                   <node concept="1rXfSq" id="3oQv0AQ93mD" role="37vLTx">
                     <ref role="37wK5l" node="3oQv0AQ90Oz" resolve="saveModel" />
-                    <node concept="37vLTw" id="3oQv0AQ98Sj" role="37wK5m">
-                      <ref role="3cqZAo" node="3oQv0AQ98Sg" resolve="modelFactorySvc" />
+                    <node concept="37vLTw" id="5wz67X6y5lU" role="37wK5m">
+                      <ref role="3cqZAo" node="5wz67X6y3h2" resolve="modelFactorySvc" />
                     </node>
                     <node concept="37vLTw" id="3oQv0AQ93Yz" role="37wK5m">
                       <ref role="3cqZAo" node="3oQv0AQ5VyS" resolve="model" />
@@ -3085,6 +3072,12 @@
               </node>
             </node>
           </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="5wz67X6y3h2" role="3clF46">
+        <property role="TrG5h" value="modelFactorySvc" />
+        <node concept="3uibUv" id="5wz67X6y53Y" role="1tU5fm">
+          <ref role="3uigEE" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
         </node>
       </node>
       <node concept="37vLTG" id="3oQv0AQ5VyS" role="3clF46">

@@ -68,6 +68,8 @@
     <import index="9w4s" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util(MPS.IDEA/)" />
     <import index="mk90" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
     <import index="24bc" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.vfs.tracking(MPS.Platform/)" />
+    <import index="ends" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.persistence(MPS.Core/)" />
+    <import index="bxo2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence.datasource(MPS.OpenAPI/)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -3137,17 +3139,53 @@
               </node>
             </node>
           </node>
+          <node concept="3cpWs8" id="5wz67X6yoky" role="3cqZAp">
+            <node concept="3cpWsn" id="5wz67X6yokz" role="3cpWs9">
+              <property role="TrG5h" value="mpsProject" />
+              <node concept="3uibUv" id="5wz67X6yoaj" role="1tU5fm">
+                <ref role="3uigEE" to="z1c4:~MPSProject" resolve="MPSProject" />
+              </node>
+              <node concept="2YIFZM" id="5wz67X6yok$" role="33vP2m">
+                <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project)" resolve="fromIdeaProject" />
+                <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
+                <node concept="37vLTw" id="5wz67X6yok_" role="37wK5m">
+                  <ref role="3cqZAo" node="68MS4n2ILJ8" resolve="myProject" />
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="3cpWs8" id="1uaLumv3b0B" role="3cqZAp">
             <node concept="3cpWsn" id="1uaLumv3b0C" role="3cpWs9">
               <property role="TrG5h" value="ma" />
+              <property role="3TUv4t" value="true" />
               <node concept="3uibUv" id="1uaLumv3b0D" role="1tU5fm">
                 <ref role="3uigEE" to="lui2:~ModelAccess" resolve="ModelAccess" />
               </node>
-              <node concept="2YIFZM" id="1uaLumv3cY3" role="33vP2m">
-                <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
-                <ref role="37wK5l" to="alof:~ProjectHelper.getModelAccess(com.intellij.openapi.project.Project)" resolve="getModelAccess" />
-                <node concept="37vLTw" id="1uaLumv3d4N" role="37wK5m">
-                  <ref role="3cqZAo" node="68MS4n2ILJ8" resolve="myProject" />
+              <node concept="2OqwBi" id="5wz67X6yy4n" role="33vP2m">
+                <node concept="37vLTw" id="5wz67X6ywpu" role="2Oq$k0">
+                  <ref role="3cqZAo" node="5wz67X6yokz" resolve="mpsProject" />
+                </node>
+                <node concept="liA8E" id="5wz67X6y$dm" role="2OqNvi">
+                  <ref role="37wK5l" to="z1c3:~Project.getModelAccess()" resolve="getModelAccess" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWs8" id="5wz67X6yE8U" role="3cqZAp">
+            <node concept="3cpWsn" id="5wz67X6yE8V" role="3cpWs9">
+              <property role="TrG5h" value="modelFactoryService" />
+              <node concept="3uibUv" id="5wz67X6yE4D" role="1tU5fm">
+                <ref role="3uigEE" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
+              </node>
+              <node concept="2OqwBi" id="5wz67X6yE8W" role="33vP2m">
+                <node concept="37vLTw" id="5wz67X6yE8X" role="2Oq$k0">
+                  <ref role="3cqZAo" node="5wz67X6yokz" resolve="mpsProject" />
+                </node>
+                <node concept="liA8E" id="5wz67X6yE8Y" role="2OqNvi">
+                  <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
+                  <node concept="3VsKOn" id="5wz67X6yE8Z" role="37wK5m">
+                    <ref role="3VsUkX" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -3263,14 +3301,17 @@
                   <node concept="3clFbJ" id="1NiMOxiwPIg" role="3cqZAp">
                     <node concept="3y3z36" id="3nWvkBlmrkV" role="3clFbw">
                       <node concept="2OqwBi" id="3nWvkBlmpHS" role="3uHU7B">
-                        <node concept="2YIFZM" id="3nWvkBlmpHT" role="2Oq$k0">
-                          <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
-                          <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
+                        <node concept="37vLTw" id="5wz67X6yJlF" role="2Oq$k0">
+                          <ref role="3cqZAo" node="5wz67X6yE8V" resolve="modelFactoryService" />
                         </node>
                         <node concept="liA8E" id="3nWvkBlmpHU" role="2OqNvi">
-                          <ref role="37wK5l" to="dush:~PersistenceFacade.getModelFactory(java.lang.String)" resolve="getModelFactory" />
-                          <node concept="37vLTw" id="3nWvkBlmpHV" role="37wK5m">
-                            <ref role="3cqZAo" node="7yFo2Ea2Dxc" resolve="ext" />
+                          <ref role="37wK5l" to="ends:~ModelFactoryService.getDefaultModelFactory(org.jetbrains.mps.openapi.persistence.datasource.DataSourceType)" resolve="getDefaultModelFactory" />
+                          <node concept="2YIFZM" id="5wz67X6yMij" role="37wK5m">
+                            <ref role="37wK5l" to="bxo2:~FileExtensionDataSourceType.of(java.lang.String)" resolve="of" />
+                            <ref role="1Pybhc" to="bxo2:~FileExtensionDataSourceType" resolve="FileExtensionDataSourceType" />
+                            <node concept="37vLTw" id="5wz67X6yMAI" role="37wK5m">
+                              <ref role="3cqZAo" node="7yFo2Ea2Dxc" resolve="ext" />
+                            </node>
                           </node>
                         </node>
                       </node>
@@ -3721,6 +3762,9 @@
                                           <node concept="2YIFZM" id="6DkrMsAcDGd" role="37vLTx">
                                             <ref role="1Pybhc" to="iho:1NiMOxiwPcH" resolve="VCSPersistenceUtil" />
                                             <ref role="37wK5l" to="iho:3oQv0AQ6t5x" resolve="saveModel" />
+                                            <node concept="37vLTw" id="5wz67X6yNiG" role="37wK5m">
+                                              <ref role="3cqZAo" node="5wz67X6yE8V" resolve="modelFactoryService" />
+                                            </node>
                                             <node concept="37vLTw" id="6DkrMsAcDGe" role="37wK5m">
                                               <ref role="3cqZAo" node="6DkrMsAbKiT" resolve="resultModel" />
                                             </node>
@@ -7767,7 +7811,10 @@
                   <property role="3oM_SC" value="FIXME" />
                 </node>
                 <node concept="3oM_SD" id="3oQv0AQ7DIl" role="1PaTwD">
-                  <property role="3oM_SC" value="seeVCSPersistenceUtil.saveModel," />
+                  <property role="3oM_SC" value="see" />
+                </node>
+                <node concept="3oM_SD" id="5wz67X6xtWu" role="1PaTwD">
+                  <property role="3oM_SC" value="VCSPersistenceUtil.saveModel," />
                 </node>
                 <node concept="3oM_SD" id="3oQv0AQ7GiF" role="1PaTwD">
                   <property role="3oM_SC" value="it's" />
@@ -8099,6 +8146,47 @@
                                 </node>
                               </node>
                               <node concept="3clFbH" id="77hmqNcojC4" role="3cqZAp" />
+                              <node concept="3cpWs8" id="5wz67X6zIkd" role="3cqZAp">
+                                <node concept="3cpWsn" id="5wz67X6zIke" role="3cpWs9">
+                                  <property role="TrG5h" value="mpsProject" />
+                                  <property role="3TUv4t" value="true" />
+                                  <node concept="3uibUv" id="5wz67X6zHPK" role="1tU5fm">
+                                    <ref role="3uigEE" to="z1c4:~MPSProject" resolve="MPSProject" />
+                                  </node>
+                                  <node concept="2YIFZM" id="5wz67X6zIkf" role="33vP2m">
+                                    <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project)" resolve="fromIdeaProject" />
+                                    <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
+                                    <node concept="2OqwBi" id="5wz67X6zIkg" role="37wK5m">
+                                      <node concept="37vLTw" id="5wz67X6zIkh" role="2Oq$k0">
+                                        <ref role="3cqZAo" node="4qk_0lIyubX" resolve="parent" />
+                                      </node>
+                                      <node concept="liA8E" id="5wz67X6zIki" role="2OqNvi">
+                                        <ref role="37wK5l" to="wenr:2jv$fqwD$wN" resolve="getProject" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="3cpWs8" id="5wz67X6zOyZ" role="3cqZAp">
+                                <node concept="3cpWsn" id="5wz67X6zOz0" role="3cpWs9">
+                                  <property role="TrG5h" value="modelFactoryService" />
+                                  <property role="3TUv4t" value="true" />
+                                  <node concept="3uibUv" id="5wz67X6zOht" role="1tU5fm">
+                                    <ref role="3uigEE" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
+                                  </node>
+                                  <node concept="2OqwBi" id="5wz67X6zOz1" role="33vP2m">
+                                    <node concept="37vLTw" id="5wz67X6zOz2" role="2Oq$k0">
+                                      <ref role="3cqZAo" node="5wz67X6zIke" resolve="mpsProject" />
+                                    </node>
+                                    <node concept="liA8E" id="5wz67X6zOz3" role="2OqNvi">
+                                      <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
+                                      <node concept="3VsKOn" id="5wz67X6zOz4" role="37wK5m">
+                                        <ref role="3VsUkX" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
                               <node concept="3cpWs8" id="4qk_0lIyuc2" role="3cqZAp">
                                 <node concept="3cpWsn" id="4qk_0lIyuc3" role="3cpWs9">
                                   <property role="TrG5h" value="closeDialog" />
@@ -8128,6 +8216,9 @@
                                       <node concept="2YIFZM" id="4qk_0lIyucm" role="37vLTx">
                                         <ref role="1Pybhc" to="iho:1NiMOxiwPcH" resolve="VCSPersistenceUtil" />
                                         <ref role="37wK5l" to="iho:3oQv0AQ6t5x" resolve="saveModel" />
+                                        <node concept="37vLTw" id="5wz67X6zU1N" role="37wK5m">
+                                          <ref role="3cqZAo" node="5wz67X6zOz0" resolve="modelFactoryService" />
+                                        </node>
                                         <node concept="37vLTw" id="4qk_0lIyucn" role="37wK5m">
                                           <ref role="3cqZAo" node="4qk_0lIyubZ" resolve="resultModel" />
                                         </node>
@@ -8340,6 +8431,9 @@
                                                   <node concept="2YIFZM" id="4qk_0lIyudh" role="37vLTx">
                                                     <ref role="1Pybhc" to="iho:1NiMOxiwPcH" resolve="VCSPersistenceUtil" />
                                                     <ref role="37wK5l" to="iho:3oQv0AQ6t5x" resolve="saveModel" />
+                                                    <node concept="37vLTw" id="5wz67X6zVrc" role="37wK5m">
+                                                      <ref role="3cqZAo" node="5wz67X6zOz0" resolve="modelFactoryService" />
+                                                    </node>
                                                     <node concept="37vLTw" id="4qk_0lIyudi" role="37wK5m">
                                                       <ref role="3cqZAo" node="4qk_0lIyubZ" resolve="resultModel" />
                                                     </node>

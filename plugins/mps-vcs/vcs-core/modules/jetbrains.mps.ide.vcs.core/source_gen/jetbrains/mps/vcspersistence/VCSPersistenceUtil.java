@@ -76,9 +76,8 @@ public class VCSPersistenceUtil {
    * @param modelFactoryTypeSelector filename extenion part that helps to tell whether the model has to be persisted in a per-root or regular xml format
    */
   @Nullable
-  public static byte[] saveModel(SModel model, String modelFactoryTypeSelector, String ext) {
+  public static byte[] saveModel(ModelFactoryService modelFactorySvc, SModel model, String modelFactoryTypeSelector, String ext) {
     String resultString;
-    final ModelFactoryService modelFactorySvc = ModelFactoryService.getInstance();
     if (MPSExtentions.MODEL_HEADER.equals(modelFactoryTypeSelector) || MPSExtentions.MODEL_ROOT.equals(modelFactoryTypeSelector)) {
       // special support for per-root persistence 
       resultString = savePerRootModel(modelFactorySvc, model, MPSExtentions.MODEL_HEADER.equals(modelFactoryTypeSelector));

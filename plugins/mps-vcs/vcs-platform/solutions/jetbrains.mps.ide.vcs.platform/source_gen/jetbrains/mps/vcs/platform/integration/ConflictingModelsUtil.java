@@ -40,8 +40,10 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
+import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.module.ModelAccess;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.extapi.persistence.ModelFactoryService;
+import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import jetbrains.mps.persistence.PersistenceVersionAware;
@@ -180,7 +182,9 @@ public class ConflictingModelsUtil {
     public void run(@NotNull ProgressIndicator indicator) {
       final ProgressMonitor monitor = new ProgressMonitorAdapter(indicator);
       monitor.start("Resolving...", ListSequence.fromList(myConflictedModelFiles).count());
-      ModelAccess ma = ProjectHelper.getModelAccess(myProject);
+      MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
+      final ModelAccess ma = mpsProject.getModelAccess();
+      final ModelFactoryService modelFactoryService = mpsProject.getComponent(ModelFactoryService.class);
       try {
         for (final VirtualFile file : ListSequence.fromList(myConflictedModelFiles)) {
           monitor.step(file.getCanonicalPath());
@@ -193,7 +197,7 @@ public class ConflictingModelsUtil {
           final Wrappers._T<SModel> baseModel = new Wrappers._T<SModel>(null);
           final Wrappers._T<SModel> mineModel = new Wrappers._T<SModel>(null);
           final Wrappers._T<SModel> repoModel = new Wrappers._T<SModel>(null);
-          if (PersistenceFacade.getInstance().getModelFactory(ext.value) != null) {
+          if (modelFactoryService.getDefaultModelFactory(FileExtensionDataSourceType.of(ext.value)) != null) {
             MergeData mergeData = null;
             try {
               mergeData = myProvider.loadRevisions(file);
@@ -254,7 +258,7 @@ public class ConflictingModelsUtil {
                 }
               } else {
                 try {
-                  resultContent.value = VCSPersistenceUtil.saveModel(resultModel, file.getExtension(), ext.value);
+                  resultContent.value = VCSPersistenceUtil.saveModel(modelFactoryService, resultModel, file.getExtension(), ext.value);
                 } catch (Throwable error) {
                   // this can be when saving in 9 persistence after merge with 8 persistence => leave it for UI merge 
                   if (baseModel.value instanceof PersistenceVersionAware && resultModel instanceof PersistenceVersionAware && ((PersistenceVersionAware) baseModel.value).getPersistenceVersion() == 8 && ((PersistenceVersionAware) resultModel).getPersistenceVersion() == 9) {
@@ -288,7 +292,7 @@ public class ConflictingModelsUtil {
               }
             });
             if (isWritten.value) {
-              check_2bxr1q_a0a2a02a0a3a21g(mySession, file);
+              check_2bxr1q_a0a2a02a0a5a21g(mySession, file);
               VcsDirtyScopeManager.getInstance(myProject).fileDirty(file);
               ListSequence.fromList(myResolvedModelFiles).addElement(file);
             }
@@ -303,7 +307,7 @@ public class ConflictingModelsUtil {
         monitor.done();
       }
     }
-    private static void check_2bxr1q_a0a2a02a0a3a21g(com.intellij.openapi.vcs.merge.MergeSession checkedDotOperand, VirtualFile file) {
+    private static void check_2bxr1q_a0a2a02a0a5a21g(com.intellij.openapi.vcs.merge.MergeSession checkedDotOperand, VirtualFile file) {
       if (null != checkedDotOperand) {
         checkedDotOperand.conflictResolvedForFile(file, com.intellij.openapi.vcs.merge.MergeSession.Resolution.Merged);
       }

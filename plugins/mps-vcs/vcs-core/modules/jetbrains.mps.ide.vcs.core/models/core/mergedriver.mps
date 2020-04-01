@@ -3600,6 +3600,17 @@
                       <node concept="2YIFZM" id="13cOvvwLhiN" role="37vLTx">
                         <ref role="1Pybhc" to="iho:1NiMOxiwPcH" resolve="VCSPersistenceUtil" />
                         <ref role="37wK5l" to="iho:3oQv0AQ6t5x" resolve="saveModel" />
+                        <node concept="2OqwBi" id="5wz67X6y6C7" role="37wK5m">
+                          <node concept="37vLTw" id="5wz67X6y6fj" role="2Oq$k0">
+                            <ref role="3cqZAo" node="6ZJWS$QOc4j" resolve="myPlatform" />
+                          </node>
+                          <node concept="liA8E" id="5wz67X6y7P_" role="2OqNvi">
+                            <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
+                            <node concept="3VsKOn" id="5wz67X6y8N7" role="37wK5m">
+                              <ref role="3VsUkX" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
+                            </node>
+                          </node>
+                        </node>
                         <node concept="37vLTw" id="7vnu9rGOuKR" role="37wK5m">
                           <ref role="3cqZAo" node="7vnu9rGOuKM" resolve="resultModel" />
                         </node>

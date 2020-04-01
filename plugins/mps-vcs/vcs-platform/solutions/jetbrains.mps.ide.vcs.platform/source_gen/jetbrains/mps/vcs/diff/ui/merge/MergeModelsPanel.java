@@ -242,7 +242,7 @@ public class MergeModelsPanel extends JPanel {
   /*package*/ void rebuildLater() {
     myMergeTree.rebuildLater();
   }
-  /*package*/ Project getProject() {
+  public Project getProject() {
     return myProject;
   }
   @Nullable
