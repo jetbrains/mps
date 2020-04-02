@@ -337,12 +337,6 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
     generator.getDelayedChanges().add(postProcessor);
   }
 
-  @NotNull
-  @Override
-  public NodeWeaveFacility prepareWeave(@NotNull WeaveContext context, @NotNull SNodeReference templateNode) {
-    return new NodeWeaveSupport(context, templateNode, this);
-  }
-
   // Internal API, perhaps, shall be part of ExecutionEnvironmentInternal iface
 
   void blockReductionsForCopiedNode(SNode inputNode, SNode outputNode) {

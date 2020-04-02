@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.Collection;
 
 /**
- * Utility to perform weaving of a node. Context-aware, the only way to obtain its instance is
- * {@link TemplateExecutionEnvironment#prepareWeave(WeaveContext, SNodeReference)}.
+ * Utility to perform weaving of a node.
  * Knows parent and anchor for nodes being weaved (either one by one or by means of another {@link #weaveTemplate(TemplateDeclaration) template}
  *
  * It's pretty much just an excerpt from {@link TemplateExecutionEnvironment} tailored as an intermediate between

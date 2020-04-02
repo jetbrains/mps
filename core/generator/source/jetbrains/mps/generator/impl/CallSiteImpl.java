@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,7 +57,7 @@ final class CallSiteImpl implements TemplateCallSite {
   public boolean weave(@NotNull TemplateContext context, @NotNull SNode outputContextNode, @Nullable WeavingWithAnchor anchorQuery) throws GenerationException {
     // FIXME have to use WeaveContext+NodeWeaveFacility as long as TemplateDeclarationWeavingAware2.weave requires these
     WeaveContextImpl wc = new WeaveContextImpl(outputContextNode, context, anchorQuery);
-    final NodeWeaveFacility nwf = myEnvironment.prepareWeave(wc, myCallSite);
+    final NodeWeaveFacility nwf = new NodeWeaveSupport(wc, myCallSite, myEnvironment);
     final Collection<SNode> weaved = myTemplateDeclaration.weave(wc, nwf);
     if (weaved != null && !weaved.isEmpty()) {
       if (context.getInputName() != null) {
@@ -70,4 +70,26 @@ final class CallSiteImpl implements TemplateCallSite {
     }
     return false;
   }
+
+  // copied from TEEI, design considerations for uniform apply/weave for a TD. Check also TemplateDeclarationWeavingAware2
+  // I
+  //   env.weave(TemplateDeclaration, ApplySink, TemplateContext)
+  //   env.apply(TemplateDeclaration, ApplySink, TemplateContext)
+  //   where TD either new GeneratedTD, or env.findTemplate()
+  // II
+  //   env.prepare(aTD).apply(ApplySink, TemplateContext), with WeaveSinkImpl(parent, anchorFunction) in case of weaving
+  //   env.prepare(aTD):TD
+  //   where aTD is either new or findTemplate()
+  // WeaveSink needs call site information to report errors, and findTemplate() needs one, so it looks ugly in generated code
+  // III
+  //   env.prepareWeave(callSite): NWF
+  //   nwf.weave(TD, TemplateContext)
+  //   nwf.weave(TemplateDeclarationKey, TemplateContext)
+  //   env.prepareApply(callSite):NodeApplyFacility
+  //   naf.apply(TD, TemplateContext)
+  //   naf.apply(TemplateDeclarationKey, TemplateContext)
+  // NAF and NWF could be the same, TemplateCallSite. What I don't like is new object instantiation for each call
+  // Not clear how interpreted code invokes templates, directly through TD.apply or through TemplateCallSite facility. How/when do we wrap TD instances with tracing
+  //   or we support tracing in the facility object? If latter, what do we cache, TD ot TCS?
+  //   From this perspective, env.findTemplate(TDK, node-ptr) combines both call site and target and can be cached
 }
