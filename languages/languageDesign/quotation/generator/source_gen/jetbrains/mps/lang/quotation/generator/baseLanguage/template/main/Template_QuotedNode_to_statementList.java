@@ -21,7 +21,6 @@ import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import jetbrains.mps.generator.impl.reference.RefResolver;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
-import jetbrains.mps.generator.runtime.TemplateSwitchMapping;
 import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
@@ -231,12 +230,7 @@ public class Template_QuotedNode_to_statementList extends TemplateDeclarationBas
                                       {
                                         final SNode switchInput30 = QueriesGenerated.sourceNodeQuery_0_0(new SourceSubstituteMacroNodeContext(context15, switchMacroRef_mmylek_b0a0a0a1a2a1a2a1a1a1a1a1a1a1a1a1a1a4a1a2a2a6));
                                         if (switchInput30 == null) {
-                                          {
-                                            TemplateSwitchMapping switch30 = environment.getGenerator().getSwitch(templateSwitchNode_mmylek_a0a0c0a1a1a2a1a2a1a1a1a1a1a1a1a1a1a1a4a1a2a2a6);
-                                            if (switch30 != null) {
-                                              switch30.processNull(environment, templateSwitchNode_mmylek_a0a0c0a1a1a2a1a2a1a1a1a1a1a1a1a1a1a1a4a1a2a2a6, context15);
-                                            }
-                                          }
+                                          environment.nullInputSwitch(templateSwitchNode_mmylek_a0a0c0a1a1a2a1a2a1a1a1a1a1a1a1a1a1a1a4a1a2a2a6);
                                           tlist30 = Collections.emptyList();
                                         } else {
                                           TemplateContext switchContext30;
