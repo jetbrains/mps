@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,17 +17,14 @@ package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.generator.impl.RoleValidation.RoleValidator;
 import jetbrains.mps.generator.impl.RoleValidation.Status;
-import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.NodeWeaveFacility;
 import jetbrains.mps.generator.runtime.TemplateContext;
-import jetbrains.mps.generator.runtime.TemplateDeclaration;
 import jetbrains.mps.textgen.trace.TracingUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-import java.util.Collection;
 import java.util.Iterator;
 
 /**
@@ -89,16 +86,5 @@ public final class NodeWeaveSupport implements NodeWeaveFacility {
       }
     }
     contextParentNode.insertChildBefore(childRole, outputNodeToWeave, anchor);
-  }
-
-  @Override
-  public Collection<SNode> weaveTemplate(@NotNull TemplateDeclaration templateDeclaration) throws GenerationException {
-    // legacy generated templates invoking weaving from the same generator module. It's ok as we don't need to bother about the way arguments get
-    // passed to a template.
-    // New, 2018.3 code uses this method as well, with env.findTemplate() for argument. Assumption of argument values being available to template
-    // (in this case set by calling code) holds true and we don't need to do anything extra here. The reasons I decided to reuse this method are:
-    // (a) easier to change TD.weave signature afterwards (it's ugly)
-    // (b) generated code needed NWF instance anyway, and looked ugly with env.findTemplate().weave(wc, environment.prepareWeave(wc, ptr))).
-    return templateDeclaration.weave(myWeaveContext, this);
   }
 }

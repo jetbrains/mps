@@ -21,8 +21,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
 
-import java.util.Collection;
-
 /**
  * Utility to perform weaving of a node.
  * Knows parent and anchor for nodes being weaved (either one by one or by means of another {@link #weaveTemplate(TemplateDeclaration) template}
@@ -57,16 +55,6 @@ public interface NodeWeaveFacility {
    * @throws GenerationFailureException
    */
   void weaveNode(@NotNull SContainmentLink childRole, @NotNull SNode outputNodeToWeave) throws GenerationFailureException;
-
-  /**
-   * weave template from the same generated generator
-   * Method intended for use from generated generators
-   * FIXME introduce TEE.prepareWeave(TD):TD along with TEE.prepareApply(TD):TD to support wrapping of TD instances with trace facility from within
-   *       generated code, then deprecate and drop this one
-   * @return FIXME contract shall be identical to {@link TemplateDeclarationWeavingAware2#weave(WeaveContext, NodeWeaveFacility)}
-   */
-  Collection<SNode> weaveTemplate(@NotNull TemplateDeclaration templateDeclaration) throws GenerationException;
-
 
   // there's need to pass more than 1 parameter to weaving, hence the context.
   interface WeaveContext {
