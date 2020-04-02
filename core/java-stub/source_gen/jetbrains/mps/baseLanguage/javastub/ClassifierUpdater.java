@@ -391,7 +391,8 @@ public class ClassifierUpdater {
     if (myJavadocSupplier == null) {
       return;
     }
-    String text = myJavadocSupplier.forMethod(method.getName() + "()");
+    String signature = MethodSignature.forMethod(method).getStringSignature();
+    String text = myJavadocSupplier.forMethod(signature);
     if ((text == null || text.length() == 0)) {
       return;
     }
@@ -418,6 +419,7 @@ public class ClassifierUpdater {
       SPropertyOperations.assign(md, PROPS.isAbstract$cU_H, m.isAbstract());
       SLinkOperations.setTarget(md, LINKS.visibility$2GiC, createVisibility(m));
       this.updateBaseMethod(m, md, cls);
+      updateMethodJavadoc(md, m);
 
       ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$oYX5)).addElement(md);
     }
@@ -438,6 +440,7 @@ public class ClassifierUpdater {
       ((jetbrains.mps.smodel.SNode) md).setId(ASMNodeId.createId(myParsedClass, m));
       SLinkOperations.setTarget(md, LINKS.visibility$2GiC, createVisibility(m));
       updateBaseMethod(m, md, cls);
+      updateMethodJavadoc(md, m);
 
       ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$oYX5)).addElement(md);
     }
