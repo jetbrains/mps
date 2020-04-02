@@ -174,7 +174,7 @@
       <node id="400642802550420129" at="169,146,170,49" concept="8" />
       <node id="400642802550422272" at="170,49,171,37" concept="3" />
       <node id="400642802550420129" at="171,37,172,14" concept="9" />
-      <node id="400642802550420129" at="176,156,177,49" concept="8" />
+      <node id="400642802550420129" at="176,102,177,49" concept="8" />
       <node id="400642802550422272" at="177,49,178,87" concept="3" />
       <node id="400642802550420129" at="178,87,179,14" concept="9" />
       <node id="400642802550420129" at="182,39,183,36" concept="8" />
@@ -227,7 +227,7 @@
       <node id="3708576844065051183" at="152,201,155,13" concept="5" />
       <node id="400642802550422212" at="60,79,64,15" concept="14" />
       <node id="400642802550420129" at="168,0,174,0" concept="7" trace="apply#(Ljetbrains/mps/generator/runtime/TemplateExecutionEnvironment;Ljetbrains/mps/generator/runtime/TemplateContext;)Ljava/util/Collection;" />
-      <node id="400642802550420129" at="175,0,181,0" concept="7" trace="weave#(Ljetbrains/mps/generator/runtime/NodeWeaveFacility/WeaveContext;Ljetbrains/mps/generator/runtime/NodeWeaveFacility;)Ljava/util/Collection;" />
+      <node id="400642802550420129" at="175,0,181,0" concept="7" trace="weave#(Ljetbrains/mps/generator/runtime/NodeWeaveFacility;)Ljava/util/Collection;" />
       <node id="400642802550420129" at="202,0,209,0" concept="7" trace="initAssociationLinks#()[Lorg/jetbrains/mps/openapi/language/SReferenceLink;" />
       <node id="3708576844065083897" at="116,71,124,23" concept="0" />
       <node id="400642802550420129" at="194,0,202,0" concept="7" trace="initProperties#()[Lorg/jetbrains/mps/openapi/language/SProperty;" />
@@ -290,7 +290,7 @@
       <scope id="400642802550420129" at="169,146,172,14">
         <var name="rv" id="400642802550420129" />
       </scope>
-      <scope id="400642802550420129" at="176,156,179,14">
+      <scope id="400642802550420129" at="176,102,179,14">
         <var name="rv" id="400642802550420129" />
       </scope>
       <scope id="400642802550420129" at="203,53,207,14">
@@ -307,7 +307,6 @@
         <var name="environment" id="400642802550420129" />
       </scope>
       <scope id="400642802550420129" at="175,0,181,0">
-        <var name="weaveContext" id="400642802550420129" />
         <var name="weaveSupport" id="400642802550420129" />
       </scope>
       <scope id="400642802550422212" at="59,13,66,37">

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,17 +16,14 @@
 package jetbrains.mps.generator.runtime;
 
 import jetbrains.mps.generator.impl.GenerationFailureException;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeReference;
-
-import java.util.Collection;
 
 /**
- * Utility to perform weaving of a node. Context-aware, the only way to obtain its instance is
- * {@link TemplateExecutionEnvironment#prepareWeave(WeaveContext, SNodeReference)}.
+ * Utility to perform weaving of a node.
  * Knows parent and anchor for nodes being weaved (either one by one or by means of another {@link #weaveTemplate(TemplateDeclaration) template}
  *
  * It's pretty much just an excerpt from {@link TemplateExecutionEnvironment} tailored as an intermediate between
@@ -60,17 +57,14 @@ public interface NodeWeaveFacility {
    */
   void weaveNode(@NotNull SContainmentLink childRole, @NotNull SNode outputNodeToWeave) throws GenerationFailureException;
 
-  /**
-   * weave template from the same generated generator
-   * Method intended for use from generated generators
-   * FIXME introduce TEE.prepareWeave(TD):TD along with TEE.prepareApply(TD):TD to support wrapping of TD instances with trace facility from within
-   *       generated code, then deprecate and drop this one
-   * @return FIXME contract shall be identical to {@link TemplateDeclarationWeavingAware2#weave(WeaveContext, NodeWeaveFacility)}
-   */
-  Collection<SNode> weaveTemplate(@NotNull TemplateDeclaration templateDeclaration) throws GenerationException;
-
-
   // there's need to pass more than 1 parameter to weaving, hence the context.
+  /**
+   * @deprecated with TemplateCallSite, everything needed specifically for weaving could go right into NodeWeaveSupport,
+   *             see {@link jetbrains.mps.generator.impl.CallSiteImpl#weave(TemplateContext, SNode, WeavingWithAnchor)}
+   *             Generated classes that implement TemplateDeclaration reference this class in 2019.3 though don't use anything from it
+   */
+  @Deprecated
+  @ToRemove(version = 2020.1)
   interface WeaveContext {
     /**
      * @return context node of a weaving rule or macro. Not necessarily the parent nodes get weaved into, as actual parent

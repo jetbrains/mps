@@ -9,15 +9,15 @@ import jetbrains.mps.generator.runtime.TemplateReductionRule;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
-import java.util.Collection;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
-import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
 import jetbrains.mps.generator.runtime.TemplateRuleWithCondition;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.template.ReductionRuleQueryContext;
+import java.util.Collection;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -38,11 +38,6 @@ public class Switch_BehaviorDescriptor extends TemplateSwitchBase implements Tem
   }
   public Iterable<TemplateReductionRule> getReductionRules() {
     return rules;
-  }
-  public Collection<SNode> applyDefault(final TemplateExecutionEnvironment environment, SNodeReference templateSwitch, String mappingLabel, final TemplateContext context) {
-    return null;
-  }
-  public void processNull(TemplateExecutionEnvironment environment, SNodeReference templateSwitch, TemplateContext context) {
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule0() {
@@ -74,7 +69,7 @@ public class Switch_BehaviorDescriptor extends TemplateSwitchBase implements Tem
             {
               final SNode tnode4 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e98L, "VariableReference"));
               try {
-                environment.resolveInTemplateLater(tnode4, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), templateNode_q5kmqu_c0a0a1a2a1a1a2a2h, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/4565427742314373491", "aspectClass", context2);
+                environment.resolveInTemplateLater(tnode4, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), templateNode_q5kmqu_c0a0a1a2a1a1a2a2f, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/4565427742314373491", "aspectClass", context2);
               } finally {
               }
               tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"), tnode4);
@@ -100,7 +95,7 @@ public class Switch_BehaviorDescriptor extends TemplateSwitchBase implements Tem
                     {
                       final SNode tnode8 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e98L, "VariableReference"));
                       try {
-                        environment.resolveInTemplateLater(tnode8, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), templateNode_q5kmqu_c0a0a1a1a1a1a1a1a1a2a2a2h, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/4565427742314373491", "aspectClass", context5);
+                        environment.resolveInTemplateLater(tnode8, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), templateNode_q5kmqu_c0a0a1a1a1a1a1a1a1a2a2a2f, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/4565427742314373491", "aspectClass", context5);
                       } finally {
                       }
                       tnode7.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), tnode8);
@@ -159,8 +154,8 @@ public class Switch_BehaviorDescriptor extends TemplateSwitchBase implements Tem
       return TemplateUtil.singletonList(tnode1);
     }
   }
-  private static final SNodePointer templateNode_q5kmqu_c0a0a1a2a1a1a2a2h = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4565427742314403561");
-  private static final SNodePointer templateNode_q5kmqu_c0a0a1a1a1a1a1a1a1a2a2a2h = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4147950839246919590");
+  private static final SNodePointer templateNode_q5kmqu_c0a0a1a2a1a1a2a2f = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4565427742314403561");
+  private static final SNodePointer templateNode_q5kmqu_c0a0a1a1a1a1a1a1a1a2a2a2f = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4147950839246919590");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ModelReference$sT = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, "jetbrains.mps.lang.project.structure.ModelReference");

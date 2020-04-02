@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -748,7 +748,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
       if (newInputNode == null) {
         TemplateSwitchMapping tswitch = myTemplateProcessor.getGenerator().getSwitch(switchPtr);
         if (tswitch != null) {
-          tswitch.processNull(templateContext.getEnvironment(), switchPtr, templateContext);
+          tswitch.processNull(templateContext.getEnvironment());
         }
         return Collections.emptyList(); // skip template
       }

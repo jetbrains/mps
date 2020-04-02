@@ -72,7 +72,7 @@ public class Template_reduce_Model_RootsOperation_noConcept extends TemplateDecl
   }
 
   @Override
-  public Collection<SNode> weave(@NotNull NodeWeaveFacility.WeaveContext weaveContext, @NotNull NodeWeaveFacility weaveSupport) throws GenerationException {
+  public Collection<SNode> weave(@NotNull NodeWeaveFacility weaveSupport) throws GenerationException {
     ArrayList<SNode> rv = new ArrayList<SNode>();
     applyPart0(weaveSupport.getTemplateContext()).weaveWith(weaveSupport).reportTo(rv);
     return rv;

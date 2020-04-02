@@ -11,9 +11,9 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
+import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.impl.DismissTopMappingRuleException;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
 import org.jetbrains.annotations.NotNull;
@@ -36,13 +36,12 @@ public class Switch_switch_IPropertyQualifier_toSProperty extends TemplateSwitch
   public Iterable<TemplateReductionRule> getReductionRules() {
     return rules;
   }
-  public Collection<SNode> applyDefault(final TemplateExecutionEnvironment environment, SNodeReference templateSwitch, String mappingLabel, final TemplateContext context) throws GenerationException {
+  public Collection<SNode> applyDefault(final TemplateContext context) throws GenerationException {
+    final TemplateExecutionEnvironment environment = context.getEnvironment();
     DismissTopMappingRuleException ex_nuu7m_a = new DismissTopMappingRuleException(DismissTopMappingRuleException.MessageType.error, "Unsupported IPropertyQualifier found. Reference to PropertyDeclaration cannot be generated.");
     ex_nuu7m_a.setTemplateContext(context);
     ex_nuu7m_a.setTemplateModelLocation(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2855392971717584215"));
     throw ex_nuu7m_a;
-  }
-  public void processNull(TemplateExecutionEnvironment environment, SNodeReference templateSwitch, TemplateContext context) {
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
@@ -52,8 +51,8 @@ public class Switch_switch_IPropertyQualifier_toSProperty extends TemplateSwitch
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_71_0(new SourceSubstituteMacroNodeContext(context, copySrcMacro_2s2e5_b0a0d0b7));
-      tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro_2s2e5_b0a0d0b7, "tpl/r:00000000-0000-4000-0000-011c89590303/1757699476691451325", context);
+      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_71_0(new SourceSubstituteMacroNodeContext(context, copySrcMacro_2s2e5_b0a0d0b6));
+      tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro_2s2e5_b0a0d0b6, "tpl/r:00000000-0000-4000-0000-011c89590303/1757699476691451325", context);
       return tlist1;
     }
   }
@@ -65,7 +64,7 @@ public class Switch_switch_IPropertyQualifier_toSProperty extends TemplateSwitch
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_71_1(new SourceSubstituteMacroNodeContext(context, callMacro_2s2e5_b0a0a2a1i));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_71_1(new SourceSubstituteMacroNodeContext(context, callMacro_2s2e5_b0a0a2a1h));
       TemplateContext context1;
       context1 = context.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
@@ -74,8 +73,8 @@ public class Switch_switch_IPropertyQualifier_toSProperty extends TemplateSwitch
       return tlist1;
     }
   }
-  private static final SNodePointer copySrcMacro_2s2e5_b0a0d0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1757699476691451326");
-  private static final SNodePointer callMacro_2s2e5_b0a0a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145325");
+  private static final SNodePointer copySrcMacro_2s2e5_b0a0d0b6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1757699476691451326");
+  private static final SNodePointer callMacro_2s2e5_b0a0a2a1h = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145325");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept PoundExpression$zj = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11885c0d945L, "jetbrains.mps.lang.smodel.structure.PoundExpression");

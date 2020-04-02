@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -311,11 +311,12 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
 
   // PARALLEL: create root rules are checked for applicability from the thread they would generate from.
   protected final void applyCreateRoot(TemplateCreateRootRule rule, TemplateExecutionEnvironment environment) throws GenerationFailureException, GenerationCanceledException {
-    if (!environment.getQueryExecutor().isApplicable(rule, new DefaultTemplateContext(environment, null, null))) {
+    final DefaultTemplateContext tc = new DefaultTemplateContext(environment, null, null);
+    if (!environment.getQueryExecutor().isApplicable(rule, tc)) {
       return;
     }
     try {
-      Collection<SNode> outputNodes = environment.getQueryExecutor().applyRule(rule, environment);
+      Collection<SNode> outputNodes = environment.getQueryExecutor().applyRule(rule, tc);
       if (outputNodes == null) {
         return;
       }

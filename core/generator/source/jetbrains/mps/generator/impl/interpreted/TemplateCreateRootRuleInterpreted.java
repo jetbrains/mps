@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.generator.impl.interpreted;
 
 import jetbrains.mps.generator.GenerationCanceledException;
-import jetbrains.mps.generator.impl.DefaultTemplateContext;
 import jetbrains.mps.generator.impl.DismissTopMappingRuleException;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.impl.RuleUtil;
@@ -26,7 +25,6 @@ import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.runtime.CreateRootRuleBase;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateCreateRootRule;
-import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.template.CreateRootRuleContext;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -59,12 +57,12 @@ public class TemplateCreateRootRuleInterpreted extends CreateRootRuleBase implem
   }
 
   @Override
-  public Collection<SNode> apply(TemplateExecutionEnvironment environment) throws GenerationCanceledException, GenerationFailureException, DismissTopMappingRuleException {
+  public Collection<SNode> apply(TemplateContext context) throws GenerationCanceledException, GenerationFailureException, DismissTopMappingRuleException {
     SNode templateNode = RuleUtil.getCreateRootRuleTemplateNode(myRuleNode);
     if (templateNode != null) {
-      return environment.getTemplateProcessor().apply(templateNode, new DefaultTemplateContext(environment, null, myMappingName));
+      return context.getEnvironment().getTemplateProcessor().apply(templateNode, context.subContext(myMappingName));
     } else {
-      environment.getLogger().error(getRuleNode(), "'create root' rule has no template");
+      context.getEnvironment().getLogger().error(getRuleNode(), "'create root' rule has no template");
       return null;
     }
   }

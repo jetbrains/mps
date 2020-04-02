@@ -16,8 +16,6 @@
 package jetbrains.mps.persistence;
 
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
-import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.JDOMUtil;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -37,7 +35,6 @@ import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
-import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -55,11 +52,6 @@ public final class PersistenceUtil {
   private static final Logger LOG = LogManager.getLogger(PersistenceUtil.class);
 
   private PersistenceUtil() {
-  }
-
-  @NotNull
-  private static ModelFactoryService getModelFactoryService() {
-    return ModelFactoryService.getInstance();
   }
 
   /**
@@ -106,21 +98,6 @@ public final class PersistenceUtil {
       LOG.error("loadModel", e);
       return null;
     }
-  }
-
-  public static String saveModel(final SModel model, String extension) {
-    ModelFactory factory = getModelFactoryService().getDefaultModelFactory(FileExtensionDataSourceType.of(extension));
-    if (factory == null) {
-      return null;
-    }
-    try {
-      InMemoryStreamDataSource source = new InMemoryStreamDataSource();
-      factory.save(model, source);
-      return source.getContent(FileUtil.DEFAULT_CHARSET_NAME);
-    } catch (ModelSaveException | IOException e) {
-      LOG.error(e);
-    }
-    return null;
   }
 
   public static Element saveModelToXml(@NotNull final SModel model, @NotNull ModelFactoryService modelFactoryService) {
@@ -188,28 +165,6 @@ public final class PersistenceUtil {
       }
     }
     return new ByteArrayInputStream(new byte[0]);
-  }
-
-  public static String savePerRootModel(final SModel model, boolean isHeader) {
-    ModelFactory factory = getModelFactoryService().getFactoryByType(PreinstalledModelFactoryTypes.PER_ROOT_XML);
-    if (factory == null) {
-      return null;
-    }
-    try {
-      InMemoryMultiStreamDataSource source = new InMemoryMultiStreamDataSource();
-      factory.save(model, source);
-      if (isHeader) {
-        return source.getContent(MPSExtentions.DOT_MODEL_HEADER, FileUtil.DEFAULT_CHARSET_NAME);
-      } else {
-        for (String name : source.getAvailableStreams()) {
-          if (name.equals(MPSExtentions.DOT_MODEL_HEADER)) continue;
-          return source.getContent(name, FileUtil.DEFAULT_CHARSET_NAME);
-        }
-      }
-    } catch (ModelSaveException | IOException e) {
-      LOG.error(e);
-    }
-    return null;
   }
 
   public static abstract class StreamDataSourceBase implements StreamDataSource {

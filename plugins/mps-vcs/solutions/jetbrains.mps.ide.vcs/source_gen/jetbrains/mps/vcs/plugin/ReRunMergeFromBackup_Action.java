@@ -21,11 +21,15 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
+import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
+import org.jetbrains.mps.openapi.persistence.ModelFactory;
+import jetbrains.mps.extapi.persistence.ModelFactoryService;
+import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import jetbrains.mps.persistence.PersistenceUtil;
-import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.util.FileUtil;
 import java.io.File;
 import jetbrains.mps.vcs.platform.util.MergeBackupUtil;
 import jetbrains.mps.vcs.util.MergeVersion;
@@ -101,6 +105,13 @@ public class ReRunMergeFromBackup_Action extends BaseAction {
         return false;
       }
     }
+    {
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+      MapSequence.fromMap(_params).put("mpsProject", p);
+      if (p == null) {
+        return false;
+      }
+    }
     return true;
   }
   @Override
@@ -113,7 +124,12 @@ public class ReRunMergeFromBackup_Action extends BaseAction {
     // for the same model, usually means same persistence as current (unless persistence has been changed). 
     String modelData = new ModelAccessHelper(((SModel) MapSequence.fromMap(_params).get("model")).getRepository()).runReadAction(new Computable<String>() {
       public String compute() {
-        return PersistenceUtil.saveModel(((SModel) MapSequence.fromMap(_params).get("model")), MPSExtentions.MODEL);
+        // FIXME as long as we use modelData to match against 'mine' content from merge backup, we implicitly assume here 
+        //      that merge uses the same ModelFactory to save model into backup as we use here to obtain actual content 
+        //      I'd say it has to use VCSPersistenceUtil.saveModel so that one can expect that persistence approach to backup and actual content matches 
+        ModelFactory xmlPersistence = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getComponent(ModelFactoryService.class).getDefaultModelFactory(PreinstalledDataSourceTypes.MPS);
+        byte[] modelAsBytes = PersistenceUtil.modelAsBytes(((SModel) MapSequence.fromMap(_params).get("model")), xmlPersistence);
+        return (modelAsBytes == null ? null : new String(modelAsBytes, FileUtil.DEFAULT_CHARSET));
       }
     });
 

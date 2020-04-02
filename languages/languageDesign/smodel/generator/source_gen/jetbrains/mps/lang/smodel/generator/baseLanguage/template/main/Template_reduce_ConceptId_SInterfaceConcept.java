@@ -16,7 +16,6 @@ import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import java.util.Collection;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
-import jetbrains.mps.generator.runtime.TemplateSwitchMapping;
 import java.util.Collections;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -52,12 +51,7 @@ public class Template_reduce_ConceptId_SInterfaceConcept extends TemplateDeclara
         {
           final SNode switchInput2 = QueriesGenerated.sourceNodeQuery_97_0(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_acp5hl_b0a0a0a1a3a2a6));
           if (switchInput2 == null) {
-            {
-              TemplateSwitchMapping switch2 = environment.getGenerator().getSwitch(templateSwitchNode_acp5hl_a0a0c0a1a1a3a2a6);
-              if (switch2 != null) {
-                switch2.processNull(environment, templateSwitchNode_acp5hl_a0a0c0a1a1a3a2a6, context1);
-              }
-            }
+            environment.nullInputSwitch(templateSwitchNode_acp5hl_a0a0c0a1a1a3a2a6);
             tlist2 = Collections.emptyList();
           } else {
             TemplateContext switchContext2;
@@ -110,7 +104,7 @@ public class Template_reduce_ConceptId_SInterfaceConcept extends TemplateDeclara
   }
 
   @Override
-  public Collection<SNode> weave(@NotNull NodeWeaveFacility.WeaveContext weaveContext, @NotNull NodeWeaveFacility weaveSupport) throws GenerationException {
+  public Collection<SNode> weave(@NotNull NodeWeaveFacility weaveSupport) throws GenerationException {
     ArrayList<SNode> rv = new ArrayList<SNode>();
     applyPart0(weaveSupport.getTemplateContext()).weaveWith(weaveSupport).reportTo(rv);
     return rv;

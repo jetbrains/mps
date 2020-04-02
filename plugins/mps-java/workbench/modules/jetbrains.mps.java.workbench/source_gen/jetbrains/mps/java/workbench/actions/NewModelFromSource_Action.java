@@ -33,18 +33,14 @@ import java.util.List;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.java.core.newparser.JavaConvertUtil;
 import jetbrains.mps.java.core.newparser.JavaToMpsConverter;
 import jetbrains.mps.ide.messages.MessagesViewTool;
-import com.intellij.openapi.util.Ref;
-import jetbrains.mps.java.core.newparser.JavaParseException;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.progress.ProgressIndicator;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
-import java.io.IOException;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -55,7 +51,7 @@ public class NewModelFromSource_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public NewModelFromSource_Action() {
-    super("Models from Java Sources", "", ICON);
+    super("Models from Java Sources", "Adds BaseLanguage-authored models to context module from selected Java source files", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }
@@ -154,7 +150,7 @@ public class NewModelFromSource_Action extends BaseAction {
     FileChooserDescriptor descriptor = new FileChooserDescriptor(true, true, false, false, false, true);
     FileChooserDialog fileDialog = FileChooserFactory.getInstance().createFileChooser(descriptor, ((Project) MapSequence.fromMap(_params).get("ideaProject")), ((Frame) MapSequence.fromMap(_params).get("frame")));
 
-    VirtualFile[] chosen = fileDialog.choose(null, ((Project) MapSequence.fromMap(_params).get("ideaProject")));
+    VirtualFile[] chosen = fileDialog.choose(((Project) MapSequence.fromMap(_params).get("ideaProject")));
 
     if (chosen.length == 0) {
       return;
@@ -162,29 +158,21 @@ public class NewModelFromSource_Action extends BaseAction {
 
     List<IFile> chosenIFiles = ListSequence.fromList(new ArrayList<IFile>(chosen.length));
     for (VirtualFile vfile : chosen) {
-      ListSequence.fromList(chosenIFiles).addElement(FileSystem.getInstance().getFile(vfile.getPath()));
+      ListSequence.fromList(chosenIFiles).addElement(((MPSProject) MapSequence.fromMap(_params).get("project")).getFileSystem().fromVirtualFile(vfile));
     }
     final List<IFile> ifilesToParse = Sequence.fromIterable(JavaConvertUtil.flattenDirs(chosenIFiles)).toListSequence();
 
     final JavaToMpsConverter parser = new JavaToMpsConverter(((SModule) MapSequence.fromMap(_params).get("module")), repository, ((Project) MapSequence.fromMap(_params).get("ideaProject")).getComponent(MessagesViewTool.class).newHandler());
-    final Ref<JavaParseException> parseException = new Ref<JavaParseException>();
 
 
     ProgressManager.getInstance().run(new Task.Modal(null, "Convert to MPS", false) {
       public void run(@NotNull ProgressIndicator indicator) {
-
-        try {
-          parser.convertToMps(ifilesToParse, new ProgressMonitorAdapter(indicator));
-
-        } catch (JavaParseException e) {
-          parseException.set(e);
-
-        } catch (IOException e) {
-          throw new RuntimeException(e);
-        }
+        parser.convertToMps(ifilesToParse, new ProgressMonitorAdapter(indicator));
       }
     });
-
+    // FIXME MigrateSourcesToMPS doesn't need model write inside platform write to saveAll, which one is correct? Seems like this one,  
+    // as saveAll saves models, but it's the same commit 661288c838da9be3a6d7352ed9804172fbb4f51f that changed both classes in a different way, on purpose, perhaps? 
+    // Another odd thing is that JavaToMpsConverter is capable to grab appropriate model access as needed (and does so), why it doesn't do that for saveAll? 
     ApplicationManager.getApplication().runWriteAction(new Runnable() {
       public void run() {
         ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runWriteAction(new Runnable() {
@@ -197,10 +185,6 @@ public class NewModelFromSource_Action extends BaseAction {
     // workaround for project pane not rebuilding itself when a model has been added 
     // not in a command but in a write action 
     ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project"))).rebuild();
-
-    if (!(parseException.isNull())) {
-      JOptionPane.showMessageDialog(((Frame) MapSequence.fromMap(_params).get("frame")), parseException.get().getMessage(), "Parse error", JOptionPane.ERROR_MESSAGE);
-    }
 
     List<SModel> resulting = parser.getModels();
     if (ListSequence.fromList(resulting).isNotEmpty()) {

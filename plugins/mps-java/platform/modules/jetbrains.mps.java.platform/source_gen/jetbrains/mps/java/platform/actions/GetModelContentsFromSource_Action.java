@@ -25,7 +25,6 @@ import java.util.List;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.java.core.newparser.JavaConvertUtil;
 import jetbrains.mps.java.core.newparser.JavaToMpsConverter;
@@ -34,15 +33,13 @@ import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.progress.ProgressIndicator;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
-import jetbrains.mps.java.core.newparser.JavaParseException;
-import java.io.IOException;
 
 @GeneratedClass(node = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/1366781238034254686", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
 public class GetModelContentsFromSource_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public GetModelContentsFromSource_Action() {
-    super("Get Model Contents from Source", "", ICON);
+    super("Get Model Contents from Source", "Fill existing model with nodes extracted from Java source files", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }
@@ -101,7 +98,7 @@ public class GetModelContentsFromSource_Action extends BaseAction {
     FileChooserDescriptor descriptor = new FileChooserDescriptor(true, true, false, false, false, true);
     FileChooserDialog dialog = FileChooserFactory.getInstance().createFileChooser(descriptor, ideaProject, ((Frame) MapSequence.fromMap(_params).get("frame")));
 
-    VirtualFile[] chosen = dialog.choose(null, ideaProject);
+    VirtualFile[] chosen = dialog.choose(ideaProject);
 
     if (chosen.length == 0) {
       return;
@@ -109,21 +106,14 @@ public class GetModelContentsFromSource_Action extends BaseAction {
 
     List<IFile> chosenIFiles = ListSequence.fromList(new ArrayList<IFile>(chosen.length));
     for (VirtualFile vfile : chosen) {
-      ListSequence.fromList(chosenIFiles).addElement(FileSystem.getInstance().getFile(vfile.getPath()));
+      ListSequence.fromList(chosenIFiles).addElement(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getFileSystem().fromVirtualFile(vfile));
     }
     final List<IFile> ifilesToParse = Sequence.fromIterable(JavaConvertUtil.flattenDirs(chosenIFiles)).toListSequence();
 
     final JavaToMpsConverter parser = new JavaToMpsConverter(((SModel) MapSequence.fromMap(_params).get("model")), ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository(), ideaProject.getComponent(MessagesViewTool.class).newHandler());
     ProgressManager.getInstance().run(new Task.Modal(null, "Convert to MPS", false) {
       public void run(@NotNull ProgressIndicator indicator) {
-        try {
-          parser.convertToMps(ifilesToParse, new ProgressMonitorAdapter(indicator));
-
-        } catch (JavaParseException e) {
-          throw new RuntimeException(e);
-        } catch (IOException e) {
-          throw new RuntimeException(e);
-        }
+        parser.convertToMps(ifilesToParse, new ProgressMonitorAdapter(indicator));
       }
     });
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.generator.runtime;
 
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -31,7 +33,31 @@ public interface TemplateSwitchMapping {
 
   Iterable<TemplateReductionRule> getReductionRules();
 
-  Collection<SNode> applyDefault(TemplateExecutionEnvironment environment, SNodeReference templateSwitch, String mappingName, TemplateContext context) throws GenerationException;
+  /**
+   * @since 2020.1
+   */
+  @Nullable
+  Collection<SNode> applyDefault(TemplateContext context) throws GenerationException;
+  /**
+   * @deprecated too many parameters, replaced with {@code #applyDefault(TemplateContext)}
+   *             19.3-generated templates override this method; once 2020.1 with overrides of the new one is out, drop this one
+   */
+  @Deprecated
+  @ToRemove(version = 2020.1)
+  default Collection<SNode> applyDefault(TemplateExecutionEnvironment environment, SNodeReference templateSwitch, String mappingName, TemplateContext context) throws GenerationException {
+    return null;
+  }
 
-  void processNull(TemplateExecutionEnvironment environment, SNodeReference templateSwitch, TemplateContext context);
+  /**
+   * @since 2020.1
+   */
+  void processNull(TemplateExecutionEnvironment environment);
+
+  /**
+   * @deprecated there's no input when the method is invoked, what kind of TC we are supposed to pass in here?
+   *             Templates of 19.3 override this method; drop once 2020.1 is out
+   */
+  @Deprecated
+  @ToRemove(version = 2020.1)
+  default void processNull(TemplateExecutionEnvironment environment, SNodeReference templateSwitch, TemplateContext context) {}
 }

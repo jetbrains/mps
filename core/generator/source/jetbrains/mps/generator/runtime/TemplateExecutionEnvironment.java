@@ -21,7 +21,6 @@ import jetbrains.mps.generator.IGeneratorLogger;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.impl.TemplateGenerator;
 import jetbrains.mps.generator.impl.query.GeneratorQueryProvider;
-import jetbrains.mps.generator.runtime.NodeWeaveFacility.WeaveContext;
 import jetbrains.mps.generator.template.ITemplateProcessor;
 import jetbrains.mps.generator.template.QueryExecutionContext;
 import jetbrains.mps.util.annotation.ToRemove;
@@ -66,6 +65,12 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
   @NotNull
   SNode createOutputNode(@NotNull SConcept concept);
 
+  /**
+   * TemplateGenerator is implementation class and there's no apparent reason why TEE clients might need access to it.
+   * @return
+   */
+  @Deprecated
+  @ToRemove(version = 2020.1)
   @NotNull
   TemplateGenerator getGenerator();
 
@@ -101,6 +106,19 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
    */
   SNode insertNode(SNode node, SNodeReference templateNode, TemplateContext templateContext) throws GenerationCanceledException, GenerationFailureException;
 
+  /**
+   * FIXME provisional API just to get rid of TemplateGenerator:getGenerator exposure. Would be great to use smth like TemplateDeclarationKey, just the name is unfortunate
+   *       Perhaps, shall go with SwitchCallSite right away?
+   *       Intentionally no TemplateContext argument as (a) it's null input case (b) message is a plain text
+   *
+   * XXX perhaps, Collection.emptyList() as return value?
+   * @param _switch identifies switch declaration
+   * @throws GenerationCanceledException provisionally, I expect null handling to get extended with option to fail generation, we'd need to account for this scenario right away
+   * @throws GenerationFailureException
+   * @since 20201.
+   */
+  void nullInputSwitch(SNodeReference _switch) throws GenerationCanceledException, GenerationFailureException;
+
   @Nullable
   Collection<SNode> trySwitch(SNodeReference _switch, TemplateContext context) throws GenerationException;
 
@@ -108,7 +126,7 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
    * Retrieve reusable runtime instance that represents TemplateDeclaration. Clients may keep an instance for subsequent reuse during the
    * same transformation session.
    * This is low-level mechanism for sophisticated use, generated templates (unless they keep instances obtained this way) shall resort to other methods to
-   * invoke templates, namely {@link #callSite(TemplateDeclarationKey,SNodeReference)} or {@link #prepareWeave(WeaveContext, SNodeReference)}
+   * invoke templates, namely {@link #callSite(TemplateDeclarationKey,SNodeReference)}.
    * @param templateDeclaration identifies template to load
    * @param callSite identifies location where invocation happens
    * @return never {@code null}, non necessarily exact generated class, might be a decorator that traces uses or reports errors.
@@ -170,39 +188,4 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
    * @since 3.3
    */
   void postProcess(@NotNull NodePostProcessor postProcessor);
-
-  /**
-   * @deprecated replaced with {@link TemplateCallSite#weave(TemplateContext, SNode, WeavingWithAnchor)} and {@link #callSite(TemplateDeclaration, SNodeReference)}
-   * MPS 2019.2 generates code that uses this API, MPS 2019.3 uses {@link TemplateCallSite}
-   *
-   * @param context knows where to put weaved nodes (parent/context and anchor function)
-   * @param templateNode call site for the weave (for target template to apply, see {@code NodeWeaveFacility#weaveTemplate(SNodeReference, Object...)}
-   * @return utility capable of node weaving with respect to the given context
-   * @since 3.3
-   */
-  @NotNull
-  @Deprecated
-  @ToRemove(version = 2019.3)
-  NodeWeaveFacility prepareWeave(@NotNull WeaveContext context, @NotNull SNodeReference templateNode);
-
-  // I
-  //   env.weave(TemplateDeclaration, ApplySink, TemplateContext)
-  //   env.apply(TemplateDeclaration, ApplySink, TemplateContext)
-  //   where TD either new GeneratedTD, or env.findTemplate()
-  // II
-  //   env.prepare(aTD).apply(ApplySink, TemplateContext), with WeaveSinkImpl(parent, anchorFunction) in case of weaving
-  //   env.prepare(aTD):TD
-  //   where aTD is either new or findTemplate()
-  // WeaveSink needs call site information to report errors, and findTemplate() needs one, so it looks ugly in generated code
-  // III
-  //   env.prepareWeave(callSite): NWF
-  //   nwf.weave(TD, TemplateContext)
-  //   nwf.weave(TemplateDeclarationKey, TemplateContext)
-  //   env.prepareApply(callSite):NodeApplyFacility
-  //   naf.apply(TD, TemplateContext)
-  //   naf.apply(TemplateDeclarationKey, TemplateContext)
-  // NAF and NWF could be the same, TemplateCallSite. What I don't like is new object instantiation for each call
-  // Not clear how interpreted code invokes templates, directly through TD.apply or through TemplateCallSite facility. How/when do we wrap TD instances with tracing
-  //   or we support tracing in the facility object? If latter, what do we cache, TD ot TCS?
-  //   From this perspective, env.findTemplate(TDK, node-ptr) combines both call site and target and can be cached
 }

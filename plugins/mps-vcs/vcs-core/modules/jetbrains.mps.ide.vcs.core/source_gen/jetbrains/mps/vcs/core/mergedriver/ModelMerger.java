@@ -18,9 +18,9 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.persistence.PersistenceUtil;
+import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
+import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import jetbrains.mps.util.FileUtil;
 import java.io.File;
 import jetbrains.mps.vcs.util.MergeDriverBackupUtil;
 import java.io.IOException;
@@ -29,7 +29,6 @@ import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.persistence.ContentOption;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
-import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 import jetbrains.mps.smodel.DefaultSModel;
@@ -112,19 +111,14 @@ import jetbrains.mps.extapi.model.SModelData;
           LOG.info(String.format("%s: node id duplication detected, should merge in UI.", myModelName));
         }
       } else {
-        String resultString;
+        byte[] resultBytes;
         SModel resultModel = mergeSession.getResultModel();
         if (LOG.isInfoEnabled()) {
           LOG.info(String.format("%s: Saving merged model...", myModelName));
         }
         updateMetaModelInfo(resultModel, baseModel, localModel, latestModel);
-        if (MPSExtentions.MODEL_HEADER.equals(myExtension) || MPSExtentions.MODEL_ROOT.equals(myExtension)) {
-          // special support for per-root persistence 
-          resultString = PersistenceUtil.savePerRootModel(resultModel, MPSExtentions.MODEL_HEADER.equals(myExtension));
-        } else {
-          resultString = PersistenceUtil.saveModel(resultModel, ext);
-        }
-        if (resultString == null) {
+        resultBytes = VCSPersistenceUtil.saveModel(myPlatform.findComponent(ModelFactoryService.class), resultModel, myExtension, ext);
+        if (resultBytes == null) {
           if (LOG.isEnabledFor(Level.ERROR)) {
             LOG.error("Error while saving result model");
           }
@@ -134,7 +128,7 @@ import jetbrains.mps.extapi.model.SModelData;
           LOG.info(String.format("%s: merged successfully.", myModelName));
         }
         backup(baseContent, localContent, latestContent);
-        return MultiTuple.<Integer,byte[]>from(MERGED, resultString.getBytes(FileUtil.DEFAULT_CHARSET));
+        return MultiTuple.<Integer,byte[]>from(MERGED, resultBytes);
       }
     } catch (Throwable e) {
       if (LOG.isEnabledFor(Level.ERROR)) {

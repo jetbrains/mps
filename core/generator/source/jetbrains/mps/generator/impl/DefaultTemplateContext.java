@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,6 +38,7 @@ public class DefaultTemplateContext implements TemplateContext {
   private final GeneratedMatchingPattern myPattern;
   private final Map<String, Object> myVars;
 
+  // FWIW, there's no uses of this cons in generated code since 2020.1 (2019.3 instantiates it in CreateRootRule)
   public DefaultTemplateContext(@NotNull TemplateExecutionEnvironment env, @Nullable SNode inputNode, @Nullable String inputName) {
     myEnv = env;
     myParent = null;

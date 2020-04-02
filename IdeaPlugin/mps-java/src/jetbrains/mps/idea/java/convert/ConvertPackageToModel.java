@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,8 +40,8 @@ import com.intellij.psi.PsiJavaFile;
 import com.intellij.psi.PsiManager;
 import com.intellij.psi.PsiMethod;
 import jetbrains.mps.extapi.model.SModelBase;
+import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
-import jetbrains.mps.java.core.newparser.JavaParseException;
 import jetbrains.mps.java.core.newparser.JavaToMpsConverter;
 import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
@@ -66,7 +66,6 @@ import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.module.FindUsagesFacade;
 import org.jetbrains.mps.openapi.module.SModule;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -131,7 +130,7 @@ public class ConvertPackageToModel extends AnAction {
       }
     }
 
-    final JavaToMpsConverter parser = new JavaToMpsConverter(mpsModule, mpsProject.getRepository(), true, true, project.getComponent(MessagesViewTool.class).newHandler());
+    final JavaToMpsConverter parser = new JavaToMpsConverter(mpsModule, mpsProject.getRepository(), true, true, mpsProject.getComponent(ModelFactoryService.class), project.getComponent(MessagesViewTool.class).newHandler());
     final List<IFile> javaFiles = toIFiles(mpsProject, psiJavaFiles);
 
     ApplicationManager.getApplication().saveAll();
@@ -139,15 +138,7 @@ public class ConvertPackageToModel extends AnAction {
     ProgressManager.getInstance().run(new Task.Modal(null, "Convert to MPS", false) {
       @Override
       public void run(@NotNull final ProgressIndicator progressIndicator) {
-
-        try {
-          parser.convertToMps(javaFiles, new ProgressMonitorAdapter(progressIndicator));
-
-        } catch (JavaParseException exc) {
-          throw new RuntimeException(exc);
-        } catch (IOException exc) {
-          throw new RuntimeException(exc);
-        }
+        parser.convertToMps(javaFiles, new ProgressMonitorAdapter(progressIndicator));
       }
     });
 

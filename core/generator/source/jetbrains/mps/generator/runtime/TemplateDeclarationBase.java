@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.generator.runtime;
 
 import jetbrains.mps.generator.impl.GenerationFailureException;
-import jetbrains.mps.generator.runtime.NodeWeaveFacility.WeaveContext;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -45,7 +44,7 @@ public abstract class TemplateDeclarationBase implements TemplateDeclaration {
   }
 
   @Override
-  public Collection<SNode> weave(@NotNull WeaveContext context, @NotNull NodeWeaveFacility weaveFacility) throws GenerationException {
+  public Collection<SNode> weave(@NotNull NodeWeaveFacility weaveFacility) throws GenerationException {
     // this code is for root templates which do not support weaving
     throw new GenerationFailureException("This template doesn't support weaving");
   }

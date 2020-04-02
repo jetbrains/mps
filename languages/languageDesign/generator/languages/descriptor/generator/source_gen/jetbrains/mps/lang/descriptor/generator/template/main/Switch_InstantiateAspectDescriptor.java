@@ -11,9 +11,9 @@ import jetbrains.mps.generator.runtime.TemplateReductionRule;
 import java.util.Collections;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
+import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 
 @Generated
 public class Switch_InstantiateAspectDescriptor extends TemplateSwitchBase implements TemplateSwitchMapping {
@@ -28,10 +28,9 @@ public class Switch_InstantiateAspectDescriptor extends TemplateSwitchBase imple
   public Iterable<TemplateReductionRule> getReductionRules() {
     return Collections.emptySet();
   }
-  public Collection<SNode> applyDefault(final TemplateExecutionEnvironment environment, SNodeReference templateSwitch, String mappingLabel, final TemplateContext context) throws GenerationException {
+  public Collection<SNode> applyDefault(final TemplateContext context) throws GenerationException {
+    final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = Collections.emptyList();
     return tlist1;
-  }
-  public void processNull(TemplateExecutionEnvironment environment, SNodeReference templateSwitch, TemplateContext context) {
   }
 }

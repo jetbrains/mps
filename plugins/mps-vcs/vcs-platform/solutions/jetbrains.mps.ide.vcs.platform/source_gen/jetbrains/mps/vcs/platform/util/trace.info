@@ -162,8 +162,8 @@
       <node id="3531370237489972470" at="46,9,47,41" concept="7" />
       <node id="3531370237489972474" at="47,41,48,39" concept="2" />
       <node id="3531370237489972479" at="48,39,49,28" concept="9" />
-      <node id="3531370237489972481" at="49,28,50,95" concept="2" />
-      <node id="3531370237489972493" at="50,95,51,24" concept="9" />
+      <node id="3531370237489972481" at="49,28,50,91" concept="2" />
+      <node id="3531370237489972493" at="50,91,51,24" concept="9" />
       <node id="3531370237489972495" at="51,24,52,56" concept="7" />
       <node id="3531370237489972519" at="55,54,56,89" concept="8" />
       <node id="3531370237489972529" at="58,9,59,63" concept="7" />
@@ -221,7 +221,7 @@
       <node id="429607733396400276" at="80,18,97,5" concept="4" />
       <node id="3531370237489972461" at="45,88,70,5" concept="12" />
       <node id="429607733396400243" at="75,0,101,0" concept="11" trace="loadZippedModelsAsText#(Ljava/io/File;[Ljetbrains/mps/vcs/util/ModelVersion;)[Ljava/lang/String;" />
-      <node id="3531370237489972457" at="45,0,72,0" concept="11" trace="packMergeResult#(Ljava/io/File;Ljava/lang/String;Ljava/lang/String;)V" />
+      <node id="3531370237489972457" at="45,0,72,0" concept="11" trace="packMergeResult#(Ljava/io/File;Ljava/lang/String;[B)V" />
       <scope id="6933307669479990706" at="32,28,32,28" />
       <scope id="3531370237489972518" at="55,54,56,89" />
       <scope id="3531370237489972547" at="61,37,62,93" />

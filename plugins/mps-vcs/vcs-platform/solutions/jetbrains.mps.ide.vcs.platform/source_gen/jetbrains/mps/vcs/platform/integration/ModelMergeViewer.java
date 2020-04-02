@@ -27,12 +27,14 @@ import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import jetbrains.mps.vcs.util.MergeConstants;
 import jetbrains.mps.vcs.diff.ui.merge.ISaveMergedModel;
 import com.intellij.openapi.application.ApplicationManager;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.persistence.PersistenceVersionAware;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.apache.log4j.Level;
-import jetbrains.mps.util.FileUtil;
 import java.io.IOException;
 import javax.swing.JComponent;
 import com.intellij.openapi.util.BooleanGetter;
@@ -46,7 +48,6 @@ import com.intellij.diff.contents.DiffContent;
 import com.intellij.openapi.editor.Document;
 import java.nio.charset.Charset;
 import com.intellij.openapi.vfs.CharsetToolkit;
-import jetbrains.mps.persistence.PersistenceUtil;
 
 @GeneratedClass(node = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)/5085852630254873851", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
 public class ModelMergeViewer implements MergeTool.MergeViewer {
@@ -75,6 +76,8 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
       final File backupFile = MergeBackupUtil.zipModel(byteContents, file);
 
       final String ext;
+      // FIXME see VCSPersistenceUtil.saveModel, it's odd code that deals with persistence kind and extension both to select proper model factory 
+      //      Besides, there's similar code in ConflictinModelsUtil! 
       boolean perRootPersistenceFile = FilePerRootDataSource.isPerRootPersistenceFile(FileSystem.getInstance().getFile(file.getPath()));
       if (perRootPersistenceFile) {
         // load model partially from per-root persistence with "normal" persistence loading 
@@ -92,11 +95,13 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
           public boolean save(MergeModelsPanel parent, final SModel resultModel) {
             ApplicationManager.getApplication().assertIsDispatchThread();
 
+            final MPSProject mpsProject = ProjectHelper.fromIdeaProject(parent.getProject());
+            final ModelFactoryService modelFactoryService = mpsProject.getComponent(ModelFactoryService.class);
             boolean closeDialog = true;
-            final Wrappers._T<String> resultContent = new Wrappers._T<String>(null);
+            final Wrappers._T<byte[]> resultContent = new Wrappers._T<byte[]>(null);
 
             try {
-              resultContent.value = ModelMergeViewer.saveModel(resultModel, file, ext);
+              resultContent.value = VCSPersistenceUtil.saveModel(modelFactoryService, resultModel, file.getExtension(), ext);
             } catch (Throwable error) {
               // this can be when saving in 9 persistence after merge with 8 persistence => trying to save in 8th 
               if (baseModel instanceof PersistenceVersionAware && resultModel instanceof PersistenceVersionAware && ((PersistenceVersionAware) baseModel).getPersistenceVersion() == 8 && ((PersistenceVersionAware) resultModel).getPersistenceVersion() == 9) {
@@ -105,7 +110,7 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
                 switch (result) {
                   case Messages.YES:
                     ((PersistenceVersionAware) resultModel).setPersistenceVersion(8);
-                    resultContent.value = ModelMergeViewer.saveModel(resultModel, file, ext);
+                    resultContent.value = VCSPersistenceUtil.saveModel(modelFactoryService, resultModel, file.getExtension(), ext);
                     break;
                   case Messages.NO:
                     resultContent.value = null;
@@ -124,7 +129,7 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
               ApplicationManager.getApplication().runWriteAction(new Runnable() {
                 public void run() {
                   try {
-                    file.setBinaryContent(resultContent.value.getBytes(FileUtil.DEFAULT_CHARSET));
+                    file.setBinaryContent(resultContent.value);
                   } catch (IOException e) {
                     if (LOG_276369528.isEnabledFor(Level.ERROR)) {
                       LOG_276369528.error("Cannot save merge result into " + file.getPath(), e);
@@ -219,15 +224,6 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
       return null;
     }
     return VCSPersistenceUtil.loadModel(bytes, ext);
-  }
-  @Nullable
-  private static String saveModel(SModel resultModel, VirtualFile file, String ext) {
-    // file is just to check and select proper format for per-root persistence 
-    if (FilePerRootDataSource.isPerRootPersistenceFile(FileSystem.getInstance().getFile(file.getPath()))) {
-      return PersistenceUtil.savePerRootModel(resultModel, MPSExtentions.MODEL_HEADER.equals(file.getExtension()));
-    } else {
-      return PersistenceUtil.saveModel(resultModel, ext);
-    }
   }
 
 }

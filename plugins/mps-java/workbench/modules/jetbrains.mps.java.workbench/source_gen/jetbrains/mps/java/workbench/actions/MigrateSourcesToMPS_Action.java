@@ -20,7 +20,6 @@ import java.util.List;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.java.core.newparser.JavaToMpsConverter;
 import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -29,8 +28,6 @@ import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.progress.ProgressIndicator;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
-import jetbrains.mps.java.core.newparser.JavaParseException;
-import java.io.IOException;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 
@@ -39,7 +36,7 @@ public class MigrateSourcesToMPS_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public MigrateSourcesToMPS_Action() {
-    super("Migrate Sources to MPS", "", ICON);
+    super("Migrate Sources to MPS", "For a module with Java source paths, convert these into MPS models", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }
@@ -93,7 +90,7 @@ public class MigrateSourcesToMPS_Action extends BaseAction {
 
     List<IFile> sourcePaths = ListSequence.fromList(new ArrayList<IFile>());
     for (String path : moduleDescr.getSourcePaths()) {
-      ListSequence.fromList(sourcePaths).addElement(FileSystem.getInstance().getFile(path));
+      ListSequence.fromList(sourcePaths).addElement(((MPSProject) MapSequence.fromMap(_params).get("project")).getFileSystem().getFile(path));
     }
 
     final JavaToMpsConverter parser = new JavaToMpsConverter(((SModule) MapSequence.fromMap(_params).get("module")), ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository(), ((Project) MapSequence.fromMap(_params).get("ideaProject")).getComponent(MessagesViewTool.class).newHandler());
@@ -101,15 +98,7 @@ public class MigrateSourcesToMPS_Action extends BaseAction {
 
     ProgressManager.getInstance().run(new Task.Modal(null, "Convert to MPS", false) {
       public void run(@NotNull ProgressIndicator indicator) {
-
-        try {
-          parser.convertToMps(filesToParse, new ProgressMonitorAdapter(indicator));
-
-        } catch (JavaParseException e) {
-          throw new RuntimeException(e);
-        } catch (IOException e) {
-          throw new RuntimeException(e);
-        }
+        parser.convertToMps(filesToParse, new ProgressMonitorAdapter(indicator));
       }
     });
     ApplicationManager.getApplication().runWriteAction(new Runnable() {

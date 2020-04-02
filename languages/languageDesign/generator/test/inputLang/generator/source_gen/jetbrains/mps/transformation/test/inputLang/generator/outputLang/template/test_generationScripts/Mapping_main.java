@@ -29,7 +29,6 @@ import jetbrains.mps.generator.runtime.MapRootRuleBase;
 import jetbrains.mps.generator.template.MapRootRuleContext;
 import jetbrains.mps.generator.runtime.CreateRootRuleBase;
 import jetbrains.mps.generator.template.CreateRootRuleContext;
-import jetbrains.mps.generator.impl.DefaultTemplateContext;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 @Generated
@@ -135,8 +134,8 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
       return QueriesGenerated.createRootRule_Condition_0_0(new CreateRootRuleContext(context, getRuleNode()));
     }
-    public Collection<SNode> apply(TemplateExecutionEnvironment environment) throws GenerationException {
-      DefaultTemplateContext context = new DefaultTemplateContext(environment, null, null);
+    public Collection<SNode> apply(TemplateContext context) throws GenerationException {
+      final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> result = environment.callSite(new Template_OutputRoot_By_RootRule(), new SNodePointer("r:00000000-0000-4000-0000-011c895905f6(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts@generator)", "1195165196524")).apply(context);
       return result;
     }

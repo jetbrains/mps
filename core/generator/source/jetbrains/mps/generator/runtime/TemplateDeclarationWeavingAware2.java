@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -67,5 +67,17 @@ public interface TemplateDeclarationWeavingAware2 {
   // @return in generated code seems to be capable of null return value
   // In generated code, WEAVE macro doesn't use return value at all, while WeavingRule uses its non-empty status only (eventually ignored)
   // In interpreted code, WEAVE macro doesn't care about return value, and TemplateWeavingRuleInterpreted always returns 'true'
-  Collection<SNode> weave(@NotNull WeaveContext context, @NotNull NodeWeaveFacility weaveFacility) throws GenerationException;
+  // Templates in 2019.3 override this method
+  @Deprecated
+  @ToRemove(version = 2020.1)
+  default Collection<SNode> weave(@NotNull WeaveContext context, @NotNull NodeWeaveFacility weaveFacility) throws GenerationException {
+    return weave(weaveFacility);
+  }
+
+  // FIXME there's no use for return value, just replace it with void, and do the same for TemplateCallSite#weave
+  default Collection<SNode> weave(@NotNull NodeWeaveFacility weaveFacility) throws GenerationException {
+    // to become abstract once 2020.1 is out
+    throw new UnsupportedOperationException("Override weave(NWF)");
+  }
+
 }

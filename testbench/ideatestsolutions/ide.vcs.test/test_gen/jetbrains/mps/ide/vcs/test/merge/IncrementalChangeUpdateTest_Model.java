@@ -24,9 +24,11 @@ import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.vcs.diff.merge.MergeTemporaryModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import org.jetbrains.mps.openapi.persistence.ModelFactory;
+import jetbrains.mps.extapi.persistence.ModelFactoryService;
+import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
 import jetbrains.mps.persistence.PersistenceUtil;
 import com.intellij.openapi.application.ApplicationManager;
-import jetbrains.mps.util.FileUtil;
 import java.util.List;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.ChangeSet;
@@ -109,14 +111,15 @@ public class IncrementalChangeUpdateTest_Model extends ChangesTestBase {
       }
     });
     SModelOperations.addRootNode(modelCopy2Change, createClassConcept_2jv4hj_a0a1a5());
-    final String changedContent = PersistenceUtil.saveModel(modelCopy2Change, getDefaultExt());
+    ModelFactory xmlPersistence = myEnv.getPlatform().findComponent(ModelFactoryService.class).getFactoryByType(PreinstalledModelFactoryTypes.PLAIN_XML);
+    final byte[] changedContent = PersistenceUtil.modelAsBytes(modelCopy2Change, xmlPersistence);
 
     ApplicationManager.getApplication().invokeAndWait(new Runnable() {
       public void run() {
         ApplicationManager.getApplication().runWriteAction(new Runnable() {
           public void run() {
             try {
-              getTestModelFile().setBinaryContent(changedContent.getBytes(FileUtil.DEFAULT_CHARSET));
+              getTestModelFile().setBinaryContent(changedContent);
             } catch (IOException e) {
               throw new AssertionError(e);
             }
@@ -127,13 +130,13 @@ public class IncrementalChangeUpdateTest_Model extends ChangesTestBase {
     myEnv.flushAllEvents();
     updateChangeListManager();
     myWaitHelper.waitForDiffRegistry();
-    Assert.assertTrue(ListSequence.fromList(check_2jv4hj_a0a8a5(myDiff.getChangeSet())).isNotEmpty());
+    Assert.assertTrue(ListSequence.fromList(check_2jv4hj_a0a9a5(myDiff.getChangeSet())).isNotEmpty());
 
     revertDiskChangesAndWait(getTestModelFile(), true);
     revertMemChangesAndWait(true);
     updateChangeListManager();
     myWaitHelper.waitForDiffRegistry();
-    Assert.assertTrue(ListSequence.fromList(check_2jv4hj_a0a41a5(myDiff.getChangeSet())).isEmpty());
+    Assert.assertTrue(ListSequence.fromList(check_2jv4hj_a0a51a5(myDiff.getChangeSet())).isEmpty());
   }
   private static List<ModelChange> check_2jv4hj_a0a31a1(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
@@ -152,13 +155,13 @@ public class IncrementalChangeUpdateTest_Model extends ChangesTestBase {
     n0.setProperty(PROPS.name$tAp1, "NewRoot");
     return n0.getResult();
   }
-  private static List<ModelChange> check_2jv4hj_a0a8a5(ChangeSet checkedDotOperand) {
+  private static List<ModelChange> check_2jv4hj_a0a9a5(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelChanges();
     }
     return null;
   }
-  private static List<ModelChange> check_2jv4hj_a0a41a5(ChangeSet checkedDotOperand) {
+  private static List<ModelChange> check_2jv4hj_a0a51a5(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelChanges();
     }

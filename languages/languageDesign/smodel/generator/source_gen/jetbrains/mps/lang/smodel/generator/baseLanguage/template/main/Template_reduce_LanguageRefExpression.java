@@ -14,7 +14,6 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
-import jetbrains.mps.generator.runtime.TemplateSwitchMapping;
 import java.util.Collections;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import java.util.ArrayList;
@@ -40,12 +39,7 @@ public class Template_reduce_LanguageRefExpression extends TemplateDeclarationBa
     {
       final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_76_0(new SourceSubstituteMacroNodeContext(context, switchMacroRef_lwhn3j_b0a0a0a2a6));
       if (switchInput1 == null) {
-        {
-          TemplateSwitchMapping switch1 = environment.getGenerator().getSwitch(templateSwitchNode_lwhn3j_a0a0c0a1a2a6);
-          if (switch1 != null) {
-            switch1.processNull(environment, templateSwitchNode_lwhn3j_a0a0c0a1a2a6, context);
-          }
-        }
+        environment.nullInputSwitch(templateSwitchNode_lwhn3j_a0a0c0a1a2a6);
         tlist1 = Collections.emptyList();
       } else {
         TemplateContext switchContext1;
@@ -73,7 +67,7 @@ public class Template_reduce_LanguageRefExpression extends TemplateDeclarationBa
   }
 
   @Override
-  public Collection<SNode> weave(@NotNull NodeWeaveFacility.WeaveContext weaveContext, @NotNull NodeWeaveFacility weaveSupport) throws GenerationException {
+  public Collection<SNode> weave(@NotNull NodeWeaveFacility weaveSupport) throws GenerationException {
     ArrayList<SNode> rv = new ArrayList<SNode>();
     applyPart0(weaveSupport.getTemplateContext()).weaveWith(weaveSupport).reportTo(rv);
     return rv;

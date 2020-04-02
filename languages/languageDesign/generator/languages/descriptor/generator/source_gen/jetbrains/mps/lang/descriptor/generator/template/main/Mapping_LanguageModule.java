@@ -20,7 +20,6 @@ import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.CreateRootRuleBase;
-import jetbrains.mps.generator.impl.DefaultTemplateContext;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -60,8 +59,8 @@ public class Mapping_LanguageModule extends MapConfigBase implements TemplateMap
     public CreateRootRule0() {
       super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "3919235298192674546"));
     }
-    public Collection<SNode> apply(TemplateExecutionEnvironment environment) throws GenerationException {
-      DefaultTemplateContext context = new DefaultTemplateContext(environment, null, null);
+    public Collection<SNode> apply(TemplateContext context) throws GenerationException {
+      final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> result = environment.callSite(new Template_language_descriptor(), new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "3919235298192674546")).apply(context);
       return result;
     }

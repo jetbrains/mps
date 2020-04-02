@@ -24,7 +24,6 @@ import jetbrains.mps.generator.impl.WeaveTemplateContainer;
 import jetbrains.mps.generator.runtime.ApplySink;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.NodeWeaveFacility;
-import jetbrains.mps.generator.runtime.NodeWeaveFacility.WeaveContext;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateDeclarationBase;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
@@ -89,7 +88,7 @@ public final class TemplateDeclarationInterpreted extends TemplateDeclarationBas
   }
 
   @Override
-  public Collection<SNode> weave(@NotNull WeaveContext weaveContext, @NotNull NodeWeaveFacility weaveFacility) throws GenerationException {
+  public Collection<SNode> weave(@NotNull NodeWeaveFacility weaveFacility) throws GenerationException {
     // Calling code is responsible to configure arguments
     WeaveTemplateContainer tc = new WeaveTemplateContainer(myTemplateNode);
     ArrayList<SNode> allWeavedNodes = new ArrayList<>();

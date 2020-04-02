@@ -181,6 +181,14 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
     return new ChildAdopter(generator).adopt(child, templateContext);
   }
 
+  @Override
+  public void nullInputSwitch(SNodeReference _switch) throws GenerationCanceledException, GenerationFailureException {
+    final TemplateSwitchMapping templateSwitch = generator.getSwitch(_switch);
+    if (templateSwitch != null) {
+      templateSwitch.processNull(this);
+    }
+  }
+
   @Nullable
   @Override
   public Collection<SNode> trySwitch(SNodeReference _switch, TemplateContext context) throws GenerationException {
@@ -206,7 +214,7 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
     // try the default case
     TemplateSwitchMapping current = generator.getSwitch(_switch);
     if (current != null) {
-      outputNodes = current.applyDefault(this, _switch, context.getInputName(), context); // FIXME TSM.applyDefault without explicit mappingLabel
+      outputNodes = current.applyDefault(context);
       generator.recordTransformInputTrace(context.getInput(), outputNodes);
       return outputNodes;
     }
@@ -327,12 +335,6 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
   @Override
   public void postProcess(@NotNull NodePostProcessor postProcessor) {
     generator.getDelayedChanges().add(postProcessor);
-  }
-
-  @NotNull
-  @Override
-  public NodeWeaveFacility prepareWeave(@NotNull WeaveContext context, @NotNull SNodeReference templateNode) {
-    return new NodeWeaveSupport(context, templateNode, this);
   }
 
   // Internal API, perhaps, shall be part of ExecutionEnvironmentInternal iface

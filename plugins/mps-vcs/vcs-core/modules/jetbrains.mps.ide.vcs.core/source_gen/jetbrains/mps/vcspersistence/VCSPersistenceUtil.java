@@ -11,10 +11,18 @@ import org.jetbrains.mps.openapi.persistence.ContentOption;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.extapi.persistence.ModelFactoryService;
+import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
+import jetbrains.mps.persistence.PersistenceUtil;
+import org.jetbrains.mps.openapi.persistence.ModelSaveException;
+import java.io.IOException;
+import org.apache.log4j.Logger;
+import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 import jetbrains.mps.smodel.SModelHeader;
 import org.xml.sax.InputSource;
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.InvalidSModel;
@@ -55,6 +63,71 @@ public class VCSPersistenceUtil {
     }
     return null;
   }
+
+  /**
+   * This is just a replacement for duplicated logic scattered around in MPS VCS code and going as far as PersistenceUtil with merge-specific assumptions.
+   * Deals with XML persistence only, capable to tell per-root xml persistence from single-file based on {@code modelFactoryTypeSelector}, 
+   * which is usually derived from name extension of a file that keeps the model.
+   * The method is solely for use from merger code (e.g. has an assumption that per-root model supplied here keeps only 1 root, as it's the way per-root 
+   * model is read for merge purposes, which is file-based)
+   * 
+   * XXX I wonder if PersistenceVersionAware.getModelFactory could be of use here not to select persistence kind again and again
+   * 
+   * @param modelFactoryTypeSelector filename extenion part that helps to tell whether the model has to be persisted in a per-root or regular xml format
+   */
+  @Nullable
+  public static byte[] saveModel(ModelFactoryService modelFactorySvc, SModel model, String modelFactoryTypeSelector, String ext) {
+    String resultString;
+    if (MPSExtentions.MODEL_HEADER.equals(modelFactoryTypeSelector) || MPSExtentions.MODEL_ROOT.equals(modelFactoryTypeSelector)) {
+      // special support for per-root persistence 
+      resultString = savePerRootModel(modelFactorySvc, model, MPSExtentions.MODEL_HEADER.equals(modelFactoryTypeSelector));
+    } else {
+      resultString = saveModel(modelFactorySvc, model, ext);
+    }
+    return (resultString == null ? null : resultString.getBytes(FileUtil.DEFAULT_CHARSET));
+  }
+
+  private static String savePerRootModel(ModelFactoryService modelFactories, final SModel model, boolean isHeader) {
+    // FIXME this odd code has been copied as is form PersistenceUtil, desperately needs a refactoring! 
+    ModelFactory factory = modelFactories.getFactoryByType(PreinstalledModelFactoryTypes.PER_ROOT_XML);
+    if (factory == null) {
+      return null;
+    }
+    try {
+      PersistenceUtil.InMemoryMultiStreamDataSource source = new PersistenceUtil.InMemoryMultiStreamDataSource();
+      factory.save(model, source);
+      if (isHeader) {
+        return source.getContent(MPSExtentions.DOT_MODEL_HEADER, FileUtil.DEFAULT_CHARSET_NAME);
+      } else {
+        for (String name : source.getAvailableStreams()) {
+          if (name.equals(MPSExtentions.DOT_MODEL_HEADER)) {
+            continue;
+          }
+          return source.getContent(name, FileUtil.DEFAULT_CHARSET_NAME);
+        }
+      }
+    } catch (ModelSaveException | IOException ex) {
+      Logger.getLogger(VCSPersistenceUtil.class).error("savePerRootModel", ex);
+    }
+    return null;
+  }
+
+  private static String saveModel(ModelFactoryService modelFactories, final SModel model, String ext) {
+    // FIXME this odd code has been copied as is form PersistenceUtil, desperately needs a refactoring! 
+    ModelFactory factory = modelFactories.getDefaultModelFactory(FileExtensionDataSourceType.of(ext));
+    if (factory == null) {
+      return null;
+    }
+    try {
+      PersistenceUtil.InMemoryStreamDataSource source = new PersistenceUtil.InMemoryStreamDataSource();
+      factory.save(model, source);
+      return source.getContent(FileUtil.DEFAULT_CHARSET_NAME);
+    } catch (ModelSaveException | IOException ex) {
+      Logger.getLogger(VCSPersistenceUtil.class).error("saveModel", ex);
+    }
+    return null;
+  }
+
 
   public static boolean isModelFullyLoaded(@Nullable SModel model) {
     //  call after loadModel to fully load model and check for errors 
