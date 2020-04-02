@@ -25638,26 +25638,25 @@
         </node>
         <node concept="3Tm1VV" id="ilNinXgik$" role="1B3o_S" />
         <node concept="37vLTG" id="ilNinXgikB" role="3clF46">
-          <property role="TrG5h" value="environment" />
-          <node concept="3uibUv" id="ilNinXgikC" role="1tU5fm">
-            <ref role="3uigEE" to="r99j:~TemplateExecutionEnvironment" resolve="TemplateExecutionEnvironment" />
+          <property role="TrG5h" value="context" />
+          <node concept="3uibUv" id="1CK_6ZcpLlw" role="1tU5fm">
+            <ref role="3uigEE" to="r99j:~TemplateContext" resolve="TemplateContext" />
           </node>
         </node>
         <node concept="3clFbS" id="ilNinXgikD" role="3clF47">
-          <node concept="3cpWs8" id="7CMYcMRh$lv" role="3cqZAp">
-            <node concept="3cpWsn" id="7CMYcMRh$lw" role="3cpWs9">
-              <property role="TrG5h" value="context" />
-              <node concept="3uibUv" id="7CMYcMRh$lr" role="1tU5fm">
-                <ref role="3uigEE" to="80j5:~DefaultTemplateContext" resolve="DefaultTemplateContext" />
+          <node concept="3cpWs8" id="1CK_6ZcpXct" role="3cqZAp">
+            <node concept="3cpWsn" id="1CK_6ZcpXcu" role="3cpWs9">
+              <property role="TrG5h" value="environment" />
+              <property role="3TUv4t" value="true" />
+              <node concept="3uibUv" id="1CK_6ZcpWzT" role="1tU5fm">
+                <ref role="3uigEE" to="r99j:~TemplateExecutionEnvironment" resolve="TemplateExecutionEnvironment" />
               </node>
-              <node concept="2ShNRf" id="7CMYcMRh$lx" role="33vP2m">
-                <node concept="1pGfFk" id="7CMYcMRh$ly" role="2ShVmc">
-                  <ref role="37wK5l" to="80j5:~DefaultTemplateContext.&lt;init&gt;(jetbrains.mps.generator.runtime.TemplateExecutionEnvironment,org.jetbrains.mps.openapi.model.SNode,java.lang.String)" resolve="DefaultTemplateContext" />
-                  <node concept="37vLTw" id="7CMYcMRh$lz" role="37wK5m">
-                    <ref role="3cqZAo" node="ilNinXgikB" resolve="environment" />
-                  </node>
-                  <node concept="10Nm6u" id="7CMYcMRh$l$" role="37wK5m" />
-                  <node concept="10Nm6u" id="7CMYcMRh$l_" role="37wK5m" />
+              <node concept="2OqwBi" id="1CK_6ZcpXcv" role="33vP2m">
+                <node concept="37vLTw" id="1CK_6ZcpXcw" role="2Oq$k0">
+                  <ref role="3cqZAo" node="ilNinXgikB" resolve="context" />
+                </node>
+                <node concept="liA8E" id="1CK_6ZcpXcx" role="2OqNvi">
+                  <ref role="37wK5l" to="r99j:~TemplateContext.getEnvironment()" resolve="getEnvironment" />
                 </node>
               </node>
             </node>
@@ -25674,11 +25673,11 @@
               <node concept="2OqwBi" id="7Ydq8GQnYMq" role="33vP2m">
                 <node concept="liA8E" id="7Ydq8GQnYML" role="2OqNvi">
                   <ref role="37wK5l" node="4puqa71E7Wz" resolve="apply" />
-                  <node concept="37vLTw" id="2BHiRxgmJhx" role="37wK5m">
-                    <ref role="3cqZAo" node="ilNinXgikB" resolve="environment" />
+                  <node concept="37vLTw" id="1CK_6ZcpXcy" role="37wK5m">
+                    <ref role="3cqZAo" node="1CK_6ZcpXcu" resolve="environment" />
                   </node>
-                  <node concept="37vLTw" id="7CMYcMRh$lA" role="37wK5m">
-                    <ref role="3cqZAo" node="7CMYcMRh$lw" resolve="context" />
+                  <node concept="37vLTw" id="1CK_6ZcpPYn" role="37wK5m">
+                    <ref role="3cqZAo" node="ilNinXgikB" resolve="context" />
                   </node>
                 </node>
                 <node concept="2ShNRf" id="7Ydq8GQnYMr" role="2Oq$k0">
@@ -25704,8 +25703,8 @@
           </node>
           <node concept="3clFbF" id="7Ydq8GQnYMV" role="3cqZAp">
             <node concept="2OqwBi" id="7Ydq8GQnYMX" role="3clFbG">
-              <node concept="37vLTw" id="2BHiRxgm8Qo" role="2Oq$k0">
-                <ref role="3cqZAo" node="ilNinXgikB" resolve="environment" />
+              <node concept="37vLTw" id="1CK_6ZcpYlh" role="2Oq$k0">
+                <ref role="3cqZAo" node="1CK_6ZcpXcu" resolve="environment" />
               </node>
               <node concept="liA8E" id="7Ydq8GQnYN1" role="2OqNvi">
                 <ref role="37wK5l" to="r99j:~TemplateExecutionEnvironment.registerLabel(org.jetbrains.mps.openapi.model.SNode,java.lang.Iterable,java.lang.String)" resolve="registerLabel" />

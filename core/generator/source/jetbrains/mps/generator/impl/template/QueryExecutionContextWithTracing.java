@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -231,10 +231,10 @@ public class QueryExecutionContextWithTracing implements QueryExecutionContext {
   }
 
   @Override
-  public Collection<SNode> applyRule(TemplateCreateRootRule rule, TemplateExecutionEnvironment environment) throws GenerationException {
+  public Collection<SNode> applyRule(TemplateCreateRootRule rule, TemplateContext context) throws GenerationException {
     try {
       tracer.push(taskName("create root rule", rule.getRuleNode()));
-      return wrapped.applyRule(rule, environment);
+      return wrapped.applyRule(rule, context);
     } finally {
       tracer.pop();
     }
