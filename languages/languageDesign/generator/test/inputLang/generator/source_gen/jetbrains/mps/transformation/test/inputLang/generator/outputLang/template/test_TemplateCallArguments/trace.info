@@ -251,7 +251,7 @@
       <node id="6736062018948461339" at="69,146,70,49" concept="7" />
       <node id="6736062018948476841" at="70,49,71,37" concept="2" />
       <node id="6736062018948461339" at="71,37,72,14" concept="8" />
-      <node id="6736062018948461339" at="76,156,77,49" concept="7" />
+      <node id="6736062018948461339" at="76,102,77,49" concept="7" />
       <node id="6736062018948476841" at="77,49,78,87" concept="2" />
       <node id="6736062018948461339" at="78,87,79,14" concept="8" />
       <node id="6736062018948461339" at="82,39,83,36" concept="7" />
@@ -267,7 +267,7 @@
       <node id="6736062018948476841" at="55,73,58,9" concept="13" />
       <node id="6736062018948476841" at="58,9,61,9" concept="5" />
       <node id="6736062018948461339" at="68,0,74,0" concept="6" trace="apply#(Ljetbrains/mps/generator/runtime/TemplateExecutionEnvironment;Ljetbrains/mps/generator/runtime/TemplateContext;)Ljava/util/Collection;" />
-      <node id="6736062018948461339" at="75,0,81,0" concept="6" trace="weave#(Ljetbrains/mps/generator/runtime/NodeWeaveFacility/WeaveContext;Ljetbrains/mps/generator/runtime/NodeWeaveFacility;)Ljava/util/Collection;" />
+      <node id="6736062018948461339" at="75,0,81,0" concept="6" trace="weave#(Ljetbrains/mps/generator/runtime/NodeWeaveFacility;)Ljava/util/Collection;" />
       <node id="6736062018948461339" at="81,0,87,0" concept="6" trace="initConcepts#()[Lorg/jetbrains/mps/openapi/language/SConcept;" />
       <node id="6736062018948461339" at="87,0,93,0" concept="6" trace="initAggregationLinks#()[Lorg/jetbrains/mps/openapi/language/SContainmentLink;" />
       <node id="6736062018948476841" at="44,37,52,7" concept="0" />
@@ -287,7 +287,7 @@
       <scope id="6736062018948461339" at="69,146,72,14">
         <var name="rv" id="6736062018948461339" />
       </scope>
-      <scope id="6736062018948461339" at="76,156,79,14">
+      <scope id="6736062018948461339" at="76,102,79,14">
         <var name="rv" id="6736062018948461339" />
       </scope>
       <scope id="6736062018948461339" at="82,39,85,14">
@@ -304,7 +304,6 @@
         <var name="environment" id="6736062018948461339" />
       </scope>
       <scope id="6736062018948461339" at="75,0,81,0">
-        <var name="weaveContext" id="6736062018948461339" />
         <var name="weaveSupport" id="6736062018948461339" />
       </scope>
       <scope id="6736062018948461339" at="81,0,87,0" />
@@ -467,7 +466,7 @@
       <node id="6736062018948578754" at="51,146,52,49" concept="7" />
       <node id="6736062018948578784" at="52,49,53,37" concept="2" />
       <node id="6736062018948578754" at="53,37,54,14" concept="8" />
-      <node id="6736062018948578754" at="58,156,59,49" concept="7" />
+      <node id="6736062018948578754" at="58,102,59,49" concept="7" />
       <node id="6736062018948578784" at="59,49,60,87" concept="2" />
       <node id="6736062018948578754" at="60,87,61,14" concept="8" />
       <node id="6736062018948578754" at="64,39,65,36" concept="7" />
@@ -485,7 +484,7 @@
       <node id="6736062018948578754" at="36,0,39,0" concept="6" trace="getParameterNames#()[Ljava/lang/String;" />
       <node id="6736062018948578784" at="42,69,46,5" concept="13" />
       <node id="6736062018948578754" at="50,0,56,0" concept="6" trace="apply#(Ljetbrains/mps/generator/runtime/TemplateExecutionEnvironment;Ljetbrains/mps/generator/runtime/TemplateContext;)Ljava/util/Collection;" />
-      <node id="6736062018948578754" at="57,0,63,0" concept="6" trace="weave#(Ljetbrains/mps/generator/runtime/NodeWeaveFacility/WeaveContext;Ljetbrains/mps/generator/runtime/NodeWeaveFacility;)Ljava/util/Collection;" />
+      <node id="6736062018948578754" at="57,0,63,0" concept="6" trace="weave#(Ljetbrains/mps/generator/runtime/NodeWeaveFacility;)Ljava/util/Collection;" />
       <node id="6736062018948578754" at="63,0,69,0" concept="6" trace="initConcepts#()[Lorg/jetbrains/mps/openapi/language/SConcept;" />
       <node id="6736062018948578754" at="69,0,75,0" concept="6" trace="initProperties#()[Lorg/jetbrains/mps/openapi/language/SProperty;" />
       <node id="6736062018948578754" at="75,0,81,0" concept="6" trace="initAggregationLinks#()[Lorg/jetbrains/mps/openapi/language/SContainmentLink;" />
@@ -501,7 +500,7 @@
       <scope id="6736062018948578754" at="51,146,54,14">
         <var name="rv" id="6736062018948578754" />
       </scope>
-      <scope id="6736062018948578754" at="58,156,61,14">
+      <scope id="6736062018948578754" at="58,102,61,14">
         <var name="rv" id="6736062018948578754" />
       </scope>
       <scope id="6736062018948578754" at="64,39,67,14">
@@ -518,7 +517,6 @@
         <var name="environment" id="6736062018948578754" />
       </scope>
       <scope id="6736062018948578754" at="57,0,63,0">
-        <var name="weaveContext" id="6736062018948578754" />
         <var name="weaveSupport" id="6736062018948578754" />
       </scope>
       <scope id="6736062018948578754" at="63,0,69,0" />

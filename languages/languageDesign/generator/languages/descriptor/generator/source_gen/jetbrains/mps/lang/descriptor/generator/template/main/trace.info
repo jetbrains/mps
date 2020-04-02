@@ -4129,7 +4129,7 @@
       <node id="263208052639697475" at="1353,146,1354,49" concept="8" />
       <node id="263208052639720703" at="1354,49,1355,37" concept="3" />
       <node id="263208052639697475" at="1355,37,1356,14" concept="9" />
-      <node id="263208052639697475" at="1360,156,1361,49" concept="8" />
+      <node id="263208052639697475" at="1360,102,1361,49" concept="8" />
       <node id="263208052639720703" at="1361,49,1362,87" concept="3" />
       <node id="263208052639697475" at="1362,87,1363,14" concept="9" />
       <node id="263208052639697475" at="1366,39,1367,37" concept="8" />
@@ -4342,7 +4342,7 @@
       <node id="6824413541682318368" at="1329,82,1333,15" concept="15" />
       <node id="263208052639706811" at="826,91,831,25" concept="15" />
       <node id="263208052639697475" at="1352,0,1358,0" concept="7" trace="apply#(Ljetbrains/mps/generator/runtime/TemplateExecutionEnvironment;Ljetbrains/mps/generator/runtime/TemplateContext;)Ljava/util/Collection;" />
-      <node id="263208052639697475" at="1359,0,1365,0" concept="7" trace="weave#(Ljetbrains/mps/generator/runtime/NodeWeaveFacility/WeaveContext;Ljetbrains/mps/generator/runtime/NodeWeaveFacility;)Ljava/util/Collection;" />
+      <node id="263208052639697475" at="1359,0,1365,0" concept="7" trace="weave#(Ljetbrains/mps/generator/runtime/NodeWeaveFacility;)Ljava/util/Collection;" />
       <node id="263208052639706469" at="60,7,68,7" concept="0" />
       <node id="263208052639706514" at="77,61,85,13" concept="0" />
       <node id="263208052639706540" at="120,59,128,11" concept="0" />
@@ -4805,7 +4805,7 @@
       <scope id="263208052639697475" at="1353,146,1356,14">
         <var name="rv" id="263208052639697475" />
       </scope>
-      <scope id="263208052639697475" at="1360,156,1363,14">
+      <scope id="263208052639697475" at="1360,102,1363,14">
         <var name="rv" id="263208052639697475" />
       </scope>
       <scope id="263208052639706469" at="61,7,67,31">
@@ -4876,7 +4876,6 @@
         <var name="environment" id="263208052639697475" />
       </scope>
       <scope id="263208052639697475" at="1359,0,1365,0">
-        <var name="weaveContext" id="263208052639697475" />
         <var name="weaveSupport" id="263208052639697475" />
       </scope>
       <scope id="263208052639706468" at="52,7,59,31">
