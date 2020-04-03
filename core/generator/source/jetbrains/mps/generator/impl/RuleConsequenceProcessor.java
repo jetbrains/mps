@@ -233,6 +233,23 @@ public abstract class RuleConsequenceProcessor {
     }
   }
 
+  private static class TemplateConsequence extends RuleConsequenceProcessor {
+    private final TemplateContainer myTemplateContainer;
+
+    public TemplateConsequence(TemplateContainer templateContainer) {
+      myTemplateContainer = templateContainer;
+    }
+
+    @NotNull
+    @Override
+    public List<SNode> processRuleConsequence(@NotNull TemplateContext context)
+      throws GenerationFailureException, DismissTopMappingRuleException, GenerationCanceledException {
+      ArrayList<SNode> outputNodes = new ArrayList<>();
+      myTemplateContainer.apply(new CollectorSink(outputNodes), context);
+      return outputNodes;
+    }
+  }
+
   private static class ConsequenceHandler implements ConsequenceDispatch {
     private RuleConsequenceProcessor myConsequence;
 
@@ -256,7 +273,7 @@ public abstract class RuleConsequenceProcessor {
     public void inlineTemplateWithContext(SNode ruleConsequence) {
       SNode templateContainer = RuleUtil.getInlineTemplateWithContext_contentNode(ruleConsequence);
       if (templateContainer != null) {
-        myConsequence = new TemplateContainer(templateContainer);
+        myConsequence = new TemplateConsequence(new TemplateContainer(templateContainer));
       } else {
         myConsequence = new BadConsequence(ruleConsequence, "error processing template consequence: no 'template'");
       }
@@ -266,7 +283,7 @@ public abstract class RuleConsequenceProcessor {
     public void inlineTemplate(SNode ruleConsequence) {
       SNode templateNode = RuleUtil.getInlineTemplate_templateNode(ruleConsequence);
       if (templateNode != null) {
-        myConsequence = new TemplateContainer(new Pair<>(templateNode, null));
+        myConsequence = new TemplateConsequence(new TemplateContainer(new Pair<>(templateNode, null)));
       } else {
         myConsequence = new BadConsequence(ruleConsequence, "no template node");
       }

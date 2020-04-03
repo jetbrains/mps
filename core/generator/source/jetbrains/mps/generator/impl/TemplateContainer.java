@@ -37,9 +37,9 @@ import java.util.List;
  * <p>For weave rule/macro there's {@link jetbrains.mps.generator.impl.WeaveTemplateContainer} counterpart.
  * @author Artem Tikhomirov
  */
-public class TemplateContainer extends RuleConsequenceProcessor {
-  private final SNode myTemplateNode;
-  private List<Pair<SNode, String>> myNodeAndMappingNamePairs;
+public class TemplateContainer {
+  protected final SNode myTemplateNode;
+  protected List<Pair<SNode, String>> myNodeAndMappingNamePairs;
 
   public TemplateContainer(@NotNull SNode templateContainer) {
     myTemplateNode = templateContainer;
@@ -65,16 +65,7 @@ public class TemplateContainer extends RuleConsequenceProcessor {
     myNodeAndMappingNamePairs = result;
   }
 
-  @NotNull
-  @Override
-  public List<SNode> processRuleConsequence(@NotNull TemplateContext ctx)
-      throws GenerationFailureException, DismissTopMappingRuleException, GenerationCanceledException {
-    ArrayList<SNode> outputNodes = new ArrayList<>();
-    apply(new CollectorSink(outputNodes), ctx);
-    return outputNodes;
-  }
-
-  public void apply(ApplySink sink, TemplateContext ctx) throws GenerationFailureException, DismissTopMappingRuleException, GenerationCanceledException {
+  public final void apply(ApplySink sink, TemplateContext ctx) throws GenerationFailureException, DismissTopMappingRuleException, GenerationCanceledException {
     initialize();
     // for each template fragment create output nodes
     final TemplateExecutionEnvironment environment = ctx.getEnvironment();
@@ -93,7 +84,7 @@ public class TemplateContainer extends RuleConsequenceProcessor {
   }
 
   @NotNull
-  private List<SNode> extractTemplateFragments() throws TemplateProcessingFailureException {
+  protected List<SNode> extractTemplateFragments() throws TemplateProcessingFailureException {
     List<SNode> fragments = GeneratorUtilEx.getTemplateFragments(myTemplateNode);
     if (fragments.isEmpty()) {
       throw new TemplateProcessingFailureException(myTemplateNode, "couldn't process template: no template fragments found");

@@ -111,6 +111,10 @@ public final class TemplateDeclarationInterpreted extends TemplateDeclarationBas
       }
     };
     TemplateContext context = weaveFacility.getTemplateContext();
+    // FIXME weave() in generated templates is not recorded into trace
+    //       There's GenerationTrace.trace updated inside TemplateContainer.apply(), but it happens for interpreted templates only.
+    //       Besides, I believe it's also true for regular TD.apply(), at least I see no access to GenerationTrace in generated code.
+    //       Well, CALL/LOOM macro do record trace in interpreted mode, and trace for compiled reduction rules is handled in TEEI.tryToReduce
     tc.apply(s, context);
 
     // CallSiteImpl needs return value to record trace of output nodes

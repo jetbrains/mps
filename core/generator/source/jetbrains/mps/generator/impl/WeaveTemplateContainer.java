@@ -15,17 +15,8 @@
  */
 package jetbrains.mps.generator.impl;
 
-import jetbrains.mps.generator.GenerationCanceledException;
-import jetbrains.mps.generator.GenerationTrace;
-import jetbrains.mps.generator.GenerationTracerUtil;
 import jetbrains.mps.generator.IGeneratorLogger.ProblemDescription;
-import jetbrains.mps.generator.runtime.ApplySink;
-import jetbrains.mps.generator.runtime.TemplateContext;
-import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
-import jetbrains.mps.generator.template.ITemplateProcessor;
-import jetbrains.mps.util.Pair;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.ArrayList;
@@ -34,56 +25,20 @@ import java.util.List;
 /**
  * Container for Template Fragments in weaving macros/rules.
  * Similar to {@link jetbrains.mps.generator.impl.TemplateContainer}, tailored for weavings.
+ * I leave it with a sole distinction of TF extraction code, which is quite similar, with subtle differences I'd like to tackle separately.
+ * I hope to get to https://youtrack.jetbrains.com/issue/MPS-23373 and deal with TF in different roles for a regular apply as well,
+ * just need to figure aput what to do with COPY-SRC (see TemplateContainer#extractTemplateFragments())
  *
  * @author Artem Tikhomirov
  */
-public class WeaveTemplateContainer {
-
-  private final SNode myTemplateNode;
-  private List<Pair<SNode, String>> myNodeAndMappingNamePairs;
-
+public class WeaveTemplateContainer extends TemplateContainer {
 
   public WeaveTemplateContainer(@NotNull SNode templateContainer) {
-    myTemplateNode = templateContainer;
+    super(templateContainer);
   }
 
-  /*
-   * Initialize container once for a template, then apply multiple times.
-   */
-  private void initialize() throws TemplateProcessingFailureException {
-    if (myNodeAndMappingNamePairs != null) {
-      return;
-    }
-    List<SNode> fragments = extractTemplateFragmentsForWeaving();
-    List<Pair<SNode, String>> result = new ArrayList<>(fragments.size());
-    for (SNode fragment : fragments) {
-      result.add(new Pair<>(fragment.getParent(), GeneratorUtilEx.getMappingName_TemplateFragment(fragment, null)));
-    }
-    myNodeAndMappingNamePairs = result;
-  }
-
-    // intentionally almost identical to TemplateContainer#apply(sink, context) as I'm going to merge the two
-  public void apply(ApplySink sink, TemplateContext ctx) throws GenerationFailureException, DismissTopMappingRuleException, GenerationCanceledException {
-    initialize();
-    // for each template fragment create output nodes
-    final TemplateExecutionEnvironment environment = ctx.getEnvironment();
-    final GenerationTrace tracer = environment.getTrace();
-    ITemplateProcessor templateProcessor = environment.getTemplateProcessor();
-    for (Pair<SNode, String> nodeAndMappingNamePair : myNodeAndMappingNamePairs) {
-      SNode templateNode = nodeAndMappingNamePair.o1;
-      String innerMappingName = nodeAndMappingNamePair.o2;
-      List<SNode> _outputNodes = templateProcessor.apply(templateNode, ctx.subContext(innerMappingName));
-      final SContainmentLink childRole = templateNode.getContainmentLink();
-      assert childRole != null;
-
-      sink.add(childRole, _outputNodes);
-
-      // FIXME weave() in generated templates is not recorded into trace
-      tracer.trace(ctx.getInput().getNodeId(), GenerationTracerUtil.translateOutput(_outputNodes), templateNode.getReference());
-    }
-  }
-
-  private List<SNode> extractTemplateFragmentsForWeaving() throws TemplateProcessingFailureException {
+  @NotNull
+  protected List<SNode> extractTemplateFragments() throws TemplateProcessingFailureException {
     List<SNode> templateFragments = GeneratorUtilEx.getTemplateFragments(myTemplateNode);
     if (templateFragments.isEmpty()) {
       // TemplateContainer has "couldn't process template: no template fragments found" message
@@ -94,7 +49,12 @@ public class WeaveTemplateContainer {
     boolean sameParent = true;
     SNode defaultContext = null;
     for (SNode templateFragment : templateFragments) {
-      SNode fragmentContextNode = templateFragment.getParent().getParent();
+      final SNode tfNode = templateFragment.getParent();
+      // this assert used to be in apply(), I moved it here though it's sort of useless, provided we access tfNode.getParent here
+      // and therefore containment link is sure thing just by construction. Nevertheless, I decided to keep this here in case tfNode.getParent
+      // get refactored. I'd like to preserve explicit assumption about not supporting plain in-line TF in weavings.
+      assert tfNode.getContainmentLink() != null;
+      SNode fragmentContextNode = tfNode.getParent();
       if (defaultContext == null) {
         defaultContext = fragmentContextNode;
       } else if (defaultContext != fragmentContextNode) {
