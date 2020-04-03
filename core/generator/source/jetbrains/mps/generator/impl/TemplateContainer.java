@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,10 +58,10 @@ public class TemplateContainer extends RuleConsequenceProcessor {
     if (myNodeAndMappingNamePairs != null) {
       return;
     }
-    List<SNode> fragments = checkAdjacentFragments();
+    List<SNode> fragments = extractTemplateFragments();
     List<Pair<SNode, String>> result = new ArrayList<>(fragments.size());
     for (SNode fragment : fragments) {
-      result.add(new Pair<>(SNodeOperations.getParent(fragment), GeneratorUtilEx.getMappingName_TemplateFragment(fragment, null)));
+      result.add(new Pair<>(fragment.getParent(), GeneratorUtilEx.getMappingName_TemplateFragment(fragment, null)));
     }
     myNodeAndMappingNamePairs = result;
   }
@@ -70,24 +70,12 @@ public class TemplateContainer extends RuleConsequenceProcessor {
   @Override
   public List<SNode> processRuleConsequence(@NotNull TemplateContext ctx)
       throws GenerationFailureException, DismissTopMappingRuleException, GenerationCanceledException {
-    initialize();
     ArrayList<SNode> outputNodes = new ArrayList<>();
-    final TemplateExecutionEnvironment environment = ctx.getEnvironment();
-    final GenerationTrace tracer = environment.getTrace();
-    ITemplateProcessor templateProcessor = environment.getTemplateProcessor();
-    for (Pair<SNode, String> nodeAndMappingNamePair : myNodeAndMappingNamePairs) {
-      SNode templateNode = nodeAndMappingNamePair.o1;
-      String innerMappingName = nodeAndMappingNamePair.o2;
-      List<SNode> _outputNodes = templateProcessor.apply(templateNode, ctx.subContext(innerMappingName));
-      SNode input = ctx.getInput();
-      tracer.trace(input == null ? null : input.getNodeId(), GenerationTracerUtil.translateOutput(_outputNodes), templateNode.getReference());
-      outputNodes.addAll(_outputNodes);
-    }
+    apply(new CollectorSink(outputNodes), ctx);
     return outputNodes;
   }
 
-  public void apply(ApplySink sink, TemplateContext ctx)
-      throws GenerationFailureException, DismissTopMappingRuleException, GenerationCanceledException {
+  public void apply(ApplySink sink, TemplateContext ctx) throws GenerationFailureException, DismissTopMappingRuleException, GenerationCanceledException {
     initialize();
     final TemplateExecutionEnvironment environment = ctx.getEnvironment();
     final GenerationTrace tracer = environment.getTrace();
@@ -96,14 +84,16 @@ public class TemplateContainer extends RuleConsequenceProcessor {
       SNode templateNode = nodeAndMappingNamePair.o1;
       String innerMappingName = nodeAndMappingNamePair.o2;
       List<SNode> _outputNodes = templateProcessor.apply(templateNode, ctx.subContext(innerMappingName));
+      final SContainmentLink childRole = templateNode.getContainmentLink();
+      sink.add(childRole, _outputNodes);
+
       SNode input = ctx.getInput();
       tracer.trace(input == null ? null : input.getNodeId(), GenerationTracerUtil.translateOutput(_outputNodes), templateNode.getReference());
-      sink.add(templateNode.getContainmentLink(), _outputNodes);
     }
   }
 
   @NotNull
-  private List<SNode> checkAdjacentFragments() throws TemplateProcessingFailureException {
+  private List<SNode> extractTemplateFragments() throws TemplateProcessingFailureException {
     List<SNode> fragments = GeneratorUtilEx.getTemplateFragments(myTemplateNode);
     if (fragments.isEmpty()) {
       throw new TemplateProcessingFailureException(myTemplateNode, "couldn't process template: no template fragments found");

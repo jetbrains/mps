@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,14 @@
 package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.generator.GenerationCanceledException;
+import jetbrains.mps.generator.GenerationTrace;
 import jetbrains.mps.generator.GenerationTracerUtil;
 import jetbrains.mps.generator.IGeneratorLogger.ProblemDescription;
 import jetbrains.mps.generator.runtime.ApplySink;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.template.ITemplateProcessor;
+import jetbrains.mps.util.Pair;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -38,34 +40,50 @@ import java.util.List;
 public class WeaveTemplateContainer {
 
   private final SNode myTemplateNode;
-  private List<SNode> myFragments;
+  private List<Pair<SNode, String>> myNodeAndMappingNamePairs;
+
 
   public WeaveTemplateContainer(@NotNull SNode templateContainer) {
     myTemplateNode = templateContainer;
   }
 
-  // intentionally almost identical to TemplateContainer#apply(sink, context) as I'm going to merge the two
-  public void apply(ApplySink sink, TemplateContext context) throws GenerationFailureException, DismissTopMappingRuleException, GenerationCanceledException {
-    if (myFragments == null) {
-      myFragments = extractTemplateFragmentsForWeaving();
+  /*
+   * Initialize container once for a template, then apply multiple times.
+   */
+  private void initialize() throws TemplateProcessingFailureException {
+    if (myNodeAndMappingNamePairs != null) {
+      return;
     }
+    List<SNode> fragments = extractTemplateFragmentsForWeaving();
+    List<Pair<SNode, String>> result = new ArrayList<>(fragments.size());
+    for (SNode fragment : fragments) {
+      result.add(new Pair<>(fragment.getParent(), GeneratorUtilEx.getMappingName_TemplateFragment(fragment, null)));
+    }
+    myNodeAndMappingNamePairs = result;
+  }
+
+    // intentionally almost identical to TemplateContainer#apply(sink, context) as I'm going to merge the two
+  public void apply(ApplySink sink, TemplateContext ctx) throws GenerationFailureException, DismissTopMappingRuleException, GenerationCanceledException {
+    initialize();
     // for each template fragment create output nodes
-    TemplateExecutionEnvironment env = context.getEnvironment();
-    ITemplateProcessor templateProcessor = env.getTemplateProcessor();
-    for (SNode templateFragment : myFragments) {
-      SNode templateFragmentParentNode = templateFragment.getParent();
-      assert templateFragmentParentNode != null; // TF is a node attribute
-      String tfMapLabel = GeneratorUtilEx.getMappingName_TemplateFragment(templateFragment, null);
-      List<SNode> outputNodesToWeave = templateProcessor.apply(templateFragmentParentNode, context.subContext(tfMapLabel));
-      final SContainmentLink childRole = templateFragmentParentNode.getContainmentLink();
+    final TemplateExecutionEnvironment environment = ctx.getEnvironment();
+    final GenerationTrace tracer = environment.getTrace();
+    ITemplateProcessor templateProcessor = environment.getTemplateProcessor();
+    for (Pair<SNode, String> nodeAndMappingNamePair : myNodeAndMappingNamePairs) {
+      SNode templateNode = nodeAndMappingNamePair.o1;
+      String innerMappingName = nodeAndMappingNamePair.o2;
+      List<SNode> outputNodesToWeave = templateProcessor.apply(templateNode, ctx.subContext(innerMappingName));
+      final SContainmentLink childRole = templateNode.getContainmentLink();
       assert childRole != null;
 
       sink.add(childRole, outputNodesToWeave);
 
       // XXX why does not TemplateContainer does the same (i.e. recordTransformInputTrace)?
-      env.getGenerator().recordTransformInputTrace(context.getInput(), outputNodesToWeave);
+      //     I believe it's because tryToReduce does recordTransformInputTrace() for anything produced by a rule (where any template output ends up)
+      //     OTOH, not clear why weaving rule can not do that instead of this class then?
+      environment.getGenerator().recordTransformInputTrace(ctx.getInput(), outputNodesToWeave);
       // FIXME weave() in generated templates is not recorded into trace
-      env.getTrace().trace(context.getInput().getNodeId(), GenerationTracerUtil.translateOutput(outputNodesToWeave), templateFragment.getReference());
+      tracer.trace(ctx.getInput().getNodeId(), GenerationTracerUtil.translateOutput(outputNodesToWeave), templateNode.getReference());
     }
   }
 
