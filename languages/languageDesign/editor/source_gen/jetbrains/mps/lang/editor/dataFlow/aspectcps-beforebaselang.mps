@@ -754,86 +754,152 @@
     <node concept="Wx3nA" id="1G" role="jymVt">
       <property role="3TUv4t" value="true" />
       <property role="TrG5h" value="conceptIndex" />
-      <node concept="3Tm6S6" id="3m" role="1B3o_S" />
+      <node concept="3Tm6S6" id="3m" role="1B3o_S">
+        <node concept="cd27G" id="3q" role="lGtFl">
+          <node concept="3u3nmq" id="3r" role="cd27D">
+            <property role="3u3nmv" value="82" />
+          </node>
+        </node>
+      </node>
       <node concept="2OqwBi" id="3n" role="33vP2m">
-        <node concept="2OqwBi" id="3p" role="2Oq$k0">
-          <node concept="2ShNRf" id="3r" role="2Oq$k0">
-            <node concept="1pGfFk" id="3t" role="2ShVmc">
+        <node concept="2OqwBi" id="3s" role="2Oq$k0">
+          <node concept="2ShNRf" id="3v" role="2Oq$k0">
+            <node concept="1pGfFk" id="3y" role="2ShVmc">
               <ref role="37wK5l" to="ksn4:~ConceptSwitchIndexBuilder.&lt;init&gt;()" resolve="ConceptSwitchIndexBuilder" />
+              <node concept="cd27G" id="3$" role="lGtFl">
+                <node concept="3u3nmq" id="3_" role="cd27D">
+                  <property role="3u3nmv" value="82" />
+                </node>
+              </node>
+            </node>
+            <node concept="cd27G" id="3z" role="lGtFl">
+              <node concept="3u3nmq" id="3A" role="cd27D">
+                <property role="3u3nmv" value="82" />
+              </node>
             </node>
           </node>
-          <node concept="liA8E" id="3s" role="2OqNvi">
+          <node concept="liA8E" id="3w" role="2OqNvi">
             <ref role="37wK5l" to="ksn4:~ConceptSwitchIndexBuilder.put(jetbrains.mps.smodel.adapter.ids.SConceptId...)" resolve="put" />
-            <node concept="2YIFZM" id="3u" role="37wK5m">
+            <node concept="2YIFZM" id="3B" role="37wK5m">
               <ref role="37wK5l" to="e8bb:~MetaIdFactory.conceptId(long,long,long)" resolve="conceptId" />
               <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
-              <node concept="1adDum" id="3v" role="37wK5m">
+              <node concept="1adDum" id="3D" role="37wK5m">
                 <property role="1adDun" value="0x18bc659203a64e29L" />
+                <node concept="cd27G" id="3H" role="lGtFl">
+                  <node concept="3u3nmq" id="3I" role="cd27D">
+                    <property role="3u3nmv" value="82" />
+                  </node>
+                </node>
               </node>
-              <node concept="1adDum" id="3w" role="37wK5m">
+              <node concept="1adDum" id="3E" role="37wK5m">
                 <property role="1adDun" value="0xa83a7ff23bde13baL" />
+                <node concept="cd27G" id="3J" role="lGtFl">
+                  <node concept="3u3nmq" id="3K" role="cd27D">
+                    <property role="3u3nmv" value="82" />
+                  </node>
+                </node>
               </node>
-              <node concept="1adDum" id="3x" role="37wK5m">
+              <node concept="1adDum" id="3F" role="37wK5m">
                 <property role="1adDun" value="0x3ee423fc2ad10eceL" />
+                <node concept="cd27G" id="3L" role="lGtFl">
+                  <node concept="3u3nmq" id="3M" role="cd27D">
+                    <property role="3u3nmv" value="82" />
+                  </node>
+                </node>
               </node>
+              <node concept="cd27G" id="3G" role="lGtFl">
+                <node concept="3u3nmq" id="3N" role="cd27D">
+                  <property role="3u3nmv" value="82" />
+                </node>
+              </node>
+            </node>
+            <node concept="cd27G" id="3C" role="lGtFl">
+              <node concept="3u3nmq" id="3O" role="cd27D">
+                <property role="3u3nmv" value="82" />
+              </node>
+            </node>
+          </node>
+          <node concept="cd27G" id="3x" role="lGtFl">
+            <node concept="3u3nmq" id="3P" role="cd27D">
+              <property role="3u3nmv" value="82" />
             </node>
           </node>
         </node>
-        <node concept="liA8E" id="3q" role="2OqNvi">
+        <node concept="liA8E" id="3t" role="2OqNvi">
           <ref role="37wK5l" to="ksn4:~ConceptSwitchIndexBuilder.seal()" resolve="seal" />
+          <node concept="cd27G" id="3Q" role="lGtFl">
+            <node concept="3u3nmq" id="3R" role="cd27D">
+              <property role="3u3nmv" value="82" />
+            </node>
+          </node>
+        </node>
+        <node concept="cd27G" id="3u" role="lGtFl">
+          <node concept="3u3nmq" id="3S" role="cd27D">
+            <property role="3u3nmv" value="82" />
+          </node>
         </node>
       </node>
       <node concept="3uibUv" id="3o" role="1tU5fm">
         <ref role="3uigEE" to="ksn4:~ConceptSwitchIndex" resolve="ConceptSwitchIndex" />
+        <node concept="cd27G" id="3T" role="lGtFl">
+          <node concept="3u3nmq" id="3U" role="cd27D">
+            <property role="3u3nmv" value="82" />
+          </node>
+        </node>
+      </node>
+      <node concept="cd27G" id="3p" role="lGtFl">
+        <node concept="3u3nmq" id="3V" role="cd27D">
+          <property role="3u3nmv" value="82" />
+        </node>
       </node>
     </node>
     <node concept="cd27G" id="1H" role="lGtFl">
-      <node concept="3u3nmq" id="3y" role="cd27D">
+      <node concept="3u3nmq" id="3W" role="cd27D">
         <property role="3u3nmv" value="69" />
       </node>
     </node>
   </node>
-  <node concept="39dXUE" id="3z">
-    <node concept="39e2AJ" id="3$" role="39e2AI">
+  <node concept="39dXUE" id="3X">
+    <node concept="39e2AJ" id="3Y" role="39e2AI">
       <property role="39e3Y2" value="switchField" />
-      <node concept="39e2AG" id="3A" role="39e3Y0">
-        <node concept="385nmt" id="3B" role="385vvn">
+      <node concept="39e2AG" id="40" role="39e3Y0">
+        <node concept="385nmt" id="41" role="385vvn">
           <property role="385vuF" value="concept switch" />
-          <node concept="2$VJBW" id="3D" role="385v07">
+          <node concept="2$VJBW" id="43" role="385v07">
             <property role="2$VJBR" value="82" />
-            <node concept="2x4n5u" id="3E" role="3iCydw">
+            <node concept="2x4n5u" id="44" role="3iCydw">
               <property role="2x4mPI" value="ConceptSwitchStatement" />
               <property role="2x4n5l" value="195uihc0nrdil" />
-              <node concept="2V$Bhx" id="3F" role="2x4n5j">
+              <node concept="2V$Bhx" id="45" role="2x4n5j">
                 <property role="2V$B1T" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1" />
                 <property role="2V$B1Q" value="jetbrains.mps.lang.smodel" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="39e2AT" id="3C" role="39e2AY">
+        <node concept="39e2AT" id="42" role="39e2AY">
           <ref role="39e2AS" node="1G" resolve="conceptIndex" />
         </node>
       </node>
     </node>
-    <node concept="39e2AJ" id="3_" role="39e2AI">
+    <node concept="39e2AJ" id="3Z" role="39e2AI">
       <property role="39e3Y2" value="switchVar" />
-      <node concept="39e2AG" id="3G" role="39e3Y0">
-        <node concept="385nmt" id="3H" role="385vvn">
+      <node concept="39e2AG" id="46" role="39e3Y0">
+        <node concept="385nmt" id="47" role="385vvn">
           <property role="385vuF" value="concept switch" />
-          <node concept="2$VJBW" id="3J" role="385v07">
+          <node concept="2$VJBW" id="49" role="385v07">
             <property role="2$VJBR" value="82" />
-            <node concept="2x4n5u" id="3K" role="3iCydw">
+            <node concept="2x4n5u" id="4a" role="3iCydw">
               <property role="2x4mPI" value="ConceptSwitchStatement" />
               <property role="2x4n5l" value="195uihc0nrdil" />
-              <node concept="2V$Bhx" id="3L" role="2x4n5j">
+              <node concept="2V$Bhx" id="4b" role="2x4n5j">
                 <property role="2V$B1T" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1" />
                 <property role="2V$B1Q" value="jetbrains.mps.lang.smodel" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="39e2AT" id="3I" role="39e2AY">
+        <node concept="39e2AT" id="48" role="39e2AY">
           <ref role="39e2AS" node="29" resolve="cncpt" />
         </node>
       </node>
