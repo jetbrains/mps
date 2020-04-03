@@ -18,8 +18,9 @@ import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import java.util.Collections;
 import jetbrains.mps.generator.runtime.TemplateUtil;
-import java.util.ArrayList;
+import jetbrains.mps.generator.runtime.ApplySink;
 import jetbrains.mps.generator.runtime.NodeWeaveFacility;
+import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -75,13 +76,10 @@ public class Template_reduce_OperationParamConcept extends TemplateDeclarationBa
     return rv;
   }
   @Override
-  public Collection<SNode> apply(@NotNull TemplateExecutionEnvironment environment, @NotNull TemplateContext context) throws GenerationException {
-    ArrayList<SNode> rv = new ArrayList<SNode>();
-    applyPart0(context).reportTo(rv);
-    return rv;
+  public void apply(TemplateContext context, ApplySink sink) throws GenerationException {
+    applyPart0(context).reportTo(sink);
   }
 
-  @Override
   public Collection<SNode> weave(@NotNull NodeWeaveFacility weaveSupport) throws GenerationException {
     ArrayList<SNode> rv = new ArrayList<SNode>();
     applyPart0(weaveSupport.getTemplateContext()).weaveWith(weaveSupport).reportTo(rv);

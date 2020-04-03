@@ -27,6 +27,7 @@ import jetbrains.mps.smodel.adapter.ids.SDataTypeId;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
 import java.util.Collections;
 import jetbrains.mps.generator.impl.reference.RefResolver;
+import jetbrains.mps.generator.runtime.ApplySink;
 import jetbrains.mps.generator.runtime.NodeWeaveFacility;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -381,13 +382,10 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
     return rv;
   }
   @Override
-  public Collection<SNode> apply(@NotNull TemplateExecutionEnvironment environment, @NotNull TemplateContext context) throws GenerationException {
-    ArrayList<SNode> rv = new ArrayList<SNode>();
-    applyPart0(context).reportTo(rv);
-    return rv;
+  public void apply(TemplateContext context, ApplySink sink) throws GenerationException {
+    applyPart0(context).reportTo(sink);
   }
 
-  @Override
   public Collection<SNode> weave(@NotNull NodeWeaveFacility weaveSupport) throws GenerationException {
     ArrayList<SNode> rv = new ArrayList<SNode>();
     applyPart0(weaveSupport.getTemplateContext()).weaveWith(weaveSupport).reportTo(rv);

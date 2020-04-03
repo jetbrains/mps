@@ -113,6 +113,7 @@ public final class TemplateDeclarationInterpreted extends TemplateDeclarationBas
     TemplateContext context = weaveFacility.getTemplateContext();
     tc.apply(s, context);
 
-    return Collections.emptyList();
+    // CallSiteImpl needs return value to record trace of output nodes
+    return allWeavedNodes;
   }
 }

@@ -13,6 +13,7 @@ import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.generator.runtime.ApplySink;
 
 @Generated
 public class Template_GDClass extends TemplateDeclarationBase {
@@ -34,8 +35,13 @@ public class Template_GDClass extends TemplateDeclarationBase {
     return tlist1;
   }
 
-  public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
-    return apply(context.getEnvironment(), context);
+  @Override
+  public void apply(TemplateContext context, ApplySink sink) throws GenerationException {
+    Collection<SNode> rv = apply(context.getEnvironment(), context);
+    if (rv == null) {
+      return;
+    }
+    sink.add(null, rv);
   }
 
   private static final SNodePointer template_in8ni3_a0a3 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639692929");

@@ -13,6 +13,7 @@ import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.runtime.TemplateUtil;
+import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -53,8 +54,13 @@ public class Template_map_outputNode extends TemplateDeclarationBase {
     return tlist1;
   }
 
-  public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
-    return apply(context.getEnvironment(), context);
+  @Override
+  public void apply(TemplateContext context, ApplySink sink) throws GenerationException {
+    Collection<SNode> rv = apply(context.getEnvironment(), context);
+    if (rv == null) {
+      return;
+    }
+    sink.add(null, rv);
   }
 
   @Override

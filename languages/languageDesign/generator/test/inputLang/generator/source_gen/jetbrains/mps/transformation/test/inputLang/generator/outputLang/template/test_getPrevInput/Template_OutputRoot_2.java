@@ -23,6 +23,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.template.MapSrcMacroContext;
 import jetbrains.mps.generator.template.MapSrcMacroPostProcContext;
+import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -160,8 +161,13 @@ public class Template_OutputRoot_2 extends TemplateDeclarationBase {
     return TemplateUtil.singletonList(tnode1);
   }
 
-  public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
-    return apply(context.getEnvironment(), context);
+  @Override
+  public void apply(TemplateContext context, ApplySink sink) throws GenerationException {
+    Collection<SNode> rv = apply(context.getEnvironment(), context);
+    if (rv == null) {
+      return;
+    }
+    sink.add(null, rv);
   }
 
   @Override

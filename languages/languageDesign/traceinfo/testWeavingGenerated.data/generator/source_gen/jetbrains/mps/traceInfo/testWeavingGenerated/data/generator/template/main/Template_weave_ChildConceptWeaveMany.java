@@ -17,9 +17,10 @@ import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.generator.runtime.ApplySink;
 import java.util.Collection;
-import java.util.ArrayList;
 import jetbrains.mps.generator.runtime.NodeWeaveFacility;
+import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -395,15 +396,12 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
     return rv;
   }
   @Override
-  public Collection<SNode> apply(@NotNull TemplateExecutionEnvironment environment, @NotNull TemplateContext context) throws GenerationException {
-    ArrayList<SNode> rv = new ArrayList<SNode>();
-    applyPart0(context).reportTo(rv);
-    applyPart1(context).reportTo(rv);
-    applyPart2(context).reportTo(rv);
-    return rv;
+  public void apply(TemplateContext context, ApplySink sink) throws GenerationException {
+    applyPart0(context).reportTo(sink);
+    applyPart1(context).reportTo(sink);
+    applyPart2(context).reportTo(sink);
   }
 
-  @Override
   public Collection<SNode> weave(@NotNull NodeWeaveFacility weaveSupport) throws GenerationException {
     ArrayList<SNode> rv = new ArrayList<SNode>();
     applyPart0(weaveSupport.getTemplateContext()).weaveWith(weaveSupport).reportTo(rv);
