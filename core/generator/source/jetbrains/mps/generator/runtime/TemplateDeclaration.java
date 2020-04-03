@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.generator.runtime;
 
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -29,9 +30,32 @@ public interface TemplateDeclaration extends TemplateDeclarationWeavingAware2 {
 
   SNodeReference getTemplateNode();
 
+  /**
+   * @deprecated in 2020.1, replaced with apply(TemplateContext,ApplySink). Code generated with 2019.3 override this method, templates in 2020.1 override the new one
+   */
   // XXX seems to be non-null return value, need to double-check
-  Collection<SNode> apply(@NotNull TemplateExecutionEnvironment environment,
-                          @NotNull TemplateContext context) throws GenerationException;
+  @Deprecated
+  @ToRemove(version = 2020.1)
+  default Collection<SNode> apply(@NotNull TemplateExecutionEnvironment environment,
+                          @NotNull TemplateContext context) throws GenerationException {
+    throw new UnsupportedOperationException("Use #apply(TemplateContext, ApplySink) instead");
+  }
+
+  /**
+   * New alternative to apply templates that make no distinction between templates applied in a regular way or in a weaving mode
+   * @param templateContext  describes template input, arguments and the rest of environment, not null
+   * @param sink             receives nodes/node sub-trees instantiated by a template, not null
+   * @since 2020.1
+   * @throws GenerationException
+   */
+  default void apply(TemplateContext templateContext, ApplySink sink) throws GenerationException {
+    // this default implementation is fine for regular template apply but not weave (in weave, we need aggregation link);
+    // therefore, until all templates utilize sink directly (i.e. by reporting aggregation link), can not use this method instead of TDWA2.weave().
+    // The plan is to generate overrides of this method in 2020.1 while using legacy methods to invoke templates, and switch to using this method in 2020.2
+    for (SNode n : apply(templateContext.getEnvironment(), templateContext)) {
+      sink.add(n);
+    }
+  }
 
   @Nullable
   default String[] getParameterNames() {

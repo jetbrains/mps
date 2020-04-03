@@ -75,8 +75,10 @@ public interface TemplateDeclarationWeavingAware2 {
   }
 
   // FIXME there's no use for return value, just replace it with void, and do the same for TemplateCallSite#weave
+  // FIXME there should be no @Override for generated methods that override this one, therefore, we can throw TDWA2 away in 2020.2 (no need
+  //       to keep one more release once weaving works through apply(TC,AS)
   default Collection<SNode> weave(@NotNull NodeWeaveFacility weaveFacility) throws GenerationException {
-    // to become abstract once 2020.1 is out
+    // to become abstract once 2020.1 is out; or to get removed altogether, replaced with TD.apply(TC,AS)
     throw new UnsupportedOperationException("Override weave(NWF)");
   }
 

@@ -27,6 +27,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -46,7 +47,8 @@ final class CallSiteImpl implements TemplateCallSite {
 
   @Override
   public Collection<SNode> apply(@NotNull TemplateContext context) throws GenerationException {
-    final Collection<SNode> rv = myTemplateDeclaration.apply(myEnvironment, context);
+    final ArrayList<SNode> rv = new ArrayList<>();
+    myTemplateDeclaration.apply(context, new CollectorSink(rv));
     final SNode input = context.getInput();
     // create root rule doesn't have an input, yet it's a regular call site
     myEnvironment.getTrace().trace(input == null ? null : input.getNodeId(), GenerationTracerUtil.translateOutput(rv), myCallSite);
@@ -59,6 +61,8 @@ final class CallSiteImpl implements TemplateCallSite {
     WeaveContextImpl wc = new WeaveContextImpl(outputContextNode, context, anchorQuery);
     // as long as we need WC instance to invoke old weave(wc, nwf), use it for NWS, too. Once 2020.1 is out, pass WC stuff right into NWS cons
     final NodeWeaveFacility nwf = new NodeWeaveSupport(wc, myCallSite, myEnvironment);
+    // FIXME with code generated in 2020.1, we can use apply(TC, AS) with a sink that would respect anchor function and outputContextNode
+    //       however, to support templates generated with 2019.3, we stick to old API (would need to keep TemplateDeclarationWeavingAware2 past 2020.2)
     final Collection<SNode> weaved = myTemplateDeclaration.weave(wc, nwf);
     if (weaved != null && !weaved.isEmpty()) {
       if (context.getInputName() != null) {

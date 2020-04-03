@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,13 +22,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Collection;
 
 /**
- * PROVISIONAL INTERFACE, NOT IN USE
- *
  * Alternative to {@link FragmentResult} as return value, this is a context object to get populated by
  * template, that is, instead of crafting nodes and wrapping them with a {@code FragmentResult} objects,
  * template could pipe created nodes right into the sink for consumption (either regular 'apply' or
  * sophisticated 'weave').
  *
+ * FIXME do I need throws in add() signature?
  *
  * @author Artem Tikhomirov
  * @since 2018.3

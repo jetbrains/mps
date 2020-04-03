@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -223,8 +222,9 @@ public abstract class RuleConsequenceProcessor {
       }
 
       try {
-        Collection<SNode> rv = myTemplate.apply(env, myTemplateCall.prepareCallContext(context));
-        return new ArrayList<>(rv);
+        final ArrayList<SNode> rv = new ArrayList<>();
+        myTemplate.apply(myTemplateCall.prepareCallContext(context), new CollectorSink(rv));
+        return rv;
       } catch (GenerationFailureException | GenerationCanceledException | DismissTopMappingRuleException | AbandonRuleInputException ex) {
         throw ex;
       } catch (GenerationException ex) {

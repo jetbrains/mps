@@ -832,10 +832,10 @@ public final class TemplateProcessor implements ITemplateProcessor {
         // XXX in fact, shall use env.callSite().apply(), but would like to save CallSiteImpl instantiation here
         //     which is not good, as I have to duplicate logic for all the extra stuff around template processing, like tracing
         //     Once BP support is in place, likely would switch to env.callSite anyway
-        Collection<SNode> rv = myTemplateRT.apply(env, tcInput);
+        ArrayList<SNode> rv = new ArrayList<>();
+        myTemplateRT.apply(tcInput, new CollectorSink(rv));
         env.getTrace().trace(newInputNode.getNodeId(), GenerationTracerUtil.translateOutput(rv), getMacroNodeRef());
-        // FIXME stick to same API, e.g. List<SNode>, do not mix the two.
-        return new ArrayList<>(rv);
+        return rv;
       } catch (GenerationFailureException | DismissTopMappingRuleException | GenerationCanceledException ex) {
         throw ex;
       } catch (GenerationException ex) {
