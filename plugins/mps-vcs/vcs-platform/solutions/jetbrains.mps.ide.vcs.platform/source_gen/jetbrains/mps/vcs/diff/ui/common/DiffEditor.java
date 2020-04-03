@@ -30,6 +30,8 @@ import jetbrains.mps.nodeEditor.commands.CommandContextWithVF;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import java.awt.event.MouseEvent;
+import java.awt.Color;
 import javax.swing.JScrollPane;
 import com.intellij.ui.ScrollPaneFactory;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -49,6 +51,7 @@ public class DiffEditor implements EditorMessageOwner {
   private InspectorEditorComponent myInspector;
   private Map<ModelChange, List<ChangeEditorMessage>> myChangeToMessages = MapSequence.fromMap(new HashMap<ModelChange, List<ChangeEditorMessage>>());
   private boolean myIsLeftEditor;
+  private ChangeGroupLayout myChangeGroupLayout;
 
 
   public DiffEditor(final IProject project, SNode node, String contentTitle, boolean isLeftEditor) {
@@ -75,6 +78,10 @@ public class DiffEditor implements EditorMessageOwner {
 
   public boolean isLeftEditor() {
     return myIsLeftEditor;
+  }
+
+  public void setChangeGroupLayout(ChangeGroupLayout changeGroupLayout) {
+    myChangeGroupLayout = changeGroupLayout;
   }
 
   public void setTitle(String newTitle) {
@@ -182,6 +189,34 @@ public class DiffEditor implements EditorMessageOwner {
       super(repository, new EditorConfigurationBuilder().showErrorsGutter(showGutter).rightToLeft(rightToLeft).build());
       myDiffFileEditor = new DiffFileEditor(this);
       setDefaultPopupGroupId(((String) BHReflection.invoke0(SNodeOperations.getNode("r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)", "426251916200108583"), CONCEPTS.ActionGroupDeclaration$YL, SMethodTrimmedId.create("getGeneratedClassFQName", CONCEPTS.ActionGroupDeclaration$YL, "hEwJa8g"))));
+    }
+
+
+    @Override
+    protected String getMessagesTextForArea(MouseEvent event) {
+      if (myChangeGroupLayout == null) {
+        return null;
+      }
+      Color prevGroupColor = null;
+      int prevGroupBottomLineY = -1;
+      int x = 0;
+      int width = getWidth();
+
+      for (ChangeGroup changeGroup : ListSequence.fromList(myChangeGroupLayout.getChangeGroups())) {
+        Color color = ChangeColors.get(changeGroup.getChangeType());
+        Bounds bounds = changeGroup.getBounds(myIsLeftEditor);
+        int y = (bounds.length() == 1 ? (int) bounds.start() - 1 : (int) bounds.start());
+        int height = (bounds.length() == 1 ? 2 : bounds.length());
+        // separate changes with the same color 
+        if (y == prevGroupBottomLineY && color.equals(prevGroupColor)) {
+          y++;
+          height--;
+        }
+        if (event.getY() >= y && event.getY() <= y + height && event.getX() >= x && event.getX() <= x + width) {
+          return "" + event.getY();
+        }
+      }
+      return null;
     }
 
 

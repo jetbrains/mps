@@ -252,7 +252,9 @@
   <dependency className="jetbrains.mps.vcs.diff.ui.common.DiffEditor">
     <classNode dependClassName="com.intellij.openapi.actionSystem.PlatformDataKeys" />
     <classNode dependClassName="com.intellij.ui.ScrollPaneFactory" />
+    <classNode dependClassName="java.awt.Color" />
     <classNode dependClassName="java.awt.Dimension" />
+    <classNode dependClassName="java.awt.event.MouseEvent" />
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
@@ -283,8 +285,12 @@
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="jetbrains.mps.smodel.behaviour.BHReflection" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ModelChange" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.Bounds" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangeColors" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessageFactory" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangeGroup" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangeGroupLayout" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.DiffFileEditor" />
     <classNode dependClassName="org.jetbrains.annotations.NonNls" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />

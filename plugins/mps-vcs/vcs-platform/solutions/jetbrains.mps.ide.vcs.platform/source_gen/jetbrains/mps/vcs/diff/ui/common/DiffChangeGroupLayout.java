@@ -20,7 +20,9 @@ public class DiffChangeGroupLayout extends ChangeGroupLayout {
   public DiffChangeGroupLayout(@Nullable ChangeEditorMessage.ConflictChecker conflictChecker, @NotNull ChangeSet changeSet, @NotNull DiffEditor leftEditor, @NotNull DiffEditor rightEditor, boolean inspector) {
     super(conflictChecker, inspector, false);
     myLeftEditor = leftEditor;
+    myLeftEditor.setChangeGroupLayout(this);
     myRightEditor = rightEditor;
+    myRightEditor.setChangeGroupLayout(this);
     myChangeSet = changeSet;
     if (inspector) {
       UpdaterListener updaterListener = new UpdaterListenerAdapter() {

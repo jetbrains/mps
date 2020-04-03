@@ -282,11 +282,9 @@ public class RootDifferencePane implements IHighlighter {
     }
   }
   private DiffEditor addEditor(int index, SModel model, String title) {
-    final DiffEditor result = new DiffEditor(myProject, model.getNode(myRootId), title, index == 0);
-
+    DiffEditor result = new DiffEditor(myProject, model.getNode(myRootId), title, index == 0);
     GridBagConstraints gbc = new GridBagConstraints(index * 2, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(5, (index == 0 ? 5 : 0), 5, (index == 1 ? 5 : 0)), 0, 0);
     myBottomPanel.add(result.getInspector().getExternalComponent(), gbc);
-
     myDiffEditorsGroup.add(result);
     return result;
   }

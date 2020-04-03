@@ -670,7 +670,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   }
 
 
-  protected JScrollPane createScrollPane(){
+  protected JScrollPane createScrollPane() {
     return ScrollPaneFactory.createScrollPane();
   }
 
@@ -867,18 +867,28 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
         }
 
         jetbrains.mps.openapi.editor.cells.EditorCell cell = myRootCell.findLeaf(event.getX(), event.getY());
-        if (cell == null) {
-          return;
-        }
         if (isCancelRequested()) {
           confirmCancel();
           return;
         }
-        rv.set(getMessagesTextFor(cell));
+        String messages = null;
+        // messages from cells have higher priority than messages from areas.
+        if (cell != null){
+          messages = getMessagesTextFor(cell);
+        }
+        if (messages == null){
+          messages = getMessagesTextForArea(event);
+        }
+        rv.set(messages);
       }
     });
     return rv.get();
   }
+
+  protected String getMessagesTextForArea(MouseEvent event) {
+    return null;
+  }
+
 
   @Override
   public Point getToolTipLocation(final MouseEvent event) {
