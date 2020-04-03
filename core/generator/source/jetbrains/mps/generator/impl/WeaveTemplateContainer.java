@@ -72,18 +72,14 @@ public class WeaveTemplateContainer {
     for (Pair<SNode, String> nodeAndMappingNamePair : myNodeAndMappingNamePairs) {
       SNode templateNode = nodeAndMappingNamePair.o1;
       String innerMappingName = nodeAndMappingNamePair.o2;
-      List<SNode> outputNodesToWeave = templateProcessor.apply(templateNode, ctx.subContext(innerMappingName));
+      List<SNode> _outputNodes = templateProcessor.apply(templateNode, ctx.subContext(innerMappingName));
       final SContainmentLink childRole = templateNode.getContainmentLink();
       assert childRole != null;
 
-      sink.add(childRole, outputNodesToWeave);
+      sink.add(childRole, _outputNodes);
 
-      // XXX why does not TemplateContainer does the same (i.e. recordTransformInputTrace)?
-      //     I believe it's because tryToReduce does recordTransformInputTrace() for anything produced by a rule (where any template output ends up)
-      //     OTOH, not clear why weaving rule can not do that instead of this class then?
-      environment.getGenerator().recordTransformInputTrace(ctx.getInput(), outputNodesToWeave);
       // FIXME weave() in generated templates is not recorded into trace
-      tracer.trace(ctx.getInput().getNodeId(), GenerationTracerUtil.translateOutput(outputNodesToWeave), templateNode.getReference());
+      tracer.trace(ctx.getInput().getNodeId(), GenerationTracerUtil.translateOutput(_outputNodes), templateNode.getReference());
     }
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -131,14 +131,11 @@ public class TemplateWeavingRuleInterpreted extends WeaveRuleBase implements Tem
     return myConsequence.apply(environment, context, outputContextNode);
   }
 
-  void weaveTemplateDeclaration(SNode outputContextNode, @NotNull TemplateContext context) throws GenerationException {
-
+  TemplateCallSite callSite(TemplateExecutionEnvironment environment) throws TemplateProcessingFailureException {
     if (myTemplate == null) {
       throw new TemplateProcessingFailureException(myRuleNode, "couldn't evaluate weaving rule: no template");
     }
-    TemplateExecutionEnvironment environment = context.getEnvironment();
-    final TemplateCallSite callSite = environment.callSite(TemplateIdentity.fromSourceNode(myTemplate), getRuleNode());
-    callSite.weave(context.subContext(myMappingName), outputContextNode, this);
+    return environment.callSite(TemplateIdentity.fromSourceNode(myTemplate), getRuleNode());
   }
 
   /**
@@ -176,13 +173,12 @@ public class TemplateWeavingRuleInterpreted extends WeaveRuleBase implements Tem
    * Here, former approach of ReferenceInfo_TemplateNode would fail to find AAA cons as it's not in ancestry of field declaration. The mapping
    * from the method below won't help either. I feel the case above is handled via indirect mapping and input history, but not sure.
    *
-   * @param environment       environment for the rule
    * @param outputContextNode node from context query of WeavingMappingRule, element of output model we inject into
-   * @param inputNode         source model element this weaving is applicable to (instance of WeavingMappingRule.myApplicableConcept)
+   * @param templateContext   holds source model element this weaving is applicable to (instance of WeavingMappingRule.myApplicableConcept)
    */
-  void mapWeaveContentNodeToTemplateDeclarationContentNode(TemplateExecutionEnvironment environment, SNode outputContextNode, SNode inputNode) {
+  void mapWeaveContentNodeToTemplateDeclarationContentNode(SNode outputContextNode, TemplateContext templateContext) {
     SNode contentNode = RuleUtil.getTemplateDeclaration_ContentNode(myTemplate);
-    environment.getGenerator().addOutputNodeByInputAndTemplateNode(inputNode, GeneratorUtil.getTemplateNodeId(contentNode), outputContextNode);
+    templateContext.getEnvironment().getGenerator().addOutputNodeByInputAndTemplateNode(templateContext, GeneratorUtil.getTemplateNodeId(contentNode), outputContextNode);
   }
 
   private interface Consequence {
@@ -198,8 +194,10 @@ public class TemplateWeavingRuleInterpreted extends WeaveRuleBase implements Tem
 
     @Override
     public boolean apply(TemplateExecutionEnvironment environment, TemplateContext context, SNode outputContextNode) throws GenerationException {
-      mapWeaveContentNodeToTemplateDeclarationContentNode(environment, outputContextNode, context.getInput());
-      weaveTemplateDeclaration(outputContextNode, myTemplateCall.prepareCallContext(context));
+      mapWeaveContentNodeToTemplateDeclarationContentNode(outputContextNode, context);
+      final TemplateCallSite callSite = callSite(environment);
+      final TemplateContext cc = myTemplateCall.prepareCallContext(context).subContext(myMappingName);
+      callSite.weave(cc, outputContextNode, TemplateWeavingRuleInterpreted.this);
       return true;
     }
   }
@@ -227,12 +225,12 @@ public class TemplateWeavingRuleInterpreted extends WeaveRuleBase implements Tem
       if (queryNodes.isEmpty()) {
         return false;
       }
-      mapWeaveContentNodeToTemplateDeclarationContentNode(environment, outputContextNode, context.getInput());
+      mapWeaveContentNodeToTemplateDeclarationContentNode(outputContextNode, context);
+      final TemplateCallSite callSite = callSite(environment);
       TemplateContext tcWithArgs = myTemplateCall.prepareCallContext(context);
       for (SNode inp : queryNodes) {
-        weaveTemplateDeclaration(outputContextNode, tcWithArgs.subContext(inp));
+        callSite.weave(tcWithArgs.subContext(myMappingName, inp), outputContextNode, TemplateWeavingRuleInterpreted.this);
       }
-
       return true;
     }
   }

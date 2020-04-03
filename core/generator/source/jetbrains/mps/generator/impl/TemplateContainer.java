@@ -22,7 +22,6 @@ import jetbrains.mps.generator.runtime.ApplySink;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.template.ITemplateProcessor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -77,6 +76,7 @@ public class TemplateContainer extends RuleConsequenceProcessor {
 
   public void apply(ApplySink sink, TemplateContext ctx) throws GenerationFailureException, DismissTopMappingRuleException, GenerationCanceledException {
     initialize();
+    // for each template fragment create output nodes
     final TemplateExecutionEnvironment environment = ctx.getEnvironment();
     final GenerationTrace tracer = environment.getTrace();
     ITemplateProcessor templateProcessor = environment.getTemplateProcessor();

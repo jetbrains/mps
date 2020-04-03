@@ -70,6 +70,14 @@ final class CallSiteImpl implements TemplateCallSite {
         // XXX seems that I could introduce tc.registerLabel(outputNodes) that would interally look into inputName!= null and use internal env to do the same.
         myEnvironment.registerLabel(context.getInput(), weaved, context.getInputName());
       }
+      // XXX next code has been copied from WeaveTemplateContainer in attempt to make WTC close to regular TemplateContainer.
+      //     I was puzzled in 392ee8bf why does not TemplateContainer does the same (i.e. recordTransformInputTrace) as WTC? (the change introduced in b40626b0)
+      //     Now I believe the answer is it's because tryToReduce does recordTransformInputTrace() for anything produced by a rule
+      //     (where any template output ends up). Would be great to do this recordTIT where TemplateWeavingRule.apply() is invoked
+      //     (i.e. WeavingProcessor.ArmedWeavingRule), the difference with regular reduction rule is that there's no access to injected nodes there
+      // Still, I like this code here better than in WTC/TC as here we have access to TEEImpl and can extract generator safely (once it's removed from TEE API)
+      myEnvironment.getGenerator().recordTransformInputTrace(context.getInput(), weaved);
+      //
       myEnvironment.getTrace().trace(context.getInput().getNodeId(), GenerationTracerUtil.translateOutput(weaved), myCallSite);
       return true;
     }
