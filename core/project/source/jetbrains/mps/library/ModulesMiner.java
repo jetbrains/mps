@@ -158,7 +158,7 @@ public final class ModulesMiner {
       // because of .iml files (see DescriptorIOFacade) that are treated as solution module and thus break
       // readModuleDescriptorsFromFolder assumption of a single descriptor per dir.
     } catch (Exception e) {
-      LOG.error(e);
+      LOG.error("Can't read module descriptor from " + file, e);
       return false;
     }
   }
