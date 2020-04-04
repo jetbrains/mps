@@ -748,7 +748,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   }
 
   public int getHorizontalScrollBarOffset() {
-    return myScrollPane.getHorizontalScrollBar().isVisible() ? myScrollPane.getHorizontalScrollBar().getPreferredSize().height : 0;
+    return myScrollPane.getHorizontalScrollBar().getPreferredSize().height;
   }
 
   Point getViewPosition() {

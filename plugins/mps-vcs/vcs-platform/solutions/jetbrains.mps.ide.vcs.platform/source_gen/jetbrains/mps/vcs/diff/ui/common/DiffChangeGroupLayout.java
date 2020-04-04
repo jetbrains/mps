@@ -4,26 +4,51 @@ package jetbrains.mps.vcs.diff.ui.common;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.vcs.diff.ChangeSet;
+import com.intellij.diff.tools.util.DiffSplitter;
+import org.jetbrains.mps.openapi.module.SRepository;
+import java.util.Map;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.update.UpdaterListener;
 import jetbrains.mps.openapi.editor.update.UpdaterListenerAdapter;
 import jetbrains.mps.openapi.editor.EditorComponent;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 import java.util.List;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
+import javax.swing.JViewport;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.util.LinkedHashMap;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import java.util.HashMap;
+import jetbrains.mps.internal.collections.runtime.IterableUtils;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import java.awt.event.MouseEvent;
+import java.awt.Color;
+import java.awt.Point;
+import jetbrains.mps.internal.collections.runtime.IMapping;
 
 @GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/6402272430682108518", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class DiffChangeGroupLayout extends ChangeGroupLayout {
   private DiffEditor myLeftEditor;
   private DiffEditor myRightEditor;
   private ChangeSet myChangeSet;
-  public DiffChangeGroupLayout(@Nullable ChangeEditorMessage.ConflictChecker conflictChecker, @NotNull ChangeSet changeSet, @NotNull DiffEditor leftEditor, @NotNull DiffEditor rightEditor, boolean inspector) {
+  private DiffSplitter myDiffSplitter;
+  private SRepository myRepoWithChanges;
+  private Map<ChangeGroup, Tuples._2<Bounds, Bounds>> myGroupsWithBounds;
+  private Map<ChangeGroup, String> myChangeGroupDescriptions;
+
+  public DiffChangeGroupLayout(@Nullable ChangeEditorMessage.ConflictChecker conflictChecker, SRepository repoWithChanges, @NotNull ChangeSet changeSet, @NotNull DiffEditor leftEditor, @NotNull DiffEditor rightEditor, DiffSplitter diffSplitter, boolean inspector) {
     super(conflictChecker, inspector, false);
     myLeftEditor = leftEditor;
-    myLeftEditor.setChangeGroupLayout(this);
+    myLeftEditor.setChangeGroupLayout(this, inspector);
     myRightEditor = rightEditor;
-    myRightEditor.setChangeGroupLayout(this);
+    myRightEditor.setChangeGroupLayout(this, inspector);
     myChangeSet = changeSet;
+    myRepoWithChanges = repoWithChanges;
+    myDiffSplitter = diffSplitter;
     if (inspector) {
       UpdaterListener updaterListener = new UpdaterListenerAdapter() {
         @Override
@@ -34,7 +59,20 @@ public class DiffChangeGroupLayout extends ChangeGroupLayout {
       myLeftEditor.getInspector().getUpdater().addListener(updaterListener);
       myRightEditor.getInspector().getUpdater().addListener(updaterListener);
     }
+    ChangeListener viewportListener = new ChangeListener() {
+      public void stateChanged(ChangeEvent e) {
+        invalidateGroupsAndRepaintSplitter();
+      }
+    };
+    getLeftViewport().addChangeListener(viewportListener);
+    getRightViewport().addChangeListener(viewportListener);
+    addInvalidateListener(new ChangeGroupInvalidateListener() {
+      public void changeGroupsInvalidated() {
+        invalidateGroupsAndRepaintSplitter();
+      }
+    });
   }
+
   @NotNull
   @Override
   public jetbrains.mps.nodeEditor.EditorComponent getLeftComponent() {
@@ -61,4 +99,105 @@ public class DiffChangeGroupLayout extends ChangeGroupLayout {
   public void setChangeSet(ChangeSet changeSet) {
     myChangeSet = changeSet;
   }
+
+  private void invalidateGroupsAndRepaintSplitter() {
+    synchronized (this) {
+      myGroupsWithBounds = null;
+      myChangeGroupDescriptions = null;
+    }
+    if (myDiffSplitter != null) {
+      myDiffSplitter.repaintDivider();
+      return;
+    }
+  }
+
+  private JViewport getLeftViewport() {
+    return getLeftComponent().getViewport();
+  }
+  private JViewport getRightViewport() {
+    return getRightComponent().getViewport();
+  }
+  private int getOffset(JViewport viewport) {
+    return -viewport.getViewPosition().y;
+  }
+
+  public Map<ChangeGroup, Tuples._2<Bounds, Bounds>> getGroupsWithBounds() {
+    synchronized (this) {
+      ensureBoundsCalculated();
+    }
+    return myGroupsWithBounds;
+  }
+
+  private void ensureBoundsCalculated() {
+    if (myGroupsWithBounds != null) {
+      return;
+    }
+    myGroupsWithBounds = MapSequence.fromMap(new LinkedHashMap<ChangeGroup, Tuples._2<Bounds, Bounds>>(16, (float) 0.75, false));
+    int leftOffset = getOffset(getLeftViewport());
+    int rightOffset = getOffset(getRightViewport());
+
+    for (ChangeGroup group : ListSequence.fromList(this.getChangeGroups())) {
+      int leftStart = (int) group.getLeftBounds().start() + leftOffset;
+      int leftEnd = (int) group.getLeftBounds().end() + leftOffset;
+      int rightStart = (int) group.getRightBounds().start() + rightOffset;
+      int rightEnd = (int) group.getRightBounds().end() + rightOffset;
+      MapSequence.fromMap(myGroupsWithBounds).put(group, MultiTuple.<Bounds,Bounds>from(new Bounds(leftStart, leftEnd), new Bounds(rightStart, rightEnd)));
+    }
+    if (myRepoWithChanges == null) {
+      return;
+    }
+
+    myRepoWithChanges.getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        myChangeGroupDescriptions = MapSequence.fromMap(new HashMap<ChangeGroup, String>());
+        for (ChangeGroup group : ListSequence.fromList(DiffChangeGroupLayout.this.getChangeGroups())) {
+          MapSequence.fromMap(myChangeGroupDescriptions).put(group, IterableUtils.join(ListSequence.fromList(group.getChanges()).select(new ISelector<ModelChange, String>() {
+            public String select(ModelChange ch) {
+              return ch.getDescription();
+            }
+          }), "\n\n"));
+        }
+      }
+    });
+  }
+
+  @Override
+  protected String getMessagesTextForArea(MouseEvent event, boolean isInspector, boolean isLeftEditor) {
+    synchronized (this) {
+      ensureBoundsCalculated();
+    }
+    if (myChangeGroupDescriptions == null) {
+      return null;
+    }
+    Color prevGroupColor = null;
+    int prevGroupBottomLineY = -1;
+    int x = 0;
+    DiffEditor editor = (isLeftEditor ? myLeftEditor : myRightEditor);
+    int width = editor.getEditorComponent(isInspector).getWidth();
+
+    int verticalOffset = getOffset((isLeftEditor ? getLeftViewport() : getRightViewport()));
+
+    Point p = event.getPoint();
+    p.y += verticalOffset;
+
+    for (IMapping<ChangeGroup, Tuples._2<Bounds, Bounds>> changeGroup : MapSequence.fromMap(myGroupsWithBounds)) {
+      Color color = ChangeColors.get(changeGroup.key().getChangeType());
+      Bounds bounds = (isLeftEditor ? changeGroup.value()._0() : changeGroup.value()._1());
+      int y = (bounds.length() == 1 ? (int) bounds.start() - 1 : (int) bounds.start());
+      int height = (bounds.length() == 1 ? 2 : bounds.length());
+      // separate changes with the same color 
+      if (y == prevGroupBottomLineY && color.equals(prevGroupColor)) {
+        y++;
+        height--;
+      }
+      if (p.y >= y && p.y <= y + height && p.x >= x && p.x <= x + width) {
+        return MapSequence.fromMap(myChangeGroupDescriptions).get(changeGroup.key());
+      }
+    }
+    return null;
+  }
+
+
+
+
 }

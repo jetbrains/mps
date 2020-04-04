@@ -11,12 +11,9 @@ import java.util.List;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroupLayout;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.vcs.diff.ui.common.DiffEditorSeparator;
 import jetbrains.mps.vcs.diff.ui.common.DiffEditorsGroup;
 import com.intellij.ui.JBSplitter;
 import com.intellij.diff.tools.util.side.TwosideContentPanel;
-import javax.swing.JPanel;
-import java.awt.GridBagLayout;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.vcs.diff.ui.common.NextPreviousTraverser;
@@ -28,6 +25,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import com.intellij.diff.tools.util.DiffSplitter;
 import com.intellij.diff.util.DiffDividerDrawUtil;
+import jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout;
 import org.jetbrains.annotations.NotNull;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -43,12 +41,10 @@ import jetbrains.mps.vcs.diff.ui.common.Bounds;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.vcs.diff.ui.common.ChangeColors;
 import com.intellij.openapi.actionSystem.ActionGroup;
+import javax.swing.JPanel;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import jetbrains.mps.vcs.diff.ui.common.ChangedBandInHighlighterPainter;
 import jetbrains.mps.vcs.diff.ui.common.ChangedBandInEditorPainter;
 import jetbrains.mps.smodel.SModelOperations;
@@ -68,13 +64,10 @@ public class RootDifferencePane implements IHighlighter {
   private DiffEditor myNewEditor;
 
   private List<ChangeGroupLayout> myChangeGroupLayouts = ListSequence.fromList(new ArrayList<ChangeGroupLayout>());
-  private List<DiffEditorSeparator> myEditorSeparators = ListSequence.fromList(new ArrayList<DiffEditorSeparator>());
-  private DiffEditorSeparator myTopSeparator = null;
   private DiffEditorsGroup myDiffEditorsGroup = new DiffEditorsGroup();
 
   private JBSplitter myPanel = new JBSplitter(true, 0.7f);
-  private TwosideContentPanel myTopPanel;
-  private JPanel myBottomPanel = new JPanel(new GridBagLayout());
+  private TwosideContentPanel myInspectorPanel;
   private boolean isInspectorShown = PropertiesComponent.getInstance().getBoolean(PARAM_SHOW_INSPECTOR, true);
 
   private DefaultActionGroup myActionGroup;
@@ -85,25 +78,30 @@ public class RootDifferencePane implements IHighlighter {
     myRootId = rootId;
     myProject = project;
 
-    myOldEditor = addEditor(0, myChangeSet.getOldModel(), titles[0]);
-    myNewEditor = addEditor(1, myChangeSet.getNewModel(), titles[1]);
+    myOldEditor = addEditor(myChangeSet.getOldModel(), titles[0], true);
+    myNewEditor = addEditor(myChangeSet.getNewModel(), titles[1], false);
 
-    myTopPanel = new TwosideContentPanel(Arrays.asList(myOldEditor.getTopComponent(), myNewEditor.getTopComponent()));
-    myTopPanel.setTitles(createTitles());
-    myTopPanel.setPainter(new MyDividerPainter());
-
-    linkEditors(true);
-    linkEditors(false);
+    TwosideContentPanel topPanel = createTwosideContentPanel(false);
+    myInspectorPanel = createTwosideContentPanel(true);
 
     myPanel.setSplitterProportionKey(PARAM_INSPECTOR_SPLITTER_POSITION);
-    myPanel.setFirstComponent(myTopPanel);
+    myPanel.setFirstComponent(topPanel);
     if (isInspectorShown) {
-      myPanel.setSecondComponent(myBottomPanel);
+      myPanel.setSecondComponent(myInspectorPanel);
     }
 
     myTraverser = new NextPreviousTraverser(myChangeGroupLayouts, myNewEditor.getMainEditor());
 
     createActionGroup(isEditable, rootName);
+  }
+
+  private TwosideContentPanel createTwosideContentPanel(boolean inspector) {
+    TwosideContentPanel panel = new TwosideContentPanel(Arrays.asList(myOldEditor.getComponent(inspector), myNewEditor.getComponent(inspector)));
+    if (!(inspector)) {
+      panel.setTitles(createTitles());
+    }
+    linkEditors(panel, inspector);
+    return panel;
   }
 
   protected List<JComponent> createTitles() {
@@ -145,6 +143,13 @@ public class RootDifferencePane implements IHighlighter {
   }
 
   private class MyDividerPainter implements DiffSplitter.Painter, DiffDividerDrawUtil.DividerPaintable {
+
+    private final DiffChangeGroupLayout myLayout;
+
+    public MyDividerPainter(DiffChangeGroupLayout layout) {
+      myLayout = layout;
+    }
+
     @Override
     public void paint(@NotNull Graphics g, @NotNull JComponent divider) {
       Graphics2D gg = DiffDividerDrawUtil.getDividerGraphics(g, divider, myOldEditor.getTopComponent());
@@ -176,7 +181,7 @@ public class RootDifferencePane implements IHighlighter {
       Color prevGroupColor = null;
       int prevLeftEnd = -1;
       int prevRightEnd = -1;
-      for (IMapping<ChangeGroup, Tuples._2<Bounds, Bounds>> groupWithBounds : MapSequence.fromMap(myTopSeparator.getGroupsWithBounds())) {
+      for (IMapping<ChangeGroup, Tuples._2<Bounds, Bounds>> groupWithBounds : MapSequence.fromMap(myLayout.getGroupsWithBounds())) {
         Bounds left = groupWithBounds.value()._0();
         Bounds right = groupWithBounds.value()._1();
         int leftStart = (int) left.start();
@@ -255,36 +260,30 @@ public class RootDifferencePane implements IHighlighter {
     }
     isInspectorShown = show;
     PropertiesComponent.getInstance().setValue(PARAM_SHOW_INSPECTOR, show + "");
-    myPanel.setSecondComponent((isInspectorShown ? myBottomPanel : null));
+    myPanel.setSecondComponent((isInspectorShown ? myInspectorPanel : null));
   }
 
-  private void linkEditors(boolean inspector) {
+  private void linkEditors(TwosideContentPanel panel, boolean inspector) {
     // create change group builder, trapecium strip and merge buttons painter 
     // 'mine' parameter means mine changeset, 'inspector' - highlight inspector editor component 
-    ChangeGroupLayout layout = new DiffChangeGroupLayout(null, myChangeSet, myOldEditor, myNewEditor, inspector);
+    DiffChangeGroupLayout layout = new DiffChangeGroupLayout(null, myProject.getRepository(), myChangeSet, myOldEditor, myNewEditor, panel.getSplitter(), inspector);
     ChangeGroupMessages.startMaintaining(layout);
     ListSequence.fromList(myChangeGroupLayouts).addElement(layout);
-    DiffEditorSeparator separator = new DiffEditorSeparator(myProject.getRepository(), layout, myTopPanel.getSplitter());
-    GridBagConstraints gbc = new GridBagConstraints(1, 0, 1, 1, 0, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(5, 0, 5, 0), 0, 0);
-    if (inspector) {
-      myBottomPanel.add(separator, gbc);
-      ListSequence.fromList(myEditorSeparators).addElement(separator);
-    } else {
-      myTopSeparator = separator;
-      ChangedBandInHighlighterPainter.addTo(myOldEditor, layout, inspector);
-      ChangedBandInHighlighterPainter.addTo(myNewEditor, layout, inspector);
-      ChangedBandInEditorPainter.addTo(myOldEditor, layout, inspector);
-      ChangedBandInEditorPainter.addTo(myNewEditor, layout, inspector);
-    }
+    panel.setPainter(new MyDividerPainter(layout));
+
+    ChangedBandInHighlighterPainter.addTo(myOldEditor, layout, inspector);
+    ChangedBandInHighlighterPainter.addTo(myNewEditor, layout, inspector);
+    ChangedBandInEditorPainter.addTo(myOldEditor, layout, inspector);
+    ChangedBandInEditorPainter.addTo(myNewEditor, layout, inspector);
+
     if (!(SModelOperations.isReadOnly(myChangeSet.getNewModel()))) {
       DiffButtonsPainter.addTo(this, myOldEditor, layout, inspector);
       DiffButtonsPainter.addTo(this, myNewEditor, layout, inspector);
     }
   }
-  private DiffEditor addEditor(int index, SModel model, String title) {
-    DiffEditor result = new DiffEditor(myProject, model.getNode(myRootId), title, index == 0);
-    GridBagConstraints gbc = new GridBagConstraints(index * 2, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(5, (index == 0 ? 5 : 0), 5, (index == 1 ? 5 : 0)), 0, 0);
-    myBottomPanel.add(result.getInspector().getExternalComponent(), gbc);
+
+  private DiffEditor addEditor(SModel model, String title, boolean isLeftEditor) {
+    DiffEditor result = new DiffEditor(myProject, model.getNode(myRootId), title, isLeftEditor);
     myDiffEditorsGroup.add(result);
     return result;
   }
@@ -338,13 +337,6 @@ public class RootDifferencePane implements IHighlighter {
     myDiffEditorsGroup.dispose();
     myOldEditor = null;
     myNewEditor = null;
-    ListSequence.fromList(myEditorSeparators).visitAll(new IVisitor<DiffEditorSeparator>() {
-      public void visit(DiffEditorSeparator s) {
-        s.dispose();
-      }
-    });
-    ListSequence.fromList(myEditorSeparators).clear();
-    myEditorSeparators = null;
   }
 
 }

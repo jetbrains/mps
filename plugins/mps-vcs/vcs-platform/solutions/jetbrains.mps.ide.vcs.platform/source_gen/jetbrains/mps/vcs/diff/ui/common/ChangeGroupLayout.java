@@ -22,6 +22,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import java.awt.event.MouseEvent;
 import jetbrains.mps.nodeEditor.cells.EditorCell;
 
 @GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4652592318748337213", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
@@ -121,7 +122,6 @@ public abstract class ChangeGroupLayout {
     assert myChangeGroups != null;
     return myChangeGroups;
   }
-
   public void invalidate() {
     myChangeGroups = null;
     ListSequence.fromList(myInvalidateListeners).visitAll(new IVisitor<ChangeGroupInvalidateListener>() {
@@ -130,7 +130,14 @@ public abstract class ChangeGroupLayout {
       }
     });
   }
-
+  public int getEditorVerticalOffset() {
+    if (myInspector) {
+      return 0;
+    } else {
+      assert getLeftComponent().getExternalComponent().getY() == getRightComponent().getExternalComponent().getY();
+      return getLeftComponent().getExternalComponent().getY();
+    }
+  }
   private static Bounds findBounds(Iterable<ChangeEditorMessage> messages, final EditorComponent editorComponent) {
     Bounds bounds = null;
     if (Sequence.fromIterable(messages).isNotEmpty()) {
@@ -149,7 +156,7 @@ public abstract class ChangeGroupLayout {
       });
     }
     if (bounds == null || bounds.length() <= 0) {
-      int y = check_cuq72k_a0a0c0t(check_cuq72k_a0a0a2a91(editorComponent));
+      int y = check_cuq72k_a0a0c0s(check_cuq72k_a0a0a2a81(editorComponent));
       return new Bounds(y, y);
     } else {
       return bounds;
@@ -159,19 +166,24 @@ public abstract class ChangeGroupLayout {
     int tolerance = (canBeAdjacent ? 0 : 1);
     return (int) a.end() - tolerance < (int) b.start() || (int) b.end() - tolerance < (int) a.start();
   }
+
+  protected String getMessagesTextForArea(MouseEvent event, boolean isInspector, boolean isLeftEditor) {
+    return null;
+  }
+
   private static List<ModelChange> check_cuq72k_a2a21(ChangeSet checkedDotOperand, ChangeGroupLayout checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelChanges();
     }
     return null;
   }
-  private static int check_cuq72k_a0a0c0t(EditorCell checkedDotOperand) {
+  private static int check_cuq72k_a0a0c0s(EditorCell checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getY();
     }
     return 0;
   }
-  private static EditorCell check_cuq72k_a0a0a2a91(EditorComponent checkedDotOperand) {
+  private static EditorCell check_cuq72k_a0a0a2a81(EditorComponent checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getRootCell();
     }

@@ -150,10 +150,10 @@ public class StructDifferencePane {
   private void linkEditors(boolean inspector) {
     // create change group builder, trapecium strip and merge buttons painter 
     // 'mine' parameter means mine changeset, 'inspector' - highlight inspector editor component 
-    ChangeGroupLayout layout = new DiffChangeGroupLayout(null, myChangeSet, myOldEditor, myNewEditor, inspector);
+    ChangeGroupLayout layout = new DiffChangeGroupLayout(null, null, myChangeSet, myOldEditor, myNewEditor, null, inspector);
     ChangeGroupMessages.startMaintaining(layout);
     ListSequence.fromList(myChangeGroupLayouts).addElement(layout);
-    DiffEditorSeparator separator = new DiffEditorSeparator(ProjectHelper.getProjectRepository(myProject), layout, null);
+    DiffEditorSeparator separator = new DiffEditorSeparator(ProjectHelper.getProjectRepository(myProject), layout);
     GridBagConstraints gbc = new GridBagConstraints(1, 0, 1, 1, 0, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(5, 0, 5, 0), 0, 0);
     ((inspector ? myBottomPanel : myTopPanel)).add(separator, gbc);
     ListSequence.fromList(myEditorSeparators).addElement(separator);

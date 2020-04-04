@@ -181,7 +181,7 @@ public class MergeRootsPane {
   }
 
   private ChangeGroupLayout createChangeGroupLayout(boolean mine, boolean inspector) {
-    DiffChangeGroupLayout layout = new DiffChangeGroupLayout(myConflictChecker, (mine ? myMergeSession.getMyChangeSet() : myMergeSession.getRepositoryChangeSet()), (mine ? myMineEditor : myResultEditor), (mine ? myResultEditor : myRepositoryEditor), inspector);
+    DiffChangeGroupLayout layout = new DiffChangeGroupLayout(myConflictChecker, null, (mine ? myMergeSession.getMyChangeSet() : myMergeSession.getRepositoryChangeSet()), (mine ? myMineEditor : myResultEditor), (mine ? myResultEditor : myRepositoryEditor), null, inspector);
     MapSequence.fromMap(myDiffLayoutPart).put(layout, mine);
     return layout;
   }
@@ -244,7 +244,7 @@ public class MergeRootsPane {
     ChangeGroupLayout layout = createChangeGroupLayout(mine, inspector);
     ChangeGroupMessages.startMaintaining(layout);
     ListSequence.fromList(myChangeGroupLayouts).addElement(layout);
-    DiffEditorSeparator separator = new DiffEditorSeparator(ProjectHelper.getProjectRepository(myProject), layout, null);
+    DiffEditorSeparator separator = new DiffEditorSeparator(ProjectHelper.getProjectRepository(myProject), layout);
     JPanel panel = (inspector ? myBottomPanel : myTopPanel);
     GridBagConstraints gbc = new GridBagConstraints((mine ? 1 : 3), 0, 1, 1, 0, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(5, 0, 5, 0), 0, 0);
     panel.add(separator, gbc);
