@@ -28,8 +28,6 @@ import org.jetbrains.annotations.Nullable;
 import org.eclipse.jdt.internal.compiler.ast.TypeDeclaration;
 import org.eclipse.jdt.internal.compiler.ast.FieldDeclaration;
 import org.eclipse.jdt.internal.compiler.ast.AbstractMethodDeclaration;
-import org.eclipse.jdt.internal.compiler.ast.Argument;
-import org.eclipse.jdt.internal.compiler.ast.MethodDeclaration;
 import org.eclipse.jdt.internal.compiler.ast.Javadoc;
 import java.util.List;
 import java.util.Collections;
@@ -146,7 +144,7 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
       fieldName2Doc = new HashMap<String, String>();
       for (FieldDeclaration fd : typeDecl.fields) {
         String fieldDoc = javadocLinesAsString(fd.javadoc, contents);
-        if (fieldDoc != null) {
+        if (fieldDoc != null && fd.name != null) {
           fieldName2Doc.put(new String(fd.name), fieldDoc);
         }
       }
@@ -159,21 +157,8 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
         if (methodDoc == null) {
           continue;
         }
-        StringBuilder methodSig = new StringBuilder();
-        methodSig.append(md.selector);
-        methodSig.append('(');
-        if (md.arguments != null && md.arguments.length > 0) {
-          for (Argument a : md.arguments) {
-            methodSig.append(a.type.getLastToken());
-            methodSig.append(',');
-          }
-          methodSig.setLength(methodSig.length() - 1);
-        }
-        methodSig.append(')');
-        if (md.isMethod()) {
-          methodSig.append(':');
-          methodSig.append(((MethodDeclaration) md).returnType.getLastToken());
-        }
+        MethodSignature signature = MethodSignature.forMethod(md);
+        method2Doc.put(signature.getStringSignature(), methodDoc);
       }
     }
     // FIXME caller has to look into memberTypes if it needs to 

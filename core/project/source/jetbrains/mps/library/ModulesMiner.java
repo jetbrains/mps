@@ -44,6 +44,7 @@ import jetbrains.mps.util.io.ModelOutputStream;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.path.Path;
+import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -141,17 +142,25 @@ public final class ModulesMiner {
 
   private boolean trySourceModuleDescriptorsFromFile(IFile file) {
     assert !file.isDirectory();
-    if (isSourceModule(file)) {
-      ModuleDescriptor moduleDescriptor = loadSourceModuleDescriptor(file);
-      if (moduleDescriptor != null) {
-        processExcludes(file, moduleDescriptor);
-        fillOutcome(new ModuleHandle(file, moduleDescriptor), true);
-        return true; // unlike other tryXXX methods, here we make sure descriptor actually read
-        // because of .iml files (see DescriptorIOFacade) that are treated as solution module and thus break
-        // readModuleDescriptorsFromFolder assumption of a single descriptor per dir.
-      }
+    if (!isSourceModule(file)) {
+      return false;
     }
-    return false;
+
+    try {
+      ModuleDescriptor moduleDescriptor = loadSourceModuleDescriptor(file);
+      if (moduleDescriptor == null) {
+        return false;
+      }
+
+      processExcludes(file, moduleDescriptor);
+      fillOutcome(new ModuleHandle(file, moduleDescriptor), true);
+      return true; // unlike other tryXXX methods, here we make sure descriptor actually read
+      // because of .iml files (see DescriptorIOFacade) that are treated as solution module and thus break
+      // readModuleDescriptorsFromFolder assumption of a single descriptor per dir.
+    } catch (Exception e) {
+      LOG.error("Can't read module descriptor from " + file, e);
+      return false;
+    }
   }
 
   /**
@@ -238,12 +247,16 @@ public final class ModulesMiner {
    */
   private void readModuleDescriptorsFromJarFile(IFile jarFile) {
     assert IFileUtil.isJarFile(jarFile);
-    IFile jarFileRoot = IFileUtil.stepIntoJar(jarFile);
+    try {
+      IFile jarFileRoot = IFileUtil.stepIntoJar(jarFile);
 
-    if (tryModuleFromDeploymentDescriptor(jarFile, jarFileRoot.findChild(META_INF).findChild(MODULE_XML))) {
-      return;
+      if (tryModuleFromDeploymentDescriptor(jarFile, jarFileRoot.findChild(META_INF).findChild(MODULE_XML))) {
+        return;
+      }
+      tryReadFromModulesDir(jarFile, jarFileRoot.findChild(MODULES_DIR));
+    } catch (Exception e) {
+      LOG.error("Can't read modules in " + jarFile, e);
     }
-    tryReadFromModulesDir(jarFile, jarFileRoot.findChild(MODULES_DIR));
   }
 
   /**
@@ -257,17 +270,25 @@ public final class ModulesMiner {
    * @return true if module found under the {@code moduleHome}
    */
   private boolean tryModuleFromDeploymentDescriptor(IFile moduleHome, IFile moduleXml) {
-    if (moduleXml.exists() && !moduleXml.isDirectory()) {
-      ModuleDescriptor moduleDescriptor = loadDeploymentDescriptor(moduleHome, moduleXml);
-      if (moduleDescriptor != null) {
-        processExcludes(moduleXml, moduleDescriptor); // do I really need to exclude anything for DD? There's source module, indeed.
-        fillOutcome(new ModuleHandle(moduleXml, moduleDescriptor), false);
+    try {
+      if (!moduleXml.exists() || moduleXml.isDirectory()) {
+        return false;
       }
+
+      ModuleDescriptor moduleDescriptor = loadDeploymentDescriptor(moduleHome, moduleXml);
+      if (moduleDescriptor == null) {
+        return true;
+      }
+
+      processExcludes(moduleXml, moduleDescriptor); // do I really need to exclude anything for DD? There's source module, indeed.
+      fillOutcome(new ModuleHandle(moduleXml, moduleDescriptor), false);
       // even if we didn't succeed to read a module, presence of META-INF/module.xml prevents processing of any other possible
       // module location under moduleHome
       return true;
+    } catch (Exception e) {
+      LOG.error("Can't read module in " + moduleXml, e);
+      return false;
     }
-    return false;
   }
 
   /**
@@ -303,6 +324,7 @@ public final class ModulesMiner {
 
   /**
    * Read descriptor for a module bundled under bundleHome/.../moduleHomeDir, if any.
+   *
    * @return {@code true} if module descriptor found under bundle home
    */
   private boolean tryReadModuleDescriptorInModulesGroup(IFile bundleHome, IFile moduleHomeDir) {
