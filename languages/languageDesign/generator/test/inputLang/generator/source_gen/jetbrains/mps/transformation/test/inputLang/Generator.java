@@ -29,7 +29,7 @@ public class Generator extends TemplateModuleBase {
   @Override
   public Collection<TemplateModel> getModels() {
     if (models == null) {
-      models = new TemplateModel[9];
+      models = new TemplateModel[10];
       models[0] = new TemplateModelImpl(this);
       models[1] = new jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ReduceInheritors.TemplateModelImpl(this);
       models[2] = new jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments.TemplateModelImpl(this);
@@ -38,7 +38,8 @@ public class Generator extends TemplateModuleBase {
       models[5] = new jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_getPrevInput.TemplateModelImpl(this);
       models[6] = new jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceExpressionToStatement.TemplateModelImpl(this);
       models[7] = new jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceOneToMany.TemplateModelImpl(this);
-      models[8] = new jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild.TemplateModelImpl(this);
+      models[8] = new jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_sameInputTemplateRefs.TemplateModelImpl(this);
+      models[9] = new jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild.TemplateModelImpl(this);
     }
     return Arrays.asList(models);
   }
@@ -52,11 +53,12 @@ public class Generator extends TemplateModuleBase {
 
   @Override
   public Collection<SLanguage> getTargetLanguages() {
-    SLanguage[] rv = new SLanguage[4];
+    SLanguage[] rv = new SLanguage[5];
     rv[0] = MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
     rv[1] = MetaAdapterFactory.getLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
-    rv[2] = MetaAdapterFactory.getLanguage(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, "jetbrains.mps.transformation.test.inputLang");
-    rv[3] = MetaAdapterFactory.getLanguage(0x157a9668bf58417bL, 0x893e53d86388dc56L, "jetbrains.mps.transformation.test.outputLang");
+    rv[2] = MetaAdapterFactory.getLanguage(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, "jetbrains.mps.lang.text");
+    rv[3] = MetaAdapterFactory.getLanguage(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, "jetbrains.mps.transformation.test.inputLang");
+    rv[4] = MetaAdapterFactory.getLanguage(0x157a9668bf58417bL, 0x893e53d86388dc56L, "jetbrains.mps.transformation.test.outputLang");
     return Arrays.asList(rv);
   }
 

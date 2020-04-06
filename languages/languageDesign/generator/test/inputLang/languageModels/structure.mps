@@ -305,6 +305,11 @@
       <property role="1L1pqM" value="Expressions in ITemplateCall arguments" />
       <property role="3tVfz5" value="207553032706660027" />
     </node>
+    <node concept="25R33" id="4rGkRvYeTTz" role="25R1y">
+      <property role="3tVfz5" value="5110551451990204003" />
+      <property role="TrG5h" value="sameInputTemplateRef" />
+      <property role="1L1pqM" value="Multiple output nodes from template against single input" />
+    </node>
     <node concept="25R33" id="3Ftr4R6BFnm" role="25R1y">
       <property role="TrG5h" value="none" />
       <property role="3tVfz5" value="1202242822699" />

@@ -24,10 +24,11 @@ public class EnumerationDescriptor_UseInTest extends EnumerationDescriptorBase {
   private final EnumerationDescriptor.MemberDescriptor myMember_reduceOneToMany_0 = new EnumerationDescriptor.MemberDescriptor("reduceOneToMany", "reduceOneToMany", 0x4bddbad571550d6L, "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/4241665505353446867");
   private final EnumerationDescriptor.MemberDescriptor myMember_argsInTemplDeclRef_0 = new EnumerationDescriptor.MemberDescriptor("argsInTemplDeclRef", "argsInTemplDeclRef", 0x6809b95ff9d9a17eL, "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/4241665505353446868");
   private final EnumerationDescriptor.MemberDescriptor myMember_argsInTemplateCall_0 = new EnumerationDescriptor.MemberDescriptor("argsInTemplateCall", "Expressions in ITemplateCall arguments", 0x2e16062328916bbL, "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/4241665505353446869");
+  private final EnumerationDescriptor.MemberDescriptor myMember_sameInputTemplateRef_0 = new EnumerationDescriptor.MemberDescriptor("sameInputTemplateRef", "Multiple output nodes from template against single input", 0x46ec5377fe3b9e63L, "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/5110551451990204003");
   private final EnumerationDescriptor.MemberDescriptor myMember_none_0 = new EnumerationDescriptor.MemberDescriptor("none", "none", 0x117eb41a22bL, "r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/4241665505353446870");
 
-  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x117eb3f7611L, 0x117eb3f7612L, 0x117eb40957dL, 0x118e69bfe8dL, 0x11986c2f8ccL, 0x119a1fd77a4L, 0x11bc25b9884L, 0x4bddbad571550d6L, 0x6809b95ff9d9a17eL, 0x2e16062328916bbL, 0x117eb41a22bL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_test1_0, myMember_getPrevInputTest_0, myMember_reduceInheritors_0, myMember_reduceExpressionToStatement_0, myMember_dontApplyReductionTwice_0, myMember_weaveManyToSingularChild_0, myMember_reduceOneToMany_0, myMember_argsInTemplDeclRef_0, myMember_argsInTemplateCall_0, myMember_none_0);
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x117eb3f7611L, 0x117eb3f7612L, 0x117eb40957dL, 0x118e69bfe8dL, 0x11986c2f8ccL, 0x119a1fd77a4L, 0x11bc25b9884L, 0x4bddbad571550d6L, 0x6809b95ff9d9a17eL, 0x2e16062328916bbL, 0x46ec5377fe3b9e63L, 0x117eb41a22bL);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_test1_0, myMember_getPrevInputTest_0, myMember_reduceInheritors_0, myMember_reduceExpressionToStatement_0, myMember_dontApplyReductionTwice_0, myMember_weaveManyToSingularChild_0, myMember_reduceOneToMany_0, myMember_argsInTemplDeclRef_0, myMember_argsInTemplateCall_0, myMember_sameInputTemplateRef_0, myMember_none_0);
 
   @Nullable
   @Override
@@ -66,6 +67,8 @@ public class EnumerationDescriptor_UseInTest extends EnumerationDescriptorBase {
         return myMember_argsInTemplDeclRef_0;
       case "argsInTemplateCall":
         return myMember_argsInTemplateCall_0;
+      case "sameInputTemplateRef":
+        return myMember_sameInputTemplateRef_0;
       case "none":
         return myMember_none_0;
     }
