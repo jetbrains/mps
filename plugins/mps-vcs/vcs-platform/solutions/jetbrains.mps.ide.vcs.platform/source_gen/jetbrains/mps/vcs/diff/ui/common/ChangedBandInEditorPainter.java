@@ -6,8 +6,8 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.nodeEditor.AbstractAdditionalPainter;
 import java.awt.Graphics;
 import jetbrains.mps.nodeEditor.EditorComponent;
-import java.awt.Color;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.awt.Color;
 
 @GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/9069855453354398005", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class ChangedBandInEditorPainter extends AbstractAdditionalPainter<ChangeGroupLayout> {
@@ -43,7 +43,6 @@ public class ChangedBandInEditorPainter extends AbstractAdditionalPainter<Change
 
   @Override
   public void paintBackground(Graphics graphics, EditorComponent component) {
-    Color prevGroupColor = null;
     int prevGroupBottomLineY = -1;
     int x = 0;
     int width = component.getWidth();
@@ -51,15 +50,19 @@ public class ChangedBandInEditorPainter extends AbstractAdditionalPainter<Change
       Color color = ChangeColors.get(changeGroup.getChangeType());
       graphics.setColor(color);
       Bounds bounds = changeGroup.getBounds(myIsLeftEditor);
-      int y = (bounds.length() == 1 ? (int) bounds.start() - 1 : (int) bounds.start());
-      int height = (bounds.length() == 1 ? 2 : bounds.length());
-      // separate changes with the same color 
-      if (y == prevGroupBottomLineY && color.equals(prevGroupColor)) {
+      int y = (int) bounds.start();
+      int height = bounds.length();
+      // separate changes close to each other 
+      if (y == prevGroupBottomLineY) {
         y++;
         height--;
+      } else if (bounds.length() == 1) {
+        y--;
+      }
+      if (bounds.length() == 1) {
+        height = 2;
       }
       graphics.fillRect(x, y, width, height);
-      prevGroupColor = color;
       prevGroupBottomLineY = y + height;
     }
   }

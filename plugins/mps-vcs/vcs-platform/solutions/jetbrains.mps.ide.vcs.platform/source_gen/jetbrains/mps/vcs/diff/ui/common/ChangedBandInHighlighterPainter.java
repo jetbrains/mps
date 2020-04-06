@@ -40,22 +40,23 @@ public class ChangedBandInHighlighterPainter extends DiffFoldingAreaPainter {
     }
 
     myChangedAres = ListSequence.fromList(new ArrayList<ChangedArea>());
-
-    Color prevGroupColor = null;
     int prevGroupBottomLineY = -1;
     for (ChangeGroup changeGroup : ListSequence.fromList(getChangeGroupLayout().getChangeGroups())) {
       Color color = ChangeColors.get(changeGroup.getChangeType());
       Bounds bounds = changeGroup.getBounds(isHighlightLeft());
-      int y = (bounds.length() == 1 ? (int) bounds.start() - 1 : (int) bounds.start());
-      int height = (bounds.length() == 1 ? 2 : bounds.length());
-
-      // separate changes with the same color 
-      if (y == prevGroupBottomLineY && color.equals(prevGroupColor)) {
+      int y = (int) bounds.start();
+      int height = bounds.length();
+      // separate changes with close to each other 
+      if (y == prevGroupBottomLineY) {
         y++;
         height--;
+      } else if (bounds.length() == 1) {
+        y--;
+      }
+      if (bounds.length() == 1) {
+        height = 2;
       }
       ListSequence.fromList(myChangedAres).addElement(new ChangedArea(color, y, height));
-      prevGroupColor = color;
       prevGroupBottomLineY = y + height;
     }
   }
