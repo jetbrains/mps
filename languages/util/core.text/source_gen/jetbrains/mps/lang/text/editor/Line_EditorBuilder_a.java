@@ -150,8 +150,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return editorCell;
     }
     private int _StyleParameter_QueryFunction_78ent8_a0a1a(SNode prevNode, SNode nextNode) {
-      if (EditorSettings.getInstance().getFontSize() > 7) {
-        return EditorSettings.getInstance().getFontSize() - 7;
+      if (EditorSettings.getInstance().getFontSize() > 9) {
+        return EditorSettings.getInstance().getFontSize() - 9;
       } else {
         return EditorSettings.getInstance().getFontSize() / 2;
       }
