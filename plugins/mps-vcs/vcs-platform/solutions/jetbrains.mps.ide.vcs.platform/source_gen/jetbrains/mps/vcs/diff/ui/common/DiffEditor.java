@@ -34,6 +34,7 @@ import java.awt.event.MouseEvent;
 import jetbrains.mps.nodeEditor.commands.CommandContextWithVF;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import java.awt.Color;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import org.jetbrains.annotations.NonNls;
@@ -51,7 +52,7 @@ public class DiffEditor implements EditorMessageOwner {
   private InspectorEditorComponent myInspector;
   private Map<ModelChange, List<ChangeEditorMessage>> myChangeToMessages = MapSequence.fromMap(new HashMap<ModelChange, List<ChangeEditorMessage>>());
   private boolean myIsLeftEditor;
-  private ChangeGroupLayout[] myChangeGroupLayout = new ChangeGroupLayout[2];
+  private ChangeGroupLayout[] myChangeGroupLayouts = new ChangeGroupLayout[2];
 
 
 
@@ -82,7 +83,7 @@ public class DiffEditor implements EditorMessageOwner {
   }
 
   public void setChangeGroupLayout(ChangeGroupLayout changeGroupLayout, boolean inspector) {
-    myChangeGroupLayout[(inspector ? 1 : 0)] = changeGroupLayout;
+    myChangeGroupLayouts[(inspector ? 1 : 0)] = changeGroupLayout;
   }
 
   public void setTitle(String newTitle) {
@@ -206,10 +207,10 @@ public class DiffEditor implements EditorMessageOwner {
 
     @Override
     protected String getMessagesTextForArea(MouseEvent event) {
-      if (myChangeGroupLayout[1] == null) {
+      if (myChangeGroupLayouts[1] == null) {
         return null;
       }
-      return myChangeGroupLayout[1].getMessagesTextForArea(event, true, isLeftEditor());
+      return myChangeGroupLayouts[1].getMessagesTextForArea(event, true, isLeftEditor());
     }
   }
 
@@ -226,11 +227,39 @@ public class DiffEditor implements EditorMessageOwner {
 
     @Override
     protected String getMessagesTextForArea(MouseEvent event) {
-      if (myChangeGroupLayout[0] == null) {
+      if (myChangeGroupLayouts[0] == null) {
         return null;
       }
-      return myChangeGroupLayout[0].getMessagesTextForArea(event, false, isLeftEditor());
+      return myChangeGroupLayouts[0].getMessagesTextForArea(event, false, isLeftEditor());
     }
+
+
+    @Override
+    public List<EditorComponent.ColoredRange> getColoredRanges() {
+      List<EditorComponent.ColoredRange> areas = super.getColoredRanges();
+      int prevGroupBottomLineY = -1;
+      for (ChangeGroup changeGroup : ListSequence.fromList(myChangeGroupLayouts[0].getChangeGroups())) {
+        Color color = ChangeColors.get(changeGroup.getChangeType());
+        Bounds bounds = changeGroup.getBounds(myIsLeftEditor);
+        int y = (int) bounds.start();
+        int height = bounds.length();
+        // separate changes close to each other 
+        if (y == prevGroupBottomLineY) {
+          y++;
+          height--;
+        } else if (bounds.length() == 1) {
+          y--;
+        }
+        if (bounds.length() == 1) {
+          height = 2;
+        }
+        ListSequence.fromList(areas).addElement(new EditorComponent.ColoredRange(color, y, height));
+        prevGroupBottomLineY = y + height;
+      }
+
+      return areas;
+    }
+
 
 
     @Override

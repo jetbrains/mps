@@ -31,6 +31,7 @@ import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.tooltips.MPSToolTipManager;
 import jetbrains.mps.ide.tooltips.TooltipComponent;
 import jetbrains.mps.nodeEditor.EditorComponent;
+import jetbrains.mps.nodeEditor.EditorComponent.ColoredRange;
 import jetbrains.mps.nodeEditor.EditorMessageIconRenderer;
 import jetbrains.mps.nodeEditor.EditorMessageIconRenderer.IconRendererType;
 import jetbrains.mps.nodeEditor.EditorSettings;
@@ -267,29 +268,30 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
   @Override
   public void paintComponent(Graphics g) {
     Rectangle clipBounds = g.getClipBounds();
-    paintBackground(g, clipBounds);
-    paintFoldingLine(g, clipBounds);
+    paintBackgroundAndFoldingLine(g, clipBounds);
+    paintColoredAreas(g, clipBounds);
     paintTextColumns(g, clipBounds);
     paintIconRenderers(g, clipBounds);
     paintFoldingArea(g, clipBounds);
   }
 
-  private void paintBackground(Graphics g, Rectangle clipBounds) {
+  private void paintFoldingArea(Graphics g, Rectangle clipBounds) {
+    if (!hasIntersection(getFoldingAreaOffset(), getFoldingAreaWidth(), clipBounds)) {
+      return;
+    }
+    for (AbstractFoldingAreaPainter painter : myFoldingAreaPainters) {
+      painter.paint(g);
+    }
+  }
+
+  private void paintBackgroundAndFoldingLine(Graphics g, Rectangle clipBounds) {
     Graphics2D g2d = (Graphics2D) g;
-    // Strip to left of the folding line
     g.setColor(myRightToLeft ? getEditorComponent().getBackground() : getBackground());
     g.fillRect(clipBounds.x, clipBounds.y, Math.min(clipBounds.width, myFoldingLineX - clipBounds.x), clipBounds.height);
-    // Strip to the right of the folding line
     g.setColor(myRightToLeft ? getBackground() : getEditorComponent().getBackground());
     g.fillRect(Math.max(clipBounds.x, myFoldingLineX), clipBounds.y, clipBounds.width - Math.max(0, myFoldingLineX - clipBounds.x), clipBounds.height);
 
-    paintFoldingAreaBackGround(g, clipBounds);
-  }
-
-  private void paintFoldingLine(Graphics g, Rectangle clipBounds) {
-    Graphics2D g2d = (Graphics2D) g;
-
-    // same as in EditorComponent.paint() method
+    Color fgColor = EditorSettings.getInstance().getLeftHighlighterTearLineColor();
     EditorCell deepestCell = myEditorComponent.getDeepestSelectedCell();
     if (deepestCell instanceof EditorCell_Label) {
       int selectedCellY = deepestCell.getY();
@@ -298,43 +300,31 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
         g.setColor(EditorSettings.getInstance().getCaretRowColor());
         g.fillRect(clipBounds.x, selectedCellY, clipBounds.width, selectedCellHeight);
         // Drawing folding line
-        UIUtil.drawVDottedLine(g2d, myFoldingLineX, clipBounds.y, selectedCellY, getBackground(),
-                               EditorSettings.getInstance().getLeftHighlighterTearLineColor());
+
+        UIUtil.drawVDottedLine(g2d, myFoldingLineX, clipBounds.y, selectedCellY, getBackground(), fgColor);
         UIUtil.drawVDottedLine(g2d, myFoldingLineX, selectedCellY, selectedCellY + selectedCellHeight, EditorSettings.getInstance().getCaretRowColor(),
-                               EditorSettings.getInstance().getLeftHighlighterTearLineColor());
+                               fgColor);
         UIUtil.drawVDottedLine(g2d, myFoldingLineX, selectedCellY + selectedCellHeight, clipBounds.y + clipBounds.height, getBackground(),
-                               EditorSettings.getInstance().getLeftHighlighterTearLineColor());
+                               fgColor);
         return;
       }
     }
     // Drawing folding line
-    // COLORS: Remove hardcoded color
-    UIUtil.drawVDottedLine(g2d, myFoldingLineX, clipBounds.y, clipBounds.y + clipBounds.height, getBackground(), Color.gray);
+    UIUtil.drawVDottedLine(g2d, myFoldingLineX, clipBounds.y, clipBounds.y + clipBounds.height, getBackground(), fgColor);
   }
 
-  private void paintFoldingAreaBackGround(Graphics g, Rectangle clipBounds) {
-    if (!hasIntersection(getFoldingAreaOffset(), getFoldingAreaWidth(), clipBounds)) {
-      return;
-    }
-    for (AbstractFoldingAreaPainter painter : myFoldingAreaPainters) {
-      if (painter.isBackgroundPainter()) {
-        painter.paint(g);
+  private void paintColoredAreas(Graphics g, Rectangle clipBounds) {
+    Graphics2D g2d = (Graphics2D) g;
+
+    for (ColoredRange area : myEditorComponent.getColoredRanges()) {
+      if (g.hitClip(clipBounds.x, area.getPosition(), clipBounds.width, area.getHeight())) {
+        g.setColor(area.getColor());
+        g.fillRect(clipBounds.x, area.getPosition(), clipBounds.width, area.getHeight());
+        UIUtil.drawVDottedLine(g2d, myFoldingLineX, area.getPosition(), area.getPosition() + area.getHeight(), area.getColor(),
+                        EditorSettings.getInstance().getLeftHighlighterTearLineColor());
       }
     }
   }
-
-  private void paintFoldingArea(Graphics g, Rectangle clipBounds) {
-    if (!hasIntersection(getFoldingAreaOffset(), getFoldingAreaWidth(), clipBounds)) {
-      return;
-    }
-    for (AbstractFoldingAreaPainter painter : myFoldingAreaPainters) {
-      if (!painter.isBackgroundPainter()) {
-        painter.paint(g);
-      }
-    }
-  }
-
-
 
   private void paintIconRenderers(final Graphics g, Rectangle clipBounds) {
     if (!hasIntersection(getIconRenderersOffset(), myIconRenderersWidth, clipBounds)) {
@@ -396,20 +386,23 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
     if (myRightToLeft) {
       recalculateFoldingAreaWidth();
       updateSeparatorLinePosition();
-    } else {
-      recalculateTextColumnWidth();
-    }
-
-    if (updateFolding) {
-      for (AbstractFoldingAreaPainter painter : myFoldingAreaPainters) {
-        painter.relayout();
+      if (updateFolding) {
+        for (AbstractFoldingAreaPainter painter : myFoldingAreaPainters) {
+          painter.relayout();
+        }
+        // wee need to recalculateIconRenderersWidth only if one of collections was folded/unfolded
+        recalculateIconRenderersWidth();
       }
-      // wee need to recalculateIconRenderersWidth only if one of collections was folded/unfolded
-      recalculateIconRenderersWidth();
-    }
-    if (myRightToLeft) {
       recalculateTextColumnWidth();
     } else {
+      recalculateTextColumnWidth();
+      if (updateFolding) {
+        for (AbstractFoldingAreaPainter painter : myFoldingAreaPainters) {
+          painter.relayout();
+        }
+        // wee need to recalculateIconRenderersWidth only if one of collections was folded/unfolded
+        recalculateIconRenderersWidth();
+      }
       recalculateFoldingAreaWidth();
       updateSeparatorLinePosition();
     }

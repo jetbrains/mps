@@ -49,8 +49,6 @@ import javax.swing.JPanel;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
-import jetbrains.mps.vcs.diff.ui.common.ChangedBandInHighlighterPainter;
-import jetbrains.mps.vcs.diff.ui.common.ChangedBandInEditorPainter;
 import jetbrains.mps.smodel.SModelOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -288,18 +286,11 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
   }
 
   private void linkEditors(TwosideContentPanel panel, boolean inspector) {
-    // create change group builder, trapecium strip and merge buttons painter 
-    // 'mine' parameter means mine changeset, 'inspector' - highlight inspector editor component 
+
     DiffChangeGroupLayout layout = new DiffChangeGroupLayout(null, myProject.getRepository(), myChangeSet, myOldEditor, myNewEditor, panel.getSplitter(), inspector);
     ChangeGroupMessages.startMaintaining(layout);
     ListSequence.fromList(myChangeGroupLayouts).addElement(layout);
     panel.setPainter(new MyDividerPainter(layout));
-
-    ChangedBandInHighlighterPainter.addTo(myOldEditor, layout, inspector);
-    ChangedBandInHighlighterPainter.addTo(myNewEditor, layout, inspector);
-    ChangedBandInEditorPainter.addTo(myOldEditor, layout, inspector);
-    ChangedBandInEditorPainter.addTo(myNewEditor, layout, inspector);
-
     if (!(SModelOperations.isReadOnly(myChangeSet.getNewModel()))) {
       DiffButtonsPainter.addTo(this, myOldEditor, layout, inspector);
       DiffButtonsPainter.addTo(this, myNewEditor, layout, inspector);

@@ -425,16 +425,6 @@ __switch__:
   public interface ConflictChecker {
     boolean isChangeConflicted(ModelChange change);
   }
-
-  public void drawBandInEditor(Graphics graphics, EditorComponent editorComponent) {
-    graphics.setColor(getColor());
-    int x = 0;
-    int width = editorComponent.getWidth();
-    Bounds bounds = getBounds(editorComponent);
-    int y = (bounds.length() == 1 ? (int) bounds.start() - 1 : (int) bounds.start());
-    int height = (bounds.length() == 1 ? 2 : bounds.length());
-    graphics.fillRect(x, y, width, height);
-  }
   private static String check_myu41h_a0a0r(SProperty checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getName();

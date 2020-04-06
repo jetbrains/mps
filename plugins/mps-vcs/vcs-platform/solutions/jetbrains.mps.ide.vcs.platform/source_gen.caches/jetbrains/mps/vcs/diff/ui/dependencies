@@ -182,8 +182,6 @@
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangeGroup" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangeGroupLayout" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages" />
-    <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangedBandInEditorPainter" />
-    <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangedBandInHighlighterPainter" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.DiffEditor" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.DiffEditorsGroup" />

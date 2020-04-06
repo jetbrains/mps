@@ -58,7 +58,7 @@ public class ModelDifferenceViewer implements DataProvider {
 
   private ModelDifferenceTree myTree = null;
   private JPanel myComponent = new JPanel(new BorderLayout());
-  private JBSplitter myPanel = new JBSplitter(false, 0.20f);
+  private JBSplitter myPanel = new JBSplitter(true, 0.25f);
   private RootDifferencePane myRootDifferencePane = null;
   private final JComponent myNoRootPanel = new JLabel("Select root to show", SwingConstants.CENTER);
 

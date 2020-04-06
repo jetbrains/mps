@@ -36,7 +36,6 @@ import com.intellij.openapi.actionSystem.Separator;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.colors.EditorColors;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.openapi.editor.impl.LeftHandScrollbarLayout;
 import com.intellij.openapi.keymap.KeymapManager;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
@@ -873,10 +872,10 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
         }
         String messages = null;
         // messages from cells have higher priority than messages from areas.
-        if (cell != null){
+        if (cell != null) {
           messages = getMessagesTextFor(cell);
         }
-        if (messages == null){
+        if (messages == null) {
           messages = getMessagesTextForArea(event);
         }
         rv.set(messages);
@@ -2115,7 +2114,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     jetbrains.mps.openapi.editor.cells.EditorCell deepestCell = getDeepestSelectedCell();
     if (deepestCell instanceof EditorCell_Label && ((EditorCell) deepestCell).isInClipRegion(g)) {
       EditorCell_Label label = (EditorCell_Label) deepestCell;
-
       g.setColor(setting.getCaretRowColor());
       g.fillRect(0, deepestCell.getY(), getWidth(),
                  deepestCell.getHeight() - deepestCell.getTopInset() - deepestCell.getBottomInset());
@@ -2125,7 +2123,13 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
                  deepestCell.getY(),
                  deepestCell.getWidth() - label.getLeftInset() - label.getRightInset(),
                  deepestCell.getHeight() - deepestCell.getTopInset() - deepestCell.getBottomInset());
+    }
 
+    for (ColoredRange area : getColoredRanges()) {
+      if (g.hitClip(0, area.getPosition(), getWidth(), area.getHeight())) {
+        g.setColor(area.getColor());
+        g.fillRect(0, area.getPosition(), getWidth(), area.getHeight());
+      }
     }
 
     List<AdditionalPainter> additionalPainters = getAdditionalPainters();
@@ -3045,6 +3049,34 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       incrButtonField.setAccessible(true);
     } catch (NoSuchFieldException e) {
       throw new IllegalStateException(e);
+    }
+  }
+
+  public List<ColoredRange> getColoredRanges() {
+    return new ArrayList<>();
+  }
+
+  public class ColoredRange {
+    private final Color myColor;
+    private final int position;
+    private final int height;
+
+    public ColoredRange(Color color, int position, int height) {
+      myColor = color;
+      this.position = position;
+      this.height = height;
+    }
+
+    public Color getColor() {
+      return myColor;
+    }
+
+    public int getPosition() {
+      return position;
+    }
+
+    public int getHeight() {
+      return height;
     }
   }
 
