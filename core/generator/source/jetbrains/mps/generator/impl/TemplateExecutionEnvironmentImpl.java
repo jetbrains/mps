@@ -384,7 +384,7 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
     TraceFacility traceSession = generator.getTraceSession();
     try {
       for (TemplateReductionRule rule : conceptRules) {
-        RuleTrace2 ruleTrace2 = traceSession != null ? traceSession.reductionRule(rule) : null;
+        RuleTrace2 ruleTrace2 = traceSession != null ? traceSession.rule(rule) : null;
         reductionRule = rule;
         final boolean reductionBlocked = myReductionTrack.isReductionBlocked(inputNode, rule);
         if (ruleTrace2 != null) {

@@ -15,7 +15,9 @@
  */
 package jetbrains.mps.generator.trace;
 
+import jetbrains.mps.generator.runtime.TemplateCreateRootRule;
 import jetbrains.mps.generator.runtime.TemplateReductionRule;
+import jetbrains.mps.generator.runtime.TemplateRootMappingRule;
 
 import java.util.Collection;
 import java.util.List;
@@ -49,11 +51,21 @@ public final class TraceFacility {
     return new RuleTrace(interestedInTheRule, reductionRule);
   }
 
-  public RuleTrace2 reductionRule(TemplateReductionRule reductionRule) {
+  public RuleTrace2 rule(TemplateReductionRule reductionRule) {
     // may want to cache RT2 instances per RR if single thread or RT2 made thread-aware
     final RuleTrace2 rv = new RuleTrace2(myActiveClients, reductionRule);
     rv.reached();
     return rv;
+  }
+
+  public RuleTrace2 rule(TemplateCreateRootRule rule) {
+    final RuleTrace2 rv = new RuleTrace2(myActiveClients, rule);
+    rv.reached();
+    return rv;
+  }
+
+  public RuleTrace2 rule(TemplateRootMappingRule rule) {
+    return new RuleTrace2(myActiveClients, rule);
   }
 
   // pair of methods to manage/tell the state of this session, for client read thread to figure out there would be no more datagrams
