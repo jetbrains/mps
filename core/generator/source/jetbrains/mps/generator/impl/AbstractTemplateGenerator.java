@@ -130,9 +130,9 @@ public abstract class AbstractTemplateGenerator implements ITemplateGenerator {
   }
 
   public void addOutputNodeByInputAndTemplateNode(TemplateContext templateContext, String templateNodeId, SNode outputNode) {
-    // in fact, no apprent reason not to use addOutputNodeForContext, as this method is in use from weaving rule, which is applied with fresh TC anyway
+    // in fact, no apparent reason not to use addOutputNodeForContext, as this method is in use from weaving rule, which is applied with fresh TC anyway
     // and hence empty history
-    myMappings.addOutputNodeByInputAndTemplateNode(templateContext, templateNodeId, outputNode);
+    myMappings.addOutputNodeForContext(templateContext, templateNodeId, outputNode);
   }
 
   void nodeCopied(TemplateContext context, SNode outputNode, String templateNodeId) {
