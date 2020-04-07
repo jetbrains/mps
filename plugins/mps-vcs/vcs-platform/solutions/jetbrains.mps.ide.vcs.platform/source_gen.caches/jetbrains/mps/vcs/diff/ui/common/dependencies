@@ -58,7 +58,6 @@
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage">
-    <classNode dependClassName="com.intellij.ui.ColorUtil" />
     <classNode dependClassName="java.awt.Color" />
     <classNode dependClassName="java.awt.Graphics" />
     <classNode dependClassName="java.awt.Rectangle" />
@@ -256,6 +255,7 @@
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.HashMap" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Map" />

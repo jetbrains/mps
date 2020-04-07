@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor;
 
+import com.intellij.diff.util.TextDiffTypeFactory;
 import com.intellij.ide.BrowserUtil;
 import com.intellij.ide.CopyProvider;
 import com.intellij.ide.CutProvider;
@@ -2127,7 +2128,8 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
     for (ColoredRange area : getColoredRanges()) {
       if (g.hitClip(0, area.getPosition(), getWidth(), area.getHeight())) {
-        g.setColor(area.getColor());
+        Color color = TextDiffTypeFactory.getMiddleColor(area.getColor(), getBackground());
+        g.setColor(color);
         g.fillRect(0, area.getPosition(), getWidth(), area.getHeight());
       }
     }
@@ -3056,7 +3058,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return new ArrayList<>();
   }
 
-  public class ColoredRange {
+  public static class ColoredRange {
     private final Color myColor;
     private final int position;
     private final int height;

@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.leftHighlighter;
 
+import com.intellij.diff.util.TextDiffTypeFactory;
 import com.intellij.ide.DataManager;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
@@ -319,9 +320,15 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
     for (ColoredRange area : myEditorComponent.getColoredRanges()) {
       if (g.hitClip(clipBounds.x, area.getPosition(), clipBounds.width, area.getHeight())) {
         g.setColor(area.getColor());
-        g.fillRect(clipBounds.x, area.getPosition(), clipBounds.width, area.getHeight());
+        g.fillRect(myRightToLeft ? myFoldingLineX : clipBounds.x, area.getPosition(), myRightToLeft ? clipBounds.width - myFoldingLineX : myFoldingLineX,
+                   area.getHeight());
+        Color mixedColor = TextDiffTypeFactory.getMiddleColor(area.getColor(), getEditorComponent().getBackground());
+        g.setColor(mixedColor);
+        g.fillRect(myRightToLeft ? 0 : myFoldingLineX, area.getPosition(), myRightToLeft ? myFoldingLineX : clipBounds.width - myFoldingLineX,
+                   area.getHeight());
+
         UIUtil.drawVDottedLine(g2d, myFoldingLineX, area.getPosition(), area.getPosition() + area.getHeight(), area.getColor(),
-                        EditorSettings.getInstance().getLeftHighlighterTearLineColor());
+                               EditorSettings.getInstance().getLeftHighlighterTearLineColor());
       }
     }
   }

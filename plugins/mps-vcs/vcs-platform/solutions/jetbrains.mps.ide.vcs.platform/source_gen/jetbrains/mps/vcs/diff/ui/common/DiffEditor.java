@@ -26,6 +26,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import java.awt.Color;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.nodeEditor.configuration.EditorConfiguration;
 import javax.swing.JScrollPane;
@@ -34,7 +36,6 @@ import java.awt.event.MouseEvent;
 import jetbrains.mps.nodeEditor.commands.CommandContextWithVF;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
-import java.awt.Color;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import org.jetbrains.annotations.NonNls;
@@ -194,6 +195,34 @@ public class DiffEditor implements EditorMessageOwner {
     return Sequence.fromArray(new EditorComponent[]{myMainEditorComponent, myInspector});
   }
 
+  public ChangeGroupLayout getChangeGroupLayout(boolean inspector) {
+    return myChangeGroupLayouts[(inspector ? 1 : 0)];
+  }
+
+  public List<EditorComponent.ColoredRange> getColoredGroupBounds(boolean inspector) {
+    List<EditorComponent.ColoredRange> areas = ListSequence.fromList(new ArrayList<EditorComponent.ColoredRange>());
+    int prevGroupBottomLineY = -1;
+    for (ChangeGroup changeGroup : ListSequence.fromList(getChangeGroupLayout(inspector).getChangeGroups())) {
+      Color color = ChangeColors.get(changeGroup.getChangeType());
+      Bounds bounds = changeGroup.getBounds(myIsLeftEditor);
+      int y = (int) bounds.start();
+      int height = bounds.length();
+      // separate changes close to each other 
+      if (y == prevGroupBottomLineY) {
+        y++;
+        height--;
+      } else if (bounds.length() == 1) {
+        y--;
+      }
+      if (bounds.length() == 1) {
+        height = 2;
+      }
+      ListSequence.fromList(areas).addElement(new EditorComponent.ColoredRange(color, y, height));
+      prevGroupBottomLineY = y + height;
+    }
+    return areas;
+  }
+
   public class MyInspectorEditorComponent extends InspectorEditorComponent {
 
     public MyInspectorEditorComponent(@NotNull SRepository repository, @NotNull EditorConfiguration configuration) {
@@ -207,11 +236,19 @@ public class DiffEditor implements EditorMessageOwner {
 
     @Override
     protected String getMessagesTextForArea(MouseEvent event) {
-      if (myChangeGroupLayouts[1] == null) {
+      if (getChangeGroupLayout(true) == null) {
         return null;
       }
-      return myChangeGroupLayouts[1].getMessagesTextForArea(event, true, isLeftEditor());
+      return getChangeGroupLayout(true).getMessagesTextForArea(event, true, isLeftEditor());
     }
+
+    @Override
+    public List<EditorComponent.ColoredRange> getColoredRanges() {
+      List<EditorComponent.ColoredRange> areas = super.getColoredRanges();
+      ListSequence.fromList(areas).addSequence(ListSequence.fromList(getColoredGroupBounds(true)));
+      return areas;
+    }
+
   }
 
   public class MainEditorComponent extends EditorComponent {
@@ -224,43 +261,20 @@ public class DiffEditor implements EditorMessageOwner {
       setDefaultPopupGroupId(((String) BHReflection.invoke0(SNodeOperations.getNode("r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)", "426251916200108583"), CONCEPTS.ActionGroupDeclaration$YL, SMethodTrimmedId.create("getGeneratedClassFQName", CONCEPTS.ActionGroupDeclaration$YL, "hEwJa8g"))));
     }
 
-
     @Override
     protected String getMessagesTextForArea(MouseEvent event) {
-      if (myChangeGroupLayouts[0] == null) {
+      if (getChangeGroupLayout(false) == null) {
         return null;
       }
-      return myChangeGroupLayouts[0].getMessagesTextForArea(event, false, isLeftEditor());
+      return getChangeGroupLayout(false).getMessagesTextForArea(event, false, isLeftEditor());
     }
-
 
     @Override
     public List<EditorComponent.ColoredRange> getColoredRanges() {
       List<EditorComponent.ColoredRange> areas = super.getColoredRanges();
-      int prevGroupBottomLineY = -1;
-      for (ChangeGroup changeGroup : ListSequence.fromList(myChangeGroupLayouts[0].getChangeGroups())) {
-        Color color = ChangeColors.get(changeGroup.getChangeType());
-        Bounds bounds = changeGroup.getBounds(myIsLeftEditor);
-        int y = (int) bounds.start();
-        int height = bounds.length();
-        // separate changes close to each other 
-        if (y == prevGroupBottomLineY) {
-          y++;
-          height--;
-        } else if (bounds.length() == 1) {
-          y--;
-        }
-        if (bounds.length() == 1) {
-          height = 2;
-        }
-        ListSequence.fromList(areas).addElement(new EditorComponent.ColoredRange(color, y, height));
-        prevGroupBottomLineY = y + height;
-      }
-
+      ListSequence.fromList(areas).addSequence(ListSequence.fromList(getColoredGroupBounds(false)));
       return areas;
     }
-
-
 
     @Override
     protected JScrollPane createScrollPane() {

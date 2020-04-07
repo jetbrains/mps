@@ -5040,6 +5040,13 @@
           <ref role="3uigEE" to="hdhb:5zpsdFy5n9A" resolve="DiffChangeGroupLayout" />
         </node>
       </node>
+      <node concept="2tJIrI" id="5sKmqs1BKck" role="jymVt" />
+      <node concept="312cEg" id="5sKmqs1BNks" role="jymVt">
+        <property role="TrG5h" value="myInspector" />
+        <property role="3TUv4t" value="true" />
+        <node concept="3Tm6S6" id="5sKmqs1BLRx" role="1B3o_S" />
+        <node concept="10P_77" id="5sKmqs1BNaN" role="1tU5fm" />
+      </node>
       <node concept="2tJIrI" id="5c$TSd$Qx5L" role="jymVt" />
       <node concept="3clFbW" id="5c$TSd$Q$gu" role="jymVt">
         <node concept="3cqZAl" id="5c$TSd$Q$gv" role="3clF45" />
@@ -5054,6 +5061,16 @@
               </node>
             </node>
           </node>
+          <node concept="3clFbF" id="5sKmqs1BO8B" role="3cqZAp">
+            <node concept="37vLTI" id="5sKmqs1BO8C" role="3clFbG">
+              <node concept="37vLTw" id="5sKmqs1BV8X" role="37vLTx">
+                <ref role="3cqZAo" node="5sKmqs1BI1P" resolve="inspector" />
+              </node>
+              <node concept="37vLTw" id="5sKmqs1BSDD" role="37vLTJ">
+                <ref role="3cqZAo" node="5sKmqs1BNks" resolve="myInspector" />
+              </node>
+            </node>
+          </node>
         </node>
         <node concept="3Tm1VV" id="5c$TSd$QyUi" role="1B3o_S" />
         <node concept="37vLTG" id="5c$TSd$Q_Ks" role="3clF46">
@@ -5061,6 +5078,10 @@
           <node concept="3uibUv" id="5c$TSd$Q_Kr" role="1tU5fm">
             <ref role="3uigEE" to="hdhb:5zpsdFy5n9A" resolve="DiffChangeGroupLayout" />
           </node>
+        </node>
+        <node concept="37vLTG" id="5sKmqs1BI1P" role="3clF46">
+          <property role="TrG5h" value="inspector" />
+          <node concept="10P_77" id="5sKmqs1BIWO" role="1tU5fm" />
         </node>
       </node>
       <node concept="2tJIrI" id="5c$TSd$Qxsh" role="jymVt" />
@@ -5113,8 +5134,11 @@
                   <node concept="37vLTw" id="2RS8k$i2xIF" role="2Oq$k0">
                     <ref role="3cqZAo" node="7DvDtqax92K" resolve="myOldEditor" />
                   </node>
-                  <node concept="liA8E" id="2RS8k$i2zdY" role="2OqNvi">
-                    <ref role="37wK5l" to="hdhb:42hl10VHa_U" resolve="getTopComponent" />
+                  <node concept="liA8E" id="5sKmqs1BHgN" role="2OqNvi">
+                    <ref role="37wK5l" to="hdhb:4FJKT$Leixn" resolve="getComponent" />
+                    <node concept="37vLTw" id="5sKmqs1BWRE" role="37wK5m">
+                      <ref role="3cqZAo" node="5sKmqs1BNks" resolve="myInspector" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -6254,6 +6278,9 @@
                   <ref role="37wK5l" node="5c$TSd$Q$gu" resolve="RootDifferencePane.MyDividerPainter" />
                   <node concept="37vLTw" id="5c$TSd$QGd3" role="37wK5m">
                     <ref role="3cqZAo" node="7DvDtq9OdRl" resolve="layout" />
+                  </node>
+                  <node concept="37vLTw" id="5sKmqs1BY8M" role="37wK5m">
+                    <ref role="3cqZAo" node="7DvDtq9OdSA" resolve="inspector" />
                   </node>
                 </node>
               </node>

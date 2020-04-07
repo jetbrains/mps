@@ -19,7 +19,6 @@ import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import java.awt.Graphics;
 import jetbrains.mps.nodeEditor.EditorComponent;
-import com.intellij.ui.ColorUtil;
 import jetbrains.mps.errors.messageTargets.DeletedNodeMessageTarget;
 import java.awt.Rectangle;
 import jetbrains.mps.nodeEditor.cells.GeometryUtil;
@@ -107,7 +106,7 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
       return;
     }
     if (isDirectCell(cell)) {
-      ((jetbrains.mps.nodeEditor.cells.EditorCell) cell).paintSelection(graphics, ColorUtil.darker(getColor(), 1), false);
+      ((jetbrains.mps.nodeEditor.cells.EditorCell) cell).paintSelection(graphics, getColor(), false);
       repaintConflictedMessages(graphics, cell);
     } else {
       if (myMessageTarget instanceof DeletedNodeMessageTarget) {

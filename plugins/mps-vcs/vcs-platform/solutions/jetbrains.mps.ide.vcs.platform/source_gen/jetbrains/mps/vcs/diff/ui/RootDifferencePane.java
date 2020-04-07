@@ -164,13 +164,16 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
 
     private final DiffChangeGroupLayout myLayout;
 
-    public MyDividerPainter(DiffChangeGroupLayout layout) {
+    private final boolean myInspector;
+
+    public MyDividerPainter(DiffChangeGroupLayout layout, boolean inspector) {
       myLayout = layout;
+      myInspector = inspector;
     }
 
     @Override
     public void paint(@NotNull Graphics g, @NotNull JComponent divider) {
-      Graphics2D gg = DiffDividerDrawUtil.getDividerGraphics(g, divider, myOldEditor.getTopComponent());
+      Graphics2D gg = DiffDividerDrawUtil.getDividerGraphics(g, divider, myOldEditor.getComponent(myInspector));
 
       gg.setColor(DiffDrawUtil.getDividerColor());
       gg.fill(gg.getClipBounds());
@@ -290,7 +293,7 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
     DiffChangeGroupLayout layout = new DiffChangeGroupLayout(null, myProject.getRepository(), myChangeSet, myOldEditor, myNewEditor, panel.getSplitter(), inspector);
     ChangeGroupMessages.startMaintaining(layout);
     ListSequence.fromList(myChangeGroupLayouts).addElement(layout);
-    panel.setPainter(new MyDividerPainter(layout));
+    panel.setPainter(new MyDividerPainter(layout, inspector));
     if (!(SModelOperations.isReadOnly(myChangeSet.getNewModel()))) {
       DiffButtonsPainter.addTo(this, myOldEditor, layout, inspector);
       DiffButtonsPainter.addTo(this, myNewEditor, layout, inspector);

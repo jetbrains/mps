@@ -197,7 +197,4 @@ public class DiffChangeGroupLayout extends ChangeGroupLayout {
     return null;
   }
 
-
-
-
 }
