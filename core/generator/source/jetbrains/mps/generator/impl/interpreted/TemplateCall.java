@@ -88,7 +88,7 @@ public class TemplateCall {
   @NotNull
   public TemplateContext prepareCallContext(@NotNull TemplateContext outerContext) throws GenerationFailureException {
     if (myNoArgs) {
-      return outerContext.asTopContext();
+      return outerContext.withNewExecutionPath();
     }
     final Map<String, Object> vars = new HashMap<>(myArguments.length * 2);
     for (int i = 0; i < myArguments.length; i++) {
@@ -96,7 +96,7 @@ public class TemplateCall {
       vars.put(myParameters[i], value);
     }
     // variables drop mapping label, hence need to reinstall it
-    return outerContext.asTopContext().subContext(vars).subContext(outerContext.getInputName());
+    return outerContext.withNewExecutionPath().subContext(vars).subContext(outerContext.getInputName());
   }
 
   private static ArgumentExpression[] toExpressionRuntime(List<SNode> args) {

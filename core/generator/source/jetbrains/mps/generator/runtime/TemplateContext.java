@@ -45,7 +45,7 @@ public interface TemplateContext {
   /**
    * EXPERIMENTAL API, DON'T USE OUTSIDE OF GENERATOR INTERNALS
    */
-  TemplateContext asTopContext();
+  TemplateContext withNewExecutionPath();
 
   SNode getInput();
 

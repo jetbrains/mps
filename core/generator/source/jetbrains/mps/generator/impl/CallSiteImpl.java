@@ -48,7 +48,7 @@ final class CallSiteImpl implements TemplateCallSite {
   @Override
   public Collection<SNode> apply(@NotNull TemplateContext context) throws GenerationException {
     final ArrayList<SNode> rv = new ArrayList<>();
-    myTemplateDeclaration.apply(context.asTopContext(), new CollectorSink(rv));
+    myTemplateDeclaration.apply(context.withNewExecutionPath(), new CollectorSink(rv));
     final SNode input = context.getInput();
     // create root rule doesn't have an input, yet it's a regular call site
     myEnvironment.getTrace().trace(input == null ? null : input.getNodeId(), GenerationTracerUtil.translateOutput(rv), myCallSite);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,9 +58,6 @@ public final class GeneratorMappings {
   /* input -> output */
   private final ConcurrentMap<SNode, Object> myCopiedOutputNodeForInputNode = new ConcurrentHashMap<>();
 
-  /* new style map: Object means multiple nodes for the template */
-  private final ConcurrentMap<String, Object> myTemplateNodeIdToOutputNodeMap = new ConcurrentHashMap<>();
-
   /* templateId -> [input -> output,generation] */
   private final ConcurrentMap<String, NodeTagCabinet> myTemplateNodeIdAndInputNodeToOutputNodeMap = new ConcurrentHashMap<>();
 
@@ -75,19 +72,6 @@ public final class GeneratorMappings {
   }
 
   // add methods
-
-  /*
-   recording output node for a template node traces back to 2007's RuleUtil (c2ebb2dbd9eb3b2607006768c84d3921b02fd7c5), with vague 'fixing some problems"
-   I see no reason to perform this mapping in case we do have input node, the only scenario (and the reason I left the code but not wiped it) is when a
-   new root is created (think QueriesGenerated) and referenced directly from templates. MPS+mbeddr are fine without this, this make me think there's
-   another mechanism that helps to address CreateRoot scenario (I highly doubt we use MLs in all such cases). Unless I know how does template references
-   to newly created roots get resolved, I prefer to keep this method and myTemplateNodeIdToOutputNodeMap here
-   */
-  void addOutputNodeByTemplateNode(String templateNodeId, @NotNull SNode outputNode) {
-    if (myTemplateNodeIdToOutputNodeMap.putIfAbsent(templateNodeId, outputNode) != null) {
-      myTemplateNodeIdToOutputNodeMap.put(templateNodeId, this);
-    }
-  }
 
   void addOutputNodeByInputNodeAndMappingName(SNode inputNode, String mappingName, SNode outputNode) {
     if (mappingName == null) {
@@ -167,30 +151,30 @@ public final class GeneratorMappings {
     // todo: combination of (templateN, inputN) -> outputN
     // todo: is not unique
     // todo: generator should report error on attempt to obtain not unique output-node
+    final NodeTagCabinet templateRecords = recordsOf(templateNodeId);
+    final int tag = templateContext.executionPathIdentity();
     if (templateContext.getInput() == null) {
-      // FIXME though everything seems to work without recording output nodes when input == null,
-      //       i decided to keep it here to get back to the question how come it works e.g. in a structure aspect, where ConceptPresentation
-      //       references LanguageSwitch class (from another create root rule) and get the reference resolved
-      addOutputNodeByTemplateNode(templateNodeId, outputNode);
+      // see addOutputNodeByTemplateNode() comment, below, for reasons we have to handle null input scenario
+      templateRecords.withoutInput(tag, outputNode);
       return;
     }
-    final int tag = templateContext.executionPathIdentity();
-    final NodeTagCabinet templateRecords = recordsOf(templateNodeId);
     // == addOutputNodeByInputAndTemplateNode(templateContext, templateNodeId, outputNode);
     templateRecords.put(templateContext.getInput(), tag, outputNode);
     // ~38 cases in MPS itself when it's important, mostly for tests
     for (SNode historyInputNode : templateContext.getInputHistory()) {
       templateRecords.putIfAbsent(historyInputNode, tag, outputNode);
     }
+      /*
+       recording output node for a template node traces back to 2007's RuleUtil (c2ebb2dbd9eb3b2607006768c84d3921b02fd7c5), with vague 'fixing some problems"
+       I see no reason to perform this mapping in case we do have input node, the only scenario is when a
+       new root is created (think QueriesGenerated or LanguageConceptSwitch) and referenced directly from templates.
+       MPS+mbeddr are fine without this; in this case the mechanism that helps to address CreateRoot scenario is dynamic references and proper resolve info
+       (we don't use MLs in all such cases). However, I prefer static references, therefore I handle null input scenario, above.
+       */
 //    addOutputNodeByTemplateNode(templateNodeId, outputNode);
   }
 
   // find methods
-
-  public SNode findOutputNodeByTemplateNodeUnique(String templateNode) {
-    Object o = myTemplateNodeIdToOutputNodeMap.get(templateNode);
-    return o instanceof SNode ? (SNode) o : null;
-  }
 
   public SNode findOutputNodeByInputNodeAndMappingName(@Nullable SNode inputNode, @Nullable String mappingName) {
     if (mappingName == null) {
@@ -245,12 +229,35 @@ public final class GeneratorMappings {
     return null;
   }
 
-  public SNode findOutputNodeByInputAndTemplateNode(SNode inputNode, final int execPathId, String templateNodeId) {
-    if (inputNode == null) {
-      // this case is handled by findOutputNodeByTemplateNodeUnique()
-      return null;
+
+  @Nullable
+  public SNode findOutputForTemplate(String templateNodeId, TemplateContext templateContext) {
+    final NodeTagCabinet l = recordsOf(templateNodeId);
+    // try to find for the same inputNode
+    final int tag = templateContext.executionPathIdentity();
+    // tc.input == null is ok, we do record 'unique' output for a template node in this case, see #addOutputNodeForContext(), above
+    SNode outputTargetNode = l.get(templateContext.getInput(), tag);
+    // Here comes a change compared to old GM/RI_Template behavior:
+    // Prior to the change, if template has been applied exactly once, then we had unique output node for each template node
+    //  (I've changed that to no-input scenario only, as it doesn't make sense to record both input and input-less mapping)
+    // The key was Pair(templateId, inputNode), and with no-input scenario it's basically templateId only.
+    // Now, with the change of executionPathIdentity, NodeTagCabinet.get() takes the tag into account, therefore same templates applied in different
+    // 'execution paths' are now 'unique', too. As they would have been non-unique before and not resolve then, I don't expect this to break anything,
+    // however, that may give too much freedom for a template author I don't really like to provide, hence this heads up.
+    if (outputTargetNode != null) {
+      return outputTargetNode;
     }
-    return recordsOf(templateNodeId).get(inputNode, execPathId);
+
+    // try to find for indirect input nodes
+    // FIXME likely, templateContext.getInput() we've checked already above, would come here again. check what's the contract of getInputHistory!
+    for (SNode historyInputNode : templateContext.getInputHistory()) {
+      outputTargetNode = l.get(historyInputNode, tag);
+      if (outputTargetNode != null) {
+        return outputTargetNode;
+      }
+    }
+
+    return null;
   }
 
   public boolean isInputNodeHasUniqueCopiedOutputNode(SNode inputNode) {
@@ -437,6 +444,7 @@ public final class GeneratorMappings {
   // FIXME in fact, seems more fruitful to keep thread-local instances, don't bother with synchronize, and merge them before references get resolved
   private static class NodeTagCabinet {
     private final ConcurrentMap<SNode, TagNodeList> myMap = new ConcurrentHashMap<>();
+    private final TagNodeList myNoInput = new TagNodeList(null);
 
     void put(final SNode key, final int tag, final SNode value) {
       myMap.computeIfAbsent(key, TagNodeList::new).add(value, tag);
@@ -446,12 +454,17 @@ public final class GeneratorMappings {
       myMap.computeIfAbsent(key, TagNodeList::new).addIfNewTag(value, tag);
     }
 
+    void withoutInput(final int tag, final SNode value) {
+      myNoInput.add(value, tag);
+    }
+
     @Nullable
-    public SNode get(SNode key, int tag) {
-      final TagNodeList l = myMap.get(key);
+    SNode get(SNode key, int tag) {
+      final TagNodeList l = key == null ? myNoInput : myMap.get(key);
       if (l == null) {
         return null;
       }
+
       if (l.size() == 1) {
         return l.first();
       }

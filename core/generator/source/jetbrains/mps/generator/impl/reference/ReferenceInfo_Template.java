@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.generator.impl.reference;
 
+import jetbrains.mps.generator.impl.GeneratorMappings;
 import jetbrains.mps.generator.impl.GeneratorUtil;
 import jetbrains.mps.generator.impl.TemplateGenerator;
 import jetbrains.mps.generator.runtime.TemplateContext;
@@ -63,29 +64,14 @@ public class ReferenceInfo_Template extends ReferenceInfo {
 
   private SNode doResolve_Straightforward(PostponedReference ref) {
     final TemplateGenerator generator = ref.getGenerator();
-    // try to find for the same inputNode
-    SNode outputTargetNode = generator.findOutputNodeByInputAndTemplateNode(myContext.getInput(), myContext.executionPathIdentity(), myTemplateTargetNode);
+    final GeneratorMappings mappings = generator.getMappings();
+
+    SNode outputTargetNode = mappings.findOutputForTemplate(myTemplateTargetNode, myContext);
     if (outputTargetNode != null) {
       checkCrossRootTemplateReference(outputTargetNode, ref);
       return outputTargetNode;
     }
 
-    // if template has been applied exactly once, then we have unique output node for each template node
-    outputTargetNode = generator.findOutputNodeByTemplateNodeUnique(myTemplateTargetNode);
-    if (outputTargetNode != null) {
-      checkCrossRootTemplateReference(outputTargetNode, ref);
-      return outputTargetNode;
-    }
-
-    // try to find for indirect input nodes
-    // XXX likely, myContext.getInput() we've checked already above, would come here again.
-    for (SNode historyInputNode : myContext.getInputHistory()) {
-      outputTargetNode = generator.findOutputNodeByInputAndTemplateNode(historyInputNode, myContext.executionPathIdentity(), myTemplateTargetNode);
-      if (outputTargetNode != null) {
-        checkCrossRootTemplateReference(outputTargetNode, ref);
-        return outputTargetNode;
-      }
-    }
     return null;
   }
 

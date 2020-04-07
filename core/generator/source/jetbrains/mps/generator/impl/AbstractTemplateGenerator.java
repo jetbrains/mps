@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -100,10 +100,6 @@ public abstract class AbstractTemplateGenerator implements ITemplateGenerator {
     }
   }
 
-  public SNode findOutputNodeByTemplateNodeUnique(String templateNode) {
-    return myMappings.findOutputNodeByTemplateNodeUnique(templateNode);
-  }
-
   @Override
   public SNode findOutputNodeByInputNodeAndMappingName(SNode inputNode, String mappingName) {
     if (inputNode != null) {
@@ -149,10 +145,6 @@ public abstract class AbstractTemplateGenerator implements ITemplateGenerator {
     SNode node = findCopiedOutputNodeForInputNode(inputNode);
     if (myMappings.isInputNodeHasUniqueCopiedOutputNode(inputNode)) return node;
     return null;
-  }
-
-  public SNode findOutputNodeByInputAndTemplateNode(SNode inputNode, int execPathId, String templateNodeId) {
-    return myMappings.findOutputNodeByInputAndTemplateNode(inputNode, execPathId, templateNodeId);
   }
 
   public SNode findOutputNodeById(SNodeId nodeId) {
