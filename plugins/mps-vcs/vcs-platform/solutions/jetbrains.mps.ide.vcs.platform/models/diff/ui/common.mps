@@ -10305,14 +10305,14 @@
           <node concept="3cpWsn" id="2ZO3ptD30EQ" role="3cpWs9">
             <property role="TrG5h" value="areas" />
             <node concept="_YKpA" id="2ZO3ptD30ER" role="1tU5fm">
-              <node concept="3uibUv" id="2ZO3ptD30ES" role="_ZDj9">
-                <ref role="3uigEE" to="exr9:~EditorComponent$ColoredRange" resolve="EditorComponent.ColoredRange" />
+              <node concept="3uibUv" id="3nupPS33hW_" role="_ZDj9">
+                <ref role="3uigEE" to="exr9:~EditorComponent$BackgroundColoredRange" resolve="EditorComponent.BackgroundColoredRange" />
               </node>
             </node>
             <node concept="2ShNRf" id="2ZO3ptD36qW" role="33vP2m">
               <node concept="Tc6Ow" id="2ZO3ptD3PTg" role="2ShVmc">
-                <node concept="3uibUv" id="2ZO3ptD3XC5" role="HW$YZ">
-                  <ref role="3uigEE" to="exr9:~EditorComponent$ColoredRange" resolve="EditorComponent.ColoredRange" />
+                <node concept="3uibUv" id="3nupPS33lxl" role="HW$YZ">
+                  <ref role="3uigEE" to="exr9:~EditorComponent$BackgroundColoredRange" resolve="EditorComponent.BackgroundColoredRange" />
                 </node>
               </node>
             </node>
@@ -10506,7 +10506,7 @@
                 <node concept="TSZUe" id="Mim59o5Uei" role="2OqNvi">
                   <node concept="2ShNRf" id="Mim59o5Uej" role="25WWJ7">
                     <node concept="1pGfFk" id="Mim59o5Uek" role="2ShVmc">
-                      <ref role="37wK5l" to="exr9:~EditorComponent$ColoredRange.&lt;init&gt;(java.awt.Color,int,int)" resolve="EditorComponent.ColoredRange" />
+                      <ref role="37wK5l" to="exr9:~EditorComponent$BackgroundColoredRange.&lt;init&gt;(java.awt.Color,int,int,boolean)" resolve="EditorComponent.BackgroundColoredRange" />
                       <node concept="37vLTw" id="Mim59o5Uel" role="37wK5m">
                         <ref role="3cqZAo" node="2ZO3ptD30F7" resolve="color" />
                       </node>
@@ -10515,6 +10515,9 @@
                       </node>
                       <node concept="37vLTw" id="Mim59o5Uen" role="37wK5m">
                         <ref role="3cqZAo" node="2ZO3ptD30Fr" resolve="height" />
+                      </node>
+                      <node concept="3clFbT" id="3nupPS33YDI" role="37wK5m">
+                        <property role="3clFbU" value="true" />
                       </node>
                     </node>
                   </node>
@@ -10557,8 +10560,8 @@
       </node>
       <node concept="3Tm1VV" id="2ZO3ptD2P8N" role="1B3o_S" />
       <node concept="_YKpA" id="2ZO3ptD2Sys" role="3clF45">
-        <node concept="3uibUv" id="2ZO3ptD2SVl" role="_ZDj9">
-          <ref role="3uigEE" to="exr9:~EditorComponent$ColoredRange" resolve="EditorComponent.ColoredRange" />
+        <node concept="3uibUv" id="3nupPS33epf" role="_ZDj9">
+          <ref role="3uigEE" to="exr9:~EditorComponent$BackgroundColoredRange" resolve="EditorComponent.BackgroundColoredRange" />
         </node>
       </node>
       <node concept="37vLTG" id="2ZO3ptD2X68" role="3clF46">
@@ -10634,7 +10637,7 @@
       </node>
       <node concept="2tJIrI" id="1UUFr_mXtgA" role="jymVt" />
       <node concept="3clFb_" id="2Yog8EfznEx" role="jymVt">
-        <property role="TrG5h" value="getMessagesTextForArea" />
+        <property role="TrG5h" value="getBackgroundMessagesText" />
         <node concept="3Tmbuc" id="2Yog8EfznEy" role="1B3o_S" />
         <node concept="17QB3L" id="2Yog8EfznEz" role="3clF45" />
         <node concept="37vLTG" id="2Yog8EfznE$" role="3clF46">
@@ -10689,12 +10692,12 @@
       </node>
       <node concept="2tJIrI" id="2Yog8EfztjW" role="jymVt" />
       <node concept="3clFb_" id="2Yog8EfztFs" role="jymVt">
-        <property role="TrG5h" value="getColoredRanges" />
+        <property role="TrG5h" value="getBackgroundColoredRanges" />
         <node concept="3Tm1VV" id="2Yog8EfztFt" role="1B3o_S" />
         <node concept="3uibUv" id="2Yog8EfztFu" role="3clF45">
           <ref role="3uigEE" to="33ny:~List" resolve="List" />
-          <node concept="3uibUv" id="2Yog8EfztFv" role="11_B2D">
-            <ref role="3uigEE" to="exr9:~EditorComponent$ColoredRange" resolve="EditorComponent.ColoredRange" />
+          <node concept="3uibUv" id="3nupPS33ZGG" role="11_B2D">
+            <ref role="3uigEE" to="exr9:~EditorComponent$BackgroundColoredRange" resolve="EditorComponent.BackgroundColoredRange" />
           </node>
         </node>
         <node concept="3clFbS" id="2Yog8EfztFw" role="3clF47">
@@ -10702,12 +10705,12 @@
             <node concept="3cpWsn" id="2Yog8EfztFy" role="3cpWs9">
               <property role="TrG5h" value="areas" />
               <node concept="_YKpA" id="2Yog8EfztFz" role="1tU5fm">
-                <node concept="3uibUv" id="2Yog8EfztF$" role="_ZDj9">
-                  <ref role="3uigEE" to="exr9:~EditorComponent$ColoredRange" resolve="EditorComponent.ColoredRange" />
+                <node concept="3uibUv" id="3nupPS341Pn" role="_ZDj9">
+                  <ref role="3uigEE" to="exr9:~EditorComponent$BackgroundColoredRange" resolve="EditorComponent.BackgroundColoredRange" />
                 </node>
               </node>
               <node concept="3nyPlj" id="2Yog8EfztF_" role="33vP2m">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getColoredRanges()" resolve="getColoredRanges" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getBackgroundColoredRanges()" resolve="getBackgroundColoredRanges" />
               </node>
             </node>
           </node>
@@ -10848,7 +10851,7 @@
       </node>
       <node concept="2tJIrI" id="3fLdyWuViRE" role="jymVt" />
       <node concept="3clFb_" id="3fLdyWuVkv6" role="jymVt">
-        <property role="TrG5h" value="getMessagesTextForArea" />
+        <property role="TrG5h" value="getBackgroundMessagesText" />
         <node concept="3Tmbuc" id="3fLdyWuVkv7" role="1B3o_S" />
         <node concept="17QB3L" id="7E9qMnrZuWN" role="3clF45" />
         <node concept="37vLTG" id="3fLdyWuVkva" role="3clF46">
@@ -10897,12 +10900,12 @@
       </node>
       <node concept="2tJIrI" id="pZ0GUvHlLj" role="jymVt" />
       <node concept="3clFb_" id="pZ0GUvHn1n" role="jymVt">
-        <property role="TrG5h" value="getColoredRanges" />
+        <property role="TrG5h" value="getBackgroundColoredRanges" />
         <node concept="3Tm1VV" id="pZ0GUvHn1o" role="1B3o_S" />
         <node concept="3uibUv" id="pZ0GUvHn1q" role="3clF45">
           <ref role="3uigEE" to="33ny:~List" resolve="List" />
-          <node concept="3uibUv" id="pZ0GUvHn1r" role="11_B2D">
-            <ref role="3uigEE" to="exr9:~EditorComponent$ColoredRange" resolve="EditorComponent.ColoredRange" />
+          <node concept="3uibUv" id="3nupPS349iT" role="11_B2D">
+            <ref role="3uigEE" to="exr9:~EditorComponent$BackgroundColoredRange" resolve="EditorComponent.BackgroundColoredRange" />
           </node>
         </node>
         <node concept="3clFbS" id="pZ0GUvHn1s" role="3clF47">
@@ -10910,12 +10913,12 @@
             <node concept="3cpWsn" id="pZ0GUvHCBU" role="3cpWs9">
               <property role="TrG5h" value="areas" />
               <node concept="_YKpA" id="pZ0GUvHCBW" role="1tU5fm">
-                <node concept="3uibUv" id="pZ0GUvHF6a" role="_ZDj9">
-                  <ref role="3uigEE" to="exr9:~EditorComponent$ColoredRange" resolve="EditorComponent.ColoredRange" />
+                <node concept="3uibUv" id="3nupPS34ibt" role="_ZDj9">
+                  <ref role="3uigEE" to="exr9:~EditorComponent$BackgroundColoredRange" resolve="EditorComponent.BackgroundColoredRange" />
                 </node>
               </node>
               <node concept="3nyPlj" id="pZ0GUvHH6_" role="33vP2m">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getColoredRanges()" resolve="getColoredRanges" />
+                <ref role="37wK5l" to="exr9:~EditorComponent.getBackgroundColoredRanges()" resolve="getBackgroundColoredRanges" />
               </node>
             </node>
           </node>

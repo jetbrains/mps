@@ -199,8 +199,8 @@ public class DiffEditor implements EditorMessageOwner {
     return myChangeGroupLayouts[(inspector ? 1 : 0)];
   }
 
-  public List<EditorComponent.ColoredRange> getColoredGroupBounds(boolean inspector) {
-    List<EditorComponent.ColoredRange> areas = ListSequence.fromList(new ArrayList<EditorComponent.ColoredRange>());
+  public List<EditorComponent.BackgroundColoredRange> getColoredGroupBounds(boolean inspector) {
+    List<EditorComponent.BackgroundColoredRange> areas = ListSequence.fromList(new ArrayList<EditorComponent.BackgroundColoredRange>());
     int prevGroupBottomLineY = -1;
     for (ChangeGroup changeGroup : ListSequence.fromList(getChangeGroupLayout(inspector).getChangeGroups())) {
       Color color = ChangeColors.get(changeGroup.getChangeType());
@@ -217,7 +217,7 @@ public class DiffEditor implements EditorMessageOwner {
       if (bounds.length() == 1) {
         height = 2;
       }
-      ListSequence.fromList(areas).addElement(new EditorComponent.ColoredRange(color, y, height));
+      ListSequence.fromList(areas).addElement(new EditorComponent.BackgroundColoredRange(color, y, height, true));
       prevGroupBottomLineY = y + height;
     }
     return areas;
@@ -235,7 +235,7 @@ public class DiffEditor implements EditorMessageOwner {
     }
 
     @Override
-    protected String getMessagesTextForArea(MouseEvent event) {
+    protected String getBackgroundMessagesText(MouseEvent event) {
       if (getChangeGroupLayout(true) == null) {
         return null;
       }
@@ -243,8 +243,8 @@ public class DiffEditor implements EditorMessageOwner {
     }
 
     @Override
-    public List<EditorComponent.ColoredRange> getColoredRanges() {
-      List<EditorComponent.ColoredRange> areas = super.getColoredRanges();
+    public List<EditorComponent.BackgroundColoredRange> getBackgroundColoredRanges() {
+      List<EditorComponent.BackgroundColoredRange> areas = super.getBackgroundColoredRanges();
       ListSequence.fromList(areas).addSequence(ListSequence.fromList(getColoredGroupBounds(true)));
       return areas;
     }
@@ -262,7 +262,7 @@ public class DiffEditor implements EditorMessageOwner {
     }
 
     @Override
-    protected String getMessagesTextForArea(MouseEvent event) {
+    protected String getBackgroundMessagesText(MouseEvent event) {
       if (getChangeGroupLayout(false) == null) {
         return null;
       }
@@ -270,8 +270,8 @@ public class DiffEditor implements EditorMessageOwner {
     }
 
     @Override
-    public List<EditorComponent.ColoredRange> getColoredRanges() {
-      List<EditorComponent.ColoredRange> areas = super.getColoredRanges();
+    public List<EditorComponent.BackgroundColoredRange> getBackgroundColoredRanges() {
+      List<EditorComponent.BackgroundColoredRange> areas = super.getBackgroundColoredRanges();
       ListSequence.fromList(areas).addSequence(ListSequence.fromList(getColoredGroupBounds(false)));
       return areas;
     }

@@ -4073,11 +4073,11 @@
       <node concept="2ShNRf" id="3SMO48FPcFX" role="33vP2m">
         <node concept="1pGfFk" id="3SMO48FPcFW" role="2ShVmc">
           <ref role="37wK5l" to="lzb2:~JBSplitter.&lt;init&gt;(boolean,float)" resolve="JBSplitter" />
-          <node concept="3clFbT" id="7wh_jVzZeH3" role="37wK5m">
+          <node concept="3clFbT" id="3SMO48FPiik" role="37wK5m">
             <property role="3clFbU" value="true" />
           </node>
           <node concept="2$xPTn" id="3SMO48FPOe7" role="37wK5m">
-            <property role="2$xPTl" value="0.8f" />
+            <property role="2$xPTl" value="0.7f" />
           </node>
         </node>
       </node>

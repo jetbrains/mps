@@ -68,7 +68,7 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
   private List<ChangeGroupLayout> myChangeGroupLayouts = ListSequence.fromList(new ArrayList<ChangeGroupLayout>());
   private DiffEditorsGroup myDiffEditorsGroup = new DiffEditorsGroup();
 
-  private JBSplitter myPanel = new JBSplitter(true, 0.8f);
+  private JBSplitter myPanel = new JBSplitter(true, 0.7f);
   private TwosideContentPanel myTopPanel;
   private TwosideContentPanel myInspectorPanel;
   private boolean isInspectorShown = PropertiesComponent.getInstance().getBoolean(PARAM_SHOW_INSPECTOR, true);

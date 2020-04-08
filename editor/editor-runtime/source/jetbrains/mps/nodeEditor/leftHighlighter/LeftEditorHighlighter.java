@@ -32,7 +32,7 @@ import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.tooltips.MPSToolTipManager;
 import jetbrains.mps.ide.tooltips.TooltipComponent;
 import jetbrains.mps.nodeEditor.EditorComponent;
-import jetbrains.mps.nodeEditor.EditorComponent.ColoredRange;
+import jetbrains.mps.nodeEditor.EditorComponent.BackgroundColoredRange;
 import jetbrains.mps.nodeEditor.EditorMessageIconRenderer;
 import jetbrains.mps.nodeEditor.EditorMessageIconRenderer.IconRendererType;
 import jetbrains.mps.nodeEditor.EditorSettings;
@@ -317,17 +317,17 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
   private void paintColoredAreas(Graphics g, Rectangle clipBounds) {
     Graphics2D g2d = (Graphics2D) g;
 
-    for (ColoredRange area : myEditorComponent.getColoredRanges()) {
-      if (g.hitClip(clipBounds.x, area.getPosition(), clipBounds.width, area.getHeight())) {
-        g.setColor(area.getColor());
-        g.fillRect(myRightToLeft ? myFoldingLineX : clipBounds.x, area.getPosition(), myRightToLeft ? clipBounds.width - myFoldingLineX : myFoldingLineX,
-                   area.getHeight());
-        Color mixedColor = TextDiffTypeFactory.getMiddleColor(area.getColor(), getEditorComponent().getBackground());
+    for (BackgroundColoredRange coloredRange : myEditorComponent.getBackgroundColoredRanges()) {
+      if (g.hitClip(clipBounds.x, coloredRange.getPosition(), clipBounds.width, coloredRange.getHeight())) {
+        g.setColor(coloredRange.getColor());
+        g.fillRect(myRightToLeft ? myFoldingLineX : clipBounds.x, coloredRange.getPosition(), myRightToLeft ? clipBounds.width - myFoldingLineX : myFoldingLineX,
+                   coloredRange.getHeight());
+        Color mixedColor = TextDiffTypeFactory.getMiddleColor(coloredRange.getColor(), getEditorComponent().getBackground());
         g.setColor(mixedColor);
-        g.fillRect(myRightToLeft ? 0 : myFoldingLineX, area.getPosition(), myRightToLeft ? myFoldingLineX : clipBounds.width - myFoldingLineX,
-                   area.getHeight());
+        g.fillRect(myRightToLeft ? 0 : myFoldingLineX, coloredRange.getPosition(), myRightToLeft ? myFoldingLineX : clipBounds.width - myFoldingLineX,
+                   coloredRange.getHeight());
 
-        UIUtil.drawVDottedLine(g2d, myFoldingLineX, area.getPosition(), area.getPosition() + area.getHeight(), area.getColor(),
+        UIUtil.drawVDottedLine(g2d, myFoldingLineX, coloredRange.getPosition(), coloredRange.getPosition() + coloredRange.getHeight(), coloredRange.getColor(),
                                EditorSettings.getInstance().getLeftHighlighterTearLineColor());
       }
     }

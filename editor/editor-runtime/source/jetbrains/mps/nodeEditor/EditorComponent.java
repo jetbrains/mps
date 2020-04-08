@@ -877,7 +877,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
           messages = getMessagesTextFor(cell);
         }
         if (messages == null) {
-          messages = getMessagesTextForArea(event);
+          messages = getBackgroundMessagesText(event);
         }
         rv.set(messages);
       }
@@ -885,7 +885,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return rv.get();
   }
 
-  protected String getMessagesTextForArea(MouseEvent event) {
+  protected String getBackgroundMessagesText(MouseEvent event) {
     return null;
   }
 
@@ -2115,6 +2115,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     jetbrains.mps.openapi.editor.cells.EditorCell deepestCell = getDeepestSelectedCell();
     if (deepestCell instanceof EditorCell_Label && ((EditorCell) deepestCell).isInClipRegion(g)) {
       EditorCell_Label label = (EditorCell_Label) deepestCell;
+
       g.setColor(setting.getCaretRowColor());
       g.fillRect(0, deepestCell.getY(), getWidth(),
                  deepestCell.getHeight() - deepestCell.getTopInset() - deepestCell.getBottomInset());
@@ -2124,11 +2125,17 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
                  deepestCell.getY(),
                  deepestCell.getWidth() - label.getLeftInset() - label.getRightInset(),
                  deepestCell.getHeight() - deepestCell.getTopInset() - deepestCell.getBottomInset());
+
     }
 
-    for (ColoredRange area : getColoredRanges()) {
+    for (BackgroundColoredRange area : getBackgroundColoredRanges()) {
       if (g.hitClip(0, area.getPosition(), getWidth(), area.getHeight())) {
-        Color color = TextDiffTypeFactory.getMiddleColor(area.getColor(), getBackground());
+        Color color;
+        if (area.colorCanBeMixed()) {
+          color = TextDiffTypeFactory.getMiddleColor(area.getColor(), getBackground());
+        } else {
+          color = area.getColor();
+        }
         g.setColor(color);
         g.fillRect(0, area.getPosition(), getWidth(), area.getHeight());
       }
@@ -3054,19 +3061,21 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     }
   }
 
-  public List<ColoredRange> getColoredRanges() {
+  public List<BackgroundColoredRange> getBackgroundColoredRanges() {
     return new ArrayList<>();
   }
 
-  public static class ColoredRange {
+  public static class BackgroundColoredRange {
     private final Color myColor;
-    private final int position;
-    private final int height;
+    private final int myPosition;
+    private final int myHeight;
+    private final boolean myColorCanBeMixed;
 
-    public ColoredRange(Color color, int position, int height) {
+    public BackgroundColoredRange(Color color, int position, int height, boolean colorCanBeMixed) {
       myColor = color;
-      this.position = position;
-      this.height = height;
+      myPosition = position;
+      myHeight = height;
+      myColorCanBeMixed = colorCanBeMixed;
     }
 
     public Color getColor() {
@@ -3074,11 +3083,15 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     }
 
     public int getPosition() {
-      return position;
+      return myPosition;
     }
 
     public int getHeight() {
-      return height;
+      return myHeight;
+    }
+
+    public boolean colorCanBeMixed() {
+      return myColorCanBeMixed;
     }
   }
 
