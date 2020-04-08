@@ -23,6 +23,8 @@ import jetbrains.mps.smodel.DynamicReference;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.vcs.diff.changes.SetConceptChange;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
 import jetbrains.mps.vcs.diff.changes.DeleteRootChange;
@@ -129,6 +131,16 @@ public class ChangeSetBuilder {
     }
   }
 
+  public void buildForConcept(SNode oldNode, SNode newNode) {
+    SConcept oldConcept = oldNode.getConcept();
+    SConcept newConcept = newNode.getConcept();
+    if (Objects.equals(oldConcept, newConcept)) {
+      // same concept 
+    } else {
+      ListSequence.fromList(myNewChanges).addElement(new SetConceptChange(myChangeSet, oldNode.getNodeId(), newConcept));
+    }
+  }
+
   public void buildForRoot(@Nullable SNode oldNode, @Nullable SNode newNode) {
     if (SNodeOperations.getContainingRoot(oldNode) != oldNode) {
       oldNode = null;
@@ -146,6 +158,7 @@ public class ChangeSetBuilder {
     } else if (newNode == null) {
       ListSequence.fromList(myNewChanges).addElement(new DeleteRootChange(myChangeSet, oldNode.getNodeId()));
     } else {
+      buildForConcept(oldNode, newNode);
       buildForProperties(oldNode, newNode);
       buildForReferences(oldNode, newNode);
 
@@ -212,9 +225,9 @@ public class ChangeSetBuilder {
     Iterable<D> added;
     Iterable<D> deleted;
     {
-      Tuples._2<Iterable<D>, Iterable<D>> _tmp_nbyrtw_c0x = getAddedAndDeleted(referencesExtractor);
-      added = _tmp_nbyrtw_c0x._0();
-      deleted = _tmp_nbyrtw_c0x._1();
+      Tuples._2<Iterable<D>, Iterable<D>> _tmp_nbyrtw_c0z = getAddedAndDeleted(referencesExtractor);
+      added = _tmp_nbyrtw_c0z._0();
+      deleted = _tmp_nbyrtw_c0z._1();
     }
     ListSequence.fromList(myNewChanges).addSequence(Sequence.fromIterable(added).select(new ISelector<D, DependencyChange>() {
       public DependencyChange select(D r) {
@@ -351,7 +364,7 @@ public class ChangeSetBuilder {
   }
 
   private <D> Tuples._2<Iterable<D>, Iterable<D>> getAddedAndDeleted(_FunctionTypes._return_P1_E0<? extends Iterable<D>, ? super SModelBase> itemsExtractor) {
-    return getAddedAndDeleted(itemsExtractor.invoke(as_nbyrtw_a0a0a0rb(myOldModel, SModelBase.class)), itemsExtractor.invoke(as_nbyrtw_a0b0a0rb(myNewModel, SModelBase.class)));
+    return getAddedAndDeleted(itemsExtractor.invoke(as_nbyrtw_a0a0a0tb(myOldModel, SModelBase.class)), itemsExtractor.invoke(as_nbyrtw_a0b0a0tb(myNewModel, SModelBase.class)));
   }
 
   public static ModelChangeSet buildChangeSet(SModel oldModel, SModel newModel) {
@@ -425,10 +438,10 @@ public class ChangeSetBuilder {
     }
     return null;
   }
-  private static <T> T as_nbyrtw_a0a0a0rb(Object o, Class<T> type) {
+  private static <T> T as_nbyrtw_a0a0a0tb(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_nbyrtw_a0b0a0rb(Object o, Class<T> type) {
+  private static <T> T as_nbyrtw_a0b0a0tb(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

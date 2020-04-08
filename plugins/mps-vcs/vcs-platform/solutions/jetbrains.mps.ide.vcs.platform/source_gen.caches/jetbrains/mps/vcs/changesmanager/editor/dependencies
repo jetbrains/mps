@@ -60,6 +60,7 @@
     <classNode dependClassName="jetbrains.mps.vcs.changesmanager.editor.StripsChangeGroupLayout" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ModelChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.NodeGroupChange" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.changes.SetConceptChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.SetPropertyChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.SetReferenceChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.Bounds" />

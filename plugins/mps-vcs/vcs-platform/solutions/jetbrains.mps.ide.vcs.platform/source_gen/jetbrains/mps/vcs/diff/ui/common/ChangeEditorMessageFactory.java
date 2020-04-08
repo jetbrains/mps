@@ -23,6 +23,7 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.errors.messageTargets.DeletedNodeMessageTarget;
+import jetbrains.mps.vcs.diff.changes.SetConceptChange;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 
 @GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/9170101780449072521", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
@@ -78,6 +79,11 @@ public class ChangeEditorMessageFactory {
         }
         return msgs;
       }
+    } else if (change instanceof SetConceptChange) {
+      SetConceptChange chng = (SetConceptChange) change;
+      SNode node = editedModel.getNode(chng.getAffectedNodeId(!(isOldEditor)));
+      NodeMessageTarget target = new NodeMessageTarget();
+      return ListSequence.fromListAndArray(new LinkedList<ChangeEditorMessage>(), new ChangeEditorMessage(node, target, owner, change, conflictChecker, highlighted));
     }
     return null;
   }

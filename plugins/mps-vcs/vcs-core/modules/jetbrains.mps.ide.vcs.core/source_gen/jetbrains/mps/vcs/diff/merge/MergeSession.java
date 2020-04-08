@@ -157,8 +157,10 @@ public final class MergeSession {
     return SetSequence.fromSet(myResolvedChanges).contains(change);
   }
   public void applyChanges(Iterable<ModelChange> changes) {
+    myModelListener.disable();
     applyChangesNoRestoreIds(changes);
     myNodeCopier.restoreIds(false);
+    myModelListener.enable();
   }
   public void excludeChanges(Iterable<ModelChange> changes) {
     excludeChangesNoRestoreIds(changes);
@@ -309,7 +311,14 @@ public final class MergeSession {
     void someChangesInvalidated();
   }
   private class MyResultModelListener extends SModelAdapter {
+    private boolean myListeningAllowed = true;
     private MyResultModelListener() {
+    }
+    private void enable() {
+      myListeningAllowed = true;
+    }
+    private void disable() {
+      myListeningAllowed = false;
     }
     private void invalidateDeletedRoot(SModelEvent event) {
       assert event.getAffectedRoot() != null;
@@ -331,30 +340,48 @@ public final class MergeSession {
     }
     @Override
     public void referenceRemoved(SModelReferenceEvent event) {
+      if (!(myListeningAllowed)) {
+        return;
+      }
       referenceModified(event);
     }
     @Override
     public void referenceAdded(SModelReferenceEvent event) {
+      if (!(myListeningAllowed)) {
+        return;
+      }
       referenceModified(event);
     }
     @Override
     public void beforeChildRemoved(SModelChildEvent event) {
+      if (!(myListeningAllowed)) {
+        return;
+      }
       beforeNodeRemovedRecursively(event.getChild());
       invalidateDeletedRoot(event);
       invalidateChanges();
     }
     @Override
     public void childAdded(SModelChildEvent event) {
+      if (!(myListeningAllowed)) {
+        return;
+      }
       invalidateDeletedRoot(event);
       invalidateChanges();
     }
     @Override
     public void propertyChanged(SModelPropertyEvent event) {
+      if (!(myListeningAllowed)) {
+        return;
+      }
       invalidateChanges();
       invalidateDeletedRoot(event);
     }
     @Override
     public void beforeRootRemoved(SModelRootEvent event) {
+      if (!(myListeningAllowed)) {
+        return;
+      }
       beforeNodeRemovedRecursively(event.getRoot());
       invalidateDeletedRoot(event);
     }

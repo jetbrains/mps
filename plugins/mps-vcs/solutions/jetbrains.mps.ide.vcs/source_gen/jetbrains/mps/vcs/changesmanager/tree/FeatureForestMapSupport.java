@@ -26,6 +26,7 @@ import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.vcs.changesmanager.tree.features.DeletedChildFeature;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.vcs.diff.changes.SetConceptChange;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -87,6 +88,10 @@ public class FeatureForestMapSupport extends AbstractProjectComponent {
           }
         }
       }
+    } else if (change instanceof SetConceptChange) {
+      SetConceptChange scc = ((SetConceptChange) change);
+      // todo: create new feature ?? 
+      ListSequence.fromList(result).addElement(new NodeFeature(new SNodePointer(modelReference, scc.getAffectedNodeId())));
     }
     return ListSequence.fromList(result).toGenericArray(Feature.class);
   }

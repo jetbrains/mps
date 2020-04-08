@@ -27,6 +27,7 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.vcs.diff.changes.SetPropertyChange;
 import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
+import jetbrains.mps.vcs.diff.changes.SetConceptChange;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
 import jetbrains.mps.util.SNodeCompare;
 import jetbrains.mps.util.IterableUtil;
@@ -168,6 +169,23 @@ public class MergeConflictsBuilder {
       }
     }
   }
+  private void collectConceptConflicts() {
+    Tuples._2<Map<SNodeId, SetConceptChange>, Map<SNodeId, SetConceptChange>> arranged;
+    arranged = this.<SNodeId,SetConceptChange>arrangeChanges(new _FunctionTypes._return_P1_E0<SNodeId, SetConceptChange>() {
+      public SNodeId invoke(SetConceptChange scc) {
+        return scc.getAffectedNodeId();
+      }
+    }, SetConceptChange.class);
+    for (SNodeId nodeid : SetSequence.fromSet(MapSequence.fromMap(arranged._0()).keySet()).intersect(SetSequence.fromSet(MapSequence.fromMap(arranged._1()).keySet()))) {
+      SetConceptChange mineChange = MapSequence.fromMap(arranged._0()).get(nodeid);
+      SetConceptChange repositoryChange = MapSequence.fromMap(arranged._1()).get(nodeid);
+      if (EqualUtil.equals(mineChange.getNewValue(), repositoryChange.getNewValue())) {
+        addSymmetric(mineChange, repositoryChange);
+      } else {
+        addPossibleConflict(mineChange, repositoryChange);
+      }
+    }
+  }
   private void collectSymmetricRootDeletes() {
     collectSymmetricChanges(new _FunctionTypes._return_P1_E0<SNodeId, DeleteRootChange>() {
       public SNodeId invoke(DeleteRootChange drc) {
@@ -281,6 +299,7 @@ public class MergeConflictsBuilder {
 
     collectPropertyConflicts();
     collectReferenceConflicts();
+    collectConceptConflicts();
 
     collectSymmetricRootDeletes();
     collectConflictingRootAdds();

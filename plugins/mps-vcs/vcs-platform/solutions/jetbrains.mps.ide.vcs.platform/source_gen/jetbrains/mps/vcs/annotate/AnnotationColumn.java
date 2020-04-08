@@ -45,6 +45,7 @@ import jetbrains.mps.smodel.persistence.lines.ReferenceLineContent;
 import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
+import jetbrains.mps.vcs.diff.changes.SetConceptChange;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
@@ -175,6 +176,9 @@ public class AnnotationColumn extends AbstractLeftColumn {
           return new NodeLineContent(n.getNodeId());
         }
       }).toGenericArray(NodeLineContent.class));
+    } else if (ch instanceof SetConceptChange) {
+      SetConceptChange src = (SetConceptChange) ch;
+      MapSequence.fromMap(myChangesToLineContents).put(ch, new LineContent[]{new NodeLineContent(src.getAffectedNodeId())});
     }
   }
   private void calculateCurrentPseudoLinesLater() {

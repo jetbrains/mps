@@ -3399,98 +3399,107 @@
   </root>
   <root nodeRef="r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/9170101780449072521">
     <file name="ChangeEditorMessageFactory.java">
-      <node id="422571825852163157" at="33,80,34,218" concept="13" />
-      <node id="422571825852071599" at="35,53,36,58" concept="12" />
-      <node id="422571825852071605" at="36,58,37,79" concept="12" />
-      <node id="422571825852071617" at="37,79,38,83" concept="12" />
-      <node id="422571825852071625" at="38,83,39,166" concept="13" />
-      <node id="422571825852082773" at="40,54,41,60" concept="12" />
-      <node id="422571825852082779" at="41,60,42,79" concept="12" />
-      <node id="422571825852082791" at="42,79,43,85" concept="12" />
-      <node id="422571825852082799" at="43,85,44,166" concept="13" />
-      <node id="422571825852112402" at="45,51,46,54" concept="12" />
-      <node id="422571825853856091" at="46,54,47,53" concept="12" />
-      <node id="422571825852112429" at="47,53,48,62" concept="12" />
-      <node id="422571825852112452" at="48,62,49,77" concept="12" />
-      <node id="3519985790943471151" at="50,35,51,20" concept="13" />
-      <node id="422571825852112461" at="52,7,53,0" concept="15" />
-      <node id="422571825852112462" at="53,0,54,80" concept="12" />
-      <node id="422571825852112473" at="54,80,55,74" concept="12" />
-      <node id="422571825852112484" at="55,74,56,0" concept="15" />
-      <node id="422571825852112485" at="56,0,57,96" concept="14" />
-      <node id="422571825852112487" at="57,96,58,63" concept="14" />
-      <node id="422571825852112489" at="58,63,59,169" concept="12" />
-      <node id="422571825852112506" at="59,169,60,163" concept="12" />
-      <node id="2224554454791753044" at="60,163,61,0" concept="15" />
-      <node id="422571825852112587" at="61,0,62,164" concept="12" />
-      <node id="422571825852112523" at="62,164,63,54" concept="12" />
-      <node id="422571825852112529" at="63,54,64,0" concept="15" />
-      <node id="422571825852112530" at="64,0,65,102" concept="12" />
-      <node id="422571825852112548" at="65,102,66,98" concept="12" />
-      <node id="422571825852112566" at="66,98,67,0" concept="15" />
-      <node id="422571825852112582" at="68,94,69,20" concept="13" />
-      <node id="422571825852112640" at="71,35,72,24" concept="14" />
-      <node id="422571825852112642" at="72,24,73,237" concept="13" />
-      <node id="422571825852112601" at="74,14,75,102" concept="12" />
-      <node id="422571825852112610" at="76,53,77,167" concept="6" />
-      <node id="422571825852112634" at="78,9,79,20" concept="13" />
-      <node id="9170101780449072896" at="81,5,82,16" concept="13" />
-      <node id="9211601095966574302" at="85,25,86,33" concept="13" />
-      <node id="9211601095966603939" at="87,5,88,55" concept="12" />
-      <node id="9211601095966658390" at="88,55,89,80" concept="13" />
-      <node id="9170101780449072913" at="93,198,94,117" concept="13" />
-      <node id="9170101780449072523" at="30,0,32,0" concept="3" trace="ChangeEditorMessageFactory#()V" />
-      <node id="3519985790943457059" at="49,77,52,7" concept="10" />
-      <node id="422571825852112567" at="67,0,70,7" concept="10" />
-      <node id="422571825852112608" at="75,102,78,9" concept="8" />
-      <node id="9211601095966548510" at="84,92,87,5" concept="10" />
-      <node id="9170101780449072900" at="93,0,96,0" concept="17" trace="createMessages#(Lorg/jetbrains/mps/openapi/model/SModel;ZLjetbrains/mps/vcs/diff/changes/ModelChange;Ljetbrains/mps/openapi/editor/message/EditorMessageOwner;Ljetbrains/mps/vcs/diff/ui/common/ChangeEditorMessage/ConflictChecker;)Ljava/util/List;" />
-      <node id="422571825852112585" at="74,12,80,7" concept="1" />
-      <node id="9211601095966529191" at="84,0,91,0" concept="17" trace="getIndex#(Lorg/jetbrains/mps/openapi/model/SNodeId;ILorg/jetbrains/mps/openapi/model/SModel;)I" />
-      <node id="422571825852112584" at="70,7,80,7" concept="10" />
-      <node id="9170101780449072555" at="32,219,81,5" concept="10" />
-      <node id="9170101780449072527" at="32,0,84,0" concept="17" trace="createMessages#(Lorg/jetbrains/mps/openapi/model/SModel;ZLjetbrains/mps/vcs/diff/changes/ModelChange;Ljetbrains/mps/openapi/editor/message/EditorMessageOwner;Ljetbrains/mps/vcs/diff/ui/common/ChangeEditorMessage/ConflictChecker;Z)Ljava/util/List;" />
-      <scope id="9170101780449072526" at="30,40,30,40" />
-      <scope id="9170101780449072613" at="33,80,34,218" />
-      <scope id="3519985790943457061" at="50,35,51,20" />
-      <scope id="422571825852112581" at="68,94,69,20" />
-      <scope id="422571825852112609" at="76,53,77,167" />
-      <scope id="9211601095966548512" at="85,25,86,33" />
-      <scope id="9170101780449072912" at="93,198,94,117" />
-      <scope id="9170101780449072523" at="30,0,32,0" />
-      <scope id="422571825852112639" at="71,35,73,237" />
-      <scope id="422571825852112608" at="75,102,78,9">
+      <node id="422571825852163157" at="34,80,35,218" concept="13" />
+      <node id="422571825852071599" at="36,53,37,58" concept="12" />
+      <node id="422571825852071605" at="37,58,38,79" concept="12" />
+      <node id="422571825852071617" at="38,79,39,83" concept="12" />
+      <node id="422571825852071625" at="39,83,40,166" concept="13" />
+      <node id="422571825852082773" at="41,54,42,60" concept="12" />
+      <node id="422571825852082779" at="42,60,43,79" concept="12" />
+      <node id="422571825852082791" at="43,79,44,85" concept="12" />
+      <node id="422571825852082799" at="44,85,45,166" concept="13" />
+      <node id="422571825852112402" at="46,51,47,54" concept="12" />
+      <node id="422571825853856091" at="47,54,48,53" concept="12" />
+      <node id="422571825852112429" at="48,53,49,62" concept="12" />
+      <node id="422571825852112452" at="49,62,50,77" concept="12" />
+      <node id="3519985790943471151" at="51,35,52,20" concept="13" />
+      <node id="422571825852112461" at="53,7,54,0" concept="15" />
+      <node id="422571825852112462" at="54,0,55,80" concept="12" />
+      <node id="422571825852112473" at="55,80,56,74" concept="12" />
+      <node id="422571825852112484" at="56,74,57,0" concept="15" />
+      <node id="422571825852112485" at="57,0,58,96" concept="14" />
+      <node id="422571825852112487" at="58,96,59,63" concept="14" />
+      <node id="422571825852112489" at="59,63,60,169" concept="12" />
+      <node id="422571825852112506" at="60,169,61,163" concept="12" />
+      <node id="2224554454791753044" at="61,163,62,0" concept="15" />
+      <node id="422571825852112587" at="62,0,63,164" concept="12" />
+      <node id="422571825852112523" at="63,164,64,54" concept="12" />
+      <node id="422571825852112529" at="64,54,65,0" concept="15" />
+      <node id="422571825852112530" at="65,0,66,102" concept="12" />
+      <node id="422571825852112548" at="66,102,67,98" concept="12" />
+      <node id="422571825852112566" at="67,98,68,0" concept="15" />
+      <node id="422571825852112582" at="69,94,70,20" concept="13" />
+      <node id="422571825852112640" at="72,35,73,24" concept="14" />
+      <node id="422571825852112642" at="73,24,74,237" concept="13" />
+      <node id="422571825852112601" at="75,14,76,102" concept="12" />
+      <node id="422571825852112610" at="77,53,78,167" concept="6" />
+      <node id="422571825852112634" at="79,9,80,20" concept="13" />
+      <node id="4000953035414297444" at="82,52,83,56" concept="12" />
+      <node id="4000953035414297450" at="83,56,84,79" concept="12" />
+      <node id="4000953035414297462" at="84,79,85,57" concept="12" />
+      <node id="4000953035414297470" at="85,57,86,166" concept="13" />
+      <node id="9170101780449072896" at="87,5,88,16" concept="13" />
+      <node id="9211601095966574302" at="91,25,92,33" concept="13" />
+      <node id="9211601095966603939" at="93,5,94,55" concept="12" />
+      <node id="9211601095966658390" at="94,55,95,80" concept="13" />
+      <node id="9170101780449072913" at="99,198,100,117" concept="13" />
+      <node id="9170101780449072523" at="31,0,33,0" concept="3" trace="ChangeEditorMessageFactory#()V" />
+      <node id="3519985790943457059" at="50,77,53,7" concept="10" />
+      <node id="422571825852112567" at="68,0,71,7" concept="10" />
+      <node id="422571825852112608" at="76,102,79,9" concept="8" />
+      <node id="9211601095966548510" at="90,92,93,5" concept="10" />
+      <node id="9170101780449072900" at="99,0,102,0" concept="17" trace="createMessages#(Lorg/jetbrains/mps/openapi/model/SModel;ZLjetbrains/mps/vcs/diff/changes/ModelChange;Ljetbrains/mps/openapi/editor/message/EditorMessageOwner;Ljetbrains/mps/vcs/diff/ui/common/ChangeEditorMessage/ConflictChecker;)Ljava/util/List;" />
+      <node id="422571825852112585" at="75,12,81,7" concept="1" />
+      <node id="9211601095966529191" at="90,0,97,0" concept="17" trace="getIndex#(Lorg/jetbrains/mps/openapi/model/SNodeId;ILorg/jetbrains/mps/openapi/model/SModel;)I" />
+      <node id="422571825852112584" at="71,7,81,7" concept="10" />
+      <node id="9170101780449072555" at="33,219,87,5" concept="10" />
+      <node id="9170101780449072527" at="33,0,90,0" concept="17" trace="createMessages#(Lorg/jetbrains/mps/openapi/model/SModel;ZLjetbrains/mps/vcs/diff/changes/ModelChange;Ljetbrains/mps/openapi/editor/message/EditorMessageOwner;Ljetbrains/mps/vcs/diff/ui/common/ChangeEditorMessage/ConflictChecker;Z)Ljava/util/List;" />
+      <scope id="9170101780449072526" at="31,40,31,40" />
+      <scope id="9170101780449072613" at="34,80,35,218" />
+      <scope id="3519985790943457061" at="51,35,52,20" />
+      <scope id="422571825852112581" at="69,94,70,20" />
+      <scope id="422571825852112609" at="77,53,78,167" />
+      <scope id="9211601095966548512" at="91,25,92,33" />
+      <scope id="9170101780449072912" at="99,198,100,117" />
+      <scope id="9170101780449072523" at="31,0,33,0" />
+      <scope id="422571825852112639" at="72,35,74,237" />
+      <scope id="422571825852112608" at="76,102,79,9">
         <var name="i" id="422571825852112626" />
       </scope>
-      <scope id="9170101780449072900" at="93,0,96,0">
+      <scope id="9170101780449072900" at="99,0,102,0">
         <var name="change" id="9170101780449072903" />
         <var name="conflictChecker" id="9170101780449072907" />
         <var name="editedModel" id="9170101780449072901" />
         <var name="isOldEditor" id="422571825852062647" />
         <var name="owner" id="9170101780449072905" />
       </scope>
-      <scope id="9170101780449072557" at="35,53,39,166">
+      <scope id="9170101780449072557" at="36,53,40,166">
         <var name="chng" id="422571825852071600" />
         <var name="node" id="422571825852071606" />
         <var name="target" id="422571825852071618" />
       </scope>
-      <scope id="9170101780449072582" at="40,54,44,166">
+      <scope id="9170101780449072582" at="41,54,45,166">
         <var name="chng" id="422571825852082774" />
         <var name="node" id="422571825852082780" />
         <var name="target" id="422571825852082792" />
       </scope>
-      <scope id="422571825852112586" at="74,14,79,20">
+      <scope id="4000953035414297443" at="82,52,86,166">
+        <var name="chng" id="4000953035414297445" />
+        <var name="node" id="4000953035414297451" />
+        <var name="target" id="4000953035414297463" />
+      </scope>
+      <scope id="422571825852112586" at="75,14,80,20">
         <var name="msgs" id="422571825852112602" />
       </scope>
-      <scope id="9211601095966524061" at="84,92,89,80">
+      <scope id="9211601095966524061" at="90,92,95,80">
         <var name="node" id="9211601095966603940" />
       </scope>
-      <scope id="9211601095966529191" at="84,0,91,0">
+      <scope id="9211601095966529191" at="90,0,97,0">
         <var name="currentChildrenSize" id="9211601095966525182" />
         <var name="editedModel" id="9211601095966525184" />
         <var name="nodeId" id="9211601095966525180" />
       </scope>
-      <scope id="9170101780449072629" at="45,51,80,7">
+      <scope id="9170101780449072629" at="46,51,81,7">
         <var name="beginId" id="422571825852112490" />
         <var name="beginIndex" id="422571825852112531" />
         <var name="changeBegin" id="422571825852112463" />
@@ -3504,8 +3513,8 @@
         <var name="parentId" id="422571825852112430" />
         <var name="roleLink" id="422571825853856092" />
       </scope>
-      <scope id="9170101780449072541" at="32,219,82,16" />
-      <scope id="9170101780449072527" at="32,0,84,0">
+      <scope id="9170101780449072541" at="33,219,88,16" />
+      <scope id="9170101780449072527" at="33,0,90,0">
         <var name="change" id="9170101780449072530" />
         <var name="conflictChecker" id="9170101780449072534" />
         <var name="editedModel" id="9170101780449072528" />
@@ -3513,7 +3522,7 @@
         <var name="isOldEditor" id="422571825852017237" />
         <var name="owner" id="9170101780449072532" />
       </scope>
-      <unit id="9170101780449072521" at="28,0,97,0" name="jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessageFactory" />
+      <unit id="9170101780449072521" at="29,0,103,0" name="jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessageFactory" />
     </file>
   </root>
 </debug-info>
