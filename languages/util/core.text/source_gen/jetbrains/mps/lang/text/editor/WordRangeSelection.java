@@ -25,39 +25,46 @@ import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
+import org.jetbrains.mps.openapi.model.SNodeId;
+import jetbrains.mps.openapi.editor.cells.CellAction;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.model.SNodeId;
-import jetbrains.mps.openapi.editor.cells.CellAction;
+import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class WordRangeSelection extends AbstractMultipleSelection {
   private static final String MODEL_ID_PROPERTY_NAME = "modelId";
   private static final String FIRST_NODE_ID_PROPERTY_NAME = "firstNodeId";
   private static final String LAST_NODE_ID_PROPERTY_NAME = "lastNodeId";
-  private static final String PARENT_NODE_ID_PROPERTY_NAME = "parentNodeId";
+  private static final String FIRST_PARENT_NODE_ID_PROPERTY_NAME = "firstParentNodeId";
+  private static final String LAST_PARENT_NODE_ID_PROPERTY_NAME = "lastParentNodeId";
   private static final String GROWING_FORWARD_PROPERTY_NAME = "growingForward";
   private final SNode myFirstNode;
   private final SNode myLastNode;
-  private final SNode myParentNode;
+  private final SNode myFirstParentNode;
+  private final SNode myLastParentNode;
   private final String myModelReference;
   private boolean myGrowingForward;
-  private int positionInCellLeft = 0;
-  private int positionInCellRight = 0;
 
   public WordRangeSelection(@NotNull EditorComponent editorComponent, Map<String, String> properties, CellInfo cellInfo) throws SelectionStoreException, SelectionRestoreException {
     super(editorComponent);
     // TODO preserve and move the cursor position 
     // TODO allow per-character selection 
-    // TODO allow multi-line selection 
+    // TODO select also spaces 
+    // TODO class loading problem 
     // TODO inherit as much as possible 
     // TODO prune the class 
+    // TODO copy spaces into the clipboard 
+    // TODO select up/down 
+    // TODO combine with other types of selection 
     if (cellInfo != null) {
       throw new SelectionStoreException("Non-null CellInfo object passed as a parameter: " + cellInfo);
     }
@@ -79,8 +86,9 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     }
     myFirstNode = SNodeOperations.as(findNode(sModelDescriptor, properties, FIRST_NODE_ID_PROPERTY_NAME), CONCEPTS.TextElement$Ue);
     myLastNode = SNodeOperations.as(findNode(sModelDescriptor, properties, LAST_NODE_ID_PROPERTY_NAME), CONCEPTS.TextElement$Ue);
-    myParentNode = SNodeOperations.as(findNode(sModelDescriptor, properties, PARENT_NODE_ID_PROPERTY_NAME), CONCEPTS.Line$w3);
-    if (myParentNode != SNodeOperations.as(SNodeOperations.getParent(myFirstNode), CONCEPTS.Line$w3) || myParentNode != SNodeOperations.as(SNodeOperations.getParent(myLastNode), CONCEPTS.Line$w3)) {
+    myFirstParentNode = SNodeOperations.as(findNode(sModelDescriptor, properties, FIRST_PARENT_NODE_ID_PROPERTY_NAME), CONCEPTS.Line$w3);
+    myLastParentNode = SNodeOperations.as(findNode(sModelDescriptor, properties, LAST_PARENT_NODE_ID_PROPERTY_NAME), CONCEPTS.Line$w3);
+    if (myFirstParentNode != SNodeOperations.as(SNodeOperations.getParent(myFirstNode), CONCEPTS.Line$w3) || myLastParentNode != SNodeOperations.as(SNodeOperations.getParent(myLastNode), CONCEPTS.Line$w3)) {
       throw new SelectionRestoreException();
     }
     myGrowingForward = SelectionInfoImpl.Util.getBooleanProperty(properties, GROWING_FORWARD_PROPERTY_NAME);
@@ -97,11 +105,12 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     super(editorComponent);
     myFirstNode = firstNode;
     myLastNode = lastNode;
-    myParentNode = SNodeOperations.as(SNodeOperations.getParent(myFirstNode), CONCEPTS.Line$w3);
+    myFirstParentNode = SNodeOperations.as(SNodeOperations.getParent(myFirstNode), CONCEPTS.Line$w3);
+    myLastParentNode = SNodeOperations.as(SNodeOperations.getParent(myLastNode), CONCEPTS.Line$w3);
     myModelReference = myFirstNode.getModel().getReference().toString();
     myGrowingForward = growingForward;
-    assert myParentNode != null;
-    assert myParentNode == SNodeOperations.getParent(myLastNode);
+    assert myFirstParentNode != null;
+    assert myLastParentNode != null;
     try {
       initSelectedCells();
     } catch (CellNotFoundException e) {
@@ -143,7 +152,8 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     selectionInfo.getPropertiesMap().put(MODEL_ID_PROPERTY_NAME, myModelReference);
     selectionInfo.getPropertiesMap().put(FIRST_NODE_ID_PROPERTY_NAME, myFirstNode.getNodeId().toString());
     selectionInfo.getPropertiesMap().put(LAST_NODE_ID_PROPERTY_NAME, myLastNode.getNodeId().toString());
-    selectionInfo.getPropertiesMap().put(PARENT_NODE_ID_PROPERTY_NAME, myParentNode.getNodeId().toString());
+    selectionInfo.getPropertiesMap().put(FIRST_PARENT_NODE_ID_PROPERTY_NAME, myFirstParentNode.getNodeId().toString());
+    selectionInfo.getPropertiesMap().put(LAST_PARENT_NODE_ID_PROPERTY_NAME, myLastParentNode.getNodeId().toString());
     selectionInfo.getPropertiesMap().put(GROWING_FORWARD_PROPERTY_NAME, Boolean.toString(myGrowingForward));
     return selectionInfo;
   }
@@ -156,7 +166,7 @@ public class WordRangeSelection extends AbstractMultipleSelection {
       return false;
     }
     WordRangeSelection that = (WordRangeSelection) another;
-    return Objects.equals(myFirstNode, that.myFirstNode) && Objects.equals(myLastNode, that.myLastNode) && Objects.equals(myParentNode, that.myParentNode);
+    return Objects.equals(myFirstNode, that.myFirstNode) && Objects.equals(myLastNode, that.myLastNode) && Objects.equals(myFirstParentNode, that.myFirstParentNode) && Objects.equals(myLastParentNode, that.myLastParentNode);
   }
   @Override
   public boolean isExactlyCoveringCell(EditorCell cell) {
@@ -213,10 +223,8 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     } else if (type == CellActionType.CUT) {
       SNode prevSelectableNode = getNextSelectableNode(myFirstNode, false);
       SNode nextSelectableNode = getNextSelectableNode(myLastNode, true);
-      if (prevSelectableNode == null && nextSelectableNode == null) {
-        prevSelectableNode = ListSequence.fromList(SLinkOperations.getChildren(myParentNode, LINKS.elements$eRew)).addElement(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")));
-      }
       super.executeAction(type);
+      removeEmptyLines();
       if (selectNode(prevSelectableNode, false) || selectNode(nextSelectableNode, true)) {
         return;
       }
@@ -246,14 +254,14 @@ public class WordRangeSelection extends AbstractMultipleSelection {
         public void doExecute() {
           List<SNode> selectedNodes = getSelectedNodes();
           assert selectedNodes.size() > 1;
-          SNode prevSelectableNode = getNextSelectableNode(SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextElement$Ue), false);
-          SNode nextSelectableNode = getNextSelectableNode(SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextElement$Ue), true);
-          if (prevSelectableNode == null && nextSelectableNode == null) {
-            prevSelectableNode = ListSequence.fromList(SLinkOperations.getChildren(myParentNode, LINKS.elements$eRew)).addElement(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")));
-          }
+          SNode firstSelected = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextElement$Ue);
+          SNode lastSelected = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextElement$Ue);
+          SNode prevSelectableNode = getNextSelectableNode(firstSelected, false);
+          SNode nextSelectableNode = getNextSelectableNode(lastSelected, true);
           for (SNode node : selectedNodes) {
             node.delete();
           }
+          removeEmptyLines();
           switch (type) {
             case BACKSPACE:
               if (selectNode(prevSelectableNode, false) || selectNode(nextSelectableNode, true)) {
@@ -292,6 +300,37 @@ public class WordRangeSelection extends AbstractMultipleSelection {
       }
     }
   }
+
+  private void removeEmptyLines() {
+    boolean someLinesStay = (SNodeOperations.getPrevSibling(myFirstParentNode) != null) || (SNodeOperations.getNextSibling(myLastParentNode) != null);
+    SContainmentLink containingLink = SNodeOperations.getContainingLink(myFirstParentNode);
+    SNode parent = SNodeOperations.getParent(myFirstParentNode);
+
+    SNode currentLine = myFirstParentNode;
+    while (true) {
+      SNode next = SNodeOperations.as(SNodeOperations.getNextSibling(currentLine), CONCEPTS.Line$w3);
+      if (ListSequence.fromList(SLinkOperations.getChildren(currentLine, LINKS.elements$eRew)).isEmpty()) {
+        SNodeOperations.deleteNode(currentLine);
+      } else {
+        someLinesStay = true;
+      }
+      if (Objects.equals(currentLine, myLastParentNode)) {
+        break;
+      }
+      currentLine = next;
+    }
+    if (!(someLinesStay)) {
+      SNode l = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
+      ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$eRew)).addElement(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")));
+      parent.addChild(containingLink, l);
+    } else {
+      if (!(Objects.equals(myFirstParentNode, myLastParentNode)) && (SNodeOperations.getParent(myFirstParentNode) != null) && (SNodeOperations.getParent(myLastParentNode) != null)) {
+        SNodeOperations.deleteNode(myLastParentNode);
+        Line__BehaviorDescriptor.merge_id1YnOZxALrLu.invoke(myFirstParentNode, myLastParentNode);
+      }
+    }
+  }
+
   private boolean canExecute(final EditorContext editorContext, final CellAction action) {
     return new ModelAccessHelper(editorContext.getRepository()).runReadAction(new Computable<Boolean>() {
       public Boolean compute() {
@@ -320,7 +359,11 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     return null;
   }
   private Iterable<? extends SNode> getChildIterable() {
-    return SLinkOperations.getChildren(myParentNode, LINKS.elements$eRew);
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(myFirstParentNode, true), CONCEPTS.Line$w3)).translate(new ITranslator2<SNode, SNode>() {
+      public Iterable<SNode> translate(SNode line) {
+        return SLinkOperations.getChildren(line, LINKS.elements$eRew);
+      }
+    });
   }
   @Override
   public void ensureVisible() {
