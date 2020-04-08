@@ -66,7 +66,7 @@ public class ReferenceInfo_Template extends ReferenceInfo {
     final TemplateGenerator generator = ref.getGenerator();
     final GeneratorMappings mappings = generator.getMappings();
 
-    SNode outputTargetNode = mappings.findOutputForTemplate(myTemplateTargetNode, myContext);
+    SNode outputTargetNode = mappings.findOutputForTemplate(myTemplateTargetNode, myContext, myTemplateSourceNode);
     if (outputTargetNode != null) {
       checkCrossRootTemplateReference(outputTargetNode, ref);
       return outputTargetNode;

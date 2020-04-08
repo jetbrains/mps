@@ -53,6 +53,7 @@ import jetbrains.mps.generator.runtime.TemplateRule;
 import jetbrains.mps.generator.runtime.TemplateSwitchMapping;
 import jetbrains.mps.generator.template.DefaultQueryExecutionContext;
 import jetbrains.mps.generator.template.QueryExecutionContext;
+import jetbrains.mps.generator.trace.RuleTrace2;
 import jetbrains.mps.generator.trace.TraceFacility;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.smodel.DynamicReference;
@@ -312,11 +313,20 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
   // PARALLEL: create root rules are checked for applicability from the thread they would generate from.
   protected final void applyCreateRoot(TemplateCreateRootRule rule, TemplateExecutionEnvironment environment) throws GenerationFailureException, GenerationCanceledException {
     final DefaultTemplateContext tc = new DefaultTemplateContext(environment, null, null);
-    if (!environment.getQueryExecutor().isApplicable(rule, tc)) {
+    TraceFacility traceSession = getTraceSession();
+    RuleTrace2 ruleTrace = traceSession != null ? traceSession.rule(rule) : null;
+    final boolean isApplicable = environment.getQueryExecutor().isApplicable(rule, tc);
+    if (ruleTrace != null) {
+      ruleTrace.condition(isApplicable);
+    }
+    if (!isApplicable) {
       return;
     }
     try {
       Collection<SNode> outputNodes = environment.getQueryExecutor().applyRule(rule, tc);
+      if (ruleTrace != null) {
+        ruleTrace.completed(outputNodes);
+      }
       if (outputNodes == null) {
         return;
       }
@@ -341,15 +351,24 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
   private void applyRootRule(TemplateRootMappingRule rule, List<SNode> rootsConsumed) throws GenerationFailureException, GenerationCanceledException {
     Iterable<SNode> inputNodes = FastNodeFinderManager.get(myInputModel).getNodes(rule.getApplicableConcept(), rule.applyToInheritors());
     final TemplateExecutionEnvironmentImpl env = newExecutionEnvironment(getDefaultExecutionContext());
+    TraceFacility traceSession = getTraceSession();
+    // this one doesn't report reached() when obtained
+    final RuleTrace2 ruleTrace = traceSession != null ? traceSession.rule(rule) : null;
     for (SNode inputNode : inputNodes) {
       // do not apply root mapping if root node has been copied from input model on previous micro-step
       // because some roots can be already mapped and copied as well (if some rule has 'keep root' = true)
       if (getGeneratorSessionContext().isCopiedRoot(inputNode)) {
         continue;
       }
-
+      if (ruleTrace != null) {
+        ruleTrace.reached();
+      }
       final DefaultTemplateContext templateContext = new DefaultTemplateContext(env, inputNode, null);
-      if (!env.getQueryExecutor().isApplicable(rule, templateContext)) {
+      final boolean isApplicable = env.getQueryExecutor().isApplicable(rule, templateContext);
+      if (ruleTrace != null) {
+        ruleTrace.condition(isApplicable);
+      }
+      if (!isApplicable) {
         continue;
       }
       boolean copyRootOnFailure = false;
@@ -370,7 +389,17 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
   protected final void createRootNodeByRule(TemplateRootMappingRule rule, SNode inputNode, TemplateExecutionEnvironmentImpl env, boolean copyRootOnFailure) throws GenerationCanceledException, GenerationFailureException {
     try {
       final DefaultTemplateContext templateContext = new DefaultTemplateContext(env, inputNode, null);
+      TraceFacility traceSession = getTraceSession();
+      final RuleTrace2 ruleTrace = traceSession != null ? traceSession.rule(rule) : null;
+      if (ruleTrace != null) {
+        // though reached() has been reported already in applyRootRule, report once again from an actual thread
+        ruleTrace.reached();
+      }
+
       Collection<SNode> outputNodes = env.getQueryExecutor().applyRule(rule, templateContext);
+      if (ruleTrace != null) {
+        ruleTrace.completed(outputNodes);
+      }
       if (outputNodes == null) {
         return;
       }

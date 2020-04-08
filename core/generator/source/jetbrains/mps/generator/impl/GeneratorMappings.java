@@ -19,11 +19,14 @@ import jetbrains.mps.generator.IGeneratorLogger;
 import jetbrains.mps.generator.IGeneratorLogger.ProblemDescription;
 import jetbrains.mps.generator.impl.cache.MappingsMemento;
 import jetbrains.mps.generator.runtime.TemplateContext;
+import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
+import jetbrains.mps.smodel.runtime.StaticScope;
 import jetbrains.mps.textgen.trace.TracingUtil;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.ToStringComparator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -133,24 +136,23 @@ public final class GeneratorMappings {
     }
   }
 
-  void addOutputNodeByInputAndTemplateNode(TemplateContext templateContext, String templateNodeId, SNode outputNode) {
-    // todo: combination of (templateN, inputN) -> outputN
-    // todo: is not unique
-    // todo: generator should report error on attempt to obtain not unique output-node
-    if (templateNodeId == null) {
-      return;
-    }
-    recordsOf(templateNodeId).put(templateContext.getInput(), templateContext.executionPathIdentity(), outputNode);
-  }
-
   private NodeTagCabinet recordsOf(String templateNodeId) {
     return myTemplateNodeIdAndInputNodeToOutputNodeMap.computeIfAbsent(templateNodeId, p -> new NodeTagCabinet());
   }
 
+  private final ConcurrentHashMap<SConcept, Boolean> myConceptCouldNotBeTarget = new ConcurrentHashMap<>();
+
+  // Doesn't make any sense to record outputNode when its concept doesn't bear 'could be reference target' StaticScope
+  private boolean couldNotBeReferenceTarget(SConcept concept) {
+    return myConceptCouldNotBeTarget.computeIfAbsent(concept, c -> c instanceof SConceptAdapterById ? ((SConceptAdapterById) c).getConceptDescriptor().getStaticScope() == StaticScope.NONE : Boolean.FALSE);
+  }
+
+  // templateContext, templateNodeId != null
+  // generally, outputNode is outcome of preceding env.createOutputNode and assumed to be != null, too.
   void addOutputNodeForContext(TemplateContext templateContext, String templateNodeId, SNode outputNode) {
-    // todo: combination of (templateN, inputN) -> outputN
-    // todo: is not unique
-    // todo: generator should report error on attempt to obtain not unique output-node
+    if (couldNotBeReferenceTarget(outputNode.getConcept())) {
+      return;
+    }
     final NodeTagCabinet templateRecords = recordsOf(templateNodeId);
     final int tag = templateContext.executionPathIdentity();
     if (templateContext.getInput() == null) {
@@ -231,10 +233,19 @@ public final class GeneratorMappings {
 
 
   @Nullable
-  public SNode findOutputForTemplate(String templateNodeId, TemplateContext templateContext) {
+  public SNode findOutputForTemplate(String templateNodeId, TemplateContext templateContext, @Nullable SNodeReference templateModelLocation) {
     final NodeTagCabinet l = recordsOf(templateNodeId);
     // try to find for the same inputNode
     final int tag = templateContext.executionPathIdentity();
+    if (myLog.needsWarnings() && l.countWithTag(templateContext.getInput(), tag) > 1) {
+      // MPS-31826 generator should report error on attempt to obtain not unique output-node
+      // in fact, the text misses 'within an execution path', which seems too technical and rather confusing.
+      // XXX not sure if I need to report templateNodeId, it seems to be the target of a reference @templateModelLocation, why would I
+      //     get users frightened by something like "tpl:/..." then?
+      // XXX also I wonder if I shall move logging outside of GM completely, RI_Template could do this, instead
+      final String m = "Multiple output nodes recorded for template which is target of the resolved reference";
+      myLog.warning(templateModelLocation, m, GeneratorUtil.describeInput(templateContext));
+    }
     // tc.input == null is ok, we do record 'unique' output for a template node in this case, see #addOutputNodeForContext(), above
     SNode outputTargetNode = l.get(templateContext.getInput(), tag);
     // Here comes a change compared to old GM/RI_Template behavior:
@@ -427,6 +438,16 @@ public final class GeneratorMappings {
       return nodes[0];
     }
 
+    int countWithTag(final int tag) {
+      int rv = 0;
+      for (int i = 0; i < count; i++) {
+        if (tags[i] == tag) {
+          rv++;
+        }
+      }
+      return rv;
+    }
+
     SNode lastWithTag(final int tag) {
       for (int i = count - 1; i >= 0; i--) {
         if (tags[i] == tag) {
@@ -456,6 +477,14 @@ public final class GeneratorMappings {
 
     void withoutInput(final int tag, final SNode value) {
       myNoInput.add(value, tag);
+    }
+
+    int countWithTag(SNode key, int tag) {
+      final TagNodeList l = key == null ? myNoInput : myMap.get(key);
+      if (l == null) {
+        return 0;
+      }
+      return l.countWithTag(tag);
     }
 
     @Nullable

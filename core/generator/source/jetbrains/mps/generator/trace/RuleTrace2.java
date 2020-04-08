@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,9 @@
  */
 package jetbrains.mps.generator.trace;
 
+import jetbrains.mps.generator.runtime.TemplateCreateRootRule;
 import jetbrains.mps.generator.runtime.TemplateReductionRule;
+import jetbrains.mps.generator.runtime.TemplateRootMappingRule;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.nio.ByteBuffer;
@@ -29,14 +31,23 @@ import java.util.Collection;
  */
 public final class RuleTrace2 {
   private final Collection<ClientToken> myClients;
-  private final TemplateReductionRule myRule;
   private final byte[] myHeader;
 
   /*package*/ RuleTrace2(Collection<ClientToken> interestedInTheRule, TemplateReductionRule reductionRule) {
     myClients = interestedInTheRule;
-    myRule = reductionRule;
-    myHeader = myRule.getRuleNode().toString().getBytes();
+    myHeader = reductionRule.getRuleNode().toString().getBytes();
   }
+
+  /*package*/ RuleTrace2(Collection<ClientToken> interestedInTheRule, TemplateCreateRootRule createRootRule) {
+    myClients = interestedInTheRule;
+    myHeader = createRootRule.getRuleNode().toString().getBytes();
+  }
+
+  /*package*/ RuleTrace2(Collection<ClientToken> interestedInTheRule, TemplateRootMappingRule rootMapRule) {
+    myClients = interestedInTheRule;
+    myHeader = rootMapRule.getRuleNode().toString().getBytes();
+  }
+
 
   public boolean isActive() {
     // alternative to nullable RuleTrace and != null checks
@@ -44,32 +55,36 @@ public final class RuleTrace2 {
   }
 
   public void reached() {
-    notify("[reached]".getBytes());
+    notify(0x01);
   }
 
   public void blocked(boolean blocked) {
-    notify(String.format("[blocked:%b]", blocked).getBytes());
+    notify(blocked ? 0x0102 : 0x0202);
   }
 
   public void condition(boolean conditionMet) {
-    notify(String.format("[condition met:%b]", conditionMet).getBytes());
+    notify(conditionMet ? 0x0103 : 0x0203);
   }
 
   public void dismissed() {
-    notify("[dismissed]".getBytes());
+    notify(0x04);
   }
 
   public void completed(Collection<SNode> outputNodes) {
-    notify(String.format("[completed:%d]", outputNodes == null ? 0 : outputNodes.size()).getBytes());
+    notify(0x05, outputNodes == null ? 0 : outputNodes.size());
   }
 
-  private void notify(byte[] message) {
+  private void notify(int ... message) {
     // could be thread-local with pre-filled header and thread id
-    final ByteBuffer bb = ByteBuffer.allocate(myHeader.length + message.length + 8 + 1);
+    final ByteBuffer bb = ByteBuffer.allocate(myHeader.length + message.length * 4 + 8*2 /*long threadId, time*/ + 1 /*zero byte*/ + 4 /*msg len*/);
     bb.put(myHeader);
     bb.put((byte) 0);
     bb.putLong(Thread.currentThread().getId());
-    bb.put(message);
+    bb.putLong(System.nanoTime());
+    bb.putInt(message.length);
+    for (int m : message) {
+      bb.putInt(m);
+    }
     final byte[] array = bb.array();
     for (ClientToken client : myClients) {
       client.sendToClient(array);
