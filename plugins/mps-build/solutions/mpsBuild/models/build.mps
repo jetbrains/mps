@@ -27948,13 +27948,16 @@
       </node>
       <node concept="28jJK3" id="3$BamnXnUZ_" role="39821P">
         <node concept="1688n2" id="7i$e6qbZNMm" role="28jJR8">
-          <property role="1688n3" value="SNAPSHOT" />
-          <property role="1688n6" value="gi" />
+          <property role="1688n3" value=".+" />
           <node concept="NbPM2" id="7i$e6qbZNMo" role="1688n0">
             <node concept="3Mxwey" id="7i$e6qbZNMs" role="3MwsjC">
-              <ref role="3Mxwex" node="7i$e6qbZNLR" resolve="mps.build.counter" />
+              <ref role="3Mxwex" node="3IKDaVZnAxg" resolve="build.number" />
             </node>
           </node>
+        </node>
+        <node concept="1688n2" id="12O7703WqA0" role="28jJR8">
+          <property role="1688n3" value="MPS-" />
+          <node concept="NbPM2" id="12O7703WqA2" role="1688n0" />
         </node>
         <node concept="55IIr" id="3$BamnXnUZB" role="28jJRO">
           <node concept="2Ry0Ak" id="3$BamnXnV1p" role="iGT6I">

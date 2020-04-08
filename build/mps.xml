@@ -214,7 +214,10 @@
       <fileset file="${basedir}/build.txt" />
       <filterchain>
         <tokenfilter>
-          <replaceregex pattern="SNAPSHOT" replace="${mps.build.counter}" flags="gi" />
+          <replaceregex pattern=".+" replace="${build.number}" flags="" />
+        </tokenfilter>
+        <tokenfilter>
+          <replaceregex pattern="MPS-" replace="" flags="" />
         </tokenfilter>
       </filterchain>
     </copy>
