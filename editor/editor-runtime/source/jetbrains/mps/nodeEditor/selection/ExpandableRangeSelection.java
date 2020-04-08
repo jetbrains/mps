@@ -70,6 +70,7 @@ public class ExpandableRangeSelection extends AbstractMultipleSelection {
 
   public ExpandableRangeSelection(@NotNull EditorComponent editorComponent, Map<String, String> properties, CellInfo cellInfo) throws SelectionStoreException,
                                                                                                                                       SelectionRestoreException {
+    //TODO remove this class
     super(editorComponent);
     if (cellInfo != null) {
       throw new SelectionStoreException("Non-null CellInfo object passed as a parameter: " + cellInfo);

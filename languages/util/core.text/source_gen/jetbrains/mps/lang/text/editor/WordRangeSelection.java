@@ -26,10 +26,10 @@ import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 
 public class WordRangeSelection extends AbstractMultipleSelection {
   private static final String ROLE_PROPERTY_NAME = "role";
@@ -38,13 +38,11 @@ public class WordRangeSelection extends AbstractMultipleSelection {
   private static final String LAST_NODE_ID_PROPERTY_NAME = "lastNodeId";
   private static final String PARENT_NODE_ID_PROPERTY_NAME = "parentNodeId";
   private static final String GROWING_FORWARD_PROPERTY_NAME = "growingForward";
-  private static final String EMPTY_CELL_ID = "emptyCellId";
   private final SNode myFirstNode;
   private final SNode myLastNode;
   private final SNode myParentNode;
   private final String myRole;
   private final String myModelReference;
-  private final String myEmptyCellId;
   private boolean myGrowingForward;
   private int positionInCellLeft = 0;
   private int positionInCellRight = 0;
@@ -87,7 +85,6 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     if (!(myRole.equals(myFirstNode.getRoleInParent())) || !(myRole.equals(myLastNode.getRoleInParent()))) {
       throw new SelectionRestoreException();
     }
-    myEmptyCellId = properties.get(EMPTY_CELL_ID);
     myGrowingForward = Boolean.parseBoolean(properties.get(GROWING_FORWARD_PROPERTY_NAME));
     try {
       initSelectedCells();
@@ -105,7 +102,6 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     myParentNode = myFirstNode.getParent();
     myRole = myFirstNode.getRoleInParent();
     myModelReference = myFirstNode.getModel().getReference().toString();
-    myEmptyCellId = emptyCellId;
     myGrowingForward = growingForward;
     assert myParentNode != null;
     assert myParentNode == myLastNode.getParent();
@@ -153,9 +149,6 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     selectionInfo.getPropertiesMap().put(FIRST_NODE_ID_PROPERTY_NAME, myFirstNode.getNodeId().toString());
     selectionInfo.getPropertiesMap().put(LAST_NODE_ID_PROPERTY_NAME, myLastNode.getNodeId().toString());
     selectionInfo.getPropertiesMap().put(PARENT_NODE_ID_PROPERTY_NAME, myParentNode.getNodeId().toString());
-    if (myEmptyCellId != null) {
-      selectionInfo.getPropertiesMap().put(EMPTY_CELL_ID, myEmptyCellId);
-    }
     selectionInfo.getPropertiesMap().put(GROWING_FORWARD_PROPERTY_NAME, Boolean.toString(myGrowingForward));
     return selectionInfo;
   }
@@ -284,21 +277,6 @@ public class WordRangeSelection extends AbstractMultipleSelection {
             default:
               assert false : "Incorrect acton type passed: " + type;
           }
-
-          // TODO throw away below, remove emptyID 
-          // selecting default cell - no children found. 
-          if (myEmptyCellId != null) {
-            SelectionUtil.selectLabelCellAnSetCaret(editorContext, myParentNode, myEmptyCellId, 0);
-            return;
-          }
-          EditorCell emptyCell = getEditorComponent().findNodeCellWithRole(myParentNode, myRole);
-          if (emptyCell != null) {
-            assert myParentNode.getModel() != null : "The model of the parent node (" + myParentNode + ") in this selection is null.";
-            assert emptyCell.getSNode().getModel() != null : "The model is null for emptyCell node (" + emptyCell.getSNode() + ")";
-            editorContext.selectWRTFocusPolicy(emptyCell);
-            return;
-          }
-          SelectionUtil.selectLabelCellAnSetCaret(editorContext, myParentNode, SelectionManager.LAST_CELL, -1);
         }
       });
     } else
