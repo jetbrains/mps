@@ -13,6 +13,8 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Line_Actions {
 
@@ -26,8 +28,8 @@ public class Line_Actions {
         EditorCellLabelSelection selection = as_h5gcex_a0a1a1a0a0a1(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
-        SNode currentWord = selectedNodes.get(0);
-        WordRangeSelection ws = new WordRangeSelection(editorContext.getEditorComponent(), SNodeOperations.getPrevSibling(currentWord), currentWord, false);
+        SNode currentWord = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextElement$Ue);
+        WordRangeSelection ws = new WordRangeSelection(editorContext.getEditorComponent(), SNodeOperations.as(SNodeOperations.getPrevSibling(currentWord), CONCEPTS.TextElement$Ue), currentWord, false);
         selectionManager.pushSelection(ws);
 
       }
@@ -44,8 +46,8 @@ public class Line_Actions {
         EditorCellLabelSelection selection = as_h5gcex_a0a1a1a0a0a2(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
-        SNode currentWord = selectedNodes.get(selectedNodes.size() - 1);
-        WordRangeSelection ws = new WordRangeSelection(editorContext.getEditorComponent(), currentWord, SNodeOperations.getNextSibling(currentWord), true);
+        SNode currentWord = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextElement$Ue);
+        WordRangeSelection ws = new WordRangeSelection(editorContext.getEditorComponent(), currentWord, SNodeOperations.as(SNodeOperations.getNextSibling(currentWord), CONCEPTS.TextElement$Ue), true);
         selectionManager.pushSelection(ws);
 
       }
@@ -96,5 +98,9 @@ public class Line_Actions {
   }
   private static <T> T as_h5gcex_a0a1a1a0a0a2(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept TextElement$Ue = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
   }
 }
