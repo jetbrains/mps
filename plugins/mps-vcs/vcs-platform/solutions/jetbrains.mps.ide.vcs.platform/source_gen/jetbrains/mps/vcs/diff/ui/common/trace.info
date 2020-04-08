@@ -1121,7 +1121,7 @@
       <node id="4652592318748337293" at="161,12,162,20" concept="13" />
       <node id="1214268015959816390" at="165,87,166,44" concept="12" />
       <node id="8026003490916188834" at="166,44,167,102" concept="13" />
-      <node id="8829706354785280891" at="170,104,171,16" concept="13" />
+      <node id="8829706354785280891" at="170,107,171,16" concept="13" />
       <node id="867367425399296142" at="175,36,176,49" concept="13" />
       <node id="867367425399296142" at="177,5,178,16" concept="13" />
       <node id="4167596265061428524" at="181,36,182,38" concept="13" />
@@ -1150,7 +1150,7 @@
       <node id="4652592318748337231" at="145,0,148,0" concept="11" trace="select#(Ljetbrains/mps/vcs/diff/ui/common/ChangeEditorMessage;)Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_0;" />
       <node id="4652592318748337241" at="149,0,152,0" concept="11" trace="accept#(Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_0;)Z" />
       <node id="4652592318748337252" at="153,0,156,0" concept="11" trace="combine#(Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_0;Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_0;)Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_0;" />
-      <node id="8829706354785280754" at="170,0,173,0" concept="11" trace="getMessagesTextForArea#(Ljava/awt/event/MouseEvent;ZZ)Ljava/lang/String;" />
+      <node id="8829706354785280754" at="170,0,173,0" concept="11" trace="getBackgroundMessagesText#(Ljava/awt/event/MouseEvent;ZZ)Ljava/lang/String;" />
       <node id="867367425399296142" at="174,128,177,5" concept="10" />
       <node id="4167596265061428524" at="180,73,183,5" concept="10" />
       <node id="4167596265061428527" at="186,87,189,5" concept="10" />
@@ -1202,7 +1202,7 @@
       <scope id="4652592318748337242" at="149,41,150,32" />
       <scope id="4652592318748337253" at="153,51,154,28" />
       <scope id="4652592318748337292" at="161,12,162,20" />
-      <scope id="8829706354785280761" at="170,104,171,16" />
+      <scope id="8829706354785280761" at="170,107,171,16" />
       <scope id="867367425399296142" at="175,36,176,49" />
       <scope id="4167596265061428524" at="181,36,182,38" />
       <scope id="4167596265061428527" at="187,36,188,45" />
@@ -1628,7 +1628,7 @@
       <node id="2214273178345491610" at="228,116,229,39" concept="18" />
       <node id="2214273178345519077" at="233,46,234,60" concept="13" />
       <node id="3429562080100711081" at="239,47,240,20" concept="13" />
-      <node id="3429562080100711087" at="241,7,242,92" concept="13" />
+      <node id="3429562080100711087" at="241,7,242,95" concept="13" />
       <node id="3429562080100735713" at="246,86,247,94" concept="12" />
       <node id="3429562080100735718" at="247,94,248,99" concept="6" />
       <node id="3429562080100735724" at="248,99,249,19" concept="13" />
@@ -1638,7 +1638,7 @@
       <node id="7168952380157195679" at="259,120,260,50" concept="6" />
       <node id="2095681145636662481" at="260,50,261,322" concept="6" />
       <node id="3742832341332173391" at="266,48,267,20" concept="13" />
-      <node id="2516374037452909727" at="268,7,269,94" concept="13" />
+      <node id="2516374037452909727" at="268,7,269,97" concept="13" />
       <node id="468095972735879668" at="273,86,274,94" concept="12" />
       <node id="3429562080100368282" at="274,94,275,100" concept="6" />
       <node id="468095972735911972" at="275,100,276,19" concept="13" />
@@ -1803,8 +1803,8 @@
       </scope>
       <scope id="4652592318748338689" at="190,0,194,0" />
       <scope id="2214273178345519069" at="232,0,236,0" />
-      <scope id="3429562080100711078" at="238,66,242,92" />
-      <scope id="3742832341331822540" at="265,66,269,94" />
+      <scope id="3429562080100711078" at="238,66,242,95" />
+      <scope id="3742832341331822540" at="265,66,269,97" />
       <scope id="7561474607379498545" at="279,0,283,0" />
       <scope id="4008989919132916544" at="284,0,288,0" />
       <scope id="4578905056600669989" at="290,50,294,35" />
@@ -3395,7 +3395,7 @@
       <node id="8829706354784921116" at="131,41,134,5" concept="10" />
       <node id="8829706354785483019" at="145,5,148,5" concept="10" />
       <node id="8829706354784921227" at="155,0,158,0" concept="11" trace="select#(Ljetbrains/mps/vcs/diff/changes/ModelChange;)Ljava/lang/String;" />
-      <node id="8829706354785120358" at="165,104,168,5" concept="20" />
+      <node id="8829706354785120358" at="165,107,168,5" concept="20" />
       <node id="8829706354785503191" at="168,5,171,5" concept="10" />
       <node id="8829706354785120460" at="192,7,195,7" concept="10" />
       <node id="2234787843315355429" at="54,0,58,0" concept="11" trace="editorUpdated#(Ljetbrains/mps/openapi/editor/EditorComponent;)V" />
@@ -3421,7 +3421,7 @@
       <node id="8829706354785120386" at="182,0,196,5" concept="9" />
       <node id="6402272430682109001" at="43,0,75,0" concept="3" trace="DiffChangeGroupLayout#(Ljetbrains/mps/vcs/diff/ui/common/ChangeEditorMessage/ConflictChecker;Lorg/jetbrains/mps/openapi/module/SRepository;Ljetbrains/mps/vcs/diff/ChangeSet;Ljetbrains/mps/vcs/diff/ui/common/DiffEditor;Ljetbrains/mps/vcs/diff/ui/common/DiffEditor;Lcom/intellij/diff/tools/util/DiffSplitter;Z)V" />
       <node id="8829706354784921114" at="131,0,163,0" concept="11" trace="ensureBoundsCalculated#()V" />
-      <node id="8829706354785120352" at="164,0,199,0" concept="11" trace="getMessagesTextForArea#(Ljava/awt/event/MouseEvent;ZZ)Ljava/lang/String;" />
+      <node id="8829706354785120352" at="164,0,199,0" concept="11" trace="getBackgroundMessagesText#(Ljava/awt/event/MouseEvent;ZZ)Ljava/lang/String;" />
       <scope id="2234787843315355436" at="55,68,56,23" />
       <scope id="8829706354784834098" at="63,47,64,45" />
       <scope id="8829706354784877932" at="70,45,71,45" />
@@ -3519,7 +3519,7 @@
         <var name="rightEditor" id="6402272430682109060" />
       </scope>
       <scope id="8829706354784921114" at="131,0,163,0" />
-      <scope id="8829706354785120357" at="165,104,197,16">
+      <scope id="8829706354785120357" at="165,107,197,16">
         <var name="editor" id="2516374037453084045" />
         <var name="p" id="1514627197433066820" />
         <var name="prevGroupBottomLineY" id="8829706354785120374" />

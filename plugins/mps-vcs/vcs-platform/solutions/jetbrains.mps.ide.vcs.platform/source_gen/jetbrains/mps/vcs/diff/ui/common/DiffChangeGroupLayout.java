@@ -162,7 +162,7 @@ public class DiffChangeGroupLayout extends ChangeGroupLayout {
   }
 
   @Override
-  protected String getMessagesTextForArea(MouseEvent event, boolean isInspector, boolean isLeftEditor) {
+  protected String getBackgroundMessagesText(MouseEvent event, boolean isInspector, boolean isLeftEditor) {
     synchronized (this) {
       ensureBoundsCalculated();
     }

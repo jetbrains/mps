@@ -7342,7 +7342,7 @@
     </node>
     <node concept="2tJIrI" id="7E9qMnrZ4oD" role="jymVt" />
     <node concept="3clFb_" id="7E9qMnrZ6bM" role="jymVt">
-      <property role="TrG5h" value="getMessagesTextForArea" />
+      <property role="TrG5h" value="getBackgroundMessagesText" />
       <node concept="3Tmbuc" id="7E9qMnrZ6bN" role="1B3o_S" />
       <node concept="17QB3L" id="7E9qMnrZ6bO" role="3clF45" />
       <node concept="37vLTG" id="7E9qMnrZ6bP" role="3clF46">
@@ -10666,7 +10666,7 @@
           <node concept="3cpWs6" id="2Yog8EfznEJ" role="3cqZAp">
             <node concept="2OqwBi" id="2Yog8EfznEK" role="3cqZAk">
               <node concept="liA8E" id="2Yog8EfznEL" role="2OqNvi">
-                <ref role="37wK5l" node="7E9qMnrZ6bM" resolve="getMessagesTextForArea" />
+                <ref role="37wK5l" node="7E9qMnrZ6bM" resolve="getBackgroundMessagesText" />
                 <node concept="37vLTw" id="2Yog8EfznEM" role="37wK5m">
                   <ref role="3cqZAo" node="2Yog8EfznE$" resolve="event" />
                 </node>
@@ -10878,7 +10878,7 @@
           <node concept="3cpWs6" id="2bFXdFgpmMv" role="3cqZAp">
             <node concept="2OqwBi" id="2bFXdFgpvxm" role="3cqZAk">
               <node concept="liA8E" id="2bFXdFgpyaL" role="2OqNvi">
-                <ref role="37wK5l" node="7E9qMnrZ6bM" resolve="getMessagesTextForArea" />
+                <ref role="37wK5l" node="7E9qMnrZ6bM" resolve="getBackgroundMessagesText" />
                 <node concept="37vLTw" id="2bFXdFgpB3D" role="37wK5m">
                   <ref role="3cqZAo" node="3fLdyWuVkva" resolve="event" />
                 </node>
@@ -20625,7 +20625,7 @@
     </node>
     <node concept="2tJIrI" id="7E9qMnrYu1y" role="jymVt" />
     <node concept="3clFb_" id="7E9qMnrYv1w" role="jymVt">
-      <property role="TrG5h" value="getMessagesTextForArea" />
+      <property role="TrG5h" value="getBackgroundMessagesText" />
       <node concept="3Tmbuc" id="7E9qMnrYv1x" role="1B3o_S" />
       <node concept="17QB3L" id="7E9qMnrYYUe" role="3clF45" />
       <node concept="37vLTG" id="7E9qMnrYv1z" role="3clF46">

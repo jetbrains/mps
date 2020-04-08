@@ -239,7 +239,7 @@ public class DiffEditor implements EditorMessageOwner {
       if (getChangeGroupLayout(true) == null) {
         return null;
       }
-      return getChangeGroupLayout(true).getMessagesTextForArea(event, true, isLeftEditor());
+      return getChangeGroupLayout(true).getBackgroundMessagesText(event, true, isLeftEditor());
     }
 
     @Override
@@ -266,7 +266,7 @@ public class DiffEditor implements EditorMessageOwner {
       if (getChangeGroupLayout(false) == null) {
         return null;
       }
-      return getChangeGroupLayout(false).getMessagesTextForArea(event, false, isLeftEditor());
+      return getChangeGroupLayout(false).getBackgroundMessagesText(event, false, isLeftEditor());
     }
 
     @Override

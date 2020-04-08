@@ -167,7 +167,7 @@ public abstract class ChangeGroupLayout {
     return (int) a.end() - tolerance < (int) b.start() || (int) b.end() - tolerance < (int) a.start();
   }
 
-  protected String getMessagesTextForArea(MouseEvent event, boolean isInspector, boolean isLeftEditor) {
+  protected String getBackgroundMessagesText(MouseEvent event, boolean isInspector, boolean isLeftEditor) {
     return null;
   }
 
