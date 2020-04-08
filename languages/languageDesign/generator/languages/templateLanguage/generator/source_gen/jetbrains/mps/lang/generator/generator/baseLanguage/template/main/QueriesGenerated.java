@@ -2797,9 +2797,15 @@ public class QueriesGenerated extends QueryProviderBase {
     }).distinct();
   }
   public static Object templateArgumentQuery_12_0(final TemplateArgumentContext _context) {
+    // XXX I believe mapperFunction.isNull check here is of no true meaning, what's wrong with substitute(mapperFunction) call that goes on 
+    // when mapperFunction.isNotNull? Neverteless, I see no value in extracting mapsrc at all (except as a nice exercise). Commit comment 
+    // doesn't help to understand this, either ("extract nodes under MAP_SRC into separate apply method"). 
+
+    // XXX reduce_Node template call in apply(), below, receives varindex == 0, while reduce_Node doesn't invoke extracted methods for varindex == 0 
+    //     therefore a MAP_SRC node on a root node shall not get extracted (otherwise it's processed twice, identically in applyPart0() and apply()) 
     return ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.MapSrcNodeMacro$Hp, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.mapperFunction$Y9oI) == null);
+        return SNodeOperations.getParent(it) != _context.getNode() && (SLinkOperations.getTarget(it, LINKS.mapperFunction$Y9oI) == null);
       }
     }).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
