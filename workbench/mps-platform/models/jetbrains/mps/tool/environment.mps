@@ -436,6 +436,12 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="6ZbvD_FEYL2" role="3cqZAp">
+          <node concept="2YIFZM" id="6ZbvD_FF4nk" role="3clFbG">
+            <ref role="1Pybhc" to="9w4s:~PlatformUtils" resolve="PlatformUtils" />
+            <ref role="37wK5l" to="9w4s:~PlatformUtils.setDefaultPrefixForCE()" resolve="setDefaultPrefixForCE" />
+          </node>
+        </node>
       </node>
       <node concept="37vLTG" id="4OPNMy2crcL" role="3clF46">
         <property role="TrG5h" value="config" />

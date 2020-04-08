@@ -6,6 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
+import com.intellij.util.PlatformUtils;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.util.annotation.Hack;
 import java.util.StringJoiner;
@@ -70,6 +71,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
   public IdeaEnvironment(@NotNull EnvironmentConfig config, boolean unitTestMode) {
     super(config);
     myUnitTestMode = unitTestMode;
+    PlatformUtils.setDefaultPrefixForCE();
   }
 
   public void init() {
