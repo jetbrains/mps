@@ -47,6 +47,7 @@ final class CallSiteImpl implements TemplateCallSite {
 
   @Override
   public Collection<SNode> apply(@NotNull TemplateContext context) throws GenerationException {
+    // don't change the kind of return value collection, there are casts in the code (until I unify all return value)
     final ArrayList<SNode> rv = new ArrayList<>();
     myTemplateDeclaration.apply(context.withNewExecutionPath(), new CollectorSink(rv));
     final SNode input = context.getInput();

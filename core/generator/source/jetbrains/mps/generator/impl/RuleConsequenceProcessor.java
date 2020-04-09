@@ -26,6 +26,7 @@ import jetbrains.mps.generator.impl.query.QueryKeyImpl;
 import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.impl.template.QueryExecutor;
 import jetbrains.mps.generator.runtime.GenerationException;
+import jetbrains.mps.generator.runtime.TemplateCallSite;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateDeclaration;
 import jetbrains.mps.generator.runtime.TemplateDeclarationKey;
@@ -190,8 +191,8 @@ public abstract class RuleConsequenceProcessor {
   private static class TemplateDeclarationReference extends RuleConsequenceProcessor {
     private final TemplateDeclarationKey myTemplateDeclaration;
     private final TemplateCall myTemplateCall;
-    private final SNodeReference myCallSite;
-    private TemplateDeclaration myTemplate;
+    private final SNodeReference myRulePointer;
+    private TemplateCallSite myCallSite;
 
     /**
      * If we invoked generated external template from non-generated generator, we use TEE.applyTemplate() or its replacement here,
@@ -202,7 +203,7 @@ public abstract class RuleConsequenceProcessor {
     public TemplateDeclarationReference(@NotNull SNode ruleConsequence, @NotNull TemplateDeclarationKey templateDeclaration) {
       myTemplateDeclaration = templateDeclaration;
       myTemplateCall = new TemplateCall(ruleConsequence);
-      myCallSite = ruleConsequence.getReference();
+      myRulePointer = ruleConsequence.getReference();
     }
 
     @NotNull
@@ -212,19 +213,18 @@ public abstract class RuleConsequenceProcessor {
       // FIXME pretty much the same code is in CallMacro, shall unify.
       TemplateExecutionEnvironment env = context.getEnvironment();
       if (myTemplateCall.argumentsMismatch()) {
-        env.getLogger().error(myCallSite, "number of arguments doesn't match myTemplate", GeneratorUtil.describeInput(context));
+        env.getLogger().error(myRulePointer, "number of arguments doesn't match myTemplate", GeneratorUtil.describeInput(context));
       }
 
-      if (myTemplate == null) {
+      if (myCallSite == null) {
         // XXX don't care to ensure single initialization in case I ever get here in parallel threads.
         //     I expect no state in the possibly decorated TD instance, hence don't care to pay the price of an extra instance
-        myTemplate = env.findTemplate(myTemplateDeclaration, myCallSite);
+        myCallSite = env.callSite(myTemplateDeclaration, myRulePointer);
       }
 
       try {
-        final ArrayList<SNode> rv = new ArrayList<>();
-        myTemplate.apply(myTemplateCall.prepareCallContext(context), new CollectorSink(rv));
-        return rv;
+        // XXX I know it's only CallSiteImpl that returns List always
+        return (List<SNode>) myCallSite.apply(myTemplateCall.prepareCallContext(context));
       } catch (GenerationFailureException | GenerationCanceledException | DismissTopMappingRuleException | AbandonRuleInputException ex) {
         throw ex;
       } catch (GenerationException ex) {

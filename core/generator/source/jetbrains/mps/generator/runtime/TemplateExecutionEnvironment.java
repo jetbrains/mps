@@ -115,7 +115,7 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
    * @param _switch identifies switch declaration
    * @throws GenerationCanceledException provisionally, I expect null handling to get extended with option to fail generation, we'd need to account for this scenario right away
    * @throws GenerationFailureException
-   * @since 20201.
+   * @since 2020.1
    */
   void nullInputSwitch(SNodeReference _switch) throws GenerationCanceledException, GenerationFailureException;
 
@@ -127,12 +127,15 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
    * same transformation session.
    * This is low-level mechanism for sophisticated use, generated templates (unless they keep instances obtained this way) shall resort to other methods to
    * invoke templates, namely {@link #callSite(TemplateDeclarationKey,SNodeReference)}.
+   * @deprecated not bad per se, just no need to expose, shall become private
    * @param templateDeclaration identifies template to load
    * @param callSite identifies location where invocation happens
    * @return never {@code null}, non necessarily exact generated class, might be a decorator that traces uses or reports errors.
    * @since 2018.3
    */
   @NotNull
+  @Deprecated
+  @ToRemove(version = 2020.1)
   TemplateDeclaration findTemplate(@NotNull TemplateDeclarationKey templateDeclaration, @NotNull SNodeReference callSite);
 
   /**

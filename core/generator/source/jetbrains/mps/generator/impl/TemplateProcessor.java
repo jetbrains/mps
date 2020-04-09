@@ -38,7 +38,6 @@ import jetbrains.mps.generator.impl.template.QueryExecutor;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateCallSite;
 import jetbrains.mps.generator.runtime.TemplateContext;
-import jetbrains.mps.generator.runtime.TemplateDeclaration;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateSwitchMapping;
 import jetbrains.mps.generator.runtime.WeavingWithAnchor;
@@ -443,7 +442,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
   private static class WeaveMacro extends MacroWithInput implements WeavingWithAnchor {
     private WeaveAnchorQuery myAnchorQuery;
     private volatile TemplateCall myCallProcessor;
-    private volatile TemplateDeclaration myTemplateRT;
+    private volatile TemplateCallSite myTemplateRT;
 
     protected WeaveMacro(@NotNull SNode macro, @NotNull TemplateNode templateNode, @Nullable MacroNode next, @NotNull TemplateProcessor templateProcessor) {
       super(macro, templateNode, next, templateProcessor);
@@ -479,7 +478,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
         }
 
         // I don't mind double initialization of the field from parallel threads, hence no guard, see $CALL$ for more details
-        myTemplateRT = env.findTemplate(TemplateIdentity.fromSourceNode(template), getMacroNodeRef());
+        myTemplateRT = env.callSite(TemplateIdentity.fromSourceNode(template), getMacroNodeRef());
         // consequence is node<TemplateDeclarationReference> and may pass arguments
         myCallProcessor = new TemplateCall(consequence);
         if (myCallProcessor.argumentsMismatch()) {
@@ -492,13 +491,10 @@ public final class TemplateProcessor implements ITemplateProcessor {
 
       final SNode contextNode = _outputNodes.get(0);
       final TemplateContext tcWithArgs = myCallProcessor.prepareCallContext(templateContext);
-      final TemplateCallSite callSite = templateContext.getEnvironment().callSite(myTemplateRT, getMacroNodeRef());
 
       for (SNode node : getNewInputNodes(templateContext)) {
         try {
-          // XXX would be great to have something like next code, instead
-          // td.apply(new WeaveSink(), templateContext);
-          callSite.weave(tcWithArgs.subContext(node), contextNode, this);
+          myTemplateRT.weave(tcWithArgs.subContext(node), contextNode, this);
           // XXX exception handling shall match that of WeavingProcessor.ArmedWeavingRule
         } catch (GenerationFailureException | GenerationCanceledException ex) {
           throw ex;
@@ -776,7 +772,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
   // $CALL$
   private static class CallMacro extends MacroWithInput {
     private final SNode myInvokedTemplate;
-    private volatile TemplateDeclaration myTemplateRT;
+    private volatile TemplateCallSite myTemplateRT;
     private volatile TemplateCall myCallProcessor;
 
     protected CallMacro(@NotNull SNode macro, @NotNull TemplateNode templateNode, @Nullable MacroNode next, @NotNull TemplateProcessor templateProcessor) {
@@ -818,7 +814,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
         }
         // myInvokedTemplate may come from a template model that has generated source code, have to access proper TemplateModel
         // implementation and proper TemplateDeclaration instance. Use of TemplateContainer here would imply we interpret any CALL/INCLUDE template.
-        myTemplateRT = env.findTemplate(TemplateIdentity.fromSourceNode(myInvokedTemplate), getMacroNodeRef());
+        myTemplateRT = env.callSite(TemplateIdentity.fromSourceNode(myInvokedTemplate), getMacroNodeRef());
         // Though we may be calling generated template, we still have node<TemplateDeclaration> as it's the only way for interpreted call site to point to
         // a template declaration. Technically, we don't need node<TemplateDeclaration> here, just its identity.
       }
@@ -829,13 +825,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
       TemplateContext tcInput = prepareArguments(templateContext).subContext(newInputNode);
 
       try {
-        // XXX in fact, shall use env.callSite().apply(), but would like to save CallSiteImpl instantiation here
-        //     which is not good, as I have to duplicate logic for all the extra stuff around template processing, like tracing
-        //     Once BP support is in place, likely would switch to env.callSite anyway
-        ArrayList<SNode> rv = new ArrayList<>();
-        myTemplateRT.apply(tcInput, new CollectorSink(rv));
-        env.getTrace().trace(newInputNode.getNodeId(), GenerationTracerUtil.translateOutput(rv), getMacroNodeRef());
-        return rv;
+        return (List<SNode>) myTemplateRT.apply(tcInput);
       } catch (GenerationFailureException | DismissTopMappingRuleException | GenerationCanceledException ex) {
         throw ex;
       } catch (GenerationException ex) {

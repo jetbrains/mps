@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -88,7 +88,7 @@ public class TemplateCall {
   @NotNull
   public TemplateContext prepareCallContext(@NotNull TemplateContext outerContext) throws GenerationFailureException {
     if (myNoArgs) {
-      return outerContext.withNewExecutionPath();
+      return outerContext;
     }
     final Map<String, Object> vars = new HashMap<>(myArguments.length * 2);
     for (int i = 0; i < myArguments.length; i++) {
@@ -96,7 +96,7 @@ public class TemplateCall {
       vars.put(myParameters[i], value);
     }
     // variables drop mapping label, hence need to reinstall it
-    return outerContext.withNewExecutionPath().subContext(vars).subContext(outerContext.getInputName());
+    return outerContext.subContext(vars).subContext(outerContext.getInputName());
   }
 
   private static ArgumentExpression[] toExpressionRuntime(List<SNode> args) {
