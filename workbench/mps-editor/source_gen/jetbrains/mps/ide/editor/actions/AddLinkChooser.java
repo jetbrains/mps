@@ -62,7 +62,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     c.gridy = 1;
     c.gridx = 0;
     c.anchor = GridBagConstraints.LINE_START;
-    mainPanel.add(new JLabel("Link: "), c);
+    mainPanel.add(new JLabel("URL: "), c);
 
     myLinkField = new JTextField(20);
     c.gridx = 1;

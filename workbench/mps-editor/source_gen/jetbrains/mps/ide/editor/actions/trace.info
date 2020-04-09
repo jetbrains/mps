@@ -381,8 +381,8 @@
       <node id="6961970966448039525" at="61,0,62,16" concept="4" />
       <node id="6961970966448039519" at="62,16,63,16" concept="4" />
       <node id="6961970966448283924" at="63,16,64,45" concept="4" />
-      <node id="6961970966446503732" at="64,45,65,43" concept="4" />
-      <node id="6961970966448065902" at="65,43,66,0" concept="12" />
+      <node id="6961970966446503732" at="64,45,65,42" concept="4" />
+      <node id="6961970966448065902" at="65,42,66,0" concept="12" />
       <node id="6961970966446729079" at="66,0,67,37" concept="4" />
       <node id="6961970966448055694" at="67,37,68,16" concept="4" />
       <node id="6961970966446503725" at="68,16,69,34" concept="4" />
@@ -3134,8 +3134,8 @@
   <root nodeRef="r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/6573807532044005480">
     <file name="WordAddLink_Action.java">
       <node id="6573807532044005480" at="23,0,24,0" concept="13" trace="ICON" />
-      <node id="6573807532044005480" at="25,31,26,32" concept="15" />
-      <node id="6573807532044005480" at="26,32,27,35" concept="4" />
+      <node id="6573807532044005480" at="25,31,26,31" concept="15" />
+      <node id="6573807532044005480" at="26,31,27,35" concept="4" />
       <node id="6573807532044005480" at="27,35,28,40" concept="4" />
       <node id="6573807532044005480" at="31,32,32,16" concept="10" />
       <node id="693268764742413532" at="35,87,36,111" concept="10" />
@@ -3442,8 +3442,8 @@
   <root nodeRef="r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/693268764742355428">
     <file name="WordRemoveLink_Action.java">
       <node id="693268764742355428" at="22,0,23,0" concept="13" trace="ICON" />
-      <node id="693268764742355428" at="24,34,25,35" concept="15" />
-      <node id="693268764742355428" at="25,35,26,35" concept="4" />
+      <node id="693268764742355428" at="24,34,25,34" concept="15" />
+      <node id="693268764742355428" at="25,34,26,35" concept="4" />
       <node id="693268764742355428" at="26,35,27,52" concept="4" />
       <node id="693268764742355428" at="30,32,31,16" concept="10" />
       <node id="693268764742411696" at="34,87,35,114" concept="10" />

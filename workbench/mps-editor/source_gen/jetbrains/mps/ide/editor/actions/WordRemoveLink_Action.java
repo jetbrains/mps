@@ -22,7 +22,7 @@ public class WordRemoveLink_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public WordRemoveLink_Action() {
-    super("Remove Link", "", ICON);
+    super("Remove URL", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
   }

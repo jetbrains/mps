@@ -23,7 +23,7 @@ public class WordAddLink_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public WordAddLink_Action() {
-    super("Add Link", "", ICON);
+    super("Add URL", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }

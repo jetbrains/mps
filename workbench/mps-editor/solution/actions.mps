@@ -13017,7 +13017,7 @@
   <node concept="sE7Ow" id="5GUQLVLhj1C">
     <property role="TrG5h" value="WordAddLink" />
     <property role="72QZ$" value="true" />
-    <property role="2uzpH1" value="Add Link" />
+    <property role="2uzpH1" value="Add URL" />
     <property role="3GE5qa" value="EditMenuActions" />
     <node concept="1DS2jV" id="JjUvrnYNpi" role="1NuT2Z">
       <property role="TrG5h" value="editorComponent" />
@@ -13083,7 +13083,7 @@
   </node>
   <node concept="sE7Ow" id="AuZ4iSlSB$">
     <property role="TrG5h" value="WordRemoveLink" />
-    <property role="2uzpH1" value="Remove Link" />
+    <property role="2uzpH1" value="Remove URL" />
     <property role="3GE5qa" value="EditMenuActions" />
     <node concept="2S4$dB" id="AuZ4iSlSBB" role="1NuT2Z">
       <property role="TrG5h" value="node" />
@@ -13508,7 +13508,7 @@
                 <node concept="1pGfFk" id="62tSVkRC7sT" role="2ShVmc">
                   <ref role="37wK5l" to="dxuu:~JLabel.&lt;init&gt;(java.lang.String)" resolve="JLabel" />
                   <node concept="Xl_RD" id="62tSVkRC7sU" role="37wK5m">
-                    <property role="Xl_RC" value="Link: " />
+                    <property role="Xl_RC" value="URL: " />
                   </node>
                 </node>
               </node>
