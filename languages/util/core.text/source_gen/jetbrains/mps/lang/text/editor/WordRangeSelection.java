@@ -25,11 +25,11 @@ import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
@@ -56,13 +56,10 @@ public class WordRangeSelection extends AbstractMultipleSelection {
 
   public WordRangeSelection(@NotNull EditorComponent editorComponent, Map<String, String> properties, CellInfo cellInfo) throws SelectionStoreException, SelectionRestoreException {
     super(editorComponent);
-    // TODO selected single node or multiple nodes cannot have intentions run on them 
-    // TODO select up/down 
-    // TODO combine with other types of selection 
+    // TODO copy spaces into the clipboard 
+    // TODO select also spaces 
     // TODO preserve and move the cursor position 
     // TODO allow per-character selection 
-    // TODO select also spaces 
-    // TODO copy spaces into the clipboard 
     if (cellInfo != null) {
       throw new SelectionStoreException("Non-null CellInfo object passed as a parameter: " + cellInfo);
     }
@@ -178,46 +175,11 @@ public class WordRangeSelection extends AbstractMultipleSelection {
   public void executeAction(CellActionType type) {
     final EditorContext editorContext = getEditorComponent().getEditorContext();
     ((jetbrains.mps.nodeEditor.EditorComponent) getEditorComponent()).assertModelNotDisposed();
+    final SelectionManager selectionManager = getEditorComponent().getSelectionManager();
+
     if (type == CellActionType.BACKSPACE || type == CellActionType.DELETE) {
       performDeleteAction(type);
       return;
-    } else if (type == CellActionType.SELECT_RIGHT || type == CellActionType.SELECT_NEXT) {
-      final SelectionManager selectionManager = getEditorComponent().getSelectionManager();
-      editorContext.getRepository().getModelAccess().executeCommand(new EditorCommand(editorContext) {
-        @Override
-        public void doExecute() {
-          if (!(myGrowingForward) && getFirstNode() != getLastNode()) {
-            SNode nextSelectableChild = getNextSelectableNode(SNodeOperations.as(getFirstNode(), CONCEPTS.TextElement$Ue), true);
-            if (nextSelectableChild != null) {
-              selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), nextSelectableChild, SNodeOperations.as(getLastNode(), CONCEPTS.TextElement$Ue), myGrowingForward));
-            }
-          } else {
-            SNode nextSelectableChild = getNextSelectableNode(SNodeOperations.as(getLastNode(), CONCEPTS.TextElement$Ue), true);
-            if (nextSelectableChild != null) {
-              selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), SNodeOperations.as(getFirstNode(), CONCEPTS.TextElement$Ue), nextSelectableChild, true));
-            }
-          }
-        }
-      });
-    } else
-    if (type == CellActionType.SELECT_LEFT || type == CellActionType.SELECT_PREVIOUS) {
-      final SelectionManager selectionManager = getEditorComponent().getSelectionManager();
-      editorContext.getRepository().getModelAccess().executeCommand(new EditorCommand(editorContext) {
-        @Override
-        public void doExecute() {
-          if (myGrowingForward && getFirstNode() != getLastNode()) {
-            SNode nextSelectableChild = getNextSelectableNode(SNodeOperations.as(getLastNode(), CONCEPTS.TextElement$Ue), false);
-            if (nextSelectableChild != null) {
-              selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), SNodeOperations.as(getFirstNode(), CONCEPTS.TextElement$Ue), nextSelectableChild, myGrowingForward));
-            }
-          } else {
-            SNode nextSelectableChild = getNextSelectableNode(SNodeOperations.as(getFirstNode(), CONCEPTS.TextElement$Ue), false);
-            if (nextSelectableChild != null) {
-              selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), nextSelectableChild, SNodeOperations.as(getLastNode(), CONCEPTS.TextElement$Ue), false));
-            }
-          }
-        }
-      });
     } else if (type == CellActionType.CUT) {
       SNode prevSelectableNode = getNextSelectableNode(myFirstNode, false);
       SNode nextSelectableNode = getNextSelectableNode(myLastNode, true);
@@ -226,9 +188,95 @@ public class WordRangeSelection extends AbstractMultipleSelection {
       if (selectNode(prevSelectableNode, false) || selectNode(nextSelectableNode, true)) {
         return;
       }
+    } else if (type == CellActionType.SELECT_RIGHT) {
+      selectRight(editorContext, selectionManager);
+    } else
+    if (type == CellActionType.SELECT_LEFT) {
+      selectLeft(editorContext, selectionManager);
+    } else if (type == CellActionType.SELECT_NEXT) {
+      selectNext(editorContext, selectionManager);
+    } else if (type == CellActionType.SELECT_PREVIOUS) {
+      selectPrevious(editorContext, selectionManager);
     }
     super.executeAction(type);
   }
+
+  private void selectRight(final EditorContext editorContext, final SelectionManager selectionManager) {
+    editorContext.getRepository().getModelAccess().executeCommand(new EditorCommand(editorContext) {
+      @Override
+      public void doExecute() {
+        if (!(myGrowingForward) && getFirstNode() != getLastNode()) {
+          SNode nextSelectableChild = getNextSelectableNode(SNodeOperations.as(getFirstNode(), CONCEPTS.TextElement$Ue), true);
+          if (nextSelectableChild != null) {
+            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), nextSelectableChild, SNodeOperations.as(getLastNode(), CONCEPTS.TextElement$Ue), myGrowingForward));
+          }
+        } else {
+          SNode nextSelectableChild = getNextSelectableNode(SNodeOperations.as(getLastNode(), CONCEPTS.TextElement$Ue), true);
+          if (nextSelectableChild != null) {
+            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), SNodeOperations.as(getFirstNode(), CONCEPTS.TextElement$Ue), nextSelectableChild, true));
+          }
+        }
+      }
+    });
+  }
+
+  private void selectLeft(final EditorContext editorContext, final SelectionManager selectionManager) {
+    editorContext.getRepository().getModelAccess().executeCommand(new EditorCommand(editorContext) {
+      @Override
+      public void doExecute() {
+        if (myGrowingForward && getFirstNode() != getLastNode()) {
+          SNode nextSelectableChild = getNextSelectableNode(SNodeOperations.as(getLastNode(), CONCEPTS.TextElement$Ue), false);
+          if (nextSelectableChild != null) {
+            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), SNodeOperations.as(getFirstNode(), CONCEPTS.TextElement$Ue), nextSelectableChild, myGrowingForward));
+          }
+        } else {
+          SNode nextSelectableChild = getNextSelectableNode(SNodeOperations.as(getFirstNode(), CONCEPTS.TextElement$Ue), false);
+          if (nextSelectableChild != null) {
+            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), nextSelectableChild, SNodeOperations.as(getLastNode(), CONCEPTS.TextElement$Ue), false));
+          }
+        }
+      }
+    });
+  }
+
+  private void selectNext(final EditorContext editorContext, final SelectionManager selectionManager) {
+    editorContext.getRepository().getModelAccess().executeCommand(new EditorCommand(editorContext) {
+      @Override
+      public void doExecute() {
+        if (!(myGrowingForward) && !(Objects.equals(myFirstParentNode, myLastParentNode))) {
+          SNode nextLine = SNodeOperations.as(SNodeOperations.getNextSibling(myFirstParentNode), CONCEPTS.Line$w3);
+          if (nextLine != null) {
+            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.elements$eRew)).first(), myLastNode, false));
+          }
+        } else {
+          SNode nextLine = SNodeOperations.as(SNodeOperations.getNextSibling(myLastParentNode), CONCEPTS.Line$w3);
+          if (nextLine != null) {
+            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), myFirstNode, ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.elements$eRew)).last(), true));
+          }
+        }
+      }
+    });
+  }
+
+  private void selectPrevious(final EditorContext editorContext, final SelectionManager selectionManager) {
+    editorContext.getRepository().getModelAccess().executeCommand(new EditorCommand(editorContext) {
+      @Override
+      public void doExecute() {
+        if (myGrowingForward && !(Objects.equals(myFirstParentNode, myLastParentNode))) {
+          SNode previousLine = SNodeOperations.as(SNodeOperations.getPrevSibling(myLastParentNode), CONCEPTS.Line$w3);
+          if (previousLine != null) {
+            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), myFirstNode, ListSequence.fromList(SLinkOperations.getChildren(previousLine, LINKS.elements$eRew)).last(), true));
+          }
+        } else {
+          SNode previousLine = SNodeOperations.as(SNodeOperations.getPrevSibling(myFirstParentNode), CONCEPTS.Line$w3);
+          if (previousLine != null) {
+            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), ListSequence.fromList(SLinkOperations.getChildren(previousLine, LINKS.elements$eRew)).first(), myLastNode, false));
+          }
+        }
+      }
+    });
+  }
+
   @NotNull
   private SNode findNode(SModel sModel, Map<String, String> properties, String propertyName) throws SelectionStoreException, SelectionRestoreException {
     String sNodeId = properties.get(propertyName);
