@@ -6,6 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -13,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.SModelOperations;
-import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -23,17 +23,16 @@ public class ModelsScope extends Scope {
   private final boolean myRootsOnly;
   private final SAbstractConcept myTargetConcept;
   private final Set<SModel> myModels;
-  public ModelsScope(Iterable<SModel> models, boolean rootsOnly, SAbstractConcept targetConcept) {
+  public ModelsScope(Iterable<SModel> models, boolean rootsOnly, @Nullable SAbstractConcept targetConcept) {
     myModels = SetSequence.fromSetWithValues(new HashSet<SModel>(), models);
     myRootsOnly = rootsOnly;
+    //  null means any, essentially BaseConcept but I see no reason to force to specify it explicitly 
     myTargetConcept = targetConcept;
   }
   @Override
   public boolean contains(SNode node) {
-    if (myTargetConcept == null) {
-      return false;
-    }
-    return SNodeUtil.isInstanceOf(node, myTargetConcept) && (!(myRootsOnly) || SNodeOperations.isRoot(node)) && SetSequence.fromSet(myModels).contains(node.getModel());
+    final boolean isInstance = (myTargetConcept == null ? true : SNodeUtil.isInstanceOf(node, myTargetConcept));
+    return isInstance && (!(myRootsOnly) || SNodeOperations.isRoot(node)) && SetSequence.fromSet(myModels).contains(node.getModel());
   }
   @Override
   public SNode resolve(SNode contextNode, @NotNull String refText) {
