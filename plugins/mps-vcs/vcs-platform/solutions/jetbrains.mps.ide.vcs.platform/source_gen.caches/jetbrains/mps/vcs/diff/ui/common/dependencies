@@ -206,7 +206,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout">
-    <classNode dependClassName="com.intellij.diff.tools.util.DiffSplitter" />
     <classNode dependClassName="java.awt.Color" />
     <classNode dependClassName="java.awt.Point" />
     <classNode dependClassName="java.awt.event.MouseEvent" />

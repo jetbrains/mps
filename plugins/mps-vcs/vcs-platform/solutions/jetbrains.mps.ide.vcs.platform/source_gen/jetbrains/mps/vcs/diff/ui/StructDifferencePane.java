@@ -275,7 +275,7 @@ public class StructDifferencePane implements PropertyChangeListener {
   private void linkEditors(TwosideContentPanel panel, boolean inspector) {
     // create change group builder, trapecium strip and merge buttons painter 
     // 'mine' parameter means mine changeset, 'inspector' - highlight inspector editor component 
-    DiffChangeGroupLayout layout = new DiffChangeGroupLayout(null, null, myChangeSet, myOldEditor, myNewEditor, panel.getSplitter(), inspector);
+    DiffChangeGroupLayout layout = new DiffChangeGroupLayout(null, null, myChangeSet, myOldEditor, myNewEditor, getSplitterRepainter(panel), inspector);
     ChangeGroupMessages.startMaintaining(layout);
     ListSequence.fromList(myChangeGroupLayouts).addElement(layout);
     panel.setPainter(new MyDividerPainter(layout, inspector));
@@ -284,6 +284,17 @@ public class StructDifferencePane implements PropertyChangeListener {
       StructDiffButtonsPainter.addTo(myNewEditor, layout, inspector);
     }
   }
+
+  private DiffChangeGroupLayout.SplitterRepainter getSplitterRepainter(final TwosideContentPanel panel) {
+    return new DiffChangeGroupLayout.SplitterRepainter() {
+      @Override
+      public void repaintSplitter() {
+        panel.repaintDivider();
+      }
+    };
+  }
+
+
   private DiffEditor addEditor(SModel model, SNodeId nodeId, String title, boolean isLeftEditor) {
     DiffEditor result = new DiffEditor(ProjectHelper.fromIdeaProject(myProject), model.getNode(nodeId), title, isLeftEditor);
     myDiffEditorsGroup.add(result);

@@ -6225,12 +6225,10 @@
                 <node concept="37vLTw" id="7DvDtqaxiB1" role="37wK5m">
                   <ref role="3cqZAo" node="7DvDtqax92N" resolve="myNewEditor" />
                 </node>
-                <node concept="2OqwBi" id="5c$TSd$QlWT" role="37wK5m">
-                  <node concept="37vLTw" id="5c$TSd$PA6q" role="2Oq$k0">
+                <node concept="1rXfSq" id="6Gx$enTYYhm" role="37wK5m">
+                  <ref role="37wK5l" node="6Gx$enTXOJV" resolve="getSplitterRepainter" />
+                  <node concept="37vLTw" id="6Gx$enTYZgU" role="37wK5m">
                     <ref role="3cqZAo" node="5c$TSd$PwrK" resolve="panel" />
-                  </node>
-                  <node concept="liA8E" id="5c$TSd$Qn6q" role="2OqNvi">
-                    <ref role="37wK5l" to="xlkh:~TwosideContentPanel.getSplitter()" resolve="getSplitter" />
                   </node>
                 </node>
                 <node concept="37vLTw" id="2BHiRxgmgnH" role="37wK5m">
@@ -6349,6 +6347,56 @@
       </node>
       <node concept="3cqZAl" id="7DvDtq9OdSC" role="3clF45" />
     </node>
+    <node concept="2tJIrI" id="6Gx$enTYC8I" role="jymVt" />
+    <node concept="3clFb_" id="6Gx$enTXOJV" role="jymVt">
+      <property role="TrG5h" value="getSplitterRepainter" />
+      <node concept="3clFbS" id="6Gx$enTXOJY" role="3clF47">
+        <node concept="3clFbF" id="6Gx$enTY5Qf" role="3cqZAp">
+          <node concept="2ShNRf" id="6Gx$enTY5Qh" role="3clFbG">
+            <node concept="YeOm9" id="6Gx$enTY5Qi" role="2ShVmc">
+              <node concept="1Y3b0j" id="6Gx$enTY5Qj" role="YeSDq">
+                <property role="2bfB8j" value="true" />
+                <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+                <ref role="1Y3XeK" to="hdhb:6Gx$enTWXiW" resolve="DiffChangeGroupLayout.SplitterRepainter" />
+                <node concept="3Tm1VV" id="6Gx$enTY5Qk" role="1B3o_S" />
+                <node concept="3clFb_" id="6Gx$enTY5Ql" role="jymVt">
+                  <property role="TrG5h" value="repaintSplitter" />
+                  <node concept="3Tm1VV" id="6Gx$enTY5Qm" role="1B3o_S" />
+                  <node concept="3cqZAl" id="6Gx$enTY5Qn" role="3clF45" />
+                  <node concept="3clFbS" id="6Gx$enTY5Qo" role="3clF47">
+                    <node concept="3clFbF" id="6Gx$enTYOL5" role="3cqZAp">
+                      <node concept="2OqwBi" id="6Gx$enTYPYf" role="3clFbG">
+                        <node concept="37vLTw" id="6Gx$enTYOL3" role="2Oq$k0">
+                          <ref role="3cqZAo" node="6Gx$enTY6Sw" resolve="panel" />
+                        </node>
+                        <node concept="liA8E" id="6Gx$enTYRg_" role="2OqNvi">
+                          <ref role="37wK5l" to="xlkh:~TwosideContentPanel.repaintDivider()" resolve="repaintDivider" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2AHcQZ" id="6Gx$enTY5Qx" role="2AJF6D">
+                    <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="6Gx$enTXKcC" role="1B3o_S" />
+      <node concept="3uibUv" id="6Gx$enTXXJU" role="3clF45">
+        <ref role="3uigEE" to="hdhb:6Gx$enTWXiW" resolve="DiffChangeGroupLayout.SplitterRepainter" />
+      </node>
+      <node concept="37vLTG" id="6Gx$enTY6Sw" role="3clF46">
+        <property role="3TUv4t" value="true" />
+        <property role="TrG5h" value="panel" />
+        <node concept="3uibUv" id="6Gx$enTYNaH" role="1tU5fm">
+          <ref role="3uigEE" to="xlkh:~TwosideContentPanel" resolve="TwosideContentPanel" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="6Gx$enTYFJ0" role="jymVt" />
     <node concept="2tJIrI" id="5c$TSd$R9K$" role="jymVt" />
     <node concept="3clFb_" id="3SMO48FRWsm" role="jymVt">
       <property role="TrG5h" value="addEditor" />
@@ -11454,12 +11502,10 @@
                 <node concept="37vLTw" id="42UviMImjKx" role="37wK5m">
                   <ref role="3cqZAo" node="42UviMImjD9" resolve="myNewEditor" />
                 </node>
-                <node concept="2OqwBi" id="6ihSbcO6Tep" role="37wK5m">
-                  <node concept="37vLTw" id="6ihSbcO6Sxm" role="2Oq$k0">
+                <node concept="1rXfSq" id="6Gx$enTZfau" role="37wK5m">
+                  <ref role="37wK5l" node="6Gx$enTZazG" resolve="getSplitterRepainter" />
+                  <node concept="37vLTw" id="6Gx$enTZfOO" role="37wK5m">
                     <ref role="3cqZAo" node="2duWW7SgePu" resolve="panel" />
-                  </node>
-                  <node concept="liA8E" id="6ihSbcO6TSg" role="2OqNvi">
-                    <ref role="37wK5l" to="xlkh:~TwosideContentPanel.getSplitter()" resolve="getSplitter" />
                   </node>
                 </node>
                 <node concept="37vLTw" id="42UviMImjKy" role="37wK5m">
@@ -11576,6 +11622,57 @@
       </node>
       <node concept="3cqZAl" id="42UviMImjLG" role="3clF45" />
     </node>
+    <node concept="2tJIrI" id="6Gx$enTZ28s" role="jymVt" />
+    <node concept="3clFb_" id="6Gx$enTZazG" role="jymVt">
+      <property role="TrG5h" value="getSplitterRepainter" />
+      <node concept="3clFbS" id="6Gx$enTZazH" role="3clF47">
+        <node concept="3clFbF" id="6Gx$enTZazI" role="3cqZAp">
+          <node concept="2ShNRf" id="6Gx$enTZazJ" role="3clFbG">
+            <node concept="YeOm9" id="6Gx$enTZazK" role="2ShVmc">
+              <node concept="1Y3b0j" id="6Gx$enTZazL" role="YeSDq">
+                <property role="2bfB8j" value="true" />
+                <ref role="1Y3XeK" to="hdhb:6Gx$enTWXiW" resolve="DiffChangeGroupLayout.SplitterRepainter" />
+                <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+                <node concept="3Tm1VV" id="6Gx$enTZazM" role="1B3o_S" />
+                <node concept="3clFb_" id="6Gx$enTZazN" role="jymVt">
+                  <property role="TrG5h" value="repaintSplitter" />
+                  <node concept="3Tm1VV" id="6Gx$enTZazO" role="1B3o_S" />
+                  <node concept="3cqZAl" id="6Gx$enTZazP" role="3clF45" />
+                  <node concept="3clFbS" id="6Gx$enTZazQ" role="3clF47">
+                    <node concept="3clFbF" id="6Gx$enTZazR" role="3cqZAp">
+                      <node concept="2OqwBi" id="6Gx$enTZazS" role="3clFbG">
+                        <node concept="37vLTw" id="6Gx$enTZazT" role="2Oq$k0">
+                          <ref role="3cqZAo" node="6Gx$enTZazY" resolve="panel" />
+                        </node>
+                        <node concept="liA8E" id="6Gx$enTZazU" role="2OqNvi">
+                          <ref role="37wK5l" to="xlkh:~TwosideContentPanel.repaintDivider()" resolve="repaintDivider" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2AHcQZ" id="6Gx$enTZazV" role="2AJF6D">
+                    <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="6Gx$enTZazW" role="1B3o_S" />
+      <node concept="3uibUv" id="6Gx$enTZazX" role="3clF45">
+        <ref role="3uigEE" to="hdhb:6Gx$enTWXiW" resolve="DiffChangeGroupLayout.SplitterRepainter" />
+      </node>
+      <node concept="37vLTG" id="6Gx$enTZazY" role="3clF46">
+        <property role="3TUv4t" value="true" />
+        <property role="TrG5h" value="panel" />
+        <node concept="3uibUv" id="6Gx$enTZazZ" role="1tU5fm">
+          <ref role="3uigEE" to="xlkh:~TwosideContentPanel" resolve="TwosideContentPanel" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="6Gx$enTZ8N$" role="jymVt" />
+    <node concept="2tJIrI" id="6Gx$enTZ2q2" role="jymVt" />
     <node concept="3clFb_" id="42UviMImjLH" role="jymVt">
       <property role="TrG5h" value="addEditor" />
       <node concept="3clFbS" id="42UviMImjLK" role="3clF47">

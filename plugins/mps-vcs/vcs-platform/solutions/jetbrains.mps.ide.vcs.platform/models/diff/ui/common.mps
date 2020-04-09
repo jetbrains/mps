@@ -1233,8 +1233,8 @@
                             </node>
                           </node>
                         </node>
-                        <node concept="3cmrfG" id="50LFMYMYxLr" role="3uHU7w">
-                          <property role="3cmrfH" value="3" />
+                        <node concept="3cmrfG" id="50LFMYMVBHp" role="3uHU7w">
+                          <property role="3cmrfH" value="1" />
                         </node>
                       </node>
                       <node concept="3cpWs3" id="42hl10VH9Mw" role="37wK5m">
@@ -19620,10 +19620,10 @@
       <node concept="3Tm6S6" id="7FLRXY0GyFr" role="1B3o_S" />
     </node>
     <node concept="312cEg" id="tBn6OML2v" role="jymVt">
-      <property role="TrG5h" value="myDiffSplitter" />
+      <property role="TrG5h" value="mySplitterRepainter" />
       <node concept="3Tm6S6" id="tBn6OML2w" role="1B3o_S" />
-      <node concept="3uibUv" id="tBn6OML2x" role="1tU5fm">
-        <ref role="3uigEE" to="ksd0:~DiffSplitter" resolve="DiffSplitter" />
+      <node concept="3uibUv" id="6Gx$enTYhPH" role="1tU5fm">
+        <ref role="3uigEE" node="6Gx$enTWXiW" resolve="DiffChangeGroupLayout.SplitterRepainter" />
       </node>
     </node>
     <node concept="312cEg" id="7E9qMnrWGhi" role="jymVt">
@@ -19763,10 +19763,10 @@
         <node concept="3clFbF" id="7E9qMnrWX0y" role="3cqZAp">
           <node concept="37vLTI" id="7E9qMnrWY3X" role="3clFbG">
             <node concept="37vLTw" id="7E9qMnrWY$g" role="37vLTx">
-              <ref role="3cqZAo" node="7E9qMnrWW3s" resolve="diffSplitter" />
+              <ref role="3cqZAo" node="7E9qMnrWW3s" resolve="splitterRepainter" />
             </node>
             <node concept="37vLTw" id="7E9qMnrWX0w" role="37vLTJ">
-              <ref role="3cqZAo" node="tBn6OML2v" resolve="myDiffSplitter" />
+              <ref role="3cqZAo" node="tBn6OML2v" resolve="mySplitterRepainter" />
             </node>
           </node>
         </node>
@@ -19957,9 +19957,9 @@
         </node>
       </node>
       <node concept="37vLTG" id="7E9qMnrWW3s" role="3clF46">
-        <property role="TrG5h" value="diffSplitter" />
-        <node concept="3uibUv" id="7E9qMnrWWth" role="1tU5fm">
-          <ref role="3uigEE" to="ksd0:~DiffSplitter" resolve="DiffSplitter" />
+        <property role="TrG5h" value="splitterRepainter" />
+        <node concept="3uibUv" id="6Gx$enTYiQh" role="1tU5fm">
+          <ref role="3uigEE" node="6Gx$enTWXiW" resolve="DiffChangeGroupLayout.SplitterRepainter" />
         </node>
       </node>
       <node concept="37vLTG" id="5zpsdFy5ni7" role="3clF46">
@@ -20164,10 +20164,10 @@
             <node concept="3clFbF" id="7E9qMnrX0Fq" role="3cqZAp">
               <node concept="2OqwBi" id="7E9qMnrX0Fr" role="3clFbG">
                 <node concept="37vLTw" id="7E9qMnrX0Fs" role="2Oq$k0">
-                  <ref role="3cqZAo" node="tBn6OML2v" resolve="myDiffSplitter" />
+                  <ref role="3cqZAo" node="tBn6OML2v" resolve="mySplitterRepainter" />
                 </node>
-                <node concept="liA8E" id="7E9qMnrX0Ft" role="2OqNvi">
-                  <ref role="37wK5l" to="ksd0:~DiffSplitter.repaintDivider()" resolve="repaintDivider" />
+                <node concept="liA8E" id="6Gx$enTYjiR" role="2OqNvi">
+                  <ref role="37wK5l" node="6Gx$enTX0za" resolve="repaintSplitter" />
                 </node>
               </node>
             </node>
@@ -20176,7 +20176,7 @@
           <node concept="3y3z36" id="7E9qMnrX0Fv" role="3clFbw">
             <node concept="10Nm6u" id="7E9qMnrX0Fw" role="3uHU7w" />
             <node concept="37vLTw" id="7E9qMnrX0Fx" role="3uHU7B">
-              <ref role="3cqZAo" node="tBn6OML2v" resolve="myDiffSplitter" />
+              <ref role="3cqZAo" node="tBn6OML2v" resolve="mySplitterRepainter" />
             </node>
           </node>
         </node>
@@ -21088,6 +21088,17 @@
       <node concept="2AHcQZ" id="4FJKT$L9CO7" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
+    </node>
+    <node concept="2tJIrI" id="6Gx$enTWRWH" role="jymVt" />
+    <node concept="3HP615" id="6Gx$enTWXiW" role="jymVt">
+      <property role="TrG5h" value="SplitterRepainter" />
+      <node concept="3clFb_" id="6Gx$enTX0za" role="jymVt">
+        <property role="TrG5h" value="repaintSplitter" />
+        <node concept="3clFbS" id="6Gx$enTX0zd" role="3clF47" />
+        <node concept="3Tm1VV" id="6Gx$enTX0ze" role="1B3o_S" />
+        <node concept="3cqZAl" id="6Gx$enTX0qp" role="3clF45" />
+      </node>
+      <node concept="3Tm1VV" id="6Gx$enTWVaw" role="1B3o_S" />
     </node>
     <node concept="2tJIrI" id="7E9qMnrYuUL" role="jymVt" />
     <node concept="3Tm1VV" id="5zpsdFy5nh8" role="1B3o_S" />

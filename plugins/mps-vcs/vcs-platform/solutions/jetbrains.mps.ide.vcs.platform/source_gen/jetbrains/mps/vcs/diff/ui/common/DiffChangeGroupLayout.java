@@ -4,7 +4,6 @@ package jetbrains.mps.vcs.diff.ui.common;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.vcs.diff.ChangeSet;
-import com.intellij.diff.tools.util.DiffSplitter;
 import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.Map;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
@@ -35,12 +34,12 @@ public class DiffChangeGroupLayout extends ChangeGroupLayout {
   private DiffEditor myLeftEditor;
   private DiffEditor myRightEditor;
   private ChangeSet myChangeSet;
-  private DiffSplitter myDiffSplitter;
+  private SplitterRepainter mySplitterRepainter;
   private SRepository myRepoWithChanges;
   private Map<ChangeGroup, Tuples._2<Bounds, Bounds>> myGroupsWithBounds;
   private Map<ChangeGroup, String> myChangeGroupDescriptions;
 
-  public DiffChangeGroupLayout(@Nullable ChangeEditorMessage.ConflictChecker conflictChecker, SRepository repoWithChanges, @NotNull ChangeSet changeSet, @NotNull DiffEditor leftEditor, @NotNull DiffEditor rightEditor, DiffSplitter diffSplitter, boolean inspector) {
+  public DiffChangeGroupLayout(@Nullable ChangeEditorMessage.ConflictChecker conflictChecker, SRepository repoWithChanges, @NotNull ChangeSet changeSet, @NotNull DiffEditor leftEditor, @NotNull DiffEditor rightEditor, SplitterRepainter splitterRepainter, boolean inspector) {
     super(conflictChecker, inspector, false);
     myLeftEditor = leftEditor;
     myLeftEditor.setChangeGroupLayout(this, inspector);
@@ -48,7 +47,7 @@ public class DiffChangeGroupLayout extends ChangeGroupLayout {
     myRightEditor.setChangeGroupLayout(this, inspector);
     myChangeSet = changeSet;
     myRepoWithChanges = repoWithChanges;
-    myDiffSplitter = diffSplitter;
+    mySplitterRepainter = splitterRepainter;
     if (inspector) {
       UpdaterListener updaterListener = new UpdaterListenerAdapter() {
         @Override
@@ -105,8 +104,8 @@ public class DiffChangeGroupLayout extends ChangeGroupLayout {
       myGroupsWithBounds = null;
       myChangeGroupDescriptions = null;
     }
-    if (myDiffSplitter != null) {
-      myDiffSplitter.repaintDivider();
+    if (mySplitterRepainter != null) {
+      mySplitterRepainter.repaintSplitter();
       return;
     }
   }
@@ -195,6 +194,10 @@ public class DiffChangeGroupLayout extends ChangeGroupLayout {
       }
     }
     return null;
+  }
+
+  public interface SplitterRepainter {
+    void repaintSplitter();
   }
 
 }

@@ -290,7 +290,7 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
 
   private void linkEditors(TwosideContentPanel panel, boolean inspector) {
 
-    DiffChangeGroupLayout layout = new DiffChangeGroupLayout(null, myProject.getRepository(), myChangeSet, myOldEditor, myNewEditor, panel.getSplitter(), inspector);
+    DiffChangeGroupLayout layout = new DiffChangeGroupLayout(null, myProject.getRepository(), myChangeSet, myOldEditor, myNewEditor, getSplitterRepainter(panel), inspector);
     ChangeGroupMessages.startMaintaining(layout);
     ListSequence.fromList(myChangeGroupLayouts).addElement(layout);
     panel.setPainter(new MyDividerPainter(layout, inspector));
@@ -299,6 +299,16 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
       DiffButtonsPainter.addTo(this, myNewEditor, layout, inspector);
     }
   }
+
+  private DiffChangeGroupLayout.SplitterRepainter getSplitterRepainter(final TwosideContentPanel panel) {
+    return new DiffChangeGroupLayout.SplitterRepainter() {
+      @Override
+      public void repaintSplitter() {
+        panel.repaintDivider();
+      }
+    };
+  }
+
 
   private DiffEditor addEditor(SModel model, String title, boolean isLeftEditor) {
     DiffEditor result = new DiffEditor(myProject, model.getNode(myRootId), title, isLeftEditor);

@@ -10,8 +10,7 @@ import jetbrains.mps.vcs.diff.merge.MergeSessionState;
 import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage;
 import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 import com.intellij.ui.JBSplitter;
-import javax.swing.JPanel;
-import java.awt.GridBagLayout;
+import com.intellij.diff.tools.util.side.ThreesideContentPanel;
 import com.intellij.ide.util.PropertiesComponent;
 import java.util.List;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroupLayout;
@@ -29,18 +28,34 @@ import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.ide.project.ProjectHelper;
+import java.util.Arrays;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import jetbrains.mps.ide.icons.IdeIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.ActionGroup;
-import javax.swing.JComponent;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import com.intellij.diff.tools.util.DiffSplitter;
+import com.intellij.diff.util.DiffDividerDrawUtil;
+import org.jetbrains.annotations.NotNull;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import com.intellij.diff.util.DiffDrawUtil;
+import org.jetbrains.annotations.Nullable;
+import java.awt.Color;
+import com.intellij.openapi.ui.GraphicsConfig;
+import com.intellij.util.ui.GraphicsUtil;
 import jetbrains.mps.internal.collections.runtime.IMapping;
+import jetbrains.mps.vcs.diff.ui.common.ChangeGroup;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.vcs.diff.ui.common.Bounds;
+import jetbrains.mps.vcs.diff.ui.common.ChangeColors;
+import com.intellij.openapi.actionSystem.ActionGroup;
+import javax.swing.JPanel;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
+import com.intellij.diff.util.Side;
 import org.jetbrains.mps.openapi.model.SNode;
 
 @GeneratedClass(node = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)/2657001694096388534", model = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)")
@@ -60,8 +75,8 @@ public class MergeRootsPane {
   private DiffEditor myRepositoryEditor;
 
   private JBSplitter myPanel = new JBSplitter(true, 0.7f);
-  private JPanel myTopPanel = new JPanel(new GridBagLayout());
-  private JPanel myBottomPanel = new JPanel(new GridBagLayout());
+  private ThreesideContentPanel myTopPanel;
+  private ThreesideContentPanel myInspectorPanel;
   private boolean isInspectorShown = PropertiesComponent.getInstance().getBoolean(PARAM_SHOW_INSPECTOR, true);
 
   private List<ChangeGroupLayout> myChangeGroupLayouts = ListSequence.fromList(new ArrayList<ChangeGroupLayout>());
@@ -89,10 +104,9 @@ public class MergeRootsPane {
     myResultEditor = addEditor(1, myMergeSession.getResultModel());
     myRepositoryEditor = addEditor(2, myMergeSession.getRepositoryModel());
 
-    linkEditors(true, false);
-    linkEditors(false, false);
-    linkEditors(true, true);
-    linkEditors(false, true);
+    myTopPanel = createThreesideContentPanel(false);
+    myInspectorPanel = createThreesideContentPanel(true);
+
 
     final ModelAccess modelAccess = ProjectHelper.fromIdeaProject(myProject).getRepository().getModelAccess();
     myMergeSession.setChangesInvalidateHandler(new MergeSession.ChangesInvalidateHandler() {
@@ -108,7 +122,7 @@ public class MergeRootsPane {
     myPanel.setSplitterProportionKey(PARAM_INSPECTOR_SPLITTER_POSITION);
     myPanel.setFirstComponent(myTopPanel);
     if (isInspectorShown) {
-      myPanel.setSecondComponent(myBottomPanel);
+      myPanel.setSecondComponent(myInspectorPanel);
     }
 
     myTraverser = new NextPreviousTraverser(myChangeGroupLayouts, myResultEditor.getMainEditor());
@@ -118,6 +132,23 @@ public class MergeRootsPane {
     highlightAllChanges();
     myTraverser.goToFirstChangeLater();
   }
+
+  private ThreesideContentPanel createThreesideContentPanel(boolean inspector) {
+    ThreesideContentPanel panel = new ThreesideContentPanel(Arrays.asList(myMineEditor.getComponent(inspector), myResultEditor.getComponent(inspector), myRepositoryEditor.getComponent(inspector)));
+    if (!(inspector)) {
+      panel.setTitles(createTitles());
+    } else {
+      panel.setTitles(Arrays.asList(((JComponent) new JLabel("Inspector")), ((JComponent) new JLabel("Inspector")), ((JComponent) new JLabel("Inspector"))));
+    }
+    linkEditors(panel, true, inspector);
+    linkEditors(panel, false, inspector);
+    return panel;
+  }
+
+  protected List<JComponent> createTitles() {
+    return Arrays.asList(myMineEditor.getTitleComponent(), myResultEditor.getTitleComponent(), myRepositoryEditor.getTitleComponent());
+  }
+
   private void createActionGroup(String rootName) {
     myActionGroup = new DefaultActionGroup();
     myActionGroup.add(new ApplyNonConflictsForRoot(this));
@@ -135,6 +166,77 @@ public class MergeRootsPane {
       }
     });
   }
+
+  private class MyDividerPainter implements DiffSplitter.Painter, DiffDividerDrawUtil.DividerPaintable {
+
+    private final DiffChangeGroupLayout myLayout;
+
+    public MyDividerPainter(DiffChangeGroupLayout layout) {
+      myLayout = layout;
+    }
+
+    @Override
+    public void paint(@NotNull Graphics g, @NotNull JComponent divider) {
+      Graphics2D gg = DiffDividerDrawUtil.getDividerGraphics(g, divider, myLayout.getLeftComponent());
+
+      gg.setColor(DiffDrawUtil.getDividerColor());
+      gg.fill(gg.getClipBounds());
+
+      final List<DiffDividerDrawUtil.DividerPolygon> polygons = new ArrayList<DiffDividerDrawUtil.DividerPolygon>();
+
+      int width = divider.getWidth();
+
+      process(new DiffDividerDrawUtil.DividerPaintable.Handler() {
+        @Override
+        public boolean process(int startLine1, int endLine1, int startLine2, int endLine2, @Nullable Color fillColor, @Nullable Color borderColor, boolean dottedBorder) {
+          return polygons.add(new DiffDividerDrawUtil.DividerPolygon(startLine1, startLine2, endLine1, endLine2, fillColor, borderColor, dottedBorder));
+        }
+      });
+
+      GraphicsConfig config = GraphicsUtil.setupAAPainting(gg);
+      for (DiffDividerDrawUtil.DividerPolygon dividerPolygon : ListSequence.fromList(polygons)) {
+        dividerPolygon.paint(gg, width, true);
+      }
+      config.restore();
+
+      gg.dispose();
+    }
+    @Override
+    public void process(@NotNull DiffDividerDrawUtil.DividerPaintable.Handler handler) {
+      int prevLeftEnd = -1;
+      int prevRightEnd = -1;
+      for (IMapping<ChangeGroup, Tuples._2<Bounds, Bounds>> groupWithBounds : MapSequence.fromMap(myLayout.getGroupsWithBounds())) {
+        Bounds left = groupWithBounds.value()._0();
+        Bounds right = groupWithBounds.value()._1();
+        int leftStart = (int) left.start();
+        int leftEnd = (int) left.end();
+        int rightStart = (int) right.start();
+        int rightEnd = (int) right.end();
+        Color color = ChangeColors.get(groupWithBounds.key().getChangeType());
+        // separate changes close to each other 
+        if (leftStart == prevLeftEnd) {
+          leftStart++;
+          if (leftEnd - leftStart == 0) {
+            leftStart++;
+            leftEnd++;
+          }
+        }
+        if (rightStart == prevRightEnd) {
+          rightStart++;
+          if (rightEnd - rightStart == 0) {
+            rightStart++;
+            rightEnd++;
+          }
+        }
+        prevLeftEnd = leftEnd;
+        prevRightEnd = rightEnd;
+        if (!(handler.process(leftStart, leftEnd, rightStart, rightEnd, color, null, false))) {
+          return;
+        }
+      }
+    }
+  }
+
   public ActionGroup getActions() {
     return myActionGroup;
   }
@@ -177,11 +279,11 @@ public class MergeRootsPane {
     }
     isInspectorShown = show;
     PropertiesComponent.getInstance().setValue(PARAM_SHOW_INSPECTOR, show + "");
-    myPanel.setSecondComponent((isInspectorShown ? myBottomPanel : null));
+    myPanel.setSecondComponent((isInspectorShown ? myInspectorPanel : null));
   }
 
   private ChangeGroupLayout createChangeGroupLayout(boolean mine, boolean inspector) {
-    DiffChangeGroupLayout layout = new DiffChangeGroupLayout(myConflictChecker, null, (mine ? myMergeSession.getMyChangeSet() : myMergeSession.getRepositoryChangeSet()), (mine ? myMineEditor : myResultEditor), (mine ? myResultEditor : myRepositoryEditor), null, inspector);
+    DiffChangeGroupLayout layout = new DiffChangeGroupLayout(myConflictChecker, ProjectHelper.getProjectRepository(myProject), (mine ? myMergeSession.getMyChangeSet() : myMergeSession.getRepositoryChangeSet()), (mine ? myMineEditor : myResultEditor), (mine ? myResultEditor : myRepositoryEditor), null, inspector);
     MapSequence.fromMap(myDiffLayoutPart).put(layout, mine);
     return layout;
   }
@@ -238,19 +340,28 @@ public class MergeRootsPane {
   private void higlightChange(DiffEditor diffEditor, SModel model, boolean isOldEditor, ModelChange change) {
     diffEditor.highlightChange(model, change, isOldEditor, myConflictChecker);
   }
-  private void linkEditors(boolean mine, boolean inspector) {
+
+  private void linkEditors(ThreesideContentPanel panel, boolean mine, boolean inspector) {
     // create change group builder, trapecium strip and merge buttons painter 
     // 'mine' parameter means mine changeset, 'inspector' - highlight inspector editor component 
-    ChangeGroupLayout layout = createChangeGroupLayout(mine, inspector);
+    DiffChangeGroupLayout layout = new DiffChangeGroupLayout(myConflictChecker, ProjectHelper.getProjectRepository(myProject), (mine ? myMergeSession.getMyChangeSet() : myMergeSession.getRepositoryChangeSet()), (mine ? myMineEditor : myResultEditor), (mine ? myResultEditor : myRepositoryEditor), getSplitterRepainter(panel, mine), inspector);
     ChangeGroupMessages.startMaintaining(layout);
     ListSequence.fromList(myChangeGroupLayouts).addElement(layout);
-    DiffEditorSeparator separator = new DiffEditorSeparator(ProjectHelper.getProjectRepository(myProject), layout);
-    JPanel panel = (inspector ? myBottomPanel : myTopPanel);
-    GridBagConstraints gbc = new GridBagConstraints((mine ? 1 : 3), 0, 1, 1, 0, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(5, 0, 5, 0), 0, 0);
-    panel.add(separator, gbc);
-    ListSequence.fromList(myEdtiorSeparators).addElement(separator);
+    panel.setPainter(new MyDividerPainter(layout), (mine ? Side.LEFT : Side.RIGHT));
     MergeButtonsPainter.addTo(this, (mine ? myMineEditor : myRepositoryEditor), layout, inspector);
   }
+
+  private DiffChangeGroupLayout.SplitterRepainter getSplitterRepainter(final ThreesideContentPanel panel, final boolean mine) {
+    return new DiffChangeGroupLayout.SplitterRepainter() {
+      @Override
+      public void repaintSplitter() {
+        panel.repaintDivider((mine ? Side.LEFT : Side.RIGHT));
+      }
+    };
+  }
+
+
+
   private SNodeId getRootNodeId(SModel model) {
     SNode node = model.getNode(myRootId);
     if (node != null && node.getParent() == null) {
@@ -269,11 +380,6 @@ public class MergeRootsPane {
     SNodeId rootId = getRootNodeId(model);
     SNode root = (rootId == null ? null : model.getNode(rootId));
     final DiffEditor result = new DiffEditor(ProjectHelper.fromIdeaProject(myProject), root, myTitles[index], index == 0);
-
-    GridBagConstraints gbc = new GridBagConstraints(index * 2, 0, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(5, (index == 0 ? 5 : 0), 5, (index == 2 ? 5 : 0)), 0, 0);
-    myTopPanel.add(result.getTopComponent(), gbc);
-    myBottomPanel.add(result.getInspector().getExternalComponent(), gbc);
-
     myDiffEditorsGroup.add(result);
     return result;
   }
