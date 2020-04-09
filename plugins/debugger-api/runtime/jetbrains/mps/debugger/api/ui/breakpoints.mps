@@ -4012,7 +4012,6 @@
       <property role="2bfB8j" value="false" />
       <node concept="3Tm1VV" id="3SnNvqCbycK" role="1B3o_S" />
       <node concept="3clFb_" id="3SnNvqCbycL" role="jymVt">
-        <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="breakpointSelected" />
         <property role="DiZV1" value="false" />
         <node concept="3Tm1VV" id="3SnNvqCbycM" role="1B3o_S" />

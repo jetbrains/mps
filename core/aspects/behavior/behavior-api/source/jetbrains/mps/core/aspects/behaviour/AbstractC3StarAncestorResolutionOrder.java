@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * This class counts the linearization for a concept (method resolution order).
@@ -36,11 +37,11 @@ import java.util.List;
 public abstract class AbstractC3StarAncestorResolutionOrder<C extends AbstractConceptLike> extends CachingAncestorResolutionOrder<C> {
   @NotNull
   @Override
-  protected List<C> calcLinearization0(@NotNull C concept) {
+  protected List<C> calcLinearizationImpl(@NotNull C concept, @NotNull Set<C> met) {
     List<List<C>> superLinearizations = new ArrayList<>();
     List<C> immediateParents = getImmediateParents(concept);
     for (C parent : immediateParents) {
-      superLinearizations.add(new ArrayList<>(calcLinearization(parent)));
+      superLinearizations.add(new ArrayList<>(calcLinearizationWithMemoization(parent, met)));
     }
     List<C> linearization = new ArrayList<>();
     linearization.add(concept);
@@ -106,8 +107,7 @@ public abstract class AbstractC3StarAncestorResolutionOrder<C extends AbstractCo
     @NotNull
     @Override
     public Iterator<List<T>> iterator() {
-      List<List<T>> allLists = new ArrayList<>();
-      allLists.addAll(mySuperLinearizations);
+      List<List<T>> allLists = new ArrayList<>(mySuperLinearizations);
       allLists.add(myLocalOrder);
       return allLists.iterator();
     }
@@ -146,7 +146,7 @@ public abstract class AbstractC3StarAncestorResolutionOrder<C extends AbstractCo
         if (myLocalOrder.isEmpty()) return false;
         T candidate = myLocalOrder.get(0);
         boolean succeeded = checkCandidateAndAddToResult(result, candidate, localOrder);
-        if (succeeded) return true;
+        return succeeded;
       }
       return false;
     }

@@ -5,7 +5,6 @@ package jetbrains.mps.tool.environment;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
-import jetbrains.mps.project.PathMacrosProvider;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.TestMode;
@@ -18,6 +17,7 @@ import java.io.File;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.core.tool.environment.util.MapPathMacrosProvider;
 import jetbrains.mps.core.tool.environment.util.CanonicalPath;
+import org.apache.log4j.Level;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.project.Project;
 
@@ -32,7 +32,6 @@ public abstract class EnvironmentBase implements Environment {
 
   protected final EnvironmentConfig myConfig;
   private boolean myInitialized;
-  private PathMacrosProvider myMacrosProvider;
   private final ProjectContainer myContainer = new ProjectContainer();
   private ClassLoader myRootClassLoader = null;
 
@@ -61,15 +60,13 @@ public abstract class EnvironmentBase implements Environment {
     myInitialized = true;
   }
 
-  private PathMacrosProvider initMacros(PathMacros macroComponent) {
+  private void initMacros(PathMacros macroComponent) {
     Map<String, String> macros = new HashMap<String, String>();
     Map<String, File> macrosConfig = myConfig.getMacros();
     for (String name : MapSequence.fromMap(macrosConfig).keySet()) {
       MapSequence.fromMap(macros).put(name, MapSequence.fromMap(macrosConfig).get(name).getAbsolutePath());
     }
-    myMacrosProvider = createMapMacrosProvider(macros);
-    macroComponent.addMacrosProvider(myMacrosProvider);
-    return myMacrosProvider;
+    macroComponent.addMacrosProvider(createMapMacrosProvider(macros));
   }
 
   private static MapPathMacrosProvider createMapMacrosProvider(Map<String, String> macros) {
@@ -80,6 +77,10 @@ public abstract class EnvironmentBase implements Environment {
       CanonicalPath path = new CanonicalPath(macroValue);
       if (path.isValidDirectory()) {
         realMacros.put(macroName, path.getValue());
+      } else {
+        if (LOG.isEnabledFor(Level.ERROR)) {
+          LOG.error("The macro '" + macroName + "' to non-existent location");
+        }
       }
     }
     return new MapPathMacrosProvider(realMacros);

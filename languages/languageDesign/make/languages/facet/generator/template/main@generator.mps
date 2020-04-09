@@ -67,9 +67,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -1872,7 +1869,6 @@
           </node>
         </node>
         <node concept="Wx3nA" id="117X3LT5S_i" role="jymVt">
-          <property role="IEkAT" value="false" />
           <property role="TrG5h" value="name" />
           <property role="3TUv4t" value="true" />
           <node concept="3uibUv" id="4Ec6s15E1uw" role="1tU5fm">
@@ -2837,7 +2833,6 @@
         </node>
         <node concept="2YIFZL" id="117X3LT5WAf" role="jymVt">
           <property role="TrG5h" value="vars" />
-          <property role="IEkAT" value="false" />
           <property role="DiZV1" value="false" />
           <property role="od$2w" value="false" />
           <node concept="3clFbS" id="117X3LT2rj2" role="3clF47">
@@ -3536,7 +3531,6 @@
       </node>
       <node concept="2YIFZL" id="117X3LT7Gv6" role="jymVt">
         <property role="TrG5h" value="vars" />
-        <property role="IEkAT" value="false" />
         <property role="DiZV1" value="false" />
         <property role="od$2w" value="false" />
         <node concept="3clFbS" id="117X3LT4v4o" role="3clF47">
@@ -3686,7 +3680,6 @@
     <node concept="3Tm1VV" id="2sMVRqVjJWm" role="1B3o_S" />
     <node concept="n94m4" id="2sMVRqVjJWr" role="lGtFl" />
     <node concept="312cEg" id="1yZMluZ2_9N" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="TrG5h" value="myManifest" />
       <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="3612de$QxLF" role="1tU5fm">
@@ -3716,7 +3709,6 @@
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getManifest" />
       <property role="DiZV1" value="false" />
-      <property role="IEkAT" value="false" />
       <node concept="3Tm1VV" id="1yZMluZ2$D1" role="1B3o_S" />
       <node concept="3uibUv" id="3612de$QxOQ" role="3clF45">
         <ref role="3uigEE" to="ud0o:1TGyBqvr2zy" resolve="IFacetManifest" />

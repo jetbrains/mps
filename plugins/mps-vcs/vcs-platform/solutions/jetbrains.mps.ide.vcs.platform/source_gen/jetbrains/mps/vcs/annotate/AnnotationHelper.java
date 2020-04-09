@@ -32,6 +32,7 @@ import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.vcs.AbstractVcsHelper;
 import java.util.Arrays;
 import com.intellij.util.Consumer;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.List;
 import jetbrains.mps.smodel.persistence.lines.LineContent;
@@ -119,6 +120,7 @@ public class AnnotationHelper {
     Task.Backgroundable annotateTask = new Task.Backgroundable(ideaProject, "Retrieving annotations", true, PerformInBackgroundOption.ALWAYS_BACKGROUND) {
       private FileAnnotation myFileAnnotation;
       private VcsException myException;
+
       @Override
       public void run(@NotNull ProgressIndicator indicator) {
         try {
@@ -127,10 +129,12 @@ public class AnnotationHelper {
           myException = e;
         }
       }
+
       @Override
       public void onCancel() {
         onSuccess();
       }
+
       @Override
       public void onSuccess() {
         // (in UI thread) 
@@ -144,7 +148,12 @@ public class AnnotationHelper {
           // Now annotation is build asynchronously, and is reloaded after build finished (can be done several times) 
           myFileAnnotation.setReloader(new Consumer<FileAnnotation>() {
             public void consume(FileAnnotation newFA) {
-              annotate(editorComponent);
+              ModelAccess modelAccess = editorComponent.getEditorContext().getRepository().getModelAccess();
+              modelAccess.runReadAction(new Runnable() {
+                public void run() {
+                  annotate(editorComponent);
+                }
+              });
             }
           });
           // if annotation is not ready yet - just wait for reload 
@@ -164,7 +173,8 @@ public class AnnotationHelper {
               return;
             }
 
-            editorComponent.getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
+            ModelAccess modelAccess = editorComponent.getEditorContext().getRepository().getModelAccess();
+            modelAccess.runReadAction(new Runnable() {
               public void run() {
                 AnnotationColumn annotationColumn = new AnnotationColumn(leftEditorHighlighter, root, myFileAnnotation, fileLineToContent.value);
                 leftEditorHighlighter.addLeftColumn(annotationColumn);

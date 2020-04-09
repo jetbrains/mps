@@ -11517,7 +11517,6 @@
   <node concept="3HP615" id="2F73y9NWLe9">
     <property role="TrG5h" value="IHighlighter" />
     <node concept="3clFb_" id="2F73y9NWMIJ" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="rehighlight" />
       <node concept="3clFbS" id="2F73y9NWMIM" role="3clF47" />

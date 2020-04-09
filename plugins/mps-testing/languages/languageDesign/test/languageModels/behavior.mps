@@ -3027,25 +3027,25 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="2wBFdLy6LWF" role="3cqZAp">
-              <node concept="2OqwBi" id="2wBFdLy6N4j" role="3clFbG">
-                <node concept="2OqwBi" id="2wBFdLy6M1g" role="2Oq$k0">
-                  <node concept="13iPFW" id="2wBFdLy6LWD" role="2Oq$k0" />
-                  <node concept="3Tsc0h" id="2wBFdLy6Mdb" role="2OqNvi">
-                    <ref role="3TtcxE" to="tp5g:hG7EUTW" resolve="nodeOperations" />
-                  </node>
-                </node>
-                <node concept="TSZUe" id="2wBFdLy6Qq9" role="2OqNvi">
-                  <node concept="37vLTw" id="2wBFdLy7dA3" role="25WWJ7">
-                    <ref role="3cqZAo" node="2wBFdLy6LTj" resolve="newNode" />
-                  </node>
-                </node>
-              </node>
-            </node>
           </node>
           <node concept="2YIFZM" id="5lg0Ljo94Ut" role="3clFbw">
             <ref role="37wK5l" to="18ew:~PathManager.isFromSources()" resolve="isFromSources" />
             <ref role="1Pybhc" to="18ew:~PathManager" resolve="PathManager" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="2wBFdLy6LWF" role="3cqZAp">
+          <node concept="2OqwBi" id="2wBFdLy6N4j" role="3clFbG">
+            <node concept="2OqwBi" id="2wBFdLy6M1g" role="2Oq$k0">
+              <node concept="13iPFW" id="2wBFdLy6LWD" role="2Oq$k0" />
+              <node concept="3Tsc0h" id="2wBFdLy6Mdb" role="2OqNvi">
+                <ref role="3TtcxE" to="tp5g:hG7EUTW" resolve="nodeOperations" />
+              </node>
+            </node>
+            <node concept="TSZUe" id="2wBFdLy6Qq9" role="2OqNvi">
+              <node concept="37vLTw" id="2wBFdLy7dA3" role="25WWJ7">
+                <ref role="3cqZAo" node="2wBFdLy6LTj" resolve="newNode" />
+              </node>
+            </node>
           </node>
         </node>
       </node>

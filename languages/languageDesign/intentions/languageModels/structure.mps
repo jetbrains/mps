@@ -2,6 +2,7 @@
 <model ref="r:00000000-0000-4000-0000-011c89590353(jetbrains.mps.lang.intentions.structure)">
   <persistence version="9" />
   <languages>
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -143,7 +144,7 @@
     <property role="EcuMT" value="1240395258925" />
     <ref role="1TJDcQ" node="hmS6QkF" resolve="IntentionDeclaration" />
     <node concept="1TJgyj" id="i3dlsyr" role="1TKVEi">
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="queryFunction" />
       <property role="IQ2ns" value="1240395532443" />
       <ref role="20lvS9" node="i38Bcsp" resolve="QueryBlock" />
@@ -209,7 +210,6 @@
     <node concept="1TJgyj" id="2c3oNEsfd2F" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="isApplicableFunction" />
-      <property role="20lbJX" value="0..1" />
       <property role="IQ2ns" value="2522969319638093995" />
       <ref role="20lvS9" node="hmSaL3P" resolve="IsApplicableBlock" />
     </node>
@@ -280,7 +280,6 @@
       <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
     </node>
     <node concept="1TJgyj" id="4d05DgImtx" role="1TKVEi">
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="forConcept" />
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="75717156636551009" />
@@ -289,7 +288,6 @@
     <node concept="1TJgyj" id="5_2vHPPt4pL" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="priority" />
-      <property role="20lbJX" value="0..1" />
       <property role="IQ2ns" value="6431842707461916273" />
       <ref role="20lvS9" node="5_2vHPPt4ol" resolve="ErrorIntentionPriority" />
     </node>

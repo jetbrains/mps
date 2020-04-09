@@ -8985,7 +8985,6 @@
       <ref role="3uigEE" to="moux:1ycrhFMLI_B" resolve="QueryExecutionContext" />
     </node>
     <node concept="3clFb_" id="3MPHfSuPT3Y" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getProject" />
       <node concept="3uibUv" id="3ZgZ1njKpcr" role="3clF45">
         <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
@@ -8994,7 +8993,6 @@
       <node concept="3clFbS" id="3MPHfSuPT42" role="3clF47" />
     </node>
     <node concept="3clFb_" id="7L2VFB5mjvh" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getOutputWindow" />
       <node concept="3uibUv" id="1ycrhFMM_73" role="3clF45">
         <ref role="3uigEE" node="4gO8Gruz$1J" resolve="BaseConsoleTab" />
@@ -9007,7 +9005,6 @@
   <node concept="3HP615" id="5WpmwkrQPPk">
     <property role="TrG5h" value="ConsoleStream" />
     <node concept="3clFb_" id="5WpmwkrQPWC" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="addText" />
       <node concept="3cqZAl" id="5WpmwkrQPWE" role="3clF45" />
       <node concept="3Tm1VV" id="5WpmwkrQPWF" role="1B3o_S" />
@@ -9018,7 +9015,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="7Jzw3XJWFQB" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="addNode" />
       <node concept="3cqZAl" id="7Jzw3XJWFQC" role="3clF45" />
       <node concept="3Tm1VV" id="7Jzw3XJWFQD" role="1B3o_S" />
@@ -9029,7 +9025,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="3ZgZ1njWRnh" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="addNodeRef" />
       <node concept="3cqZAl" id="3ZgZ1njWRni" role="3clF45" />
       <node concept="3Tm1VV" id="3ZgZ1njWRnj" role="1B3o_S" />
@@ -9040,7 +9035,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="3ZgZ1njWQP3" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="addException" />
       <node concept="3cqZAl" id="3ZgZ1njWQP4" role="3clF45" />
       <node concept="3Tm1VV" id="3ZgZ1njWQP5" role="1B3o_S" />
@@ -9053,7 +9047,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="3ZgZ1njWQRY" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="addClosure" />
       <node concept="37vLTG" id="6_TW7xVHjmt" role="3clF46">
         <property role="TrG5h" value="closure" />
@@ -9070,7 +9063,6 @@
       <node concept="3clFbS" id="3ZgZ1njWQS1" role="3clF47" />
     </node>
     <node concept="3clFb_" id="1ycrhFMNuOa" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="addSequence" />
       <node concept="37vLTG" id="1ycrhFMNuTm" role="3clF46">
         <property role="TrG5h" value="project" />

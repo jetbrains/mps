@@ -73,9 +73,7 @@
         <child id="1068580123134" name="parameter" index="3clF46" />
         <child id="1068580123135" name="body" index="3clF47" />
       </concept>
-      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_">
-        <property id="1178608670077" name="isAbstract" index="1EzhhJ" />
-      </concept>
+      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_" />
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
       </concept>
@@ -1920,7 +1918,6 @@
   <node concept="3HP615" id="10Uj_trkvQk">
     <property role="TrG5h" value="IRedirects" />
     <node concept="3clFb_" id="10Uj_trkvTx" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getRedirect" />
       <node concept="37vLTG" id="10Uj_trkvTH" role="3clF46">
         <property role="TrG5h" value="path" />

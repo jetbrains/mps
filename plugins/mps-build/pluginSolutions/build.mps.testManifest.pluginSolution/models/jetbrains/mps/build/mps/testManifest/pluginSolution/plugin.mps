@@ -356,6 +356,9 @@
         <child id="7389400916848037006" name="children" index="39821P" />
       </concept>
       <concept id="841011766566059607" name="jetbrains.mps.build.structure.BuildStringNotEmpty" flags="ng" index="3_J27D" />
+      <concept id="5248329904287794596" name="jetbrains.mps.build.structure.BuildInputFiles" flags="ng" index="3LXTmp">
+        <child id="5248329904287794679" name="selectors" index="3LXTna" />
+      </concept>
       <concept id="4903714810883702019" name="jetbrains.mps.build.structure.BuildTextStringPart" flags="ng" index="3Mxwew">
         <property id="4903714810883755350" name="text" index="3MwjfP" />
       </concept>
@@ -469,6 +472,12 @@
       </concept>
       <concept id="1265949165890536423" name="jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleJars" flags="ng" index="L2wRC" />
       <concept id="868032131020265945" name="jetbrains.mps.build.mps.structure.BuildMPSPlugin" flags="ng" index="3b7kt6" />
+      <concept id="5253498789149381388" name="jetbrains.mps.build.mps.structure.BuildMps_Module" flags="ng" index="3bQrTs">
+        <child id="5253498789149547825" name="sources" index="3bR31x" />
+      </concept>
+      <concept id="763829979718664966" name="jetbrains.mps.build.mps.structure.BuildMps_ModuleResources" flags="ng" index="3rtmxn">
+        <child id="763829979718664967" name="files" index="3rtmxm" />
+      </concept>
       <concept id="3189788309731840247" name="jetbrains.mps.build.mps.structure.BuildMps_Solution" flags="ng" index="1E1JtA" />
       <concept id="3189788309731840248" name="jetbrains.mps.build.mps.structure.BuildMps_Language" flags="ng" index="1E1JtD" />
       <concept id="322010710375871467" name="jetbrains.mps.build.mps.structure.BuildMps_AbstractModule" flags="ng" index="3LEN3z">
@@ -1352,6 +1361,13 @@
                         </node>
                       </node>
                     </node>
+                    <node concept="3rtmxn" id="6UtCO5dHXf_" role="3bR31x">
+                      <node concept="3LXTmp" id="6UtCO5dHXfA" role="3rtmxm">
+                        <node concept="3qWCbU" id="6UtCO5dHXfB" role="3LXTna">
+                          <property role="3qWCbO" value="icons/**, resources/**" />
+                        </node>
+                      </node>
+                    </node>
                   </node>
                 </node>
                 <node concept="2G$12M" id="7vU6U506kQn" role="3989C9">
@@ -1391,6 +1407,13 @@
                               <ref role="3cqZAo" node="7vU6U505bu4" resolve="tmms" />
                             </node>
                           </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3rtmxn" id="6UtCO5dHXfy" role="3bR31x">
+                      <node concept="3LXTmp" id="6UtCO5dHXfz" role="3rtmxm">
+                        <node concept="3qWCbU" id="6UtCO5dHXf$" role="3LXTna">
+                          <property role="3qWCbO" value="icons/**, resources/**" />
                         </node>
                       </node>
                     </node>

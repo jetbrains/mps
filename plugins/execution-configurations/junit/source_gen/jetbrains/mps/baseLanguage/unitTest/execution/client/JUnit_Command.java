@@ -16,6 +16,7 @@ import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.debug.api.IDebugger;
 import com.intellij.openapi.application.PathManager;
 import jetbrains.mps.util.NameUtil;
+import com.intellij.openapi.util.text.StringUtil;
 import jetbrains.mps.debug.api.run.IDebuggerConfiguration;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.debug.api.IDebuggerSettings;
@@ -101,7 +102,11 @@ public class JUnit_Command {
     }
   }
   private static String createPropString(String propName, String propValue) {
-    return " -D" + propName + "=" + NameUtil.escapeString(propValue);
+    String val = NameUtil.escapeString(propValue);
+    if (StringUtil.containsWhitespaces(val)) {
+      val = "\"" + val + "\"";
+    }
+    return " -D" + propName + "=" + val;
   }
 
   public static IDebuggerConfiguration getDebuggerConfiguration() {

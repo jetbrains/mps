@@ -83,9 +83,7 @@
         <child id="1068580123134" name="parameter" index="3clF46" />
         <child id="1068580123135" name="body" index="3clF47" />
       </concept>
-      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_">
-        <property id="1178608670077" name="isAbstract" index="1EzhhJ" />
-      </concept>
+      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_" />
       <concept id="1068580123152" name="jetbrains.mps.baseLanguage.structure.EqualsExpression" flags="nn" index="3clFbC" />
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
@@ -178,7 +176,6 @@
       <ref role="3uigEE" node="2wxFklq8Gs9" resolve="Requestor" />
     </node>
     <node concept="3clFb_" id="2wxFklq8Mle" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="processClassPrepare" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="2wxFklq8Mlf" role="1B3o_S" />
@@ -207,7 +204,6 @@
       <ref role="3uigEE" node="2wxFklq8Gs9" resolve="Requestor" />
     </node>
     <node concept="3clFb_" id="2wxFklq8UNl" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="isRequestHitByEvent" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="2wxFklq8UNm" role="1B3o_S" />
@@ -228,7 +224,6 @@
       <node concept="3clFbS" id="2wxFklq8UNs" role="3clF47" />
     </node>
     <node concept="3clFb_" id="2wxFklq8UNt" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getSuspendPolicy" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="2wxFklq8UNu" role="1B3o_S" />

@@ -346,8 +346,6 @@
       <concept id="1240395258925" name="jetbrains.mps.lang.intentions.structure.ParameterizedIntentionDeclaration" flags="ig" index="3dkpOd">
         <child id="1240395532443" name="queryFunction" index="3dlsAV" />
       </concept>
-      <concept id="1812109616120608865" name="jetbrains.mps.lang.intentions.structure.ParameterizedDescriptionBlock" flags="in" index="1jPt1T" />
-      <concept id="1812109616120795373" name="jetbrains.mps.lang.intentions.structure.ParameterizedExecuteBlock" flags="in" index="1jPJzP" />
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
       <concept id="1196350785110" name="jetbrains.mps.lang.quotation.structure.AbstractAntiquotation" flags="ng" index="2c44t0">
@@ -18112,7 +18110,7 @@
   <node concept="3dkpOd" id="75REJnczRcE">
     <property role="TrG5h" value="AlterStatementListContainer" />
     <ref role="2ZfgGC" to="tpee:i0zv2NF" resolve="IContainsStatementList" />
-    <node concept="1jPt1T" id="75REJnczRdE" role="2ZfVej">
+    <node concept="2S6ZIM" id="75REJnczRdE" role="2ZfVej">
       <node concept="3clFbS" id="75REJnczRdF" role="2VODD2">
         <node concept="3cpWs8" id="7LqRtPB4Y$T" role="3cqZAp">
           <node concept="3cpWsn" id="7LqRtPB4Y$W" role="3cpWs9">
@@ -18233,7 +18231,7 @@
         </node>
       </node>
     </node>
-    <node concept="1jPJzP" id="75REJnczRdG" role="2ZfgGD">
+    <node concept="2Sbjvc" id="75REJnczRdG" role="2ZfgGD">
       <node concept="3clFbS" id="75REJnczRdH" role="2VODD2">
         <node concept="3cpWs8" id="75REJncHQ10" role="3cqZAp">
           <node concept="3cpWsn" id="75REJncHQ11" role="3cpWs9">

@@ -36,6 +36,8 @@ public interface Copyable<T> {
    * full deep copy from one collection to another
    */
   static <T extends Copyable<T>> void deepCopy(@NotNull Collection<T> source, @NotNull Collection<T> target) {
-    target.addAll(source.stream().map(Copyable::copy).collect(Collectors.toList()));
+    target.addAll(source.stream()
+                        .map(Copyable::copy)
+                        .collect(Collectors.toList()));
   }
 }

@@ -83,7 +83,7 @@
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
@@ -804,7 +804,7 @@
             </node>
           </node>
           <node concept="3SKdUt" id="5sDn0On7T0J" role="3cqZAp">
-            <node concept="1PaTwC" id="5sDn0On7T0K" role="3ndbpf">
+            <node concept="1PaTwC" id="5sDn0On7T0K" role="1aUNEU">
               <node concept="3oM_SD" id="5sDn0OnjkSG" role="1PaTwD">
                 <property role="3oM_SC" value="todo:" />
               </node>

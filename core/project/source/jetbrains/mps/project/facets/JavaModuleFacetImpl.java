@@ -105,8 +105,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
 
   @Override
   public final Set<String> getClassPath() {
-    Set<String> result = new LinkedHashSet<>();
-    result.addAll(getLibraryClassPath());
+    Set<String> result = new LinkedHashSet<>(getLibraryClassPath());
     // XXX CP entry for IDEA-compiled modules (classes/) is part of library CP. Is it right?
     //     On the one hand, we might need classes compiled outside of a module to build it, OTOH, it makes classes/
     //     somewhat different from classes_gen/

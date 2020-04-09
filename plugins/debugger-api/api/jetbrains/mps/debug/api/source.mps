@@ -631,7 +631,6 @@
     <property role="TrG5h" value="IPositionProvider" />
     <node concept="2tJIrI" id="42TXcA3HF9G" role="jymVt" />
     <node concept="3clFb_" id="42TXcA3HFdn" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getPosition" />
       <node concept="16syzq" id="42TXcA3HFdo" role="3clF45">
         <ref role="16sUi3" node="6$AhvwzesLR" resolve="P" />
@@ -669,7 +668,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="6$AhvwzesWq" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="accepts" />
       <node concept="37vLTG" id="6$AhvwzesWv" role="3clF46">
         <property role="TrG5h" value="session" />

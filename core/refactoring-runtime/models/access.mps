@@ -224,7 +224,6 @@
     <property role="TrG5h" value="RefactoringFacade" />
     <node concept="3clFb_" id="1TclyuNTOmV" role="jymVt">
       <property role="TrG5h" value="executeSimple" />
-      <property role="1EzhhJ" value="false" />
       <node concept="37vLTG" id="1TclyuNTOmW" role="3clF46">
         <property role="TrG5h" value="context" />
         <property role="3TUv4t" value="true" />
@@ -237,7 +236,6 @@
       <node concept="3clFbS" id="1TclyuNTOn0" role="3clF47" />
     </node>
     <node concept="3clFb_" id="29N7xYwTG9W" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="execute" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="2rJ9V01VxN_" role="1B3o_S" />

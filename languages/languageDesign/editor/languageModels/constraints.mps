@@ -310,7 +310,6 @@
         <child id="6039268229364358388" name="body" index="1pnPq1" />
         <child id="6039268229364358387" name="concept" index="1pnPq6" />
       </concept>
-      <concept id="334628810661441841" name="jetbrains.mps.lang.smodel.structure.AsSConcept" flags="nn" index="1rGIog" />
       <concept id="1171999116870" name="jetbrains.mps.lang.smodel.structure.Node_IsNullOperation" flags="nn" index="3w_OXm" />
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
       <concept id="1144100932627" name="jetbrains.mps.lang.smodel.structure.OperationParm_Inclusion" flags="ng" index="1xIGOp" />
@@ -2369,10 +2368,7 @@
           <node concept="3cpWsn" id="147CB3QsUwR" role="3cpWs9">
             <property role="TrG5h" value="cc" />
             <node concept="10QFUN" id="147CB3QsUwS" role="33vP2m">
-              <node concept="2OqwBi" id="147CB3QsUwT" role="10QFUP">
-                <node concept="2DD5aU" id="147CB3QsUxq" role="2Oq$k0" />
-                <node concept="1rGIog" id="147CB3QsUwV" role="2OqNvi" />
-              </node>
+              <node concept="2DD5aU" id="147CB3QsUxq" role="10QFUP" />
               <node concept="3bZ5Sz" id="147CB3QsUwW" role="10QFUM">
                 <ref role="3bZ5Sy" to="tpc2:7_cYeEu4pYp" resolve="ContextVariable" />
               </node>

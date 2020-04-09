@@ -142,7 +142,6 @@
         <ref role="m$_yA" node="2Wb4ucKlQX3" resolve="jetbrains.mps.build.sandbox" />
       </node>
       <node concept="m$_yB" id="2Wb4ucKmnHM" role="m$_yh">
-        <property role="1ZOk41" value="false" />
         <ref role="m$_yA" node="2Wb4ucKmnFy" resolve="jetbrains.mps.build.tests" />
       </node>
     </node>
@@ -288,7 +287,6 @@
       <node concept="m$_wl" id="2Wb4ucKmdz8" role="39821P">
         <property role="vjkMI" value="true" />
         <ref role="m_rDy" node="2Wb4ucKlR0y" resolve="test" />
-        <node concept="pUk6w" id="5peYeZGo8Vm" role="pUk7w" />
         <node concept="398223" id="2Wb4ucKmnEb" role="39821P">
           <node concept="3_J27D" id="2Wb4ucKmnEd" role="Nbhlr">
             <node concept="3Mxwew" id="2Wb4ucKmnEo" role="3MwsjC">
@@ -302,6 +300,7 @@
             <ref role="L2wRA" node="2Wb4ucKmnFy" resolve="jetbrains.mps.build.tests" />
           </node>
         </node>
+        <node concept="pUk6w" id="6UtCO5dHXco" role="pUk7w" />
       </node>
     </node>
     <node concept="3b7kt6" id="2Wb4ucKlQKh" role="10PD9s" />

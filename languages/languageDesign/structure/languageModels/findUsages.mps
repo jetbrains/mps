@@ -1355,11 +1355,11 @@
       </node>
       <node concept="37vLTG" id="172ROKPwkpV" role="3clF46">
         <property role="TrG5h" value="peer" />
-        <node concept="2AHcQZ" id="6xjafMJkeEs" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
         <node concept="3Tqbb2" id="172ROKPwkpU" role="1tU5fm">
           <ref role="ehGHo" to="tpce:f_TIwhg" resolve="ConceptDeclaration" />
+        </node>
+        <node concept="2AHcQZ" id="6xjafMJkeEs" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
     </node>
@@ -1681,6 +1681,20 @@
           </node>
         </node>
         <node concept="3J1_TO" id="172ROKPIjRO" role="3cqZAp">
+          <node concept="1wplmZ" id="xvs04dG4Na" role="1zxBo6">
+            <node concept="3clFbS" id="172ROKPIjRR" role="1wplMD">
+              <node concept="3clFbF" id="172ROKPIbRm" role="3cqZAp">
+                <node concept="2OqwBi" id="172ROKPIcp0" role="3clFbG">
+                  <node concept="37vLTw" id="172ROKPIbRk" role="2Oq$k0">
+                    <ref role="3cqZAo" node="172ROKPHExY" resolve="subMonitor" />
+                  </node>
+                  <node concept="liA8E" id="172ROKPIddT" role="2OqNvi">
+                    <ref role="37wK5l" to="yyf4:~ProgressMonitor.done()" resolve="done" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="3clFbS" id="172ROKPIjRQ" role="1zxBo7">
             <node concept="2Gpval" id="172ROKPzJxs" role="3cqZAp">
               <node concept="2GrKxI" id="172ROKPzJxu" role="2Gsz3X">
@@ -1739,20 +1753,6 @@
                     <node concept="liA8E" id="7uPL$vP46On" role="2OqNvi">
                       <ref role="37wK5l" node="6i$L4D_fATj" resolve="getPeer" />
                     </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="1wplmZ" id="xvs04dG4Na" role="1zxBo6">
-            <node concept="3clFbS" id="172ROKPIjRR" role="1wplMD">
-              <node concept="3clFbF" id="172ROKPIbRm" role="3cqZAp">
-                <node concept="2OqwBi" id="172ROKPIcp0" role="3clFbG">
-                  <node concept="37vLTw" id="172ROKPIbRk" role="2Oq$k0">
-                    <ref role="3cqZAo" node="172ROKPHExY" resolve="subMonitor" />
-                  </node>
-                  <node concept="liA8E" id="172ROKPIddT" role="2OqNvi">
-                    <ref role="37wK5l" to="yyf4:~ProgressMonitor.done()" resolve="done" />
                   </node>
                 </node>
               </node>
@@ -2103,11 +2103,11 @@
       </node>
       <node concept="37vLTG" id="172ROKPwWwB" role="3clF46">
         <property role="TrG5h" value="peer" />
-        <node concept="2AHcQZ" id="6xjafMJkjIs" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
         <node concept="3Tqbb2" id="172ROKPwWwC" role="1tU5fm">
           <ref role="ehGHo" to="tpce:h0PlHMJ" resolve="InterfaceConceptDeclaration" />
+        </node>
+        <node concept="2AHcQZ" id="6xjafMJkjIs" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
     </node>
@@ -2260,7 +2260,7 @@
     </node>
     <node concept="3clFb_" id="6PYrBB1jnfl" role="jymVt">
       <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="calcLinearization0" />
+      <property role="TrG5h" value="calcLinearizationImpl" />
       <property role="DiZV1" value="false" />
       <property role="od$2w" value="false" />
       <node concept="3Tmbuc" id="6PYrBB1jnfm" role="1B3o_S" />
@@ -2320,9 +2320,12 @@
               <node concept="1pGfFk" id="6PYrBB1jt9q" role="2ShVmc">
                 <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;(java.util.Collection)" resolve="ArrayList" />
                 <node concept="3nyPlj" id="6PYrBB1jrCD" role="37wK5m">
-                  <ref role="37wK5l" to="manl:~AbstractC3StarAncestorResolutionOrder.calcLinearization0(jetbrains.mps.core.aspects.behaviour.api.AbstractConceptLike)" resolve="calcLinearization0" />
+                  <ref role="37wK5l" to="manl:~AbstractC3StarAncestorResolutionOrder.calcLinearizationImpl(jetbrains.mps.core.aspects.behaviour.api.AbstractConceptLike,java.util.Set)" resolve="calcLinearizationImpl" />
                   <node concept="37vLTw" id="6PYrBB1jrCE" role="37wK5m">
                     <ref role="3cqZAo" node="6PYrBB1jnfq" resolve="concept" />
+                  </node>
+                  <node concept="37vLTw" id="5bMGe0c7b7i" role="37wK5m">
+                    <ref role="3cqZAo" node="5bMGe0c75YF" resolve="visited" />
                   </node>
                 </node>
                 <node concept="3uibUv" id="6PYrBB1jtqs" role="1pMfVU">
@@ -2413,6 +2416,18 @@
       </node>
       <node concept="2AHcQZ" id="6PYrBB1jnfz" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+      <node concept="37vLTG" id="5bMGe0c75YF" role="3clF46">
+        <property role="TrG5h" value="visited" />
+        <node concept="3uibUv" id="5bMGe0c79ds" role="1tU5fm">
+          <ref role="3uigEE" to="33ny:~Set" resolve="Set" />
+          <node concept="3uibUv" id="5bMGe0c79lG" role="11_B2D">
+            <ref role="3uigEE" node="6i$L4D_fAml" resolve="AbstractConceptWrap" />
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="5bMGe0c79BZ" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
       </node>
     </node>
   </node>

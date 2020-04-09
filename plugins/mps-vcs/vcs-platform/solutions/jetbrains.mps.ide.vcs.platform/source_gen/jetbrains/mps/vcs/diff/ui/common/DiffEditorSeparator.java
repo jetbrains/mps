@@ -8,10 +8,10 @@ import jetbrains.mps.ide.tooltips.TooltipComponent;
 import java.util.Map;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import org.jetbrains.mps.openapi.module.SRepository;
+import java.awt.event.MouseAdapter;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import java.awt.Dimension;
-import jetbrains.mps.ide.tooltips.MPSToolTipManager;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.LinkedHashMap;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -34,6 +34,7 @@ public class DiffEditorSeparator extends JComponent implements TooltipComponent 
   private Map<ChangeGroup, Tuples._2<Bounds, Bounds>> myGroupsWithBounds;
   private Map<ChangeGroup, String> myChangeGroupDescriptions;
   private final SRepository myRepoWithChanges;
+  private final MouseAdapter myMouseAdapter = new MouseAdapter() {};
 
   public DiffEditorSeparator(SRepository repoWithChanges, ChangeGroupLayout changeGroupLayout) {
     myChangeGroupLayout = changeGroupLayout;
@@ -57,7 +58,8 @@ public class DiffEditorSeparator extends JComponent implements TooltipComponent 
         invalidateAndRepaint();
       }
     });
-    MPSToolTipManager.getInstance().registerComponent(this);
+    // this allows com.intellij.ide.IdeTooltipManager#eventDispatched to get notification for events over this component and draw tool tip with text from getToolTipText method 
+    this.addMouseListener(this.myMouseAdapter);
   }
 
   private void ensureBoundsCalculated() {
@@ -89,6 +91,7 @@ public class DiffEditorSeparator extends JComponent implements TooltipComponent 
       }
     });
   }
+
   @Override
   protected void paintComponent(Graphics g) {
     synchronized (this) {
@@ -108,6 +111,7 @@ public class DiffEditorSeparator extends JComponent implements TooltipComponent 
       }
     }
   }
+
   private void invalidateAndRepaint() {
     synchronized (this) {
       myGroupsWithBounds = null;
@@ -115,17 +119,26 @@ public class DiffEditorSeparator extends JComponent implements TooltipComponent 
     }
     repaint();
   }
+
   private JViewport getLeftViewport() {
     return myChangeGroupLayout.getLeftComponent().getViewport();
   }
+
   private JViewport getRightViewport() {
     return myChangeGroupLayout.getRightComponent().getViewport();
   }
+
   private int getOffset(JViewport viewport) {
     return -viewport.getViewPosition().y + myChangeGroupLayout.getEditorVerticalOffset();
   }
+
   @Override
-  public String getMPSTooltipText(MouseEvent mouseEvent) {
+  public String getMPSTooltipText(MouseEvent event) {
+    return getToolTipText(event);
+  }
+
+  @Override
+  public String getToolTipText(MouseEvent mouseEvent) {
     synchronized (this) {
       ensureBoundsCalculated();
       final Point p = mouseEvent.getPoint();
@@ -145,9 +158,12 @@ public class DiffEditorSeparator extends JComponent implements TooltipComponent 
       }
     }
   }
+
   public void dispose() {
-    MPSToolTipManager.getInstance().unregisterComponent(this);
+    // TODO: remove? 
+    this.removeMouseListener(myMouseAdapter);
   }
+
   private int vectorProduct(int left, int right, int x, int y) {
     int x1 = getWidth();
     int y1 = right - left;

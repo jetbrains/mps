@@ -7,6 +7,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
+import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import jetbrains.mps.lang.editor.editorTest.editor.ActionMap1;
 import java.util.Objects;
 
@@ -22,20 +23,26 @@ public class MapExt {
 
     // If we set a DELETE action but no BACKSPACE action, 
     // use the DELETE action for BACKSPACE as well. 
-    CellAction deleteAction = editorCell.getAction(CellActionType.DELETE);
-    CellAction backspaceAction = editorCell.getAction(CellActionType.BACKSPACE);
-    if (deleteAction != originalDelete && backspaceAction == originalBackspace) {
-      editorCell.setAction(CellActionType.BACKSPACE, deleteAction);
+    CellAction delete = editorCell.getAction(CellActionType.DELETE);
+    CellAction backspace = editorCell.getAction(CellActionType.BACKSPACE);
+    if (delete != originalDelete && backspace == originalBackspace) {
+      editorCell.setAction(CellActionType.BACKSPACE, delete);
+    }
+    if (delete != originalDelete) {
+      editorCell.putUserObject(AbstractCellListHandler.ELEMENT_CELL_DELETE_SET, OB);
+    }
+    if (backspace != originalBackspace) {
+      editorCell.putUserObject(AbstractCellListHandler.ELEMENT_CELL_BACKSPACE_SET, OB);
     }
   }
 
-  public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
+  private static final Object OB = new Object();
 
+  public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     // set cell actions from all imported action maps 
     ActionMap1.setDefinedCellActionsOfType(editorCell, node, context, CellActionType.DELETE);
 
     // set cell actions defined directly in this action map 
-
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {

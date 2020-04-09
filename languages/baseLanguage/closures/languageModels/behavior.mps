@@ -35,7 +35,6 @@
       <concept id="1225194413805" name="jetbrains.mps.lang.behavior.structure.ConceptConstructorDeclaration" flags="in" index="13hLZK" />
       <concept id="1225194472830" name="jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration" flags="ng" index="13i0hz">
         <property id="5864038008284099149" name="isStatic" index="2Ki8OM" />
-        <property id="1225194472833" name="isPrivate" index="13i0is" />
         <property id="1225194472832" name="isVirtual" index="13i0it" />
         <property id="1225194472834" name="isAbstract" index="13i0iv" />
         <reference id="1225194472831" name="overriddenMethod" index="13i0hy" />
@@ -3439,7 +3438,6 @@
     </node>
     <node concept="13i0hz" id="7ehuabO0MmP" role="13h7CS">
       <property role="TrG5h" value="getJavaType" />
-      <property role="13i0is" value="false" />
       <ref role="13i0hy" to="tpek:hEwIzO1" resolve="getJavaType" />
       <node concept="3Tm1VV" id="7ehuabO0MmW" role="1B3o_S" />
       <node concept="3clFbS" id="7ehuabO0MmX" role="3clF47">

@@ -1616,14 +1616,12 @@
     <property role="TrG5h" value="IdeaJavaCompiler" />
     <node concept="3Tm1VV" id="2_5NjuZKW3k" role="1B3o_S" />
     <node concept="3clFb_" id="3RgaFyKP9hF" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="isValid" />
       <node concept="10P_77" id="3RgaFyKP9hJ" role="3clF45" />
       <node concept="3Tm1VV" id="3RgaFyKP9hH" role="1B3o_S" />
       <node concept="3clFbS" id="3RgaFyKP9hI" role="3clF47" />
     </node>
     <node concept="3clFb_" id="42gV918qhxZ" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="compileModules" />
       <node concept="3uibUv" id="3E_ABgyyzwE" role="3clF45">
         <ref role="3uigEE" to="vqh0:~CompilationResult" resolve="CompilationResult" />

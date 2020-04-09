@@ -4576,7 +4576,6 @@
       <property role="2bfB8j" value="true" />
       <node concept="3Tm1VV" id="9D0Ba05uYk" role="1B3o_S" />
       <node concept="3clFb_" id="9D0Ba05uYg" role="jymVt">
-        <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="beforeDialogShown" />
         <node concept="3cqZAl" id="9D0Ba05uYh" role="3clF45" />
         <node concept="3Tm1VV" id="9D0Ba05uYi" role="1B3o_S" />

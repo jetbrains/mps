@@ -31,6 +31,7 @@
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="5zyv" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent(JDK/)" />
     <import index="ni5j" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.regex(JDK/)" />
+    <import index="mioz" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.debugger.impl(MPS.IDEA/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" implicit="true" />
   </imports>
   <registry>
@@ -362,6 +363,31 @@
       <node concept="3cqZAl" id="6bfDvj8bCm4" role="3clF45" />
       <node concept="3clFbS" id="6bfDvj8bCm3" role="3clF47">
         <node concept="3J1_TO" id="6bfDvj8c2vY" role="3cqZAp">
+          <node concept="3uVAMA" id="6bfDvj8c2w1" role="1zxBo5">
+            <node concept="XOnhg" id="6bfDvj8c2w2" role="1zc67B">
+              <property role="3TUv4t" value="false" />
+              <property role="TrG5h" value="e" />
+              <node concept="nSUau" id="xvs04dIvvs" role="1tU5fm">
+                <node concept="3uibUv" id="6bfDvj8c2w5" role="nSUat">
+                  <ref role="3uigEE" to="3v5a:~ExecutionException" resolve="ExecutionException" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbS" id="6bfDvj8c2w4" role="1zc67A">
+              <node concept="3xETmq" id="4rbJdZOuFO1" role="3cqZAp">
+                <node concept="3_1$Yv" id="4rbJdZOuFO2" role="3_9lra">
+                  <node concept="2OqwBi" id="4rbJdZOuFO3" role="3_1BAH">
+                    <node concept="37vLTw" id="4rbJdZOuFO4" role="2Oq$k0">
+                      <ref role="3cqZAo" node="6bfDvj8c2w2" resolve="e" />
+                    </node>
+                    <node concept="liA8E" id="4rbJdZOuFO5" role="2OqNvi">
+                      <ref role="37wK5l" to="wyt6:~Throwable.getMessage()" resolve="getMessage" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="3clFbS" id="6bfDvj8c2vZ" role="1zxBo7">
             <node concept="3cpWs8" id="6bfDvj8bDpW" role="3cqZAp">
               <node concept="3cpWsn" id="6bfDvj8bDpX" role="3cpWs9">
@@ -591,31 +617,6 @@
                   </node>
                 </node>
                 <node concept="17RvpY" id="6bfDvj8bDpI" role="2OqNvi" />
-              </node>
-            </node>
-          </node>
-          <node concept="3uVAMA" id="6bfDvj8c2w1" role="1zxBo5">
-            <node concept="XOnhg" id="6bfDvj8c2w2" role="1zc67B">
-              <property role="3TUv4t" value="false" />
-              <property role="TrG5h" value="e" />
-              <node concept="nSUau" id="xvs04dIvvs" role="1tU5fm">
-                <node concept="3uibUv" id="6bfDvj8c2w5" role="nSUat">
-                  <ref role="3uigEE" to="3v5a:~ExecutionException" resolve="ExecutionException" />
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbS" id="6bfDvj8c2w4" role="1zc67A">
-              <node concept="3xETmq" id="4rbJdZOuFO1" role="3cqZAp">
-                <node concept="3_1$Yv" id="4rbJdZOuFO2" role="3_9lra">
-                  <node concept="2OqwBi" id="4rbJdZOuFO3" role="3_1BAH">
-                    <node concept="37vLTw" id="4rbJdZOuFO4" role="2Oq$k0">
-                      <ref role="3cqZAo" node="6bfDvj8c2w2" resolve="e" />
-                    </node>
-                    <node concept="liA8E" id="4rbJdZOuFO5" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~Throwable.getMessage()" resolve="getMessage" />
-                    </node>
-                  </node>
-                </node>
               </node>
             </node>
           </node>
@@ -1106,38 +1107,54 @@
               <ref role="3uigEE" to="v3va:384sIIhHvlx" resolve="ProcessRunnerForConfigurationTests" />
             </node>
             <node concept="2OqwBi" id="7iUUdC1umKR" role="33vP2m">
-              <node concept="2OqwBi" id="7iUUdC1umKS" role="2Oq$k0">
-                <node concept="2ShNRf" id="7iUUdC1umKT" role="2Oq$k0">
-                  <node concept="1pGfFk" id="7iUUdC1umKU" role="2ShVmc">
-                    <ref role="37wK5l" to="v3va:7iUUdC1rzN1" resolve="ProcessRunnerForConfigurationTests.Builder" />
-                    <node concept="37vLTw" id="7iUUdC1umKV" role="37wK5m">
-                      <ref role="3cqZAo" node="384sIIhNmhv" resolve="process" />
+              <node concept="liA8E" id="7iUUdC1umL2" role="2OqNvi">
+                <ref role="37wK5l" to="v3va:7iUUdC1surU" resolve="build" />
+              </node>
+              <node concept="2OqwBi" id="33YWcaLtxNp" role="2Oq$k0">
+                <node concept="2OqwBi" id="7iUUdC1umKS" role="2Oq$k0">
+                  <node concept="2ShNRf" id="7iUUdC1umKT" role="2Oq$k0">
+                    <node concept="1pGfFk" id="7iUUdC1umKU" role="2ShVmc">
+                      <ref role="37wK5l" to="v3va:7iUUdC1rzN1" resolve="ProcessRunnerForConfigurationTests.Builder" />
+                      <node concept="37vLTw" id="7iUUdC1umKV" role="37wK5m">
+                        <ref role="3cqZAo" node="384sIIhNmhv" resolve="process" />
+                      </node>
                     </node>
                   </node>
-                </node>
-                <node concept="liA8E" id="7iUUdC1umKW" role="2OqNvi">
-                  <ref role="37wK5l" to="v3va:7iUUdC1rArG" resolve="addExpectedPaterns" />
-                  <node concept="2YIFZM" id="7iUUdC1umKX" role="37wK5m">
-                    <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
-                    <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
-                    <node concept="2YIFZM" id="7iUUdC1umKY" role="37wK5m">
-                      <ref role="37wK5l" to="ni5j:~Pattern.compile(java.lang.String)" resolve="compile" />
-                      <ref role="1Pybhc" to="ni5j:~Pattern" resolve="Pattern" />
-                      <node concept="3cpWs3" id="7iUUdC1umKZ" role="37wK5m">
-                        <node concept="Xl_RD" id="7iUUdC1umL0" role="3uHU7w">
-                          <property role="Xl_RC" value="\n" />
-                        </node>
-                        <node concept="10M0yZ" id="7iUUdC1umL1" role="3uHU7B">
-                          <ref role="1PxDUh" to="u9u1:73dkH4Pmkrj" resolve="Main" />
-                          <ref role="3cqZAo" to="u9u1:73dkH4Pmkr_" resolve="MESSAGE" />
+                  <node concept="liA8E" id="7iUUdC1umKW" role="2OqNvi">
+                    <ref role="37wK5l" to="v3va:7iUUdC1rArG" resolve="addExpectedPaterns" />
+                    <node concept="2YIFZM" id="7iUUdC1umKX" role="37wK5m">
+                      <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
+                      <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
+                      <node concept="2YIFZM" id="7iUUdC1umKY" role="37wK5m">
+                        <ref role="37wK5l" to="ni5j:~Pattern.compile(java.lang.String)" resolve="compile" />
+                        <ref role="1Pybhc" to="ni5j:~Pattern" resolve="Pattern" />
+                        <node concept="3cpWs3" id="7iUUdC1umKZ" role="37wK5m">
+                          <node concept="Xl_RD" id="7iUUdC1umL0" role="3uHU7w">
+                            <property role="Xl_RC" value="\n*" />
+                          </node>
+                          <node concept="10M0yZ" id="7iUUdC1umL1" role="3uHU7B">
+                            <ref role="1PxDUh" to="u9u1:73dkH4Pmkrj" resolve="Main" />
+                            <ref role="3cqZAo" to="u9u1:73dkH4Pmkr_" resolve="MESSAGE" />
+                          </node>
                         </node>
                       </node>
                     </node>
                   </node>
                 </node>
-              </node>
-              <node concept="liA8E" id="7iUUdC1umL2" role="2OqNvi">
-                <ref role="37wK5l" to="v3va:7iUUdC1surU" resolve="build" />
+                <node concept="liA8E" id="33YWcaLtyfF" role="2OqNvi">
+                  <ref role="37wK5l" to="v3va:7iUUdC1rB0D" resolve="addAllowedErrorPaterns" />
+                  <node concept="2YIFZM" id="33YWcaLtJL3" role="37wK5m">
+                    <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
+                    <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
+                    <node concept="2YIFZM" id="33YWcaLt$3q" role="37wK5m">
+                      <ref role="1Pybhc" to="ni5j:~Pattern" resolve="Pattern" />
+                      <ref role="37wK5l" to="ni5j:~Pattern.compile(java.lang.String)" resolve="compile" />
+                      <node concept="Xl_RD" id="33YWcaLt$92" role="37wK5m">
+                        <property role="Xl_RC" value="Picked up JAVA_TOOL_OPTIONS.*\n*" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
               </node>
             </node>
           </node>

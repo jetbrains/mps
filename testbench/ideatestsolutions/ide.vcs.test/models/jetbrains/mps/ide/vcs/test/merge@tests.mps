@@ -5504,7 +5504,6 @@
       <property role="2bfB8j" value="true" />
       <property role="TrG5h" value="ModelChanger" />
       <node concept="3clFb_" id="7mLn5gQmcm5" role="jymVt">
-        <property role="1EzhhJ" value="false" />
         <property role="2aFKle" value="false" />
         <property role="TrG5h" value="changeModel" />
         <node concept="3clFbS" id="7mLn5gQmcm8" role="3clF47" />
@@ -5520,7 +5519,6 @@
       <property role="2bfB8j" value="true" />
       <property role="TrG5h" value="ModelCreator" />
       <node concept="3clFb_" id="7mLn5gQmcSY" role="jymVt">
-        <property role="1EzhhJ" value="false" />
         <property role="2aFKle" value="false" />
         <property role="TrG5h" value="createModel" />
         <node concept="3clFbS" id="7mLn5gQmcT1" role="3clF47" />

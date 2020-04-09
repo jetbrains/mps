@@ -92,6 +92,9 @@
       <concept id="4056363777117001481" name="jetbrains.mps.lang.quotation.structure.StringToTypedValueMigrationInfo" flags="ng" index="AAgTk">
         <property id="2173356959483005420" name="stringValueMigrated" index="3qcH_f" />
       </concept>
+      <concept id="6985522012210254362" name="jetbrains.mps.lang.quotation.structure.NodeBuilderPropertyExpression" flags="nn" index="WxPPo">
+        <child id="6985522012210254363" name="expression" index="WxPPp" />
+      </concept>
     </language>
     <language id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest">
       <concept id="1171981022339" name="jetbrains.mps.baseLanguage.unitTest.structure.AssertTrue" flags="nn" index="3vwNmj">
@@ -196,13 +199,15 @@
           <ref role="2pJxaS" to="tpee:fzcmrck" resolve="IntegerConstant" />
           <node concept="2pJxcG" id="5zNZr7ZTSXl" role="2pJxcM">
             <ref role="2pJxcJ" to="tpee:fzcmrcl" resolve="value" />
-            <node concept="33vP2n" id="5zNZr7ZTSYU" role="28ntcv">
-              <node concept="LIFWc" id="5zNZr7ZTSZ4" role="lGtFl">
-                <property role="ZRATv" value="true" />
-                <property role="OXtK3" value="true" />
-                <property role="p6zMq" value="0" />
-                <property role="p6zMs" value="0" />
-                <property role="LIFWd" value="Custom_1ltshm_a0" />
+            <node concept="WxPPo" id="6UtCO5dICDN" role="28ntcv">
+              <node concept="33vP2n" id="5zNZr7ZTSYU" role="WxPPp">
+                <node concept="LIFWc" id="5zNZr7ZTSZ4" role="lGtFl">
+                  <property role="ZRATv" value="true" />
+                  <property role="OXtK3" value="true" />
+                  <property role="p6zMq" value="0" />
+                  <property role="p6zMs" value="0" />
+                  <property role="LIFWd" value="Custom_1ltshm_a0" />
+                </node>
               </node>
             </node>
           </node>

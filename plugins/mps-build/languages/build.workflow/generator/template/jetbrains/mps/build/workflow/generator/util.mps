@@ -20,6 +20,7 @@
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="iuxj" ref="r:64db3a92-5968-4a73-b456-34504a2d97a6(jetbrains.mps.core.xml.structure)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
+    <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" implicit="true" />
     <import index="nq57" ref="r:6da6c71a-0aac-4fb2-b0ad-1b3a207cc189(jetbrains.mps.build.workflow.behavior)" implicit="true" />
   </imports>
   <registry>
@@ -969,36 +970,30 @@
                 <node concept="1bVj0M" id="6pYRYgn80l4" role="37wK5m">
                   <node concept="3clFbS" id="6pYRYgn80l5" role="1bW5cS">
                     <node concept="3clFbF" id="6pYRYgn80l6" role="3cqZAp">
-                      <node concept="2OqwBi" id="6pYRYgn80m5" role="3clFbG">
-                        <node concept="2ShNRf" id="6pYRYgn80lY" role="2Oq$k0">
-                          <node concept="1pGfFk" id="6pYRYgn80m0" role="2ShVmc">
-                            <ref role="37wK5l" to="wyt6:~Integer.&lt;init&gt;(int)" resolve="Integer" />
-                            <node concept="2OqwBi" id="6pYRYgn80lE" role="37wK5m">
-                              <node concept="2OqwBi" id="6pYRYgn80lx" role="2Oq$k0">
-                                <node concept="37vLTw" id="2BHiRxghiGU" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="6pYRYgn80la" resolve="m1" />
-                                </node>
-                                <node concept="liA8E" id="6pYRYgn80lB" role="2OqNvi">
-                                  <ref role="37wK5l" node="6pYRYgn7KiV" resolve="getModule" />
-                                </node>
-                              </node>
-                              <node concept="2bSWHS" id="6pYRYgn80lK" role="2OqNvi" />
+                      <node concept="2YIFZM" id="26prL1qekKr" role="3clFbG">
+                        <ref role="37wK5l" to="wyt6:~Integer.compare(int,int)" resolve="compare" />
+                        <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
+                        <node concept="2OqwBi" id="6pYRYgn80lE" role="37wK5m">
+                          <node concept="2OqwBi" id="6pYRYgn80lx" role="2Oq$k0">
+                            <node concept="37vLTw" id="2BHiRxghiGU" role="2Oq$k0">
+                              <ref role="3cqZAo" node="6pYRYgn80la" resolve="m1" />
+                            </node>
+                            <node concept="liA8E" id="6pYRYgn80lB" role="2OqNvi">
+                              <ref role="37wK5l" node="6pYRYgn7KiV" resolve="getModule" />
                             </node>
                           </node>
+                          <node concept="2bSWHS" id="6pYRYgn80lK" role="2OqNvi" />
                         </node>
-                        <node concept="liA8E" id="6pYRYgn80ma" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~Integer.compareTo(java.lang.Integer)" resolve="compareTo" />
-                          <node concept="2OqwBi" id="6pYRYgn80mt" role="37wK5m">
-                            <node concept="2OqwBi" id="6pYRYgn80mj" role="2Oq$k0">
-                              <node concept="37vLTw" id="2BHiRxgmyr$" role="2Oq$k0">
-                                <ref role="3cqZAo" node="6pYRYgn80ld" resolve="m2" />
-                              </node>
-                              <node concept="liA8E" id="6pYRYgn80mp" role="2OqNvi">
-                                <ref role="37wK5l" node="6pYRYgn7KiV" resolve="getModule" />
-                              </node>
+                        <node concept="2OqwBi" id="6pYRYgn80mt" role="37wK5m">
+                          <node concept="2OqwBi" id="6pYRYgn80mj" role="2Oq$k0">
+                            <node concept="37vLTw" id="2BHiRxgmyr$" role="2Oq$k0">
+                              <ref role="3cqZAo" node="6pYRYgn80ld" resolve="m2" />
                             </node>
-                            <node concept="2bSWHS" id="6pYRYgn80mz" role="2OqNvi" />
+                            <node concept="liA8E" id="6pYRYgn80mp" role="2OqNvi">
+                              <ref role="37wK5l" node="6pYRYgn7KiV" resolve="getModule" />
+                            </node>
                           </node>
+                          <node concept="2bSWHS" id="6pYRYgn80mz" role="2OqNvi" />
                         </node>
                       </node>
                     </node>
@@ -1107,6 +1102,56 @@
                 </node>
                 <node concept="3clFbT" id="1s8OwvM8XWF" role="37vLTx">
                   <property role="3clFbU" value="true" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="26prL1qey35" role="3cqZAp">
+              <node concept="37vLTI" id="26prL1qeEh$" role="3clFbG">
+                <node concept="2OqwBi" id="26prL1qeNca" role="37vLTx">
+                  <node concept="2OqwBi" id="26prL1qeJic" role="2Oq$k0">
+                    <node concept="37vLTw" id="26prL1qeICr" role="2Oq$k0">
+                      <ref role="3cqZAo" node="6pYRYgn7Kju" resolve="cycle" />
+                    </node>
+                    <node concept="liA8E" id="26prL1qeKIL" role="2OqNvi">
+                      <ref role="37wK5l" to="33ny:~Collection.stream()" resolve="stream" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="26prL1qeO_y" role="2OqNvi">
+                    <ref role="37wK5l" to="1ctc:~Stream.anyMatch(java.util.function.Predicate)" resolve="anyMatch" />
+                    <node concept="1bVj0M" id="26prL1qeOU$" role="37wK5m">
+                      <node concept="37vLTG" id="26prL1qePbr" role="1bW2Oz">
+                        <property role="TrG5h" value="mod" />
+                        <node concept="3uibUv" id="26prL1qePeL" role="1tU5fm">
+                          <ref role="3uigEE" node="47XTuiHNFss" resolve="CycleHelper.Module" />
+                        </node>
+                      </node>
+                      <node concept="3clFbS" id="26prL1qeOU_" role="1bW5cS">
+                        <node concept="3clFbF" id="26prL1qePDk" role="3cqZAp">
+                          <node concept="2OqwBi" id="26prL1qeQjB" role="3clFbG">
+                            <node concept="2OqwBi" id="26prL1qePR0" role="2Oq$k0">
+                              <node concept="37vLTw" id="26prL1qePDj" role="2Oq$k0">
+                                <ref role="3cqZAo" node="26prL1qePbr" resolve="mod" />
+                              </node>
+                              <node concept="liA8E" id="26prL1qeQ5z" role="2OqNvi">
+                                <ref role="37wK5l" node="6pYRYgn7KiV" resolve="getModule" />
+                              </node>
+                            </node>
+                            <node concept="3TrcHB" id="26prL1qeQvT" role="2OqNvi">
+                              <ref role="3TsBF5" to="8xvf:3Par5_L4Jg5" resolve="fork" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="2OqwBi" id="26prL1qeDMa" role="37vLTJ">
+                  <node concept="37vLTw" id="26prL1qeDyC" role="2Oq$k0">
+                    <ref role="3cqZAo" node="6pYRYgn7KLg" resolve="cycleX" />
+                  </node>
+                  <node concept="3TrcHB" id="26prL1qeDVR" role="2OqNvi">
+                    <ref role="3TsBF5" to="8xvf:3Par5_L4Jg5" resolve="fork" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -2240,26 +2285,20 @@
               </node>
               <node concept="3clFbS" id="1tWbYFNht7R" role="1bW5cS">
                 <node concept="3clFbF" id="1tWbYFNht7Y" role="3cqZAp">
-                  <node concept="2OqwBi" id="1tWbYFNht7Z" role="3clFbG">
-                    <node concept="2ShNRf" id="1tWbYFNht80" role="2Oq$k0">
-                      <node concept="1pGfFk" id="1tWbYFNht81" role="2ShVmc">
-                        <ref role="37wK5l" to="wyt6:~Integer.&lt;init&gt;(int)" resolve="Integer" />
-                        <node concept="2OqwBi" id="1tWbYFNht82" role="37wK5m">
-                          <node concept="37vLTw" id="2BHiRxgmaqZ" role="2Oq$k0">
-                            <ref role="3cqZAo" node="1tWbYFNht7S" resolve="n1" />
-                          </node>
-                          <node concept="2bSWHS" id="1tWbYFNht86" role="2OqNvi" />
-                        </node>
+                  <node concept="2YIFZM" id="26prL1qeqCL" role="3clFbG">
+                    <ref role="37wK5l" to="wyt6:~Integer.compare(int,int)" resolve="compare" />
+                    <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
+                    <node concept="2OqwBi" id="26prL1qerq$" role="37wK5m">
+                      <node concept="37vLTw" id="26prL1qeree" role="2Oq$k0">
+                        <ref role="3cqZAo" node="1tWbYFNht7S" resolve="n1" />
                       </node>
+                      <node concept="2bSWHS" id="26prL1qerzc" role="2OqNvi" />
                     </node>
-                    <node concept="liA8E" id="1tWbYFNht87" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~Integer.compareTo(java.lang.Integer)" resolve="compareTo" />
-                      <node concept="2OqwBi" id="1tWbYFNht88" role="37wK5m">
-                        <node concept="2bSWHS" id="1tWbYFNht8c" role="2OqNvi" />
-                        <node concept="37vLTw" id="2BHiRxgmcmt" role="2Oq$k0">
-                          <ref role="3cqZAo" node="1tWbYFNht7V" resolve="n2" />
-                        </node>
+                    <node concept="2OqwBi" id="26prL1qerGH" role="37wK5m">
+                      <node concept="37vLTw" id="26prL1qerBs" role="2Oq$k0">
+                        <ref role="3cqZAo" node="1tWbYFNht7V" resolve="n2" />
                       </node>
+                      <node concept="2bSWHS" id="26prL1qerLC" role="2OqNvi" />
                     </node>
                   </node>
                 </node>

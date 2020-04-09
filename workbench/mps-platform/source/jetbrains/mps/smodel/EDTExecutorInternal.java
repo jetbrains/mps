@@ -17,10 +17,10 @@ package jetbrains.mps.smodel;
 
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityInvokator;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.application.TransactionGuard;
 import com.intellij.openapi.application.TransactionGuardImpl;
-import com.intellij.testFramework.ThreadTracker;
 import com.intellij.util.ReflectionUtil;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.smodel.EDTExecutor.Task;
@@ -32,17 +32,16 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.TestOnly;
 import org.jetbrains.mps.annotations.Internal;
 
+import java.util.LinkedList;
 import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -65,13 +64,18 @@ final class EDTExecutorInternal implements Disposable {
   private static final Logger LOG = LogManager.getLogger(EDTExecutorInternal.class);
 
   private final ScheduledExecutorService EXECUTOR_SERVICE = Executors.newSingleThreadScheduledExecutor(createDaemonFactory());
-  private final AtomicBoolean myFlushIsScheduled = new AtomicBoolean();
 
-  private final AtomicInteger myTasks2RunCount = new AtomicInteger(); // debug info
-
+  private final CloseableLock myLock = new CloseableLock(new ReentrantLock());
   // for #flushEvents method
-  private final CloseableLock myQueueIsEmptyLock = new CloseableLock(new ReentrantLock());
-  private final Condition myQueueWasEmptyCondition = myQueueIsEmptyLock.newCondition();
+  private final Condition myQueueWasEmptyCondition = myLock.newCondition();
+
+  /**
+   * elements are added only in the {@code EDTExecutor#scheduleTask(Task)}
+   * elements are removed in the EDT only in the {@link EDTExecutorInternal#tryToRunTopTask()}
+   * guarded by myLock
+   */
+  private final Queue<Task> myTaskQueue = new LinkedList<>();
+  private volatile boolean myFlushIsScheduled = false;
 
   private boolean myDisposed = false; // access only in EDT!
 
@@ -82,34 +86,45 @@ final class EDTExecutorInternal implements Disposable {
     return new NamedThreadFactory(WorkbenchModelAccess.THREAD_GROUP_NAME + "-", true);
   }
 
-  /**
-   * elements are added only in the {@code EDTExecutor#scheduleTask(Task)}
-   * elements are removed in the EDT only in the {@link EDTExecutorInternal#tryToRunTopTask()}
-   */
-  private final Queue<Task> myTaskQueue = new ConcurrentLinkedQueue<>();
-
   void scheduleTask(Task task) {
-    traceTheCaller();
-    checkTheContract();
-    boolean success = myTaskQueue.add(task);
-    if (success) {
-      int tasksRemaining = myTasks2RunCount.incrementAndGet();
-      LOG.trace("total tasks in the queue " + tasksRemaining);
-    } else {
-      // impossible by the contract of ConcurrentLinkedQueue
-      LOG.error("Failed to add the task into the queue " + task);
+    try (CloseableLock ignored = myLock.lock()) {
+      traceTheCaller();
+      checkTheContract();
+      boolean success = myTaskQueue.add(task);
+      if (success) {
+        int tasksRemaining = myTaskQueue.size();
+        LOG.trace("total tasks in the queue " + tasksRemaining);
+      } else {
+        // impossible by the contract of ConcurrentLinkedQueue
+        LOG.error("Failed to add the task into the queue " + task);
+      }
+      if (!myFlushIsScheduled) {
+        myFlushIsScheduled = true;
+        LOG.debug("FlushIsScheduled is ON");
+        scheduleFlushInEDT();
+      }
     }
-    scheduleFlushInEDT();
   }
 
-  private void checkTheContract() {
-    if (!myTaskQueue.isEmpty()) {
-      if (!myFlushIsScheduled.get()) {
-        if (myTasks2RunCount.get() > 1000) {
-          LOG.error("Flush was not scheduled while the size of the task queue is more than 1000", new Throwable());
-          scheduleFlushInEDT();
+  @TestOnly
+  /*package*/ boolean isFlushScheduled() {
+    try (CloseableLock ignored = myLock.lock()) {
+      return myFlushIsScheduled;
+    }
+  }
+
+  /*package*/ boolean checkTheContract() {
+    try (CloseableLock ignored = myLock.lock()) {
+      if (!myFlushIsScheduled) {
+        if (!myTaskQueue.isEmpty()) {
+          LOG.error("Flush was not scheduled while the task queue is not empty", new Throwable());
+          if (!ApplicationManager.getApplication().isUnitTestMode()) {
+            scheduleFlushInEDT();
+          }
+          return false;
         }
       }
+      return true;
     }
   }
 
@@ -131,18 +146,13 @@ final class EDTExecutorInternal implements Disposable {
    * flushing the whole queue in the edt asynchronously
    */
   private void scheduleFlushInEDT() {
-    if (myFlushIsScheduled.compareAndSet(false, true)) {
-      doScheduleFlushInEDT();
-    }
-  }
-
-  private void doScheduleFlushInEDT() {
     try {
-      myFlushIsScheduled.set(true);
       forceScheduleFlushEDT();
-    } catch (Throwable t) {
+    } catch (RuntimeException t) {
       LOG.error("Caught an exception while scheduling the flush", t);
-      myFlushIsScheduled.set(false);
+      EXECUTOR_SERVICE.schedule(this::forceScheduleFlushEDT,
+                                100,
+                                TimeUnit.MILLISECONDS);
     }
   }
 
@@ -155,13 +165,23 @@ final class EDTExecutorInternal implements Disposable {
     // here we are tricking IJ modality policy
     TransactionGuardImpl guard = (TransactionGuardImpl) TransactionGuard.getInstance();
     Runnable wrapped = guaranteeWriteSafetyViaHack(guard);
-    ApplicationManager.getApplication().invokeLater(() -> {
-      try {
-        wrapped.run();
-      } finally {
-        myFlushIsScheduled.compareAndSet(true, false);
-      }
-    }, ModalityState.any(), myExpiredCondition);
+    ModalityInvokator invokator = ApplicationManager.getApplication().getInvokator();
+    invokator.invokeLater(wrapped, ModalityState.any(), myExpiredCondition)
+             .doWhenRejected(() -> LOG.error("Execution has been rejected"))
+             .doWhenProcessed(() -> {
+               LOG.trace("doing when processed");
+               if (myDisposed) return;
+               try (CloseableLock ignored = myLock.lock()) {
+                 if (myTaskQueue.isEmpty()) {
+                   LOG.debug("FlushIsScheduled is OFF");
+                   myFlushIsScheduled = false;
+                   signalQueueWasEmpty();
+                   return;
+                 }
+               }
+               LOG.trace("flushing the queue again");
+               scheduleFlushInEDT(); // because the flag is still on
+             });
   }
 
   /**
@@ -172,19 +192,15 @@ final class EDTExecutorInternal implements Disposable {
   @Hack
   @NotNull
   private Runnable guaranteeWriteSafetyViaHack(@NotNull TransactionGuardImpl guard) {
-    return guard.wrapLaterInvocation(() -> {
-        ThreadUtils.assertEDT();
-        guard.assertWriteActionAllowed();
-        flushTasksQueue();
-      }, ModalityState.NON_MODAL);
+    return () -> guard.wrapLaterInvocation(() -> {
+      ThreadUtils.assertEDT();
+      guard.assertWriteActionAllowed();
+      flushTasksQueue();
+    }, ModalityState.NON_MODAL).run();
   }
 
   private void flushTasksQueue() {
     ThreadUtils.assertEDT();
-    if (myTaskQueue.isEmpty()) {
-      LOG.trace("the task queue is empty, aborting");
-      return;
-    }
 
     if (!myDisposed) {
       warnIfQueueIsTooLarge();
@@ -198,26 +214,20 @@ final class EDTExecutorInternal implements Disposable {
     if (timer == null) {
       LOG.error("Timer is null, could not run tasks", new Throwable());
     } else {
-      try {
-        while (!myTaskQueue.isEmpty()) {
-          LOG.trace(String.format("flushing tasks: %d ms left", timer.getDelay(TimeUnit.MILLISECONDS)));
-          flushNTasks(timer, myTasks2RunCount.get());
-          if (timer.isDone()) {
-            LOG.trace("exiting by timer");
+      while (true) {
+        int size;
+        try (CloseableLock ignored = myLock.lock()) {
+          size = myTaskQueue.size();
+          if (size == 0) {
+            LOG.trace("the task queue is empty, aborting the flush");
             return;
           }
         }
-      } finally {
-        boolean again = true;
-        if (myTaskQueue.isEmpty()) {
-          try (CloseableLock ignored = myQueueIsEmptyLock.lock()) {
-            signalQueueWasEmpty();
-            again = false;
-          }
-        }
-        if (again) {
-          LOG.trace("flushing the queue again");
-          doScheduleFlushInEDT();
+        LOG.trace(String.format("flushing tasks: %d ms left", timer.getDelay(TimeUnit.MILLISECONDS)));
+        flushNTasks(timer, size);
+        if (timer.isDone()) {
+          LOG.trace("also exiting by timer");
+          return;
         }
       }
     }
@@ -225,6 +235,10 @@ final class EDTExecutorInternal implements Disposable {
 
   private void flushNTasks(ScheduledFuture<?> timer, int nTasksToFlush) {
     for (int taskCounter = 0; taskCounter < nTasksToFlush; ++taskCounter) {
+      if (timer.isDone()) {
+        LOG.trace("exiting by timer");
+        return;
+      }
       if (LOG.isTraceEnabled()) {
         LOG.trace(String.format("flush tasks: %d ms left", timer.getDelay(TimeUnit.MILLISECONDS)));
       }
@@ -247,11 +261,13 @@ final class EDTExecutorInternal implements Disposable {
   }
 
   private void warnIfQueueIsTooLarge() {
-    int queueSize = myTasks2RunCount.get();
-    if (queueSize > EDTExecutor.QUEUE_MAX_EXPECTED_VALUE) {
-      LOG.warn("Tasks queue size is " + queueSize + " which is above the expected");
-    } else {
-      LOG.trace("flushing the queue with " + queueSize + " tasks in it");
+    try (CloseableLock ignored = myLock.lock()) {
+      int queueSize = myTaskQueue.size();
+      if (queueSize > EDTExecutor.QUEUE_MAX_EXPECTED_VALUE) {
+        LOG.warn("Tasks queue size is " + queueSize + " which is above the expected");
+      } else {
+        LOG.trace("flushing the queue with " + queueSize + " tasks in it");
+      }
     }
   }
 
@@ -261,7 +277,10 @@ final class EDTExecutorInternal implements Disposable {
    * @return true iff the task was a success and it is gone from the queue
    */
   private boolean tryToRunTopTask() {
-    Task task = myTaskQueue.peek();
+    Task task;
+    try (CloseableLock ignored = myLock.lock()) {
+      task = myTaskQueue.peek();
+    }
     if (task == null) {
       return false;
     }
@@ -278,8 +297,12 @@ final class EDTExecutorInternal implements Disposable {
     } finally {
       if (taskPassed) {
         LOG.trace("removing the task");
-        myTaskQueue.remove();
-        myTasks2RunCount.decrementAndGet();
+        try (CloseableLock ignored = myLock.lock()) {
+          boolean theSame = (task == myTaskQueue.remove());
+          if (!theSame) {
+            LOG.error("The contract is broken, the invocation of #peek must happen-before the invocation of #remove");
+          }
+        }
       }
     }
     return taskPassed;
@@ -304,10 +327,7 @@ final class EDTExecutorInternal implements Disposable {
    * Triggered by {@link EDTExecutorInternal#signalQueueWasEmpty()}
    */
   private void waitForQueueToBeEmpty() {
-    if (myTaskQueue.isEmpty()) {
-      return;
-    }
-    try (CloseableLock ignored = myQueueIsEmptyLock.lock()) {
+    try (CloseableLock ignored = myLock.lock()) {
       while (!myTaskQueue.isEmpty()) {
         try {
           myQueueWasEmptyCondition.await();
@@ -330,7 +350,7 @@ final class EDTExecutorInternal implements Disposable {
   private static final class CloseableLock implements AutoCloseable {
     private final Lock myDelegate;
 
-    private CloseableLock(@NotNull Lock delegate) {
+    CloseableLock(@NotNull Lock delegate) {
       myDelegate = delegate;
     }
 

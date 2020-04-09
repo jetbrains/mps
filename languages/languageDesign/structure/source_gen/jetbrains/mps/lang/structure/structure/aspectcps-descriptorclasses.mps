@@ -44,9 +44,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -598,7 +595,6 @@
     <node concept="3Tm1VV" id="$" role="1B3o_S" />
     <node concept="2tJIrI" id="_" role="jymVt" />
     <node concept="3clFb_" id="A" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -734,8 +730,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2$" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1qY" resolve="AbstractConceptDeclaration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1Z" role="3KbHQx">
@@ -785,8 +781,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="37" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1qZ" resolve="AggregationLinkDeclarationScopeKind" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="20" role="3KbHQx">
@@ -883,8 +879,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3r" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1r0" resolve="AttributeInfo" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="21" role="3KbHQx">
@@ -1005,8 +1001,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="41" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1r1" resolve="AttributeInfo_AttributedConcept" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="22" role="3KbHQx">
@@ -1079,8 +1075,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4K" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1r2" resolve="AttributeInfo_IsMultiple" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="23" role="3KbHQx">
@@ -1209,8 +1205,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5d" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1r3" resolve="ConceptDeclaration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="24" role="3KbHQx">
@@ -1314,8 +1310,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5Z" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1r4" resolve="ConstrainedDataTypeDeclaration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="25" role="3KbHQx">
@@ -1365,8 +1361,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6C" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1r5" resolve="DataTypeDeclaration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="26" role="3KbHQx">
@@ -1447,8 +1443,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6W" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1r6" resolve="DeprecatedNodeAnnotation" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="27" role="3KbHQx">
@@ -1498,8 +1494,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7s" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1r7" resolve="DocumentationObjective" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="28" role="3KbHQx">
@@ -1633,8 +1629,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7K" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1r8" resolve="DocumentationObjectiveRef" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="29" role="3KbHQx">
@@ -1731,8 +1727,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8$" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1r9" resolve="DocumentedNodeAnnotation" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2a" role="3KbHQx">
@@ -1869,8 +1865,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9a" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1ra" resolve="EnumCustomMethodReplacementInfo" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2b" role="3KbHQx">
@@ -1966,8 +1962,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9Z" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rb" resolve="EnumMigrationInfo" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2c" role="3KbHQx">
@@ -2063,8 +2059,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="a_" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rc" resolve="EnumPropertyMigrationInfo" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2d" role="3KbHQx">
@@ -2171,8 +2167,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bb" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rd" resolve="EnumerationDataTypeDeclaration_Old" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2e" role="3KbHQx">
@@ -2276,8 +2272,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bP" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1re" resolve="EnumerationDeclaration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2f" role="3KbHQx">
@@ -2367,8 +2363,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cu" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rf" resolve="EnumerationMemberDeclaration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2g" role="3KbHQx">
@@ -2463,8 +2459,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="d1" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rg" resolve="EnumerationMemberDeclaration_Old" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2h" role="3KbHQx">
@@ -2553,8 +2549,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="dA" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rh" resolve="ExperimentalAPINodeAttribute" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2i" role="3KbHQx">
@@ -2604,8 +2600,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="e9" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1ri" resolve="IConceptAspect" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2j" role="3KbHQx">
@@ -2668,8 +2664,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="et" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rj" resolve="IEnumeration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2k" role="3KbHQx">
@@ -2719,8 +2715,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="eQ" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rk" resolve="INamedAspect" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2l" role="3KbHQx">
@@ -2770,8 +2766,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="fa" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rl" resolve="INamedStructureElement" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2m" role="3KbHQx">
@@ -2821,8 +2817,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="fu" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rm" resolve="IStructureDeprecatable" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2n" role="3KbHQx">
@@ -2872,8 +2868,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="fM" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rn" resolve="IStructureElement" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2o" role="3KbHQx">
@@ -2977,8 +2973,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="g6" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1ro" resolve="InterfaceConceptDeclaration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2p" role="3KbHQx">
@@ -3099,8 +3095,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="gJ" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rp" resolve="InterfaceConceptReference" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2q" role="3KbHQx">
@@ -3185,8 +3181,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hu" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rq" resolve="LinkDeclaration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2r" role="3KbHQx">
@@ -3290,8 +3286,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="i0" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rr" resolve="PrimitiveDataTypeDeclaration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2s" role="3KbHQx">
@@ -3376,8 +3372,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="iD" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rs" resolve="PropertyDeclaration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2t" role="3KbHQx">
@@ -3450,8 +3446,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="jb" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rt" resolve="RefPresentationTemplate" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2u" role="3KbHQx">
@@ -3501,8 +3497,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="jC" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1ru" resolve="ReferenceLinkDeclartionScopeKind" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="2v" role="3KbHQx">
@@ -3591,8 +3587,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="jW" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rv" resolve="SmartReferenceAttribute" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -17109,7 +17105,6 @@
     </node>
     <node concept="2tJIrI" id="1xP" role="jymVt" />
     <node concept="3clFb_" id="1xQ" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -17131,8 +17126,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1_U" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1qY" resolve="AbstractConceptDeclaration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_m" role="3KbHQx">
@@ -17144,8 +17139,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1_Y" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1qZ" resolve="AggregationLinkDeclarationScopeKind" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_n" role="3KbHQx">
@@ -17157,8 +17152,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1A2" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1r0" resolve="AttributeInfo" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_o" role="3KbHQx">
@@ -17170,8 +17165,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1A6" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1r1" resolve="AttributeInfo_AttributedConcept" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_p" role="3KbHQx">
@@ -17183,8 +17178,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1Aa" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1r2" resolve="AttributeInfo_IsMultiple" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_q" role="3KbHQx">
@@ -17196,8 +17191,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1Ae" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1r3" resolve="ConceptDeclaration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_r" role="3KbHQx">
@@ -17209,8 +17204,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1Ai" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1r4" resolve="ConstrainedDataTypeDeclaration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_s" role="3KbHQx">
@@ -17222,8 +17217,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1Am" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1r5" resolve="DataTypeDeclaration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_t" role="3KbHQx">
@@ -17235,8 +17230,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1Aq" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1r6" resolve="DeprecatedNodeAnnotation" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_u" role="3KbHQx">
@@ -17248,8 +17243,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1Au" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1r7" resolve="DocumentationObjective" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_v" role="3KbHQx">
@@ -17261,8 +17256,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1Ay" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1r8" resolve="DocumentationObjectiveRef" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_w" role="3KbHQx">
@@ -17274,8 +17269,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1AA" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1r9" resolve="DocumentedNodeAnnotation" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_x" role="3KbHQx">
@@ -17287,8 +17282,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1AE" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1ra" resolve="EnumCustomMethodReplacementInfo" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_y" role="3KbHQx">
@@ -17300,8 +17295,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1AI" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rb" resolve="EnumMigrationInfo" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_z" role="3KbHQx">
@@ -17313,8 +17308,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1AM" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rc" resolve="EnumPropertyMigrationInfo" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_$" role="3KbHQx">
@@ -17326,8 +17321,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1AQ" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rd" resolve="EnumerationDataTypeDeclaration_Old" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1__" role="3KbHQx">
@@ -17339,8 +17334,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1AU" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1re" resolve="EnumerationDeclaration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_A" role="3KbHQx">
@@ -17352,8 +17347,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1AY" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rf" resolve="EnumerationMemberDeclaration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_B" role="3KbHQx">
@@ -17365,8 +17360,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1B2" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rg" resolve="EnumerationMemberDeclaration_Old" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_C" role="3KbHQx">
@@ -17378,8 +17373,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1B6" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rh" resolve="ExperimentalAPINodeAttribute" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_D" role="3KbHQx">
@@ -17391,8 +17386,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1Ba" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1ri" resolve="IConceptAspect" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_E" role="3KbHQx">
@@ -17404,8 +17399,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1Be" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rj" resolve="IEnumeration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_F" role="3KbHQx">
@@ -17417,8 +17412,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1Bi" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rk" resolve="INamedAspect" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_G" role="3KbHQx">
@@ -17430,8 +17425,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1Bm" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rl" resolve="INamedStructureElement" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_H" role="3KbHQx">
@@ -17443,8 +17438,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1Bq" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rm" resolve="IStructureDeprecatable" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_I" role="3KbHQx">
@@ -17456,8 +17451,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1Bu" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rn" resolve="IStructureElement" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_J" role="3KbHQx">
@@ -17469,8 +17464,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1By" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1ro" resolve="InterfaceConceptDeclaration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_K" role="3KbHQx">
@@ -17482,8 +17477,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1BA" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rp" resolve="InterfaceConceptReference" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_L" role="3KbHQx">
@@ -17495,8 +17490,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1BE" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rq" resolve="LinkDeclaration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_M" role="3KbHQx">
@@ -17508,8 +17503,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1BI" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rr" resolve="PrimitiveDataTypeDeclaration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_N" role="3KbHQx">
@@ -17521,8 +17516,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1BM" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rs" resolve="PropertyDeclaration" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_O" role="3KbHQx">
@@ -17534,8 +17529,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1BQ" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rt" resolve="RefPresentationTemplate" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_P" role="3KbHQx">
@@ -17547,8 +17542,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1BU" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1ru" resolve="ReferenceLinkDeclartionScopeKind" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_Q" role="3KbHQx">
@@ -17560,8 +17555,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1BY" role="3Kbmr1">
-              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="1rv" resolve="SmartReferenceAttribute" />
+              <ref role="1PxDUh" node="1qW" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="1_R" role="3KbGdf">

@@ -1842,7 +1842,7 @@
   
   <target name="java.compile.java.modules.cycle.1" depends="java.compile.execution-languages, java.compile.jetbrains.mps.ant.execution, java.compile.jetbrains.mps.baseLanguage.execution.util, java.compile.jetbrains.mps.execution.configurations.pluginSolution, java.compile.jetbrains.mps.execution.languages, java.compile.jetbrains.mps.execution.library, fetchDependencies">
     <mkdir dir="${build.tmp}/java.modules.cycle.1" />
-    <javac destdir="${build.tmp}/java.modules.cycle.1" fork="true" encoding="utf8" memorymaximumsize="1024m" nowarn="true" includeantruntime="false">
+    <javac destdir="${build.tmp}/java.modules.cycle.1" fork="false" encoding="utf8" nowarn="true" includeantruntime="false">
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/plugins/execution-configurations/plugin/source_gen" />

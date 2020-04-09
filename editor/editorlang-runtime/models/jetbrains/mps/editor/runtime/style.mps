@@ -152,7 +152,6 @@
     <property role="TrG5h" value="StyledTextPrinter" />
     <node concept="3Tm1VV" id="5UI0oFUbheP" role="1B3o_S" />
     <node concept="3clFb_" id="5UI0oFUbhkv" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="setBold" />
       <node concept="3uibUv" id="4yQ1FQy84xc" role="3clF45">
         <ref role="3uigEE" node="5UI0oFUbheO" resolve="StyledTextPrinter" />
@@ -165,7 +164,6 @@
       <node concept="3clFbS" id="5UI0oFUbhky" role="3clF47" />
     </node>
     <node concept="3clFb_" id="5UI0oFUbhvW" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="append" />
       <node concept="3uibUv" id="4yQ1FQy84xl" role="3clF45">
         <ref role="3uigEE" node="5UI0oFUbheO" resolve="StyledTextPrinter" />
@@ -201,7 +199,6 @@
       <property role="TrG5h" value="T" />
     </node>
     <node concept="3clFb_" id="1ObOLrjiFDG" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getMethods" />
       <node concept="37vLTG" id="1ObOLrjiGr7" role="3clF46">
         <property role="TrG5h" value="node" />
@@ -222,7 +219,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="1ObOLrjiNpp" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getStyledMethodPresentation" />
       <node concept="37vLTG" id="1ObOLrjiNuV" role="3clF46">
         <property role="TrG5h" value="node" />
@@ -251,7 +247,6 @@
       <node concept="3clFbS" id="1ObOLrjiNpt" role="3clF47" />
     </node>
     <node concept="3clFb_" id="1ObOLrjiNxp" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="isMethodCurrent" />
       <node concept="37vLTG" id="1ObOLrjiNAk" role="3clF46">
         <property role="TrG5h" value="node" />

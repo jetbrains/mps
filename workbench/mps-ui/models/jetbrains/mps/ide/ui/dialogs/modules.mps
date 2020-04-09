@@ -1712,7 +1712,6 @@
       <property role="TrG5h" value="ModuleCreationSettingsListener" />
       <node concept="3Tm1VV" id="g46k2sd2Wq" role="1B3o_S" />
       <node concept="3clFb_" id="g46k2sd68G" role="jymVt">
-        <property role="1EzhhJ" value="false" />
         <property role="2aFKle" value="false" />
         <property role="TrG5h" value="changed" />
         <node concept="3clFbS" id="g46k2sd68J" role="3clF47" />

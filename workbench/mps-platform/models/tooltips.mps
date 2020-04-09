@@ -3,6 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
   <imports>
     <import index="z60i" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)" />
@@ -17,8 +18,8 @@
     <import index="g1qu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.ui(MPS.IDEA/)" />
     <import index="ddhc" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide(MPS.IDEA/)" />
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
-    <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="439w" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.codeInsight.hint(MPS.IDEA/)" />
+    <import index="mhfm" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:org.jetbrains.annotations(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -30,6 +31,7 @@
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1076505808687" name="jetbrains.mps.baseLanguage.structure.WhileStatement" flags="nn" index="2$JKZl">
         <child id="1076505808688" name="condition" index="2$JKZa" />
       </concept>
@@ -38,9 +40,14 @@
       </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
+        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
+      </concept>
+      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
+        <reference id="1188214555875" name="key" index="2B6OnR" />
+        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -86,7 +93,6 @@
       </concept>
       <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg" />
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
-        <child id="1095933932569" name="implementedInterface" index="EKbjA" />
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
@@ -109,9 +115,7 @@
         <child id="1068580123134" name="parameter" index="3clF46" />
         <child id="1068580123135" name="body" index="3clF47" />
       </concept>
-      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_">
-        <property id="1178608670077" name="isAbstract" index="1EzhhJ" />
-      </concept>
+      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_" />
       <concept id="1068580123152" name="jetbrains.mps.baseLanguage.structure.EqualsExpression" flags="nn" index="3clFbC" />
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
@@ -193,7 +197,46 @@
       </concept>
       <concept id="8064396509828172209" name="jetbrains.mps.baseLanguage.structure.UnaryMinus" flags="nn" index="1ZRNhn" />
     </language>
+    <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
+      <concept id="2546654756694997551" name="jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTag" flags="ng" index="92FcH">
+        <child id="2546654756694997556" name="reference" index="92FcQ" />
+        <child id="3106559687488913694" name="line" index="2XjZqd" />
+      </concept>
+      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
+        <child id="5383422241790532083" name="tags" index="3nqlJM" />
+      </concept>
+      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
+        <child id="8970989240999019149" name="part" index="1dT_Ay" />
+      </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
+        <child id="2667874559098216723" name="text" index="3HnX3l" />
+      </concept>
+      <concept id="6612597108003615641" name="jetbrains.mps.baseLanguage.javadoc.structure.HTMLElement" flags="ng" index="2U$1Ah">
+        <property id="6612597108003615642" name="name" index="2U$1Ai" />
+        <child id="6612597108003615643" name="line" index="2U$1Aj" />
+      </concept>
+      <concept id="2217234381367530212" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference" flags="ng" index="VXe08">
+        <reference id="2217234381367530213" name="classifier" index="VXe09" />
+      </concept>
+      <concept id="2217234381367530195" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference" flags="ng" index="VXe0Z">
+        <reference id="2217234381367530196" name="methodDeclaration" index="VXe0S" />
+      </concept>
+      <concept id="5562345046718956738" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseVariableDocReference" flags="ng" index="YTMYr">
+        <reference id="5562345046718956740" name="declaration" index="YTMYt" />
+      </concept>
+      <concept id="8970989240999019145" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentLinePart" flags="ng" index="1dT_AA">
+        <child id="6962838954693749192" name="tag" index="qph3F" />
+      </concept>
+      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
+        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      </concept>
+      <concept id="6501140109493894267" name="jetbrains.mps.baseLanguage.javadoc.structure.StaticFieldDocReference" flags="ng" index="1RlsK7" />
+      <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+    </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
+      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
@@ -1051,6 +1094,38 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="3UNstk3ofrF" role="1B3o_S" />
+    <node concept="2AHcQZ" id="pf7SrZYAqI" role="2AJF6D">
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+    </node>
+    <node concept="2AHcQZ" id="pf7SrZYCmn" role="2AJF6D">
+      <ref role="2AI5Lk" to="mhfm:~ApiStatus$ScheduledForRemoval" resolve="ApiStatus.ScheduledForRemoval" />
+      <node concept="2B6LJw" id="pf7SrZYEKN" role="2B76xF">
+        <ref role="2B6OnR" to="mhfm:~ApiStatus$ScheduledForRemoval.inVersion()" resolve="inVersion" />
+        <node concept="Xl_RD" id="pf7SrZYEPc" role="2B70Vg">
+          <property role="Xl_RC" value="2020.1" />
+        </node>
+      </node>
+    </node>
+    <node concept="3UR2Jj" id="pf7SrZYEQt" role="lGtFl">
+      <node concept="TZ5HI" id="pf7SrZYGuV" role="3nqlJM">
+        <node concept="TZ5HA" id="pf7SrZYGuW" role="3HnX3l">
+          <node concept="1dT_AC" id="pf7SrZYGvr" role="1dT_Ay">
+            <property role="1dT_AB" value="see " />
+          </node>
+          <node concept="1dT_AA" id="pf7SrZYGvu" role="1dT_Ay">
+            <node concept="92FcH" id="pf7SrZYGv$" role="qph3F">
+              <node concept="TZ5HA" id="pf7SrZYGvA" role="2XjZqd" />
+              <node concept="VXe08" id="pf7SrZYGvH" role="92FcQ">
+                <ref role="VXe09" node="1s17jCa4YDf" resolve="MPSToolTipManager" />
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="pf7SrZYGvt" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="312cEu" id="1s17jCa3yCE">
     <property role="TrG5h" value="ToolTipData" />
@@ -1245,6 +1320,38 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="1s17jCa3yCF" role="1B3o_S" />
+    <node concept="2AHcQZ" id="pf7SrZYGQz" role="2AJF6D">
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+    </node>
+    <node concept="2AHcQZ" id="pf7SrZYH4a" role="2AJF6D">
+      <ref role="2AI5Lk" to="mhfm:~ApiStatus$ScheduledForRemoval" resolve="ApiStatus.ScheduledForRemoval" />
+      <node concept="2B6LJw" id="pf7SrZYHue" role="2B76xF">
+        <ref role="2B6OnR" to="mhfm:~ApiStatus$ScheduledForRemoval.inVersion()" resolve="inVersion" />
+        <node concept="Xl_RD" id="pf7SrZYHyD" role="2B70Vg">
+          <property role="Xl_RC" value="2020.1" />
+        </node>
+      </node>
+    </node>
+    <node concept="3UR2Jj" id="pf7SrZYHzc" role="lGtFl">
+      <node concept="TZ5HI" id="pf7SrZYHPy" role="3nqlJM">
+        <node concept="TZ5HA" id="pf7SrZYHPz" role="3HnX3l">
+          <node concept="1dT_AC" id="pf7SrZYHPI" role="1dT_Ay">
+            <property role="1dT_AB" value="see " />
+          </node>
+          <node concept="1dT_AA" id="pf7SrZYHPL" role="1dT_Ay">
+            <node concept="92FcH" id="pf7SrZYHPR" role="qph3F">
+              <node concept="TZ5HA" id="pf7SrZYHPT" role="2XjZqd" />
+              <node concept="VXe08" id="pf7SrZYHQ0" role="92FcQ">
+                <ref role="VXe09" node="1s17jCa4YDf" resolve="MPSToolTipManager" />
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="pf7SrZYHPK" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="312cEu" id="1s17jCa4YDf">
     <property role="TrG5h" value="MPSToolTipManager" />
@@ -1324,50 +1431,13 @@
       <node concept="17QB3L" id="2_hdIw20rMn" role="1tU5fm" />
       <node concept="10Nm6u" id="2_hdIw20rMp" role="33vP2m" />
     </node>
+    <node concept="2tJIrI" id="5N7YVqEGQAq" role="jymVt" />
     <node concept="3clFbW" id="1s17jCa4YDh" role="jymVt">
       <node concept="3cqZAl" id="1s17jCa4YDi" role="3clF45" />
       <node concept="3Tm1VV" id="1s17jCa4YDj" role="1B3o_S" />
       <node concept="3clFbS" id="1s17jCa4YDk" role="3clF47" />
     </node>
-    <node concept="3clFb_" id="1s17jCa4YDq" role="jymVt">
-      <property role="TrG5h" value="getComponentName" />
-      <node concept="3Tm1VV" id="1s17jCa4YDr" role="1B3o_S" />
-      <node concept="17QB3L" id="1s17jCa4YDC" role="3clF45" />
-      <node concept="2AHcQZ" id="1s17jCa4YDt" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NonNls" resolve="NonNls" />
-      </node>
-      <node concept="2AHcQZ" id="1s17jCa4YDu" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="3clFbS" id="1s17jCa4YDv" role="3clF47">
-        <node concept="3cpWs6" id="1s17jCa4YDD" role="3cqZAp">
-          <node concept="Xl_RD" id="1s17jCa4YDG" role="3cqZAk">
-            <property role="Xl_RC" value="MPSTooltipManager" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3tYsUK_Sd1F" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="1s17jCa4YDw" role="jymVt">
-      <property role="TrG5h" value="disposeComponent" />
-      <node concept="3Tm1VV" id="1s17jCa4YDx" role="1B3o_S" />
-      <node concept="3cqZAl" id="1s17jCa4YDy" role="3clF45" />
-      <node concept="3clFbS" id="1s17jCa4YDz" role="3clF47" />
-      <node concept="2AHcQZ" id="3tYsUK_Sd1D" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="1s17jCa4YD$" role="jymVt">
-      <property role="TrG5h" value="initComponent" />
-      <node concept="3Tm1VV" id="1s17jCa4YD_" role="1B3o_S" />
-      <node concept="3cqZAl" id="1s17jCa4YDA" role="3clF45" />
-      <node concept="3clFbS" id="1s17jCa4YDB" role="3clF47" />
-      <node concept="2AHcQZ" id="3tYsUK_Sd1E" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
+    <node concept="2tJIrI" id="5N7YVqEGR89" role="jymVt" />
     <node concept="3clFb_" id="1s17jCa51wx" role="jymVt">
       <property role="TrG5h" value="registerComponent" />
       <property role="DiZV1" value="false" />
@@ -1408,6 +1478,7 @@
       </node>
       <node concept="3Tm1VV" id="1s17jCa51ws" role="1B3o_S" />
     </node>
+    <node concept="2tJIrI" id="5N7YVqEGRyv" role="jymVt" />
     <node concept="3clFb_" id="5Ib2SMdWudE" role="jymVt">
       <property role="TrG5h" value="unregisterComponent" />
       <node concept="37vLTG" id="5Ib2SMdWudJ" role="3clF46">
@@ -1447,6 +1518,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5N7YVqEGRY7" role="jymVt" />
     <node concept="3clFb_" id="ZpMnc7KRkr" role="jymVt">
       <property role="TrG5h" value="registerComponentRightAligned" />
       <node concept="37vLTG" id="ZpMnc7KRkw" role="3clF46">
@@ -1486,6 +1558,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5N7YVqEGSNi" role="jymVt" />
     <node concept="3clFb_" id="5Ib2SMdWxeT" role="jymVt">
       <property role="TrG5h" value="unregisterComponentRightAligned" />
       <node concept="37vLTG" id="5Ib2SMdWxeY" role="3clF46">
@@ -1525,6 +1598,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5N7YVqEGTl5" role="jymVt" />
     <node concept="3clFb_" id="ZpMnc7KRkM" role="jymVt">
       <property role="TrG5h" value="getRightAlignedMouseListener" />
       <node concept="3uibUv" id="ZpMnc7KRlL" role="3clF45">
@@ -1598,6 +1672,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5N7YVqEGTQT" role="jymVt" />
     <node concept="3clFb_" id="5FgjsmMmWOG" role="jymVt">
       <property role="TrG5h" value="mouseMoved" />
       <node concept="3cqZAl" id="5FgjsmMmWOH" role="3clF45" />
@@ -1793,6 +1868,7 @@
         <node concept="10P_77" id="ZpMnc7KRlP" role="1tU5fm" />
       </node>
     </node>
+    <node concept="2tJIrI" id="5N7YVqEGUkP" role="jymVt" />
     <node concept="3clFb_" id="5AJb1TPc3vK" role="jymVt">
       <property role="TrG5h" value="getContainingFrame" />
       <node concept="3uibUv" id="5AJb1TPc3NK" role="3clF45">
@@ -1848,6 +1924,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5N7YVqEGUPR" role="jymVt" />
     <node concept="3clFb_" id="ZpMnc7KSij" role="jymVt">
       <property role="TrG5h" value="showToolTip" />
       <node concept="37vLTG" id="ZpMnc7KSio" role="3clF46">
@@ -1890,6 +1967,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5N7YVqEGVfY" role="jymVt" />
     <node concept="3clFb_" id="14d_vc4TXM4" role="jymVt">
       <property role="TrG5h" value="showToolTip" />
       <node concept="3Tm6S6" id="ZpMnc7KSiF" role="1B3o_S" />
@@ -2017,6 +2095,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5N7YVqEGVEM" role="jymVt" />
     <node concept="3clFb_" id="ZpMnc7KSiG" role="jymVt">
       <property role="TrG5h" value="showToolTip" />
       <node concept="37vLTG" id="ZpMnc7KSiL" role="3clF46">
@@ -2057,6 +2136,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5N7YVqEGVYK" role="jymVt" />
     <node concept="3clFb_" id="4o3l0Vx6lb" role="jymVt">
       <property role="TrG5h" value="showToolTip" />
       <node concept="3Tm6S6" id="ZpMnc7KSj7" role="1B3o_S" />
@@ -2365,6 +2445,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5N7YVqEGWpO" role="jymVt" />
     <node concept="3clFb_" id="59WdvGPQugF" role="jymVt">
       <property role="TrG5h" value="hideToolTip" />
       <node concept="3Tm1VV" id="ZpMnc7KSii" role="1B3o_S" />
@@ -2436,6 +2517,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5N7YVqEGWUV" role="jymVt" />
     <node concept="2YIFZL" id="1s17jCa4YDJ" role="jymVt">
       <property role="TrG5h" value="getInstance" />
       <node concept="3uibUv" id="1s17jCa4YDN" role="3clF45">
@@ -2470,14 +2552,146 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="1s17jCa4YDg" role="1B3o_S" />
-    <node concept="3uibUv" id="1s17jCa4YDp" role="EKbjA">
-      <ref role="3uigEE" to="1m72:~ApplicationComponent" resolve="ApplicationComponent" />
+    <node concept="2AHcQZ" id="5N7YVqEHS39" role="2AJF6D">
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+    </node>
+    <node concept="2AHcQZ" id="5N7YVqEHT7j" role="2AJF6D">
+      <ref role="2AI5Lk" to="mhfm:~ApiStatus$ScheduledForRemoval" resolve="ApiStatus.ScheduledForRemoval" />
+      <node concept="2B6LJw" id="5N7YVqEHUvy" role="2B76xF">
+        <ref role="2B6OnR" to="mhfm:~ApiStatus$ScheduledForRemoval.inVersion()" resolve="inVersion" />
+        <node concept="Xl_RD" id="5N7YVqEHUIE" role="2B70Vg">
+          <property role="Xl_RC" value="2020.1" />
+        </node>
+      </node>
+    </node>
+    <node concept="3UR2Jj" id="5N7YVqEHYxJ" role="lGtFl">
+      <node concept="TZ5HI" id="5N7YVqEHZfY" role="3nqlJM">
+        <node concept="TZ5HA" id="5N7YVqEHZfZ" role="3HnX3l">
+          <node concept="1dT_AC" id="5N7YVqEHZky" role="1dT_Ay">
+            <property role="1dT_AB" value="To have tooltip over your UI component, please, either: " />
+          </node>
+          <node concept="2U$1Ah" id="pf7SrZYIqi" role="1dT_Ay">
+            <property role="2U$1Ai" value="ul" />
+            <node concept="TZ5HA" id="pf7SrZYIqj" role="2U$1Aj">
+              <node concept="1dT_AC" id="pf7SrZYIqL" role="1dT_Ay">
+                <property role="1dT_AB" value="" />
+              </node>
+            </node>
+            <node concept="TZ5HA" id="pf7SrZYJf9" role="2U$1Aj">
+              <node concept="1dT_AC" id="pf7SrZYJfa" role="1dT_Ay">
+                <property role="1dT_AB" value="" />
+              </node>
+              <node concept="2U$1Ah" id="pf7SrZYIqO" role="1dT_Ay">
+                <property role="2U$1Ai" value="li" />
+                <node concept="TZ5HA" id="pf7SrZYIqP" role="2U$1Aj">
+                  <node concept="1dT_AC" id="pf7SrZYIqU" role="1dT_Ay">
+                    <property role="1dT_AB" value="Set static text with method " />
+                  </node>
+                  <node concept="1dT_AA" id="pf7SrZYIqW" role="1dT_Ay">
+                    <node concept="92FcH" id="pf7SrZYIqX" role="qph3F">
+                      <node concept="TZ5HA" id="pf7SrZYIqY" role="2XjZqd" />
+                      <node concept="VXe0Z" id="pf7SrZYIqZ" role="92FcQ">
+                        <ref role="VXe0S" to="dxuu:~JComponent.setToolTipText(java.lang.String)" resolve="setToolTipText" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="1dT_AC" id="pf7SrZYIqN" role="1dT_Ay">
+                <property role="1dT_AB" value="" />
+              </node>
+            </node>
+            <node concept="TZ5HA" id="pf7SrZYJeF" role="2U$1Aj">
+              <node concept="1dT_AC" id="pf7SrZYJeG" role="1dT_Ay">
+                <property role="1dT_AB" value="" />
+              </node>
+              <node concept="2U$1Ah" id="pf7SrZYIsH" role="1dT_Ay">
+                <property role="2U$1Ai" value="li" />
+                <node concept="TZ5HA" id="pf7SrZYIsI" role="2U$1Aj">
+                  <node concept="1dT_AC" id="pf7SrZYJiq" role="1dT_Ay">
+                    <property role="1dT_AB" value="Implement method " />
+                  </node>
+                  <node concept="1dT_AA" id="5N7YVqEHZk_" role="1dT_Ay">
+                    <node concept="92FcH" id="5N7YVqEHZkF" role="qph3F">
+                      <node concept="TZ5HA" id="5N7YVqEHZkH" role="2XjZqd">
+                        <node concept="1dT_AC" id="pf7SrZYJli" role="1dT_Ay">
+                          <property role="1dT_AB" value="" />
+                        </node>
+                      </node>
+                      <node concept="VXe0Z" id="5N7YVqEIgk2" role="92FcQ">
+                        <ref role="VXe0S" to="dxuu:~JComponent.getToolTipText(java.awt.event.MouseEvent)" resolve="getToolTipText" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="1dT_AC" id="pf7SrZYJmz" role="1dT_Ay">
+                    <property role="1dT_AB" value=" for dynamically changing tooltip" />
+                  </node>
+                </node>
+              </node>
+              <node concept="1dT_AC" id="pf7SrZYIsG" role="1dT_Ay">
+                <property role="1dT_AB" value="" />
+              </node>
+            </node>
+            <node concept="TZ5HA" id="pf7SrZYJnR" role="2U$1Aj">
+              <node concept="1dT_AC" id="pf7SrZYJnS" role="1dT_Ay">
+                <property role="1dT_AB" value="" />
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="pf7SrZYIqh" role="1dT_Ay">
+            <property role="1dT_AB" value="Also your component should have mouse listener, so " />
+          </node>
+          <node concept="1dT_AA" id="bT3GMwUHxC" role="1dT_Ay">
+            <node concept="92FcH" id="bT3GMwUHyp" role="qph3F">
+              <node concept="TZ5HA" id="bT3GMwUHyr" role="2XjZqd" />
+              <node concept="VXe0Z" id="bT3GMwUUTK" role="92FcQ">
+                <ref role="VXe0S" to="ddhc:~IdeTooltipManager.eventDispatched(java.awt.AWTEvent)" resolve="eventDispatched" />
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="bT3GMwUHxB" role="1dT_Ay">
+            <property role="1dT_AB" value=" can intercept and handle it. &lt;br&gt;&lt;br&gt; Additionally you can add client property " />
+          </node>
+          <node concept="1dT_AA" id="pf7SrZYjJS" role="1dT_Ay">
+            <node concept="92FcH" id="pf7SrZYjKd" role="qph3F">
+              <node concept="TZ5HA" id="pf7SrZYjKf" role="2XjZqd" />
+              <node concept="1RlsK7" id="pf7SrZYx7$" role="92FcQ">
+                <ref role="YTMYt" to="ddhc:~HelpTooltipManager.SHORTCUT_PROPERTY" resolve="SHORTCUT_PROPERTY" />
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="pf7SrZYjJR" role="1dT_Ay">
+            <property role="1dT_AB" value="to show shortcut on tool tip. &lt;br&gt; Class " />
+          </node>
+          <node concept="1dT_AA" id="5N7YVqEIlad" role="1dT_Ay">
+            <node concept="92FcH" id="5N7YVqEIlao" role="qph3F">
+              <node concept="TZ5HA" id="5N7YVqEIlaq" role="2XjZqd" />
+              <node concept="VXe08" id="5N7YVqEIlax" role="92FcQ">
+                <ref role="VXe09" to="ddhc:~HelpTooltipManager" resolve="HelpTooltipManager" />
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="5N7YVqEIlac" role="1dT_Ay">
+            <property role="1dT_AB" value=" will use this method to create and hide tooltip via IntelliJ Platform. &lt;br&gt; Also see " />
+          </node>
+          <node concept="1dT_AA" id="5N7YVqEIlHq" role="1dT_Ay">
+            <node concept="92FcH" id="5N7YVqEIlHE" role="qph3F">
+              <node concept="TZ5HA" id="5N7YVqEIlHG" role="2XjZqd" />
+              <node concept="VXe08" id="5N7YVqEIlHN" role="92FcQ">
+                <ref role="VXe09" to="ddhc:~IdeTooltipManager" resolve="IdeTooltipManager" />
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="5N7YVqEIlHp" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+      </node>
     </node>
   </node>
   <node concept="3HP615" id="35QfjTUxgYp">
     <property role="TrG5h" value="TooltipComponent" />
     <node concept="3clFb_" id="35QfjTUxgYr" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getMPSTooltipText" />
       <node concept="3Tm1VV" id="35QfjTUxgYt" role="1B3o_S" />
       <node concept="3clFbS" id="35QfjTUxgYu" role="3clF47" />
@@ -2490,6 +2704,38 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="35QfjTUxgYq" role="1B3o_S" />
+    <node concept="2AHcQZ" id="pf7SrZYKeh" role="2AJF6D">
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+    </node>
+    <node concept="2AHcQZ" id="pf7SrZYKfg" role="2AJF6D">
+      <ref role="2AI5Lk" to="mhfm:~ApiStatus$ScheduledForRemoval" resolve="ApiStatus.ScheduledForRemoval" />
+      <node concept="2B6LJw" id="pf7SrZYKgS" role="2B76xF">
+        <ref role="2B6OnR" to="mhfm:~ApiStatus$ScheduledForRemoval.inVersion()" resolve="inVersion" />
+        <node concept="Xl_RD" id="pf7SrZYKlf" role="2B70Vg">
+          <property role="Xl_RC" value="2020.1" />
+        </node>
+      </node>
+    </node>
+    <node concept="3UR2Jj" id="pf7SrZYKm8" role="lGtFl">
+      <node concept="TZ5HI" id="pf7SrZYKn2" role="3nqlJM">
+        <node concept="TZ5HA" id="pf7SrZYKn3" role="3HnX3l">
+          <node concept="1dT_AC" id="pf7SrZYKna" role="1dT_Ay">
+            <property role="1dT_AB" value="see " />
+          </node>
+          <node concept="1dT_AA" id="pf7SrZYKnd" role="1dT_Ay">
+            <node concept="92FcH" id="pf7SrZYKnj" role="qph3F">
+              <node concept="TZ5HA" id="pf7SrZYKnl" role="2XjZqd" />
+              <node concept="VXe08" id="pf7SrZYKns" role="92FcQ">
+                <ref role="VXe09" node="1s17jCa4YDf" resolve="MPSToolTipManager" />
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="pf7SrZYKnc" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+      </node>
+    </node>
   </node>
 </model>
 

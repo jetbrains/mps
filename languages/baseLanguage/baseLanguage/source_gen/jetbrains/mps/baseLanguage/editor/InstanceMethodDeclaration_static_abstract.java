@@ -203,7 +203,6 @@ public class InstanceMethodDeclaration_static_abstract extends TransformationMen
       public void execute(@NotNull String pattern) {
         SNode staticMethod = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.StaticMethodDeclaration$eX);
         MemberDeclarationRefactoringUtil.rewireMethodReferences(_context.getNode(), staticMethod);
-
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), staticMethod, "staticModifier", -1);
       }
 

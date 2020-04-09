@@ -952,7 +952,6 @@
       <concept id="1140131837776" name="jetbrains.mps.lang.smodel.structure.Node_ReplaceWithAnotherOperation" flags="nn" index="1P9Npp">
         <child id="1140131861877" name="replacementNode" index="1P9ThW" />
       </concept>
-      <concept id="1140133623887" name="jetbrains.mps.lang.smodel.structure.Node_DeleteOperation" flags="nn" index="1PgB_6" />
       <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI">
         <property id="1238684351431" name="asCast" index="1BlNFB" />
       </concept>
@@ -6894,7 +6893,7 @@
                             <ref role="3Tt5mk" to="tpc2:Ny5pAsx39_" resolve="separatorTextQuery" />
                           </node>
                         </node>
-                        <node concept="1PgB_6" id="3EUGuXc83Jm" role="2OqNvi" />
+                        <node concept="3YRAZt" id="3EUGuXc83Jm" role="2OqNvi" />
                       </node>
                     </node>
                   </node>
@@ -7205,7 +7204,7 @@
           <node concept="3clFbF" id="heqEMKP" role="3cqZAp">
             <node concept="2OqwBi" id="hxx$Q62" role="3clFbG">
               <node concept="0IXxy" id="heqEMKS" role="2Oq$k0" />
-              <node concept="1PgB_6" id="heqEMKR" role="2OqNvi" />
+              <node concept="3YRAZt" id="heqEMKR" role="2OqNvi" />
             </node>
           </node>
         </node>
@@ -18537,7 +18536,7 @@
           <node concept="3clFbF" id="2GhHZlI5dN$" role="3cqZAp">
             <node concept="2OqwBi" id="2GhHZlI5dR$" role="3clFbG">
               <node concept="0IXxy" id="2GhHZlI5dNz" role="2Oq$k0" />
-              <node concept="1PgB_6" id="2GhHZlI5dZh" role="2OqNvi" />
+              <node concept="3YRAZt" id="2GhHZlI5dZh" role="2OqNvi" />
             </node>
           </node>
         </node>
@@ -18566,7 +18565,7 @@
           <node concept="3clFbF" id="2GhHZlI5e4U" role="3cqZAp">
             <node concept="2OqwBi" id="2GhHZlI5e4V" role="3clFbG">
               <node concept="0IXxy" id="2GhHZlI5e4W" role="2Oq$k0" />
-              <node concept="1PgB_6" id="2GhHZlI5e4X" role="2OqNvi" />
+              <node concept="3YRAZt" id="2GhHZlI5e4X" role="2OqNvi" />
             </node>
           </node>
         </node>

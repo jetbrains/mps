@@ -19,6 +19,12 @@ import jetbrains.mps.project.ModuleId;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
+import java.util.ArrayList;
+import org.jdom.Element;
+import jetbrains.mps.project.persistence.ModuleDescriptorPersistence;
+import jetbrains.mps.util.MacrosFactory;
+import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
 
 /**
@@ -35,10 +41,12 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
   @NotNull
   private final String myNewName;
   private final ModulePathConverter myModulePathConverter;
+  private final IFile myNewFile;
 
   public DescriptorCopyOrganizer(@NotNull AbstractModule moduleToCopy, @NotNull String newName, @NotNull IFile newFile) {
     myModuleToCopy = moduleToCopy;
     myNewName = newName;
+    myNewFile = newFile;
     if (moduleToCopy.getDescriptorFile() != null) {
       myModulePathConverter = PathConverters.forDescriptorFiles(moduleToCopy.getDescriptorFile(), newFile);
     } else {
@@ -92,7 +100,7 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
   }
 
   private void hackModuleDescriptor(final ModuleDescriptor copyDescriptor) {
-    hackJavaFacetProperties(copyDescriptor);
+    hackFacetProperties(copyDescriptor);
     hackDeploymentDescriptor(copyDescriptor);
     resetModelRootsAndFacets(copyDescriptor);
   }
@@ -116,7 +124,10 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
    * will go away when these paths are restrained to be relative [from the module file] or absolute without regard to the module file
    * moreover these paths will move to the java module facet implementation
    */
-  private void hackJavaFacetProperties(@NotNull ModuleDescriptor copyDescriptor) {
+  private void hackFacetProperties(@NotNull ModuleDescriptor copyDescriptor) {
+    resaveFacetsUnderNewFile(copyDescriptor);
+
+    // area of facet descriptor which is still in the module descriptor 
     List<String> newStubPaths = copyDescriptor.getJavaLibs().stream().map(new Function<String, String>() {
       public String apply(String path) {
         return myModulePathConverter.source2Target(path);
@@ -131,6 +142,21 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
     }).collect(Collectors.<String>toList());
     copyDescriptor.getSourcePaths().clear();
     copyDescriptor.getSourcePaths().addAll(newSourcePaths);
+  }
+
+  private void resaveFacetsUnderNewFile(ModuleDescriptor copyDescriptor) {
+    final List<ModuleFacetDescriptor> newFacetDescriptors = new ArrayList<ModuleFacetDescriptor>();
+    copyDescriptor.getModuleFacetDescriptors().forEach(new Consumer<ModuleFacetDescriptor>() {
+      public void accept(ModuleFacetDescriptor it) {
+        Element tmp = new Element("tmp");
+        ModuleDescriptorPersistence.writeMemento(it.getMemento(), tmp, MacrosFactory.forModule(myModuleToCopy));
+        MementoImpl memo = new MementoImpl();
+        ModuleDescriptorPersistence.readMemento(memo, tmp, MacrosFactory.forModuleFile(myNewFile));
+        newFacetDescriptors.add(new ModuleFacetDescriptor(it.getType(), memo));
+      }
+    });
+    copyDescriptor.getModuleFacetDescriptors().clear();
+    copyDescriptor.getModuleFacetDescriptors().addAll(newFacetDescriptors);
   }
 
   /**

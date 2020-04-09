@@ -818,6 +818,7 @@
       </concept>
       <concept id="868032131020265945" name="jetbrains.mps.build.mps.structure.BuildMPSPlugin" flags="ng" index="3b7kt6" />
       <concept id="5253498789149381388" name="jetbrains.mps.build.mps.structure.BuildMps_Module" flags="ng" index="3bQrTs">
+        <child id="5253498789149547825" name="sources" index="3bR31x" />
         <child id="5253498789149547704" name="dependencies" index="3bR37C" />
       </concept>
       <concept id="978600701690054692" name="jetbrains.mps.build.mps.structure.GeneratorInternal_String" flags="ng" index="1cIVw3">
@@ -830,6 +831,9 @@
         <child id="4356762679305686649" name="jarLocations" index="3yLTFF" />
         <child id="8488591998064324395" name="classpathEntries" index="3E5mpp" />
         <child id="506537499308757750" name="sourcesJarLocation" index="3SGgvt" />
+      </concept>
+      <concept id="763829979718664966" name="jetbrains.mps.build.mps.structure.BuildMps_ModuleResources" flags="ng" index="3rtmxn">
+        <child id="763829979718664967" name="files" index="3rtmxm" />
       </concept>
       <concept id="4356762679305675652" name="jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleXml_CustomJarLocation" flags="ng" index="3yLZsm">
         <property id="4356762679305675654" name="packagedLocation" index="3yLZsk" />
@@ -6272,6 +6276,13 @@
         <property role="TrG5h" value="aaa" />
         <property role="3LESm3" value="123" />
         <node concept="55IIr" id="6CY5wCYZIX7" role="3LF7KH" />
+        <node concept="3rtmxn" id="6UtCO5dGLG7" role="3bR31x">
+          <node concept="3LXTmp" id="6UtCO5dGLG8" role="3rtmxm">
+            <node concept="3qWCbU" id="6UtCO5dGLG9" role="3LXTna">
+              <property role="3qWCbO" value="icons/**, resources/**" />
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="m$_wf" id="5HVSRHdWiAO" role="3989C9">
         <property role="m$_wk" value="plugin1" />
@@ -18782,6 +18793,13 @@
           </node>
         </node>
         <node concept="55IIr" id="EpEP7haDD8" role="3LF7KH" />
+        <node concept="3rtmxn" id="6UtCO5dGLGa" role="3bR31x">
+          <node concept="3LXTmp" id="6UtCO5dGLGb" role="3rtmxm">
+            <node concept="3qWCbU" id="6UtCO5dGLGc" role="3LXTna">
+              <property role="3qWCbO" value="icons/**, resources/**" />
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="1l3spV" id="EpEP7haDDb" role="1l3spN">
         <node concept="398223" id="EpEP7haDDd" role="39821P">

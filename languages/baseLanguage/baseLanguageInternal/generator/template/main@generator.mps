@@ -1770,7 +1770,6 @@
   </node>
   <node concept="1pmfR0" id="4hwx6CzjUy5">
     <property role="TrG5h" value="mod_extractSingleConstant" />
-    <property role="1v3f2W" value="post_processing" />
     <property role="1v3jST" value="true" />
     <node concept="1pplIY" id="4hwx6CzjUy6" role="1pqMTA">
       <node concept="3clFbS" id="4hwx6CzjUy7" role="2VODD2">

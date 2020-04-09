@@ -264,7 +264,7 @@
         </node>
         <node concept="m$_wl" id="70qJ_RossVM" role="39821P">
           <ref role="m_rDy" node="70qJ_RossVv" resolve="jetbrains.mps.buildTest2" />
-          <node concept="pUk6x" id="5peYeZGo8Vo" role="pUk7w" />
+          <node concept="pUk6x" id="6UtCO5dHXcp" role="pUk7w" />
         </node>
       </node>
     </node>

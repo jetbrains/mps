@@ -5566,7 +5566,6 @@
   <node concept="3HP615" id="4CAk1UddXyA">
     <property role="TrG5h" value="CaptionFunction" />
     <node concept="3clFb_" id="4CAk1UddXE9" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="caption" />
       <node concept="3clFbS" id="4CAk1UddXEc" role="3clF47" />
@@ -5587,7 +5586,6 @@
     <property role="2bfB8j" value="false" />
     <property role="TrG5h" value="NamerFactory" />
     <node concept="3clFb_" id="63HiSADv5Gc" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="create" />
       <node concept="3clFbS" id="63HiSADv5Gf" role="3clF47" />

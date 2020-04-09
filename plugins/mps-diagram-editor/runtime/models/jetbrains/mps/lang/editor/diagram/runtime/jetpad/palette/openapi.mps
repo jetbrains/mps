@@ -20,9 +20,7 @@
         <child id="1068580123133" name="returnType" index="3clF45" />
         <child id="1068580123135" name="body" index="3clF47" />
       </concept>
-      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_">
-        <property id="1178608670077" name="isAbstract" index="1EzhhJ" />
-      </concept>
+      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_" />
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
@@ -48,7 +46,6 @@
   <node concept="3HP615" id="6KNGF9gVep">
     <property role="TrG5h" value="PaletteElement" />
     <node concept="3clFb_" id="6KNGF9gVeq" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getIcon" />
       <node concept="3uibUv" id="6KNGF9gVer" role="3clF45">
         <ref role="3uigEE" to="dxuu:~Icon" resolve="Icon" />
@@ -57,7 +54,6 @@
       <node concept="3clFbS" id="6KNGF9gVet" role="3clF47" />
     </node>
     <node concept="3clFb_" id="6KNGF9gVeu" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getText" />
       <node concept="17QB3L" id="6KNGF9gVev" role="3clF45" />
       <node concept="3Tm1VV" id="6KNGF9gVew" role="1B3o_S" />
@@ -68,7 +64,6 @@
   <node concept="3HP615" id="6KNGF9gVez">
     <property role="TrG5h" value="PaletteActionGroup" />
     <node concept="3clFb_" id="6KNGF9gVeC" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getElements" />
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
@@ -81,7 +76,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="6KNGF9gVeH" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="isPopup" />
       <node concept="10P_77" id="6KNGF9gVeI" role="3clF45" />
       <node concept="3Tm1VV" id="6KNGF9gVeJ" role="1B3o_S" />
@@ -98,7 +92,6 @@
       <ref role="3uigEE" node="6KNGF9gVep" resolve="PaletteElement" />
     </node>
     <node concept="3clFb_" id="4ttM7y2hSPp" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="onClick" />
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />

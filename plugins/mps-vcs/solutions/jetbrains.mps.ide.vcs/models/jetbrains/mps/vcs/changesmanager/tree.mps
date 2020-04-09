@@ -2514,7 +2514,6 @@
     <property role="TrG5h" value="TreeNodeFeatureExtractor" />
     <node concept="3Tm1VV" id="61iyVk1mWmr" role="1B3o_S" />
     <node concept="3clFb_" id="4oT3Lbm4_1$" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getFeature" />
       <node concept="37vLTG" id="4oT3Lbm4_1C" role="3clF46">
         <property role="TrG5h" value="treeNode" />
@@ -2545,7 +2544,6 @@
       <property role="TrG5h" value="V" />
     </node>
     <node concept="3clFb_" id="4UF4IzfxylM" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="featureStateChanged" />
       <node concept="37vLTG" id="4UF4IzfxylQ" role="3clF46">
         <property role="TrG5h" value="feature" />

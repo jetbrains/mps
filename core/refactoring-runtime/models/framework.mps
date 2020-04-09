@@ -437,7 +437,6 @@
   <node concept="3HP615" id="4a0HOMfn8ye">
     <property role="TrG5h" value="IDescendantsProvider" />
     <node concept="3clFb_" id="4a0HOMfn8yg" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescendants" />
       <node concept="37vLTG" id="4a0HOMfn8yk" role="3clF46">
         <property role="TrG5h" value="nodeAdapter" />
@@ -2686,7 +2685,6 @@
   <node concept="3HP615" id="4a0HOMfn9yJ">
     <property role="TrG5h" value="IRefactoringTarget" />
     <node concept="3clFb_" id="4a0HOMfn9yS" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getTarget" />
       <node concept="3clFbS" id="4a0HOMfn9yV" role="3clF47" />
       <node concept="3uibUv" id="4a0HOMfn9yU" role="3clF45">
@@ -2695,14 +2693,12 @@
       <node concept="3Tm1VV" id="4a0HOMfn9yT" role="1B3o_S" />
     </node>
     <node concept="3clFb_" id="4a0HOMfn9yW" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="allowMultipleTargets" />
       <node concept="3clFbS" id="4a0HOMfn9yZ" role="3clF47" />
       <node concept="10P_77" id="4a0HOMfn9yY" role="3clF45" />
       <node concept="3Tm1VV" id="4a0HOMfn9yX" role="1B3o_S" />
     </node>
     <node concept="3clFb_" id="4a0HOMfn9z0" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="isApplicable" />
       <node concept="3Tm1VV" id="4a0HOMfn9z1" role="1B3o_S" />
       <node concept="10P_77" id="4a0HOMfn9z2" role="3clF45" />
@@ -2740,7 +2736,6 @@
   <node concept="3HP615" id="4a0HOMfn9$I">
     <property role="TrG5h" value="IRefactoring" />
     <node concept="3clFb_" id="4a0HOMfn9$K" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getUserFriendlyName" />
       <node concept="3Tm1VV" id="4a0HOMfn9$L" role="1B3o_S" />
       <node concept="3uibUv" id="4a0HOMfn9$M" role="3clF45">
@@ -2749,7 +2744,6 @@
       <node concept="3clFbS" id="4a0HOMfn9$N" role="3clF47" />
     </node>
     <node concept="3clFb_" id="4a0HOMfn9$S" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getOverridenRefactoringClass" />
       <node concept="3Tm1VV" id="4a0HOMfn9$T" role="1B3o_S" />
       <node concept="3uibUv" id="4a0HOMfn9$U" role="3clF45">
@@ -2758,7 +2752,6 @@
       <node concept="3clFbS" id="4a0HOMfn9$V" role="3clF47" />
     </node>
     <node concept="3clFb_" id="4a0HOMfn9$W" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getRefactoringTarget" />
       <node concept="3Tm1VV" id="4a0HOMfn9$X" role="1B3o_S" />
       <node concept="3uibUv" id="4a0HOMfn9$Y" role="3clF45">
@@ -2767,7 +2760,6 @@
       <node concept="3clFbS" id="4a0HOMfn9$Z" role="3clF47" />
     </node>
     <node concept="3clFb_" id="4a0HOMfn9_0" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="init" />
       <node concept="37vLTG" id="4a0HOMfn9_3" role="3clF46">
         <property role="TrG5h" value="refactoringContext" />
@@ -2780,7 +2772,6 @@
       <node concept="3clFbS" id="4a0HOMfn9_5" role="3clF47" />
     </node>
     <node concept="3clFb_" id="4a0HOMfn9_6" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="refactor" />
       <node concept="3Tm1VV" id="4a0HOMfn9_7" role="1B3o_S" />
       <node concept="3clFbS" id="4a0HOMfn9_b" role="3clF47" />
@@ -2793,7 +2784,6 @@
       <node concept="3cqZAl" id="4a0HOMfn9_8" role="3clF45" />
     </node>
     <node concept="3clFb_" id="4a0HOMfn9_c" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getModelsToGenerate" />
       <node concept="3uibUv" id="4a0HOMfn9_e" role="3clF45">
         <ref role="3uigEE" to="33ny:~List" resolve="List" />
@@ -2811,7 +2801,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="4a0HOMfn9_j" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="doWhenDone" />
       <node concept="37vLTG" id="4a0HOMfn9_m" role="3clF46">
         <property role="TrG5h" value="refactoringContext" />
@@ -2824,7 +2813,6 @@
       <node concept="3clFbS" id="4a0HOMfn9_o" role="3clF47" />
     </node>
     <node concept="3clFb_" id="4a0HOMfn9_p" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getAffectedNodes" />
       <node concept="3uibUv" id="7QDeCk4UWgd" role="3clF45">
         <ref role="3uigEE" to="9erk:~SearchResults" resolve="SearchResults" />

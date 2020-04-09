@@ -1680,7 +1680,6 @@
       <property role="2bfB8j" value="true" />
       <node concept="3Tm1VV" id="72Fa_thHKfs" role="1B3o_S" />
       <node concept="3clFb_" id="72Fa_thHN9A" role="jymVt">
-        <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="getDerivedClassifiers" />
         <node concept="37vLTG" id="72Fa_thHN9F" role="3clF46">
           <property role="TrG5h" value="classifier" />
@@ -1701,7 +1700,6 @@
         </node>
       </node>
       <node concept="3clFb_" id="72Fa_thHKft" role="jymVt">
-        <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="isIndexReady" />
         <node concept="37vLTG" id="72Fa_thHN9y" role="3clF46">
           <property role="TrG5h" value="project" />

@@ -838,7 +838,6 @@
     <property role="TrG5h" value="ModelVersion" />
     <node concept="3Tm1VV" id="341WClvYLIE" role="1B3o_S" />
     <node concept="3clFb_" id="341WClvYLIF" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getSuffix" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="341WClvYLIG" role="1B3o_S" />

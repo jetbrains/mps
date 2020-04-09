@@ -11,6 +11,9 @@
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
+        <property id="7862711839422615217" name="text" index="t5JxN" />
+      </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
         <property id="4628067390765907488" name="conceptShortDescription" index="R4oN_" />
@@ -38,6 +41,7 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
@@ -141,6 +145,15 @@
       <property role="20kJfa" value="haltonfailure" />
       <property role="IQ2ns" value="6593674873639478221" />
       <ref role="20lvS9" to="3ior:3NagsOfThPf" resolve="BuildString" />
+    </node>
+    <node concept="1TJgyj" id="1tJmw8EAXGe" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="compressArgs" />
+      <property role="IQ2ns" value="1688667350638517006" />
+      <ref role="20lvS9" to="3ior:3NagsOfThPf" resolve="BuildString" />
+      <node concept="t5JxF" id="1tJmw8EAXUg" role="lGtFl">
+        <property role="t5JxN" value="using JAVA_TOOL_OPTIONS variable to prevent issues like https://youtrack.jetbrains.com/issue/MPS-24137" />
+      </node>
     </node>
     <node concept="1TJgyj" id="5I1s5NvuWcr" role="1TKVEi">
       <property role="IQ2ns" value="6593674873635848987" />

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,9 @@
  */
 package jetbrains.mps.nodeEditor;
 
+import com.intellij.ide.IdeTooltip;
+import com.intellij.ide.IdeTooltipManager;
+import com.intellij.ui.HintHint;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.nodeEditor.actions.CursorPositionTracker;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
@@ -32,11 +35,11 @@ import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.selection.SingularSelection;
 import jetbrains.mps.openapi.editor.selection.SingularSelection.SideSelectDirection;
-import jetbrains.mps.smodel.SNodeLegacy;
-import jetbrains.mps.smodel.SNodeUtil;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.util.Condition;
 
+import javax.swing.JEditorPane;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.List;
 
@@ -692,7 +695,26 @@ public class NodeEditorActions {
   public static class ShowMessage extends AbstractCellAction {
     @Override
     public void execute(EditorContext context) {
-      ((jetbrains.mps.nodeEditor.EditorComponent) context.getEditorComponent()).showMessageTooltip();
+      final jetbrains.mps.nodeEditor.EditorComponent editorComponent = (jetbrains.mps.nodeEditor.EditorComponent) context.getEditorComponent();
+      jetbrains.mps.openapi.editor.cells.EditorCell cell = editorComponent.getSelectedCell();
+      if (cell == null) {
+        return;
+      }
+
+      String text = editorComponent.getMessagesTextFor(cell);
+      if (text == null) {
+        return;
+      }
+
+      // Try to show tooltip over caret or in case of active selection - over the middle of the cell
+      final int caretRelativePosition = cell.getCaretX() - cell.getX();
+      final boolean isCaretInsideCell = caretRelativePosition >= 0 && caretRelativePosition <= cell.getWidth();
+      Point point = new Point(
+          isCaretInsideCell ? cell.getCaretX() : cell.getX() + cell.getWidth() / 2, cell.getY());
+      // Inspired by com.intellij.ide.IdeTooltipManager#showTooltipForEvent
+      final JEditorPane pane = IdeTooltipManager.initPane(text, new HintHint().setAwtTooltip(true), null);
+      final IdeTooltip tooltip = new IdeTooltip(editorComponent, point, pane);
+      IdeTooltipManager.getInstance().show(tooltip, true);
     }
   }
 

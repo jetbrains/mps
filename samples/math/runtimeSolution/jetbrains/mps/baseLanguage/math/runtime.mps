@@ -140,9 +140,7 @@
         <child id="1068580123134" name="parameter" index="3clF46" />
         <child id="1068580123135" name="body" index="3clF47" />
       </concept>
-      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_">
-        <property id="1178608670077" name="isAbstract" index="1EzhhJ" />
-      </concept>
+      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_" />
       <concept id="1068580123152" name="jetbrains.mps.baseLanguage.structure.EqualsExpression" flags="nn" index="3clFbC" />
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
@@ -10754,7 +10752,6 @@
       <property role="TrG5h" value="T" />
     </node>
     <node concept="3clFb_" id="KHeRs0wOv2" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="cast" />
       <node concept="3Tm1VV" id="KHeRs0wOv3" role="1B3o_S" />
       <node concept="16syzq" id="KHeRs0wOv4" role="3clF45">
@@ -10769,7 +10766,6 @@
       <node concept="3clFbS" id="KHeRs0wOv7" role="3clF47" />
     </node>
     <node concept="3clFb_" id="KHeRs0wOv8" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="add" />
       <node concept="3Tm1VV" id="KHeRs0wOv9" role="1B3o_S" />
       <node concept="16syzq" id="KHeRs0wOva" role="3clF45">
@@ -10790,7 +10786,6 @@
       <node concept="3clFbS" id="KHeRs0wOvf" role="3clF47" />
     </node>
     <node concept="3clFb_" id="KHeRs0wOvg" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="neg" />
       <node concept="3Tm1VV" id="KHeRs0wOvh" role="1B3o_S" />
       <node concept="16syzq" id="KHeRs0wOvi" role="3clF45">
@@ -10805,7 +10800,6 @@
       <node concept="3clFbS" id="KHeRs0wOvl" role="3clF47" />
     </node>
     <node concept="3clFb_" id="KHeRs0wOvm" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="mul" />
       <node concept="3Tm1VV" id="KHeRs0wOvn" role="1B3o_S" />
       <node concept="16syzq" id="KHeRs0wOvo" role="3clF45">
@@ -10826,7 +10820,6 @@
       <node concept="3clFbS" id="KHeRs0wOvt" role="3clF47" />
     </node>
     <node concept="3clFb_" id="KHeRs0wOvu" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="inv" />
       <node concept="3Tm1VV" id="KHeRs0wOvv" role="1B3o_S" />
       <node concept="16syzq" id="KHeRs0wOvw" role="3clF45">
@@ -10841,7 +10834,6 @@
       <node concept="3clFbS" id="KHeRs0wOvz" role="3clF47" />
     </node>
     <node concept="3clFb_" id="KHeRs0wOv$" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="conj" />
       <node concept="3Tm1VV" id="KHeRs0wOv_" role="1B3o_S" />
       <node concept="16syzq" id="KHeRs0wOvA" role="3clF45">
@@ -10856,7 +10848,6 @@
       <node concept="3clFbS" id="KHeRs0wOvD" role="3clF47" />
     </node>
     <node concept="3clFb_" id="KHeRs0wOvE" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="abs" />
       <node concept="3Tm1VV" id="KHeRs0wOvF" role="1B3o_S" />
       <node concept="3uibUv" id="KHeRs0wOvG" role="3clF45">
@@ -14451,7 +14442,6 @@
         <property role="TrG5h" value="T" />
       </node>
       <node concept="3clFb_" id="KHeRs0wOMh" role="jymVt">
-        <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="iterator" />
         <node concept="3Tm1VV" id="KHeRs0wOMi" role="1B3o_S" />
         <node concept="3uibUv" id="KHeRs0wOMj" role="3clF45">

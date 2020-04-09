@@ -231,9 +231,7 @@
         <child id="1068580123134" name="parameter" index="3clF46" />
         <child id="1068580123135" name="body" index="3clF47" />
       </concept>
-      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_">
-        <property id="1178608670077" name="isAbstract" index="1EzhhJ" />
-      </concept>
+      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_" />
       <concept id="1068580123152" name="jetbrains.mps.baseLanguage.structure.EqualsExpression" flags="nn" index="3clFbC" />
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
@@ -361,7 +359,6 @@
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -2865,7 +2862,7 @@
         <node concept="3eNFk2" id="5PUUrvXNxVw" role="3eNLev">
           <node concept="3clFbS" id="5PUUrvXNxVy" role="3eOfB_">
             <node concept="3SKdUt" id="5PUUrvXNy8N" role="3cqZAp">
-              <node concept="1PaTwC" id="5PUUrvXNy8O" role="3ndbpf">
+              <node concept="1PaTwC" id="5PUUrvXNy8O" role="1aUNEU">
                 <node concept="3oM_SD" id="5PUUrvXNy8Q" role="1PaTwD">
                   <property role="3oM_SC" value="for" />
                 </node>
@@ -25521,7 +25518,7 @@
               <node concept="3clFbJ" id="7oysyrldiOC" role="3cqZAp">
                 <node concept="3clFbS" id="7oysyrldiOD" role="3clFbx">
                   <node concept="3SKdUt" id="7oysyrldiP9" role="3cqZAp">
-                    <node concept="1PaTwC" id="ATZLwXnPWl" role="3ndbpf">
+                    <node concept="1PaTwC" id="ATZLwXnPWl" role="1aUNEU">
                       <node concept="3oM_SD" id="ATZLwXnPWm" role="1PaTwD">
                         <property role="3oM_SC" value="ignore" />
                       </node>
@@ -62721,7 +62718,6 @@
     <property role="3GE5qa" value="ext.references" />
     <property role="TrG5h" value="TypeDescriptor" />
     <node concept="3clFb_" id="4j2u3ESw1$$" role="jymVt">
-      <property role="1EzhhJ" value="true" />
       <property role="TrG5h" value="handle" />
       <node concept="3clFbS" id="4j2u3ESw1$B" role="3clF47" />
       <node concept="3Tm1VV" id="4j2u3ESw1$C" role="1B3o_S" />
@@ -65172,7 +65168,6 @@
     <property role="TrG5h" value="TypeHandler" />
     <node concept="2tJIrI" id="4j2u3ESvuUc" role="jymVt" />
     <node concept="3clFb_" id="4j2u3ESvuUH" role="jymVt">
-      <property role="1EzhhJ" value="true" />
       <property role="TrG5h" value="handlePrimitve" />
       <node concept="37vLTG" id="4j2u3ESvwmK" role="3clF46">
         <property role="TrG5h" value="prim" />
@@ -65187,7 +65182,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="4j2u3ESvwPS" role="jymVt">
-      <property role="1EzhhJ" value="true" />
       <property role="TrG5h" value="handleClassifier" />
       <node concept="3clFbS" id="4j2u3ESvwPV" role="3clF47" />
       <node concept="3Tm1VV" id="4j2u3ESvwPW" role="1B3o_S" />

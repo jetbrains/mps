@@ -668,7 +668,6 @@
   <node concept="3HP615" id="1F5g4zQqSPt">
     <property role="TrG5h" value="MoveNodesAction" />
     <node concept="3clFb_" id="1F5g4zQxi0e" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="getName" />
       <node concept="3clFbS" id="1F5g4zQxi0h" role="3clF47" />
@@ -676,7 +675,6 @@
       <node concept="17QB3L" id="1F5g4zQxhZ9" role="3clF45" />
     </node>
     <node concept="3clFb_" id="1F5g4zQqTc8" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="isApplicable" />
       <node concept="37vLTG" id="1F5g4zQqTiW" role="3clF46">
         <property role="TrG5h" value="project" />
@@ -693,7 +691,6 @@
       <node concept="3clFbS" id="1F5g4zQqTcc" role="3clF47" />
     </node>
     <node concept="3clFb_" id="1F5g4zQqUnD" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="execute" />
       <node concept="37vLTG" id="1F5g4zQqUoH" role="3clF46">
         <property role="TrG5h" value="project" />
