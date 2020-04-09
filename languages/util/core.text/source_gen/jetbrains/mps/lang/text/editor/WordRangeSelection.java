@@ -56,18 +56,13 @@ public class WordRangeSelection extends AbstractMultipleSelection {
 
   public WordRangeSelection(@NotNull EditorComponent editorComponent, Map<String, String> properties, CellInfo cellInfo) throws SelectionStoreException, SelectionRestoreException {
     super(editorComponent);
-    // TODO ClassCastException - module id 
     // TODO selected single node or multiple nodes cannot have intentions run on them 
+    // TODO select up/down 
+    // TODO combine with other types of selection 
     // TODO preserve and move the cursor position 
     // TODO allow per-character selection 
     // TODO select also spaces 
-    // TODO class loading problem 
-    // TODO inherit as much as possible 
-    // TODO prune the class 
     // TODO copy spaces into the clipboard 
-    // TODO select up/down 
-    // TODO combine with other types of selection 
-    // TODO remove ExpandableRangeSelection 
     if (cellInfo != null) {
       throw new SelectionStoreException("Non-null CellInfo object passed as a parameter: " + cellInfo);
     }

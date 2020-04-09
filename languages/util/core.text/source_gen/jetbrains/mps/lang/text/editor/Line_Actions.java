@@ -29,7 +29,10 @@ public class Line_Actions {
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
         SNode currentWord = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextElement$Ue);
-        WordRangeSelection ws = new WordRangeSelection(editorContext.getEditorComponent(), SNodeOperations.as(SNodeOperations.getPrevSibling(currentWord), CONCEPTS.TextElement$Ue), currentWord, false);
+        boolean includeCurrentNodeInSelection = selection.getSelectionEnd() != selection.getSelectionStart();
+
+        SNode prevNode = SNodeOperations.as(SNodeOperations.getPrevSibling(currentWord), CONCEPTS.TextElement$Ue);
+        WordRangeSelection ws = new WordRangeSelection(editorContext.getEditorComponent(), prevNode, (includeCurrentNodeInSelection ? currentWord : prevNode), false);
         selectionManager.pushSelection(ws);
 
       }
@@ -47,7 +50,11 @@ public class Line_Actions {
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
         SNode currentWord = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextElement$Ue);
-        WordRangeSelection ws = new WordRangeSelection(editorContext.getEditorComponent(), currentWord, SNodeOperations.as(SNodeOperations.getNextSibling(currentWord), CONCEPTS.TextElement$Ue), true);
+        boolean includeCurrentNodeInSelection = selection.getSelectionEnd() != selection.getSelectionStart();
+        SNode nexttNode = SNodeOperations.as(SNodeOperations.getNextSibling(currentWord), CONCEPTS.TextElement$Ue);
+
+
+        WordRangeSelection ws = new WordRangeSelection(editorContext.getEditorComponent(), (includeCurrentNodeInSelection ? currentWord : nexttNode), nexttNode, true);
         selectionManager.pushSelection(ws);
 
       }
