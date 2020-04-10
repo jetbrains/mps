@@ -12,7 +12,6 @@ import jetbrains.mps.vcs.diff.ui.common.ChangeGroupLayout;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.vcs.diff.ui.common.DiffEditorsGroup;
-import com.intellij.ui.JBSplitter;
 import com.intellij.diff.tools.util.side.TwosideContentPanel;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
@@ -22,14 +21,13 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import java.beans.PropertyChangeEvent;
 import com.intellij.openapi.ui.Splitter;
 import java.util.Arrays;
+import com.intellij.ui.JBSplitter;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import jetbrains.mps.ide.icons.IdeIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.diff.tools.util.DiffSplitter;
 import com.intellij.diff.util.DiffDividerDrawUtil;
-import jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout;
 import org.jetbrains.annotations.NotNull;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -37,6 +35,7 @@ import com.intellij.diff.util.DiffDrawUtil;
 import java.awt.Color;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.util.ui.GraphicsUtil;
+import jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroup;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
@@ -67,9 +66,7 @@ public class StructDifferencePane implements PropertyChangeListener {
   private List<ChangeGroupLayout> myChangeGroupLayouts = ListSequence.fromList(new ArrayList<ChangeGroupLayout>());
   private DiffEditorsGroup myDiffEditorsGroup;
 
-  private JBSplitter myPanel = new JBSplitter(true, 0.7f);
-  private TwosideContentPanel myTopPanel;
-  private TwosideContentPanel myInspectorPanel;
+  private TwosideContentPanel myPanel;
   private boolean isInspectorShown = PropertiesComponent.getInstance().getBoolean(PARAM_SHOW_INSPECTOR, true);
 
   private DefaultActionGroup myActionGroup;
@@ -97,18 +94,8 @@ public class StructDifferencePane implements PropertyChangeListener {
 
     myOldEditor = addEditor(myChangeSet.getOldModel(), myChangeSet.getOldNodeId(), titles[0], true);
     myNewEditor = addEditor(myChangeSet.getNewModel(), myChangeSet.getNewNodeId(), titles[1], false);
-
-    myTopPanel = createTwosideContentPanel(false);
-    myInspectorPanel = createTwosideContentPanel(true);
-
-    myPanel.setSplitterProportionKey(PARAM_INSPECTOR_SPLITTER_POSITION);
-    myPanel.setFirstComponent(myTopPanel);
-    if (isInspectorShown) {
-      myPanel.setSecondComponent(myInspectorPanel);
-    }
-
+    myPanel = createTwosideContentPanel();
     myTraverser = new NextPreviousTraverser(myChangeGroupLayouts, myNewEditor.getMainEditor());
-
     createActionGroup();
   }
 
@@ -118,21 +105,22 @@ public class StructDifferencePane implements PropertyChangeListener {
       return;
     }
     Splitter sourceSplitter = (Splitter) event.getSource();
-    Splitter otherSplitter = (sourceSplitter == myTopPanel.getSplitter() ? myInspectorPanel.getSplitter() : myTopPanel.getSplitter());
+    Splitter otherSplitter = (sourceSplitter == myOldEditor.getPanel() ? ((Splitter) myNewEditor.getPanel()) : ((Splitter) myOldEditor.getPanel()));
     otherSplitter.removePropertyChangeListener(Splitter.PROP_PROPORTION, this);
     otherSplitter.setProportion((float) event.getNewValue());
     otherSplitter.addPropertyChangeListener(Splitter.PROP_PROPORTION, this);
   }
 
-  private TwosideContentPanel createTwosideContentPanel(boolean inspector) {
-    TwosideContentPanel panel = new TwosideContentPanel(Arrays.asList(myOldEditor.getComponent(inspector), myNewEditor.getComponent(inspector)));
-    panel.getSplitter().addPropertyChangeListener(Splitter.PROP_PROPORTION, this);
-    if (!(inspector)) {
-      panel.setTitles(createTitles());
-    } else {
-      panel.setTitles(Arrays.asList(((JComponent) new JLabel("Inspector")), ((JComponent) new JLabel("Inspector"))));
-    }
-    linkEditors(panel, inspector);
+  private TwosideContentPanel createTwosideContentPanel() {
+    TwosideContentPanel panel = new TwosideContentPanel(Arrays.asList(myOldEditor.getPanel(), myNewEditor.getPanel()));
+    ((JBSplitter) myOldEditor.getPanel()).setSplitterProportionKey(PARAM_INSPECTOR_SPLITTER_POSITION);
+    ((JBSplitter) myNewEditor.getPanel()).setSplitterProportionKey(PARAM_INSPECTOR_SPLITTER_POSITION);
+    myOldEditor.getPanel().addPropertyChangeListener(Splitter.PROP_PROPORTION, this);
+    myNewEditor.getPanel().addPropertyChangeListener(Splitter.PROP_PROPORTION, this);
+    panel.setTitles(createTitles());
+    linkEditors(panel, false);
+    linkEditors(panel, true);
+    panel.setPainter(new MyDividerPainter());
     return panel;
   }
 
@@ -164,17 +152,28 @@ public class StructDifferencePane implements PropertyChangeListener {
 
   private class MyDividerPainter implements DiffSplitter.Painter, DiffDividerDrawUtil.DividerPaintable {
 
-    private final DiffChangeGroupLayout myLayout;
-
-    private final boolean myInspector;
-
-    public MyDividerPainter(DiffChangeGroupLayout layout, boolean inspector) {
-      myLayout = layout;
-      myInspector = inspector;
-    }
+    private boolean myInspector;
 
     @Override
     public void paint(@NotNull Graphics g, @NotNull JComponent divider) {
+      paintMainEditorDivider(g, divider);
+      if (isInspectorShown) {
+        paintInspectorDivider(g, divider);
+      }
+    }
+
+    protected void paintMainEditorDivider(@NotNull Graphics g, @NotNull JComponent divider) {
+      myInspector = false;
+      paintDividerPart(g, divider);
+    }
+
+    protected void paintInspectorDivider(@NotNull Graphics g, @NotNull JComponent divider) {
+      myInspector = true;
+      paintDividerPart(g, divider);
+    }
+
+    private void paintDividerPart(@NotNull Graphics g, @NotNull JComponent divider) {
+
       Graphics2D gg = DiffDividerDrawUtil.getDividerGraphics(g, divider, myOldEditor.getComponent(myInspector));
 
       gg.setColor(DiffDrawUtil.getDividerColor());
@@ -199,11 +198,18 @@ public class StructDifferencePane implements PropertyChangeListener {
 
       gg.dispose();
     }
+
     @Override
     public void process(@NotNull DiffDividerDrawUtil.DividerPaintable.Handler handler) {
+
+      DiffChangeGroupLayout changeGroupLayout = ((DiffChangeGroupLayout) ((myInspector ? ListSequence.fromList(myChangeGroupLayouts).getElement(1) : ListSequence.fromList(myChangeGroupLayouts).getElement(0))));
+      processChangeGroupLayout(handler, changeGroupLayout);
+    }
+
+    public void processChangeGroupLayout(@NotNull DiffDividerDrawUtil.DividerPaintable.Handler handler, DiffChangeGroupLayout layout) {
       int prevLeftEnd = -1;
       int prevRightEnd = -1;
-      for (IMapping<ChangeGroup, Tuples._2<Bounds, Bounds>> groupWithBounds : MapSequence.fromMap(myLayout.getGroupsWithBounds())) {
+      for (IMapping<ChangeGroup, Tuples._2<Bounds, Bounds>> groupWithBounds : MapSequence.fromMap(layout.getGroupsWithBounds())) {
         Bounds left = groupWithBounds.value()._0();
         Bounds right = groupWithBounds.value()._1();
         int leftStart = (int) left.start();
@@ -269,16 +275,14 @@ public class StructDifferencePane implements PropertyChangeListener {
     }
     isInspectorShown = show;
     PropertiesComponent.getInstance().setValue(PARAM_SHOW_INSPECTOR, show + "");
-    myPanel.setSecondComponent((isInspectorShown ? myInspectorPanel : null));
+    myOldEditor.showInspector(show);
+    myNewEditor.showInspector(show);
   }
 
   private void linkEditors(TwosideContentPanel panel, boolean inspector) {
-    // create change group builder, trapecium strip and merge buttons painter 
-    // 'mine' parameter means mine changeset, 'inspector' - highlight inspector editor component 
     DiffChangeGroupLayout layout = new DiffChangeGroupLayout(null, null, myChangeSet, myOldEditor, myNewEditor, getSplitterRepainter(panel), inspector);
     ChangeGroupMessages.startMaintaining(layout);
     ListSequence.fromList(myChangeGroupLayouts).addElement(layout);
-    panel.setPainter(new MyDividerPainter(layout, inspector));
     if (!(SModelOperations.isReadOnly(myChangeSet.getNewModel()))) {
       StructDiffButtonsPainter.addTo(myOldEditor, layout, inspector);
       StructDiffButtonsPainter.addTo(myNewEditor, layout, inspector);
@@ -294,9 +298,8 @@ public class StructDifferencePane implements PropertyChangeListener {
     };
   }
 
-
   private DiffEditor addEditor(SModel model, SNodeId nodeId, String title, boolean isLeftEditor) {
-    DiffEditor result = new DiffEditor(ProjectHelper.fromIdeaProject(myProject), model.getNode(nodeId), title, isLeftEditor);
+    DiffEditor result = new DiffEditor(ProjectHelper.fromIdeaProject(myProject), model.getNode(nodeId), title, isLeftEditor, isInspectorShown);
     myDiffEditorsGroup.add(result);
     return result;
   }

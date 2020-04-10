@@ -104,9 +104,12 @@ public class DiffChangeGroupLayout extends ChangeGroupLayout {
       myGroupsWithBounds = null;
       myChangeGroupDescriptions = null;
     }
+    repaintSplitter();
+  }
+
+  public void repaintSplitter() {
     if (mySplitterRepainter != null) {
       mySplitterRepainter.repaintSplitter();
-      return;
     }
   }
 

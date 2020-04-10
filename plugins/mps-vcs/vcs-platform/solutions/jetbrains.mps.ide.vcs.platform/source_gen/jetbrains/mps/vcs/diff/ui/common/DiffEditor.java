@@ -4,6 +4,7 @@ package jetbrains.mps.vcs.diff.ui.common;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
+import com.intellij.ui.JBSplitter;
 import javax.swing.JComponent;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import java.util.Map;
@@ -20,6 +21,7 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.openapi.editor.extensions.EditorExtensionUtil;
 import java.awt.Dimension;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.annotations.NotNull;
@@ -47,21 +49,24 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4652592318748338308", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class DiffEditor implements EditorMessageOwner {
+  private JBSplitter myPanel = new JBSplitter(true, 0.75f);
+  private boolean isInspectorShown;
   private MainEditorComponent myMainEditorComponent;
   private String myTitle;
   private JComponent myTitleComponent;
-  private InspectorEditorComponent myInspector;
+  private InspectorEditorComponent myInspectorComponent;
   private Map<ModelChange, List<ChangeEditorMessage>> myChangeToMessages = MapSequence.fromMap(new HashMap<ModelChange, List<ChangeEditorMessage>>());
   private boolean myIsLeftEditor;
   private ChangeGroupLayout[] myChangeGroupLayouts = new ChangeGroupLayout[2];
 
 
 
-  public DiffEditor(final IProject project, SNode node, String contentTitle, boolean isLeftEditor) {
+  public DiffEditor(final IProject project, SNode node, String contentTitle, boolean isLeftEditor, boolean isInspectorShown) {
+    this.isInspectorShown = isInspectorShown;
     myIsLeftEditor = isLeftEditor;
     myTitle = contentTitle;
     myMainEditorComponent = new MainEditorComponent(project.getRepository(), true, isLeftEditor);
-    myInspector = new MyInspectorEditorComponent(project.getRepository(), new EditorConfigurationBuilder().rightToLeft(isLeftEditor).build());
+    myInspectorComponent = new MyInspectorEditorComponent(project.getRepository(), new EditorConfigurationBuilder().rightToLeft(isLeftEditor).build());
     Sequence.fromIterable(getEditorComponents()).visitAll(new IVisitor<EditorComponent>() {
       public void visit(EditorComponent ec) {
         EditorExtensionUtil.extendUsingProject(ec, project);
@@ -69,7 +74,7 @@ public class DiffEditor implements EditorMessageOwner {
     });
 
     myMainEditorComponent.editNode(node);
-    myInspector.getExternalComponent().setPreferredSize(new Dimension());
+    myInspectorComponent.getExternalComponent().setPreferredSize(new Dimension());
     Sequence.fromIterable(getEditorComponents()).visitAll(new IVisitor<EditorComponent>() {
       public void visit(EditorComponent ec) {
         ec.getLeftEditorHighlighter().setDefaultFoldingAreaPaintersEnabled(false);
@@ -77,6 +82,23 @@ public class DiffEditor implements EditorMessageOwner {
     });
 
     myTitleComponent = new JLabel(((contentTitle == null || contentTitle.length() == 0) ? "" : contentTitle));
+
+    myPanel.setFirstComponent(getTopComponent());
+    if (isInspectorShown) {
+      myPanel.setSecondComponent(getBottomComponent());
+    }
+  }
+
+  public JPanel getPanel() {
+    return myPanel;
+  }
+
+  public void showInspector(boolean show) {
+    if (isInspectorShown == show) {
+      return;
+    }
+    isInspectorShown = show;
+    myPanel.setSecondComponent((show ? getBottomComponent() : null));
   }
 
   public boolean isLeftEditor() {
@@ -123,10 +145,12 @@ public class DiffEditor implements EditorMessageOwner {
 
   public void inspect(SNode node) {
     String[] initialEditorHints = myMainEditorComponent.getEditorHintsForNode(node);
-    boolean needToEdit = myInspector.getUpdater().setInitialEditorHints(initialEditorHints);
-    if (needToEdit || myInspector.getEditedNode() != node) {
-      myInspector.editNode(node);
-      myInspector.getHighlightManager().repaintAndRebuildEditorMessages();
+    boolean needToEdit = myInspectorComponent.getUpdater().setInitialEditorHints(initialEditorHints);
+    if (needToEdit || myInspectorComponent.getEditedNode() != node) {
+      myInspectorComponent.editNode(node);
+      myInspectorComponent.getHighlightManager().repaintAndRebuildEditorMessages();
+      DiffChangeGroupLayout changeGroupLayout = (DiffChangeGroupLayout) myChangeGroupLayouts[1];
+      changeGroupLayout.repaintSplitter();
     }
   }
 
@@ -139,11 +163,11 @@ public class DiffEditor implements EditorMessageOwner {
   }
 
   public InspectorEditorComponent getInspector() {
-    return myInspector;
+    return myInspectorComponent;
   }
 
   public JComponent getBottomComponent() {
-    return myInspector.getExternalComponent();
+    return myInspectorComponent.getExternalComponent();
   }
 
   public JComponent getComponent(boolean inspector) {
@@ -151,7 +175,7 @@ public class DiffEditor implements EditorMessageOwner {
   }
 
   public EditorComponent getEditorComponent(boolean inspector) {
-    return (inspector ? myInspector : myMainEditorComponent);
+    return (inspector ? myInspectorComponent : myMainEditorComponent);
   }
   public void highlightChange(SModel model, ModelChange change, boolean isOldEditor, ChangeEditorMessage.ConflictChecker conflictChecker) {
     final List<ChangeEditorMessage> messages = ChangeEditorMessageFactory.createMessages(model, isOldEditor, change, this, conflictChecker);
@@ -189,10 +213,10 @@ public class DiffEditor implements EditorMessageOwner {
   }
   public void dispose() {
     myMainEditorComponent.dispose();
-    myInspector.dispose();
+    myInspectorComponent.dispose();
   }
   private Iterable<EditorComponent> getEditorComponents() {
-    return Sequence.fromArray(new EditorComponent[]{myMainEditorComponent, myInspector});
+    return Sequence.fromArray(new EditorComponent[]{myMainEditorComponent, myInspectorComponent});
   }
 
   public ChangeGroupLayout getChangeGroupLayout(boolean inspector) {

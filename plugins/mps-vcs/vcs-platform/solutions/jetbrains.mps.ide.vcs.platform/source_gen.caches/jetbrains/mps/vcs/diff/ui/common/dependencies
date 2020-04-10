@@ -246,6 +246,7 @@
   </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.common.DiffEditor">
     <classNode dependClassName="com.intellij.openapi.actionSystem.PlatformDataKeys" />
+    <classNode dependClassName="com.intellij.ui.JBSplitter" />
     <classNode dependClassName="com.intellij.ui.ScrollPaneFactory" />
     <classNode dependClassName="java.awt.Color" />
     <classNode dependClassName="java.awt.Dimension" />
@@ -260,6 +261,7 @@
     <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="javax.swing.JComponent" />
     <classNode dependClassName="javax.swing.JLabel" />
+    <classNode dependClassName="javax.swing.JPanel" />
     <classNode dependClassName="javax.swing.JScrollPane" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId" />
@@ -288,6 +290,7 @@
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessageFactory" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangeGroup" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangeGroupLayout" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.DiffFileEditor" />
     <classNode dependClassName="org.jetbrains.annotations.NonNls" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
