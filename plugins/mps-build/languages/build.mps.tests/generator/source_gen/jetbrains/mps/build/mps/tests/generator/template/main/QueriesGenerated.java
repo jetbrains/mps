@@ -111,6 +111,18 @@ public class QueriesGenerated extends QueryProviderBase {
     return isNotEmptyString(((String) _context.getVariable("var:jvmargs"))) && !(((String) _context.getVariable("var:jvmargs")).startsWith("$"));
   }
   public static boolean ifMacro_Condition_0_1(final IfMacroContext _context) {
+    return ((Boolean) _context.getVariable("var:compressArgs"));
+  }
+  public static boolean ifMacro_Condition_0_2(final IfMacroContext _context) {
+    return !(((Boolean) _context.getVariable("var:compressArgs")));
+  }
+  public static boolean ifMacro_Condition_0_3(final IfMacroContext _context) {
+    return !(((Boolean) _context.getVariable("var:compressArgs")));
+  }
+  public static boolean ifMacro_Condition_0_4(final IfMacroContext _context) {
+    return !(((Boolean) _context.getVariable("var:compressArgs")));
+  }
+  public static boolean ifMacro_Condition_0_5(final IfMacroContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.modules$mNDD)).isNotEmpty();
   }
   public static Iterable<SNode> sourceNodesQuery_0_0(final SourceSubstituteMacroNodesContext _context) {
@@ -119,7 +131,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Iterable<SNode> sourceNodesQuery_0_1(final SourceSubstituteMacroNodesContext _context) {
     return Sequence.fromIterable(Sequence.fromArray(((String[]) _context.getVariable("var:requiredPlugins")))).select(new ISelector<String, SNode>() {
       public SNode select(String it) {
-        return createGeneratorInternal_String_x583g4_a0a0a0a0p(it);
+        return createGeneratorInternal_String_x583g4_a0a0a0a0t(it);
       }
     });
   }
@@ -169,6 +181,15 @@ public class QueriesGenerated extends QueryProviderBase {
     ModulePlugins plugins = new ModulePlugins(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$BF), _context);
     plugins.collect(((MPSModulesClosure) _context.getVariable("var:closure")).getAllModules(), Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.options$xNNT), LINKS.requiredPlugins$I9bc), LINKS.plugin$MEr0)).toListSequence());
     return plugins.getPluginPaths();
+  }
+  public static Object varMacro_Value_0_4(final TemplateVarContext _context) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.options$xNNT) == null) || (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$xNNT), LINKS.compressArgs$PEmG) == null)) {
+      return false;
+    }
+    SNode project = SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$BF);
+    MacroHelper macroHelper = new MacroHelper.MacroContext(project, _context).getMacros(project);
+    String text = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$xNNT), LINKS.compressArgs$PEmG), macroHelper);
+    return "true".equals(text);
   }
   private final Map<String, SourceNodesQuery> snsqMethods = new HashMap<String, SourceNodesQuery>();
   {
@@ -275,6 +296,10 @@ public class QueriesGenerated extends QueryProviderBase {
   {
     int i = 0;
     imcMethods.put("3609768169816336811", new IfMC(i++));
+    imcMethods.put("1688667350638584981", new IfMC(i++));
+    imcMethods.put("1688667350638640417", new IfMC(i++));
+    imcMethods.put("1688667350638643955", new IfMC(i++));
+    imcMethods.put("1688667350638644558", new IfMC(i++));
     imcMethods.put("7459197473282491893", new IfMC(i++));
   }
   @NotNull
@@ -298,6 +323,14 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.ifMacro_Condition_0_0(ctx);
         case 1:
           return QueriesGenerated.ifMacro_Condition_0_1(ctx);
+        case 2:
+          return QueriesGenerated.ifMacro_Condition_0_2(ctx);
+        case 3:
+          return QueriesGenerated.ifMacro_Condition_0_3(ctx);
+        case 4:
+          return QueriesGenerated.ifMacro_Condition_0_4(ctx);
+        case 5:
+          return QueriesGenerated.ifMacro_Condition_0_5(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for if macro %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -309,6 +342,7 @@ public class QueriesGenerated extends QueryProviderBase {
     vvqMethods.put("3609768169816347522", new VVQ(1));
     vvqMethods.put("2409421742521905393", new VVQ(2));
     vvqMethods.put("2409421742521905397", new VVQ(3));
+    vvqMethods.put("1688667350638627524", new VVQ(4));
   }
   @NotNull
   @Override
@@ -335,12 +369,14 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.varMacro_Value_0_2(ctx);
         case 3:
           return QueriesGenerated.varMacro_Value_0_3(ctx);
+        case 4:
+          return QueriesGenerated.varMacro_Value_0_4(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
     }
   }
-  private static SNode createGeneratorInternal_String_x583g4_a0a0a0a0p(String p0) {
+  private static SNode createGeneratorInternal_String_x583g4_a0a0a0a0t(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_String$cg);
     n0.setProperty(PROPS.path$LlSY, p0);
     return n0.getResult();
@@ -369,5 +405,6 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SContainmentLink jvmArgs$kmv8 = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x321879066b697c19L, "jvmArgs");
     /*package*/ static final SContainmentLink requiredPlugins$I9bc = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5b81705cdf7bc31bL, "requiredPlugins");
     /*package*/ static final SReferenceLink plugin$MEr0 = MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdf7bc318L, 0x5b81705cdf7bc319L, "plugin");
+    /*package*/ static final SContainmentLink compressArgs$PEmG = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x176f5a022a9bdb0eL, "compressArgs");
   }
 }

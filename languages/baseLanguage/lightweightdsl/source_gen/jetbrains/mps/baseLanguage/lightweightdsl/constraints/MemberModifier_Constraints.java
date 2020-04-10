@@ -39,7 +39,7 @@ public class MemberModifier_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.DSLClassMember$68, true, false), LINKS.modifier$Y2M5), SNodeOperations.asSConcept(SNodeOperations.asSConcept(childConcept)))).count() < 2;
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.DSLClassMember$68, true, false), LINKS.modifier$Y2M5), SNodeOperations.asSConcept(childConcept))).count() < 2;
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:686da497-9d31-49eb-a30e-63814e3d3c62(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.constraints)", "1227128029536560573");
 

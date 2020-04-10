@@ -12,8 +12,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.editor.behavior.ContextVariable__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodePointer;
@@ -40,7 +40,7 @@ public class ContextVariable_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    SConcept cc = (SConcept) SNodeOperations.asSConcept(childConcept);
+    SConcept cc = (SConcept) childConcept;
     final SAbstractConcept providerConcept = ContextVariable__BehaviorDescriptor.getProviderConcept_idaxxf7pcCKs.invoke(SNodeOperations.asSConcept(cc));
     return providerConcept != null && ListSequence.fromList(SNodeOperations.getNodeAncestors(parentNode, null, true)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {

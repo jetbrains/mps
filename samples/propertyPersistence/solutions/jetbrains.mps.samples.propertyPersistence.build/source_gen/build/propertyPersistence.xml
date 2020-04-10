@@ -66,6 +66,7 @@
     </echoxml>
     <jar destfile="${build.tmp}/default/propertyPersistence.zip/mps-sample-property-persistence/lib/jetbrains.mps.samples.propertyPersistenceDef.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.samples.propertyPersistenceDef" />
+      <fileset dir="${basedir}/solutions/jetbrains.mps.samples.propertyPersistenceDef" includes="icons/**, resources/**" />
       <fileset dir="${basedir}/solutions/jetbrains.mps.samples.propertyPersistenceDef/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.samples.propertyPersistenceDef.jar" />
     </jar>
@@ -144,6 +145,7 @@
     </echoxml>
     <jar destfile="${build.tmp}/default/propertyPersistence.zip/mps-sample-property-persistence/languages/jetbrains.mps.samples.PropertyDefinition.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.samples.PropertyDefinition" />
+      <fileset dir="${basedir}/languages/jetbrains.mps.samples.PropertyDefinition" includes="icons/**, resources/**" />
       <fileset dir="${basedir}/languages/jetbrains.mps.samples.PropertyDefinition/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.samples.PropertyDefinition.jar" />
     </jar>
@@ -230,6 +232,7 @@
     </echoxml>
     <jar destfile="${build.tmp}/default/propertyPersistence.zip/mps-sample-property-persistence/languages/jetbrains.mps.samples.propertyPersistence.ideaPlugin.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.samples.propertyPersistence.ideaPlugin" />
+      <fileset dir="${basedir}/solutions/jetbrains.mps.samples.propertyPersistence.ideaPlugin" includes="icons/**, resources/**" />
       <fileset dir="${basedir}/solutions/jetbrains.mps.samples.propertyPersistence.ideaPlugin/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.samples.propertyPersistence.ideaPlugin.jar" />
     </jar>
@@ -245,6 +248,58 @@
       </fileset>
       <zipfileset file="${basedir}/solutions/jetbrains.mps.samples.propertyPersistence.ideaPlugin/jetbrains.mps.samples.propertyPersistence.ideaPlugin.msd" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/solutions-jetbrains.mps.samples.propertyPersistence.ideaPlugin-models" prefix="module/models" />
+    </jar>
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.samples.propertyPersistenceDef.jar1" />
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.samples.propertyPersistenceDef.jar1/META-INF" />
+    <echoxml file="${build.tmp}/default/jetbrains.mps.samples.propertyPersistenceDef.jar1/META-INF/module.xml">
+      <module namespace="jetbrains.mps.samples.propertyPersistenceDef" type="solution" uuid="453c2096-9965-4ff2-82d1-32da63f0871d">
+        <dependencies>
+          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt" />
+          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="rt" />
+          <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="rt" />
+          <module ref="4c6a28d1-2c60-478d-b36e-db9b3cbb21fb(closures.runtime)" kind="rt" />
+          <module ref="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt" />
+          <module ref="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
+          <module ref="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt" />
+          <module ref="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
+          <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
+          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
+          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
+          <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="cl" />
+          <module ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" kind="cl" />
+          <module ref="3379a6ba-4e58-4d2d-be6a-e17044723bd3(jetbrains.mps.samples.PropertyDefinition)" kind="cl" />
+        </dependencies>
+        <uses>
+          <language id="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
+          <language id="l:83888646-71ce-4f1c-9c53-c54016f6ad4f:jetbrains.mps.baseLanguage.collections" />
+          <language id="l:3a13115c-633c-4c5c-bbcc-75c4219e9555:jetbrains.mps.lang.quotation" />
+          <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
+          <language id="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
+        </uses>
+        <classpath>
+          <entry path="." />
+        </classpath>
+        <sources jar="jetbrains.mps.samples.propertyPersistenceDef-src.jar" descriptor="jetbrains.mps.samples.propertyPersistenceDef.msd" />
+      </module>
+    </echoxml>
+    <jar destfile="${build.tmp}/default/propertyPersistence.zip/mps-sample-property-persistence/languages/jetbrains.mps.samples.propertyPersistenceDef.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/java/out/jetbrains.mps.samples.propertyPersistenceDef" />
+      <fileset dir="${basedir}/solutions/jetbrains.mps.samples.propertyPersistenceDef" includes="icons/**, resources/**" />
+      <fileset dir="${basedir}/solutions/jetbrains.mps.samples.propertyPersistenceDef/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${build.tmp}/default/jetbrains.mps.samples.propertyPersistenceDef.jar1" />
+    </jar>
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/solutions-jetbrains.mps.samples.propertyPersistenceDef-models1">
+      <fileset dir="${basedir}/solutions/jetbrains.mps.samples.propertyPersistenceDef/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    </copyModels>
+    <jar destfile="${build.tmp}/default/propertyPersistence.zip/mps-sample-property-persistence/languages/jetbrains.mps.samples.propertyPersistenceDef-src.jar" duplicate="preserve">
+      <fileset dir="${basedir}/solutions/jetbrains.mps.samples.propertyPersistenceDef/source_gen">
+        <exclude name="**/trace.info" />
+        <exclude name="**/exports" />
+        <exclude name="**/checkpoints" />
+        <exclude name="**/*.mps" />
+      </fileset>
+      <zipfileset file="${basedir}/solutions/jetbrains.mps.samples.propertyPersistenceDef/jetbrains.mps.samples.propertyPersistenceDef.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/solutions-jetbrains.mps.samples.propertyPersistenceDef-models1" prefix="module/models" />
     </jar>
     <zip destfile="${build.layout}/propertyPersistence.zip">
       <zipfileset file="${basedir}/solutions/jetbrains.mps.samples.propertyPersistence.ideaPlugin/source_gen/jetbrains/mps/samples/propertyPersistence/ideaPlugin/ideaPlugin/plugin.xml" prefix="mps-sample-property-persistence/META-INF" />

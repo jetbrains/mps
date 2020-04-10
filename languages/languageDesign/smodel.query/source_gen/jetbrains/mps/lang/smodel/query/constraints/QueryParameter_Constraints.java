@@ -43,7 +43,7 @@ public class QueryParameter_Constraints extends BaseConstraintsDescriptor {
     if (!(Objects.equals(SNodeOperations.getContainingLink(parentNode), LINKS.parameter$ew30))) {
       return false;
     }
-    return Sequence.fromIterable(QueryExpression__BehaviorDescriptor.getSupportedParameters_id3J6h25QXCDW.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.cast(SNodeOperations.getParent(parentNode), CONCEPTS.QueryExpression$ML))))).contains(SNodeOperations.castConcept(SNodeOperations.asSConcept(childConcept), CONCEPTS.QueryParameter$vQ));
+    return Sequence.fromIterable(QueryExpression__BehaviorDescriptor.getSupportedParameters_id3J6h25QXCDW.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.cast(SNodeOperations.getParent(parentNode), CONCEPTS.QueryExpression$ML))))).contains(SNodeOperations.castConcept(childConcept, CONCEPTS.QueryParameter$vQ));
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:aef526b1-5019-472a-a761-72ac88ef58a4(jetbrains.mps.lang.smodel.query.constraints)", "1227128029536563386");
 

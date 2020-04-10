@@ -43,9 +43,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -406,7 +403,6 @@
     <node concept="3Tm1VV" id="j" role="1B3o_S" />
     <node concept="2tJIrI" id="k" role="jymVt" />
     <node concept="3clFb_" id="l" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -501,8 +497,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1w" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gz" resolve="AbstractClassifierSpecification" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1c" role="3KbHQx">
@@ -552,8 +548,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1O" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="g$" resolve="AbstractMethodSpecification" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1d" role="3KbHQx">
@@ -626,8 +622,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="28" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="g_" resolve="CommentMigrationScriptPart" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1e" role="3KbHQx">
@@ -748,8 +744,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2_" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gA" resolve="DirectClassifierSpecification" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1f" role="3KbHQx">
@@ -870,8 +866,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3k" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gB" resolve="DirectMethodSpecification" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1g" role="3KbHQx">
@@ -944,8 +940,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="43" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gC" resolve="ExtractInterfaceMigration" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1h" role="3KbHQx">
@@ -1018,8 +1014,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4w" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gD" resolve="FQNameClassifierSpecification" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1i" role="3KbHQx">
@@ -1092,8 +1088,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4X" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gE" resolve="FQNameMethodSpecification" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1j" role="3KbHQx">
@@ -1166,8 +1162,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5q" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gF" resolve="FactoryMigrationScriptPart" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1k" role="3KbHQx">
@@ -1312,8 +1308,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5R" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gG" resolve="MigrationScript" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1l" role="3KbHQx">
@@ -1363,8 +1359,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6J" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gH" resolve="MigrationScriptPart" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1m" role="3KbHQx">
@@ -1437,8 +1433,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="73" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gI" resolve="MigrationScriptPart_Instance" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1n" role="3KbHQx">
@@ -1511,8 +1507,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7w" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gJ" resolve="MigrationScriptPart_Instance_Predicate" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1o" role="3KbHQx">
@@ -1585,8 +1581,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7X" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gK" resolve="MigrationScriptPart_Instance_Updater" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1p" role="3KbHQx">
@@ -1659,8 +1655,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8q" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gL" resolve="MigrationScriptPart_node" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1q" role="3KbHQx">
@@ -1733,8 +1729,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8R" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gM" resolve="PullUpMethod" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1r" role="3KbHQx">
@@ -1807,8 +1803,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9k" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gN" resolve="WhitespaceMigrationScriptPart" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -3916,7 +3912,6 @@
     </node>
     <node concept="2tJIrI" id="km" role="jymVt" />
     <node concept="3clFb_" id="kn" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -3938,8 +3933,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="mG" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gz" resolve="AbstractClassifierSpecification" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="mp" role="3KbHQx">
@@ -3951,8 +3946,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="mK" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="g$" resolve="AbstractMethodSpecification" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="mq" role="3KbHQx">
@@ -3964,8 +3959,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="mO" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="g_" resolve="CommentMigrationScriptPart" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="mr" role="3KbHQx">
@@ -3977,8 +3972,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="mS" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gA" resolve="DirectClassifierSpecification" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="ms" role="3KbHQx">
@@ -3990,8 +3985,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="mW" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gB" resolve="DirectMethodSpecification" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="mt" role="3KbHQx">
@@ -4003,8 +3998,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="n0" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gC" resolve="ExtractInterfaceMigration" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="mu" role="3KbHQx">
@@ -4016,8 +4011,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="n4" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gD" resolve="FQNameClassifierSpecification" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="mv" role="3KbHQx">
@@ -4029,8 +4024,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="n8" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gE" resolve="FQNameMethodSpecification" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="mw" role="3KbHQx">
@@ -4042,8 +4037,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="nc" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gF" resolve="FactoryMigrationScriptPart" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="mx" role="3KbHQx">
@@ -4055,8 +4050,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ng" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gG" resolve="MigrationScript" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="my" role="3KbHQx">
@@ -4068,8 +4063,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="nk" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gH" resolve="MigrationScriptPart" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="mz" role="3KbHQx">
@@ -4081,8 +4076,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="no" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gI" resolve="MigrationScriptPart_Instance" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="m$" role="3KbHQx">
@@ -4094,8 +4089,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ns" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gJ" resolve="MigrationScriptPart_Instance_Predicate" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="m_" role="3KbHQx">
@@ -4107,8 +4102,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="nw" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gK" resolve="MigrationScriptPart_Instance_Updater" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="mA" role="3KbHQx">
@@ -4120,8 +4115,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="n$" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gL" resolve="MigrationScriptPart_node" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="mB" role="3KbHQx">
@@ -4133,8 +4128,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="nC" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gM" resolve="PullUpMethod" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="mC" role="3KbHQx">
@@ -4146,8 +4141,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="nG" role="3Kbmr1">
-              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gN" resolve="WhitespaceMigrationScriptPart" />
+              <ref role="1PxDUh" node="gx" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="mD" role="3KbGdf">

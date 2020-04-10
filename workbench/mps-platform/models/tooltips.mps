@@ -20,6 +20,7 @@
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="439w" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.codeInsight.hint(MPS.IDEA/)" />
     <import index="mhfm" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:org.jetbrains.annotations(MPS.IDEA/)" />
+    <import index="mhfn" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -1098,9 +1099,9 @@
       <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
     </node>
     <node concept="2AHcQZ" id="pf7SrZYCmn" role="2AJF6D">
-      <ref role="2AI5Lk" to="mhfm:~ApiStatus$ScheduledForRemoval" resolve="ApiStatus.ScheduledForRemoval" />
+      <ref role="2AI5Lk" to="mhfn:~ApiStatus$ScheduledForRemoval" resolve="ApiStatus.ScheduledForRemoval" />
       <node concept="2B6LJw" id="pf7SrZYEKN" role="2B76xF">
-        <ref role="2B6OnR" to="mhfm:~ApiStatus$ScheduledForRemoval.inVersion()" resolve="inVersion" />
+        <ref role="2B6OnR" to="mhfn:~ApiStatus$ScheduledForRemoval.inVersion()" resolve="inVersion" />
         <node concept="Xl_RD" id="pf7SrZYEPc" role="2B70Vg">
           <property role="Xl_RC" value="2020.1" />
         </node>
@@ -1324,9 +1325,9 @@
       <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
     </node>
     <node concept="2AHcQZ" id="pf7SrZYH4a" role="2AJF6D">
-      <ref role="2AI5Lk" to="mhfm:~ApiStatus$ScheduledForRemoval" resolve="ApiStatus.ScheduledForRemoval" />
+      <ref role="2AI5Lk" to="mhfn:~ApiStatus$ScheduledForRemoval" resolve="ApiStatus.ScheduledForRemoval" />
       <node concept="2B6LJw" id="pf7SrZYHue" role="2B76xF">
-        <ref role="2B6OnR" to="mhfm:~ApiStatus$ScheduledForRemoval.inVersion()" resolve="inVersion" />
+        <ref role="2B6OnR" to="mhfn:~ApiStatus$ScheduledForRemoval.inVersion()" resolve="inVersion" />
         <node concept="Xl_RD" id="pf7SrZYHyD" role="2B70Vg">
           <property role="Xl_RC" value="2020.1" />
         </node>
@@ -2556,9 +2557,9 @@
       <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
     </node>
     <node concept="2AHcQZ" id="5N7YVqEHT7j" role="2AJF6D">
-      <ref role="2AI5Lk" to="mhfm:~ApiStatus$ScheduledForRemoval" resolve="ApiStatus.ScheduledForRemoval" />
+      <ref role="2AI5Lk" to="mhfn:~ApiStatus$ScheduledForRemoval" resolve="ApiStatus.ScheduledForRemoval" />
       <node concept="2B6LJw" id="5N7YVqEHUvy" role="2B76xF">
-        <ref role="2B6OnR" to="mhfm:~ApiStatus$ScheduledForRemoval.inVersion()" resolve="inVersion" />
+        <ref role="2B6OnR" to="mhfn:~ApiStatus$ScheduledForRemoval.inVersion()" resolve="inVersion" />
         <node concept="Xl_RD" id="5N7YVqEHUIE" role="2B70Vg">
           <property role="Xl_RC" value="2020.1" />
         </node>
@@ -2708,9 +2709,9 @@
       <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
     </node>
     <node concept="2AHcQZ" id="pf7SrZYKfg" role="2AJF6D">
-      <ref role="2AI5Lk" to="mhfm:~ApiStatus$ScheduledForRemoval" resolve="ApiStatus.ScheduledForRemoval" />
+      <ref role="2AI5Lk" to="mhfn:~ApiStatus$ScheduledForRemoval" resolve="ApiStatus.ScheduledForRemoval" />
       <node concept="2B6LJw" id="pf7SrZYKgS" role="2B76xF">
-        <ref role="2B6OnR" to="mhfm:~ApiStatus$ScheduledForRemoval.inVersion()" resolve="inVersion" />
+        <ref role="2B6OnR" to="mhfn:~ApiStatus$ScheduledForRemoval.inVersion()" resolve="inVersion" />
         <node concept="Xl_RD" id="pf7SrZYKlf" role="2B70Vg">
           <property role="Xl_RC" value="2020.1" />
         </node>

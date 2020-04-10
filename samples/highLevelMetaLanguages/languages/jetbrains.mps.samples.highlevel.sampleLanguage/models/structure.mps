@@ -3,7 +3,6 @@
   <persistence version="9" />
   <languages>
     <devkit ref="d772797b-a94f-47ab-a15c-365485022ccb(jetbrains.mps.samples.highlevel.devkit.structure)" />
-    <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports />
   <registry>

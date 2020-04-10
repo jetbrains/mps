@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="2yjrdiabh5wxcu37hk4u4pmwbvimel5">
+<product version="3" modelHash="-a2d82f7l54cp7dspgpemcz7t2d0ycbq">
   <files names="AbstractCommandPart.java:CommandPart.java:DefaultProcessHandler.java:KeyValueCommandPart.java:ListCommandPart.java:OutputRedirector.java:ProcessHandlerBuilder.java:PropertyCommandPart.java" />
 </product>
 

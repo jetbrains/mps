@@ -15,6 +15,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
+import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -133,15 +134,22 @@ public class Line_Actions {
 
     // If we set a DELETE action but no BACKSPACE action, 
     // use the DELETE action for BACKSPACE as well. 
-    CellAction deleteAction = editorCell.getAction(CellActionType.DELETE);
-    CellAction backspaceAction = editorCell.getAction(CellActionType.BACKSPACE);
-    if (deleteAction != originalDelete && backspaceAction == originalBackspace) {
-      editorCell.setAction(CellActionType.BACKSPACE, deleteAction);
+    CellAction delete = editorCell.getAction(CellActionType.DELETE);
+    CellAction backspace = editorCell.getAction(CellActionType.BACKSPACE);
+    if (delete != originalDelete && backspace == originalBackspace) {
+      editorCell.setAction(CellActionType.BACKSPACE, delete);
+    }
+    if (delete != originalDelete) {
+      editorCell.putUserObject(AbstractCellListHandler.ELEMENT_CELL_DELETE_SET, OB);
+    }
+    if (backspace != originalBackspace) {
+      editorCell.putUserObject(AbstractCellListHandler.ELEMENT_CELL_BACKSPACE_SET, OB);
     }
   }
 
-  public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
+  private static final Object OB = new Object();
 
+  public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     // set cell actions from all imported action maps 
 
     // set cell actions defined directly in this action map 
@@ -149,7 +157,6 @@ public class Line_Actions {
     editorCell.setAction(CellActionType.SELECT_LEFT, createAction_SELECT_LEFT(node));
     editorCell.setAction(CellActionType.SELECT_NEXT, createAction_SELECT_NEXT(node));
     editorCell.setAction(CellActionType.SELECT_RIGHT, createAction_SELECT_RIGHT(node));
-
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {

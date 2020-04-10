@@ -34,6 +34,7 @@ public class ToggleDefaultMethodInInterface_Test extends BaseTransformationTest 
     public void testMethodImpl() throws Exception {
       initEditorComponent("1076865108604126516", "2209098755809724856");
       invokeIntention("jetbrains.mps.baseLanguage.intentions.ToggleMethodDefault_Intention", myStart.getNode());
+
     }
   }
 }

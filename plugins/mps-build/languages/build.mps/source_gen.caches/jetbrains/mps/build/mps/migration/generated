@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="6admchvxx5b6wt61bn3rymltlg93pgm">
+<product version="3" modelHash="1xk948i20013mpy0ffwnw3b8h0vbl1h">
   <files names="BuildJavaVersionMigration.java:BuildJavaVersionMigration_JDKDefault.java:DevkitAsJar.java:MigrationDescriptor.java:ModuleResources.java:ModuleXml_classpathEntry.java:TransferCustomPackagingToLayout.java:UpdateListOfBrandingProperties.java" />
 </product>
 
