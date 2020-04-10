@@ -26,7 +26,9 @@
         </modelRoot>
       </models>
       <facets>
-        <facet type="java" />
+        <facet type="java">
+          <classes generated="true" path="${module}/generator/classes_gen" />
+        </facet>
       </facets>
       <external-templates>
         <generator generatorUID="0647eca7-da98-422a-8a8b-6ebc0bd014ea(jetbrains.mps.lang.editor#1129914002149)" />
