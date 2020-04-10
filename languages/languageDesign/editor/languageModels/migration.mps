@@ -54,19 +54,15 @@
       </concept>
     </language>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
-      <concept id="5991739802479784074" name="jetbrains.mps.lang.editor.structure.MenuTypeNamed" flags="ng" index="22hDWg" />
-      <concept id="5991739802479784073" name="jetbrains.mps.lang.editor.structure.MenuTypeDefault" flags="ng" index="22hDWj" />
       <concept id="2000375450116454183" name="jetbrains.mps.lang.editor.structure.ISubstituteMenu" flags="ng" index="22mbnS">
         <child id="414384289274416996" name="parts" index="3ft7WO" />
       </concept>
-      <concept id="2000375450116423800" name="jetbrains.mps.lang.editor.structure.SubstituteMenu" flags="ng" index="22mcaB" />
       <concept id="6089045305654894367" name="jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Named" flags="ng" index="2kknPI" />
+      <concept id="3738029991950788349" name="jetbrains.mps.lang.editor.structure.SubstituteMenu_Named" flags="ng" index="Q6S24" />
       <concept id="615427434521884870" name="jetbrains.mps.lang.editor.structure.SubstituteMenuPart_Subconcepts" flags="ng" index="2VfDsV" />
-      <concept id="1630016958697344083" name="jetbrains.mps.lang.editor.structure.IMenu_Concept" flags="ng" index="2ZABuq">
-        <child id="5991739802479788259" name="type" index="22hAXT" />
-      </concept>
       <concept id="2115302367868116903" name="jetbrains.mps.lang.editor.structure.GeneratedSubstituteMenuAttribute" flags="ng" index="382kZG" />
       <concept id="1154465273778" name="jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_ParentNode" flags="nn" index="3bvxqY" />
+      <concept id="3308396621974580100" name="jetbrains.mps.lang.editor.structure.SubstituteMenu_Default" flags="ng" index="3p36aQ" />
       <concept id="7580468736840446506" name="jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_model" flags="nn" index="1rpKSd" />
       <concept id="730181322658904464" name="jetbrains.mps.lang.editor.structure.SubstituteMenuPart_IncludeMenu" flags="ng" index="1s_PAr">
         <child id="730181322658904467" name="menuReference" index="1s_PAo" />
@@ -1571,8 +1567,7 @@
               <ref role="ehGHo" to="tpc2:3fw9B$5YUrX" resolve="SubstituteMenu_Named" />
             </node>
             <node concept="2c44tf" id="7ERGDLdnxKo" role="33vP2m">
-              <node concept="22mcaB" id="7ERGDLdnxKp" role="2c44tc">
-                <node concept="22hDWg" id="6UtCO5dGvqM" role="22hAXT" />
+              <node concept="Q6S24" id="7ERGDLdnxKp" role="2c44tc">
                 <node concept="3VyMlK" id="7ERGDLdnxKq" role="3ft7WO">
                   <node concept="2c44te" id="7ERGDLdnxKr" role="lGtFl">
                     <node concept="37vLTw" id="7ERGDLdnxKs" role="2c44t1">
@@ -1665,8 +1660,7 @@
               <ref role="ehGHo" to="tpc2:2RDMjbOTqI4" resolve="SubstituteMenu_Default" />
             </node>
             <node concept="2c44tf" id="7ERGDLdnEk7" role="33vP2m">
-              <node concept="22mcaB" id="7ERGDLdnEk8" role="2c44tc">
-                <node concept="22hDWj" id="6UtCO5dGvqN" role="22hAXT" />
+              <node concept="3p36aQ" id="7ERGDLdnEk8" role="2c44tc">
                 <node concept="1s_PAr" id="7ERGDLdnEkb" role="3ft7WO">
                   <node concept="2kknPI" id="7ERGDLdnEkc" role="1s_PAo">
                     <node concept="2c44tb" id="7ERGDLdnEkd" role="lGtFl">
