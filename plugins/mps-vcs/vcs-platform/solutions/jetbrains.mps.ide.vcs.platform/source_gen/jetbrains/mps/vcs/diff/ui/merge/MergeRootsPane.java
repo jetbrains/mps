@@ -252,7 +252,7 @@ public class MergeRootsPane implements PropertyChangeListener {
     public void process(@NotNull DiffDividerDrawUtil.DividerPaintable.Handler handler) {
       DiffChangeGroupLayout changeGroupLayout;
       if (myInspector) {
-        changeGroupLayout = ((DiffChangeGroupLayout) ((mine ? ListSequence.fromList(myChangeGroupLayouts).getElement(3) : ListSequence.fromList(myChangeGroupLayouts).getElement(4))));
+        changeGroupLayout = ((DiffChangeGroupLayout) ((mine ? ListSequence.fromList(myChangeGroupLayouts).getElement(2) : ListSequence.fromList(myChangeGroupLayouts).getElement(3))));
       } else {
         changeGroupLayout = ((DiffChangeGroupLayout) ((mine ? ListSequence.fromList(myChangeGroupLayouts).getElement(0) : ListSequence.fromList(myChangeGroupLayouts).getElement(1))));
       }
