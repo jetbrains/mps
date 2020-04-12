@@ -61,7 +61,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     style.set(StyleAttributes.EDITABLE, false);
     style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
     editorCell.getStyle().putAll(style);
-    IgnoreMigrationDataOption_Actions.setCellActions(editorCell, myNode, getEditorContext());
+    MigrationTestOption_Delete.setCellActions(editorCell, myNode, getEditorContext());
     return editorCell;
   }
   private EditorCell createConstant_0() {
@@ -90,7 +90,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     Style style = new StyleImpl();
     style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
-    IgnoreMigrationDataOption_Actions.setCellActions(editorCell, myNode, getEditorContext());
+    MigrationTestOption_Delete.setCellActions(editorCell, myNode, getEditorContext());
     return editorCell;
   }
   private static boolean isNotEmptyString(String str) {

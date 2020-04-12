@@ -25,6 +25,8 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.smodel.tempmodel.TempModuleOptions;
+import jetbrains.mps.smodel.CopyUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.test.runtime.BaseMigrationTestBody;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.Iterator;
@@ -89,16 +91,19 @@ public final class GenerateOutput_Intention extends AbstractIntentionDescriptor 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SModel tempModel = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
+      for (SNode root : ListSequence.fromList(CopyUtil.copy(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.inputNodes$h6eF), LINKS.nodeToCheck$Pz43)).toListSequence()))) {
+        SModelOperations.addRootNode(tempModel, root);
+      }
       List<MigrationScript> migrationScripts = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.migration$wvkx), LINKS.migration$RUsw)).select(new ISelector<SNode, MigrationScript>() {
         public MigrationScript select(SNode it) {
-          return check_hr1otd_a0a0a0a0b0c7(check_hr1otd_a0a0a0a0a1a2h(LanguageRegistry.getInstance().getLanguage(((Language) SNodeOperations.getModel(it).getModule()))), it);
+          return check_hr1otd_a0a0a0a0c0c7(check_hr1otd_a0a0a0a0a2a2h(LanguageRegistry.getInstance().getLanguage(((Language) SNodeOperations.getModel(it).getModule()))), it);
         }
       }).toListSequence();
-      Collection<SNode> output = BaseMigrationTestBody.runMigration(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.inputNodes$h6eF), LINKS.nodeToCheck$Pz43)).toListSequence(), tempModel, ListSequence.fromList(migrationScripts).toGenericArray(MigrationScript.class));
+      Collection<SNode> output = CopyUtil.copy(BaseMigrationTestBody.runMigration(tempModel, ListSequence.fromList(migrationScripts).toGenericArray(MigrationScript.class)));
       if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.outputNodes$ot72)).count() != CollectionSequence.fromCollection(output).count()) {
         ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.outputNodes$ot72)).clear();
         for (SNode n : CollectionSequence.fromCollection(output)) {
-          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.outputNodes$ot72)).addElement(createTestNode_8ua06z_a0a0a1a3a0(n));
+          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.outputNodes$ot72)).addElement(createTestNode_8ua06z_a0a0a1a4a0(n));
         }
       } else {
         {
@@ -132,19 +137,19 @@ public final class GenerateOutput_Intention extends AbstractIntentionDescriptor 
     }
     return null;
   }
-  private static MigrationScript check_hr1otd_a0a0a0a0b0c7(MigrationAspectDescriptor checkedDotOperand, SNode it) {
+  private static MigrationScript check_hr1otd_a0a0a0a0c0c7(MigrationAspectDescriptor checkedDotOperand, SNode it) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getScript((int) IMigrationUnit__BehaviorDescriptor.fromVersion_id4uVwhQyFcnl.invoke(it));
     }
     return null;
   }
-  private static MigrationAspectDescriptor check_hr1otd_a0a0a0a0a1a2h(LanguageRuntime checkedDotOperand) {
+  private static MigrationAspectDescriptor check_hr1otd_a0a0a0a0a2a2h(LanguageRuntime checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getAspect(MigrationAspectDescriptor.class);
     }
     return null;
   }
-  private static SNode createTestNode_8ua06z_a0a0a1a3a0(SNode p0) {
+  private static SNode createTestNode_8ua06z_a0a0a1a4a0(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TestNode$kc);
     n0.forChild(LINKS.nodeToCheck$Pz43).initNode(p0, CONCEPTS.BaseConcept$Sz, true);
     return n0.getResult();

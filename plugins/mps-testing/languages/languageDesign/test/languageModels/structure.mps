@@ -1531,5 +1531,12 @@
       <ref role="PrY4T" node="6EW1JnOFUIt" resolve="IRuleReference" />
     </node>
   </node>
+  <node concept="1TIwiD" id="5zRGbU5_gLx">
+    <property role="EcuMT" value="6410786926916602977" />
+    <property role="3GE5qa" value="migration" />
+    <property role="TrG5h" value="StableIdOption" />
+    <property role="34LRSv" value="including node id" />
+    <ref role="1TJDcQ" node="5j9sOBrE7yu" resolve="MigrationTestOption" />
+  </node>
 </model>
 

@@ -4224,7 +4224,7 @@
           <node concept="2iRkQZ" id="5j9sOBrLfVz" role="2czzBx" />
           <node concept="VPM3Z" id="5j9sOBrLfV$" role="3F10Kt" />
           <node concept="3F0ifn" id="5j9sOBrLfVE" role="2czzBI">
-            <property role="ilYzB" value="&lt;without exceptions&gt;" />
+            <property role="ilYzB" value="&lt;structurally&gt;" />
           </node>
         </node>
         <node concept="2iRfu4" id="5j9sOBrKrTg" role="2iSdaV" />
@@ -4407,7 +4407,7 @@
     <node concept="3EZMnI" id="5j9sOBrRvDE" role="2wV5jI">
       <node concept="PMmxH" id="5j9sOBrMRvA" role="3EZMnx">
         <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
-        <ref role="1ERwB7" node="5j9sOBrXeoS" resolve="IgnoreMigrationDataOption_Actions" />
+        <ref role="1ERwB7" node="5j9sOBrXeoS" resolve="MigrationTestOption_Delete" />
         <node concept="VPxyj" id="5j9sOBrWFAs" role="3F10Kt" />
         <node concept="Vb9p2" id="5j9sOBrNGo2" role="3F10Kt" />
       </node>
@@ -4415,7 +4415,7 @@
         <property role="3F0ifm" value="by scripts" />
       </node>
       <node concept="1HlG4h" id="5j9sOBrRvFr" role="3EZMnx">
-        <ref role="1ERwB7" node="5j9sOBrXeoS" resolve="IgnoreMigrationDataOption_Actions" />
+        <ref role="1ERwB7" node="5j9sOBrXeoS" resolve="MigrationTestOption_Delete" />
         <node concept="1HfYo3" id="5j9sOBrRvFt" role="1HlULh">
           <node concept="3TQlhw" id="5j9sOBrRvFv" role="1Hhtcw">
             <node concept="3clFbS" id="5j9sOBrRvFx" role="2VODD2">
@@ -4516,8 +4516,8 @@
   </node>
   <node concept="1h_SRR" id="5j9sOBrXeoS">
     <property role="3GE5qa" value="migration" />
-    <property role="TrG5h" value="IgnoreMigrationDataOption_Actions" />
-    <ref role="1h_SK9" to="tp5g:5j9sOBrG_KN" resolve="IgnoreMigrationDataOption" />
+    <property role="TrG5h" value="MigrationTestOption_Delete" />
+    <ref role="1h_SK9" to="tp5g:5j9sOBrE7yu" resolve="MigrationTestOption" />
     <node concept="1hA7zw" id="5j9sOBrXeoT" role="1h_SK8">
       <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="5j9sOBrXeoU" role="1hA7z_">
@@ -4712,6 +4712,16 @@
       <node concept="2kknPJ" id="37IDDoEg2_5" role="2klrvf">
         <ref role="2ZyFGn" to="tpck:gw2VY9q" resolve="BaseConcept" />
       </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="5zRGbU5_oFj">
+    <property role="3GE5qa" value="migration" />
+    <ref role="1XX52x" to="tp5g:5zRGbU5_gLx" resolve="StableIdOption" />
+    <node concept="PMmxH" id="5zRGbU5_p88" role="2wV5jI">
+      <ref role="1ERwB7" node="5j9sOBrXeoS" resolve="MigrationTestOption_Delete" />
+      <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
+      <node concept="VPxyj" id="5zRGbU5_p89" role="3F10Kt" />
+      <node concept="Vb9p2" id="5zRGbU5_p8a" role="3F10Kt" />
     </node>
   </node>
 </model>

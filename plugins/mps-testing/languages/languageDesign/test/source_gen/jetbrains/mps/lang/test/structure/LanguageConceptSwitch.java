@@ -79,18 +79,19 @@ public final class LanguageConceptSwitch {
   public static final int ScopesExpectedNode = 67;
   public static final int ScopesTest = 68;
   public static final int SimpleNodeTest = 69;
-  public static final int SwitchToInspector = 70;
-  public static final int TestInfo = 71;
-  public static final int TestNode = 72;
-  public static final int TestNodeAnnotation = 73;
-  public static final int TestNodeReference = 74;
-  public static final int TypeKeyStatement = 75;
-  public static final int TypesystemEquationReference = 76;
-  public static final int UnknownRuleReference = 77;
-  public static final int UntypedExpression = 78;
-  public static final int VariableAlive = 79;
-  public static final int VariableInitialized = 80;
-  public static final int WarningStatementReference = 81;
+  public static final int StableIdOption = 70;
+  public static final int SwitchToInspector = 71;
+  public static final int TestInfo = 72;
+  public static final int TestNode = 73;
+  public static final int TestNodeAnnotation = 74;
+  public static final int TestNodeReference = 75;
+  public static final int TypeKeyStatement = 76;
+  public static final int TypesystemEquationReference = 77;
+  public static final int UnknownRuleReference = 78;
+  public static final int UntypedExpression = 79;
+  public static final int VariableAlive = 80;
+  public static final int VariableInitialized = 81;
+  public static final int WarningStatementReference = 82;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL);
@@ -164,6 +165,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x32ba5b0ec25fe9f3L, ScopesExpectedNode);
     builder.put(0x7181d929c720809L, ScopesTest);
     builder.put(0x11d71fcb191L, SimpleNodeTest);
+    builder.put(0x58f7b0be85950c61L, StableIdOption);
     builder.put(0x501fdfb29636e491L, SwitchToInspector);
     builder.put(0x46bca02bfb6e730aL, TestInfo);
     builder.put(0x11b5a38fc01L, TestNode);

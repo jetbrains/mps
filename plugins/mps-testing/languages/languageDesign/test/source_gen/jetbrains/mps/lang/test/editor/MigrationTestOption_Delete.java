@@ -13,7 +13,7 @@ import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import java.util.Objects;
 
-public class IgnoreMigrationDataOption_Actions {
+public class MigrationTestOption_Delete {
 
   /*package*/ static AbstractCellAction createAction_DELETE(final SNode node) {
     return new AbstractCellAction() {

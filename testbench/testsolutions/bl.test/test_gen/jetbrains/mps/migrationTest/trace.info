@@ -10,7 +10,7 @@
   <root nodeRef="r:71718df8-4cce-453f-a660-5133048de06c(jetbrains.mps.migrationTest@tests)/7948043932933885479">
     <file name="MigrateTryStatement_Test.java">
       <node id="7948043932933885479" at="34,37,35,25" concept="6" />
-      <node id="7948043932933885479" at="39,64,40,36" concept="1" />
+      <node id="7948043932933885479" at="39,64,40,40" concept="1" />
       <node id="7948043932933885479" at="45,52,46,19" concept="6" />
       <node id="7948043932933885479" at="50,46,51,202" concept="4" />
       <node id="7948043932933885479" at="54,47,55,202" concept="4" />
@@ -26,7 +26,7 @@
       <node id="7948043932933885479" at="53,0,57,0" concept="3" trace="getOutputNodes#()Ljava/util/Collection;" />
       <node id="7948043932933885479" at="57,0,61,0" concept="3" trace="getMigrationScript#()[Ljetbrains/mps/lang/migration/runtime/base/MigrationScript;" />
       <scope id="7948043932933885479" at="34,37,35,25" />
-      <scope id="7948043932933885479" at="39,64,40,36" />
+      <scope id="7948043932933885479" at="39,64,40,40" />
       <scope id="7948043932933885479" at="45,52,46,19" />
       <scope id="7948043932933885479" at="50,46,51,202" />
       <scope id="7948043932933885479" at="54,47,55,202" />

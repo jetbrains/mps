@@ -290,6 +290,9 @@
       <concept id="1180636770613" name="jetbrains.mps.lang.smodel.structure.SNodeCreator" flags="nn" index="3zrR0B">
         <child id="1180636770616" name="createdType" index="3zrR0E" />
       </concept>
+      <concept id="1206482823744" name="jetbrains.mps.lang.smodel.structure.Model_AddRootOperation" flags="nn" index="3BYIHo">
+        <child id="1206482823746" name="nodeArgument" index="3BYIHq" />
+      </concept>
       <concept id="6407023681583036853" name="jetbrains.mps.lang.smodel.structure.NodeAttributeQualifier" flags="ng" index="3CFYIy">
         <reference id="6407023681583036854" name="attributeConcept" index="3CFYIx" />
       </concept>
@@ -1813,6 +1816,43 @@
             </node>
           </node>
         </node>
+        <node concept="2Gpval" id="26S_KM$5kT3" role="3cqZAp">
+          <node concept="2GrKxI" id="26S_KM$5kT5" role="2Gsz3X">
+            <property role="TrG5h" value="root" />
+          </node>
+          <node concept="3clFbS" id="26S_KM$5kT9" role="2LFqv$">
+            <node concept="3clFbF" id="26S_KM$5mQ0" role="3cqZAp">
+              <node concept="2OqwBi" id="26S_KM$5n0S" role="3clFbG">
+                <node concept="37vLTw" id="5zRGbU5BRyd" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7KUdrkECSWa" resolve="tempModel" />
+                </node>
+                <node concept="3BYIHo" id="26S_KM$5n8p" role="2OqNvi">
+                  <node concept="2GrUjf" id="26S_KM$5oe1" role="3BYIHq">
+                    <ref role="2Gs0qQ" node="26S_KM$5kT5" resolve="root" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2YIFZM" id="26S_KM$5dWJ" role="2GsD0m">
+            <ref role="37wK5l" to="w1kc:~CopyUtil.copy(java.util.List)" resolve="copy" />
+            <ref role="1Pybhc" to="w1kc:~CopyUtil" resolve="CopyUtil" />
+            <node concept="2OqwBi" id="7KUdrkEIx0l" role="37wK5m">
+              <node concept="2OqwBi" id="7KUdrkEIoFb" role="2Oq$k0">
+                <node concept="2OqwBi" id="7KUdrkEFcNR" role="2Oq$k0">
+                  <node concept="2Sf5sV" id="7KUdrkEGxOO" role="2Oq$k0" />
+                  <node concept="3Tsc0h" id="7KUdrkEFcNV" role="2OqNvi">
+                    <ref role="3TtcxE" to="tp5g:4K12N3pJ$JC" resolve="inputNodes" />
+                  </node>
+                </node>
+                <node concept="13MTOL" id="7KUdrkEIsI9" role="2OqNvi">
+                  <ref role="13MTZf" to="tp5g:hHqenIi" resolve="nodeToCheck" />
+                </node>
+              </node>
+              <node concept="ANE8D" id="7KUdrkEIzDX" role="2OqNvi" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="5JRx$mlZyd4" role="3cqZAp">
           <node concept="3cpWsn" id="5JRx$mlZyd5" role="3cpWs9">
             <property role="TrG5h" value="migrationScripts" />
@@ -1907,31 +1947,21 @@
             <node concept="3vKaQO" id="7KUdrkEFcNK" role="1tU5fm">
               <node concept="3Tqbb2" id="7KUdrkEFcNN" role="3O5elw" />
             </node>
-            <node concept="2YIFZM" id="7KUdrkEFcNQ" role="33vP2m">
-              <ref role="1Pybhc" to="tp6m:7KUdrkE_D1n" resolve="BaseMigrationTestBody" />
-              <ref role="37wK5l" to="tp6m:7KUdrkECRUc" resolve="runMigration" />
-              <node concept="2OqwBi" id="7KUdrkEIx0l" role="37wK5m">
-                <node concept="2OqwBi" id="7KUdrkEIoFb" role="2Oq$k0">
-                  <node concept="2OqwBi" id="7KUdrkEFcNR" role="2Oq$k0">
-                    <node concept="2Sf5sV" id="7KUdrkEGxOO" role="2Oq$k0" />
-                    <node concept="3Tsc0h" id="7KUdrkEFcNV" role="2OqNvi">
-                      <ref role="3TtcxE" to="tp5g:4K12N3pJ$JC" resolve="inputNodes" />
-                    </node>
-                  </node>
-                  <node concept="13MTOL" id="7KUdrkEIsI9" role="2OqNvi">
-                    <ref role="13MTZf" to="tp5g:hHqenIi" resolve="nodeToCheck" />
-                  </node>
+            <node concept="2YIFZM" id="5zRGbU5Bw3b" role="33vP2m">
+              <ref role="37wK5l" to="w1kc:~CopyUtil.copy(java.util.List)" resolve="copy" />
+              <ref role="1Pybhc" to="w1kc:~CopyUtil" resolve="CopyUtil" />
+              <node concept="2YIFZM" id="7KUdrkEFcNQ" role="37wK5m">
+                <ref role="1Pybhc" to="tp6m:7KUdrkE_D1n" resolve="BaseMigrationTestBody" />
+                <ref role="37wK5l" to="tp6m:7KUdrkECRUc" resolve="runMigration" />
+                <node concept="37vLTw" id="6dZNzDpLRo2" role="37wK5m">
+                  <ref role="3cqZAo" node="7KUdrkECSWa" resolve="tempModel" />
                 </node>
-                <node concept="ANE8D" id="7KUdrkEIzDX" role="2OqNvi" />
-              </node>
-              <node concept="37vLTw" id="6dZNzDpLRo2" role="37wK5m">
-                <ref role="3cqZAo" node="7KUdrkECSWa" resolve="tempModel" />
-              </node>
-              <node concept="2OqwBi" id="5JRx$mlZB47" role="37wK5m">
-                <node concept="37vLTw" id="5JRx$mlZ_SA" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5JRx$mlZyd5" resolve="migrationScripts" />
+                <node concept="2OqwBi" id="5JRx$mlZB47" role="37wK5m">
+                  <node concept="37vLTw" id="5JRx$mlZ_SA" role="2Oq$k0">
+                    <ref role="3cqZAo" node="5JRx$mlZyd5" resolve="migrationScripts" />
+                  </node>
+                  <node concept="3_kTaI" id="5JRx$mlZC1Y" role="2OqNvi" />
                 </node>
-                <node concept="3_kTaI" id="5JRx$mlZC1Y" role="2OqNvi" />
               </node>
             </node>
           </node>

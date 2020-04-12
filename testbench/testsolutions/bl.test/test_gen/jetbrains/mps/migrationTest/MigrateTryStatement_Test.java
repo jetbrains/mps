@@ -37,7 +37,7 @@ public class MigrateTryStatement_Test extends BaseTransformationTest {
 
   @Test
   public void test_MigrateTryStatement_Test() throws Throwable {
-    new TestBody(this).testMethod();
+    new TestBody(this).testMethod(true);
   }
 
   /*package*/ static class TestBody extends BaseMigrationTestBody {

@@ -492,7 +492,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     private EditorCell createConstant_4() {
       EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
       editorCell.setCellId("Constant_w3rzlq_a2d0");
-      editorCell.setDefaultText("<without exceptions>");
+      editorCell.setDefaultText("<structurally>");
       return editorCell;
     }
   }
