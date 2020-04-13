@@ -5,7 +5,7 @@
   <attribute name="generation-plan" value="AspectCPS" />
   <languages />
   <imports>
-    <import index="bhcn" ref="r:b764cfb6-903f-41e9-95dc-ea24a6097dec(tooltips.structure)" />
+    <import index="bhcn" ref="r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(tooltips.structure)" />
     <import index="ksn4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
@@ -943,7 +943,7 @@
             <node concept="liA8E" id="4J" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.origin(java.lang.String)" resolve="origin" />
               <node concept="Xl_RD" id="4K" role="37wK5m">
-                <property role="Xl_RC" value="r:b764cfb6-903f-41e9-95dc-ea24a6097dec(tooltips.structure)/3877544518697302453" />
+                <property role="Xl_RC" value="r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(tooltips.structure)/3877544518697302453" />
               </node>
             </node>
           </node>
@@ -1168,7 +1168,7 @@
             <node concept="liA8E" id="67" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.origin(java.lang.String)" resolve="origin" />
               <node concept="Xl_RD" id="68" role="37wK5m">
-                <property role="Xl_RC" value="r:b764cfb6-903f-41e9-95dc-ea24a6097dec(tooltips.structure)/9185659875393567715" />
+                <property role="Xl_RC" value="r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(tooltips.structure)/9185659875393567715" />
               </node>
             </node>
           </node>

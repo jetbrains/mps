@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:ccc912a6-16e8-466b-b48a-0e82310c4cc7(tooltips.editor)">
+<model ref="r:eed912a6-16e8-466b-b48a-0e82310c46dd(tooltips.editor)">
   <persistence version="9" />
   <languages>
     <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
   </languages>
   <imports>
     <import index="tpc5" ref="r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)" />
-    <import index="bhcn" ref="r:b764cfb6-903f-41e9-95dc-ea24a6097dec(tooltips.structure)" implicit="true" />
+    <import index="bhcn" ref="r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(tooltips.structure)" implicit="true" />
     <import index="tpen" ref="r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>

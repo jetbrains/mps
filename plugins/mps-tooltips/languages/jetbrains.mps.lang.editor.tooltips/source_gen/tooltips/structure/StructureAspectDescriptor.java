@@ -55,7 +55,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("tooltips", "AuxEditorCellWithRefToGeneratedHint", 0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x35cfce3215b739b5L);
     b.class_(true, false, false);
     b.super_("jetbrains.mps.lang.editor.structure.EditorCellModel", 0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L);
-    b.origin("r:b764cfb6-903f-41e9-95dc-ea24a6097dec(tooltips.structure)/3877544518697302453");
+    b.origin("r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(tooltips.structure)/3877544518697302453");
     b.version(2);
     b.associate("hint", 0x35cfce3215b85a20L).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef50d095eL).optional(false).origin("3877544518697376288").done();
     b.aggregate("tooltip", 0x955054acf64dc63L).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L).optional(true).ordered(true).multiple(false).origin("672449538226969699").done();
@@ -65,7 +65,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("tooltips", "CellModel_Tooltip", 0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x7f7a04fd2c647be3L);
     b.class_(false, false, false);
     b.super_("jetbrains.mps.lang.editor.structure.EditorCellModel", 0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L);
-    b.origin("r:b764cfb6-903f-41e9-95dc-ea24a6097dec(tooltips.structure)/9185659875393567715");
+    b.origin("r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(tooltips.structure)/9185659875393567715");
     b.version(2);
     b.property("lazy", 0x42ab886dda92b1ebL).type(PrimitiveTypeId.BOOLEAN).origin("4804083432920625643").done();
     b.aggregate("tooltipCell", 0x35cfce3215bf1834L).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L).optional(false).ordered(true).multiple(false).origin("3877544518697818164").done();

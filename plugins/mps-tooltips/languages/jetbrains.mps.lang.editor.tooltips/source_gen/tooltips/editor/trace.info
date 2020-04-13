@@ -16,7 +16,7 @@
       <unit at="20,0,54,0" name="tooltips.editor.EditorAspectDescriptorImpl" />
     </file>
   </root>
-  <root nodeRef="r:ccc912a6-16e8-466b-b48a-0e82310c4cc7(tooltips.editor)/3877544518697325392">
+  <root nodeRef="r:eed912a6-16e8-466b-b48a-0e82310c46dd(tooltips.editor)/3877544518697325392">
     <file name="AuxEditorCellWithRefToGeneratedHint_Editor.java">
       <node id="3877544518697325392" at="11,79,12,101" concept="6" />
       <node id="3877544518697325392" at="11,0,14,0" concept="4" trace="createEditorCell#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -266,7 +266,7 @@
       <unit id="3877544518697325392" at="44,0,239,0" name="tooltips.editor.AuxEditorCellWithRefToGeneratedHint_EditorBuilder_a" />
     </file>
   </root>
-  <root nodeRef="r:ccc912a6-16e8-466b-b48a-0e82310c4cc7(tooltips.editor)/430077727056735136">
+  <root nodeRef="r:eed912a6-16e8-466b-b48a-0e82310c46dd(tooltips.editor)/430077727056735136">
     <file name="AuxEditorCellWithRefToGeneratedHint_SubstituteMenu.java">
       <node id="430077727056735136" at="18,118,19,140" concept="5" />
       <node id="430077727056735136" at="19,140,20,18" concept="6" />
@@ -292,7 +292,7 @@
       <unit id="430077727056735136" at="15,0,37,0" name="tooltips.editor.AuxEditorCellWithRefToGeneratedHint_SubstituteMenu" />
     </file>
   </root>
-  <root nodeRef="r:ccc912a6-16e8-466b-b48a-0e82310c4cc7(tooltips.editor)/9185659875393569207">
+  <root nodeRef="r:eed912a6-16e8-466b-b48a-0e82310c46dd(tooltips.editor)/9185659875393569207">
     <file name="CellModel_Tooltip_Editor.java">
       <node id="9185659875393569207" at="11,79,12,83" concept="6" />
       <node id="9185659875393569207" at="14,82,15,86" concept="6" />

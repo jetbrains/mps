@@ -15,7 +15,7 @@
     <import index="cj4x" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor(MPS.Editor/)" />
     <import index="tpcb" ref="r:00000000-0000-4000-0000-011c89590297(jetbrains.mps.lang.editor.behavior)" />
     <import index="5usg" ref="r:3838bb8b-fecd-4f7c-841e-325717a43980(tooltips.runtime)" />
-    <import index="bhcn" ref="r:b764cfb6-903f-41e9-95dc-ea24a6097dec(tooltips.structure)" />
+    <import index="bhcn" ref="r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(tooltips.structure)" />
     <import index="rfhd" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util.registry(MPS.IDEA/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
