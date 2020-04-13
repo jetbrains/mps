@@ -58,7 +58,7 @@
   <sourcePath />
   <dependencies>
     <dependency reexport="false">b1ab8c10-c118-4755-bf2a-cebab35cf533(tooltips)</dependency>
-    <dependency reexport="false">fa52e9df-2136-4ef8-81b2-bec0babe5ec8(tooltips.runtime)</dependency>
+    <dependency reexport="false">af52e9df-2136-4ef8-81b2-bec0babe5e4c(tooltips.runtime)</dependency>
   </dependencies>
   <languageVersions>
     <language slang="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" version="11" />
@@ -121,7 +121,7 @@
     <module reference="9ded098b-ad6a-4657-bfd9-48636cfe8bc3(jetbrains.mps.lang.traceable)" version="0" />
     <module reference="b1ab8c10-c118-4755-bf2a-cebab35cf533(tooltips)" version="0" />
     <module reference="a8c4631e-640d-42a1-ba26-250ba067c2c2(tooltips.example)" version="0" />
-    <module reference="fa52e9df-2136-4ef8-81b2-bec0babe5ec8(tooltips.runtime)" version="0" />
+    <module reference="af52e9df-2136-4ef8-81b2-bec0babe5e4c(tooltips.runtime)" version="0" />
   </dependencyVersions>
   <extendedLanguages />
 </language>

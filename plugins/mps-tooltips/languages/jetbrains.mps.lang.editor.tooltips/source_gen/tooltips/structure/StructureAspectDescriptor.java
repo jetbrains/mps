@@ -62,7 +62,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForCellModel_Tooltip() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("tooltips", "CellModel_Tooltip", 0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x7f7a04fd2c647be3L);
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("tooltips", "CellModel_Tooltip", 0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x11d794d84ece7c48L);
     b.class_(false, false, false);
     b.super_("jetbrains.mps.lang.editor.structure.EditorCellModel", 0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L);
     b.origin("r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(tooltips.structure)/9185659875393567715");

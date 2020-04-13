@@ -39,7 +39,7 @@
       </concept>
     </language>
     <language id="b1ab8c10-c118-4755-bf2a-cebab35cf533" name="tooltips">
-      <concept id="9185659875393567715" name="tooltips.structure.CellModel_Tooltip" flags="ng" index="1j7BWu">
+      <concept id="1285659875393567816" name="tooltips.structure.CellModel_Tooltip" flags="ng" index="1j7BWu">
         <property id="4804083432920625643" name="lazy" index="2oejA6" />
         <child id="3877544518697818164" name="tooltipCell" index="wsdo6" />
         <child id="9185659875393569181" name="visibleCell" index="1j7Clw" />

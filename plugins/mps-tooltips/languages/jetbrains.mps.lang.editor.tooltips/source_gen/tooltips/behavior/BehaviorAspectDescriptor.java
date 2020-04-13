@@ -27,5 +27,5 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
     }
     return null;
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x7f7a04fd2c647be3L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x11d794d84ece7c48L)).seal();
 }

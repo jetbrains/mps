@@ -48,6 +48,6 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
     return Collections.<SubstituteMenu>emptyList();
   }
 
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x35cfce3215b739b5L), MetaIdFactory.conceptId(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x7f7a04fd2c647be3L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x35cfce3215b739b5L), MetaIdFactory.conceptId(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x11d794d84ece7c48L)).seal();
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x35cfce3215b739b5L)).seal();
 }

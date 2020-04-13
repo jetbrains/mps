@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="00000000-0000-4000-5f02-5beb5f025beb/i:f164800(checkpoints/tooltips.structure@descriptorclasses)">
+<model ref="00000000-0000-4000-5f02-5beb5f025beb/i:fd64901(checkpoints/tooltips.structure@descriptorclasses)">
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
   <languages />
   <imports>
-    <import index="bhcn" ref="r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(tooltips.structure)" />
+    <import index="8byu" ref="r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(tooltips.structure)" />
     <import index="ksn4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
@@ -544,7 +544,7 @@
             <node concept="liA8E" id="2f" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
               <node concept="1adDum" id="2g" role="37wK5m">
-                <property role="1adDun" value="0x7f7a04fd2c647be3L" />
+                <property role="1adDun" value="0x11d794d84ece7c48L" />
               </node>
               <node concept="37vLTw" id="2h" role="37wK5m">
                 <ref role="3cqZAo" node="1F" resolve="CellModel_Tooltip" />
@@ -1119,7 +1119,7 @@
                   <property role="1adDun" value="0xbf2acebab35cf533L" />
                 </node>
                 <node concept="1adDum" id="5R" role="37wK5m">
-                  <property role="1adDun" value="0x7f7a04fd2c647be3L" />
+                  <property role="1adDun" value="0x11d794d84ece7c48L" />
                 </node>
               </node>
             </node>
