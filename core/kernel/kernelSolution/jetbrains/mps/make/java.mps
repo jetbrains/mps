@@ -95,9 +95,7 @@
         <child id="1068580123134" name="parameter" index="3clF46" />
         <child id="1068580123135" name="body" index="3clF47" />
       </concept>
-      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_">
-        <property id="1178608670077" name="isAbstract" index="1EzhhJ" />
-      </concept>
+      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_" />
       <concept id="1068580123152" name="jetbrains.mps.baseLanguage.structure.EqualsExpression" flags="nn" index="3clFbC" />
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
@@ -1781,7 +1779,6 @@
       <property role="2bfB8j" value="true" />
       <property role="TrG5h" value="Source" />
       <node concept="3clFb_" id="79YVnsaOd6_" role="jymVt">
-        <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="getDependencies" />
         <node concept="3uibUv" id="79YVnsaOd9C" role="3clF45">
           <ref role="3uigEE" node="E2BH9lAYkA" resolve="RootDependencies" />

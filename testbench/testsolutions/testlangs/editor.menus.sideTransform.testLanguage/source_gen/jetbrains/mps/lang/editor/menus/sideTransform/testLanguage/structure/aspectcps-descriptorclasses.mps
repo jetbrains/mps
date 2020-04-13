@@ -30,9 +30,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -336,7 +333,6 @@
     <node concept="3Tm1VV" id="g" role="1B3o_S" />
     <node concept="2tJIrI" id="h" role="jymVt" />
     <node concept="3clFb_" id="i" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -446,8 +442,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1k" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7E" resolve="TestSideTransform_NodeToReference" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="13" role="3KbHQx">
@@ -512,8 +508,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1I" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7F" resolve="TestSideTransform_NodeWithReference" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="14" role="3KbHQx">
@@ -586,8 +582,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="28" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7G" resolve="TestSideTransform_Root" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="15" role="3KbHQx">
@@ -652,8 +648,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2_" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7H" resolve="TestSideTransform_SimpleNode" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="16" role="3KbHQx">
@@ -726,8 +722,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2Z" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7I" resolve="TestTransformExceptionActionCanExecuteChild" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="17" role="3KbHQx">
@@ -800,8 +796,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3s" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7J" resolve="TestTransformExceptionActionDescriptionTextChild" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="18" role="3KbHQx">
@@ -874,8 +870,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3T" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7K" resolve="TestTransformExceptionActionGroupChild" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="19" role="3KbHQx">
@@ -948,8 +944,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4m" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7L" resolve="TestTransformExceptionActionIconChild" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1a" role="3KbHQx">
@@ -1022,8 +1018,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4N" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7M" resolve="TestTransformExceptionActionTextChild" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1b" role="3KbHQx">
@@ -1096,8 +1092,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5g" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7N" resolve="TestTransformExceptionIncludeMenuChild" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1c" role="3KbHQx">
@@ -1170,8 +1166,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5H" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7O" resolve="TestTransformExceptionParameterizedChild" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1d" role="3KbHQx">
@@ -1244,8 +1240,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6a" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7P" resolve="TestTransformExceptionParent" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1e" role="3KbHQx">
@@ -1318,8 +1314,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6B" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7Q" resolve="TestTransformExceptionSubmenuChild" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1f" role="3KbHQx">
@@ -1392,8 +1388,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="74" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7R" resolve="TestTransformExceptionWrapSubstituteMenuChild" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -2226,7 +2222,6 @@
     </node>
     <node concept="2tJIrI" id="aV" role="jymVt" />
     <node concept="3clFb_" id="aW" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -2248,8 +2243,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cK" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7E" resolve="TestSideTransform_NodeToReference" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cw" role="3KbHQx">
@@ -2261,8 +2256,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cO" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7F" resolve="TestSideTransform_NodeWithReference" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cx" role="3KbHQx">
@@ -2274,8 +2269,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cS" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7G" resolve="TestSideTransform_Root" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cy" role="3KbHQx">
@@ -2287,8 +2282,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cW" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7H" resolve="TestSideTransform_SimpleNode" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cz" role="3KbHQx">
@@ -2300,8 +2295,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="d0" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7I" resolve="TestTransformExceptionActionCanExecuteChild" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="c$" role="3KbHQx">
@@ -2313,8 +2308,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="d4" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7J" resolve="TestTransformExceptionActionDescriptionTextChild" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="c_" role="3KbHQx">
@@ -2326,8 +2321,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="d8" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7K" resolve="TestTransformExceptionActionGroupChild" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cA" role="3KbHQx">
@@ -2339,8 +2334,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="dc" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7L" resolve="TestTransformExceptionActionIconChild" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cB" role="3KbHQx">
@@ -2352,8 +2347,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="dg" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7M" resolve="TestTransformExceptionActionTextChild" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cC" role="3KbHQx">
@@ -2365,8 +2360,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="dk" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7N" resolve="TestTransformExceptionIncludeMenuChild" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cD" role="3KbHQx">
@@ -2378,8 +2373,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="do" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7O" resolve="TestTransformExceptionParameterizedChild" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cE" role="3KbHQx">
@@ -2391,8 +2386,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ds" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7P" resolve="TestTransformExceptionParent" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cF" role="3KbHQx">
@@ -2404,8 +2399,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="dw" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7Q" resolve="TestTransformExceptionSubmenuChild" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cG" role="3KbHQx">
@@ -2417,8 +2412,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="d$" role="3Kbmr1">
-              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7R" resolve="TestTransformExceptionWrapSubstituteMenuChild" />
+              <ref role="1PxDUh" node="7C" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="cH" role="3KbGdf">

@@ -44,17 +44,14 @@ public class check_ConceptBehaviorForNotImplementedMethods_NonTypesystemRule ext
         }
       }
       if (notImplementedMethods) {
-        String msg = "Concept " + SPropertyOperations.getString(SLinkOperations.getTarget(nodeToCheck, LINKS.concept$v6ns), PROPS.name$tAp1) + " doesn't implement " + methodDeclarations;
+        String msg = "Concept " + SPropertyOperations.getString(SLinkOperations.getTarget(nodeToCheck, LINKS.concept$v6ns), PROPS.name$tAp1) + " does not implement some abstract methods";
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(nodeToCheck, msg, "r:f7f8a091-d98d-402d-85c4-5f05cb2b8c61(jetbrains.mps.lang.behavior.typesystem)", "1198950378289", null, errorTarget);
         }
-        {
-          final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(nodeToCheck, LINKS.concept$v6ns), msg, "r:f7f8a091-d98d-402d-85c4-5f05cb2b8c61(jetbrains.mps.lang.behavior.typesystem)", "66987406575552399", null, errorTarget);
-        }
       }
     }
+
     for (SNode cmd : SLinkOperations.getChildren(nodeToCheck, LINKS.method$vbvQ)) {
       if ((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(cmd)) {
         {

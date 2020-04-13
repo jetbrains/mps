@@ -1855,302 +1855,302 @@
           </node>
         </node>
         <node concept="3J1_TO" id="a4" role="3cqZAp">
-          <node concept="3clFbS" id="a8" role="1zxBo7">
-            <node concept="3cpWs8" id="aa" role="3cqZAp">
-              <node concept="3cpWsn" id="ak" role="3cpWs9">
+          <node concept="1wplmZ" id="a8" role="1zxBo6">
+            <node concept="3clFbS" id="aa" role="1wplMD">
+              <node concept="3clFbF" id="ab" role="3cqZAp">
+                <node concept="2OqwBi" id="ac" role="3clFbG">
+                  <node concept="1rXfSq" id="ad" role="2Oq$k0">
+                    <ref role="37wK5l" to="qvne:6OQfiPCHBjx" resolve="getCellFactory" />
+                  </node>
+                  <node concept="liA8E" id="ae" role="2OqNvi">
+                    <ref role="37wK5l" to="f4zo:~EditorCellFactory.popCellContext()" resolve="popCellContext" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="a9" role="1zxBo7">
+            <node concept="3cpWs8" id="af" role="3cqZAp">
+              <node concept="3cpWsn" id="ap" role="3cpWs9">
                 <property role="TrG5h" value="property" />
-                <node concept="3uibUv" id="al" role="1tU5fm">
+                <node concept="3uibUv" id="aq" role="1tU5fm">
                   <ref role="3uigEE" to="c17a:~SProperty" resolve="SProperty" />
                 </node>
-                <node concept="355D3s" id="am" role="33vP2m">
+                <node concept="355D3s" id="ar" role="33vP2m">
                   <ref role="355D3t" to="7tg8:0" resolve="Car" />
                   <ref role="355D3u" to="7tg8:2" resolve="year" />
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="ab" role="3cqZAp">
-              <node concept="2OqwBi" id="an" role="3clFbG">
-                <node concept="1rXfSq" id="ao" role="2Oq$k0">
+            <node concept="3clFbF" id="ag" role="3cqZAp">
+              <node concept="2OqwBi" id="as" role="3clFbG">
+                <node concept="1rXfSq" id="at" role="2Oq$k0">
                   <ref role="37wK5l" to="qvne:6OQfiPCHBjx" resolve="getCellFactory" />
                 </node>
-                <node concept="liA8E" id="ap" role="2OqNvi">
+                <node concept="liA8E" id="au" role="2OqNvi">
                   <ref role="37wK5l" to="f4zo:~EditorCellFactory.setPropertyInfo(jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo)" resolve="setPropertyInfo" />
-                  <node concept="2ShNRf" id="aq" role="37wK5m">
-                    <node concept="1pGfFk" id="ar" role="2ShVmc">
+                  <node concept="2ShNRf" id="av" role="37wK5m">
+                    <node concept="1pGfFk" id="aw" role="2ShVmc">
                       <ref role="37wK5l" to="uddc:~SPropertyInfo.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SProperty)" resolve="SPropertyInfo" />
-                      <node concept="37vLTw" id="as" role="37wK5m">
+                      <node concept="37vLTw" id="ax" role="37wK5m">
                         <ref role="3cqZAo" node="R" resolve="myNode" />
                       </node>
-                      <node concept="37vLTw" id="at" role="37wK5m">
-                        <ref role="3cqZAo" node="ak" resolve="property" />
+                      <node concept="37vLTw" id="ay" role="37wK5m">
+                        <ref role="3cqZAo" node="ap" resolve="property" />
                       </node>
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3cpWs8" id="ac" role="3cqZAp">
-              <node concept="3cpWsn" id="au" role="3cpWs9">
+            <node concept="3cpWs8" id="ah" role="3cqZAp">
+              <node concept="3cpWsn" id="az" role="3cpWs9">
                 <property role="TrG5h" value="editorCell" />
-                <node concept="3uibUv" id="av" role="1tU5fm">
+                <node concept="3uibUv" id="a$" role="1tU5fm">
                   <ref role="3uigEE" to="g51k:~EditorCell_Property" resolve="EditorCell_Property" />
                 </node>
-                <node concept="2YIFZM" id="aw" role="33vP2m">
+                <node concept="2YIFZM" id="a_" role="33vP2m">
                   <ref role="1Pybhc" to="g51k:~EditorCell_Property" resolve="EditorCell_Property" />
                   <ref role="37wK5l" to="g51k:~EditorCell_Property.create(jetbrains.mps.openapi.editor.EditorContext,jetbrains.mps.nodeEditor.cells.ModelAccessor,org.jetbrains.mps.openapi.model.SNode)" resolve="create" />
-                  <node concept="1rXfSq" id="ax" role="37wK5m">
+                  <node concept="1rXfSq" id="aA" role="37wK5m">
                     <ref role="37wK5l" to="qvne:6OQfiPCHBdf" resolve="getEditorContext" />
-                    <node concept="cd27G" id="a_" role="lGtFl">
-                      <node concept="3u3nmq" id="aA" role="cd27D">
+                    <node concept="cd27G" id="aE" role="lGtFl">
+                      <node concept="3u3nmq" id="aF" role="cd27D">
                         <property role="3u3nmv" value="3778147542048941788" />
                       </node>
                     </node>
                   </node>
-                  <node concept="2ShNRf" id="ay" role="37wK5m">
-                    <node concept="1pGfFk" id="aB" role="2ShVmc">
+                  <node concept="2ShNRf" id="aB" role="37wK5m">
+                    <node concept="1pGfFk" id="aG" role="2ShVmc">
                       <ref role="37wK5l" to="g51k:~SPropertyAccessor.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SProperty,boolean,boolean)" resolve="SPropertyAccessor" />
-                      <node concept="37vLTw" id="aD" role="37wK5m">
+                      <node concept="37vLTw" id="aI" role="37wK5m">
                         <ref role="3cqZAo" node="R" resolve="myNode" />
-                        <node concept="cd27G" id="aI" role="lGtFl">
-                          <node concept="3u3nmq" id="aJ" role="cd27D">
+                        <node concept="cd27G" id="aN" role="lGtFl">
+                          <node concept="3u3nmq" id="aO" role="cd27D">
                             <property role="3u3nmv" value="3778147542048941788" />
                           </node>
                         </node>
                       </node>
-                      <node concept="37vLTw" id="aE" role="37wK5m">
-                        <ref role="3cqZAo" node="ak" resolve="property" />
-                        <node concept="cd27G" id="aK" role="lGtFl">
-                          <node concept="3u3nmq" id="aL" role="cd27D">
+                      <node concept="37vLTw" id="aJ" role="37wK5m">
+                        <ref role="3cqZAo" node="ap" resolve="property" />
+                        <node concept="cd27G" id="aP" role="lGtFl">
+                          <node concept="3u3nmq" id="aQ" role="cd27D">
                             <property role="3u3nmv" value="3778147542048941788" />
                           </node>
                         </node>
                       </node>
-                      <node concept="3clFbT" id="aF" role="37wK5m">
-                        <node concept="cd27G" id="aM" role="lGtFl">
-                          <node concept="3u3nmq" id="aN" role="cd27D">
+                      <node concept="3clFbT" id="aK" role="37wK5m">
+                        <node concept="cd27G" id="aR" role="lGtFl">
+                          <node concept="3u3nmq" id="aS" role="cd27D">
                             <property role="3u3nmv" value="3778147542048941788" />
                           </node>
                         </node>
                       </node>
-                      <node concept="3clFbT" id="aG" role="37wK5m">
-                        <node concept="cd27G" id="aO" role="lGtFl">
-                          <node concept="3u3nmq" id="aP" role="cd27D">
+                      <node concept="3clFbT" id="aL" role="37wK5m">
+                        <node concept="cd27G" id="aT" role="lGtFl">
+                          <node concept="3u3nmq" id="aU" role="cd27D">
                             <property role="3u3nmv" value="3778147542048941788" />
                           </node>
                         </node>
                       </node>
-                      <node concept="cd27G" id="aH" role="lGtFl">
-                        <node concept="3u3nmq" id="aQ" role="cd27D">
+                      <node concept="cd27G" id="aM" role="lGtFl">
+                        <node concept="3u3nmq" id="aV" role="cd27D">
                           <property role="3u3nmv" value="3778147542048941788" />
                         </node>
                       </node>
                     </node>
-                    <node concept="cd27G" id="aC" role="lGtFl">
-                      <node concept="3u3nmq" id="aR" role="cd27D">
+                    <node concept="cd27G" id="aH" role="lGtFl">
+                      <node concept="3u3nmq" id="aW" role="cd27D">
                         <property role="3u3nmv" value="3778147542048941788" />
                       </node>
                     </node>
                   </node>
-                  <node concept="37vLTw" id="az" role="37wK5m">
+                  <node concept="37vLTw" id="aC" role="37wK5m">
                     <ref role="3cqZAo" node="R" resolve="myNode" />
-                    <node concept="cd27G" id="aS" role="lGtFl">
-                      <node concept="3u3nmq" id="aT" role="cd27D">
+                    <node concept="cd27G" id="aX" role="lGtFl">
+                      <node concept="3u3nmq" id="aY" role="cd27D">
                         <property role="3u3nmv" value="3778147542048941788" />
                       </node>
                     </node>
                   </node>
-                  <node concept="cd27G" id="a$" role="lGtFl">
-                    <node concept="3u3nmq" id="aU" role="cd27D">
+                  <node concept="cd27G" id="aD" role="lGtFl">
+                    <node concept="3u3nmq" id="aZ" role="cd27D">
                       <property role="3u3nmv" value="3778147542048941788" />
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="ad" role="3cqZAp">
-              <node concept="2OqwBi" id="aV" role="3clFbG">
-                <node concept="37vLTw" id="aW" role="2Oq$k0">
-                  <ref role="3cqZAo" node="au" resolve="editorCell" />
+            <node concept="3clFbF" id="ai" role="3cqZAp">
+              <node concept="2OqwBi" id="b0" role="3clFbG">
+                <node concept="37vLTw" id="b1" role="2Oq$k0">
+                  <ref role="3cqZAo" node="az" resolve="editorCell" />
                 </node>
-                <node concept="liA8E" id="aX" role="2OqNvi">
+                <node concept="liA8E" id="b2" role="2OqNvi">
                   <ref role="37wK5l" to="g51k:~EditorCell_Label.setDefaultText(java.lang.String)" resolve="setDefaultText" />
-                  <node concept="Xl_RD" id="aY" role="37wK5m">
+                  <node concept="Xl_RD" id="b3" role="37wK5m">
                     <property role="Xl_RC" value="&lt;no year&gt;" />
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="ae" role="3cqZAp">
-              <node concept="2OqwBi" id="aZ" role="3clFbG">
-                <node concept="37vLTw" id="b0" role="2Oq$k0">
-                  <ref role="3cqZAo" node="au" resolve="editorCell" />
+            <node concept="3clFbF" id="aj" role="3cqZAp">
+              <node concept="2OqwBi" id="b4" role="3clFbG">
+                <node concept="37vLTw" id="b5" role="2Oq$k0">
+                  <ref role="3cqZAo" node="az" resolve="editorCell" />
                 </node>
-                <node concept="liA8E" id="b1" role="2OqNvi">
+                <node concept="liA8E" id="b6" role="2OqNvi">
                   <ref role="37wK5l" to="f4zo:~EditorCell.setCellId(java.lang.String)" resolve="setCellId" />
-                  <node concept="Xl_RD" id="b2" role="37wK5m">
+                  <node concept="Xl_RD" id="b7" role="37wK5m">
                     <property role="Xl_RC" value="property_year" />
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="af" role="3cqZAp">
-              <node concept="2OqwBi" id="b3" role="3clFbG">
-                <node concept="liA8E" id="b4" role="2OqNvi">
+            <node concept="3clFbF" id="ak" role="3cqZAp">
+              <node concept="2OqwBi" id="b8" role="3clFbG">
+                <node concept="liA8E" id="b9" role="2OqNvi">
                   <ref role="37wK5l" to="g51k:~EditorCell_Basic.setSubstituteInfo(jetbrains.mps.openapi.editor.cells.SubstituteInfo)" resolve="setSubstituteInfo" />
-                  <node concept="2ShNRf" id="b6" role="37wK5m">
-                    <node concept="1pGfFk" id="b7" role="2ShVmc">
+                  <node concept="2ShNRf" id="bb" role="37wK5m">
+                    <node concept="1pGfFk" id="bc" role="2ShVmc">
                       <ref role="37wK5l" to="6lvu:~SPropertySubstituteInfo.&lt;init&gt;(jetbrains.mps.openapi.editor.cells.EditorCell,org.jetbrains.mps.openapi.language.SProperty)" resolve="SPropertySubstituteInfo" />
-                      <node concept="37vLTw" id="b8" role="37wK5m">
-                        <ref role="3cqZAo" node="au" resolve="editorCell" />
+                      <node concept="37vLTw" id="bd" role="37wK5m">
+                        <ref role="3cqZAo" node="az" resolve="editorCell" />
                       </node>
-                      <node concept="37vLTw" id="b9" role="37wK5m">
-                        <ref role="3cqZAo" node="ak" resolve="property" />
+                      <node concept="37vLTw" id="be" role="37wK5m">
+                        <ref role="3cqZAo" node="ap" resolve="property" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="37vLTw" id="b5" role="2Oq$k0">
-                  <ref role="3cqZAo" node="au" resolve="editorCell" />
+                <node concept="37vLTw" id="ba" role="2Oq$k0">
+                  <ref role="3cqZAo" node="az" resolve="editorCell" />
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="ag" role="3cqZAp">
-              <node concept="1rXfSq" id="ba" role="3clFbG">
+            <node concept="3clFbF" id="al" role="3cqZAp">
+              <node concept="1rXfSq" id="bf" role="3clFbG">
                 <ref role="37wK5l" to="qvne:4gNWjiBdWj$" resolve="setCellContext" />
-                <node concept="37vLTw" id="bb" role="37wK5m">
-                  <ref role="3cqZAo" node="au" resolve="editorCell" />
+                <node concept="37vLTw" id="bg" role="37wK5m">
+                  <ref role="3cqZAo" node="az" resolve="editorCell" />
                 </node>
               </node>
             </node>
-            <node concept="3cpWs8" id="ah" role="3cqZAp">
-              <node concept="3cpWsn" id="bc" role="3cpWs9">
+            <node concept="3cpWs8" id="am" role="3cqZAp">
+              <node concept="3cpWsn" id="bh" role="3cpWs9">
                 <property role="TrG5h" value="propertyAttributes" />
-                <node concept="A3Dl8" id="bd" role="1tU5fm">
-                  <node concept="3Tqbb2" id="bf" role="A3Ik2">
+                <node concept="A3Dl8" id="bi" role="1tU5fm">
+                  <node concept="3Tqbb2" id="bk" role="A3Ik2">
                     <ref role="ehGHo" to="tpck:2ULFgo8_XDm" resolve="PropertyAttribute" />
                   </node>
                 </node>
-                <node concept="2OqwBi" id="be" role="33vP2m">
-                  <node concept="2OqwBi" id="bg" role="2Oq$k0">
-                    <node concept="37vLTw" id="bi" role="2Oq$k0">
+                <node concept="2OqwBi" id="bj" role="33vP2m">
+                  <node concept="2OqwBi" id="bl" role="2Oq$k0">
+                    <node concept="37vLTw" id="bn" role="2Oq$k0">
                       <ref role="3cqZAo" node="R" resolve="myNode" />
                     </node>
-                    <node concept="3CFZ6_" id="bj" role="2OqNvi">
-                      <node concept="3CFTEB" id="bk" role="3CFYIz" />
+                    <node concept="3CFZ6_" id="bo" role="2OqNvi">
+                      <node concept="3CFTEB" id="bp" role="3CFYIz" />
                     </node>
                   </node>
-                  <node concept="v3k3i" id="bh" role="2OqNvi">
-                    <node concept="chp4Y" id="bl" role="v3oSu">
+                  <node concept="v3k3i" id="bm" role="2OqNvi">
+                    <node concept="chp4Y" id="bq" role="v3oSu">
                       <ref role="cht4Q" to="tpck:2ULFgo8_XDm" resolve="PropertyAttribute" />
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3cpWs8" id="ai" role="3cqZAp">
-              <node concept="3cpWsn" id="bm" role="3cpWs9">
+            <node concept="3cpWs8" id="an" role="3cqZAp">
+              <node concept="3cpWsn" id="br" role="3cpWs9">
                 <property role="TrG5h" value="currentPropertyAttributes" />
-                <node concept="A3Dl8" id="bn" role="1tU5fm">
-                  <node concept="3Tqbb2" id="bp" role="A3Ik2">
+                <node concept="A3Dl8" id="bs" role="1tU5fm">
+                  <node concept="3Tqbb2" id="bu" role="A3Ik2">
                     <ref role="ehGHo" to="tpck:2ULFgo8_XDm" resolve="PropertyAttribute" />
                   </node>
                 </node>
-                <node concept="2OqwBi" id="bo" role="33vP2m">
-                  <node concept="37vLTw" id="bq" role="2Oq$k0">
-                    <ref role="3cqZAo" node="bc" resolve="propertyAttributes" />
+                <node concept="2OqwBi" id="bt" role="33vP2m">
+                  <node concept="37vLTw" id="bv" role="2Oq$k0">
+                    <ref role="3cqZAo" node="bh" resolve="propertyAttributes" />
                   </node>
-                  <node concept="3zZkjj" id="br" role="2OqNvi">
-                    <node concept="1bVj0M" id="bs" role="23t8la">
-                      <node concept="3clFbS" id="bt" role="1bW5cS">
-                        <node concept="3clFbF" id="bv" role="3cqZAp">
-                          <node concept="17R0WA" id="bw" role="3clFbG">
-                            <node concept="37vLTw" id="bx" role="3uHU7w">
-                              <ref role="3cqZAo" node="ak" resolve="property" />
+                  <node concept="3zZkjj" id="bw" role="2OqNvi">
+                    <node concept="1bVj0M" id="bx" role="23t8la">
+                      <node concept="3clFbS" id="by" role="1bW5cS">
+                        <node concept="3clFbF" id="b$" role="3cqZAp">
+                          <node concept="17R0WA" id="b_" role="3clFbG">
+                            <node concept="37vLTw" id="bA" role="3uHU7w">
+                              <ref role="3cqZAo" node="ap" resolve="property" />
                             </node>
-                            <node concept="2OqwBi" id="by" role="3uHU7B">
-                              <node concept="37vLTw" id="bz" role="2Oq$k0">
-                                <ref role="3cqZAo" node="bu" resolve="it" />
+                            <node concept="2OqwBi" id="bB" role="3uHU7B">
+                              <node concept="37vLTw" id="bC" role="2Oq$k0">
+                                <ref role="3cqZAo" node="bz" resolve="it" />
                               </node>
-                              <node concept="2qgKlT" id="b$" role="2OqNvi">
+                              <node concept="2qgKlT" id="bD" role="2OqNvi">
                                 <ref role="37wK5l" to="tpcu:1avfQ4BBzOo" resolve="getProperty" />
                               </node>
                             </node>
                           </node>
                         </node>
                       </node>
-                      <node concept="Rh6nW" id="bu" role="1bW2Oz">
+                      <node concept="Rh6nW" id="bz" role="1bW2Oz">
                         <property role="TrG5h" value="it" />
-                        <node concept="2jxLKc" id="b_" role="1tU5fm" />
+                        <node concept="2jxLKc" id="bE" role="1tU5fm" />
                       </node>
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3clFbJ" id="aj" role="3cqZAp">
-              <node concept="2OqwBi" id="bA" role="3clFbw">
-                <node concept="37vLTw" id="bD" role="2Oq$k0">
-                  <ref role="3cqZAo" node="bm" resolve="currentPropertyAttributes" />
+            <node concept="3clFbJ" id="ao" role="3cqZAp">
+              <node concept="2OqwBi" id="bF" role="3clFbw">
+                <node concept="37vLTw" id="bI" role="2Oq$k0">
+                  <ref role="3cqZAo" node="br" resolve="currentPropertyAttributes" />
                 </node>
-                <node concept="3GX2aA" id="bE" role="2OqNvi" />
+                <node concept="3GX2aA" id="bJ" role="2OqNvi" />
               </node>
-              <node concept="3clFbS" id="bB" role="3clFbx">
-                <node concept="3cpWs8" id="bF" role="3cqZAp">
-                  <node concept="3cpWsn" id="bH" role="3cpWs9">
+              <node concept="3clFbS" id="bG" role="3clFbx">
+                <node concept="3cpWs8" id="bK" role="3cqZAp">
+                  <node concept="3cpWsn" id="bM" role="3cpWs9">
                     <property role="TrG5h" value="manager" />
-                    <node concept="3uibUv" id="bI" role="1tU5fm">
+                    <node concept="3uibUv" id="bN" role="1tU5fm">
                       <ref role="3uigEE" to="exr9:~EditorManager" resolve="EditorManager" />
                     </node>
-                    <node concept="2YIFZM" id="bJ" role="33vP2m">
+                    <node concept="2YIFZM" id="bO" role="33vP2m">
                       <ref role="1Pybhc" to="exr9:~EditorManager" resolve="EditorManager" />
                       <ref role="37wK5l" to="exr9:~EditorManager.getInstanceFromContext(jetbrains.mps.openapi.editor.EditorContext)" resolve="getInstanceFromContext" />
-                      <node concept="1rXfSq" id="bK" role="37wK5m">
+                      <node concept="1rXfSq" id="bP" role="37wK5m">
                         <ref role="37wK5l" to="qvne:6OQfiPCHBdf" resolve="getEditorContext" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="3cpWs6" id="bG" role="3cqZAp">
-                  <node concept="2OqwBi" id="bL" role="3cqZAk">
-                    <node concept="37vLTw" id="bM" role="2Oq$k0">
-                      <ref role="3cqZAo" node="bH" resolve="manager" />
+                <node concept="3cpWs6" id="bL" role="3cqZAp">
+                  <node concept="2OqwBi" id="bQ" role="3cqZAk">
+                    <node concept="37vLTw" id="bR" role="2Oq$k0">
+                      <ref role="3cqZAo" node="bM" resolve="manager" />
                     </node>
-                    <node concept="liA8E" id="bN" role="2OqNvi">
+                    <node concept="liA8E" id="bS" role="2OqNvi">
                       <ref role="37wK5l" to="exr9:~EditorManager.createNodeRoleAttributeCell(org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.openapi.editor.update.AttributeKind,jetbrains.mps.openapi.editor.cells.EditorCell)" resolve="createNodeRoleAttributeCell" />
-                      <node concept="2OqwBi" id="bO" role="37wK5m">
-                        <node concept="37vLTw" id="bR" role="2Oq$k0">
-                          <ref role="3cqZAo" node="bm" resolve="currentPropertyAttributes" />
+                      <node concept="2OqwBi" id="bT" role="37wK5m">
+                        <node concept="37vLTw" id="bW" role="2Oq$k0">
+                          <ref role="3cqZAo" node="br" resolve="currentPropertyAttributes" />
                         </node>
-                        <node concept="1uHKPH" id="bS" role="2OqNvi" />
+                        <node concept="1uHKPH" id="bX" role="2OqNvi" />
                       </node>
-                      <node concept="Rm8GO" id="bP" role="37wK5m">
+                      <node concept="Rm8GO" id="bU" role="37wK5m">
                         <ref role="Rm8GQ" to="22ra:~AttributeKind.PROPERTY" resolve="PROPERTY" />
                         <ref role="1Px2BO" to="22ra:~AttributeKind" resolve="AttributeKind" />
                       </node>
-                      <node concept="37vLTw" id="bQ" role="37wK5m">
-                        <ref role="3cqZAo" node="au" resolve="editorCell" />
+                      <node concept="37vLTw" id="bV" role="37wK5m">
+                        <ref role="3cqZAo" node="az" resolve="editorCell" />
                       </node>
                     </node>
                   </node>
                 </node>
               </node>
-              <node concept="3cpWs6" id="bC" role="9aQIa">
-                <node concept="37vLTw" id="bT" role="3cqZAk">
-                  <ref role="3cqZAo" node="au" resolve="editorCell" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="1wplmZ" id="a9" role="1zxBo6">
-            <node concept="3clFbS" id="bU" role="1wplMD">
-              <node concept="3clFbF" id="bV" role="3cqZAp">
-                <node concept="2OqwBi" id="bW" role="3clFbG">
-                  <node concept="1rXfSq" id="bX" role="2Oq$k0">
-                    <ref role="37wK5l" to="qvne:6OQfiPCHBjx" resolve="getCellFactory" />
-                  </node>
-                  <node concept="liA8E" id="bY" role="2OqNvi">
-                    <ref role="37wK5l" to="f4zo:~EditorCellFactory.popCellContext()" resolve="popCellContext" />
-                  </node>
+              <node concept="3cpWs6" id="bH" role="9aQIa">
+                <node concept="37vLTw" id="bY" role="3cqZAk">
+                  <ref role="3cqZAo" node="az" resolve="editorCell" />
                 </node>
               </node>
             </node>
@@ -2709,302 +2709,302 @@
           </node>
         </node>
         <node concept="3J1_TO" id="fk" role="3cqZAp">
-          <node concept="3clFbS" id="fo" role="1zxBo7">
-            <node concept="3cpWs8" id="fq" role="3cqZAp">
-              <node concept="3cpWsn" id="f$" role="3cpWs9">
+          <node concept="1wplmZ" id="fo" role="1zxBo6">
+            <node concept="3clFbS" id="fq" role="1wplMD">
+              <node concept="3clFbF" id="fr" role="3cqZAp">
+                <node concept="2OqwBi" id="fs" role="3clFbG">
+                  <node concept="1rXfSq" id="ft" role="2Oq$k0">
+                    <ref role="37wK5l" to="qvne:6OQfiPCHBjx" resolve="getCellFactory" />
+                  </node>
+                  <node concept="liA8E" id="fu" role="2OqNvi">
+                    <ref role="37wK5l" to="f4zo:~EditorCellFactory.popCellContext()" resolve="popCellContext" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="fp" role="1zxBo7">
+            <node concept="3cpWs8" id="fv" role="3cqZAp">
+              <node concept="3cpWsn" id="fD" role="3cpWs9">
                 <property role="TrG5h" value="property" />
-                <node concept="3uibUv" id="f_" role="1tU5fm">
+                <node concept="3uibUv" id="fE" role="1tU5fm">
                   <ref role="3uigEE" to="c17a:~SProperty" resolve="SProperty" />
                 </node>
-                <node concept="355D3s" id="fA" role="33vP2m">
+                <node concept="355D3s" id="fF" role="33vP2m">
                   <ref role="355D3t" to="7tg8:0" resolve="Car" />
                   <ref role="355D3u" to="7tg8:1" resolve="model" />
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="fr" role="3cqZAp">
-              <node concept="2OqwBi" id="fB" role="3clFbG">
-                <node concept="1rXfSq" id="fC" role="2Oq$k0">
+            <node concept="3clFbF" id="fw" role="3cqZAp">
+              <node concept="2OqwBi" id="fG" role="3clFbG">
+                <node concept="1rXfSq" id="fH" role="2Oq$k0">
                   <ref role="37wK5l" to="qvne:6OQfiPCHBjx" resolve="getCellFactory" />
                 </node>
-                <node concept="liA8E" id="fD" role="2OqNvi">
+                <node concept="liA8E" id="fI" role="2OqNvi">
                   <ref role="37wK5l" to="f4zo:~EditorCellFactory.setPropertyInfo(jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo)" resolve="setPropertyInfo" />
-                  <node concept="2ShNRf" id="fE" role="37wK5m">
-                    <node concept="1pGfFk" id="fF" role="2ShVmc">
+                  <node concept="2ShNRf" id="fJ" role="37wK5m">
+                    <node concept="1pGfFk" id="fK" role="2ShVmc">
                       <ref role="37wK5l" to="uddc:~SPropertyInfo.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SProperty)" resolve="SPropertyInfo" />
-                      <node concept="37vLTw" id="fG" role="37wK5m">
+                      <node concept="37vLTw" id="fL" role="37wK5m">
                         <ref role="3cqZAo" node="R" resolve="myNode" />
                       </node>
-                      <node concept="37vLTw" id="fH" role="37wK5m">
-                        <ref role="3cqZAo" node="f$" resolve="property" />
+                      <node concept="37vLTw" id="fM" role="37wK5m">
+                        <ref role="3cqZAo" node="fD" resolve="property" />
                       </node>
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3cpWs8" id="fs" role="3cqZAp">
-              <node concept="3cpWsn" id="fI" role="3cpWs9">
+            <node concept="3cpWs8" id="fx" role="3cqZAp">
+              <node concept="3cpWsn" id="fN" role="3cpWs9">
                 <property role="TrG5h" value="editorCell" />
-                <node concept="3uibUv" id="fJ" role="1tU5fm">
+                <node concept="3uibUv" id="fO" role="1tU5fm">
                   <ref role="3uigEE" to="g51k:~EditorCell_Property" resolve="EditorCell_Property" />
                 </node>
-                <node concept="2YIFZM" id="fK" role="33vP2m">
+                <node concept="2YIFZM" id="fP" role="33vP2m">
                   <ref role="1Pybhc" to="g51k:~EditorCell_Property" resolve="EditorCell_Property" />
                   <ref role="37wK5l" to="g51k:~EditorCell_Property.create(jetbrains.mps.openapi.editor.EditorContext,jetbrains.mps.nodeEditor.cells.ModelAccessor,org.jetbrains.mps.openapi.model.SNode)" resolve="create" />
-                  <node concept="1rXfSq" id="fL" role="37wK5m">
+                  <node concept="1rXfSq" id="fQ" role="37wK5m">
                     <ref role="37wK5l" to="qvne:6OQfiPCHBdf" resolve="getEditorContext" />
-                    <node concept="cd27G" id="fP" role="lGtFl">
-                      <node concept="3u3nmq" id="fQ" role="cd27D">
+                    <node concept="cd27G" id="fU" role="lGtFl">
+                      <node concept="3u3nmq" id="fV" role="cd27D">
                         <property role="3u3nmv" value="3778147542048941788" />
                       </node>
                     </node>
                   </node>
-                  <node concept="2ShNRf" id="fM" role="37wK5m">
-                    <node concept="1pGfFk" id="fR" role="2ShVmc">
+                  <node concept="2ShNRf" id="fR" role="37wK5m">
+                    <node concept="1pGfFk" id="fW" role="2ShVmc">
                       <ref role="37wK5l" to="g51k:~SPropertyAccessor.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SProperty,boolean,boolean)" resolve="SPropertyAccessor" />
-                      <node concept="37vLTw" id="fT" role="37wK5m">
+                      <node concept="37vLTw" id="fY" role="37wK5m">
                         <ref role="3cqZAo" node="R" resolve="myNode" />
-                        <node concept="cd27G" id="fY" role="lGtFl">
-                          <node concept="3u3nmq" id="fZ" role="cd27D">
+                        <node concept="cd27G" id="g3" role="lGtFl">
+                          <node concept="3u3nmq" id="g4" role="cd27D">
                             <property role="3u3nmv" value="3778147542048941788" />
                           </node>
                         </node>
                       </node>
-                      <node concept="37vLTw" id="fU" role="37wK5m">
-                        <ref role="3cqZAo" node="f$" resolve="property" />
-                        <node concept="cd27G" id="g0" role="lGtFl">
-                          <node concept="3u3nmq" id="g1" role="cd27D">
+                      <node concept="37vLTw" id="fZ" role="37wK5m">
+                        <ref role="3cqZAo" node="fD" resolve="property" />
+                        <node concept="cd27G" id="g5" role="lGtFl">
+                          <node concept="3u3nmq" id="g6" role="cd27D">
                             <property role="3u3nmv" value="3778147542048941788" />
                           </node>
                         </node>
                       </node>
-                      <node concept="3clFbT" id="fV" role="37wK5m">
-                        <node concept="cd27G" id="g2" role="lGtFl">
-                          <node concept="3u3nmq" id="g3" role="cd27D">
+                      <node concept="3clFbT" id="g0" role="37wK5m">
+                        <node concept="cd27G" id="g7" role="lGtFl">
+                          <node concept="3u3nmq" id="g8" role="cd27D">
                             <property role="3u3nmv" value="3778147542048941788" />
                           </node>
                         </node>
                       </node>
-                      <node concept="3clFbT" id="fW" role="37wK5m">
-                        <node concept="cd27G" id="g4" role="lGtFl">
-                          <node concept="3u3nmq" id="g5" role="cd27D">
+                      <node concept="3clFbT" id="g1" role="37wK5m">
+                        <node concept="cd27G" id="g9" role="lGtFl">
+                          <node concept="3u3nmq" id="ga" role="cd27D">
                             <property role="3u3nmv" value="3778147542048941788" />
                           </node>
                         </node>
                       </node>
-                      <node concept="cd27G" id="fX" role="lGtFl">
-                        <node concept="3u3nmq" id="g6" role="cd27D">
+                      <node concept="cd27G" id="g2" role="lGtFl">
+                        <node concept="3u3nmq" id="gb" role="cd27D">
                           <property role="3u3nmv" value="3778147542048941788" />
                         </node>
                       </node>
                     </node>
-                    <node concept="cd27G" id="fS" role="lGtFl">
-                      <node concept="3u3nmq" id="g7" role="cd27D">
+                    <node concept="cd27G" id="fX" role="lGtFl">
+                      <node concept="3u3nmq" id="gc" role="cd27D">
                         <property role="3u3nmv" value="3778147542048941788" />
                       </node>
                     </node>
                   </node>
-                  <node concept="37vLTw" id="fN" role="37wK5m">
+                  <node concept="37vLTw" id="fS" role="37wK5m">
                     <ref role="3cqZAo" node="R" resolve="myNode" />
-                    <node concept="cd27G" id="g8" role="lGtFl">
-                      <node concept="3u3nmq" id="g9" role="cd27D">
+                    <node concept="cd27G" id="gd" role="lGtFl">
+                      <node concept="3u3nmq" id="ge" role="cd27D">
                         <property role="3u3nmv" value="3778147542048941788" />
                       </node>
                     </node>
                   </node>
-                  <node concept="cd27G" id="fO" role="lGtFl">
-                    <node concept="3u3nmq" id="ga" role="cd27D">
+                  <node concept="cd27G" id="fT" role="lGtFl">
+                    <node concept="3u3nmq" id="gf" role="cd27D">
                       <property role="3u3nmv" value="3778147542048941788" />
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="ft" role="3cqZAp">
-              <node concept="2OqwBi" id="gb" role="3clFbG">
-                <node concept="37vLTw" id="gc" role="2Oq$k0">
-                  <ref role="3cqZAo" node="fI" resolve="editorCell" />
+            <node concept="3clFbF" id="fy" role="3cqZAp">
+              <node concept="2OqwBi" id="gg" role="3clFbG">
+                <node concept="37vLTw" id="gh" role="2Oq$k0">
+                  <ref role="3cqZAo" node="fN" resolve="editorCell" />
                 </node>
-                <node concept="liA8E" id="gd" role="2OqNvi">
+                <node concept="liA8E" id="gi" role="2OqNvi">
                   <ref role="37wK5l" to="g51k:~EditorCell_Label.setDefaultText(java.lang.String)" resolve="setDefaultText" />
-                  <node concept="Xl_RD" id="ge" role="37wK5m">
+                  <node concept="Xl_RD" id="gj" role="37wK5m">
                     <property role="Xl_RC" value="&lt;no model&gt;" />
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="fu" role="3cqZAp">
-              <node concept="2OqwBi" id="gf" role="3clFbG">
-                <node concept="37vLTw" id="gg" role="2Oq$k0">
-                  <ref role="3cqZAo" node="fI" resolve="editorCell" />
+            <node concept="3clFbF" id="fz" role="3cqZAp">
+              <node concept="2OqwBi" id="gk" role="3clFbG">
+                <node concept="37vLTw" id="gl" role="2Oq$k0">
+                  <ref role="3cqZAo" node="fN" resolve="editorCell" />
                 </node>
-                <node concept="liA8E" id="gh" role="2OqNvi">
+                <node concept="liA8E" id="gm" role="2OqNvi">
                   <ref role="37wK5l" to="f4zo:~EditorCell.setCellId(java.lang.String)" resolve="setCellId" />
-                  <node concept="Xl_RD" id="gi" role="37wK5m">
+                  <node concept="Xl_RD" id="gn" role="37wK5m">
                     <property role="Xl_RC" value="property_model" />
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="fv" role="3cqZAp">
-              <node concept="2OqwBi" id="gj" role="3clFbG">
-                <node concept="liA8E" id="gk" role="2OqNvi">
+            <node concept="3clFbF" id="f$" role="3cqZAp">
+              <node concept="2OqwBi" id="go" role="3clFbG">
+                <node concept="liA8E" id="gp" role="2OqNvi">
                   <ref role="37wK5l" to="g51k:~EditorCell_Basic.setSubstituteInfo(jetbrains.mps.openapi.editor.cells.SubstituteInfo)" resolve="setSubstituteInfo" />
-                  <node concept="2ShNRf" id="gm" role="37wK5m">
-                    <node concept="1pGfFk" id="gn" role="2ShVmc">
+                  <node concept="2ShNRf" id="gr" role="37wK5m">
+                    <node concept="1pGfFk" id="gs" role="2ShVmc">
                       <ref role="37wK5l" to="6lvu:~SPropertySubstituteInfo.&lt;init&gt;(jetbrains.mps.openapi.editor.cells.EditorCell,org.jetbrains.mps.openapi.language.SProperty)" resolve="SPropertySubstituteInfo" />
-                      <node concept="37vLTw" id="go" role="37wK5m">
-                        <ref role="3cqZAo" node="fI" resolve="editorCell" />
+                      <node concept="37vLTw" id="gt" role="37wK5m">
+                        <ref role="3cqZAo" node="fN" resolve="editorCell" />
                       </node>
-                      <node concept="37vLTw" id="gp" role="37wK5m">
-                        <ref role="3cqZAo" node="f$" resolve="property" />
+                      <node concept="37vLTw" id="gu" role="37wK5m">
+                        <ref role="3cqZAo" node="fD" resolve="property" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="37vLTw" id="gl" role="2Oq$k0">
-                  <ref role="3cqZAo" node="fI" resolve="editorCell" />
+                <node concept="37vLTw" id="gq" role="2Oq$k0">
+                  <ref role="3cqZAo" node="fN" resolve="editorCell" />
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="fw" role="3cqZAp">
-              <node concept="1rXfSq" id="gq" role="3clFbG">
+            <node concept="3clFbF" id="f_" role="3cqZAp">
+              <node concept="1rXfSq" id="gv" role="3clFbG">
                 <ref role="37wK5l" to="qvne:4gNWjiBdWj$" resolve="setCellContext" />
-                <node concept="37vLTw" id="gr" role="37wK5m">
-                  <ref role="3cqZAo" node="fI" resolve="editorCell" />
+                <node concept="37vLTw" id="gw" role="37wK5m">
+                  <ref role="3cqZAo" node="fN" resolve="editorCell" />
                 </node>
               </node>
             </node>
-            <node concept="3cpWs8" id="fx" role="3cqZAp">
-              <node concept="3cpWsn" id="gs" role="3cpWs9">
+            <node concept="3cpWs8" id="fA" role="3cqZAp">
+              <node concept="3cpWsn" id="gx" role="3cpWs9">
                 <property role="TrG5h" value="propertyAttributes" />
-                <node concept="A3Dl8" id="gt" role="1tU5fm">
-                  <node concept="3Tqbb2" id="gv" role="A3Ik2">
+                <node concept="A3Dl8" id="gy" role="1tU5fm">
+                  <node concept="3Tqbb2" id="g$" role="A3Ik2">
                     <ref role="ehGHo" to="tpck:2ULFgo8_XDm" resolve="PropertyAttribute" />
                   </node>
                 </node>
-                <node concept="2OqwBi" id="gu" role="33vP2m">
-                  <node concept="2OqwBi" id="gw" role="2Oq$k0">
-                    <node concept="37vLTw" id="gy" role="2Oq$k0">
+                <node concept="2OqwBi" id="gz" role="33vP2m">
+                  <node concept="2OqwBi" id="g_" role="2Oq$k0">
+                    <node concept="37vLTw" id="gB" role="2Oq$k0">
                       <ref role="3cqZAo" node="R" resolve="myNode" />
                     </node>
-                    <node concept="3CFZ6_" id="gz" role="2OqNvi">
-                      <node concept="3CFTEB" id="g$" role="3CFYIz" />
+                    <node concept="3CFZ6_" id="gC" role="2OqNvi">
+                      <node concept="3CFTEB" id="gD" role="3CFYIz" />
                     </node>
                   </node>
-                  <node concept="v3k3i" id="gx" role="2OqNvi">
-                    <node concept="chp4Y" id="g_" role="v3oSu">
+                  <node concept="v3k3i" id="gA" role="2OqNvi">
+                    <node concept="chp4Y" id="gE" role="v3oSu">
                       <ref role="cht4Q" to="tpck:2ULFgo8_XDm" resolve="PropertyAttribute" />
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3cpWs8" id="fy" role="3cqZAp">
-              <node concept="3cpWsn" id="gA" role="3cpWs9">
+            <node concept="3cpWs8" id="fB" role="3cqZAp">
+              <node concept="3cpWsn" id="gF" role="3cpWs9">
                 <property role="TrG5h" value="currentPropertyAttributes" />
-                <node concept="A3Dl8" id="gB" role="1tU5fm">
-                  <node concept="3Tqbb2" id="gD" role="A3Ik2">
+                <node concept="A3Dl8" id="gG" role="1tU5fm">
+                  <node concept="3Tqbb2" id="gI" role="A3Ik2">
                     <ref role="ehGHo" to="tpck:2ULFgo8_XDm" resolve="PropertyAttribute" />
                   </node>
                 </node>
-                <node concept="2OqwBi" id="gC" role="33vP2m">
-                  <node concept="37vLTw" id="gE" role="2Oq$k0">
-                    <ref role="3cqZAo" node="gs" resolve="propertyAttributes" />
+                <node concept="2OqwBi" id="gH" role="33vP2m">
+                  <node concept="37vLTw" id="gJ" role="2Oq$k0">
+                    <ref role="3cqZAo" node="gx" resolve="propertyAttributes" />
                   </node>
-                  <node concept="3zZkjj" id="gF" role="2OqNvi">
-                    <node concept="1bVj0M" id="gG" role="23t8la">
-                      <node concept="3clFbS" id="gH" role="1bW5cS">
-                        <node concept="3clFbF" id="gJ" role="3cqZAp">
-                          <node concept="17R0WA" id="gK" role="3clFbG">
-                            <node concept="37vLTw" id="gL" role="3uHU7w">
-                              <ref role="3cqZAo" node="f$" resolve="property" />
+                  <node concept="3zZkjj" id="gK" role="2OqNvi">
+                    <node concept="1bVj0M" id="gL" role="23t8la">
+                      <node concept="3clFbS" id="gM" role="1bW5cS">
+                        <node concept="3clFbF" id="gO" role="3cqZAp">
+                          <node concept="17R0WA" id="gP" role="3clFbG">
+                            <node concept="37vLTw" id="gQ" role="3uHU7w">
+                              <ref role="3cqZAo" node="fD" resolve="property" />
                             </node>
-                            <node concept="2OqwBi" id="gM" role="3uHU7B">
-                              <node concept="37vLTw" id="gN" role="2Oq$k0">
-                                <ref role="3cqZAo" node="gI" resolve="it" />
+                            <node concept="2OqwBi" id="gR" role="3uHU7B">
+                              <node concept="37vLTw" id="gS" role="2Oq$k0">
+                                <ref role="3cqZAo" node="gN" resolve="it" />
                               </node>
-                              <node concept="2qgKlT" id="gO" role="2OqNvi">
+                              <node concept="2qgKlT" id="gT" role="2OqNvi">
                                 <ref role="37wK5l" to="tpcu:1avfQ4BBzOo" resolve="getProperty" />
                               </node>
                             </node>
                           </node>
                         </node>
                       </node>
-                      <node concept="Rh6nW" id="gI" role="1bW2Oz">
+                      <node concept="Rh6nW" id="gN" role="1bW2Oz">
                         <property role="TrG5h" value="it" />
-                        <node concept="2jxLKc" id="gP" role="1tU5fm" />
+                        <node concept="2jxLKc" id="gU" role="1tU5fm" />
                       </node>
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3clFbJ" id="fz" role="3cqZAp">
-              <node concept="2OqwBi" id="gQ" role="3clFbw">
-                <node concept="37vLTw" id="gT" role="2Oq$k0">
-                  <ref role="3cqZAo" node="gA" resolve="currentPropertyAttributes" />
+            <node concept="3clFbJ" id="fC" role="3cqZAp">
+              <node concept="2OqwBi" id="gV" role="3clFbw">
+                <node concept="37vLTw" id="gY" role="2Oq$k0">
+                  <ref role="3cqZAo" node="gF" resolve="currentPropertyAttributes" />
                 </node>
-                <node concept="3GX2aA" id="gU" role="2OqNvi" />
+                <node concept="3GX2aA" id="gZ" role="2OqNvi" />
               </node>
-              <node concept="3clFbS" id="gR" role="3clFbx">
-                <node concept="3cpWs8" id="gV" role="3cqZAp">
-                  <node concept="3cpWsn" id="gX" role="3cpWs9">
+              <node concept="3clFbS" id="gW" role="3clFbx">
+                <node concept="3cpWs8" id="h0" role="3cqZAp">
+                  <node concept="3cpWsn" id="h2" role="3cpWs9">
                     <property role="TrG5h" value="manager" />
-                    <node concept="3uibUv" id="gY" role="1tU5fm">
+                    <node concept="3uibUv" id="h3" role="1tU5fm">
                       <ref role="3uigEE" to="exr9:~EditorManager" resolve="EditorManager" />
                     </node>
-                    <node concept="2YIFZM" id="gZ" role="33vP2m">
+                    <node concept="2YIFZM" id="h4" role="33vP2m">
                       <ref role="1Pybhc" to="exr9:~EditorManager" resolve="EditorManager" />
                       <ref role="37wK5l" to="exr9:~EditorManager.getInstanceFromContext(jetbrains.mps.openapi.editor.EditorContext)" resolve="getInstanceFromContext" />
-                      <node concept="1rXfSq" id="h0" role="37wK5m">
+                      <node concept="1rXfSq" id="h5" role="37wK5m">
                         <ref role="37wK5l" to="qvne:6OQfiPCHBdf" resolve="getEditorContext" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="3cpWs6" id="gW" role="3cqZAp">
-                  <node concept="2OqwBi" id="h1" role="3cqZAk">
-                    <node concept="37vLTw" id="h2" role="2Oq$k0">
-                      <ref role="3cqZAo" node="gX" resolve="manager" />
+                <node concept="3cpWs6" id="h1" role="3cqZAp">
+                  <node concept="2OqwBi" id="h6" role="3cqZAk">
+                    <node concept="37vLTw" id="h7" role="2Oq$k0">
+                      <ref role="3cqZAo" node="h2" resolve="manager" />
                     </node>
-                    <node concept="liA8E" id="h3" role="2OqNvi">
+                    <node concept="liA8E" id="h8" role="2OqNvi">
                       <ref role="37wK5l" to="exr9:~EditorManager.createNodeRoleAttributeCell(org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.openapi.editor.update.AttributeKind,jetbrains.mps.openapi.editor.cells.EditorCell)" resolve="createNodeRoleAttributeCell" />
-                      <node concept="2OqwBi" id="h4" role="37wK5m">
-                        <node concept="37vLTw" id="h7" role="2Oq$k0">
-                          <ref role="3cqZAo" node="gA" resolve="currentPropertyAttributes" />
+                      <node concept="2OqwBi" id="h9" role="37wK5m">
+                        <node concept="37vLTw" id="hc" role="2Oq$k0">
+                          <ref role="3cqZAo" node="gF" resolve="currentPropertyAttributes" />
                         </node>
-                        <node concept="1uHKPH" id="h8" role="2OqNvi" />
+                        <node concept="1uHKPH" id="hd" role="2OqNvi" />
                       </node>
-                      <node concept="Rm8GO" id="h5" role="37wK5m">
+                      <node concept="Rm8GO" id="ha" role="37wK5m">
                         <ref role="Rm8GQ" to="22ra:~AttributeKind.PROPERTY" resolve="PROPERTY" />
                         <ref role="1Px2BO" to="22ra:~AttributeKind" resolve="AttributeKind" />
                       </node>
-                      <node concept="37vLTw" id="h6" role="37wK5m">
-                        <ref role="3cqZAo" node="fI" resolve="editorCell" />
+                      <node concept="37vLTw" id="hb" role="37wK5m">
+                        <ref role="3cqZAo" node="fN" resolve="editorCell" />
                       </node>
                     </node>
                   </node>
                 </node>
               </node>
-              <node concept="3cpWs6" id="gS" role="9aQIa">
-                <node concept="37vLTw" id="h9" role="3cqZAk">
-                  <ref role="3cqZAo" node="fI" resolve="editorCell" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="1wplmZ" id="fp" role="1zxBo6">
-            <node concept="3clFbS" id="ha" role="1wplMD">
-              <node concept="3clFbF" id="hb" role="3cqZAp">
-                <node concept="2OqwBi" id="hc" role="3clFbG">
-                  <node concept="1rXfSq" id="hd" role="2Oq$k0">
-                    <ref role="37wK5l" to="qvne:6OQfiPCHBjx" resolve="getCellFactory" />
-                  </node>
-                  <node concept="liA8E" id="he" role="2OqNvi">
-                    <ref role="37wK5l" to="f4zo:~EditorCellFactory.popCellContext()" resolve="popCellContext" />
-                  </node>
+              <node concept="3cpWs6" id="gX" role="9aQIa">
+                <node concept="37vLTw" id="he" role="3cqZAk">
+                  <ref role="3cqZAo" node="fN" resolve="editorCell" />
                 </node>
               </node>
             </node>
@@ -5205,302 +5205,302 @@
           </node>
         </node>
         <node concept="3J1_TO" id="u9" role="3cqZAp">
-          <node concept="3clFbS" id="ud" role="1zxBo7">
-            <node concept="3cpWs8" id="uf" role="3cqZAp">
-              <node concept="3cpWsn" id="up" role="3cpWs9">
+          <node concept="1wplmZ" id="ud" role="1zxBo6">
+            <node concept="3clFbS" id="uf" role="1wplMD">
+              <node concept="3clFbF" id="ug" role="3cqZAp">
+                <node concept="2OqwBi" id="uh" role="3clFbG">
+                  <node concept="1rXfSq" id="ui" role="2Oq$k0">
+                    <ref role="37wK5l" to="qvne:6OQfiPCHBjx" resolve="getCellFactory" />
+                  </node>
+                  <node concept="liA8E" id="uj" role="2OqNvi">
+                    <ref role="37wK5l" to="f4zo:~EditorCellFactory.popCellContext()" resolve="popCellContext" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="ue" role="1zxBo7">
+            <node concept="3cpWs8" id="uk" role="3cqZAp">
+              <node concept="3cpWsn" id="uu" role="3cpWs9">
                 <property role="TrG5h" value="property" />
-                <node concept="3uibUv" id="uq" role="1tU5fm">
+                <node concept="3uibUv" id="uv" role="1tU5fm">
                   <ref role="3uigEE" to="c17a:~SProperty" resolve="SProperty" />
                 </node>
-                <node concept="355D3s" id="ur" role="33vP2m">
+                <node concept="355D3s" id="uw" role="33vP2m">
                   <ref role="355D3t" to="7tg8:n" resolve="Person" />
                   <ref role="355D3u" to="7tg8:o" resolve="name" />
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="ug" role="3cqZAp">
-              <node concept="2OqwBi" id="us" role="3clFbG">
-                <node concept="1rXfSq" id="ut" role="2Oq$k0">
+            <node concept="3clFbF" id="ul" role="3cqZAp">
+              <node concept="2OqwBi" id="ux" role="3clFbG">
+                <node concept="1rXfSq" id="uy" role="2Oq$k0">
                   <ref role="37wK5l" to="qvne:6OQfiPCHBjx" resolve="getCellFactory" />
                 </node>
-                <node concept="liA8E" id="uu" role="2OqNvi">
+                <node concept="liA8E" id="uz" role="2OqNvi">
                   <ref role="37wK5l" to="f4zo:~EditorCellFactory.setPropertyInfo(jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo)" resolve="setPropertyInfo" />
-                  <node concept="2ShNRf" id="uv" role="37wK5m">
-                    <node concept="1pGfFk" id="uw" role="2ShVmc">
+                  <node concept="2ShNRf" id="u$" role="37wK5m">
+                    <node concept="1pGfFk" id="u_" role="2ShVmc">
                       <ref role="37wK5l" to="uddc:~SPropertyInfo.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SProperty)" resolve="SPropertyInfo" />
-                      <node concept="37vLTw" id="ux" role="37wK5m">
+                      <node concept="37vLTw" id="uA" role="37wK5m">
                         <ref role="3cqZAo" node="lm" resolve="myNode" />
                       </node>
-                      <node concept="37vLTw" id="uy" role="37wK5m">
-                        <ref role="3cqZAo" node="up" resolve="property" />
+                      <node concept="37vLTw" id="uB" role="37wK5m">
+                        <ref role="3cqZAo" node="uu" resolve="property" />
                       </node>
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3cpWs8" id="uh" role="3cqZAp">
-              <node concept="3cpWsn" id="uz" role="3cpWs9">
+            <node concept="3cpWs8" id="um" role="3cqZAp">
+              <node concept="3cpWsn" id="uC" role="3cpWs9">
                 <property role="TrG5h" value="editorCell" />
-                <node concept="3uibUv" id="u$" role="1tU5fm">
+                <node concept="3uibUv" id="uD" role="1tU5fm">
                   <ref role="3uigEE" to="g51k:~EditorCell_Property" resolve="EditorCell_Property" />
                 </node>
-                <node concept="2YIFZM" id="u_" role="33vP2m">
+                <node concept="2YIFZM" id="uE" role="33vP2m">
                   <ref role="1Pybhc" to="g51k:~EditorCell_Property" resolve="EditorCell_Property" />
                   <ref role="37wK5l" to="g51k:~EditorCell_Property.create(jetbrains.mps.openapi.editor.EditorContext,jetbrains.mps.nodeEditor.cells.ModelAccessor,org.jetbrains.mps.openapi.model.SNode)" resolve="create" />
-                  <node concept="1rXfSq" id="uA" role="37wK5m">
+                  <node concept="1rXfSq" id="uF" role="37wK5m">
                     <ref role="37wK5l" to="qvne:6OQfiPCHBdf" resolve="getEditorContext" />
-                    <node concept="cd27G" id="uE" role="lGtFl">
-                      <node concept="3u3nmq" id="uF" role="cd27D">
+                    <node concept="cd27G" id="uJ" role="lGtFl">
+                      <node concept="3u3nmq" id="uK" role="cd27D">
                         <property role="3u3nmv" value="3778147542048983658" />
                       </node>
                     </node>
                   </node>
-                  <node concept="2ShNRf" id="uB" role="37wK5m">
-                    <node concept="1pGfFk" id="uG" role="2ShVmc">
+                  <node concept="2ShNRf" id="uG" role="37wK5m">
+                    <node concept="1pGfFk" id="uL" role="2ShVmc">
                       <ref role="37wK5l" to="g51k:~SPropertyAccessor.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SProperty,boolean,boolean)" resolve="SPropertyAccessor" />
-                      <node concept="37vLTw" id="uI" role="37wK5m">
+                      <node concept="37vLTw" id="uN" role="37wK5m">
                         <ref role="3cqZAo" node="lm" resolve="myNode" />
-                        <node concept="cd27G" id="uN" role="lGtFl">
-                          <node concept="3u3nmq" id="uO" role="cd27D">
+                        <node concept="cd27G" id="uS" role="lGtFl">
+                          <node concept="3u3nmq" id="uT" role="cd27D">
                             <property role="3u3nmv" value="3778147542048983658" />
                           </node>
                         </node>
                       </node>
-                      <node concept="37vLTw" id="uJ" role="37wK5m">
-                        <ref role="3cqZAo" node="up" resolve="property" />
-                        <node concept="cd27G" id="uP" role="lGtFl">
-                          <node concept="3u3nmq" id="uQ" role="cd27D">
+                      <node concept="37vLTw" id="uO" role="37wK5m">
+                        <ref role="3cqZAo" node="uu" resolve="property" />
+                        <node concept="cd27G" id="uU" role="lGtFl">
+                          <node concept="3u3nmq" id="uV" role="cd27D">
                             <property role="3u3nmv" value="3778147542048983658" />
                           </node>
                         </node>
                       </node>
-                      <node concept="3clFbT" id="uK" role="37wK5m">
-                        <node concept="cd27G" id="uR" role="lGtFl">
-                          <node concept="3u3nmq" id="uS" role="cd27D">
+                      <node concept="3clFbT" id="uP" role="37wK5m">
+                        <node concept="cd27G" id="uW" role="lGtFl">
+                          <node concept="3u3nmq" id="uX" role="cd27D">
                             <property role="3u3nmv" value="3778147542048983658" />
                           </node>
                         </node>
                       </node>
-                      <node concept="3clFbT" id="uL" role="37wK5m">
-                        <node concept="cd27G" id="uT" role="lGtFl">
-                          <node concept="3u3nmq" id="uU" role="cd27D">
+                      <node concept="3clFbT" id="uQ" role="37wK5m">
+                        <node concept="cd27G" id="uY" role="lGtFl">
+                          <node concept="3u3nmq" id="uZ" role="cd27D">
                             <property role="3u3nmv" value="3778147542048983658" />
                           </node>
                         </node>
                       </node>
-                      <node concept="cd27G" id="uM" role="lGtFl">
-                        <node concept="3u3nmq" id="uV" role="cd27D">
+                      <node concept="cd27G" id="uR" role="lGtFl">
+                        <node concept="3u3nmq" id="v0" role="cd27D">
                           <property role="3u3nmv" value="3778147542048983658" />
                         </node>
                       </node>
                     </node>
-                    <node concept="cd27G" id="uH" role="lGtFl">
-                      <node concept="3u3nmq" id="uW" role="cd27D">
+                    <node concept="cd27G" id="uM" role="lGtFl">
+                      <node concept="3u3nmq" id="v1" role="cd27D">
                         <property role="3u3nmv" value="3778147542048983658" />
                       </node>
                     </node>
                   </node>
-                  <node concept="37vLTw" id="uC" role="37wK5m">
+                  <node concept="37vLTw" id="uH" role="37wK5m">
                     <ref role="3cqZAo" node="lm" resolve="myNode" />
-                    <node concept="cd27G" id="uX" role="lGtFl">
-                      <node concept="3u3nmq" id="uY" role="cd27D">
+                    <node concept="cd27G" id="v2" role="lGtFl">
+                      <node concept="3u3nmq" id="v3" role="cd27D">
                         <property role="3u3nmv" value="3778147542048983658" />
                       </node>
                     </node>
                   </node>
-                  <node concept="cd27G" id="uD" role="lGtFl">
-                    <node concept="3u3nmq" id="uZ" role="cd27D">
+                  <node concept="cd27G" id="uI" role="lGtFl">
+                    <node concept="3u3nmq" id="v4" role="cd27D">
                       <property role="3u3nmv" value="3778147542048983658" />
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="ui" role="3cqZAp">
-              <node concept="2OqwBi" id="v0" role="3clFbG">
-                <node concept="37vLTw" id="v1" role="2Oq$k0">
-                  <ref role="3cqZAo" node="uz" resolve="editorCell" />
+            <node concept="3clFbF" id="un" role="3cqZAp">
+              <node concept="2OqwBi" id="v5" role="3clFbG">
+                <node concept="37vLTw" id="v6" role="2Oq$k0">
+                  <ref role="3cqZAo" node="uC" resolve="editorCell" />
                 </node>
-                <node concept="liA8E" id="v2" role="2OqNvi">
+                <node concept="liA8E" id="v7" role="2OqNvi">
                   <ref role="37wK5l" to="g51k:~EditorCell_Label.setDefaultText(java.lang.String)" resolve="setDefaultText" />
-                  <node concept="Xl_RD" id="v3" role="37wK5m">
+                  <node concept="Xl_RD" id="v8" role="37wK5m">
                     <property role="Xl_RC" value="&lt;no name&gt;" />
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="uj" role="3cqZAp">
-              <node concept="2OqwBi" id="v4" role="3clFbG">
-                <node concept="37vLTw" id="v5" role="2Oq$k0">
-                  <ref role="3cqZAo" node="uz" resolve="editorCell" />
+            <node concept="3clFbF" id="uo" role="3cqZAp">
+              <node concept="2OqwBi" id="v9" role="3clFbG">
+                <node concept="37vLTw" id="va" role="2Oq$k0">
+                  <ref role="3cqZAo" node="uC" resolve="editorCell" />
                 </node>
-                <node concept="liA8E" id="v6" role="2OqNvi">
+                <node concept="liA8E" id="vb" role="2OqNvi">
                   <ref role="37wK5l" to="f4zo:~EditorCell.setCellId(java.lang.String)" resolve="setCellId" />
-                  <node concept="Xl_RD" id="v7" role="37wK5m">
+                  <node concept="Xl_RD" id="vc" role="37wK5m">
                     <property role="Xl_RC" value="property_name" />
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="uk" role="3cqZAp">
-              <node concept="2OqwBi" id="v8" role="3clFbG">
-                <node concept="liA8E" id="v9" role="2OqNvi">
+            <node concept="3clFbF" id="up" role="3cqZAp">
+              <node concept="2OqwBi" id="vd" role="3clFbG">
+                <node concept="liA8E" id="ve" role="2OqNvi">
                   <ref role="37wK5l" to="g51k:~EditorCell_Basic.setSubstituteInfo(jetbrains.mps.openapi.editor.cells.SubstituteInfo)" resolve="setSubstituteInfo" />
-                  <node concept="2ShNRf" id="vb" role="37wK5m">
-                    <node concept="1pGfFk" id="vc" role="2ShVmc">
+                  <node concept="2ShNRf" id="vg" role="37wK5m">
+                    <node concept="1pGfFk" id="vh" role="2ShVmc">
                       <ref role="37wK5l" to="6lvu:~SPropertySubstituteInfo.&lt;init&gt;(jetbrains.mps.openapi.editor.cells.EditorCell,org.jetbrains.mps.openapi.language.SProperty)" resolve="SPropertySubstituteInfo" />
-                      <node concept="37vLTw" id="vd" role="37wK5m">
-                        <ref role="3cqZAo" node="uz" resolve="editorCell" />
+                      <node concept="37vLTw" id="vi" role="37wK5m">
+                        <ref role="3cqZAo" node="uC" resolve="editorCell" />
                       </node>
-                      <node concept="37vLTw" id="ve" role="37wK5m">
-                        <ref role="3cqZAo" node="up" resolve="property" />
+                      <node concept="37vLTw" id="vj" role="37wK5m">
+                        <ref role="3cqZAo" node="uu" resolve="property" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="37vLTw" id="va" role="2Oq$k0">
-                  <ref role="3cqZAo" node="uz" resolve="editorCell" />
+                <node concept="37vLTw" id="vf" role="2Oq$k0">
+                  <ref role="3cqZAo" node="uC" resolve="editorCell" />
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="ul" role="3cqZAp">
-              <node concept="1rXfSq" id="vf" role="3clFbG">
+            <node concept="3clFbF" id="uq" role="3cqZAp">
+              <node concept="1rXfSq" id="vk" role="3clFbG">
                 <ref role="37wK5l" to="qvne:4gNWjiBdWj$" resolve="setCellContext" />
-                <node concept="37vLTw" id="vg" role="37wK5m">
-                  <ref role="3cqZAo" node="uz" resolve="editorCell" />
+                <node concept="37vLTw" id="vl" role="37wK5m">
+                  <ref role="3cqZAo" node="uC" resolve="editorCell" />
                 </node>
               </node>
             </node>
-            <node concept="3cpWs8" id="um" role="3cqZAp">
-              <node concept="3cpWsn" id="vh" role="3cpWs9">
+            <node concept="3cpWs8" id="ur" role="3cqZAp">
+              <node concept="3cpWsn" id="vm" role="3cpWs9">
                 <property role="TrG5h" value="propertyAttributes" />
-                <node concept="A3Dl8" id="vi" role="1tU5fm">
-                  <node concept="3Tqbb2" id="vk" role="A3Ik2">
+                <node concept="A3Dl8" id="vn" role="1tU5fm">
+                  <node concept="3Tqbb2" id="vp" role="A3Ik2">
                     <ref role="ehGHo" to="tpck:2ULFgo8_XDm" resolve="PropertyAttribute" />
                   </node>
                 </node>
-                <node concept="2OqwBi" id="vj" role="33vP2m">
-                  <node concept="2OqwBi" id="vl" role="2Oq$k0">
-                    <node concept="37vLTw" id="vn" role="2Oq$k0">
+                <node concept="2OqwBi" id="vo" role="33vP2m">
+                  <node concept="2OqwBi" id="vq" role="2Oq$k0">
+                    <node concept="37vLTw" id="vs" role="2Oq$k0">
                       <ref role="3cqZAo" node="lm" resolve="myNode" />
                     </node>
-                    <node concept="3CFZ6_" id="vo" role="2OqNvi">
-                      <node concept="3CFTEB" id="vp" role="3CFYIz" />
+                    <node concept="3CFZ6_" id="vt" role="2OqNvi">
+                      <node concept="3CFTEB" id="vu" role="3CFYIz" />
                     </node>
                   </node>
-                  <node concept="v3k3i" id="vm" role="2OqNvi">
-                    <node concept="chp4Y" id="vq" role="v3oSu">
+                  <node concept="v3k3i" id="vr" role="2OqNvi">
+                    <node concept="chp4Y" id="vv" role="v3oSu">
                       <ref role="cht4Q" to="tpck:2ULFgo8_XDm" resolve="PropertyAttribute" />
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3cpWs8" id="un" role="3cqZAp">
-              <node concept="3cpWsn" id="vr" role="3cpWs9">
+            <node concept="3cpWs8" id="us" role="3cqZAp">
+              <node concept="3cpWsn" id="vw" role="3cpWs9">
                 <property role="TrG5h" value="currentPropertyAttributes" />
-                <node concept="A3Dl8" id="vs" role="1tU5fm">
-                  <node concept="3Tqbb2" id="vu" role="A3Ik2">
+                <node concept="A3Dl8" id="vx" role="1tU5fm">
+                  <node concept="3Tqbb2" id="vz" role="A3Ik2">
                     <ref role="ehGHo" to="tpck:2ULFgo8_XDm" resolve="PropertyAttribute" />
                   </node>
                 </node>
-                <node concept="2OqwBi" id="vt" role="33vP2m">
-                  <node concept="37vLTw" id="vv" role="2Oq$k0">
-                    <ref role="3cqZAo" node="vh" resolve="propertyAttributes" />
+                <node concept="2OqwBi" id="vy" role="33vP2m">
+                  <node concept="37vLTw" id="v$" role="2Oq$k0">
+                    <ref role="3cqZAo" node="vm" resolve="propertyAttributes" />
                   </node>
-                  <node concept="3zZkjj" id="vw" role="2OqNvi">
-                    <node concept="1bVj0M" id="vx" role="23t8la">
-                      <node concept="3clFbS" id="vy" role="1bW5cS">
-                        <node concept="3clFbF" id="v$" role="3cqZAp">
-                          <node concept="17R0WA" id="v_" role="3clFbG">
-                            <node concept="37vLTw" id="vA" role="3uHU7w">
-                              <ref role="3cqZAo" node="up" resolve="property" />
+                  <node concept="3zZkjj" id="v_" role="2OqNvi">
+                    <node concept="1bVj0M" id="vA" role="23t8la">
+                      <node concept="3clFbS" id="vB" role="1bW5cS">
+                        <node concept="3clFbF" id="vD" role="3cqZAp">
+                          <node concept="17R0WA" id="vE" role="3clFbG">
+                            <node concept="37vLTw" id="vF" role="3uHU7w">
+                              <ref role="3cqZAo" node="uu" resolve="property" />
                             </node>
-                            <node concept="2OqwBi" id="vB" role="3uHU7B">
-                              <node concept="37vLTw" id="vC" role="2Oq$k0">
-                                <ref role="3cqZAo" node="vz" resolve="it" />
+                            <node concept="2OqwBi" id="vG" role="3uHU7B">
+                              <node concept="37vLTw" id="vH" role="2Oq$k0">
+                                <ref role="3cqZAo" node="vC" resolve="it" />
                               </node>
-                              <node concept="2qgKlT" id="vD" role="2OqNvi">
+                              <node concept="2qgKlT" id="vI" role="2OqNvi">
                                 <ref role="37wK5l" to="tpcu:1avfQ4BBzOo" resolve="getProperty" />
                               </node>
                             </node>
                           </node>
                         </node>
                       </node>
-                      <node concept="Rh6nW" id="vz" role="1bW2Oz">
+                      <node concept="Rh6nW" id="vC" role="1bW2Oz">
                         <property role="TrG5h" value="it" />
-                        <node concept="2jxLKc" id="vE" role="1tU5fm" />
+                        <node concept="2jxLKc" id="vJ" role="1tU5fm" />
                       </node>
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3clFbJ" id="uo" role="3cqZAp">
-              <node concept="2OqwBi" id="vF" role="3clFbw">
-                <node concept="37vLTw" id="vI" role="2Oq$k0">
-                  <ref role="3cqZAo" node="vr" resolve="currentPropertyAttributes" />
+            <node concept="3clFbJ" id="ut" role="3cqZAp">
+              <node concept="2OqwBi" id="vK" role="3clFbw">
+                <node concept="37vLTw" id="vN" role="2Oq$k0">
+                  <ref role="3cqZAo" node="vw" resolve="currentPropertyAttributes" />
                 </node>
-                <node concept="3GX2aA" id="vJ" role="2OqNvi" />
+                <node concept="3GX2aA" id="vO" role="2OqNvi" />
               </node>
-              <node concept="3clFbS" id="vG" role="3clFbx">
-                <node concept="3cpWs8" id="vK" role="3cqZAp">
-                  <node concept="3cpWsn" id="vM" role="3cpWs9">
+              <node concept="3clFbS" id="vL" role="3clFbx">
+                <node concept="3cpWs8" id="vP" role="3cqZAp">
+                  <node concept="3cpWsn" id="vR" role="3cpWs9">
                     <property role="TrG5h" value="manager" />
-                    <node concept="3uibUv" id="vN" role="1tU5fm">
+                    <node concept="3uibUv" id="vS" role="1tU5fm">
                       <ref role="3uigEE" to="exr9:~EditorManager" resolve="EditorManager" />
                     </node>
-                    <node concept="2YIFZM" id="vO" role="33vP2m">
+                    <node concept="2YIFZM" id="vT" role="33vP2m">
                       <ref role="1Pybhc" to="exr9:~EditorManager" resolve="EditorManager" />
                       <ref role="37wK5l" to="exr9:~EditorManager.getInstanceFromContext(jetbrains.mps.openapi.editor.EditorContext)" resolve="getInstanceFromContext" />
-                      <node concept="1rXfSq" id="vP" role="37wK5m">
+                      <node concept="1rXfSq" id="vU" role="37wK5m">
                         <ref role="37wK5l" to="qvne:6OQfiPCHBdf" resolve="getEditorContext" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="3cpWs6" id="vL" role="3cqZAp">
-                  <node concept="2OqwBi" id="vQ" role="3cqZAk">
-                    <node concept="37vLTw" id="vR" role="2Oq$k0">
-                      <ref role="3cqZAo" node="vM" resolve="manager" />
+                <node concept="3cpWs6" id="vQ" role="3cqZAp">
+                  <node concept="2OqwBi" id="vV" role="3cqZAk">
+                    <node concept="37vLTw" id="vW" role="2Oq$k0">
+                      <ref role="3cqZAo" node="vR" resolve="manager" />
                     </node>
-                    <node concept="liA8E" id="vS" role="2OqNvi">
+                    <node concept="liA8E" id="vX" role="2OqNvi">
                       <ref role="37wK5l" to="exr9:~EditorManager.createNodeRoleAttributeCell(org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.openapi.editor.update.AttributeKind,jetbrains.mps.openapi.editor.cells.EditorCell)" resolve="createNodeRoleAttributeCell" />
-                      <node concept="2OqwBi" id="vT" role="37wK5m">
-                        <node concept="37vLTw" id="vW" role="2Oq$k0">
-                          <ref role="3cqZAo" node="vr" resolve="currentPropertyAttributes" />
+                      <node concept="2OqwBi" id="vY" role="37wK5m">
+                        <node concept="37vLTw" id="w1" role="2Oq$k0">
+                          <ref role="3cqZAo" node="vw" resolve="currentPropertyAttributes" />
                         </node>
-                        <node concept="1uHKPH" id="vX" role="2OqNvi" />
+                        <node concept="1uHKPH" id="w2" role="2OqNvi" />
                       </node>
-                      <node concept="Rm8GO" id="vU" role="37wK5m">
+                      <node concept="Rm8GO" id="vZ" role="37wK5m">
                         <ref role="Rm8GQ" to="22ra:~AttributeKind.PROPERTY" resolve="PROPERTY" />
                         <ref role="1Px2BO" to="22ra:~AttributeKind" resolve="AttributeKind" />
                       </node>
-                      <node concept="37vLTw" id="vV" role="37wK5m">
-                        <ref role="3cqZAo" node="uz" resolve="editorCell" />
+                      <node concept="37vLTw" id="w0" role="37wK5m">
+                        <ref role="3cqZAo" node="uC" resolve="editorCell" />
                       </node>
                     </node>
                   </node>
                 </node>
               </node>
-              <node concept="3cpWs6" id="vH" role="9aQIa">
-                <node concept="37vLTw" id="vY" role="3cqZAk">
-                  <ref role="3cqZAo" node="uz" resolve="editorCell" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="1wplmZ" id="ue" role="1zxBo6">
-            <node concept="3clFbS" id="vZ" role="1wplMD">
-              <node concept="3clFbF" id="w0" role="3cqZAp">
-                <node concept="2OqwBi" id="w1" role="3clFbG">
-                  <node concept="1rXfSq" id="w2" role="2Oq$k0">
-                    <ref role="37wK5l" to="qvne:6OQfiPCHBjx" resolve="getCellFactory" />
-                  </node>
-                  <node concept="liA8E" id="w3" role="2OqNvi">
-                    <ref role="37wK5l" to="f4zo:~EditorCellFactory.popCellContext()" resolve="popCellContext" />
-                  </node>
+              <node concept="3cpWs6" id="vM" role="9aQIa">
+                <node concept="37vLTw" id="w3" role="3cqZAk">
+                  <ref role="3cqZAo" node="uC" resolve="editorCell" />
                 </node>
               </node>
             </node>

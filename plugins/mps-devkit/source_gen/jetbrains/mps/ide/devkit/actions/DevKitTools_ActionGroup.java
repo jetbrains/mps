@@ -16,6 +16,5 @@ public class DevKitTools_ActionGroup extends GeneratedActionGroup {
     setIsInternal(false);
     setPopup(false);
     DevKitTools_ActionGroup.this.addAction("jetbrains.mps.ide.devkit.actions.ReloadAll_Action");
-    DevKitTools_ActionGroup.this.addAction("jetbrains.mps.ide.devkit.actions.InternalReactivateEDTExecutorQueue_Action");
   }
 }

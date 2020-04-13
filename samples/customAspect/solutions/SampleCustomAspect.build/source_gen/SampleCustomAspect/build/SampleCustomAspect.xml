@@ -79,6 +79,7 @@
     </echoxml>
     <jar destfile="${build.tmp}/default/SampleCustomAspect.zip/SampleCustomAspect/languages/SampleCustomAspect/jetbrains.mps.samples.customAspect.sampleLanguage.sandbox.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.sampleLanguage.sandbox" />
+      <fileset dir="${basedir}/languages/jetbrains.mps.samples.customAspect.sampleLanguage/sandbox" includes="icons/**, resources/**" />
       <fileset dir="${basedir}/languages/jetbrains.mps.samples.customAspect.sampleLanguage/sandbox/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.samples.customAspect.sampleLanguage.sandbox.jar" />
     </jar>
@@ -131,6 +132,7 @@
     </echoxml>
     <jar destfile="${build.tmp}/default/SampleCustomAspect.zip/SampleCustomAspect/languages/SampleCustomAspect/jetbrains.mps.samples.customAspect.documentation.pluginSolution.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.documentation.pluginSolution" />
+      <fileset dir="${basedir}/solutions/jetbrains.mps.samples.customAspect.documentation.pluginSolution" includes="icons/**, resources/**" />
       <fileset dir="${basedir}/solutions/jetbrains.mps.samples.customAspect.documentation.pluginSolution/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.samples.customAspect.documentation.pluginSolution.jar" />
     </jar>
@@ -206,6 +208,7 @@
     </echoxml>
     <jar destfile="${build.tmp}/default/SampleCustomAspect.zip/SampleCustomAspect/languages/SampleCustomAspect/jetbrains.mps.samples.customAspect.sampleLanguage.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.sampleLanguage" />
+      <fileset dir="${basedir}/languages/jetbrains.mps.samples.customAspect.sampleLanguage" includes="icons/**, resources/**" />
       <fileset dir="${basedir}/languages/jetbrains.mps.samples.customAspect.sampleLanguage/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.samples.customAspect.sampleLanguage.jar" />
     </jar>
@@ -287,6 +290,7 @@
     </echoxml>
     <jar destfile="${build.tmp}/default/SampleCustomAspect.zip/SampleCustomAspect/languages/SampleCustomAspect/jetbrains.mps.samples.customAspect.documentation.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.documentation" />
+      <fileset dir="${basedir}/languages/jetbrains.mps.samples.customAspect.docLanguage" includes="icons/**, resources/**" />
       <fileset dir="${basedir}/languages/jetbrains.mps.samples.customAspect.docLanguage/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.samples.customAspect.documentation.jar" />
     </jar>
@@ -392,6 +396,7 @@
     </echoxml>
     <jar destfile="${build.tmp}/default/SampleCustomAspect.zip/SampleCustomAspect/languages/SampleCustomAspect/jetbrains.mps.samples.customAspect.documentation.runtime.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.documentation.runtime" />
+      <fileset dir="${basedir}/solutions/jetbrains.mps.samples.customAspect.documentation.runtime" includes="icons/**, resources/**" />
       <fileset dir="${basedir}/solutions/jetbrains.mps.samples.customAspect.documentation.runtime/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.samples.customAspect.documentation.runtime.jar" />
     </jar>

@@ -30,9 +30,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -250,7 +247,6 @@
     <node concept="3Tm1VV" id="7" role="1B3o_S" />
     <node concept="2tJIrI" id="8" role="jymVt" />
     <node concept="3clFb_" id="9" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -381,8 +377,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="K" role="3Kbmr1">
-              <ref role="1PxDUh" node="3n" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3p" resolve="QueryFunction_TransformationMenu_Icon" />
+              <ref role="1PxDUh" node="3n" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="C" role="3KbHQx">
@@ -468,8 +464,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1i" role="3Kbmr1">
-              <ref role="1PxDUh" node="3n" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3q" resolve="QueryFunction_TransformationMenu_Tooltip" />
+              <ref role="1PxDUh" node="3n" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="D" role="3KbHQx">
@@ -542,8 +538,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1O" role="3Kbmr1">
-              <ref role="1PxDUh" node="3n" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3r" resolve="TransformationFeature_Icon" />
+              <ref role="1PxDUh" node="3n" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="E" role="3KbHQx">
@@ -616,8 +612,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2h" role="3Kbmr1">
-              <ref role="1PxDUh" node="3n" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3s" resolve="TransformationFeature_Tooltip" />
+              <ref role="1PxDUh" node="3n" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="F" role="3KbHQx">
@@ -703,8 +699,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2I" role="3Kbmr1">
-              <ref role="1PxDUh" node="3n" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3t" resolve="TransformationLocation_ContextActionsTool" />
+              <ref role="1PxDUh" node="3n" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -1159,7 +1155,6 @@
     </node>
     <node concept="2tJIrI" id="57" role="jymVt" />
     <node concept="3clFb_" id="58" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -1181,8 +1176,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6f" role="3Kbmr1">
-              <ref role="1PxDUh" node="3n" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3p" resolve="QueryFunction_TransformationMenu_Icon" />
+              <ref role="1PxDUh" node="3n" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="68" role="3KbHQx">
@@ -1194,8 +1189,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6j" role="3Kbmr1">
-              <ref role="1PxDUh" node="3n" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3q" resolve="QueryFunction_TransformationMenu_Tooltip" />
+              <ref role="1PxDUh" node="3n" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="69" role="3KbHQx">
@@ -1207,8 +1202,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6n" role="3Kbmr1">
-              <ref role="1PxDUh" node="3n" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3r" resolve="TransformationFeature_Icon" />
+              <ref role="1PxDUh" node="3n" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="6a" role="3KbHQx">
@@ -1220,8 +1215,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6r" role="3Kbmr1">
-              <ref role="1PxDUh" node="3n" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3s" resolve="TransformationFeature_Tooltip" />
+              <ref role="1PxDUh" node="3n" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="6b" role="3KbHQx">
@@ -1233,8 +1228,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6v" role="3Kbmr1">
-              <ref role="1PxDUh" node="3n" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3t" resolve="TransformationLocation_ContextActionsTool" />
+              <ref role="1PxDUh" node="3n" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="6c" role="3KbGdf">

@@ -54,9 +54,7 @@
         <child id="1068580123134" name="parameter" index="3clF46" />
         <child id="1068580123135" name="body" index="3clF47" />
       </concept>
-      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_">
-        <property id="1178608670077" name="isAbstract" index="1EzhhJ" />
-      </concept>
+      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_" />
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
       </concept>
@@ -108,7 +106,6 @@
   <node concept="3HP615" id="16TciwZII5d">
     <property role="TrG5h" value="VCSAspectDescriptor" />
     <node concept="3clFb_" id="4WGKd_KBOxw" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getVCSDescriptor" />
       <node concept="3uibUv" id="4WGKd_KBOBJ" role="3clF45">
         <ref role="3uigEE" node="4WGKd_KBOsX" resolve="VCSConceptAspect" />
@@ -366,7 +363,6 @@
     <property role="2bfB8j" value="true" />
     <property role="TrG5h" value="VCSConceptAspect" />
     <node concept="3clFb_" id="4WGKd_KBOwj" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDefaultStrategy" />
       <node concept="3uibUv" id="4WGKd_KBOwk" role="3clF45">
         <ref role="3uigEE" to="ur19:16TciwZIYCr" resolve="MergeStrategy" />
@@ -378,7 +374,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="4WGKd_KBOCK" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDefaultStrategy" />
       <node concept="3uibUv" id="4WGKd_KBOCL" role="3clF45">
         <ref role="3uigEE" to="ur19:16TciwZIYCr" resolve="MergeStrategy" />
@@ -396,7 +391,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="4WGKd_KFMfc" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDefaultStrategy" />
       <node concept="3uibUv" id="4WGKd_KFMfd" role="3clF45">
         <ref role="3uigEE" to="ur19:16TciwZIYCr" resolve="MergeStrategy" />
@@ -414,7 +408,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="4WGKd_KFMfE" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDefaultStrategy" />
       <node concept="3uibUv" id="4WGKd_KFMfF" role="3clF45">
         <ref role="3uigEE" to="ur19:16TciwZIYCr" resolve="MergeStrategy" />

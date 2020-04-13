@@ -30,9 +30,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -239,7 +236,6 @@
     <node concept="3Tm1VV" id="4" role="1B3o_S" />
     <node concept="2tJIrI" id="5" role="jymVt" />
     <node concept="3clFb_" id="6" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -349,8 +345,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="$" role="3Kbmr1">
-              <ref role="1PxDUh" node="7T" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7V" resolve="Workflow" />
+              <ref role="1PxDUh" node="7T" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="v" role="3KbHQx">
@@ -415,8 +411,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="Y" role="3Kbmr1">
-              <ref role="1PxDUh" node="7T" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7W" resolve="WorkflowContainer" />
+              <ref role="1PxDUh" node="7T" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -1834,7 +1830,6 @@
     </node>
     <node concept="2tJIrI" id="99" role="jymVt" />
     <node concept="3clFb_" id="9a" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -1856,8 +1851,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ad" role="3Kbmr1">
-              <ref role="1PxDUh" node="7T" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7V" resolve="Workflow" />
+              <ref role="1PxDUh" node="7T" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="a9" role="3KbHQx">
@@ -1869,8 +1864,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ah" role="3Kbmr1">
-              <ref role="1PxDUh" node="7T" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7W" resolve="WorkflowContainer" />
+              <ref role="1PxDUh" node="7T" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="aa" role="3KbGdf">

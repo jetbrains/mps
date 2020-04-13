@@ -30,9 +30,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -333,7 +330,6 @@
     <node concept="3Tm1VV" id="d" role="1B3o_S" />
     <node concept="2tJIrI" id="e" role="jymVt" />
     <node concept="3clFb_" id="f" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -428,8 +424,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="18" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gV" resolve="Applicability" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="U" role="3KbHQx">
@@ -502,8 +498,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1s" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gW" resolve="ChangeEvent" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="V" role="3KbHQx">
@@ -568,8 +564,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1T" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gX" resolve="DailyPlan" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="W" role="3KbHQx">
@@ -690,8 +686,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2j" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gY" resolve="DailyPlanReference" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="X" role="3KbHQx">
@@ -764,8 +760,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="32" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gZ" resolve="DayRange" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="Y" role="3KbHQx">
@@ -830,8 +826,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3v" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="h0" resolve="HeatingPlan" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="Z" role="3KbHQx">
@@ -904,8 +900,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3T" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="h1" resolve="NotSpecified" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="10" role="3KbHQx">
@@ -978,8 +974,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4m" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="h2" resolve="Slot" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="11" role="3KbHQx">
@@ -1052,8 +1048,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4N" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="h3" resolve="SpecificDay" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="12" role="3KbHQx">
@@ -1126,8 +1122,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5g" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="h4" resolve="WeekDays" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="13" role="3KbHQx">
@@ -1200,8 +1196,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5H" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="h5" resolve="WeekendDay" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -3698,7 +3694,6 @@
     </node>
     <node concept="2tJIrI" id="jG" role="jymVt" />
     <node concept="3clFb_" id="jH" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -3720,8 +3715,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="lm" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gV" resolve="Applicability" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="l9" role="3KbHQx">
@@ -3733,8 +3728,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="lq" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gW" resolve="ChangeEvent" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="la" role="3KbHQx">
@@ -3746,8 +3741,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="lu" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gX" resolve="DailyPlan" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lb" role="3KbHQx">
@@ -3759,8 +3754,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ly" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gY" resolve="DailyPlanReference" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lc" role="3KbHQx">
@@ -3772,8 +3767,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="lA" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="gZ" resolve="DayRange" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="ld" role="3KbHQx">
@@ -3785,8 +3780,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="lE" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="h0" resolve="HeatingPlan" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="le" role="3KbHQx">
@@ -3798,8 +3793,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="lI" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="h1" resolve="NotSpecified" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lf" role="3KbHQx">
@@ -3811,8 +3806,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="lM" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="h2" resolve="Slot" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lg" role="3KbHQx">
@@ -3824,8 +3819,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="lQ" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="h3" resolve="SpecificDay" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lh" role="3KbHQx">
@@ -3837,8 +3832,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="lU" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="h4" resolve="WeekDays" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="li" role="3KbHQx">
@@ -3850,8 +3845,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="lY" role="3Kbmr1">
-              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="h5" resolve="WeekendDay" />
+              <ref role="1PxDUh" node="gT" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="lj" role="3KbGdf">

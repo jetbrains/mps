@@ -30,9 +30,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -330,7 +327,6 @@
     <node concept="3Tm1VV" id="f" role="1B3o_S" />
     <node concept="2tJIrI" id="g" role="jymVt" />
     <node concept="3clFb_" id="h" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -425,8 +421,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1g" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7s" resolve="BaseClassifierType" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="10" role="3KbHQx">
@@ -491,8 +487,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1$" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7t" resolve="DefaultClassifier" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="11" role="3KbHQx">
@@ -613,8 +609,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1Y" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7u" resolve="DefaultClassifierFieldAccessOperation" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="12" role="3KbHQx">
@@ -679,8 +675,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2H" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7v" resolve="DefaultClassifierFieldDeclaration" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="13" role="3KbHQx">
@@ -801,8 +797,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="37" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7w" resolve="DefaultClassifierMethodCallOperation" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="14" role="3KbHQx">
@@ -867,8 +863,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3Q" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7x" resolve="DefaultClassifierMethodDeclaration" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="15" role="3KbHQx">
@@ -989,8 +985,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4g" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7y" resolve="DefaultClassifierType" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="16" role="3KbHQx">
@@ -1040,8 +1036,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4Z" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7z" resolve="IClassifier" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="17" role="3KbHQx">
@@ -1091,8 +1087,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5j" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7$" resolve="IClassifierPart" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="18" role="3KbHQx">
@@ -1142,8 +1138,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5B" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7_" resolve="IMember" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="19" role="3KbHQx">
@@ -1193,8 +1189,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5V" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7A" resolve="IMemberOperation" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1a" role="3KbHQx">
@@ -1280,8 +1276,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6f" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7B" resolve="SuperClassifierExpresson" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1b" role="3KbHQx">
@@ -1367,8 +1363,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6L" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7C" resolve="ThisClassifierExpression" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -2197,7 +2193,6 @@
     </node>
     <node concept="2tJIrI" id="ay" role="jymVt" />
     <node concept="3clFb_" id="az" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -2219,8 +2214,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cw" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7s" resolve="BaseClassifierType" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="ch" role="3KbHQx">
@@ -2232,8 +2227,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="c$" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7t" resolve="DefaultClassifier" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="ci" role="3KbHQx">
@@ -2245,8 +2240,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cC" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7u" resolve="DefaultClassifierFieldAccessOperation" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cj" role="3KbHQx">
@@ -2258,8 +2253,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cG" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7v" resolve="DefaultClassifierFieldDeclaration" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="ck" role="3KbHQx">
@@ -2271,8 +2266,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cK" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7w" resolve="DefaultClassifierMethodCallOperation" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cl" role="3KbHQx">
@@ -2284,8 +2279,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cO" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7x" resolve="DefaultClassifierMethodDeclaration" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cm" role="3KbHQx">
@@ -2297,8 +2292,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cS" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7y" resolve="DefaultClassifierType" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cn" role="3KbHQx">
@@ -2310,8 +2305,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cW" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7z" resolve="IClassifier" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="co" role="3KbHQx">
@@ -2323,8 +2318,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="d0" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7$" resolve="IClassifierPart" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cp" role="3KbHQx">
@@ -2336,8 +2331,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="d4" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7_" resolve="IMember" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cq" role="3KbHQx">
@@ -2349,8 +2344,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="d8" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7A" resolve="IMemberOperation" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cr" role="3KbHQx">
@@ -2362,8 +2357,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="dc" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7B" resolve="SuperClassifierExpresson" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cs" role="3KbHQx">
@@ -2375,8 +2370,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="dg" role="3Kbmr1">
-              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7C" resolve="ThisClassifierExpression" />
+              <ref role="1PxDUh" node="7q" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="ct" role="3KbGdf">

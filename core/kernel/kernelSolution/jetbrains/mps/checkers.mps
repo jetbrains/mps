@@ -6656,7 +6656,6 @@
     </node>
     <node concept="2tJIrI" id="1EzqTC0e$Xi" role="jymVt" />
     <node concept="3clFb_" id="3xfDcbRdDB8" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="getCategory" />
       <node concept="3clFbS" id="3xfDcbRdDBb" role="3clF47" />
@@ -7416,7 +7415,6 @@
         <property role="2bfB8j" value="false" />
         <property role="TrG5h" value="ErrorSkipCondition" />
         <node concept="3clFb_" id="45Q6RD6uvTH" role="jymVt">
-          <property role="1EzhhJ" value="false" />
           <property role="2aFKle" value="false" />
           <property role="TrG5h" value="skipSingleNode" />
           <node concept="3clFbS" id="45Q6RD6uvTI" role="3clF47" />
@@ -7428,7 +7426,6 @@
           </node>
         </node>
         <node concept="3clFb_" id="45Q6RD6uvHx" role="jymVt">
-          <property role="1EzhhJ" value="false" />
           <property role="2aFKle" value="false" />
           <property role="TrG5h" value="skipSubtree" />
           <node concept="3clFbS" id="45Q6RD6uvH$" role="3clF47" />
@@ -8682,7 +8679,6 @@
       <property role="2bfB8j" value="false" />
       <property role="TrG5h" value="IteratorWithProgress" />
       <node concept="3clFb_" id="IMyJ9Jwbwv" role="jymVt">
-        <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="remainingSize" />
         <node concept="10Oyi0" id="IMyJ9JwbGD" role="3clF45" />
         <node concept="3Tm1VV" id="IMyJ9Jwbwy" role="1B3o_S" />
@@ -8694,7 +8690,6 @@
         </node>
       </node>
       <node concept="3clFb_" id="IMyJ9JwZ0v" role="jymVt">
-        <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="nextItem" />
         <node concept="1LlUBW" id="IMyJ9JwZMh" role="3clF45">
           <node concept="16syzq" id="IMyJ9Jx01J" role="1Lm7xW">
@@ -9539,7 +9534,6 @@
     <property role="TrG5h" value="IAbstractChecker" />
     <node concept="3clFb_" id="4SGXHKgYYAZ" role="jymVt">
       <property role="TrG5h" value="check" />
-      <property role="1EzhhJ" value="false" />
       <node concept="3clFbS" id="4SGXHKgYYB0" role="3clF47" />
       <node concept="3Tm1VV" id="4SGXHKgYYB1" role="1B3o_S" />
       <node concept="37vLTG" id="4SGXHKgYYB2" role="3clF46">

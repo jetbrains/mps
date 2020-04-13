@@ -3437,7 +3437,6 @@
     <property role="TrG5h" value="ResultsListener" />
     <node concept="3Tm1VV" id="DTcS_lxT1P" role="1B3o_S" />
     <node concept="3clFb_" id="DTcS_lxT1Q" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="resultsChanged" />
       <property role="DiZV1" value="false" />
       <node concept="37vLTG" id="DTcS_ly7T4" role="3clF46">

@@ -31,9 +31,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -260,7 +257,6 @@
     <node concept="3Tm1VV" id="7" role="1B3o_S" />
     <node concept="2tJIrI" id="8" role="jymVt" />
     <node concept="3clFb_" id="9" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -394,8 +390,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="K" role="3Kbmr1">
-              <ref role="1PxDUh" node="3t" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3v" resolve="NonThreadSafeClass" />
+              <ref role="1PxDUh" node="3t" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="C" role="3KbHQx">
@@ -468,8 +464,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1j" role="3Kbmr1">
-              <ref role="1PxDUh" node="3t" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3w" resolve="ParallelFor" />
+              <ref role="1PxDUh" node="3t" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="D" role="3KbHQx">
@@ -534,8 +530,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1K" role="3Kbmr1">
-              <ref role="1PxDUh" node="3t" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3x" resolve="ParallelLoopVariable" />
+              <ref role="1PxDUh" node="3t" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="E" role="3KbHQx">
@@ -608,8 +604,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2a" role="3Kbmr1">
-              <ref role="1PxDUh" node="3t" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3y" resolve="ThreadPool" />
+              <ref role="1PxDUh" node="3t" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="F" role="3KbHQx">
@@ -730,8 +726,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2B" role="3Kbmr1">
-              <ref role="1PxDUh" node="3t" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3z" resolve="ThreadSafe" />
+              <ref role="1PxDUh" node="3t" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -1224,7 +1220,6 @@
     </node>
     <node concept="2tJIrI" id="5d" role="jymVt" />
     <node concept="3clFb_" id="5e" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -1246,8 +1241,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6z" role="3Kbmr1">
-              <ref role="1PxDUh" node="3t" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3v" resolve="NonThreadSafeClass" />
+              <ref role="1PxDUh" node="3t" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="6s" role="3KbHQx">
@@ -1259,8 +1254,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6B" role="3Kbmr1">
-              <ref role="1PxDUh" node="3t" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3w" resolve="ParallelFor" />
+              <ref role="1PxDUh" node="3t" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="6t" role="3KbHQx">
@@ -1272,8 +1267,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6F" role="3Kbmr1">
-              <ref role="1PxDUh" node="3t" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3x" resolve="ParallelLoopVariable" />
+              <ref role="1PxDUh" node="3t" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="6u" role="3KbHQx">
@@ -1285,8 +1280,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6J" role="3Kbmr1">
-              <ref role="1PxDUh" node="3t" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3y" resolve="ThreadPool" />
+              <ref role="1PxDUh" node="3t" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="6v" role="3KbHQx">
@@ -1298,8 +1293,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6N" role="3Kbmr1">
-              <ref role="1PxDUh" node="3t" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3z" resolve="ThreadSafe" />
+              <ref role="1PxDUh" node="3t" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="6w" role="3KbGdf">

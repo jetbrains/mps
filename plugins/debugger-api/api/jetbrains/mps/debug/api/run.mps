@@ -123,7 +123,6 @@
     <property role="TrG5h" value="IDebuggerConfiguration" />
     <node concept="3Tm1VV" id="3SnNvqCaJfh" role="1B3o_S" />
     <node concept="3clFb_" id="3SnNvqCaJfi" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="createDebuggerSettings" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="3SnNvqCaJfj" role="1B3o_S" />
@@ -136,7 +135,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="3SnNvqCaJfn" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDebugger" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="3SnNvqCaJfo" role="1B3o_S" />

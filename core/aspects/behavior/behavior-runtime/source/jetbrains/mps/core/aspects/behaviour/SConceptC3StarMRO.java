@@ -21,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author apyshkin
@@ -30,13 +31,12 @@ public final class SConceptC3StarMRO extends C3StarAncestorResolutionOrder<_SAbs
   private static final _SAbstractConcept BASECONCEPT_WRAP = _SAbstractConcept.wrap(SNodeUtil.concept_BaseConcept);
 
   @NotNull
-  @Override
-  protected List<_SAbstractConcept> calcLinearization0(@NotNull _SAbstractConcept concept) {
+  protected List<_SAbstractConcept> calcLinearizationImpl(@NotNull _SAbstractConcept concept, @NotNull Set<_SAbstractConcept> visited) {
     if (concept.equals(BASECONCEPT_WRAP)) {
       return Collections.singletonList(BASECONCEPT_WRAP);
     }
-    List<_SAbstractConcept> result = new ArrayList<>(super.calcLinearization0(concept));
-    assert result.size() > 0;
+    List<_SAbstractConcept> result = new ArrayList<>(super.calcLinearizationImpl(concept, visited));
+    assert (!result.isEmpty());
     if (result.get(result.size() - 1).equals(BASECONCEPT_WRAP)) {
       return result;
     }

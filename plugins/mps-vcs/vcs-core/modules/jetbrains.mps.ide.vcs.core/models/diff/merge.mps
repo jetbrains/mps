@@ -6916,7 +6916,6 @@
       <property role="2bfB8j" value="true" />
       <node concept="3Tm1VV" id="3UEHyzu03mc" role="1B3o_S" />
       <node concept="3clFb_" id="3UEHyzu03md" role="jymVt">
-        <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="someChangesInvalidated" />
         <node concept="3cqZAl" id="3UEHyzu03me" role="3clF45" />
         <node concept="3Tm1VV" id="3UEHyzu03mf" role="1B3o_S" />

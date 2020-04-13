@@ -629,7 +629,6 @@
     <property role="TrG5h" value="ITestReporter" />
     <node concept="3Tm1VV" id="2doG_VG7LJr" role="1B3o_S" />
     <node concept="3clFb_" id="2doG_VG7LJs" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="runFinished" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="2doG_VG7LJt" role="1B3o_S" />
@@ -637,7 +636,6 @@
       <node concept="3clFbS" id="2doG_VG7LJv" role="3clF47" />
     </node>
     <node concept="3clFb_" id="2doG_VG7LJw" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="testStarted" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="2doG_VG7LJx" role="1B3o_S" />
@@ -652,7 +650,6 @@
       <node concept="3clFbS" id="2doG_VG7LJ_" role="3clF47" />
     </node>
     <node concept="3clFb_" id="2doG_VG7LJA" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="testFinished" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="2doG_VG7LJB" role="1B3o_S" />
@@ -667,7 +664,6 @@
       <node concept="3clFbS" id="2doG_VG7LJF" role="3clF47" />
     </node>
     <node concept="3clFb_" id="2doG_VG7LJG" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="testFailed" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="2doG_VG7LJH" role="1B3o_S" />
@@ -696,7 +692,6 @@
       <node concept="3clFbS" id="2doG_VG7LJP" role="3clF47" />
     </node>
     <node concept="3clFb_" id="2doG_VG7LJQ" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="testOutputLine" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="2doG_VG7LJR" role="1B3o_S" />
@@ -718,7 +713,6 @@
       <node concept="3clFbS" id="2doG_VG7LJX" role="3clF47" />
     </node>
     <node concept="3clFb_" id="2doG_VG7LJY" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="testErrorLine" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="2doG_VG7LJZ" role="1B3o_S" />
@@ -740,7 +734,6 @@
       <node concept="3clFbS" id="2doG_VG7LK5" role="3clF47" />
     </node>
     <node concept="3clFb_" id="2doG_VG7LK6" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="outputLine" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="2doG_VG7LK7" role="1B3o_S" />
@@ -755,7 +748,6 @@
       <node concept="3clFbS" id="2doG_VG7LKb" role="3clF47" />
     </node>
     <node concept="3clFb_" id="2doG_VG7LKc" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="errorLine" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="2doG_VG7LKd" role="1B3o_S" />

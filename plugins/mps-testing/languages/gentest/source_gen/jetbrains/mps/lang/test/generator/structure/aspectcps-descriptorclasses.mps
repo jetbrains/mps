@@ -30,9 +30,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -270,7 +267,6 @@
     <node concept="3Tm1VV" id="9" role="1B3o_S" />
     <node concept="2tJIrI" id="a" role="jymVt" />
     <node concept="3clFb_" id="b" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -436,8 +432,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="S" role="3Kbmr1">
-              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4l" resolve="ArgumentReference" />
+              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="I" role="3KbHQx">
@@ -502,8 +498,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1B" role="3Kbmr1">
-              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4m" resolve="GeneratorTest" />
+              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="J" role="3KbHQx">
@@ -581,8 +577,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="21" role="3Kbmr1">
-              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4n" resolve="ModelArgument" />
+              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="K" role="3KbHQx">
@@ -632,8 +628,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2w" role="3Kbmr1">
-              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4o" resolve="TestArgument" />
+              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="L" role="3KbHQx">
@@ -683,8 +679,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2O" role="3Kbmr1">
-              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4p" resolve="TestAssertion" />
+              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="M" role="3KbHQx">
@@ -770,8 +766,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="38" role="3Kbmr1">
-              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4q" resolve="TransformationMatchAssertion" />
+              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="N" role="3KbHQx">
@@ -857,8 +853,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3E" role="3Kbmr1">
-              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4r" resolve="TransformationMatchManyAssertion" />
+              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -1416,7 +1412,6 @@
     </node>
     <node concept="2tJIrI" id="6p" role="jymVt" />
     <node concept="3clFb_" id="6q" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -1438,8 +1433,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7M" role="3Kbmr1">
-              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4l" resolve="ArgumentReference" />
+              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="7D" role="3KbHQx">
@@ -1451,8 +1446,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7Q" role="3Kbmr1">
-              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4m" resolve="GeneratorTest" />
+              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="7E" role="3KbHQx">
@@ -1464,8 +1459,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7U" role="3Kbmr1">
-              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4n" resolve="ModelArgument" />
+              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="7F" role="3KbHQx">
@@ -1477,8 +1472,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7Y" role="3Kbmr1">
-              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4o" resolve="TestArgument" />
+              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="7G" role="3KbHQx">
@@ -1490,8 +1485,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="82" role="3Kbmr1">
-              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4p" resolve="TestAssertion" />
+              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="7H" role="3KbHQx">
@@ -1503,8 +1498,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="86" role="3Kbmr1">
-              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4q" resolve="TransformationMatchAssertion" />
+              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="7I" role="3KbHQx">
@@ -1516,8 +1511,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8a" role="3Kbmr1">
-              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4r" resolve="TransformationMatchManyAssertion" />
+              <ref role="1PxDUh" node="4j" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="7J" role="3KbGdf">

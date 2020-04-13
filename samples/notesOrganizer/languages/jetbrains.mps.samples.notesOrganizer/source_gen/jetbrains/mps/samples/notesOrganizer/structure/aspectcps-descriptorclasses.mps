@@ -30,9 +30,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -323,7 +320,6 @@
     <node concept="3Tm1VV" id="c" role="1B3o_S" />
     <node concept="2tJIrI" id="d" role="jymVt" />
     <node concept="3clFb_" id="e" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -433,8 +429,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="14" role="3Kbmr1">
-              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cP" resolve="Category" />
+              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="R" role="3KbHQx">
@@ -555,8 +551,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1u" role="3Kbmr1">
-              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cQ" resolve="CategoryReference" />
+              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="S" role="3KbHQx">
@@ -629,8 +625,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2d" role="3Kbmr1">
-              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cR" resolve="Note" />
+              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="T" role="3KbHQx">
@@ -680,8 +676,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2E" role="3Kbmr1">
-              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cS" resolve="NoteMetaInfo" />
+              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="U" role="3KbHQx">
@@ -731,8 +727,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2Y" role="3Kbmr1">
-              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cT" resolve="NotePart" />
+              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="V" role="3KbHQx">
@@ -810,8 +806,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3i" role="3Kbmr1">
-              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cU" resolve="Notes" />
+              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="W" role="3KbHQx">
@@ -876,8 +872,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3L" role="3Kbmr1">
-              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cV" resolve="NotesConfiguration" />
+              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="X" role="3KbHQx">
@@ -942,8 +938,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4b" role="3Kbmr1">
-              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cW" resolve="Priority" />
+              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="Y" role="3KbHQx">
@@ -1008,8 +1004,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4_" role="3Kbmr1">
-              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cX" resolve="Status" />
+              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="Z" role="3KbHQx">
@@ -1082,8 +1078,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4Z" role="3Kbmr1">
-              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cY" resolve="TextNotePart" />
+              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -2962,7 +2958,6 @@
     </node>
     <node concept="2tJIrI" id="fr" role="jymVt" />
     <node concept="3clFb_" id="fs" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -2984,8 +2979,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="h0" role="3Kbmr1">
-              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cP" resolve="Category" />
+              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="gO" role="3KbHQx">
@@ -2997,8 +2992,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="h4" role="3Kbmr1">
-              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cQ" resolve="CategoryReference" />
+              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="gP" role="3KbHQx">
@@ -3010,8 +3005,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="h8" role="3Kbmr1">
-              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cR" resolve="Note" />
+              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="gQ" role="3KbHQx">
@@ -3023,8 +3018,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hc" role="3Kbmr1">
-              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cS" resolve="NoteMetaInfo" />
+              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="gR" role="3KbHQx">
@@ -3036,8 +3031,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hg" role="3Kbmr1">
-              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cT" resolve="NotePart" />
+              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="gS" role="3KbHQx">
@@ -3049,8 +3044,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hk" role="3Kbmr1">
-              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cU" resolve="Notes" />
+              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="gT" role="3KbHQx">
@@ -3062,8 +3057,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ho" role="3Kbmr1">
-              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cV" resolve="NotesConfiguration" />
+              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="gU" role="3KbHQx">
@@ -3075,8 +3070,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hs" role="3Kbmr1">
-              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cW" resolve="Priority" />
+              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="gV" role="3KbHQx">
@@ -3088,8 +3083,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hw" role="3Kbmr1">
-              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cX" resolve="Status" />
+              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="gW" role="3KbHQx">
@@ -3101,8 +3096,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="h$" role="3Kbmr1">
-              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cY" resolve="TextNotePart" />
+              <ref role="1PxDUh" node="cN" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="gX" role="3KbGdf">

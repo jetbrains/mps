@@ -30,9 +30,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -326,7 +323,6 @@
     <node concept="3Tm1VV" id="e" role="1B3o_S" />
     <node concept="2tJIrI" id="f" role="jymVt" />
     <node concept="3clFb_" id="g" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -436,8 +432,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1c" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7m" resolve="Extension" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="X" role="3KbHQx">
@@ -524,8 +520,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1A" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7n" resolve="ExtensionDeclaration" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="Y" role="3KbHQx">
@@ -611,8 +607,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="28" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7o" resolve="ExtensionFieldDeclaration" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="Z" role="3KbHQx">
@@ -754,8 +750,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2E" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7p" resolve="ExtensionFieldReference" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="10" role="3KbHQx">
@@ -849,8 +845,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3x" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7q" resolve="ExtensionFunction" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="11" role="3KbHQx">
@@ -944,8 +940,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="46" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7r" resolve="ExtensionObjectGetter" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="12" role="3KbHQx">
@@ -1035,8 +1031,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4F" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7s" resolve="ExtensionPointDeclaration" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="13" role="3KbHQx">
@@ -1109,8 +1105,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5e" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7t" resolve="ExtensionPointExpression" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="14" role="3KbHQx">
@@ -1183,8 +1179,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5F" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7u" resolve="ExtensionPointType" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="15" role="3KbHQx">
@@ -1257,8 +1253,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="68" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7v" resolve="GetExtensionObjectsOperation" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="16" role="3KbHQx">
@@ -1308,8 +1304,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6_" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7w" resolve="IRegisterable" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="17" role="3KbHQx">
@@ -1359,8 +1355,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6T" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7x" resolve="IRootWithUniqueName" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -2147,7 +2143,6 @@
     </node>
     <node concept="2tJIrI" id="ah" role="jymVt" />
     <node concept="3clFb_" id="ai" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -2169,8 +2164,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ca" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7m" resolve="Extension" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="bW" role="3KbHQx">
@@ -2182,8 +2177,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ce" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7n" resolve="ExtensionDeclaration" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="bX" role="3KbHQx">
@@ -2195,8 +2190,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ci" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7o" resolve="ExtensionFieldDeclaration" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="bY" role="3KbHQx">
@@ -2208,8 +2203,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cm" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7p" resolve="ExtensionFieldReference" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="bZ" role="3KbHQx">
@@ -2221,8 +2216,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cq" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7q" resolve="ExtensionFunction" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="c0" role="3KbHQx">
@@ -2234,8 +2229,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cu" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7r" resolve="ExtensionObjectGetter" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="c1" role="3KbHQx">
@@ -2247,8 +2242,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cy" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7s" resolve="ExtensionPointDeclaration" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="c2" role="3KbHQx">
@@ -2260,8 +2255,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cA" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7t" resolve="ExtensionPointExpression" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="c3" role="3KbHQx">
@@ -2273,8 +2268,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cE" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7u" resolve="ExtensionPointType" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="c4" role="3KbHQx">
@@ -2286,8 +2281,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cI" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7v" resolve="GetExtensionObjectsOperation" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="c5" role="3KbHQx">
@@ -2299,8 +2294,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cM" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7w" resolve="IRegisterable" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="c6" role="3KbHQx">
@@ -2312,8 +2307,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cQ" role="3Kbmr1">
-              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7x" resolve="IRootWithUniqueName" />
+              <ref role="1PxDUh" node="7k" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="c7" role="3KbGdf">

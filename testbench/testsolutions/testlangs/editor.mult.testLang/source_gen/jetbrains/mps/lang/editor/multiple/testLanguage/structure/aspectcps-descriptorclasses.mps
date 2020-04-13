@@ -30,9 +30,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -313,7 +310,6 @@
     <node concept="3Tm1VV" id="b" role="1B3o_S" />
     <node concept="2tJIrI" id="c" role="jymVt" />
     <node concept="3clFb_" id="d" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -423,8 +419,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="10" role="3Kbmr1">
-              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="ci" resolve="MultipleEditorsTestChild" />
+              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="O" role="3KbHQx">
@@ -489,8 +485,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1q" role="3Kbmr1">
-              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cj" resolve="MultipleEditorsTestEditorComponentChild" />
+              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="P" role="3KbHQx">
@@ -555,8 +551,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1O" role="3Kbmr1">
-              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="ck" resolve="MultipleEditorsTestEditorComponentChildSubconcept" />
+              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="Q" role="3KbHQx">
@@ -629,8 +625,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2e" role="3Kbmr1">
-              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cl" resolve="MultipleEditorsTestEditorComponentRoot" />
+              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="R" role="3KbHQx">
@@ -695,8 +691,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2F" role="3Kbmr1">
-              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cm" resolve="MultipleEditorsTestMostSpecificChild" />
+              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="S" role="3KbHQx">
@@ -769,8 +765,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="35" role="3Kbmr1">
-              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cn" resolve="MultipleEditorsTestMostSpecificRoot" />
+              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="T" role="3KbHQx">
@@ -843,8 +839,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3y" role="3Kbmr1">
-              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="co" resolve="MultipleEditorsTestRefNodeListRoot" />
+              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="U" role="3KbHQx">
@@ -917,8 +913,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3Z" role="3Kbmr1">
-              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cp" resolve="MultipleEditorsTestRefNodeRoot" />
+              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="V" role="3KbHQx">
@@ -991,8 +987,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4s" role="3Kbmr1">
-              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cq" resolve="MultipleEditorsTestRoot" />
+              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -2829,7 +2825,6 @@
     </node>
     <node concept="2tJIrI" id="eH" role="jymVt" />
     <node concept="3clFb_" id="eI" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -2851,8 +2846,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="gd" role="3Kbmr1">
-              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="ci" resolve="MultipleEditorsTestChild" />
+              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="g2" role="3KbHQx">
@@ -2864,8 +2859,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="gh" role="3Kbmr1">
-              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cj" resolve="MultipleEditorsTestEditorComponentChild" />
+              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="g3" role="3KbHQx">
@@ -2877,8 +2872,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="gl" role="3Kbmr1">
-              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="ck" resolve="MultipleEditorsTestEditorComponentChildSubconcept" />
+              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="g4" role="3KbHQx">
@@ -2890,8 +2885,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="gp" role="3Kbmr1">
-              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cl" resolve="MultipleEditorsTestEditorComponentRoot" />
+              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="g5" role="3KbHQx">
@@ -2903,8 +2898,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="gt" role="3Kbmr1">
-              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cm" resolve="MultipleEditorsTestMostSpecificChild" />
+              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="g6" role="3KbHQx">
@@ -2916,8 +2911,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="gx" role="3Kbmr1">
-              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cn" resolve="MultipleEditorsTestMostSpecificRoot" />
+              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="g7" role="3KbHQx">
@@ -2929,8 +2924,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="g_" role="3Kbmr1">
-              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="co" resolve="MultipleEditorsTestRefNodeListRoot" />
+              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="g8" role="3KbHQx">
@@ -2942,8 +2937,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="gD" role="3Kbmr1">
-              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cp" resolve="MultipleEditorsTestRefNodeRoot" />
+              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="g9" role="3KbHQx">
@@ -2955,8 +2950,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="gH" role="3Kbmr1">
-              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="cq" resolve="MultipleEditorsTestRoot" />
+              <ref role="1PxDUh" node="cg" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="ga" role="3KbGdf">

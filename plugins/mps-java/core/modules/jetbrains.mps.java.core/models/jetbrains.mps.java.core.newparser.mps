@@ -585,7 +585,6 @@
       <concept id="1140131837776" name="jetbrains.mps.lang.smodel.structure.Node_ReplaceWithAnotherOperation" flags="nn" index="1P9Npp">
         <child id="1140131861877" name="replacementNode" index="1P9ThW" />
       </concept>
-      <concept id="1140133623887" name="jetbrains.mps.lang.smodel.structure.Node_DeleteOperation" flags="nn" index="1PgB_6" />
       <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI" />
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
         <reference id="1138405853777" name="concept" index="ehGHo" />
@@ -12312,7 +12311,7 @@
                           <node concept="2GrUjf" id="6OFQ5laADde" role="2Oq$k0">
                             <ref role="2Gs0qQ" node="6OFQ5laACBb" resolve="stmt" />
                           </node>
-                          <node concept="1PgB_6" id="6OFQ5laAHpL" role="2OqNvi" />
+                          <node concept="3YRAZt" id="6OFQ5laAHpL" role="2OqNvi" />
                         </node>
                       </node>
                       <node concept="3clFbF" id="6OFQ5laADAw" role="3cqZAp">
@@ -29008,7 +29007,7 @@
                                     <node concept="37vLTw" id="2UltI5kipKP" role="2Oq$k0">
                                       <ref role="3cqZAo" node="2UltI5kips6" resolve="it" />
                                     </node>
-                                    <node concept="1PgB_6" id="2UltI5kirrp" role="2OqNvi" />
+                                    <node concept="3YRAZt" id="2UltI5kirrp" role="2OqNvi" />
                                   </node>
                                 </node>
                               </node>
@@ -29046,7 +29045,7 @@
                               <node concept="37vLTw" id="2UltI5kj9E9" role="2Oq$k0">
                                 <ref role="3cqZAo" node="2UltI5kis16" resolve="importAnnotation" />
                               </node>
-                              <node concept="1PgB_6" id="2UltI5kjbco" role="2OqNvi" />
+                              <node concept="3YRAZt" id="2UltI5kjbco" role="2OqNvi" />
                             </node>
                           </node>
                         </node>
@@ -40969,7 +40968,6 @@
   <node concept="3HP615" id="FOYqCnnT0z">
     <property role="TrG5h" value="IncrementalModelAccess" />
     <node concept="3clFb_" id="FOYqCnnT2g" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="accessModel" />
       <node concept="3cqZAl" id="FOYqCnnT2i" role="3clF45" />
       <node concept="3Tm1VV" id="FOYqCnnT2j" role="1B3o_S" />
@@ -40982,7 +40980,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="FOYqCnnT8n" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="replaceReferences" />
       <node concept="3clFbS" id="FOYqCnnT8q" role="3clF47" />
@@ -40996,7 +40993,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="FOYqCnnTeC" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="replaceNodes" />
       <node concept="3clFbS" id="FOYqCnnTeF" role="3clF47" />

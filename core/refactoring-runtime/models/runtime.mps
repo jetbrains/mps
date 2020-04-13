@@ -28,9 +28,7 @@
         <child id="1068580123133" name="returnType" index="3clF45" />
         <child id="1068580123135" name="body" index="3clF47" />
       </concept>
-      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_">
-        <property id="1178608670077" name="isAbstract" index="1EzhhJ" />
-      </concept>
+      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_" />
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS" />
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
@@ -93,7 +91,6 @@
     <property role="TrG5h" value="RefactoringAspect" />
     <node concept="2tJIrI" id="7T2CYsOvSCe" role="jymVt" />
     <node concept="3clFb_" id="7T2CYsOvSA9" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getRefactorings" />
       <node concept="3uibUv" id="7T2CYsOvSAz" role="3clF45">
         <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />

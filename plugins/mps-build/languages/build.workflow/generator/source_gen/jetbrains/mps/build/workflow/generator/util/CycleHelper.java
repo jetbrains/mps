@@ -23,6 +23,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import java.util.function.Predicate;
 import java.util.LinkedHashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.CopyUtil;
@@ -96,7 +97,7 @@ public class CycleHelper {
 
       Collections.sort(cycle, new Comparator<Module>() {
         public int compare(Module m1, Module m2) {
-          return new Integer(SNodeOperations.getIndexInParent(m1.getModule())).compareTo(SNodeOperations.getIndexInParent(m2.getModule()));
+          return Integer.compare(SNodeOperations.getIndexInParent(m1.getModule()), SNodeOperations.getIndexInParent(m2.getModule()));
         }
       });
       SNode first = cycle.get(0).getModule();
@@ -105,6 +106,11 @@ public class CycleHelper {
       cyclesToName.add(cycleX);
       SNodeOperations.insertPrevSiblingChild(first, cycleX);
       SPropertyOperations.assign(cycleX, PROPS.noWarnings$aouL, true);
+      SPropertyOperations.assign(cycleX, PROPS.fork$RER2, cycle.stream().anyMatch(new Predicate<Module>() {
+        public boolean test(Module mod) {
+          return SPropertyOperations.getBoolean(mod.getModule(), PROPS.fork$RER2);
+        }
+      }));
 
       // build cycle sources & dependencies; trying to avoid duplication (which is not critical) 
       Set<String> seenSources = new HashSet<String>();
@@ -195,7 +201,7 @@ public class CycleHelper {
     int cycleCounter = 0;
     Collections.sort(cyclesToName, new Comparator<SNode>() {
       public int compare(SNode n1, SNode n2) {
-        return new Integer(SNodeOperations.getIndexInParent(n1)).compareTo(SNodeOperations.getIndexInParent(n2));
+        return Integer.compare(SNodeOperations.getIndexInParent(n1), SNodeOperations.getIndexInParent(n2));
       }
     });
     for (SNode cycleX : cyclesToName) {
@@ -262,6 +268,7 @@ public class CycleHelper {
   private static final class PROPS {
     /*package*/ static final SProperty outputFolder$1Prz = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x667edfe4171f2fb7L, "outputFolder");
     /*package*/ static final SProperty noWarnings$aouL = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0xcdff0e1a96ccbeeL, "noWarnings");
+    /*package*/ static final SProperty fork$RER2 = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x3d4a6c597112f405L, "fork");
     /*package*/ static final SProperty heapSize$aofh = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0xcdff0e1a96ccbe3L, "heapSize");
     /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty temporaryFolder$lP8S = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6271L, 0x667edfe41720f53eL, "temporaryFolder");

@@ -2407,7 +2407,6 @@
     <property role="2bfB8j" value="true" />
     <node concept="3Tm1VV" id="LoP3E1yxVm" role="1B3o_S" />
     <node concept="3clFb_" id="LoP3E1yxVh" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getCommandList" />
       <node concept="_YKpA" id="LoP3E1yxVi" role="3clF45">
         <node concept="17QB3L" id="LoP3E1yxVj" role="_ZDj9" />
@@ -2416,7 +2415,6 @@
       <node concept="3clFbS" id="LoP3E1yxVl" role="3clF47" />
     </node>
     <node concept="3clFb_" id="1pHZJ4B4Mex" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getLength" />
       <node concept="10Oyi0" id="7953dFbxHTK" role="3clF45" />
       <node concept="3Tm1VV" id="1pHZJ4B4Mez" role="1B3o_S" />

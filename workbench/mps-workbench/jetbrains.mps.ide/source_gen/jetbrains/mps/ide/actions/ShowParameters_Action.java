@@ -17,25 +17,25 @@ import com.intellij.featureStatistics.FeatureUsageTracker;
 import java.awt.Point;
 import jetbrains.mps.editor.runtime.style.ParametersInformation;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import java.awt.Component;
-import jetbrains.mps.ide.tooltips.MPSToolTipManager;
-import jetbrains.mps.ide.tooltips.ToolTipData;
+import javax.swing.JComponent;
+import com.intellij.ide.IdeTooltipManager;
+import com.intellij.ide.IdeTooltip;
 import org.jetbrains.mps.openapi.model.SNode;
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
-import jetbrains.mps.ide.tooltips.ToolTip;
+import com.intellij.codeInsight.hint.HintUtil;
 import javax.swing.border.EmptyBorder;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import javax.swing.JTextPane;
-import java.awt.GridBagConstraints;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.editor.runtime.style.StyledTextPrinter;
 import com.intellij.ui.JBColor;
 import java.awt.Color;
 import com.intellij.ui.Gray;
 import jetbrains.mps.nodeEditor.EditorSettings;
+import java.awt.GridBagConstraints;
+import com.intellij.util.ui.JBUI;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -101,13 +101,16 @@ public class ShowParameters_Action extends BaseAction {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("editing.showParameters");
     ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        Point p = new Point(((EditorCell) MapSequence.fromMap(_params).get("cell")).getX() + ((EditorCell) MapSequence.fromMap(_params).get("cell")).getWidth(), ((EditorCell) MapSequence.fromMap(_params).get("cell")).getY() + ((EditorCell) MapSequence.fromMap(_params).get("cell")).getHeight());
+        // Try to show tooltip over caret or in case of active selection - over the middle of the cell 
+        int caretRelativePosition = ((EditorCell) MapSequence.fromMap(_params).get("cell")).getCaretX() - ((EditorCell) MapSequence.fromMap(_params).get("cell")).getX();
+        boolean isCaretInsideCell = caretRelativePosition >= 0 && caretRelativePosition <= ((EditorCell) MapSequence.fromMap(_params).get("cell")).getWidth();
+        Point point = new Point((isCaretInsideCell ? ((EditorCell) MapSequence.fromMap(_params).get("cell")).getCaretX() : ((EditorCell) MapSequence.fromMap(_params).get("cell")).getX() + ((EditorCell) MapSequence.fromMap(_params).get("cell")).getWidth() / 2), ((EditorCell) MapSequence.fromMap(_params).get("cell")).getY());
         EditorCell currentCell = ((EditorCell) MapSequence.fromMap(_params).get("cell"));
         while (currentCell != null) {
           ParametersInformation parametersInformation = currentCell.getStyle().get(StyleAttributes.PARAMETERS_INFORMATION);
           if (parametersInformation != null) {
-            Component component = ShowParameters_Action.this.createComponent(parametersInformation, currentCell.getSNode(), _params);
-            MPSToolTipManager.getInstance().showToolTip(new ToolTipData(component), ((EditorComponent) MapSequence.fromMap(_params).get("editor")), p);
+            JComponent component = ShowParameters_Action.this.createComponent(parametersInformation, currentCell.getSNode(), _params);
+            IdeTooltipManager.getInstance().show(new IdeTooltip(((EditorComponent) MapSequence.fromMap(_params).get("editor")), point, component), true);
             return;
           }
           currentCell = currentCell.getParent();
@@ -118,40 +121,34 @@ public class ShowParameters_Action extends BaseAction {
   /*package*/ SNode getCellNode(final Map<String, Object> _params) {
     return ((EditorCell) MapSequence.fromMap(_params).get("cell")).getSNode();
   }
-  private <T> Component createComponent(ParametersInformation<T> parametersInformation, SNode node, final Map<String, Object> _params) {
+  private <T> JComponent createComponent(ParametersInformation<T> parametersInformation, SNode node, final Map<String, Object> _params) {
     // TODO: make IDEA like 
     JPanel panel = new JPanel(new GridBagLayout());
-    panel.setBackground(ToolTip.BACKGROUND_COLOR);
+    panel.setBackground(HintUtil.getInformationColor());
     panel.setBorder(new EmptyBorder(0, 4, 0, 4));
 
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.DefaultClassCreator$sQ)) {
       StyledTextPrinterImpl printer = new StyledTextPrinterImpl();
       printer.append(SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.DefaultClassCreator$sQ), LINKS.classifier$bk50), PROPS.name$tAp1) + "()");
       JTextPane textPane = ShowParameters_Action.this.createTextPane(printer, _params);
-      GridBagConstraints constraints = ShowParameters_Action.this.createConstraints(_params);
-      panel.add(textPane, constraints);
+      panel.add(textPane, ShowParameters_Action.this.createConstraints(0, _params));
     } else {
       Iterable<T> methods = parametersInformation.getMethods(node, ((EditorContext) MapSequence.fromMap(_params).get("editorContext")));
       int lineNumber = 0;
       for (T method : Sequence.fromIterable(methods)) {
         StyledTextPrinterImpl printer = new StyledTextPrinterImpl();
-        parametersInformation.getStyledMethodPresentation(node, ((EditorContext) MapSequence.fromMap(_params).get("editorContext")), method, (StyledTextPrinter) printer);
+        parametersInformation.getStyledMethodPresentation(node, ((EditorContext) MapSequence.fromMap(_params).get("editorContext")), method, printer);
         ShowParameters_Action.this.createTextPane(printer, _params);
 
         JTextPane textPane = ShowParameters_Action.this.createTextPane(printer, _params);
         if (Sequence.fromIterable(methods).count() > 1 && parametersInformation.isMethodCurrent(node, ((EditorContext) MapSequence.fromMap(_params).get("editorContext")), method)) {
           textPane.setBackground(new JBColor(new Color(231, 254, 234), Gray._100));
         } else {
-          textPane.setBackground(ToolTip.BACKGROUND_COLOR);
+          textPane.setBackground(HintUtil.getInformationColor());
         }
-        GridBagConstraints constraints = ShowParameters_Action.this.createConstraints(_params);
-        constraints.gridy = lineNumber++;
-        panel.add(textPane, constraints);
+        panel.add(textPane, ShowParameters_Action.this.createConstraints(lineNumber++, _params));
         if (Sequence.fromIterable(methods).last() != method) {
-          constraints = new GridBagConstraints();
-          constraints.fill = GridBagConstraints.HORIZONTAL;
-          constraints.gridy = lineNumber++;
-          panel.add(new Line(), constraints);
+          panel.add(new Line(), ShowParameters_Action.this.createConstraints(lineNumber++, _params));
         }
       }
     }
@@ -163,15 +160,12 @@ public class ShowParameters_Action extends BaseAction {
     textPane.setFont(EditorSettings.getInstance().getDefaultEditorFont());
     textPane.setOpaque(true);
     textPane.setBackground(new JBColor(new Color(231, 254, 234), Gray._100));
-    textPane.setBackground(ToolTip.BACKGROUND_COLOR);
+    textPane.setBackground(HintUtil.getInformationColor());
     textPane.setForeground(JBColor.foreground());
     return textPane;
   }
-  private GridBagConstraints createConstraints(final Map<String, Object> _params) {
-    GridBagConstraints constraints = new GridBagConstraints();
-    constraints.fill = GridBagConstraints.BOTH;
-    constraints.gridy = 0;
-    return constraints;
+  private GridBagConstraints createConstraints(int row, final Map<String, Object> _params) {
+    return new GridBagConstraints(0, row, 1, 1, 1, 0, GridBagConstraints.WEST, GridBagConstraints.HORIZONTAL, JBUI.emptyInsets(), 0, 0);
   }
 
   private static final class CONCEPTS {

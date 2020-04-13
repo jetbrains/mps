@@ -31,9 +31,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -475,7 +472,6 @@
     <node concept="3Tm1VV" id="s" role="1B3o_S" />
     <node concept="2tJIrI" id="t" role="jymVt" />
     <node concept="3clFb_" id="u" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -570,8 +566,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="24" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dA" resolve="AutoInitDSLClass" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1B" role="3KbHQx">
@@ -636,8 +632,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2o" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dB" resolve="BooleanPropertyInstance" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1C" role="3KbHQx">
@@ -702,8 +698,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2M" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dC" resolve="CustomMemberDescriptor" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1D" role="3KbHQx">
@@ -848,8 +844,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3c" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dD" resolve="DSLAnnotation" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1E" role="3KbHQx">
@@ -899,8 +895,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="44" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dE" resolve="DSLClassMember" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1F" role="3KbHQx">
@@ -965,8 +961,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4o" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dF" resolve="DSLDescriptor" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1G" role="3KbHQx">
@@ -1039,8 +1035,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4M" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dG" resolve="DefaultModifier" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1H" role="3KbHQx">
@@ -1113,8 +1109,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5f" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dH" resolve="DependentTypeDescriptor" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1I" role="3KbHQx">
@@ -1187,8 +1183,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5G" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dI" resolve="DependentTypeInstance" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1J" role="3KbHQx">
@@ -1261,8 +1257,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="69" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dJ" resolve="EmptyMemberDescriptor" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1K" role="3KbHQx">
@@ -1355,8 +1351,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6A" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dK" resolve="GenerateModifier" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1L" role="3KbHQx">
@@ -1421,8 +1417,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7b" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dL" resolve="ImplementationCode" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1M" role="3KbHQx">
@@ -1487,8 +1483,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7_" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dM" resolve="IntegerPropertyInstance" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1N" role="3KbHQx">
@@ -1538,8 +1534,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7Z" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dN" resolve="MemberInstance" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1O" role="3KbHQx">
@@ -1589,8 +1585,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8j" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dO" resolve="MemberModifier" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1P" role="3KbHQx">
@@ -1711,8 +1707,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8B" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dP" resolve="MemberPlaceholder" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1Q" role="3KbHQx">
@@ -1777,8 +1773,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9m" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dQ" resolve="MethodDescriptor" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1R" role="3KbHQx">
@@ -1843,8 +1839,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9K" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dR" resolve="MethodInstance" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1S" role="3KbHQx">
@@ -1909,8 +1905,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="aa" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dS" resolve="MethodParameterInstance" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1T" role="3KbHQx">
@@ -1983,8 +1979,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="a$" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dT" resolve="MultipleModifier" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1U" role="3KbHQx">
@@ -2049,8 +2045,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="b1" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dU" resolve="ParameterDescriptor" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1V" role="3KbHQx">
@@ -2123,8 +2119,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="br" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dV" resolve="PlaceholderModifier" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1W" role="3KbHQx">
@@ -2189,8 +2185,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bS" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dW" resolve="PropertyDescriptor" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1X" role="3KbHQx">
@@ -2240,8 +2236,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ci" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dX" resolve="PropertyInstance" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1Y" role="3KbHQx">
@@ -2314,8 +2310,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cA" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dY" resolve="RequiredModifier" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1Z" role="3KbHQx">
@@ -2380,8 +2376,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="d3" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dZ" resolve="StringPropertyInstance" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -3794,7 +3790,6 @@
     </node>
     <node concept="2tJIrI" id="iV" role="jymVt" />
     <node concept="3clFb_" id="iW" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -3816,8 +3811,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="m8" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dA" resolve="AutoInitDSLClass" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lG" role="3KbHQx">
@@ -3829,8 +3824,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="mc" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dB" resolve="BooleanPropertyInstance" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lH" role="3KbHQx">
@@ -3842,8 +3837,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="mg" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dC" resolve="CustomMemberDescriptor" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lI" role="3KbHQx">
@@ -3855,8 +3850,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="mk" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dD" resolve="DSLAnnotation" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lJ" role="3KbHQx">
@@ -3868,8 +3863,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="mo" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dE" resolve="DSLClassMember" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lK" role="3KbHQx">
@@ -3881,8 +3876,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ms" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dF" resolve="DSLDescriptor" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lL" role="3KbHQx">
@@ -3894,8 +3889,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="mw" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dG" resolve="DefaultModifier" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lM" role="3KbHQx">
@@ -3907,8 +3902,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="m$" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dH" resolve="DependentTypeDescriptor" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lN" role="3KbHQx">
@@ -3920,8 +3915,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="mC" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dI" resolve="DependentTypeInstance" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lO" role="3KbHQx">
@@ -3933,8 +3928,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="mG" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dJ" resolve="EmptyMemberDescriptor" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lP" role="3KbHQx">
@@ -3946,8 +3941,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="mK" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dK" resolve="GenerateModifier" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lQ" role="3KbHQx">
@@ -3959,8 +3954,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="mO" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dL" resolve="ImplementationCode" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lR" role="3KbHQx">
@@ -3972,8 +3967,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="mS" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dM" resolve="IntegerPropertyInstance" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lS" role="3KbHQx">
@@ -3985,8 +3980,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="mW" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dN" resolve="MemberInstance" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lT" role="3KbHQx">
@@ -3998,8 +3993,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="n0" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dO" resolve="MemberModifier" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lU" role="3KbHQx">
@@ -4011,8 +4006,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="n4" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dP" resolve="MemberPlaceholder" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lV" role="3KbHQx">
@@ -4024,8 +4019,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="n8" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dQ" resolve="MethodDescriptor" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lW" role="3KbHQx">
@@ -4037,8 +4032,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="nc" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dR" resolve="MethodInstance" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lX" role="3KbHQx">
@@ -4050,8 +4045,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ng" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dS" resolve="MethodParameterInstance" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lY" role="3KbHQx">
@@ -4063,8 +4058,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="nk" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dT" resolve="MultipleModifier" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lZ" role="3KbHQx">
@@ -4076,8 +4071,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="no" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dU" resolve="ParameterDescriptor" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="m0" role="3KbHQx">
@@ -4089,8 +4084,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ns" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dV" resolve="PlaceholderModifier" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="m1" role="3KbHQx">
@@ -4102,8 +4097,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="nw" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dW" resolve="PropertyDescriptor" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="m2" role="3KbHQx">
@@ -4115,8 +4110,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="n$" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dX" resolve="PropertyInstance" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="m3" role="3KbHQx">
@@ -4128,8 +4123,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="nC" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dY" resolve="RequiredModifier" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="m4" role="3KbHQx">
@@ -4141,8 +4136,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="nG" role="3Kbmr1">
-              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="dZ" resolve="StringPropertyInstance" />
+              <ref role="1PxDUh" node="d$" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="m5" role="3KbGdf">

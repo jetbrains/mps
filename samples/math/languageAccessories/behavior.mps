@@ -215,7 +215,6 @@
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
       </concept>
-      <concept id="8866923313515890008" name="jetbrains.mps.lang.smodel.structure.AsNodeOperation" flags="nn" index="FGMqu" />
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS">
         <reference id="1145383142433" name="elementConcept" index="2I9WkF" />
       </concept>
@@ -225,9 +224,6 @@
       <concept id="1966870290088668520" name="jetbrains.mps.lang.smodel.structure.Enum_MembersOperation" flags="ng" index="2ViDtN" />
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
       <concept id="1227264722563" name="jetbrains.mps.lang.smodel.structure.EqualsStructurallyExpression" flags="nn" index="2YFouu" />
-      <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
-        <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
-      </concept>
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
@@ -237,6 +233,9 @@
       </concept>
       <concept id="1180636770613" name="jetbrains.mps.lang.smodel.structure.SNodeCreator" flags="nn" index="3zrR0B">
         <child id="1180636770616" name="createdType" index="3zrR0E" />
+      </concept>
+      <concept id="1219352745532" name="jetbrains.mps.lang.smodel.structure.NodeRefExpression" flags="nn" index="3B5_sB">
+        <reference id="1219352800908" name="referentNode" index="3B5MYn" />
       </concept>
       <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI" />
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
@@ -2090,11 +2089,8 @@
               <ref role="3cqZAo" node="2D1PBM_bxH4" resolve="result" />
             </node>
             <node concept="TSZUe" id="2D1PBM_bxHe" role="2OqNvi">
-              <node concept="2OqwBi" id="2mrwa9kVnwz" role="25WWJ7">
-                <node concept="35c_gC" id="2mrwa9kVmSY" role="2Oq$k0">
-                  <ref role="35c_gD" to="39kg:6iLUnbAh3Cw" resolve="ExponentialOperation" />
-                </node>
-                <node concept="FGMqu" id="2mrwa9kVo8j" role="2OqNvi" />
+              <node concept="3B5_sB" id="2mrwa9kVnwz" role="25WWJ7">
+                <ref role="3B5MYn" to="39kg:6iLUnbAh3Cw" resolve="ExponentialOperation" />
               </node>
             </node>
           </node>
@@ -2502,11 +2498,8 @@
               <ref role="3cqZAo" node="2D1PBM_byrt" resolve="result" />
             </node>
             <node concept="TSZUe" id="2D1PBM_byrI" role="2OqNvi">
-              <node concept="2OqwBi" id="2mrwa9kVp1o" role="25WWJ7">
-                <node concept="35c_gC" id="2mrwa9kVouT" role="2Oq$k0">
-                  <ref role="35c_gD" to="39kg:6iLUnbAhUPX" resolve="MatrixExponentialOperation" />
-                </node>
-                <node concept="FGMqu" id="2mrwa9kVpxs" role="2OqNvi" />
+              <node concept="3B5_sB" id="2mrwa9kVp1o" role="25WWJ7">
+                <ref role="3B5MYn" to="39kg:6iLUnbAhUPX" resolve="MatrixExponentialOperation" />
               </node>
             </node>
           </node>

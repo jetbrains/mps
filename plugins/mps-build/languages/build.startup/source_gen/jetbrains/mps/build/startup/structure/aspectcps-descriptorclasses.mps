@@ -30,9 +30,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -260,7 +257,6 @@
     <node concept="3Tm1VV" id="8" role="1B3o_S" />
     <node concept="2tJIrI" id="9" role="jymVt" />
     <node concept="3clFb_" id="a" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -378,8 +374,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="O" role="3Kbmr1">
-              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3_" resolve="ClassPathItem" />
+              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="F" role="3KbHQx">
@@ -469,8 +465,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1h" role="3Kbmr1">
-              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3A" resolve="MpsStartupScript" />
+              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="G" role="3KbHQx">
@@ -543,8 +539,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1O" role="3Kbmr1">
-              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3B" resolve="SimpleVmOptions" />
+              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="H" role="3KbHQx">
@@ -609,8 +605,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2h" role="3Kbmr1">
-              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3C" resolve="TextFile" />
+              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="I" role="3KbHQx">
@@ -683,8 +679,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2F" role="3Kbmr1">
-              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3D" resolve="TextLine" />
+              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="J" role="3KbHQx">
@@ -734,8 +730,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="38" role="3Kbmr1">
-              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3E" resolve="VmOptions" />
+              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -1232,7 +1228,6 @@
     </node>
     <node concept="2tJIrI" id="5u" role="jymVt" />
     <node concept="3clFb_" id="5v" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -1254,8 +1249,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6F" role="3Kbmr1">
-              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3_" resolve="ClassPathItem" />
+              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="6z" role="3KbHQx">
@@ -1267,8 +1262,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6J" role="3Kbmr1">
-              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3A" resolve="MpsStartupScript" />
+              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="6$" role="3KbHQx">
@@ -1280,8 +1275,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6N" role="3Kbmr1">
-              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3B" resolve="SimpleVmOptions" />
+              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="6_" role="3KbHQx">
@@ -1293,8 +1288,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6R" role="3Kbmr1">
-              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3C" resolve="TextFile" />
+              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="6A" role="3KbHQx">
@@ -1306,8 +1301,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6V" role="3Kbmr1">
-              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3D" resolve="TextLine" />
+              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="6B" role="3KbHQx">
@@ -1319,8 +1314,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6Z" role="3Kbmr1">
-              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3E" resolve="VmOptions" />
+              <ref role="1PxDUh" node="3z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="6C" role="3KbGdf">

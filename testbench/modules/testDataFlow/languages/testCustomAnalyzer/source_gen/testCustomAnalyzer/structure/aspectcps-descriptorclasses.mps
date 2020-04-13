@@ -30,9 +30,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -250,7 +247,6 @@
     <node concept="3Tm1VV" id="7" role="1B3o_S" />
     <node concept="2tJIrI" id="8" role="jymVt" />
     <node concept="3clFb_" id="9" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -368,8 +364,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="K" role="3Kbmr1">
-              <ref role="1PxDUh" node="38" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3a" resolve="Child" />
+              <ref role="1PxDUh" node="38" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="C" role="3KbHQx">
@@ -442,8 +438,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1d" role="3Kbmr1">
-              <ref role="1PxDUh" node="38" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3b" resolve="OtherChild" />
+              <ref role="1PxDUh" node="38" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="D" role="3KbHQx">
@@ -516,8 +512,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1E" role="3Kbmr1">
-              <ref role="1PxDUh" node="38" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3c" resolve="OtherRoot" />
+              <ref role="1PxDUh" node="38" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="E" role="3KbHQx">
@@ -590,8 +586,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="27" role="3Kbmr1">
-              <ref role="1PxDUh" node="38" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3d" resolve="OtherSubChild" />
+              <ref role="1PxDUh" node="38" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="F" role="3KbHQx">
@@ -664,8 +660,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2$" role="3Kbmr1">
-              <ref role="1PxDUh" node="38" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3e" resolve="Root" />
+              <ref role="1PxDUh" node="38" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -1120,7 +1116,6 @@
     </node>
     <node concept="2tJIrI" id="4S" role="jymVt" />
     <node concept="3clFb_" id="4T" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -1142,8 +1137,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="60" role="3Kbmr1">
-              <ref role="1PxDUh" node="38" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3a" resolve="Child" />
+              <ref role="1PxDUh" node="38" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="5T" role="3KbHQx">
@@ -1155,8 +1150,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="64" role="3Kbmr1">
-              <ref role="1PxDUh" node="38" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3b" resolve="OtherChild" />
+              <ref role="1PxDUh" node="38" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="5U" role="3KbHQx">
@@ -1168,8 +1163,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="68" role="3Kbmr1">
-              <ref role="1PxDUh" node="38" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3c" resolve="OtherRoot" />
+              <ref role="1PxDUh" node="38" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="5V" role="3KbHQx">
@@ -1181,8 +1176,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6c" role="3Kbmr1">
-              <ref role="1PxDUh" node="38" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3d" resolve="OtherSubChild" />
+              <ref role="1PxDUh" node="38" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="5W" role="3KbHQx">
@@ -1194,8 +1189,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6g" role="3Kbmr1">
-              <ref role="1PxDUh" node="38" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3e" resolve="Root" />
+              <ref role="1PxDUh" node="38" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="5X" role="3KbGdf">

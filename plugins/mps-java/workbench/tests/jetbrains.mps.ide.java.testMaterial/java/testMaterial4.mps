@@ -458,7 +458,6 @@
     <property role="TrG5h" value="OrdinaryInterfaceWithInnerClasses" />
     <node concept="3Tm1VV" id="2OnbqFWkZ17" role="1B3o_S" />
     <node concept="3clFb_" id="2OnbqFWkZ1g" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="foo" />
       <node concept="3Tm1VV" id="2OnbqFWkZ1h" role="1B3o_S" />
       <node concept="3cqZAl" id="2OnbqFWkZ1i" role="3clF45" />

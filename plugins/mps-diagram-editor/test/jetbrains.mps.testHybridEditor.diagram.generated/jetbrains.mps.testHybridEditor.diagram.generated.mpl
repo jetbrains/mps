@@ -7,7 +7,9 @@
   </models>
   <facets>
     <facet type="tests" />
-    <facet type="java" />
+    <facet type="java">
+      <classes generated="true" path="${module}/classes_gen" />
+    </facet>
   </facets>
   <accessoryModels />
   <sourcePath />

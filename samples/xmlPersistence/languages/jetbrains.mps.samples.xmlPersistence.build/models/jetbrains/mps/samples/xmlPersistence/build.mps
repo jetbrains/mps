@@ -156,7 +156,6 @@
               <ref role="L2wRA" node="7ZoWiKcez7S" resolve="jetbrains.mps.samples.xmlPersistence" />
             </node>
           </node>
-          <node concept="pUk6w" id="5peYeZGo92D" role="pUk7w" />
           <node concept="398223" id="5peYeZGo92E" role="39821P">
             <node concept="3_J27D" id="5peYeZGo92F" role="Nbhlr">
               <node concept="3Mxwew" id="5peYeZGo92G" role="3MwsjC">
@@ -167,6 +166,7 @@
               <ref role="L2wRA" node="7ZoWiKcez8p" resolve="jetbrains.mps.samples.xmlPersistence.ideaPlugin" />
             </node>
           </node>
+          <node concept="pUk6w" id="6UtCO5dIB32" role="pUk7w" />
         </node>
       </node>
     </node>
@@ -355,7 +355,6 @@
         <ref role="m$_yA" node="7ZoWiKcez7S" resolve="jetbrains.mps.samples.xmlPersistence" />
       </node>
       <node concept="m$_yB" id="7ZoWiKcezd3" role="m$_yh">
-        <property role="1ZOk41" value="false" />
         <ref role="m$_yA" node="7ZoWiKcez8p" resolve="jetbrains.mps.samples.xmlPersistence.ideaPlugin" />
       </node>
       <node concept="m$_yC" id="7ZoWiKceS$J" role="m$_yJ">

@@ -7,7 +7,9 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="java" />
+    <facet type="java">
+      <classes generated="true" />
+    </facet>
     <facet type="tests" />
     <facet pluginId="jetbrains.mps.debugger.java" type="ideaPlugin" />
   </facets>

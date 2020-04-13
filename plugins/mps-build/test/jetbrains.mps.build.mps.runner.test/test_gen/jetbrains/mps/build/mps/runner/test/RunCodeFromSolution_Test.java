@@ -36,6 +36,9 @@ public class RunCodeFromSolution_Test extends EnvironmentAwareTestCase {
   public void test_useAdditionalPlugin() throws Exception {
     runAndCheck(PROJECT_PATH, "test5.xml");
   }
+  public void test_useRegistryInDummyPlugin() throws Exception {
+    runAndCheck(PROJECT_PATH, "testDummyPlugin.xml");
+  }
   public void setUp() {
     myProject = myEnvironment.openProject(new File(PROJECT_PATH));
   }
@@ -64,11 +67,13 @@ public class RunCodeFromSolution_Test extends EnvironmentAwareTestCase {
     process.addProcessListener(new ProcessAdapter() {
       @Override
       public void onTextAvailable(ProcessEvent event, Key key) {
+        if (isEmptyString(event.getText())) {
+          return;
+        }
         if (ProcessOutputTypes.STDERR.equals(key)) {
-          // print errors 
-          System.err.print("test>>> " + event.getText());
+          System.err.print("test error >>> " + event.getText());
         } else {
-          System.out.print("test>>> " + event.getText());
+          System.out.print("test >>> " + event.getText());
         }
       }
     });
@@ -82,5 +87,8 @@ public class RunCodeFromSolution_Test extends EnvironmentAwareTestCase {
       Assert.fail("Test failed: the file was not created");
     }
     okFile.delete();
+  }
+  private static boolean isEmptyString(String str) {
+    return str == null || str.length() == 0;
   }
 }

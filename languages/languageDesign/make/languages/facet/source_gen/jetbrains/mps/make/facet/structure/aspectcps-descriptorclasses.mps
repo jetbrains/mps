@@ -38,9 +38,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -432,7 +429,6 @@
     <node concept="3Tm1VV" id="m" role="1B3o_S" />
     <node concept="2tJIrI" id="n" role="jymVt" />
     <node concept="3clFb_" id="o" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -598,8 +594,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1G" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tr" resolve="ExtendsFacetReference" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1l" role="3KbHQx">
@@ -684,8 +680,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2r" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="ts" resolve="FacetDeclaration" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1m" role="3KbHQx">
@@ -758,8 +754,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2X" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tt" resolve="FacetJavaClassExpression" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1n" role="3KbHQx">
@@ -809,8 +805,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3q" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tu" resolve="FacetReference" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1o" role="3KbHQx">
@@ -883,8 +879,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3I" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tv" resolve="FacetReferenceExpression" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1p" role="3KbHQx">
@@ -957,8 +953,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4b" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tw" resolve="ForeignParametersComponentExpression" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1q" role="3KbHQx">
@@ -1079,8 +1075,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4C" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tx" resolve="ForeignParametersExpression" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1r" role="3KbHQx">
@@ -1130,8 +1126,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5n" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="ty" resolve="IFacet" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1s" role="3KbHQx">
@@ -1181,8 +1177,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5F" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tz" resolve="IPropertyExpression" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1t" role="3KbHQx">
@@ -1255,8 +1251,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5Z" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="t$" resolve="LocalParametersComponentExpression" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1u" role="3KbHQx">
@@ -1329,8 +1325,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6s" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="t_" resolve="LocalParametersExpression" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1v" role="3KbHQx">
@@ -1451,8 +1447,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6T" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tA" resolve="NamedFacetReference" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1w" role="3KbHQx">
@@ -1517,8 +1513,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7C" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tB" resolve="ParametersDeclaration" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1x" role="3KbHQx">
@@ -1639,8 +1635,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="82" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tC" resolve="RelatedFacetReference" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1y" role="3KbHQx">
@@ -1761,8 +1757,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8L" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tD" resolve="ResourceClassifierType" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1z" role="3KbHQx">
@@ -1835,8 +1831,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9w" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tE" resolve="ResourceSpecificPropertiesExpression" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1$" role="3KbHQx">
@@ -1909,8 +1905,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9X" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tF" resolve="ResourceTypeDeclaration" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_" role="3KbHQx">
@@ -1975,8 +1971,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="aq" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tG" resolve="TargetDeclaration" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1A" role="3KbHQx">
@@ -2097,8 +2093,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="aO" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tH" resolve="TargetDependency" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1B" role="3KbHQx">
@@ -2219,8 +2215,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bz" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tI" resolve="TargetReferenceExpression" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -6239,7 +6235,6 @@
     </node>
     <node concept="2tJIrI" id="xK" role="jymVt" />
     <node concept="3clFb_" id="xL" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -6261,8 +6256,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="$A" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tr" resolve="ExtendsFacetReference" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="$g" role="3KbHQx">
@@ -6274,8 +6269,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="$E" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="ts" resolve="FacetDeclaration" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="$h" role="3KbHQx">
@@ -6287,8 +6282,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="$I" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tt" resolve="FacetJavaClassExpression" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="$i" role="3KbHQx">
@@ -6300,8 +6295,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="$M" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tu" resolve="FacetReference" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="$j" role="3KbHQx">
@@ -6313,8 +6308,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="$Q" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tv" resolve="FacetReferenceExpression" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="$k" role="3KbHQx">
@@ -6326,8 +6321,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="$U" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tw" resolve="ForeignParametersComponentExpression" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="$l" role="3KbHQx">
@@ -6339,8 +6334,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="$Y" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tx" resolve="ForeignParametersExpression" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="$m" role="3KbHQx">
@@ -6352,8 +6347,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="_2" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="ty" resolve="IFacet" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="$n" role="3KbHQx">
@@ -6365,8 +6360,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="_6" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tz" resolve="IPropertyExpression" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="$o" role="3KbHQx">
@@ -6378,8 +6373,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="_a" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="t$" resolve="LocalParametersComponentExpression" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="$p" role="3KbHQx">
@@ -6391,8 +6386,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="_e" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="t_" resolve="LocalParametersExpression" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="$q" role="3KbHQx">
@@ -6404,8 +6399,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="_i" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tA" resolve="NamedFacetReference" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="$r" role="3KbHQx">
@@ -6417,8 +6412,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="_m" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tB" resolve="ParametersDeclaration" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="$s" role="3KbHQx">
@@ -6430,8 +6425,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="_q" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tC" resolve="RelatedFacetReference" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="$t" role="3KbHQx">
@@ -6443,8 +6438,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="_u" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tD" resolve="ResourceClassifierType" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="$u" role="3KbHQx">
@@ -6456,8 +6451,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="_y" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tE" resolve="ResourceSpecificPropertiesExpression" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="$v" role="3KbHQx">
@@ -6469,8 +6464,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="_A" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tF" resolve="ResourceTypeDeclaration" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="$w" role="3KbHQx">
@@ -6482,8 +6477,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="_E" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tG" resolve="TargetDeclaration" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="$x" role="3KbHQx">
@@ -6495,8 +6490,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="_I" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tH" resolve="TargetDependency" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="$y" role="3KbHQx">
@@ -6508,8 +6503,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="_M" role="3Kbmr1">
-              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="tI" resolve="TargetReferenceExpression" />
+              <ref role="1PxDUh" node="tp" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="$z" role="3KbGdf">

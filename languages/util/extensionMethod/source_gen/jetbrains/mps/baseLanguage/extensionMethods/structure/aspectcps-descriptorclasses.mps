@@ -30,9 +30,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -290,7 +287,6 @@
     <node concept="3Tm1VV" id="b" role="1B3o_S" />
     <node concept="2tJIrI" id="c" role="jymVt" />
     <node concept="3clFb_" id="d" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -385,8 +381,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="10" role="3Kbmr1">
-              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5O" resolve="BaseExtensionMethodContainer" />
+              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="O" role="3KbHQx">
@@ -507,8 +503,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1k" role="3Kbmr1">
-              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5P" resolve="ExtensionMethodCall" />
+              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="P" role="3KbHQx">
@@ -573,8 +569,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="23" role="3Kbmr1">
-              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5Q" resolve="ExtensionMethodDeclaration" />
+              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="Q" role="3KbHQx">
@@ -639,8 +635,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2t" role="3Kbmr1">
-              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5R" resolve="ExtensionStaticFieldDeclaration" />
+              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="R" role="3KbHQx">
@@ -761,8 +757,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2R" role="3Kbmr1">
-              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5S" resolve="ExtensionStaticFieldReference" />
+              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="S" role="3KbHQx">
@@ -896,8 +892,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3A" role="3Kbmr1">
-              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5T" resolve="LocalExtendedMethodCall" />
+              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="T" role="3KbHQx">
@@ -962,8 +958,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4q" role="3Kbmr1">
-              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5U" resolve="SimpleExtensionMethodsContainer" />
+              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="U" role="3KbHQx">
@@ -1036,8 +1032,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4O" role="3Kbmr1">
-              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5V" resolve="ThisExtensionExpression" />
+              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="V" role="3KbHQx">
@@ -1102,8 +1098,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5h" role="3Kbmr1">
-              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5W" resolve="TypeExtension" />
+              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -1764,7 +1760,6 @@
     </node>
     <node concept="2tJIrI" id="8e" role="jymVt" />
     <node concept="3clFb_" id="8f" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -1786,8 +1781,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9S" role="3Kbmr1">
-              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5O" resolve="BaseExtensionMethodContainer" />
+              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="9H" role="3KbHQx">
@@ -1799,8 +1794,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9W" role="3Kbmr1">
-              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5P" resolve="ExtensionMethodCall" />
+              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="9I" role="3KbHQx">
@@ -1812,8 +1807,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="a0" role="3Kbmr1">
-              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5Q" resolve="ExtensionMethodDeclaration" />
+              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="9J" role="3KbHQx">
@@ -1825,8 +1820,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="a4" role="3Kbmr1">
-              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5R" resolve="ExtensionStaticFieldDeclaration" />
+              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="9K" role="3KbHQx">
@@ -1838,8 +1833,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="a8" role="3Kbmr1">
-              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5S" resolve="ExtensionStaticFieldReference" />
+              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="9L" role="3KbHQx">
@@ -1851,8 +1846,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ac" role="3Kbmr1">
-              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5T" resolve="LocalExtendedMethodCall" />
+              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="9M" role="3KbHQx">
@@ -1864,8 +1859,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ag" role="3Kbmr1">
-              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5U" resolve="SimpleExtensionMethodsContainer" />
+              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="9N" role="3KbHQx">
@@ -1877,8 +1872,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ak" role="3Kbmr1">
-              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5V" resolve="ThisExtensionExpression" />
+              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="9O" role="3KbHQx">
@@ -1890,8 +1885,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ao" role="3Kbmr1">
-              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5W" resolve="TypeExtension" />
+              <ref role="1PxDUh" node="5M" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="9P" role="3KbGdf">

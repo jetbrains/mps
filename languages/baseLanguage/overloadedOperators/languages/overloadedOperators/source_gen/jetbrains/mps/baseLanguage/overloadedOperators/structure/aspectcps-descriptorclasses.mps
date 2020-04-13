@@ -30,9 +30,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -300,7 +297,6 @@
     <node concept="3Tm1VV" id="c" role="1B3o_S" />
     <node concept="2tJIrI" id="d" role="jymVt" />
     <node concept="3clFb_" id="e" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -466,8 +462,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="14" role="3Kbmr1">
-              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6_" resolve="BinaryOperationReference" />
+              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="R" role="3KbHQx">
@@ -588,8 +584,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1N" role="3Kbmr1">
-              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6A" resolve="ContainerImport" />
+              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="S" role="3KbHQx">
@@ -710,8 +706,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2y" role="3Kbmr1">
-              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6B" resolve="CustomOperator" />
+              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="T" role="3KbHQx">
@@ -776,8 +772,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3h" role="3Kbmr1">
-              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6C" resolve="CustomOperatorDeclaration" />
+              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="U" role="3KbHQx">
@@ -898,8 +894,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3F" role="3Kbmr1">
-              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6D" resolve="CustomOperatorUsage" />
+              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="V" role="3KbHQx">
@@ -964,8 +960,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4q" role="3Kbmr1">
-              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6E" resolve="LeftOperand" />
+              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="W" role="3KbHQx">
@@ -1015,8 +1011,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4O" role="3Kbmr1">
-              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6F" resolve="Operator" />
+              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="X" role="3KbHQx">
@@ -1089,8 +1085,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="58" role="3Kbmr1">
-              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6G" resolve="OverloadedBinaryOperator" />
+              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="Y" role="3KbHQx">
@@ -1155,8 +1151,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5_" role="3Kbmr1">
-              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6H" resolve="OverloadedOperatorContainer" />
+              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="Z" role="3KbHQx">
@@ -1229,8 +1225,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5Z" role="3Kbmr1">
-              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6I" resolve="RightOperand" />
+              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -1933,7 +1929,6 @@
     </node>
     <node concept="2tJIrI" id="9a" role="jymVt" />
     <node concept="3clFb_" id="9b" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -1955,8 +1950,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="aT" role="3Kbmr1">
-              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6_" resolve="BinaryOperationReference" />
+              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="aH" role="3KbHQx">
@@ -1968,8 +1963,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="aX" role="3Kbmr1">
-              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6A" resolve="ContainerImport" />
+              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="aI" role="3KbHQx">
@@ -1981,8 +1976,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="b1" role="3Kbmr1">
-              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6B" resolve="CustomOperator" />
+              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="aJ" role="3KbHQx">
@@ -1994,8 +1989,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="b5" role="3Kbmr1">
-              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6C" resolve="CustomOperatorDeclaration" />
+              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="aK" role="3KbHQx">
@@ -2007,8 +2002,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="b9" role="3Kbmr1">
-              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6D" resolve="CustomOperatorUsage" />
+              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="aL" role="3KbHQx">
@@ -2020,8 +2015,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bd" role="3Kbmr1">
-              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6E" resolve="LeftOperand" />
+              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="aM" role="3KbHQx">
@@ -2033,8 +2028,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bh" role="3Kbmr1">
-              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6F" resolve="Operator" />
+              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="aN" role="3KbHQx">
@@ -2046,8 +2041,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bl" role="3Kbmr1">
-              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6G" resolve="OverloadedBinaryOperator" />
+              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="aO" role="3KbHQx">
@@ -2059,8 +2054,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bp" role="3Kbmr1">
-              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6H" resolve="OverloadedOperatorContainer" />
+              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="aP" role="3KbHQx">
@@ -2072,8 +2067,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bt" role="3Kbmr1">
-              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6I" resolve="RightOperand" />
+              <ref role="1PxDUh" node="6z" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="aQ" role="3KbGdf">

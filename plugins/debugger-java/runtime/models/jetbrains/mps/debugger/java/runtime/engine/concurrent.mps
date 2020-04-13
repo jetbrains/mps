@@ -848,14 +848,12 @@
     <property role="TrG5h" value="IManagerCommand" />
     <node concept="3Tm1VV" id="5DZ5wiJ6hk4" role="1B3o_S" />
     <node concept="3clFb_" id="5DZ5wiJ6hk5" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="invoke" />
       <node concept="3cqZAl" id="5DZ5wiJ6hk6" role="3clF45" />
       <node concept="3Tm1VV" id="5DZ5wiJ6hk7" role="1B3o_S" />
       <node concept="3clFbS" id="5DZ5wiJ6hk8" role="3clF47" />
     </node>
     <node concept="3clFb_" id="5DZ5wiJ6hk9" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="cancel" />
       <node concept="3cqZAl" id="5DZ5wiJ6hka" role="3clF45" />
       <node concept="3Tm1VV" id="5DZ5wiJ6hkb" role="1B3o_S" />

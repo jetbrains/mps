@@ -226,10 +226,7 @@
           <node concept="3fqX7Q" id="147CB3QsVkX" role="3clFbG">
             <node concept="2OqwBi" id="147CB3QsVkY" role="3fr31v">
               <node concept="2OqwBi" id="147CB3QsVkZ" role="2Oq$k0">
-                <node concept="2OqwBi" id="147CB3QsVl0" role="2Oq$k0">
-                  <node concept="2DD5aU" id="147CB3QsVl7" role="2Oq$k0" />
-                  <node concept="1rGIog" id="147CB3QsVl2" role="2OqNvi" />
-                </node>
+                <node concept="2DD5aU" id="147CB3QsVl7" role="2Oq$k0" />
                 <node concept="liA8E" id="147CB3QsVl3" role="2OqNvi">
                   <ref role="37wK5l" to="c17a:~SAbstractConcept.getLanguage()" resolve="getLanguage" />
                 </node>

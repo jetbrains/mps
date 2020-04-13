@@ -38,9 +38,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -298,7 +295,6 @@
     <node concept="3Tm1VV" id="b" role="1B3o_S" />
     <node concept="2tJIrI" id="c" role="jymVt" />
     <node concept="3clFb_" id="d" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -429,8 +425,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="10" role="3Kbmr1">
-              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6Q" resolve="IndexedTupleLiteral" />
+              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="O" role="3KbHQx">
@@ -516,8 +512,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1y" role="3Kbmr1">
-              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6R" resolve="IndexedTupleMemberAccessExpression" />
+              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="P" role="3KbHQx">
@@ -603,8 +599,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="24" role="3Kbmr1">
-              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6S" resolve="IndexedTupleType" />
+              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="Q" role="3KbHQx">
@@ -725,8 +721,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2A" role="3Kbmr1">
-              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6T" resolve="NamedTupleComponentAccessOperation" />
+              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="R" role="3KbHQx">
@@ -791,8 +787,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3l" role="3Kbmr1">
-              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6U" resolve="NamedTupleComponentDeclaration" />
+              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="S" role="3KbHQx">
@@ -913,8 +909,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3J" role="3Kbmr1">
-              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6V" resolve="NamedTupleComponentReference" />
+              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="T" role="3KbHQx">
@@ -1012,8 +1008,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4u" role="3Kbmr1">
-              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6W" resolve="NamedTupleDeclaration" />
+              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="U" role="3KbHQx">
@@ -1146,8 +1142,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="55" role="3Kbmr1">
-              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6X" resolve="NamedTupleLiteral" />
+              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="V" role="3KbHQx">
@@ -1280,8 +1276,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5T" role="3Kbmr1">
-              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6Y" resolve="NamedTupleType" />
+              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -1942,7 +1938,6 @@
     </node>
     <node concept="2tJIrI" id="9g" role="jymVt" />
     <node concept="3clFb_" id="9h" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -1964,8 +1959,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="aU" role="3Kbmr1">
-              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6Q" resolve="IndexedTupleLiteral" />
+              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="aJ" role="3KbHQx">
@@ -1977,8 +1972,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="aY" role="3Kbmr1">
-              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6R" resolve="IndexedTupleMemberAccessExpression" />
+              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="aK" role="3KbHQx">
@@ -1990,8 +1985,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="b2" role="3Kbmr1">
-              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6S" resolve="IndexedTupleType" />
+              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="aL" role="3KbHQx">
@@ -2003,8 +1998,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="b6" role="3Kbmr1">
-              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6T" resolve="NamedTupleComponentAccessOperation" />
+              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="aM" role="3KbHQx">
@@ -2016,8 +2011,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ba" role="3Kbmr1">
-              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6U" resolve="NamedTupleComponentDeclaration" />
+              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="aN" role="3KbHQx">
@@ -2029,8 +2024,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="be" role="3Kbmr1">
-              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6V" resolve="NamedTupleComponentReference" />
+              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="aO" role="3KbHQx">
@@ -2042,8 +2037,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bi" role="3Kbmr1">
-              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6W" resolve="NamedTupleDeclaration" />
+              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="aP" role="3KbHQx">
@@ -2055,8 +2050,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bm" role="3Kbmr1">
-              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6X" resolve="NamedTupleLiteral" />
+              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="aQ" role="3KbHQx">
@@ -2068,8 +2063,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bq" role="3Kbmr1">
-              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="6Y" resolve="NamedTupleType" />
+              <ref role="1PxDUh" node="6O" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="aR" role="3KbGdf">

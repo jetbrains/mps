@@ -14,7 +14,6 @@
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" implicit="true" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" implicit="true" />
-    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
@@ -92,7 +91,6 @@
       <concept id="1180636770613" name="jetbrains.mps.lang.smodel.structure.SNodeCreator" flags="nn" index="3zrR0B">
         <child id="1180636770616" name="createdType" index="3zrR0E" />
       </concept>
-      <concept id="1172323065820" name="jetbrains.mps.lang.smodel.structure.Node_GetConceptOperation" flags="nn" index="3NT_Vc" />
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
         <reference id="1138405853777" name="concept" index="ehGHo" />
       </concept>
@@ -133,7 +131,7 @@
               <node concept="3TrcHB" id="4gQZRkTTpKC" role="2OqNvi">
                 <ref role="3TsBF5" to="tpce:4qF2Hm2r7ja" resolve="conceptAlias" />
               </node>
-              <node concept="1tp6Ag" id="4gQZRkTTpKD" role="lGtFl">
+              <node concept="1tp6Ag" id="6UtCO5dImV8" role="lGtFl">
                 <property role="1tp6A2" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1(jetbrains.mps.lang.smodel)/4" />
                 <property role="1tp6Ah" value="unknown attributes" />
                 <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.generator.structure.VarMacro" />
@@ -250,6 +248,12 @@
               <node concept="3TrcHB" id="7Ift4HfT7Qi" role="2OqNvi">
                 <ref role="3TsBF5" to="tpce:4qF2Hm2r7ja" resolve="conceptAlias" />
               </node>
+              <node concept="1tp6Ag" id="6UtCO5dImV9" role="lGtFl">
+                <property role="1tp6A2" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1(jetbrains.mps.lang.smodel)/4" />
+                <property role="1tp6Ah" value="unknown attributes" />
+                <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.generator.structure.VarMacro" />
+                <property role="1tp6Av" value="Migrate popular concept&lt;-&gt;node conversions" />
+              </node>
               <node concept="2jeGV$" id="2Qr33HiCinb" role="lGtFl">
                 <property role="TrG5h" value="thevar" />
                 <node concept="2jfdEK" id="2Qr33HiCind" role="2jfP_Y">
@@ -335,15 +339,15 @@
             </node>
           </node>
           <node concept="3clFbF" id="2Qr33HiPxLb" role="3cqZAp">
-            <node concept="2OqwBi" id="2Qr33HiPylZ" role="3clFbG">
-              <node concept="2OqwBi" id="2Qr33HiPxSL" role="2Oq$k0">
+            <node concept="2EnYce" id="2Qr33HiPylZ" role="3clFbG">
+              <node concept="2OqwBi" id="6UtCO5dImXl" role="2Oq$k0">
+                <node concept="2yIwOk" id="6UtCO5dImXm" role="2OqNvi" />
                 <node concept="37vLTw" id="2Qr33HiPxL9" role="2Oq$k0">
                   <ref role="3cqZAo" node="2Qr33HiPxpn" resolve="n" />
                 </node>
-                <node concept="3NT_Vc" id="2Qr33HiPy7S" role="2OqNvi" />
               </node>
-              <node concept="3TrcHB" id="2Qr33HiPywO" role="2OqNvi">
-                <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+              <node concept="liA8E" id="6UtCO5dImXn" role="2OqNvi">
+                <ref role="37wK5l" to="c17a:~SAbstractConcept.getName()" resolve="getName" />
               </node>
             </node>
           </node>

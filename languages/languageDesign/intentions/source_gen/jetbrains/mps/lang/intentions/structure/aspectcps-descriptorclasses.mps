@@ -43,9 +43,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -409,7 +406,6 @@
     <node concept="3Tm1VV" id="l" role="1B3o_S" />
     <node concept="2tJIrI" id="m" role="jymVt" />
     <node concept="3clFb_" id="n" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -519,8 +515,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1C" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="aZ" resolve="BaseIntentionDeclaration" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1i" role="3KbHQx">
@@ -593,8 +589,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="22" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="b0" resolve="ChildFilterFunction" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1j" role="3KbHQx">
@@ -680,8 +676,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2v" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="b1" resolve="ConceptFunctionParameter_childNode" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1k" role="3KbHQx">
@@ -767,8 +763,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="31" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="b2" resolve="ConceptFunctionParameter_node" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1l" role="3KbHQx">
@@ -841,8 +837,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3z" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="b3" resolve="DescriptionBlock" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1m" role="3KbHQx">
@@ -915,8 +911,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="40" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="b4" resolve="ErrorIntentionPriority" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1n" role="3KbHQx">
@@ -989,8 +985,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4t" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="b5" resolve="ExecuteBlock" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1o" role="3KbHQx">
@@ -1055,8 +1051,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4U" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="b6" resolve="ForConceptMethodParameter" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1p" role="3KbHQx">
@@ -1160,8 +1156,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5k" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="b7" resolve="Intention" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1q" role="3KbHQx">
@@ -1246,8 +1242,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5X" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="b8" resolve="IntentionDeclaration" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1r" role="3KbHQx">
@@ -1333,8 +1329,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6v" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="b9" resolve="IntentionParameter" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1s" role="3KbHQx">
@@ -1384,8 +1380,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="71" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="ba" resolve="IntentionPriority" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1t" role="3KbHQx">
@@ -1458,8 +1454,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7l" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="bb" resolve="IsApplicableBlock" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1u" role="3KbHQx">
@@ -1524,8 +1520,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7M" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="bc" resolve="Parameter" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1v" role="3KbHQx">
@@ -1620,8 +1616,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8c" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="bd" resolve="ParameterizedDescriptionBlock" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1w" role="3KbHQx">
@@ -1716,8 +1712,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8L" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="be" resolve="ParameterizedExecuteBlock" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1x" role="3KbHQx">
@@ -1782,8 +1778,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9m" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="bf" resolve="ParameterizedIntentionDeclaration" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1y" role="3KbHQx">
@@ -1856,8 +1852,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9K" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="bg" resolve="QueryBlock" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1z" role="3KbHQx">
@@ -1961,8 +1957,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ad" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="bh" resolve="SurroundWithIntentionDeclaration" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -3043,7 +3039,6 @@
     </node>
     <node concept="2tJIrI" id="f7" role="jymVt" />
     <node concept="3clFb_" id="f8" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -3065,8 +3060,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hz" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="aZ" resolve="BaseIntentionDeclaration" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="he" role="3KbHQx">
@@ -3078,8 +3073,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hB" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="b0" resolve="ChildFilterFunction" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="hf" role="3KbHQx">
@@ -3091,8 +3086,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hF" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="b1" resolve="ConceptFunctionParameter_childNode" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="hg" role="3KbHQx">
@@ -3104,8 +3099,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hJ" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="b2" resolve="ConceptFunctionParameter_node" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="hh" role="3KbHQx">
@@ -3117,8 +3112,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hN" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="b3" resolve="DescriptionBlock" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="hi" role="3KbHQx">
@@ -3130,8 +3125,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hR" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="b4" resolve="ErrorIntentionPriority" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="hj" role="3KbHQx">
@@ -3143,8 +3138,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hV" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="b5" resolve="ExecuteBlock" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="hk" role="3KbHQx">
@@ -3156,8 +3151,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hZ" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="b6" resolve="ForConceptMethodParameter" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="hl" role="3KbHQx">
@@ -3169,8 +3164,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="i3" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="b7" resolve="Intention" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="hm" role="3KbHQx">
@@ -3182,8 +3177,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="i7" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="b8" resolve="IntentionDeclaration" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="hn" role="3KbHQx">
@@ -3195,8 +3190,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ib" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="b9" resolve="IntentionParameter" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="ho" role="3KbHQx">
@@ -3208,8 +3203,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="if" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="ba" resolve="IntentionPriority" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="hp" role="3KbHQx">
@@ -3221,8 +3216,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ij" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="bb" resolve="IsApplicableBlock" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="hq" role="3KbHQx">
@@ -3234,8 +3229,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="in" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="bc" resolve="Parameter" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="hr" role="3KbHQx">
@@ -3247,8 +3242,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ir" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="bd" resolve="ParameterizedDescriptionBlock" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="hs" role="3KbHQx">
@@ -3260,8 +3255,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="iv" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="be" resolve="ParameterizedExecuteBlock" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="ht" role="3KbHQx">
@@ -3273,8 +3268,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="iz" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="bf" resolve="ParameterizedIntentionDeclaration" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="hu" role="3KbHQx">
@@ -3286,8 +3281,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="iB" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="bg" resolve="QueryBlock" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="hv" role="3KbHQx">
@@ -3299,8 +3294,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="iF" role="3Kbmr1">
-              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="bh" resolve="SurroundWithIntentionDeclaration" />
+              <ref role="1PxDUh" node="aX" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="hw" role="3KbGdf">

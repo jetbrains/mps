@@ -30,9 +30,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -300,7 +297,6 @@
     <node concept="3Tm1VV" id="c" role="1B3o_S" />
     <node concept="2tJIrI" id="d" role="jymVt" />
     <node concept="3clFb_" id="e" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -418,8 +414,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="14" role="3Kbmr1">
-              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5G" resolve="ConvertTo" />
+              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="R" role="3KbHQx">
@@ -492,8 +488,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1x" role="3Kbmr1">
-              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5H" resolve="CurrencyDefTable" />
+              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="S" role="3KbHQx">
@@ -558,8 +554,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1Y" role="3Kbmr1">
-              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5I" resolve="CurrencyUnit" />
+              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="T" role="3KbHQx">
@@ -632,8 +628,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2o" role="3Kbmr1">
-              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5J" resolve="CurrentStockPrice" />
+              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="U" role="3KbHQx">
@@ -706,8 +702,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2P" role="3Kbmr1">
-              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5K" resolve="GetAmount" />
+              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="V" role="3KbHQx">
@@ -780,8 +776,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3i" role="3Kbmr1">
-              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5L" resolve="GetCurrency" />
+              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="W" role="3KbHQx">
@@ -854,8 +850,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3J" role="3Kbmr1">
-              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5M" resolve="MoneyLiteral" />
+              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="X" role="3KbHQx">
@@ -928,8 +924,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4c" role="3Kbmr1">
-              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5N" resolve="MoneyType" />
+              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="Y" role="3KbHQx">
@@ -1002,8 +998,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4D" role="3Kbmr1">
-              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5O" resolve="MovingAverage" />
+              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="Z" role="3KbHQx">
@@ -1076,8 +1072,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="56" role="3Kbmr1">
-              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5P" resolve="StockSymbol" />
+              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -1761,7 +1757,6 @@
     </node>
     <node concept="2tJIrI" id="8h" role="jymVt" />
     <node concept="3clFb_" id="8i" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -1783,8 +1778,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9T" role="3Kbmr1">
-              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5G" resolve="ConvertTo" />
+              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="9H" role="3KbHQx">
@@ -1796,8 +1791,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9X" role="3Kbmr1">
-              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5H" resolve="CurrencyDefTable" />
+              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="9I" role="3KbHQx">
@@ -1809,8 +1804,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="a1" role="3Kbmr1">
-              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5I" resolve="CurrencyUnit" />
+              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="9J" role="3KbHQx">
@@ -1822,8 +1817,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="a5" role="3Kbmr1">
-              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5J" resolve="CurrentStockPrice" />
+              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="9K" role="3KbHQx">
@@ -1835,8 +1830,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="a9" role="3Kbmr1">
-              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5K" resolve="GetAmount" />
+              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="9L" role="3KbHQx">
@@ -1848,8 +1843,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ad" role="3Kbmr1">
-              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5L" resolve="GetCurrency" />
+              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="9M" role="3KbHQx">
@@ -1861,8 +1856,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ah" role="3Kbmr1">
-              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5M" resolve="MoneyLiteral" />
+              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="9N" role="3KbHQx">
@@ -1874,8 +1869,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="al" role="3Kbmr1">
-              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5N" resolve="MoneyType" />
+              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="9O" role="3KbHQx">
@@ -1887,8 +1882,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ap" role="3Kbmr1">
-              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5O" resolve="MovingAverage" />
+              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="9P" role="3KbHQx">
@@ -1900,8 +1895,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="at" role="3Kbmr1">
-              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="5P" resolve="StockSymbol" />
+              <ref role="1PxDUh" node="5E" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="9Q" role="3KbGdf">

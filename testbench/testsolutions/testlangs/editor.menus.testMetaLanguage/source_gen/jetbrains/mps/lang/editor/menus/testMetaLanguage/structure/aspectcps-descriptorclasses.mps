@@ -30,9 +30,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -264,7 +261,6 @@
     <node concept="3Tm1VV" id="9" role="1B3o_S" />
     <node concept="2tJIrI" id="a" role="jymVt" />
     <node concept="3clFb_" id="b" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -395,8 +391,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="S" role="3Kbmr1">
-              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4t" resolve="TransformationFeature_Optional" />
+              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="I" role="3KbHQx">
@@ -482,8 +478,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1q" role="3Kbmr1">
-              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4u" resolve="TransformationFeature_Required" />
+              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="J" role="3KbHQx">
@@ -569,8 +565,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1W" role="3Kbmr1">
-              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4v" resolve="TransformationFeature_Unavailable" />
+              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="K" role="3KbHQx">
@@ -656,8 +652,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2u" role="3Kbmr1">
-              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4w" resolve="TransformationLocation_Test" />
+              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="L" role="3KbHQx">
@@ -730,8 +726,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="30" role="3Kbmr1">
-              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4x" resolve="TransformationLocation_WithFeatures" />
+              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="M" role="3KbHQx">
@@ -804,8 +800,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3t" role="3Kbmr1">
-              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4y" resolve="TransformationLocation_WithoutFeatures" />
+              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="N" role="3KbHQx">
@@ -870,8 +866,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3U" role="3Kbmr1">
-              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4z" resolve="TransformationMenu_Test" />
+              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -1410,7 +1406,6 @@
     </node>
     <node concept="2tJIrI" id="6x" role="jymVt" />
     <node concept="3clFb_" id="6y" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -1432,8 +1427,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7N" role="3Kbmr1">
-              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4t" resolve="TransformationFeature_Optional" />
+              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="7E" role="3KbHQx">
@@ -1445,8 +1440,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7R" role="3Kbmr1">
-              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4u" resolve="TransformationFeature_Required" />
+              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="7F" role="3KbHQx">
@@ -1458,8 +1453,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7V" role="3Kbmr1">
-              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4v" resolve="TransformationFeature_Unavailable" />
+              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="7G" role="3KbHQx">
@@ -1471,8 +1466,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7Z" role="3Kbmr1">
-              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4w" resolve="TransformationLocation_Test" />
+              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="7H" role="3KbHQx">
@@ -1484,8 +1479,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="83" role="3Kbmr1">
-              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4x" resolve="TransformationLocation_WithFeatures" />
+              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="7I" role="3KbHQx">
@@ -1497,8 +1492,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="87" role="3Kbmr1">
-              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4y" resolve="TransformationLocation_WithoutFeatures" />
+              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="7J" role="3KbHQx">
@@ -1510,8 +1505,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8b" role="3Kbmr1">
-              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="4z" resolve="TransformationMenu_Test" />
+              <ref role="1PxDUh" node="4r" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="7K" role="3KbGdf">

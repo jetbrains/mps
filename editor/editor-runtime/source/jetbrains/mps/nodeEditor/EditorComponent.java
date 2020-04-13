@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,7 +52,6 @@ import com.intellij.ui.components.JBScrollPane.Flip;
 import com.intellij.util.io.URLUtil;
 import com.intellij.util.ui.ButtonlessScrollBarUI;
 import com.intellij.util.ui.UIUtil;
-import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.DeployListener;
 import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
@@ -67,7 +66,6 @@ import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectView.ProjectViewSelectInProvider;
-import jetbrains.mps.ide.tooltips.MPSToolTipManager;
 import jetbrains.mps.ide.tooltips.TooltipComponent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.logging.Logger;
@@ -142,6 +140,7 @@ import jetbrains.mps.workbench.ActionPlace;
 import jetbrains.mps.workbench.action.ActionUtils;
 import jetbrains.mps.workbench.action.BaseAction;
 import org.apache.log4j.LogManager;
+import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -643,10 +642,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
     myIntentionsSupport = new IntentionsSupport(this);
 
-    if (MPSToolTipManager.getInstance() != null) {
-      MPSToolTipManager.getInstance().registerComponent(this);
-    }
-
     getSelectionManager().addSelectionListener((editorComponent, oldSelection, newSelection) -> {
       if (oldSelection == newSelection) {
         return;
@@ -857,7 +852,12 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   }
 
   @Override
-  public String getMPSTooltipText(final MouseEvent event) {
+  public String getMPSTooltipText(MouseEvent event) {
+    return getToolTipText(event);
+  }
+
+  @Override
+  public String getToolTipText(MouseEvent event) {
     final Reference<String> rv = new Reference<>(null);
     getModelAccess().runReadAction(new CancellableReadAction() {
       @Override
@@ -871,15 +871,16 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
           confirmCancel();
           return;
         }
-        String messages = null;
+        String text = null;
         // messages from cells have higher priority than messages from areas.
         if (cell != null) {
-          messages = getMessagesTextFor(cell);
+          text = getMessagesTextFor(cell);
         }
-        if (messages == null) {
-          messages = getBackgroundMessagesText(event);
+        if (text == null) {
+          text = getBackgroundMessagesText(event);
         }
-        rv.set(messages);
+        text = text == null ? text : text.replace("\n", "<br>");
+        rv.set(text);
       }
     });
     return rv.get();
@@ -1013,22 +1014,14 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return messages.stream().map(HighlighterMessage::getReportItem).collect(Collectors.toList());
   }
 
+  @Deprecated
+  @ScheduledForRemoval(inVersion = "2020.1")
   public void showMessageTooltip() {
-    jetbrains.mps.openapi.editor.cells.EditorCell cell = getSelectedCell();
-    if (cell == null) {
-      return;
-    }
-    String text = getMessagesTextFor(cell);
-    Point point = new Point(cell.getX(), cell.getY() + cell.getHeight());
-    if (MPSToolTipManager.getInstance() != null) {
-      MPSToolTipManager.getInstance().showToolTip(text, this, point);
-    }
   }
 
+  @Deprecated
+  @ScheduledForRemoval(inVersion = "2020.1")
   public void hideMessageToolTip() {
-    if (MPSToolTipManager.getInstance() != null) {
-      MPSToolTipManager.getInstance().hideToolTip();
-    }
   }
 
   protected boolean notifiesCreation() {
@@ -1402,9 +1395,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     fireEditorWillBeDisposed();
     myDisposed = true;
     myDisposedTrace = new Throwable("Editor was disposed by: ");
-    if (!RuntimeFlags.isTestMode()) {
-      hideMessageToolTip();
-    }
 
     releaseTypecheckingSession();
 
@@ -3035,8 +3025,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 //      return null;
 //    }
 
-    hideMessageToolTip();
-
     if (myInputMethodRequests == null) {
       myInputMethodRequests = new InputMethodRequestsImpl(this);
     }
@@ -3189,9 +3177,14 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     }
 
     @Override
-    public String getMPSTooltipText(MouseEvent mouseEvent) {
-      if (getUI() instanceof TooltipComponent) {
-        return ((TooltipComponent) getUI()).getMPSTooltipText(mouseEvent);
+    public String getMPSTooltipText(MouseEvent event) {
+      return getToolTipText(event);
+    }
+
+    @Override
+    public String getToolTipText(MouseEvent mouseEvent) {
+      if (getUI() instanceof MessagesGutter) {
+        return ((MessagesGutter) getUI()).getMPSTooltipText(mouseEvent);
       }
       return null;
     }

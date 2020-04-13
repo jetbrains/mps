@@ -700,6 +700,7 @@
   </dependency>
   <dependency className="jetbrains.mps.baseLanguageInternal.editor.InternalAnonymousClass_EditorBuilder_a">
     <classNode dependClassName="java.lang.Iterable" />
+    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.List" />
@@ -807,6 +808,7 @@
   </dependency>
   <dependency className="jetbrains.mps.baseLanguageInternal.editor.InternalClassCreator_EditorBuilder_a">
     <classNode dependClassName="java.lang.Iterable" />
+    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Objects" />
@@ -912,6 +914,7 @@
   </dependency>
   <dependency className="jetbrains.mps.baseLanguageInternal.editor.InternalClassifierType_EditorBuilder_a">
     <classNode dependClassName="java.lang.Iterable" />
+    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.BaseAngleBracketStyleClass" />
@@ -1005,6 +1008,7 @@
   </dependency>
   <dependency className="jetbrains.mps.baseLanguageInternal.editor.InternalNewExpression_EditorBuilder_a">
     <classNode dependClassName="java.lang.Iterable" />
+    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Objects" />
@@ -1132,6 +1136,7 @@
   </dependency>
   <dependency className="jetbrains.mps.baseLanguageInternal.editor.InternalPartialInstanceMethodCall_EditorBuilder_a">
     <classNode dependClassName="java.lang.Iterable" />
+    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Objects" />
@@ -1228,6 +1233,7 @@
   </dependency>
   <dependency className="jetbrains.mps.baseLanguageInternal.editor.InternalStaticMethodCall_EditorBuilder_a">
     <classNode dependClassName="java.lang.Iterable" />
+    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Objects" />
@@ -1286,6 +1292,7 @@
   </dependency>
   <dependency className="jetbrains.mps.baseLanguageInternal.editor.InternalSuperMethodCallOperation_EditorBuilder_a">
     <classNode dependClassName="java.lang.Iterable" />
+    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Objects" />

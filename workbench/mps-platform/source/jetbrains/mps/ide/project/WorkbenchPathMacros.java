@@ -117,10 +117,10 @@ public class WorkbenchPathMacros implements Disposable, PathMacrosProvider {
   private void notifyAboutUndefinedMacros(@NotNull Set<String> macros, @NotNull Project project) {
     final Application application = ApplicationManager.getApplication();
     String content = "<html>MPS may work incorrectly.<br><a href=''>Please define the macro(s) '" + StringUtil.join(macros, ", ") + "'.</a></html>";
-    if (application.isHeadlessEnvironment() || application.isUnitTestMode()) {
-      throw new RuntimeException(content + ": " + StringUtil.join(macros, ", "));
-    }
     String title = "Unknown macro(s) are detected";
+    if (application.isHeadlessEnvironment() || application.isUnitTestMode()) {
+      throw new RuntimeException(title + ": " + StringUtil.join(macros, ", "));
+    }
     new UnknownMacroNotification(SYSTEM_MESSAGES_GROUP_ID, title, content, NotificationType.ERROR,
                                  (notification, event) -> fixMacro(project, notification, event),
                                  macros).notify(project);

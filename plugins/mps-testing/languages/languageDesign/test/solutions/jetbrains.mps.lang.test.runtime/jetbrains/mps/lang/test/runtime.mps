@@ -5718,7 +5718,6 @@
     <property role="TrG5h" value="TransformationTest" />
     <property role="3GE5qa" value="transformation" />
     <node concept="3clFb_" id="e$hNri9cbB" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getProject" />
       <node concept="3Tm1VV" id="e$hNri9cbD" role="1B3o_S" />
       <node concept="3clFbS" id="e$hNri9cbE" role="3clF47" />
@@ -5732,7 +5731,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="e$hNri9ceN" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getModelDescriptor" />
       <node concept="3clFbS" id="e$hNri9ceQ" role="3clF47" />
       <node concept="3Tm1VV" id="e$hNri9ceP" role="1B3o_S" />
@@ -5746,7 +5744,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="e$hNri9cfd" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getTransientModelDescriptor" />
       <node concept="3Tm1VV" id="e$hNri9cfe" role="1B3o_S" />
       <node concept="3clFbS" id="e$hNri9cff" role="3clF47" />
@@ -9957,7 +9954,6 @@
       <property role="2bfB8j" value="true" />
       <property role="TrG5h" value="EditorTestRunnable" />
       <node concept="3clFb_" id="14TMHtHucDr" role="jymVt">
-        <property role="1EzhhJ" value="false" />
         <property role="2aFKle" value="false" />
         <property role="TrG5h" value="run" />
         <node concept="3clFbS" id="14TMHtHucDu" role="3clF47" />

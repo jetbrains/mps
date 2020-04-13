@@ -44,7 +44,9 @@ final class AncestorCache {
     @SuppressWarnings("unchecked") // due to the packaging api vs impl and visibility issues AP
     AncestorResolutionOrder<_SAbstractConcept> mro = (AncestorResolutionOrder<_SAbstractConcept>) behaviorRegistry.getMRO();
     List<_SAbstractConcept> linearization = mro.calcLinearization(_SAbstractConcept.wrap(concept));
-    return linearization.stream().map(_SAbstractConcept::unwrap).collect(Collectors.toList());
+    return linearization.stream()
+                        .map(_SAbstractConcept::unwrap)
+                        .collect(Collectors.toList());
   }
 
   private List<SAbstractConcept> calcConstructorAncestors() {

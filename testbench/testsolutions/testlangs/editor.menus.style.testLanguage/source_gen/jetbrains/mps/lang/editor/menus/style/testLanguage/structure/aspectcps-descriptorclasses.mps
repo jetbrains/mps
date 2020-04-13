@@ -30,9 +30,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -404,7 +401,6 @@
     <node concept="3Tm1VV" id="k" role="1B3o_S" />
     <node concept="2tJIrI" id="l" role="jymVt" />
     <node concept="3clFb_" id="m" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -522,8 +518,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1$" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="f9" resolve="TestCompletionCustomization_ChildInLinkNoPriority" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1f" role="3KbHQx">
@@ -596,8 +592,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="21" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fa" resolve="TestCompletionCustomization_ChildInLinkWithPriority" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1g" role="3KbHQx">
@@ -647,8 +643,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2u" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fb" resolve="TestCompletionCustomization_ChildNoMenu" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1h" role="3KbHQx">
@@ -721,8 +717,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2M" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fc" resolve="TestCompletionCustomization_ChildNoPriority" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1i" role="3KbHQx">
@@ -772,8 +768,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3f" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fd" resolve="TestCompletionCustomization_ChildParameterizedSubstituteMenu" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1j" role="3KbHQx">
@@ -823,8 +819,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3z" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fe" resolve="TestCompletionCustomization_ChildSimpleSubstituteMenu" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1k" role="3KbHQx">
@@ -889,8 +885,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3R" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="ff" resolve="TestCompletionCustomization_ChildToReference" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1l" role="3KbHQx">
@@ -963,8 +959,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4h" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fg" resolve="TestCompletionCustomization_ChildWithPriority" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1m" role="3KbHQx">
@@ -1014,8 +1010,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4I" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fh" resolve="TestCompletionCustomization_ChildWrapSubstituteMenu" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1n" role="3KbHQx">
@@ -1065,8 +1061,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="52" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fi" resolve="TestCompletionCustomization_ConceptToWrap" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1o" role="3KbHQx">
@@ -1139,8 +1135,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5m" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fj" resolve="TestCompletionCustomization_ConceptToWrapNoPriority" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1p" role="3KbHQx">
@@ -1213,8 +1209,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5N" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fk" resolve="TestCompletionCustomization_ConceptToWrapWithPriority" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1q" role="3KbHQx">
@@ -1264,8 +1260,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6g" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fl" resolve="TestCompletionCustomization_ContextMatcherBaseChild" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1r" role="3KbHQx">
@@ -1315,8 +1311,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6$" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fm" resolve="TestCompletionCustomization_ContextMatcherChildInMatchingLink" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1s" role="3KbHQx">
@@ -1381,8 +1377,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6S" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fn" resolve="TestCompletionCustomization_ContextMatcherChildToSubstitute" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1t" role="3KbHQx">
@@ -1455,8 +1451,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7i" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fo" resolve="TestCompletionCustomization_ParentTestContextMatcher" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1u" role="3KbHQx">
@@ -1529,8 +1525,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7J" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fp" resolve="TestCompletionCustomization_ParentTestStyle" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="1v" role="3KbHQx">
@@ -1595,8 +1591,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8c" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fq" resolve="TestCompletionCustomization_RootToReference" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -3668,7 +3664,6 @@
     </node>
     <node concept="2tJIrI" id="j7" role="jymVt" />
     <node concept="3clFb_" id="j8" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -3690,8 +3685,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="lk" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="f9" resolve="TestCompletionCustomization_ChildInLinkNoPriority" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="l0" role="3KbHQx">
@@ -3703,8 +3698,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="lo" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fa" resolve="TestCompletionCustomization_ChildInLinkWithPriority" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="l1" role="3KbHQx">
@@ -3716,8 +3711,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ls" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fb" resolve="TestCompletionCustomization_ChildNoMenu" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="l2" role="3KbHQx">
@@ -3729,8 +3724,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="lw" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fc" resolve="TestCompletionCustomization_ChildNoPriority" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="l3" role="3KbHQx">
@@ -3742,8 +3737,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="l$" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fd" resolve="TestCompletionCustomization_ChildParameterizedSubstituteMenu" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="l4" role="3KbHQx">
@@ -3755,8 +3750,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="lC" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fe" resolve="TestCompletionCustomization_ChildSimpleSubstituteMenu" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="l5" role="3KbHQx">
@@ -3768,8 +3763,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="lG" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="ff" resolve="TestCompletionCustomization_ChildToReference" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="l6" role="3KbHQx">
@@ -3781,8 +3776,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="lK" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fg" resolve="TestCompletionCustomization_ChildWithPriority" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="l7" role="3KbHQx">
@@ -3794,8 +3789,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="lO" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fh" resolve="TestCompletionCustomization_ChildWrapSubstituteMenu" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="l8" role="3KbHQx">
@@ -3807,8 +3802,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="lS" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fi" resolve="TestCompletionCustomization_ConceptToWrap" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="l9" role="3KbHQx">
@@ -3820,8 +3815,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="lW" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fj" resolve="TestCompletionCustomization_ConceptToWrapNoPriority" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="la" role="3KbHQx">
@@ -3833,8 +3828,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="m0" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fk" resolve="TestCompletionCustomization_ConceptToWrapWithPriority" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lb" role="3KbHQx">
@@ -3846,8 +3841,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="m4" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fl" resolve="TestCompletionCustomization_ContextMatcherBaseChild" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lc" role="3KbHQx">
@@ -3859,8 +3854,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="m8" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fm" resolve="TestCompletionCustomization_ContextMatcherChildInMatchingLink" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="ld" role="3KbHQx">
@@ -3872,8 +3867,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="mc" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fn" resolve="TestCompletionCustomization_ContextMatcherChildToSubstitute" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="le" role="3KbHQx">
@@ -3885,8 +3880,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="mg" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fo" resolve="TestCompletionCustomization_ParentTestContextMatcher" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lf" role="3KbHQx">
@@ -3898,8 +3893,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="mk" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fp" resolve="TestCompletionCustomization_ParentTestStyle" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="lg" role="3KbHQx">
@@ -3911,8 +3906,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="mo" role="3Kbmr1">
-              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="fq" resolve="TestCompletionCustomization_RootToReference" />
+              <ref role="1PxDUh" node="f7" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="lh" role="3KbGdf">

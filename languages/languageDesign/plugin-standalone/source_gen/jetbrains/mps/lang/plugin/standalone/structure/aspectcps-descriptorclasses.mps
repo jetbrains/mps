@@ -38,9 +38,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -328,7 +325,6 @@
     <node concept="3Tm1VV" id="e" role="1B3o_S" />
     <node concept="2tJIrI" id="f" role="jymVt" />
     <node concept="3clFb_" id="g" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -458,8 +454,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1c" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7$" resolve="ApplicationPluginDeclaration" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="X" role="3KbHQx">
@@ -532,8 +528,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1I" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7_" resolve="ApplicationPluginDisposeBlock" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="Y" role="3KbHQx">
@@ -606,8 +602,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2b" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7A" resolve="ApplicationPluginInitBlock" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="Z" role="3KbHQx">
@@ -680,8 +676,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2C" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7B" resolve="ApplicationPluginType" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="10" role="3KbHQx">
@@ -802,8 +798,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="35" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7C" resolve="GetPreferencesComponentInProjectOperation" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="11" role="3KbHQx">
@@ -924,8 +920,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3O" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7D" resolve="GetToolInProjectOperation" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="12" role="3KbHQx">
@@ -1011,8 +1007,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4z" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7E" resolve="PlatformAccessExpression" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="13" role="3KbHQx">
@@ -1097,8 +1093,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="55" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7F" resolve="ProjectPluginDeclaration" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="14" role="3KbHQx">
@@ -1171,8 +1167,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5B" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7G" resolve="ProjectPluginDisposeBlock" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="15" role="3KbHQx">
@@ -1245,8 +1241,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="64" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7H" resolve="ProjectPluginInitBlock" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="16" role="3KbHQx">
@@ -1319,8 +1315,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6x" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7I" resolve="ProjectPluginType" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="17" role="3KbHQx">
@@ -1393,8 +1389,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6Y" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7J" resolve="StandalonePluginDescriptor" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -2219,7 +2215,6 @@
     </node>
     <node concept="2tJIrI" id="av" role="jymVt" />
     <node concept="3clFb_" id="aw" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -2241,8 +2236,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cA" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7$" resolve="ApplicationPluginDeclaration" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="co" role="3KbHQx">
@@ -2254,8 +2249,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cE" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7_" resolve="ApplicationPluginDisposeBlock" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cp" role="3KbHQx">
@@ -2267,8 +2262,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cI" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7A" resolve="ApplicationPluginInitBlock" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cq" role="3KbHQx">
@@ -2280,8 +2275,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cM" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7B" resolve="ApplicationPluginType" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cr" role="3KbHQx">
@@ -2293,8 +2288,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cQ" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7C" resolve="GetPreferencesComponentInProjectOperation" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cs" role="3KbHQx">
@@ -2306,8 +2301,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cU" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7D" resolve="GetToolInProjectOperation" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="ct" role="3KbHQx">
@@ -2319,8 +2314,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cY" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7E" resolve="PlatformAccessExpression" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cu" role="3KbHQx">
@@ -2332,8 +2327,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="d2" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7F" resolve="ProjectPluginDeclaration" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cv" role="3KbHQx">
@@ -2345,8 +2340,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="d6" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7G" resolve="ProjectPluginDisposeBlock" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cw" role="3KbHQx">
@@ -2358,8 +2353,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="da" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7H" resolve="ProjectPluginInitBlock" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cx" role="3KbHQx">
@@ -2371,8 +2366,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="de" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7I" resolve="ProjectPluginType" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="cy" role="3KbHQx">
@@ -2384,8 +2379,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="di" role="3Kbmr1">
-              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="7J" resolve="StandalonePluginDescriptor" />
+              <ref role="1PxDUh" node="7y" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="cz" role="3KbGdf">

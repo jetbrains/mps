@@ -8314,7 +8314,6 @@
   <node concept="3HP615" id="1o1N$5kfrU_">
     <property role="TrG5h" value="DragHandler" />
     <node concept="3clFb_" id="1o1N$5kfsCE" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="dragStarted" />
       <node concept="3cqZAl" id="1o1N$5kfsCG" role="3clF45" />
       <node concept="3Tm1VV" id="1o1N$5kfsCH" role="1B3o_S" />
@@ -8327,7 +8326,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="1o1N$5kfviu" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="updatePosition" />
       <node concept="3cqZAl" id="1o1N$5kfviv" role="3clF45" />
       <node concept="3Tm1VV" id="1o1N$5kfviw" role="1B3o_S" />
@@ -8340,7 +8338,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="1o1N$5kfvjW" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="dragStopped" />
       <node concept="3cqZAl" id="1o1N$5kfvjX" role="3clF45" />
       <node concept="3Tm1VV" id="1o1N$5kfvjY" role="1B3o_S" />

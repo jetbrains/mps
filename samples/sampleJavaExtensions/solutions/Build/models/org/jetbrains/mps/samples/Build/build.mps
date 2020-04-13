@@ -498,7 +498,7 @@
     <node concept="1l3spV" id="o8lhP6Nts" role="1l3spN">
       <node concept="m$_wl" id="7BdheMmR0l0" role="39821P">
         <ref role="m_rDy" node="7BdheMmR0kP" resolve="org.jetbrains.mps.samples.sampleJavaExtensions" />
-        <node concept="pUk6x" id="5peYeZGo92B" role="pUk7w" />
+        <node concept="pUk6x" id="6UtCO5dIB1u" role="pUk7w" />
       </node>
     </node>
     <node concept="10PD9b" id="o8lhP6Ntt" role="10PD9s" />

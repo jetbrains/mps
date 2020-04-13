@@ -34,9 +34,7 @@
         <child id="1068580123134" name="parameter" index="3clF46" />
         <child id="1068580123135" name="body" index="3clF47" />
       </concept>
-      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_">
-        <property id="1178608670077" name="isAbstract" index="1EzhhJ" />
-      </concept>
+      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_" />
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
@@ -62,7 +60,6 @@
     <property role="TrG5h" value="IEvaluationProvider" />
     <node concept="3Tm1VV" id="3SnNvqCaJu2" role="1B3o_S" />
     <node concept="3clFb_" id="3SnNvqCaJu3" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="showEvaluationDialog" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="3SnNvqCaJu4" role="1B3o_S" />
@@ -77,7 +74,6 @@
       <node concept="3clFbS" id="3SnNvqCaJu8" role="3clF47" />
     </node>
     <node concept="3clFb_" id="3SnNvqCaJu9" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="showEvaluationDialog" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="3SnNvqCaJua" role="1B3o_S" />
@@ -102,7 +98,6 @@
       <node concept="3clFbS" id="3SnNvqCaJuh" role="3clF47" />
     </node>
     <node concept="3clFb_" id="3SnNvqCaJui" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="createWatchesPanel" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="3SnNvqCaJuj" role="1B3o_S" />
@@ -115,7 +110,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="3SnNvqCaJun" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="canEvaluate" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="3SnNvqCaJuo" role="1B3o_S" />

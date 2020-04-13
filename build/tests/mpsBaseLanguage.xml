@@ -510,6 +510,7 @@
     </echoxml>
     <jar destfile="${build.layout}/jetbrains.mps.baseLanguage.tuples.test.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.tuples.test" />
+      <fileset dir="${basedir}/testbench/testsolutions/bl.tuples.test" includes="icons/**, resources/**" />
       <fileset dir="${basedir}/testbench/testsolutions/bl.tuples.test/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage.tuples.test.jar" />
     </jar>
@@ -1659,6 +1660,7 @@
       </classpath>
       
       <env key="NO_FS_ROOTS_ACCESS_CHECK" value="true" />
+      
       <sysproperty key="plugin.path" value="${mps.plugins.path.string}" />
       <sysproperty key="mps.libraries" value="${mps.libraries.path.string}" />
       <sysproperty key="mps.test.modules" value="${mps.tests.path.string}" />

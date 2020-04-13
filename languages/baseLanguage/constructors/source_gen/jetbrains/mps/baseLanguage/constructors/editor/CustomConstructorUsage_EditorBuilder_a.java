@@ -25,9 +25,9 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
-import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandlerElementKeyMap;
+import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
@@ -99,14 +99,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
               public SNode getNode() {
                 return myNode;
               }
+
               @Override
               public SAbstractConcept getChildSConcept() {
                 return CONCEPTS.Expression$TP;
               }
+
               @Override
               public SContainmentLink getSLink() {
                 return LINKS.element$3UjZ;
               }
+
               @Override
               public SNode createNodeToInsert(EditorContext p0) {
                 return SNodeFactoryOperations.createNewNode(CONCEPTS.Expression$TP, null);
@@ -124,6 +127,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
                   getCellFactory().popCellContext();
                 }
               }
+
               @Override
               public EditorCell createEmptyCell() {
                 getCellFactory().pushCellContext();
@@ -136,19 +140,32 @@ import org.jetbrains.mps.openapi.language.SConcept;
                   getCellFactory().popCellContext();
                 }
               }
+
+              private final Object OBJ = new Object();
+
               public void installElementCellActions(SNode listOwner, SNode elementNode, EditorCell elementCell) {
-                if (elementCell.getUserObject(AbstractCellListHandler.ELEMENT_CELL_ACTIONS_SET) == null) {
-                  elementCell.putUserObject(AbstractCellListHandler.ELEMENT_CELL_ACTIONS_SET, AbstractCellListHandler.ELEMENT_CELL_ACTIONS_SET);
-                  if (elementNode != null) {
-                    elementCell.setAction(CellActionType.DELETE, new CellAction_DeleteNode(elementNode, CellAction_DeleteNode.DeleteDirection.FORWARD));
+                if (elementNode != null) {
+                  if (elementCell.getUserObject(ELEMENT_CELL_BACKSPACE_SET) == null) {
+                    elementCell.putUserObject(ELEMENT_CELL_BACKSPACE_SET, OBJ);
                     elementCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteNode(elementNode, CellAction_DeleteNode.DeleteDirection.BACKWARD));
+                  }
+                  if (elementCell.getUserObject(ELEMENT_CELL_DELETE_SET) == null) {
+                    elementCell.putUserObject(ELEMENT_CELL_DELETE_SET, OBJ);
+                    elementCell.setAction(CellActionType.DELETE, new CellAction_DeleteNode(elementNode, CellAction_DeleteNode.DeleteDirection.FORWARD));
+                  }
+                  if (elementCell.getUserObject(ELEMENT_CELL_ACTIONS_SET) == null) {
+                    elementCell.putUserObject(ELEMENT_CELL_ACTIONS_SET, OBJ);
                     elementCell.addKeyMap(new RefNodeListHandlerElementKeyMap(this, SPropertyOperations.getString(SLinkOperations.getTarget(myNode, LINKS.customConstructor$3U3x), PROPS.separator$gTq9)));
                   }
+                }
+                if (elementCell.getUserObject(AbstractCellListHandler.ELEMENT_CELL_COMPLETE_SET) == null) {
                   if (elementCell.getSubstituteInfo() == null || elementCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
+                    elementCell.putUserObject(AbstractCellListHandler.ELEMENT_CELL_COMPLETE_SET, OBJ);
                     elementCell.setSubstituteInfo(new SChildSubstituteInfo(elementCell));
                   }
                 }
               }
+
               public EditorCell createSeparatorCell() {
                 EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), getNode(), SPropertyOperations.getString(SLinkOperations.getTarget(myNode, LINKS.customConstructor$3U3x), PROPS.separator$gTq9));
                 editorCell.setSelectable(false);
@@ -160,6 +177,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
             return handler.createCells(new CellLayout_Indent());
           }
+
         };
       }
     }.invoke();

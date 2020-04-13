@@ -226,7 +226,7 @@
     </language>
   </registry>
   <node concept="18kY7G" id="5I1s5NvHqoQ">
-    <property role="TrG5h" value="check_BuildMpsLayout_TestModules_Options" />
+    <property role="TrG5h" value="check_BuildMpsLayout_TestModules_haltonfailure_option" />
     <property role="3GE5qa" value="Project.Testing" />
     <node concept="3clFbS" id="5I1s5NvHqoR" role="18ibNy">
       <node concept="3clFbJ" id="5I1s5NvHqq5" role="3cqZAp">
@@ -304,8 +304,13 @@
                   <node concept="Xl_RD" id="5I1s5NvHqqC" role="2MkJ7o">
                     <property role="Xl_RC" value="Inappropriate value for 'haltonfailure' property" />
                   </node>
-                  <node concept="1YBJjd" id="5I1s5NvHr3V" role="1urrMF">
-                    <ref role="1YBMHb" node="5I1s5NvHqoT" resolve="options" />
+                  <node concept="2OqwBi" id="1tJmw8EAYod" role="1urrMF">
+                    <node concept="1YBJjd" id="5I1s5NvHr3V" role="2Oq$k0">
+                      <ref role="1YBMHb" node="5I1s5NvHqoT" resolve="options" />
+                    </node>
+                    <node concept="3TrEf2" id="1tJmw8EAYFR" role="2OqNvi">
+                      <ref role="3Tt5mk" to="5tjl:5I1s5NvGMfd" resolve="haltonfailure" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -753,6 +758,116 @@
     <node concept="1YaCAy" id="7BTZ519LZAF" role="1YuTPh">
       <property role="TrG5h" value="testGroup" />
       <ref role="1YaFvo" to="5tjl:3X9rC2XzJdF" resolve="BuildMpsLayout_TestModuleGroup" />
+    </node>
+  </node>
+  <node concept="18kY7G" id="1tJmw8EAYG7">
+    <property role="TrG5h" value="check_BuildMpsLayout_TestModules_compressargs_option" />
+    <property role="3GE5qa" value="Project.Testing" />
+    <node concept="3clFbS" id="1tJmw8EAYG8" role="18ibNy">
+      <node concept="3clFbJ" id="1tJmw8EAYG9" role="3cqZAp">
+        <node concept="3clFbS" id="1tJmw8EAYGa" role="3clFbx">
+          <node concept="3cpWs8" id="1tJmw8EAYGb" role="3cqZAp">
+            <node concept="3cpWsn" id="1tJmw8EAYGc" role="3cpWs9">
+              <property role="TrG5h" value="approxPresentation" />
+              <node concept="17QB3L" id="1tJmw8EAYGd" role="1tU5fm" />
+              <node concept="2OqwBi" id="1tJmw8EAYGe" role="33vP2m">
+                <node concept="2OqwBi" id="1tJmw8EAYGf" role="2Oq$k0">
+                  <node concept="1YBJjd" id="1tJmw8EAYGg" role="2Oq$k0">
+                    <ref role="1YBMHb" node="1tJmw8EAYGP" resolve="options" />
+                  </node>
+                  <node concept="3TrEf2" id="1tJmw8EAZ$P" role="2OqNvi">
+                    <ref role="3Tt5mk" to="5tjl:1tJmw8EAXGe" resolve="compressArgs" />
+                  </node>
+                </node>
+                <node concept="2qgKlT" id="1tJmw8EAYGi" role="2OqNvi">
+                  <ref role="37wK5l" to="vbkb:3NagsOfTioI" resolve="getText" />
+                  <node concept="10Nm6u" id="1tJmw8EAYGj" role="37wK5m" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbJ" id="1tJmw8EAYGk" role="3cqZAp">
+            <node concept="3clFbS" id="1tJmw8EAYGl" role="3clFbx">
+              <node concept="3cpWs6" id="1tJmw8EAYGm" role="3cqZAp" />
+            </node>
+            <node concept="2OqwBi" id="1tJmw8EAYGn" role="3clFbw">
+              <node concept="37vLTw" id="1tJmw8EAYGo" role="2Oq$k0">
+                <ref role="3cqZAo" node="1tJmw8EAYGc" resolve="approxPresentation" />
+              </node>
+              <node concept="liA8E" id="1tJmw8EAYGp" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence)" resolve="contains" />
+                <node concept="Xl_RD" id="1tJmw8EAYGq" role="37wK5m">
+                  <property role="Xl_RC" value="${" />
+                </node>
+              </node>
+            </node>
+            <node concept="3eNFk2" id="1tJmw8EAYGr" role="3eNLev">
+              <node concept="2OqwBi" id="1tJmw8EAYGs" role="3eO9$A">
+                <node concept="37vLTw" id="1tJmw8EAYGt" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1tJmw8EAYGc" resolve="approxPresentation" />
+                </node>
+                <node concept="liA8E" id="1tJmw8EAYGu" role="2OqNvi">
+                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
+                  <node concept="Xl_RD" id="1tJmw8EAYGv" role="37wK5m">
+                    <property role="Xl_RC" value="true" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="1tJmw8EAYGw" role="3eOfB_">
+                <node concept="3cpWs6" id="1tJmw8EAYGx" role="3cqZAp" />
+              </node>
+            </node>
+            <node concept="3eNFk2" id="1tJmw8EAYGy" role="3eNLev">
+              <node concept="2OqwBi" id="1tJmw8EAYGz" role="3eO9$A">
+                <node concept="37vLTw" id="1tJmw8EAYG$" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1tJmw8EAYGc" resolve="approxPresentation" />
+                </node>
+                <node concept="liA8E" id="1tJmw8EAYG_" role="2OqNvi">
+                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
+                  <node concept="Xl_RD" id="1tJmw8EAYGA" role="37wK5m">
+                    <property role="Xl_RC" value="false" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="1tJmw8EAYGB" role="3eOfB_">
+                <node concept="3cpWs6" id="1tJmw8EAYGC" role="3cqZAp" />
+              </node>
+            </node>
+            <node concept="9aQIb" id="1tJmw8EAYGD" role="9aQIa">
+              <node concept="3clFbS" id="1tJmw8EAYGE" role="9aQI4">
+                <node concept="2MkqsV" id="1tJmw8EAYGF" role="3cqZAp">
+                  <node concept="Xl_RD" id="1tJmw8EAYGG" role="2MkJ7o">
+                    <property role="Xl_RC" value="Inappropriate value for 'compressargs' property" />
+                  </node>
+                  <node concept="2OqwBi" id="1tJmw8EAYGH" role="1urrMF">
+                    <node concept="1YBJjd" id="1tJmw8EAYGI" role="2Oq$k0">
+                      <ref role="1YBMHb" node="1tJmw8EAYGP" resolve="options" />
+                    </node>
+                    <node concept="3TrEf2" id="1tJmw8EAZFE" role="2OqNvi">
+                      <ref role="3Tt5mk" to="5tjl:1tJmw8EAXGe" resolve="compressArgs" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2OqwBi" id="1tJmw8EAYGK" role="3clFbw">
+          <node concept="2OqwBi" id="1tJmw8EAYGL" role="2Oq$k0">
+            <node concept="1YBJjd" id="1tJmw8EAYGM" role="2Oq$k0">
+              <ref role="1YBMHb" node="1tJmw8EAYGP" resolve="options" />
+            </node>
+            <node concept="3TrEf2" id="1tJmw8EAZD4" role="2OqNvi">
+              <ref role="3Tt5mk" to="5tjl:1tJmw8EAXGe" resolve="compressArgs" />
+            </node>
+          </node>
+          <node concept="3x8VRR" id="1tJmw8EAYGO" role="2OqNvi" />
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="1tJmw8EAYGP" role="1YuTPh">
+      <property role="TrG5h" value="options" />
+      <ref role="1YaFvo" to="5tjl:5I1s5NvGLjw" resolve="BuildMpsLayout_TestModules_Options" />
     </node>
   </node>
 </model>

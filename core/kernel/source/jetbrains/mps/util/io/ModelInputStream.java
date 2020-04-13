@@ -23,6 +23,7 @@ import jetbrains.mps.smodel.adapter.ids.SContainmentLinkId;
 import jetbrains.mps.smodel.adapter.ids.SPropertyId;
 import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -184,7 +185,8 @@ public class ModelInputStream extends DataInputStream {
     } else if (c == MODELID_FOREIGN) {
       return jetbrains.mps.smodel.SModelId.foreign(readString());
     } else if (c == MODELID_STRING) {
-      return PersistenceFacade.getInstance().createModelId(readString());
+      @NotNull PersistenceFacade instance = PersistenceFacade.getInstance();
+      return instance.createModelId(readString());
     } else if (c == MODELID_INTEGER) {
       return new IntegerSModelId(readInt());
     } else {

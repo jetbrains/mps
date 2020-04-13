@@ -18,7 +18,6 @@
       </concept>
       <concept id="1225194413805" name="jetbrains.mps.lang.behavior.structure.ConceptConstructorDeclaration" flags="in" index="13hLZK" />
       <concept id="1225194472830" name="jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration" flags="ng" index="13i0hz">
-        <property id="1225194472833" name="isPrivate" index="13i0is" />
         <reference id="1225194472831" name="overriddenMethod" index="13i0hy" />
       </concept>
     </language>
@@ -58,7 +57,6 @@
     </node>
     <node concept="13i0hz" id="7ied1lkoU2j" role="13h7CS">
       <property role="TrG5h" value="isLValue" />
-      <property role="13i0is" value="false" />
       <ref role="13i0hy" to="tpek:hEwJgmE" resolve="isLValue" />
       <node concept="3Tm1VV" id="7ied1lkoU2s" role="1B3o_S" />
       <node concept="3clFbS" id="7ied1lkoU2t" role="3clF47">

@@ -3700,7 +3700,6 @@
     <property role="TrG5h" value="ModelElementTargetChooser" />
     <node concept="3Tm1VV" id="52KjdOfMzLJ" role="1B3o_S" />
     <node concept="3clFb_" id="52KjdOfM$Zf" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getComponent" />
       <node concept="3uibUv" id="52KjdOfM$Zj" role="3clF45">
         <ref role="3uigEE" to="dxuu:~JComponent" resolve="JComponent" />
@@ -3709,7 +3708,6 @@
       <node concept="3clFbS" id="52KjdOfM$Zi" role="3clF47" />
     </node>
     <node concept="3clFb_" id="3EDrOip5qMn" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getPreferredFocusedComponent" />
       <node concept="3uibUv" id="3EDrOip5qMo" role="3clF45">
         <ref role="3uigEE" to="dxuu:~JComponent" resolve="JComponent" />
@@ -3718,7 +3716,6 @@
       <node concept="3clFbS" id="3EDrOip5qMq" role="3clF47" />
     </node>
     <node concept="3clFb_" id="52KjdOfM$Zm" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getSelectedObject" />
       <node concept="3uibUv" id="1F5g4zQv2B5" role="3clF45">
         <ref role="3uigEE" node="1F5g4zQtlkd" resolve="NodeLocation" />
@@ -5249,7 +5246,6 @@
     <property role="TrG5h" value="RefactoringViewAction" />
     <node concept="3Tm1VV" id="3g3N8kb3Dey" role="1B3o_S" />
     <node concept="3clFb_" id="29N7xYwTFE3" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="performAction" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="29N7xYwTFE4" role="1B3o_S" />
@@ -5268,7 +5264,6 @@
     <property role="TrG5h" value="RefactoringViewItem" />
     <node concept="3Tm1VV" id="3g3N8kb3DkW" role="1B3o_S" />
     <node concept="3clFb_" id="3g3N8kb3DkX" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="close" />
       <node concept="3cqZAl" id="3g3N8kb3DkY" role="3clF45" />
       <node concept="3Tm1VV" id="3g3N8kb3DkZ" role="1B3o_S" />
@@ -5278,7 +5273,6 @@
       <property role="2bfB8j" value="true" />
       <property role="TrG5h" value="RefactoringViewItemEx" />
       <node concept="3clFb_" id="6gEjUfBDWfV" role="jymVt">
-        <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="getIncludedResultNodes" />
         <node concept="3uibUv" id="7TfAUXYnxhV" role="3clF45">
           <ref role="3uigEE" to="33ny:~List" resolve="List" />
@@ -5299,7 +5293,6 @@
     <property role="2bfB8j" value="false" />
     <property role="TrG5h" value="NodeLocation" />
     <node concept="3clFb_" id="1F5g4zQtm7Z" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="canInsert" />
       <node concept="37vLTG" id="1F5g4zQtw_I" role="3clF46">
         <property role="TrG5h" value="repository" />
@@ -5317,7 +5310,6 @@
     </node>
     <node concept="3clFb_" id="1F5g4zQw_bc" role="jymVt">
       <property role="TrG5h" value="insertNode" />
-      <property role="1EzhhJ" value="false" />
       <node concept="37vLTG" id="FLkVtywDEy" role="3clF46">
         <property role="TrG5h" value="repository" />
         <node concept="3uibUv" id="FLkVtywDEz" role="1tU5fm">

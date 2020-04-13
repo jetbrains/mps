@@ -21,6 +21,7 @@ import jetbrains.mps.util.Reference;
 import java.util.HashSet;
 import java.util.Collections;
 import com.intellij.openapi.util.Key;
+import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.execution.process.ProcessOutputTypes;
 import java.util.regex.Matcher;
 
@@ -122,25 +123,48 @@ public class ProcessRunnerForConfigurationTests {
     public ProcessEvent getFailedEvent() {
       return myFailedEvent.get();
     }
+    private final StringBuilder myCurText = new StringBuilder();
+    private ProcessEvent myLastEvent = null;
+    private Key myLastKey;
 
     @Override
-    public void onTextAvailable(ProcessEvent event, Key key) {
+    public synchronized void onTextAvailable(ProcessEvent event, Key key) {
       // assuming everything comes in lines 
       String text = event.getText();
-      List<Pattern> patternsWeEncountered = getPatternsForWhichMsgExpected(text);
-      myPrintedExpectedPatterns.addAll(patternsWeEncountered);
-
-      if (ProcessOutputTypes.STDERR.equals(key)) {
-        if (!(isErrMsgAllowed(text))) {
-          myFailedEvent.set(event);
-        }
-        System.err.print("TEST ERR OUTPUT::: " + text);
-      } else {
-        System.out.print("TEST OUTPUT::: " + text);
+      if ((text == null || text.length() == 0)) {
+        return;
       }
+      myLastKey = key;
+      myLastEvent = event;
+      myCurText.append(text);
+      if (text.contains("\n")) {
+        flush();
+      }
+    }
 
-      if (needToExit(text)) {
-        event.getProcessHandler().detachProcess();
+    private void flush() {
+      String text = myCurText.toString();
+      int lastIndexOfBr = text.lastIndexOf("\n");
+      assert lastIndexOfBr >= 0;
+      text = text.substring(0, lastIndexOfBr + 1);
+      myCurText.delete(0, text.length());
+      String[] splitByLines = StringUtil.splitByLinesKeepSeparators(text);
+      for (String line : splitByLines) {
+        List<Pattern> patternsWeEncountered = getPatternsForWhichMsgExpected(line);
+        myPrintedExpectedPatterns.addAll(patternsWeEncountered);
+
+        if (ProcessOutputTypes.STDERR.equals(myLastKey)) {
+          if (!(isErrMsgAllowed(line))) {
+            myFailedEvent.set(myLastEvent);
+          }
+          System.err.print("TEST ERR OUTPUT::: " + line);
+        } else {
+          System.out.print("TEST OUTPUT::: " + line);
+        }
+
+        if (needToExit(line)) {
+          myLastEvent.getProcessHandler().detachProcess();
+        }
       }
     }
 
@@ -159,6 +183,7 @@ public class ProcessRunnerForConfigurationTests {
         Matcher matcher = allowedPattern.matcher(text);
         if (matcher.matches()) {
           allowed = true;
+          break;
         }
       }
       return allowed;

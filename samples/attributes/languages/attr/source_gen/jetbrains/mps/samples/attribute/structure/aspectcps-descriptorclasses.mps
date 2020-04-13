@@ -31,9 +31,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
-        <property id="1224848525476" name="isDeprecated" index="IEkAT" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -273,7 +270,6 @@
     <node concept="3Tm1VV" id="8" role="1B3o_S" />
     <node concept="2tJIrI" id="9" role="jymVt" />
     <node concept="3clFb_" id="a" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -414,8 +410,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="O" role="3Kbmr1">
-              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3F" resolve="CommentAttribute" />
+              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="F" role="3KbHQx">
@@ -495,8 +491,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1q" role="3Kbmr1">
-              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3G" resolve="CommentAttribute2" />
+              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="G" role="3KbHQx">
@@ -561,8 +557,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1U" role="3Kbmr1">
-              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3H" resolve="HandlerAsChild" />
+              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="H" role="3KbHQx">
@@ -627,8 +623,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2k" role="3Kbmr1">
-              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3I" resolve="HandlerAsRoot" />
+              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="I" role="3KbHQx">
@@ -693,8 +689,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2I" role="3Kbmr1">
-              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3J" resolve="SubConceptToTransform" />
+              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="J" role="3KbHQx">
@@ -759,8 +755,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="38" role="3Kbmr1">
-              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3K" resolve="SubConceptToTransformNested" />
+              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
             </node>
           </node>
         </node>
@@ -1276,7 +1272,6 @@
     </node>
     <node concept="2tJIrI" id="5$" role="jymVt" />
     <node concept="3clFb_" id="5_" role="jymVt">
-      <property role="IEkAT" value="false" />
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
@@ -1298,8 +1293,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6S" role="3Kbmr1">
-              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3F" resolve="CommentAttribute" />
+              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="6K" role="3KbHQx">
@@ -1311,8 +1306,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6W" role="3Kbmr1">
-              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3G" resolve="CommentAttribute2" />
+              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="6L" role="3KbHQx">
@@ -1324,8 +1319,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="70" role="3Kbmr1">
-              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3H" resolve="HandlerAsChild" />
+              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="6M" role="3KbHQx">
@@ -1337,8 +1332,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="74" role="3Kbmr1">
-              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3I" resolve="HandlerAsRoot" />
+              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="6N" role="3KbHQx">
@@ -1350,8 +1345,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="78" role="3Kbmr1">
-              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3J" resolve="SubConceptToTransform" />
+              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="3KbdKl" id="6O" role="3KbHQx">
@@ -1363,8 +1358,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7c" role="3Kbmr1">
-              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="3K" resolve="SubConceptToTransformNested" />
+              <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
             </node>
           </node>
           <node concept="2OqwBi" id="6P" role="3KbGdf">

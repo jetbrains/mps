@@ -371,9 +371,6 @@
         <child id="1226511765987" name="elementType" index="2hN53Y" />
       </concept>
       <concept id="1226516258405" name="jetbrains.mps.baseLanguage.collections.structure.HashSetCreator" flags="nn" index="2i4dXS" />
-      <concept id="1226566855640" name="jetbrains.mps.baseLanguage.collections.structure.AddSetElementOperation" flags="nn" index="2l5eF5">
-        <child id="1226567214363" name="argument" index="2l6Ag6" />
-      </concept>
       <concept id="1151688443754" name="jetbrains.mps.baseLanguage.collections.structure.ListType" flags="in" index="_YKpA">
         <child id="1151688676805" name="elementType" index="_ZDj9" />
       </concept>
@@ -393,6 +390,7 @@
         <child id="1237721435807" name="elementType" index="HW$YZ" />
       </concept>
       <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
+      <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
       <concept id="1162935959151" name="jetbrains.mps.baseLanguage.collections.structure.GetSizeOperation" flags="nn" index="34oBXx" />
       <concept id="1202120902084" name="jetbrains.mps.baseLanguage.collections.structure.WhereOperation" flags="nn" index="3zZkjj" />
       <concept id="1172254888721" name="jetbrains.mps.baseLanguage.collections.structure.ContainsOperation" flags="nn" index="3JPx81" />
@@ -4958,8 +4956,8 @@
               </node>
               <node concept="3clFbF" id="2xUsQ1Xav$O" role="3cqZAp">
                 <node concept="2OqwBi" id="2xUsQ1XavWC" role="3clFbG">
-                  <node concept="2l5eF5" id="59e5wazGD6v" role="2OqNvi">
-                    <node concept="37vLTw" id="59e5wazGDdA" role="2l6Ag6">
+                  <node concept="TSZUe" id="6UtCO5dIBNz" role="2OqNvi">
+                    <node concept="37vLTw" id="6UtCO5dIBNy" role="25WWJ7">
                       <ref role="3cqZAo" node="2xUsQ1XaqTs" resolve="t" />
                     </node>
                   </node>

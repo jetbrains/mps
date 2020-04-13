@@ -133,9 +133,7 @@
         <child id="1068580123134" name="parameter" index="3clF46" />
         <child id="1068580123135" name="body" index="3clF47" />
       </concept>
-      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_">
-        <property id="1178608670077" name="isAbstract" index="1EzhhJ" />
-      </concept>
+      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_" />
       <concept id="1068580123152" name="jetbrains.mps.baseLanguage.structure.EqualsExpression" flags="nn" index="3clFbC" />
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
@@ -5051,7 +5049,6 @@
     <property role="TrG5h" value="ISample" />
     <node concept="3Tm1VV" id="5GhXmmtIMNA" role="1B3o_S" />
     <node concept="3clFb_" id="5GhXmmtIMNB" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getSample" />
       <node concept="17QB3L" id="5GhXmmtIMP1" role="3clF45" />
       <node concept="3Tm1VV" id="5GhXmmtIMND" role="1B3o_S" />

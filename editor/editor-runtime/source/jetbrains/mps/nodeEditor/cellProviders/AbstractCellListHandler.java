@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_InsertIntoCollection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
-import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -35,6 +34,11 @@ import java.util.Iterator;
 import java.util.List;
 
 public abstract class AbstractCellListHandler extends AbstractEditorBuilder implements EditorBuilderEnvironment {
+  public static final String ELEMENT_CELL_COMPLETE_SET = "element-cell-complete-set";
+  public static final String ELEMENT_CELL_BACKSPACE_SET = "element-cell-backspace-set";
+  public static final String ELEMENT_CELL_DELETE_SET = "element-cell-delete-set";
+
+  // other actions
   public static final String ELEMENT_CELL_ACTIONS_SET = "element-cell-actions-set";
 
   protected EditorCell_Collection myListEditorCell_Collection;

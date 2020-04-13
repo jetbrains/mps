@@ -6,6 +6,7 @@ import jetbrains.mps.core.aspects.behaviour.C3StarAncestorResolutionOrder;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
+import java.util.Set;
 import java.util.Collections;
 import java.util.ArrayList;
 
@@ -14,11 +15,11 @@ public final class ConceptMRO extends C3StarAncestorResolutionOrder<AbstractConc
 
   @NotNull
   @Override
-  protected List<AbstractConceptWrap> calcLinearization0(@NotNull AbstractConceptWrap concept) {
+  protected List<AbstractConceptWrap> calcLinearizationImpl(@NotNull AbstractConceptWrap concept, @NotNull Set<AbstractConceptWrap> visited) {
     if (concept.equals(BASECONCEPT_WRAP)) {
       return Collections.<AbstractConceptWrap>singletonList(BASECONCEPT_WRAP);
     }
-    List<AbstractConceptWrap> result = new ArrayList<AbstractConceptWrap>(super.calcLinearization0(concept));
+    List<AbstractConceptWrap> result = new ArrayList<AbstractConceptWrap>(super.calcLinearizationImpl(concept, visited));
     assert result.size() > 0;
     if (result.get(result.size() - 1).equals(BASECONCEPT_WRAP)) {
       return result;

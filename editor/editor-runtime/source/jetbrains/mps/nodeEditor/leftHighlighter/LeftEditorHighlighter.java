@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,6 @@ import gnu.trove.THashMap;
 import jetbrains.mps.ide.actions.MPSActions;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import jetbrains.mps.ide.tooltips.MPSToolTipManager;
 import jetbrains.mps.ide.tooltips.TooltipComponent;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorComponent.BackgroundColoredRange;
@@ -151,9 +150,6 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
         }
       }
     });
-    if (MPSToolTipManager.getInstance() != null) {
-      MPSToolTipManager.getInstance().registerComponent(this);
-    }
     editorComponent.getUpdater().addListener(new UpdaterListenerAdapter() {
       @Override
       public void editorUpdated(jetbrains.mps.openapi.editor.EditorComponent editorComponent) {
@@ -216,9 +212,6 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
     }
     for (AbstractLeftColumn column : myLeftColumns) {
       column.dispose();
-    }
-    if (MPSToolTipManager.getInstance() != null) {
-      MPSToolTipManager.getInstance().unregisterComponent(this);
     }
   }
 
@@ -557,7 +550,12 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
   }
 
   @Override
-  public String getMPSTooltipText(MouseEvent e) {
+  public String getMPSTooltipText(MouseEvent event) {
+    return getToolTipText(event);
+  }
+
+  @Override
+  public String getToolTipText(MouseEvent e) {
     if (isInFoldingArea(e)) {
       for (AbstractFoldingAreaPainter painter : myFoldingAreaPainters) {
         if (painter.getToolTipText() != null) {

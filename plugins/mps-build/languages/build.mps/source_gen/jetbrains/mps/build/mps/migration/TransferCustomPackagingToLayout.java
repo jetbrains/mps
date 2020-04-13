@@ -42,7 +42,7 @@ public class TransferCustomPackagingToLayout extends MigrationScriptBase {
   }
   @Override
   public boolean isRerunnable() {
-    return true;
+    return false;
   }
   public SNode execute(final SModule m) {
     doExecute(m);

@@ -2438,7 +2438,6 @@
       <property role="2bfB8j" value="true" />
       <node concept="3Tm1VV" id="6FFoA$ya05n" role="1B3o_S" />
       <node concept="3clFb_" id="6FFoA$ya05o" role="jymVt">
-        <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="getModel" />
         <node concept="3uibUv" id="IYmOvnFBy3" role="3clF45">
           <ref role="3uigEE" to="i1lu:IYmOvnu1Zm" resolve="IEvaluationContainer" />
@@ -4411,7 +4410,6 @@
       <property role="2bfB8j" value="true" />
       <node concept="3Tm1VV" id="6ra8WUbIhvX" role="1B3o_S" />
       <node concept="3clFb_" id="6ra8WUbIhvR" role="jymVt">
-        <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="updateErrorText" />
         <node concept="3cqZAl" id="6ra8WUbIhvS" role="3clF45" />
         <node concept="3Tm1VV" id="6ra8WUbIhvT" role="1B3o_S" />

@@ -72,9 +72,9 @@
     <import index="xo69" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.diff.util(MPS.IDEA/)" />
     <import index="xygl" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.progress(MPS.IDEA/)" />
     <import index="24bc" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.vfs.tracking(MPS.Platform/)" />
+    <import index="lsse" ref="r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)" />
     <import index="xlkh" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.diff.tools.util.side(MPS.IDEA/)" />
     <import index="ksd0" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.diff.tools.util(MPS.IDEA/)" />
-    <import index="lsse" ref="r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)" />
     <import index="mnlj" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.beans(JDK/)" />
   </imports>
   <registry>
@@ -13230,7 +13230,6 @@
   <node concept="3HP615" id="2F73y9NWLe9">
     <property role="TrG5h" value="IHighlighter" />
     <node concept="3clFb_" id="2F73y9NWMIJ" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="rehighlight" />
       <node concept="3clFbS" id="2F73y9NWMIM" role="3clF47" />
@@ -13463,6 +13462,9 @@
               </node>
             </node>
           </node>
+          <node concept="1rXfSq" id="2YaKrzovTYH" role="3clFbw">
+            <ref role="37wK5l" to="hdhb:42hl10VH9Kp" resolve="isHighlightLeft" />
+          </node>
           <node concept="3clFbS" id="2YaKrzovTYI" role="3clFbx">
             <node concept="3clFbJ" id="2YaKrzovTYJ" role="3cqZAp">
               <node concept="3fqX7Q" id="2YaKrzovTYK" role="3clFbw">
@@ -13546,9 +13548,6 @@
                 <ref role="3cqZAo" node="2YaKrzovUq0" resolve="allDelete" />
               </node>
             </node>
-          </node>
-          <node concept="1rXfSq" id="2YaKrzovTYH" role="3clFbw">
-            <ref role="37wK5l" to="hdhb:42hl10VH9Kp" resolve="isHighlightLeft" />
           </node>
         </node>
         <node concept="3clFbF" id="2YaKrzowJWa" role="3cqZAp">

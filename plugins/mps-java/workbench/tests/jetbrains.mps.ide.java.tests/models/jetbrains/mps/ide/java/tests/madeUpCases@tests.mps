@@ -740,7 +740,6 @@
           <property role="TrG5h" value="TypeVars" />
         </node>
         <node concept="3clFb_" id="66hA68pgQXL" role="jymVt">
-          <property role="1EzhhJ" value="false" />
           <property role="TrG5h" value="method1" />
           <node concept="3cqZAl" id="66hA68pgQXM" role="3clF45" />
           <node concept="3Tm1VV" id="66hA68pgQXN" role="1B3o_S" />
@@ -765,7 +764,6 @@
           </node>
         </node>
         <node concept="3clFb_" id="66hA68pgQY4" role="jymVt">
-          <property role="1EzhhJ" value="false" />
           <property role="TrG5h" value="getSuperY" />
           <node concept="3Tm1VV" id="66hA68pgQY6" role="1B3o_S" />
           <node concept="3clFbS" id="66hA68pgQY7" role="3clF47" />
@@ -779,7 +777,6 @@
           </node>
         </node>
         <node concept="3clFb_" id="4H_f$Zog6YW" role="jymVt">
-          <property role="1EzhhJ" value="false" />
           <property role="TrG5h" value="circularRefs" />
           <node concept="3cqZAl" id="4H_f$Zog6YY" role="3clF45" />
           <node concept="3Tm1VV" id="4H_f$Zog6YZ" role="1B3o_S" />
@@ -2048,7 +2045,6 @@
             <node concept="10Oyi0" id="13DhuT6A_Vk" role="1tU5fm" />
           </node>
           <node concept="3clFb_" id="13DhuT6A_Vn" role="jymVt">
-            <property role="1EzhhJ" value="false" />
             <property role="TrG5h" value="ifaceMethod" />
             <node concept="3uibUv" id="13DhuT6A_Wb" role="3clF45">
               <ref role="3uigEE" node="13DhuT6A_V5" resolve="ClassWithIface" />
@@ -2061,7 +2057,6 @@
             </node>
           </node>
           <node concept="3clFb_" id="7ABk$v6mkB7" role="jymVt">
-            <property role="1EzhhJ" value="false" />
             <property role="2aFKle" value="false" />
             <property role="TrG5h" value="foo" />
             <node concept="3clFbS" id="7ABk$v6mkBa" role="3clF47" />
@@ -2076,7 +2071,6 @@
             </node>
           </node>
           <node concept="3clFb_" id="7ABk$v6mkYS" role="jymVt">
-            <property role="1EzhhJ" value="false" />
             <property role="2aFKle" value="false" />
             <property role="TrG5h" value="bar" />
             <node concept="3clFbS" id="7ABk$v6mkYV" role="3clF47" />

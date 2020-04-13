@@ -3,6 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="9" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -964,9 +965,9 @@
     </node>
     <node concept="1TJgyj" id="21kJG8HcIcC" role="1TKVEi">
       <property role="IQ2ns" value="2329696648448631592" />
-      <property role="20lmBu" value="aggregation" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="overridenRules" />
-      <property role="20lbJX" value="0..n" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
       <ref role="20lvS9" node="21kJG8H0nwI" resolve="CheckingRuleReference" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYQAk" role="bvy1s">
@@ -2206,9 +2207,8 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="21kJG8H0nwJ" role="1TKVEi">
       <property role="IQ2ns" value="2329696648445392943" />
-      <property role="20lmBu" value="reference" />
       <property role="20kJfa" value="declaration" />
-      <property role="20lbJX" value="1" />
+      <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="hp8kY3U" resolve="NonTypesystemRule" />
     </node>
   </node>

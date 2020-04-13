@@ -4903,7 +4903,6 @@
     <property role="TrG5h" value="Context" />
     <node concept="3Tm1VV" id="y48tyGZ_xW" role="1B3o_S" />
     <node concept="3clFb_" id="y48tyGZCsS" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getThread" />
       <node concept="3Tm1VV" id="y48tyGZCsU" role="1B3o_S" />
       <node concept="3clFbS" id="y48tyGZCsV" role="3clF47" />
@@ -4915,7 +4914,6 @@
       </node>
     </node>
     <node concept="3clFb_" id="y48tyGZCt0" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getSuspendPolicy" />
       <node concept="3Tm1VV" id="y48tyGZCt2" role="1B3o_S" />
       <node concept="3clFbS" id="y48tyGZCt3" role="3clF47" />

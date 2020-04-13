@@ -103,9 +103,6 @@
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
-      <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT">
-        <property id="1068580123138" name="value" index="3clFbU" />
-      </concept>
       <concept id="1068580320020" name="jetbrains.mps.baseLanguage.structure.IntegerConstant" flags="nn" index="3cmrfG">
         <property id="1068580320021" name="value" index="3cmrfH" />
       </concept>
@@ -444,21 +441,7 @@
       </node>
     </node>
     <node concept="13hLZK" id="6pYRYgn8i1x" role="13h7CW">
-      <node concept="3clFbS" id="6pYRYgn8i1y" role="2VODD2">
-        <node concept="3clFbF" id="3Par5_L6cJl" role="3cqZAp">
-          <node concept="37vLTI" id="3Par5_L6ddI" role="3clFbG">
-            <node concept="3clFbT" id="3Par5_L6de8" role="37vLTx">
-              <property role="3clFbU" value="true" />
-            </node>
-            <node concept="2OqwBi" id="3Par5_L6cL8" role="37vLTJ">
-              <node concept="13iPFW" id="3Par5_L6cJk" role="2Oq$k0" />
-              <node concept="3TrcHB" id="3Par5_L6cW0" role="2OqNvi">
-                <ref role="3TsBF5" to="8xvf:3Par5_L4Jg5" resolve="fork" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
+      <node concept="3clFbS" id="6pYRYgn8i1y" role="2VODD2" />
     </node>
     <node concept="13i0hz" id="3Par5_LaArg" role="13h7CS">
       <property role="TrG5h" value="needsFork" />

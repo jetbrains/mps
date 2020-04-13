@@ -69,7 +69,7 @@ public class JavaCommand_Test extends BaseTransformationTest {
       });
 
       ProcessHandler process = new Java_Command().createProcess(pointer.value, myProject.getRepository());
-      ProcessRunnerForConfigurationTests processRunner = new ProcessRunnerForConfigurationTests.Builder(process).addExpectedPaterns(Collections.singletonList(Pattern.compile(Main.MESSAGE + "\n"))).build();
+      ProcessRunnerForConfigurationTests processRunner = new ProcessRunnerForConfigurationTests.Builder(process).addExpectedPaterns(Collections.singletonList(Pattern.compile(Main.MESSAGE + "\n*"))).addAllowedErrorPaterns(Collections.singletonList(Pattern.compile("Picked up JAVA_TOOL_OPTIONS.*\n*"))).build();
       processRunner.startAndCheckProcess();
     }
 

@@ -28,7 +28,7 @@ import jetbrains.jetpad.projectional.view.ViewTraitBuilder;
 import jetbrains.jetpad.projectional.view.ViewEvents;
 import jetbrains.jetpad.projectional.view.ViewEventHandler;
 import jetbrains.jetpad.event.KeyEvent;
-import jetbrains.mps.ide.tooltips.MPSToolTipManager;
+import com.intellij.ide.IdeTooltipManager;
 import jetbrains.jetpad.event.Key;
 import jetbrains.jetpad.event.ModifierKey;
 
@@ -136,7 +136,7 @@ public abstract class AbstractJetpadCell extends EditorCell_Collection implement
         if (!(view.focused().get())) {
           return;
         }
-        MPSToolTipManager.getInstance().hideToolTip();
+        IdeTooltipManager.getInstance().hideCurrentNow(false);
         if (e.is(Key.F1, ModifierKey.CONTROL)) {
           getEditorComponent().getSelectionManager().getSelection().executeAction(CellActionType.SHOW_MESSAGE);
         }
