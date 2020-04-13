@@ -12,7 +12,7 @@
   </facets>
   <accessoryModels />
   <generators>
-    <generator alias="" namespace="tooltips#7561794385526429391" uuid="091ef3ba-305a-4257-ac3b-6c5daacb61ee">
+    <generator alias="" namespace="tooltips#0361794385526429345" uuid="30def3ba-305a-4257-ac3b-6c5daacb64ac">
       <models>
         <modelRoot contentPath="${module}" type="default">
           <sourceRoot location="generator/template" />
@@ -84,13 +84,13 @@
         <module reference="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" version="0" />
         <module reference="b1ab8c10-c118-4755-bf2a-a223235cf533(tooltips)" version="0" />
         <module reference="b1ab8c10-c118-4755-bf2a-cebab35cf533(tooltips)" version="0" />
-        <module reference="091ef3ba-305a-4257-ac3b-6c5daacb61ee(tooltips#7561794385526429391)" version="0" />
+        <module reference="30def3ba-305a-4257-ac3b-6c5daacb64ac(tooltips#0361794385526429345)" version="0" />
         <module reference="fa52e9df-2136-4ef8-81b2-bec0babe5ec8(tooltips.runtime)" version="0" />
       </dependencyVersions>
       <mapping-priorities>
         <mapping-priority-rule kind="strictly_together">
           <greater-priority-mapping>
-            <generator generatorUID="091ef3ba-305a-4257-ac3b-6c5daacb61ee(tooltips#7561794385526429391)" />
+            <generator generatorUID="30def3ba-305a-4257-ac3b-6c5daacb64ac(tooltips#0361794385526429345)" />
             <external-mapping>
               <mapping-node modelUID="r:b2a269fc-16e8-4926-b622-720f52369a9c(tooltips.generator.template.main@generator)" nodeID="7561794385526429392" />
             </external-mapping>
@@ -104,7 +104,7 @@
         </mapping-priority-rule>
         <mapping-priority-rule kind="strictly_together">
           <greater-priority-mapping>
-            <generator generatorUID="091ef3ba-305a-4257-ac3b-6c5daacb61ee(tooltips#7561794385526429391)" />
+            <generator generatorUID="30def3ba-305a-4257-ac3b-6c5daacb64ac(tooltips#0361794385526429345)" />
             <external-mapping>
               <mapping-node modelUID="r:b2a269fc-16e8-4926-b622-720f52369a9c(tooltips.generator.template.main@generator)" nodeID="3462177627478823549" />
             </external-mapping>
