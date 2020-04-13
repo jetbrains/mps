@@ -13,7 +13,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-public class NodeBuilderNode_Replace {
+public class NodeBuilder_Replace {
   public static class NodeFactory_9079830899493053022 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       {
@@ -21,6 +21,16 @@ public class NodeBuilderNode_Replace {
         if (SNodeOperations.isInstanceOf(sampleBuilderNode, CONCEPTS.NodeBuilderNode$RN)) {
           SLinkOperations.setTarget(newNode, LINKS.concept$lMG$, SLinkOperations.getTarget(sampleBuilderNode, LINKS.concept$lMG$));
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.values$oju9)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(sampleBuilderNode, LINKS.values$oju9)));
+        }
+      }
+    }
+  }
+  public static class NodeFactory_410791833645398110 implements NodeFactory {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+      {
+        final SNode sampleBuilderNode = sampleNode;
+        if (SNodeOperations.isInstanceOf(sampleBuilderNode, CONCEPTS.NodeBuilderNode$RN)) {
+          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.nodes$$MVw)).addElement(sampleBuilderNode);
         }
       }
     }
@@ -33,5 +43,6 @@ public class NodeBuilderNode_Replace {
   private static final class LINKS {
     /*package*/ static final SReferenceLink concept$lMG$ = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b02b1L, "concept");
     /*package*/ static final SContainmentLink values$oju9 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b033bL, "values");
+    /*package*/ static final SContainmentLink nodes$$MVw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, 0x718e3f4cb7a2df33L, "nodes");
   }
 }

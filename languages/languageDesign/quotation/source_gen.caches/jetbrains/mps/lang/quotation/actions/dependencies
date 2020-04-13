@@ -5,13 +5,13 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="java.util.Collections" />
-    <classNode dependClassName="jetbrains.mps.lang.quotation.actions.NodeBuilderNode_Replace" />
+    <classNode dependClassName="jetbrains.mps.lang.quotation.actions.NodeBuilder_Replace" />
     <classNode dependClassName="jetbrains.mps.openapi.actions.descriptor.NodeFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode extendsClassName="jetbrains.mps.actions.descriptor.BaseActionAspectDescriptor" />
     <classNode extendsClassName="jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.quotation.actions.NodeBuilderNode_Replace">
+  <dependency className="jetbrains.mps.lang.quotation.actions.NodeBuilder_Replace">
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />

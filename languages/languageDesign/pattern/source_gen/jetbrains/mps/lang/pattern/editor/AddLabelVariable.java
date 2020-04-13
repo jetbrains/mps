@@ -23,6 +23,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -33,6 +34,7 @@ import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class AddLabelVariable extends TransformationMenuBase {
   public AddLabelVariable() {
@@ -107,6 +109,10 @@ public class AddLabelVariable extends TransformationMenuBase {
         SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.LabeledNode$iM);
       }
 
+      @Override
+      public boolean canExecute(@NotNull String pattern) {
+        return SNodeOperations.isInstanceOf(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.INodeBuilderContainer$cS, false, false), CONCEPTS.PatternBuilder$Pa);
+      }
 
 
 
@@ -129,5 +135,7 @@ public class AddLabelVariable extends TransformationMenuBase {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept LabeledNode$iM = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0xd6beaaa1fc92ce7L, "jetbrains.mps.lang.pattern.structure.LabeledNode");
+    /*package*/ static final SInterfaceConcept INodeBuilderContainer$cS = MetaAdapterFactory.getInterfaceConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0xe04f17ec2c78d3eL, "jetbrains.mps.lang.quotation.structure.INodeBuilderContainer");
+    /*package*/ static final SConcept PatternBuilder$Pa = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x240625574192fa19L, "jetbrains.mps.lang.pattern.structure.PatternBuilder");
   }
 }

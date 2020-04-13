@@ -620,6 +620,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.LeftParenAfterNameStyleClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParenStyleClass" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.CellUtil" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.style.FocusPolicy" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />

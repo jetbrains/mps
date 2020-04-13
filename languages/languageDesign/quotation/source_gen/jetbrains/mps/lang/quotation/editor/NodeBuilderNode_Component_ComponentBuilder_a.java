@@ -51,6 +51,7 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandlerElementKeyMap;
+import jetbrains.mps.editor.runtime.style.FocusPolicy;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParenStyleClass;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -76,7 +77,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   private EditorCell createCollection_0() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
-    editorCell.setCellId("Collection_aaqzos_a");
+    editorCell.setCellId("NODE_COMPONENT");
     Style style = new StyleImpl();
     style.set(StyleAttributes.INDENT_LAYOUT_INDENT_ANCHOR, _StyleParameter_QueryFunction_aaqzos_a0a());
     editorCell.getStyle().putAll(style);
@@ -295,6 +296,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
       Style style = new StyleImpl();
       style.set(StyleAttributes.EDITABLE, true);
       editorCell.getStyle().putAll(style);
+      if (true) {
+        editorCell.getStyle().set(StyleAttributes.FOCUS_POLICY, FocusPolicy.ATTRACTS_FOCUS);
+      }
       editorCell.setDefaultText("");
       return editorCell;
     }

@@ -93,6 +93,7 @@
     <classNode dependClassName="jetbrains.mps.lang.editor.menus.MenuPart" />
     <classNode dependClassName="jetbrains.mps.lang.editor.menus.SingleItemMenuPart" />
     <classNode dependClassName="jetbrains.mps.lang.editor.menus.transformation.MenuLocations" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer" />
@@ -108,6 +109,7 @@
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SInterfaceConcept" />
     <classNode extendsClassName="jetbrains.mps.nodeEditor.menus.transformation.TransformationMenuBase" />
   </dependency>
   <dependency className="jetbrains.mps.lang.pattern.editor.AsPattern_Editor">
@@ -535,6 +537,41 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />
   </dependency>
+  <dependency className="jetbrains.mps.lang.pattern.editor.LabelNode_DeleteLabel">
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.Objects" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.cells.AbstractCellAction" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.selection.SelectionUtil" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellAction" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellActionType" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.selection.SelectionManager" />
+    <classNode dependClassName="jetbrains.mps.smodel.action.SNodeFactoryOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+  </dependency>
+  <dependency className="jetbrains.mps.lang.pattern.editor.LabelNode_DeleteNode">
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.util.Objects" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.cells.AbstractCellAction" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellAction" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellActionType" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="jetbrains.mps.smodel.action.SNodeFactoryOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+  </dependency>
   <dependency className="jetbrains.mps.lang.pattern.editor.LabeledNode_Editor">
     <classNode dependClassName="jetbrains.mps.lang.pattern.editor.LabeledNode_EditorBuilder_a" />
     <classNode dependClassName="jetbrains.mps.lang.pattern.editor.LabeledNode_InspectorBuilder_a" />
@@ -552,6 +589,8 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.lang.pattern.editor.LabelNode_DeleteLabel" />
+    <classNode dependClassName="jetbrains.mps.lang.pattern.editor.LabelNode_DeleteNode" />
     <classNode dependClassName="jetbrains.mps.lang.pattern.editor.PatternBuilderStyles_StyleSheet.VariableStyleClass" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor" />
