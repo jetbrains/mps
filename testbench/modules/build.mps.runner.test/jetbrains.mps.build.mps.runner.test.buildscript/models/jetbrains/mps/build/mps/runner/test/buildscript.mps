@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model ref="r:1df60b02-4b01-4931-9ed0-efa7ab133a2f(jetbrains.mps.build.mps.runner.test.buildscript)">
   <persistence version="9" />
+  <attribute name="doNotGenerate" value="false" />
   <languages>
     <use id="798100da-4f0a-421a-b991-71f8c50ce5d2" name="jetbrains.mps.build" version="0" />
     <use id="0cf935df-4699-4e9c-a132-fa109541cba3" name="jetbrains.mps.build.mps" version="7" />
@@ -129,10 +130,10 @@
     <property role="2DA0ip" value=".." />
     <property role="turDy" value="test1.xml" />
     <node concept="1E1JtA" id="4X5j05vNi7E" role="3989C9">
+      <property role="BnDLt" value="true" />
       <property role="TrG5h" value="jetbrains.mps.build.mps.runner.test.test1" />
       <property role="3LESm3" value="f4221d3d-7652-4403-b74b-cf2957188acb" />
       <property role="2GAjPV" value="false" />
-      <property role="BnDLt" value="true" />
       <node concept="55IIr" id="4X5j05vNi7z" role="3LF7KH">
         <node concept="2Ry0Ak" id="4X5j05vNi7B" role="iGT6I">
           <property role="2Ry0Am" value="jetbrains.mps.build.mps.runner.test.test1" />

@@ -32,9 +32,8 @@ import java.util.concurrent.locks.ReentrantLock;
  * The proper way to start all our ***Workers that involve IJ startup must implement ApplicationStarter
  * themselves.
  *
- * fixme not so happy about this static here;
- *       however I do noy know about other way how to wait for the application to load
- *       I would need some non-static
+ * fixme not so happy about this static here; however I do not know about other way how to wait for the application to load
+ *       we need to have platform code changed correspondingly
  * @author apyshkin
  * @since 11/03/2020
  */

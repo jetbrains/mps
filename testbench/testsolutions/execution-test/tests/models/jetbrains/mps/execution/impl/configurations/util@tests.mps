@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model ref="r:32667737-240a-422b-b048-8918d4b92152(jetbrains.mps.execution.impl.configurations.util@tests)">
   <persistence version="9" />
+  <attribute name="doNotGenerate" value="false" />
   <languages>
     <use id="ed6d7656-532c-4bc2-81d1-af945aeb8280" name="jetbrains.mps.baseLanguage.blTypes" version="-1" />
     <use id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers" version="-1" />
@@ -9,7 +10,7 @@
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="-1" />
     <use id="9ded098b-ad6a-4657-bfd9-48636cfe8bc3" name="jetbrains.mps.lang.traceable" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="f3347d8a-0e79-4f35-8ac9-1574f25c986f" name="jetbrains.mps.execution.commands" version="-1" />
   </languages>
   <imports>
@@ -1554,9 +1555,9 @@
                     </node>
                   </node>
                   <node concept="1rXfSq" id="384sIIhKllU" role="33vP2m">
-                    <ref role="37wK5l" node="384sIIhJNC2" />
+                    <ref role="37wK5l" node="384sIIhJNC2" resolve="getPatternsForWhichMsgExpected" />
                     <node concept="2GrUjf" id="33YWcaLuCfS" role="37wK5m">
-                      <ref role="2Gs0qQ" node="33YWcaLuA_g" />
+                      <ref role="2Gs0qQ" node="33YWcaLuA_g" resolve="line" />
                     </node>
                   </node>
                 </node>
@@ -1564,12 +1565,12 @@
               <node concept="3clFbF" id="384sIIhJTPe" role="3cqZAp">
                 <node concept="2OqwBi" id="384sIIhJUkp" role="3clFbG">
                   <node concept="37vLTw" id="384sIIhJTPc" role="2Oq$k0">
-                    <ref role="3cqZAo" node="384sIIhNBlT" />
+                    <ref role="3cqZAo" node="384sIIhNBlT" resolve="myPrintedExpectedPatterns" />
                   </node>
                   <node concept="liA8E" id="384sIIhK6oI" role="2OqNvi">
                     <ref role="37wK5l" to="33ny:~Set.addAll(java.util.Collection)" resolve="addAll" />
                     <node concept="37vLTw" id="384sIIhKokt" role="37wK5m">
-                      <ref role="3cqZAo" node="384sIIhKllT" />
+                      <ref role="3cqZAo" node="384sIIhKllT" resolve="patternsWeEncountered" />
                     </node>
                   </node>
                 </node>
@@ -1582,12 +1583,12 @@
                       <node concept="3clFbF" id="384sIIhIIj1" role="3cqZAp">
                         <node concept="2OqwBi" id="384sIIhJGbK" role="3clFbG">
                           <node concept="37vLTw" id="384sIIhIIiZ" role="2Oq$k0">
-                            <ref role="3cqZAo" node="384sIIhNBlQ" />
+                            <ref role="3cqZAo" node="384sIIhNBlQ" resolve="myFailedEvent" />
                           </node>
                           <node concept="liA8E" id="384sIIhJJfu" role="2OqNvi">
                             <ref role="37wK5l" to="18ew:~Reference.set(java.lang.Object)" resolve="set" />
                             <node concept="37vLTw" id="33YWcaLuSpu" role="37wK5m">
-                              <ref role="3cqZAo" node="33YWcaLuE5v" />
+                              <ref role="3cqZAo" node="33YWcaLuE5v" resolve="myLastEvent" />
                             </node>
                           </node>
                         </node>
@@ -1595,9 +1596,9 @@
                     </node>
                     <node concept="3fqX7Q" id="384sIIhIR8V" role="3clFbw">
                       <node concept="1rXfSq" id="384sIIhOGJe" role="3fr31v">
-                        <ref role="37wK5l" node="384sIIhJMwI" />
+                        <ref role="37wK5l" node="384sIIhJMwI" resolve="isErrMsgAllowed" />
                         <node concept="2GrUjf" id="33YWcaLuO11" role="37wK5m">
-                          <ref role="2Gs0qQ" node="33YWcaLuA_g" />
+                          <ref role="2Gs0qQ" node="33YWcaLuA_g" resolve="line" />
                         </node>
                       </node>
                     </node>
@@ -1615,7 +1616,7 @@
                             <property role="Xl_RC" value="TEST ERR OUTPUT::: " />
                           </node>
                           <node concept="2GrUjf" id="33YWcaLuO3T" role="3uHU7w">
-                            <ref role="2Gs0qQ" node="33YWcaLuA_g" />
+                            <ref role="2Gs0qQ" node="33YWcaLuA_g" resolve="line" />
                           </node>
                         </node>
                       </node>
@@ -1630,7 +1631,7 @@
                   <node concept="liA8E" id="73dkH4Pmkgv" role="2OqNvi">
                     <ref role="37wK5l" to="zn9m:~Key.equals(java.lang.Object)" resolve="equals" />
                     <node concept="37vLTw" id="33YWcaLuOlT" role="37wK5m">
-                      <ref role="3cqZAo" node="33YWcaLuHFq" />
+                      <ref role="3cqZAo" node="33YWcaLuHFq" resolve="myLastKey" />
                     </node>
                   </node>
                 </node>
@@ -1646,7 +1647,7 @@
                           <ref role="37wK5l" to="guwi:~PrintStream.print(java.lang.String)" resolve="print" />
                           <node concept="3cpWs3" id="5OrJjFbwY9R" role="37wK5m">
                             <node concept="2GrUjf" id="33YWcaLuOh4" role="3uHU7w">
-                              <ref role="2Gs0qQ" node="33YWcaLuA_g" />
+                              <ref role="2Gs0qQ" node="33YWcaLuA_g" resolve="line" />
                             </node>
                             <node concept="Xl_RD" id="5OrJjFbwdQu" role="3uHU7B">
                               <property role="Xl_RC" value="TEST OUTPUT::: " />
@@ -1665,7 +1666,7 @@
                     <node concept="2OqwBi" id="7iUUdC1tKtM" role="3clFbG">
                       <node concept="2OqwBi" id="7iUUdC1tJPO" role="2Oq$k0">
                         <node concept="37vLTw" id="33YWcaLuSyE" role="2Oq$k0">
-                          <ref role="3cqZAo" node="33YWcaLuE5v" />
+                          <ref role="3cqZAo" node="33YWcaLuE5v" resolve="myLastEvent" />
                         </node>
                         <node concept="liA8E" id="7iUUdC1tKdm" role="2OqNvi">
                           <ref role="37wK5l" to="uu3z:~ProcessEvent.getProcessHandler()" resolve="getProcessHandler" />
@@ -1678,9 +1679,9 @@
                   </node>
                 </node>
                 <node concept="1rXfSq" id="7iUUdC1tJ0q" role="3clFbw">
-                  <ref role="37wK5l" node="7iUUdC1sNNo" />
+                  <ref role="37wK5l" node="7iUUdC1sNNo" resolve="needToExit" />
                   <node concept="2GrUjf" id="33YWcaLuNNv" role="37wK5m">
-                    <ref role="2Gs0qQ" node="33YWcaLuA_g" />
+                    <ref role="2Gs0qQ" node="33YWcaLuA_g" resolve="line" />
                   </node>
                 </node>
               </node>

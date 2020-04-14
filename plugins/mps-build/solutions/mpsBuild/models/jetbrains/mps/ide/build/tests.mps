@@ -7241,6 +7241,7 @@
       <node concept="398223" id="6sT62Z6Skh2" role="39821P">
         <node concept="m$_wl" id="6sT62Z6Skh3" role="39821P">
           <ref role="m_rDy" node="6sT62Z6Skkm" resolve="test.behavior.plugin" />
+          <node concept="pUk6w" id="5peYeZGo8W5" role="pUk7w" />
           <node concept="398223" id="6sT62Z6Skh4" role="39821P">
             <node concept="3_J27D" id="6sT62Z6Skh5" role="Nbhlr">
               <node concept="3Mxwew" id="6sT62Z6Skh6" role="3MwsjC">
@@ -7316,7 +7317,6 @@
               <ref role="L2wRA" node="6sT62Z6SkiW" resolve="BHL7" />
             </node>
           </node>
-          <node concept="pUk6w" id="5peYeZGo8W5" role="pUk7w" />
         </node>
         <node concept="398223" id="6sT62Z6Skhx" role="39821P">
           <node concept="3_J27D" id="6sT62Z6Skhy" role="Nbhlr">
