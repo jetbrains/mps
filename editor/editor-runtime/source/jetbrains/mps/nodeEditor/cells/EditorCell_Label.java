@@ -728,7 +728,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
   }
 
   public void selectWordOrAll() {
-    if (getTextLine().getStartTextSelectionPosition() != getTextLine().getEndTextSelectionPosition()) {
+    if (selectionNotEmpty()) {
       selectAll();
       return;
     }
@@ -742,6 +742,11 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
       selectAll();
     }
 
+  }
+
+  private boolean selectionNotEmpty() {
+    TextLine textLine = getTextLine();
+    return textLine.getStartTextSelectionPosition() != textLine.getEndTextSelectionPosition();
   }
 
   private void select(int start, int end) {
@@ -855,7 +860,13 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
 
     @Override
     public void execute(EditorContext context) {
-      setCaretPosition(getCaretPosition() - 1, myWithSelection);
+      int position;
+      if (!myWithSelection && selectionNotEmpty() && isCaretPositionAllowed(getSelectionStart())) {
+        position = getSelectionStart();
+      } else {
+        position = getCaretPosition() - 1;
+      }
+      setCaretPosition(position, myWithSelection);
       fireSelectionChanged();
       ensureCaretVisible();
     }
@@ -875,7 +886,13 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
 
     @Override
     public void execute(EditorContext context) {
-      setCaretPosition(getCaretPosition() + 1, myWithSelection);
+      int position;
+      if (!myWithSelection && selectionNotEmpty() && isCaretPositionAllowed(getSelectionEnd())) {
+        position = getSelectionEnd();
+      } else {
+        position = getCaretPosition() + 1;
+      }
+      setCaretPosition(position, myWithSelection);
       fireSelectionChanged();
       ensureCaretVisible();
     }

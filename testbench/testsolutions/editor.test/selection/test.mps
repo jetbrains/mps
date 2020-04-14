@@ -1656,5 +1656,299 @@
       </node>
     </node>
   </node>
+  <node concept="LiM7Y" id="6k_DIBxSAbc">
+    <property role="TrG5h" value="CancelSelection_MoveLeft" />
+    <property role="3YCmrE" value="Move left/right cancels selection and places cursor at the beggining/end of the selection" />
+    <property role="3GE5qa" value="LeftRight" />
+    <node concept="3clFbS" id="6k_DIBxSAbd" role="LjaKd">
+      <node concept="2HxZob" id="6k_DIBxSI1Z" role="3cqZAp">
+        <node concept="1iFQzN" id="6k_DIBxSI9q" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:6KwcZ1G3Po2" resolve="SelectUp" />
+        </node>
+      </node>
+      <node concept="2HxZob" id="6k_DIBxSKBC" role="3cqZAp">
+        <node concept="1iFQzN" id="6k_DIBxSKDi" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:R3$tg1aBNT" resolve="MoveLeft" />
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="6k_DIBxSAgU" role="25YQCW">
+      <node concept="9aQIb" id="6k_DIBxSAgS" role="1qenE9">
+        <node concept="3clFbS" id="6k_DIBxSAgT" role="9aQI4">
+          <node concept="3clFbF" id="6k_DIBxSAll" role="3cqZAp">
+            <node concept="2OqwBi" id="6k_DIBxSAli" role="3clFbG">
+              <node concept="10M0yZ" id="6k_DIBxSAlj" role="2Oq$k0">
+                <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+                <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
+              </node>
+              <node concept="liA8E" id="6k_DIBxSAlk" role="2OqNvi">
+                <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
+                <node concept="Xl_RD" id="6k_DIBxSAlT" role="37wK5m">
+                  <property role="Xl_RC" value="Hello World!" />
+                </node>
+                <node concept="LIFWc" id="6k_DIBxSAC$" role="lGtFl">
+                  <property role="LIFWa" value="4" />
+                  <property role="OXtK3" value="true" />
+                  <property role="p6zMq" value="4" />
+                  <property role="p6zMs" value="4" />
+                  <property role="LIFWd" value="property_name" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="6k_DIBxSA_a" role="25YQFr">
+      <node concept="9aQIb" id="6k_DIBxSA_b" role="1qenE9">
+        <node concept="3clFbS" id="6k_DIBxSA_c" role="9aQI4">
+          <node concept="3clFbF" id="6k_DIBxSA_d" role="3cqZAp">
+            <node concept="2OqwBi" id="6k_DIBxSA_e" role="3clFbG">
+              <node concept="10M0yZ" id="6k_DIBxSA_f" role="2Oq$k0">
+                <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+                <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
+              </node>
+              <node concept="liA8E" id="6k_DIBxSA_g" role="2OqNvi">
+                <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
+                <node concept="Xl_RD" id="6k_DIBxSA_h" role="37wK5m">
+                  <property role="Xl_RC" value="Hello World!" />
+                </node>
+                <node concept="LIFWc" id="6k_DIBxSKrV" role="lGtFl">
+                  <property role="LIFWa" value="0" />
+                  <property role="OXtK3" value="true" />
+                  <property role="p6zMq" value="0" />
+                  <property role="p6zMs" value="0" />
+                  <property role="LIFWd" value="property_name" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="4vx40Hhk1lM">
+    <property role="TrG5h" value="CancelSelection_MoveRight" />
+    <property role="3YCmrE" value="Move left/right cancels selection and places cursor at the beggining/end of the selection" />
+    <property role="3GE5qa" value="LeftRight" />
+    <node concept="3clFbS" id="4vx40Hhk1lN" role="LjaKd">
+      <node concept="2HxZob" id="4vx40Hhk1lO" role="3cqZAp">
+        <node concept="1iFQzN" id="4vx40Hhk1lP" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:6KwcZ1G3Po2" resolve="SelectUp" />
+        </node>
+      </node>
+      <node concept="2HxZob" id="4vx40Hhk1lQ" role="3cqZAp">
+        <node concept="1iFQzN" id="4vx40Hhk1lR" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:R3$tg1aBNW" resolve="MoveRight" />
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="4vx40Hhk1lS" role="25YQCW">
+      <node concept="9aQIb" id="4vx40Hhk1lT" role="1qenE9">
+        <node concept="3clFbS" id="4vx40Hhk1lU" role="9aQI4">
+          <node concept="3clFbF" id="4vx40Hhk1lV" role="3cqZAp">
+            <node concept="2OqwBi" id="4vx40Hhk1lW" role="3clFbG">
+              <node concept="10M0yZ" id="4vx40Hhk1lX" role="2Oq$k0">
+                <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+                <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
+              </node>
+              <node concept="liA8E" id="4vx40Hhk1lY" role="2OqNvi">
+                <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
+                <node concept="Xl_RD" id="4vx40Hhk1lZ" role="37wK5m">
+                  <property role="Xl_RC" value="Hello World!" />
+                </node>
+                <node concept="LIFWc" id="4vx40Hhk1m0" role="lGtFl">
+                  <property role="LIFWa" value="4" />
+                  <property role="OXtK3" value="true" />
+                  <property role="p6zMq" value="4" />
+                  <property role="p6zMs" value="4" />
+                  <property role="LIFWd" value="property_name" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="4vx40Hhk1m1" role="25YQFr">
+      <node concept="9aQIb" id="4vx40Hhk1m2" role="1qenE9">
+        <node concept="3clFbS" id="4vx40Hhk1m3" role="9aQI4">
+          <node concept="3clFbF" id="4vx40Hhk1m4" role="3cqZAp">
+            <node concept="2OqwBi" id="4vx40Hhk1m5" role="3clFbG">
+              <node concept="10M0yZ" id="4vx40Hhk1m6" role="2Oq$k0">
+                <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
+                <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+              </node>
+              <node concept="liA8E" id="4vx40Hhk1m7" role="2OqNvi">
+                <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
+                <node concept="Xl_RD" id="4vx40Hhk1m8" role="37wK5m">
+                  <property role="Xl_RC" value="Hello World!" />
+                </node>
+                <node concept="LIFWc" id="4vx40Hhk1yv" role="lGtFl">
+                  <property role="ZRATv" value="true" />
+                  <property role="OXtK3" value="true" />
+                  <property role="p6zMq" value="7" />
+                  <property role="p6zMs" value="7" />
+                  <property role="LIFWd" value="property_name" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="4vx40Hhk5s4">
+    <property role="TrG5h" value="CancelSelection_MoveLeft2" />
+    <property role="3YCmrE" value="Move left/right cancels selection and places cursor at the beggining/end of the selection" />
+    <property role="3GE5qa" value="LeftRight" />
+    <node concept="3clFbS" id="4vx40Hhk5s5" role="LjaKd">
+      <node concept="2HxZob" id="4vx40Hhk5s6" role="3cqZAp">
+        <node concept="1iFQzN" id="4vx40Hhk5s7" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:7aqfviVHVNq" resolve="SelectLeft" />
+        </node>
+      </node>
+      <node concept="2HxZob" id="4vx40Hhk7SX" role="3cqZAp">
+        <node concept="1iFQzN" id="4vx40Hhk7SY" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:7aqfviVHVNq" resolve="SelectLeft" />
+        </node>
+      </node>
+      <node concept="2HxZob" id="4vx40Hhk91T" role="3cqZAp">
+        <node concept="1iFQzN" id="4vx40Hhk93_" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:R3$tg1aBNT" resolve="MoveLeft" />
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="4vx40Hhk5sa" role="25YQCW">
+      <node concept="9aQIb" id="4vx40Hhk5sb" role="1qenE9">
+        <node concept="3clFbS" id="4vx40Hhk5sc" role="9aQI4">
+          <node concept="3clFbF" id="4vx40Hhk5sd" role="3cqZAp">
+            <node concept="2OqwBi" id="4vx40Hhk5se" role="3clFbG">
+              <node concept="10M0yZ" id="4vx40Hhk5sf" role="2Oq$k0">
+                <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
+                <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+              </node>
+              <node concept="liA8E" id="4vx40Hhk5sg" role="2OqNvi">
+                <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
+                <node concept="Xl_RD" id="4vx40Hhk5sh" role="37wK5m">
+                  <property role="Xl_RC" value="Hello World!" />
+                </node>
+                <node concept="LIFWc" id="4vx40Hhk5si" role="lGtFl">
+                  <property role="LIFWa" value="4" />
+                  <property role="OXtK3" value="true" />
+                  <property role="p6zMq" value="4" />
+                  <property role="p6zMs" value="4" />
+                  <property role="LIFWd" value="property_name" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="4vx40Hhk5sj" role="25YQFr">
+      <node concept="9aQIb" id="4vx40Hhk5sk" role="1qenE9">
+        <node concept="3clFbS" id="4vx40Hhk5sl" role="9aQI4">
+          <node concept="3clFbF" id="4vx40Hhk5sm" role="3cqZAp">
+            <node concept="2OqwBi" id="4vx40Hhk5sn" role="3clFbG">
+              <node concept="10M0yZ" id="4vx40Hhk5so" role="2Oq$k0">
+                <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+                <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
+              </node>
+              <node concept="liA8E" id="4vx40Hhk5sp" role="2OqNvi">
+                <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
+                <node concept="Xl_RD" id="4vx40Hhk5sq" role="37wK5m">
+                  <property role="Xl_RC" value="Hello World!" />
+                </node>
+                <node concept="LIFWc" id="4vx40Hhk7Lu" role="lGtFl">
+                  <property role="LIFWa" value="2" />
+                  <property role="OXtK3" value="true" />
+                  <property role="p6zMq" value="2" />
+                  <property role="p6zMs" value="2" />
+                  <property role="LIFWd" value="property_name" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="4vx40Hhka43">
+    <property role="TrG5h" value="CancelSelection_MoveRight2" />
+    <property role="3YCmrE" value="Move left/right cancels selection and places cursor at the beggining/end of the selection" />
+    <property role="3GE5qa" value="LeftRight" />
+    <node concept="3clFbS" id="4vx40Hhka44" role="LjaKd">
+      <node concept="2HxZob" id="4vx40Hhka45" role="3cqZAp">
+        <node concept="1iFQzN" id="4vx40Hhka46" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:7aqfviVHVNq" resolve="SelectLeft" />
+        </node>
+      </node>
+      <node concept="2HxZob" id="4vx40Hhkal8" role="3cqZAp">
+        <node concept="1iFQzN" id="4vx40Hhkal9" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:7aqfviVHVNq" resolve="SelectLeft" />
+        </node>
+      </node>
+      <node concept="2HxZob" id="4vx40Hhka47" role="3cqZAp">
+        <node concept="1iFQzN" id="4vx40Hhka48" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:R3$tg1aBNW" resolve="MoveRight" />
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="4vx40Hhka49" role="25YQCW">
+      <node concept="9aQIb" id="4vx40Hhka4a" role="1qenE9">
+        <node concept="3clFbS" id="4vx40Hhka4b" role="9aQI4">
+          <node concept="3clFbF" id="4vx40Hhka4c" role="3cqZAp">
+            <node concept="2OqwBi" id="4vx40Hhka4d" role="3clFbG">
+              <node concept="10M0yZ" id="4vx40Hhka4e" role="2Oq$k0">
+                <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
+                <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+              </node>
+              <node concept="liA8E" id="4vx40Hhka4f" role="2OqNvi">
+                <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
+                <node concept="Xl_RD" id="4vx40Hhka4g" role="37wK5m">
+                  <property role="Xl_RC" value="Hello World!" />
+                </node>
+                <node concept="LIFWc" id="4vx40Hhka4h" role="lGtFl">
+                  <property role="LIFWa" value="4" />
+                  <property role="OXtK3" value="true" />
+                  <property role="p6zMq" value="4" />
+                  <property role="p6zMs" value="4" />
+                  <property role="LIFWd" value="property_name" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="4vx40Hhka4i" role="25YQFr">
+      <node concept="9aQIb" id="4vx40Hhka4j" role="1qenE9">
+        <node concept="3clFbS" id="4vx40Hhka4k" role="9aQI4">
+          <node concept="3clFbF" id="4vx40Hhka4l" role="3cqZAp">
+            <node concept="2OqwBi" id="4vx40Hhka4m" role="3clFbG">
+              <node concept="10M0yZ" id="4vx40Hhka4n" role="2Oq$k0">
+                <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+                <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
+              </node>
+              <node concept="liA8E" id="4vx40Hhka4o" role="2OqNvi">
+                <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
+                <node concept="Xl_RD" id="4vx40Hhka4p" role="37wK5m">
+                  <property role="Xl_RC" value="Hello World!" />
+                </node>
+                <node concept="LIFWc" id="4vx40HhkatT" role="lGtFl">
+                  <property role="LIFWa" value="4" />
+                  <property role="OXtK3" value="true" />
+                  <property role="p6zMq" value="4" />
+                  <property role="p6zMs" value="4" />
+                  <property role="LIFWd" value="property_name" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 
