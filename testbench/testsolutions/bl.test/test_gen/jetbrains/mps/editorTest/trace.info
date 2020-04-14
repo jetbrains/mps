@@ -17244,6 +17244,86 @@
       <unit id="6080342878134138487" at="15,0,44,0" name="jetbrains.mps.editorTest.EmptyEnumConstantCreationTest_Test" />
     </file>
   </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/6105464434604278123">
+    <file name="MultilineCommentAdd_Test.java">
+      <node id="6105464434604278123" at="18,37,19,25" concept="11" />
+      <node id="6105464434604278123" at="23,59,24,36" concept="2" />
+      <node id="6105464434604278123" at="29,52,30,19" concept="11" />
+      <node id="6105464434604278123" at="34,51,35,72" concept="2" />
+      <node id="6105464434604279419" at="35,72,36,23" concept="2" />
+      <node id="6105464434604278123" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="6105464434604278123" at="18,0,21,0" concept="1" trace="MultilineCommentAdd_Test#()V" />
+      <node id="6105464434604278123" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6105464434604278123" at="22,0,26,0" concept="5" trace="test_MultilineCommentAdd#()V" />
+      <node id="6105464434604278123" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="6105464434604278123" at="18,37,19,25" />
+      <scope id="6105464434604278123" at="23,59,24,36" />
+      <scope id="6105464434604278123" at="29,52,30,19" />
+      <scope id="6105464434604278123" at="34,51,36,23" />
+      <scope id="6105464434604278123" at="18,0,21,0" />
+      <scope id="6105464434604278123" at="29,0,32,0">
+        <var name="owner" id="6105464434604278123" />
+      </scope>
+      <scope id="6105464434604278123" at="22,0,26,0" />
+      <scope id="6105464434604278123" at="33,0,38,0" />
+      <unit id="6105464434604278123" at="27,0,39,0" name="jetbrains.mps.editorTest.MultilineCommentAdd_Test$TestBody" />
+      <unit id="6105464434604278123" at="13,0,40,0" name="jetbrains.mps.editorTest.MultilineCommentAdd_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/6105464434604280139">
+    <file name="MultilineCommentDelete_Test.java">
+      <node id="6105464434604280139" at="18,40,19,25" concept="11" />
+      <node id="6105464434604280139" at="23,62,24,36" concept="2" />
+      <node id="6105464434604280139" at="29,52,30,19" concept="11" />
+      <node id="6105464434604280139" at="34,51,35,72" concept="2" />
+      <node id="6105464434604282074" at="35,72,36,69" concept="2" />
+      <node id="6105464434604282188" at="36,69,37,69" concept="2" />
+      <node id="6105464434604280139" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="6105464434604280139" at="18,0,21,0" concept="1" trace="MultilineCommentDelete_Test#()V" />
+      <node id="6105464434604280139" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6105464434604280139" at="22,0,26,0" concept="5" trace="test_MultilineCommentDelete#()V" />
+      <node id="6105464434604280139" at="33,0,39,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="6105464434604280139" at="18,40,19,25" />
+      <scope id="6105464434604280139" at="23,62,24,36" />
+      <scope id="6105464434604280139" at="29,52,30,19" />
+      <scope id="6105464434604280139" at="18,0,21,0" />
+      <scope id="6105464434604280139" at="29,0,32,0">
+        <var name="owner" id="6105464434604280139" />
+      </scope>
+      <scope id="6105464434604280139" at="34,51,37,69" />
+      <scope id="6105464434604280139" at="22,0,26,0" />
+      <scope id="6105464434604280139" at="33,0,39,0" />
+      <unit id="6105464434604280139" at="27,0,40,0" name="jetbrains.mps.editorTest.MultilineCommentDelete_Test$TestBody" />
+      <unit id="6105464434604280139" at="13,0,41,0" name="jetbrains.mps.editorTest.MultilineCommentDelete_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/6105464434604444088">
+    <file name="MultilineCommentBackspace_Test.java">
+      <node id="6105464434604444088" at="18,43,19,25" concept="11" />
+      <node id="6105464434604444088" at="23,65,24,36" concept="2" />
+      <node id="6105464434604444088" at="29,52,30,19" concept="11" />
+      <node id="6105464434604444088" at="34,51,35,72" concept="2" />
+      <node id="6105464434604444101" at="35,72,36,72" concept="2" />
+      <node id="6105464434604444299" at="36,72,37,72" concept="2" />
+      <node id="6105464434604444088" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="6105464434604444088" at="18,0,21,0" concept="1" trace="MultilineCommentBackspace_Test#()V" />
+      <node id="6105464434604444088" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6105464434604444088" at="22,0,26,0" concept="5" trace="test_MultilineCommentBackspace#()V" />
+      <node id="6105464434604444088" at="33,0,39,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="6105464434604444088" at="18,43,19,25" />
+      <scope id="6105464434604444088" at="23,65,24,36" />
+      <scope id="6105464434604444088" at="29,52,30,19" />
+      <scope id="6105464434604444088" at="18,0,21,0" />
+      <scope id="6105464434604444088" at="29,0,32,0">
+        <var name="owner" id="6105464434604444088" />
+      </scope>
+      <scope id="6105464434604444088" at="34,51,37,72" />
+      <scope id="6105464434604444088" at="22,0,26,0" />
+      <scope id="6105464434604444088" at="33,0,39,0" />
+      <unit id="6105464434604444088" at="27,0,40,0" name="jetbrains.mps.editorTest.MultilineCommentBackspace_Test$TestBody" />
+      <unit id="6105464434604444088" at="13,0,41,0" name="jetbrains.mps.editorTest.MultilineCommentBackspace_Test" />
+    </file>
+  </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/6131265013450950732">
     <file name="RemoveSynchronized_Test.java">
       <node id="6131265013450950732" at="18,36,19,25" concept="11" />
