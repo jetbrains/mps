@@ -5551,7 +5551,7 @@
   </node>
   <node concept="LiM7Y" id="5LP$7dDfiLE">
     <property role="3GE5qa" value="emptyLine" />
-    <property role="TrG5h" value="HandleEmptyLineInsert" />
+    <property role="TrG5h" value="HandleEmptyLineInsertPress" />
     <node concept="1qefOq" id="5LP$7dDfiLF" role="25YQCW">
       <node concept="3DQ70j" id="5LP$7dDfiLG" role="1qenE9">
         <node concept="1Pa9Pv" id="5LP$7dDfiLH" role="3DQ709">
