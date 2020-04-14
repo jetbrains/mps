@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:b2a269fc-16e8-4926-b622-720f52369a9c(tooltips.generator.template.main@generator)">
+<model ref="r:34a269fc-16e8-4926-b622-720f5236945a(tooltips.generator.template.main@generator)">
   <persistence version="9" />
   <languages>
     <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="3" />
@@ -288,10 +288,10 @@
       </concept>
     </language>
   </registry>
-  <node concept="bUwia" id="6zKSYRPQ9rg">
+  <node concept="bUwia" id="6zKSYRPQ9rr">
     <property role="TrG5h" value="main" />
     <node concept="3aamgX" id="48TKAW3VfZV" role="3acgRq">
-      <ref role="30HIoZ" to="8byu:7XU1fOGp7Jz" resolve="CellModel_Tooltip" />
+      <ref role="30HIoZ" to="8byu:6XU1fOGp7Jy" resolve="CellModel_Tooltip" />
       <node concept="1Koe21" id="48TKAW3VfZW" role="1lVwrX">
         <node concept="9aQIb" id="48TKAW3VfZX" role="1Koe22">
           <node concept="3clFbS" id="48TKAW3VfZY" role="9aQI4">
@@ -331,7 +331,7 @@
   </node>
   <node concept="13MO4I" id="7XU1fOGp8aY">
     <property role="TrG5h" value="reduce_CellModel_Tooltip" />
-    <ref role="3gUMe" to="8byu:7XU1fOGp7Jz" resolve="CellModel_Tooltip" />
+    <ref role="3gUMe" to="8byu:6XU1fOGp7Jy" resolve="CellModel_Tooltip" />
     <node concept="312cEu" id="7XU1fOGpbcE" role="13RCb5">
       <property role="2bfB8j" value="true" />
       <property role="TrG5h" value="_context_class_" />
@@ -671,7 +671,7 @@
                 </node>
                 <node concept="2SmgA7" id="3nfNz8lHNjv" role="2OqNvi">
                   <node concept="chp4Y" id="_l1kFfoIsL" role="1dBWTz">
-                    <ref role="cht4Q" to="8byu:7XU1fOGp7Jz" resolve="CellModel_Tooltip" />
+                    <ref role="cht4Q" to="8byu:6XU1fOGp7Jy" resolve="CellModel_Tooltip" />
                   </node>
                 </node>
               </node>
@@ -720,7 +720,7 @@
                       <ref role="1iwH77" node="5KuTQqLiy_e" resolve="Hint" />
                       <node concept="1PxgMI" id="_l1kFfoHPR" role="1iwH7V">
                         <node concept="chp4Y" id="_l1kFfoHRS" role="3oSUPX">
-                          <ref role="cht4Q" to="8byu:7XU1fOGp7Jz" resolve="CellModel_Tooltip" />
+                          <ref role="cht4Q" to="8byu:6XU1fOGp7Jy" resolve="CellModel_Tooltip" />
                         </node>
                         <node concept="2OqwBi" id="_l1kFfoGTR" role="1m5AlR">
                           <node concept="30H73N" id="_l1kFfoGDC" role="2Oq$k0" />
@@ -764,7 +764,7 @@
               <node concept="2OqwBi" id="_l1kFfoDai" role="3uHU7B">
                 <node concept="30H73N" id="_l1kFfoCW1" role="2Oq$k0" />
                 <node concept="1BlSNk" id="_l1kFfoDqm" role="2OqNvi">
-                  <ref role="1BmUXE" to="8byu:7XU1fOGp7Jz" resolve="CellModel_Tooltip" />
+                  <ref role="1BmUXE" to="8byu:6XU1fOGp7Jy" resolve="CellModel_Tooltip" />
                   <ref role="1Bn3mz" to="8byu:3nfNz8lJLwO" resolve="tooltipCell" />
                 </node>
               </node>
@@ -825,7 +825,7 @@
                 </node>
                 <node concept="2SmgA7" id="5KuTQqLhnNF" role="2OqNvi">
                   <node concept="chp4Y" id="5KuTQqLho8U" role="1dBWTz">
-                    <ref role="cht4Q" to="8byu:7XU1fOGp7Jz" resolve="CellModel_Tooltip" />
+                    <ref role="cht4Q" to="8byu:6XU1fOGp7Jy" resolve="CellModel_Tooltip" />
                   </node>
                 </node>
               </node>
@@ -845,7 +845,7 @@
               <node concept="2OqwBi" id="7CuN9i8PWLJ" role="3uHU7B">
                 <node concept="30H73N" id="7CuN9i8PWyM" role="2Oq$k0" />
                 <node concept="1BlSNk" id="7CuN9i8PX72" role="2OqNvi">
-                  <ref role="1BmUXE" to="8byu:7XU1fOGp7Jz" resolve="CellModel_Tooltip" />
+                  <ref role="1BmUXE" to="8byu:6XU1fOGp7Jy" resolve="CellModel_Tooltip" />
                   <ref role="1Bn3mz" to="8byu:3nfNz8lJLwO" resolve="tooltipCell" />
                 </node>
               </node>
@@ -866,7 +866,7 @@
     <node concept="2rT7sh" id="5KuTQqLiy_e" role="2rTMjI">
       <property role="TrG5h" value="Hint" />
       <ref role="2rZz_L" to="tpc2:59ZEGVP3g_u" resolve="ConceptEditorHintDeclaration" />
-      <ref role="2rTdP9" to="8byu:7XU1fOGp7Jz" resolve="CellModel_Tooltip" />
+      <ref role="2rTdP9" to="8byu:6XU1fOGp7Jy" resolve="CellModel_Tooltip" />
     </node>
   </node>
   <node concept="24kQdi" id="5KuTQqLh7d9">

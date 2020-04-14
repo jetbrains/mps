@@ -91,7 +91,7 @@
           <greater-priority-mapping>
             <generator generatorUID="30def3ba-305a-4257-ac3b-6c5daacb64ac(tooltips#0361794385526429345)" />
             <external-mapping>
-              <mapping-node modelUID="r:b2a269fc-16e8-4926-b622-720f52369a9c(tooltips.generator.template.main@generator)" nodeID="7561794385526429392" />
+              <mapping-node modelUID="r:34a269fc-16e8-4926-b622-720f5236945a(tooltips.generator.template.main@generator)" nodeID="7561794385526429392" />
             </external-mapping>
           </greater-priority-mapping>
           <lesser-priority-mapping>
@@ -105,7 +105,7 @@
           <greater-priority-mapping>
             <generator generatorUID="30def3ba-305a-4257-ac3b-6c5daacb64ac(tooltips#0361794385526429345)" />
             <external-mapping>
-              <mapping-node modelUID="r:b2a269fc-16e8-4926-b622-720f52369a9c(tooltips.generator.template.main@generator)" nodeID="3462177627478823549" />
+              <mapping-node modelUID="r:34a269fc-16e8-4926-b622-720f5236945a(tooltips.generator.template.main@generator)" nodeID="3462177627478823549" />
             </external-mapping>
           </greater-priority-mapping>
           <lesser-priority-mapping>

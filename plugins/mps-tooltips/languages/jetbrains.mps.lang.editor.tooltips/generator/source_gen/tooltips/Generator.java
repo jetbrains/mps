@@ -31,7 +31,7 @@ public class Generator extends TemplateModuleInterpreted2 {
 
   @Override
   protected void fillTemplateModels(TemplateModuleInterpreted2.TemplateModels models) {
-    models.templates("r:b2a269fc-16e8-4926-b622-720f52369a9c", QueriesGenerated.class);
+    models.templates("r:34a269fc-16e8-4926-b622-720f5236945a", QueriesGenerated.class);
   }
 
   @Override
@@ -51,6 +51,6 @@ public class Generator extends TemplateModuleInterpreted2 {
 
   @Override
   public Collection<TemplateMappingPriorityRule> getPriorities() {
-    return TemplateUtil.asCollection(TemplateUtil.createStrictlyTogetherRule(TemplateUtil.createRefExternal("30def3ba-305a-4257-ac3b-6c5daacb64ac(tooltips#0361794385526429345)", TemplateUtil.createRefNormal("r:b2a269fc-16e8-4926-b622-720f52369a9c(tooltips.generator.template.main@generator)", "7561794385526429392", "main")), TemplateUtil.createRefExternal("0647eca7-da98-422a-8a8b-6ebc0bd014ea(jetbrains.mps.lang.editor#1129914002149)", TemplateUtil.createRefNormal("r:00000000-0000-4000-0000-011c8959029f(jetbrains.mps.lang.editor.generator.baseLanguage.template.main@generator)", "1096629760203", "MAPPING_main"))), TemplateUtil.createStrictlyTogetherRule(TemplateUtil.createRefExternal("30def3ba-305a-4257-ac3b-6c5daacb64ac(tooltips#0361794385526429345)", TemplateUtil.createRefNormal("r:b2a269fc-16e8-4926-b622-720f52369a9c(tooltips.generator.template.main@generator)", "3462177627478823549", "desugaring")), TemplateUtil.createRefExternal("0647eca7-da98-422a-8a8b-6ebc0bd014ea(jetbrains.mps.lang.editor#1129914002149)", TemplateUtil.createRefNormal("r:00000000-0000-4000-0000-011c8959029f(jetbrains.mps.lang.editor.generator.baseLanguage.template.main@generator)", "1198258322917", "MAPPING_Sugar"))));
+    return TemplateUtil.asCollection(TemplateUtil.createStrictlyTogetherRule(TemplateUtil.createRefExternal("30def3ba-305a-4257-ac3b-6c5daacb64ac(tooltips#0361794385526429345)", TemplateUtil.createRefNormal("r:34a269fc-16e8-4926-b622-720f5236945a(tooltips.generator.template.main@generator)", "7561794385526429392", "7561794385526429392")), TemplateUtil.createRefExternal("0647eca7-da98-422a-8a8b-6ebc0bd014ea(jetbrains.mps.lang.editor#1129914002149)", TemplateUtil.createRefNormal("r:00000000-0000-4000-0000-011c8959029f(jetbrains.mps.lang.editor.generator.baseLanguage.template.main@generator)", "1096629760203", "MAPPING_main"))), TemplateUtil.createStrictlyTogetherRule(TemplateUtil.createRefExternal("30def3ba-305a-4257-ac3b-6c5daacb64ac(tooltips#0361794385526429345)", TemplateUtil.createRefNormal("r:34a269fc-16e8-4926-b622-720f5236945a(tooltips.generator.template.main@generator)", "3462177627478823549", "desugaring")), TemplateUtil.createRefExternal("0647eca7-da98-422a-8a8b-6ebc0bd014ea(jetbrains.mps.lang.editor#1129914002149)", TemplateUtil.createRefNormal("r:00000000-0000-4000-0000-011c8959029f(jetbrains.mps.lang.editor.generator.baseLanguage.template.main@generator)", "1198258322917", "MAPPING_Sugar"))));
   }
 }
