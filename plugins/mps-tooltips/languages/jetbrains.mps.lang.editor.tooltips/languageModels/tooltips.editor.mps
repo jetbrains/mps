@@ -6,7 +6,7 @@
   </languages>
   <imports>
     <import index="tpc5" ref="r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)" />
-    <import index="bhcn" ref="r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(tooltips.structure)" implicit="true" />
+    <import index="8byu" ref="r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(tooltips.structure)" implicit="true" />
     <import index="tpen" ref="r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
@@ -97,7 +97,7 @@
     </language>
   </registry>
   <node concept="24kQdi" id="7XU1fOGp86R">
-    <ref role="1XX52x" to="bhcn:6XU1fOGp7Jy" resolve="CellModel_Tooltip" />
+    <ref role="1XX52x" to="8byu:6XU1fOGp7Jy" resolve="CellModel_Tooltip" />
     <node concept="3EZMnI" id="4aFy6Rq$F80" role="6VMZX">
       <node concept="2iRkQZ" id="4aFy6Rq$F81" role="2iSdaV" />
       <node concept="PMmxH" id="hF4Bju4" role="3EZMnx">
@@ -116,7 +116,7 @@
           </node>
           <node concept="3F0A7n" id="3h9t8Jnexs8" role="3EZMnx">
             <property role="39s7Ar" value="true" />
-            <ref role="1NtTu8" to="bhcn:4aFy6Rq$F7F" resolve="lazy" />
+            <ref role="1NtTu8" to="8byu:4aFy6Rq$F7F" resolve="lazy" />
             <node concept="VPXOz" id="3h9t8Jnexs9" role="3F10Kt">
               <property role="VOm3f" value="true" />
             </node>
@@ -134,7 +134,7 @@
     </node>
     <node concept="3EZMnI" id="4omk_tmE6UR" role="2wV5jI">
       <node concept="3F1sOY" id="4omk_tmE6US" role="3EZMnx">
-        <ref role="1NtTu8" to="bhcn:7XU1fOGp86t" resolve="visibleCell" />
+        <ref role="1NtTu8" to="8byu:7XU1fOGp86t" resolve="visibleCell" />
       </node>
       <node concept="3F0ifn" id="4omk_tmE6UT" role="3EZMnx">
         <property role="3F0ifm" value=" with tooltip " />
@@ -163,7 +163,7 @@
         </node>
       </node>
       <node concept="3F1sOY" id="3nfNz8lJQ34" role="3EZMnx">
-        <ref role="1NtTu8" to="bhcn:3nfNz8lJLwO" resolve="tooltipCell" />
+        <ref role="1NtTu8" to="8byu:3nfNz8lJLwO" resolve="tooltipCell" />
       </node>
       <node concept="2iRkQZ" id="4omk_tmE6UW" role="2iSdaV" />
       <node concept="VPXOz" id="4omk_tmE6UX" role="3F10Kt">
@@ -180,14 +180,14 @@
     </node>
   </node>
   <node concept="24kQdi" id="3nfNz8lHTdg">
-    <ref role="1XX52x" to="bhcn:3nfNz8lHNAP" resolve="AuxEditorCellWithRefToGeneratedHint" />
+    <ref role="1XX52x" to="8byu:3nfNz8lHNAP" resolve="AuxEditorCellWithRefToGeneratedHint" />
     <node concept="3EZMnI" id="3nfNz8lHTdl" role="2wV5jI">
       <node concept="2iRfu4" id="3nfNz8lHTdm" role="2iSdaV" />
       <node concept="3F0ifn" id="3nfNz8lHTdi" role="3EZMnx">
         <property role="3F0ifm" value="AUX_EDITOR_CELL with hint:" />
       </node>
       <node concept="1iCGBv" id="3nfNz8lI5CI" role="3EZMnx">
-        <ref role="1NtTu8" to="bhcn:3nfNz8lI5Cw" resolve="hint" />
+        <ref role="1NtTu8" to="8byu:3nfNz8lI5Cw" resolve="hint" />
         <node concept="1sVBvm" id="3nfNz8lI5CK" role="1sWHZn">
           <node concept="3F0A7n" id="3nfNz8lI5CS" role="2wV5jI">
             <property role="1Intyy" value="true" />
@@ -199,12 +199,12 @@
         <property role="3F0ifm" value="storing popup:" />
       </node>
       <node concept="3F1sOY" id="_l1kFfpe4m" role="3EZMnx">
-        <ref role="1NtTu8" to="bhcn:_l1kFfpdLz" resolve="tooltip" />
+        <ref role="1NtTu8" to="8byu:_l1kFfpdLz" resolve="tooltip" />
       </node>
     </node>
   </node>
   <node concept="22mcaB" id="nRWmC31yIw">
-    <ref role="aqKnT" to="bhcn:3nfNz8lHNAP" resolve="AuxEditorCellWithRefToGeneratedHint" />
+    <ref role="aqKnT" to="8byu:3nfNz8lHNAP" resolve="AuxEditorCellWithRefToGeneratedHint" />
     <node concept="22hDWj" id="6RCvqEo4RqC" role="22hAXT" />
   </node>
 </model>

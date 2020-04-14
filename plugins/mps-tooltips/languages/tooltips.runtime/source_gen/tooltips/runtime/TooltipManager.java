@@ -19,7 +19,7 @@ import java.awt.Point;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 
 public class TooltipManager {
-  private static final String RADAR_HINT = "tooltips.editor.tooltips.radar";
+  private static final String RADAR_HINT = "editor.tooltips.radar";
 
   private final EditorComponent myEditorComponent;
   @Nullable
