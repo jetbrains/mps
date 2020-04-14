@@ -42,9 +42,9 @@ public class DiffChangeGroupLayout extends ChangeGroupLayout {
   public DiffChangeGroupLayout(@Nullable ChangeEditorMessage.ConflictChecker conflictChecker, SRepository repoWithChanges, @NotNull ChangeSet changeSet, @NotNull DiffEditor leftEditor, @NotNull DiffEditor rightEditor, SplitterRepainter splitterRepainter, boolean inspector) {
     super(conflictChecker, inspector, false);
     myLeftEditor = leftEditor;
-    myLeftEditor.setChangeGroupLayout(this, inspector);
+    myLeftEditor.setRightChangeGroupLayout(this, inspector);
     myRightEditor = rightEditor;
-    myRightEditor.setChangeGroupLayout(this, inspector);
+    myRightEditor.setLeftChangeGroupLayout(this, inspector);
     myChangeSet = changeSet;
     myRepoWithChanges = repoWithChanges;
     mySplitterRepainter = splitterRepainter;
