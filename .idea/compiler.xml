@@ -560,9 +560,9 @@
       <directory url="file://$PROJECT_DIR$/samples/stateChart/languages/jetbrains.mps.samples.StateChart/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/stateChart/languages/jetbrains.mps.samples.StateChart/sandbox/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/stateChart/languages/jetbrains.mps.samples.StateChart/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/samples/tooltips.example/generator/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/samples/tooltips.example/sandbox/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/samples/tooltips.example/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/tooltips/tooltips.example/generator/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/tooltips/tooltips.example/sandbox/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/tooltips/tooltips.example/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/xmlLiterals/languages/xmlLiterals/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/xmlLiterals/languages/xmlLiterals/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/xmlLiterals/solutions/jetbrains.mps.samples.xmlLiterals.sandbox/source_gen" includeSubdirectories="true" />
