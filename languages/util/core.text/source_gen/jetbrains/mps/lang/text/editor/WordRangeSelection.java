@@ -24,6 +24,8 @@ import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
+import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
+import jetbrains.mps.lang.text.behavior.TextElement__BehaviorDescriptor;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -180,10 +182,17 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     if (type == CellActionType.BACKSPACE || type == CellActionType.DELETE) {
       performDeleteAction(type);
       return;
+    } else if (type == CellActionType.COPY) {
+      CopyPasteUtil.copyNodesAndTextToClipboard(getSelectedNodes(), null, buildTextFromSelectedCells());
+      return;
     } else if (type == CellActionType.CUT) {
       SNode prevSelectableNode = getNextSelectableNode(myFirstNode, false);
       SNode nextSelectableNode = getNextSelectableNode(myLastNode, true);
-      super.executeAction(type);
+
+      CopyPasteUtil.copyNodesAndTextToClipboard(getSelectedNodes(), null, buildTextFromSelectedCells());
+      for (SNode n : getSelectedNodes()) {
+        SNodeOperations.deleteNode(n);
+      }
       removeEmptyLines();
       if (selectNode(prevSelectableNode, false) || selectNode(nextSelectableNode, true)) {
         return;
@@ -201,6 +210,23 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     super.executeAction(type);
   }
 
+  private String buildTextFromSelectedCells() {
+    StringBuilder builder = new StringBuilder("");
+    SNode current = myFirstNode;
+    while (true) {
+      builder.append(TextElement__BehaviorDescriptor.getTextualRepresentation_idfB3l81it7u.invoke(current));
+      if (current == myLastNode) {
+        break;
+      }
+      if ((SNodeOperations.getNextSibling(current) == null)) {
+        builder.append("\n");
+      } else {
+        builder.append(" ");
+      }
+      current = getNextSelectableNode(current, true);
+    }
+    return builder.toString();
+  }
   private void selectRight(final EditorContext editorContext, final SelectionManager selectionManager) {
     editorContext.getRepository().getModelAccess().executeCommand(new EditorCommand(editorContext) {
       @Override

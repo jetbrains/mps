@@ -107,9 +107,7 @@ public class SNodeTransferable implements Transferable {
     return myText;
   }
   private void saveNodes(@NotNull List<SNode> nodes, @Nullable Map<SNode, Set<SNode>> nodesAndAttributes) {
-    for (SNode node : nodes) {
-      assert node.getParent() == nodes.get(0).getParent();
-    }
+    // TODO remove the check if there's no indication that this constraint is really needed for the class to work. ATM it doesn't seem it needs the assertion at all. 
     assert mySNodes.isEmpty();
     PasteNodeData pasteNodeData = CopyPasteUtil.createNodeDataIn(nodes, nodesAndAttributes);
     mySNodes.addAll(pasteNodeData.getNodes());
