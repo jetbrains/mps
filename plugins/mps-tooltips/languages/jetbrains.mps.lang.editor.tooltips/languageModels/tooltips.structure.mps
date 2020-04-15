@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:b764cfb6-903f-41e9-95dc-ea24a6097dec(tooltips.structure)">
+<model ref="r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(tooltips.structure)">
   <persistence version="9" />
   <languages>
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
@@ -44,10 +44,10 @@
       </concept>
     </language>
   </registry>
-  <node concept="1TIwiD" id="7XU1fOGp7Jz">
+  <node concept="1TIwiD" id="6XU1fOGp7Jy">
     <property role="TrG5h" value="CellModel_Tooltip" />
     <property role="34LRSv" value="tooltip" />
-    <property role="EcuMT" value="9185659875393567715" />
+    <property role="EcuMT" value="1285659875393567816" />
     <ref role="1TJDcQ" to="tpc2:fBEYTCT" resolve="EditorCellModel" />
     <node concept="1TJgyi" id="4aFy6Rq$F7F" role="1TKVEl">
       <property role="IQ2nx" value="4804083432920625643" />

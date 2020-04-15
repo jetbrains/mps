@@ -15,7 +15,7 @@ public final class LanguageConceptSwitch {
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L);
     builder.put(0x35cfce3215b739b5L, AuxEditorCellWithRefToGeneratedHint);
-    builder.put(0x7f7a04fd2c647be3L, CellModel_Tooltip);
+    builder.put(0x11d794d84ece7c48L, CellModel_Tooltip);
     myIndex = builder.seal();
   }
 

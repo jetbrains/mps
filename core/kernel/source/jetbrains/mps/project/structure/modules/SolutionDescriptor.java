@@ -15,11 +15,9 @@
  */
 package jetbrains.mps.project.structure.modules;
 
-import jetbrains.mps.project.facets.JavaLanguageLevel;
 import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 
@@ -29,8 +27,6 @@ public class SolutionDescriptor extends ModuleDescriptor {
   private boolean myCompileInMPS = true;
   private boolean myRequestCompileIDEA = false;
   private boolean myReadOnlyStubModule = false;
-  @Nullable
-  private JavaLanguageLevel myJavaLanguageLevel = null;
 
   public final String getOutputPath() {
     return myOutputPath;
@@ -58,12 +54,6 @@ public class SolutionDescriptor extends ModuleDescriptor {
     return myRequestCompileIDEA;
   }
 
-  @Override
-  @Nullable
-  public JavaLanguageLevel getJavaLanguageLevel() {
-    return myJavaLanguageLevel;
-  }
-
   public boolean isReadOnlyStubModule() {
     return myReadOnlyStubModule;
   }
@@ -75,10 +65,6 @@ public class SolutionDescriptor extends ModuleDescriptor {
 
   public final void setCompileInMPS(boolean compileInMPS) {
     myCompileInMPS = compileInMPS;
-  }
-
-  public final void setJavaLanguageLevel(@Nullable JavaLanguageLevel level) {
-    myJavaLanguageLevel = level;
   }
 
   /**
@@ -101,7 +87,6 @@ public class SolutionDescriptor extends ModuleDescriptor {
     stream.writeString(myKind.name());
     stream.writeBoolean(myCompileInMPS);
     stream.writeBoolean(myRequestCompileIDEA);
-    stream.writeString(myJavaLanguageLevel == null ? "" : myJavaLanguageLevel.name());
   }
 
   @Override
@@ -111,8 +96,6 @@ public class SolutionDescriptor extends ModuleDescriptor {
     myKind = SolutionKind.valueOf(stream.readString());
     myCompileInMPS = stream.readBoolean();
     myRequestCompileIDEA = stream.readBoolean();
-    String languageLevel = stream.readString();
-    myJavaLanguageLevel = languageLevel.isEmpty() ? null : JavaLanguageLevel.valueOf(languageLevel);
   }
 
   @Override
@@ -122,7 +105,6 @@ public class SolutionDescriptor extends ModuleDescriptor {
     copy.setKind(getKind());
     copy.setCompileInMPS(getCompileInMPS());
     copy.setNeedsExternalIdeaCompile(needsExternalIdeaCompile());
-    copy.setJavaLanguageLevel(getJavaLanguageLevel());
     copy.setOutputPath(getOutputPath());
     return copy;
   }

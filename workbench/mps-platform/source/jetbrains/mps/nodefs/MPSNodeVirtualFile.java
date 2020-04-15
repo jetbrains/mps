@@ -17,6 +17,7 @@ package jetbrains.mps.nodefs;
 
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileSystem;
+import com.intellij.testFramework.LightVirtualFileBase;
 import com.intellij.util.LocalTimeCounter;
 import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.smodel.ModelAccessHelper;
@@ -32,7 +33,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public final class MPSNodeVirtualFile extends VirtualFile {
+public final class MPSNodeVirtualFile extends LightVirtualFileBase {
   private static final byte[] CONTENTS = new byte[0];
   private static final Logger LOG = LogManager.getLogger(MPSNodeVirtualFile.class);
   static final String NODE_PREFIX = "node://";
@@ -46,9 +47,9 @@ public final class MPSNodeVirtualFile extends VirtualFile {
   private String myPresentationName;
   private long myModificationStamp = LocalTimeCounter.currentTime();
   private long myTimeStamp = -1;
-  private boolean myValid = true;
 
   MPSNodeVirtualFile(@NotNull SNodeReference nodePointer, @NotNull RepositoryVirtualFiles vfs) {
+    super("", null, 0);
     myNode = nodePointer;
     myRepoFiles = vfs;
     updateFields();
@@ -122,16 +123,6 @@ public final class MPSNodeVirtualFile extends VirtualFile {
   }
 
   @Override
-  public boolean isDirectory() {
-    return false;
-  }
-
-  @Override
-  public long getLength() {
-    return 0;
-  }
-
-  @Override
   public InputStream getInputStream() {
     throw new UnsupportedOperationException();
   }
@@ -155,11 +146,11 @@ public final class MPSNodeVirtualFile extends VirtualFile {
     // i.e. a real directory wherein the model file lives
     // Needed for idea scope to work (see PsiSearchScopeUtil.isInScope)
     // but why it's not MPSModelVirtualFile that serves as parent for node VF?
-    if (!myValid || myNode.getModelReference() == null) {
+    if (!isValid() || myNode.getModelReference() == null) {
       return null;
     }
     return new ModelAccessHelper(myRepoFiles.getRepository()).runReadAction(() -> {
-      if (!myValid) {
+      if (!isValid()) {
         // wow! this double check is needed even with the fact, that read action is run in the same thread
         // i.e. getParent() and this runnable are in the same thread
         // But! idea waits for the current write action to complete before proceeding to the read action
@@ -181,42 +172,27 @@ public final class MPSNodeVirtualFile extends VirtualFile {
   }
 
   @Override
-  public VirtualFile[] getChildren() {
-    return null;
-  }
-
-  @Override
   public void refresh(boolean asynchronous, boolean recursive, Runnable postRunnable) {
     if (postRunnable != null) {
       postRunnable.run();
     }
   }
 
-  @Override
-  public boolean isWritable() {
-    return true;
-  }
-
-  @Override
-  public boolean isValid() {
-    return myValid;
-  }
-
   /*package*/ void invalidate() {
-    if (!myValid) {
+    if (!isValid()) {
       // With proper fix of https://youtrack.jetbrains.com/issue/MPS-24244 (shared VFS notifier instance), shall not happen,
       // nevertheless, doesn't hurt to be alert.
       LOG.error("Attempt to invalidate already disposed file", new Throwable());
       return;
     }
     myRepoFiles.forgetVirtualFile(myNode);
-    myValid = false;
+    setValid(false);
   }
 
   public void revalidate() {
-    assert !myValid;
+    assert !isValid();
     myRepoFiles.remindVirtualFile(myNode, this);
-    myValid = true;
+    setValid(true);
   }
 
   // XXX what's the contract of the method???

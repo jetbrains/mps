@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="00000000-0000-4000-5f02-5beb5f025beb/i:f164800(checkpoints/tooltips.structure@descriptorclasses)">
+<model ref="00000000-0000-4000-5f02-5beb5f025beb/i:fd64901(checkpoints/tooltips.structure@descriptorclasses)">
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
   <languages />
   <imports>
-    <import index="bhcn" ref="r:b764cfb6-903f-41e9-95dc-ea24a6097dec(tooltips.structure)" />
+    <import index="8byu" ref="r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(tooltips.structure)" />
     <import index="ksn4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
@@ -379,13 +379,13 @@
                           <property role="Xl_RC" value="tooltip" />
                           <node concept="cd27G" id="1l" role="lGtFl">
                             <node concept="3u3nmq" id="1m" role="cd27D">
-                              <property role="3u3nmv" value="9185659875393567715" />
+                              <property role="3u3nmv" value="8032738370786720738" />
                             </node>
                           </node>
                         </node>
                         <node concept="cd27G" id="1k" role="lGtFl">
                           <node concept="3u3nmq" id="1n" role="cd27D">
-                            <property role="3u3nmv" value="9185659875393567715" />
+                            <property role="3u3nmv" value="8032738370786720738" />
                           </node>
                         </node>
                       </node>
@@ -544,7 +544,7 @@
             <node concept="liA8E" id="2f" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
               <node concept="1adDum" id="2g" role="37wK5m">
-                <property role="1adDun" value="0x7f7a04fd2c647be3L" />
+                <property role="1adDun" value="0x11d794d84ece7c48L" />
               </node>
               <node concept="37vLTw" id="2h" role="37wK5m">
                 <ref role="3cqZAo" node="1F" resolve="CellModel_Tooltip" />
@@ -943,7 +943,7 @@
             <node concept="liA8E" id="4J" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.origin(java.lang.String)" resolve="origin" />
               <node concept="Xl_RD" id="4K" role="37wK5m">
-                <property role="Xl_RC" value="r:b764cfb6-903f-41e9-95dc-ea24a6097dec(tooltips.structure)/3877544518697302453" />
+                <property role="Xl_RC" value="r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(tooltips.structure)/3877544518697302453" />
               </node>
             </node>
           </node>
@@ -1119,7 +1119,7 @@
                   <property role="1adDun" value="0xbf2acebab35cf533L" />
                 </node>
                 <node concept="1adDum" id="5R" role="37wK5m">
-                  <property role="1adDun" value="0x7f7a04fd2c647be3L" />
+                  <property role="1adDun" value="0x11d794d84ece7c48L" />
                 </node>
               </node>
             </node>
@@ -1168,7 +1168,7 @@
             <node concept="liA8E" id="67" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.origin(java.lang.String)" resolve="origin" />
               <node concept="Xl_RD" id="68" role="37wK5m">
-                <property role="Xl_RC" value="r:b764cfb6-903f-41e9-95dc-ea24a6097dec(tooltips.structure)/9185659875393567715" />
+                <property role="Xl_RC" value="r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(tooltips.structure)/8032738370786720738" />
               </node>
             </node>
           </node>

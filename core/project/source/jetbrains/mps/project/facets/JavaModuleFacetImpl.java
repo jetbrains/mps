@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,10 +47,15 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   // has to be piped though MacroHelper to get expanded/shrunken
   private static final String PATH_KEY = "path";
 
+  private static final String JAVA_LANGUAGE_LEVEL = "languageLevel";
+
   // XXX perhaps, shall keep String and translate to IFile the moment asked. However, feel right to use IFile (well, *not String*) for FS locations
   //     and shall rather deal with String uses for files in MD. Uses of the value suggest we can use java.io.File (this is a location we
   //     unlikely need IDEA VFS services for)
   private IFile myGeneratedClassesLocation = null;
+
+  @Nullable
+  private JavaLanguageLevel myJavaLanguageLevel = null;
 
   public JavaModuleFacetImpl() {
     super(FACET_TYPE);
@@ -65,13 +70,14 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
 
   @Override
   public JavaLanguageLevel getLanguageLevel() {
-    AbstractModule module = getModule();
-    ModuleDescriptor descriptor = module.getModuleDescriptor();
-    JavaLanguageLevel level = descriptor == null ? null : descriptor.getJavaLanguageLevel();
-    if (level != null) {
-      return level;
+    if (myJavaLanguageLevel != null) {
+      return myJavaLanguageLevel;
     }
     return JavaLanguageLevel.getDefault(isCompileInMps());
+  }
+
+  public void setLanguageLevel(@Nullable JavaLanguageLevel level) {
+    myJavaLanguageLevel = level;
   }
 
   @NotNull
@@ -177,6 +183,9 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   @Override
   public void save(Memento memento) {
     super.save(memento);
+    if (myJavaLanguageLevel != null) {
+      memento.put(JAVA_LANGUAGE_LEVEL, myJavaLanguageLevel.name());
+    }
     // FIXME On one hand, it looks stupid to account for existing values in the memento, a lot of ugly code
     //       on the other, we might not want to save each and every setting inside an instance field.
     //       Check FileBasedModelRoot.save(), which doesn't account for existing values; the way it's invoked (with clear memento in AM.save())
@@ -198,6 +207,11 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   @Override
   public void load(Memento memento) {
     super.load(memento);
+    String languageLevel = memento.get(JAVA_LANGUAGE_LEVEL);
+    if (languageLevel != null && languageLevel.length() > 0) {
+      myJavaLanguageLevel = JavaLanguageLevel.valueOf(languageLevel);
+    }
+
     if (isAtDeployedModule()) {
       // XXX generally, deployed modules shall have different JMF implementation; for the time being we share the one and
       //     have to respect deployed module scenario here by ignoring classes_gen, even if explicitly specified in source MD

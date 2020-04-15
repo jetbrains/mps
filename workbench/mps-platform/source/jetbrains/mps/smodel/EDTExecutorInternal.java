@@ -49,14 +49,14 @@ import java.util.concurrent.locks.ReentrantLock;
 import static jetbrains.mps.smodel.EDTExecutor.MAX_SINGLE_EXECUTION_TIME_MS;
 
 /**
+ * FIXME TO be replaced with single threaded executor
+ *
  * Manages the tasks queue; allowing concurrently to add new tasks and flushing the old ones.
  *
  * 1. Tasks might come from various threads, they are added to the *tasks queue*
  * 2. Every time the task is the first one in the queue the #flush is initiated.
  * 3. The flush procedure is executed asynchronously on the EDT (via the {@link TransactionGuard#submitTransactionLater(Disposable, Runnable)})
  * Property: The order of execution is equal to the order of tasks' scheduling
- *
- * fixme this is horrifying: who writes like this?? rewrite
  *
  * @author apyshkin
  */
@@ -193,9 +193,14 @@ final class EDTExecutorInternal implements Disposable {
   @NotNull
   private Runnable guaranteeWriteSafetyViaHack(@NotNull TransactionGuardImpl guard) {
     return () -> guard.wrapLaterInvocation(() -> {
-      ThreadUtils.assertEDT();
-      guard.assertWriteActionAllowed();
-      flushTasksQueue();
+      try {
+        ThreadUtils.assertEDT();
+        guard.assertWriteActionAllowed();
+        flushTasksQueue();
+      } catch (Throwable t) {
+        LOG.error("Problems when flushing the queue", t);
+        scheduleFlushInEDT();
+      }
     }, ModalityState.NON_MODAL).run();
   }
 
@@ -285,6 +290,7 @@ final class EDTExecutorInternal implements Disposable {
       return false;
     }
     boolean taskPassed = true;
+    boolean taskFailedWithError = false;
     try {
       taskPassed = task.tryRun();
       if (!taskPassed) {
@@ -292,10 +298,11 @@ final class EDTExecutorInternal implements Disposable {
       }
     } catch (TaskIsOutdated ex) {
       LOG.warn(ex.getMessage());
-    } catch (Exception e) {
+    } catch (LinkageError | AssertionError | RuntimeException e) {
       LOG.error("run in EDT failure", e);
+      taskFailedWithError = true;
     } finally {
-      if (taskPassed) {
+      if (taskPassed || taskFailedWithError) {
         LOG.trace("removing the task");
         try (CloseableLock ignored = myLock.lock()) {
           boolean theSame = (task == myTaskQueue.remove());

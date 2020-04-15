@@ -284,6 +284,89 @@
       <unit id="5097407566121847268" at="13,0,41,0" name="jetbrains.mps.lang.editor.selection.test.RootEndWithLineSelectionFromLastCell_Test" />
     </file>
   </root>
+  <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/5179438687247668594">
+    <file name="CancelSelection_MoveRight_Test.java">
+      <node id="5179438687247668594" at="18,43,19,25" concept="4" />
+      <node id="5179438687247668594" at="23,65,24,36" concept="1" />
+      <node id="5179438687247668594" at="29,52,30,19" concept="4" />
+      <node id="5179438687247668594" at="34,51,35,72" concept="1" />
+      <node id="5179438687247668596" at="35,72,36,71" concept="1" />
+      <node id="5179438687247668598" at="36,71,37,72" concept="1" />
+      <node id="5179438687247668594" at="15,0,17,0" concept="3" trace="ourParamCache" />
+      <node id="5179438687247668594" at="18,0,21,0" concept="0" trace="CancelSelection_MoveRight_Test#()V" />
+      <node id="5179438687247668594" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="5179438687247668594" at="22,0,26,0" concept="2" trace="test_CancelSelection_MoveRight#()V" />
+      <node id="5179438687247668594" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="5179438687247668594" at="18,43,19,25" />
+      <scope id="5179438687247668594" at="23,65,24,36" />
+      <scope id="5179438687247668594" at="29,52,30,19" />
+      <scope id="5179438687247668594" at="18,0,21,0" />
+      <scope id="5179438687247668594" at="29,0,32,0">
+        <var name="owner" id="5179438687247668594" />
+      </scope>
+      <scope id="5179438687247668594" at="34,51,37,72" />
+      <scope id="5179438687247668594" at="22,0,26,0" />
+      <scope id="5179438687247668594" at="33,0,39,0" />
+      <unit id="5179438687247668594" at="27,0,40,0" name="jetbrains.mps.lang.editor.selection.test.CancelSelection_MoveRight_Test$TestBody" />
+      <unit id="5179438687247668594" at="13,0,41,0" name="jetbrains.mps.lang.editor.selection.test.CancelSelection_MoveRight_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/5179438687247685380">
+    <file name="CancelSelection_MoveLeft2_Test.java">
+      <node id="5179438687247685380" at="18,43,19,25" concept="4" />
+      <node id="5179438687247685380" at="23,65,24,36" concept="1" />
+      <node id="5179438687247685380" at="29,52,30,19" concept="4" />
+      <node id="5179438687247685380" at="34,51,35,72" concept="1" />
+      <node id="5179438687247685382" at="35,72,36,73" concept="1" />
+      <node id="5179438687247695421" at="36,73,37,73" concept="1" />
+      <node id="5179438687247700089" at="37,73,38,71" concept="1" />
+      <node id="5179438687247685380" at="15,0,17,0" concept="3" trace="ourParamCache" />
+      <node id="5179438687247685380" at="18,0,21,0" concept="0" trace="CancelSelection_MoveLeft2_Test#()V" />
+      <node id="5179438687247685380" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="5179438687247685380" at="22,0,26,0" concept="2" trace="test_CancelSelection_MoveLeft2#()V" />
+      <node id="5179438687247685380" at="33,0,40,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="5179438687247685380" at="18,43,19,25" />
+      <scope id="5179438687247685380" at="23,65,24,36" />
+      <scope id="5179438687247685380" at="29,52,30,19" />
+      <scope id="5179438687247685380" at="18,0,21,0" />
+      <scope id="5179438687247685380" at="29,0,32,0">
+        <var name="owner" id="5179438687247685380" />
+      </scope>
+      <scope id="5179438687247685380" at="22,0,26,0" />
+      <scope id="5179438687247685380" at="34,51,38,71" />
+      <scope id="5179438687247685380" at="33,0,40,0" />
+      <unit id="5179438687247685380" at="27,0,41,0" name="jetbrains.mps.lang.editor.selection.test.CancelSelection_MoveLeft2_Test$TestBody" />
+      <unit id="5179438687247685380" at="13,0,42,0" name="jetbrains.mps.lang.editor.selection.test.CancelSelection_MoveLeft2_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/5179438687247704323">
+    <file name="CancelSelection_MoveRight2_Test.java">
+      <node id="5179438687247704323" at="18,44,19,25" concept="4" />
+      <node id="5179438687247704323" at="23,66,24,36" concept="1" />
+      <node id="5179438687247704323" at="29,52,30,19" concept="4" />
+      <node id="5179438687247704323" at="34,51,35,72" concept="1" />
+      <node id="5179438687247704325" at="35,72,36,73" concept="1" />
+      <node id="5179438687247705416" at="36,73,37,73" concept="1" />
+      <node id="5179438687247704327" at="37,73,38,72" concept="1" />
+      <node id="5179438687247704323" at="15,0,17,0" concept="3" trace="ourParamCache" />
+      <node id="5179438687247704323" at="18,0,21,0" concept="0" trace="CancelSelection_MoveRight2_Test#()V" />
+      <node id="5179438687247704323" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="5179438687247704323" at="22,0,26,0" concept="2" trace="test_CancelSelection_MoveRight2#()V" />
+      <node id="5179438687247704323" at="33,0,40,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="5179438687247704323" at="18,44,19,25" />
+      <scope id="5179438687247704323" at="23,66,24,36" />
+      <scope id="5179438687247704323" at="29,52,30,19" />
+      <scope id="5179438687247704323" at="18,0,21,0" />
+      <scope id="5179438687247704323" at="29,0,32,0">
+        <var name="owner" id="5179438687247704323" />
+      </scope>
+      <scope id="5179438687247704323" at="22,0,26,0" />
+      <scope id="5179438687247704323" at="34,51,38,72" />
+      <scope id="5179438687247704323" at="33,0,40,0" />
+      <unit id="5179438687247704323" at="27,0,41,0" name="jetbrains.mps.lang.editor.selection.test.CancelSelection_MoveRight2_Test$TestBody" />
+      <unit id="5179438687247704323" at="13,0,42,0" name="jetbrains.mps.lang.editor.selection.test.CancelSelection_MoveRight2_Test" />
+    </file>
+  </root>
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/5476958923832861246">
     <file name="SelectUpWithNodeRangeSelection_Test.java">
       <node id="5476958923832861246" at="18,48,19,25" concept="4" />
@@ -417,6 +500,33 @@
       <scope id="7023440913657702620" at="35,0,41,0" />
       <unit id="7023440913657702620" at="29,0,42,0" name="jetbrains.mps.lang.editor.selection.test.GoToReference_Test$TestBody" />
       <unit id="7023440913657702620" at="15,0,43,0" name="jetbrains.mps.lang.editor.selection.test.GoToReference_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/7288415095416316620">
+    <file name="CancelSelection_MoveLeft_Test.java">
+      <node id="7288415095416316620" at="18,42,19,25" concept="4" />
+      <node id="7288415095416316620" at="23,64,24,36" concept="1" />
+      <node id="7288415095416316620" at="29,52,30,19" concept="4" />
+      <node id="7288415095416316620" at="34,51,35,72" concept="1" />
+      <node id="7288415095416348799" at="35,72,36,71" concept="1" />
+      <node id="7288415095416359400" at="36,71,37,71" concept="1" />
+      <node id="7288415095416316620" at="15,0,17,0" concept="3" trace="ourParamCache" />
+      <node id="7288415095416316620" at="18,0,21,0" concept="0" trace="CancelSelection_MoveLeft_Test#()V" />
+      <node id="7288415095416316620" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="7288415095416316620" at="22,0,26,0" concept="2" trace="test_CancelSelection_MoveLeft#()V" />
+      <node id="7288415095416316620" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="7288415095416316620" at="18,42,19,25" />
+      <scope id="7288415095416316620" at="23,64,24,36" />
+      <scope id="7288415095416316620" at="29,52,30,19" />
+      <scope id="7288415095416316620" at="18,0,21,0" />
+      <scope id="7288415095416316620" at="29,0,32,0">
+        <var name="owner" id="7288415095416316620" />
+      </scope>
+      <scope id="7288415095416316620" at="34,51,37,71" />
+      <scope id="7288415095416316620" at="22,0,26,0" />
+      <scope id="7288415095416316620" at="33,0,39,0" />
+      <unit id="7288415095416316620" at="27,0,40,0" name="jetbrains.mps.lang.editor.selection.test.CancelSelection_MoveLeft_Test$TestBody" />
+      <unit id="7288415095416316620" at="13,0,41,0" name="jetbrains.mps.lang.editor.selection.test.CancelSelection_MoveLeft_Test" />
     </file>
   </root>
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/7627714699894335141">

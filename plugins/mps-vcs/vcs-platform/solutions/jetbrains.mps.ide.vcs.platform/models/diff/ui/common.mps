@@ -5718,6 +5718,7 @@
       <property role="2bfB8j" value="true" />
       <node concept="3clFb_" id="42hl10VHaeO" role="jymVt">
         <property role="TrG5h" value="isChangeConflicted" />
+        <property role="1EzhhJ" value="false" />
         <node concept="3Tm1VV" id="42hl10VHaeQ" role="1B3o_S" />
         <node concept="3clFbS" id="42hl10VHaeR" role="3clF47" />
         <node concept="10P_77" id="42hl10VHaeP" role="3clF45" />
@@ -6245,7 +6246,6 @@
     </node>
     <node concept="3clFb_" id="42hl10VHaiB" role="jymVt">
       <property role="TrG5h" value="calculateChangeGroups" />
-      <node concept="3Tmbuc" id="2R19yH3UcCO" role="1B3o_S" />
       <node concept="3cqZAl" id="42hl10VHaiC" role="3clF45" />
       <node concept="3clFbS" id="42hl10VHaiE" role="3clF47">
         <node concept="3cpWs8" id="42hl10VHaiF" role="3cqZAp">
@@ -6841,6 +6841,7 @@
           </node>
         </node>
       </node>
+      <node concept="3Tmbuc" id="2R19yH3UcCO" role="1B3o_S" />
     </node>
     <node concept="3clFb_" id="42hl10VHamL" role="jymVt">
       <property role="TrG5h" value="addInvalidateListener" />
@@ -7349,6 +7350,7 @@
     <property role="TrG5h" value="ChangeGroupInvalidateListener" />
     <node concept="3clFb_" id="42hl10VHapH" role="jymVt">
       <property role="TrG5h" value="changeGroupsInvalidated" />
+      <property role="1EzhhJ" value="false" />
       <node concept="3clFbS" id="42hl10VHapK" role="3clF47" />
       <node concept="3cqZAl" id="42hl10VHapI" role="3clF45" />
       <node concept="3Tm1VV" id="42hl10VHapJ" role="1B3o_S" />

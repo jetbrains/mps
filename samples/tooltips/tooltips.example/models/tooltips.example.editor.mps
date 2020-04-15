@@ -6,8 +6,8 @@
     <use id="b1ab8c10-c118-4755-bf2a-cebab35cf533" name="tooltips" version="0" />
   </languages>
   <imports>
-    <import index="bhcn" ref="r:b764cfb6-903f-41e9-95dc-ea24a6097dec(tooltips.structure)" />
-    <import index="g4nc" ref="r:ccc912a6-16e8-466b-b48a-0e82310c4cc7(tooltips.editor)" />
+    <import index="bhcn" ref="r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(tooltips.structure)" />
+    <import index="g4nc" ref="r:eed912a6-16e8-466b-b48a-0e82310c46dd(tooltips.editor)" />
     <import index="vbi9" ref="b1ab8c10-c118-4755-bf2a-cebab35cf533/i:f010101(tooltips/tooltips@descriptor)" />
     <import index="8psh" ref="r:785fbfdf-4d16-46ea-8112-f67d04b451d9(tooltips.example.structure)" implicit="true" />
   </imports>
@@ -39,7 +39,7 @@
       </concept>
     </language>
     <language id="b1ab8c10-c118-4755-bf2a-cebab35cf533" name="tooltips">
-      <concept id="9185659875393567715" name="tooltips.structure.CellModel_Tooltip" flags="ng" index="1j7BWu">
+      <concept id="1285659875393567816" name="tooltips.structure.CellModel_Tooltip" flags="ng" index="1j7BWu">
         <property id="4804083432920625643" name="lazy" index="2oejA6" />
         <child id="3877544518697818164" name="tooltipCell" index="wsdo6" />
         <child id="9185659875393569181" name="visibleCell" index="1j7Clw" />

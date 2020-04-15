@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="jetbrains.mps.baseLanguage.search" uuid="a0c108f0-1637-416e-a249-3effbaa4c998" moduleVersion="0" pluginKind="PLUGIN_CORE" compileInMPS="false" javaLanguageLevel="JAVA_7">
+<solution name="jetbrains.mps.baseLanguage.search" uuid="a0c108f0-1637-416e-a249-3effbaa4c998" moduleVersion="0" pluginKind="PLUGIN_CORE" compileInMPS="false">
   <compileInIDEA />
   <models>
     <modelRoot contentPath="${module}" type="default">
@@ -8,7 +8,7 @@
   </models>
   <facets>
     <facet pluginId="com.intellij" type="ideaPlugin" />
-    <facet type="java">
+    <facet type="java" languageLevel="JAVA_7">
       <classes generated="true" />
     </facet>
   </facets>

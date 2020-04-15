@@ -113,7 +113,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.lazy$Z9Fv;
+      final SProperty property = PROPS.lazy$eRaS;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("");
@@ -149,7 +149,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty lazy$Z9Fv = MetaAdapterFactory.getProperty(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x7f7a04fd2c647be3L, 0x42ab886dda92b1ebL, "lazy");
+    /*package*/ static final SProperty lazy$eRaS = MetaAdapterFactory.getProperty(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x11d794d84ece7c48L, 0x42ab886dda92b1ebL, "lazy");
   }
 
   private static final class CONCEPTS {

@@ -24,7 +24,7 @@ public class AuxEditorCellWithRefToGeneratedHint_SubstituteMenu extends Substitu
   @Override
   public List<SubstituteMenuItem> createMenuItems(@NotNull SubstituteMenuContext context) {
     context.getEditorMenuTrace().pushTraceInfo();
-    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default substitute menu for " + "AuxEditorCellWithRefToGeneratedHint", new SNodePointer("r:ccc912a6-16e8-466b-b48a-0e82310c4cc7(tooltips.editor)", "430077727056735136")));
+    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default substitute menu for " + "AuxEditorCellWithRefToGeneratedHint", new SNodePointer("r:eed912a6-16e8-466b-b48a-0e82310c46dd(tooltips.editor)", "430077727056735136")));
     try {
       return super.createMenuItems(context);
     } finally {

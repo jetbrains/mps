@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:0d0e1bda-6b96-4b22-8d38-0412cf6a66ac(tooltips.behavior)">
+<model ref="r:3a3e1bda-6b96-4b22-8d38-0412cf6a63dc(tooltips.behavior)">
   <persistence version="9" />
   <languages>
     <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
   </languages>
   <imports>
-    <import index="bhcn" ref="r:b764cfb6-903f-41e9-95dc-ea24a6097dec(tooltips.structure)" />
+    <import index="bhcn" ref="r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(tooltips.structure)" />
   </imports>
   <registry>
     <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
@@ -47,7 +47,7 @@
     </language>
   </registry>
   <node concept="13h7C7" id="1a$Yn_2R4C7">
-    <ref role="13h7C2" to="bhcn:7XU1fOGp7Jz" resolve="CellModel_Tooltip" />
+    <ref role="13h7C2" to="bhcn:6XU1fOGp7Jy" resolve="CellModel_Tooltip" />
     <node concept="13hLZK" id="1a$Yn_2R4C8" role="13h7CW">
       <node concept="3clFbS" id="1a$Yn_2R4C9" role="2VODD2">
         <node concept="3clFbF" id="1a$Yn_2RBYL" role="3cqZAp">

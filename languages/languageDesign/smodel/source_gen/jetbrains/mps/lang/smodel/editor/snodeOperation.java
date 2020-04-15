@@ -14,9 +14,9 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.actions.ApplicableTypesInfo;
 import jetbrains.mps.util.Computable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.behavior.ILinkAccess__BehaviorDescriptor;
 import java.util.Arrays;
@@ -67,6 +67,11 @@ public class snodeOperation extends SubstituteMenuBase {
       appTypesInfo = new Computable<ApplicableTypesInfo>() {
         public ApplicableTypesInfo compute() {
           ApplicableTypesInfo result = new ApplicableTypesInfo();
+          if (!(SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.DotExpression$6a))) {
+            // according to GroupMenuPart, variables are initialized *before* group condition is checked. 
+            // Guess, could be null return value here, but doesn't seem to hurt to keep non-null value.  
+            return result;
+          }
           SNode leftExpression = SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
           SNode leftType = TypecheckingFacade.getFromContext().getTypeOf(leftExpression);
           SNode operation = SLinkOperations.getTarget(SNodeOperations.as(leftExpression, CONCEPTS.DotExpression$6a), LINKS.operation$X4R8);

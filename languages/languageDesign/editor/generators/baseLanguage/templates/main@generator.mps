@@ -30192,11 +30192,11 @@
                             <ref role="3cqZAo" to="emqf:~AbstractCellListHandler.ELEMENT_CELL_BACKSPACE_SET" resolve="ELEMENT_CELL_BACKSPACE_SET" />
                           </node>
                           <node concept="37vLTw" id="3V2CODQTmHP" role="37wK5m">
-                            <ref role="3cqZAo" node="3V2CODQSDFI" resolve="OBJ" />
+                            <ref role="3cqZAo" node="3V2CODQSDFI" />
                           </node>
                         </node>
                         <node concept="37vLTw" id="3V2CODQTei9" role="2Oq$k0">
-                          <ref role="3cqZAo" node="XrrhtvD5CG" resolve="elementCell" />
+                          <ref role="3cqZAo" node="XrrhtvD5CG" />
                         </node>
                       </node>
                     </node>
@@ -30212,7 +30212,7 @@
                             <node concept="1pGfFk" id="XrrhtvD5Aa" role="2ShVmc">
                               <ref role="37wK5l" to="q4oi:~CellAction_DeleteNode.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode$DeleteDirection)" resolve="CellAction_DeleteNode" />
                               <node concept="37vLTw" id="XrrhtvD5Ab" role="37wK5m">
-                                <ref role="3cqZAo" node="XrrhtvD5CE" resolve="elementNode" />
+                                <ref role="3cqZAo" node="XrrhtvD5CE" />
                               </node>
                               <node concept="Rm8GO" id="1VSb7QEZlQ4" role="37wK5m">
                                 <ref role="1Px2BO" to="q4oi:~CellAction_DeleteNode$DeleteDirection" resolve="CellAction_DeleteNode.DeleteDirection" />
@@ -30222,14 +30222,14 @@
                           </node>
                         </node>
                         <node concept="37vLTw" id="XrrhtvD5Ac" role="2Oq$k0">
-                          <ref role="3cqZAo" node="XrrhtvD5CG" resolve="elementCell" />
+                          <ref role="3cqZAo" node="XrrhtvD5CG" />
                         </node>
                       </node>
                     </node>
                   </node>
                   <node concept="3y3z36" id="XrrhtvD5Bb" role="3clFbw">
                     <node concept="37vLTw" id="XrrhtvD5Bc" role="3uHU7B">
-                      <ref role="3cqZAo" node="XrrhtvD5CE" resolve="elementNode" />
+                      <ref role="3cqZAo" node="XrrhtvD5CE" />
                     </node>
                     <node concept="10Nm6u" id="XrrhtvD5Bd" role="3uHU7w" />
                   </node>

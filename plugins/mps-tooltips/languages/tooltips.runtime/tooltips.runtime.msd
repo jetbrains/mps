@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="tooltips.runtime" uuid="fa52e9df-2136-4ef8-81b2-bec0babe5ec8" moduleVersion="0" pluginKind="PLUGIN_EDITOR" compileInMPS="true">
+<solution name="tooltips.runtime" uuid="af52e9df-2136-4ef8-81b2-bec0babe5e4c" moduleVersion="0" pluginKind="PLUGIN_EDITOR" compileInMPS="true">
   <models>
     <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models" />
@@ -51,7 +51,7 @@
     <module reference="34e84b8f-afa8-4364-abcd-a279fddddbe7(jetbrains.mps.editor.runtime)" version="0" />
     <module reference="9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)" version="0" />
     <module reference="fa52e9df-2136-4ef8-81b2-08650aeb5ec8(tooltips.runtime)" version="0" />
-    <module reference="fa52e9df-2136-4ef8-81b2-bec0babe5ec8(tooltips.runtime)" version="0" />
+    <module reference="af52e9df-2136-4ef8-81b2-bec0babe5e4c(tooltips.runtime)" version="0" />
   </dependencyVersions>
 </solution>
 

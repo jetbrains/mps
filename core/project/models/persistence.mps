@@ -9672,14 +9672,6 @@
         <property role="Xl_RC" value="pluginKind" />
       </node>
     </node>
-    <node concept="Wx3nA" id="5DYpX5HRHXG" role="jymVt">
-      <property role="TrG5h" value="JAVA_LANGUAGE_LEVEL" />
-      <property role="3TUv4t" value="true" />
-      <node concept="17QB3L" id="5DYpX5HRHXI" role="1tU5fm" />
-      <node concept="Xl_RD" id="5DYpX5HRHXJ" role="33vP2m">
-        <property role="Xl_RC" value="javaLanguageLevel" />
-      </node>
-    </node>
     <node concept="312cEg" id="33oJVYhfKyp" role="jymVt">
       <property role="TrG5h" value="myMacroHelper" />
       <property role="3TUv4t" value="true" />
@@ -9870,61 +9862,6 @@
                         </node>
                       </node>
                       <node concept="3clFbH" id="5DYpX5HRMyE" role="3cqZAp" />
-                      <node concept="3cpWs8" id="5DYpX5HRNeT" role="3cqZAp">
-                        <node concept="3cpWsn" id="5DYpX5HRNeU" role="3cpWs9">
-                          <property role="TrG5h" value="languageLevel" />
-                          <node concept="17QB3L" id="5DYpX5HRNeV" role="1tU5fm" />
-                          <node concept="2OqwBi" id="5DYpX5HRNeW" role="33vP2m">
-                            <node concept="37vLTw" id="5DYpX5HRNeX" role="2Oq$k0">
-                              <ref role="3cqZAo" node="33oJVYhfQy$" resolve="rootElement" />
-                            </node>
-                            <node concept="liA8E" id="5DYpX5HRNeY" role="2OqNvi">
-                              <ref role="37wK5l" to="mmaq:~Element.getAttributeValue(java.lang.String)" resolve="getAttributeValue" />
-                              <node concept="37vLTw" id="5DYpX5HRP_2" role="37wK5m">
-                                <ref role="3cqZAo" node="5DYpX5HRHXG" resolve="JAVA_LANGUAGE_LEVEL" />
-                              </node>
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="3clFbJ" id="5DYpX5HRNf0" role="3cqZAp">
-                        <node concept="3clFbS" id="5DYpX5HRNf1" role="3clFbx">
-                          <node concept="g8Q5y" id="5DYpX5HRNf2" role="3cqZAp">
-                            <node concept="3clFbS" id="5DYpX5HRNf3" role="GGjiV" />
-                            <node concept="3tyRfN" id="5DYpX5HRNf4" role="GIGjv">
-                              <ref role="3tyRfW" to="w0gx:~SolutionDescriptor.setJavaLanguageLevel(jetbrains.mps.project.facets.JavaLanguageLevel)" resolve="setJavaLanguageLevel" />
-                              <node concept="unr1b" id="5DYpX5HRNf5" role="3tyRfI">
-                                <ref role="un$jP" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
-                                <node concept="37vLTw" id="5DYpX5HRNf6" role="unwt0">
-                                  <ref role="3cqZAo" node="5DYpX5HRNeU" resolve="languageLevel" />
-                                </node>
-                              </node>
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="1Wc70l" id="5DYpX5HRNf7" role="3clFbw">
-                          <node concept="3eOSWO" id="5DYpX5HRNf8" role="3uHU7w">
-                            <node concept="3cmrfG" id="5DYpX5HRNf9" role="3uHU7w">
-                              <property role="3cmrfH" value="0" />
-                            </node>
-                            <node concept="2OqwBi" id="5DYpX5HRNfa" role="3uHU7B">
-                              <node concept="37vLTw" id="5DYpX5HRNfb" role="2Oq$k0">
-                                <ref role="3cqZAo" node="5DYpX5HRNeU" resolve="languageLevel" />
-                              </node>
-                              <node concept="liA8E" id="5DYpX5HRNfc" role="2OqNvi">
-                                <ref role="37wK5l" to="wyt6:~String.length()" resolve="length" />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="3y3z36" id="5DYpX5HRNfd" role="3uHU7B">
-                            <node concept="37vLTw" id="5DYpX5HRNfe" role="3uHU7B">
-                              <ref role="3cqZAo" node="5DYpX5HRNeU" resolve="languageLevel" />
-                            </node>
-                            <node concept="10Nm6u" id="5DYpX5HRNff" role="3uHU7w" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="3clFbH" id="IMUMWuHR5x" role="3cqZAp" />
                       <node concept="3cpWs8" id="6oJSkzE8fjM" role="3cqZAp">
                         <node concept="3cpWsn" id="6oJSkzE8fjN" role="3cpWs9">
                           <property role="TrG5h" value="moduleVersion" />
@@ -10537,47 +10474,6 @@
                     <ref role="37wK5l" to="w0gx:~SolutionDescriptor.getCompileInMPS()" resolve="getCompileInMPS" />
                   </node>
                 </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="5DYpX5HRV8l" role="3cqZAp">
-          <node concept="3clFbS" id="5DYpX5HRV8m" role="3clFbx">
-            <node concept="3clFbF" id="5DYpX5HRV8n" role="3cqZAp">
-              <node concept="2OqwBi" id="5DYpX5HRV8o" role="3clFbG">
-                <node concept="37vLTw" id="5DYpX5HRV8p" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1Tieq1im88u" resolve="result" />
-                </node>
-                <node concept="liA8E" id="5DYpX5HRV8q" role="2OqNvi">
-                  <ref role="37wK5l" to="mmaq:~Element.setAttribute(java.lang.String,java.lang.String)" resolve="setAttribute" />
-                  <node concept="37vLTw" id="5DYpX5HS2Am" role="37wK5m">
-                    <ref role="3cqZAo" node="5DYpX5HRHXG" resolve="JAVA_LANGUAGE_LEVEL" />
-                  </node>
-                  <node concept="2OqwBi" id="5DYpX5HRV8r" role="37wK5m">
-                    <node concept="2OqwBi" id="5DYpX5HRV8s" role="2Oq$k0">
-                      <node concept="37vLTw" id="5DYpX5HS2PE" role="2Oq$k0">
-                        <ref role="3cqZAo" node="33oJVYhgCCY" resolve="descriptor" />
-                      </node>
-                      <node concept="liA8E" id="5DYpX5HS2SL" role="2OqNvi">
-                        <ref role="37wK5l" to="w0gx:~SolutionDescriptor.getJavaLanguageLevel()" resolve="getJavaLanguageLevel" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="5DYpX5HS3eh" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~Enum.name()" resolve="name" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3y3z36" id="5DYpX5HRV8w" role="3clFbw">
-            <node concept="10Nm6u" id="kw_SAXUljN" role="3uHU7w" />
-            <node concept="2OqwBi" id="5DYpX5HRV8y" role="3uHU7B">
-              <node concept="37vLTw" id="5DYpX5HRV8z" role="2Oq$k0">
-                <ref role="3cqZAo" node="33oJVYhgCCY" resolve="descriptor" />
-              </node>
-              <node concept="liA8E" id="5DYpX5HRZSV" role="2OqNvi">
-                <ref role="37wK5l" to="w0gx:~SolutionDescriptor.getJavaLanguageLevel()" resolve="getJavaLanguageLevel" />
               </node>
             </node>
           </node>

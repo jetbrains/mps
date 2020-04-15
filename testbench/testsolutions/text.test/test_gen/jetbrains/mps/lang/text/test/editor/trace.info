@@ -1418,6 +1418,219 @@
       <unit id="6328114375522083915" at="13,0,40,0" name="jetbrains.mps.lang.text.test.editor.AddNextNodeFromOutsideOfTheText_Test" />
     </file>
   </root>
+  <root nodeRef="r:6cf522f1-8af4-45dd-b0f5-721b6e5caab5(jetbrains.mps.lang.text.test.editor@tests)/6662390049125773207">
+    <file name="HandleEmptyLineInsertBefore_Test.java">
+      <node id="6662390049125773207" at="18,45,19,25" concept="5" />
+      <node id="6662390049125773207" at="23,67,24,36" concept="1" />
+      <node id="6662390049125773207" at="29,52,30,19" concept="5" />
+      <node id="6662390049125773207" at="34,51,35,72" concept="1" />
+      <node id="6662390049125773229" at="35,72,36,75" concept="1" />
+      <node id="6662390049125773207" at="15,0,17,0" concept="4" trace="ourParamCache" />
+      <node id="6662390049125773207" at="18,0,21,0" concept="0" trace="HandleEmptyLineInsertBefore_Test#()V" />
+      <node id="6662390049125773207" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6662390049125773207" at="22,0,26,0" concept="2" trace="test_HandleEmptyLineInsertBefore#()V" />
+      <node id="6662390049125773207" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="6662390049125773207" at="18,45,19,25" />
+      <scope id="6662390049125773207" at="23,67,24,36" />
+      <scope id="6662390049125773207" at="29,52,30,19" />
+      <scope id="6662390049125773207" at="34,51,36,75" />
+      <scope id="6662390049125773207" at="18,0,21,0" />
+      <scope id="6662390049125773207" at="29,0,32,0">
+        <var name="owner" id="6662390049125773207" />
+      </scope>
+      <scope id="6662390049125773207" at="22,0,26,0" />
+      <scope id="6662390049125773207" at="33,0,38,0" />
+      <unit id="6662390049125773207" at="27,0,39,0" name="jetbrains.mps.lang.text.test.editor.HandleEmptyLineInsertBefore_Test$TestBody" />
+      <unit id="6662390049125773207" at="13,0,40,0" name="jetbrains.mps.lang.text.test.editor.HandleEmptyLineInsertBefore_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:6cf522f1-8af4-45dd-b0f5-721b6e5caab5(jetbrains.mps.lang.text.test.editor@tests)/6662390049125773808">
+    <file name="HandleEmptyLineType_Test.java">
+      <node id="6662390049125773808" at="18,37,19,25" concept="5" />
+      <node id="6662390049125773808" at="23,59,24,36" concept="1" />
+      <node id="6662390049125773808" at="29,52,30,19" concept="5" />
+      <node id="6662390049125773808" at="34,51,35,72" concept="1" />
+      <node id="6662390049125774507" at="35,72,36,26" concept="1" />
+      <node id="6662390049125773808" at="15,0,17,0" concept="4" trace="ourParamCache" />
+      <node id="6662390049125773808" at="18,0,21,0" concept="0" trace="HandleEmptyLineType_Test#()V" />
+      <node id="6662390049125773808" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6662390049125773808" at="22,0,26,0" concept="2" trace="test_HandleEmptyLineType#()V" />
+      <node id="6662390049125773808" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="6662390049125773808" at="18,37,19,25" />
+      <scope id="6662390049125773808" at="23,59,24,36" />
+      <scope id="6662390049125773808" at="29,52,30,19" />
+      <scope id="6662390049125773808" at="34,51,36,26" />
+      <scope id="6662390049125773808" at="18,0,21,0" />
+      <scope id="6662390049125773808" at="29,0,32,0">
+        <var name="owner" id="6662390049125773808" />
+      </scope>
+      <scope id="6662390049125773808" at="22,0,26,0" />
+      <scope id="6662390049125773808" at="33,0,38,0" />
+      <unit id="6662390049125773808" at="27,0,39,0" name="jetbrains.mps.lang.text.test.editor.HandleEmptyLineType_Test$TestBody" />
+      <unit id="6662390049125773808" at="13,0,40,0" name="jetbrains.mps.lang.text.test.editor.HandleEmptyLineType_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:6cf522f1-8af4-45dd-b0f5-721b6e5caab5(jetbrains.mps.lang.text.test.editor@tests)/6662390049125774589">
+    <file name="HandleEmptyLineDelete_Test.java">
+      <node id="6662390049125774589" at="18,39,19,25" concept="5" />
+      <node id="6662390049125774589" at="23,61,24,36" concept="1" />
+      <node id="6662390049125774589" at="29,52,30,19" concept="5" />
+      <node id="6662390049125774589" at="34,51,35,72" concept="1" />
+      <node id="6662390049125774611" at="35,72,36,69" concept="1" />
+      <node id="6662390049125774589" at="15,0,17,0" concept="4" trace="ourParamCache" />
+      <node id="6662390049125774589" at="18,0,21,0" concept="0" trace="HandleEmptyLineDelete_Test#()V" />
+      <node id="6662390049125774589" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6662390049125774589" at="22,0,26,0" concept="2" trace="test_HandleEmptyLineDelete#()V" />
+      <node id="6662390049125774589" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="6662390049125774589" at="18,39,19,25" />
+      <scope id="6662390049125774589" at="23,61,24,36" />
+      <scope id="6662390049125774589" at="29,52,30,19" />
+      <scope id="6662390049125774589" at="34,51,36,69" />
+      <scope id="6662390049125774589" at="18,0,21,0" />
+      <scope id="6662390049125774589" at="29,0,32,0">
+        <var name="owner" id="6662390049125774589" />
+      </scope>
+      <scope id="6662390049125774589" at="22,0,26,0" />
+      <scope id="6662390049125774589" at="33,0,38,0" />
+      <unit id="6662390049125774589" at="27,0,39,0" name="jetbrains.mps.lang.text.test.editor.HandleEmptyLineDelete_Test$TestBody" />
+      <unit id="6662390049125774589" at="13,0,40,0" name="jetbrains.mps.lang.text.test.editor.HandleEmptyLineDelete_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:6cf522f1-8af4-45dd-b0f5-721b6e5caab5(jetbrains.mps.lang.text.test.editor@tests)/6662390049125775031">
+    <file name="HandleEmptyLineBackspace_Test.java">
+      <node id="6662390049125775031" at="18,42,19,25" concept="5" />
+      <node id="6662390049125775031" at="23,64,24,36" concept="1" />
+      <node id="6662390049125775031" at="29,52,30,19" concept="5" />
+      <node id="6662390049125775031" at="34,51,35,72" concept="1" />
+      <node id="6662390049125775053" at="35,72,36,72" concept="1" />
+      <node id="6662390049125775031" at="15,0,17,0" concept="4" trace="ourParamCache" />
+      <node id="6662390049125775031" at="18,0,21,0" concept="0" trace="HandleEmptyLineBackspace_Test#()V" />
+      <node id="6662390049125775031" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6662390049125775031" at="22,0,26,0" concept="2" trace="test_HandleEmptyLineBackspace#()V" />
+      <node id="6662390049125775031" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="6662390049125775031" at="18,42,19,25" />
+      <scope id="6662390049125775031" at="23,64,24,36" />
+      <scope id="6662390049125775031" at="29,52,30,19" />
+      <scope id="6662390049125775031" at="34,51,36,72" />
+      <scope id="6662390049125775031" at="18,0,21,0" />
+      <scope id="6662390049125775031" at="29,0,32,0">
+        <var name="owner" id="6662390049125775031" />
+      </scope>
+      <scope id="6662390049125775031" at="22,0,26,0" />
+      <scope id="6662390049125775031" at="33,0,38,0" />
+      <unit id="6662390049125775031" at="27,0,39,0" name="jetbrains.mps.lang.text.test.editor.HandleEmptyLineBackspace_Test$TestBody" />
+      <unit id="6662390049125775031" at="13,0,40,0" name="jetbrains.mps.lang.text.test.editor.HandleEmptyLineBackspace_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:6cf522f1-8af4-45dd-b0f5-721b6e5caab5(jetbrains.mps.lang.text.test.editor@tests)/6662390049125775552">
+    <file name="HandleEmptyLineUp_Test.java">
+      <node id="6662390049125775552" at="18,35,19,25" concept="5" />
+      <node id="6662390049125775552" at="23,57,24,36" concept="1" />
+      <node id="6662390049125775552" at="29,52,30,19" concept="5" />
+      <node id="6662390049125775552" at="34,51,35,72" concept="1" />
+      <node id="6662390049125775574" at="35,72,36,77" concept="1" />
+      <node id="6662390049125775552" at="15,0,17,0" concept="4" trace="ourParamCache" />
+      <node id="6662390049125775552" at="18,0,21,0" concept="0" trace="HandleEmptyLineUp_Test#()V" />
+      <node id="6662390049125775552" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6662390049125775552" at="22,0,26,0" concept="2" trace="test_HandleEmptyLineUp#()V" />
+      <node id="6662390049125775552" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="6662390049125775552" at="18,35,19,25" />
+      <scope id="6662390049125775552" at="23,57,24,36" />
+      <scope id="6662390049125775552" at="29,52,30,19" />
+      <scope id="6662390049125775552" at="34,51,36,77" />
+      <scope id="6662390049125775552" at="18,0,21,0" />
+      <scope id="6662390049125775552" at="29,0,32,0">
+        <var name="owner" id="6662390049125775552" />
+      </scope>
+      <scope id="6662390049125775552" at="22,0,26,0" />
+      <scope id="6662390049125775552" at="33,0,38,0" />
+      <unit id="6662390049125775552" at="27,0,39,0" name="jetbrains.mps.lang.text.test.editor.HandleEmptyLineUp_Test$TestBody" />
+      <unit id="6662390049125775552" at="13,0,40,0" name="jetbrains.mps.lang.text.test.editor.HandleEmptyLineUp_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:6cf522f1-8af4-45dd-b0f5-721b6e5caab5(jetbrains.mps.lang.text.test.editor@tests)/6662390049125776456">
+    <file name="HandleEmptyLineDown_Test.java">
+      <node id="6662390049125776456" at="18,37,19,25" concept="5" />
+      <node id="6662390049125776456" at="23,59,24,36" concept="1" />
+      <node id="6662390049125776456" at="29,52,30,19" concept="5" />
+      <node id="6662390049125776456" at="34,51,35,72" concept="1" />
+      <node id="6662390049125776478" at="35,72,36,79" concept="1" />
+      <node id="6662390049125776456" at="15,0,17,0" concept="4" trace="ourParamCache" />
+      <node id="6662390049125776456" at="18,0,21,0" concept="0" trace="HandleEmptyLineDown_Test#()V" />
+      <node id="6662390049125776456" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6662390049125776456" at="22,0,26,0" concept="2" trace="test_HandleEmptyLineDown#()V" />
+      <node id="6662390049125776456" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="6662390049125776456" at="18,37,19,25" />
+      <scope id="6662390049125776456" at="23,59,24,36" />
+      <scope id="6662390049125776456" at="29,52,30,19" />
+      <scope id="6662390049125776456" at="34,51,36,79" />
+      <scope id="6662390049125776456" at="18,0,21,0" />
+      <scope id="6662390049125776456" at="29,0,32,0">
+        <var name="owner" id="6662390049125776456" />
+      </scope>
+      <scope id="6662390049125776456" at="22,0,26,0" />
+      <scope id="6662390049125776456" at="33,0,38,0" />
+      <unit id="6662390049125776456" at="27,0,39,0" name="jetbrains.mps.lang.text.test.editor.HandleEmptyLineDown_Test$TestBody" />
+      <unit id="6662390049125776456" at="13,0,40,0" name="jetbrains.mps.lang.text.test.editor.HandleEmptyLineDown_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:6cf522f1-8af4-45dd-b0f5-721b6e5caab5(jetbrains.mps.lang.text.test.editor@tests)/6662390049125777247">
+    <file name="HandleMoveElementsUp_Test.java">
+      <node id="6662390049125777247" at="18,38,19,25" concept="5" />
+      <node id="6662390049125777247" at="23,60,24,36" concept="1" />
+      <node id="6662390049125777247" at="29,52,30,19" concept="5" />
+      <node id="6662390049125777247" at="34,51,35,72" concept="1" />
+      <node id="6662390049125777269" at="35,72,36,73" concept="1" />
+      <node id="6662390049125778245" at="36,73,37,73" concept="1" />
+      <node id="6662390049125778278" at="37,73,38,73" concept="1" />
+      <node id="6662390049125778286" at="38,73,39,73" concept="1" />
+      <node id="6662390049125778376" at="39,73,40,77" concept="1" />
+      <node id="6662390049125778546" at="40,77,41,71" concept="1" />
+      <node id="6662390049125777247" at="15,0,17,0" concept="4" trace="ourParamCache" />
+      <node id="6662390049125777247" at="18,0,21,0" concept="0" trace="HandleMoveElementsUp_Test#()V" />
+      <node id="6662390049125777247" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6662390049125777247" at="22,0,26,0" concept="2" trace="test_HandleMoveElementsUp#()V" />
+      <node id="6662390049125777247" at="33,0,43,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="6662390049125777247" at="18,38,19,25" />
+      <scope id="6662390049125777247" at="23,60,24,36" />
+      <scope id="6662390049125777247" at="29,52,30,19" />
+      <scope id="6662390049125777247" at="18,0,21,0" />
+      <scope id="6662390049125777247" at="29,0,32,0">
+        <var name="owner" id="6662390049125777247" />
+      </scope>
+      <scope id="6662390049125777247" at="22,0,26,0" />
+      <scope id="6662390049125777247" at="34,51,41,71" />
+      <scope id="6662390049125777247" at="33,0,43,0" />
+      <unit id="6662390049125777247" at="27,0,44,0" name="jetbrains.mps.lang.text.test.editor.HandleMoveElementsUp_Test$TestBody" />
+      <unit id="6662390049125777247" at="13,0,45,0" name="jetbrains.mps.lang.text.test.editor.HandleMoveElementsUp_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:6cf522f1-8af4-45dd-b0f5-721b6e5caab5(jetbrains.mps.lang.text.test.editor@tests)/868435548829749208">
+    <file name="HandleEmptyLineInsertAfter_Test.java">
+      <node id="868435548829749208" at="18,44,19,25" concept="5" />
+      <node id="868435548829749208" at="23,66,24,36" concept="1" />
+      <node id="868435548829749208" at="29,52,30,19" concept="5" />
+      <node id="868435548829749208" at="34,51,35,70" concept="1" />
+      <node id="868435548829749230" at="35,70,36,69" concept="1" />
+      <node id="868435548829749208" at="15,0,17,0" concept="4" trace="ourParamCache" />
+      <node id="868435548829749208" at="18,0,21,0" concept="0" trace="HandleEmptyLineInsertAfter_Test#()V" />
+      <node id="868435548829749208" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="868435548829749208" at="22,0,26,0" concept="2" trace="test_HandleEmptyLineInsertAfter#()V" />
+      <node id="868435548829749208" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="868435548829749208" at="18,44,19,25" />
+      <scope id="868435548829749208" at="23,66,24,36" />
+      <scope id="868435548829749208" at="29,52,30,19" />
+      <scope id="868435548829749208" at="34,51,36,69" />
+      <scope id="868435548829749208" at="18,0,21,0" />
+      <scope id="868435548829749208" at="29,0,32,0">
+        <var name="owner" id="868435548829749208" />
+      </scope>
+      <scope id="868435548829749208" at="22,0,26,0" />
+      <scope id="868435548829749208" at="33,0,38,0" />
+      <unit id="868435548829749208" at="27,0,39,0" name="jetbrains.mps.lang.text.test.editor.HandleEmptyLineInsertAfter_Test$TestBody" />
+      <unit id="868435548829749208" at="13,0,40,0" name="jetbrains.mps.lang.text.test.editor.HandleEmptyLineInsertAfter_Test" />
+    </file>
+  </root>
   <root nodeRef="r:6cf522f1-8af4-45dd-b0f5-721b6e5caab5(jetbrains.mps.lang.text.test.editor@tests)/908515276058402354">
     <file name="SelectLeft3_Test.java">
       <node id="908515276058402354" at="18,29,19,25" concept="5" />

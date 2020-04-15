@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,6 @@ package jetbrains.mps.project.structure.modules;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.ModuleId;
-import jetbrains.mps.project.facets.JavaLanguageLevel;
-import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.io.ModelInputStream;
@@ -140,11 +138,6 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     return false;
   }
 
-  @Nullable
-  public JavaLanguageLevel getJavaLanguageLevel() {
-    return null;
-  }
-
   public void setNeedsExternalIdeaCompile(boolean value) {
     // no-op, subclasses that do support this setting shall override
   }
@@ -251,7 +244,7 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
    * Additional source files to compile along with module's own generated output.
    * Though, uses are bit odd:
    *  - There's unused {@link AbstractModule#getSourcePaths()}
-   *  - JavaModuleFacet manifests these {@link JavaModuleFacet#getAdditionalSourcePaths()}, likely using module descriptor just as a storage (it's what JMF does anyway)
+   *  - JavaModuleFacet manifests these {@link jetbrains.mps.project.facets.JavaModuleFacet#getAdditionalSourcePaths()}, likely using module descriptor just as a storage (it's what JMF does anyway)
    *  - Make respects these to compile a module
    */
   public final Collection<String> getSourcePaths() {

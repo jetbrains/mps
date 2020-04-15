@@ -24,13 +24,17 @@ import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
-import jetbrains.mps.editor.runtime.commands.EditorCommand;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import org.jetbrains.mps.openapi.model.SNodeId;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.lang.text.behavior.TextElement__BehaviorDescriptor;
+import jetbrains.mps.editor.runtime.commands.EditorCommand;
+import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.smodel.ModelAccessHelper;
@@ -180,10 +184,17 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     if (type == CellActionType.BACKSPACE || type == CellActionType.DELETE) {
       performDeleteAction(type);
       return;
+    } else if (type == CellActionType.COPY) {
+      CopyPasteUtil.copyNodesAndTextToClipboard(wrapSelectedNodesInNewLines(), null, buildTextualRepresentationOfSelectedCells());
+      return;
     } else if (type == CellActionType.CUT) {
       SNode prevSelectableNode = getNextSelectableNode(myFirstNode, false);
       SNode nextSelectableNode = getNextSelectableNode(myLastNode, true);
-      super.executeAction(type);
+
+      CopyPasteUtil.copyNodesAndTextToClipboard(wrapSelectedNodesInNewLines(), null, buildTextualRepresentationOfSelectedCells());
+      for (SNode n : getSelectedNodes()) {
+        SNodeOperations.deleteNode(n);
+      }
       removeEmptyLines();
       if (selectNode(prevSelectableNode, false) || selectNode(nextSelectableNode, true)) {
         return;
@@ -199,6 +210,53 @@ public class WordRangeSelection extends AbstractMultipleSelection {
       selectPrevious(editorContext, selectionManager);
     }
     super.executeAction(type);
+  }
+
+  private List<SNode> wrapSelectedNodesInNewLines() {
+    SNode artificialParent = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, "jetbrains.mps.lang.text.structure.Text"));
+
+    final List<SNode> selectedNodes = getSelectedNodes();
+    List<SNode> lines = new ArrayList<SNode>();
+    for (SNode n : selectedNodes) {
+      SNode p = SNodeOperations.as(SNodeOperations.getParent(n), CONCEPTS.Line$w3);
+      if (p != null && !(ListSequence.fromList(lines).contains(p))) {
+        ListSequence.fromList(lines).addElement(p);
+      }
+    }
+    List<SNode> copiesOfLines = new ArrayList<SNode>();
+    for (SNode l : lines) {
+      SNode lc = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
+      ListSequence.fromList(SLinkOperations.getChildren(lc, LINKS.elements$eRew)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$eRew)).where(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return selectedNodes.contains(it);
+        }
+      }).select(new ISelector<SNode, SNode>() {
+        public SNode select(SNode it) {
+          return SNodeOperations.copyNode(it);
+        }
+      }));
+      ListSequence.fromList(copiesOfLines).addElement(lc);
+      ListSequence.fromList(SLinkOperations.getChildren(artificialParent, LINKS.lines$$cru)).addElement(lc);
+    }
+    return copiesOfLines;
+  }
+
+  private String buildTextualRepresentationOfSelectedCells() {
+    StringBuilder builder = new StringBuilder("");
+    SNode current = myFirstNode;
+    while (true) {
+      builder.append(TextElement__BehaviorDescriptor.getTextualRepresentation_idfB3l81it7u.invoke(current));
+      if (current == myLastNode) {
+        break;
+      }
+      if ((SNodeOperations.getNextSibling(current) == null)) {
+        builder.append("\n");
+      } else {
+        builder.append(" ");
+      }
+      current = getNextSelectableNode(current, true);
+    }
+    return builder.toString();
   }
 
   private void selectRight(final EditorContext editorContext, final SelectionManager selectionManager) {
@@ -415,5 +473,6 @@ public class WordRangeSelection extends AbstractMultipleSelection {
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink lines$$cru = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x2331694e561a03b8L, "lines");
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,8 +68,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 // FIXME #apply() shall not deal with ModuleDescriptor directly, instead, JavaModuleFacet.save() shall put that there (better yet,
 // to memento, not to be different from other facets, provided we don't use isCompileInMPS and getKind directly from descriptor)
@@ -165,7 +163,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
         values.add(new LanguageLevelPresentation(value));
       }
       myLanguageLevel = new ComboBox<>(new DefaultComboBoxModel<>(values.toArray(new LanguageLevelPresentation[]{})));
-      myLanguageLevel.setSelectedItem(new LanguageLevelPresentation(descriptor.getJavaLanguageLevel()));
+      myLanguageLevel.setSelectedItem(new LanguageLevelPresentation(myJavaModuleFacet.getLanguageLevel()));
 
       myCompileInMPS.addChangeListener(e -> {
         if (RuntimeFlags.isInternalMode()) {
@@ -288,7 +286,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       if (myExternalIdeaCompile != null) {
         solutionCheck |= descriptor.needsExternalIdeaCompile() != myExternalIdeaCompile.isSelected();
       }
-      solutionCheck |= !new LanguageLevelPresentation(descriptor.getJavaLanguageLevel()).equals(myLanguageLevel.getSelectedItem());
+      solutionCheck |= !new LanguageLevelPresentation(myJavaModuleFacet.getLanguageLevel()).equals(myLanguageLevel.getSelectedItem());
     }
 
     // Any change in table model will require re-save, even if state in the end is the same, to simplify this check.
@@ -302,7 +300,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       assert descriptor != null;
       descriptor.setCompileInMPS(myCompileInMPS.isSelected());
       descriptor.setKind((SolutionKind) mySolutionKind.getSelectedItem());
-      descriptor.setJavaLanguageLevel(((LanguageLevelPresentation) myLanguageLevel.getSelectedItem()).myValue);
+      myJavaModuleFacet.setLanguageLevel(((LanguageLevelPresentation) myLanguageLevel.getSelectedItem()).myValue);
       if (myExternalIdeaCompile != null) {
         descriptor.setNeedsExternalIdeaCompile(myExternalIdeaCompile.isSelected());
       }

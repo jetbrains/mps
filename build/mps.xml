@@ -30,6 +30,7 @@
   <property name="artifacts.mpsDiagramEditor" location="${build.dir}/artifacts/mpsDiagramEditor" />
   <property name="artifacts.jetpad" location="${build.dir}/artifacts/jetpad" />
   <property name="artifacts.mpsExecutionPlugin" location="${build.dir}/artifacts/mpsExecutionPlugin" />
+  <property name="artifacts.mpsTooltips" location="${build.dir}/artifacts/mpsTooltips" />
   <property name="artifacts.mpsTesting" location="${build.dir}/artifacts/mpsTesting" />
   <property name="artifacts.mpsContextActionsTool" location="${build.dir}/artifacts/mpsContextActionsTool" />
   <property file="${artifacts.mpsBuild}/build.properties" prefix="import.mpsBuild" />
@@ -180,6 +181,10 @@
     <copy todir="${build.layout}/plugins/mps-project-migrations">
       <fileset dir="${artifacts.mpsMigration}/mps-project-migrations" />
     </copy>
+    <mkdir dir="${build.layout}/plugins/mps-tooltips" />
+    <copy todir="${build.layout}/plugins/mps-tooltips">
+      <fileset dir="${artifacts.mpsTooltips}/mps-tooltips" />
+    </copy>
     <mkdir dir="${build.layout}/plugins/mps-build" />
     <copy todir="${build.layout}/plugins/mps-build">
       <fileset dir="${artifacts.mpsBuildUI}/mps-build" />
@@ -269,6 +274,7 @@
     <ant antfile="build/mpsMigration.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/jetpad.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsDiagramEditor.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsTooltips.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsContextActionsTool.xml" inheritAll="false" useNativeBasedir="true" />
   </target>
   
