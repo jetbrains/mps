@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,16 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.RuntimeFlags;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 /**
  * Reentrant action execution, with notification on first and last action.
@@ -108,6 +111,20 @@ import java.util.function.Consumer;
   }
 
   private void logUnexpectedRuntimeException(RuntimeException ex) {
+    final Predicate<String> cfePredicate = "com.intellij.openapi.diagnostic.ControlFlowException"::equals;
+    if (Arrays.stream(ex.getClass().getInterfaces()).map(Class::getName).anyMatch(cfePredicate)) {
+      // don't treat IDEA's control flow exceptions as errors. We can do nothing about IDEA's approach to use RuntimeException implements ControlFlowException
+      // but at least shall not log it as an error to avoid perception something's wrong with MPS>
+      if (RuntimeFlags.isInternalMode() || LOG.isDebugEnabled()) {
+        final String msg = String.format("Action dispatch cancelled with control flow exception (level:%d)", myActionLevel.get());
+        if (RuntimeFlags.isInternalMode()) {
+          LOG.warn(msg, ex);
+        } else {
+          LOG.debug(msg, ex);
+        }
+      }
+      return;
+    }
     // we need this catch not to obscure errors during run with errors from finally block (e.g. if both onActionStarted and onActionFinished fail with
     // exception, we would observe only the last one from onActionFinished)
     // FWIW, there's no scenario behind actionLevel printout here, just in case it yields anything interesting.
