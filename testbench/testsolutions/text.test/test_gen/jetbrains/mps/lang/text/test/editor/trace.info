@@ -1605,6 +1605,32 @@
       <unit id="6662390049125777247" at="13,0,45,0" name="jetbrains.mps.lang.text.test.editor.HandleMoveElementsUp_Test" />
     </file>
   </root>
+  <root nodeRef="r:6cf522f1-8af4-45dd-b0f5-721b6e5caab5(jetbrains.mps.lang.text.test.editor@tests)/868435548829749208">
+    <file name="HandleEmptyLineInsertAfter_Test.java">
+      <node id="868435548829749208" at="18,44,19,25" concept="5" />
+      <node id="868435548829749208" at="23,66,24,36" concept="1" />
+      <node id="868435548829749208" at="29,52,30,19" concept="5" />
+      <node id="868435548829749208" at="34,51,35,70" concept="1" />
+      <node id="868435548829749230" at="35,70,36,69" concept="1" />
+      <node id="868435548829749208" at="15,0,17,0" concept="4" trace="ourParamCache" />
+      <node id="868435548829749208" at="18,0,21,0" concept="0" trace="HandleEmptyLineInsertAfter_Test#()V" />
+      <node id="868435548829749208" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="868435548829749208" at="22,0,26,0" concept="2" trace="test_HandleEmptyLineInsertAfter#()V" />
+      <node id="868435548829749208" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="868435548829749208" at="18,44,19,25" />
+      <scope id="868435548829749208" at="23,66,24,36" />
+      <scope id="868435548829749208" at="29,52,30,19" />
+      <scope id="868435548829749208" at="34,51,36,69" />
+      <scope id="868435548829749208" at="18,0,21,0" />
+      <scope id="868435548829749208" at="29,0,32,0">
+        <var name="owner" id="868435548829749208" />
+      </scope>
+      <scope id="868435548829749208" at="22,0,26,0" />
+      <scope id="868435548829749208" at="33,0,38,0" />
+      <unit id="868435548829749208" at="27,0,39,0" name="jetbrains.mps.lang.text.test.editor.HandleEmptyLineInsertAfter_Test$TestBody" />
+      <unit id="868435548829749208" at="13,0,40,0" name="jetbrains.mps.lang.text.test.editor.HandleEmptyLineInsertAfter_Test" />
+    </file>
+  </root>
   <root nodeRef="r:6cf522f1-8af4-45dd-b0f5-721b6e5caab5(jetbrains.mps.lang.text.test.editor@tests)/908515276058402354">
     <file name="SelectLeft3_Test.java">
       <node id="908515276058402354" at="18,29,19,25" concept="5" />
