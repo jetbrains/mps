@@ -134,6 +134,15 @@
     <appender-ref ref="FILE"/>
   </category>
 
+  <!-- Temporary fix for MPS-31909 -->
+  <appender name="NULL" class="org.apache.log4j.varia.NullAppender" />
+  <category name="STDOUT" additivity="false">
+    <appender-ref ref="NULL"/>
+  </category>
+  <category name="STDERR" additivity="false">
+    <appender-ref ref="NULL"/>
+  </category>
+
   <root>
     <priority value="INFO"/>
     <appender-ref ref="CONSOLE-WARN"/>
