@@ -2780,7 +2780,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return isAncestorOf(focusOwner);
   }
 
-  private boolean isContextAssistantFocused() {
+  public boolean isContextAssistantFocused() {
     ContextAssistant activeAssistant = myEditorContext.getContextAssistantManager().getActiveAssistant();
     return activeAssistant != null && activeAssistant.hasFocus();
   }

@@ -10,8 +10,8 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
@@ -31,7 +31,9 @@ public class Insert_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).isFocusOwner() && EditorActionUtils.getEditorCellToInsert(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent"))) != null && EditorActionUtils.isWriteActionEnabled(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), Sequence.<EditorCell>singleton(EditorActionUtils.getEditorCellToInsert(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")))));
+    EditorComponent ec = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent"));
+    EditorCell editorCellToInsert = EditorActionUtils.getEditorCellToInsert(ec);
+    return editorCellToInsert != null && EditorActionUtils.isWriteActionEnabled(ec, Sequence.<EditorCell>singleton(editorCellToInsert));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
