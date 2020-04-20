@@ -7,6 +7,8 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.platform.Platform;
+import jetbrains.mps.RuntimeFlags;
+import jetbrains.mps.TestMode;
 import jetbrains.mps.project.PathMacros;
 import jetbrains.mps.library.LibraryInitializer;
 import java.util.Map;
@@ -41,11 +43,15 @@ public abstract class EnvironmentBase implements Environment {
     myConfig = config;
   }
 
+
   protected void init(Platform mpsPlatform) {
     if (myInitialized) {
       throw new EnvironmentInitializedTwiceException();
     }
     myRootClassLoader = createRootClassLoader();
+    if (myConfig.isTestMode()) {
+      RuntimeFlags.setTestMode(TestMode.USUAL);
+    }
     initMacros(mpsPlatform.findComponent(PathMacros.class));
     if (LOG.isInfoEnabled()) {
       LOG.info("Initializing libraries");

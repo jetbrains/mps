@@ -4158,9 +4158,14 @@
             <node concept="2ShNRf" id="5AcmpEOoN$t" role="37vLTx">
               <node concept="1pGfFk" id="5AcmpEOoOkj" role="2ShVmc">
                 <ref role="37wK5l" to="79ha:6rx4kZDkRyV" resolve="MpsEnvironment" />
-                <node concept="2YIFZM" id="6LlhC3WLzsr" role="37wK5m">
-                  <ref role="1Pybhc" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
-                  <ref role="37wK5l" to="79ha:6rx4kZDkZ7z" resolve="defaultConfig" />
+                <node concept="2OqwBi" id="28TMbOSGOoM" role="37wK5m">
+                  <node concept="2YIFZM" id="6LlhC3WLzsr" role="2Oq$k0">
+                    <ref role="1Pybhc" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
+                    <ref role="37wK5l" to="79ha:6rx4kZDkZ7z" resolve="defaultConfig" />
+                  </node>
+                  <node concept="liA8E" id="28TMbOSGOvy" role="2OqNvi">
+                    <ref role="37wK5l" to="79ha:28TMbOSEVXt" resolve="withTestModeOn" />
+                  </node>
                 </node>
               </node>
             </node>

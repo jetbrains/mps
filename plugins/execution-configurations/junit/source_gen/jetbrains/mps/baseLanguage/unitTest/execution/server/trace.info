@@ -107,8 +107,8 @@
       <node id="7205456062167109060" at="75,56,76,20" concept="4" />
       <node id="3930437502079975139" at="78,79,79,34" concept="4" />
       <node id="7205456062166993884" at="81,90,82,49" concept="4" />
-      <node id="1831019415301396413" at="83,5,84,50" concept="10" />
-      <node id="1831019415301399994" at="84,50,85,14" concept="4" />
+      <node id="1831019415301396413" at="83,5,84,67" concept="10" />
+      <node id="1831019415301399994" at="84,67,85,14" concept="4" />
       <node id="1831019415301399072" at="85,14,86,14" concept="11" />
       <node id="3310779261129642940" at="28,0,31,0" concept="3" trace="WithPlatformTestExecutor#(Ljetbrains/mps/baseLanguage/unitTest/execution/server/TestsContributor;)V" />
       <node id="7205456062166680834" at="38,48,41,5" concept="8" />

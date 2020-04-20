@@ -731,9 +731,14 @@
             <node concept="2ShNRf" id="5AcmpEOpkJB" role="37vLTx">
               <node concept="1pGfFk" id="5AcmpEOpwE5" role="2ShVmc">
                 <ref role="37wK5l" to="79ha:6rx4kZDkRyV" resolve="MpsEnvironment" />
-                <node concept="2YIFZM" id="6LlhC3WLoBT" role="37wK5m">
-                  <ref role="37wK5l" to="79ha:6rx4kZDkZ7z" resolve="defaultConfig" />
-                  <ref role="1Pybhc" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
+                <node concept="2OqwBi" id="28TMbOSGJSx" role="37wK5m">
+                  <node concept="2YIFZM" id="6LlhC3WLoBT" role="2Oq$k0">
+                    <ref role="37wK5l" to="79ha:6rx4kZDkZ7z" resolve="defaultConfig" />
+                    <ref role="1Pybhc" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
+                  </node>
+                  <node concept="liA8E" id="28TMbOSGKDE" role="2OqNvi">
+                    <ref role="37wK5l" to="79ha:28TMbOSEVXt" resolve="withTestModeOn" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -2616,6 +2621,21 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="28TMbOSGa0f" role="3cqZAp">
+          <node concept="37vLTI" id="28TMbOSGbLT" role="3clFbG">
+            <node concept="37vLTw" id="28TMbOSGbVh" role="37vLTJ">
+              <ref role="3cqZAo" node="5A5jZryZYv4" resolve="config" />
+            </node>
+            <node concept="2OqwBi" id="28TMbOSGaKY" role="37vLTx">
+              <node concept="37vLTw" id="28TMbOSGa0d" role="2Oq$k0">
+                <ref role="3cqZAo" node="5A5jZryZYv4" resolve="config" />
+              </node>
+              <node concept="liA8E" id="28TMbOSGbGJ" role="2OqNvi">
+                <ref role="37wK5l" to="79ha:28TMbOSEVXt" resolve="withTestModeOn" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="nUYGvAYmF3" role="3cqZAp">
           <node concept="3cpWsn" id="nUYGvAYmF4" role="3cpWs9">
             <property role="TrG5h" value="rv" />
@@ -2624,7 +2644,7 @@
             </node>
             <node concept="2ShNRf" id="nUYGvAYnrF" role="33vP2m">
               <node concept="1pGfFk" id="nUYGvAYoL3" role="2ShVmc">
-                <ref role="37wK5l" to="cky9:6rx4kZDkRjb" resolve="IdeaEnvironment" />
+                <ref role="37wK5l" to="cky9:4OPNMy2crcG" resolve="IdeaEnvironment" />
                 <node concept="37vLTw" id="nUYGvAYoQP" role="37wK5m">
                   <ref role="3cqZAo" node="5A5jZryZYv4" resolve="config" />
                 </node>
@@ -3866,24 +3886,29 @@
         <node concept="3cpWs8" id="a8z8zytENl" role="3cqZAp">
           <node concept="3cpWsn" id="a8z8zytENm" role="3cpWs9">
             <property role="TrG5h" value="config" />
-            <node concept="2OqwBi" id="12CYGR0Z$fY" role="33vP2m">
-              <node concept="2OqwBi" id="63DSRaTik3u" role="2Oq$k0">
-                <node concept="2OqwBi" id="12CYGR100Wd" role="2Oq$k0">
-                  <node concept="2YIFZM" id="a8z8zytENn" role="2Oq$k0">
-                    <ref role="37wK5l" to="79ha:6rx4kZDkZ7z" resolve="defaultConfig" />
-                    <ref role="1Pybhc" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
+            <node concept="2OqwBi" id="28TMbOSG1XL" role="33vP2m">
+              <node concept="2OqwBi" id="12CYGR0Z$fY" role="2Oq$k0">
+                <node concept="2OqwBi" id="63DSRaTik3u" role="2Oq$k0">
+                  <node concept="2OqwBi" id="12CYGR100Wd" role="2Oq$k0">
+                    <node concept="2YIFZM" id="a8z8zytENn" role="2Oq$k0">
+                      <ref role="37wK5l" to="79ha:6rx4kZDkZ7z" resolve="defaultConfig" />
+                      <ref role="1Pybhc" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
+                    </node>
+                    <node concept="liA8E" id="12CYGR1017d" role="2OqNvi">
+                      <ref role="37wK5l" to="79ha:12CYGR0ZVly" resolve="setCreatePluginClassLoaders" />
+                      <node concept="3clFbT" id="12CYGR101d9" role="37wK5m" />
+                    </node>
                   </node>
-                  <node concept="liA8E" id="12CYGR1017d" role="2OqNvi">
-                    <ref role="37wK5l" to="79ha:12CYGR0ZVly" resolve="setCreatePluginClassLoaders" />
-                    <node concept="3clFbT" id="12CYGR101d9" role="37wK5m" />
+                  <node concept="liA8E" id="63DSRaTikig" role="2OqNvi">
+                    <ref role="37wK5l" to="79ha:6uGRett37Lr" resolve="withJavaPlugin" />
                   </node>
                 </node>
-                <node concept="liA8E" id="63DSRaTikig" role="2OqNvi">
-                  <ref role="37wK5l" to="79ha:6uGRett37Lr" resolve="withJavaPlugin" />
+                <node concept="liA8E" id="12CYGR0Z_58" role="2OqNvi">
+                  <ref role="37wK5l" to="79ha:4asrSzSFl5Q" resolve="withMigrationPlugin" />
                 </node>
               </node>
-              <node concept="liA8E" id="12CYGR0Z_58" role="2OqNvi">
-                <ref role="37wK5l" to="79ha:4asrSzSFl5Q" resolve="withMigrationPlugin" />
+              <node concept="liA8E" id="28TMbOSG2bK" role="2OqNvi">
+                <ref role="37wK5l" to="79ha:28TMbOSEVXt" resolve="withTestModeOn" />
               </node>
             </node>
             <node concept="3uibUv" id="a8z8zytENk" role="1tU5fm">
@@ -3899,7 +3924,7 @@
             </node>
             <node concept="2ShNRf" id="3Y8TONRGODz" role="37vLTx">
               <node concept="1pGfFk" id="3Y8TONRH2y9" role="2ShVmc">
-                <ref role="37wK5l" to="cky9:6rx4kZDkRjb" resolve="IdeaEnvironment" />
+                <ref role="37wK5l" to="cky9:4OPNMy2crcG" resolve="IdeaEnvironment" />
                 <node concept="37vLTw" id="3Y8TONRH2BX" role="37wK5m">
                   <ref role="3cqZAo" node="a8z8zytENm" resolve="config" />
                 </node>
@@ -5461,9 +5486,14 @@
             <node concept="2ShNRf" id="7Uu6u4DBjsg" role="37vLTx">
               <node concept="1pGfFk" id="7Uu6u4DBjsh" role="2ShVmc">
                 <ref role="37wK5l" to="79ha:6rx4kZDkRyV" resolve="MpsEnvironment" />
-                <node concept="2YIFZM" id="7Uu6u4DBjsi" role="37wK5m">
-                  <ref role="1Pybhc" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
-                  <ref role="37wK5l" to="79ha:6rx4kZDkZ7z" resolve="defaultConfig" />
+                <node concept="2OqwBi" id="28TMbOSGLWC" role="37wK5m">
+                  <node concept="2YIFZM" id="7Uu6u4DBjsi" role="2Oq$k0">
+                    <ref role="1Pybhc" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
+                    <ref role="37wK5l" to="79ha:6rx4kZDkZ7z" resolve="defaultConfig" />
+                  </node>
+                  <node concept="liA8E" id="28TMbOSGM5k" role="2OqNvi">
+                    <ref role="37wK5l" to="79ha:28TMbOSEVXt" resolve="withTestModeOn" />
+                  </node>
                 </node>
               </node>
             </node>

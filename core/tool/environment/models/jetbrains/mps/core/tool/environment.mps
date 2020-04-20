@@ -732,6 +732,12 @@
         </node>
       </node>
     </node>
+    <node concept="312cEg" id="28TMbOSF0ab" role="jymVt">
+      <property role="TrG5h" value="myTestModeOn" />
+      <node concept="3Tm6S6" id="28TMbOSEYQA" role="1B3o_S" />
+      <node concept="10P_77" id="28TMbOSF06_" role="1tU5fm" />
+      <node concept="3clFbT" id="28TMbOSF1me" role="33vP2m" />
+    </node>
     <node concept="2tJIrI" id="6rx4kZDkayQ" role="jymVt" />
     <node concept="3clFbW" id="3YQ3dO9lyd8" role="jymVt">
       <node concept="3Tm6S6" id="3YQ3dO9lyp2" role="1B3o_S" />
@@ -1561,6 +1567,42 @@
           </node>
         </node>
       </node>
+    </node>
+    <node concept="2tJIrI" id="28TMbOSET_P" role="jymVt" />
+    <node concept="3clFb_" id="28TMbOSEVXt" role="jymVt">
+      <property role="TrG5h" value="withTestModeOn" />
+      <node concept="3clFbS" id="28TMbOSEVXw" role="3clF47">
+        <node concept="3clFbF" id="28TMbOSEXei" role="3cqZAp">
+          <node concept="37vLTI" id="28TMbOSF1YD" role="3clFbG">
+            <node concept="3clFbT" id="28TMbOSF23R" role="37vLTx">
+              <property role="3clFbU" value="true" />
+            </node>
+            <node concept="37vLTw" id="28TMbOSF6EU" role="37vLTJ">
+              <ref role="3cqZAo" node="28TMbOSF0ab" resolve="myTestModeOn" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="28TMbOSF2db" role="3cqZAp">
+          <node concept="Xjq3P" id="28TMbOSF2dM" role="3cqZAk" />
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="28TMbOSEUR9" role="1B3o_S" />
+      <node concept="3uibUv" id="28TMbOSEVT2" role="3clF45">
+        <ref role="3uigEE" node="6rx4kZDk5A9" resolve="EnvironmentConfig" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="28TMbOSF2eq" role="jymVt" />
+    <node concept="3clFb_" id="28TMbOSF4Ad" role="jymVt">
+      <property role="TrG5h" value="isTestMode" />
+      <node concept="3clFbS" id="28TMbOSF4Ag" role="3clF47">
+        <node concept="3cpWs6" id="28TMbOSF5qY" role="3cqZAp">
+          <node concept="37vLTw" id="28TMbOSF5rF" role="3cqZAk">
+            <ref role="3cqZAo" node="28TMbOSF0ab" resolve="myTestModeOn" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="28TMbOSF3vQ" role="1B3o_S" />
+      <node concept="10P_77" id="28TMbOSF4yT" role="3clF45" />
     </node>
     <node concept="3Tm1VV" id="6rx4kZDk5Aa" role="1B3o_S" />
     <node concept="3UR2Jj" id="3eUNqOk6xny" role="lGtFl">
@@ -3200,12 +3242,12 @@
     <node concept="3clFbW" id="3eUNqOk4feY" role="jymVt">
       <node concept="3cqZAl" id="3eUNqOk4feZ" role="3clF45" />
       <node concept="3clFbS" id="3eUNqOk4ff1" role="3clF47">
-        <node concept="3clFbF" id="3eUNqOk7wZK" role="3cqZAp">
-          <node concept="37vLTI" id="3eUNqOk7x10" role="3clFbG">
-            <node concept="37vLTw" id="3eUNqOk7x1X" role="37vLTx">
+        <node concept="3clFbF" id="28TMbOSF8vp" role="3cqZAp">
+          <node concept="37vLTI" id="28TMbOSF8JC" role="3clFbG">
+            <node concept="37vLTw" id="28TMbOSF8Ld" role="37vLTx">
               <ref role="3cqZAo" node="3eUNqOk7wX9" resolve="config" />
             </node>
-            <node concept="37vLTw" id="3eUNqOk7wZI" role="37vLTJ">
+            <node concept="37vLTw" id="28TMbOSF8vl" role="37vLTJ">
               <ref role="3cqZAo" node="3eUNqOk7wUa" resolve="myConfig" />
             </node>
           </node>
@@ -3222,6 +3264,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="28TMbOSELL7" role="jymVt" />
     <node concept="2tJIrI" id="3eUNqOk6cjb" role="jymVt" />
     <node concept="3clFb_" id="3eUNqOk6clf" role="jymVt">
       <property role="1EzhhJ" value="false" />
@@ -3252,6 +3295,28 @@
             </node>
             <node concept="1rXfSq" id="3x_lgCAcKqC" role="37vLTx">
               <ref role="37wK5l" node="3x_lgCAcjqZ" resolve="createRootClassLoader" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="28TMbOSEMM8" role="3cqZAp">
+          <node concept="3clFbS" id="28TMbOSEMMa" role="3clFbx">
+            <node concept="3clFbF" id="28TMbOSENT1" role="3cqZAp">
+              <node concept="2YIFZM" id="28TMbOSENTk" role="3clFbG">
+                <ref role="37wK5l" to="fyhk:~RuntimeFlags.setTestMode(jetbrains.mps.TestMode)" resolve="setTestMode" />
+                <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
+                <node concept="Rm8GO" id="28TMbOSENW4" role="37wK5m">
+                  <ref role="Rm8GQ" to="fyhk:~TestMode.USUAL" resolve="USUAL" />
+                  <ref role="1Px2BO" to="fyhk:~TestMode" resolve="TestMode" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="28TMbOSF95h" role="3clFbw">
+            <node concept="liA8E" id="28TMbOSF9f4" role="2OqNvi">
+              <ref role="37wK5l" node="28TMbOSF4Ad" resolve="isTestMode" />
+            </node>
+            <node concept="37vLTw" id="28TMbOSF9oE" role="2Oq$k0">
+              <ref role="3cqZAo" node="3eUNqOk7wUa" resolve="myConfig" />
             </node>
           </node>
         </node>

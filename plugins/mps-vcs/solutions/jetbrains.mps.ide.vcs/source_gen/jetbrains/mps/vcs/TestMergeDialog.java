@@ -94,7 +94,7 @@ public class TestMergeDialog {
       String line = new Scanner(System.in).nextLine();
       args = new String[]{((line == null ? null : line.trim()))};
     }
-    IdeaEnvironment ENV = new IdeaEnvironment(EnvironmentConfig.defaultConfig());
+    IdeaEnvironment ENV = new IdeaEnvironment(EnvironmentConfig.defaultConfig().withTestModeOn());
     ENV.init();
     IconLoader.activate();
     jetbrains.mps.project.Project mpsProject = ENV.createEmptyProject();
