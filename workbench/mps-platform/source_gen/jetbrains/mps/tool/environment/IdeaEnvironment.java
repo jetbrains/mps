@@ -19,8 +19,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import com.intellij.openapi.application.ApplicationManager;
 import java.awt.GraphicsEnvironment;
 import com.intellij.testFramework.TestApplicationManager;
-import com.intellij.testFramework.ThreadTracker;
-import jetbrains.mps.smodel.WorkbenchModelAccess;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.RuntimeFlags;
 import com.intellij.openapi.Disposable;
@@ -199,7 +197,6 @@ public final class IdeaEnvironment extends EnvironmentBase {
     } else {
       myIdeaApplication = MPSHeadlessPlatformStarter.Holder.IT.createApp();
     }
-    ThreadTracker.longRunningThreadCreated(ApplicationManager.getApplication(), WorkbenchModelAccess.THREAD_GROUP_NAME);
   }
 
   @Override

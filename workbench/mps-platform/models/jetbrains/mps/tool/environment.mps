@@ -1946,20 +1946,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="5WEPrBtx9HV" role="3cqZAp">
-          <node concept="2YIFZM" id="5WEPrBtx9Jx" role="3clFbG">
-            <ref role="1Pybhc" to="anz6:~ThreadTracker" resolve="ThreadTracker" />
-            <ref role="37wK5l" to="anz6:~ThreadTracker.longRunningThreadCreated(com.intellij.openapi.Disposable,java.lang.String...)" resolve="longRunningThreadCreated" />
-            <node concept="2YIFZM" id="3DE6_ds7Fd_" role="37wK5m">
-              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
-              <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
-            </node>
-            <node concept="10M0yZ" id="5WEPrBtxA06" role="37wK5m">
-              <ref role="3cqZAo" to="w1kd:~WorkbenchModelAccess.THREAD_GROUP_NAME" resolve="THREAD_GROUP_NAME" />
-              <ref role="1PxDUh" to="w1kd:~WorkbenchModelAccess" resolve="WorkbenchModelAccess" />
-            </node>
-          </node>
-        </node>
       </node>
       <node concept="3Tm6S6" id="6z7xhWku6$B" role="1B3o_S" />
       <node concept="3cqZAl" id="65UowUML6Oy" role="3clF45" />

@@ -84,7 +84,7 @@ public class ThreadWatcher implements Output {
       builder.append("|(MPS interrupting thread)");
 
       // jetbrains.mps.smodel.EDTExecutorInternal 
-      builder.append("|(MPS EDT Executor Thread.*)");
+      builder.append("|(MPS EDT Executor.*)");
 
       // jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry 
       builder.append("|(ChangesManager command queue)");

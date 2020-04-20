@@ -843,7 +843,7 @@
               <node concept="liA8E" id="3m4z3Ef4Rqj" role="2OqNvi">
                 <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
                 <node concept="Xl_RD" id="3m4z3Ef4Rqk" role="37wK5m">
-                  <property role="Xl_RC" value="|(MPS EDT Executor Thread.*)" />
+                  <property role="Xl_RC" value="|(MPS EDT Executor.*)" />
                 </node>
               </node>
             </node>
