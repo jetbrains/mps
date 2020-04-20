@@ -43782,7 +43782,7 @@
     <property role="TrG5h" value="GoToConceptDescendants" />
     <property role="72QZ$" value="true" />
     <property role="3GE5qa" value="Structure.Actions" />
-    <property role="2uzpH1" value="Implementation(s)" />
+    <property role="2uzpH1" value="Concept Implementation(s)" />
     <property role="1teQrl" value="true" />
     <node concept="2XrIbr" id="5VO8AhfgrAG" role="32lrUH">
       <property role="TrG5h" value="captionFun" />
@@ -44593,7 +44593,7 @@
     <property role="TrG5h" value="GoToImplementationBehaviorMethod" />
     <property role="72QZ$" value="true" />
     <property role="3GE5qa" value="Behavior.Actions" />
-    <property role="2uzpH1" value="Implementation(s)" />
+    <property role="2uzpH1" value="Concept Method Implementation(s)" />
     <node concept="2XrIbr" id="2WqrB2Puq2s" role="32lrUH">
       <property role="TrG5h" value="captionFun" />
       <node concept="3uibUv" id="4CAk1Udgnc$" role="3clF45">
@@ -45065,7 +45065,7 @@
     <property role="TrG5h" value="GoToSuperBehaviorMethod" />
     <property role="72QZ$" value="true" />
     <property role="3GE5qa" value="Behavior.Actions" />
-    <property role="2uzpH1" value="Go to Super Methods" />
+    <property role="2uzpH1" value="Go to Super Method(s)" />
     <node concept="2XrIbr" id="4CAk1UdgKbD" role="32lrUH">
       <property role="TrG5h" value="captionFun" />
       <node concept="37vLTG" id="4CAk1UdgKbE" role="3clF46">

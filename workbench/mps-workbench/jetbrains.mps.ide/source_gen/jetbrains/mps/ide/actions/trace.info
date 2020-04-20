@@ -5031,8 +5031,8 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1596727503333709182">
     <file name="GoToImplementationBehaviorMethod_Action.java">
       <node id="1596727503333709182" at="34,0,35,0" concept="16" trace="ICON" />
-      <node id="1596727503333709182" at="36,52,37,41" concept="18" />
-      <node id="1596727503333709182" at="37,41,38,35" concept="6" />
+      <node id="1596727503333709182" at="36,52,37,56" concept="18" />
+      <node id="1596727503333709182" at="37,56,38,35" concept="6" />
       <node id="1596727503333709182" at="38,35,39,40" concept="6" />
       <node id="1596727503333709182" at="42,32,43,16" concept="13" />
       <node id="6818267381901085364" at="46,87,47,118" concept="12" />
@@ -12339,8 +12339,8 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6842131548104407467">
     <file name="GoToConceptDescendants_Action.java">
       <node id="6842131548104407467" at="35,0,36,0" concept="16" trace="ICON" />
-      <node id="6842131548104407467" at="37,42,38,41" concept="18" />
-      <node id="6842131548104407467" at="38,41,39,35" concept="6" />
+      <node id="6842131548104407467" at="37,42,38,49" concept="18" />
+      <node id="6842131548104407467" at="38,49,39,35" concept="6" />
       <node id="6842131548104407467" at="39,35,40,40" concept="6" />
       <node id="6842131548104407467" at="43,32,44,16" concept="13" />
       <node id="6842131548104407467" at="48,53,49,19" concept="13" />
@@ -13185,8 +13185,8 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7335624801804239524">
     <file name="GoToSuperBehaviorMethod_Action.java">
       <node id="7335624801804239524" at="35,0,36,0" concept="16" trace="ICON" />
-      <node id="7335624801804239524" at="37,43,38,43" concept="18" />
-      <node id="7335624801804239524" at="38,43,39,35" concept="6" />
+      <node id="7335624801804239524" at="37,43,38,45" concept="18" />
+      <node id="7335624801804239524" at="38,45,39,35" concept="6" />
       <node id="7335624801804239524" at="39,35,40,40" concept="6" />
       <node id="7335624801804239524" at="43,32,44,16" concept="13" />
       <node id="7335624801804239567" at="47,87,48,118" concept="12" />
