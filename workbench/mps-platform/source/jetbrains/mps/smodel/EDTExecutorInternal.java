@@ -334,7 +334,7 @@ final class EDTExecutorInternal implements Disposable {
     try (CloseableLock ignored = myLock.lock()) {
       while (!myTaskQueue.isEmpty()) {
         try {
-          myQueueWasEmptyCondition.await();
+          myQueueWasEmptyCondition.await(200, TimeUnit.MILLISECONDS);
         } catch (InterruptedException ie) {
           LOG.warn("Interrupted while waiting for flush", ie);
           Thread.currentThread().interrupt();
