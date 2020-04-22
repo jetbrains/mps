@@ -1522,7 +1522,7 @@
                                 <ref role="3cqZAo" node="2eczPnNAQBP" resolve="ngc" />
                               </node>
                               <node concept="liA8E" id="33pw6PrBjxE" role="2OqNvi">
-                                <ref role="37wK5l" to="btf5:4k3fuHGtdr_" resolve="getParentNodeId" />
+                                <ref role="37wK5l" to="btf5:4k3fuHGtdr_" resolve="getNewParentNodeId" />
                               </node>
                             </node>
                           </node>
@@ -1673,6 +1673,69 @@
               </node>
               <node concept="37vLTw" id="3u6fppQV092" role="2ZW6bz">
                 <ref role="3cqZAo" node="7t8y_6kIn0Z" resolve="ch" />
+              </node>
+            </node>
+          </node>
+          <node concept="3eNFk2" id="$Z3RHQAoy6" role="3eNLev">
+            <node concept="2ZW3vV" id="$Z3RHQApXU" role="3eO9$A">
+              <node concept="3uibUv" id="$Z3RHQAq0B" role="2ZW6by">
+                <ref role="3uigEE" to="btf5:2prfDaQ83wW" resolve="NodeIdChange" />
+              </node>
+              <node concept="37vLTw" id="$Z3RHQApPL" role="2ZW6bz">
+                <ref role="3cqZAo" node="7t8y_6kIn0Z" resolve="ch" />
+              </node>
+            </node>
+            <node concept="3clFbS" id="$Z3RHQAoy8" role="3eOfB_">
+              <node concept="3cpWs8" id="$Z3RHQAq1h" role="3cqZAp">
+                <node concept="3cpWsn" id="$Z3RHQAq1i" role="3cpWs9">
+                  <property role="TrG5h" value="nic" />
+                  <node concept="3uibUv" id="$Z3RHQAq1j" role="1tU5fm">
+                    <ref role="3uigEE" to="btf5:2prfDaQ83wW" resolve="NodeIdChange" />
+                  </node>
+                  <node concept="10QFUN" id="$Z3RHQAq2Y" role="33vP2m">
+                    <node concept="3uibUv" id="$Z3RHQAq5G" role="10QFUM">
+                      <ref role="3uigEE" to="btf5:2prfDaQ83wW" resolve="NodeIdChange" />
+                    </node>
+                    <node concept="37vLTw" id="$Z3RHQAq2a" role="10QFUP">
+                      <ref role="3cqZAo" node="7t8y_6kIn0Z" resolve="ch" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="$Z3RHQBaAM" role="3cqZAp">
+                <node concept="37vLTI" id="$Z3RHQBaAN" role="3clFbG">
+                  <node concept="3EllGN" id="$Z3RHQBaBc" role="37vLTJ">
+                    <node concept="37vLTw" id="$Z3RHQBaBd" role="3ElQJh">
+                      <ref role="3cqZAo" node="2eczPnNAz7w" resolve="myChangesToLineContents" />
+                    </node>
+                    <node concept="37vLTw" id="$Z3RHQBaBe" role="3ElVtu">
+                      <ref role="3cqZAo" node="7t8y_6kIn0Z" resolve="ch" />
+                    </node>
+                  </node>
+                  <node concept="2ShNRf" id="2j$MD6_8eRw" role="37vLTx">
+                    <node concept="3g6Rrh" id="2j$MD6_8eRx" role="2ShVmc">
+                      <node concept="3uibUv" id="2j$MD6_8eRy" role="3g7fb8">
+                        <ref role="3uigEE" to="mdm6:~LineContent" resolve="LineContent" />
+                      </node>
+                      <node concept="2ShNRf" id="2j$MD6_8eRz" role="3g7hyw">
+                        <node concept="1pGfFk" id="2j$MD6_8eR$" role="2ShVmc">
+                          <ref role="37wK5l" to="mdm6:~NodeLineContent.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNodeId)" resolve="NodeLineContent" />
+                          <node concept="2OqwBi" id="2j$MD6_8eR_" role="37wK5m">
+                            <node concept="liA8E" id="2j$MD6_8fpj" role="2OqNvi">
+                              <ref role="37wK5l" to="btf5:7v6p9iW3p60" resolve="getNodeId" />
+                              <node concept="3clFbT" id="2j$MD6_8fwl" role="37wK5m">
+                                <property role="3clFbU" value="true" />
+                              </node>
+                            </node>
+                            <node concept="37vLTw" id="2j$MD6_8f8w" role="2Oq$k0">
+                              <ref role="3cqZAo" node="$Z3RHQAq1i" resolve="nic" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
               </node>
             </node>
           </node>

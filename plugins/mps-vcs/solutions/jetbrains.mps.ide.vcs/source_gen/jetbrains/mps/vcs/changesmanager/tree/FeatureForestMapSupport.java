@@ -91,7 +91,7 @@ public class FeatureForestMapSupport extends AbstractProjectComponent {
     } else
     if (change instanceof NodeGroupChange) {
       NodeGroupChange ngc = ((NodeGroupChange) change);
-      SNodeId parentId = ngc.getParentNodeId();
+      SNodeId parentId = ngc.getNewParentNodeId();
       int begin = ngc.getResultBegin();
       int end = ngc.getResultEnd();
       if (begin == end) {

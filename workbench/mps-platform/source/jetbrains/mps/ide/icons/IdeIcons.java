@@ -53,6 +53,7 @@ public class IdeIcons {
 
   public static final Icon PROPERTIES_ICON = General.Settings;
   public static final Icon INSPECTOR_ICON = Toolwindows.ToolWindowInspection;
+  public static final Icon GEAR_PLAIN_ICON=General.GearPlain;
 
   public static final Icon APPLY = Diff.Arrow;
   public static final Icon APPLY_RIGHT= Diff.ArrowRight;

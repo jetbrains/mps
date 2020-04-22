@@ -26,13 +26,17 @@ import jetbrains.mps.internal.collections.runtime.IMapping;
 public class NodeCopier {
   private Map<SNodeId, SNodeId> myIdReplacementCache = MapSequence.fromMap(new HashMap<SNodeId, SNodeId>());
   private SModel myModel;
+  private Map<SNodeId, SNodeId> myRenamedNodes = MapSequence.fromMap(new HashMap<SNodeId, SNodeId>());
+
 
   public NodeCopier(SModel model) {
     myModel = model;
   }
+
   public SNodeId getReplacementId(SNodeId originalId) {
     return MapSequence.fromMap(myIdReplacementCache).get(originalId);
   }
+
   public SNode copyNode(SNode sourceNode) {
     SNode copy = CopyUtil.copyAndPreserveId(sourceNode);
     for (SNode node : ListSequence.fromList(SNodeOperations.getNodeDescendants(copy, null, true, new SAbstractConcept[]{}))) {
@@ -51,6 +55,24 @@ public class NodeCopier {
     }
     return copy;
   }
+
+  public void replaceNodeId(SNode node, SNodeId newNodeId) {
+    SNodeId oldNodeId = node.getNodeId();
+    if (myModel.getNode(newNodeId) == null) {
+      MapSequence.fromMap(myRenamedNodes).put(oldNodeId, newNodeId);
+      setId(node, newNodeId);
+      return;
+    }
+    SNodeId replacedId;
+    do {
+      replacedId = jetbrains.mps.smodel.SModel.generateUniqueId();
+    } while (myModel.getNode(replacedId) != null);
+    setId(node, replacedId);
+    if (!(MapSequence.fromMap(myIdReplacementCache).containsKey(oldNodeId))) {
+      MapSequence.fromMap(myIdReplacementCache).put(newNodeId, replacedId);
+    }
+  }
+
   public void restoreIds(boolean affectOthers) {
     // no idea if the reasons that lead to this code still hold  
     // With UN being tracked for repository-attached models and within command only, do we still get errors here? 
@@ -70,6 +92,7 @@ public class NodeCopier {
       UnregisteredNodes.setWarningLevel(oldWarningLevel);
     }
   }
+
   private void setId(SNode node, SNodeId id) {
     if (SNodeOperations.getParent(node) == null) {
       SNodeOperations.deleteNode(node);
@@ -82,6 +105,7 @@ public class NodeCopier {
       SNodeOperations.replaceWithAnother(stubNode, node);
     }
   }
+
   private void softRestoreIds() {
     for (SNodeId id : SetSequence.fromSet(MapSequence.fromMap(myIdReplacementCache).keySet())) {
       if (MapSequence.fromMap(myIdReplacementCache).get(id) != null && myModel.getNode(id) == null) {
@@ -92,6 +116,7 @@ public class NodeCopier {
       }
     }
   }
+
   private void evictOtherDuplicates() {
     for (SNodeId id : SetSequence.fromSet(MapSequence.fromMap(myIdReplacementCache).keySet())) {
       SNode toBeEvicted = myModel.getNode(id);
@@ -99,6 +124,7 @@ public class NodeCopier {
       setId(toBeEvicted, jetbrains.mps.smodel.SModel.generateUniqueId());
     }
   }
+
   public Map<SNodeId, SNodeId> getState() {
     final Map<SNodeId, SNodeId> state = MapSequence.fromMap(new HashMap<SNodeId, SNodeId>(MapSequence.fromMap(myIdReplacementCache).count()));
     MapSequence.fromMap(myIdReplacementCache).visitAll(new IVisitor<IMapping<SNodeId, SNodeId>>() {
@@ -108,15 +134,25 @@ public class NodeCopier {
     });
     return state;
   }
+
   public void setState(Map<SNodeId, SNodeId> state, SModel model) {
     myIdReplacementCache = state;
     myModel = model;
   }
+
   public boolean hasIdsToRestore() {
     return Sequence.fromIterable(MapSequence.fromMap(myIdReplacementCache).values()).any(new IWhereFilter<SNodeId>() {
       public boolean accept(SNodeId id) {
         return id != null;
       }
     });
+  }
+
+  public void addRenamedNode(SNodeId sourceId, SNodeId renamedId) {
+    MapSequence.fromMap(myRenamedNodes).put(sourceId, renamedId);
+  }
+
+  public Map<SNodeId, SNodeId> getRenamedNodes() {
+    return myRenamedNodes;
   }
 }

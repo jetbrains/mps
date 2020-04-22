@@ -46,6 +46,7 @@ import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
 import jetbrains.mps.vcs.diff.changes.SetConceptChange;
+import jetbrains.mps.vcs.diff.changes.NodeIdChange;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
@@ -170,7 +171,7 @@ public class AnnotationColumn extends AbstractLeftColumn {
       MapSequence.fromMap(myChangesToLineContents).put(ch, new LineContent[]{new ReferenceLineContent(src.getAffectedNodeId(), src.getRoleLink())});
     } else if (ch instanceof NodeGroupChange) {
       NodeGroupChange ngc = (NodeGroupChange) ch;
-      Iterable<SNode> newChildren = AttributeOperations.getChildNodesAndAttributes(((SNode) myModel.getNode(ngc.getParentNodeId())), ngc.getRoleLink());
+      Iterable<SNode> newChildren = AttributeOperations.getChildNodesAndAttributes(((SNode) myModel.getNode(ngc.getNewParentNodeId())), ngc.getRoleLink());
       MapSequence.fromMap(myChangesToLineContents).put(ch, Sequence.fromIterable(newChildren).page(ngc.getResultBegin(), ngc.getResultEnd()).select(new ISelector<SNode, NodeLineContent>() {
         public NodeLineContent select(SNode n) {
           return new NodeLineContent(n.getNodeId());
@@ -179,6 +180,9 @@ public class AnnotationColumn extends AbstractLeftColumn {
     } else if (ch instanceof SetConceptChange) {
       SetConceptChange src = (SetConceptChange) ch;
       MapSequence.fromMap(myChangesToLineContents).put(ch, new LineContent[]{new NodeLineContent(src.getAffectedNodeId())});
+    } else if (ch instanceof NodeIdChange) {
+      NodeIdChange nic = (NodeIdChange) ch;
+      MapSequence.fromMap(myChangesToLineContents).put(ch, new LineContent[]{new NodeLineContent(nic.getNodeId(true))});
     }
   }
   private void calculateCurrentPseudoLinesLater() {

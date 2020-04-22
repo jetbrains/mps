@@ -62,6 +62,11 @@ public class SetReferenceChange extends NodeChange {
   public String getResolveInfo() {
     return myResolveInfo;
   }
+
+  public boolean isResolveInfoOnly() {
+    return myResolveInfoOnly;
+  }
+
   @Override
   public void apply(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
     SNode node = model.getNode(getAffectedNodeId());
@@ -144,13 +149,13 @@ public class SetReferenceChange extends NodeChange {
     SNode node = getChangeSet().getOldModel().getNode(getAffectedNodeId(false));
     assert node != null;
     SReference ref = node.getReference(getRoleLink());
-    SModelReference targetModel = check_mgdhcs_a0d0r(ref);
+    SModelReference targetModel = check_mgdhcs_a0d0u(ref);
     if (Objects.equals(SModelOperations.getPointer(getChangeSet().getOldModel()), targetModel)) {
       // This is internal reference 
       targetModel = null;
     }
 
-    return new SetReferenceChange(getChangeSet().getOppositeChangeSet(), getAffectedNodeId(true), myRole, targetModel, check_mgdhcs_e0a6a71(ref), check_mgdhcs_f0a6a71(((jetbrains.mps.smodel.SReference) ref)));
+    return new SetReferenceChange(getChangeSet().getOppositeChangeSet(), getAffectedNodeId(true), myRole, targetModel, check_mgdhcs_e0a6a02(ref), check_mgdhcs_f0a6a02(((jetbrains.mps.smodel.SReference) ref)));
   }
   private static SReference check_mgdhcs_a0i0f(SNode checkedDotOperand, SReferenceLink myRole, SetReferenceChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {
@@ -170,19 +175,19 @@ public class SetReferenceChange extends NodeChange {
     }
     return null;
   }
-  private static SModelReference check_mgdhcs_a0d0r(SReference checkedDotOperand) {
+  private static SModelReference check_mgdhcs_a0d0u(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetSModelReference();
     }
     return null;
   }
-  private static SNodeId check_mgdhcs_e0a6a71(SReference checkedDotOperand) {
+  private static SNodeId check_mgdhcs_e0a6a02(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetNodeId();
     }
     return null;
   }
-  private static String check_mgdhcs_f0a6a71(jetbrains.mps.smodel.SReference checkedDotOperand) {
+  private static String check_mgdhcs_f0a6a02(jetbrains.mps.smodel.SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getResolveInfo();
     }

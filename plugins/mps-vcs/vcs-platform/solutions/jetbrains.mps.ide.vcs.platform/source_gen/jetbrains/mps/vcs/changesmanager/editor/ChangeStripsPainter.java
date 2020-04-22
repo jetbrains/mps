@@ -23,6 +23,7 @@ import jetbrains.mps.vcs.diff.changes.SetPropertyChange;
 import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
 import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
 import jetbrains.mps.vcs.diff.changes.SetConceptChange;
+import jetbrains.mps.vcs.diff.changes.NodeIdChange;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.Nullable;
 import java.awt.Point;
@@ -122,6 +123,8 @@ public class ChangeStripsPainter extends AbstractFoldingAreaPainter {
           return ((NodeGroupChange) change).getDescription(false);
         } else if (change instanceof SetConceptChange) {
           return ((SetConceptChange) change).getDescription();
+        } else if (change instanceof NodeIdChange) {
+          return ((NodeIdChange) change).getDescription(false);
         }
       }
       return NameUtil.formatNumericalString(ListSequence.fromList(changes).count(), "change");

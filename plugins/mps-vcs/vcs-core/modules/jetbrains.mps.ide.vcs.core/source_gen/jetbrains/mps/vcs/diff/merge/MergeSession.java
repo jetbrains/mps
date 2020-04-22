@@ -23,6 +23,7 @@ import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
 import jetbrains.mps.vcs.diff.changes.NodeChange;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
 import jetbrains.mps.vcs.diff.changes.DeleteRootChange;
+import jetbrains.mps.vcs.diff.changes.NodeIdChange;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Arrays;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
@@ -100,11 +101,13 @@ public final class MergeSession {
     for (ModelChange change : Sequence.fromIterable(getAllChanges())) {
       SNodeId nodeId = null;
       if (change instanceof NodeGroupChange) {
-        nodeId = ((NodeGroupChange) change).getParentNodeId();
+        nodeId = ((NodeGroupChange) change).getOldParentNodeId();
       } else if (change instanceof NodeChange) {
         nodeId = ((NodeChange) change).getAffectedNodeId();
       } else if (change instanceof AddRootChange || change instanceof DeleteRootChange) {
         nodeId = change.getRootId();
+      } else if (change instanceof NodeIdChange) {
+        nodeId = ((NodeIdChange) change).getNodeId(false);
       }
       if (nodeId != null) {
         if (MapSequence.fromMap(myNodeToChanges).get(nodeId) == null) {
@@ -233,7 +236,7 @@ public final class MergeSession {
       final NodeGroupChange ngc = (NodeGroupChange) change;
       List<NodeGroupChange> ngcConflictedChanges = ListSequence.fromList(conflictedChanges).ofType(NodeGroupChange.class).where(new IWhereFilter<NodeGroupChange>() {
         public boolean accept(NodeGroupChange ch) {
-          return ch.getParentNodeId().equals(ngc.getParentNodeId());
+          return ch.getNewParentNodeId().equals(ngc.getNewParentNodeId());
         }
       }).toListSequence();
       int anchorIndex = ngc.getEnd();
@@ -243,11 +246,11 @@ public final class MergeSession {
         // original conflicted changes will be resolved 
         ChangeSetImpl changeSet = as_bow6nj_a0a2a5a5a74(ch.getChangeSet(), ChangeSetImpl.class);
         assert changeSet != null;
-        NodeGroupChange newChange = new NodeGroupChange(changeSet, ch.getParentNodeId(), ch.getRoleLink(), anchorIndex, anchorIndex, ch.getResultBegin(), ch.getResultEnd());
+        NodeGroupChange newChange = new NodeGroupChange(changeSet, ch.getOldParentNodeId(), ch.getNewParentNodeId(), ch.getRoleLink(), anchorIndex, anchorIndex, ch.getResultBegin(), ch.getResultEnd());
         if (isNotEmptyChange(newChange)) {
           changeSet.add(newChange);
           ListSequence.fromList(MapSequence.fromMap(myRootToChanges).get(ch.getRootId())).addElement(newChange);
-          ListSequence.fromList(MapSequence.fromMap(myNodeToChanges).get(ch.getParentNodeId())).addElement(newChange);
+          ListSequence.fromList(MapSequence.fromMap(myNodeToChanges).get(ch.getOldParentNodeId())).addElement(newChange);
           // this change with the new insertion change 
           // which is conflicted with the resolved change, so it will be red and will not autoapply 
           MapSequence.fromMap(myConflictingChanges).put(newChange, ListSequence.fromList(new ArrayList<ModelChange>()));

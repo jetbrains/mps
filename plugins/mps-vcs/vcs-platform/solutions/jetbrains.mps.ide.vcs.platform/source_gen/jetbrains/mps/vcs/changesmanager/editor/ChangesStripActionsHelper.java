@@ -25,6 +25,7 @@ import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.vcs.diff.changes.NodeChange;
+import jetbrains.mps.vcs.diff.changes.NodeIdChange;
 import java.util.Collections;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
@@ -143,6 +144,8 @@ public final class ChangesStripActionsHelper {
           NodeGroupChange ngc = (NodeGroupChange) ch;
           List<SNode> changeChildren = ngc.getChangedCollection(false);
           return ListSequence.fromList(changeChildren).page(ngc.getBegin(), ngc.getEnd());
+        } else if (ch instanceof NodeIdChange) {
+          return Sequence.<SNode>singleton(oldModel.getNode(((NodeIdChange) ch).getNodeId(false)));
         } else {
           return Sequence.fromIterable(Collections.<SNode>emptyList());
         }

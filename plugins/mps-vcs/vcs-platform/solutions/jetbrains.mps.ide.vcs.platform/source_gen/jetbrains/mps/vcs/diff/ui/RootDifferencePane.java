@@ -47,15 +47,20 @@ import com.intellij.openapi.actionSystem.ActionGroup;
 import javax.swing.JPanel;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
 import jetbrains.mps.smodel.SModelOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.vcs.diff.changes.NodeIdChange;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 
 @GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/8817948936268058313", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 public class RootDifferencePane implements IHighlighter, PropertyChangeListener {
   private static final String PARAM_SHOW_INSPECTOR = RootDifferencePane.class.getName() + "ShowInspector";
+  private static final String PARAM_HIDE_ID_CHANGES = RootDifferencePane.class.getName() + "HideIdChanges";
   private static final String PARAM_INSPECTOR_SPLITTER_POSITION = RootDifferencePane.class.getName() + "InspectorSplitterPosition";
   private final MPSProject myProject;
   private ModelChangeSet myChangeSet;
@@ -73,6 +78,9 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
   private DefaultActionGroup myActionGroup;
   private NextPreviousTraverser myTraverser;
 
+
+  private boolean myHideIdChanges = PropertiesComponent.getInstance().getBoolean(PARAM_HIDE_ID_CHANGES, false);
+
   public RootDifferencePane(MPSProject project, ModelChangeSet changeSet, SNodeId rootId, String rootName, String[] titles, boolean isEditable) {
     myChangeSet = changeSet;
     myRootId = rootId;
@@ -81,6 +89,7 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
     myNewEditor = addEditor(myChangeSet.getNewModel(), titles[1], false);
     myPanel = createTwosideContentPanel();
     myTraverser = new NextPreviousTraverser(myChangeGroupLayouts, myNewEditor.getMainEditor());
+    // todo: add possibility to hide resolve info only changes, see MPSSPRT-209 
     createActionGroup(isEditable, rootName);
   }
 
@@ -133,6 +142,17 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
       }
     });
     myActionGroup.addSeparator();
+    myActionGroup.add(new ToggleAction("Hide Non-Functional ID Changes", "Hide Non-Functional ID Changes", IdeIcons.EXCLUDE) {
+      public boolean isSelected(AnActionEvent e) {
+        return myHideIdChanges;
+      }
+      public void setSelected(AnActionEvent e, boolean b) {
+        hideIdChanges(b);
+      }
+    });
+
+    // todo: add possibility to hide resolve info only changes, see MPSSPRT-209 
+    myActionGroup.addSeparator();
     if (isEditable) {
       myActionGroup.add(new RevertRootsAction(rootName) {
         @Override
@@ -141,7 +161,7 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
         }
         @Override
         protected void after() {
-          rehighlight();
+          rehighlight(true);
         }
       });
     }
@@ -272,7 +292,7 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
     myRootId = rootId;
     myOldEditor.editRoot(myRootId, myChangeSet.getOldModel());
     myNewEditor.editRoot(myRootId, myChangeSet.getNewModel());
-    rehighlight();
+    rehighlight(true);
     myTraverser.goToFirstChangeLater();
   }
   public void setRootId(SNodeId rootId, ModelChangeSet changeSet) {
@@ -292,6 +312,22 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
     PropertiesComponent.getInstance().setValue(PARAM_SHOW_INSPECTOR, show + "");
     myOldEditor.showInspector(show);
     myNewEditor.showInspector(show);
+  }
+
+  /**
+   * Should be removed later when the button will be replaced by popup menu with several options
+   */
+  private void hideIdChanges(boolean hide) {
+    if (myHideIdChanges == hide) {
+      return;
+    }
+    myHideIdChanges = hide;
+    PropertiesComponent.getInstance().setValue(PARAM_HIDE_ID_CHANGES, hide);
+    check_guncoj_a3a74(ProjectHelper.getModelAccess(myProject.getProject()), this);
+  }
+
+  private void rehighlightNoRebuild() {
+    rehighlight(false);
   }
 
   private void linkEditors(TwosideContentPanel panel, boolean inspector) {
@@ -319,13 +355,25 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
     return result;
   }
 
+  private Iterable<ModelChange> getChangesToHighlight() {
+    return Sequence.fromIterable(myChangeSet.getChangesForRoot(myRootId)).where(new IWhereFilter<ModelChange>() {
+      public boolean accept(ModelChange change) {
+        if (change instanceof NodeIdChange && myHideIdChanges) {
+          return false;
+        }
+        // todo: add possibility to hide resolve info only changes, see MPSSPRT-209 
+        return true;
+      }
+    });
+  }
+
   private void highlightAllChanges() {
     ListSequence.fromList(myChangeGroupLayouts).visitAll(new IVisitor<ChangeGroupLayout>() {
       public void visit(ChangeGroupLayout b) {
         b.invalidate();
       }
     });
-    for (ModelChange change : Sequence.fromIterable(myChangeSet.getChangesForRoot(myRootId))) {
+    for (ModelChange change : Sequence.fromIterable(getChangesToHighlight())) {
       higlightChange(myOldEditor, myChangeSet.getOldModel(), true, change);
       higlightChange(myNewEditor, myChangeSet.getNewModel(), false, change);
     }
@@ -342,8 +390,10 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
     diffEditor.highlightChange(model, change, isOldEditor, null);
   }
   @Override
-  public void rehighlight() {
-    ChangeSetBuilder.rebuildChangeSet(myChangeSet);
+  public void rehighlight(boolean rebuildChangeSet) {
+    if (rebuildChangeSet) {
+      ChangeSetBuilder.rebuildChangeSet(myChangeSet);
+    }
     myNewEditor.unhighlightAllChanges();
     myOldEditor.unhighlightAllChanges();
 
@@ -359,7 +409,7 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
 
   /*package*/ void rollbackChanges(Iterable<ModelChange> changes) {
     ModelChange.rollbackChanges(changes);
-    rehighlight();
+    rehighlight(true);
   }
 
   public void dispose() {
@@ -370,4 +420,14 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
     myNewEditor = null;
   }
 
+  private static void check_guncoj_a3a74(ModelAccess checkedDotOperand, final RootDifferencePane checkedDotThisExpression) {
+    if (null != checkedDotOperand) {
+      checkedDotOperand.runReadAction(new Runnable() {
+        public void run() {
+          checkedDotThisExpression.rehighlightNoRebuild();
+        }
+      });
+    }
+
+  }
 }

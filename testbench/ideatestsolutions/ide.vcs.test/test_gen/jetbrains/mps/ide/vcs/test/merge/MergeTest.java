@@ -158,6 +158,30 @@ public class MergeTest extends ChangesTestBase {
       }
     });
   }
+
+  @Test
+  public void testSymmetricChanges_AddChidlrenWithDifferentIds() {
+    testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
+      public SModel createModel() {
+        ChangesTestUtil.addBlockStatementToMethod2(getMineClassRoot(), null, false);
+        ChangesTestUtil.addBlockStatementToMethod2(getTheirsClassRoot(), null, false);
+        return myMineModel;
+      }
+    });
+  }
+
+  @Test
+  public void testConflictingChanges_AddChidlrenWithDifferentIds() {
+    testMergeNumberOfConflictingChanges(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SModel>() {
+      public SModel invoke() {
+        ChangesTestUtil.addBlockStatementToMethod2(getMineClassRoot(), null, false);
+        ChangesTestUtil.addBlockStatementToMethod2(getTheirsClassRoot(), null, true);
+        return myMineModel;
+      }
+    }), 2);
+  }
+
+
   @Test
   public void testSymmetricChanges_Uncomment() {
     testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
@@ -321,7 +345,7 @@ public class MergeTest extends ChangesTestBase {
   public void testAddChildAndSetPropertyDontConflict() {
     testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelChanger() {
       public void changeModel(SModel expectedModel) {
-        SNode newChild = createInstanceMethodDeclaration_u0wfvp_a0a0a0a0a0a15();
+        SNode newChild = createInstanceMethodDeclaration_u0wfvp_a0a0a0a0a0a75();
         SPropertyOperations.assign(getMineClassRoot(), PROPS.name$tAp1, "ChangedName");
         insertMemberPreservingId(getTheirsClassRoot(), newChild, -1);
 
@@ -445,7 +469,7 @@ public class MergeTest extends ChangesTestBase {
     n0.forChild(LINKS.returnType$WIkw).init(CONCEPTS.VoidType$aT);
     return n0.getResult();
   }
-  private static SNode createInstanceMethodDeclaration_u0wfvp_a0a0a0a0a0a15() {
+  private static SNode createInstanceMethodDeclaration_u0wfvp_a0a0a0a0a0a75() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InstanceMethodDeclaration$An);
     n0.setProperty(PROPS.name$tAp1, "newMethod");
     n0.forChild(LINKS.body$WIlu).init(CONCEPTS.StatementList$TN);

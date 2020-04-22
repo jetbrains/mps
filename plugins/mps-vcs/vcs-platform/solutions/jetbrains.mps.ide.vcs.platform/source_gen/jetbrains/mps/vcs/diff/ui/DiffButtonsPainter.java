@@ -62,7 +62,7 @@ public class DiffButtonsPainter extends ButtonsPainter {
       getEditorComponent().getEditorContext().getRepository().getModelAccess().executeCommand(new Runnable() {
         public void run() {
           ModelChange.rollbackChanges(getChangeGroup().getChanges());
-          myDiffPane.rehighlight();
+          myDiffPane.rehighlight(true);
         }
       });
     }

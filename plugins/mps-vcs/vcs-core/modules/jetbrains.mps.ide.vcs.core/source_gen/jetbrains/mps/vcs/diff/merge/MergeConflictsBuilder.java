@@ -21,15 +21,15 @@ import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
 import jetbrains.mps.vcs.diff.changes.DeleteRootChange;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.vcs.diff.changes.NodeChange;
+import jetbrains.mps.vcs.diff.changes.NodeIdChange;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.vcs.diff.changes.SetPropertyChange;
 import jetbrains.mps.util.EqualUtil;
+import jetbrains.mps.vcs.diff.changes.SetPropertyChange;
 import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
 import jetbrains.mps.vcs.diff.changes.SetConceptChange;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
-import jetbrains.mps.util.SNodeCompare;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -113,7 +113,9 @@ public class MergeConflictsBuilder {
       if (change instanceof NodeChange) {
         nodeId = ((NodeChange) change).getAffectedNodeId();
       } else if (change instanceof NodeGroupChange) {
-        nodeId = ((NodeGroupChange) change).getParentNodeId();
+        nodeId = ((NodeGroupChange) change).getOldParentNodeId();
+      } else if (change instanceof NodeIdChange) {
+        nodeId = ((NodeIdChange) change).getNodeId(false);
       }
       if (nodeId == null) {
         continue;
@@ -139,6 +141,25 @@ public class MergeConflictsBuilder {
           }
         }
         node = SNodeOperations.getParent(node);
+      }
+    }
+  }
+
+  private void collectIdConflicts() {
+    Tuples._2<Map<SNodeId, NodeIdChange>, Map<SNodeId, NodeIdChange>> arranged;
+    arranged = this.<SNodeId,NodeIdChange>arrangeChanges(new _FunctionTypes._return_P1_E0<SNodeId, NodeIdChange>() {
+      public SNodeId invoke(NodeIdChange nic) {
+        return nic.getNodeId(false);
+      }
+    }, NodeIdChange.class);
+    for (SNodeId nodeId : SetSequence.fromSet(MapSequence.fromMap(arranged._0()).keySet()).intersect(SetSequence.fromSet(MapSequence.fromMap(arranged._1()).keySet()))) {
+      NodeIdChange mineChange = MapSequence.fromMap(arranged._0()).get(nodeId);
+      NodeIdChange repositoryChange = MapSequence.fromMap(arranged._1()).get(nodeId);
+      addSymmetric(mineChange, repositoryChange);
+      if (EqualUtil.equals(mineChange.getNodeId(true), repositoryChange.getNodeId(true))) {
+        addSymmetric(mineChange, repositoryChange);
+      } else {
+        addPossibleConflict(mineChange, repositoryChange);
       }
     }
   }
@@ -226,8 +247,8 @@ public class MergeConflictsBuilder {
   private boolean nodeGroupChangesSymmetric(NodeGroupChange mine, NodeGroupChange repository) {
     if (mine.getBegin() == repository.getBegin() && mine.getEnd() == repository.getEnd()) {
       if (mine.getResultEnd() - mine.getResultBegin() == repository.getResultEnd() - repository.getResultBegin()) {
-        List<? extends SNode> myChildren = IterableUtil.asList(AttributeOperations.getChildNodesAndAttributes(((SNode) myMyModel.getNode(mine.getParentNodeId())), mine.getRoleLink()));
-        List<? extends SNode> repositoryChildren = IterableUtil.asList(AttributeOperations.getChildNodesAndAttributes(((SNode) myRepositoryModel.getNode(repository.getParentNodeId())), repository.getRoleLink()));
+        List<? extends SNode> myChildren = IterableUtil.asList(AttributeOperations.getChildNodesAndAttributes(((SNode) myMyModel.getNode(mine.getNewParentNodeId())), mine.getRoleLink()));
+        List<? extends SNode> repositoryChildren = IterableUtil.asList(AttributeOperations.getChildNodesAndAttributes(((SNode) myRepositoryModel.getNode(repository.getNewParentNodeId())), repository.getRoleLink()));
         for (int o = 0; o < mine.getResultEnd() - mine.getResultBegin(); o++) {
           if (!(SNodeCompare.nodeEquals(myChildren.get(mine.getResultBegin() + o), repositoryChildren.get(repository.getResultBegin() + o)))) {
             return false;
@@ -317,6 +338,7 @@ public class MergeConflictsBuilder {
     collectPropertyConflicts();
     collectReferenceConflicts();
     collectConceptConflicts();
+    collectIdConflicts();
 
     collectSymmetricRootDeletes();
     collectConflictingRootAdds();
@@ -329,7 +351,7 @@ public class MergeConflictsBuilder {
   private static Map<Tuples._2<SNodeId, SContainmentLink>, List<NodeGroupChange>> arrangeNodeGroupChanges(ChangeSet changeSet) {
     Map<Tuples._2<SNodeId, SContainmentLink>, List<NodeGroupChange>> nodeRoleToGroupChanges = MapSequence.fromMap(new HashMap<Tuples._2<SNodeId, SContainmentLink>, List<NodeGroupChange>>());
     for (NodeGroupChange change : Sequence.fromIterable(changeSet.getModelChanges(NodeGroupChange.class))) {
-      Tuples._2<SNodeId, SContainmentLink> nodeRole = MultiTuple.<SNodeId,SContainmentLink>from(change.getParentNodeId(), change.getRoleLink());
+      Tuples._2<SNodeId, SContainmentLink> nodeRole = MultiTuple.<SNodeId,SContainmentLink>from(change.getOldParentNodeId(), change.getRoleLink());
       if (!(MapSequence.fromMap(nodeRoleToGroupChanges).containsKey(nodeRole))) {
         MapSequence.fromMap(nodeRoleToGroupChanges).put(nodeRole, ListSequence.fromList(new ArrayList<NodeGroupChange>()));
       }
