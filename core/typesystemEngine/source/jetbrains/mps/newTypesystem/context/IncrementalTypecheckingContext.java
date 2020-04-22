@@ -28,6 +28,7 @@ import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.SNodeOperations;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -38,7 +39,7 @@ public class IncrementalTypecheckingContext extends ReportingTypecheckingContext
   private static Logger LOG = LogManager.getLogger(IncrementalTypecheckingContext.class);
   private final ClassLoaderManager myClassManager;
 
-  private boolean myIsNonTypesystemComputation = false;
+  private volatile NonTypesystemComputationMode myNonTypesystemComputationMode = NonTypesystemComputationMode.OFF;
 //  private boolean myIsInferenceMode = false;
 
   private Map<Object, Integer> myRequesting = new HashMap<>();
@@ -150,18 +151,26 @@ public class IncrementalTypecheckingContext extends ReportingTypecheckingContext
   }
 
   @Override
-  public void setIsNonTypesystemComputation() {
-    myIsNonTypesystemComputation = true;
+  public boolean setNonTypesystemComputationMode(@NotNull NonTypesystemComputationMode mode) {
+    NonTypesystemComputationMode old = myNonTypesystemComputationMode;
+    myNonTypesystemComputationMode = mode;
+    return (old == mode);
+  }
+
+  @NotNull
+  @Override
+  public NonTypesystemComputationMode getNonTypesystemComputationMode() {
+    return myNonTypesystemComputationMode;
   }
 
   @Override
   public void resetIsNonTypesystemComputation() {
-    myIsNonTypesystemComputation = false;
+    myNonTypesystemComputationMode = NonTypesystemComputationMode.OFF;
   }
 
   @Override
   public boolean isNonTypesystemComputation() {
-    return myIsNonTypesystemComputation;
+    return myNonTypesystemComputationMode != NonTypesystemComputationMode.OFF;
   }
 
   @Override

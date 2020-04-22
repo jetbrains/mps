@@ -29,6 +29,7 @@ import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.typesystem.LegacyTypecheckingProvider;
 import jetbrains.mps.typesystem.LegacyTypecheckingQueries;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
+import jetbrains.mps.typesystem.inference.TypeCheckingContext.NonTypesystemComputationMode;
 import jetbrains.mps.util.Cancellable;
 import jetbrains.mps.util.Pair;
 import org.apache.log4j.LogManager;
@@ -90,7 +91,7 @@ public class NonTypesystemEditorChecker extends AbstractTypesystemEditorChecker 
         context.checkIfNotChecked(rootNode, false);
         try {
           messagesChanged = true;
-          context.setIsNonTypesystemComputation();
+          context.setNonTypesystemComputationMode(NonTypesystemComputationMode.ON_THE_FLY);
           if (typesComponent.applyNonTypesystemRulesToRoot(context, cancellable)) {
             typesComponent.setCheckedNonTypesystem();
           }
@@ -98,7 +99,7 @@ public class NonTypesystemEditorChecker extends AbstractTypesystemEditorChecker 
           LOG.error(null, t);
           typesComponent.setCheckedNonTypesystem();
         } finally {
-          context.resetIsNonTypesystemComputation();
+          context.setNonTypesystemComputationMode(NonTypesystemComputationMode.OFF);
         }
       }
 

@@ -24,10 +24,13 @@ import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.languageScope.LanguageScopeExecutor;
 import jetbrains.mps.newTypesystem.state.State;
 import jetbrains.mps.smodel.NodeReadEventsCaster;
+import jetbrains.mps.typesystem.inference.TypeCheckingContext.NonTypesystemComputationMode;
 import jetbrains.mps.typesystemEngine.util.TypeSystemUtil;
 import jetbrains.mps.util.Cancellable;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.IterableUtil;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeChecker;
@@ -39,6 +42,7 @@ import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<State> implements ITypeErrorComponent {
+  private static final Logger LOG = LogManager.getLogger(NonTypeSystemComponent.class);
 
   private ConcurrentLinkedQueue<Pair<SNode, String>> myCurrentPropertiesToInvalidate = new ConcurrentLinkedQueue<>();
   private ConcurrentLinkedQueue<SNode> myCurrentTypedTermsToInvalidate = new ConcurrentLinkedQueue<>();
@@ -310,6 +314,7 @@ public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<Sta
   }
 
   private void applyNonTypesystemRulesToNode(@NotNull final SNode node, final TypeCheckingContext typeCheckingContext) {
+    assert typeCheckingContext.isNonTypesystemComputation();
     getTypechecking().runApplyRulesTo(node, () -> {
 
       List<Pair<NonTypesystemRule_Runtime, IsApplicableStatus>> nonTypesystemRules = TypeChecker.getInstance().getRulesManager().getNonTypesystemRules(node);
@@ -317,7 +322,12 @@ public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<Sta
       if (nonTypesystemRules == null) return;
 
       boolean incrementalMode = isIncrementalMode();
+      boolean onTheFlyMode = typeCheckingContext.getNonTypesystemComputationMode() == NonTypesystemComputationMode.ON_THE_FLY;
       for (Pair<NonTypesystemRule_Runtime, IsApplicableStatus> rule : nonTypesystemRules) {
+        if (onTheFlyMode && !rule.o1.applyOnTheFly()) {
+          LOG.debug("Skipping the heavy rule " + rule.o1);
+          continue;
+        }
         Pair<SNode, NonTypesystemRule_Runtime> nodeAndRule = new Pair<>(node, rule.o1);
         MyTypesReadListener typesReadListener = new MyTypesReadListener();
         if (incrementalMode) {

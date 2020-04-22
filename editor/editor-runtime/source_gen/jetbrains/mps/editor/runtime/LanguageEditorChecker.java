@@ -144,19 +144,19 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
     return createMessages(editorContext, inspector, errorsComponent, editedNode);
   }
 
-  private boolean runChecks(boolean inspector, LanguageErrorsComponent errorsComponent, TypeCheckingContext typeCheckingContext, SNode node, EditorContext editorContext, Cancellable cancellable) {
+  private boolean runChecks(boolean inspector, LanguageErrorsComponent errorsComponent, TypeCheckingContext context, SNode node, EditorContext editorContext, Cancellable cancellable) {
     if (inspector) {
       return errorsComponent.checkInspector();
     }
 
     try {
-      if (typeCheckingContext != null) {
-        typeCheckingContext.setIsNonTypesystemComputation();
+      if (context != null) {
+        context.setNonTypesystemComputationMode(TypeCheckingContext.NonTypesystemComputationMode.ON_THE_FLY);
       }
       return errorsComponent.check(SNodeOperations.getContainingRoot(((SNode) node)), myRules, editorContext.getRepository(), cancellable);
     } finally {
-      if (typeCheckingContext != null) {
-        typeCheckingContext.resetIsNonTypesystemComputation();
+      if (context != null) {
+        context.setNonTypesystemComputationMode(TypeCheckingContext.NonTypesystemComputationMode.OFF);
       }
     }
   }

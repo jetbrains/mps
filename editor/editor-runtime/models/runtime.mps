@@ -7702,7 +7702,7 @@
         </node>
       </node>
       <node concept="37vLTG" id="2v0ve8x$pfN" role="3clF46">
-        <property role="TrG5h" value="typeCheckingContext" />
+        <property role="TrG5h" value="context" />
         <node concept="3uibUv" id="2v0ve8x$pfO" role="1tU5fm">
           <ref role="3uigEE" to="u78q:~TypeCheckingContext" resolve="TypeCheckingContext" />
         </node>
@@ -7748,20 +7748,24 @@
           <node concept="3clFbS" id="2v0ve8x$pg5" role="1zxBo7">
             <node concept="3clFbJ" id="2v0ve8x$pg6" role="3cqZAp">
               <node concept="3clFbS" id="2v0ve8x$pg7" role="3clFbx">
-                <node concept="3clFbF" id="2v0ve8x$pg8" role="3cqZAp">
-                  <node concept="2OqwBi" id="2v0ve8x$pg9" role="3clFbG">
-                    <node concept="37vLTw" id="2v0ve8x$pga" role="2Oq$k0">
-                      <ref role="3cqZAo" node="2v0ve8x$pfN" resolve="typeCheckingContext" />
+                <node concept="3clFbF" id="4VpcCIwXWAI" role="3cqZAp">
+                  <node concept="2OqwBi" id="4VpcCIwXWAJ" role="3clFbG">
+                    <node concept="37vLTw" id="4VpcCIwXWAK" role="2Oq$k0">
+                      <ref role="3cqZAo" node="2v0ve8x$pfN" resolve="context" />
                     </node>
-                    <node concept="liA8E" id="2v0ve8x$pgb" role="2OqNvi">
-                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.setIsNonTypesystemComputation()" resolve="setIsNonTypesystemComputation" />
+                    <node concept="liA8E" id="4VpcCIwXWAL" role="2OqNvi">
+                      <ref role="37wK5l" to="u78q:~TypeCheckingContext.setNonTypesystemComputationMode(jetbrains.mps.typesystem.inference.TypeCheckingContext$NonTypesystemComputationMode)" resolve="setNonTypesystemComputationMode" />
+                      <node concept="Rm8GO" id="4VpcCIwY$_9" role="37wK5m">
+                        <ref role="Rm8GQ" to="u78q:~TypeCheckingContext$NonTypesystemComputationMode.ON_THE_FLY" resolve="ON_THE_FLY" />
+                        <ref role="1Px2BO" to="u78q:~TypeCheckingContext$NonTypesystemComputationMode" resolve="TypeCheckingContext.NonTypesystemComputationMode" />
+                      </node>
                     </node>
                   </node>
                 </node>
               </node>
               <node concept="3y3z36" id="2v0ve8x$pgc" role="3clFbw">
                 <node concept="37vLTw" id="2v0ve8x$pgd" role="3uHU7B">
-                  <ref role="3cqZAo" node="2v0ve8x$pfN" resolve="typeCheckingContext" />
+                  <ref role="3cqZAo" node="2v0ve8x$pfN" resolve="context" />
                 </node>
                 <node concept="10Nm6u" id="2v0ve8x$pge" role="3uHU7w" />
               </node>
@@ -7807,18 +7811,22 @@
               <node concept="3clFbJ" id="2v0ve8x$pgC" role="3cqZAp">
                 <node concept="3y3z36" id="2v0ve8x$pgD" role="3clFbw">
                   <node concept="37vLTw" id="2v0ve8x$pgE" role="3uHU7B">
-                    <ref role="3cqZAo" node="2v0ve8x$pfN" resolve="typeCheckingContext" />
+                    <ref role="3cqZAo" node="2v0ve8x$pfN" resolve="context" />
                   </node>
                   <node concept="10Nm6u" id="2v0ve8x$pgF" role="3uHU7w" />
                 </node>
                 <node concept="3clFbS" id="2v0ve8x$pgG" role="3clFbx">
-                  <node concept="3clFbF" id="2v0ve8x$pgH" role="3cqZAp">
-                    <node concept="2OqwBi" id="2v0ve8x$pgI" role="3clFbG">
-                      <node concept="37vLTw" id="2v0ve8x$pgJ" role="2Oq$k0">
-                        <ref role="3cqZAo" node="2v0ve8x$pfN" resolve="typeCheckingContext" />
+                  <node concept="3clFbF" id="4VpcCIwY$4u" role="3cqZAp">
+                    <node concept="2OqwBi" id="4VpcCIwY$4v" role="3clFbG">
+                      <node concept="37vLTw" id="4VpcCIwY$4w" role="2Oq$k0">
+                        <ref role="3cqZAo" node="2v0ve8x$pfN" resolve="context" />
                       </node>
-                      <node concept="liA8E" id="2v0ve8x$pgK" role="2OqNvi">
-                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.resetIsNonTypesystemComputation()" resolve="resetIsNonTypesystemComputation" />
+                      <node concept="liA8E" id="4VpcCIwY$4x" role="2OqNvi">
+                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.setNonTypesystemComputationMode(jetbrains.mps.typesystem.inference.TypeCheckingContext$NonTypesystemComputationMode)" resolve="setNonTypesystemComputationMode" />
+                        <node concept="Rm8GO" id="4VpcCIwY$7r" role="37wK5m">
+                          <ref role="Rm8GQ" to="u78q:~TypeCheckingContext$NonTypesystemComputationMode.OFF" resolve="OFF" />
+                          <ref role="1Px2BO" to="u78q:~TypeCheckingContext$NonTypesystemComputationMode" resolve="TypeCheckingContext.NonTypesystemComputationMode" />
+                        </node>
                       </node>
                     </node>
                   </node>

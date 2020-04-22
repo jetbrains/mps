@@ -47,6 +47,10 @@
       <concept id="1197029447546" name="jetbrains.mps.baseLanguage.structure.FieldReferenceOperation" flags="nn" index="2OwXpG">
         <reference id="1197029500499" name="fieldDeclaration" index="2Oxat5" />
       </concept>
+      <concept id="1083260308424" name="jetbrains.mps.baseLanguage.structure.EnumConstantReference" flags="nn" index="Rm8GO">
+        <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
+        <reference id="1144432896254" name="enumClass" index="1Px2BO" />
+      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
       </concept>
@@ -603,8 +607,12 @@
                           <node concept="37vLTw" id="mDYNhtwV4X" role="2Oq$k0">
                             <ref role="3cqZAo" node="mDYNhtwT1g" resolve="context" />
                           </node>
-                          <node concept="liA8E" id="mDYNhtwVfW" role="2OqNvi">
-                            <ref role="37wK5l" to="u78q:~TypeCheckingContext.setIsNonTypesystemComputation()" resolve="setIsNonTypesystemComputation" />
+                          <node concept="liA8E" id="4VpcCIwXRkf" role="2OqNvi">
+                            <ref role="37wK5l" to="u78q:~TypeCheckingContext.setNonTypesystemComputationMode(jetbrains.mps.typesystem.inference.TypeCheckingContext$NonTypesystemComputationMode)" resolve="setNonTypesystemComputationMode" />
+                            <node concept="Rm8GO" id="4VpcCIwXVON" role="37wK5m">
+                              <ref role="Rm8GQ" to="u78q:~TypeCheckingContext$NonTypesystemComputationMode.NORMAL" resolve="NORMAL" />
+                              <ref role="1Px2BO" to="u78q:~TypeCheckingContext$NonTypesystemComputationMode" resolve="TypeCheckingContext.NonTypesystemComputationMode" />
+                            </node>
                           </node>
                         </node>
                       </node>
@@ -624,13 +632,17 @@
                     </node>
                     <node concept="1wplmZ" id="xvs04dGAo_" role="1zxBo6">
                       <node concept="3clFbS" id="mDYNhtwUY1" role="1wplMD">
-                        <node concept="3clFbF" id="mDYNhtwWlM" role="3cqZAp">
-                          <node concept="2OqwBi" id="mDYNhtwWs9" role="3clFbG">
-                            <node concept="37vLTw" id="mDYNhtwWlL" role="2Oq$k0">
+                        <node concept="3clFbF" id="4VpcCIwXWAI" role="3cqZAp">
+                          <node concept="2OqwBi" id="4VpcCIwXWAJ" role="3clFbG">
+                            <node concept="37vLTw" id="4VpcCIwXWAK" role="2Oq$k0">
                               <ref role="3cqZAo" node="mDYNhtwT1g" resolve="context" />
                             </node>
-                            <node concept="liA8E" id="mDYNhtwWwJ" role="2OqNvi">
-                              <ref role="37wK5l" to="u78q:~TypeCheckingContext.resetIsNonTypesystemComputation()" resolve="resetIsNonTypesystemComputation" />
+                            <node concept="liA8E" id="4VpcCIwXWAL" role="2OqNvi">
+                              <ref role="37wK5l" to="u78q:~TypeCheckingContext.setNonTypesystemComputationMode(jetbrains.mps.typesystem.inference.TypeCheckingContext$NonTypesystemComputationMode)" resolve="setNonTypesystemComputationMode" />
+                              <node concept="Rm8GO" id="4VpcCIwXYKa" role="37wK5m">
+                                <ref role="Rm8GQ" to="u78q:~TypeCheckingContext$NonTypesystemComputationMode.OFF" resolve="OFF" />
+                                <ref role="1Px2BO" to="u78q:~TypeCheckingContext$NonTypesystemComputationMode" resolve="TypeCheckingContext.NonTypesystemComputationMode" />
+                              </node>
                             </node>
                           </node>
                         </node>
