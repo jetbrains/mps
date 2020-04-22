@@ -69,7 +69,7 @@ public class TemplateModelInterpreted extends TemplateModelBase {
    * 'public' just to give access from TemplateModuleInterpreted2
    */
   public boolean isStale() {
-    if (myModel == null || myModelTimestamp == -1) {
+    if (myModelTimestamp == -1) {
       return true;
     }
     return myModelTimestamp != myModel.getSource().getTimestamp();
