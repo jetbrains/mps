@@ -14703,18 +14703,13 @@
                 <ref role="3cqZAo" node="76a4RXpsLzQ" resolve="module" />
               </node>
             </node>
-            <node concept="2OqwBi" id="4biA4YBBCVp" role="3uHU7B">
-              <node concept="2OqwBi" id="4biA4YBBCVq" role="2Oq$k0">
-                <node concept="37vLTw" id="4biA4YBBCVr" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2i74bFClxjY" resolve="myMpsProject" />
-                </node>
-                <node concept="liA8E" id="4biA4YBBCVs" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c3:~Project.getProjectModulesWithGenerators()" resolve="getProjectModulesWithGenerators" />
-                </node>
+            <node concept="2OqwBi" id="4biA4YBBCVq" role="3uHU7B">
+              <node concept="37vLTw" id="4biA4YBBCVr" role="2Oq$k0">
+                <ref role="3cqZAo" node="2i74bFClxjY" resolve="myMpsProject" />
               </node>
-              <node concept="liA8E" id="4biA4YBBCVt" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:~List.contains(java.lang.Object)" resolve="contains" />
-                <node concept="37vLTw" id="4biA4YBBCVu" role="37wK5m">
+              <node concept="liA8E" id="Ta317REhyA" role="2OqNvi">
+                <ref role="37wK5l" to="z1c3:~ProjectBase.isProjectModule(org.jetbrains.mps.openapi.module.SModule)" resolve="isProjectModule" />
+                <node concept="37vLTw" id="Ta317REopJ" role="37wK5m">
                   <ref role="3cqZAo" node="76a4RXpsLzQ" resolve="module" />
                 </node>
               </node>

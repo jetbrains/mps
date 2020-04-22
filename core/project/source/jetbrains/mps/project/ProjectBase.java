@@ -19,6 +19,7 @@ import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.extapi.module.SRepositoryRegistry;
+import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.project.ModulePath;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
 import jetbrains.mps.smodel.Generator;
@@ -217,11 +218,10 @@ public abstract class ProjectBase extends Project {
     repository.getModelAccess().runWriteAction(() -> {
       if (module instanceof Language) {
         // At the moment, project doesn't notice Generator modules, and expects them to be part of Language
-        // E.g. ProjectModulesFiller doesn't tell project to addModule(Generator). However, with Language no longer owner for its Generatorsm
+        // E.g. ProjectModulesFiller doesn't tell project to addModule(Generator). However, with Language no longer owner for its Generators,
         // we have to unregister them explicitly (like ModuleRepositoryFacade does)
-        // For reasons why we unregister all generators, not owned only, see ModuleRepositoryFacade.
-        Collection<Generator> allKnownLangGenerators = ((Language) module).getGenerators();
-        for (Generator g : allKnownLangGenerators) {
+        Collection<Generator> ownedGenerators = ((Language) module).getOwnedGenerators();
+        for (Generator g : ownedGenerators) {
           repository.unregisterModule(g, this);
         }
       }
@@ -246,6 +246,23 @@ public abstract class ProjectBase extends Project {
       }
     });
     return Collections.unmodifiableList(result);
+  }
+
+  /**
+   * Effective way to tell if a module is part of the project
+   * Note, Generator modules owned by a Language from the project are deemed project modules, too.
+   */
+  @Override
+  public boolean isProjectModule(@NotNull SModule module) {
+    if (getPath(module) != null) {
+      return true;
+    }
+    if (module instanceof Generator) {
+      // could be a generator owned by a language. Standalone generators from project would be discovered by getPath().
+      final GeneratorDescriptor gmd = ((Generator) module).getModuleDescriptor();
+      return !gmd.isStandaloneModule() && getPath(gmd.getSourceLanguage()) != null;
+    }
+    return false;
   }
 
   /**

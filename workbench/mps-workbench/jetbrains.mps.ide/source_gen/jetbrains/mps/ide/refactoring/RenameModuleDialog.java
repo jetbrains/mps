@@ -13,6 +13,8 @@ import jetbrains.mps.ide.IdeBundle;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.smodel.UndoRunnable;
+import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.refactoring.Renamer;
 import javax.swing.JComponent;
 import com.intellij.ui.components.JBPanel;
@@ -64,10 +66,11 @@ public class RenameModuleDialog extends RenameDialog {
 
   @Override
   protected void doRefactoringAction() {
-    myProject.getRepository().getModelAccess().executeCommand(new Runnable() {
+    final String newModuleName = getCurrentValue();
+    myProject.getModelAccess().executeCommand(new UndoRunnable.Base(String.format("Rename module %s", NameUtil.compactNamespace(myModule.getModuleName())), null) {
+      @Override
       public void run() {
-        final String newModuleName = getCurrentValue();
-        Renamer.renameModuleWithSubModules(myModule, newModuleName, myProject);
+        new Renamer(myProject).renameModule(myModule, newModuleName);
         RenameModuleDialog.super.doRefactoringAction();
       }
     });

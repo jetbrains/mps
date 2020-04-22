@@ -14,7 +14,6 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.ide.projectPane.ProjectPane;
-import jetbrains.mps.project.StandaloneMPSProject;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import com.intellij.openapi.ui.Messages;
 
@@ -33,7 +32,8 @@ public class SetVirtualFolder_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ((MPSProject) MapSequence.fromMap(_params).get("project")).isProjectModule(((SModule) MapSequence.fromMap(_params).get("module")));
+    // project.isProjectModule would say true for a generator under a language, and we don't want to set VF for it 
+    return ((MPSProject) MapSequence.fromMap(_params).get("project")).getPath(((SModule) MapSequence.fromMap(_params).get("module"))) != null;
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -70,8 +70,8 @@ public class SetVirtualFolder_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final ProjectPane pane = ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject")));
-    String oldFolder = ((StandaloneMPSProject) ((MPSProject) MapSequence.fromMap(_params).get("project"))).getFolderFor(((SModule) MapSequence.fromMap(_params).get("module")));
-    final Wrappers._T<String> newFolder = new Wrappers._T<String>(Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), "Enter new virtual folder name", "New Vitual folder", Messages.getQuestionIcon(), oldFolder, null));
+    String oldFolder = ((MPSProject) MapSequence.fromMap(_params).get("project")).getPath(((SModule) MapSequence.fromMap(_params).get("module"))).getVirtualFolder();
+    final Wrappers._T<String> newFolder = new Wrappers._T<String>(Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), "Enter new virtual folder name", "New Virtual folder", Messages.getQuestionIcon(), oldFolder, null));
     ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().executeCommand(new Runnable() {
       public void run() {
         if (newFolder.value != null) {
@@ -79,7 +79,7 @@ public class SetVirtualFolder_Action extends BaseAction {
             newFolder.value = null;
           }
           for (SModule m : pane.getSelectedModules()) {
-            ((StandaloneMPSProject) ((MPSProject) MapSequence.fromMap(_params).get("project"))).setFolderFor(m, newFolder.value);
+            ((MPSProject) MapSequence.fromMap(_params).get("project")).setVirtualFolder(m, newFolder.value);
           }
         }
       }
