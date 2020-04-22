@@ -125,11 +125,6 @@ public class Generator extends ReloadableModuleBase {
   }
 
   @Override
-  public IFile getModuleSourceDir() {
-    return mySourceLanguage == null ? null : mySourceLanguage.getModuleSourceDir();
-  }
-
-  @Override
   protected void doSetModuleDescriptor(ModuleDescriptor moduleDescriptor) {
     assert moduleDescriptor instanceof GeneratorDescriptor;
     if (false == moduleDescriptor instanceof GeneratorDescriptor) {
