@@ -4,8 +4,8 @@ package jetbrains.mps.lang.structure.findUsages;
 
 import jetbrains.mps.core.aspects.behaviour.api.AbstractConceptLike;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -23,6 +23,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   @Override
+  @NotNull
   public String getName() {
     return SPropertyOperations.getString(myPeer, PROPS.name$tAp1);
   }
