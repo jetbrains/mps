@@ -17,6 +17,7 @@ package jetbrains.mps.newTypesystem.context.component;
 
 import gnu.trove.THashMap;
 import gnu.trove.THashSet;
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
@@ -314,7 +315,7 @@ public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<Sta
   }
 
   private void applyNonTypesystemRulesToNode(@NotNull final SNode node, final TypeCheckingContext typeCheckingContext) {
-    assert typeCheckingContext.isNonTypesystemComputation();
+    assert typeCheckingContext.isNonTypesystemComputation() || RuntimeFlags.isTestMode();
     getTypechecking().runApplyRulesTo(node, () -> {
 
       List<Pair<NonTypesystemRule_Runtime, IsApplicableStatus>> nonTypesystemRules = TypeChecker.getInstance().getRulesManager().getNonTypesystemRules(node);

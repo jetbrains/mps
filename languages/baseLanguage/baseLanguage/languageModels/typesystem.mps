@@ -583,6 +583,7 @@
         <child id="1195213635060" name="body" index="18ibNy" />
       </concept>
       <concept id="1195214364922" name="jetbrains.mps.lang.typesystem.structure.NonTypesystemRule" flags="ig" index="18kY7G">
+        <property id="7181286126212894140" name="doNotApplyOnTheFly" index="1$Xk0j" />
         <child id="2329696648448631592" name="overridenRules" index="dp_RE" />
       </concept>
       <concept id="1188811367543" name="jetbrains.mps.lang.typesystem.structure.ComparisonRule" flags="ig" index="3aFulz">
@@ -57480,6 +57481,7 @@
   </node>
   <node concept="18kY7G" id="7juMyjbyBUD">
     <property role="TrG5h" value="CheckExtendedClassIsImported" />
+    <property role="1$Xk0j" value="true" />
     <node concept="3clFbS" id="7juMyjbyC3I" role="18ibNy">
       <node concept="3cpWs8" id="7juMyjbzQ3l" role="3cqZAp">
         <node concept="3cpWsn" id="7juMyjbzQ3m" role="3cpWs9">
