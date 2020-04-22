@@ -57,7 +57,7 @@ public abstract class CheckExpectedMessageRunnable implements Runnable {
   }
 
   private String getErrorString() {
-    return "node <" + NodeCheckerUtil.nodeWithIdToString(myNodeToCheck) + "> does not have the expected '" + myExpectedMessageStatus.getPresentation() + "' message '" + ((myExpectedMessageText != null ? myExpectedMessageText : "")) + "'";
+    return "node <" + NodeCheckerUtil.nodeWithIdToString(myNodeToCheck) + "> does not have the expected '" + myExpectedMessageStatus.getPresentation() + "' message" + ((myExpectedMessageText != null ? " '" + myExpectedMessageText + "'" : ""));
   }
 
   public static class CheckExpectedRuleMessageRunnable extends CheckExpectedMessageRunnable {
