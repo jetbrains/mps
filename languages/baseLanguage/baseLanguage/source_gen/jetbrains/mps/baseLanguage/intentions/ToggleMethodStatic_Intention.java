@@ -18,6 +18,7 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
@@ -77,7 +78,11 @@ public final class ToggleMethodStatic_Intention extends AbstractIntentionDescrip
       SLinkOperations.setTarget(method, LINKS.body$WIlu, SLinkOperations.getTarget(node, LINKS.body$WIlu));
       SPropertyOperations.assign(method, PROPS.isFinal$I$Qu, SPropertyOperations.getBoolean(node, PROPS.isFinal$I$Qu));
       SPropertyOperations.assign(method, PROPS.isSynchronized$PMx, SPropertyOperations.getBoolean(node, PROPS.isSynchronized$PMx));
-      ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.modifiers$akE0)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$akE0)));
+      ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.modifiers$akE0)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$akE0)).where(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$Z2));
+        }
+      }));
       ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$WIkZ)));
       SLinkOperations.setTarget(method, LINKS.returnType$WIkw, SLinkOperations.getTarget(node, LINKS.returnType$WIkw));
       ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.throwsItem$gr7e)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.throwsItem$gr7e)));
@@ -104,6 +109,7 @@ public final class ToggleMethodStatic_Intention extends AbstractIntentionDescrip
     /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
     /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept DefaultModifier$Z2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.structure.DefaultModifier");
     /*package*/ static final SConcept MethodDocComment$Vx = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment");
     /*package*/ static final SInterfaceConcept IVisible$6G = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
   }

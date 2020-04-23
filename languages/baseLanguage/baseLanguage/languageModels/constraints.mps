@@ -4902,8 +4902,8 @@
               <node concept="2OqwBi" id="6fye98S$P4h" role="3uHU7w">
                 <node concept="nLn13" id="6fye98S$OMT" role="2Oq$k0" />
                 <node concept="1mIQ4w" id="6fye98S$Pyh" role="2OqNvi">
-                  <node concept="chp4Y" id="6fye98S$PON" role="cj9EA">
-                    <ref role="cht4Q" to="tpee:20YUQaJkyY_" resolve="IHasModifiers" />
+                  <node concept="chp4Y" id="3fOwGzXK6jc" role="cj9EA">
+                    <ref role="cht4Q" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
                   </node>
                 </node>
               </node>
