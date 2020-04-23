@@ -13028,9 +13028,6 @@
                             <node concept="3LWZYx" id="3cxBkkDaqOS" role="1juEy9">
                               <property role="3LWZYw" value="log.xml" />
                             </node>
-                            <node concept="3LWZYx" id="3cxBkkDaqOT" role="1juEy9">
-                              <property role="3LWZYw" value="log4j.dtd" />
-                            </node>
                           </node>
                           <node concept="28jJK3" id="5n0UWmYT0H" role="39821P">
                             <node concept="1688n2" id="hbXdVemkgu" role="28jJR8">

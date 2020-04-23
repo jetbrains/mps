@@ -39005,16 +39005,6 @@
             </node>
           </node>
         </node>
-        <node concept="28jJK3" id="3cxBkkDa4A3" role="39821P">
-          <node concept="55IIr" id="3cxBkkDa4A4" role="28jJRO">
-            <node concept="2Ry0Ak" id="3cxBkkDa4A5" role="iGT6I">
-              <property role="2Ry0Am" value="bin" />
-              <node concept="2Ry0Ak" id="3cxBkkDa4A6" role="2Ry0An">
-                <property role="2Ry0Am" value="log4j.dtd" />
-              </node>
-            </node>
-          </node>
-        </node>
       </node>
       <node concept="398223" id="1diLdO26H79" role="39821P">
         <node concept="3_J27D" id="1diLdO26H7a" role="Nbhlr">
