@@ -257,8 +257,12 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
         final Class<? extends GeneratorRuntime> aClass = rtClass.asSubclass(GeneratorRuntime.class);
         final LanguageRuntime sourceLanguageRuntime = getLanguage(sourceLanguage);
         if (sourceLanguageRuntime == null) {
-          throw new InstantiationException(String.format("Could not find language runtime for %s to attach generator %s to", sourceLanguage.getQualifiedName(),
-              g.getModuleName()));
+          String m = format("Could not find language runtime for %s to attach generator %s to", sourceLanguage.getQualifiedName(), g.getModuleName());
+          // we used to throw exception, yet same considerations as createRuntime(Language), above, shall apply. If Language module misses classes,
+          // createRuntime() for it would warn about 'make failed?' and go on gracefully, but its dependent generator fails with exception, which is inapropriate
+//          throw new InstantiationException(m);
+          LOG.warn(m);
+          return null;
         }
         Constructor<?>[] allConstructors = aClass.getConstructors();
         // Provisional constructor for TemplateModule, that takes LanguageRegistry, LanguageRuntime and Generator module. @since 2018.1
