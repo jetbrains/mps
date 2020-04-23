@@ -16,10 +16,12 @@
 package jetbrains.mps.intentions;
 
 import com.intellij.ide.HelpTooltipManager;
+import com.intellij.openapi.keymap.KeymapUtil;
 import jetbrains.mps.ide.tooltips.TooltipComponent;
 import jetbrains.mps.intentions.icons.Icons;
 
 import javax.swing.JLabel;
+import javax.swing.KeyStroke;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -34,7 +36,7 @@ public abstract class LightBulbMenu extends JLabel implements TooltipComponent {
     setBackground(Color.WHITE);
 
     setToolTipText("Click or press");
-    putClientProperty(HelpTooltipManager.SHORTCUT_PROPERTY, "Alt + Enter");
+    putClientProperty(HelpTooltipManager.SHORTCUT_PROPERTY, KeymapUtil.getKeystrokeText(KeyStroke.getKeyStroke("alt ENTER")));
 
     setPreferredSize(new Dimension(getWidth(), getHeight()));
     setSize(getWidth(), getHeight());
