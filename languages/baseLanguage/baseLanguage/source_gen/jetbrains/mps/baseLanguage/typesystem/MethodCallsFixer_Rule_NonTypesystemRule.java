@@ -23,6 +23,8 @@ public class MethodCallsFixer_Rule_NonTypesystemRule extends AbstractNonTypesyst
   public MethodCallsFixer_Rule_NonTypesystemRule() {
   }
   public void applyRule(final SNode methodCallNode, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
+    // fixme the longest rule in bl in 2020.1 
+    // we should consider a softer strategy for auto-fixing the references 
     Tuples._2<SNode, Boolean> resolveResult = MethodResolveUtil.resolveMethod(methodCallNode);
     SNode newTarget = resolveResult._0();
     boolean goodReplacement = (boolean) resolveResult._1();
@@ -43,7 +45,7 @@ public class MethodCallsFixer_Rule_NonTypesystemRule extends AbstractNonTypesyst
       } else if (goodReplacement) {
         if (!(newTarget == baseMethodDeclaration)) {
           final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.baseMethodDeclaration$$A7i);
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(methodCallNode, "Reference to wrong overriden method", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "869282237625479726", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(methodCallNode, "Reference to wrong overridden method", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "869282237625479726", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MethodCallsFixer_Quickfix_QuickFix", true);
             intentionProvider.putArgument("methodCall", methodCallNode);
