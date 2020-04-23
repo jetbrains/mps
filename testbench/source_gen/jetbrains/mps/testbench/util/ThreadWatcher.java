@@ -64,6 +64,8 @@ public class ThreadWatcher implements Output {
       // com.intellij.execution.process.ProcessIOExecutorService 
       builder.append("|(I/O pool [0-9]+)");
 
+      builder.append("|(JobScheduler FJ pool.*)");
+
       // com.intellij.psi.impl.DocumentCommitThread 
       builder.append("|(Document Committing Pool)");
 
