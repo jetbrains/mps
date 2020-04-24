@@ -243,7 +243,7 @@ public class QueriesGenerated extends QueryProviderBase {
       return _context.getTemplateValue();
     }
 
-    return String.format("# %s startup script", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.fullName$6Y3p), null));
+    return String.format("# %s startup script.", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.fullName$6Y3p), null));
   }
   public static Object propertyMacro_GetValue_4_1(final PropertyMacroContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
@@ -257,95 +257,100 @@ public class QueriesGenerated extends QueryProviderBase {
       return _context.getTemplateValue();
     }
 
-    return String.format("# Try (in order): %s_JDK, %s.jdk, ../jre, JDK_HOME, JAVA_HOME, \"java\" in PATH.", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null).toLowerCase());
+    return String.format("# Try (in order): $%s_JDK, .../%s.jdk, .../jbr, .../jbr-x86, $JDK_HOME, $JAVA_HOME, \"java\" in $PATH.", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null).toLowerCase());
   }
   public static Object propertyMacro_GetValue_4_3(final PropertyMacroContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("if [ -n \"$%s_JDK\" -a -x \"$%s_JDK/bin/java\" ]; then", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
+    String vendor = ((SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.vendor$uCoa) != null) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.vendor$uCoa), null) : BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.company$Av4_), LINKS.name$fPxS), null));
+    return String.format("IDEA_VENDOR_NAME='%s'", vendor);
   }
   public static Object propertyMacro_GetValue_4_4(final PropertyMacroContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  JDK=\"$%s_JDK\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
+    return String.format("if [ -n \"$%s_JDK\" ] && [ -x \"$%s_JDK/bin/java\" ]; then", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
   }
   public static Object propertyMacro_GetValue_4_5(final PropertyMacroContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("elif [ -s \"$HOME/.%s/config/%s.jdk\" ]; then", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null).toLowerCase());
+    return String.format("  JDK=\"$%s_JDK\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
   }
   public static Object propertyMacro_GetValue_4_6(final PropertyMacroContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  JDK=`\"$CAT\" $HOME/.%s/config/%s.jdk`", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null).toLowerCase());
-
+    return String.format("if [ -z \"$JDK\" ] && [ -s \"${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/%s/%s.jdk\" ]; then", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null).toLowerCase());
   }
   public static Object propertyMacro_GetValue_4_7(final PropertyMacroContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  message \"No JDK found. Please validate either %s_JDK, JDK_HOME or JAVA_HOME environment variable points to valid JDK installation.\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
+    return String.format("  USER_JRE=$(\"$CAT\" \"${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/%s/%s.jdk\")", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null).toLowerCase());
+
   }
   public static Object propertyMacro_GetValue_4_8(final PropertyMacroContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("if [ -n \"$%s_PROPERTIES\" ]; then", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
+    return String.format("  message \"No JDK found. Please validate either %s_JDK, JDK_HOME or JAVA_HOME environment variable points to valid JDK installation.\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
   }
   public static Object propertyMacro_GetValue_4_9(final PropertyMacroContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  IDE_PROPERTIES_PROPERTY=\"-Didea.properties.file=$%s_PROPERTIES\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
+    return String.format("if [ -n \"$%s_PROPERTIES\" ]; then", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
   }
   public static Object propertyMacro_GetValue_4_10(final PropertyMacroContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("elif [ -r \"$HOME/.%s/config/mps$BITS.vmoptions\" ]; then", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
+    return String.format("  IDE_PROPERTIES_PROPERTY=\"-Didea.properties.file=$%s_PROPERTIES\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
   }
   public static Object propertyMacro_GetValue_4_11(final PropertyMacroContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  VM_OPTIONS_FILE=\"$HOME/.%s/config/mps$BITS.vmoptions\"", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
+    return String.format("elif [ -r \"${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/%s/%s$BITS.vmoptions\" ]; then", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
   }
   public static Object propertyMacro_GetValue_4_12(final PropertyMacroContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("elif [ -r \"$IDE_BIN_HOME/%s$BITS.vmoptions\" ]; then", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
+    return String.format("  VM_OPTIONS_FILE=\"${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/%s/%s$BITS.vmoptions\"", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
   }
   public static Object propertyMacro_GetValue_4_13(final PropertyMacroContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  VM_OPTIONS_FILE=\"$IDE_BIN_HOME/%s$BITS.vmoptions\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
+    return String.format("elif [ -r \"$IDE_BIN_HOME/%s$BITS.vmoptions\" ]; then", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
   }
   public static Object propertyMacro_GetValue_4_14(final PropertyMacroContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  VM_OPTIONS_FILE=\"$IDE_BIN_HOME/$OS_SPECIFIC/%s$BITS.vmoptions\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
+    return String.format("  VM_OPTIONS_FILE=\"$IDE_BIN_HOME/%s$BITS.vmoptions\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
   }
   public static Object propertyMacro_GetValue_4_15(final PropertyMacroContext _context) {
-    return String.format("    AGENT=\"-agentlib:$AGENT_LIB=disablealloc,delay=10000,sessionname=%s\"", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()));
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+      return _context.getTemplateValue();
+    }
+
+    return String.format("  VM_OPTIONS_FILE=\"$IDE_BIN_HOME/$OS_SPECIFIC/%s$BITS.vmoptions\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
   }
   public static Object propertyMacro_GetValue_4_16(final PropertyMacroContext _context) {
     if (((Integer) _context.getVariable("cv:pathIndex")) == 0) {
@@ -374,6 +379,20 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getTemplateValue() + MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode());
   }
   public static Object propertyMacro_GetValue_4_21(final PropertyMacroContext _context) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+      return _context.getTemplateValue();
+    }
+
+    return String.format("  \"-XX:ErrorFile=$HOME/java_error_in_%s_%%p.log\" \\", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
+  }
+  public static Object propertyMacro_GetValue_4_22(final PropertyMacroContext _context) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+      return _context.getTemplateValue();
+    }
+
+    return String.format("  \"-XX:HeapDumpPath=$HOME/java_error_in_%s.hprof\" \\", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
+  }
+  public static Object propertyMacro_GetValue_4_23(final PropertyMacroContext _context) {
     return BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null) + ".sh";
   }
   public static Object propertyMacro_GetValue_5_0(final PropertyMacroContext _context) {
@@ -477,27 +496,29 @@ public class QueriesGenerated extends QueryProviderBase {
     pvqMethods.put("1731640411964942141", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "SET MAIN_CLASS="));
     pvqMethods.put("1731640411964801463", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "mps.bat"));
     pvqMethods.put("1731640411967557624", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "mps.vmoptions"));
-    pvqMethods.put("710674657033124927", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "# JetBrains MPS startup script"));
+    pvqMethods.put("710674657033124927", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "# JetBrains MPS startup script."));
     pvqMethods.put("710674657033171134", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "  TITLE=\"Cannot start JetBrains MPS\""));
-    pvqMethods.put("710674657033222864", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "# Try (in order): MPS_JDK, mps.jdk, ./jbr, ../jre, JDK_HOME, JAVA_HOME, \"java\" in PATH."));
-    pvqMethods.put("710674657033246562", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "if [ -n \"$MPS_JDK\" -a -x \"$MPS_JDK/bin/java\" ]; then"));
+    pvqMethods.put("710674657033222864", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "# Try (in order): $MPS_JDK, .../mps.jdk, .../jbr, .../jbr-x86, $JDK_HOME, $JAVA_HOME, \"java\" in $PATH."));
+    pvqMethods.put("6222348044825405005", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "IDEA_VENDOR_NAME=JetBrains"));
+    pvqMethods.put("710674657033246562", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "if [ -n \"$MPS_JDK\" ] && [ -x \"$MPS_JDK/bin/java\" ]; then"));
     pvqMethods.put("4497499073720400481", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "  JDK=\"$MPS_JDK\""));
-    pvqMethods.put("710674657033294128", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "elif [ -s \"$HOME/.MPS/config/mps.jdk\" ]; then"));
-    pvqMethods.put("710674657033296112", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "  JDK=`\"$CAT\" $HOME/.MPS/config/mps.jdk`"));
-    pvqMethods.put("710674657033343317", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "  message \"No JDK found. Please validate either MPS_JDK, JDK_HOME or JAVA_HOME environment variable points to valid JDK installation.\""));
+    pvqMethods.put("710674657033294128", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "if [ -z \"$JDK\" ] && [ -s \"${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/MPS/mps.jdk\" ]; then"));
+    pvqMethods.put("710674657033296112", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "  USER_JRE=$(\"$CAT\" \"${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/MPS/mps.jdk\")"));
+    pvqMethods.put("710674657033343317", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "    message \"No JDK found. Please validate either MPS_JDK, JDK_HOME or JAVA_HOME environment variable points to valid JDK installation.\""));
     pvqMethods.put("2021320554791923742", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "if [ -n \"$MPS_PROPERTIES\" ]; then"));
     pvqMethods.put("2021320554791959067", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "  IDE_PROPERTIES_PROPERTY=\"-Didea.properties.file=$MPS_PROPERTIES\""));
-    pvqMethods.put("710674657039779460", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "elif [ -r \"$HOME/.MPS/config/mps$BITS.vmoptions\" ]; then"));
-    pvqMethods.put("710674657033496535", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "  VM_OPTIONS_FILE=\"$HOME/.MPS/config/mps$BITS.vmoptions\""));
+    pvqMethods.put("710674657039779460", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "elif [ -r \"${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/MPS/mps$BITS.vmoptions\" ]; then"));
+    pvqMethods.put("710674657033496535", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "  VM_OPTIONS_FILE=\"${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/MPS/mps$BITS.vmoptions\""));
     pvqMethods.put("2604223389424076978", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "elif [ -r \"$IDE_BIN_HOME/mps$BITS.vmoptions\" ]; then"));
     pvqMethods.put("2604223389424089726", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "  VM_OPTIONS_FILE=\"$IDE_BIN_HOME/mps$BITS.vmoptions\""));
     pvqMethods.put("2604223389424102979", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "  VM_OPTIONS_FILE=\"$IDE_BIN_HOME/$OS_SPECIFIC/idea$BITS.vmoptions\""));
-    pvqMethods.put("710674657033560475", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "    AGENT=\"-agentlib:$AGENT_LIB=disablealloc,delay=10000,sessionname=MPS\""));
     pvqMethods.put("4487788881657840184", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "CLASSPATH=\"$CLASSPATH:$IDE_HOME/"));
     pvqMethods.put("2604223389424176433", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "if [ -n \"$MPS_CLASSPATH\" ]; then"));
     pvqMethods.put("2604223389424194139", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "  CLASSPATH=\"$CLASSPATH:$MPS_CLASSPATH\""));
     pvqMethods.put("4487788881657707877", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "MAIN_CLASS="));
     pvqMethods.put("8793115184017538268", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "IDEA_PATHS_SELECTOR="));
+    pvqMethods.put("4396737822194642704", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "  \"-XX:ErrorFile=$HOME/java_error_in_MPS_%p.log\" \\"));
+    pvqMethods.put("4396737822194642998", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "  \"-XX:HeapDumpPath=$HOME/java_error_in_MPS.hprof\" \\"));
     pvqMethods.put("922958177839996412", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "mps.sh"));
     pvqMethods.put("2693344784288480127", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "mps64.vmoptions"));
   }
@@ -630,6 +651,10 @@ public class QueriesGenerated extends QueryProviderBase {
         case 54:
           return QueriesGenerated.propertyMacro_GetValue_4_21(ctx);
         case 55:
+          return QueriesGenerated.propertyMacro_GetValue_4_22(ctx);
+        case 56:
+          return QueriesGenerated.propertyMacro_GetValue_4_23(ctx);
+        case 57:
           return QueriesGenerated.propertyMacro_GetValue_5_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -643,6 +668,9 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SContainmentLink fullName$6Y3p = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x54c4eb89feb230b0L, "fullName");
     /*package*/ static final SContainmentLink product$6Y2U = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x54c4eb89feb230afL, "product");
     /*package*/ static final SContainmentLink bootClasspath$zxWs = MetaAdapterFactory.getContainmentLink(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437508L, 0x35ebd6e5b3437728L, "bootClasspath");
+    /*package*/ static final SContainmentLink vendor$uCoa = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x565a3894500dd6d9L, "vendor");
+    /*package*/ static final SContainmentLink company$Av4_ = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0xad72aee24ac230dL, "company");
+    /*package*/ static final SContainmentLink name$fPxS = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xad72aee24ac03d8L, 0xad72aee24ac03e1L, "name");
   }
 
   private static final class PROPS {

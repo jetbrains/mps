@@ -2610,6 +2610,16 @@
             </node>
             <node concept="3F1sOY" id="2g$3PZTTGiV" role="3EZMnx">
               <ref role="1NtTu8" to="kdzh:Nf0pasGVkV" resolve="script" />
+              <node concept="ljvvj" id="5pqe9hg3tss" role="3F10Kt">
+                <property role="VOm3f" value="true" />
+              </node>
+            </node>
+            <node concept="3F0ifn" id="5pqe9hg3tsh" role="3EZMnx">
+              <property role="3F0ifm" value="settings folder" />
+            </node>
+            <node concept="3F1sOY" id="5pqe9hg3tsE" role="3EZMnx">
+              <property role="1$x2rV" value="(use company name)" />
+              <ref role="1NtTu8" to="kdzh:5pqe9hg3trp" resolve="vendor" />
             </node>
             <node concept="l2Vlx" id="57dcfYPyy8F" role="2iSdaV" />
             <node concept="pVoyu" id="57dcfYPyyaK" role="3F10Kt">
@@ -4959,7 +4969,7 @@
         </node>
         <node concept="3F1sOY" id="FnaIS$FaHq" role="3EZMnx">
           <ref role="1NtTu8" to="kdzh:FnaIS$F0fx" resolve="name" />
-          <node concept="ljvvj" id="FnaIS$FaHr" role="3F10Kt">
+          <node concept="ljvvj" id="5pqe9hg3tqM" role="3F10Kt">
             <property role="VOm3f" value="true" />
           </node>
         </node>

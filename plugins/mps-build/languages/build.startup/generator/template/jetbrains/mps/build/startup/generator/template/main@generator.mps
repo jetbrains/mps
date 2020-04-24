@@ -88,6 +88,11 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
+      <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
+        <child id="1163668914799" name="condition" index="3K4Cdx" />
+        <child id="1163668922816" name="ifTrue" index="3K4E3e" />
+        <child id="1163668934364" name="ifFalse" index="3K4GZi" />
+      </concept>
     </language>
     <language id="479c7a8c-02f9-43b5-9139-d910cb22f298" name="jetbrains.mps.core.xml">
       <concept id="2133624044437898907" name="jetbrains.mps.core.xml.structure.XmlDoctypeDeclaration" flags="ng" index="29q25o">
@@ -2916,12 +2921,11 @@
     <node concept="2DRAP_" id="3T7P3nA9$gR" role="2DRAPQ">
       <property role="2DPR8u" value="#!/bin/sh" />
     </node>
-    <node concept="2DRAP_" id="3T7P3nAfXCP" role="2DRAPQ" />
     <node concept="2DRAP_" id="1SWE651AoFG" role="2DRAPQ">
       <property role="2DPR8u" value="# ---------------------------------------------------------------------" />
     </node>
     <node concept="2DRAP_" id="3T7P3nA9$gW" role="2DRAPQ">
-      <property role="2DPR8u" value="# JetBrains MPS startup script" />
+      <property role="2DPR8u" value="# JetBrains MPS startup script." />
       <node concept="17Uvod" id="BsOHnjlfKZ" role="lGtFl">
         <property role="P4ACc" value="d5033cee-f632-44b6-b308-89d4fbde34ff/1731640411964205218/1731640411964798937" />
         <property role="2qtEX9" value="text" />
@@ -2949,7 +2953,7 @@
                 <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="Xl_RD" id="BsOHnjlk$p" role="37wK5m">
-                  <property role="Xl_RC" value="# %s startup script" />
+                  <property role="Xl_RC" value="# %s startup script." />
                 </node>
                 <node concept="2OqwBi" id="BsOHnjljId" role="37wK5m">
                   <node concept="2OqwBi" id="BsOHnjljIe" role="2Oq$k0">
@@ -3042,34 +3046,34 @@
       </node>
     </node>
     <node concept="2DRAP_" id="1SWE651Asmb" role="2DRAPQ">
-      <property role="2DPR8u" value="  if [ -n `which zenity` ]; then" />
+      <property role="2DPR8u" value="  if [ -n &quot;$(command -v zenity)&quot; ]; then" />
     </node>
     <node concept="2DRAP_" id="1SWE651AsDD" role="2DRAPQ">
-      <property role="2DPR8u" value="    zenity --error --title=&quot;$TITLE&quot; --text=&quot;$1&quot;" />
+      <property role="2DPR8u" value="    zenity --error --title=&quot;$TITLE&quot; --text=&quot;$1&quot; --no-wrap" />
     </node>
     <node concept="2DRAP_" id="1SWE651AsX8" role="2DRAPQ">
-      <property role="2DPR8u" value="  elif [ -n `which kdialog` ]; then" />
+      <property role="2DPR8u" value="  elif [ -n &quot;$(command -v kdialog)&quot; ]; then" />
     </node>
     <node concept="2DRAP_" id="1SWE651AtgC" role="2DRAPQ">
-      <property role="2DPR8u" value="    kdialog --error --title &quot;$TITLE&quot; &quot;$1&quot;" />
+      <property role="2DPR8u" value="    kdialog --error &quot;$1&quot; --title &quot;$TITLE&quot;" />
+    </node>
+    <node concept="2DRAP_" id="1SWE651Aube" role="2DRAPQ">
+      <property role="2DPR8u" value="  elif [ -n &quot;$(command -v notify-send)&quot; ]; then" />
+    </node>
+    <node concept="2DRAP_" id="1SWE651AuuM" role="2DRAPQ">
+      <property role="2DPR8u" value="    notify-send &quot;ERROR: $TITLE&quot; &quot;$1&quot;" />
     </node>
     <node concept="2DRAP_" id="1SWE651At$9" role="2DRAPQ">
-      <property role="2DPR8u" value="  elif [ -n `which xmessage` ]; then" />
+      <property role="2DPR8u" value="  elif [ -n &quot;$(command -v xmessage)&quot; ]; then" />
     </node>
     <node concept="2DRAP_" id="1SWE651AtRF" role="2DRAPQ">
       <property role="2DPR8u" value="    xmessage -center &quot;ERROR: $TITLE: $1&quot;" />
-    </node>
-    <node concept="2DRAP_" id="1SWE651Aube" role="2DRAPQ">
-      <property role="2DPR8u" value="  elif [ -n `which notify-send` ]; then" />
-    </node>
-    <node concept="2DRAP_" id="1SWE651AuuM" role="2DRAPQ">
-      <property role="2DPR8u" value="    notify-send &quot;ERROR: $TITLE: $1&quot;" />
     </node>
     <node concept="2DRAP_" id="1SWE651AuMn" role="2DRAPQ">
       <property role="2DPR8u" value="  else" />
     </node>
     <node concept="2DRAP_" id="1SWE651Ava_" role="2DRAPQ">
-      <property role="2DPR8u" value="    echo &quot;ERROR: $TITLE\n$1&quot;" />
+      <property role="2DPR8u" value="    printf &quot;ERROR: %s\n%s\n&quot; &quot;$TITLE&quot; &quot;$1&quot;" />
     </node>
     <node concept="2DRAP_" id="1SWE651AvyE" role="2DRAPQ">
       <property role="2DPR8u" value="  fi" />
@@ -3079,41 +3083,38 @@
     </node>
     <node concept="2DRAP_" id="3T7P3nA9$vZ" role="2DRAPQ" />
     <node concept="2DRAP_" id="3T7P3nA9$w5" role="2DRAPQ">
-      <property role="2DPR8u" value="UNAME=`which uname`" />
+      <property role="2DPR8u" value="UNAME=$(command -v uname)" />
     </node>
     <node concept="2DRAP_" id="6bEF3_KQNhO" role="2DRAPQ">
-      <property role="2DPR8u" value="GREP=`which egrep`" />
-    </node>
-    <node concept="2DRAP_" id="1SWE651AcHW" role="2DRAPQ">
-      <property role="2DPR8u" value="GREP_OPTIONS=&quot;&quot;" />
+      <property role="2DPR8u" value="GREP=$(command -v egrep)" />
     </node>
     <node concept="2DRAP_" id="1SWE651Aece" role="2DRAPQ">
-      <property role="2DPR8u" value="CUT=`which cut`" />
+      <property role="2DPR8u" value="CUT=$(command -v cut)" />
     </node>
     <node concept="2DRAP_" id="hoHCGhwj_U" role="2DRAPQ">
-      <property role="2DPR8u" value="READLINK=`which readlink`" />
+      <property role="2DPR8u" value="READLINK=$(command -v readlink)" />
     </node>
     <node concept="2DRAP_" id="hoHCGhwjXi" role="2DRAPQ">
-      <property role="2DPR8u" value="XARGS=`which xargs`" />
+      <property role="2DPR8u" value="XARGS=$(command -v xargs)" />
     </node>
     <node concept="2DRAP_" id="hoHCGhwkkX" role="2DRAPQ">
-      <property role="2DPR8u" value="DIRNAME=`which dirname`" />
+      <property role="2DPR8u" value="DIRNAME=$(command -v dirname)" />
     </node>
     <node concept="2DRAP_" id="6bEF3_KQOqv" role="2DRAPQ">
-      <property role="2DPR8u" value="MKTEMP=`which mktemp`" />
+      <property role="2DPR8u" value="MKTEMP=$(command -v mktemp)" />
     </node>
     <node concept="2DRAP_" id="6bEF3_KQPyQ" role="2DRAPQ">
-      <property role="2DPR8u" value="RM=`which rm`" />
+      <property role="2DPR8u" value="RM=$(command -v rm)" />
     </node>
     <node concept="2DRAP_" id="1SWE651AgzL" role="2DRAPQ">
-      <property role="2DPR8u" value="CAT=`which cat`" />
+      <property role="2DPR8u" value="CAT=$(command -v cat)" />
     </node>
     <node concept="2DRAP_" id="1SWE651AhA5" role="2DRAPQ">
-      <property role="2DPR8u" value="TR=`which tr`" />
+      <property role="2DPR8u" value="SED=$(command -v sed)" />
     </node>
     <node concept="2DRAP_" id="1SWE651AigQ" role="2DRAPQ" />
     <node concept="2DRAP_" id="1SWE651Ai$1" role="2DRAPQ">
-      <property role="2DPR8u" value="if [ -z &quot;$UNAME&quot; -o -z &quot;$GREP&quot; -o -z &quot;$CUT&quot; -o -z &quot;$MKTEMP&quot; -o -z &quot;$RM&quot; -o -z &quot;$CAT&quot; -o -z &quot;$TR&quot; ]; then" />
+      <property role="2DPR8u" value="if [ -z &quot;$UNAME&quot; ] || [ -z &quot;$GREP&quot; ] || [ -z &quot;$CUT&quot; ] || [ -z &quot;$DIRNAME&quot; ] || [ -z &quot;$MKTEMP&quot; ] || [ -z &quot;$RM&quot; ] || [ -z &quot;$CAT&quot; ] || [ -z &quot;$SED&quot; ]; then" />
     </node>
     <node concept="2DRAP_" id="1SWE651AiRd" role="2DRAPQ">
       <property role="2DPR8u" value="  message &quot;Required tools are missing - check beginning of \&quot;$0\&quot; file for details.&quot;" />
@@ -3125,15 +3126,21 @@
       <property role="2DPR8u" value="fi" />
     </node>
     <node concept="2DRAP_" id="1SWE651AhTe" role="2DRAPQ" />
+    <node concept="2DRAP_" id="3O4ms4th4QJ" role="2DRAPQ">
+      <property role="2DPR8u" value="# shellcheck disable=SC2034" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4th6M8" role="2DRAPQ">
+      <property role="2DPR8u" value="GREP_OPTIONS=''" />
+    </node>
     <node concept="2DRAP_" id="1SWE651AjTN" role="2DRAPQ">
-      <property role="2DPR8u" value="OS_TYPE=`&quot;$UNAME&quot; -s`" />
+      <property role="2DPR8u" value="OS_TYPE=$(&quot;$UNAME&quot; -s)" />
     </node>
     <node concept="2DRAP_" id="1SWE651Akh_" role="2DRAPQ" />
     <node concept="2DRAP_" id="1SWE651Ak$L" role="2DRAPQ">
       <property role="2DPR8u" value="# ---------------------------------------------------------------------" />
     </node>
     <node concept="2DRAP_" id="1SWE651AkS4" role="2DRAPQ">
-      <property role="2DPR8u" value="# Ensure IDE_HOME points to the directory where the IDE is installed." />
+      <property role="2DPR8u" value="# Ensure $IDE_HOME points to the directory where the IDE is installed." />
     </node>
     <node concept="2DRAP_" id="1SWE651Albo" role="2DRAPQ">
       <property role="2DPR8u" value="# ---------------------------------------------------------------------" />
@@ -3148,7 +3155,7 @@
       <property role="2DPR8u" value="  while [ -L &quot;$SCRIPT_LOCATION&quot; ]; do" />
     </node>
     <node concept="2DRAP_" id="3T7P3nA9_FI" role="2DRAPQ">
-      <property role="2DPR8u" value="    SCRIPT_LOCATION=`&quot;$READLINK&quot; -e &quot;$SCRIPT_LOCATION&quot;`" />
+      <property role="2DPR8u" value="    SCRIPT_LOCATION=$(&quot;$READLINK&quot; -e &quot;$SCRIPT_LOCATION&quot;)" />
     </node>
     <node concept="2DRAP_" id="1SWE651Aoom" role="2DRAPQ">
       <property role="2DPR8u" value="  done" />
@@ -3158,26 +3165,26 @@
     </node>
     <node concept="2DRAP_" id="3T7P3nA9$gT" role="2DRAPQ" />
     <node concept="2DRAP_" id="3xQpxE3B7CU" role="2DRAPQ">
-      <property role="2DPR8u" value="cd &quot;`dirname &quot;$SCRIPT_LOCATION&quot;`&quot;" />
+      <property role="2DPR8u" value="cd &quot;$(&quot;$DIRNAME&quot; &quot;$SCRIPT_LOCATION&quot;)&quot; || exit 2" />
     </node>
     <node concept="2DRAP_" id="1SWE651Axri" role="2DRAPQ">
-      <property role="2DPR8u" value="IDE_BIN_HOME=`pwd`" />
+      <property role="2DPR8u" value="IDE_BIN_HOME=$(pwd)" />
     </node>
     <node concept="2DRAP_" id="BsOHnjl$bK" role="2DRAPQ">
-      <property role="2DPR8u" value="IDE_HOME=`dirname &quot;$IDE_BIN_HOME&quot;`" />
+      <property role="2DPR8u" value="IDE_HOME=$(&quot;$DIRNAME&quot; &quot;$IDE_BIN_HOME&quot;)" />
     </node>
     <node concept="2DRAP_" id="3xQpxE3Bbg0" role="2DRAPQ">
-      <property role="2DPR8u" value="cd &quot;$OLDPWD&quot;" />
+      <property role="2DPR8u" value="cd &quot;${OLDPWD}&quot; || exit 2" />
     </node>
     <node concept="2DRAP_" id="hoHCGht60J" role="2DRAPQ" />
     <node concept="2DRAP_" id="hoHCGht6jb" role="2DRAPQ">
       <property role="2DPR8u" value="# ---------------------------------------------------------------------" />
     </node>
     <node concept="2DRAP_" id="hoHCGht6_C" role="2DRAPQ">
-      <property role="2DPR8u" value="# Locate a JDK installation directory which will be used to run the IDE." />
+      <property role="2DPR8u" value="# Locate a JDK installation directory command -v will be used to run the IDE." />
     </node>
     <node concept="2DRAP_" id="hoHCGht6S6" role="2DRAPQ">
-      <property role="2DPR8u" value="# Try (in order): MPS_JDK, mps.jdk, ./jbr, ../jre, JDK_HOME, JAVA_HOME, &quot;java&quot; in PATH." />
+      <property role="2DPR8u" value="# Try (in order): $MPS_JDK, .../mps.jdk, .../jbr, .../jbr-x86, $JDK_HOME, $JAVA_HOME, &quot;java&quot; in $PATH." />
       <node concept="17Uvod" id="BsOHnjlBFg" role="lGtFl">
         <property role="P4ACc" value="d5033cee-f632-44b6-b308-89d4fbde34ff/1731640411964205218/1731640411964798937" />
         <property role="2qtEX9" value="text" />
@@ -3205,7 +3212,7 @@
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="BsOHnjlC9C" role="37wK5m">
-                  <property role="Xl_RC" value="# Try (in order): %s_JDK, %s.jdk, ../jre, JDK_HOME, JAVA_HOME, \&quot;java\&quot; in PATH." />
+                  <property role="Xl_RC" value="# Try (in order): $%s_JDK, .../%s.jdk, .../jbr, .../jbr-x86, $JDK_HOME, $JAVA_HOME, \&quot;java\&quot; in $PATH." />
                 </node>
                 <node concept="2OqwBi" id="BsOHnjlC9D" role="37wK5m">
                   <node concept="2OqwBi" id="BsOHnjlC9E" role="2Oq$k0">
@@ -3255,8 +3262,112 @@
     <node concept="2DRAP_" id="hoHCGht7Xm" role="2DRAPQ">
       <property role="2DPR8u" value="# ---------------------------------------------------------------------" />
     </node>
+    <node concept="2DRAP_" id="5pqe9hgEw5o" role="2DRAPQ">
+      <property role="2DPR8u" value="IDEA_VENDOR_NAME=JetBrains" />
+      <node concept="17Uvod" id="5pqe9hgEypd" role="lGtFl">
+        <property role="2qtEX9" value="text" />
+        <property role="P4ACc" value="d5033cee-f632-44b6-b308-89d4fbde34ff/1731640411964205218/1731640411964798937" />
+        <node concept="3zFVjK" id="5pqe9hgEype" role="3zH0cK">
+          <node concept="3clFbS" id="5pqe9hgEypf" role="2VODD2">
+            <node concept="3clFbJ" id="5pqe9hgEytP" role="3cqZAp">
+              <node concept="3clFbS" id="5pqe9hgEytQ" role="3clFbx">
+                <node concept="3cpWs6" id="5pqe9hgEytR" role="3cqZAp">
+                  <node concept="3zGtF$" id="5pqe9hgEytS" role="3cqZAk" />
+                </node>
+              </node>
+              <node concept="2OqwBi" id="5pqe9hgEytT" role="3clFbw">
+                <node concept="2OqwBi" id="5pqe9hgEytU" role="2Oq$k0">
+                  <node concept="30H73N" id="5pqe9hgEytV" role="2Oq$k0" />
+                  <node concept="3TrEf2" id="5pqe9hgEytW" role="2OqNvi">
+                    <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" resolve="branding" />
+                  </node>
+                </node>
+                <node concept="3w_OXm" id="5pqe9hgEytX" role="2OqNvi" />
+              </node>
+            </node>
+            <node concept="3clFbH" id="5pqe9hgEytY" role="3cqZAp" />
+            <node concept="3cpWs8" id="5pqe9hgEytZ" role="3cqZAp">
+              <node concept="3cpWsn" id="5pqe9hgEyu0" role="3cpWs9">
+                <property role="TrG5h" value="vendor" />
+                <node concept="17QB3L" id="5pqe9hgEyu1" role="1tU5fm" />
+                <node concept="3K4zz7" id="5pqe9hgEyu2" role="33vP2m">
+                  <node concept="2OqwBi" id="5pqe9hgEyu3" role="3K4Cdx">
+                    <node concept="2OqwBi" id="5pqe9hgEyu4" role="2Oq$k0">
+                      <node concept="2OqwBi" id="5pqe9hgEyu5" role="2Oq$k0">
+                        <node concept="30H73N" id="5pqe9hgEyu6" role="2Oq$k0" />
+                        <node concept="3TrEf2" id="5pqe9hgEyu7" role="2OqNvi">
+                          <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" resolve="branding" />
+                        </node>
+                      </node>
+                      <node concept="3TrEf2" id="5pqe9hgEyu8" role="2OqNvi">
+                        <ref role="3Tt5mk" to="kdzh:5pqe9hg3trp" resolve="vendor" />
+                      </node>
+                    </node>
+                    <node concept="3x8VRR" id="5pqe9hgEyu9" role="2OqNvi" />
+                  </node>
+                  <node concept="2OqwBi" id="5pqe9hgEyua" role="3K4E3e">
+                    <node concept="2OqwBi" id="5pqe9hgEyub" role="2Oq$k0">
+                      <node concept="2OqwBi" id="5pqe9hgEyuc" role="2Oq$k0">
+                        <node concept="30H73N" id="5pqe9hgEyud" role="2Oq$k0" />
+                        <node concept="3TrEf2" id="5pqe9hgEyue" role="2OqNvi">
+                          <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" resolve="branding" />
+                        </node>
+                      </node>
+                      <node concept="3TrEf2" id="5pqe9hgEyuf" role="2OqNvi">
+                        <ref role="3Tt5mk" to="kdzh:5pqe9hg3trp" resolve="vendor" />
+                      </node>
+                    </node>
+                    <node concept="2qgKlT" id="5pqe9hgEyug" role="2OqNvi">
+                      <ref role="37wK5l" to="vbkb:3NagsOfTioI" resolve="getText" />
+                      <node concept="10Nm6u" id="5pqe9hgEyuh" role="37wK5m" />
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="5pqe9hgEyui" role="3K4GZi">
+                    <node concept="2OqwBi" id="5pqe9hgEyuj" role="2Oq$k0">
+                      <node concept="2OqwBi" id="5pqe9hgEyuk" role="2Oq$k0">
+                        <node concept="2OqwBi" id="5pqe9hgEyul" role="2Oq$k0">
+                          <node concept="30H73N" id="5pqe9hgEyum" role="2Oq$k0" />
+                          <node concept="3TrEf2" id="5pqe9hgEyun" role="2OqNvi">
+                            <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" resolve="branding" />
+                          </node>
+                        </node>
+                        <node concept="3TrEf2" id="5pqe9hgEyuo" role="2OqNvi">
+                          <ref role="3Tt5mk" to="kdzh:FnaIS$F2cd" resolve="company" />
+                        </node>
+                      </node>
+                      <node concept="3TrEf2" id="5pqe9hgEyup" role="2OqNvi">
+                        <ref role="3Tt5mk" to="kdzh:FnaIS$F0fx" resolve="name" />
+                      </node>
+                    </node>
+                    <node concept="2qgKlT" id="5pqe9hgEyuq" role="2OqNvi">
+                      <ref role="37wK5l" to="vbkb:3NagsOfTioI" resolve="getText" />
+                      <node concept="10Nm6u" id="5pqe9hgEyur" role="37wK5m" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5pqe9hgEyus" role="3cqZAp">
+              <node concept="2YIFZM" id="5pqe9hgEyut" role="3clFbG">
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+                <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                <node concept="Xl_RD" id="5pqe9hgEyuu" role="37wK5m">
+                  <property role="Xl_RC" value="IDEA_VENDOR_NAME='%s'" />
+                </node>
+                <node concept="37vLTw" id="5pqe9hgEyuv" role="37wK5m">
+                  <ref role="3cqZAo" node="5pqe9hgEyu0" resolve="vendor" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2DRAP_" id="3O4ms4thamu" role="2DRAPQ">
+      <property role="2DPR8u" value="# shellcheck disable=SC2154" />
+    </node>
     <node concept="2DRAP_" id="1SWE651AvUK" role="2DRAPQ">
-      <property role="2DPR8u" value="if [ -n &quot;$MPS_JDK&quot; -a -x &quot;$MPS_JDK/bin/java&quot; ]; then" />
+      <property role="2DPR8u" value="if [ -n &quot;$MPS_JDK&quot; ] &amp;&amp; [ -x &quot;$MPS_JDK/bin/java&quot; ]; then" />
       <node concept="17Uvod" id="BsOHnjlHty" role="lGtFl">
         <property role="P4ACc" value="d5033cee-f632-44b6-b308-89d4fbde34ff/1731640411964205218/1731640411964798937" />
         <property role="2qtEX9" value="text" />
@@ -3284,7 +3395,7 @@
                 <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="Xl_RD" id="BsOHnjlHA8" role="37wK5m">
-                  <property role="Xl_RC" value="if [ -n \&quot;$%s_JDK\&quot; -a -x \&quot;$%s_JDK/bin/java\&quot; ]; then" />
+                  <property role="Xl_RC" value="if [ -n \&quot;$%s_JDK\&quot; ] &amp;&amp; [ -x \&quot;$%s_JDK/bin/java\&quot; ]; then" />
                 </node>
                 <node concept="2OqwBi" id="BsOHnjlHA9" role="37wK5m">
                   <node concept="2OqwBi" id="BsOHnjlHAa" role="2Oq$k0">
@@ -3380,8 +3491,12 @@
         </node>
       </node>
     </node>
+    <node concept="2DRAP_" id="3O4ms4trEkr" role="2DRAPQ">
+      <property role="2DPR8u" value="fi" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4trFWC" role="2DRAPQ" />
     <node concept="2DRAP_" id="BsOHnjlLoq" role="2DRAPQ">
-      <property role="2DPR8u" value="elif [ -s &quot;$HOME/.MPS/config/mps.jdk&quot; ]; then" />
+      <property role="2DPR8u" value="if [ -z &quot;$JDK&quot; ] &amp;&amp; [ -s &quot;${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/MPS/mps.jdk&quot; ]; then" />
       <node concept="17Uvod" id="BsOHnjlT4K" role="lGtFl">
         <property role="P4ACc" value="d5033cee-f632-44b6-b308-89d4fbde34ff/1731640411964205218/1731640411964798937" />
         <property role="2qtEX9" value="text" />
@@ -3409,10 +3524,10 @@
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="BsOHnjlWXZ" role="37wK5m">
-                  <property role="Xl_RC" value="elif [ -s \&quot;$HOME/.%s/config/%s.jdk\&quot; ]; then" />
+                  <property role="Xl_RC" value="if [ -z \&quot;$JDK\&quot; ] &amp;&amp; [ -s \&quot;${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/%s/%s.jdk\&quot; ]; then" />
                 </node>
                 <node concept="2OqwBi" id="BsOHnjm0rg" role="37wK5m">
-                  <node concept="30H73N" id="BsOHnjm0rh" role="2Oq$k0" />
+                  <node concept="30H73N" id="3O4ms4trKZa" role="2Oq$k0" />
                   <node concept="2qgKlT" id="BsOHnjm0ri" role="2OqNvi">
                     <ref role="37wK5l" to="tgdw:BsOHnja5fe" resolve="getIdeaPathSelector" />
                   </node>
@@ -3446,7 +3561,7 @@
       </node>
     </node>
     <node concept="2DRAP_" id="BsOHnjlOrA" role="2DRAPQ">
-      <property role="2DPR8u" value="  JDK=`&quot;$CAT&quot; $HOME/.MPS/config/mps.jdk`" />
+      <property role="2DPR8u" value="  USER_JRE=$(&quot;$CAT&quot; &quot;${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/MPS/mps.jdk&quot;)" />
       <node concept="17Uvod" id="BsOHnjlTzK" role="lGtFl">
         <property role="P4ACc" value="d5033cee-f632-44b6-b308-89d4fbde34ff/1731640411964205218/1731640411964798937" />
         <property role="2qtEX9" value="text" />
@@ -3474,7 +3589,7 @@
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="BsOHnjlXBS" role="37wK5m">
-                  <property role="Xl_RC" value="  JDK=`\&quot;$CAT\&quot; $HOME/.%s/config/%s.jdk`" />
+                  <property role="Xl_RC" value="  USER_JRE=$(\&quot;$CAT\&quot; \&quot;${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/%s/%s.jdk\&quot;)" />
                 </node>
                 <node concept="2OqwBi" id="BsOHnjlUMR" role="37wK5m">
                   <node concept="30H73N" id="BsOHnjlUMS" role="2Oq$k0" />
@@ -3512,52 +3627,93 @@
       </node>
     </node>
     <node concept="2DRAP_" id="BsOHnjlQtL" role="2DRAPQ">
-      <property role="2DPR8u" value="  if [ ! -d &quot;$JDK&quot; ]; then" />
+      <property role="2DPR8u" value="  if [ ! -d &quot;$USER_JRE&quot; ]; then" />
     </node>
     <node concept="2DRAP_" id="BsOHnjlRuS" role="2DRAPQ">
-      <property role="2DPR8u" value="    JDK=&quot;$IDE_HOME/$JDK&quot;" />
+      <property role="2DPR8u" value="    USER_JRE=&quot;$IDE_HOME/$USER_JRE&quot;" />
     </node>
     <node concept="2DRAP_" id="BsOHnjlPsF" role="2DRAPQ">
       <property role="2DPR8u" value="  fi" />
     </node>
-    <node concept="2DRAP_" id="2XRBtU2o0ri" role="2DRAPQ">
-      <property role="2DPR8u" value="elif [ -x &quot;$IDE_HOME/jbr/bin/java&quot; ] &amp;&amp; &quot;$IDE_HOME/jbr/bin/java&quot; -version &gt; /dev/null 2&gt;&amp;1 ; then" />
+    <node concept="2DRAP_" id="3O4ms4tAo_J" role="2DRAPQ">
+      <property role="2DPR8u" value="  if [ -x &quot;$USER_JRE/bin/java&quot; ]; then" />
     </node>
-    <node concept="2DRAP_" id="2XRBtU2o0rj" role="2DRAPQ">
-      <property role="2DPR8u" value="  JDK=&quot;$IDE_HOME/jbr&quot;" />
+    <node concept="2DRAP_" id="3O4ms4tAsnp" role="2DRAPQ">
+      <property role="2DPR8u" value="    JDK=&quot;$USER_JRE&quot;" />
     </node>
-    <node concept="2DRAP_" id="1SWE651AwEZ" role="2DRAPQ">
-      <property role="2DPR8u" value="elif [ -x &quot;$IDE_HOME/jre/jre/bin/java&quot; ] &amp;&amp; &quot;$IDE_HOME/jre/jre/bin/java&quot; -version &gt; /dev/null 2&gt;&amp;1 ; then" />
+    <node concept="2DRAP_" id="3O4ms4tAq$o" role="2DRAPQ">
+      <property role="2DPR8u" value="  fi" />
     </node>
-    <node concept="2DRAP_" id="1SWE651Ax38" role="2DRAPQ">
-      <property role="2DPR8u" value="  JDK=&quot;$IDE_HOME/jre&quot;" />
+    <node concept="2DRAP_" id="3O4ms4tAtqN" role="2DRAPQ">
+      <property role="2DPR8u" value="fi" />
     </node>
-    <node concept="2DRAP_" id="hoHCGht9YX" role="2DRAPQ">
-      <property role="2DPR8u" value="elif [ -n &quot;$JDK_HOME&quot; -a -x &quot;$JDK_HOME/bin/java&quot; ]; then" />
+    <node concept="2DRAP_" id="3O4ms4tAvpv" role="2DRAPQ" />
+    <node concept="2DRAP_" id="3O4ms4tKXY1" role="2DRAPQ">
+      <property role="2DPR8u" value="if [ -z &quot;$JDK&quot; ] &amp;&amp; [ &quot;$OS_TYPE&quot; = &quot;Linux&quot; ]; then" />
     </node>
-    <node concept="2DRAP_" id="hoHCGhtam1" role="2DRAPQ">
+    <node concept="2DRAP_" id="3O4ms4tL0Pi" role="2DRAPQ">
+      <property role="2DPR8u" value="  OS_ARCH=$(&quot;$UNAME&quot; -m)" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4tL3$f" role="2DRAPQ">
+      <property role="2DPR8u" value="  if [ &quot;$OS_ARCH&quot; = &quot;x86_64&quot; ] &amp;&amp; [ -d &quot;$IDE_HOME/jbr&quot; ]; then" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4tL4sd" role="2DRAPQ">
+      <property role="2DPR8u" value="    JDK=&quot;$IDE_HOME/jbr&quot;" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4tL6mq" role="2DRAPQ">
+      <property role="2DPR8u" value="  fi" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4tL7jp" role="2DRAPQ">
+      <property role="2DPR8u" value="  if [ -z &quot;$JDK&quot; ] &amp;&amp; [ -d &quot;$IDE_HOME/jbr-x86&quot; ] &amp;&amp; &quot;$IDE_HOME/jbr-x86/bin/java&quot; -version &gt; /dev/null 2&gt;&amp;1 ; then" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4tL8bq" role="2DRAPQ">
+      <property role="2DPR8u" value="    JDK=&quot;$IDE_HOME/jbr-x86&quot;" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4tLaaS" role="2DRAPQ">
+      <property role="2DPR8u" value="  fi" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4tLb2V" role="2DRAPQ">
+      <property role="2DPR8u" value="fi" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4tLdUt" role="2DRAPQ" />
+    <node concept="2DRAP_" id="3O4ms4tLe5W" role="2DRAPQ">
+      <property role="2DPR8u" value="# shellcheck disable=SC2153" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4tLeY1" role="2DRAPQ">
+      <property role="2DPR8u" value="if [ -z &quot;$JDK&quot; ] &amp;&amp; [ -n &quot;$JDK_HOME&quot; ] &amp;&amp; [ -x &quot;$JDK_HOME/bin/java&quot; ]; then" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4tLgXz" role="2DRAPQ">
       <property role="2DPR8u" value="  JDK=&quot;$JDK_HOME&quot;" />
     </node>
-    <node concept="2DRAP_" id="hoHCGhtaH6" role="2DRAPQ">
-      <property role="2DPR8u" value="elif [ -n &quot;$JAVA_HOME&quot; -a -x &quot;$JAVA_HOME/bin/java&quot; ]; then" />
+    <node concept="2DRAP_" id="3O4ms4tLhPE" role="2DRAPQ">
+      <property role="2DPR8u" value="fi" />
     </node>
-    <node concept="2DRAP_" id="hoHCGhtb4c" role="2DRAPQ">
+    <node concept="2DRAP_" id="3O4ms4tLjL0" role="2DRAPQ" />
+    <node concept="2DRAP_" id="3O4ms4tLjW$" role="2DRAPQ">
+      <property role="2DPR8u" value="if [ -z &quot;$JDK&quot; ] &amp;&amp; [ -n &quot;$JAVA_HOME&quot; ] &amp;&amp; [ -x &quot;$JAVA_HOME/bin/java&quot; ]; then" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4tLkSW" role="2DRAPQ">
       <property role="2DPR8u" value="  JDK=&quot;$JAVA_HOME&quot;" />
     </node>
-    <node concept="2DRAP_" id="hoHCGhtbrj" role="2DRAPQ">
-      <property role="2DPR8u" value="else" />
+    <node concept="2DRAP_" id="3O4ms4tLlL7" role="2DRAPQ">
+      <property role="2DPR8u" value="fi" />
     </node>
-    <node concept="2DRAP_" id="hoHCGhtbMr" role="2DRAPQ">
-      <property role="2DPR8u" value="  JAVA_BIN_PATH=`which java`" />
+    <node concept="2DRAP_" id="3O4ms4tKZXn" role="2DRAPQ" />
+    <node concept="2DRAP_" id="3O4ms4tLnKJ" role="2DRAPQ">
+      <property role="2DPR8u" value="if [ -z &quot;$JDK&quot; ]; then" />
     </node>
+    <node concept="2DRAP_" id="3O4ms4tLqCn" role="2DRAPQ">
+      <property role="2DPR8u" value="  JDK_PATH=$(command -v java)" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4tLoQk" role="2DRAPQ" />
     <node concept="2DRAP_" id="hoHCGhtc9$" role="2DRAPQ">
-      <property role="2DPR8u" value="  if [ -n &quot;$JAVA_BIN_PATH&quot; ]; then" />
+      <property role="2DPR8u" value="  if [ -n &quot;$JDK_PATH&quot; ]; then" />
     </node>
     <node concept="2DRAP_" id="hoHCGhtcwI" role="2DRAPQ">
-      <property role="2DPR8u" value="    if [ &quot;$OS_TYPE&quot; = &quot;FreeBSD&quot; -o &quot;$OS_TYPE&quot; = &quot;MidnightBSD&quot; ]; then" />
+      <property role="2DPR8u" value="    if [ &quot;$OS_TYPE&quot; = &quot;FreeBSD&quot; ] || [ &quot;$OS_TYPE&quot; = &quot;MidnightBSD&quot; ]; then" />
     </node>
     <node concept="2DRAP_" id="hoHCGhtcRT" role="2DRAPQ">
-      <property role="2DPR8u" value="      JAVA_LOCATION=`JAVAVM_DRYRUN=yes java | &quot;$GREP&quot; '^JAVA_HOME' | &quot;$CUT&quot; -c11-`" />
+      <property role="2DPR8u" value="      JAVA_LOCATION=$(JAVAVM_DRYRUN=yes java | &quot;$GREP&quot; '^JAVA_HOME' | &quot;$CUT&quot; -c11-)" />
     </node>
     <node concept="2DRAP_" id="hoHCGhtdf5" role="2DRAPQ">
       <property role="2DPR8u" value="      if [ -x &quot;$JAVA_LOCATION/bin/java&quot; ]; then" />
@@ -3587,7 +3743,7 @@
       <property role="2DPR8u" value="    elif [ &quot;$OS_TYPE&quot; = &quot;Darwin&quot; ]; then" />
     </node>
     <node concept="2DRAP_" id="hoHCGhtgwu" role="2DRAPQ">
-      <property role="2DPR8u" value="      JAVA_LOCATION=`/usr/libexec/java_home`" />
+      <property role="2DPR8u" value="      JAVA_LOCATION=$(/usr/libexec/java_home)" />
     </node>
     <node concept="2DRAP_" id="hoHCGhtgRO" role="2DRAPQ">
       <property role="2DPR8u" value="      if [ -x &quot;$JAVA_LOCATION/bin/java&quot; ]; then" />
@@ -3601,83 +3757,88 @@
     <node concept="2DRAP_" id="hoHCGhthXW" role="2DRAPQ">
       <property role="2DPR8u" value="    fi" />
     </node>
-    <node concept="2DRAP_" id="hoHCGhtilm" role="2DRAPQ" />
-    <node concept="2DRAP_" id="hoHCGhtiGL" role="2DRAPQ">
-      <property role="2DPR8u" value="    if [ -z &quot;$JDK&quot; -a -x &quot;$READLINK&quot; -a -x &quot;$XARGS&quot; -a -x &quot;$DIRNAME&quot; ]; then" />
-    </node>
-    <node concept="2DRAP_" id="hoHCGhtj4d" role="2DRAPQ">
-      <property role="2DPR8u" value="      JAVA_LOCATION=`&quot;$READLINK&quot; -f &quot;$JAVA_BIN_PATH&quot;`" />
-    </node>
-    <node concept="2DRAP_" id="hoHCGhtjrE" role="2DRAPQ">
-      <property role="2DPR8u" value="      case &quot;$JAVA_LOCATION&quot; in" />
-    </node>
-    <node concept="2DRAP_" id="hoHCGhtjN8" role="2DRAPQ">
-      <property role="2DPR8u" value="        */jre/bin/java)" />
-    </node>
-    <node concept="2DRAP_" id="hoHCGhtkaB" role="2DRAPQ">
-      <property role="2DPR8u" value="          JAVA_LOCATION=`echo &quot;$JAVA_LOCATION&quot; | &quot;$XARGS&quot; &quot;$DIRNAME&quot; | &quot;$XARGS&quot; &quot;$DIRNAME&quot; | &quot;$XARGS&quot; &quot;$DIRNAME&quot;`" />
-    </node>
-    <node concept="2DRAP_" id="hoHCGhtky7" role="2DRAPQ">
-      <property role="2DPR8u" value="          if [ ! -d &quot;$JAVA_LOCATION/bin&quot; ]; then" />
-    </node>
-    <node concept="2DRAP_" id="hoHCGhtkTC" role="2DRAPQ">
-      <property role="2DPR8u" value="            JAVA_LOCATION=&quot;$JAVA_LOCATION/jre&quot;" />
-    </node>
-    <node concept="2DRAP_" id="hoHCGhtlha" role="2DRAPQ">
-      <property role="2DPR8u" value="          fi" />
-    </node>
-    <node concept="2DRAP_" id="hoHCGhtlCH" role="2DRAPQ">
-      <property role="2DPR8u" value="          ;;" />
-    </node>
-    <node concept="2DRAP_" id="hoHCGhtm0h" role="2DRAPQ">
-      <property role="2DPR8u" value="        *)" />
-    </node>
-    <node concept="2DRAP_" id="hoHCGhtmnQ" role="2DRAPQ">
-      <property role="2DPR8u" value="          JAVA_LOCATION=`echo &quot;$JAVA_LOCATION&quot; | &quot;$XARGS&quot; &quot;$DIRNAME&quot; | &quot;$XARGS&quot; &quot;$DIRNAME&quot;`" />
-    </node>
-    <node concept="2DRAP_" id="hoHCGhtmJs" role="2DRAPQ">
-      <property role="2DPR8u" value="          ;;" />
-    </node>
-    <node concept="2DRAP_" id="hoHCGhtn73" role="2DRAPQ">
-      <property role="2DPR8u" value="      esac" />
-    </node>
-    <node concept="2DRAP_" id="hoHCGhtnuF" role="2DRAPQ">
-      <property role="2DPR8u" value="      if [ -x &quot;$JAVA_LOCATION/bin/java&quot; ]; then" />
-    </node>
-    <node concept="2DRAP_" id="hoHCGhtnQk" role="2DRAPQ">
-      <property role="2DPR8u" value="        JDK=&quot;$JAVA_LOCATION&quot;" />
-    </node>
-    <node concept="2DRAP_" id="hoHCGhtodY" role="2DRAPQ">
-      <property role="2DPR8u" value="      fi" />
-    </node>
-    <node concept="2DRAP_" id="hoHCGhto_D" role="2DRAPQ">
-      <property role="2DPR8u" value="    fi" />
-    </node>
-    <node concept="2DRAP_" id="hoHCGhtoXl" role="2DRAPQ">
+    <node concept="2DRAP_" id="3O4ms4tLvjt" role="2DRAPQ">
       <property role="2DPR8u" value="  fi" />
     </node>
-    <node concept="2DRAP_" id="hoHCGhtpl2" role="2DRAPQ">
+    <node concept="2DRAP_" id="hoHCGhtilm" role="2DRAPQ" />
+    <node concept="2DRAP_" id="hoHCGhtiGL" role="2DRAPQ">
+      <property role="2DPR8u" value="  if [ -z &quot;$JDK&quot; ] &amp;&amp; [ -n &quot;$JDK_PATH&quot; ] &amp;&amp; [ -x &quot;$READLINK&quot; ] &amp;&amp; [ -x &quot;$XARGS&quot; ]; then" />
+    </node>
+    <node concept="2DRAP_" id="hoHCGhtj4d" role="2DRAPQ">
+      <property role="2DPR8u" value="    JAVA_LOCATION=$(&quot;$READLINK&quot; -f &quot;$JDK_PATH&quot;)" />
+    </node>
+    <node concept="2DRAP_" id="hoHCGhtjrE" role="2DRAPQ">
+      <property role="2DPR8u" value="    case &quot;$JAVA_LOCATION&quot; in" />
+    </node>
+    <node concept="2DRAP_" id="hoHCGhtjN8" role="2DRAPQ">
+      <property role="2DPR8u" value="      */jre/bin/java)" />
+    </node>
+    <node concept="2DRAP_" id="hoHCGhtkaB" role="2DRAPQ">
+      <property role="2DPR8u" value="        JAVA_LOCATION=$(echo &quot;$JAVA_LOCATION&quot; | &quot;$XARGS&quot; &quot;$DIRNAME&quot; | &quot;$XARGS&quot; &quot;$DIRNAME&quot; | &quot;$XARGS&quot; &quot;$DIRNAME&quot;)" />
+    </node>
+    <node concept="2DRAP_" id="hoHCGhtky7" role="2DRAPQ">
+      <property role="2DPR8u" value="        if [ ! -d &quot;$JAVA_LOCATION/bin&quot; ]; then" />
+    </node>
+    <node concept="2DRAP_" id="hoHCGhtkTC" role="2DRAPQ">
+      <property role="2DPR8u" value="          JAVA_LOCATION=&quot;$JAVA_LOCATION/jre&quot;" />
+    </node>
+    <node concept="2DRAP_" id="hoHCGhtlha" role="2DRAPQ">
+      <property role="2DPR8u" value="        fi" />
+    </node>
+    <node concept="2DRAP_" id="hoHCGhtlCH" role="2DRAPQ">
+      <property role="2DPR8u" value="        ;;" />
+    </node>
+    <node concept="2DRAP_" id="hoHCGhtm0h" role="2DRAPQ">
+      <property role="2DPR8u" value="      *)" />
+    </node>
+    <node concept="2DRAP_" id="hoHCGhtmnQ" role="2DRAPQ">
+      <property role="2DPR8u" value="        JAVA_LOCATION=$(echo &quot;$JAVA_LOCATION&quot; | &quot;$XARGS&quot; &quot;$DIRNAME&quot; | &quot;$XARGS&quot; &quot;$DIRNAME&quot;)" />
+    </node>
+    <node concept="2DRAP_" id="hoHCGhtmJs" role="2DRAPQ">
+      <property role="2DPR8u" value="        ;;" />
+    </node>
+    <node concept="2DRAP_" id="hoHCGhtn73" role="2DRAPQ">
+      <property role="2DPR8u" value="    esac" />
+    </node>
+    <node concept="2DRAP_" id="hoHCGhtnuF" role="2DRAPQ">
+      <property role="2DPR8u" value="    if [ -x &quot;$JAVA_LOCATION/bin/java&quot; ]; then" />
+    </node>
+    <node concept="2DRAP_" id="hoHCGhtnQk" role="2DRAPQ">
+      <property role="2DPR8u" value="      JDK=&quot;$JAVA_LOCATION&quot;" />
+    </node>
+    <node concept="2DRAP_" id="hoHCGhtodY" role="2DRAPQ">
+      <property role="2DPR8u" value="    fi" />
+    </node>
+    <node concept="2DRAP_" id="hoHCGhto_D" role="2DRAPQ">
+      <property role="2DPR8u" value="  fi" />
+    </node>
+    <node concept="2DRAP_" id="hoHCGhtoXl" role="2DRAPQ">
       <property role="2DPR8u" value="fi" />
     </node>
     <node concept="2DRAP_" id="1SWE651AxIZ" role="2DRAPQ" />
     <node concept="2DRAP_" id="1SWE651Ay2H" role="2DRAPQ">
       <property role="2DPR8u" value="JAVA_BIN=&quot;$JDK/bin/java&quot;" />
     </node>
-    <node concept="2DRAP_" id="1SWE651Ayms" role="2DRAPQ">
-      <property role="2DPR8u" value="if [ ! -x &quot;$JAVA_BIN&quot; ]; then" />
-    </node>
-    <node concept="2DRAP_" id="1SWE651AyEc" role="2DRAPQ">
-      <property role="2DPR8u" value="  JAVA_BIN=&quot;$JDK/jre/bin/java&quot;" />
-    </node>
-    <node concept="2DRAP_" id="1SWE651AzIr" role="2DRAPQ">
-      <property role="2DPR8u" value="fi" />
-    </node>
-    <node concept="2DRAP_" id="hoHCGhtpGK" role="2DRAPQ" />
     <node concept="2DRAP_" id="hoHCGhtq01" role="2DRAPQ">
       <property role="2DPR8u" value="if [ -z &quot;$JDK&quot; ] || [ ! -x &quot;$JAVA_BIN&quot; ]; then" />
     </node>
+    <node concept="2DRAP_" id="3O4ms4u6oFn" role="2DRAPQ">
+      <property role="2DPR8u" value="  X86_JRE_URL=&quot;https://download.jetbrains.com/idea/jbr-for-201.6668.121-linux-x86.tar.gz&quot;" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4u6qFK" role="2DRAPQ">
+      <property role="2DPR8u" value="  # shellcheck disable=SC2166" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4u6uFU" role="2DRAPQ">
+      <property role="2DPR8u" value="  if [ -n &quot;$X86_JRE_URL&quot; ] &amp;&amp; [ ! -d &quot;$IDE_HOME/jbr-x86&quot; ] &amp;&amp; [ &quot;$OS_ARCH&quot; = &quot;i386&quot; -o &quot;$OS_ARCH&quot; = &quot;i686&quot; ]; then" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4u6vKe" role="2DRAPQ">
+      <property role="2DPR8u" value="    message &quot;To run IDE on a 32-bit system, please download 32-bit Java runtime from \&quot;$X86_JRE_URL\&quot; and unpack it into \&quot;jbr-x86\&quot; directory.&quot;" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4u6xfQ" role="2DRAPQ">
+      <property role="2DPR8u" value="  else" />
+    </node>
     <node concept="2DRAP_" id="hoHCGhtqnL" role="2DRAPQ">
-      <property role="2DPR8u" value="  message &quot;No JDK found. Please validate either MPS_JDK, JDK_HOME or JAVA_HOME environment variable points to valid JDK installation.&quot;" />
+      <property role="2DPR8u" value="    message &quot;No JDK found. Please validate either MPS_JDK, JDK_HOME or JAVA_HOME environment variable points to valid JDK installation.&quot;" />
       <node concept="17Uvod" id="BsOHnjm55l" role="lGtFl">
         <property role="P4ACc" value="d5033cee-f632-44b6-b308-89d4fbde34ff/1731640411964205218/1731640411964798937" />
         <property role="2qtEX9" value="text" />
@@ -3730,6 +3891,9 @@
         </node>
       </node>
     </node>
+    <node concept="2DRAP_" id="3O4ms4u6zgj" role="2DRAPQ">
+      <property role="2DPR8u" value="  fi" />
+    </node>
     <node concept="2DRAP_" id="hoHCGhtqJy" role="2DRAPQ">
       <property role="2DPR8u" value="  exit 1" />
     </node>
@@ -3738,13 +3902,13 @@
     </node>
     <node concept="2DRAP_" id="hoHCGht8gm" role="2DRAPQ" />
     <node concept="2DRAP_" id="2lwFGYPiQ2J" role="2DRAPQ">
-      <property role="2DPR8u" value="VERSION_LOG=`&quot;$MKTEMP&quot; -t java.version.log.XXXXXX`" />
+      <property role="2DPR8u" value="VERSION_LOG=$(&quot;$MKTEMP&quot; -t java.version.log.XXXXXX)" />
     </node>
     <node concept="2DRAP_" id="2lwFGYPiQQW" role="2DRAPQ">
-      <property role="2DPR8u" value="JAVA_TOOL_OPTIONS= &quot;$JAVA_BIN&quot; -version 2&gt; &quot;$VERSION_LOG&quot;" />
+      <property role="2DPR8u" value="JAVA_TOOL_OPTIONS='' &quot;$JAVA_BIN&quot; -version 2&gt; &quot;$VERSION_LOG&quot;" />
     </node>
     <node concept="2DRAP_" id="2lwFGYPiRFm" role="2DRAPQ">
-      <property role="2DPR8u" value="&quot;$GREP&quot; &quot;64-Bit|x86_64&quot; &quot;$VERSION_LOG&quot; &gt; /dev/null" />
+      <property role="2DPR8u" value="&quot;$GREP&quot; &quot;64-Bit|x86_64|amd64&quot; &quot;$VERSION_LOG&quot; &gt; /dev/null" />
     </node>
     <node concept="2DRAP_" id="2lwFGYPiSvL" role="2DRAPQ">
       <property role="2DPR8u" value="BITS=$?" />
@@ -3760,10 +3924,13 @@
       <property role="2DPR8u" value="# ---------------------------------------------------------------------" />
     </node>
     <node concept="2DRAP_" id="7C7qUK4sRIF" role="2DRAPQ">
-      <property role="2DPR8u" value="# Collect JVM options and properties." />
+      <property role="2DPR8u" value="# Collect JVM options and IDE properties." />
     </node>
     <node concept="2DRAP_" id="7C7qUK4sRr8" role="2DRAPQ">
       <property role="2DPR8u" value="# ---------------------------------------------------------------------" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4u6$aA" role="2DRAPQ">
+      <property role="2DPR8u" value="# shellcheck disable=SC2154" />
     </node>
     <node concept="2DRAP_" id="BsOHnjmajx" role="2DRAPQ">
       <property role="2DPR8u" value="if [ -n &quot;$MPS_PROPERTIES&quot; ]; then" />
@@ -3880,8 +4047,11 @@
     <node concept="2DRAP_" id="BsOHnjmeRb" role="2DRAPQ">
       <property role="2DPR8u" value="VM_OPTIONS_FILE=&quot;&quot;" />
     </node>
+    <node concept="2DRAP_" id="3O4ms4u6Ahp" role="2DRAPQ">
+      <property role="2DPR8u" value="# shellcheck disable=SC2154" />
+    </node>
     <node concept="2DRAP_" id="BsOHnjmg36" role="2DRAPQ">
-      <property role="2DPR8u" value="if [ -n &quot;$IDEA_VM_OPTIONS&quot; -a -r &quot;$IDEA_VM_OPTIONS&quot; ]; then" />
+      <property role="2DPR8u" value="if [ -n &quot;$IDEA_VM_OPTIONS&quot; ] &amp;&amp; [ -r &quot;$IDEA_VM_OPTIONS&quot; ]; then" />
     </node>
     <node concept="2DRAP_" id="BsOHnjmh8K" role="2DRAPQ">
       <property role="2DPR8u" value="  # explicit" />
@@ -3899,7 +4069,7 @@
       <property role="2DPR8u" value="  VM_OPTIONS_FILE=&quot;$IDE_HOME.vmoptions&quot;" />
     </node>
     <node concept="2DRAP_" id="BsOHnjIA$m" role="2DRAPQ">
-      <property role="2DPR8u" value="elif [ -r &quot;$HOME/.MPS/config/mps$BITS.vmoptions&quot; ]; then" />
+      <property role="2DPR8u" value="elif [ -r &quot;${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/MPS/mps$BITS.vmoptions&quot; ]; then" />
       <node concept="17Uvod" id="BsOHnjICq4" role="lGtFl">
         <property role="P4ACc" value="d5033cee-f632-44b6-b308-89d4fbde34ff/1731640411964205218/1731640411964798937" />
         <property role="2qtEX9" value="text" />
@@ -3927,7 +4097,7 @@
                 <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="Xl_RD" id="BsOHnjICz0" role="37wK5m">
-                  <property role="Xl_RC" value="elif [ -r \&quot;$HOME/.%s/config/mps$BITS.vmoptions\&quot; ]; then" />
+                  <property role="Xl_RC" value="elif [ -r \&quot;${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/%s/%s$BITS.vmoptions\&quot; ]; then" />
                 </node>
                 <node concept="2OqwBi" id="BsOHnjICz1" role="37wK5m">
                   <node concept="30H73N" id="BsOHnjICz2" role="2Oq$k0" />
@@ -3962,7 +4132,7 @@
       <property role="2DPR8u" value="  # user-overridden" />
     </node>
     <node concept="2DRAP_" id="BsOHnjmlzy" role="2DRAPQ">
-      <property role="2DPR8u" value="  VM_OPTIONS_FILE=&quot;$HOME/.MPS/config/mps$BITS.vmoptions&quot;" />
+      <property role="2DPR8u" value="  VM_OPTIONS_FILE=&quot;${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/MPS/mps$BITS.vmoptions&quot;" />
       <node concept="17Uvod" id="BsOHnjmEvn" role="lGtFl">
         <property role="P4ACc" value="d5033cee-f632-44b6-b308-89d4fbde34ff/1731640411964205218/1731640411964798937" />
         <property role="2qtEX9" value="text" />
@@ -3990,7 +4160,7 @@
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="BsOHnjmEBR" role="37wK5m">
-                  <property role="Xl_RC" value="  VM_OPTIONS_FILE=\&quot;$HOME/.%s/config/mps$BITS.vmoptions\&quot;" />
+                  <property role="Xl_RC" value="  VM_OPTIONS_FILE=\&quot;${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/%s/%s$BITS.vmoptions\&quot;" />
                 </node>
                 <node concept="2OqwBi" id="BsOHnjmEBS" role="37wK5m">
                   <node concept="30H73N" id="BsOHnjmEBT" role="2Oq$k0" />
@@ -4206,7 +4376,28 @@
       <property role="2DPR8u" value="if [ -r &quot;$VM_OPTIONS_FILE&quot; ]; then" />
     </node>
     <node concept="2DRAP_" id="BsOHnjmChX" role="2DRAPQ">
-      <property role="2DPR8u" value="  VM_OPTIONS=`&quot;$CAT&quot; &quot;$VM_OPTIONS_FILE&quot; | &quot;$GREP&quot; -v &quot;^#.*&quot;`" />
+      <property role="2DPR8u" value="  VM_OPTIONS=$(&quot;$CAT&quot; &quot;$VM_OPTIONS_FILE&quot; | &quot;$GREP&quot; -v &quot;^#.*&quot;)" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4uhex$" role="2DRAPQ">
+      <property role="2DPR8u" value="  if { echo &quot;$VM_OPTIONS&quot; | &quot;$GREP&quot; -q &quot;agentlib:yjpagent&quot; - ; }; then" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4uhgyK" role="2DRAPQ">
+      <property role="2DPR8u" value="    if [ &quot;$OS_TYPE&quot; = &quot;Linux&quot; ]; then" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4uhizX" role="2DRAPQ">
+      <property role="2DPR8u" value="      VM_OPTIONS=$(echo &quot;$VM_OPTIONS&quot; | &quot;$SED&quot; -e &quot;s|-agentlib:yjpagent\(-linux\)\?\([^=]*\)|-agentpath:$IDE_BIN_HOME/libyjpagent-linux\2.so|&quot;)" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4uhjto" role="2DRAPQ">
+      <property role="2DPR8u" value="    else" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4uhluB" role="2DRAPQ">
+      <property role="2DPR8u" value="      VM_OPTIONS=$(echo &quot;$VM_OPTIONS&quot; | &quot;$SED&quot; -e &quot;s|-agentlib:yjpagent[^ ]*||&quot;)" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4uhmo4" role="2DRAPQ">
+      <property role="2DPR8u" value="    fi" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4uhopl" role="2DRAPQ">
+      <property role="2DPR8u" value="  fi" />
     </node>
     <node concept="2DRAP_" id="7C7qUK4t34P" role="2DRAPQ">
       <property role="2DPR8u" value="else" />
@@ -4215,54 +4406,6 @@
       <property role="2DPR8u" value="  message &quot;Cannot find VM options file&quot;" />
     </node>
     <node concept="2DRAP_" id="7C7qUK4t1fw" role="2DRAPQ">
-      <property role="2DPR8u" value="fi" />
-    </node>
-    <node concept="2DRAP_" id="BsOHnjmKj1" role="2DRAPQ" />
-    <node concept="2DRAP_" id="BsOHnjmKpu" role="2DRAPQ">
-      <property role="2DPR8u" value="IS_EAP=&quot;true&quot;" />
-    </node>
-    <node concept="2DRAP_" id="BsOHnjmLxM" role="2DRAPQ">
-      <property role="2DPR8u" value="if [ &quot;$IS_EAP&quot; = &quot;true&quot; ]; then" />
-    </node>
-    <node concept="2DRAP_" id="BsOHnjmME7" role="2DRAPQ">
-      <property role="2DPR8u" value="  OS_NAME=`echo &quot;$OS_TYPE&quot; | &quot;$TR&quot; '[:upper:]' '[:lower:]'`" />
-    </node>
-    <node concept="2DRAP_" id="BsOHnjmNMt" role="2DRAPQ">
-      <property role="2DPR8u" value="  AGENT_LIB=&quot;yjpagent-$OS_NAME$BITS&quot;" />
-    </node>
-    <node concept="2DRAP_" id="BsOHnjmOUO" role="2DRAPQ">
-      <property role="2DPR8u" value="  if [ -r &quot;$IDE_BIN_HOME/lib$AGENT_LIB.so&quot; ]; then" />
-    </node>
-    <node concept="2DRAP_" id="BsOHnjmQ3c" role="2DRAPQ">
-      <property role="2DPR8u" value="    AGENT=&quot;-agentlib:$AGENT_LIB=disablealloc,delay=10000,sessionname=MPS&quot;" />
-      <node concept="17Uvod" id="BsOHnjmU6r" role="lGtFl">
-        <property role="P4ACc" value="d5033cee-f632-44b6-b308-89d4fbde34ff/1731640411964205218/1731640411964798937" />
-        <property role="2qtEX9" value="text" />
-        <node concept="3zFVjK" id="BsOHnjmU6s" role="3zH0cK">
-          <node concept="3clFbS" id="BsOHnjmU6t" role="2VODD2">
-            <node concept="3clFbF" id="BsOHnjmUAO" role="3cqZAp">
-              <node concept="2YIFZM" id="BsOHnjmUAP" role="3clFbG">
-                <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
-                <node concept="Xl_RD" id="BsOHnjmUAQ" role="37wK5m">
-                  <property role="Xl_RC" value="    AGENT=\&quot;-agentlib:$AGENT_LIB=disablealloc,delay=10000,sessionname=%s\&quot;" />
-                </node>
-                <node concept="2OqwBi" id="BsOHnjmUAR" role="37wK5m">
-                  <node concept="30H73N" id="BsOHnjmUAS" role="2Oq$k0" />
-                  <node concept="2qgKlT" id="BsOHnjmUAT" role="2OqNvi">
-                    <ref role="37wK5l" to="tgdw:BsOHnja5fe" resolve="getIdeaPathSelector" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2DRAP_" id="BsOHnjmRb_" role="2DRAPQ">
-      <property role="2DPR8u" value="  fi" />
-    </node>
-    <node concept="2DRAP_" id="BsOHnjmSjZ" role="2DRAPQ">
       <property role="2DPR8u" value="fi" />
     </node>
     <node concept="2DRAP_" id="7C7qUK4t3Lc" role="2DRAPQ" />
@@ -4343,6 +4486,9 @@
     </node>
     <node concept="2DRAP_" id="hoHCGhtrRd" role="2DRAPQ">
       <property role="2DPR8u" value="CLASSPATH=&quot;$CLASSPATH:$JDK/lib/tools.jar&quot;" />
+    </node>
+    <node concept="2DRAP_" id="3O4ms4urSEc" role="2DRAPQ">
+      <property role="2DPR8u" value="# shellcheck disable=SC2154" />
     </node>
     <node concept="2DRAP_" id="7C7qUK4t86a" role="2DRAPQ">
       <property role="2DPR8u" value="if [ -n &quot;$MPS_CLASSPATH&quot; ]; then" />
@@ -4468,6 +4614,9 @@
     <node concept="2DRAP_" id="3tlJBNgUA8f" role="2DRAPQ">
       <property role="2DPR8u" value="IFS=&quot;$(printf '\n\t')&quot;" />
     </node>
+    <node concept="2DRAP_" id="3O4ms4uhsa6" role="2DRAPQ">
+      <property role="2DPR8u" value="# shellcheck disable=SC2086" />
+    </node>
     <node concept="2DRAP_" id="3T7P3nA9UKP" role="2DRAPQ">
       <property role="2DPR8u" value="MAIN_CLASS=" />
       <node concept="17Uvod" id="3T7P3nA9VP_" role="lGtFl">
@@ -4513,7 +4662,7 @@
       </node>
     </node>
     <node concept="2DRAP_" id="7C7qUK4tbCU" role="2DRAPQ">
-      <property role="2DPR8u" value="LD_LIBRARY_PATH=&quot;$IDE_BIN_HOME:$LD_LIBRARY_PATH&quot; &quot;$JAVA_BIN&quot; \" />
+      <property role="2DPR8u" value="&quot;$JAVA_BIN&quot; \" />
     </node>
     <node concept="2DRAP_" id="BsOHnjn0bH" role="2DRAPQ">
       <property role="2DPR8u" value="  ${AGENT} \" />
@@ -4526,9 +4675,111 @@
     </node>
     <node concept="2DRAP_" id="7C7qUK4tcX2" role="2DRAPQ">
       <property role="2DPR8u" value="  &quot;-XX:ErrorFile=$HOME/java_error_in_MPS_%p.log&quot; \" />
+      <node concept="17Uvod" id="3O4ms4urUWg" role="lGtFl">
+        <property role="2qtEX9" value="text" />
+        <property role="P4ACc" value="d5033cee-f632-44b6-b308-89d4fbde34ff/1731640411964205218/1731640411964798937" />
+        <node concept="3zFVjK" id="3O4ms4urUWh" role="3zH0cK">
+          <node concept="3clFbS" id="3O4ms4urUWi" role="2VODD2">
+            <node concept="3clFbJ" id="3O4ms4urV1h" role="3cqZAp">
+              <node concept="3clFbS" id="3O4ms4urV1i" role="3clFbx">
+                <node concept="3cpWs6" id="3O4ms4urV1j" role="3cqZAp">
+                  <node concept="3zGtF$" id="3O4ms4urV1k" role="3cqZAk" />
+                </node>
+              </node>
+              <node concept="2OqwBi" id="3O4ms4urV1l" role="3clFbw">
+                <node concept="2OqwBi" id="3O4ms4urV1m" role="2Oq$k0">
+                  <node concept="30H73N" id="3O4ms4urV1n" role="2Oq$k0" />
+                  <node concept="3TrEf2" id="3O4ms4urV1o" role="2OqNvi">
+                    <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" resolve="branding" />
+                  </node>
+                </node>
+                <node concept="3w_OXm" id="3O4ms4urV1p" role="2OqNvi" />
+              </node>
+            </node>
+            <node concept="3clFbH" id="3O4ms4urV1q" role="3cqZAp" />
+            <node concept="3clFbF" id="3O4ms4urV1r" role="3cqZAp">
+              <node concept="2YIFZM" id="3O4ms4urV1s" role="3clFbG">
+                <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+                <node concept="Xl_RD" id="3O4ms4urV1t" role="37wK5m">
+                  <property role="Xl_RC" value="  \&quot;-XX:ErrorFile=$HOME/java_error_in_%s_%%p.log\&quot; \\" />
+                </node>
+                <node concept="2OqwBi" id="3O4ms4urV1u" role="37wK5m">
+                  <node concept="2OqwBi" id="3O4ms4urV1v" role="2Oq$k0">
+                    <node concept="2OqwBi" id="3O4ms4urV1w" role="2Oq$k0">
+                      <node concept="30H73N" id="3O4ms4urV1x" role="2Oq$k0" />
+                      <node concept="3TrEf2" id="3O4ms4urV1y" role="2OqNvi">
+                        <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" resolve="branding" />
+                      </node>
+                    </node>
+                    <node concept="3TrEf2" id="3O4ms4urV1z" role="2OqNvi">
+                      <ref role="3Tt5mk" to="kdzh:5j4USBYGz2J" resolve="product" />
+                    </node>
+                  </node>
+                  <node concept="2qgKlT" id="3O4ms4urV1$" role="2OqNvi">
+                    <ref role="37wK5l" to="vbkb:3NagsOfTioI" resolve="getText" />
+                    <node concept="10Nm6u" id="3O4ms4urV1_" role="37wK5m" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2DRAP_" id="BsOHnjn1yI" role="2DRAPQ">
-      <property role="2DPR8u" value="  &quot;-XX:HeapDumpPath=$HOME/java_error_in_IDEA.hprof&quot; \" />
+      <property role="2DPR8u" value="  &quot;-XX:HeapDumpPath=$HOME/java_error_in_MPS.hprof&quot; \" />
+      <node concept="17Uvod" id="3O4ms4urV0Q" role="lGtFl">
+        <property role="2qtEX9" value="text" />
+        <property role="P4ACc" value="d5033cee-f632-44b6-b308-89d4fbde34ff/1731640411964205218/1731640411964798937" />
+        <node concept="3zFVjK" id="3O4ms4urV0R" role="3zH0cK">
+          <node concept="3clFbS" id="3O4ms4urV0S" role="2VODD2">
+            <node concept="3clFbJ" id="3O4ms4urWH6" role="3cqZAp">
+              <node concept="3clFbS" id="3O4ms4urWH7" role="3clFbx">
+                <node concept="3cpWs6" id="3O4ms4urWH8" role="3cqZAp">
+                  <node concept="3zGtF$" id="3O4ms4urWH9" role="3cqZAk" />
+                </node>
+              </node>
+              <node concept="2OqwBi" id="3O4ms4urWHa" role="3clFbw">
+                <node concept="2OqwBi" id="3O4ms4urWHb" role="2Oq$k0">
+                  <node concept="30H73N" id="3O4ms4urWHc" role="2Oq$k0" />
+                  <node concept="3TrEf2" id="3O4ms4urWHd" role="2OqNvi">
+                    <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" resolve="branding" />
+                  </node>
+                </node>
+                <node concept="3w_OXm" id="3O4ms4urWHe" role="2OqNvi" />
+              </node>
+            </node>
+            <node concept="3clFbH" id="3O4ms4urWHf" role="3cqZAp" />
+            <node concept="3clFbF" id="3O4ms4urWHg" role="3cqZAp">
+              <node concept="2YIFZM" id="3O4ms4urWHh" role="3clFbG">
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+                <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                <node concept="Xl_RD" id="3O4ms4urWHi" role="37wK5m">
+                  <property role="Xl_RC" value="  \&quot;-XX:HeapDumpPath=$HOME/java_error_in_%s.hprof\&quot; \\" />
+                </node>
+                <node concept="2OqwBi" id="3O4ms4urWHj" role="37wK5m">
+                  <node concept="2OqwBi" id="3O4ms4urWHk" role="2Oq$k0">
+                    <node concept="2OqwBi" id="3O4ms4urWHl" role="2Oq$k0">
+                      <node concept="30H73N" id="3O4ms4urWHm" role="2Oq$k0" />
+                      <node concept="3TrEf2" id="3O4ms4urWHn" role="2OqNvi">
+                        <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" resolve="branding" />
+                      </node>
+                    </node>
+                    <node concept="3TrEf2" id="3O4ms4urWHo" role="2OqNvi">
+                      <ref role="3Tt5mk" to="kdzh:5j4USBYGz2J" resolve="product" />
+                    </node>
+                  </node>
+                  <node concept="2qgKlT" id="3O4ms4urWHp" role="2OqNvi">
+                    <ref role="37wK5l" to="vbkb:3NagsOfTioI" resolve="getText" />
+                    <node concept="10Nm6u" id="3O4ms4urWHq" role="37wK5m" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2DRAP_" id="7C7qUK4tdgZ" role="2DRAPQ">
       <property role="2DPR8u" value="  -Didea.paths.selector=$IDEA_PATHS_SELECTOR \" />
@@ -4544,6 +4795,9 @@
     </node>
     <node concept="2DRAP_" id="BsOHnjn547" role="2DRAPQ">
       <property role="2DPR8u" value="  -Didea.jre.check=true \" />
+    </node>
+    <node concept="2DRAP_" id="5pqe9hgw0aW" role="2DRAPQ">
+      <property role="2DPR8u" value="  -Didea.vendor.name=$IDEA_VENDOR_NAME \" />
     </node>
     <node concept="2DRAP_" id="7C7qUK4tehq" role="2DRAPQ">
       <property role="2DPR8u" value="  ${MAIN_CLASS} \" />

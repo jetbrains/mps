@@ -386,6 +386,7 @@
       <concept id="7753544965996377997" name="jetbrains.mps.build.mps.structure.BuildMps_Branding" flags="ng" index="1zClus">
         <property id="3497141547781541445" name="minor" index="2OjLBK" />
         <property id="3497141547781541444" name="major" index="2OjLBL" />
+        <child id="6222348044815161049" name="vendor" index="6lYTd" />
         <child id="6845119683729424406" name="customXmlElement" index="27hc03" />
         <child id="6845119683729337285" name="progressY" index="27hAJg" />
         <child id="6845119683729294884" name="progressColor" index="27hGoL" />
@@ -27520,6 +27521,11 @@
       <node concept="3_J27D" id="2g$3PZTZDBX" role="2gvbiD">
         <node concept="3Mxwew" id="2g$3PZTZDBY" role="3MwsjC">
           <property role="3MwjfP" value="mps" />
+        </node>
+      </node>
+      <node concept="3_J27D" id="5pqe9hgPkjN" role="6lYTd">
+        <node concept="3Mxwew" id="5pqe9hgPkjP" role="3MwsjC">
+          <property role="3MwjfP" value="JetBrains" />
         </node>
       </node>
     </node>
