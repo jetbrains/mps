@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root>
+    <file name="TypesystemDescriptor.java">
+      <unit at="8,0,20,0" name="jetbrains.mps.samples.ChemMastery.typesystem.TypesystemDescriptor" />
+    </file>
+  </root>
+  <root nodeRef="r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)/3709490473851161602">
+    <file name="ElementSummary.java">
+      <node id="3709490473851161722" at="23,0,24,0" concept="3" trace="elementCounts" />
+      <node id="3709490473851217632" at="26,31,27,169" concept="7" />
+      <node id="3709490473851212940" at="29,37,30,276" concept="2" />
+      <node id="3709490473851167926" at="36,54,37,175" concept="2" />
+      <node id="3709490473851242379" at="40,49,41,160" concept="8" />
+      <node id="3709490473851343752" at="44,62,45,54" concept="7" />
+      <node id="3709490473851322936" at="47,39,48,101" concept="8" />
+      <node id="3709490473851344786" at="51,35,52,93" concept="2" />
+      <node id="3709490473851379522" at="56,39,57,115" concept="8" />
+      <node id="3709490473851379537" at="60,35,61,93" concept="2" />
+      <node id="3709490473851466511" at="65,59,66,84" concept="8" />
+      <node id="3709490473851466526" at="69,55,70,195" concept="2" />
+      <node id="3709490473851366357" at="72,7,73,30" concept="8" />
+      <node id="3709490473851161602" at="77,0,78,0" concept="9" trace="cardinality$$dy0" />
+      <node id="3709490473851161602" at="78,0,79,0" concept="9" trace="cardinalityVisible$iY8b" />
+      <node id="3709490473851161602" at="79,0,80,0" concept="9" trace="id$sqos" />
+      <node id="3709490473851161602" at="80,0,81,0" concept="9" trace="cardinality$$dIY" />
+      <node id="3709490473851161602" at="81,0,82,0" concept="9" trace="cardinalityVisible$DlMA" />
+      <node id="3709490473851161602" at="85,0,86,0" concept="9" trace="elements$Eg3r" />
+      <node id="3709490473851161602" at="86,0,87,0" concept="9" trace="element$$dI0" />
+      <node id="3709490473851212472" at="29,0,32,0" concept="6" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="3709490473851167684" at="36,0,39,0" concept="6" trace="addElement#(Ljava/lang/String;I)V" />
+      <node id="3709490473851241419" at="40,0,43,0" concept="6" trace="isSameAs#(Ljetbrains/mps/samples/ChemMastery/typesystem/ElementSummary;)Z" />
+      <node id="3709490473851322013" at="47,0,50,0" concept="6" trace="accept#(Ljava/lang/String;)Z" />
+      <node id="3709490473851341392" at="51,0,54,0" concept="6" trace="visit#(Ljava/lang/String;)V" />
+      <node id="3709490473851379520" at="56,0,59,0" concept="6" trace="accept#(Ljava/lang/String;)Z" />
+      <node id="3709490473851379535" at="60,0,63,0" concept="6" trace="visit#(Ljava/lang/String;)V" />
+      <node id="3709490473851466509" at="65,0,68,0" concept="6" trace="accept#(Ljetbrains/mps/internal/collections/runtime/IMapping;)Z" />
+      <node id="3709490473851466524" at="69,0,72,0" concept="6" trace="visit#(Ljetbrains/mps/internal/collections/runtime/IMapping;)V" />
+      <node id="3709490473851198741" at="27,169,32,9" concept="2" />
+      <node id="3709490473851165058" at="25,52,33,5" concept="4" />
+      <node id="3709490473851318581" at="45,54,54,7" concept="2" />
+      <node id="3709490473851379511" at="54,7,63,7" concept="2" />
+      <node id="3709490473851466500" at="63,7,72,7" concept="2" />
+      <node id="3709490473851162943" at="25,0,35,0" concept="1" trace="ElementSummary#(Ljava/lang/Iterable;)V" />
+      <node id="3709490473851313894" at="44,0,75,0" concept="6" trace="comparisonReport#(Ljetbrains/mps/samples/ChemMastery/typesystem/ElementSummary;)Ljava/lang/String;" />
+      <scope id="3709490473851212473" at="29,37,30,276" />
+      <scope id="3709490473851167687" at="36,54,37,175" />
+      <scope id="3709490473851241422" at="40,49,41,160" />
+      <scope id="3709490473851322014" at="47,39,48,101" />
+      <scope id="3709490473851341393" at="51,35,52,93" />
+      <scope id="3709490473851379521" at="56,39,57,115" />
+      <scope id="3709490473851379536" at="60,35,61,93" />
+      <scope id="3709490473851466510" at="65,59,66,84" />
+      <scope id="3709490473851466525" at="69,55,70,195" />
+      <scope id="3709490473851212472" at="29,0,32,0">
+        <var name="el" id="3709490473851212472" />
+      </scope>
+      <scope id="3709490473851167684" at="36,0,39,0">
+        <var name="count" id="3709490473851167824" />
+        <var name="element" id="3709490473851167734" />
+      </scope>
+      <scope id="3709490473851241419" at="40,0,43,0">
+        <var name="other" id="3709490473851241924" />
+      </scope>
+      <scope id="3709490473851322013" at="47,0,50,0">
+        <var name="k" id="3709490473851322013" />
+      </scope>
+      <scope id="3709490473851341392" at="51,0,54,0">
+        <var name="k" id="3709490473851341392" />
+      </scope>
+      <scope id="3709490473851379520" at="56,0,59,0">
+        <var name="k" id="3709490473851379520" />
+      </scope>
+      <scope id="3709490473851379535" at="60,0,63,0">
+        <var name="k" id="3709490473851379535" />
+      </scope>
+      <scope id="3709490473851466509" at="65,0,68,0">
+        <var name="el" id="3709490473851466509" />
+      </scope>
+      <scope id="3709490473851466524" at="69,0,72,0">
+        <var name="el" id="3709490473851466524" />
+      </scope>
+      <scope id="3709490473851165061" at="26,31,32,9">
+        <var name="compoundCardinality" id="3709490473851217635" />
+      </scope>
+      <scope id="3709490473851162947" at="25,52,33,5" />
+      <scope id="3709490473851165058" at="25,52,33,5">
+        <var name="c" id="3709490473851165059" />
+      </scope>
+      <scope id="3709490473851162943" at="25,0,35,0">
+        <var name="compounds" id="3709490473851162981" />
+      </scope>
+      <scope id="3709490473851313897" at="44,62,73,30">
+        <var name="builder" id="3709490473851343753" />
+      </scope>
+      <scope id="3709490473851313894" at="44,0,75,0">
+        <var name="other" id="3709490473851317811" />
+      </scope>
+      <unit id="3709490473851212472" at="28,94,32,7" name="jetbrains.mps.samples.ChemMastery.typesystem.ElementSummary$1" />
+      <unit id="3709490473851322013" at="46,84,50,5" name="jetbrains.mps.samples.ChemMastery.typesystem.ElementSummary$2" />
+      <unit id="3709490473851341392" at="50,20,54,5" name="jetbrains.mps.samples.ChemMastery.typesystem.ElementSummary$3" />
+      <unit id="3709490473851379520" at="55,85,59,5" name="jetbrains.mps.samples.ChemMastery.typesystem.ElementSummary$4" />
+      <unit id="3709490473851379535" at="59,20,63,5" name="jetbrains.mps.samples.ChemMastery.typesystem.ElementSummary$5" />
+      <unit id="3709490473851466509" at="64,54,68,5" name="jetbrains.mps.samples.ChemMastery.typesystem.ElementSummary$6" />
+      <unit id="3709490473851466524" at="68,20,72,5" name="jetbrains.mps.samples.ChemMastery.typesystem.ElementSummary$7" />
+      <unit id="3709490473851161602" at="84,0,88,0" name="jetbrains.mps.samples.ChemMastery.typesystem.ElementSummary$LINKS" />
+      <unit id="3709490473851161602" at="76,0,83,0" name="jetbrains.mps.samples.ChemMastery.typesystem.ElementSummary$PROPS" />
+      <unit id="3709490473851161602" at="22,0,89,0" name="jetbrains.mps.samples.ChemMastery.typesystem.ElementSummary" />
+    </file>
+  </root>
+  <root nodeRef="r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)/6567999678834787901">
+    <file name="TypesystemDescriptor.java">
+      <node id="6567999678834787901" at="14,5,15,93" concept="7" />
+      <node id="6567999678834787901" at="15,93,16,55" concept="2" />
+      <node id="6567999678834787901" at="13,5,17,5" concept="0" />
+      <scope id="6567999678834787901" at="14,5,16,55">
+        <var name="nonTypesystemRule" id="6567999678834787901" />
+      </scope>
+    </file>
+    <file name="check_ElementRef_NonTypesystemRule.java">
+      <node id="6567999678834799886" at="25,7,26,66" concept="7" />
+      <node id="6567999678834799886" at="26,66,27,268" concept="7" />
+      <node id="6567999678834810834" at="28,9,29,159" concept="7" />
+      <node id="6567999678834810834" at="29,159,30,71" concept="2" />
+      <node id="6567999678834787901" at="35,50,36,34" concept="8" />
+      <node id="6567999678834787901" at="38,68,39,102" concept="8" />
+      <node id="6567999678834787901" at="41,30,42,17" concept="8" />
+      <node id="6567999678834787901" at="46,0,47,0" concept="9" trace="cardinalityVisible$DlMA" />
+      <node id="6567999678834787901" at="47,0,48,0" concept="9" trace="cardinality$$dIY" />
+      <node id="6567999678834787901" at="51,0,52,0" concept="9" trace="ElementRef$i$" />
+      <node id="6567999678834787901" at="21,0,23,0" concept="1" trace="check_ElementRef_NonTypesystemRule#()V" />
+      <node id="6567999678834787901" at="35,0,38,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="6567999678834787901" at="38,0,41,0" concept="6" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="6567999678834787901" at="41,0,44,0" concept="6" trace="overrides#()Z" />
+      <node id="6567999678834810834" at="27,268,31,9" concept="0" />
+      <node id="6567999678834799886" at="24,159,32,7" concept="0" />
+      <node id="6567999678834787908" at="23,123,33,5" concept="5" />
+      <node id="6567999678834787901" at="23,0,35,0" concept="6" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="6567999678834787901" at="21,47,21,47" />
+      <scope id="6567999678834787901" at="35,50,36,34" />
+      <scope id="6567999678834787901" at="38,68,39,102" />
+      <scope id="6567999678834787901" at="41,30,42,17" />
+      <scope id="6567999678834787901" at="21,0,23,0" />
+      <scope id="6567999678834810834" at="28,9,30,71">
+        <var name="intentionProvider" id="6567999678834810834" />
+      </scope>
+      <scope id="6567999678834787901" at="35,0,38,0" />
+      <scope id="6567999678834787901" at="38,0,41,0">
+        <var name="argument" id="6567999678834787901" />
+      </scope>
+      <scope id="6567999678834787901" at="41,0,44,0" />
+      <scope id="6567999678834799886" at="25,7,31,9">
+        <var name="_reporter_2309309498" id="6567999678834799886" />
+        <var name="errorTarget" id="6567999678834799886" />
+      </scope>
+      <scope id="6567999678834787910" at="24,159,32,7" />
+      <scope id="6567999678834787902" at="23,123,33,5" />
+      <scope id="6567999678834787901" at="23,0,35,0">
+        <var name="elementRef" id="6567999678834787901" />
+        <var name="status" id="6567999678834787901" />
+        <var name="typeCheckingContext" id="6567999678834787901" />
+      </scope>
+      <unit id="6567999678834787901" at="50,0,53,0" name="jetbrains.mps.samples.ChemMastery.typesystem.check_ElementRef_NonTypesystemRule$CONCEPTS" />
+      <unit id="6567999678834787901" at="45,0,49,0" name="jetbrains.mps.samples.ChemMastery.typesystem.check_ElementRef_NonTypesystemRule$PROPS" />
+      <unit id="6567999678834787901" at="20,0,54,0" name="jetbrains.mps.samples.ChemMastery.typesystem.check_ElementRef_NonTypesystemRule" />
+    </file>
+  </root>
+  <root nodeRef="r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)/6567999678834800028">
+    <file name="HideCardinalityOne_QuickFix.java">
+      <node id="6567999678834800028" at="15,40,16,139" concept="10" />
+      <node id="6567999678834800344" at="18,44,19,42" concept="8" />
+      <node id="6567999678834800600" at="21,35,22,119" concept="2" />
+      <node id="6567999678834800028" at="26,0,27,0" concept="9" trace="ElementRef$i$" />
+      <node id="6567999678834800028" at="30,0,31,0" concept="9" trace="cardinalityVisible$DlMA" />
+      <node id="6567999678834800028" at="15,0,18,0" concept="1" trace="HideCardinalityOne_QuickFix#()V" />
+      <node id="6567999678834800028" at="18,0,21,0" concept="6" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="6567999678834800028" at="21,0,24,0" concept="6" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="6567999678834800028" at="15,40,16,139" />
+      <scope id="6567999678834800050" at="18,44,19,42" />
+      <scope id="6567999678834800030" at="21,35,22,119" />
+      <scope id="6567999678834800028" at="15,0,18,0" />
+      <scope id="6567999678834800028" at="18,0,21,0">
+        <var name="node" id="6567999678834800028" />
+      </scope>
+      <scope id="6567999678834800028" at="21,0,24,0">
+        <var name="node" id="6567999678834800028" />
+      </scope>
+      <unit id="6567999678834800028" at="25,0,28,0" name="jetbrains.mps.samples.ChemMastery.typesystem.HideCardinalityOne_QuickFix$CONCEPTS" />
+      <unit id="6567999678834800028" at="29,0,32,0" name="jetbrains.mps.samples.ChemMastery.typesystem.HideCardinalityOne_QuickFix$PROPS" />
+      <unit id="6567999678834800028" at="14,0,33,0" name="jetbrains.mps.samples.ChemMastery.typesystem.HideCardinalityOne_QuickFix" />
+    </file>
+  </root>
+  <root nodeRef="r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)/7995886393880673819">
+    <file name="TypesystemDescriptor.java">
+      <node id="7995886393880673819" at="10,5,11,95" concept="7" />
+      <node id="7995886393880673819" at="11,95,12,55" concept="2" />
+      <node id="7995886393880673819" at="9,33,13,5" concept="0" />
+      <scope id="7995886393880673819" at="10,5,12,55">
+        <var name="nonTypesystemRule" id="7995886393880673819" />
+      </scope>
+    </file>
+    <file name="check_ChemEquation_NonTypesystemRule.java">
+      <node id="7995886393880688056" at="28,7,29,66" concept="7" />
+      <node id="7995886393880688056" at="29,66,30,282" concept="7" />
+      <node id="7995886393880688207" at="34,7,35,66" concept="7" />
+      <node id="7995886393880688207" at="35,66,36,285" concept="7" />
+      <node id="3709490473851306680" at="39,204,40,156" concept="7" />
+      <node id="3709490473851306804" at="40,156,41,157" concept="7" />
+      <node id="3709490473851308833" at="43,9,44,92" concept="7" />
+      <node id="3709490473851308833" at="44,92,45,257" concept="7" />
+      <node id="7995886393880673819" at="50,50,51,36" concept="8" />
+      <node id="7995886393880673819" at="53,68,54,102" concept="8" />
+      <node id="7995886393880673819" at="56,30,57,17" concept="8" />
+      <node id="7995886393880673819" at="61,0,62,0" concept="9" trace="left$U$u8" />
+      <node id="7995886393880673819" at="62,0,63,0" concept="9" trace="right$U$v6" />
+      <node id="7995886393880673819" at="66,0,67,0" concept="9" trace="Compound$6W" />
+      <node id="7995886393880673819" at="67,0,68,0" concept="9" trace="ChemEquation$$Y" />
+      <node id="7995886393880673819" at="71,0,72,0" concept="9" trace="condition$2Qh4" />
+      <node id="7995886393880673819" at="24,0,26,0" concept="1" trace="check_ChemEquation_NonTypesystemRule#()V" />
+      <node id="7995886393880673819" at="50,0,53,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="7995886393880673819" at="53,0,56,0" concept="6" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="7995886393880673819" at="56,0,59,0" concept="6" trace="overrides#()Z" />
+      <node id="7995886393880688056" at="27,102,31,7" concept="0" />
+      <node id="7995886393880688207" at="33,103,37,7" concept="0" />
+      <node id="3709490473851308833" at="42,35,46,9" concept="0" />
+      <node id="7995886393880673826" at="26,125,32,5" concept="5" />
+      <node id="7995886393880688200" at="32,5,38,5" concept="5" />
+      <node id="3709490473851308100" at="41,157,47,7" concept="5" />
+      <node id="3709490473851644483" at="38,5,48,5" concept="5" />
+      <node id="7995886393880673819" at="26,0,50,0" concept="6" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="7995886393880673819" at="24,49,24,49" />
+      <scope id="7995886393880673819" at="50,50,51,36" />
+      <scope id="7995886393880673819" at="53,68,54,102" />
+      <scope id="7995886393880673819" at="56,30,57,17" />
+      <scope id="7995886393880673819" at="24,0,26,0" />
+      <scope id="7995886393880688056" at="28,7,30,282">
+        <var name="_reporter_2309309498" id="7995886393880688056" />
+        <var name="errorTarget" id="7995886393880688056" />
+      </scope>
+      <scope id="7995886393880688207" at="34,7,36,285">
+        <var name="_reporter_2309309498" id="7995886393880688207" />
+        <var name="errorTarget" id="7995886393880688207" />
+      </scope>
+      <scope id="3709490473851308833" at="43,9,45,257">
+        <var name="_reporter_2309309498" id="3709490473851308833" />
+        <var name="errorTarget" id="3709490473851308833" />
+      </scope>
+      <scope id="7995886393880673819" at="50,0,53,0" />
+      <scope id="7995886393880673819" at="53,0,56,0">
+        <var name="argument" id="7995886393880673819" />
+      </scope>
+      <scope id="7995886393880673819" at="56,0,59,0" />
+      <scope id="7995886393880673828" at="27,102,31,7" />
+      <scope id="7995886393880688206" at="33,103,37,7" />
+      <scope id="3709490473851308102" at="42,35,46,9" />
+      <scope id="3709490473851644485" at="39,204,47,7">
+        <var name="sumL" id="3709490473851306681" />
+        <var name="sumR" id="3709490473851306805" />
+      </scope>
+      <scope id="7995886393880673820" at="26,125,48,5" />
+      <scope id="7995886393880673819" at="26,0,50,0">
+        <var name="chemEquation" id="7995886393880673819" />
+        <var name="status" id="7995886393880673819" />
+        <var name="typeCheckingContext" id="7995886393880673819" />
+      </scope>
+      <unit id="7995886393880673819" at="70,0,73,0" name="jetbrains.mps.samples.ChemMastery.typesystem.check_ChemEquation_NonTypesystemRule$PROPS" />
+      <unit id="7995886393880673819" at="60,0,64,0" name="jetbrains.mps.samples.ChemMastery.typesystem.check_ChemEquation_NonTypesystemRule$LINKS" />
+      <unit id="7995886393880673819" at="65,0,69,0" name="jetbrains.mps.samples.ChemMastery.typesystem.check_ChemEquation_NonTypesystemRule$CONCEPTS" />
+      <unit id="7995886393880673819" at="23,0,74,0" name="jetbrains.mps.samples.ChemMastery.typesystem.check_ChemEquation_NonTypesystemRule" />
+    </file>
+  </root>
+</debug-info>
+
