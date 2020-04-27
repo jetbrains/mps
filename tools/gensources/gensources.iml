@@ -802,6 +802,9 @@
       <sourceFolder url="file://$MODULE_DIR$/../../samples/calculator-tutorial/languages/calculator/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/calculator-tutorial/languages/calculator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/calculator-tutorial/solutions/jetbrains.mps.calculator.sandbox/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../samples/chemmastery/languages/jetbrains.mps.samples.ChemMastery/generator/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../samples/chemmastery/languages/jetbrains.mps.samples.ChemMastery/sandbox/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../samples/chemmastery/languages/jetbrains.mps.samples.ChemMastery/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/complexLanguage/languages/complex/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/complexLanguage/languages/complex/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/complexLanguage/solutions/jetbrains.mps.complex.runtime/source_gen" isTestSource="false" />
@@ -985,6 +988,9 @@
       <excludeFolder url="file://$MODULE_DIR$/../../samples/calculator-tutorial/languages/calculator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/calculator-tutorial/languages/calculator/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/calculator-tutorial/solutions/jetbrains.mps.calculator.sandbox/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../samples/chemmastery/languages/jetbrains.mps.samples.ChemMastery/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../samples/chemmastery/languages/jetbrains.mps.samples.ChemMastery/generator/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../samples/chemmastery/languages/jetbrains.mps.samples.ChemMastery/sandbox/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/complexLanguage/languages/complex/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/complexLanguage/languages/complex/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/complexLanguage/solutions/jetbrains.mps.complex.runtime/classes_gen" />

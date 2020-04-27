@@ -400,6 +400,9 @@
       <directory url="file://$PROJECT_DIR$/samples/calculator-tutorial/languages/calculator/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/calculator-tutorial/languages/calculator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/calculator-tutorial/solutions/jetbrains.mps.calculator.sandbox/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/chemmastery/languages/jetbrains.mps.samples.ChemMastery/generator/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/chemmastery/languages/jetbrains.mps.samples.ChemMastery/sandbox/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/chemmastery/languages/jetbrains.mps.samples.ChemMastery/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/complexLanguage/languages/complex/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/complexLanguage/languages/complex/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/complexLanguage/solutions/jetbrains.mps.complex.runtime/source_gen" includeSubdirectories="true" />
