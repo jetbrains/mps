@@ -248,12 +248,6 @@
               <node concept="3TrcHB" id="7Ift4HfT7Qi" role="2OqNvi">
                 <ref role="3TsBF5" to="tpce:4qF2Hm2r7ja" resolve="conceptAlias" />
               </node>
-              <node concept="1tp6Ag" id="6UtCO5dImV9" role="lGtFl">
-                <property role="1tp6A2" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1(jetbrains.mps.lang.smodel)/4" />
-                <property role="1tp6Ah" value="unknown attributes" />
-                <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.generator.structure.VarMacro" />
-                <property role="1tp6Av" value="Migrate popular concept&lt;-&gt;node conversions" />
-              </node>
               <node concept="2jeGV$" id="2Qr33HiCinb" role="lGtFl">
                 <property role="TrG5h" value="thevar" />
                 <node concept="2jfdEK" id="2Qr33HiCind" role="2jfP_Y">

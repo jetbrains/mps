@@ -394,14 +394,6 @@
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
-      <concept id="8703179436979359251" name="jetbrains.mps.lang.core.structure.MigrationAnnotation" flags="ng" index="1tp6A5">
-        <property id="8703179436979359252" name="createdByScript" index="1tp6A2" />
-      </concept>
-      <concept id="8703179436979359238" name="jetbrains.mps.lang.core.structure.ReviewMigration" flags="ng" index="1tp6Ag">
-        <property id="8703179436979359239" name="reasonShort" index="1tp6Ah" />
-        <property id="8703179436979359240" name="todo" index="1tp6Au" />
-        <property id="8703179436979359241" name="readableId" index="1tp6Av" />
-      </concept>
     </language>
     <language id="90746344-04fd-4286-97d5-b46ae6a81709" name="jetbrains.mps.lang.migration">
       <concept id="3220955710218421371" name="jetbrains.mps.lang.migration.structure.LinkPatternVariableReference" flags="ng" index="spIps">
@@ -3640,12 +3632,6 @@
                   <node concept="2OqwBi" id="2bPv98Qj_eu" role="3uHU7w">
                     <node concept="1bNLJ0" id="2bPv98Qj_cM" role="2Oq$k0">
                       <ref role="1bNLJ7" node="2bPv98QhBwf" resolve="#throwable" />
-                      <node concept="1tp6Ag" id="6UtCO5eK7E8" role="lGtFl">
-                        <property role="1tp6A2" value="90746344-04fd-4286-97d5-b46ae6a81709(jetbrains.mps.lang.migration)/0" />
-                        <property role="1tp6Ah" value="language semantic changed" />
-                        <property role="1tp6Au" value="Pattern variable references now are not detached from their model on first variable read. If detach is needed for the code to work properly, perform detach manually." />
-                        <property role="1tp6Av" value="Transform Detach Changed" />
-                      </node>
                     </node>
                     <node concept="1mIQ4w" id="2bPv98Qj_Pa" role="2OqNvi">
                       <node concept="chp4Y" id="2bPv98Qj_YG" role="cj9EA">

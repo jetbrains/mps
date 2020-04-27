@@ -722,14 +722,6 @@
       <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
         <property id="2423417345669755629" name="filter" index="1eyWvh" />
       </concept>
-      <concept id="8703179436979359251" name="jetbrains.mps.lang.core.structure.MigrationAnnotation" flags="ng" index="1tp6A5">
-        <property id="8703179436979359252" name="createdByScript" index="1tp6A2" />
-      </concept>
-      <concept id="8703179436979359238" name="jetbrains.mps.lang.core.structure.ReviewMigration" flags="ng" index="1tp6Ag">
-        <property id="8703179436979359239" name="reasonShort" index="1tp6Ah" />
-        <property id="8703179436979359240" name="todo" index="1tp6Au" />
-        <property id="8703179436979359241" name="readableId" index="1tp6Av" />
-      </concept>
       <concept id="779128492853369165" name="jetbrains.mps.lang.core.structure.SideTransformInfo" flags="ng" index="1KehLL">
         <property id="779128492853934523" name="cellId" index="1K8rM7" />
         <property id="779128492853699361" name="side" index="1Kfyot" />
@@ -35152,12 +35144,6 @@
             <node concept="1wplmZ" id="chyDR0GAIiX" role="1zxBo6">
               <node concept="3clFbS" id="434bMCwsRIU" role="1wplMD" />
             </node>
-            <node concept="1tp6Ag" id="52Vvy0$It_O" role="lGtFl">
-              <property role="1tp6A2" value="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)/10" />
-              <property role="1tp6Ah" value="unknown attributes" />
-              <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.test.structure.AnonymousCellAnnotation" />
-              <property role="1tp6Av" value="Migrate 'try' statements" />
-            </node>
             <node concept="LIFWc" id="5$HBxhc1P60" role="lGtFl">
               <property role="ZRATv" value="true" />
               <property role="OXtK3" value="true" />
@@ -35300,12 +35286,6 @@
             <node concept="1wplmZ" id="chyDR0GAL2h" role="1zxBo6">
               <node concept="3clFbS" id="434bMCwsS6P" role="1wplMD" />
             </node>
-            <node concept="1tp6Ag" id="52Vvy0$It_P" role="lGtFl">
-              <property role="1tp6A2" value="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)/10" />
-              <property role="1tp6Ah" value="unknown attributes" />
-              <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.test.structure.AnonymousCellAnnotation" />
-              <property role="1tp6Av" value="Migrate 'try' statements" />
-            </node>
             <node concept="LIFWc" id="5$HBxhc1P8g" role="lGtFl">
               <property role="ZRATv" value="true" />
               <property role="OXtK3" value="true" />
@@ -35447,12 +35427,6 @@
             </node>
             <node concept="1wplmZ" id="chyDR0GAN1n" role="1zxBo6">
               <node concept="3clFbS" id="434bMCwsT7k" role="1wplMD" />
-            </node>
-            <node concept="1tp6Ag" id="52Vvy0$It_Q" role="lGtFl">
-              <property role="1tp6A2" value="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)/10" />
-              <property role="1tp6Ah" value="unknown attributes" />
-              <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.test.structure.AnonymousCellAnnotation" />
-              <property role="1tp6Av" value="Migrate 'try' statements" />
             </node>
             <node concept="LIFWc" id="5$HBxhc1OOk" role="lGtFl">
               <property role="ZRATv" value="true" />
@@ -68774,12 +68748,6 @@
               <node concept="1wplmZ" id="dCWjq0uCUtf" role="1zxBo6">
                 <node concept="3clFbS" id="4ZFm$8TrXD7" role="1wplMD" />
               </node>
-              <node concept="1tp6Ag" id="52Vvy0$It_N" role="lGtFl">
-                <property role="1tp6A2" value="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)/10" />
-                <property role="1tp6Ah" value="unknown attributes" />
-                <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.test.structure.AnonymousCellAnnotation" />
-                <property role="1tp6Av" value="Migrate 'try' statements" />
-              </node>
               <node concept="LIFWc" id="5$HBxhc00HD" role="lGtFl">
                 <property role="LIFWa" value="0" />
                 <property role="OXtK3" value="true" />
@@ -68818,12 +68786,6 @@
                     </node>
                   </node>
                 </node>
-              </node>
-              <node concept="1tp6Ag" id="52Vvy0$It_F" role="lGtFl">
-                <property role="1tp6A2" value="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)/10" />
-                <property role="1tp6Ah" value="unknown attributes" />
-                <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.test.structure.AnonymousCellAnnotation" />
-                <property role="1tp6Av" value="Migrate 'try' statements" />
               </node>
               <node concept="LIFWc" id="5$HBxhbVjH$" role="lGtFl">
                 <property role="ZRATv" value="true" />

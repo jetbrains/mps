@@ -390,12 +390,6 @@
                   <node concept="3xONca" id="6IYCYtggoS0" role="3qv8fS">
                     <ref role="3xOPvv" node="6IYCYtgaw13" resolve="testNode" />
                   </node>
-                  <node concept="1tp6Ag" id="6UtCO5dIDon" role="lGtFl">
-                    <property role="1tp6A2" value="8585453e-6bfb-4d80-98de-b16074f1d86c(jetbrains.mps.lang.test)/2" />
-                    <property role="1tp6Ah" value="too complex to migrate" />
-                    <property role="1tp6Au" value="This statement should have been migrated, but test method is too complex to be migrated. Please replace `check error messages` statements with test node annotations." />
-                    <property role="1tp6Av" value="Replace Check Nodes statement with annotation" />
-                  </node>
                 </node>
               </node>
               <node concept="3clFbT" id="6IYCYtggoSQ" role="3clFbw">

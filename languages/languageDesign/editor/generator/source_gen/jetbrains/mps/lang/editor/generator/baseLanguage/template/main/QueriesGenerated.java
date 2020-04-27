@@ -1755,13 +1755,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return (boolean) CellModel_Collection__BehaviorDescriptor.isFoldingEnabled_id1_9L3A4DrOF.invoke(_context.getNode()) && SLinkOperations.getTarget(_context.getNode(), LINKS.foldedCellModel$YcIy) != null;
   }
   public static boolean ifMacro_Condition_1_5(final IfMacroContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.addHints$GiDV) != null || SLinkOperations.getTarget(_context.getNode(), LINKS.removeHints$JmNX) != null;
-  }
-  public static boolean ifMacro_Condition_1_6(final IfMacroContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.addHints$GiDV) != null;
   }
-  public static boolean ifMacro_Condition_1_7(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_1_6(final IfMacroContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.removeHints$JmNX) != null;
+  }
+  public static boolean ifMacro_Condition_1_7(final IfMacroContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.addHints$GiDV) != null || SLinkOperations.getTarget(_context.getNode(), LINKS.removeHints$JmNX) != null;
   }
   public static boolean ifMacro_Condition_1_8(final IfMacroContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.addHints$GiDV) == null && SLinkOperations.getTarget(_context.getNode(), LINKS.removeHints$JmNX) == null;
@@ -6108,9 +6108,9 @@ public class QueriesGenerated extends QueryProviderBase {
     imcMethods.put("4212343982984334754", new IfMC(i++));
     imcMethods.put("4212343982984309482", new IfMC(i++));
     imcMethods.put("6845024055069759790", new IfMC(i++));
-    imcMethods.put("5950344441598856698", new IfMC(i++));
     imcMethods.put("5950344441599961139", new IfMC(i++));
     imcMethods.put("5950344441600061729", new IfMC(i++));
+    imcMethods.put("5950344441598856698", new IfMC(i++));
     imcMethods.put("5950344441599009870", new IfMC(i++));
     imcMethods.put("6402638943148827890", new IfMC(i++));
     imcMethods.put("6240706158491156331", new IfMC(i++));
@@ -7791,8 +7791,8 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SReferenceLink dataType$fLUl = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
     /*package*/ static final SContainmentLink contextHints$QcT4 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, 0x240ba2de0c6c0b6eL, "contextHints");
     /*package*/ static final SContainmentLink foldedCellModel$YcIy = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x6b2f47204d99c5f5L, "foldedCellModel");
-    /*package*/ static final SContainmentLink removeHints$JmNX = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x3ae0865e9aa67219L, "removeHints");
     /*package*/ static final SContainmentLink addHints$GiDV = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x3ae0865e9aa66fc9L, "addHints");
+    /*package*/ static final SContainmentLink removeHints$JmNX = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x3ae0865e9aa67219L, "removeHints");
     /*package*/ static final SContainmentLink contextHints$gwQx = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, 0x65fc2f4f98189976L, "contextHints");
     /*package*/ static final SContainmentLink foldedCellModel$DJXi = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x53e9723ab9b3b776L, "foldedCellModel");
     /*package*/ static final SContainmentLink isApplicableFunction$iLab = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x108b5877365L, 0x108b58da61aL, "isApplicableFunction");
