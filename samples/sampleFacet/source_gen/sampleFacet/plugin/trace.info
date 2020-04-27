@@ -13,7 +13,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1163670490218:jetbrains.mps.baseLanguage.structure.SwitchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root>
     <file name="FacetAspectDescriptor.java">
       <unit at="8,0,18,0" name="sampleFacet.plugin.FacetAspectDescriptor" />
@@ -190,9 +190,6 @@
       <scope id="5590401931537536729" at="62,32,62,32" />
       <scope id="1670948443106462369" at="177,33,177,33" />
       <scope id="5590401931537536727" at="252,31,252,31" />
-      <scope id="5590401931537536727" at="280,0,280,37">
-        <var name="re" id="5590401931537536727" />
-      </scope>
       <scope id="5590401931537536727" at="280,37,280,37" />
       <scope id="5590401931537536727" at="42,38,43,19" />
       <scope id="5590401931537536727" at="45,43,46,16" />
@@ -240,6 +237,9 @@
       <scope id="5590401931537536773" at="270,98,271,119" />
       <scope id="7937398471886838375" at="273,94,274,112" />
       <scope id="8014813979421756100" at="276,93,277,109" />
+      <scope id="5590401931537536727" at="280,7,281,7">
+        <var name="re" id="5590401931537536727" />
+      </scope>
       <scope id="5590401931537536727" at="38,25,40,72" />
       <scope id="5590401931537536729" at="62,0,64,0" />
       <scope id="5590401931537536731" at="90,20,92,61" />

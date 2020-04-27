@@ -15,7 +15,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1163670490218:jetbrains.mps.baseLanguage.structure.SwitchStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:00000000-0000-4000-0000-011c895903ee(jetbrains.mps.internalCollections.test.closures)/1203180268870">
     <file name="Where_Test.java">
@@ -71,13 +71,13 @@
       <scope id="3343985444902960476" at="42,41,43,27" />
       <scope id="3343985444902960511" at="47,41,48,27" />
       <scope id="1241360757813" at="55,40,56,26" />
-      <scope id="1241360792896" at="66,0,67,28">
-        <var name="e" id="1241360792896" />
-      </scope>
       <scope id="1241360792896" at="66,40,67,28" />
       <scope id="1682545549094440459" at="74,40,75,22" />
       <scope id="1682545549094440477" at="80,58,81,57" />
       <scope id="1241360792896" at="63,9,65,20" />
+      <scope id="1241360792896" at="66,5,68,5">
+        <var name="e" id="1241360792896" />
+      </scope>
       <scope id="1203883107838" at="22,0,25,0">
         <var name="it" id="1203883107838" />
       </scope>
@@ -1075,14 +1075,14 @@
       <scope id="1204793880608" at="82,41,83,34" />
       <scope id="1204981312412" at="85,43,86,41" />
       <scope id="1241362803926" at="89,29,90,38" />
-      <scope id="1241362803936" at="96,0,97,28">
-        <var name="e" id="1241362803936" />
-      </scope>
       <scope id="1241362803936" at="96,40,97,28" />
       <scope id="1205510696466" at="42,26,44,52">
         <var name="card" id="1205510749495" />
       </scope>
       <scope id="1241362803936" at="93,9,95,20" />
+      <scope id="1241362803936" at="96,5,98,5">
+        <var name="e" id="1241362803936" />
+      </scope>
       <scope id="1204129298262" at="16,0,19,0" />
       <scope id="1205510374413" at="29,35,32,5">
         <var name="e" id="1205510374417" />
