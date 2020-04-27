@@ -46,8 +46,6 @@
     <!--<projectService serviceInterface="com.intellij.openapi.vcs.changes.patch.PatchBaseDirectoryDetec  tor"
                     serviceImplementation="jetbrains.mps.MPSPatchBaseDirectoryDetector"/>-->
 
-    <projectService serviceInterface="com.intellij.openapi.vcs.impl.DefaultVcsRootPolicy"
-                    serviceImplementation="jetbrains.mps.ide.vcs.ExtendedDefaultVcsRootPolicy"/>
     <projectService serviceInterface="com.intellij.openapi.roots.FileIndexFacade"
                     serviceImplementation="com.intellij.mock.MockFileIndexFacade" overrides="true"/>
 
