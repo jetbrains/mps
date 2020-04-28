@@ -259,7 +259,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
         int arrowHeadHeight = height / 2 - 3;
         g.setColor(Color.black);
         ((Graphics2D) g).setStroke(new BasicStroke(3));
-        ((Graphics2D) g).setStroke(new BasicStroke(3));
         ((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g.drawLine(0, height / 2, desiredWidth, height / 2);
         g.drawLine(desiredWidth, height / 2, arrowHeadWidth, height / 2 - arrowHeadHeight);

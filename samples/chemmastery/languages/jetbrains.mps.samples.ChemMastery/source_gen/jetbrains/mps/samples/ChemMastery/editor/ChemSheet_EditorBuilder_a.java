@@ -40,6 +40,16 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Image;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.nodeEditor.cells.EditorCell_Component;
+import javax.swing.JComponent;
+import jetbrains.mps.nodeEditor.EditorSettings;
+import javax.swing.JPanel;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.BasicStroke;
+import java.awt.RenderingHints;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
 import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler;
@@ -76,6 +86,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.addEditorCell(createProperty_0());
     editorCell.addEditorCell(createRefNode_0());
     editorCell.addEditorCell(createCollection_1());
+    editorCell.addEditorCell(createCollection_2());
     editorCell.addEditorCell(createConstant_2());
     editorCell.addEditorCell(createRefNodeList_0());
     return editorCell;
@@ -224,28 +235,61 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createConstant_2() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "------------------------------------------------------------------------------");
-    editorCell.setCellId("Constant_8qm7p9_e0");
+  private EditorCell createCollection_2() {
+    EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
+    editorCell.setCellId("Collection_8qm7p9_e0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
     editorCell.getStyle().putAll(style);
+    editorCell.addEditorCell(createJComponent_0());
+    return editorCell;
+  }
+  private EditorCell createJComponent_0() {
+    EditorCell editorCell = EditorCell_Component.createComponentCell(getEditorContext(), myNode, _QueryFunction_JComponent_8qm7p9_a0e0(), "JComponent_8qm7p9_a4a");
+    editorCell.setCellId("JComponent_8qm7p9_a4a_0");
+    return editorCell;
+  }
+  private JComponent _QueryFunction_JComponent_8qm7p9_a0e0() {
+    final int fontSize = EditorSettings.getInstance().getFontSize();
+    final int desiredWidth = fontSize * 80;
+    JPanel panel = new JPanel() {
+
+      @Override
+      public Dimension getPreferredSize() {
+        return new Dimension(desiredWidth, fontSize);
+      }
+      @Override
+      protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        int height = getHeight();
+        g.setColor(Color.black);
+        ((Graphics2D) g).setStroke(new BasicStroke(3));
+        ((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g.drawLine(0, height / 2, desiredWidth, height / 2);
+      }
+    };
+    panel.setBackground(new Color(1, 0, 0, 0));
+    return panel;
+  }
+  private EditorCell createConstant_2() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
+    editorCell.setCellId("Constant_8qm7p9_f0");
     editorCell.setDefaultText("");
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new entriesListHandler_8qm7p9_f0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new entriesListHandler_8qm7p9_g0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_entries");
     editorCell.setGridLayout(true);
     editorCell.setSRole(handler.getElementSRole());
     return editorCell;
   }
-  private static class entriesListHandler_8qm7p9_f0 extends RefNodeListHandler {
+  private static class entriesListHandler_8qm7p9_g0 extends RefNodeListHandler {
     @NotNull
     private SNode myNode;
 
-    public entriesListHandler_8qm7p9_f0(SNode ownerNode, EditorContext context) {
+    public entriesListHandler_8qm7p9_g0(SNode ownerNode, EditorContext context) {
       super(context, false);
       myNode = ownerNode;
     }
@@ -268,7 +312,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(entriesListHandler_8qm7p9_f0.this.getNode(), LINKS.entries$$D86));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(entriesListHandler_8qm7p9_g0.this.getNode(), LINKS.entries$$D86));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
