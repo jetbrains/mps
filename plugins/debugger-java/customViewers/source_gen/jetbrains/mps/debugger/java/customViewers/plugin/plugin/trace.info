@@ -14,7 +14,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root>
     <file name="CustomViewersInitializer_AppPluginPart.java">
@@ -109,15 +109,15 @@
       <scope id="2244048449136669030" at="117,5,120,5">
         <var name="creator" id="2244048449136669030" />
       </scope>
-      <scope id="2244048449136669031" at="65,0,69,24">
-        <var name="e" id="2244048449136669031" />
-      </scope>
       <scope id="2244048449136669031" at="65,51,69,24" />
-      <scope id="2244048449136669041" at="95,0,99,24">
-        <var name="e" id="2244048449136669041" />
-      </scope>
       <scope id="2244048449136669041" at="95,51,99,24" />
       <scope id="2244048449136669031" at="53,79,58,0" />
+      <scope id="2244048449136669031" at="65,11,70,11">
+        <var name="e" id="2244048449136669031" />
+      </scope>
+      <scope id="2244048449136669041" at="95,11,100,11">
+        <var name="e" id="2244048449136669041" />
+      </scope>
       <scope id="2244048449136669031" at="53,0,60,0">
         <var name="concept" id="2244048449136669031" />
         <var name="debuggableNode" id="2244048449136669031" />

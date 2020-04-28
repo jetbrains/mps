@@ -53,7 +53,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     {
-      final GeneratedMatchingPattern pattern = new Pattern_5idd3j_a0a9(_quotation_createNode_5idd3j_a0a0a9());
+      final GeneratedMatchingPattern pattern = new Pattern_5idd3j_a0a11(_quotation_createNode_5idd3j_a0a0a11());
       Sequence.fromIterable(((Iterable<SModel>) m.getModels())).translate(new ITranslator2<SModel, SNode>() {
         public Iterable<SNode> translate(SModel it) {
           return SModelOperations.nodes(it, SNodeOperations.asSConcept(pattern.getConcept()));
@@ -88,7 +88,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
             public SNode compute() {
               return new _FunctionTypes._return_P1_E0<SNode, SNode>() {
                 public SNode invoke(SNode node) {
-                  return createCatchVariable_5idd3j_a0a0a0j(ListSequence.fromList(pattern.getMatchedList("annotations")).select(new ISelector<SNode, SNode>() {
+                  return createCatchVariable_5idd3j_a0a0a0l(ListSequence.fromList(pattern.getMatchedList("annotations")).select(new ISelector<SNode, SNode>() {
                     public SNode select(SNode it) {
                       return SNodeOperations.deleteNode(it);
                     }
@@ -100,7 +100,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
             public void invoke(SNode before, SNode after) {
               SNodeId anchorId = before.getNodeId();
               if (anchorId instanceof jetbrains.mps.smodel.SNodeId.Regular) {
-                ((jetbrains.mps.smodel.SNode) SNodeOperations.cast(SLinkOperations.getTarget(after, LINKS.type$pLrO), CONCEPTS.AlternativeType$aM)).setId(generateNodeId((jetbrains.mps.smodel.SNodeId.Regular) anchorId, 7192883672011481891L));
+                ((jetbrains.mps.smodel.SNode) SNodeOperations.cast(SLinkOperations.getTarget(after, LINKS.type$pLrO), CONCEPTS.AlternativeType$aM)).setId(generateNodeId((jetbrains.mps.smodel.SNodeId.Regular) anchorId, ALTERNATIVE_TYPE_ID_GEN));
               }
             }
           });
@@ -108,7 +108,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
       });
     }
     {
-      final GeneratedMatchingPattern pattern = new Pattern_5idd3j_a1a9(_quotation_createNode_5idd3j_a0a1a9());
+      final GeneratedMatchingPattern pattern = new Pattern_5idd3j_a1a11(_quotation_createNode_5idd3j_a0a1a11());
       Sequence.fromIterable(((Iterable<SModel>) m.getModels())).translate(new ITranslator2<SModel, SNode>() {
         public Iterable<SNode> translate(SModel it) {
           return SModelOperations.nodes(it, SNodeOperations.asSConcept(pattern.getConcept()));
@@ -143,7 +143,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
             public SNode compute() {
               return new _FunctionTypes._return_P1_E0<SNode, SNode>() {
                 public SNode invoke(SNode node) {
-                  return createMultipleCatchClause_5idd3j_a0a0b0j((SNode) SNodeOperations.deleteNode(pattern.getMatchedNode("throwable")), SNodeOperations.deleteNode(pattern.getMatchedNode("catchBody")));
+                  return createMultipleCatchClause_5idd3j_a0a0b0l((SNode) SNodeOperations.deleteNode(pattern.getMatchedNode("throwable")), SNodeOperations.deleteNode(pattern.getMatchedNode("catchBody")));
                 }
               }.invoke(nodeToMigrate);
             }
@@ -152,7 +152,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
       });
     }
     {
-      final GeneratedMatchingPattern pattern = new Pattern_5idd3j_a2a9(_quotation_createNode_5idd3j_a0a2a9());
+      final GeneratedMatchingPattern pattern = new Pattern_5idd3j_a2a11(_quotation_createNode_5idd3j_a0a2a11());
       Sequence.fromIterable(((Iterable<SModel>) m.getModels())).translate(new ITranslator2<SModel, SNode>() {
         public Iterable<SNode> translate(SModel it) {
           return SModelOperations.nodes(it, SNodeOperations.asSConcept(pattern.getConcept()));
@@ -191,7 +191,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
             public SNode compute() {
               return new _FunctionTypes._return_P1_E0<SNode, SNode>() {
                 public SNode invoke(SNode node) {
-                  return createTryUniversalStatement_5idd3j_a0a0c0j(SNodeOperations.deleteNode(pattern.getMatchedNode("body")), ListSequence.fromList(pattern.getMatchedList("catchClause")).select(new ISelector<SNode, SNode>() {
+                  return createTryUniversalStatement_5idd3j_a0a0c0l(SNodeOperations.deleteNode(pattern.getMatchedNode("body")), ListSequence.fromList(pattern.getMatchedList("catchClause")).select(new ISelector<SNode, SNode>() {
                     public SNode select(SNode it) {
                       return (SNode) (SNode) SNodeOperations.deleteNode(it);
                     }
@@ -204,7 +204,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
       });
     }
     {
-      final GeneratedMatchingPattern pattern = new Pattern_5idd3j_a3a9(_quotation_createNode_5idd3j_a0a3a9());
+      final GeneratedMatchingPattern pattern = new Pattern_5idd3j_a3a11(_quotation_createNode_5idd3j_a0a3a11());
       Sequence.fromIterable(((Iterable<SModel>) m.getModels())).translate(new ITranslator2<SModel, SNode>() {
         public Iterable<SNode> translate(SModel it) {
           return SModelOperations.nodes(it, SNodeOperations.asSConcept(pattern.getConcept()));
@@ -244,7 +244,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
             public SNode compute() {
               return new _FunctionTypes._return_P1_E0<SNode, SNode>() {
                 public SNode invoke(SNode node) {
-                  return createTryUniversalStatement_5idd3j_a0a0d0j(SNodeOperations.deleteNode(pattern.getMatchedNode("body")), ListSequence.fromList(pattern.getMatchedList("catchClause")).select(new ISelector<SNode, SNode>() {
+                  return createTryUniversalStatement_5idd3j_a0a0d0l(SNodeOperations.deleteNode(pattern.getMatchedNode("body")), ListSequence.fromList(pattern.getMatchedList("catchClause")).select(new ISelector<SNode, SNode>() {
                     public SNode select(SNode it) {
                       return (SNode) (SNode) SNodeOperations.deleteNode(it);
                     }
@@ -256,7 +256,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
             public void invoke(SNode before, SNode after) {
               SNodeId anchorId = before.getNodeId();
               if (anchorId instanceof jetbrains.mps.smodel.SNodeId.Regular) {
-                ((jetbrains.mps.smodel.SNode) SLinkOperations.getTarget(after, LINKS.finallyBody$4P0X)).setId(generateNodeId((jetbrains.mps.smodel.SNodeId.Regular) anchorId, 2519056534000765414L));
+                ((jetbrains.mps.smodel.SNode) SLinkOperations.getTarget(after, LINKS.finallyBody$4P0X)).setId(generateNodeId((jetbrains.mps.smodel.SNodeId.Regular) anchorId, FINALLY_CLAUSE_ID_GEN));
               }
             }
           });
@@ -290,16 +290,18 @@ public class MigrateTryStatement extends MigrationScriptBase {
   public MigrationScriptReference getDescriptor() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 10);
   }
+  public static final long ALTERNATIVE_TYPE_ID_GEN = 7192883672011481891L;
+  public static final long FINALLY_CLAUSE_ID_GEN = 2519056534000765414L;
 
 
-  public SNodeId generateNodeId(jetbrains.mps.smodel.SNodeId.Regular source, long seed) {
+  public static SNodeId generateNodeId(jetbrains.mps.smodel.SNodeId.Regular source, long seed) {
     long sourceId = source.getId();
     long xorred = sourceId ^ seed;
     long shifted = xorred << 1 ^ xorred >> Long.SIZE - 2;
     return new jetbrains.mps.smodel.SNodeId.Regular(shifted);
   }
 
-  private static SNode _quotation_createNode_5idd3j_a0a0a9() {
+  private static SNode _quotation_createNode_5idd3j_a0a0a11() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
@@ -313,7 +315,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation"), quotedNode_3);
     return quotedNode_1;
   }
-  private static SNode createCatchVariable_5idd3j_a0a0a0j(Iterable<? extends SNode> p0, boolean p1, Iterable<? extends SNode> p2, String p3) {
+  private static SNode createCatchVariable_5idd3j_a0a0a0l(Iterable<? extends SNode> p0, boolean p1, Iterable<? extends SNode> p2, String p3) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CatchVariable$6W);
     n0.forChild(LINKS.annotation$oVP4).initNodeList(p0, CONCEPTS.AnnotationInstance$5z);
     n0.forChild(LINKS.initializer$KgD).initNull();
@@ -325,7 +327,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
     n0.setProperty(PROPS.name$tAp1, p3);
     return n0.getResult();
   }
-  private static SNode _quotation_createNode_5idd3j_a0a1a9() {
+  private static SNode _quotation_createNode_5idd3j_a0a1a11() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
@@ -340,13 +342,13 @@ public class MigrateTryStatement extends MigrationScriptBase {
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f2L, "catchBody"), quotedNode_3);
     return quotedNode_1;
   }
-  private static SNode createMultipleCatchClause_5idd3j_a0a0b0j(SNode p0, SNode p1) {
+  private static SNode createMultipleCatchClause_5idd3j_a0a0b0l(SNode p0, SNode p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MultipleCatchClause$U5);
     n0.forChild(LINKS.throwable$pijh).initNode(p0, CONCEPTS.CatchVariable$6W, true);
     n0.forChild(LINKS.catchBody$pijK).initNode(p1, CONCEPTS.StatementList$TN, true);
     return n0.getResult();
   }
-  private static SNode _quotation_createNode_5idd3j_a0a2a9() {
+  private static SNode _quotation_createNode_5idd3j_a0a2a11() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
@@ -369,14 +371,14 @@ public class MigrateTryStatement extends MigrationScriptBase {
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause"), quotedNode_3);
     return quotedNode_1;
   }
-  private static SNode createTryUniversalStatement_5idd3j_a0a0c0j(SNode p0, Iterable<? extends SNode> p1) {
+  private static SNode createTryUniversalStatement_5idd3j_a0a0c0l(SNode p0, Iterable<? extends SNode> p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TryUniversalStatement$80);
     n0.forChild(LINKS.body$4P0u).initNode(p0, CONCEPTS.StatementList$TN, true);
     n0.forChild(LINKS.catchClause$4PbB).initNodeList(p1, CONCEPTS.MultipleCatchClause$U5);
     n0.forChild(LINKS.finallyBody$4P0X).initNull();
     return n0.getResult();
   }
-  private static SNode _quotation_createNode_5idd3j_a0a3a9() {
+  private static SNode _quotation_createNode_5idd3j_a0a3a11() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
@@ -402,7 +404,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacecb713L, "finallyBody"), quotedNode_4);
     return quotedNode_1;
   }
-  private static SNode createTryUniversalStatement_5idd3j_a0a0d0j(SNode p0, Iterable<? extends SNode> p1, SNode p2) {
+  private static SNode createTryUniversalStatement_5idd3j_a0a0d0l(SNode p0, Iterable<? extends SNode> p1, SNode p2) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TryUniversalStatement$80);
     n0.forChild(LINKS.body$4P0u).initNode(p0, CONCEPTS.StatementList$TN, true);
     n0.forChild(LINKS.catchClause$4PbB).initNodeList(p1, CONCEPTS.MultipleCatchClause$U5);

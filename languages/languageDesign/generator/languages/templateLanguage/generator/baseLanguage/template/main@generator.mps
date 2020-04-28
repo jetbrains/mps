@@ -67,6 +67,9 @@
       <concept id="1153422305557" name="jetbrains.mps.baseLanguage.structure.LessThanOrEqualsExpression" flags="nn" index="2dkUwp" />
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
+        <child id="8118189177080264854" name="classes" index="nSUat" />
+      </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1239709250944" name="jetbrains.mps.baseLanguage.structure.PrefixIncrementExpression" flags="nn" index="2$rviw" />
       <concept id="1239714755177" name="jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation" flags="nn" index="2$Kvd9">
@@ -81,10 +84,6 @@
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
-      </concept>
-      <concept id="1153952380246" name="jetbrains.mps.baseLanguage.structure.TryFinallyStatement" flags="nn" index="2GUZhq">
-        <child id="1153952416686" name="body" index="2GV8ay" />
-        <child id="1153952429843" name="finallyBody" index="2GVbov" />
       </concept>
       <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
         <reference id="2820489544401957798" name="classifier" index="HV5vE" />
@@ -103,16 +102,8 @@
         <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
         <reference id="1144432896254" name="enumClass" index="1Px2BO" />
       </concept>
-      <concept id="1164879751025" name="jetbrains.mps.baseLanguage.structure.TryCatchStatement" flags="nn" index="SfApY">
-        <child id="1164879758292" name="body" index="SfCbr" />
-        <child id="1164903496223" name="catchClause" index="TEbGg" />
-      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
-      </concept>
-      <concept id="1164903280175" name="jetbrains.mps.baseLanguage.structure.CatchClause" flags="nn" index="TDmWw">
-        <child id="1164903359218" name="catchBody" index="TDEfX" />
-        <child id="1164903359217" name="throwable" index="TDEfY" />
       </concept>
       <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
         <child id="1137022507850" name="body" index="2VODD2" />
@@ -124,6 +115,7 @@
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
+      <concept id="4952749571008284462" name="jetbrains.mps.baseLanguage.structure.CatchVariable" flags="ng" index="XOnhg" />
       <concept id="1182160077978" name="jetbrains.mps.baseLanguage.structure.AnonymousClassCreator" flags="nn" index="YeOm9">
         <child id="1182160096073" name="cls" index="YeSDq" />
       </concept>
@@ -254,6 +246,13 @@
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
       <concept id="1214918800624" name="jetbrains.mps.baseLanguage.structure.PostfixIncrementExpression" flags="nn" index="3uNrnE" />
+      <concept id="3093926081414150598" name="jetbrains.mps.baseLanguage.structure.MultipleCatchClause" flags="ng" index="3uVAMA">
+        <child id="8276990574895933173" name="catchBody" index="1zc67A" />
+        <child id="8276990574895933172" name="throwable" index="1zc67B" />
+      </concept>
+      <concept id="8276990574909231788" name="jetbrains.mps.baseLanguage.structure.FinallyClause" flags="ng" index="1wplmZ">
+        <child id="8276990574909234106" name="finallyBody" index="1wplMD" />
+      </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1184950988562" name="jetbrains.mps.baseLanguage.structure.ArrayCreator" flags="nn" index="3$_iS1">
         <child id="1184951007469" name="componentType" index="3$_nBY" />
@@ -270,6 +269,11 @@
       </concept>
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
+      </concept>
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+        <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
+        <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
+        <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
         <child id="1163668914799" name="condition" index="3K4Cdx" />
@@ -661,14 +665,6 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
-      </concept>
-      <concept id="8703179436979359251" name="jetbrains.mps.lang.core.structure.MigrationAnnotation" flags="ng" index="1tp6A5">
-        <property id="8703179436979359252" name="createdByScript" index="1tp6A2" />
-      </concept>
-      <concept id="8703179436979359238" name="jetbrains.mps.lang.core.structure.ReviewMigration" flags="ng" index="1tp6Ag">
-        <property id="8703179436979359239" name="reasonShort" index="1tp6Ah" />
-        <property id="8703179436979359240" name="todo" index="1tp6Au" />
-        <property id="8703179436979359241" name="readableId" index="1tp6Av" />
       </concept>
       <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
         <property id="709746936026609031" name="linkId" index="3V$3ak" />
@@ -9896,8 +9892,8 @@
               </node>
               <node concept="raruj" id="7bUnfsbsJc4" role="lGtFl" />
             </node>
-            <node concept="2GUZhq" id="3AFg8NT6h76" role="3cqZAp">
-              <node concept="3clFbS" id="3AFg8NT6h77" role="2GV8ay">
+            <node concept="3J1_TO" id="3AFg8NT6h76" role="3cqZAp">
+              <node concept="3clFbS" id="3AFg8NT6h77" role="1zxBo7">
                 <node concept="3clFbF" id="3AFg8NT6h8z" role="3cqZAp">
                   <node concept="2OqwBi" id="3AFg8NT6h8$" role="3clFbG">
                     <node concept="37vLTw" id="2BHiRxgm7VM" role="2Oq$k0">
@@ -12452,12 +12448,8 @@
                   </node>
                 </node>
               </node>
-              <node concept="3clFbS" id="3AFg8NT6h79" role="2GVbov" />
-              <node concept="1tp6Ag" id="7XUBClp43DE" role="lGtFl">
-                <property role="1tp6A2" value="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)/10" />
-                <property role="1tp6Ah" value="unknown attributes" />
-                <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.generator.structure.TemplateFragment" />
-                <property role="1tp6Av" value="Migrate 'try' statements" />
+              <node concept="1wplmZ" id="3qWu3Qujz10" role="1zxBo6">
+                <node concept="3clFbS" id="3AFg8NT6h79" role="1wplMD" />
               </node>
               <node concept="raruj" id="3AFg8NT6h7a" role="lGtFl" />
               <node concept="1ps_y7" id="25JZ4W_7Izn" role="lGtFl">
@@ -19615,8 +19607,8 @@
     </node>
     <node concept="9aQIb" id="2wIwnT8XeKS" role="13RCb5">
       <node concept="3clFbS" id="2wIwnT8XeKT" role="9aQI4">
-        <node concept="SfApY" id="2wIwnT8XeKU" role="3cqZAp">
-          <node concept="3clFbS" id="2wIwnT8XeKV" role="SfCbr">
+        <node concept="3J1_TO" id="2wIwnT8XeKU" role="3cqZAp">
+          <node concept="3clFbS" id="2wIwnT8XeKV" role="1zxBo7">
             <node concept="3cpWs8" id="57rxH_R9SLn" role="3cqZAp">
               <node concept="3cpWsn" id="57rxH_R9SLo" role="3cpWs9">
                 <property role="TrG5h" value="context" />
@@ -19837,14 +19829,16 @@
               <node concept="raruj" id="2wIwnT8XeKZ" role="lGtFl" />
             </node>
           </node>
-          <node concept="TDmWw" id="2wIwnT8XeL0" role="TEbGg">
-            <node concept="3cpWsn" id="2wIwnT8XeL1" role="TDEfY">
+          <node concept="3uVAMA" id="2wIwnT8XeL0" role="1zxBo5">
+            <node concept="XOnhg" id="2wIwnT8XeL1" role="1zc67B">
               <property role="TrG5h" value="ex" />
-              <node concept="3uibUv" id="2wIwnT8XeLg" role="1tU5fm">
-                <ref role="3uigEE" to="80j5:~DismissTopMappingRuleException" resolve="DismissTopMappingRuleException" />
+              <node concept="nSUau" id="9vTwtaS3DV5" role="1tU5fm">
+                <node concept="3uibUv" id="2wIwnT8XeLg" role="nSUat">
+                  <ref role="3uigEE" to="80j5:~DismissTopMappingRuleException" resolve="DismissTopMappingRuleException" />
+                </node>
               </node>
             </node>
-            <node concept="3clFbS" id="2wIwnT8XeL3" role="TDEfX" />
+            <node concept="3clFbS" id="2wIwnT8XeL3" role="1zc67A" />
           </node>
         </node>
       </node>
@@ -30679,8 +30673,8 @@
               </node>
               <node concept="raruj" id="30c0HY8gCII" role="lGtFl" />
             </node>
-            <node concept="2GUZhq" id="30c0HY8gCIJ" role="3cqZAp">
-              <node concept="3clFbS" id="30c0HY8gCIK" role="2GV8ay">
+            <node concept="3J1_TO" id="30c0HY8gCIJ" role="3cqZAp">
+              <node concept="3clFbS" id="30c0HY8gCIK" role="1zxBo7">
                 <node concept="3cpWs8" id="30c0HY8gCIU" role="3cqZAp">
                   <node concept="3cpWsn" id="30c0HY8gCIV" role="3cpWs9">
                     <property role="TrG5h" value="innerContext" />
@@ -31633,12 +31627,8 @@
                   </node>
                 </node>
               </node>
-              <node concept="3clFbS" id="30c0HY8gCMc" role="2GVbov" />
-              <node concept="1tp6Ag" id="7XUBClp43DF" role="lGtFl">
-                <property role="1tp6A2" value="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)/10" />
-                <property role="1tp6Ah" value="unknown attributes" />
-                <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.generator.structure.TemplateFragment" />
-                <property role="1tp6Av" value="Migrate 'try' statements" />
+              <node concept="1wplmZ" id="2nMZ9HWYgii" role="1zxBo6">
+                <node concept="3clFbS" id="30c0HY8gCMc" role="1wplMD" />
               </node>
               <node concept="raruj" id="30c0HY8gCMk" role="lGtFl" />
             </node>
@@ -33870,8 +33860,8 @@
             </node>
           </node>
         </node>
-        <node concept="2GUZhq" id="5rc3f3_ZGdE" role="3cqZAp">
-          <node concept="3clFbS" id="5rc3f3_ZGdF" role="2GV8ay">
+        <node concept="3J1_TO" id="5rc3f3_ZGdE" role="3cqZAp">
+          <node concept="3clFbS" id="5rc3f3_ZGdF" role="1zxBo7">
             <node concept="3cpWs8" id="dgwQoTVu64" role="3cqZAp">
               <node concept="3cpWsn" id="dgwQoTVu65" role="3cpWs9">
                 <property role="TrG5h" value="switchContext" />
@@ -34557,12 +34547,8 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbS" id="5rc3f3_ZGgr" role="2GVbov" />
-          <node concept="1tp6Ag" id="7XUBClp43DG" role="lGtFl">
-            <property role="1tp6A2" value="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)/10" />
-            <property role="1tp6Ah" value="unknown attributes" />
-            <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.generator.structure.TemplateFragment" />
-            <property role="1tp6Av" value="Migrate 'try' statements" />
+          <node concept="1wplmZ" id="exMScmBwpkp" role="1zxBo6">
+            <node concept="3clFbS" id="5rc3f3_ZGgr" role="1wplMD" />
           </node>
           <node concept="raruj" id="1x8Y7yqXfQa" role="lGtFl" />
           <node concept="1W57fq" id="5rc3f3_ZGgu" role="lGtFl">

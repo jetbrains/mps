@@ -18,7 +18,6 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)/1710949916357471507">
     <file name="IdeaGoToDeclarationInitializer.java">
@@ -97,7 +96,7 @@
       <node id="2191995028863072592" at="34,0,39,0" concept="3" trace="InstallIDEAPlugin_Action#()V" />
       <node id="2191995028863072674" at="90,60,95,7" concept="8" />
       <node id="2191995028863072838" at="47,5,53,5" concept="1" />
-      <node id="2191995028863072873" at="65,5,71,5" concept="19" />
+      <node id="2191995028863072873" at="65,5,71,5" concept="18" />
       <node id="2191995028863072694" at="96,5,102,5" concept="8" />
       <node id="2191995028863072670" at="89,96,96,5" concept="7" />
       <node id="2191995028863072737" at="105,0,112,0" concept="9" trace="isFileVisible#(Lcom/intellij/openapi/vfs/VirtualFile;Z)Z" />
@@ -253,13 +252,13 @@
       <scope id="5516192790076359852" at="69,72,70,65" />
       <scope id="5516192790076384420" at="76,72,77,58" />
       <scope id="5516192790076394290" at="83,72,84,51" />
-      <scope id="5516192790076274089" at="101,0,102,32">
-        <var name="e" id="5516192790076274095" />
-      </scope>
       <scope id="5516192790076274090" at="101,39,102,32" />
       <scope id="1710949916357003100" at="110,36,111,49" />
       <scope id="5516192790075456630" at="29,0,31,0" />
       <scope id="5516192790076274097" at="98,15,100,32" />
+      <scope id="5516192790076274089" at="101,11,103,11">
+        <var name="e" id="5516192790076274095" />
+      </scope>
       <scope id="5516192790076321320" at="55,0,58,0">
         <var name="h" id="5516192790076321320" />
       </scope>
@@ -420,7 +419,7 @@
       <node id="8611316981187585790" at="211,0,214,0" concept="3" trace="MyTimer#(Ljava/awt/event/ActionListener;)V" />
       <node id="8611316981187585426" at="113,0,117,0" concept="9" trace="tick#()V" />
       <node id="8611316981187585588" at="171,0,175,0" concept="9" trace="run#()V" />
-      <node id="3328426647529473154" at="53,31,58,15" concept="19" />
+      <node id="3328426647529473154" at="53,31,58,15" concept="18" />
       <node id="8611316981187520275" at="68,0,73,0" concept="9" trace="install#(Lcom/intellij/openapi/wm/StatusBar;)V" />
       <node id="8611316981187585369" at="78,45,83,9" concept="8" />
       <node id="8611316981187520288" at="87,0,92,0" concept="9" trace="getPresentation#(Lcom/intellij/openapi/wm/StatusBarWidget/PlatformType;)Lcom/intellij/openapi/wm/StatusBarWidget/WidgetPresentation;" />
@@ -449,7 +448,7 @@
       <node id="8611316981187585551" at="167,0,180,0" concept="9" trace="setNewState#(Ljetbrains/mps/plugin/PluginStateWidget/State;Ljetbrains/mps/plugin/PluginStateWidget/State;)Z" />
       <node id="8611316981187520282" at="73,0,87,0" concept="9" trace="getClickConsumer#()Lcom/intellij/util/Consumer;" />
       <node id="8611316981187585455" at="150,43,164,7" concept="8" />
-      <node id="3328426647534966564" at="49,28,64,9" concept="19" />
+      <node id="3328426647534966564" at="49,28,64,9" concept="18" />
       <node id="8611316981187585450" at="149,10,165,5" concept="8" />
       <node id="8611316981187585446" at="138,10,165,5" concept="8" />
       <node id="8611316981187585390" at="38,0,66,0" concept="9" trace="actionPerformed#(Ljava/awt/event/ActionEvent;)V" />
@@ -612,12 +611,12 @@
       <node id="8632185942131071075" at="80,0,83,0" concept="15" trace="assertNotInEDT#()V" />
       <node id="8632185942131071050" at="66,27,70,7" concept="8" />
       <node id="8632185942131070874" at="74,0,80,0" concept="15" trace="getInstance#()Ljetbrains/mps/plugin/MPSPlugin;" />
-      <node id="8632185942131071014" at="52,5,60,5" concept="19" />
-      <node id="8632185942131071047" at="63,34,71,5" concept="19" />
-      <node id="8632185942131070933" at="20,64,29,5" concept="19" />
+      <node id="8632185942131071014" at="52,5,60,5" concept="18" />
+      <node id="8632185942131071047" at="63,34,71,5" concept="18" />
+      <node id="8632185942131070933" at="20,64,29,5" concept="18" />
       <node id="8632185942131070927" at="20,0,31,0" concept="9" trace="getProjectHandler#(Ljava/lang/String;)Ljetbrains/mps/plugin/IProjectHandler;" />
       <node id="8632185942131071043" at="63,0,74,0" concept="9" trace="getPlugin#()Ljetbrains/mps/plugin/IMPSPlugin;" />
-      <node id="8632185942131070963" at="32,31,46,5" concept="19" />
+      <node id="8632185942131070963" at="32,31,46,5" concept="18" />
       <node id="8632185942131071001" at="48,0,63,0" concept="9" trace="openConnectionPresent#()Z" />
       <node id="8632185942131070957" at="31,0,48,0" concept="9" trace="isIDEAPresent#()Z" />
       <scope id="8632185942131070893" at="18,23,18,23" />
@@ -811,8 +810,8 @@
       <node id="8632185942131071787" at="305,56,309,9" concept="8" />
       <node id="8632185942131071831" at="315,11,319,9" concept="8" />
       <node id="8632185942131071539" at="326,0,330,0" concept="9" trace="findUsages#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/module/SearchScope;Ljetbrains/mps/ide/findusages/model/IResultProvider;)V" />
-      <node id="8632185942131071601" at="116,30,121,11" concept="19" />
-      <node id="8632185942131071617" at="122,9,127,9" concept="19" />
+      <node id="8632185942131071601" at="116,30,121,11" concept="18" />
+      <node id="8632185942131071617" at="122,9,127,9" concept="18" />
       <node id="6173352816488226159" at="154,106,159,12" concept="10" />
       <node id="1423989185889502177" at="160,113,165,14" concept="5" />
       <node id="1423989185889514811" at="165,14,170,14" concept="5" />
@@ -823,7 +822,7 @@
       <node id="8389443510893206000" at="175,61,181,11" concept="8" />
       <node id="8632185942131071596" at="115,101,122,9" concept="8" />
       <node id="8632185942131071442" at="269,0,276,0" concept="9" trace="showAspectMethodUsages#(Ljava/lang/String;Ljava/lang/String;)V" />
-      <node id="8632185942131071560" at="94,25,103,9" concept="19" />
+      <node id="8632185942131071560" at="94,25,103,9" concept="18" />
       <node id="6173352816488637142" at="189,0,198,9" concept="8" />
       <node id="4015100317975368313" at="236,84,245,7" concept="10" />
       <node id="1071422968910417108" at="255,25,264,9" concept="7" />
@@ -1127,7 +1126,7 @@
       <node id="8632185942131072019" at="47,0,52,0" concept="9" trace="getComponentName#()Ljava/lang/String;" />
       <node id="8632185942131072004" at="33,31,39,15" concept="5" />
       <node id="6338816248140731489" at="72,36,78,7" concept="7" />
-      <node id="4652478519508028118" at="79,5,85,5" concept="19" />
+      <node id="4652478519508028118" at="79,5,85,5" concept="18" />
       <node id="8632185942131072060" at="89,0,95,0" concept="9" trace="getIdeaProjectHandler#()Ljetbrains/mps/plugin/IProjectHandler;" />
       <node id="6338816248140680340" at="71,73,79,5" concept="7" />
       <node id="8632185942131072000" at="32,0,41,0" concept="9" trace="projectOpened#()V" />
@@ -1196,7 +1195,7 @@
       <node id="720398003261380082" at="34,10,36,5" concept="1" />
       <node id="720398003261380043" at="22,91,26,11" concept="8" />
       <node id="720398003261380073" at="31,6,36,5" concept="8" />
-      <node id="720398003261380069" at="20,25,29,9" concept="19" />
+      <node id="720398003261380069" at="20,25,29,9" concept="18" />
       <node id="720398003261380031" at="19,0,31,0" concept="9" trace="run#()V" />
       <node id="720398003261380026" at="17,50,31,6" concept="10" />
       <node id="720398003261380002" at="15,0,39,0" concept="9" trace="navigate#(Ljava/lang/String;Ljava/lang/String;IIII)Z" />

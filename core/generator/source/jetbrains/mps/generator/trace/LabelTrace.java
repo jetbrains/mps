@@ -61,7 +61,7 @@ public final class LabelTrace {
   }
 
   private void notify(byte[] message) {
-    final ByteBuffer bb = ByteBuffer.allocate(4 + myHeader.length + message.length * 4 + 8 * 2 /*long threadId, time*/ + 1 /*zero byte*/ + 4 /*msg len*/);
+    final ByteBuffer bb = ByteBuffer.allocate(myHeader.length + message.length + 8 * 2 /*long threadId, time*/);
     bb.put(myHeader);
     bb.putLong(Thread.currentThread().getId());
     bb.putLong(System.nanoTime());

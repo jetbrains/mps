@@ -521,14 +521,6 @@
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
-      <concept id="8703179436979359251" name="jetbrains.mps.lang.core.structure.MigrationAnnotation" flags="ng" index="1tp6A5">
-        <property id="8703179436979359252" name="createdByScript" index="1tp6A2" />
-      </concept>
-      <concept id="8703179436979359238" name="jetbrains.mps.lang.core.structure.ReviewMigration" flags="ng" index="1tp6Ag">
-        <property id="8703179436979359239" name="reasonShort" index="1tp6Ah" />
-        <property id="8703179436979359240" name="todo" index="1tp6Au" />
-        <property id="8703179436979359241" name="readableId" index="1tp6Av" />
-      </concept>
       <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
         <property id="709746936026609031" name="linkId" index="3V$3ak" />
         <property id="709746936026609029" name="role_DebugInfo" index="3V$3am" />
@@ -2050,12 +2042,6 @@
               <node concept="3cpWs6" id="42Bx8VbWv_h" role="3cqZAp">
                 <node concept="1bNLJ0" id="42Bx8VbWvCz" role="3cqZAk">
                   <ref role="1bNLJ7" node="4YXTt1AHoVf" resolve="#arg" />
-                  <node concept="1tp6Ag" id="6UtCO5dGG9T" role="lGtFl">
-                    <property role="1tp6A2" value="90746344-04fd-4286-97d5-b46ae6a81709(jetbrains.mps.lang.migration)/0" />
-                    <property role="1tp6Ah" value="language semantic changed" />
-                    <property role="1tp6Au" value="Pattern variable references now are not detached from their model on first variable read. If detach is needed for the code to work properly, perform detach manually." />
-                    <property role="1tp6Av" value="Transform Detach Changed" />
-                  </node>
                 </node>
               </node>
             </node>
@@ -2448,12 +2434,6 @@
                       <node concept="2c44te" id="42Bx8VbMBeF" role="lGtFl">
                         <node concept="1bNLJ0" id="42Bx8VbMBKG" role="2c44t1">
                           <ref role="1bNLJ7" node="42Bx8VbMdMK" resolve="#expr" />
-                          <node concept="1tp6Ag" id="6UtCO5dGG9U" role="lGtFl">
-                            <property role="1tp6A2" value="90746344-04fd-4286-97d5-b46ae6a81709(jetbrains.mps.lang.migration)/0" />
-                            <property role="1tp6Ah" value="language semantic changed" />
-                            <property role="1tp6Au" value="Pattern variable references now are not detached from their model on first variable read. If detach is needed for the code to work properly, perform detach manually." />
-                            <property role="1tp6Av" value="Transform Detach Changed" />
-                          </node>
                         </node>
                       </node>
                     </node>
@@ -2643,12 +2623,6 @@
                   <node concept="1P9Npp" id="42Bx8VbHGB9" role="2OqNvi">
                     <node concept="1bNLJ0" id="42Bx8VbHHVm" role="1P9ThW">
                       <ref role="1bNLJ7" node="42Bx8VbHBtE" resolve="#c" />
-                      <node concept="1tp6Ag" id="6UtCO5dGG9V" role="lGtFl">
-                        <property role="1tp6A2" value="90746344-04fd-4286-97d5-b46ae6a81709(jetbrains.mps.lang.migration)/0" />
-                        <property role="1tp6Ah" value="language semantic changed" />
-                        <property role="1tp6Au" value="Pattern variable references now are not detached from their model on first variable read. If detach is needed for the code to work properly, perform detach manually." />
-                        <property role="1tp6Av" value="Transform Detach Changed" />
-                      </node>
                     </node>
                   </node>
                   <node concept="2OqwBi" id="42Bx8VbH$2K" role="2Oq$k0">

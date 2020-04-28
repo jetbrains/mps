@@ -9,7 +9,6 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
@@ -94,14 +93,14 @@
       <node id="8032286684682216671" at="138,0,142,0" concept="3" trace="getParts#()Ljava/util/List;" />
       <node id="8032286684682209790" at="169,0,173,0" concept="0" trace="Item#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)V" />
       <node id="8032286684682209790" at="186,0,190,0" concept="3" trace="getTraceInfo#()Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;" />
-      <node id="8032286684683045672" at="46,308,51,5" concept="10" />
+      <node id="8032286684683045672" at="46,308,51,5" concept="9" />
       <node id="8032286684682299201" at="114,0,119,0" concept="3" trace="getMatchingText#(Ljava/lang/String;)Ljava/lang/String;" />
-      <node id="8032286684682216671" at="130,260,135,7" concept="10" />
+      <node id="8032286684682216671" at="130,260,135,7" concept="9" />
       <node id="8032286684682209808" at="190,0,195,0" concept="3" trace="getMatchingText#(Ljava/lang/String;)Ljava/lang/String;" />
       <node id="8032286684682299183" at="61,25,67,7" concept="9" />
-      <node id="8032286684682299183" at="69,52,75,7" concept="10" />
+      <node id="8032286684682299183" at="69,52,75,7" concept="9" />
       <node id="8032286684682209790" at="148,27,154,9" concept="9" />
-      <node id="8032286684682209790" at="156,54,162,9" concept="10" />
+      <node id="8032286684682209790" at="156,54,162,9" concept="9" />
       <node id="8032286684682299183" at="91,0,98,0" concept="3" trace="createNode#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="8032286684682209790" at="178,0,185,0" concept="3" trace="createNode#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="8032286684683045672" at="33,0,41,0" concept="3" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
@@ -129,19 +128,16 @@
       <scope id="8032286684682209790" at="174,66,175,34" />
       <scope id="8032286684682209790" at="187,51,188,29" />
       <scope id="8032286684682209808" at="192,64,193,25" />
-      <scope id="8032286684682299183" at="64,0,66,20">
-        <var name="t" id="8032286684682299183" />
-      </scope>
       <scope id="8032286684682299183" at="64,29,66,20" />
       <scope id="8032286684682299183" at="70,11,72,72" />
       <scope id="8032286684682299183" at="82,50,84,27" />
-      <scope id="8032286684682209790" at="151,0,153,22">
-        <var name="t" id="8032286684682209790" />
-      </scope>
       <scope id="8032286684682209790" at="151,31,153,22" />
       <scope id="8032286684682209790" at="157,13,159,74" />
       <scope id="8032286684682209790" at="169,52,171,29" />
       <scope id="8032286684683045672" at="30,0,33,0" />
+      <scope id="8032286684682299183" at="64,7,67,7">
+        <var name="t" id="8032286684682299183" />
+      </scope>
       <scope id="8032286684682299183" at="87,0,90,0">
         <var name="traceInfo" id="8032286684682299183" />
       </scope>
@@ -151,6 +147,9 @@
       <scope id="8032286684682299183" at="111,0,114,0">
         <var name="pattern" id="8032286684682299183" />
         <var name="strictly" id="8032286684682299183" />
+      </scope>
+      <scope id="8032286684682209790" at="151,9,154,9">
+        <var name="t" id="8032286684682209790" />
       </scope>
       <scope id="8032286684682209790" at="174,0,177,0">
         <var name="traceInfo" id="8032286684682209790" />
@@ -264,10 +263,10 @@
       <node id="8998492695587537855" at="84,0,87,0" concept="3" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
       <node id="8998492695587537855" at="79,0,83,0" concept="0" trace="Item#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)V" />
       <node id="8998492695587537855" at="96,0,100,0" concept="3" trace="getTraceInfo#()Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;" />
-      <node id="8998492695587537706" at="43,323,48,5" concept="10" />
+      <node id="8998492695587537706" at="43,323,48,5" concept="9" />
       <node id="8998492695587548686" at="100,0,105,0" concept="3" trace="getMatchingText#(Ljava/lang/String;)Ljava/lang/String;" />
       <node id="8998492695587537855" at="58,25,64,7" concept="9" />
-      <node id="8998492695587537855" at="66,52,72,7" concept="10" />
+      <node id="8998492695587537855" at="66,52,72,7" concept="9" />
       <node id="8998492695587537706" at="31,0,38,0" concept="3" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
       <node id="8998492695587537855" at="88,0,95,0" concept="3" trace="createNode#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="8998492695587537706" at="39,0,50,0" concept="3" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
@@ -280,15 +279,15 @@
       <scope id="8998492695587537855" at="84,64,85,32" />
       <scope id="8998492695587537855" at="97,49,98,27" />
       <scope id="8998492695587548686" at="102,62,103,29" />
-      <scope id="8998492695587537855" at="61,0,63,20">
-        <var name="t" id="8998492695587537855" />
-      </scope>
       <scope id="8998492695587537855" at="61,29,63,20" />
       <scope id="8998492695587537855" at="67,11,69,72" />
       <scope id="8998492695587537855" at="79,50,81,27" />
       <scope id="8998492695587537706" at="28,0,31,0" />
       <scope id="8998492695587537706" at="33,118,36,18">
         <var name="result" id="8998492695587537706" />
+      </scope>
+      <scope id="8998492695587537855" at="61,7,64,7">
+        <var name="t" id="8998492695587537855" />
       </scope>
       <scope id="8998492695587537855" at="84,0,87,0">
         <var name="traceInfo" id="8998492695587537855" />

@@ -36,20 +36,15 @@
       </concept>
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
+        <child id="8118189177080264854" name="classes" index="nSUat" />
+      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
-      <concept id="1164879751025" name="jetbrains.mps.baseLanguage.structure.TryCatchStatement" flags="nn" index="SfApY">
-        <child id="1164879758292" name="body" index="SfCbr" />
-        <child id="1164903496223" name="catchClause" index="TEbGg" />
-      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
-      </concept>
-      <concept id="1164903280175" name="jetbrains.mps.baseLanguage.structure.CatchClause" flags="nn" index="TDmWw">
-        <child id="1164903359218" name="catchBody" index="TDEfX" />
-        <child id="1164903359217" name="throwable" index="TDEfY" />
       </concept>
       <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
         <child id="1137022507850" name="body" index="2VODD2" />
@@ -57,6 +52,7 @@
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
+      <concept id="4952749571008284462" name="jetbrains.mps.baseLanguage.structure.CatchVariable" flags="ng" index="XOnhg" />
       <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
@@ -132,9 +128,17 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
+      <concept id="3093926081414150598" name="jetbrains.mps.baseLanguage.structure.MultipleCatchClause" flags="ng" index="3uVAMA">
+        <child id="8276990574895933173" name="catchBody" index="1zc67A" />
+        <child id="8276990574895933172" name="throwable" index="1zc67B" />
+      </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
+      </concept>
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+        <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
+        <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
@@ -385,8 +389,8 @@
         <node concept="3Tm1VV" id="4Cd_ANvqxyG" role="1B3o_S" />
         <node concept="raruj" id="4Cd_ANvqx$6" role="lGtFl" />
         <node concept="3clFbS" id="4Cd_ANvqRDs" role="3clF47">
-          <node concept="SfApY" id="2lR2lzquv$0" role="3cqZAp">
-            <node concept="3clFbS" id="2lR2lzquv$2" role="SfCbr">
+          <node concept="3J1_TO" id="2lR2lzquv$0" role="3cqZAp">
+            <node concept="3clFbS" id="2lR2lzquv$2" role="1zxBo7">
               <node concept="3clFbH" id="4Cd_ANvqRDw" role="3cqZAp">
                 <node concept="2b32R4" id="4Cd_ANvqYIK" role="lGtFl">
                   <node concept="3JmXsc" id="4Cd_ANvqYIS" role="2P8S$">
@@ -409,14 +413,16 @@
                 </node>
               </node>
             </node>
-            <node concept="TDmWw" id="2lR2lzquv$3" role="TEbGg">
-              <node concept="3cpWsn" id="2lR2lzquv$5" role="TDEfY">
+            <node concept="3uVAMA" id="2lR2lzquv$3" role="1zxBo5">
+              <node concept="XOnhg" id="2lR2lzquv$5" role="1zc67B">
                 <property role="TrG5h" value="throwable" />
-                <node concept="3uibUv" id="47G6Tek7BTw" role="1tU5fm">
-                  <ref role="3uigEE" to="wyt6:~Throwable" resolve="Throwable" />
+                <node concept="nSUau" id="8Pa$pYt5bhd" role="1tU5fm">
+                  <node concept="3uibUv" id="47G6Tek7BTw" role="nSUat">
+                    <ref role="3uigEE" to="wyt6:~Throwable" resolve="Throwable" />
+                  </node>
                 </node>
               </node>
-              <node concept="3clFbS" id="2lR2lzquv$9" role="TDEfX">
+              <node concept="3clFbS" id="2lR2lzquv$9" role="1zc67A">
                 <node concept="3clFbF" id="3ZgZ1njXaN3" role="3cqZAp">
                   <node concept="2OqwBi" id="3ZgZ1njXaNG" role="3clFbG">
                     <node concept="37vLTw" id="3ZgZ1njXaN2" role="2Oq$k0">

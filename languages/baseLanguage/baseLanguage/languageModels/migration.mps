@@ -75,12 +75,14 @@
         <child id="1164903359218" name="catchBody" index="TDEfX" />
         <child id="1164903359217" name="throwable" index="TDEfY" />
       </concept>
+      <concept id="1070462154015" name="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" flags="ig" index="Wx3nA" />
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
       <concept id="1182160077978" name="jetbrains.mps.baseLanguage.structure.AnonymousClassCreator" flags="nn" index="YeOm9">
         <child id="1182160096073" name="cls" index="YeSDq" />
       </concept>
+      <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
@@ -101,6 +103,7 @@
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
+        <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
       <concept id="1068431790189" name="jetbrains.mps.baseLanguage.structure.Type" flags="in" index="33vP2l" />
@@ -390,14 +393,6 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
-      </concept>
-      <concept id="8703179436979359251" name="jetbrains.mps.lang.core.structure.MigrationAnnotation" flags="ng" index="1tp6A5">
-        <property id="8703179436979359252" name="createdByScript" index="1tp6A2" />
-      </concept>
-      <concept id="8703179436979359238" name="jetbrains.mps.lang.core.structure.ReviewMigration" flags="ng" index="1tp6Ag">
-        <property id="8703179436979359239" name="reasonShort" index="1tp6Ah" />
-        <property id="8703179436979359240" name="todo" index="1tp6Au" />
-        <property id="8703179436979359241" name="readableId" index="1tp6Av" />
       </concept>
     </language>
     <language id="90746344-04fd-4286-97d5-b46ae6a81709" name="jetbrains.mps.lang.migration">
@@ -3075,7 +3070,25 @@
   <node concept="3SyAh_" id="4hKJ3ZH605L">
     <property role="qMTe8" value="10" />
     <property role="TrG5h" value="MigrateTryStatement" />
+    <node concept="Wx3nA" id="1GH7oWJgskD" role="jymVt">
+      <property role="3TUv4t" value="true" />
+      <property role="TrG5h" value="ALTERNATIVE_TYPE_ID_GEN" />
+      <node concept="3Tm1VV" id="1GH7oWJgskA" role="1B3o_S" />
+      <node concept="3cpWsb" id="1GH7oWJgskB" role="1tU5fm" />
+      <node concept="1adDum" id="1GH7oWJgskC" role="33vP2m">
+        <property role="1adDun" value="7192883672011481891L" />
+      </node>
+    </node>
     <node concept="3Tm1VV" id="4hKJ3ZH605M" role="1B3o_S" />
+    <node concept="Wx3nA" id="1GH7oWJgykD" role="jymVt">
+      <property role="3TUv4t" value="true" />
+      <property role="TrG5h" value="FINALLY_CLAUSE_ID_GEN" />
+      <node concept="3Tm1VV" id="1GH7oWJgykA" role="1B3o_S" />
+      <node concept="3cpWsb" id="1GH7oWJgykB" role="1tU5fm" />
+      <node concept="1adDum" id="1GH7oWJgykC" role="33vP2m">
+        <property role="1adDun" value="2519056534000765414L" />
+      </node>
+    </node>
     <node concept="3tTeZs" id="4hKJ3ZH605N" role="jymVt">
       <property role="3tTeZt" value="&lt;no execute after&gt;" />
       <ref role="3tTeZr" to="slm6:7ay_HjIMt1a" resolve="execute after" />
@@ -3104,22 +3117,8 @@
       <node concept="17QB3L" id="4hKJ3ZH6wG8" role="1tU5fm" />
     </node>
     <node concept="2tJIrI" id="5zRGbU5r4gq" role="jymVt" />
-    <node concept="3clFb_" id="5zRGbU5pcGe" role="jymVt">
+    <node concept="2YIFZL" id="1GH7oWJg7CE" role="jymVt">
       <property role="TrG5h" value="generateNodeId" />
-      <node concept="37vLTG" id="5zRGbU5pd5l" role="3clF46">
-        <property role="TrG5h" value="source" />
-        <node concept="3uibUv" id="5zRGbU5rpwP" role="1tU5fm">
-          <ref role="3uigEE" to="w1kc:~SNodeId$Regular" resolve="SNodeId.Regular" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="5zRGbU5pkwt" role="3clF46">
-        <property role="TrG5h" value="seed" />
-        <node concept="3cpWsb" id="5zRGbU5pkBV" role="1tU5fm" />
-      </node>
-      <node concept="3uibUv" id="5zRGbU5r3Ma" role="3clF45">
-        <ref role="3uigEE" to="mhbf:~SNodeId" resolve="SNodeId" />
-      </node>
-      <node concept="3Tm1VV" id="5zRGbU5pcGh" role="1B3o_S" />
       <node concept="3clFbS" id="5zRGbU5pcGi" role="3clF47">
         <node concept="3cpWs8" id="5zRGbU5pkEi" role="3cqZAp">
           <node concept="3cpWsn" id="5zRGbU5pkEj" role="3cpWs9">
@@ -3190,6 +3189,20 @@
           </node>
         </node>
       </node>
+      <node concept="37vLTG" id="5zRGbU5pd5l" role="3clF46">
+        <property role="TrG5h" value="source" />
+        <node concept="3uibUv" id="5zRGbU5rpwP" role="1tU5fm">
+          <ref role="3uigEE" to="w1kc:~SNodeId$Regular" resolve="SNodeId.Regular" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="5zRGbU5pkwt" role="3clF46">
+        <property role="TrG5h" value="seed" />
+        <node concept="3cpWsb" id="5zRGbU5pkBV" role="1tU5fm" />
+      </node>
+      <node concept="3uibUv" id="5zRGbU5r3Ma" role="3clF45">
+        <ref role="3uigEE" to="mhbf:~SNodeId" resolve="SNodeId" />
+      </node>
+      <node concept="3Tm1VV" id="5zRGbU5pcGh" role="1B3o_S" />
     </node>
     <node concept="2tJIrI" id="5zRGbU5r4tO" role="jymVt" />
     <node concept="q3mfD" id="4hKJ3ZH605V" role="jymVt">
@@ -3450,7 +3463,7 @@
                       <node concept="liA8E" id="5zRGbU5rfx1" role="2OqNvi">
                         <ref role="37wK5l" to="w1kc:~SNode.setId(org.jetbrains.mps.openapi.model.SNodeId)" resolve="setId" />
                         <node concept="1rXfSq" id="5zRGbU5rn7n" role="37wK5m">
-                          <ref role="37wK5l" node="5zRGbU5pcGe" resolve="generateNodeId" />
+                          <ref role="37wK5l" node="1GH7oWJg7CE" resolve="generateNodeId" />
                           <node concept="10QFUN" id="5zRGbU5rq8a" role="37wK5m">
                             <node concept="37vLTw" id="5zRGbU5rq89" role="10QFUP">
                               <ref role="3cqZAo" node="5zRGbU5rnVP" resolve="anchorId" />
@@ -3459,8 +3472,8 @@
                               <ref role="3uigEE" to="w1kc:~SNodeId$Regular" resolve="SNodeId.Regular" />
                             </node>
                           </node>
-                          <node concept="1adDum" id="5zRGbU5rmTV" role="37wK5m">
-                            <property role="1adDun" value="7192883672011481891L" />
+                          <node concept="37vLTw" id="1GH7oWJgskG" role="37wK5m">
+                            <ref role="3cqZAo" node="1GH7oWJgskD" resolve="ALTERNATIVE_TYPE_ID_GEN" />
                           </node>
                         </node>
                       </node>
@@ -3619,12 +3632,6 @@
                   <node concept="2OqwBi" id="2bPv98Qj_eu" role="3uHU7w">
                     <node concept="1bNLJ0" id="2bPv98Qj_cM" role="2Oq$k0">
                       <ref role="1bNLJ7" node="2bPv98QhBwf" resolve="#throwable" />
-                      <node concept="1tp6Ag" id="6UtCO5eK7E8" role="lGtFl">
-                        <property role="1tp6A2" value="90746344-04fd-4286-97d5-b46ae6a81709(jetbrains.mps.lang.migration)/0" />
-                        <property role="1tp6Ah" value="language semantic changed" />
-                        <property role="1tp6Au" value="Pattern variable references now are not detached from their model on first variable read. If detach is needed for the code to work properly, perform detach manually." />
-                        <property role="1tp6Av" value="Transform Detach Changed" />
-                      </node>
                     </node>
                     <node concept="1mIQ4w" id="2bPv98Qj_Pa" role="2OqNvi">
                       <node concept="chp4Y" id="2bPv98Qj_YG" role="cj9EA">
@@ -3989,7 +3996,7 @@
                       <node concept="liA8E" id="5zRGbU5S8Zz" role="2OqNvi">
                         <ref role="37wK5l" to="w1kc:~SNode.setId(org.jetbrains.mps.openapi.model.SNodeId)" resolve="setId" />
                         <node concept="1rXfSq" id="5zRGbU5S8Z$" role="37wK5m">
-                          <ref role="37wK5l" node="5zRGbU5pcGe" resolve="generateNodeId" />
+                          <ref role="37wK5l" node="1GH7oWJg7CE" resolve="generateNodeId" />
                           <node concept="10QFUN" id="5zRGbU5S8Z_" role="37wK5m">
                             <node concept="37vLTw" id="5zRGbU5S8ZA" role="10QFUP">
                               <ref role="3cqZAo" node="5zRGbU5S8Zp" resolve="anchorId" />
@@ -3998,8 +4005,8 @@
                               <ref role="3uigEE" to="w1kc:~SNodeId$Regular" resolve="SNodeId.Regular" />
                             </node>
                           </node>
-                          <node concept="1adDum" id="5zRGbU5S8ZC" role="37wK5m">
-                            <property role="1adDun" value="2519056534000765414L" />
+                          <node concept="37vLTw" id="1GH7oWJgykG" role="37wK5m">
+                            <ref role="3cqZAo" node="1GH7oWJgykD" resolve="FINALLY_CLAUSE_ID_GEN" />
                           </node>
                         </node>
                       </node>

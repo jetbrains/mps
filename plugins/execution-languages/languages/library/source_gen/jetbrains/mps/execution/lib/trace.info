@@ -16,7 +16,6 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:5a505993-793e-4b2d-84cf-271f9dde39b3(jetbrains.mps.execution.lib)/1977878056377381089">
     <file name="ExecutionTool.java">
@@ -92,7 +91,7 @@
       <node id="5133679254727507978" at="52,78,57,25" concept="8" />
       <node id="5133679254727507975" at="52,0,59,0" concept="12" trace="nodesToCloneableList#(Ljava/util/List;)Ljetbrains/mps/execution/lib/ClonableList;" />
       <node id="5647974406689059575" at="68,0,75,0" concept="12" trace="clonableListToNodes#(Ljetbrains/mps/execution/lib/ClonableList;)Ljava/util/List;" />
-      <node id="7289289476949348533" at="33,5,44,5" concept="17" />
+      <node id="7289289476949348533" at="33,5,44,5" concept="16" />
       <node id="5133679254727507899" at="29,0,47,0" concept="12" trace="stringToPointer#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <scope id="5740494279800983027" at="26,26,26,26" />
       <scope id="5133679254727507910" at="31,65,32,18" />
@@ -294,7 +293,7 @@
       <node id="8278380780105768314" at="124,0,131,0" concept="6" trace="clone#()Ljava/lang/Object;" />
       <node id="8278380780105768364" at="79,0,88,0" concept="6" trace="setNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8278380780105768314" at="93,62,102,5" concept="16" />
-      <node id="6744899951645931937" at="38,31,52,9" concept="17" />
+      <node id="6744899951645931937" at="38,31,52,9" concept="16" />
       <node id="8278380780105768314" at="91,0,105,0" concept="6" trace="clone#()Ljetbrains/mps/execution/lib/NodeByConcept_Configuration;" />
       <node id="2070521360955586203" at="38,0,54,0" concept="6" trace="compute#()Ljava/lang/String;" />
       <node id="6072045827976706427" at="36,66,54,7" concept="7" />
@@ -326,9 +325,6 @@
         <var name="nodePtr" id="3261175532206506699" />
       </scope>
       <scope id="8278380780105768314" at="94,9,97,48" />
-      <scope id="8278380780105768314" at="98,0,101,7">
-        <var name="ex" id="8278380780105768314" />
-      </scope>
       <scope id="8278380780105768314" at="98,45,101,7" />
       <scope id="8278380780105768314" at="106,0,109,0" />
       <scope id="8278380780105768314" at="109,0,112,0" />
@@ -345,6 +341,9 @@
       </scope>
       <scope id="8278380780105768314" at="65,73,69,83" />
       <scope id="8278380780105768338" at="73,38,77,86" />
+      <scope id="8278380780105768314" at="98,5,102,5">
+        <var name="ex" id="8278380780105768314" />
+      </scope>
       <scope id="8278380780105768314" at="125,61,129,19">
         <var name="state" id="8278380780105768314" />
       </scope>
@@ -502,7 +501,7 @@
       <node id="8278380780105899327" at="83,0,92,0" concept="6" trace="setNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8278380780105899265" at="113,70,122,5" concept="16" />
       <node id="8278380780105899389" at="97,0,109,0" concept="6" trace="accept#(Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_0;)Z" />
-      <node id="2070521360955700854" at="41,31,55,9" concept="17" />
+      <node id="2070521360955700854" at="41,31,55,9" concept="16" />
       <node id="8278380780105899383" at="95,45,109,15" concept="8" />
       <node id="8278380780105899265" at="111,0,125,0" concept="6" trace="clone#()Ljetbrains/mps/execution/lib/NodeBySeveralConcepts_Configuration;" />
       <node id="2070521360955700852" at="41,0,57,0" concept="6" trace="compute#()Ljava/lang/String;" />
@@ -538,9 +537,6 @@
         <var name="nodePtr" id="3261175532206509320" />
       </scope>
       <scope id="8278380780105899265" at="114,9,117,48" />
-      <scope id="8278380780105899265" at="118,0,121,7">
-        <var name="ex" id="8278380780105899265" />
-      </scope>
       <scope id="8278380780105899265" at="118,45,121,7" />
       <scope id="8278380780105899265" at="126,0,129,0" />
       <scope id="8278380780105899265" at="129,0,132,0" />
@@ -560,6 +556,9 @@
       </scope>
       <scope id="8278380780105899265" at="69,73,73,83" />
       <scope id="8278380780105899299" at="77,35,81,86" />
+      <scope id="8278380780105899265" at="118,5,122,5">
+        <var name="ex" id="8278380780105899265" />
+      </scope>
       <scope id="8278380780105899265" at="145,61,149,19">
         <var name="state" id="8278380780105899265" />
       </scope>

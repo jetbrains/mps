@@ -39,7 +39,7 @@ public class DeleteTryFinallyStatementFinallyKeywordTwoStep_Test extends BaseTra
       EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
         public void run() throws Exception {
           invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-          Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), getEditorComponent().getSelectedNode(), "finally"));
+          Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), getEditorComponent().getSelectedNode()));
           invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
         }
       }, true);

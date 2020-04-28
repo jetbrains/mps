@@ -79,16 +79,8 @@
         <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
         <reference id="1144432896254" name="enumClass" index="1Px2BO" />
       </concept>
-      <concept id="1164879751025" name="jetbrains.mps.baseLanguage.structure.TryCatchStatement" flags="nn" index="SfApY">
-        <child id="1164879758292" name="body" index="SfCbr" />
-        <child id="1164903496223" name="catchClause" index="TEbGg" />
-      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
-      </concept>
-      <concept id="1164903280175" name="jetbrains.mps.baseLanguage.structure.CatchClause" flags="nn" index="TDmWw">
-        <child id="1164903359218" name="catchBody" index="TDEfX" />
-        <child id="1164903359217" name="throwable" index="TDEfY" />
       </concept>
       <concept id="1070462154015" name="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" flags="ig" index="Wx3nA" />
       <concept id="1070475354124" name="jetbrains.mps.baseLanguage.structure.ThisExpression" flags="nn" index="Xjq3P">
@@ -4150,9 +4142,43 @@
             </node>
           </node>
         </node>
-        <node concept="SfApY" id="6CFNGGphPfh" role="3cqZAp">
-          <node concept="TDmWw" id="6CFNGGphPfi" role="TEbGg">
-            <node concept="3clFbS" id="6CFNGGphPf1" role="TDEfX">
+        <node concept="3J1_TO" id="6CFNGGphPfh" role="3cqZAp">
+          <node concept="3clFbS" id="6CFNGGphPeO" role="1zxBo7">
+            <node concept="3clFbF" id="5_O5XWaAqEo" role="3cqZAp">
+              <node concept="1rXfSq" id="5_O5XWaAqEn" role="3clFbG">
+                <ref role="37wK5l" node="5_O5XWaAqEg" resolve="copyModelsAndFacets" />
+                <node concept="37vLTw" id="5_O5XWaAqEm" role="37wK5m">
+                  <ref role="3cqZAo" node="7l6b$Kxtfmw" resolve="copy" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="6niszax9BVH" role="3cqZAp">
+              <node concept="1rXfSq" id="6niszax9BVF" role="3clFbG">
+                <ref role="37wK5l" node="6niszax9AKI" resolve="addModuleToProject" />
+                <node concept="37vLTw" id="7l6b$KxtHDv" role="37wK5m">
+                  <ref role="3cqZAo" node="7l6b$Kxtfmw" resolve="copy" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="6CFNGGphPfB" role="3cqZAp">
+              <node concept="1rXfSq" id="6CFNGGphPfC" role="3clFbG">
+                <ref role="37wK5l" node="6CFNGGphPfM" resolve="adjustReferences" />
+                <node concept="37vLTw" id="7l6b$KxtNCR" role="37wK5m">
+                  <ref role="3cqZAo" node="7l6b$Kxtfmw" resolve="copy" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3uVAMA" id="6CFNGGphPfi" role="1zxBo5">
+            <node concept="XOnhg" id="6CFNGGphPeX" role="1zc67B">
+              <property role="TrG5h" value="e" />
+              <node concept="nSUau" id="1fN7Fwrqu4W" role="1tU5fm">
+                <node concept="3uibUv" id="2Q$HO4BaocN" role="nSUat">
+                  <ref role="3uigEE" to="ends:~CopyNotSupportedException" resolve="CopyNotSupportedException" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbS" id="6CFNGGphPf1" role="1zc67A">
               <node concept="3DQ70j" id="2Q$HO4Be3ZJ" role="lGtFl">
                 <property role="3V$3am" value="statement" />
                 <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
@@ -4181,22 +4207,17 @@
                 <node concept="15s5l7" id="2Q$HO4BcW1e" role="lGtFl" />
               </node>
             </node>
-            <node concept="3cpWsn" id="6CFNGGphPeX" role="TDEfY">
-              <property role="3TUv4t" value="false" />
-              <property role="TrG5h" value="e" />
-              <node concept="3uibUv" id="2Q$HO4BaocN" role="1tU5fm">
-                <ref role="3uigEE" to="ends:~CopyNotSupportedException" resolve="CopyNotSupportedException" />
-              </node>
-            </node>
           </node>
-          <node concept="TDmWw" id="2Q$HO4Bap72" role="TEbGg">
-            <node concept="3cpWsn" id="2Q$HO4Bap73" role="TDEfY">
+          <node concept="3uVAMA" id="2Q$HO4Bap72" role="1zxBo5">
+            <node concept="XOnhg" id="2Q$HO4Bap73" role="1zc67B">
               <property role="TrG5h" value="e" />
-              <node concept="3uibUv" id="2Q$HO4Baq9K" role="1tU5fm">
-                <ref role="3uigEE" to="wyt6:~RuntimeException" resolve="RuntimeException" />
+              <node concept="nSUau" id="9NHVqLBH6n1" role="1tU5fm">
+                <node concept="3uibUv" id="2Q$HO4Baq9K" role="nSUat">
+                  <ref role="3uigEE" to="wyt6:~RuntimeException" resolve="RuntimeException" />
+                </node>
               </node>
             </node>
-            <node concept="3clFbS" id="2Q$HO4Bap75" role="TDEfX">
+            <node concept="3clFbS" id="2Q$HO4Bap75" role="1zc67A">
               <node concept="3DQ70j" id="2Q$HO4BdJNm" role="lGtFl">
                 <property role="3V$3am" value="statement" />
                 <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
@@ -4223,32 +4244,6 @@
                   </node>
                 </node>
                 <node concept="15s5l7" id="2Q$HO4BcWY8" role="lGtFl" />
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbS" id="6CFNGGphPeO" role="SfCbr">
-            <node concept="3clFbF" id="5_O5XWaAqEo" role="3cqZAp">
-              <node concept="1rXfSq" id="5_O5XWaAqEn" role="3clFbG">
-                <ref role="37wK5l" node="5_O5XWaAqEg" resolve="copyModelsAndFacets" />
-                <node concept="37vLTw" id="5_O5XWaAqEm" role="37wK5m">
-                  <ref role="3cqZAo" node="7l6b$Kxtfmw" resolve="copy" />
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="6niszax9BVH" role="3cqZAp">
-              <node concept="1rXfSq" id="6niszax9BVF" role="3clFbG">
-                <ref role="37wK5l" node="6niszax9AKI" resolve="addModuleToProject" />
-                <node concept="37vLTw" id="7l6b$KxtHDv" role="37wK5m">
-                  <ref role="3cqZAo" node="7l6b$Kxtfmw" resolve="copy" />
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="6CFNGGphPfB" role="3cqZAp">
-              <node concept="1rXfSq" id="6CFNGGphPfC" role="3clFbG">
-                <ref role="37wK5l" node="6CFNGGphPfM" resolve="adjustReferences" />
-                <node concept="37vLTw" id="7l6b$KxtNCR" role="37wK5m">
-                  <ref role="3cqZAo" node="7l6b$Kxtfmw" resolve="copy" />
-                </node>
               </node>
             </node>
           </node>

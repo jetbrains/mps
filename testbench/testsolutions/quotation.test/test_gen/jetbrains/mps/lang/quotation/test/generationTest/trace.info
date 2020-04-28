@@ -14,7 +14,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:1cc42aa8-6d2d-49a0-9b1f-2e5f92988fc5(jetbrains.mps.lang.quotation.test.generationTest@tests)/2472582545954256453">
     <file name="LightQuotationFinal_Test.java">
       <node id="2472582545954256453" at="38,37,39,25" concept="13" />
@@ -270,17 +270,8 @@
       <scope id="2472582545954296763" at="75,53,76,44" />
       <scope id="2472582545954307850" at="79,57,80,48" />
       <scope id="2472582545954256453" at="85,52,86,19" />
-      <scope id="4144226654067693327" at="145,0,146,30">
-        <var name="e" id="4144226654067693327" />
-      </scope>
       <scope id="4144226654067693327" at="145,40,146,30" />
-      <scope id="7488577682371848714" at="164,0,165,30">
-        <var name="e" id="7488577682371848714" />
-      </scope>
       <scope id="7488577682371848714" at="164,40,165,30" />
-      <scope id="7488577682371813128" at="170,0,171,30">
-        <var name="e" id="7488577682371813128" />
-      </scope>
       <scope id="7488577682371813128" at="170,40,171,30" />
       <scope id="2472582545954287990" at="226,33,227,202" />
       <scope id="2472582545954288444" at="242,33,243,202" />
@@ -297,11 +288,20 @@
       <scope id="4144226654067693327" at="142,11,144,22">
         <var name="l" id="2472582545954289837" />
       </scope>
+      <scope id="4144226654067693327" at="145,7,147,7">
+        <var name="e" id="4144226654067693327" />
+      </scope>
       <scope id="7488577682371848714" at="161,11,163,22">
         <var name="q" id="2472582545954296182" />
       </scope>
+      <scope id="7488577682371848714" at="164,7,166,7">
+        <var name="e" id="7488577682371848714" />
+      </scope>
       <scope id="7488577682371813128" at="167,11,169,22">
         <var name="l" id="2472582545954296190" />
+      </scope>
+      <scope id="7488577682371813128" at="170,7,172,7">
+        <var name="e" id="7488577682371813128" />
       </scope>
       <scope id="2472582545954256453" at="38,0,41,0" />
       <scope id="2472582545954256453" at="85,0,88,0">
