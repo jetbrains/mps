@@ -103,6 +103,9 @@
         <key>idea.paths.selector</key>
         <string>MPS2020.1</string>
         
+        <key>idea.vendor.name</key>
+        <string>JetBrains</string>
+        
         <key>idea.executable</key>
         <string>mps</string>
         
