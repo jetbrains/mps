@@ -47,7 +47,7 @@
       <concept id="3123291046850546424" name="jetbrains.mps.samples.ChemMastery.structure.Parens" flags="ng" index="3EXQ9g">
         <child id="3123291046850546425" name="elements" index="3EXQ9h" />
       </concept>
-      <concept id="3123291046850546418" name="jetbrains.mps.samples.ChemMastery.structure.Dash" flags="ng" index="3EXQ9q" />
+      <concept id="3123291046850546418" name="jetbrains.mps.samples.ChemMastery.structure.ExplicitBond" flags="ng" index="3EXQ9q" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
