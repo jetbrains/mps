@@ -7,8 +7,8 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
 
-public class Dash_Editor extends DefaultNodeEditor {
+public class ExplicitBond_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return new Dash_EditorBuilder_a(editorContext, node).createCell();
+    return new ExplicitBond_EditorBuilder_a(editorContext, node).createCell();
   }
 }

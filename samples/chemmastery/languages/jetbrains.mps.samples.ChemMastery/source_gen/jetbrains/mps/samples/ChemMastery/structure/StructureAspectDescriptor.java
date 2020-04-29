@@ -18,7 +18,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptCompound = createDescriptorForCompound();
   /*package*/ final ConceptDescriptor myConceptCompoundComponent = createDescriptorForCompoundComponent();
   /*package*/ final ConceptDescriptor myConceptCompoundComponentWithCardinality = createDescriptorForCompoundComponentWithCardinality();
-  /*package*/ final ConceptDescriptor myConceptDash = createDescriptorForDash();
   /*package*/ final ConceptDescriptor myConceptDocumentationEntry = createDescriptorForDocumentationEntry();
   /*package*/ final ConceptDescriptor myConceptElement = createDescriptorForElement();
   /*package*/ final ConceptDescriptor myConceptElementList = createDescriptorForElementList();
@@ -26,6 +25,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptEnergy = createDescriptorForEnergy();
   /*package*/ final ConceptDescriptor myConceptEquationComponent = createDescriptorForEquationComponent();
   /*package*/ final ConceptDescriptor myConceptEquationEntry = createDescriptorForEquationEntry();
+  /*package*/ final ConceptDescriptor myConceptExplicitBond = createDescriptorForExplicitBond();
   /*package*/ final ConceptDescriptor myConceptParens = createDescriptorForParens();
   /*package*/ final ConceptDescriptor myConceptSheetEntry = createDescriptorForSheetEntry();
   private final LanguageConceptSwitch myIndexSwitch;
@@ -43,7 +43,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptChemEquation, myConceptChemSheet, myConceptCompound, myConceptCompoundComponent, myConceptCompoundComponentWithCardinality, myConceptDash, myConceptDocumentationEntry, myConceptElement, myConceptElementList, myConceptElementRef, myConceptEnergy, myConceptEquationComponent, myConceptEquationEntry, myConceptParens, myConceptSheetEntry);
+    return Arrays.asList(myConceptChemEquation, myConceptChemSheet, myConceptCompound, myConceptCompoundComponent, myConceptCompoundComponentWithCardinality, myConceptDocumentationEntry, myConceptElement, myConceptElementList, myConceptElementRef, myConceptEnergy, myConceptEquationComponent, myConceptEquationEntry, myConceptExplicitBond, myConceptParens, myConceptSheetEntry);
   }
 
   @Override
@@ -60,8 +60,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptCompoundComponent;
       case LanguageConceptSwitch.CompoundComponentWithCardinality:
         return myConceptCompoundComponentWithCardinality;
-      case LanguageConceptSwitch.Dash:
-        return myConceptDash;
       case LanguageConceptSwitch.DocumentationEntry:
         return myConceptDocumentationEntry;
       case LanguageConceptSwitch.Element:
@@ -76,6 +74,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptEquationComponent;
       case LanguageConceptSwitch.EquationEntry:
         return myConceptEquationEntry;
+      case LanguageConceptSwitch.ExplicitBond:
+        return myConceptExplicitBond;
       case LanguageConceptSwitch.Parens:
         return myConceptParens;
       case LanguageConceptSwitch.SheetEntry:
@@ -139,15 +139,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.property("cardinality", 0x2b5828a8c1c2fd51L).type(PrimitiveTypeId.INTEGER).origin("3123291046851837265").done();
     b.property("cardinalityVisible", 0x2b5828a8c1c2fd52L).type(PrimitiveTypeId.BOOLEAN).origin("3123291046851837266").done();
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForDash() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.ChemMastery", "Dash", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af2L);
-    b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.ChemMastery.structure.CompoundComponent", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af1L);
-    b.origin("r:bdc165a5-467f-4770-a2dc-cee62bfac766(jetbrains.mps.samples.ChemMastery.structure)/3123291046850546418");
-    b.version(2);
-    b.alias("-");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForDocumentationEntry() {
@@ -216,6 +207,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.aggregate("equation", 0x6ef7184fab9f24dbL).target(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L).optional(false).ordered(true).multiple(false).origin("7995886393880421595").done();
     b.alias("equation");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForExplicitBond() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.ChemMastery", "ExplicitBond", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af2L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.samples.ChemMastery.structure.CompoundComponent", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af1L);
+    b.origin("r:bdc165a5-467f-4770-a2dc-cee62bfac766(jetbrains.mps.samples.ChemMastery.structure)/3123291046850546418");
+    b.version(2);
+    b.alias("-");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForParens() {

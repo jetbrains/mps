@@ -14,7 +14,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_Compound;
   private ConceptPresentation props_CompoundComponent;
   private ConceptPresentation props_CompoundComponentWithCardinality;
-  private ConceptPresentation props_Dash;
   private ConceptPresentation props_DocumentationEntry;
   private ConceptPresentation props_Element;
   private ConceptPresentation props_ElementList;
@@ -22,6 +21,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_Energy;
   private ConceptPresentation props_EquationComponent;
   private ConceptPresentation props_EquationEntry;
+  private ConceptPresentation props_ExplicitBond;
   private ConceptPresentation props_Parens;
   private ConceptPresentation props_SheetEntry;
 
@@ -64,13 +64,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_CompoundComponentWithCardinality = cpb.create();
         }
         return props_CompoundComponentWithCardinality;
-      case LanguageConceptSwitch.Dash:
-        if (props_Dash == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("-");
-          props_Dash = cpb.create();
-        }
-        return props_Dash;
       case LanguageConceptSwitch.DocumentationEntry:
         if (props_DocumentationEntry == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -120,6 +113,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_EquationEntry = cpb.create();
         }
         return props_EquationEntry;
+      case LanguageConceptSwitch.ExplicitBond:
+        if (props_ExplicitBond == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("-");
+          props_ExplicitBond = cpb.create();
+        }
+        return props_ExplicitBond;
       case LanguageConceptSwitch.Parens:
         if (props_Parens == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

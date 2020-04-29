@@ -191,7 +191,7 @@ public class CompoundComponent_TransformationMenu extends TransformationMenuBase
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNodeOperations.insertPrevSiblingChild(_context.getNode(), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af2L, "jetbrains.mps.samples.ChemMastery.structure.Dash")));
+        SNodeOperations.insertPrevSiblingChild(_context.getNode(), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af2L, "jetbrains.mps.samples.ChemMastery.structure.ExplicitBond")));
       }
 
 
@@ -478,7 +478,7 @@ public class CompoundComponent_TransformationMenu extends TransformationMenuBase
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNodeOperations.insertNextSiblingChild(_context.getNode(), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af2L, "jetbrains.mps.samples.ChemMastery.structure.Dash")));
+        SNodeOperations.insertNextSiblingChild(_context.getNode(), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af2L, "jetbrains.mps.samples.ChemMastery.structure.ExplicitBond")));
       }
 
 

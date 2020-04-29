@@ -46,7 +46,7 @@
     <classNode dependClassName="jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime" />
     <classNode dependClassName="jetbrains.mps.samples.ChemMastery.typesystem.check_CardinalityVisibility_NonTypesystemRule" />
     <classNode dependClassName="jetbrains.mps.samples.ChemMastery.typesystem.check_ChemEquation_NonTypesystemRule" />
-    <classNode dependClassName="jetbrains.mps.samples.ChemMastery.typesystem.check_Dash_NonTypesystemRule" />
+    <classNode dependClassName="jetbrains.mps.samples.ChemMastery.typesystem.check_ExplicitBond_NonTypesystemRule" />
     <classNode dependClassName="jetbrains.mps.samples.ChemMastery.typesystem.check_Parens_NonTypesystemRule" />
     <classNode extendsClassName="jetbrains.mps.lang.typesystem.runtime.BaseHelginsDescriptor" />
   </dependency>
@@ -86,7 +86,7 @@
     <classNode extendsClassName="jetbrains.mps.lang.typesystem.runtime.AbstractNonTypesystemRule_Runtime" />
     <classNode extendsClassName="jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime" />
   </dependency>
-  <dependency className="jetbrains.mps.samples.ChemMastery.typesystem.check_Dash_NonTypesystemRule">
+  <dependency className="jetbrains.mps.samples.ChemMastery.typesystem.check_ExplicitBond_NonTypesystemRule">
     <classNode dependClassName="jetbrains.mps.errors.BaseQuickFixProvider" />
     <classNode dependClassName="jetbrains.mps.errors.IErrorReporter" />
     <classNode dependClassName="jetbrains.mps.errors.messageTargets.MessageTarget" />

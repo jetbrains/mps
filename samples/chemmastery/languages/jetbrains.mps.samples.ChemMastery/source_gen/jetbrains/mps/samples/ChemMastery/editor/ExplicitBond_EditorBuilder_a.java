@@ -9,11 +9,11 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 
-/*package*/ class Dash_EditorBuilder_a extends AbstractEditorBuilder {
+/*package*/ class ExplicitBond_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
   private SNode myNode;
 
-  public Dash_EditorBuilder_a(@NotNull EditorContext context, @NotNull SNode node) {
+  public ExplicitBond_EditorBuilder_a(@NotNull EditorContext context, @NotNull SNode node) {
     super(context);
     myNode = node;
   }
@@ -30,7 +30,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "-");
-    editorCell.setCellId("Constant_12bpst_a");
+    editorCell.setCellId("Constant_8woo22_a");
     editorCell.setBig(true);
     setCellContext(editorCell);
     DashDelete.setCellActions(editorCell, myNode, getEditorContext());

@@ -407,23 +407,6 @@
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
-  <dependency className="jetbrains.mps.samples.ChemMastery.editor.Dash_Editor">
-    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
-    <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.Dash_EditorBuilder_a" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode extendsClassName="jetbrains.mps.nodeEditor.DefaultNodeEditor" />
-  </dependency>
-  <dependency className="jetbrains.mps.samples.ChemMastery.editor.Dash_EditorBuilder_a">
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Constant" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
-    <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.DashDelete" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />
-  </dependency>
   <dependency className="jetbrains.mps.samples.ChemMastery.editor.DeleteCardinality">
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.util.Objects" />
@@ -509,7 +492,6 @@
     <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.CompoundComponent_TransformationMenu" />
     <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.Compound_Editor" />
     <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.Compound_TransformationMenu" />
-    <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.Dash_Editor" />
     <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.DocumentationEntryContent" />
     <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.ElementList_Editor" />
     <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.ElementRef_Editor" />
@@ -522,6 +504,7 @@
     <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.EquationComponent_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.EquationComponent_TransformationMenu" />
     <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.EquationEntryContent" />
+    <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.ExplicitBond_Editor" />
     <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.Parens_Editor" />
     <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.SheetEntryContent" />
     <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.SheetEntry_Editor" />
@@ -1022,6 +1005,23 @@
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />
+  </dependency>
+  <dependency className="jetbrains.mps.samples.ChemMastery.editor.ExplicitBond_Editor">
+    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.ExplicitBond_EditorBuilder_a" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.nodeEditor.DefaultNodeEditor" />
+  </dependency>
+  <dependency className="jetbrains.mps.samples.ChemMastery.editor.ExplicitBond_EditorBuilder_a">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Constant" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.DashDelete" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />
   </dependency>

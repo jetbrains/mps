@@ -244,7 +244,7 @@
   <node concept="1TIwiD" id="2Hoaaz1FOFM">
     <property role="EcuMT" value="3123291046850546418" />
     <property role="3GE5qa" value="expression" />
-    <property role="TrG5h" value="Dash" />
+    <property role="TrG5h" value="ExplicitBond" />
     <property role="34LRSv" value="-" />
     <ref role="1TJDcQ" node="2Hoaaz1FOFL" resolve="CompoundComponent" />
   </node>

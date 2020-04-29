@@ -68,32 +68,32 @@
   </root>
   <root nodeRef="r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)/3123291046851144672">
     <file name="TypesystemDescriptor.java">
-      <node id="3123291046851144672" at="18,5,19,87" concept="7" />
-      <node id="3123291046851144672" at="19,87,20,55" concept="2" />
+      <node id="3123291046851144672" at="18,5,19,95" concept="7" />
+      <node id="3123291046851144672" at="19,95,20,55" concept="2" />
       <node id="3123291046851144672" at="17,5,21,5" concept="0" />
       <scope id="3123291046851144672" at="18,5,20,55">
         <var name="nonTypesystemRule" id="3123291046851144672" />
       </scope>
     </file>
-    <file name="check_Dash_NonTypesystemRule.java">
+    <file name="check_ExplicitBond_NonTypesystemRule.java">
       <node id="3123291046851157167" at="24,7,25,66" concept="7" />
       <node id="3123291046851157167" at="25,66,26,265" concept="7" />
       <node id="3123291046851203355" at="27,9,28,160" concept="7" />
       <node id="3123291046851203355" at="28,160,29,71" concept="2" />
-      <node id="3123291046851144672" at="34,50,35,28" concept="8" />
+      <node id="3123291046851144672" at="34,50,35,36" concept="8" />
       <node id="3123291046851144672" at="37,68,38,102" concept="8" />
       <node id="3123291046851144672" at="40,30,41,17" concept="8" />
-      <node id="3123291046851144672" at="45,0,46,0" concept="9" trace="Dash$Lh" />
-      <node id="3123291046851144672" at="20,0,22,0" concept="1" trace="check_Dash_NonTypesystemRule#()V" />
+      <node id="3123291046851144672" at="45,0,46,0" concept="9" trace="ExplicitBond$Lh" />
+      <node id="3123291046851144672" at="20,0,22,0" concept="1" trace="check_ExplicitBond_NonTypesystemRule#()V" />
       <node id="3123291046851144672" at="34,0,37,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="3123291046851144672" at="37,0,40,0" concept="6" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="3123291046851144672" at="40,0,43,0" concept="6" trace="overrides#()Z" />
       <node id="3123291046851203355" at="26,265,30,9" concept="0" />
-      <node id="3123291046851157167" at="23,283,31,7" concept="0" />
+      <node id="3123291046851157167" at="23,299,31,7" concept="0" />
       <node id="3123291046851144679" at="22,117,32,5" concept="5" />
       <node id="3123291046851144672" at="22,0,34,0" concept="6" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <scope id="3123291046851144672" at="20,41,20,41" />
-      <scope id="3123291046851144672" at="34,50,35,28" />
+      <scope id="3123291046851144672" at="20,49,20,49" />
+      <scope id="3123291046851144672" at="34,50,35,36" />
       <scope id="3123291046851144672" at="37,68,38,102" />
       <scope id="3123291046851144672" at="40,30,41,17" />
       <scope id="3123291046851144672" at="20,0,22,0" />
@@ -109,15 +109,15 @@
         <var name="_reporter_2309309498" id="3123291046851157167" />
         <var name="errorTarget" id="3123291046851157167" />
       </scope>
-      <scope id="3123291046851144681" at="23,283,31,7" />
+      <scope id="3123291046851144681" at="23,299,31,7" />
       <scope id="3123291046851144673" at="22,117,32,5" />
       <scope id="3123291046851144672" at="22,0,34,0">
         <var name="dash" id="3123291046851144672" />
         <var name="status" id="3123291046851144672" />
         <var name="typeCheckingContext" id="3123291046851144672" />
       </scope>
-      <unit id="3123291046851144672" at="44,0,47,0" name="jetbrains.mps.samples.ChemMastery.typesystem.check_Dash_NonTypesystemRule$CONCEPTS" />
-      <unit id="3123291046851144672" at="19,0,48,0" name="jetbrains.mps.samples.ChemMastery.typesystem.check_Dash_NonTypesystemRule" />
+      <unit id="3123291046851144672" at="44,0,47,0" name="jetbrains.mps.samples.ChemMastery.typesystem.check_ExplicitBond_NonTypesystemRule$CONCEPTS" />
+      <unit id="3123291046851144672" at="19,0,48,0" name="jetbrains.mps.samples.ChemMastery.typesystem.check_ExplicitBond_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)/3123291046851202406">
