@@ -78,7 +78,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createRefNodeList_0());
-    editorCell.addEditorCell(createConstant_1());
+    editorCell.addEditorCell(createConstant_2());
     if (nodeCondition_lznsv5_a3a()) {
       editorCell.addEditorCell(createCollection_1());
     }
@@ -127,7 +127,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return LINKS.elements$Cbl0;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.ElementRef$i$;
+      return CONCEPTS.CompoundComponent$KM;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -140,7 +140,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(elementsListHandler_lznsv5_b0.this.getNode(), LINKS.elements$Cbl0));
       try {
         EditorCell emptyCell = null;
-        emptyCell = super.createEmptyCell();
+        emptyCell = createConstant_1();
         installElementCellActions(null, emptyCell, true);
         setCellContext(emptyCell);
         return emptyCell;
@@ -192,11 +192,20 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteNode(prevNode, CellAction_DeleteNode.DeleteDirection.BACKWARD));
       return editorCell;
     }
+    private EditorCell createConstant_1() {
+      EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
+      editorCell.setCellId("Constant_lznsv5_a1a");
+      Style style = new StyleImpl();
+      style.set(StyleAttributes.EDITABLE, true);
+      editorCell.getStyle().putAll(style);
+      editorCell.setDefaultText("");
+      return editorCell;
+    }
     private int _StyleParameter_QueryFunction_lznsv5_a0a1a(SNode prevNode, SNode nextNode) {
       return EditorSettings.getInstance().getFontSize() / 4;
     }
   }
-  private EditorCell createConstant_1() {
+  private EditorCell createConstant_2() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ")");
     editorCell.setCellId("Constant_lznsv5_c0");
     Style style = new StyleImpl();
@@ -216,14 +225,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
     style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
     style.set(StyleAttributes.FONT_SIZE, _StyleParameter_QueryFunction_lznsv5_a2d0());
     editorCell.getStyle().putAll(style);
-    editorCell.addEditorCell(createConstant_2());
+    editorCell.addEditorCell(createConstant_3());
     editorCell.addEditorCell(createCollection_2());
     return editorCell;
   }
   private int _StyleParameter_QueryFunction_lznsv5_a2d0() {
     return EditorSettings.getInstance().getFontSize() / 4 * 3;
   }
-  private EditorCell createConstant_2() {
+  private EditorCell createConstant_3() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
     editorCell.setCellId("Constant_lznsv5_a3a");
     Style style = new StyleImpl();
@@ -236,11 +245,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createCollection_2() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
     editorCell.setCellId("Collection_lznsv5_b3a");
-    editorCell.addEditorCell(createConstant_3());
+    editorCell.addEditorCell(createConstant_4());
     editorCell.addEditorCell(createProperty_0());
     return editorCell;
   }
-  private EditorCell createConstant_3() {
+  private EditorCell createConstant_4() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
     editorCell.setCellId("Constant_lznsv5_a1d0");
     Style style = new StyleImpl();
@@ -288,7 +297,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept Parens$Ym = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af8L, "jetbrains.mps.samples.ChemMastery.structure.Parens");
-    /*package*/ static final SConcept ElementRef$i$ = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, "jetbrains.mps.samples.ChemMastery.structure.ElementRef");
+    /*package*/ static final SConcept CompoundComponent$KM = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af1L, "jetbrains.mps.samples.ChemMastery.structure.CompoundComponent");
     /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 

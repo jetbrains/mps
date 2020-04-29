@@ -172,7 +172,7 @@ public class EquationComponent_SubstituteMenu extends SubstituteMenuBase {
     @Override
     public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
       context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "ElementRef", new SNodePointer("r:563c5369-4649-4929-a845-37c7045ffecd(jetbrains.mps.samples.ChemMastery.editor)", "6567999678835491466")));
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "CompoundComponent", new SNodePointer("r:563c5369-4649-4929-a845-37c7045ffecd(jetbrains.mps.samples.ChemMastery.editor)", "6567999678835491466")));
       try {
         return super.createItems(context);
       } finally {
@@ -230,14 +230,14 @@ public class EquationComponent_SubstituteMenu extends SubstituteMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.ElementRef$i$;
+      return CONCEPTS.CompoundComponent$KM;
     }
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept EquationComponent$C$ = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x5b2638e8bdcb49dcL, "jetbrains.mps.samples.ChemMastery.structure.EquationComponent");
     /*package*/ static final SConcept Compound$6W = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, "jetbrains.mps.samples.ChemMastery.structure.Compound");
-    /*package*/ static final SConcept ElementRef$i$ = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, "jetbrains.mps.samples.ChemMastery.structure.ElementRef");
+    /*package*/ static final SConcept CompoundComponent$KM = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af1L, "jetbrains.mps.samples.ChemMastery.structure.CompoundComponent");
   }
 
   private static final class PROPS {
