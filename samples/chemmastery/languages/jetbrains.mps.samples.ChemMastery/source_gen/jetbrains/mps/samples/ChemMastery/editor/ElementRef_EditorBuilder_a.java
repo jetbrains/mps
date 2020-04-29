@@ -13,6 +13,10 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import tooltips.runtime.LazyTooltipCellEvaluator;
+import tooltips.runtime.TooltipTimingProperties;
+import com.intellij.openapi.util.registry.Registry;
+import tooltips.runtime.TooltipWrapper;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.editor.cellProviders.SReferenceCellProvider;
 import jetbrains.mps.util.Computable;
@@ -77,7 +81,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
     style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
     editorCell.getStyle().putAll(style);
-    editorCell.addEditorCell(createRefCell_0());
+    editorCell.addEditorCell(createTooltip_1());
     if (nodeCondition_mwjwii_a1a()) {
       editorCell.addEditorCell(createCollection_1());
     }
@@ -85,6 +89,29 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
   private boolean nodeCondition_mwjwii_a1a() {
     return SPropertyOperations.getBoolean(myNode, PROPS.cardinalityVisible$x1gv);
+  }
+  private EditorCell createTooltip_0(final EditorContext editorContext, final SNode node) {
+
+    LazyTooltipCellEvaluator tooltip = new LazyTooltipCellEvaluator(editorContext, node, "jetbrains.mps.samples.ChemMastery.editor.GeneratedHints.tooltipHint_mwjwii_a0", true);
+    EditorCell visibleCell = createRefCell_0();
+
+    TooltipTimingProperties timing = new TooltipTimingProperties() {
+      @Override
+      public int getShortDelayBeforeShow() {
+        return Registry.intValue("ide.tooltip.initialDelay");
+      }
+
+      @Override
+      public int getShowImmediatelyPeriod() {
+        return Registry.intValue("ide.tooltip.reshowDelay");
+      }
+    };
+    TooltipWrapper editorCell = new TooltipWrapper(editorContext, node, visibleCell, tooltip, timing);
+    editorCell.setCellId("Tooltip_mwjwii_a0");
+    return editorCell;
+  }
+  private EditorCell createTooltip_1() {
+    return createTooltip_0(getEditorContext(), myNode);
   }
   private EditorCell createRefCell_0() {
     final SReferenceLink referenceLink = LINKS.element$$dI0;
