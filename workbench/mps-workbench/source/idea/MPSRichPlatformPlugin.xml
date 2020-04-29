@@ -306,6 +306,9 @@
   -->
     <notificationWhitelist groupIds="Code style settings migration;Find Problems;Missing SDKs;Automatic indent detection;Indexing;
     Framework Detection;Power Save Mode;Show control flow group"/>
+    <projectService serviceInterface="com.intellij.refactoring.suggested.SuggestedRefactoringProvider"
+                    serviceImplementation="com.intellij.refactoring.suggested.SuggestedRefactoringProviderImpl"/>
+    <postStartupActivity implementation="com.intellij.refactoring.suggested.SuggestedRefactoringProviderImpl$Startup"/>
   </extensions>
 
   <xi:include href="/META-INF/VcsExtensions.xml" xpointer="xpointer(/idea-plugin/*)"/>
