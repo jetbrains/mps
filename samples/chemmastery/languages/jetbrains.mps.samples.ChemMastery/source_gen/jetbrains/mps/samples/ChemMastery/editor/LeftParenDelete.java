@@ -5,7 +5,10 @@ package jetbrains.mps.samples.ChemMastery.editor;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -13,19 +16,30 @@ import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import java.util.Objects;
-import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class DeleteCardinality {
+public class LeftParenDelete {
 
   /*package*/ static AbstractCellAction createAction_DELETE(final SNode node) {
     return new AbstractCellAction() {
       public void execute(EditorContext editorContext) {
         this.execute_internal(editorContext, node);
       }
-      public void execute_internal(EditorContext editorContext, SNode node) {
-        SPropertyOperations.assign(node, PROPS.cardinalityVisible$x1gv, false);
-        SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, SelectionManager.LAST_CELL, -1);
+      public void execute_internal(EditorContext editorContext, final SNode node) {
+        SNode first = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elements$Cbl0)).first();
+        if ((first == null)) {
+          first = SNodeOperations.getPrevSibling(node);
+        }
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elements$Cbl0)).visitAll(new IVisitor<SNode>() {
+          public void visit(SNode it) {
+            SNodeOperations.insertPrevSiblingChild(node, it);
+          }
+        });
+        SNodeOperations.deleteNode(node);
+        if (first != null) {
+          SelectionUtil.selectLabelCellAnSetCaret(editorContext, first, SelectionManager.FIRST_CELL, 0);
+        }
       }
 
     };
@@ -57,7 +71,6 @@ public class DeleteCardinality {
 
   public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     // set cell actions from all imported action maps 
-    HandleEnterForElementRef.setDefinedCellActions(editorCell, node, context);
 
     // set cell actions defined directly in this action map 
     editorCell.setAction(CellActionType.DELETE, createAction_DELETE(node));
@@ -66,7 +79,6 @@ public class DeleteCardinality {
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
 
     // set cell action(s) of the given type from imported action maps 
-    HandleEnterForElementRef.setDefinedCellActionsOfType(editorCell, node, context, actionType);
 
     // set cell action of the given type defined directly in this action map 
     if (Objects.equals(actionType, CellActionType.DELETE)) {
@@ -74,7 +86,7 @@ public class DeleteCardinality {
     }
   }
 
-  private static final class PROPS {
-    /*package*/ static final SProperty cardinalityVisible$x1gv = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink elements$Cbl0 = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af8L, 0x2b5828a8c1af4af9L, "elements");
   }
 }

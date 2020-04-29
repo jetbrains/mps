@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="agp1rlcbiur3e8dh57tu439nj2td1xh">
-  <files names="ElementSummary.java:HideCardinalityOne_QuickFix.java:RemoveMisplacedDash_QuickFix.java:TypesystemDescriptor.java:check_ChemEquation_NonTypesystemRule.java:check_Dash_NonTypesystemRule.java:check_ElementRef_NonTypesystemRule.java:check_Parens_NonTypesystemRule.java" />
+<product version="3" modelHash="26vria8a56muf042ivfaybae0stqo7g">
+  <files names="ElementSummary.java:HideCardinalityOne_QuickFix.java:RemoveMisplacedDash_QuickFix.java:TypesystemDescriptor.java:check_CardinalityVisibility_NonTypesystemRule.java:check_ChemEquation_NonTypesystemRule.java:check_Dash_NonTypesystemRule.java:check_Parens_NonTypesystemRule.java" />
 </product>
 

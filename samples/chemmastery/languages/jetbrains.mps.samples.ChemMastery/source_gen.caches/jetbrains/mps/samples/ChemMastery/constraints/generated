@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-eifgbdvgikwtx155dl6x3qugiegh088">
-  <files names="Compound_Constraints.java:ConstraintsAspectDescriptor.java:ElementRef_Constraints.java" />
+<product version="3" modelHash="-b56843ly3nxedl6e8y0ny5shkldex4l">
+  <files names="CompoundComponentWithCardinality_Constraints.java:Compound_Constraints.java:ConstraintsAspectDescriptor.java" />
 </product>
 

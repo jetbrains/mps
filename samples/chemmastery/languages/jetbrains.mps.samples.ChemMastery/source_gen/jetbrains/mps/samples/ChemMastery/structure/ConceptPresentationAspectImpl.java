@@ -13,6 +13,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ChemSheet;
   private ConceptPresentation props_Compound;
   private ConceptPresentation props_CompoundComponent;
+  private ConceptPresentation props_CompoundComponentWithCardinality;
   private ConceptPresentation props_Dash;
   private ConceptPresentation props_DocumentationEntry;
   private ConceptPresentation props_Element;
@@ -56,6 +57,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_CompoundComponent = cpb.create();
         }
         return props_CompoundComponent;
+      case LanguageConceptSwitch.CompoundComponentWithCardinality:
+        if (props_CompoundComponentWithCardinality == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("CompoundComponentWithCardinality");
+          props_CompoundComponentWithCardinality = cpb.create();
+        }
+        return props_CompoundComponentWithCardinality;
       case LanguageConceptSwitch.Dash:
         if (props_Dash == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

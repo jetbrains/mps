@@ -64,30 +64,6 @@
     <ref role="13h7C2" to="ngid:6VR64YFDy_V" resolve="ElementRef" />
     <node concept="13hLZK" id="6VR64YFDyAv" role="13h7CW">
       <node concept="3clFbS" id="6VR64YFDyAw" role="2VODD2">
-        <node concept="3clFbF" id="6VR64YFDyAE" role="3cqZAp">
-          <node concept="37vLTI" id="6VR64YFDz_8" role="3clFbG">
-            <node concept="3cmrfG" id="6VR64YFDz_q" role="37vLTx">
-              <property role="3cmrfH" value="1" />
-            </node>
-            <node concept="2OqwBi" id="6VR64YFDyJE" role="37vLTJ">
-              <node concept="13iPFW" id="6VR64YFDyAD" role="2Oq$k0" />
-              <node concept="3TrcHB" id="6VR64YFDyQP" role="2OqNvi">
-                <ref role="3TsBF5" to="ngid:6VR64YFDy_Y" resolve="cardinality" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="6VR64YFSFYU" role="3cqZAp">
-          <node concept="37vLTI" id="6VR64YFSGwI" role="3clFbG">
-            <node concept="3clFbT" id="6VR64YFVJE$" role="37vLTx" />
-            <node concept="2OqwBi" id="6VR64YFSG72" role="37vLTJ">
-              <node concept="13iPFW" id="6VR64YFSFYS" role="2Oq$k0" />
-              <node concept="3TrcHB" id="6VR64YFSGed" role="2OqNvi">
-                <ref role="3TsBF5" to="ngid:6VR64YFSF8U" resolve="cardinalityVisible" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="6VR64YFDzA$" role="3cqZAp">
           <node concept="37vLTI" id="6VR64YFD$tl" role="3clFbG">
             <node concept="3cmrfG" id="6VR64YFD$tB" role="37vLTx">
@@ -164,6 +140,38 @@
             </node>
             <node concept="WFELt" id="5GAeeyXKmY7" role="2OqNvi">
               <ref role="1A0vxQ" to="ngid:5GAeeyXMOBs" resolve="EquationComponent" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="13h7C7" id="2Hoaaz1KNg3">
+    <property role="3GE5qa" value="expression" />
+    <ref role="13h7C2" to="ngid:2Hoaaz1KJPg" resolve="CompoundComponentWithCardinality" />
+    <node concept="13hLZK" id="2Hoaaz1KNg4" role="13h7CW">
+      <node concept="3clFbS" id="2Hoaaz1KNg5" role="2VODD2">
+        <node concept="3clFbF" id="6VR64YFDyAE" role="3cqZAp">
+          <node concept="37vLTI" id="6VR64YFDz_8" role="3clFbG">
+            <node concept="3cmrfG" id="6VR64YFDz_q" role="37vLTx">
+              <property role="3cmrfH" value="1" />
+            </node>
+            <node concept="2OqwBi" id="6VR64YFDyJE" role="37vLTJ">
+              <node concept="13iPFW" id="6VR64YFDyAD" role="2Oq$k0" />
+              <node concept="3TrcHB" id="2Hoaaz1KMND" role="2OqNvi">
+                <ref role="3TsBF5" to="ngid:2Hoaaz1KJPh" resolve="cardinality" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="6VR64YFSFYU" role="3cqZAp">
+          <node concept="37vLTI" id="6VR64YFSGwI" role="3clFbG">
+            <node concept="3clFbT" id="6VR64YFVJE$" role="37vLTx" />
+            <node concept="2OqwBi" id="6VR64YFSG72" role="37vLTJ">
+              <node concept="13iPFW" id="6VR64YFSFYS" role="2Oq$k0" />
+              <node concept="3TrcHB" id="2Hoaaz1KN1y" role="2OqNvi">
+                <ref role="3TsBF5" to="ngid:2Hoaaz1KJPi" resolve="cardinalityVisible" />
+              </node>
             </node>
           </node>
         </node>

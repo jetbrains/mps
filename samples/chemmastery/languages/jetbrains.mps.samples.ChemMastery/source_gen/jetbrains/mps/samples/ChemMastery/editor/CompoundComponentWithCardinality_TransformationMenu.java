@@ -43,7 +43,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-public class ElementRef_TransformationMenu extends TransformationMenuBase {
+public class CompoundComponentWithCardinality_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM);
   @Override
   public boolean isApplicableToLocation(@NotNull String location) {
@@ -54,7 +54,7 @@ public class ElementRef_TransformationMenu extends TransformationMenuBase {
   @Override
   public List<TransformationMenuItem> createMenuItems(@NotNull TransformationMenuContext context) {
     context.getEditorMenuTrace().pushTraceInfo();
-    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default transformation menu for " + "ElementRef", new SNodePointer("r:563c5369-4649-4929-a845-37c7045ffecd(jetbrains.mps.samples.ChemMastery.editor)", "3123291046851062707")));
+    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default transformation menu for " + "CompoundComponentWithCardinality", new SNodePointer("r:563c5369-4649-4929-a845-37c7045ffecd(jetbrains.mps.samples.ChemMastery.editor)", "3123291046851062707")));
     try {
       return super.createMenuItems(context);
     } finally {
@@ -67,13 +67,13 @@ public class ElementRef_TransformationMenu extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new TMP_Include_7oish4_a0());
-      result.add(new TMP_Action_7oish4_b0());
+      result.add(new TMP_Include_qoepdk_a0());
+      result.add(new TMP_Action_qoepdk_b0());
     }
     return result;
   }
 
-  public class TMP_Include_7oish4_a0 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_qoepdk_a0 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -96,7 +96,7 @@ public class ElementRef_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  private class TMP_Action_7oish4_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
+  private class TMP_Action_qoepdk_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
       Item item = new Item(context);
@@ -129,7 +129,7 @@ public class ElementRef_TransformationMenu extends TransformationMenuBase {
       @Nullable
       @Override
       public String getLabelText(String pattern) {
-        if (PatternDetectionUtil.isNumeric(pattern) && !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.cardinalityVisible$DlMA))) {
+        if (PatternDetectionUtil.isNumeric(pattern) && !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.cardinalityVisible$x1gv))) {
           return pattern;
         } else {
           return "";
@@ -138,9 +138,9 @@ public class ElementRef_TransformationMenu extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SPropertyOperations.assign(_context.getNode(), PROPS.cardinality$$dIY, Integer.parseInt(pattern));
-        SPropertyOperations.assign(_context.getNode(), PROPS.cardinalityVisible$DlMA, true);
-        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.LAST_EDITABLE_CELL, -1);
+        SPropertyOperations.assign(_context.getNode(), PROPS.cardinality$x1g0, Integer.parseInt(pattern));
+        SPropertyOperations.assign(_context.getNode(), PROPS.cardinalityVisible$x1gv, true);
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.LAST_CELL, -1);
       }
 
 
@@ -168,7 +168,7 @@ public class ElementRef_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cardinalityVisible$DlMA = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184fabe2b23aL, "cardinalityVisible");
-    /*package*/ static final SProperty cardinality$$dIY = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184faba6297eL, "cardinality");
+    /*package*/ static final SProperty cardinalityVisible$x1gv = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
+    /*package*/ static final SProperty cardinality$x1g0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd51L, "cardinality");
   }
 }

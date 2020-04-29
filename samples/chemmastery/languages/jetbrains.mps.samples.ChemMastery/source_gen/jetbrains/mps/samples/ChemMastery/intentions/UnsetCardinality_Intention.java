@@ -36,7 +36,7 @@ public final class UnsetCardinality_Intention extends AbstractIntentionDescripto
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SPropertyOperations.getBoolean(node, PROPS.cardinalityVisible$DlMA);
+    return SPropertyOperations.getBoolean(node, PROPS.cardinalityVisible$x1gv);
   }
   @Override
   public boolean isSurroundWith() {
@@ -57,7 +57,7 @@ public final class UnsetCardinality_Intention extends AbstractIntentionDescripto
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.cardinalityVisible$DlMA, false);
+      SPropertyOperations.assign(node, PROPS.cardinalityVisible$x1gv, false);
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, SelectionManager.FIRST_EDITABLE_CELL, -1);
     }
     @Override
@@ -67,6 +67,6 @@ public final class UnsetCardinality_Intention extends AbstractIntentionDescripto
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cardinalityVisible$DlMA = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184fabe2b23aL, "cardinalityVisible");
+    /*package*/ static final SProperty cardinalityVisible$x1gv = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
   }
 }

@@ -13,16 +13,17 @@ public final class LanguageConceptSwitch {
   public static final int ChemSheet = 1;
   public static final int Compound = 2;
   public static final int CompoundComponent = 3;
-  public static final int Dash = 4;
-  public static final int DocumentationEntry = 5;
-  public static final int Element = 6;
-  public static final int ElementList = 7;
-  public static final int ElementRef = 8;
-  public static final int Energy = 9;
-  public static final int EquationComponent = 10;
-  public static final int EquationEntry = 11;
-  public static final int Parens = 12;
-  public static final int SheetEntry = 13;
+  public static final int CompoundComponentWithCardinality = 4;
+  public static final int Dash = 5;
+  public static final int DocumentationEntry = 6;
+  public static final int Element = 7;
+  public static final int ElementList = 8;
+  public static final int ElementRef = 9;
+  public static final int Energy = 10;
+  public static final int EquationComponent = 11;
+  public static final int EquationEntry = 12;
+  public static final int Parens = 13;
+  public static final int SheetEntry = 14;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xa9a262e8f8054598L, 0x88c614f38937d309L);
@@ -30,6 +31,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x6ef7184fab9f2130L, ChemSheet);
     builder.put(0x6ef7184faba62978L, Compound);
     builder.put(0x2b5828a8c1af4af1L, CompoundComponent);
+    builder.put(0x2b5828a8c1c2fd50L, CompoundComponentWithCardinality);
     builder.put(0x2b5828a8c1af4af2L, Dash);
     builder.put(0x6ef7184fab9f24e2L, DocumentationEntry);
     builder.put(0x6ef7184faba53971L, Element);

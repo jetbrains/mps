@@ -17,14 +17,14 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-public class check_ElementRef_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
-  public check_ElementRef_NonTypesystemRule() {
+public class check_CardinalityVisibility_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
+  public check_CardinalityVisibility_NonTypesystemRule() {
   }
-  public void applyRule(final SNode elementRef, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SPropertyOperations.getInteger(elementRef, PROPS.cardinality$$dIY) == 1 && SPropertyOperations.getBoolean(elementRef, PROPS.cardinalityVisible$DlMA)) {
+  public void applyRule(final SNode compoundComponentWithCardinality, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
+    if (SPropertyOperations.getInteger(compoundComponentWithCardinality, PROPS.cardinality$x1g0) == 1 && SPropertyOperations.getBoolean(compoundComponentWithCardinality, PROPS.cardinalityVisible$x1gv)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(elementRef, "Cardinality of 1 does not need to be shown", "r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)", "6567999678834799886", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(compoundComponentWithCardinality, "Cardinality of 1 does not need to be shown", "r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)", "6567999678834799886", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.samples.ChemMastery.typesystem.HideCardinalityOne_QuickFix", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
@@ -33,7 +33,7 @@ public class check_ElementRef_NonTypesystemRule extends AbstractNonTypesystemRul
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ElementRef$i$;
+    return CONCEPTS.CompoundComponentWithCardinality$dw;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,11 +43,11 @@ public class check_ElementRef_NonTypesystemRule extends AbstractNonTypesystemRul
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cardinalityVisible$DlMA = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184fabe2b23aL, "cardinalityVisible");
-    /*package*/ static final SProperty cardinality$$dIY = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184faba6297eL, "cardinality");
+    /*package*/ static final SProperty cardinalityVisible$x1gv = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
+    /*package*/ static final SProperty cardinality$x1g0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd51L, "cardinality");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ElementRef$i$ = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, "jetbrains.mps.samples.ChemMastery.structure.ElementRef");
+    /*package*/ static final SConcept CompoundComponentWithCardinality$dw = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, "jetbrains.mps.samples.ChemMastery.structure.CompoundComponentWithCardinality");
   }
 }

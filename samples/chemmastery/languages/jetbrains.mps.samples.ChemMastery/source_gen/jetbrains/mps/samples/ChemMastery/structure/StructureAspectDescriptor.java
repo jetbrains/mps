@@ -17,6 +17,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptChemSheet = createDescriptorForChemSheet();
   /*package*/ final ConceptDescriptor myConceptCompound = createDescriptorForCompound();
   /*package*/ final ConceptDescriptor myConceptCompoundComponent = createDescriptorForCompoundComponent();
+  /*package*/ final ConceptDescriptor myConceptCompoundComponentWithCardinality = createDescriptorForCompoundComponentWithCardinality();
   /*package*/ final ConceptDescriptor myConceptDash = createDescriptorForDash();
   /*package*/ final ConceptDescriptor myConceptDocumentationEntry = createDescriptorForDocumentationEntry();
   /*package*/ final ConceptDescriptor myConceptElement = createDescriptorForElement();
@@ -42,7 +43,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptChemEquation, myConceptChemSheet, myConceptCompound, myConceptCompoundComponent, myConceptDash, myConceptDocumentationEntry, myConceptElement, myConceptElementList, myConceptElementRef, myConceptEnergy, myConceptEquationComponent, myConceptEquationEntry, myConceptParens, myConceptSheetEntry);
+    return Arrays.asList(myConceptChemEquation, myConceptChemSheet, myConceptCompound, myConceptCompoundComponent, myConceptCompoundComponentWithCardinality, myConceptDash, myConceptDocumentationEntry, myConceptElement, myConceptElementList, myConceptElementRef, myConceptEnergy, myConceptEquationComponent, myConceptEquationEntry, myConceptParens, myConceptSheetEntry);
   }
 
   @Override
@@ -57,6 +58,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptCompound;
       case LanguageConceptSwitch.CompoundComponent:
         return myConceptCompoundComponent;
+      case LanguageConceptSwitch.CompoundComponentWithCardinality:
+        return myConceptCompoundComponentWithCardinality;
       case LanguageConceptSwitch.Dash:
         return myConceptDash;
       case LanguageConceptSwitch.DocumentationEntry:
@@ -128,6 +131,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForCompoundComponentWithCardinality() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.ChemMastery", "CompoundComponentWithCardinality", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.samples.ChemMastery.structure.CompoundComponent", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af1L);
+    b.origin("r:bdc165a5-467f-4770-a2dc-cee62bfac766(jetbrains.mps.samples.ChemMastery.structure)/3123291046851837264");
+    b.version(2);
+    b.property("cardinality", 0x2b5828a8c1c2fd51L).type(PrimitiveTypeId.INTEGER).origin("3123291046851837265").done();
+    b.property("cardinalityVisible", 0x2b5828a8c1c2fd52L).type(PrimitiveTypeId.BOOLEAN).origin("3123291046851837266").done();
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForDash() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.ChemMastery", "Dash", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af2L);
     b.class_(false, false, false);
@@ -171,11 +184,9 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForElementRef() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.ChemMastery", "ElementRef", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.ChemMastery.structure.CompoundComponent", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af1L);
+    b.super_("jetbrains.mps.samples.ChemMastery.structure.CompoundComponentWithCardinality", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L);
     b.origin("r:bdc165a5-467f-4770-a2dc-cee62bfac766(jetbrains.mps.samples.ChemMastery.structure)/7995886393880881531");
     b.version(2);
-    b.property("cardinality", 0x6ef7184faba6297eL).type(PrimitiveTypeId.INTEGER).origin("7995886393880881534").done();
-    b.property("cardinalityVisible", 0x6ef7184fabe2b23aL).type(PrimitiveTypeId.BOOLEAN).origin("7995886393884848698").done();
     b.property("ionization", 0x6ef7184faba62980L).type(PrimitiveTypeId.INTEGER).origin("7995886393880881536").done();
     b.associate("element", 0x6ef7184faba6297cL).target(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba53971L).optional(false).origin("7995886393880881532").done();
     return b.create();
@@ -209,10 +220,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForParens() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.ChemMastery", "Parens", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af8L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.ChemMastery.structure.CompoundComponent", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af1L);
+    b.super_("jetbrains.mps.samples.ChemMastery.structure.CompoundComponentWithCardinality", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L);
     b.origin("r:bdc165a5-467f-4770-a2dc-cee62bfac766(jetbrains.mps.samples.ChemMastery.structure)/3123291046850546424");
     b.version(2);
-    b.aggregate("elements", 0x2b5828a8c1af4af9L).target(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL).optional(true).ordered(true).multiple(true).origin("3123291046850546425").done();
+    b.aggregate("elements", 0x2b5828a8c1af4af9L).target(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af1L).optional(true).ordered(true).multiple(true).origin("3123291046850546425").done();
     b.alias("(");
     return b.create();
   }

@@ -21,10 +21,10 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
       case 0:
         return new Compound_Constraints();
       case 1:
-        return new ElementRef_Constraints();
+        return new CompoundComponentWithCardinality_Constraints();
       default:
     }
     return new BaseConstraintsDescriptor(concept);
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L), MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L), MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L)).seal();
 }

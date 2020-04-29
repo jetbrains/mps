@@ -17,9 +17,18 @@ public class ElementFactories {
       {
         final SNode original = sampleNode;
         if (SNodeOperations.isInstanceOf(original, CONCEPTS.ElementRef$i$)) {
-          SPropertyOperations.assign(newNode, PROPS.cardinality$$dIY, SPropertyOperations.getInteger(original, PROPS.cardinality$$dIY));
-          SPropertyOperations.assign(newNode, PROPS.cardinalityVisible$DlMA, SPropertyOperations.getBoolean(original, PROPS.cardinalityVisible$DlMA));
           SPropertyOperations.assign(newNode, PROPS.ionization$$dJW, SPropertyOperations.getInteger(original, PROPS.ionization$$dJW));
+        }
+      }
+    }
+  }
+  public static class NodeFactory_3123291046851857615 implements NodeFactory {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+      {
+        final SNode original = sampleNode;
+        if (SNodeOperations.isInstanceOf(original, CONCEPTS.CompoundComponentWithCardinality$dw)) {
+          SPropertyOperations.assign(newNode, PROPS.cardinality$x1g0, SPropertyOperations.getInteger(original, PROPS.cardinality$x1g0));
+          SPropertyOperations.assign(newNode, PROPS.cardinalityVisible$x1gv, SPropertyOperations.getBoolean(original, PROPS.cardinalityVisible$x1gv));
         }
       }
     }
@@ -38,13 +47,14 @@ public class ElementFactories {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ElementRef$i$ = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, "jetbrains.mps.samples.ChemMastery.structure.ElementRef");
+    /*package*/ static final SConcept CompoundComponentWithCardinality$dw = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, "jetbrains.mps.samples.ChemMastery.structure.CompoundComponentWithCardinality");
     /*package*/ static final SConcept Compound$6W = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, "jetbrains.mps.samples.ChemMastery.structure.Compound");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cardinality$$dIY = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184faba6297eL, "cardinality");
-    /*package*/ static final SProperty cardinalityVisible$DlMA = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184fabe2b23aL, "cardinalityVisible");
     /*package*/ static final SProperty ionization$$dJW = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184faba62980L, "ionization");
+    /*package*/ static final SProperty cardinality$x1g0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd51L, "cardinality");
+    /*package*/ static final SProperty cardinalityVisible$x1gv = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
     /*package*/ static final SProperty cardinality$$dy0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184faba62979L, "cardinality");
     /*package*/ static final SProperty cardinalityVisible$iY8b = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184fabe70dd6L, "cardinalityVisible");
   }

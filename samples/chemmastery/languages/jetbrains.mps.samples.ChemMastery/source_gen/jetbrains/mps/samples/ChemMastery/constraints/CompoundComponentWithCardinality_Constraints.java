@@ -16,20 +16,20 @@ import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class ElementRef_Constraints extends BaseConstraintsDescriptor {
-  public ElementRef_Constraints() {
-    super(CONCEPTS.ElementRef$i$);
+public class CompoundComponentWithCardinality_Constraints extends BaseConstraintsDescriptor {
+  public CompoundComponentWithCardinality_Constraints() {
+    super(CONCEPTS.CompoundComponentWithCardinality$dw);
   }
 
   public static class Cardinality_Property extends BasePropertyConstraintsDescriptor {
     public Cardinality_Property(ConstraintsDescriptor container) {
-      super(PROPS.cardinality$$dIY, container);
+      super(PROPS.cardinality$x1g0, container);
     }
     @Override
     public boolean hasOwnValidator() {
       return true;
     }
-    private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:997593df-af82-42f2-9730-e4b9efa419fd(jetbrains.mps.samples.ChemMastery.constraints)", "7995886393882964776");
+    private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:997593df-af82-42f2-9730-e4b9efa419fd(jetbrains.mps.samples.ChemMastery.constraints)", "3123291046851838142");
     @Override
     public boolean validateValue(SNode node, Object propertyValue, CheckingNodeContext checkingNodeContext) {
       boolean result = staticValidateProperty(node, SPropertyOperations.castInteger(propertyValue));
@@ -45,15 +45,15 @@ public class ElementRef_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.cardinality$$dIY, new Cardinality_Property(this));
+    properties.put(PROPS.cardinality$x1g0, new Cardinality_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ElementRef$i$ = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, "jetbrains.mps.samples.ChemMastery.structure.ElementRef");
+    /*package*/ static final SConcept CompoundComponentWithCardinality$dw = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, "jetbrains.mps.samples.ChemMastery.structure.CompoundComponentWithCardinality");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cardinality$$dIY = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184faba6297eL, "cardinality");
+    /*package*/ static final SProperty cardinality$x1g0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd51L, "cardinality");
   }
 }

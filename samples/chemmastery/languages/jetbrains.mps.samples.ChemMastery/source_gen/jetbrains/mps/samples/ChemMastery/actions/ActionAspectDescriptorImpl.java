@@ -18,6 +18,8 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
       switch (concept.getName()) {
         case "Compound":
           return Collections.<NodeFactory>singletonList(new ElementFactories.NodeFactory_6744317956898850832());
+        case "CompoundComponentWithCardinality":
+          return Collections.<NodeFactory>singletonList(new ElementFactories.NodeFactory_3123291046851857615());
         case "ElementRef":
           return Collections.<NodeFactory>singletonList(new ElementFactories.NodeFactory_6567999678834696497());
         default:

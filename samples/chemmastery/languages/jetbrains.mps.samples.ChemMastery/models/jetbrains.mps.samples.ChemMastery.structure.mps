@@ -203,17 +203,7 @@
     <property role="EcuMT" value="7995886393880881531" />
     <property role="3GE5qa" value="expression" />
     <property role="TrG5h" value="ElementRef" />
-    <ref role="1TJDcQ" node="2Hoaaz1FOFL" resolve="CompoundComponent" />
-    <node concept="1TJgyi" id="6VR64YFDy_Y" role="1TKVEl">
-      <property role="IQ2nx" value="7995886393880881534" />
-      <property role="TrG5h" value="cardinality" />
-      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
-    </node>
-    <node concept="1TJgyi" id="6VR64YFSF8U" role="1TKVEl">
-      <property role="IQ2nx" value="7995886393884848698" />
-      <property role="TrG5h" value="cardinalityVisible" />
-      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
-    </node>
+    <ref role="1TJDcQ" node="2Hoaaz1KJPg" resolve="CompoundComponentWithCardinality" />
     <node concept="1TJgyi" id="6VR64YFDyA0" role="1TKVEl">
       <property role="IQ2nx" value="7995886393880881536" />
       <property role="TrG5h" value="ionization" />
@@ -258,13 +248,13 @@
     <property role="3GE5qa" value="expression" />
     <property role="TrG5h" value="Parens" />
     <property role="34LRSv" value="(" />
-    <ref role="1TJDcQ" node="2Hoaaz1FOFL" resolve="CompoundComponent" />
+    <ref role="1TJDcQ" node="2Hoaaz1KJPg" resolve="CompoundComponentWithCardinality" />
     <node concept="1TJgyj" id="2Hoaaz1FOFT" role="1TKVEi">
       <property role="IQ2ns" value="3123291046850546425" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="elements" />
       <property role="20lbJX" value="fLJekj5/_0__n" />
-      <ref role="20lvS9" node="6VR64YFDy_V" resolve="ElementRef" />
+      <ref role="20lvS9" node="2Hoaaz1FOFL" resolve="CompoundComponent" />
     </node>
   </node>
   <node concept="1TIwiD" id="2Hoaaz1KJPg">
@@ -272,6 +262,16 @@
     <property role="3GE5qa" value="expression" />
     <property role="TrG5h" value="CompoundComponentWithCardinality" />
     <ref role="1TJDcQ" node="2Hoaaz1FOFL" resolve="CompoundComponent" />
+    <node concept="1TJgyi" id="2Hoaaz1KJPh" role="1TKVEl">
+      <property role="IQ2nx" value="3123291046851837265" />
+      <property role="TrG5h" value="cardinality" />
+      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
+    </node>
+    <node concept="1TJgyi" id="2Hoaaz1KJPi" role="1TKVEl">
+      <property role="IQ2nx" value="3123291046851837266" />
+      <property role="TrG5h" value="cardinalityVisible" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
   </node>
 </model>
 

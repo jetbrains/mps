@@ -36,7 +36,7 @@ public final class SetCardinalityTo_Intention extends AbstractIntentionDescripto
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return !(SPropertyOperations.getBoolean(node, PROPS.cardinalityVisible$DlMA));
+    return !(SPropertyOperations.getBoolean(node, PROPS.cardinalityVisible$x1gv));
   }
   @Override
   public boolean isSurroundWith() {
@@ -66,8 +66,8 @@ public final class SetCardinalityTo_Intention extends AbstractIntentionDescripto
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.cardinality$$dIY, myParameter);
-      SPropertyOperations.assign(node, PROPS.cardinalityVisible$DlMA, true);
+      SPropertyOperations.assign(node, PROPS.cardinality$x1g0, myParameter);
+      SPropertyOperations.assign(node, PROPS.cardinalityVisible$x1gv, true);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -79,7 +79,7 @@ public final class SetCardinalityTo_Intention extends AbstractIntentionDescripto
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cardinalityVisible$DlMA = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184fabe2b23aL, "cardinalityVisible");
-    /*package*/ static final SProperty cardinality$$dIY = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184faba6297eL, "cardinality");
+    /*package*/ static final SProperty cardinalityVisible$x1gv = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
+    /*package*/ static final SProperty cardinality$x1g0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd51L, "cardinality");
   }
 }

@@ -54,17 +54,21 @@
       </concept>
     </language>
   </registry>
-  <node concept="1M2fIO" id="6VR64YFLvbd">
+  <node concept="1M2fIO" id="6VR64YFTKRO">
     <property role="3GE5qa" value="expression" />
-    <ref role="1M2myG" to="ngid:6VR64YFDy_V" resolve="ElementRef" />
-    <node concept="EnEH3" id="6VR64YFLvbe" role="1MhHOB">
-      <ref role="EomxK" to="ngid:6VR64YFDy_Y" resolve="cardinality" />
-      <node concept="QB0g5" id="6VR64YFLvcC" role="QCWH9">
-        <node concept="3clFbS" id="6VR64YFLvcD" role="2VODD2">
-          <node concept="3clFbF" id="6VR64YFLvdI" role="3cqZAp">
-            <node concept="3eOSWO" id="6VR64YFLwfk" role="3clFbG">
-              <node concept="1Wqviy" id="6VR64YFLvdH" role="3uHU7B" />
-              <node concept="3cmrfG" id="6VR64YFLwfq" role="3uHU7w">
+    <ref role="1M2myG" to="ngid:6VR64YFDy_S" resolve="Compound" />
+  </node>
+  <node concept="1M2fIO" id="2Hoaaz1KK27">
+    <property role="3GE5qa" value="expression" />
+    <ref role="1M2myG" to="ngid:2Hoaaz1KJPg" resolve="CompoundComponentWithCardinality" />
+    <node concept="EnEH3" id="2Hoaaz1KK28" role="1MhHOB">
+      <ref role="EomxK" to="ngid:2Hoaaz1KJPh" resolve="cardinality" />
+      <node concept="QB0g5" id="2Hoaaz1KK2Y" role="QCWH9">
+        <node concept="3clFbS" id="2Hoaaz1KK2Z" role="2VODD2">
+          <node concept="3clFbF" id="2Hoaaz1KK6S" role="3cqZAp">
+            <node concept="3eOSWO" id="2Hoaaz1KK6T" role="3clFbG">
+              <node concept="1Wqviy" id="2Hoaaz1KK6U" role="3uHU7B" />
+              <node concept="3cmrfG" id="2Hoaaz1KK6V" role="3uHU7w">
                 <property role="3cmrfH" value="0" />
               </node>
             </node>
@@ -72,10 +76,6 @@
         </node>
       </node>
     </node>
-  </node>
-  <node concept="1M2fIO" id="6VR64YFTKRO">
-    <property role="3GE5qa" value="expression" />
-    <ref role="1M2myG" to="ngid:6VR64YFDy_S" resolve="Compound" />
   </node>
 </model>
 

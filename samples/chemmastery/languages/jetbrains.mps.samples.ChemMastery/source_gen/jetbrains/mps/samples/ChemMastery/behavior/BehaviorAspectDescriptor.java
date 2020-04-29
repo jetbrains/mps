@@ -12,6 +12,7 @@ import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor {
+  private final BHDescriptor myCompoundComponentWithCardinality__BehaviorDescriptor = new CompoundComponentWithCardinality__BehaviorDescriptor();
   private final BHDescriptor myChemEquation__BehaviorDescriptor = new ChemEquation__BehaviorDescriptor();
   private final BHDescriptor myCompound__BehaviorDescriptor = new Compound__BehaviorDescriptor();
   private final BHDescriptor myElementRef__BehaviorDescriptor = new ElementRef__BehaviorDescriptor();
@@ -28,10 +29,12 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
       case 1:
         return myCompound__BehaviorDescriptor;
       case 2:
+        return myCompoundComponentWithCardinality__BehaviorDescriptor;
+      case 3:
         return myElementRef__BehaviorDescriptor;
       default:
     }
     return null;
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L), MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L), MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L), MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L), MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L), MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL)).seal();
 }
