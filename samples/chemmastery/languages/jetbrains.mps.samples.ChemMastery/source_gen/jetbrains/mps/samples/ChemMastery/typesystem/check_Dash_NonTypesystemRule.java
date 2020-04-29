@@ -23,7 +23,7 @@ public class check_Dash_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
     if ((SNodeOperations.getPrevSibling(dash) == null) || (SNodeOperations.getNextSibling(dash) == null) || SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(dash), CONCEPTS.Dash$Lh) || SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(dash), CONCEPTS.Dash$Lh)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(dash, "Misplaced separator", "r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)", "3123291046851157167", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(dash, "A bond (-) must be connecting two elements.", "r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)", "3123291046851157167", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.samples.ChemMastery.typesystem.RemoveMisplacedDash_QuickFix", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);

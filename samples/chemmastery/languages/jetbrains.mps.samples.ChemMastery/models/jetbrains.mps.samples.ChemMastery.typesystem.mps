@@ -1365,7 +1365,7 @@
         <node concept="3clFbS" id="2Hoaaz1I6JD" role="3clFbx">
           <node concept="2MkqsV" id="2Hoaaz1I9MJ" role="3cqZAp">
             <node concept="Xl_RD" id="2Hoaaz1I9MV" role="2MkJ7o">
-              <property role="Xl_RC" value="Misplaced separator" />
+              <property role="Xl_RC" value="A bond (-) must be connecting two elements." />
             </node>
             <node concept="1YBJjd" id="2Hoaaz1I9NK" role="1urrMF">
               <ref role="1YBMHb" node="2Hoaaz1I6Jz" resolve="dash" />

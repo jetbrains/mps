@@ -5643,7 +5643,7 @@
                           </node>
                         </node>
                         <node concept="Xl_RD" id="xs" role="37wK5m">
-                          <property role="Xl_RC" value="Misplaced separator" />
+                          <property role="Xl_RC" value="A bond (-) must be connecting two elements." />
                           <node concept="cd27G" id="xz" role="lGtFl">
                             <node concept="3u3nmq" id="x$" role="cd27D">
                               <property role="3u3nmv" value="3123291046851157179" />

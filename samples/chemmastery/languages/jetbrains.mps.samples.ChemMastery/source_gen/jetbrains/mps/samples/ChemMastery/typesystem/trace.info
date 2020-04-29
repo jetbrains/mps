@@ -77,7 +77,7 @@
     </file>
     <file name="check_Dash_NonTypesystemRule.java">
       <node id="3123291046851157167" at="24,7,25,66" concept="7" />
-      <node id="3123291046851157167" at="25,66,26,241" concept="7" />
+      <node id="3123291046851157167" at="25,66,26,265" concept="7" />
       <node id="3123291046851203355" at="27,9,28,160" concept="7" />
       <node id="3123291046851203355" at="28,160,29,71" concept="2" />
       <node id="3123291046851144672" at="34,50,35,28" concept="8" />
@@ -88,7 +88,7 @@
       <node id="3123291046851144672" at="34,0,37,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="3123291046851144672" at="37,0,40,0" concept="6" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="3123291046851144672" at="40,0,43,0" concept="6" trace="overrides#()Z" />
-      <node id="3123291046851203355" at="26,241,30,9" concept="0" />
+      <node id="3123291046851203355" at="26,265,30,9" concept="0" />
       <node id="3123291046851157167" at="23,283,31,7" concept="0" />
       <node id="3123291046851144679" at="22,117,32,5" concept="5" />
       <node id="3123291046851144672" at="22,0,34,0" concept="6" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
