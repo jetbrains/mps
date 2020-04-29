@@ -48,7 +48,7 @@ public class BuildMps_Generator_Constraints extends BaseConstraintsDescriptor {
       // limit use of this concept in a project with MPS plugin 
       return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(buildProject, LINKS.plugins$97JG), CONCEPTS.BuildMPSPlugin$y$)).isNotEmpty();
     }
-    // XXX I'm not sure there's solid reason to preven reuse of this node, but failed to find reason for that, therefore, left as is. 
+    // XXX I'm not sure there's solid reason to prevent reuse of this node, but failed to find reason for that, therefore, left as is. 
     return false;
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:76dda237-5120-4688-b749-201ab5c5059d(jetbrains.mps.build.mps.constraints)", "1227128029536567275");
