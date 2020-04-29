@@ -12,6 +12,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ChemEquation;
   private ConceptPresentation props_ChemSheet;
   private ConceptPresentation props_Compound;
+  private ConceptPresentation props_CompoundComponent;
+  private ConceptPresentation props_Dash;
   private ConceptPresentation props_DocumentationEntry;
   private ConceptPresentation props_Element;
   private ConceptPresentation props_ElementList;
@@ -19,6 +21,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_Energy;
   private ConceptPresentation props_EquationComponent;
   private ConceptPresentation props_EquationEntry;
+  private ConceptPresentation props_Parens;
   private ConceptPresentation props_SheetEntry;
 
   @Override
@@ -47,6 +50,19 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Compound = cpb.create();
         }
         return props_Compound;
+      case LanguageConceptSwitch.CompoundComponent:
+        if (props_CompoundComponent == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_CompoundComponent = cpb.create();
+        }
+        return props_CompoundComponent;
+      case LanguageConceptSwitch.Dash:
+        if (props_Dash == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("-");
+          props_Dash = cpb.create();
+        }
+        return props_Dash;
       case LanguageConceptSwitch.DocumentationEntry:
         if (props_DocumentationEntry == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -96,6 +112,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_EquationEntry = cpb.create();
         }
         return props_EquationEntry;
+      case LanguageConceptSwitch.Parens:
+        if (props_Parens == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("(");
+          props_Parens = cpb.create();
+        }
+        return props_Parens;
       case LanguageConceptSwitch.SheetEntry:
         if (props_SheetEntry == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

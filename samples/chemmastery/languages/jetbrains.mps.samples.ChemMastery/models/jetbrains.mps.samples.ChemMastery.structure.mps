@@ -14,6 +14,7 @@
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
+        <property id="4628067390765956802" name="abstract" index="R5$K7" />
         <property id="5092175715804935370" name="conceptAlias" index="34LRSv" />
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
         <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
@@ -185,7 +186,7 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="elements" />
       <property role="20lbJX" value="fLJekj5/_0__n" />
-      <ref role="20lvS9" node="6VR64YFDy_V" resolve="ElementRef" />
+      <ref role="20lvS9" node="2Hoaaz1FOFL" resolve="CompoundComponent" />
     </node>
     <node concept="1TJgyi" id="6VR64YFDy_T" role="1TKVEl">
       <property role="IQ2nx" value="7995886393880881529" />
@@ -202,7 +203,7 @@
     <property role="EcuMT" value="7995886393880881531" />
     <property role="3GE5qa" value="expression" />
     <property role="TrG5h" value="ElementRef" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <ref role="1TJDcQ" node="2Hoaaz1FOFL" resolve="CompoundComponent" />
     <node concept="1TJgyi" id="6VR64YFDy_Y" role="1TKVEl">
       <property role="IQ2nx" value="7995886393880881534" />
       <property role="TrG5h" value="cardinality" />
@@ -237,6 +238,40 @@
     <property role="3GE5qa" value="expression" />
     <property role="TrG5h" value="EquationComponent" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="1TIwiD" id="2Hoaaz1FOFL">
+    <property role="EcuMT" value="3123291046850546417" />
+    <property role="3GE5qa" value="expression" />
+    <property role="TrG5h" value="CompoundComponent" />
+    <property role="R5$K7" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="1TIwiD" id="2Hoaaz1FOFM">
+    <property role="EcuMT" value="3123291046850546418" />
+    <property role="3GE5qa" value="expression" />
+    <property role="TrG5h" value="Dash" />
+    <property role="34LRSv" value="-" />
+    <ref role="1TJDcQ" node="2Hoaaz1FOFL" resolve="CompoundComponent" />
+  </node>
+  <node concept="1TIwiD" id="2Hoaaz1FOFS">
+    <property role="EcuMT" value="3123291046850546424" />
+    <property role="3GE5qa" value="expression" />
+    <property role="TrG5h" value="Parens" />
+    <property role="34LRSv" value="(" />
+    <ref role="1TJDcQ" node="2Hoaaz1FOFL" resolve="CompoundComponent" />
+    <node concept="1TJgyj" id="2Hoaaz1FOFT" role="1TKVEi">
+      <property role="IQ2ns" value="3123291046850546425" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="elements" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="6VR64YFDy_V" resolve="ElementRef" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="2Hoaaz1KJPg">
+    <property role="EcuMT" value="3123291046851837264" />
+    <property role="3GE5qa" value="expression" />
+    <property role="TrG5h" value="CompoundComponentWithCardinality" />
+    <ref role="1TJDcQ" node="2Hoaaz1FOFL" resolve="CompoundComponent" />
   </node>
 </model>
 

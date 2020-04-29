@@ -16,15 +16,21 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.MenuPart;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
+import jetbrains.mps.lang.editor.menus.transformation.IncludeTransformationMenuTransformationMenuPart;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuLookup;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.lang.editor.menus.transformation.DefaultTransformationMenuLookup;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.apache.log4j.Logger;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -33,26 +39,12 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.lang.editor.menus.GroupMenuPart;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import java.util.Arrays;
-import jetbrains.mps.editor.runtime.selection.SelectionUtil;
-import jetbrains.mps.openapi.editor.selection.SelectionManager;
-import jetbrains.mps.lang.editor.menus.transformation.WrapSubstituteMenuTransformationMenuPart;
-import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
-import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
-import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.lang.editor.menus.transformation.SubstituteMenuItemAsActionItem;
-import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
-import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ElementRef_TransformationMenu extends TransformationMenuBase {
-  private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM);
+  private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM);
   @Override
   public boolean isApplicableToLocation(@NotNull String location) {
     return SetSequence.fromSet(myLocations).contains(location);
@@ -62,7 +54,7 @@ public class ElementRef_TransformationMenu extends TransformationMenuBase {
   @Override
   public List<TransformationMenuItem> createMenuItems(@NotNull TransformationMenuContext context) {
     context.getEditorMenuTrace().pushTraceInfo();
-    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default transformation menu for " + "ElementRef", new SNodePointer("r:563c5369-4649-4929-a845-37c7045ffecd(jetbrains.mps.samples.ChemMastery.editor)", "7995886393883075688")));
+    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default transformation menu for " + "ElementRef", new SNodePointer("r:563c5369-4649-4929-a845-37c7045ffecd(jetbrains.mps.samples.ChemMastery.editor)", "3123291046851062707")));
     try {
       return super.createMenuItems(context);
     } finally {
@@ -74,178 +66,37 @@ public class ElementRef_TransformationMenu extends TransformationMenuBase {
   @NotNull
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
-    if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new TMP_Action_7oish4_a0());
-      result.add(new TMP_Group_7oish4_b0());
-    }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new TMP_Action_7oish4_a1());
-      result.add(new TMP_Action_7oish4_b1());
-      result.add(new TMP_WrapSM_7oish4_c1());
+      result.add(new TMP_Include_7oish4_a0());
+      result.add(new TMP_Action_7oish4_b0());
     }
     return result;
   }
 
-  private class TMP_Action_7oish4_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
-    @Nullable
-    protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      Item item = new Item(context);
-      String description;
-      try {
-        description = "single item: " + item.getLabelText("");
-      } catch (Throwable t) {
-        Logger.getLogger(getClass()).error("Exception while executing getText of the item " + item, t);
-        return null;
-      }
-      context.getEditorMenuTrace().pushTraceInfo();
-      try {
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:563c5369-4649-4929-a845-37c7045ffecd(jetbrains.mps.samples.ChemMastery.editor)", "7995886393884437872")));
-        item.setTraceInfo(context.getEditorMenuTrace().getTraceInfo());
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-      return item;
-    }
-
-    private class Item extends ActionItemBase implements SideTransformCompletionActionItem {
-      private final TransformationMenuContext _context;
-      private EditorMenuTraceInfo myEditorMenuTraceInfo;
-      private Item(TransformationMenuContext context) {
-        _context = context;
-      }
-      private void setTraceInfo(EditorMenuTraceInfo info) {
-        myEditorMenuTraceInfo = info;
-      }
-      @Nullable
-      @Override
-      public String getLabelText(String pattern) {
-        return "+";
-      }
-
-      @Override
-      public void execute(@NotNull String pattern) {
-        SNodeOperations.insertPrevSiblingChild(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Compound$6W, false, false), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x5b2638e8bdcb49dcL, "jetbrains.mps.samples.ChemMastery.structure.EquationComponent")));
-      }
-
-
-
-
-      @Override
-      public EditorMenuTraceInfo getTraceInfo() {
-        return myEditorMenuTraceInfo;
-      }
-
-      public void customize(String pattern, EditorMenuItemStyle style) {
-        EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-        SAbstractConcept outputConcept = null;
-        EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
-        for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
-          customizer.customize(style, compositeContext);
-        }
-      }
-    }
-
-  }
-  public class TMP_Group_7oish4_b0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
-    private SNode compound;
-    @Override
-    protected void initialize(TransformationMenuContext _context) {
-      super.initialize(_context);
-      compound = new Computable<SNode>() {
-        public SNode compute() {
-          return SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Compound$6W);
-        }
-      }.compute();
-    }
-    @Override
-    protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(compound, PROPS.cardinalityVisible$iY8b)) && (SNodeOperations.getPrevSibling(_context.getNode()) == null);
-    }
-
+  public class TMP_Include_7oish4_a0 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
       context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:563c5369-4649-4929-a845-37c7045ffecd(jetbrains.mps.samples.ChemMastery.editor)", "7995886393883497609")));
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "default transformation menu for " + "CompoundComponent", new SNodePointer("r:563c5369-4649-4929-a845-37c7045ffecd(jetbrains.mps.samples.ChemMastery.editor)", "3123291046851420210")));
       try {
         return super.createItems(context);
       } finally {
         context.getEditorMenuTrace().popTraceInfo();
       }
     }
+
+    @Nullable
     @Override
-    protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_7oish4_a1a());
+    protected TransformationMenuLookup getMenuLookup(TransformationMenuContext _context) {
+      final SNode node = _context.getNode();
+      final EditorContext editorContext = _context.getEditorContext();
+
+      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.CompoundComponent$KM);
     }
-    private class TMP_Action_7oish4_a1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
-      @Nullable
-      protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Item item = new Item(context);
-        String description;
-        try {
-          description = "single item: " + item.getLabelText("");
-        } catch (Throwable t) {
-          Logger.getLogger(getClass()).error("Exception while executing getText of the item " + item, t);
-          return null;
-        }
-        context.getEditorMenuTrace().pushTraceInfo();
-        try {
-          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:563c5369-4649-4929-a845-37c7045ffecd(jetbrains.mps.samples.ChemMastery.editor)", "7995886393883386902")));
-          item.setTraceInfo(context.getEditorMenuTrace().getTraceInfo());
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
-        return item;
-      }
 
-      private class Item extends ActionItemBase implements SideTransformCompletionActionItem {
-        private final TransformationMenuContext _context;
-        private EditorMenuTraceInfo myEditorMenuTraceInfo;
-        private Item(TransformationMenuContext context) {
-          _context = context;
-        }
-        private void setTraceInfo(EditorMenuTraceInfo info) {
-          myEditorMenuTraceInfo = info;
-        }
-        @Nullable
-        @Override
-        public String getLabelText(String pattern) {
-          return pattern;
-        }
-
-        @Override
-        public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(compound, PROPS.cardinality$$dy0, Integer.parseInt(pattern));
-          SPropertyOperations.assign(compound, PROPS.cardinalityVisible$iY8b, true);
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), compound, SelectionManager.FIRST_EDITABLE_CELL, -1);
-
-        }
-
-        @Override
-        public boolean canExecute(@NotNull String pattern) {
-          return PatternDetectionUtil.isNumeric(pattern);
-        }
-
-
-
-        @Override
-        public EditorMenuTraceInfo getTraceInfo() {
-          return myEditorMenuTraceInfo;
-        }
-
-        public void customize(String pattern, EditorMenuItemStyle style) {
-          EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = null;
-          EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
-          for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
-            customizer.customize(style, compositeContext);
-          }
-        }
-      }
-
-    }
   }
-  private class TMP_Action_7oish4_a1 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
+  private class TMP_Action_7oish4_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
       Item item = new Item(context);
@@ -311,141 +162,12 @@ public class ElementRef_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  private class TMP_Action_7oish4_b1 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
-    @Nullable
-    protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      Item item = new Item(context);
-      String description;
-      try {
-        description = "single item: " + item.getLabelText("");
-      } catch (Throwable t) {
-        Logger.getLogger(getClass()).error("Exception while executing getText of the item " + item, t);
-        return null;
-      }
-      context.getEditorMenuTrace().pushTraceInfo();
-      try {
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:563c5369-4649-4929-a845-37c7045ffecd(jetbrains.mps.samples.ChemMastery.editor)", "7995886393884397377")));
-        item.setTraceInfo(context.getEditorMenuTrace().getTraceInfo());
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-      return item;
-    }
-
-    private class Item extends ActionItemBase implements SideTransformCompletionActionItem {
-      private final TransformationMenuContext _context;
-      private EditorMenuTraceInfo myEditorMenuTraceInfo;
-      private Item(TransformationMenuContext context) {
-        _context = context;
-      }
-      private void setTraceInfo(EditorMenuTraceInfo info) {
-        myEditorMenuTraceInfo = info;
-      }
-      @Nullable
-      @Override
-      public String getLabelText(String pattern) {
-        return "+";
-      }
-
-      @Override
-      public void execute(@NotNull String pattern) {
-        SNodeOperations.insertNextSiblingChild(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Compound$6W, false, false), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x5b2638e8bdcb49dcL, "jetbrains.mps.samples.ChemMastery.structure.EquationComponent")));
-      }
-
-
-
-
-      @Override
-      public EditorMenuTraceInfo getTraceInfo() {
-        return myEditorMenuTraceInfo;
-      }
-
-      public void customize(String pattern, EditorMenuItemStyle style) {
-        EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-        SAbstractConcept outputConcept = null;
-        EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
-        for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
-          customizer.customize(style, compositeContext);
-        }
-      }
-    }
-
-  }
-  public class TMP_WrapSM_7oish4_c1 extends WrapSubstituteMenuTransformationMenuPart {
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap substitute menu " + "default substitute menu for " + "ElementRef", new SNodePointer("r:563c5369-4649-4929-a845-37c7045ffecd(jetbrains.mps.samples.ChemMastery.editor)", "1777500479620623106")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
-    @Nullable
-    @Override
-    protected SubstituteMenuLookup getSubstituteMenuLookup(TransformationMenuContext _context) {
-      final EditorContext editorContext = _context.getEditorContext();
-      SAbstractConcept conceptToFindMenuFor = getConceptToFindMenuFor(_context);
-      return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
-    }
-    private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.ElementRef$i$;
-    }
-
-
-    private class SMIasTMI extends SubstituteMenuItemAsActionItem implements SideTransformCompletionActionItem {
-
-      private final SNode targetNode;
-      private final TransformationMenuContext _context;
-      private final SubstituteItemProxy wrappedItem;
-
-      public SMIasTMI(SubstituteMenuItem substituteItem, SNode targetNode, TransformationMenuContext tctx) {
-        super(substituteItem);
-        this.targetNode = targetNode;
-        this._context = tctx;
-        wrappedItem = new SubstituteItemProxy(substituteItem);
-      }
-
-      @Override
-      public void execute(@NotNull String pattern) {
-        SNode createdNode = getSubstituteItem().createNode(pattern);
-        SNodeOperations.insertNextSiblingChild(_context.getNode(), createdNode);
-      }
-
-      @Override
-      public void customize(String pattern, EditorMenuItemStyle style) {
-        super.customize(pattern, style);
-        if (targetNode != null) {
-          EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
-          CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
-          EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
-          for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
-            customizer.customize(style, compositeContext);
-          }
-
-        }
-      }
-
-    }
-
-
-    @Override
-    protected TransformationMenuItem createTransformationItem(final SNode targetNode, final SubstituteMenuItem item, final TransformationMenuContext _context) {
-      return new SMIasTMI(item, targetNode, _context);
-    }
-  }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Compound$6W = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, "jetbrains.mps.samples.ChemMastery.structure.Compound");
-    /*package*/ static final SConcept ElementRef$i$ = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, "jetbrains.mps.samples.ChemMastery.structure.ElementRef");
+    /*package*/ static final SConcept CompoundComponent$KM = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af1L, "jetbrains.mps.samples.ChemMastery.structure.CompoundComponent");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cardinalityVisible$iY8b = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184fabe70dd6L, "cardinalityVisible");
-    /*package*/ static final SProperty cardinality$$dy0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184faba62979L, "cardinality");
     /*package*/ static final SProperty cardinalityVisible$DlMA = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184fabe2b23aL, "cardinalityVisible");
     /*package*/ static final SProperty cardinality$$dIY = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184faba6297eL, "cardinality");
   }

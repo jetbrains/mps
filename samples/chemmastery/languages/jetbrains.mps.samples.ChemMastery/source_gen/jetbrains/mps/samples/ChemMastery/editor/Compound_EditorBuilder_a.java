@@ -137,7 +137,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       return LINKS.elements$Eg3r;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.ElementRef$i$;
+      return CONCEPTS.CompoundComponent$KM;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -222,7 +222,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   private static final class CONCEPTS {
     /*package*/ static final SConcept Compound$6W = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, "jetbrains.mps.samples.ChemMastery.structure.Compound");
     /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SConcept ElementRef$i$ = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, "jetbrains.mps.samples.ChemMastery.structure.ElementRef");
+    /*package*/ static final SConcept CompoundComponent$KM = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af1L, "jetbrains.mps.samples.ChemMastery.structure.CompoundComponent");
   }
 
   private static final class PROPS {

@@ -42,6 +42,10 @@
         <child id="7995886393880421595" name="equation" index="35q3Mk" />
       </concept>
       <concept id="6567999678834231771" name="jetbrains.mps.samples.ChemMastery.structure.Energy" flags="ng" index="3AVn4N" />
+      <concept id="3123291046850546424" name="jetbrains.mps.samples.ChemMastery.structure.Parens" flags="ng" index="3EXQ9g">
+        <child id="3123291046850546425" name="elements" index="3EXQ9h" />
+      </concept>
+      <concept id="3123291046850546418" name="jetbrains.mps.samples.ChemMastery.structure.Dash" flags="ng" index="3EXQ9q" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
@@ -1289,6 +1293,7 @@
             <property role="355qDP" value="true" />
             <ref role="35kj4N" node="5GAeeyXOA2I" resolve="Hydrogen" />
           </node>
+          <node concept="3EXQ9q" id="2Hoaaz1KJNm" role="35kvJG" />
           <node concept="35kj4O" id="2Hoaaz1FOEO" role="35kvJG">
             <property role="35kj4L" value="1" />
             <property role="35kj7f" value="0" />
@@ -1299,21 +1304,25 @@
             <property role="35kj7f" value="0" />
             <ref role="35kj4N" node="5GAeeyXOA2I" resolve="Hydrogen" />
           </node>
-          <node concept="35kj4O" id="2Hoaaz1FOF0" role="35kvJG">
-            <property role="35kj4L" value="1" />
-            <property role="35kj7f" value="0" />
-            <ref role="35kj4N" node="5GAeeyXOA49" resolve="Oxygen" />
+          <node concept="3EXQ9g" id="2Hoaaz1KJNy" role="35kvJG">
+            <node concept="35kj4O" id="2Hoaaz1KJNI" role="3EXQ9h">
+              <property role="35kj4L" value="1" />
+              <property role="35kj7f" value="0" />
+              <ref role="35kj4N" node="5GAeeyXOA49" resolve="Oxygen" />
+            </node>
+            <node concept="35kj4O" id="2Hoaaz1KJNM" role="3EXQ9h">
+              <property role="35kj4L" value="1" />
+              <property role="35kj7f" value="0" />
+              <ref role="35kj4N" node="5GAeeyXOA2I" resolve="Hydrogen" />
+            </node>
           </node>
-          <node concept="35kj4O" id="2Hoaaz1FOF8" role="35kvJG">
-            <property role="35kj4L" value="1" />
-            <property role="35kj7f" value="0" />
-            <ref role="35kj4N" node="5GAeeyXOA2I" resolve="Hydrogen" />
-          </node>
+          <node concept="3EXQ9q" id="2Hoaaz1KJOd" role="35kvJG" />
           <node concept="35kj4O" id="2Hoaaz1FOFg" role="35kvJG">
             <property role="35kj4L" value="1" />
             <property role="35kj7f" value="0" />
             <ref role="35kj4N" node="5GAeeyXOA49" resolve="Oxygen" />
           </node>
+          <node concept="3EXQ9q" id="2Hoaaz1KJOr" role="35kvJG" />
           <node concept="35kj4O" id="2Hoaaz1FOFq" role="35kvJG">
             <property role="35kj4L" value="2" />
             <property role="35kj7f" value="0" />
@@ -1325,6 +1334,55 @@
             <property role="35kj7f" value="0" />
             <property role="355qDP" value="true" />
             <ref role="35kj4N" node="5GAeeyXOA2I" resolve="Hydrogen" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="35q3MJ" id="2Hoaaz1GRx0" role="35q3Mi">
+      <node concept="35q3_W" id="2Hoaaz1GRx1" role="35q3Mk">
+        <node concept="35kj4R" id="2Hoaaz1GRzu" role="35qb9B">
+          <property role="35kj4Q" value="1" />
+          <node concept="35kj4O" id="2Hoaaz1GRzs" role="35kvJG">
+            <property role="35kj4L" value="1" />
+            <property role="35kj7f" value="0" />
+            <ref role="35kj4N" node="5GAeeyXOA2I" resolve="Hydrogen" />
+          </node>
+          <node concept="35kj4O" id="2Hoaaz1Jt_X" role="35kvJG">
+            <property role="35kj4L" value="2" />
+            <property role="35kj7f" value="0" />
+            <property role="355qDP" value="true" />
+            <ref role="35kj4N" node="5QoCnbDeEc7" resolve="Chlorine" />
+          </node>
+          <node concept="35kj4O" id="2Hoaaz1JtA5" role="35kvJG">
+            <property role="35kj4L" value="1" />
+            <property role="35kj7f" value="0" />
+            <ref role="35kj4N" node="5GAeeyXOA2S" resolve="Helium" />
+          </node>
+          <node concept="3EXQ9q" id="2Hoaaz1K4Ui" role="35kvJG" />
+          <node concept="35kj4O" id="2Hoaaz1IkPy" role="35kvJG">
+            <property role="35kj4L" value="1" />
+            <property role="35kj7f" value="0" />
+            <ref role="35kj4N" node="5GAeeyXOA3E" resolve="Carbon" />
+          </node>
+        </node>
+        <node concept="35kj4R" id="2Hoaaz1KoTA" role="35qb9_">
+          <property role="35kj4Q" value="1" />
+          <node concept="35kj4O" id="2Hoaaz1KoT$" role="35kvJG">
+            <property role="35kj4L" value="2" />
+            <property role="35kj7f" value="0" />
+            <property role="355qDP" value="true" />
+            <ref role="35kj4N" node="5GAeeyXOA2S" resolve="Helium" />
+          </node>
+          <node concept="35kj4O" id="2Hoaaz1KoTF" role="35kvJG">
+            <property role="35kj4L" value="3" />
+            <property role="35kj7f" value="0" />
+            <property role="355qDP" value="true" />
+            <ref role="35kj4N" node="5GAeeyXOA49" resolve="Oxygen" />
+          </node>
+          <node concept="35kj4O" id="2Hoaaz1KoTL" role="35kvJG">
+            <property role="35kj4L" value="1" />
+            <property role="35kj7f" value="0" />
+            <ref role="35kj4N" node="5QoCnbDeEfN" resolve="Iron" />
           </node>
         </node>
       </node>
