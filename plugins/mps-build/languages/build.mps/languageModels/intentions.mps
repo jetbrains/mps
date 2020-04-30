@@ -653,7 +653,12 @@
               <property role="1BlNFB" value="true" />
               <node concept="2OqwBi" id="3HwLahs6f1D" role="1m5AlR">
                 <node concept="2Rxl7S" id="3HwLahs6f1J" role="2OqNvi" />
-                <node concept="2Sf5sV" id="47hmiPOFDDv" role="2Oq$k0" />
+                <node concept="2OqwBi" id="uc4modFDHE" role="2Oq$k0">
+                  <node concept="2Sf5sV" id="uc4modFDHF" role="2Oq$k0" />
+                  <node concept="3TrEf2" id="uc4modFDHG" role="2OqNvi">
+                    <ref role="3Tt5mk" to="kdzh:Kfbl0tIRdc" resolve="sourceLanguage" />
+                  </node>
+                </node>
               </node>
               <node concept="chp4Y" id="714IaVdGYWr" role="3oSUPX">
                 <ref role="cht4Q" to="3ior:4RPz6WoY4Cj" resolve="BuildProject" />
@@ -812,7 +817,12 @@
               <property role="1BlNFB" value="true" />
               <node concept="2OqwBi" id="47hmiPOFYgN" role="1m5AlR">
                 <node concept="2Rxl7S" id="47hmiPOFYgO" role="2OqNvi" />
-                <node concept="2Sf5sV" id="47hmiPOFYgP" role="2Oq$k0" />
+                <node concept="2OqwBi" id="uc4modFCMt" role="2Oq$k0">
+                  <node concept="2Sf5sV" id="uc4modFCMu" role="2Oq$k0" />
+                  <node concept="3TrEf2" id="uc4modFCMv" role="2OqNvi">
+                    <ref role="3Tt5mk" to="kdzh:Kfbl0tIRdc" resolve="sourceLanguage" />
+                  </node>
+                </node>
               </node>
               <node concept="chp4Y" id="47hmiPOFYgQ" role="3oSUPX">
                 <ref role="cht4Q" to="3ior:4RPz6WoY4Cj" resolve="BuildProject" />

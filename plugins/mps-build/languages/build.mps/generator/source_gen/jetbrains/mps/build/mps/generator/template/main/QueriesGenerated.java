@@ -1437,13 +1437,24 @@ public class QueriesGenerated extends QueryProviderBase {
     });
   }
   public static Iterable<SNode> sourceNodesQuery_10_3(final SourceSubstituteMacroNodesContext _context) {
-    return SetSequence.fromSet(((MPSModulesPartitioner.Chunk) _context.getVariable("var:chunk")).getModules()).sort(new ISelector<SNode, String>() {
+    List<SNode> mm = SetSequence.fromSet(((MPSModulesPartitioner.Chunk) _context.getVariable("var:chunk")).getModules()).sort(new ISelector<SNode, String>() {
       public String select(SNode it) {
         return SPropertyOperations.getString(it, PROPS.name$tAp1);
       }
-    }, true).where(new IWhereFilter<SNode>() {
+    }, true).toListSequence();
+    Iterable<SNode> managedGenerators = Sequence.fromIterable(SNodeOperations.ofConcept(mm, CONCEPTS.BuildMps_Generator$ru)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_Generator$ru));
+        return Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.sourceLanguage$vc9u), LINKS.managedGenerators$8HoD), LINKS.generator$$sLb)).contains(it);
+      }
+    });
+    // XXX in fact, assumption that managed generator shares descriptor file is not perfect. 
+    //   as we need to reference module files here, might be better just to remove modules with duplicating path 
+    //   One more alternative is just to exclude modules without path (as we use path anyway in the template), however 
+    //   I won't use it alone as it would imply 'owned' BM_Generator module don't have path specified, which might get  
+    //   changed as it has changed for SModule/AbstractModule/Generator 
+    return ListSequence.fromList(mm).subtract(Sequence.fromIterable(managedGenerators)).where(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return (SLinkOperations.getTarget(it, LINKS.path$g7Oh) != null);
       }
     });
   }
@@ -1522,11 +1533,14 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((List<SNode>) _context.getVariable("var:dependency"));
   }
   public static Iterable<SNode> sourceNodesQuery_12_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.group$abww), LINKS.modules$4DA0)).where(new IWhereFilter<SNode>() {
+    // generator modules that are 'managed' (i.e. deployed along with a language) don't need a dedicated 'module' entry 
+    // loadModules script moves all BM_Generator modules to top level, therefore we can face both standalone and owned BM_Generator in the group 
+    Iterable<SNode> managedGenerators = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.group$abww), LINKS.modules$4DA0), CONCEPTS.BuildMps_Generator$ru)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_Generator$ru));
+        return Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.sourceLanguage$vc9u), LINKS.managedGenerators$8HoD), LINKS.generator$$sLb)).contains(it);
       }
     });
+    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.group$abww), LINKS.modules$4DA0)).subtract(Sequence.fromIterable(managedGenerators));
   }
   public static Iterable<SNode> sourceNodesQuery_14_0(final SourceSubstituteMacroNodesContext _context) {
     List<SNode> rv = ListSequence.fromList(new ArrayList<SNode>());

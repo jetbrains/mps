@@ -49559,7 +49559,7 @@
     </node>
     <node concept="1E1JtD" id="xAoHD7hU5Y" role="3989C9">
       <property role="BnDLt" value="true" />
-      <property role="TrG5h" value="tooltips" />
+      <property role="TrG5h" value="jetbrains.mps.lang.editor.tooltips" />
       <property role="3LESm3" value="b1ab8c10-c118-4755-bf2a-cebab35cf533" />
       <node concept="398BVA" id="xAoHD7hU7r" role="3LF7KH">
         <ref role="398BVh" node="6Hpa5co69C7" resolve="mps_home" />
@@ -49570,9 +49570,9 @@
             <node concept="2Ry0Ak" id="xAoHD7hU7u" role="2Ry0An">
               <property role="2Ry0Am" value="languages" />
               <node concept="2Ry0Ak" id="xAoHD7hU7v" role="2Ry0An">
-                <property role="2Ry0Am" value="jetbrains.mps.lang.editor.tooltips" />
-                <node concept="2Ry0Ak" id="xAoHD7hU7w" role="2Ry0An">
-                  <property role="2Ry0Am" value="tooltips.mpl" />
+                <property role="2Ry0Am" value="tooltips" />
+                <node concept="2Ry0Ak" id="7L58xphhOP0" role="2Ry0An">
+                  <property role="2Ry0Am" value="jetbrains.mps.lang.editor.tooltips.mpl" />
                 </node>
               </node>
             </node>
@@ -49583,18 +49583,18 @@
         <property role="3ZfqAx" value="languageModels" />
         <property role="1Hdu6h" value="true" />
         <property role="1HemKv" value="true" />
-        <node concept="3LXTmp" id="xAoHD7hUaw" role="1HemKq">
-          <node concept="398BVA" id="xAoHD7hUaj" role="3LXTmr">
+        <node concept="3LXTmp" id="7L58xphhOPg" role="1HemKq">
+          <node concept="398BVA" id="7L58xphhOP4" role="3LXTmr">
             <ref role="398BVh" node="6Hpa5co69C7" resolve="mps_home" />
-            <node concept="2Ry0Ak" id="xAoHD7hUak" role="iGT6I">
+            <node concept="2Ry0Ak" id="7L58xphhOP5" role="iGT6I">
               <property role="2Ry0Am" value="plugins" />
-              <node concept="2Ry0Ak" id="xAoHD7hUal" role="2Ry0An">
+              <node concept="2Ry0Ak" id="7L58xphhOP6" role="2Ry0An">
                 <property role="2Ry0Am" value="mps-tooltips" />
-                <node concept="2Ry0Ak" id="xAoHD7hUam" role="2Ry0An">
+                <node concept="2Ry0Ak" id="7L58xphhOP7" role="2Ry0An">
                   <property role="2Ry0Am" value="languages" />
-                  <node concept="2Ry0Ak" id="xAoHD7hUan" role="2Ry0An">
-                    <property role="2Ry0Am" value="jetbrains.mps.lang.editor.tooltips" />
-                    <node concept="2Ry0Ak" id="xAoHD7hUao" role="2Ry0An">
+                  <node concept="2Ry0Ak" id="7L58xphhOP8" role="2Ry0An">
+                    <property role="2Ry0Am" value="tooltips" />
+                    <node concept="2Ry0Ak" id="7L58xphhOP9" role="2Ry0An">
                       <property role="2Ry0Am" value="languageModels" />
                     </node>
                   </node>
@@ -49602,13 +49602,13 @@
               </node>
             </node>
           </node>
-          <node concept="3qWCbU" id="xAoHD7hUax" role="3LXTna">
+          <node concept="3qWCbU" id="7L58xphhOPh" role="3LXTna">
             <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
           </node>
         </node>
       </node>
       <node concept="1E0d5M" id="xAoHD7hUay" role="1E1XAP">
-        <ref role="1E0d5P" node="xAoHD7hU06" resolve="tooltips.runtime" />
+        <ref role="1E0d5P" node="xAoHD7hU06" resolve="jetbrains.mps.lang.editor.tooltips.runtime" />
       </node>
       <node concept="1SiIV0" id="xAoHD7hUaz" role="3bR37C">
         <node concept="1Busua" id="xAoHD7hUa$" role="1SiIV1">
@@ -49616,11 +49616,11 @@
         </node>
       </node>
       <node concept="1yeLz9" id="xAoHD7hUa_" role="1TViLv">
-        <property role="TrG5h" value="tooltips#0361794385526429345" />
+        <property role="TrG5h" value="jetbrains.mps.lang.editor.tooltips#0361794385526429345" />
         <property role="3LESm3" value="30def3ba-305a-4257-ac3b-6c5daacb64ac" />
         <node concept="1SiIV0" id="xAoHD7hUaA" role="3bR37C">
           <node concept="3bR9La" id="xAoHD7hUaB" role="1SiIV1">
-            <ref role="3bR37D" node="xAoHD7hU06" resolve="tooltips.runtime" />
+            <ref role="3bR37D" node="xAoHD7hU06" resolve="jetbrains.mps.lang.editor.tooltips.runtime" />
           </node>
         </node>
         <node concept="1SiIV0" id="xAoHD7hUaC" role="3bR37C">
@@ -49642,20 +49642,20 @@
           <property role="3ZfqAx" value="generator/template" />
           <property role="1Hdu6h" value="true" />
           <property role="1HemKv" value="true" />
-          <node concept="3LXTmp" id="xAoHD7hUaX" role="1HemKq">
-            <node concept="398BVA" id="xAoHD7hUaI" role="3LXTmr">
+          <node concept="3LXTmp" id="7L58xphhOPw" role="1HemKq">
+            <node concept="398BVA" id="7L58xphhOPi" role="3LXTmr">
               <ref role="398BVh" node="6Hpa5co69C7" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="xAoHD7hUaJ" role="iGT6I">
+              <node concept="2Ry0Ak" id="7L58xphhOPj" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="xAoHD7hUaK" role="2Ry0An">
+                <node concept="2Ry0Ak" id="7L58xphhOPk" role="2Ry0An">
                   <property role="2Ry0Am" value="mps-tooltips" />
-                  <node concept="2Ry0Ak" id="xAoHD7hUaL" role="2Ry0An">
+                  <node concept="2Ry0Ak" id="7L58xphhOPl" role="2Ry0An">
                     <property role="2Ry0Am" value="languages" />
-                    <node concept="2Ry0Ak" id="xAoHD7hUaM" role="2Ry0An">
-                      <property role="2Ry0Am" value="jetbrains.mps.lang.editor.tooltips" />
-                      <node concept="2Ry0Ak" id="xAoHD7hUaN" role="2Ry0An">
+                    <node concept="2Ry0Ak" id="7L58xphhOPm" role="2Ry0An">
+                      <property role="2Ry0Am" value="tooltips" />
+                      <node concept="2Ry0Ak" id="7L58xphhOPn" role="2Ry0An">
                         <property role="2Ry0Am" value="generator" />
-                        <node concept="2Ry0Ak" id="xAoHD7hUaO" role="2Ry0An">
+                        <node concept="2Ry0Ak" id="7L58xphhOPo" role="2Ry0An">
                           <property role="2Ry0Am" value="template" />
                         </node>
                       </node>
@@ -49664,7 +49664,7 @@
                 </node>
               </node>
             </node>
-            <node concept="3qWCbU" id="xAoHD7hUaY" role="3LXTna">
+            <node concept="3qWCbU" id="7L58xphhOPx" role="3LXTna">
               <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
             </node>
           </node>
@@ -49673,7 +49673,7 @@
     </node>
     <node concept="1E1JtA" id="xAoHD7hU06" role="3989C9">
       <property role="BnDLt" value="true" />
-      <property role="TrG5h" value="tooltips.runtime" />
+      <property role="TrG5h" value="jetbrains.mps.lang.editor.tooltips.runtime" />
       <property role="3LESm3" value="af52e9df-2136-4ef8-81b2-bec0babe5e4c" />
       <node concept="398BVA" id="xAoHD7hU1z" role="3LF7KH">
         <ref role="398BVh" node="6Hpa5co69C7" resolve="mps_home" />
@@ -49685,8 +49685,8 @@
               <property role="2Ry0Am" value="languages" />
               <node concept="2Ry0Ak" id="xAoHD7hU1B" role="2Ry0An">
                 <property role="2Ry0Am" value="tooltips.runtime" />
-                <node concept="2Ry0Ak" id="xAoHD7hU1C" role="2Ry0An">
-                  <property role="2Ry0Am" value="tooltips.runtime.msd" />
+                <node concept="2Ry0Ak" id="7L58xphhOP2" role="2Ry0An">
+                  <property role="2Ry0Am" value="jetbrains.mps.lang.editor.tooltips.runtime.msd" />
                 </node>
               </node>
             </node>
@@ -49800,10 +49800,10 @@
         </node>
       </node>
       <node concept="m$_yB" id="6Hpa5co69Qs" role="m$_yh">
-        <ref role="m$_yA" node="xAoHD7hU5Y" resolve="tooltips" />
+        <ref role="m$_yA" node="xAoHD7hU5Y" resolve="jetbrains.mps.lang.editor.tooltips" />
       </node>
       <node concept="m$_yB" id="6Hpa5co69Qx" role="m$_yh">
-        <ref role="m$_yA" node="xAoHD7hU06" resolve="tooltips.runtime" />
+        <ref role="m$_yA" node="xAoHD7hU06" resolve="jetbrains.mps.lang.editor.tooltips.runtime" />
       </node>
       <node concept="m$_yC" id="6Hpa5co69QC" role="m$_yJ">
         <ref role="m$_y1" node="4k71ibbKLe8" resolve="jetbrains.mps.core" />

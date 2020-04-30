@@ -34,6 +34,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Deque;
@@ -249,7 +250,8 @@ public class ProjectPaneTreeHighlighter {
             ((TreeElement) treeNode).accept(myVisitor);
           }
           if (myWithChildren && treeNode.getChildCount() > 0) {
-            myQueue.add(treeNode.getChildren());
+            // get a copy of the list, just in case it's modified while TreeElement.accept process one of siblings
+            myQueue.add(new ArrayList<>(treeNode.getChildren()));
             myQueueChanged = true;
           }
         }

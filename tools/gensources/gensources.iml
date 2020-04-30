@@ -739,12 +739,12 @@
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-testing/languages/languageDesign/test/source_gen" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/../../plugins/mps-tooltips/languages">
-      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-tooltips/languages/jetbrains.mps.lang.editor.tooltips/generator/source_gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-tooltips/languages/jetbrains.mps.lang.editor.tooltips/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-tooltips/languages/tooltips.runtime/source_gen" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-tooltips/languages/jetbrains.mps.lang.editor.tooltips/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-tooltips/languages/jetbrains.mps.lang.editor.tooltips/generator/classes_gen" />
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-tooltips/languages/tooltips/generator/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-tooltips/languages/tooltips/source_gen" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-tooltips/languages/tooltips.runtime/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-tooltips/languages/tooltips/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-tooltips/languages/tooltips/generator/classes_gen" />
     </content>
     <content url="file://$MODULE_DIR$/../../plugins/mps-vcs/languages">
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-vcs/languages/mergehints/generator/source_gen" isTestSource="false" />
@@ -959,7 +959,6 @@
       <sourceFolder url="file://$MODULE_DIR$/../../samples/stateChart/languages/jetbrains.mps.samples.StateChart/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/stateChart/languages/jetbrains.mps.samples.StateChart/sandbox/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/stateChart/languages/jetbrains.mps.samples.StateChart/source_gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../samples/tooltips/tooltips.example/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/tooltips/tooltips.example/sandbox/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/tooltips/tooltips.example/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/xmlLiterals/languages/xmlLiterals/generator/source_gen" isTestSource="false" />
@@ -1146,7 +1145,6 @@
       <excludeFolder url="file://$MODULE_DIR$/../../samples/stateChart/languages/jetbrains.mps.samples.StateChart/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/stateChart/languages/jetbrains.mps.samples.StateChart/sandbox/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/tooltips/tooltips.example/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../samples/tooltips/tooltips.example/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/tooltips/tooltips.example/sandbox/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/xmlLiterals/languages/xmlLiterals/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/xmlLiterals/languages/xmlLiterals/generator/classes_gen" />

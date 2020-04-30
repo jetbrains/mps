@@ -50,6 +50,9 @@ import com.intellij.openapi.application.PathMacros;
 import java.util.ArrayList;
 import com.intellij.openapi.application.ApplicationInfo;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
+import java.util.Comparator;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -58,9 +61,9 @@ import jetbrains.mps.build.mps.util.ModuleLoader;
 import jetbrains.mps.messages.LogHandler;
 import jetbrains.mps.build.mps.util.ModuleChecker;
 import java.util.Iterator;
+import java.util.HashMap;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -308,13 +311,30 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     // project structure and layout 
     Set<ModuleData> moduleData = SetSequence.fromSet(new LinkedHashSet<ModuleData>());
     extractModules(selectedData, moduleData);
-    SNode group = _quotation_createNode_un708i_a0z0z(SetSequence.fromSet(moduleData).select(new ISelector<ModuleData, SNode>() {
+    Comparator<ModuleData> langFirst = new Comparator<ModuleData>() {
+      @Override
+      public int compare(ModuleData a, ModuleData b) {
+        SModule m1 = a.getModule();
+        SModule m2 = b.getModule();
+        if (m1.getClass() == m2.getClass()) {
+          return 0;
+        }
+        if (m1 instanceof Language) {
+          return -1;
+        }
+        if (m2 instanceof Language) {
+          return 1;
+        }
+        return 0;
+      }
+    };
+    SNode group = _quotation_createNode_un708i_a0ab0z(SetSequence.fromSet(moduleData).sort(langFirst, true).select(new ISelector<ModuleData, SNode>() {
       public SNode select(ModuleData it) {
         return createModuleNode(it);
       }
     }).toListSequence(), name);
-    SNode plugin = _quotation_createNode_un708i_a0ab0z(name, group, name, name);
-    SNode tips = _quotation_createNode_un708i_a0bb0z();
+    SNode plugin = _quotation_createNode_un708i_a0bb0z(name, group, name, name);
+    SNode tips = _quotation_createNode_un708i_a0cb0z();
 
     if (this.getDependencyKind() == DependencyStep.DependencyKind.STANDALONE) {
       ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$tgxg)).addElement(tips);
@@ -324,13 +344,13 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$tgxg)).addElement(plugin);
     ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$tgxg)).addElement(group);
     if (Objects.equals(getDependencyKind(), DependencyStep.DependencyKind.STANDALONE)) {
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(buildProject, LINKS.layout$tpCz), LINKS.children$aiMf)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(_quotation_createNode_un708i_a0a0a0ib0z(buildNumber, convertToMacroRelative(_quotation_createNode_un708i_a0a0b2a0a0a0a43a52(), SNodeOperations.cast(ListSequence.fromList(macros).findFirst(new IWhereFilter<SNode>() {
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(buildProject, LINKS.layout$tpCz), LINKS.children$aiMf)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(_quotation_createNode_un708i_a0a0a0jb0z(buildNumber, convertToMacroRelative(_quotation_createNode_un708i_a0a0b2a0a0a0a53a52(), SNodeOperations.cast(ListSequence.fromList(macros).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), "mps_home");
         }
       }), CONCEPTS.BuildFolderMacro$Ok)), tips, branding, plugin, buildNumber, dateMacro), LINKS.children$aiMf)));
     } else {
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(buildProject, LINKS.layout$tpCz), LINKS.children$aiMf)).addElement(_quotation_createNode_un708i_a0a0a0ib0z_0(name + ".zip", plugin));
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(buildProject, LINKS.layout$tpCz), LINKS.children$aiMf)).addElement(_quotation_createNode_un708i_a0a0a0jb0z_0(name + ".zip", plugin));
     }
 
     // add mps layout to the target model 
@@ -431,6 +451,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     return macroRelative;
   }
 
+  private final HashMap<SModuleReference, SNode> myLanguageNodes = new HashMap<SModuleReference, SNode>();
   @Nullable
   private SNode createModuleNode(ModuleData moduleData) {
     SModule module = moduleData.getModule();
@@ -446,15 +467,19 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     }
 
     if (module instanceof Solution) {
-      return _quotation_createNode_un708i_a0a5a53(path);
+      return _quotation_createNode_un708i_a0a5a63(path);
     } else if (module instanceof Language) {
-      return _quotation_createNode_un708i_a0a0f0jb(path);
+      SNode langNode = _quotation_createNode_un708i_a0a0a5a63(path);
+      myLanguageNodes.put(module.getModuleReference(), langNode);
+      return langNode;
     } else if (module instanceof Generator) {
+      // it's ok if we won't find it, 'reload from sources' could discover it (provided language module is there and has been loaded/extracted already) 
+      SNode srcLang = myLanguageNodes.get(((Generator) module).sourceLanguage().getSourceModuleReference());
       // at the moment, LanguagesStep uses project.getProjectModules() to populate tree, hence only standalone generator modules could end up here 
       // If, however, we would need to make sure it's top-level module here, likely would have to resort to GeneratorDescriptor.isStandaloneModule check here. 
-      return _quotation_createNode_un708i_a2a1f0jb(path);
+      return _quotation_createNode_un708i_a4a1f0kb(path, srcLang);
     } else {
-      return _quotation_createNode_un708i_a0a0f0jb_0(path);
+      return _quotation_createNode_un708i_a0a0f0kb(path);
     }
   }
 
@@ -464,7 +489,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
 
   private SNode createPath(String relativePath) {
     String[] parts = relativePath.split("/");
-    SNode path = _quotation_createNode_un708i_a0b0nb();
+    SNode path = _quotation_createNode_un708i_a0b0ob();
     SNode compositePart = SLinkOperations.getTarget(path, LINKS.compositePart$gwj7);
     for (String part : parts) {
       SPropertyOperations.set(compositePart, PROPS.head$vKDv, part);
@@ -760,7 +785,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     SNodeAccessUtil.setPropertyValue(quotedNode_2, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_1);
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_un708i_a0z0z(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_un708i_a0ab0z(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
@@ -775,7 +800,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     }
     return quotedNode_3;
   }
-  private static SNode _quotation_createNode_un708i_a0ab0z(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4) {
+  private static SNode _quotation_createNode_un708i_a0bb0z(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_5 = null;
     SNode quotedNode_6 = null;
@@ -819,7 +844,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x12dcccc092aac8d3L, "xml"), quotedNode_11);
     return quotedNode_5;
   }
-  private static SNode _quotation_createNode_un708i_a0bb0z() {
+  private static SNode _quotation_createNode_un708i_a0cb0z() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
@@ -829,7 +854,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x71731b16a201d7bcL, 0x71731b16a2289997L, "imports"), quotedNode_2);
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_un708i_a0a0a0ib0z(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4, Object parameter_5, Object parameter_6, Object parameter_7) {
+  private static SNode _quotation_createNode_un708i_a0a0a0jb0z(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4, Object parameter_5, Object parameter_6, Object parameter_7) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_8 = null;
     SNode quotedNode_9 = null;
@@ -1006,7 +1031,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     quotedNode_8.addChild(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children"), quotedNode_14);
     return quotedNode_8;
   }
-  private static SNode _quotation_createNode_un708i_a0a0b2a0a0a0a43a52() {
+  private static SNode _quotation_createNode_un708i_a0a0b2a0a0a0a53a52() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
@@ -1020,7 +1045,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart"), quotedNode_2);
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_un708i_a0a0a0ib0z_0(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_un708i_a0a0a0jb0z_0(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
@@ -1805,7 +1830,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437508L, 0x35ebd6e5b3437728L, "bootClasspath"), quotedNode_13);
     return quotedNode_3;
   }
-  private static SNode _quotation_createNode_un708i_a0a5a53(Object parameter_1) {
+  private static SNode _quotation_createNode_un708i_a0a5a63(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
@@ -1817,7 +1842,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     }
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_un708i_a0a0f0jb(Object parameter_1) {
+  private static SNode _quotation_createNode_un708i_a0a0a5a63(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
@@ -1829,7 +1854,20 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     }
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_un708i_a0a0f0jb_0(Object parameter_1) {
+  private static SNode _quotation_createNode_un708i_a4a1f0kb(Object parameter_1, Object parameter_2) {
+    PersistenceFacade facade = PersistenceFacade.getInstance();
+    SNode quotedNode_3 = null;
+    SNode quotedNode_4 = null;
+    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps"), 0x4c6db07d2e56a8b4L, "BuildMps_Generator")).getResult();
+    quotedNode_3.setProperty(MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x742675d05378e98dL, "compact"), "true");
+    SNodeAccessUtil.setReferenceTarget(quotedNode_3, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, 0xc0f2d501dbb734cL, "sourceLanguage"), (SNode) parameter_2);
+    quotedNode_4 = (SNode) parameter_1;
+    if (quotedNode_4 != null) {
+      quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d47f25L, "path"), SNodeOperations.copyIfNecessary(quotedNode_4));
+    }
+    return quotedNode_3;
+  }
+  private static SNode _quotation_createNode_un708i_a0a0f0kb(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
@@ -1841,19 +1879,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     }
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_un708i_a2a1f0jb(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_2 = null;
-    SNode quotedNode_3 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps"), 0x4c6db07d2e56a8b4L, "BuildMps_Generator")).getResult();
-    quotedNode_2.setProperty(MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x742675d05378e98dL, "compact"), "true");
-    quotedNode_3 = (SNode) parameter_1;
-    if (quotedNode_3 != null) {
-      quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d47f25L, "path"), SNodeOperations.copyIfNecessary(quotedNode_3));
-    }
-    return quotedNode_2;
-  }
-  private static SNode _quotation_createNode_un708i_a0b0nb() {
+  private static SNode _quotation_createNode_un708i_a0b0ob() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;

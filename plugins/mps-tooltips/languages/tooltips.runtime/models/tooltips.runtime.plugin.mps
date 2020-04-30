@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:34503960-04c3-48f0-a2c2-a612bc447345(tooltips.runtime.plugin)">
+<model ref="r:34503960-04c3-48f0-a2c2-a612bc447345(jetbrains.mps.lang.editor.tooltips.runtime.plugin)">
   <persistence version="9" />
   <languages>
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="0" />
@@ -13,7 +13,7 @@
     <import index="cj4x" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor(MPS.Editor/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
-    <import index="5usg" ref="r:3458bb8b-fecd-4f7c-841e-325717a43789(tooltips.runtime)" />
+    <import index="v7e1" ref="r:3458bb8b-fecd-4f7c-841e-325717a43789(jetbrains.mps.lang.editor.tooltips.runtime)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="z1c3" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" implicit="true" />
   </imports>
@@ -169,7 +169,7 @@
           <ref role="3uigEE" to="exr9:~EditorComponent" resolve="EditorComponent" />
         </node>
         <node concept="3uibUv" id="6lupAYIb9gL" role="11_B2D">
-          <ref role="3uigEE" to="5usg:7XU1fOGm9dY" resolve="TooltipManager" />
+          <ref role="3uigEE" to="v7e1:7XU1fOGm9dY" resolve="TooltipManager" />
         </node>
       </node>
       <node concept="2ShNRf" id="4uoR1I3N$3j" role="33vP2m">
@@ -179,7 +179,7 @@
             <ref role="3uigEE" to="exr9:~EditorComponent" resolve="EditorComponent" />
           </node>
           <node concept="3uibUv" id="6lupAYIbbkS" role="1pMfVU">
-            <ref role="3uigEE" to="5usg:7XU1fOGm9dY" resolve="TooltipManager" />
+            <ref role="3uigEE" to="v7e1:7XU1fOGm9dY" resolve="TooltipManager" />
           </node>
         </node>
       </node>
@@ -288,7 +288,7 @@
                                 <node concept="3clFbF" id="4uoR1I3O36P" role="3cqZAp">
                                   <node concept="2ShNRf" id="4uoR1I3O36N" role="3clFbG">
                                     <node concept="1pGfFk" id="4uoR1I3O3qL" role="2ShVmc">
-                                      <ref role="37wK5l" to="5usg:7XU1fOGmtzj" resolve="TooltipManager" />
+                                      <ref role="37wK5l" to="v7e1:7XU1fOGmtzj" resolve="TooltipManager" />
                                       <node concept="37vLTw" id="4uoR1I3O3wS" role="37wK5m">
                                         <ref role="3cqZAo" node="4uoR1I3O2Em" resolve="key" />
                                       </node>
