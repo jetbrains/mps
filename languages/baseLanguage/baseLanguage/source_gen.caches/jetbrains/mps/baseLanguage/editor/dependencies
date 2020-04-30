@@ -9351,9 +9351,9 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BigStatement_comment_action" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.DeleteCondition" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.Delete_If" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.IfStatement_FirstBrace" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.IfStatement_LastBrace" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.IfStatement_elseDelete_action" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.UnwrapStatementListContainer" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
@@ -9399,6 +9399,19 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.editor.IfStatement_FirstBrace">
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.util.Objects" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.UnwrapStatementsUtil" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.cells.AbstractCellAction" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellAction" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellActionType" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.editor.IfStatement_LastBrace">
     <classNode dependClassName="java.lang.Object" />
@@ -16906,6 +16919,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.SingleLineComment__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CommentUtil" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IVisitor" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
