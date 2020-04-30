@@ -18140,7 +18140,7 @@
               <node concept="3clFbF" id="7LqRtPB5j4$" role="3cqZAp">
                 <node concept="37vLTI" id="7LqRtPB5jU9" role="3clFbG">
                   <node concept="Xl_RD" id="7LqRtPB5k$N" role="37vLTx">
-                    <property role="Xl_RC" value="'for Type var: iterable)'" />
+                    <property role="Xl_RC" value="'for (Type var: iterable)'" />
                   </node>
                   <node concept="37vLTw" id="7LqRtPB5j4z" role="37vLTJ">
                     <ref role="3cqZAo" node="7LqRtPB4Y$W" resolve="targetName" />

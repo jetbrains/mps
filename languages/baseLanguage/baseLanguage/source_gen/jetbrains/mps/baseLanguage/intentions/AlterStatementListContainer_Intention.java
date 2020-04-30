@@ -76,7 +76,7 @@ public final class AlterStatementListContainer_Intention extends AbstractIntenti
       if (SConceptOperations.isExactly(SNodeOperations.asSConcept(myParameter), CONCEPTS.ForEachStatement$Dx)) {
         targetName = "'for (var in iterable)'";
       } else if (SConceptOperations.isExactly(SNodeOperations.asSConcept(myParameter), CONCEPTS.ForeachStatement$oA)) {
-        targetName = "'for Type var: iterable)'";
+        targetName = "'for (Type var: iterable)'";
       } else {
         targetName = myParameter.getConceptAlias() + ((SConceptOperations.isExactly(SNodeOperations.asSConcept(myParameter), CONCEPTS.DoWhileStatement$GB) ? "-While" : ""));
       }
