@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.language;
 
+import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
@@ -41,10 +42,10 @@ class LanguageExtensionRegistry {
   /*package*/ LanguageExtensionRegistry() {
   }
 
-  /*package*/ void record(@NotNull LanguageRuntime target, @NotNull Class<? extends ILanguageAspect> aspectClass, @NotNull LanguageRuntime contributor) {
-    ExtensionRecord extRecord = myExtensionRecords.get(target.getId());
+  /*package*/ void record(@NotNull SLanguageId targetId, @NotNull Class<? extends ILanguageAspect> aspectClass, @NotNull LanguageRuntime contributor) {
+    ExtensionRecord extRecord = myExtensionRecords.get(targetId);
     if (extRecord == null) {
-      myExtensionRecords.put(target.getId(), extRecord = new ExtensionRecord());
+      myExtensionRecords.put(targetId, extRecord = new ExtensionRecord());
     }
     extRecord.record(aspectClass, contributor);
     Set<SLanguageId> targets = myContributorsMap.get(contributor.getId());
@@ -52,7 +53,7 @@ class LanguageExtensionRegistry {
     if (targets == null) {
       myContributorsMap.put(contributor.getId(), targets = new HashSet<>());
     }
-    targets.add(target.getId());
+    targets.add(targetId);
   }
 
   /*package*/ void clearContributionsOf(LanguageRuntime contributor) {
@@ -62,6 +63,11 @@ class LanguageExtensionRegistry {
     }
     for (SLanguageId lid : extended) {
       ExtensionRecord rec = myExtensionRecords.get(lid);
+      if (rec == null) {
+        // though not looking possible, stacktrace in MPS-32028 suggests we can face it
+        // in some misconfiguration scenarios
+        continue;
+      }
       rec.forget(contributor);
       if (rec.isEmpty()) {
         myExtensionRecords.remove(lid);
@@ -106,15 +112,14 @@ class LanguageExtensionRegistry {
       @Override
       public void recordContribution(SLanguage targetLanguage, Class<? extends ILanguageAspect> aspectClass) {
         // the moment LR gets a chance to tell what it contributes to, its dependant modules already present
-        // there's no real need to go through LangRegistry here, could stick to MetaIdHelper.getLanguage(targetLanguage):SLanguageId
-        final LanguageRuntime language = languageRegistry.getLanguage(targetLanguage);
-        LanguageExtensionRegistry.this.record(language, aspectClass, contributorRuntime);
+        // however, module presence and CL availability don't guarantee us LanguageRuntime class was loaded successfully (MPS-31873).
+        LanguageExtensionRegistry.this.record(MetaIdHelper.getLanguage(targetLanguage), aspectClass, contributorRuntime);
       }
 
       @Override
       public void recordContribution(String targetLanguageName, String targetLanguageId, Class<? extends ILanguageAspect> aspectClass) {
-        final SLanguage l = MetaAdapterFactory.getLanguage(SLanguageId.deserialize(targetLanguageId), targetLanguageName);
-        recordContribution(l, aspectClass);
+        final SLanguageId langId = SLanguageId.deserialize(targetLanguageId);
+        LanguageExtensionRegistry.this.record(langId, aspectClass, contributorRuntime);
       }
     };
   }
