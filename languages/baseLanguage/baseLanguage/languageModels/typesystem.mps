@@ -91,7 +91,7 @@
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="alternative" index="nSUat" />
+        <child id="8118189177080264854" name="classes" index="nSUat" />
       </concept>
       <concept id="1224500799915" name="jetbrains.mps.baseLanguage.structure.BitwiseXorExpression" flags="nn" index="pVQyQ" />
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
@@ -55323,7 +55323,7 @@
                                 <node concept="2pJPED" id="4hKJ3ZGzPXE" role="28nt2d">
                                   <ref role="2pJxaS" to="tpee:72DAwHBizyl" resolve="AlternativeType" />
                                   <node concept="2pIpSj" id="4hKJ3ZGzPXF" role="2pJxcM">
-                                    <ref role="2pIpSl" to="tpee:72DAwHBizym" resolve="classes" />
+                                    <ref role="2pIpSl" to="tpee:72DAwHBizym" resolve="alternative" />
                                     <node concept="36be1Y" id="4hKJ3ZGzPXG" role="28nt2d">
                                       <node concept="36biLy" id="4hKJ3ZGzPXH" role="36be1Z">
                                         <node concept="2OqwBi" id="4hKJ3ZGzPXI" role="36biLW">
@@ -73160,7 +73160,7 @@
             </node>
           </node>
           <node concept="3Tsc0h" id="5PUUrvXDGot" role="2OqNvi">
-            <ref role="3TtcxE" to="tpee:72DAwHBizym" resolve="classes" />
+            <ref role="3TtcxE" to="tpee:72DAwHBizym" resolve="alternative" />
           </node>
         </node>
         <node concept="3clFbS" id="5PUUrvXDFec" role="2LFqv$">

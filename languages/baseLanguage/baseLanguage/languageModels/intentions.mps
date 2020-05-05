@@ -12870,7 +12870,7 @@
                           </node>
                         </node>
                         <node concept="3Tsc0h" id="4hKJ3ZGzg0x" role="2OqNvi">
-                          <ref role="3TtcxE" to="tpee:72DAwHBizym" resolve="classes" />
+                          <ref role="3TtcxE" to="tpee:72DAwHBizym" resolve="alternative" />
                         </node>
                       </node>
                       <node concept="TSZUe" id="4hKJ3ZGzkdr" role="2OqNvi">
@@ -13096,7 +13096,7 @@
                   <ref role="3cqZAo" node="2URGstPlzTI" resolve="tryStatement" />
                 </node>
                 <node concept="3TrEf2" id="4hKJ3ZG_tr$" role="2OqNvi">
-                  <ref role="3Tt5mk" to="tpee:7btLLchmV4l" resolve="finallyBody" />
+                  <ref role="3Tt5mk" to="tpee:7btLLchmV4l" resolve="finallyClause" />
                 </node>
               </node>
               <node concept="3TrEf2" id="4hKJ3ZGXP5M" role="2OqNvi">
@@ -13533,7 +13533,7 @@
                               </node>
                             </node>
                             <node concept="3Tsc0h" id="4hKJ3ZG_HdK" role="2OqNvi">
-                              <ref role="3TtcxE" to="tpee:72DAwHBizym" resolve="classes" />
+                              <ref role="3TtcxE" to="tpee:72DAwHBizym" resolve="alternative" />
                             </node>
                           </node>
                           <node concept="TSZUe" id="4hKJ3ZG_JyH" role="2OqNvi">

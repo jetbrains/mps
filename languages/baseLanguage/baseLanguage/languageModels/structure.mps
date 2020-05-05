@@ -4645,7 +4645,7 @@
       <property role="IQ2ns" value="8118189177080264854" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20lbJX" value="fLJekj6/_1__n" />
-      <property role="20kJfa" value="classes" />
+      <property role="20kJfa" value="alternative" />
       <ref role="20lvS9" node="fz3vP1H" resolve="Type" />
     </node>
   </node>
@@ -4716,7 +4716,7 @@
     </node>
     <node concept="1TJgyj" id="7btLLchmV4l" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="finallyBody" />
+      <property role="20kJfa" value="finallyClause" />
       <property role="IQ2ns" value="8276990574886367509" />
       <ref role="20lvS9" node="7btLLciI9aG" resolve="FinallyClause" />
     </node>
