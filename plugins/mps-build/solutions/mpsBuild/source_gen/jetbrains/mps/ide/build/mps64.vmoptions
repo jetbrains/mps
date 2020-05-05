@@ -25,4 +25,5 @@
 -Didea.invalidate.caches.invalidates.vfs=true
 -Dperformance.watcher.freeze.report=false
 -Didea.log.config.file=log.xml
+-Didea.initially.ask.config=true
 #-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071

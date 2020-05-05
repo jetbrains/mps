@@ -37055,6 +37055,9 @@
       <property role="2eq24a" value="true" />
       <property role="26Ea6C" value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071" />
     </node>
+    <node concept="26Ea6D" id="Rq3MOfED6S" role="2hID6k">
+      <property role="26Ea6C" value="-Didea.initially.ask.config=true" />
+    </node>
     <node concept="26EafG" id="BJYGrH08Xy" role="26Ea7d">
       <property role="26EafJ" value="lib/branding.jar" />
     </node>
@@ -37176,6 +37179,9 @@
     <node concept="26Ea6D" id="BJYGrH08XG" role="26FZ21">
       <property role="2eq24a" value="true" />
       <property role="26Ea6C" value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071" />
+    </node>
+    <node concept="26Ea6D" id="Rq3MOfED7X" role="26FZ21">
+      <property role="26Ea6C" value="-Didea.initially.ask.config=true" />
     </node>
   </node>
   <node concept="1l3spW" id="4O0hKJpjIUQ">
