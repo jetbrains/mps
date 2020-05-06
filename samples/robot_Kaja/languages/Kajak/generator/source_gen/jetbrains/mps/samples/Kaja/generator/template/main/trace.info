@@ -1532,8 +1532,8 @@
       <node id="3308300503039647645" at="157,136,158,135" concept="3" />
       <node id="3308300503039647645" at="158,135,159,142" concept="3" />
       <node id="3308300503039647645" at="159,142,160,149" concept="3" />
-      <node id="3308300503039647645" at="160,149,161,149" concept="3" />
-      <node id="3308300503039647645" at="161,149,162,136" concept="3" />
+      <node id="3308300503039647645" at="160,149,161,151" concept="3" />
+      <node id="3308300503039647645" at="161,151,162,136" concept="3" />
       <node id="3308300503039647645" at="162,136,163,14" concept="9" />
       <node id="3308300503039647645" at="29,0,31,0" concept="1" trace="Template_reduce_LeftTurn#()V" />
       <node id="3308300503039647645" at="32,0,35,0" concept="7" trace="getTemplateNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
