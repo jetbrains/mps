@@ -4,6 +4,8 @@ package jetbrains.mps.samples.ChemMastery.editor;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -12,11 +14,19 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class EquationEditorUtil {
   public static void insertNewEquationLine(SNode currentNode) {
     SNode containingEquation = SNodeOperations.getNodeAncestor(currentNode, CONCEPTS.ChemEquation$$Y, false, false);
-    while (!(SNodeOperations.getContainingLink(containingEquation).isMultiple())) {
-      containingEquation = SNodeOperations.getParent(containingEquation);
-      if (containingEquation == null) {
-        return;
+    if (containingEquation != null) {
+      while (!(SNodeOperations.getContainingLink(containingEquation).isMultiple())) {
+        containingEquation = SNodeOperations.getParent(containingEquation);
+        if (containingEquation == null) {
+          return;
+        }
       }
+    } else {
+      containingEquation = ListSequence.fromList(SNodeOperations.getNodeAncestors(currentNode, null, false)).where(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return SNodeOperations.getParent(it) != null && SNodeOperations.getParent(SNodeOperations.getParent(it)) == null;
+        }
+      }).first();
     }
     SAbstractConcept targetConcept = SNodeOperations.getContainingLink(containingEquation).getTargetConcept();
     SNodeOperations.insertNextSiblingChild(containingEquation, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(targetConcept)));
