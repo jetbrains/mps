@@ -465,6 +465,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("fullName", 0x54c4eb89feb230b0L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xbabdfbeee17fe57L).optional(false).ordered(true).multiple(false).origin("6108265972537372848").done();
     b.aggregate("edition", 0xccf01929cb3b512L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL).optional(true).ordered(true).multiple(false).origin("922958177840117010").done();
     b.aggregate("script", 0xccf01929cb3b53bL).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xbabdfbeee17fe57L).optional(false).ordered(true).multiple(false).origin("922958177840117051").done();
+    b.aggregate("vendor", 0x565a3894500dd6d9L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xbabdfbeee17fe57L).optional(true).ordered(true).multiple(false).origin("6222348044815161049").done();
     b.aggregate("welcomeLogo", 0xab80b14d5f245eeL).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL).optional(false).ordered(true).multiple(false).origin("772379520210716142").done();
     b.aggregate("editorBGUrl", 0x54a6365f080e9d69L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL).optional(true).ordered(true).multiple(false).origin("6099622527104884073").done();
     b.aggregate("plugins", 0xad72aee24a9cf29L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL).optional(true).ordered(true).multiple(false).origin("781140262677761833").done();

@@ -387,6 +387,7 @@
         <property id="3497141547781541445" name="minor" index="2OjLBK" />
         <property id="3497141547781541444" name="major" index="2OjLBL" />
         <property id="3497141547781541446" name="eap" index="2OjLBN" />
+        <child id="6222348044815161049" name="vendor" index="6lYTd" />
         <child id="6845119683729424406" name="customXmlElement" index="27hc03" />
         <child id="6845119683729337285" name="progressY" index="27hAJg" />
         <child id="6845119683729294884" name="progressColor" index="27hGoL" />
@@ -27524,6 +27525,11 @@
           <property role="3MwjfP" value="mps" />
         </node>
       </node>
+      <node concept="3_J27D" id="5pqe9hgPkjN" role="6lYTd">
+        <node concept="3Mxwew" id="5pqe9hgPkjP" role="3MwsjC">
+          <property role="3MwjfP" value="JetBrains" />
+        </node>
+      </node>
     </node>
     <node concept="3jsGME" id="3yx5FXANrTm" role="3989C9">
       <property role="TrG5h" value="mps-tips" />
@@ -37172,6 +37178,12 @@
     <node concept="26Ea6D" id="BJYGrH08XG" role="26FZ21">
       <property role="2eq24a" value="true" />
       <property role="26Ea6C" value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071" />
+    </node>
+    <node concept="26Ea6D" id="Rq3MOfED7X" role="26FZ21">
+      <property role="26Ea6C" value="-Didea.initially.ask.config=true" />
+    </node>
+    <node concept="26Ea6D" id="Rq3MOfED6S" role="2hID6k">
+      <property role="26Ea6C" value="-Didea.initially.ask.config=true" />
     </node>
   </node>
   <node concept="1l3spW" id="4O0hKJpjIUQ">
