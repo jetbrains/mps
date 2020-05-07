@@ -530,6 +530,16 @@ public class BaseLanguageStyle_StyleSheet {
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
     new ThirdLevelStyleClass(editorContext, node).apply(style, editorCell);
   }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_Placeholder(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new PlaceholderStyleClass(editorContext, node).apply(style, editorCell);
+  }
 
   public static class KeyWordStyleClass extends AbstractStyleClass {
     public KeyWordStyleClass(EditorContext editorContext, SNode node) {
@@ -1133,6 +1143,20 @@ public class BaseLanguageStyle_StyleSheet {
     @Override
     public void apply(Style style, EditorCell editorCell) {
       style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.lightGray));
+    }
+
+  }
+  public static class PlaceholderStyleClass extends AbstractStyleClass {
+    public PlaceholderStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.SELECTABLE, true);
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
+      style.set(StyleAttributes.EDITABLE, true);
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.darkGray));
     }
 
   }

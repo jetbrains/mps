@@ -576,6 +576,9 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
    */
   @Override
   public SNode findOutputNodeByInputNodeAndMappingName(SNode inputNode, String mappingName) {
+    if (mappingName == null) {
+      return null;
+    }
     SNode existing = super.findOutputNodeByInputNodeAndMappingName(inputNode, mappingName);
     if (existing != null) {
       // XXX apparently, there are models that use input nodes from a model other than that being transformed
@@ -587,6 +590,11 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
     if (inputNode == null) {
       // there are models e.g. bl.plugin, debugger.api.ui.icons, d.java.runtime.ui that pass null as inputNode
       return null;
+    }
+    TraceFacility traceSession = getTraceSession();
+    final LabelTrace lm = traceSession == null ? null : traceSession.lm(mappingName);
+    if (lm != null) {
+      lm.miss(inputNode);
     }
     SModel inputNodeModel = inputNode.getModel();
     if (inputNodeModel == getInputModel()) {
@@ -610,6 +618,9 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
     }
     CheckpointIdentity cpId = targetPoint.getIdentity();
     SNode output = modelCheckpoints.findTransformedNode(cpId, inputNode, mappingName);
+    if (lm != null) {
+      lm.xmodel(cpId.getName(), output);
+    }
     return output;
   }
 

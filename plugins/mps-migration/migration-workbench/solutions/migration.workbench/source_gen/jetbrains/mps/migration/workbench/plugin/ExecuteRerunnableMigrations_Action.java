@@ -26,13 +26,9 @@ import java.util.Set;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.SLanguageHierarchy;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import java.util.Iterator;
-import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
+import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 
 @GeneratedClass(node = "r:e303f5e6-4651-4e3c-b105-2f02e438900c(jetbrains.mps.migration.workbench.plugin)/6423044698579343489", model = "r:e303f5e6-4651-4e3c-b105-2f02e438900c(jetbrains.mps.migration.workbench.plugin)")
 public class ExecuteRerunnableMigrations_Action extends BaseAction {
@@ -89,72 +85,15 @@ public class ExecuteRerunnableMigrations_Action extends BaseAction {
               mpsProject.getRepository().getModelAccess().executeCommand(new Runnable() {
                 public void run() {
                   Set<SLanguage> languages = new SLanguageHierarchy(mpsProject.getComponent(LanguageRegistry.class), module.getUsedLanguages()).getExtended();
-                  Iterable<MigrationScript> scripts = SetSequence.fromSet(languages).translate(new ITranslator2<SLanguage, MigrationScript>() {
-                    public Iterable<MigrationScript> translate(final SLanguage it) {
-                      return new Iterable<MigrationScript>() {
-                        public Iterator<MigrationScript> iterator() {
-                          return new YieldingIterator<MigrationScript>() {
-                            private int __CP__ = 0;
-                            protected boolean moveToNext() {
-__loop__:
-                              do {
-__switch__:
-                                switch (this.__CP__) {
-                                  case -1:
-                                    assert false : "Internal error";
-                                    return false;
-                                  case 2:
-                                    this._2_ver = 0;
-                                  case 3:
-                                    if (!(_2_ver < it.getLanguageVersion())) {
-                                      this.__CP__ = 1;
-                                      break;
-                                    }
-                                    this.__CP__ = 4;
-                                    break;
-                                  case 5:
-                                    _2_ver++;
-                                    this.__CP__ = 3;
-                                    break;
-                                  case 8:
-                                    if (_7_script != null && Sequence.fromIterable(_7_script.requiresData()).isEmpty() && _7_script.isRerunnable()) {
-                                      this.__CP__ = 9;
-                                      break;
-                                    }
-                                    this.__CP__ = 5;
-                                    break;
-                                  case 10:
-                                    this.__CP__ = 5;
-                                    this.yield(_7_script);
-                                    return true;
-                                  case 0:
-                                    this.__CP__ = 2;
-                                    break;
-                                  case 4:
-                                    this._7_script = new MigrationScriptReference(it, _2_ver).resolve(mpsProject, true);
-                                    this.__CP__ = 8;
-                                    break;
-                                  case 9:
-                                    this.__CP__ = 10;
-                                    break;
-                                  default:
-                                    break __loop__;
-                                }
-                              } while (true);
-                              return false;
-                            }
-                            private int _2_ver;
-                            private MigrationScript _7_script;
-                          };
-                        }
-                      };
+                  for (SLanguage language : SetSequence.fromSet(languages)) {
+                    for (int ver = 0; ver < language.getLanguageVersion(); ver++) {
+                      MigrationScript script = new MigrationScriptReference(language, ver).resolve(mpsProject, true);
+                      if (script != null && Sequence.fromIterable(script.requiresData()).isEmpty() && script.isRerunnable()) {
+                        script.execute(module);
+                        RunMigration.updateModelVesionsIfPossible(module, language, ver, ver + 1);
+                      }
                     }
-                  });
-                  Sequence.fromIterable(scripts).visitAll(new IVisitor<MigrationScript>() {
-                    public void visit(MigrationScript it) {
-                      it.execute(module);
-                    }
-                  });
+                  }
                 }
               });
             }

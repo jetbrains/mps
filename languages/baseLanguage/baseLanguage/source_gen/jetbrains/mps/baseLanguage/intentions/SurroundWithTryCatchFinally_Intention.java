@@ -112,7 +112,7 @@ public final class SurroundWithTryCatchFinally_Intention extends AbstractIntenti
             SLinkOperations.setTarget(type, LINKS.classifier$pQ_R, it);
             SNode clause = SNodeFactoryOperations.createNewNode(CONCEPTS.MultipleCatchClause$U5, null);
             SLinkOperations.setTarget(clause, LINKS.throwable$pijh, SNodeFactoryOperations.createNewNode(CONCEPTS.CatchVariable$6W, null));
-            ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(clause, LINKS.throwable$pijh), LINKS.type$pLrO), CONCEPTS.AlternativeType$aM), LINKS.classes$Fu70)).addElement(type);
+            ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(clause, LINKS.throwable$pijh), LINKS.type$pLrO), CONCEPTS.AlternativeType$aM), LINKS.alternative$Fu70)).addElement(type);
             SPropertyOperations.assign(SLinkOperations.getTarget(clause, LINKS.throwable$pijh), PROPS.name$tAp1, "e");
             ListSequence.fromList(SLinkOperations.getChildren(tryStatement, LINKS.catchClause$4PbB)).addElement(clause);
           }
@@ -147,7 +147,7 @@ public final class SurroundWithTryCatchFinally_Intention extends AbstractIntenti
     /*package*/ static final SContainmentLink catchClause$4PbB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb116L, "catchClause");
     /*package*/ static final SContainmentLink throwable$pijh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f4L, "throwable");
     /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink classes$Fu70 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70a99a0b674a3895L, 0x70a99a0b674a3896L, "classes");
+    /*package*/ static final SContainmentLink alternative$Fu70 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70a99a0b674a3895L, 0x70a99a0b674a3896L, "alternative");
   }
 
   private static final class PROPS {

@@ -17,6 +17,7 @@ package jetbrains.mps.generator.trace;
 
 import jetbrains.mps.util.io.ModelOutputStream;
 import org.apache.log4j.Logger;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.io.ByteArrayOutputStream;
@@ -47,8 +48,9 @@ public final class LabelTrace {
   public void register(SNode input, SNode output) {
     try {
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
+      bos.write(0x01);
       final ModelOutputStream os = new ModelOutputStream(bos);
-      os.writeNodeId(input.getNodeId());
+      os.writeNodePointer(input.getReference());
       os.writeConcept(input.getConcept());
       os.writeNodeId(output.getNodeId());
       os.writeConcept(output.getConcept());
@@ -56,6 +58,39 @@ public final class LabelTrace {
       notify(bos.toByteArray());
     } catch (IOException ex) {
       Logger.getLogger(LabelTrace.class).debug("register", ex);
+      // ignore
+    }
+  }
+
+  public void miss(SNode input) {
+    try {
+      ByteArrayOutputStream bos = new ByteArrayOutputStream();
+      bos.write(0x02);
+      final ModelOutputStream os = new ModelOutputStream(bos);
+      os.writeNodePointer(input.getReference());
+      os.flush();
+      notify(bos.toByteArray());
+    } catch (IOException ex) {
+      Logger.getLogger(LabelTrace.class).debug("miss", ex);
+      // ignore
+    }
+  }
+
+  public void xmodel(String cpName, @Nullable SNode output) {
+    try {
+      ByteArrayOutputStream bos = new ByteArrayOutputStream();
+      if (output != null) {
+        bos.write(0x03);
+        final ModelOutputStream os = new ModelOutputStream(bos);
+        os.writeNodePointer(output.getReference());
+        os.flush();
+      } else {
+        bos.write(0x04);
+      }
+      bos.write(cpName.getBytes());
+      notify(bos.toByteArray());
+    } catch (IOException ex) {
+      Logger.getLogger(LabelTrace.class).debug("xmodel", ex);
       // ignore
     }
   }

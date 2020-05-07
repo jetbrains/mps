@@ -86,6 +86,8 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
           return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1183997671100());
         case "TryFinallyStatement":
           return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1183997675651());
+        case "TryUniversalStatement":
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_5181868005285685187());
         case "WhileStatement":
           return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_3450034536571911384());
         default:

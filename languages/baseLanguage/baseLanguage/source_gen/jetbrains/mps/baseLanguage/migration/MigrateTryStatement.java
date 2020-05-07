@@ -256,7 +256,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
             public void invoke(SNode before, SNode after) {
               SNodeId anchorId = before.getNodeId();
               if (anchorId instanceof jetbrains.mps.smodel.SNodeId.Regular) {
-                ((jetbrains.mps.smodel.SNode) SLinkOperations.getTarget(after, LINKS.finallyBody$4P0X)).setId(generateNodeId((jetbrains.mps.smodel.SNodeId.Regular) anchorId, FINALLY_CLAUSE_ID_GEN));
+                ((jetbrains.mps.smodel.SNode) SLinkOperations.getTarget(after, LINKS.finallyClause$4P0X)).setId(generateNodeId((jetbrains.mps.smodel.SNodeId.Regular) anchorId, FINALLY_CLAUSE_ID_GEN));
               }
             }
           });
@@ -322,7 +322,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
     n0.setProperty(PROPS.isFinal$hIht, "" + (p1));
     {
       SNodeBuilder n1 = n0.forChild(LINKS.type$pLrO).init(CONCEPTS.AlternativeType$aM);
-      n1.forChild(LINKS.classes$Fu70).initNodeList(p2, CONCEPTS.Type$IG);
+      n1.forChild(LINKS.alternative$Fu70).initNodeList(p2, CONCEPTS.Type$IG);
     }
     n0.setProperty(PROPS.name$tAp1, p3);
     return n0.getResult();
@@ -375,7 +375,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TryUniversalStatement$80);
     n0.forChild(LINKS.body$4P0u).initNode(p0, CONCEPTS.StatementList$TN, true);
     n0.forChild(LINKS.catchClause$4PbB).initNodeList(p1, CONCEPTS.MultipleCatchClause$U5);
-    n0.forChild(LINKS.finallyBody$4P0X).initNull();
+    n0.forChild(LINKS.finallyClause$4P0X).initNull();
     return n0.getResult();
   }
   private static SNode _quotation_createNode_5idd3j_a0a3a11() {
@@ -409,7 +409,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
     n0.forChild(LINKS.body$4P0u).initNode(p0, CONCEPTS.StatementList$TN, true);
     n0.forChild(LINKS.catchClause$4PbB).initNodeList(p1, CONCEPTS.MultipleCatchClause$U5);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.finallyBody$4P0X).init(CONCEPTS.FinallyClause$qj);
+      SNodeBuilder n1 = n0.forChild(LINKS.finallyClause$4P0X).init(CONCEPTS.FinallyClause$qj);
       n1.forChild(LINKS.finallyBody$oGY4).initNode(p2, CONCEPTS.StatementList$TN, true);
     }
     return n0.getResult();
@@ -435,10 +435,10 @@ public class MigrateTryStatement extends MigrationScriptBase {
     /*package*/ static final SContainmentLink catchClause$jGNt = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause");
     /*package*/ static final SContainmentLink catchClause$GIrD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10f39abd97cL, "catchClause");
     /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink finallyBody$4P0X = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyBody");
+    /*package*/ static final SContainmentLink finallyClause$4P0X = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
     /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
     /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink classes$Fu70 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70a99a0b674a3895L, 0x70a99a0b674a3896L, "classes");
+    /*package*/ static final SContainmentLink alternative$Fu70 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70a99a0b674a3895L, 0x70a99a0b674a3896L, "alternative");
     /*package*/ static final SContainmentLink throwable$pijh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f4L, "throwable");
     /*package*/ static final SContainmentLink catchBody$pijK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f5L, "catchBody");
     /*package*/ static final SContainmentLink body$4P0u = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb114L, "body");

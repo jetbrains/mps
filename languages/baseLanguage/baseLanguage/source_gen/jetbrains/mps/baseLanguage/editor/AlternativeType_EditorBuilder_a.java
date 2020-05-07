@@ -57,17 +57,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new classesListHandler_u6hstu_a0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new alternativeListHandler_u6hstu_a0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
-    editorCell.setCellId("refNodeList_classes");
+    editorCell.setCellId("refNodeList_alternative");
     editorCell.setSRole(handler.getElementSRole());
     return editorCell;
   }
-  private static class classesListHandler_u6hstu_a0 extends RefNodeListHandler {
+  private static class alternativeListHandler_u6hstu_a0 extends RefNodeListHandler {
     @NotNull
     private SNode myNode;
 
-    public classesListHandler_u6hstu_a0(SNode ownerNode, EditorContext context) {
+    public alternativeListHandler_u6hstu_a0(SNode ownerNode, EditorContext context) {
       super(context, false);
       myNode = ownerNode;
     }
@@ -77,7 +77,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.classes$Fu70;
+      return LINKS.alternative$Fu70;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.Type$IG;
@@ -90,7 +90,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(classesListHandler_u6hstu_a0.this.getNode(), LINKS.classes$Fu70));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(alternativeListHandler_u6hstu_a0.this.getNode(), LINKS.alternative$Fu70));
       try {
         EditorCell emptyCell = null;
         emptyCell = createError_0();
@@ -154,7 +154,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink classes$Fu70 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70a99a0b674a3895L, 0x70a99a0b674a3896L, "classes");
+    /*package*/ static final SContainmentLink alternative$Fu70 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70a99a0b674a3895L, 0x70a99a0b674a3896L, "alternative");
   }
 
   private static final class CONCEPTS {

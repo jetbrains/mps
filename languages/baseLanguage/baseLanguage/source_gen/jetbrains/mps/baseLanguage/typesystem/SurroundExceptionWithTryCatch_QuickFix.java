@@ -78,7 +78,7 @@ public class SurroundExceptionWithTryCatch_QuickFix extends QuickFix_Runtime {
       {
         SNodeBuilder n2 = n1.forChild(LINKS.type$pLrO).init(CONCEPTS.AlternativeType$aM);
         {
-          SNodeBuilder n3 = n2.forChild(LINKS.classes$Fu70).initNode(p0, CONCEPTS.Type$IG, false);
+          SNodeBuilder n3 = n2.forChild(LINKS.alternative$Fu70).initNode(p0, CONCEPTS.Type$IG, false);
         }
       }
       n1.setProperty(PROPS.name$tAp1, "e");
@@ -111,7 +111,7 @@ public class SurroundExceptionWithTryCatch_QuickFix extends QuickFix_Runtime {
     /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
     /*package*/ static final SContainmentLink catchBody$pijK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f5L, "catchBody");
     /*package*/ static final SContainmentLink throwable$pijh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f4L, "throwable");
-    /*package*/ static final SContainmentLink classes$Fu70 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70a99a0b674a3895L, 0x70a99a0b674a3896L, "classes");
+    /*package*/ static final SContainmentLink alternative$Fu70 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70a99a0b674a3895L, 0x70a99a0b674a3896L, "alternative");
   }
 
   private static final class PROPS {

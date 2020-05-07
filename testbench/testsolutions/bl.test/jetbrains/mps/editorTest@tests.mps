@@ -203,7 +203,7 @@
         <child id="1732176556423038857" name="lines" index="2lOMFJ" />
       </concept>
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1239709250944" name="jetbrains.mps.baseLanguage.structure.PrefixIncrementExpression" flags="nn" index="2$rviw" />
@@ -479,7 +479,7 @@
       </concept>
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
-        <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
+        <child id="8276990574886367509" name="finallyClause" index="1zxBo6" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
@@ -35144,12 +35144,12 @@
             <node concept="1wplmZ" id="chyDR0GAIiX" role="1zxBo6">
               <node concept="3clFbS" id="434bMCwsRIU" role="1wplMD" />
             </node>
-            <node concept="LIFWc" id="1GH7oWKgc5D" role="lGtFl">
+            <node concept="LIFWc" id="4vDGnVXzdC9" role="lGtFl">
               <property role="ZRATv" value="true" />
               <property role="OXtK3" value="true" />
               <property role="p6zMq" value="3" />
               <property role="p6zMs" value="3" />
-              <property role="LIFWd" value="Constant_94yrau_a0a0_0" />
+              <property role="LIFWd" value="ALIAS_EDITOR_COMPONENT" />
             </node>
           </node>
         </node>
@@ -68820,12 +68820,12 @@
                   </node>
                 </node>
               </node>
-              <node concept="LIFWc" id="1GH7oWKcN73" role="lGtFl">
+              <node concept="LIFWc" id="4vDGnVXpQ0y" role="lGtFl">
                 <property role="ZRATv" value="true" />
                 <property role="OXtK3" value="true" />
                 <property role="p6zMq" value="0" />
                 <property role="p6zMs" value="0" />
-                <property role="LIFWd" value="Error_94yrau_a4a" />
+                <property role="LIFWd" value="Constant_94yrau_a4a" />
               </node>
             </node>
           </node>
@@ -71678,12 +71678,12 @@
               <node concept="1wplmZ" id="2izvNjVzD_d" role="1zxBo6">
                 <node concept="3clFbS" id="2izvNjVzD_e" role="1wplMD" />
               </node>
-              <node concept="LIFWc" id="2izvNjVzDFU" role="lGtFl">
+              <node concept="LIFWc" id="4vDGnVXyDWO" role="lGtFl">
                 <property role="LIFWa" value="0" />
                 <property role="OXtK3" value="true" />
                 <property role="p6zMq" value="0" />
                 <property role="p6zMs" value="0" />
-                <property role="LIFWd" value="Constant_94yrau_a0a0_0" />
+                <property role="LIFWd" value="ALIAS_EDITOR_COMPONENT" />
               </node>
             </node>
           </node>

@@ -50,8 +50,8 @@ public final class ReturnStatement__BehaviorDescriptor extends BaseBHDescriptor 
       }
       if (SNodeOperations.isInstanceOf(current, CONCEPTS.TryUniversalStatement$80)) {
         SNode tryStatement = SNodeOperations.cast(current, CONCEPTS.TryUniversalStatement$80);
-        if ((SLinkOperations.getTarget(tryStatement, LINKS.finallyBody$4P0X) != null) && SLinkOperations.getTarget(SLinkOperations.getTarget(tryStatement, LINKS.finallyBody$4P0X), LINKS.finallyBody$oGY4) != SNodeOperations.getParent(__thisNode__)) {
-          ListSequence.fromList(result).addElement(SLinkOperations.getTarget(SLinkOperations.getTarget(tryStatement, LINKS.finallyBody$4P0X), LINKS.finallyBody$oGY4));
+        if ((SLinkOperations.getTarget(tryStatement, LINKS.finallyClause$4P0X) != null) && SLinkOperations.getTarget(SLinkOperations.getTarget(tryStatement, LINKS.finallyClause$4P0X), LINKS.finallyBody$oGY4) != SNodeOperations.getParent(__thisNode__)) {
+          ListSequence.fromList(result).addElement(SLinkOperations.getTarget(SLinkOperations.getTarget(tryStatement, LINKS.finallyClause$4P0X), LINKS.finallyBody$oGY4));
         }
       }
       current = SNodeOperations.getParent(current);
@@ -156,7 +156,7 @@ public final class ReturnStatement__BehaviorDescriptor extends BaseBHDescriptor 
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink finallyBody$LPze = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacecb713L, "finallyBody");
-    /*package*/ static final SContainmentLink finallyBody$4P0X = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyBody");
+    /*package*/ static final SContainmentLink finallyClause$4P0X = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
     /*package*/ static final SContainmentLink finallyBody$oGY4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x72ddc71312b892acL, 0x72ddc71312b89bbaL, "finallyBody");
     /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
     /*package*/ static final SContainmentLink expression$EsbK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");

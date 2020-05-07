@@ -272,6 +272,13 @@ public class BL_node_factories {
       }
     }
   }
+  public static class NodeFactory_5181868005285685187 implements NodeFactory {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Statement$ok)) {
+        ListSequence.fromList(SLinkOperations.getChildren(SNodeFactoryOperations.setNewChild(newNode, LINKS.body$4P0u, CONCEPTS.StatementList$TN), LINKS.statement$WHn8)).addElement(SNodeOperations.cast(sampleNode, CONCEPTS.Statement$ok));
+      }
+    }
+  }
   public static class NodeFactory_1159218040860 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Expression$TP)) {
@@ -306,9 +313,9 @@ public class BL_node_factories {
   }
   public static class NodeFactory_5649551303341182515 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SLinkOperations.setTarget(newNode, LINKS.variable$H$_G, _quotation_createNode_ns07og_a0a0a0z());
+      SLinkOperations.setTarget(newNode, LINKS.variable$H$_G, _quotation_createNode_ns07og_a0a0a0ab());
     }
-    private static SNode _quotation_createNode_ns07og_a0a0a0z() {
+    private static SNode _quotation_createNode_ns07og_a0a0a0ab() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
       quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7efL, "LocalVariableDeclaration")).getResult();
@@ -324,10 +331,10 @@ public class BL_node_factories {
         }
       }
       if ((SLinkOperations.getTarget(newNode, LINKS.type$pLrO) == null)) {
-        SLinkOperations.setTarget(newNode, LINKS.type$pLrO, _quotation_createNode_ns07og_a0a0a1a0ab());
+        SLinkOperations.setTarget(newNode, LINKS.type$pLrO, _quotation_createNode_ns07og_a0a0a1a0bb());
       }
     }
-    private static SNode _quotation_createNode_ns07og_a0a0a1a0ab() {
+    private static SNode _quotation_createNode_ns07og_a0a0a1a0bb() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_1 = null;
       quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d22479L, "IntegerType")).getResult();
@@ -471,6 +478,7 @@ public class BL_node_factories {
     /*package*/ static final SContainmentLink condition$h1yE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11232674988L, 0x11232679422L, "condition");
     /*package*/ static final SContainmentLink body$9KDK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f383e83d4L, "body");
     /*package*/ static final SContainmentLink body$TQ1f = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacec83aeL, "body");
+    /*package*/ static final SContainmentLink body$4P0u = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb114L, "body");
     /*package*/ static final SContainmentLink expression$bUD_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
     /*package*/ static final SContainmentLink expression$egh9 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d6d026f5fL, 0x11d6d026f62L, "expression");
     /*package*/ static final SContainmentLink expression$7Rjy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");

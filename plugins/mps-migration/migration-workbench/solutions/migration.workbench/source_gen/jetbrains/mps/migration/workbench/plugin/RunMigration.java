@@ -20,6 +20,9 @@ import com.intellij.openapi.progress.ProgressIndicator;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.util.WaitForProgressToShow;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.smodel.SModelInternal;
 
 @GeneratedClass(node = "r:e303f5e6-4651-4e3c-b105-2f02e438900c(jetbrains.mps.migration.workbench.plugin)/442258911877355780", model = "r:e303f5e6-4651-4e3c-b105-2f02e438900c(jetbrains.mps.migration.workbench.plugin)")
 public class RunMigration extends BaseAction {
@@ -58,6 +61,7 @@ public class RunMigration extends BaseAction {
               RunMigration.this.myProject.getRepository().getModelAccess().executeCommand(new Runnable() {
                 public void run() {
                   myScript.execute(module);
+                  updateModelVesionsIfPossible(module, myScript.getReference().getLanguage(), myScript.getReference().getFromVersion(), myScript.getReference().getFromVersion() + 1);
                 }
               });
             }
@@ -69,5 +73,13 @@ public class RunMigration extends BaseAction {
         }
       }
     });
+  }
+  public static void updateModelVesionsIfPossible(SModule module, SLanguage language, int from, int to) {
+    Iterable<SModel> models = module.getModels();
+    for (SModelInternal model : Sequence.fromIterable(models).ofType(SModelInternal.class)) {
+      if (model.getLanguageImportVersion(language) == from) {
+        model.setLanguageImportVersion(language, to);
+      }
+    }
   }
 }
