@@ -59,6 +59,8 @@ teamcity-info.xml
 /plugins/github
 /plugins/vcs-changeReminder
 /plugins/platform-images
+/plugins/laf-macos
+/plugins/laf-win10
 
 # Main libraries folder: dependencies are downloaded before complilation with task 'install' from build/getDependencies.xml
 /lib/
