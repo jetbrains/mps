@@ -3750,6 +3750,29 @@
                             </node>
                           </node>
                         </node>
+                        <node concept="3cpWs8" id="7w0pMwk9vFw" role="3cqZAp">
+                          <node concept="3cpWsn" id="7w0pMwk9vFx" role="3cpWs9">
+                            <property role="TrG5h" value="langHierarchy" />
+                            <node concept="3uibUv" id="7w0pMwk9omQ" role="1tU5fm">
+                              <ref role="3uigEE" to="w1kc:~SLanguageHierarchy" resolve="SLanguageHierarchy" />
+                            </node>
+                            <node concept="2ShNRf" id="7w0pMwk9vFy" role="33vP2m">
+                              <node concept="1pGfFk" id="7w0pMwk9vFz" role="2ShVmc">
+                                <ref role="37wK5l" to="w1kc:~SLanguageHierarchy.&lt;init&gt;(jetbrains.mps.smodel.language.LanguageRegistry,java.util.Collection)" resolve="SLanguageHierarchy" />
+                                <node concept="37vLTw" id="7w0pMwk9vF$" role="37wK5m">
+                                  <ref role="3cqZAo" node="6X$LxHCKPDa" resolve="langReg" />
+                                </node>
+                                <node concept="2YIFZM" id="7w0pMwk9vF_" role="37wK5m">
+                                  <ref role="1Pybhc" to="w1kc:~SModelOperations" resolve="SModelOperations" />
+                                  <ref role="37wK5l" to="w1kc:~SModelOperations.getAllLanguageImports(org.jetbrains.mps.openapi.model.SModel)" resolve="getAllLanguageImports" />
+                                  <node concept="37vLTw" id="7w0pMwk9vFA" role="37wK5m">
+                                    <ref role="3cqZAo" node="2qqFBg4MWfP" resolve="targetModel" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
                         <node concept="3cpWs8" id="2qqFBg4Nctg" role="3cqZAp">
                           <node concept="3cpWsn" id="2qqFBg4Ncth" role="3cpWs9">
                             <property role="TrG5h" value="allVisibleLanguages" />
@@ -3760,23 +3783,29 @@
                               </node>
                             </node>
                             <node concept="2OqwBi" id="2qqFBg4Ncti" role="33vP2m">
-                              <node concept="2ShNRf" id="2qqFBg4Nctj" role="2Oq$k0">
-                                <node concept="1pGfFk" id="2qqFBg4Nctk" role="2ShVmc">
-                                  <ref role="37wK5l" to="w1kc:~SLanguageHierarchy.&lt;init&gt;(jetbrains.mps.smodel.language.LanguageRegistry,java.util.Collection)" resolve="SLanguageHierarchy" />
-                                  <node concept="37vLTw" id="6X$LxHCKQ_H" role="37wK5m">
-                                    <ref role="3cqZAo" node="6X$LxHCKPDa" resolve="langReg" />
-                                  </node>
-                                  <node concept="2YIFZM" id="2qqFBg4Nctl" role="37wK5m">
-                                    <ref role="1Pybhc" to="w1kc:~SModelOperations" resolve="SModelOperations" />
-                                    <ref role="37wK5l" to="w1kc:~SModelOperations.getAllLanguageImports(org.jetbrains.mps.openapi.model.SModel)" resolve="getAllLanguageImports" />
-                                    <node concept="37vLTw" id="2qqFBg4Nctm" role="37wK5m">
-                                      <ref role="3cqZAo" node="2qqFBg4MWfP" resolve="targetModel" />
-                                    </node>
-                                  </node>
-                                </node>
+                              <node concept="37vLTw" id="7w0pMwk9vFB" role="2Oq$k0">
+                                <ref role="3cqZAo" node="7w0pMwk9vFx" resolve="langHierarchy" />
                               </node>
                               <node concept="liA8E" id="2qqFBg4Nctn" role="2OqNvi">
                                 <ref role="37wK5l" to="w1kc:~SLanguageHierarchy.getExtended()" resolve="getExtended" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3clFbF" id="7w0pMwk9CV_" role="3cqZAp">
+                          <node concept="2OqwBi" id="7w0pMwk9EbW" role="3clFbG">
+                            <node concept="37vLTw" id="7w0pMwk9CVz" role="2Oq$k0">
+                              <ref role="3cqZAo" node="2qqFBg4Ncth" resolve="allVisibleLanguages" />
+                            </node>
+                            <node concept="liA8E" id="7w0pMwk9Fnj" role="2OqNvi">
+                              <ref role="37wK5l" to="33ny:~Set.addAll(java.util.Collection)" resolve="addAll" />
+                              <node concept="2OqwBi" id="7w0pMwk9BjM" role="37wK5m">
+                                <node concept="37vLTw" id="7w0pMwk9Aj2" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="7w0pMwk9vFx" resolve="langHierarchy" />
+                                </node>
+                                <node concept="liA8E" id="7w0pMwk9CcH" role="2OqNvi">
+                                  <ref role="37wK5l" to="w1kc:~SLanguageHierarchy.getAggregated()" resolve="getAggregated" />
+                                </node>
                               </node>
                             </node>
                           </node>

@@ -330,7 +330,9 @@ public final class CopyPasteUtil {
           }
         }
         LanguageRegistry langReg = mpsProject.getComponent(LanguageRegistry.class);
-        Set<SLanguage> allVisibleLanguages = new SLanguageHierarchy(langReg, jetbrains.mps.smodel.SModelOperations.getAllLanguageImports(targetModel)).getExtended();
+        SLanguageHierarchy langHierarchy = new SLanguageHierarchy(langReg, jetbrains.mps.smodel.SModelOperations.getAllLanguageImports(targetModel));
+        Set<SLanguage> allVisibleLanguages = langHierarchy.getExtended();
+        allVisibleLanguages.addAll(langHierarchy.getAggregated());
         for (SLanguage lang : necessaryLanguages) {
           if (!(allVisibleLanguages.contains(lang))) {
             additionalLanguages.add(lang);
