@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,13 @@
  */
 package jetbrains.mps.generator.runtime;
 
-import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.template.ITemplateGenerator;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.Collection;
@@ -30,17 +34,42 @@ import java.util.Collections;
  * @since 3.3
  */
 public abstract class MapConfigBase implements TemplateMappingConfiguration {
-
   private final SNodeReference myMapConfigNode;
   private final String myName;
   private final TemplateModel myTemplateModel;
   private final boolean myTopPriority;
 
+  protected final SConcept[] myConcepts;
+  protected final SProperty[] myProperties;
+  protected final SReferenceLink[] myAssociationLinks;
+  protected final SContainmentLink[] myAggregationLinks;
+
+  /**
+   * @deprecated shall use {@link #MapConfigBase(SNodeReference, String, TemplateModel, boolean, MetaObjectContainer)} instead
+   *             Code generated with 20.1 uses this cons but doesn't access fields that are null.
+   */
+  @Deprecated
+  @ToRemove(version = 2020.2)
   protected MapConfigBase(@NotNull SNodeReference mcNode, @NotNull String name, @NotNull TemplateModel templateModel, boolean topPri) {
     myMapConfigNode = mcNode;
     myName = name;
     myTemplateModel = templateModel;
     myTopPriority = topPri;
+    myConcepts = null;
+    myProperties = null;
+    myAssociationLinks = null;
+    myAggregationLinks = null;
+  }
+
+  protected MapConfigBase(@NotNull SNodeReference mcNode, @NotNull String name, @NotNull TemplateModel templateModel, boolean topPri, MetaObjectContainer moc) {
+    myMapConfigNode = mcNode;
+    myName = name;
+    myTemplateModel = templateModel;
+    myTopPriority = topPri;
+    myConcepts = moc.concepts();
+    myProperties = moc.properties();
+    myAssociationLinks = moc.associations();
+    myAggregationLinks = moc.aggregations();
   }
 
   /**

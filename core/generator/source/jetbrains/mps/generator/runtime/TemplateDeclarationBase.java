@@ -42,6 +42,13 @@ public abstract class TemplateDeclarationBase implements TemplateDeclaration {
     myAggregationLinks = initAggregationLinks();
   }
 
+  protected TemplateDeclarationBase(MetaObjectContainer metaObjectContainer) {
+    myConcepts = metaObjectContainer.concepts();
+    myProperties = metaObjectContainer.properties();
+    myAssociationLinks = metaObjectContainer.associations();
+    myAggregationLinks = metaObjectContainer.aggregations();
+  }
+
   /**
    * Gives a presentation for an outcome of a TemplateFragment that produces sequence of nodes
    * @param aggregationIndex index in myAggregationLinks

@@ -15,11 +15,40 @@
  */
 package jetbrains.mps.generator.runtime;
 
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+
 /**
  * Base implementation of {@link jetbrains.mps.generator.runtime.TemplateSwitchMapping} to use as superclass in generated code
  * to facilitate future API changes
  * @author Artem Tikhomirov
  */
 public abstract class TemplateSwitchBase implements TemplateSwitchMapping {
+  protected final SConcept[] myConcepts;
+  protected final SProperty[] myProperties;
+  protected final SReferenceLink[] myAssociationLinks;
+  protected final SContainmentLink[] myAggregationLinks;
 
+  /**
+   * @deprecated code generated with 2020.1 implies no-arg cons in this class; drop once 2020.2 is out.
+   *             null values are perfectly ok as there's no access to these fields in 2020.1-generated subclasses
+   */
+  @Deprecated
+  @ToRemove(version = 2020.2)
+  protected TemplateSwitchBase() {
+    myConcepts = null;
+    myProperties = null;
+    myAssociationLinks = null;
+    myAggregationLinks = null;
+  }
+
+  protected TemplateSwitchBase(MetaObjectContainer metaObjectContainer) {
+    myConcepts = metaObjectContainer.concepts();
+    myProperties = metaObjectContainer.properties();
+    myAssociationLinks = metaObjectContainer.associations();
+    myAggregationLinks = metaObjectContainer.aggregations();
+  }
 }

@@ -3792,6 +3792,9 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object varMacro_Value_12_0(final TemplateVarContext _context) {
     return GenUtil.createMetaObjectHelper(_context, _context.getNode());
   }
+  public static Object varMacro_Value_13_0(final TemplateVarContext _context) {
+    return GenUtil.createMetaObjectHelper(_context, _context.getNode());
+  }
   public static Object varMacro_Value_17_0(final TemplateVarContext _context) {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.template$yiTA), LINKS.parameter$AB01);
   }
@@ -3800,6 +3803,9 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object varMacro_Value_27_0(final TemplateVarContext _context) {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.templateCall$RjMM), LINKS.template$yiTA), LINKS.parameter$AB01);
+  }
+  public static Object varMacro_Value_31_0(final TemplateVarContext _context) {
+    return GenUtil.createMetaObjectHelper(_context, _context.getNode());
   }
   public static Object varMacro_Value_42_0(final TemplateVarContext _context) {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.template$yiTA), LINKS.parameter$AB01);
@@ -7038,42 +7044,44 @@ public class QueriesGenerated extends QueryProviderBase {
     vvqMethods.put("2409421742521903318", new VVQ(2));
     vvqMethods.put("3872488684040150086", new VVQ(3));
     vvqMethods.put("3890784291937083403", new VVQ(4));
-    vvqMethods.put("2409421742521903321", new VVQ(5));
-    vvqMethods.put("2409421742521903324", new VVQ(6));
-    vvqMethods.put("2409421742521903327", new VVQ(7));
-    vvqMethods.put("2409421742521903330", new VVQ(8));
-    vvqMethods.put("2409421742521903333", new VVQ(9));
-    vvqMethods.put("2409421742521903336", new VVQ(10));
-    vvqMethods.put("2409421742521903339", new VVQ(11));
-    vvqMethods.put("3890784291938560624", new VVQ(12));
-    vvqMethods.put("3890784291938578692", new VVQ(13));
-    vvqMethods.put("3890784291938569605", new VVQ(14));
-    vvqMethods.put("3890784291938574335", new VVQ(15));
-    vvqMethods.put("3890784291938632648", new VVQ(16));
-    vvqMethods.put("3890784291938637005", new VVQ(17));
-    vvqMethods.put("3890784291938641362", new VVQ(18));
-    vvqMethods.put("3890784291938645756", new VVQ(19));
-    vvqMethods.put("3890784291938664312", new VVQ(20));
-    vvqMethods.put("3890784291938655062", new VVQ(21));
-    vvqMethods.put("3890784291938659501", new VVQ(22));
-    vvqMethods.put("3890784291938673628", new VVQ(23));
-    vvqMethods.put("3890784291938679546", new VVQ(24));
-    vvqMethods.put("3890784291938685760", new VVQ(25));
-    vvqMethods.put("3890784291938755893", new VVQ(26));
-    vvqMethods.put("3890784291938753113", new VVQ(27));
-    vvqMethods.put("3890784291938736144", new VVQ(28));
-    vvqMethods.put("3890784291938744638", new VVQ(29));
-    vvqMethods.put("3890784291938727574", new VVQ(30));
-    vvqMethods.put("3890784291938718843", new VVQ(31));
-    vvqMethods.put("3890784291938707624", new VVQ(32));
-    vvqMethods.put("3890784291938712749", new VVQ(33));
-    vvqMethods.put("3890784291938702437", new VVQ(34));
-    vvqMethods.put("3890784291938696519", new VVQ(35));
-    vvqMethods.put("3890784291938690601", new VVQ(36));
-    vvqMethods.put("2409421742521903342", new VVQ(37));
-    vvqMethods.put("2409421742521903347", new VVQ(38));
-    vvqMethods.put("2409421742521903352", new VVQ(39));
-    vvqMethods.put("2409421742521903357", new VVQ(40));
+    vvqMethods.put("4620924672251150313", new VVQ(5));
+    vvqMethods.put("2409421742521903321", new VVQ(6));
+    vvqMethods.put("2409421742521903324", new VVQ(7));
+    vvqMethods.put("2409421742521903327", new VVQ(8));
+    vvqMethods.put("4620924672251075762", new VVQ(9));
+    vvqMethods.put("2409421742521903330", new VVQ(10));
+    vvqMethods.put("2409421742521903333", new VVQ(11));
+    vvqMethods.put("2409421742521903336", new VVQ(12));
+    vvqMethods.put("2409421742521903339", new VVQ(13));
+    vvqMethods.put("3890784291938560624", new VVQ(14));
+    vvqMethods.put("3890784291938578692", new VVQ(15));
+    vvqMethods.put("3890784291938569605", new VVQ(16));
+    vvqMethods.put("3890784291938574335", new VVQ(17));
+    vvqMethods.put("3890784291938632648", new VVQ(18));
+    vvqMethods.put("3890784291938637005", new VVQ(19));
+    vvqMethods.put("3890784291938641362", new VVQ(20));
+    vvqMethods.put("3890784291938645756", new VVQ(21));
+    vvqMethods.put("3890784291938664312", new VVQ(22));
+    vvqMethods.put("3890784291938655062", new VVQ(23));
+    vvqMethods.put("3890784291938659501", new VVQ(24));
+    vvqMethods.put("3890784291938673628", new VVQ(25));
+    vvqMethods.put("3890784291938679546", new VVQ(26));
+    vvqMethods.put("3890784291938685760", new VVQ(27));
+    vvqMethods.put("3890784291938755893", new VVQ(28));
+    vvqMethods.put("3890784291938753113", new VVQ(29));
+    vvqMethods.put("3890784291938736144", new VVQ(30));
+    vvqMethods.put("3890784291938744638", new VVQ(31));
+    vvqMethods.put("3890784291938727574", new VVQ(32));
+    vvqMethods.put("3890784291938718843", new VVQ(33));
+    vvqMethods.put("3890784291938707624", new VVQ(34));
+    vvqMethods.put("3890784291938712749", new VVQ(35));
+    vvqMethods.put("3890784291938702437", new VVQ(36));
+    vvqMethods.put("3890784291938696519", new VVQ(37));
+    vvqMethods.put("3890784291938690601", new VVQ(38));
+    vvqMethods.put("2409421742521903342", new VVQ(39));
+    vvqMethods.put("2409421742521903347", new VVQ(40));
+    vvqMethods.put("2409421742521903352", new VVQ(41));
+    vvqMethods.put("2409421742521903357", new VVQ(42));
   }
   @NotNull
   @Override
@@ -7103,76 +7111,80 @@ public class QueriesGenerated extends QueryProviderBase {
         case 4:
           return QueriesGenerated.varMacro_Value_12_0(ctx);
         case 5:
-          return QueriesGenerated.varMacro_Value_17_0(ctx);
+          return QueriesGenerated.varMacro_Value_13_0(ctx);
         case 6:
-          return QueriesGenerated.varMacro_Value_26_0(ctx);
+          return QueriesGenerated.varMacro_Value_17_0(ctx);
         case 7:
-          return QueriesGenerated.varMacro_Value_27_0(ctx);
+          return QueriesGenerated.varMacro_Value_26_0(ctx);
         case 8:
-          return QueriesGenerated.varMacro_Value_42_0(ctx);
+          return QueriesGenerated.varMacro_Value_27_0(ctx);
         case 9:
-          return QueriesGenerated.varMacro_Value_49_0(ctx);
+          return QueriesGenerated.varMacro_Value_31_0(ctx);
         case 10:
-          return QueriesGenerated.varMacro_Value_53_0(ctx);
+          return QueriesGenerated.varMacro_Value_42_0(ctx);
         case 11:
-          return QueriesGenerated.varMacro_Value_53_1(ctx);
+          return QueriesGenerated.varMacro_Value_49_0(ctx);
         case 12:
-          return QueriesGenerated.varMacro_Value_56_0(ctx);
+          return QueriesGenerated.varMacro_Value_53_0(ctx);
         case 13:
-          return QueriesGenerated.varMacro_Value_56_1(ctx);
+          return QueriesGenerated.varMacro_Value_53_1(ctx);
         case 14:
-          return QueriesGenerated.varMacro_Value_56_2(ctx);
+          return QueriesGenerated.varMacro_Value_56_0(ctx);
         case 15:
-          return QueriesGenerated.varMacro_Value_56_3(ctx);
+          return QueriesGenerated.varMacro_Value_56_1(ctx);
         case 16:
-          return QueriesGenerated.varMacro_Value_56_4(ctx);
+          return QueriesGenerated.varMacro_Value_56_2(ctx);
         case 17:
-          return QueriesGenerated.varMacro_Value_56_5(ctx);
+          return QueriesGenerated.varMacro_Value_56_3(ctx);
         case 18:
-          return QueriesGenerated.varMacro_Value_56_6(ctx);
+          return QueriesGenerated.varMacro_Value_56_4(ctx);
         case 19:
-          return QueriesGenerated.varMacro_Value_56_7(ctx);
+          return QueriesGenerated.varMacro_Value_56_5(ctx);
         case 20:
-          return QueriesGenerated.varMacro_Value_56_8(ctx);
+          return QueriesGenerated.varMacro_Value_56_6(ctx);
         case 21:
-          return QueriesGenerated.varMacro_Value_56_9(ctx);
+          return QueriesGenerated.varMacro_Value_56_7(ctx);
         case 22:
-          return QueriesGenerated.varMacro_Value_56_10(ctx);
+          return QueriesGenerated.varMacro_Value_56_8(ctx);
         case 23:
-          return QueriesGenerated.varMacro_Value_56_11(ctx);
+          return QueriesGenerated.varMacro_Value_56_9(ctx);
         case 24:
-          return QueriesGenerated.varMacro_Value_56_12(ctx);
+          return QueriesGenerated.varMacro_Value_56_10(ctx);
         case 25:
-          return QueriesGenerated.varMacro_Value_56_13(ctx);
+          return QueriesGenerated.varMacro_Value_56_11(ctx);
         case 26:
-          return QueriesGenerated.varMacro_Value_56_14(ctx);
+          return QueriesGenerated.varMacro_Value_56_12(ctx);
         case 27:
-          return QueriesGenerated.varMacro_Value_56_15(ctx);
+          return QueriesGenerated.varMacro_Value_56_13(ctx);
         case 28:
-          return QueriesGenerated.varMacro_Value_56_16(ctx);
+          return QueriesGenerated.varMacro_Value_56_14(ctx);
         case 29:
-          return QueriesGenerated.varMacro_Value_56_17(ctx);
+          return QueriesGenerated.varMacro_Value_56_15(ctx);
         case 30:
-          return QueriesGenerated.varMacro_Value_56_18(ctx);
+          return QueriesGenerated.varMacro_Value_56_16(ctx);
         case 31:
-          return QueriesGenerated.varMacro_Value_56_19(ctx);
+          return QueriesGenerated.varMacro_Value_56_17(ctx);
         case 32:
-          return QueriesGenerated.varMacro_Value_56_20(ctx);
+          return QueriesGenerated.varMacro_Value_56_18(ctx);
         case 33:
-          return QueriesGenerated.varMacro_Value_56_21(ctx);
+          return QueriesGenerated.varMacro_Value_56_19(ctx);
         case 34:
-          return QueriesGenerated.varMacro_Value_56_22(ctx);
+          return QueriesGenerated.varMacro_Value_56_20(ctx);
         case 35:
-          return QueriesGenerated.varMacro_Value_56_23(ctx);
+          return QueriesGenerated.varMacro_Value_56_21(ctx);
         case 36:
-          return QueriesGenerated.varMacro_Value_56_24(ctx);
+          return QueriesGenerated.varMacro_Value_56_22(ctx);
         case 37:
-          return QueriesGenerated.varMacro_Value_85_0(ctx);
+          return QueriesGenerated.varMacro_Value_56_23(ctx);
         case 38:
-          return QueriesGenerated.varMacro_Value_85_1(ctx);
+          return QueriesGenerated.varMacro_Value_56_24(ctx);
         case 39:
-          return QueriesGenerated.varMacro_Value_85_2(ctx);
+          return QueriesGenerated.varMacro_Value_85_0(ctx);
         case 40:
+          return QueriesGenerated.varMacro_Value_85_1(ctx);
+        case 41:
+          return QueriesGenerated.varMacro_Value_85_2(ctx);
+        case 42:
           return QueriesGenerated.varMacro_Value_85_3(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
