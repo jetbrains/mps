@@ -18,6 +18,7 @@ import jetbrains.mps.generator.impl.DismissTopMappingRuleException;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -25,6 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class Switch_switch_IPropertyQualifier_toSProperty extends TemplateSwitchBase implements TemplateSwitchMapping {
   private final Iterable<TemplateReductionRule> rules;
   public Switch_switch_IPropertyQualifier_toSProperty() {
+    super(new MO());
     rules = TemplateUtil.<TemplateReductionRule>asIterable(new ReductionRule0(), new ReductionRule1());
   }
   public SNodeReference getSwitchNode() {
@@ -43,7 +45,7 @@ public class Switch_switch_IPropertyQualifier_toSProperty extends TemplateSwitch
     ex_nuu7m_a.setTemplateModelLocation(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2855392971717584215"));
     throw ex_nuu7m_a;
   }
-  /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6407023681583040977"), CONCEPTS.PoundExpression$zj, false);
     }
@@ -56,7 +58,7 @@ public class Switch_switch_IPropertyQualifier_toSProperty extends TemplateSwitch
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule1 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6407023681583040957"), CONCEPTS.PropertyQualifier$5P, false);
     }
@@ -72,6 +74,12 @@ public class Switch_switch_IPropertyQualifier_toSProperty extends TemplateSwitch
       }
       return tlist1;
     }
+  }
+
+  /*package*/ static final class MO implements MetaObjectContainer {
+
+
+
   }
   private static final SNodePointer copySrcMacro_2s2e5_b0a0d0b6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1757699476691451326");
   private static final SNodePointer callMacro_2s2e5_b0a0a2a1h = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145325");

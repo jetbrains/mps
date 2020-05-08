@@ -10,14 +10,21 @@ import jetbrains.mps.generator.runtime.TemplateModel;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.template.ITemplateGenerator;
 import jetbrains.mps.generator.template.TemplateQueryContext;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
 
 @Generated
 public class Mapping_mc_model_operations extends MapConfigBase implements TemplateMappingConfiguration {
   public Mapping_mc_model_operations(@NotNull TemplateModel model) {
-    super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1143235821620"), "mc_model_operations", model, false);
+    super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1143235821620"), "mc_model_operations", model, false, new MO());
   }
   @Override
   public boolean isApplicable(@NotNull ITemplateGenerator generator) {
     return QueriesGenerated.mc_Condition_10(new TemplateQueryContext(getMappingNode(), generator));
+  }
+
+  /*package*/ static final class MO implements MetaObjectContainer {
+
+
+
   }
 }

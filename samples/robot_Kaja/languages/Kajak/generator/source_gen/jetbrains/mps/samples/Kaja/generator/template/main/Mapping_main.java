@@ -21,6 +21,7 @@ import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.MapRootRuleBase;
 import jetbrains.mps.generator.runtime.DropRootRuleBase;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -31,7 +32,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   private final Collection<TemplateDropRootRule> dropRules;
   private final Collection<TemplateMappingScript> preScripts;
   public Mapping_main(@NotNull TemplateModel model) {
-    super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039570163"), "main", model, false);
+    super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039570163"), "main", model, false, new MO());
     rules = TemplateUtil.<TemplateReductionRule>asCollection(new ReductionRule0(), new ReductionRule1(), new ReductionRule2(), new ReductionRule3(), new ReductionRule4(), new ReductionRule5(), new ReductionRule6(), new ReductionRule7(), new ReductionRule8(), new ReductionRule9(), new ReductionRule10(), new ReductionRule11(), new ReductionRule12(), new ReductionRule13(), new ReductionRule14(), new ReductionRule15(), new ReductionRule16(), new ReductionRule17(), new ReductionRule18(), new ReductionRule19(), new ReductionRule20(), new ReductionRule21());
     rootRules = TemplateUtil.<TemplateRootMappingRule>asCollection(new RootMappingRule0());
     dropRules = TemplateUtil.<TemplateDropRootRule>asCollection(new DropRootRule0());
@@ -53,7 +54,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   public Collection<TemplateMappingScript> getPreScripts() {
     return preScripts;
   }
-  /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039580714"), CONCEPTS.Step$zR, false);
     }
@@ -64,7 +65,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule1 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039647643"), CONCEPTS.LeftTurn$xm, false);
     }
@@ -75,7 +76,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule2 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule2 extends ReductionRuleBase {
     public ReductionRule2() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039647796"), CONCEPTS.IsWall$dq, false);
     }
@@ -86,7 +87,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule3 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule3 extends ReductionRuleBase {
     public ReductionRule3() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039654077"), CONCEPTS.Not$Vv, false);
     }
@@ -97,7 +98,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule4 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule4 extends ReductionRuleBase {
     public ReductionRule4() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "6405700485436186603"), CONCEPTS.IsMark$H2, false);
     }
@@ -108,7 +109,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule5 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule5 extends ReductionRuleBase {
     public ReductionRule5() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "859008965969439774"), CONCEPTS.IsFull$9y, false);
     }
@@ -119,7 +120,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule6 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule6 extends ReductionRuleBase {
     public ReductionRule6() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039647830"), CONCEPTS.IfStatement$GU, false);
     }
@@ -130,7 +131,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule7 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule7 extends ReductionRuleBase {
     public ReductionRule7() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039660390"), CONCEPTS.Repeat$qn, false);
     }
@@ -141,7 +142,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule8 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule8 extends ReductionRuleBase {
     public ReductionRule8() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039667448"), CONCEPTS.While$1T, false);
     }
@@ -152,7 +153,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule9 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule9 extends ReductionRuleBase {
     public ReductionRule9() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039683662"), CONCEPTS.Heading$ie, false);
     }
@@ -163,7 +164,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule10 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule10 extends ReductionRuleBase {
     public ReductionRule10() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "7060824959893176543"), CONCEPTS.Looking$Tc, false);
     }
@@ -174,7 +175,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule11 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule11 extends ReductionRuleBase {
     public ReductionRule11() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039683776"), CONCEPTS.North$e, false);
     }
@@ -185,7 +186,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule12 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule12 extends ReductionRuleBase {
     public ReductionRule12() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039683792"), CONCEPTS.East$dj, false);
     }
@@ -196,7 +197,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule13 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule13 extends ReductionRuleBase {
     public ReductionRule13() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039683806"), CONCEPTS.South$sk, false);
     }
@@ -207,7 +208,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule14 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule14 extends ReductionRuleBase {
     public ReductionRule14() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039683821"), CONCEPTS.West$fN, false);
     }
@@ -218,7 +219,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule15 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule15 extends ReductionRuleBase {
     public ReductionRule15() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039701201"), CONCEPTS.RoutineDefinition$2l, false);
     }
@@ -229,7 +230,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule16 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule16 extends ReductionRuleBase {
     public ReductionRule16() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039701251"), CONCEPTS.RoutineCall$GX, false);
     }
@@ -240,7 +241,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule17 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule17 extends ReductionRuleBase {
     public ReductionRule17() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039928807"), CONCEPTS.CommandList$Mn, false);
     }
@@ -251,7 +252,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule18 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule18 extends ReductionRuleBase {
     public ReductionRule18() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "6405700485436123137"), CONCEPTS.Drop$X4, false);
     }
@@ -262,7 +263,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule19 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule19 extends ReductionRuleBase {
     public ReductionRule19() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "6405700485436170018"), CONCEPTS.Pick$4v, false);
     }
@@ -273,7 +274,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule20 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule20 extends ReductionRuleBase {
     public ReductionRule20() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "6405700485436287827"), CONCEPTS.CommentLine$L0, false);
     }
@@ -284,7 +285,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule21 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule21 extends ReductionRuleBase {
     public ReductionRule21() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3210697320273763069"), CONCEPTS.TraceMessage$uj, false);
     }
@@ -295,7 +296,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
+  /*package*/ final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
     public RootMappingRule0() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039570164"), CONCEPTS.Script$1X, false, false);
     }
@@ -310,6 +311,12 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     public DropRootRule0() {
       super(new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4394627182934963716"), CONCEPTS.Library$IO);
     }
+  }
+
+  /*package*/ static final class MO implements MetaObjectContainer {
+
+
+
   }
 
   private static final class CONCEPTS {

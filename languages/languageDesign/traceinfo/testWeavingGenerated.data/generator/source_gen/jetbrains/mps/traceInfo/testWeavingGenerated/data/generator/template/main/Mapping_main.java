@@ -23,6 +23,7 @@ import jetbrains.mps.generator.runtime.WeaveRuleBase;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.generator.runtime.TemplateCallSite;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -32,7 +33,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   private final Collection<TemplateWeavingRule> weavings;
   private final Collection<TemplateDropRootRule> dropRules;
   public Mapping_main(@NotNull TemplateModel model) {
-    super(new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008486850"), "main", model, false);
+    super(new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008486850"), "main", model, false, new MO());
     rootRules = TemplateUtil.<TemplateRootMappingRule>asCollection(new RootMappingRule0());
     weavings = TemplateUtil.<TemplateWeavingRule>asCollection(new WeavingRule0(), new WeavingRule1(), new WeavingRule2(), new WeavingRule3());
     dropRules = TemplateUtil.<TemplateDropRootRule>asCollection(new DropRootRule0());
@@ -49,7 +50,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   public Collection<TemplateDropRootRule> getDropRules() {
     return dropRules;
   }
-  /*package*/ static final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
+  /*package*/ final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
     public RootMappingRule0() {
       super(new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008486853"), CONCEPTS.RootConcept$ey, false, true);
     }
@@ -169,6 +170,12 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       }
       return result;
     }
+  }
+
+  /*package*/ static final class MO implements MetaObjectContainer {
+
+
+
   }
 
   private static final class CONCEPTS {

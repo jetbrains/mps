@@ -17,6 +17,7 @@ import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.template.MapRootRuleContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -24,14 +25,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class Mapping_main extends MapConfigBase implements TemplateMappingConfiguration {
   private final Collection<TemplateRootMappingRule> rootRules;
   public Mapping_main(@NotNull TemplateModel model) {
-    super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f7(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_getPrevInput@generator)", "1202255161944"), "main", model, false);
+    super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f7(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_getPrevInput@generator)", "1202255161944"), "main", model, false, new MO());
     rootRules = TemplateUtil.<TemplateRootMappingRule>asCollection(new RootMappingRule0(), new RootMappingRule1());
   }
   @Override
   public Collection<TemplateRootMappingRule> getRootRules() {
     return rootRules;
   }
-  /*package*/ static final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
+  /*package*/ final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
     public RootMappingRule0() {
       super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f7(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_getPrevInput@generator)", "1202255161953"), CONCEPTS.InputRoot$eR, false, false);
     }
@@ -47,7 +48,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return result;
     }
   }
-  /*package*/ static final class RootMappingRule1 extends MapRootRuleBase implements TemplateRootMappingRule {
+  /*package*/ final class RootMappingRule1 extends MapRootRuleBase implements TemplateRootMappingRule {
     public RootMappingRule1() {
       super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f7(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_getPrevInput@generator)", "1202338801828"), CONCEPTS.InputRoot$eR, false, false);
     }
@@ -62,6 +63,12 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       environment.registerLabel(context.getInput(), result, "ROOT INPUT");
       return result;
     }
+  }
+
+  /*package*/ static final class MO implements MetaObjectContainer {
+
+
+
   }
 
   private static final class CONCEPTS {

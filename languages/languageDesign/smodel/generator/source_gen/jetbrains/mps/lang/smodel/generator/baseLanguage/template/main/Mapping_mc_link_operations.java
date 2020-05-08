@@ -16,43 +16,46 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.runtime.TemplateRuleWithCondition;
 import jetbrains.mps.generator.template.ReductionRuleQueryContext;
 import java.util.Collections;
 import jetbrains.mps.generator.template.IfMacroContext;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 @Generated
 public class Mapping_mc_link_operations extends MapConfigBase implements TemplateMappingConfiguration {
   private final Collection<TemplateReductionRule> rules;
   public Mapping_mc_link_operations(@NotNull TemplateModel model) {
-    super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1139341814904"), "mc_link_operations", model, false);
+    super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1139341814904"), "mc_link_operations", model, false, new MO());
     rules = TemplateUtil.<TemplateReductionRule>asCollection(new ReductionRule0(), new ReductionRule1(), new ReductionRule2(), new ReductionRule3(), new ReductionRule4(), new ReductionRule5());
   }
   @Override
   public Collection<TemplateReductionRule> getReductionRules() {
     return rules;
   }
-  /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1168907859730"), CONCEPTS.SLinkAccess$NO, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      final SNode tnode1 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf09L, "StaticMethodCall"));
+      final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
       {
-        environment.associate(tnode1, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept"), "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286349");
-        environment.associate(tnode1, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "1612392507789494675");
+        environment.associate(tnode1, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286349");
+        environment.associate(tnode1, myAssociationLinks[1], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "1612392507789494675");
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0d0c0b3));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_jzpaek_b0a0c0d0c0b3, "tpl/r:00000000-0000-4000-0000-011c89590303/1205438232670", context1);
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
+            tnode1.addChild(myAggregationLinks[0], child3);
           }
           // TODO validate child 
         }
@@ -65,7 +68,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
             tlist4 = environment.callSite(new Template_reduce_LinkDeclaration_SLink(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145281")).apply(context2);
           }
           for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
-            tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child5);
+            tnode1.addChild(myAggregationLinks[0], child5);
           }
           // TODO validate child 
         }
@@ -73,7 +76,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
       return TemplateUtil.singletonList(tnode1);
     }
   }
-  /*package*/ static final class ReductionRule1 extends ReductionRuleBase implements TemplateRuleWithCondition {
+  /*package*/ final class ReductionRule1 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule1() {
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1168907918945"), CONCEPTS.Link_SetNewChildOperation$I5, false);
     }
@@ -84,17 +87,17 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      final SNode tnode1 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf09L, "StaticMethodCall"));
+      final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
       {
-        environment.associate(tnode1, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "4585658144689928116");
-        environment.associate(tnode1, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept"), "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286349");
+        environment.associate(tnode1, myAssociationLinks[1], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "4585658144689928116");
+        environment.associate(tnode1, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286349");
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_2(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0d0c0c4));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_jzpaek_b0a0c0d0c0c4, "tpl/r:00000000-0000-4000-0000-011c89590303/6246743999000387772", context1);
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
+            tnode1.addChild(myAggregationLinks[0], child3);
           }
           // TODO validate child 
         }
@@ -109,7 +112,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
               switchContext4 = context1.subContext(null, switchInput4);
               tlist4 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2e, switchContext4);
               if (tlist4 == null) {
-                final SNode tnode5 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940cd6167L, "NullLiteral"));
+                final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
                 if (tnode5 != null) {
                   tlist4 = TemplateUtil.singletonList(tnode5);
                 }
@@ -117,7 +120,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
             }
           }
           for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
-            tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child6);
+            tnode1.addChild(myAggregationLinks[0], child6);
           }
           // TODO validate child 
         }
@@ -133,11 +136,11 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
             }
             tlist7 = tlist8;
           } else {
-            final SNode tnode9 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940cd6167L, "NullLiteral"));
+            final SNode tnode9 = environment.createOutputNode(myConcepts[1]);
             tlist7 = TemplateUtil.singletonList(tnode9);
           }
           for (SNode child10 : TemplateUtil.asNotNull(tlist7)) {
-            tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child10);
+            tnode1.addChild(myAggregationLinks[0], child10);
           }
           // TODO validate child 
         }
@@ -145,7 +148,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
       return TemplateUtil.singletonList(tnode1);
     }
   }
-  /*package*/ static final class ReductionRule2 extends ReductionRuleBase implements TemplateRuleWithCondition {
+  /*package*/ final class ReductionRule2 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule2() {
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1168908007519"), CONCEPTS.Link_SetTargetOperation$KR, false);
     }
@@ -156,17 +159,17 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      final SNode tnode1 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf09L, "StaticMethodCall"));
+      final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
       {
-        environment.associate(tnode1, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "1612392507789543417");
-        environment.associate(tnode1, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept"), "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286349");
+        environment.associate(tnode1, myAssociationLinks[1], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "1612392507789543417");
+        environment.associate(tnode1, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286349");
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_5(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0d0c0c5));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_jzpaek_b0a0c0d0c0c5, "tpl/r:00000000-0000-4000-0000-011c89590303/6246743999000991648", context1);
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
+            tnode1.addChild(myAggregationLinks[0], child3);
           }
           // TODO validate child 
         }
@@ -181,7 +184,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
               switchContext4 = context1.subContext(null, switchInput4);
               tlist4 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2f, switchContext4);
               if (tlist4 == null) {
-                final SNode tnode5 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940cd6167L, "NullLiteral"));
+                final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
                 if (tnode5 != null) {
                   tlist4 = TemplateUtil.singletonList(tnode5);
                 }
@@ -189,7 +192,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
             }
           }
           for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
-            tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child6);
+            tnode1.addChild(myAggregationLinks[0], child6);
           }
           // TODO validate child 
         }
@@ -198,7 +201,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           final SNode copySrcInput7 = QueriesGenerated.sourceNodeQuery_2_7(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0f0c0c5));
           tlist7 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput7), copySrcMacro_jzpaek_b0a0c0f0c0c5, "tpl/r:00000000-0000-4000-0000-011c89590303/6246743999000991666", context1);
           for (SNode child8 : TemplateUtil.asNotNull(tlist7)) {
-            tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child8);
+            tnode1.addChild(myAggregationLinks[0], child8);
           }
           // TODO validate child 
         }
@@ -206,24 +209,24 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
       return TemplateUtil.singletonList(tnode1);
     }
   }
-  /*package*/ static final class ReductionRule3 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule3 extends ReductionRuleBase {
     public ReductionRule3() {
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "942336824646427994"), CONCEPTS.Link_SetTargetPointerOperation$59, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      final SNode tnode1 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf09L, "StaticMethodCall"));
+      final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
       {
-        environment.associate(tnode1, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "942336824646416144");
-        environment.associate(tnode1, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept"), "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286349");
+        environment.associate(tnode1, myAssociationLinks[1], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "942336824646416144");
+        environment.associate(tnode1, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286349");
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_8(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0d0c0b6));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_jzpaek_b0a0c0d0c0b6, "tpl/r:00000000-0000-4000-0000-011c89590303/3719571763733973059", context1);
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
+            tnode1.addChild(myAggregationLinks[0], child3);
           }
           // TODO validate child 
         }
@@ -238,7 +241,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
               switchContext4 = context1.subContext(null, switchInput4);
               tlist4 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a1g, switchContext4);
               if (tlist4 == null) {
-                final SNode tnode5 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940cd6167L, "NullLiteral"));
+                final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
                 if (tnode5 != null) {
                   tlist4 = TemplateUtil.singletonList(tnode5);
                 }
@@ -246,7 +249,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
             }
           }
           for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
-            tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child6);
+            tnode1.addChild(myAggregationLinks[0], child6);
           }
           // TODO validate child 
         }
@@ -261,7 +264,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
               switchContext7 = context1.subContext(null, switchInput7);
               tlist7 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a5a2a1g, switchContext7);
               if (tlist7 == null) {
-                final SNode tnode8 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940cd6167L, "NullLiteral"));
+                final SNode tnode8 = environment.createOutputNode(myConcepts[1]);
                 if (tnode8 != null) {
                   tlist7 = TemplateUtil.singletonList(tnode8);
                 }
@@ -269,7 +272,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
             }
           }
           for (SNode child9 : TemplateUtil.asNotNull(tlist7)) {
-            tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child9);
+            tnode1.addChild(myAggregationLinks[0], child9);
           }
           // TODO validate child 
         }
@@ -277,7 +280,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
       return TemplateUtil.singletonList(tnode1);
     }
   }
-  /*package*/ static final class ReductionRule4 extends ReductionRuleBase implements TemplateRuleWithCondition {
+  /*package*/ final class ReductionRule4 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule4() {
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "9051222292532744236"), CONCEPTS.Node_PointerOperation$Ry, false);
     }
@@ -288,17 +291,17 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      final SNode tnode1 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf09L, "StaticMethodCall"));
+      final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
       {
-        environment.associate(tnode1, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "9051222292532802757");
-        environment.associate(tnode1, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept"), "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286349");
+        environment.associate(tnode1, myAssociationLinks[1], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "9051222292532802757");
+        environment.associate(tnode1, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286349");
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_11(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0d0c0c7));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_jzpaek_b0a0c0d0c0c7, "tpl/r:00000000-0000-4000-0000-011c89590303/9051222292532830808", context1);
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
+            tnode1.addChild(myAggregationLinks[0], child3);
           }
           // TODO validate child 
         }
@@ -313,7 +316,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
               switchContext4 = context1.subContext(null, switchInput4);
               tlist4 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2h, switchContext4);
               if (tlist4 == null) {
-                final SNode tnode5 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940cd6167L, "NullLiteral"));
+                final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
                 if (tnode5 != null) {
                   tlist4 = TemplateUtil.singletonList(tnode5);
                 }
@@ -321,7 +324,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
             }
           }
           for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
-            tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child6);
+            tnode1.addChild(myAggregationLinks[0], child6);
           }
           // TODO validate child 
         }
@@ -329,7 +332,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
       return TemplateUtil.singletonList(tnode1);
     }
   }
-  /*package*/ static final class ReductionRule5 extends ReductionRuleBase implements TemplateRuleWithCondition {
+  /*package*/ final class ReductionRule5 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule5() {
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "9051222292532831674"), CONCEPTS.Node_IsOperation$IL, false);
     }
@@ -340,17 +343,17 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      final SNode tnode1 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf09L, "StaticMethodCall"));
+      final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
       {
-        environment.associate(tnode1, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "9051222292532820543");
-        environment.associate(tnode1, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept"), "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286349");
+        environment.associate(tnode1, myAssociationLinks[1], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "9051222292532820543");
+        environment.associate(tnode1, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286349");
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_13(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0d0c0c8));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_jzpaek_b0a0c0d0c0c8, "tpl/r:00000000-0000-4000-0000-011c89590303/9051222292532842598", context1);
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
+            tnode1.addChild(myAggregationLinks[0], child3);
           }
           // TODO validate child 
         }
@@ -365,7 +368,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
               switchContext4 = context1.subContext(null, switchInput4);
               tlist4 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2i, switchContext4);
               if (tlist4 == null) {
-                final SNode tnode5 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940cd6167L, "NullLiteral"));
+                final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
                 if (tnode5 != null) {
                   tlist4 = TemplateUtil.singletonList(tnode5);
                 }
@@ -373,7 +376,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
             }
           }
           for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
-            tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child6);
+            tnode1.addChild(myAggregationLinks[0], child6);
           }
           // TODO validate child 
         }
@@ -386,12 +389,38 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
             tlist7 = environment.callSite(new Template_reduce_NodeIdentity_SNodeReference(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "9051222292532846779")).apply(context2);
           }
           for (SNode child8 : TemplateUtil.asNotNull(tlist7)) {
-            tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child8);
+            tnode1.addChild(myAggregationLinks[0], child8);
           }
           // TODO validate child 
         }
       }
       return TemplateUtil.singletonList(tnode1);
+    }
+  }
+
+  /*package*/ static final class MO implements MetaObjectContainer {
+    @Override
+    public SConcept[] concepts() {
+      SConcept[] rv = new SConcept[2];
+      rv[0] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf09L, "StaticMethodCall");
+      rv[1] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940cd6167L, "NullLiteral");
+      return rv;
+    }
+
+
+    @Override
+    public SReferenceLink[] associations() {
+      SReferenceLink[] rv = new SReferenceLink[2];
+      rv[0] = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
+      rv[1] = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+      return rv;
+    }
+
+    @Override
+    public SContainmentLink[] aggregations() {
+      SContainmentLink[] rv = new SContainmentLink[1];
+      rv[0] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+      return rv;
     }
   }
   private static final SNodePointer copySrcMacro_jzpaek_b0a0c0d0c0b3 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1205438232671");

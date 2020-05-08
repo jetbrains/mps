@@ -22,6 +22,7 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.WeaveRuleBase;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
 import jetbrains.mps.generator.runtime.TemplateCallSite;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -30,7 +31,7 @@ public class Mapping_mc_concept_switch extends MapConfigBase implements Template
   private final Collection<TemplateReductionRule> rules;
   private final Collection<TemplateWeavingRule> weavings;
   public Mapping_mc_concept_switch(@NotNull TemplateModel model) {
-    super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1717381292179408189"), "mc_concept_switch", model, false);
+    super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1717381292179408189"), "mc_concept_switch", model, false, new MO());
     rules = TemplateUtil.<TemplateReductionRule>asCollection(new ReductionRule0());
     weavings = TemplateUtil.<TemplateWeavingRule>asCollection(new WeavingRule0());
   }
@@ -46,7 +47,7 @@ public class Mapping_mc_concept_switch extends MapConfigBase implements Template
   public Collection<TemplateWeavingRule> getWeavingRules() {
     return weavings;
   }
-  /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
+  /*package*/ final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6039268229364247704"), CONCEPTS.ConceptSwitchStatement$9V, false);
     }
@@ -75,6 +76,12 @@ public class Mapping_mc_concept_switch extends MapConfigBase implements Template
       final TemplateCallSite callSite = environment.callSite(new Template_weave_ConceptSwitchMap(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7723526804945759568"));
       return callSite.weave(context, outputContextNode, WeavingRule0.this);
     }
+  }
+
+  /*package*/ static final class MO implements MetaObjectContainer {
+
+
+
   }
 
   private static final class CONCEPTS {

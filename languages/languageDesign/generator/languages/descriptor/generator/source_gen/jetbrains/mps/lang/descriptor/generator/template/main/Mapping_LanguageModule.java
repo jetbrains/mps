@@ -20,6 +20,7 @@ import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.CreateRootRuleBase;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -28,7 +29,7 @@ public class Mapping_LanguageModule extends MapConfigBase implements TemplateMap
   private final Collection<TemplateCreateRootRule> createRules;
   private final Collection<TemplateRootMappingRule> rootRules;
   public Mapping_LanguageModule(@NotNull TemplateModel model) {
-    super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "3919235298192647143"), "LanguageModule", model, false);
+    super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "3919235298192647143"), "LanguageModule", model, false, new MO());
     createRules = TemplateUtil.<TemplateCreateRootRule>asCollection(new CreateRootRule0());
     rootRules = TemplateUtil.<TemplateRootMappingRule>asCollection(new RootMappingRule0());
   }
@@ -44,7 +45,7 @@ public class Mapping_LanguageModule extends MapConfigBase implements TemplateMap
   public Collection<TemplateRootMappingRule> getRootRules() {
     return rootRules;
   }
-  /*package*/ static final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
+  /*package*/ final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
     public RootMappingRule0() {
       super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "8780540425167303786"), CONCEPTS.LanguageDescriptor$hv, false, false);
     }
@@ -55,7 +56,7 @@ public class Mapping_LanguageModule extends MapConfigBase implements TemplateMap
       return result;
     }
   }
-  /*package*/ static final class CreateRootRule0 extends CreateRootRuleBase implements TemplateCreateRootRule {
+  /*package*/ final class CreateRootRule0 extends CreateRootRuleBase implements TemplateCreateRootRule {
     public CreateRootRule0() {
       super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "3919235298192674546"));
     }
@@ -64,6 +65,12 @@ public class Mapping_LanguageModule extends MapConfigBase implements TemplateMap
       Collection<SNode> result = environment.callSite(new Template_language_descriptor(), new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "3919235298192674546")).apply(context);
       return result;
     }
+  }
+
+  /*package*/ static final class MO implements MetaObjectContainer {
+
+
+
   }
 
   private static final class CONCEPTS {
