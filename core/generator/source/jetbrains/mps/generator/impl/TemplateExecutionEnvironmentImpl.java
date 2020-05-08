@@ -45,6 +45,7 @@ import jetbrains.mps.generator.trace.RuleTrace2;
 import jetbrains.mps.generator.trace.TraceFacility;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.smodel.SReference;
 import jetbrains.mps.textgen.trace.TracingUtil;
 import jetbrains.mps.util.containers.ConcurrentHashSet;
 import org.jetbrains.annotations.NotNull;
@@ -312,6 +313,13 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
     for (SNode outputNode : outputNodes) {
       generator.registerMappingLabel(inputNode, mappingLabel, outputNode);
     }
+  }
+
+  @Override
+  public void associate(SNode outputNode, SReferenceLink role, String targetModelRef, String targetNodeId) {
+    final PersistenceFacade pf = PersistenceFacade.getInstance();
+    final SReference r = SReference.create(role, outputNode, pf.createModelReference(targetModelRef), pf.createNodeId(targetNodeId));
+    outputNode.setReference(role, r);
   }
 
   @Override

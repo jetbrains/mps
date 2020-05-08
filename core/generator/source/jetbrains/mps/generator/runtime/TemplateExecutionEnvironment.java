@@ -175,6 +175,15 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
   void registerLabel(SNode inputNode, Iterable<SNode> outputNodes, String mappingLabel);
 
   /**
+   * A handy replacement for direct sNode.setReference(MAF.getRefLink(), SReference.create(MAF.getRefLink), PF.getInstance().createModelRef, PF.getInstance.createNodeId) call
+   * @param outputNode not null
+   * @param role not null
+   * @param targetModelRef not null
+   * @param targetNodeId not null
+   */
+  void associate(SNode outputNode, SReferenceLink role, String targetModelRef, String targetNodeId);
+
+  /**
    * Support for references between template nodes
    */
   void resolveInTemplateLater(@NotNull SNode outputNode, @NotNull SReferenceLink role, SNodeReference templateSourceNode, String templateTargetNodeId, @Nullable String resolveInfo, TemplateContext context);
