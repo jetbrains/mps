@@ -161,7 +161,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }
 
     String vendor = ((SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.vendor$uCoa) != null) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.vendor$uCoa), null) : BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.company$Av4_), LINKS.name$fPxS), null));
-    return String.format("SET IDEA_VENDOR_NAME=\"%s\"", vendor);
+    return String.format("SET IDEA_VENDOR_NAME=%s", vendor);
   }
   public static Object propertyMacro_GetValue_2_6(final PropertyMacroContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
@@ -503,7 +503,7 @@ public class QueriesGenerated extends QueryProviderBase {
     pvqMethods.put("2604223389424353193", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "  echo and then run mps.bat from there"));
     pvqMethods.put("4881006832912615439", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), ":: Try (in order): MPS_JDK, mps%BITS%.exe.jdk, ..\\jre, JDK_HOME, JAVA_HOME."));
     pvqMethods.put("924581919122088570", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), ":: Try (in order): MPS_JDK, mps%BITS%.exe.jdk, ..\\jre, JDK_HOME, JAVA_HOME."));
-    pvqMethods.put("2137654190566736179", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "SET IDEA_VENDOR_NAME=\"JetBrains\""));
+    pvqMethods.put("2137654190566736179", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "SET IDEA_VENDOR_NAME=JetBrains"));
     pvqMethods.put("4881006832912630346", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "IF EXIST \"%MPS_JDK%\" SET JDK=%MPS_JDK%"));
     pvqMethods.put("4881006832912503655", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "SET USER_JDK64_FILE=%APPDATA%\\%IDEA_VENDOR_NAME%\\MPS\\mps%BITS%.exe.jdk"));
     pvqMethods.put("4881006832912525717", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "SET USER_JDK_FILE=%APPDATA%\\%IDEA_VENDOR_NAME%\\MPS\\mps%BITS%.exe.jdk"));

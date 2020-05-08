@@ -1952,7 +1952,7 @@
       <property role="2DPR8u" value="SET JDK=" />
     </node>
     <node concept="2DRAP_" id="1QEui$pmG5o" role="2DRAPQ">
-      <property role="2DPR8u" value="SET IDEA_VENDOR_NAME=&quot;JetBrains&quot;" />
+      <property role="2DPR8u" value="SET IDEA_VENDOR_NAME=JetBrains" />
       <node concept="17Uvod" id="1QEui$pmK4N" role="lGtFl">
         <property role="2qtEX9" value="text" />
         <property role="P4ACc" value="d5033cee-f632-44b6-b308-89d4fbde34ff/1731640411964205218/1731640411964798937" />
@@ -2041,7 +2041,7 @@
                 <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="Xl_RD" id="1QEui$pmNmU" role="37wK5m">
-                  <property role="Xl_RC" value="SET IDEA_VENDOR_NAME=\&quot;%s\&quot;" />
+                  <property role="Xl_RC" value="SET IDEA_VENDOR_NAME=%s" />
                 </node>
                 <node concept="37vLTw" id="1QEui$pmNmV" role="37wK5m">
                   <ref role="3cqZAo" node="1QEui$pmNms" resolve="vendor" />
@@ -2893,7 +2893,7 @@
       </node>
     </node>
     <node concept="2DRAP_" id="4eWOtEm22os" role="2DRAPQ">
-      <property role="2DPR8u" value="SET COMMON_JVM_ARGS=&quot;-XX:ErrorFile=%USERPROFILE%\java_error_in_%PRODUCT%_%%p.log&quot; &quot;-XX:HeapDumpPath=%USERPROFILE%\java_error_in_%PRODUCT%.hprof&quot; -Didea.paths.selector=%IDEA_PATHS_SELECTOR% -Didea.vendor.name=%IDEA_VENDOR_NAME% %IDE_PROPERTIES_PROPERTY%" />
+      <property role="2DPR8u" value="SET COMMON_JVM_ARGS=&quot;-XX:ErrorFile=%USERPROFILE%\java_error_in_%PRODUCT%_%%p.log&quot; &quot;-XX:HeapDumpPath=%USERPROFILE%\java_error_in_%PRODUCT%.hprof&quot; -Didea.paths.selector=%IDEA_PATHS_SELECTOR% -Didea.vendor.name=&quot;%IDEA_VENDOR_NAME%&quot; %IDE_PROPERTIES_PROPERTY%" />
     </node>
     <node concept="2DRAP_" id="4eWOtEm22ts" role="2DRAPQ">
       <property role="2DPR8u" value="SET IDE_JVM_ARGS=-Didea.platform.prefix=Idea -Didea.jre.check=true" />

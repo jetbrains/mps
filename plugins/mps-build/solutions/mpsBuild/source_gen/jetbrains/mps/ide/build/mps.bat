@@ -27,7 +27,7 @@ IF "%IDE_BIN_DIR:~-8%" == "bin\win\" (
 :: Try (in order): MPS_JDK, mps%BITS%.exe.jdk, ..\jre, JDK_HOME, JAVA_HOME.
 :: ---------------------------------------------------------------------
 SET JDK=
-SET IDEA_VENDOR_NAME="JetBrains"
+SET IDEA_VENDOR_NAME=JetBrains
 
 IF EXIST "%MPS_JDK%" SET JDK=%MPS_JDK%
 IF EXIST "%JDK%" GOTO check
@@ -108,7 +108,7 @@ IF EXIST "%VM_OPTIONS_FILE%" SET ACC=%ACC% -Djb.vmOptionsFile="%VM_OPTIONS_FILE%
 
 SET IDEA_PATHS_SELECTOR=MPS2020.1
 SET PRODUCT="MPS"
-SET COMMON_JVM_ARGS="-XX:ErrorFile=%USERPROFILE%\java_error_in_%PRODUCT%_%%p.log" "-XX:HeapDumpPath=%USERPROFILE%\java_error_in_%PRODUCT%.hprof" -Didea.paths.selector=%IDEA_PATHS_SELECTOR% -Didea.vendor.name=%IDEA_VENDOR_NAME% %IDE_PROPERTIES_PROPERTY%
+SET COMMON_JVM_ARGS="-XX:ErrorFile=%USERPROFILE%\java_error_in_%PRODUCT%_%%p.log" "-XX:HeapDumpPath=%USERPROFILE%\java_error_in_%PRODUCT%.hprof" -Didea.paths.selector=%IDEA_PATHS_SELECTOR% -Didea.vendor.name="%IDEA_VENDOR_NAME%" %IDE_PROPERTIES_PROPERTY%
 SET IDE_JVM_ARGS=-Didea.platform.prefix=Idea -Didea.jre.check=true
 SET ALL_JVM_ARGS=%ACC% %COMMON_JVM_ARGS% %IDE_JVM_ARGS%
 
