@@ -14,8 +14,6 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.TemplateVarContext;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.generator.runtime.TemplateUtil;
@@ -44,8 +42,8 @@ public class Template_reduce_ContainmentLinkId_SContainmentLink extends Template
     context1 = context1.withVariable("var:conceptId", QueriesGenerated.varMacro_Value_103_0(new TemplateVarContext(context, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904806"))));
     final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
     try {
-      tnode2.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode2, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~MetaAdapterFactory")));
-      tnode2.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode2, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~MetaAdapterFactory.getContainmentLink(long,long,long,long,java.lang.String)")));
+      environment.associate(tnode2, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)", "~MetaAdapterFactory");
+      environment.associate(tnode2, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)", "~MetaAdapterFactory.getContainmentLink(long,long,long,long,java.lang.String)");
       TemplateContext context2 = context1.subContext();
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[1]);

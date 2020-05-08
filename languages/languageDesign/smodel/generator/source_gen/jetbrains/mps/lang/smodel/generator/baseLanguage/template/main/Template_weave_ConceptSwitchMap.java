@@ -14,8 +14,6 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
@@ -73,7 +71,7 @@ public class Template_weave_ConceptSwitchMap extends TemplateDeclarationBase {
                   {
                     final SNode tnode6 = environment.createOutputNode(myConcepts[4]);
                     try {
-                      tnode6.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode6, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~ConceptSwitchIndexBuilder.<init>()")));
+                      environment.associate(tnode6, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)", "~ConceptSwitchIndexBuilder.<init>()");
                     } finally {
                     }
                     tnode5.addChild(myAggregationLinks[1], tnode6);
@@ -87,7 +85,7 @@ public class Template_weave_ConceptSwitchMap extends TemplateDeclarationBase {
               {
                 final SNode tnode7 = environment.createOutputNode(myConcepts[5]);
                 try {
-                  tnode7.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode7, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~ConceptSwitchIndexBuilder.put(jetbrains.mps.smodel.adapter.ids.SConceptId...)")));
+                  environment.associate(tnode7, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)", "~ConceptSwitchIndexBuilder.put(jetbrains.mps.smodel.adapter.ids.SConceptId...)");
                   TemplateContext context5 = context3.subContext();
                   {
                     final List<SNode> tlist8 = new ArrayList<SNode>();
@@ -102,8 +100,8 @@ public class Template_weave_ConceptSwitchMap extends TemplateDeclarationBase {
                       context7 = context7.withVariable("var:cid", QueriesGenerated.varMacro_Value_98_0(new TemplateVarContext(context6, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904796"))));
                       final SNode tnode10 = environment.createOutputNode(myConcepts[6]);
                       try {
-                        tnode10.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode10, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~MetaIdFactory.conceptId(long,long,long)")));
-                        tnode10.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode10, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~MetaIdFactory")));
+                        environment.associate(tnode10, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)", "~MetaIdFactory.conceptId(long,long,long)");
+                        environment.associate(tnode10, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)", "~MetaIdFactory");
                         TemplateContext context8 = context7.subContext();
                         {
                           final SNode tnode11 = environment.createOutputNode(myConcepts[7]);
@@ -157,7 +155,7 @@ public class Template_weave_ConceptSwitchMap extends TemplateDeclarationBase {
           {
             final SNode tnode15 = environment.createOutputNode(myConcepts[5]);
             try {
-              tnode15.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode15, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~ConceptSwitchIndexBuilder.seal()")));
+              environment.associate(tnode15, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)", "~ConceptSwitchIndexBuilder.seal()");
             } finally {
             }
             tnode3.addChild(myAggregationLinks[4], tnode15);
@@ -171,7 +169,7 @@ public class Template_weave_ConceptSwitchMap extends TemplateDeclarationBase {
       {
         final SNode tnode16 = environment.createOutputNode(myConcepts[8]);
         try {
-          tnode16.setReference(myAssociationLinks[2], SReference.create(myAssociationLinks[2], tnode16, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~ConceptSwitchIndex")));
+          environment.associate(tnode16, myAssociationLinks[2], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)", "~ConceptSwitchIndex");
         } finally {
         }
         tnode1.addChild(myAggregationLinks[6], tnode16);

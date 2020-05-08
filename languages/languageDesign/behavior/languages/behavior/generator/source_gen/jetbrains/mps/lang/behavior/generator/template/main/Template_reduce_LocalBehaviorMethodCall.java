@@ -14,8 +14,6 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.TemplateVarContext;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.impl.reference.RefResolver;
 import jetbrains.mps.generator.runtime.TemplateUtil;
@@ -54,7 +52,7 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
         try {
-          tnode3.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode3, PersistenceFacade.getInstance().createModelReference("d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)"), PersistenceFacade.getInstance().createNodeId("~SMethod.invoke(org.jetbrains.mps.openapi.model.SNode,java.lang.Object...)")));
+          environment.associate(tnode3, myAssociationLinks[0], "d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)", "~SMethod.invoke(org.jetbrains.mps.openapi.model.SNode,java.lang.Object...)");
           TemplateContext context3 = context2.subContext();
           {
             Collection<SNode> tlist4 = null;
@@ -105,7 +103,7 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
                   {
                     final SNode tnode10 = environment.createOutputNode(myConcepts[1]);
                     try {
-                      tnode10.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode10, PersistenceFacade.getInstance().createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)"), PersistenceFacade.getInstance().createNodeId("~SNode.getConcept()")));
+                      environment.associate(tnode10, myAssociationLinks[0], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SNode.getConcept()");
                     } finally {
                     }
                     tnode8.addChild(myAggregationLinks[1], tnode10);
@@ -196,7 +194,7 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
           {
             final SNode tnode23 = environment.createOutputNode(myConcepts[6]);
             try {
-              tnode23.setReference(myAssociationLinks[2], SReference.create(myAssociationLinks[2], tnode23, PersistenceFacade.getInstance().createModelReference("d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)"), PersistenceFacade.getInstance().createNodeId("~SMethod")));
+              environment.associate(tnode23, myAssociationLinks[2], "d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)", "~SMethod");
               TemplateContext context9 = context8.subContext();
               {
                 Collection<SNode> tlist24 = null;

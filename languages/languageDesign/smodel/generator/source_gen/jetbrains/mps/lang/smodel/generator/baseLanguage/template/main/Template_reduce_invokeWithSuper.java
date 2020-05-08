@@ -21,8 +21,6 @@ import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -116,7 +114,7 @@ public class Template_reduce_invokeWithSuper extends TemplateDeclarationBase {
           {
             final SNode tnode12 = environment.createOutputNode(myConcepts[4]);
             try {
-              tnode12.setReference(myAssociationLinks[2], SReference.create(myAssociationLinks[2], tnode12, PersistenceFacade.getInstance().createModelReference("d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)"), PersistenceFacade.getInstance().createNodeId("~SMethod")));
+              environment.associate(tnode12, myAssociationLinks[2], "d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)", "~SMethod");
               TemplateContext context7 = context6.subContext();
               {
                 Collection<SNode> tlist13 = null;

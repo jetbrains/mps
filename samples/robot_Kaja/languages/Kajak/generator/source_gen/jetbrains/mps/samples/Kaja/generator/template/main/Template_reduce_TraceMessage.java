@@ -12,8 +12,6 @@ import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.generator.runtime.ApplySink;
@@ -42,7 +40,7 @@ public class Template_reduce_TraceMessage extends TemplateDeclarationBase {
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
         try {
-          tnode2.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode2, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("3210697320273763026")));
+          environment.associate(tnode2, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3210697320273763026");
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode3 = environment.createOutputNode(myConcepts[2]);

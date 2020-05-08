@@ -12,8 +12,6 @@ import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -52,7 +50,7 @@ public class Template_reduce_Drop extends TemplateDeclarationBase {
                   {
                     final SNode tnode5 = environment.createOutputNode(myConcepts[4]);
                     try {
-                      tnode5.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode5, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("6405700485436169962")));
+                      environment.associate(tnode5, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "6405700485436169962");
                     } finally {
                     }
                     tnode4.addChild(myAggregationLinks[0], tnode5);
@@ -74,7 +72,7 @@ public class Template_reduce_Drop extends TemplateDeclarationBase {
                       {
                         final SNode tnode8 = environment.createOutputNode(myConcepts[4]);
                         try {
-                          tnode8.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode8, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("3308300503039570096")));
+                          environment.associate(tnode8, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039570096");
                         } finally {
                         }
                         tnode7.addChild(myAggregationLinks[2], tnode8);
@@ -92,7 +90,7 @@ public class Template_reduce_Drop extends TemplateDeclarationBase {
                       {
                         final SNode tnode10 = environment.createOutputNode(myConcepts[4]);
                         try {
-                          tnode10.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode10, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("3308300503039570144")));
+                          environment.associate(tnode10, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039570144");
                         } finally {
                         }
                         tnode9.addChild(myAggregationLinks[2], tnode10);
@@ -123,7 +121,7 @@ public class Template_reduce_Drop extends TemplateDeclarationBase {
                           {
                             final SNode tnode14 = environment.createOutputNode(myConcepts[4]);
                             try {
-                              tnode14.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode14, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("3308300503039580739")));
+                              environment.associate(tnode14, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039580739");
                               TemplateContext context11 = context10.subContext();
                               {
                                 final SNode tnode15 = environment.createOutputNode(myConcepts[6]);

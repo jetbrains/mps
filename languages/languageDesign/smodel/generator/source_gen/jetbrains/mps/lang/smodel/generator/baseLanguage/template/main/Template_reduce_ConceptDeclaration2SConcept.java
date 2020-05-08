@@ -14,8 +14,6 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.IfMacroContext;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.generator.runtime.TemplateUtil;
@@ -43,8 +41,8 @@ public class Template_reduce_ConceptDeclaration2SConcept extends TemplateDeclara
     if (QueriesGenerated.ifMacro_Condition_100_0(new IfMacroContext(context, ifMacroRef_ye5dbk_b0a0c0g))) {
       final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
       try {
-        tnode2.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode2, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~MetaAdapterFactory")));
-        tnode2.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode2, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)")));
+        environment.associate(tnode2, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)", "~MetaAdapterFactory");
+        environment.associate(tnode2, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)", "~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)");
         TemplateContext context1 = context.subContext();
         {
           final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
@@ -88,14 +86,14 @@ public class Template_reduce_ConceptDeclaration2SConcept extends TemplateDeclara
     } else {
       final SNode tnode7 = environment.createOutputNode(myConcepts[0]);
       try {
-        tnode7.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode7, PersistenceFacade.getInstance().createModelReference("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)"), PersistenceFacade.getInstance().createNodeId("742658975218862661")));
-        tnode7.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode7, PersistenceFacade.getInstance().createModelReference("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)"), PersistenceFacade.getInstance().createNodeId("6599163591527286941")));
+        environment.associate(tnode7, myAssociationLinks[1], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "742658975218862661");
+        environment.associate(tnode7, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286941");
         TemplateContext context2 = context.subContext();
         {
           final SNode tnode8 = environment.createOutputNode(myConcepts[0]);
           try {
-            tnode8.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode8, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~MetaAdapterFactory")));
-            tnode8.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode8, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~MetaAdapterFactory.getInterfaceConcept(long,long,long,java.lang.String)")));
+            environment.associate(tnode8, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)", "~MetaAdapterFactory");
+            environment.associate(tnode8, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)", "~MetaAdapterFactory.getInterfaceConcept(long,long,long,java.lang.String)");
             TemplateContext context3 = context2.subContext();
             {
               final SNode tnode9 = environment.createOutputNode(myConcepts[1]);

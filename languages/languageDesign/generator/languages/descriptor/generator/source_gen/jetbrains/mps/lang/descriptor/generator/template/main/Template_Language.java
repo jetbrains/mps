@@ -16,8 +16,6 @@ import java.util.ArrayList;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.generator.impl.reference.RefResolver;
 import jetbrains.mps.generator.impl.MapSrcProcessor;
 import jetbrains.mps.generator.impl.GenerationFailureException;
@@ -84,7 +82,7 @@ public class Template_Language extends TemplateDeclarationBase {
                     {
                       final SNode tnode9 = environment.createOutputNode(myConcepts[5]);
                       try {
-                        tnode9.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode9, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), PersistenceFacade.getInstance().createNodeId("~Class.cast(java.lang.Object)")));
+                        environment.associate(tnode9, myAssociationLinks[1], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Class.cast(java.lang.Object)");
                         TemplateContext context7 = context6.subContext();
                         {
                           final SNode tnode10 = environment.createOutputNode(myConcepts[6]);
@@ -145,7 +143,7 @@ public class Template_Language extends TemplateDeclarationBase {
             {
               final SNode tnode14 = environment.createOutputNode(myConcepts[5]);
               try {
-                tnode14.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode14, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), PersistenceFacade.getInstance().createNodeId("~Class.isAssignableFrom(java.lang.Class)")));
+                environment.associate(tnode14, myAssociationLinks[1], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Class.isAssignableFrom(java.lang.Class)");
                 TemplateContext context10 = context9.subContext();
                 {
                   final SNode tnode15 = environment.createOutputNode(myConcepts[8]);
@@ -210,7 +208,7 @@ public class Template_Language extends TemplateDeclarationBase {
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[11]);
         try {
-          tnode4.setReference(myAssociationLinks[4], SReference.create(myAssociationLinks[4], tnode4, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.language(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~LanguageRuntime")));
+          environment.associate(tnode4, myAssociationLinks[4], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.language(MPS.Core/)", "~LanguageRuntime");
         } finally {
         }
         tnode2.addChild(myAggregationLinks[9], tnode4);
@@ -236,7 +234,7 @@ public class Template_Language extends TemplateDeclarationBase {
           {
             final SNode tnode7 = environment.createOutputNode(myConcepts[11]);
             try {
-              tnode7.setReference(myAssociationLinks[4], SReference.create(myAssociationLinks[4], tnode7, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~SLanguageId")));
+              environment.associate(tnode7, myAssociationLinks[4], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)", "~SLanguageId");
             } finally {
             }
             tnode5.addChild(myAggregationLinks[10], tnode7);
@@ -299,8 +297,8 @@ public class Template_Language extends TemplateDeclarationBase {
                       {
                         final SNode tnode16 = environment.createOutputNode(myConcepts[19]);
                         try {
-                          tnode16.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode16, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~SLanguageId.deserialize(java.lang.String)")));
-                          tnode16.setReference(myAssociationLinks[5], SReference.create(myAssociationLinks[5], tnode16, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~SLanguageId")));
+                          environment.associate(tnode16, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)", "~SLanguageId.deserialize(java.lang.String)");
+                          environment.associate(tnode16, myAssociationLinks[5], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)", "~SLanguageId");
                           TemplateContext context8 = context7.subContext();
                           {
                             final SNode tnode17 = environment.createOutputNode(myConcepts[20]);
@@ -397,7 +395,7 @@ public class Template_Language extends TemplateDeclarationBase {
           {
             final SNode tnode25 = environment.createOutputNode(myConcepts[23]);
             try {
-              tnode25.setReference(myAssociationLinks[6], SReference.create(myAssociationLinks[6], tnode25, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), PersistenceFacade.getInstance().createNodeId("~Override")));
+              environment.associate(tnode25, myAssociationLinks[6], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Override");
             } finally {
             }
             tnode19.addChild(myAggregationLinks[17], tnode25);
@@ -469,7 +467,7 @@ public class Template_Language extends TemplateDeclarationBase {
           {
             final SNode tnode33 = environment.createOutputNode(myConcepts[23]);
             try {
-              tnode33.setReference(myAssociationLinks[6], SReference.create(myAssociationLinks[6], tnode33, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), PersistenceFacade.getInstance().createNodeId("~Override")));
+              environment.associate(tnode33, myAssociationLinks[6], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Override");
             } finally {
             }
             tnode27.addChild(myAggregationLinks[17], tnode33);
@@ -535,7 +533,7 @@ public class Template_Language extends TemplateDeclarationBase {
           {
             final SNode tnode40 = environment.createOutputNode(myConcepts[11]);
             try {
-              tnode40.setReference(myAssociationLinks[4], SReference.create(myAssociationLinks[4], tnode40, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~SLanguageId")));
+              environment.associate(tnode40, myAssociationLinks[4], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)", "~SLanguageId");
             } finally {
             }
             tnode35.addChild(myAggregationLinks[12], tnode40);
@@ -587,12 +585,12 @@ public class Template_Language extends TemplateDeclarationBase {
               {
                 final SNode tnode46 = environment.createOutputNode(myConcepts[11]);
                 try {
-                  tnode46.setReference(myAssociationLinks[4], SReference.create(myAssociationLinks[4], tnode46, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)"), PersistenceFacade.getInstance().createNodeId("~Collection")));
+                  environment.associate(tnode46, myAssociationLinks[4], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)", "~Collection");
                   TemplateContext context20 = context19.subContext();
                   {
                     final SNode tnode47 = environment.createOutputNode(myConcepts[11]);
                     try {
-                      tnode47.setReference(myAssociationLinks[4], SReference.create(myAssociationLinks[4], tnode47, PersistenceFacade.getInstance().createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)"), PersistenceFacade.getInstance().createNodeId("~SLanguage")));
+                      environment.associate(tnode47, myAssociationLinks[4], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)", "~SLanguage");
                     } finally {
                     }
                     tnode46.addChild(myAggregationLinks[18], tnode47);
@@ -639,19 +637,19 @@ public class Template_Language extends TemplateDeclarationBase {
                         {
                           final SNode tnode53 = environment.createOutputNode(myConcepts[5]);
                           try {
-                            tnode53.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode53, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)"), PersistenceFacade.getInstance().createNodeId("~Collection.add(java.lang.Object)")));
+                            environment.associate(tnode53, myAssociationLinks[1], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)", "~Collection.add(java.lang.Object)");
                             TemplateContext context25 = context24.subContext();
                             {
                               final SNode tnode54 = environment.createOutputNode(myConcepts[19]);
                               try {
-                                tnode54.setReference(myAssociationLinks[5], SReference.create(myAssociationLinks[5], tnode54, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~MetaAdapterFactory")));
-                                tnode54.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode54, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~MetaAdapterFactory.getLanguage(jetbrains.mps.smodel.adapter.ids.SLanguageId,java.lang.String)")));
+                                environment.associate(tnode54, myAssociationLinks[5], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)", "~MetaAdapterFactory");
+                                environment.associate(tnode54, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)", "~MetaAdapterFactory.getLanguage(jetbrains.mps.smodel.adapter.ids.SLanguageId,java.lang.String)");
                                 TemplateContext context26 = context25.subContext();
                                 {
                                   final SNode tnode55 = environment.createOutputNode(myConcepts[19]);
                                   try {
-                                    tnode55.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode55, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~SLanguageId.deserialize(java.lang.String)")));
-                                    tnode55.setReference(myAssociationLinks[5], SReference.create(myAssociationLinks[5], tnode55, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~SLanguageId")));
+                                    environment.associate(tnode55, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)", "~SLanguageId.deserialize(java.lang.String)");
+                                    environment.associate(tnode55, myAssociationLinks[5], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)", "~SLanguageId");
                                     TemplateContext context27 = context26.subContext();
                                     {
                                       final SNode tnode56 = environment.createOutputNode(myConcepts[20]);
@@ -710,7 +708,7 @@ public class Template_Language extends TemplateDeclarationBase {
           {
             final SNode tnode59 = environment.createOutputNode(myConcepts[23]);
             try {
-              tnode59.setReference(myAssociationLinks[6], SReference.create(myAssociationLinks[6], tnode59, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), PersistenceFacade.getInstance().createNodeId("~Override")));
+              environment.associate(tnode59, myAssociationLinks[6], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Override");
             } finally {
             }
             tnode42.addChild(myAggregationLinks[17], tnode59);
@@ -753,7 +751,7 @@ public class Template_Language extends TemplateDeclarationBase {
               {
                 final SNode tnode64 = environment.createOutputNode(myConcepts[11]);
                 try {
-                  tnode64.setReference(myAssociationLinks[4], SReference.create(myAssociationLinks[4], tnode64, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~ILanguageAspect")));
+                  environment.associate(tnode64, myAssociationLinks[4], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)", "~ILanguageAspect");
                 } finally {
                 }
                 tnode63.addChild(myAggregationLinks[20], tnode64);
@@ -782,7 +780,7 @@ public class Template_Language extends TemplateDeclarationBase {
               {
                 final SNode tnode67 = environment.createOutputNode(myConcepts[11]);
                 try {
-                  tnode67.setReference(myAssociationLinks[4], SReference.create(myAssociationLinks[4], tnode67, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), PersistenceFacade.getInstance().createNodeId("~Class")));
+                  environment.associate(tnode67, myAssociationLinks[4], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Class");
                   TemplateContext context31 = context30.subContext();
                   {
                     final SNode tnode68 = environment.createOutputNode(myConcepts[29]);
@@ -1092,7 +1090,7 @@ public class Template_Language extends TemplateDeclarationBase {
           {
             final SNode tnode104 = environment.createOutputNode(myConcepts[23]);
             try {
-              tnode104.setReference(myAssociationLinks[6], SReference.create(myAssociationLinks[6], tnode104, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), PersistenceFacade.getInstance().createNodeId("~Override")));
+              environment.associate(tnode104, myAssociationLinks[6], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Override");
             } finally {
             }
             tnode61.addChild(myAggregationLinks[17], tnode104);
@@ -1140,7 +1138,7 @@ public class Template_Language extends TemplateDeclarationBase {
               {
                 final SNode tnode110 = environment.createOutputNode(myConcepts[11]);
                 try {
-                  tnode110.setReference(myAssociationLinks[4], SReference.create(myAssociationLinks[4], tnode110, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.language(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~LanguageExtensions")));
+                  environment.associate(tnode110, myAssociationLinks[4], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.language(MPS.Core/)", "~LanguageExtensions");
                 } finally {
                 }
                 tnode109.addChild(myAggregationLinks[10], tnode110);
@@ -1149,7 +1147,7 @@ public class Template_Language extends TemplateDeclarationBase {
               {
                 final SNode tnode111 = environment.createOutputNode(myConcepts[23]);
                 try {
-                  tnode111.setReference(myAssociationLinks[6], SReference.create(myAssociationLinks[6], tnode111, PersistenceFacade.getInstance().createModelReference("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)"), PersistenceFacade.getInstance().createNodeId("~NotNull")));
+                  environment.associate(tnode111, myAssociationLinks[6], "3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull");
                 } finally {
                 }
                 tnode109.addChild(myAggregationLinks[17], tnode111);
@@ -1214,7 +1212,7 @@ public class Template_Language extends TemplateDeclarationBase {
           {
             final SNode tnode118 = environment.createOutputNode(myConcepts[23]);
             try {
-              tnode118.setReference(myAssociationLinks[6], SReference.create(myAssociationLinks[6], tnode118, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), PersistenceFacade.getInstance().createNodeId("~Override")));
+              environment.associate(tnode118, myAssociationLinks[6], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Override");
             } finally {
             }
             tnode106.addChild(myAggregationLinks[17], tnode118);

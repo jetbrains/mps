@@ -18,8 +18,6 @@ import java.util.ArrayList;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.generator.impl.reference.RefResolver;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
@@ -77,7 +75,7 @@ public class Template_BehaviorAspectDescriptor extends TemplateDeclarationBase {
             {
               final SNode tnode6 = environment.createOutputNode(myConcepts[3]);
               try {
-                tnode6.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode6, PersistenceFacade.getInstance().createModelReference("d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)"), PersistenceFacade.getInstance().createNodeId("~BHDescriptor")));
+                environment.associate(tnode6, myAssociationLinks[0], "d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)", "~BHDescriptor");
               } finally {
               }
               tnode4.addChild(myAggregationLinks[1], tnode6);
@@ -129,7 +127,7 @@ public class Template_BehaviorAspectDescriptor extends TemplateDeclarationBase {
       {
         final SNode tnode11 = environment.createOutputNode(myConcepts[3]);
         try {
-          tnode11.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode11, PersistenceFacade.getInstance().createModelReference("d936855b-48da-4812-a8a0-2bfddd633ac4/java:jetbrains.mps.core.aspects.behaviour(jetbrains.mps.lang.behavior.runtime/)"), PersistenceFacade.getInstance().createNodeId("~BaseBehaviorAspectDescriptor")));
+          environment.associate(tnode11, myAssociationLinks[0], "d936855b-48da-4812-a8a0-2bfddd633ac4/java:jetbrains.mps.core.aspects.behaviour(jetbrains.mps.lang.behavior.runtime/)", "~BaseBehaviorAspectDescriptor");
         } finally {
         }
         tnode2.addChild(myAggregationLinks[5], tnode11);
@@ -195,7 +193,7 @@ public class Template_BehaviorAspectDescriptor extends TemplateDeclarationBase {
           {
             final SNode tnode19 = environment.createOutputNode(myConcepts[3]);
             try {
-              tnode19.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode19, PersistenceFacade.getInstance().createModelReference("d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)"), PersistenceFacade.getInstance().createNodeId("~BHDescriptor")));
+              environment.associate(tnode19, myAssociationLinks[0], "d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)", "~BHDescriptor");
             } finally {
             }
             tnode17.addChild(myAggregationLinks[6], tnode19);
@@ -218,7 +216,7 @@ public class Template_BehaviorAspectDescriptor extends TemplateDeclarationBase {
               {
                 final SNode tnode22 = environment.createOutputNode(myConcepts[14]);
                 try {
-                  tnode22.setReference(myAssociationLinks[2], SReference.create(myAssociationLinks[2], tnode22, PersistenceFacade.getInstance().createModelReference("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)"), PersistenceFacade.getInstance().createNodeId("~NotNull")));
+                  environment.associate(tnode22, myAssociationLinks[2], "3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull");
                 } finally {
                 }
                 tnode20.addChild(myAggregationLinks[8], tnode22);
@@ -232,7 +230,7 @@ public class Template_BehaviorAspectDescriptor extends TemplateDeclarationBase {
           {
             final SNode tnode23 = environment.createOutputNode(myConcepts[14]);
             try {
-              tnode23.setReference(myAssociationLinks[2], SReference.create(myAssociationLinks[2], tnode23, PersistenceFacade.getInstance().createModelReference("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)"), PersistenceFacade.getInstance().createNodeId("~Nullable")));
+              environment.associate(tnode23, myAssociationLinks[2], "3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~Nullable");
             } finally {
             }
             tnode17.addChild(myAggregationLinks[8], tnode23);

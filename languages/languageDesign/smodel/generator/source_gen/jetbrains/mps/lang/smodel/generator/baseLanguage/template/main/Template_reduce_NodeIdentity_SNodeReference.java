@@ -14,8 +14,6 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.TemplateVarContext;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.generator.runtime.TemplateUtil;
@@ -48,7 +46,7 @@ public class Template_reduce_NodeIdentity_SNodeReference extends TemplateDeclara
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
         try {
-          tnode3.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode3, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~SNodePointer.<init>(java.lang.String,java.lang.String)")));
+          environment.associate(tnode3, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)", "~SNodePointer.<init>(java.lang.String,java.lang.String)");
           TemplateContext context3 = context2.subContext();
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[2]);

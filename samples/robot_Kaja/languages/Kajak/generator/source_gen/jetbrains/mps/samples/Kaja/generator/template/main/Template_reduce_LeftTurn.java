@@ -12,8 +12,6 @@ import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -55,7 +53,7 @@ public class Template_reduce_LeftTurn extends TemplateDeclarationBase {
                       {
                         final SNode tnode6 = environment.createOutputNode(myConcepts[4]);
                         try {
-                          tnode6.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode6, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("3308300503039569996")));
+                          environment.associate(tnode6, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039569996");
                         } finally {
                         }
                         tnode5.addChild(myAggregationLinks[0], tnode6);
@@ -73,7 +71,7 @@ public class Template_reduce_LeftTurn extends TemplateDeclarationBase {
                       {
                         final SNode tnode8 = environment.createOutputNode(myConcepts[4]);
                         try {
-                          tnode8.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode8, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("3308300503039570144")));
+                          environment.associate(tnode8, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039570144");
                         } finally {
                         }
                         tnode7.addChild(myAggregationLinks[0], tnode8);

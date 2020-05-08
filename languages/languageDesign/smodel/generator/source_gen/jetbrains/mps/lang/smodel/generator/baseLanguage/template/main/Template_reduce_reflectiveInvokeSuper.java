@@ -14,8 +14,6 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.TemplateVarContext;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.generator.impl.reference.RefResolver;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.runtime.TemplateUtil;
@@ -48,7 +46,7 @@ public class Template_reduce_reflectiveInvokeSuper extends TemplateDeclarationBa
     context1 = context1.withVariable("var:invocationTarget", QueriesGenerated.varMacro_Value_116_0(new TemplateVarContext(context, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904818"))));
     final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
     try {
-      tnode2.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode2, PersistenceFacade.getInstance().createModelReference("d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.smodel.behaviour(jetbrains.mps.lang.behavior.api/)"), PersistenceFacade.getInstance().createNodeId("~BHReflection")));
+      environment.associate(tnode2, myAssociationLinks[0], "d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.smodel.behaviour(jetbrains.mps.lang.behavior.api/)", "~BHReflection");
       environment.resolve(new RefResolver(tnode2, myAssociationLinks[1], context1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4656749346205522051"), "invokeSuper") {
         @Override
         public Object resolve() {
@@ -86,8 +84,8 @@ public class Template_reduce_reflectiveInvokeSuper extends TemplateDeclarationBa
       {
         final SNode tnode6 = environment.createOutputNode(myConcepts[0]);
         try {
-          tnode6.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode6, PersistenceFacade.getInstance().createModelReference("d936855b-48da-4812-a8a0-2bfddd633ac4/java:jetbrains.mps.core.aspects.behaviour(jetbrains.mps.lang.behavior.runtime/)"), PersistenceFacade.getInstance().createNodeId("~SMethodTrimmedId.create(java.lang.String,org.jetbrains.mps.openapi.language.SAbstractConcept,java.lang.String)")));
-          tnode6.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode6, PersistenceFacade.getInstance().createModelReference("d936855b-48da-4812-a8a0-2bfddd633ac4/java:jetbrains.mps.core.aspects.behaviour(jetbrains.mps.lang.behavior.runtime/)"), PersistenceFacade.getInstance().createNodeId("~SMethodTrimmedId")));
+          environment.associate(tnode6, myAssociationLinks[1], "d936855b-48da-4812-a8a0-2bfddd633ac4/java:jetbrains.mps.core.aspects.behaviour(jetbrains.mps.lang.behavior.runtime/)", "~SMethodTrimmedId.create(java.lang.String,org.jetbrains.mps.openapi.language.SAbstractConcept,java.lang.String)");
+          environment.associate(tnode6, myAssociationLinks[0], "d936855b-48da-4812-a8a0-2bfddd633ac4/java:jetbrains.mps.core.aspects.behaviour(jetbrains.mps.lang.behavior.runtime/)", "~SMethodTrimmedId");
           TemplateContext context4 = context2.subContext();
           {
             final SNode tnode7 = environment.createOutputNode(myConcepts[2]);

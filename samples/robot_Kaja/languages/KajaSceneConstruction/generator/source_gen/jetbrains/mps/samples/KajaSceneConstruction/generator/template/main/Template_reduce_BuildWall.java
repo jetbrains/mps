@@ -12,8 +12,6 @@ import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.generator.runtime.ApplySink;
@@ -58,7 +56,7 @@ public class Template_reduce_BuildWall extends TemplateDeclarationBase {
                       {
                         final SNode tnode6 = environment.createOutputNode(myConcepts[4]);
                         try {
-                          tnode6.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode6, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("3210697320273550801")));
+                          environment.associate(tnode6, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3210697320273550801");
                           TemplateContext context6 = context5.subContext();
                           {
                             final SNode tnode7 = environment.createOutputNode(myConcepts[5]);
@@ -95,7 +93,7 @@ public class Template_reduce_BuildWall extends TemplateDeclarationBase {
                       {
                         final SNode tnode10 = environment.createOutputNode(myConcepts[4]);
                         try {
-                          tnode10.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode10, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("3210697320273550615")));
+                          environment.associate(tnode10, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3210697320273550615");
                         } finally {
                         }
                         tnode9.addChild(myAggregationLinks[1], tnode10);
@@ -126,7 +124,7 @@ public class Template_reduce_BuildWall extends TemplateDeclarationBase {
                   {
                     final SNode tnode13 = environment.createOutputNode(myConcepts[4]);
                     try {
-                      tnode13.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode13, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("3210697320273648281")));
+                      environment.associate(tnode13, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3210697320273648281");
                       TemplateContext context9 = context8.subContext();
                       {
                         final SNode tnode14 = environment.createOutputNode(myConcepts[5]);
@@ -145,7 +143,7 @@ public class Template_reduce_BuildWall extends TemplateDeclarationBase {
                   {
                     final SNode tnode15 = environment.createOutputNode(myConcepts[4]);
                     try {
-                      tnode15.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode15, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("3210697320273648203")));
+                      environment.associate(tnode15, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3210697320273648203");
                       TemplateContext context10 = context8.subContext();
                       {
                         final SNode tnode16 = environment.createOutputNode(myConcepts[5]);
@@ -181,7 +179,7 @@ public class Template_reduce_BuildWall extends TemplateDeclarationBase {
                           {
                             final SNode tnode20 = environment.createOutputNode(myConcepts[4]);
                             try {
-                              tnode20.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode20, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("3308300503039580739")));
+                              environment.associate(tnode20, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039580739");
                               TemplateContext context14 = context13.subContext();
                               {
                                 final SNode tnode21 = environment.createOutputNode(myConcepts[8]);

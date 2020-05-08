@@ -15,8 +15,6 @@ import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.impl.reference.RefResolver;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -59,7 +57,7 @@ public class Template_reduce_ThisNodeExpression extends TemplateDeclarationBase 
         {
           final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
           try {
-            tnode4.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode4, PersistenceFacade.getInstance().createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)"), PersistenceFacade.getInstance().createNodeId("~SAbstractConcept.getDeclarationNode()")));
+            environment.associate(tnode4, myAssociationLinks[1], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)", "~SAbstractConcept.getDeclarationNode()");
           } finally {
           }
           tnode2.addChild(myAggregationLinks[1], tnode4);

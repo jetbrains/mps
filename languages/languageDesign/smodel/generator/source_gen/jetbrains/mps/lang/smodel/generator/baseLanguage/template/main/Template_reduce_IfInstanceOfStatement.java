@@ -14,8 +14,6 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import java.util.Collection;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.runtime.TemplateUtil;
@@ -60,7 +58,7 @@ public class Template_reduce_IfInstanceOfStatement extends TemplateDeclarationBa
                   {
                     final SNode tnode5 = environment.createOutputNode(myConcepts[4]);
                     try {
-                      tnode5.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode5, PersistenceFacade.getInstance().createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)"), PersistenceFacade.getInstance().createNodeId("~SNode")));
+                      environment.associate(tnode5, myAssociationLinks[0], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SNode");
                     } finally {
                     }
                     tnode4.addChild(myAggregationLinks[0], tnode5);
@@ -92,8 +90,8 @@ public class Template_reduce_IfInstanceOfStatement extends TemplateDeclarationBa
               {
                 final SNode tnode9 = environment.createOutputNode(myConcepts[6]);
                 try {
-                  tnode9.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode9, PersistenceFacade.getInstance().createModelReference("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)"), PersistenceFacade.getInstance().createNodeId("6599163591527294101")));
-                  tnode9.setReference(myAssociationLinks[2], SReference.create(myAssociationLinks[2], tnode9, PersistenceFacade.getInstance().createModelReference("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)"), PersistenceFacade.getInstance().createNodeId("6599163591527286941")));
+                  environment.associate(tnode9, myAssociationLinks[1], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527294101");
+                  environment.associate(tnode9, myAssociationLinks[2], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286941");
                   TemplateContext context6 = context5.subContext();
                   {
                     final SNode tnode10 = environment.createOutputNode(myConcepts[7]);

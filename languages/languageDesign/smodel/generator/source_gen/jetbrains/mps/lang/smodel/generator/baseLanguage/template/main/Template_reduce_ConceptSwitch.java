@@ -15,8 +15,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.template.IfMacroContext;
@@ -58,7 +56,7 @@ public class Template_reduce_ConceptSwitch extends TemplateDeclarationBase {
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
             try {
-              tnode4.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode4, PersistenceFacade.getInstance().createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)"), PersistenceFacade.getInstance().createNodeId("~SAbstractConcept")));
+              environment.associate(tnode4, myAssociationLinks[0], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)", "~SAbstractConcept");
             } finally {
             }
             tnode3.addChild(myAggregationLinks[0], tnode4);
@@ -176,7 +174,7 @@ public class Template_reduce_ConceptSwitch extends TemplateDeclarationBase {
             {
               final SNode tnode16 = environment.createOutputNode(myConcepts[8]);
               try {
-                tnode16.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode16, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~ConceptIndex.index(org.jetbrains.mps.openapi.language.SAbstractConcept)")));
+                environment.associate(tnode16, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)", "~ConceptIndex.index(org.jetbrains.mps.openapi.language.SAbstractConcept)");
                 TemplateContext context7 = context6.subContext();
                 {
                   final SNode tnode17 = environment.createOutputNode(myConcepts[9]);

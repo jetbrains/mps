@@ -12,8 +12,6 @@ import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.generator.runtime.ApplySink;
@@ -62,7 +60,7 @@ public class Template_reduce_DropMark extends TemplateDeclarationBase {
                           {
                             final SNode tnode7 = environment.createOutputNode(myConcepts[4]);
                             try {
-                              tnode7.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode7, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("3210697320273614248")));
+                              environment.associate(tnode7, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3210697320273614248");
                               TemplateContext context7 = context6.subContext();
                               {
                                 final SNode tnode8 = environment.createOutputNode(myConcepts[5]);
@@ -103,7 +101,7 @@ public class Template_reduce_DropMark extends TemplateDeclarationBase {
                               {
                                 final SNode tnode12 = environment.createOutputNode(myConcepts[4]);
                                 try {
-                                  tnode12.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode12, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("3210697320273550653")));
+                                  environment.associate(tnode12, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3210697320273550653");
                                   TemplateContext context10 = context9.subContext();
                                   {
                                     final SNode tnode13 = environment.createOutputNode(myConcepts[5]);
@@ -140,7 +138,7 @@ public class Template_reduce_DropMark extends TemplateDeclarationBase {
                               {
                                 final SNode tnode16 = environment.createOutputNode(myConcepts[4]);
                                 try {
-                                  tnode16.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode16, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("3210697320273550615")));
+                                  environment.associate(tnode16, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3210697320273550615");
                                 } finally {
                                 }
                                 tnode15.addChild(myAggregationLinks[3], tnode16);
@@ -171,7 +169,7 @@ public class Template_reduce_DropMark extends TemplateDeclarationBase {
                                   {
                                     final SNode tnode20 = environment.createOutputNode(myConcepts[4]);
                                     try {
-                                      tnode20.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode20, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("3308300503039580739")));
+                                      environment.associate(tnode20, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039580739");
                                       TemplateContext context15 = context14.subContext();
                                       {
                                         final SNode tnode21 = environment.createOutputNode(myConcepts[7]);
@@ -227,7 +225,7 @@ public class Template_reduce_DropMark extends TemplateDeclarationBase {
                   {
                     final SNode tnode24 = environment.createOutputNode(myConcepts[4]);
                     try {
-                      tnode24.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode24, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("3210697320273648281")));
+                      environment.associate(tnode24, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3210697320273648281");
                       TemplateContext context17 = context16.subContext();
                       {
                         final SNode tnode25 = environment.createOutputNode(myConcepts[5]);
@@ -246,7 +244,7 @@ public class Template_reduce_DropMark extends TemplateDeclarationBase {
                   {
                     final SNode tnode26 = environment.createOutputNode(myConcepts[4]);
                     try {
-                      tnode26.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode26, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("3210697320273648203")));
+                      environment.associate(tnode26, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3210697320273648203");
                       TemplateContext context18 = context16.subContext();
                       {
                         final SNode tnode27 = environment.createOutputNode(myConcepts[5]);
@@ -282,7 +280,7 @@ public class Template_reduce_DropMark extends TemplateDeclarationBase {
                           {
                             final SNode tnode31 = environment.createOutputNode(myConcepts[4]);
                             try {
-                              tnode31.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode31, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("3308300503039580739")));
+                              environment.associate(tnode31, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039580739");
                               TemplateContext context22 = context21.subContext();
                               {
                                 final SNode tnode32 = environment.createOutputNode(myConcepts[7]);

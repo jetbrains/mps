@@ -14,8 +14,6 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -71,8 +69,8 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                   {
                     final SNode tnode7 = environment.createOutputNode(myConcepts[6]);
                     try {
-                      tnode7.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode7, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), PersistenceFacade.getInstance().createNodeId("~System")));
-                      tnode7.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode7, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), PersistenceFacade.getInstance().createNodeId("~System.out")));
+                      environment.associate(tnode7, myAssociationLinks[0], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~System");
+                      environment.associate(tnode7, myAssociationLinks[1], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~System.out");
                     } finally {
                     }
                     tnode6.addChild(myAggregationLinks[2], tnode7);
@@ -81,7 +79,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                   {
                     final SNode tnode8 = environment.createOutputNode(myConcepts[7]);
                     try {
-                      tnode8.setReference(myAssociationLinks[2], SReference.create(myAssociationLinks[2], tnode8, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)"), PersistenceFacade.getInstance().createNodeId("~PrintStream.println(java.lang.String)")));
+                      environment.associate(tnode8, myAssociationLinks[2], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)", "~PrintStream.println(java.lang.String)");
                       TemplateContext context5 = context4.subContext();
                       {
                         final SNode tnode9 = environment.createOutputNode(myConcepts[8]);
@@ -190,8 +188,8 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                   {
                     final SNode tnode7 = environment.createOutputNode(myConcepts[6]);
                     try {
-                      tnode7.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode7, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), PersistenceFacade.getInstance().createNodeId("~System")));
-                      tnode7.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode7, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), PersistenceFacade.getInstance().createNodeId("~System.out")));
+                      environment.associate(tnode7, myAssociationLinks[0], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~System");
+                      environment.associate(tnode7, myAssociationLinks[1], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~System.out");
                     } finally {
                     }
                     tnode6.addChild(myAggregationLinks[2], tnode7);
@@ -200,7 +198,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                   {
                     final SNode tnode8 = environment.createOutputNode(myConcepts[7]);
                     try {
-                      tnode8.setReference(myAssociationLinks[2], SReference.create(myAssociationLinks[2], tnode8, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)"), PersistenceFacade.getInstance().createNodeId("~PrintStream.println(java.lang.String)")));
+                      environment.associate(tnode8, myAssociationLinks[2], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)", "~PrintStream.println(java.lang.String)");
                       TemplateContext context5 = context4.subContext();
                       {
                         final SNode tnode9 = environment.createOutputNode(myConcepts[8]);
@@ -309,8 +307,8 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                   {
                     final SNode tnode7 = environment.createOutputNode(myConcepts[6]);
                     try {
-                      tnode7.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode7, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), PersistenceFacade.getInstance().createNodeId("~System")));
-                      tnode7.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode7, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), PersistenceFacade.getInstance().createNodeId("~System.out")));
+                      environment.associate(tnode7, myAssociationLinks[0], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~System");
+                      environment.associate(tnode7, myAssociationLinks[1], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~System.out");
                     } finally {
                     }
                     tnode6.addChild(myAggregationLinks[2], tnode7);
@@ -319,7 +317,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                   {
                     final SNode tnode8 = environment.createOutputNode(myConcepts[7]);
                     try {
-                      tnode8.setReference(myAssociationLinks[2], SReference.create(myAssociationLinks[2], tnode8, PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)"), PersistenceFacade.getInstance().createNodeId("~PrintStream.println(java.lang.String)")));
+                      environment.associate(tnode8, myAssociationLinks[2], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)", "~PrintStream.println(java.lang.String)");
                       TemplateContext context5 = context4.subContext();
                       {
                         final SNode tnode9 = environment.createOutputNode(myConcepts[8]);

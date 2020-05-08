@@ -20,8 +20,6 @@ import jetbrains.mps.generator.runtime.TemplateUtil;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.generator.impl.reference.RefResolver;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.runtime.ApplySink;
@@ -166,8 +164,8 @@ public class Template_reduce_ConceptSwitch_SubconceptCases extends TemplateDecla
             {
               final SNode tnode12 = environment.createOutputNode(myConcepts[10]);
               try {
-                tnode12.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode12, PersistenceFacade.getInstance().createModelReference("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)"), PersistenceFacade.getInstance().createNodeId("1461238478128512590")));
-                tnode12.setReference(myAssociationLinks[2], SReference.create(myAssociationLinks[2], tnode12, PersistenceFacade.getInstance().createModelReference("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)"), PersistenceFacade.getInstance().createNodeId("6599163591527270726")));
+                environment.associate(tnode12, myAssociationLinks[1], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "1461238478128512590");
+                environment.associate(tnode12, myAssociationLinks[2], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527270726");
                 TemplateContext context7 = context6.subContext();
                 {
                   final SNode tnode13 = environment.createOutputNode(myConcepts[8]);

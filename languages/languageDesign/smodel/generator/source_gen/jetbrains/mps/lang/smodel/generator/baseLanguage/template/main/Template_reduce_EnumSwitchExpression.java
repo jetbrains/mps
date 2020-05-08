@@ -21,8 +21,6 @@ import java.util.Collection;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.runtime.TemplateUtil;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.adapter.ids.SDataTypeId;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
 import java.util.Collections;
@@ -115,8 +113,8 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
               {
                 final SNode tnode12 = environment.createOutputNode(myConcepts[6]);
                 try {
-                  tnode12.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode12, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~EnumerationLiteralsIndex.build(long,long,long,long...)")));
-                  tnode12.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode12, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~EnumerationLiteralsIndex")));
+                  environment.associate(tnode12, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)", "~EnumerationLiteralsIndex.build(long,long,long,long...)");
+                  environment.associate(tnode12, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)", "~EnumerationLiteralsIndex");
                   TemplateContext context6 = context5.subContext();
                   {
                     Collection<SNode> tlist13 = null;
@@ -163,7 +161,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
           {
             final SNode tnode18 = environment.createOutputNode(myConcepts[8]);
             try {
-              tnode18.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode18, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~EnumerationLiteralsIndex.indexNullable(org.jetbrains.mps.openapi.language.SEnumerationLiteral)")));
+              environment.associate(tnode18, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)", "~EnumerationLiteralsIndex.indexNullable(org.jetbrains.mps.openapi.language.SEnumerationLiteral)");
               TemplateContext context9 = context4.subContext();
               {
                 Collection<SNode> tlist19 = null;

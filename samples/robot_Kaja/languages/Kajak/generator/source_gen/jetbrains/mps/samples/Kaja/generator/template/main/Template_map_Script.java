@@ -13,8 +13,6 @@ import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
@@ -53,7 +51,7 @@ public class Template_map_Script extends TemplateDeclarationBase {
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
         try {
-          tnode3.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode3, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("3308300503039473785")));
+          environment.associate(tnode3, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039473785");
         } finally {
         }
         tnode1.addChild(myAggregationLinks[1], tnode3);
@@ -281,7 +279,7 @@ public class Template_map_Script extends TemplateDeclarationBase {
                       {
                         final SNode tnode33 = environment.createOutputNode(myConcepts[16]);
                         try {
-                          tnode33.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode33, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("3308300503039555813")));
+                          environment.associate(tnode33, myAssociationLinks[1], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039555813");
                         } finally {
                         }
                         tnode31.addChild(myAggregationLinks[11], tnode33);
@@ -317,7 +315,7 @@ public class Template_map_Script extends TemplateDeclarationBase {
                       {
                         final SNode tnode37 = environment.createOutputNode(myConcepts[16]);
                         try {
-                          tnode37.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode37, PersistenceFacade.getInstance().createModelReference("r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)"), PersistenceFacade.getInstance().createNodeId("3308300503039569042")));
+                          environment.associate(tnode37, myAssociationLinks[1], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039569042");
                         } finally {
                         }
                         tnode35.addChild(myAggregationLinks[11], tnode37);

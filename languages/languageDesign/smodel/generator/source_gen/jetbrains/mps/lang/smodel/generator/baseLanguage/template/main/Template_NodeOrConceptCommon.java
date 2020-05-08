@@ -14,8 +14,6 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.IfMacroContext;
-import jetbrains.mps.smodel.SReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
@@ -41,8 +39,8 @@ public class Template_NodeOrConceptCommon extends TemplateDeclarationBase {
     if (QueriesGenerated.ifMacro_Condition_115_0(new IfMacroContext(context, ifMacroRef_um8mvo_b0a0c0g))) {
       final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
       try {
-        tnode2.setReference(myAssociationLinks[0], SReference.create(myAssociationLinks[0], tnode2, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel.generator.smodelAdapter(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~SNodeOperations.asSConcept(org.jetbrains.mps.openapi.model.SNode)")));
-        tnode2.setReference(myAssociationLinks[1], SReference.create(myAssociationLinks[1], tnode2, PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel.generator.smodelAdapter(MPS.Core/)"), PersistenceFacade.getInstance().createNodeId("~SNodeOperations")));
+        environment.associate(tnode2, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel.generator.smodelAdapter(MPS.Core/)", "~SNodeOperations.asSConcept(org.jetbrains.mps.openapi.model.SNode)");
+        environment.associate(tnode2, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel.generator.smodelAdapter(MPS.Core/)", "~SNodeOperations");
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist3 = null;
