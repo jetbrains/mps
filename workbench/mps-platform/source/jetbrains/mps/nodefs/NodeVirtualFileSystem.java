@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,17 +68,17 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
    * Custom notification topic for events from this FS. We use it instead of VirtualFileManager.VFS_CHANGES to deal with
    * {@link com.intellij.openapi.command.impl.FileUndoProvider} invalidating undo actions for any beforeFileDeleted event from an FS which is not
    * backed up by LocalHistory (see {@code FileUndoProvider#beforeFileDeletion()} and {@code FileUndoProvider#shouldProcess()}.
-   *
+   * <p>
    * The drawback of custom dispatch is that IDEA in general would not know about changes in this FS, however, this was the case anyway when
    * the class has been DeprecatedVirtualFileSystem subclass (which did send out VirtualFileListener events for listeners that we explicitly added to the FS ,
    * but did not publish anything to VFS_CHANGES topic)
    * The benefit is that our solution is independent from IDEA.
-   *
+   * <p>
    * Alternative approaches are:
-   *   - get IDEA LocalHistory/FileUndoProvider fixed (discussion pending; LocalHistory may re-dispatch events to dependent
-   *     FileUndoProvider only in case it knows the file - FUP would require this anyway in shouldProcess()).
-   *   - do not dispatch beforeFileDeleted (utilize the fact FUP#fileDeleted does nothing for events like the one we send out).
-   *     This approach is quite fragile, though facilitates this class to behave mostly like a regular VFS.
+   * - get IDEA LocalHistory/FileUndoProvider fixed (discussion pending; LocalHistory may re-dispatch events to dependent
+   * FileUndoProvider only in case it knows the file - FUP would require this anyway in shouldProcess()).
+   * - do not dispatch beforeFileDeleted (utilize the fact FUP#fileDeleted does nothing for events like the one we send out).
+   * This approach is quite fragile, though facilitates this class to behave mostly like a regular VFS.
    */
   public static final Topic<BulkFileListener> NODE_FS_CHANGES = new Topic<>("MPS Node VFS changes", BulkFileListener.class);
 
@@ -395,22 +395,39 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
         if (evt instanceof SPropertyChangeEvent) {
           // candidate for rename
           MPSNodeVirtualFile vf = rvf.getVirtualFile(((SPropertyChangeEvent) evt).getNode().getReference());
+          if (vf == null) {
+            vf = rvf.getVirtualFile(((SPropertyChangeEvent) evt).getNode().getContainingRoot().getReference());
+          }
           if (vf != null) {
             changedFiles.add(vf);
           }
         } else if (evt instanceof SNodeRemoveEvent) {
           // SNode.getReference() for deleted node produces invalid pointer
           MPSNodeVirtualFile vf = rvf.getVirtualFile(new SNodePointer(evt.getModel().getReference(), ((SNodeRemoveEvent) evt).getChild().getNodeId()));
+          if (vf == null && ((SNodeRemoveEvent) evt).getParent() != null) {
+            vf = rvf.getVirtualFile(((SNodeRemoveEvent) evt).getParent().getReference());
+          }
           if (vf != null) {
             deletedFiles.add(vf);
           }
         } else if (evt instanceof SNodeAddEvent) {
           // SNode.getReference() for (later) deleted node produces invalid pointer
           MPSNodeVirtualFile vf = rvf.getVirtualFile(new SNodePointer(evt.getModel().getReference(), ((SNodeAddEvent) evt).getChild().getNodeId()));
+          if (vf == null && ((SNodeAddEvent) evt).getParent() != null) {
+            vf = rvf.getVirtualFile(((SNodeAddEvent) evt).getParent().getReference());
+          }
           if (vf != null) {
             deletedFiles.remove(vf);
           }
 
+        } else if (evt instanceof SReferenceChangeEvent) {
+          MPSNodeVirtualFile vf = rvf.getVirtualFile(((SReferenceChangeEvent) evt).getNode().getReference());
+          if (vf == null) {
+            vf = rvf.getVirtualFile(((SReferenceChangeEvent) evt).getNode().getContainingRoot().getReference());
+          }
+          if (vf != null) {
+            changedFiles.add(vf);
+          }
         }
       }
       VFSNotifier vfsNotifier = rvf.getNotifier(new VFSNotifier(rvf));
@@ -428,6 +445,7 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
     @Override
     public void referenceChanged(@NotNull SReferenceChangeEvent event) {
       updateFileTimestampOfAffectedNodes(event, event.getNode().getReference(), new SNodePointer(event.getNode().getContainingRoot()));
+      myChangeCollector.referenceChanged(event);
     }
 
     @Override

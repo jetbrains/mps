@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,24 +19,30 @@ import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.nodeEditor.NodeEditorComponent;
+import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.openapi.editor.EditorComponent;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
 
 public class MPSEditorUtil {
   @Nullable
   public static SNode getCurrentEditedNode(@NotNull Project project, @NotNull MPSNodeVirtualFile file) {
     FileEditor editor = FileEditorManager.getInstance(project).getSelectedEditor(file);
-    if (!(editor instanceof MPSFileNodeEditor)) return null;
+    if (!(editor instanceof MPSFileNodeEditor)) {
+      return null;
+    }
 
     Editor nodeEditor = ((MPSFileNodeEditor) editor).getNodeEditor();
-    if (nodeEditor == null || !nodeEditor.isTabbed()) return null;
+    if (nodeEditor == null) {
+      return null;
+    }
 
     EditorComponent tabEditor = nodeEditor.getCurrentEditorComponent();
-    if (!(tabEditor instanceof NodeEditorComponent)) return null;
+    if (!(tabEditor instanceof NodeEditorComponent)) {
+      return null;
+    }
 
     return tabEditor.getEditedNode();
   }
