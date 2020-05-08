@@ -13,10 +13,10 @@ import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
-import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import java.util.Collection;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
+import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -58,7 +58,7 @@ public class Template_processStatement extends TemplateDeclarationBase {
                   {
                     final SNode tnode5 = environment.createOutputNode(myConcepts[4]);
                     try {
-                      SNodeAccessUtil.setProperty(tnode5, myProperties[0], "ss");
+                      tnode5.setProperty(myProperties[0], "ss");
                     } finally {
                     }
                     tnode4.addChild(myAggregationLinks[0], tnode5);
@@ -81,7 +81,7 @@ public class Template_processStatement extends TemplateDeclarationBase {
               {
                 final SNode tnode7 = environment.createOutputNode(myConcepts[6]);
                 try {
-                  SNodeAccessUtil.setProperty(tnode7, myProperties[1], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_3_0(new PropertyMacroContext(context5, "nvar", propertyMacro_iblz6q_c0a0c0a0b0b0b0c0b0b0c0h))));
+                  SNodeAccessUtil.setPropertyValue(tnode7, myProperties[1], QueriesGenerated.propertyMacro_GetValue_3_0(new PropertyMacroContext(context5, "nvar", propertyMacro_iblz6q_c0a2a0a1a1a1a2a1a1a2a7)));
                   TemplateContext context6 = context5.subContext();
                   {
                     final SNode tnode8 = environment.createOutputNode(myConcepts[7]);
@@ -137,7 +137,7 @@ public class Template_processStatement extends TemplateDeclarationBase {
                 final SNode tnode4 = environment.createOutputNode(myConcepts[6]);
                 try {
                   environment.nodeCopied(context3, tnode4, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980649133");
-                  SNodeAccessUtil.setProperty(tnode4, myProperties[1], "e");
+                  tnode4.setProperty(myProperties[1], "e");
                   TemplateContext context4 = context3.subContext();
                   {
                     final SNode tnode5 = environment.createOutputNode(myConcepts[7]);
@@ -177,7 +177,7 @@ public class Template_processStatement extends TemplateDeclarationBase {
                   {
                     final SNode tnode9 = environment.createOutputNode(myConcepts[11]);
                     try {
-                      SNodeAccessUtil.setProperty(tnode9, myProperties[2], "5");
+                      tnode9.setProperty(myProperties[2], "5");
                     } finally {
                     }
                     tnode7.addChild(myAggregationLinks[8], tnode9);
@@ -265,7 +265,7 @@ public class Template_processStatement extends TemplateDeclarationBase {
     rv[9] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
     return rv;
   }
-  private static final SNodePointer propertyMacro_iblz6q_c0a0c0a0b0b0b0c0b0b0c0h = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2681305894288695039");
+  private static final SNodePointer propertyMacro_iblz6q_c0a2a0a1a1a1a2a1a1a2a7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2681305894288695039");
   private static final SNodePointer copySrcMacro_iblz6q_b0a0c0d0b0b0b0c0b0b0c0h = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2681305894288695055");
   private static final SNodePointer templateNode_iblz6q_c0a0a1a1a1a1a1a2a1a1a2a8 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4265636116363100026");
 }

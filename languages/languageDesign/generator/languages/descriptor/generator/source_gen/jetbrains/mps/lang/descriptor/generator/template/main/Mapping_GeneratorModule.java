@@ -222,7 +222,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
         {
           final SNode tnode2 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral"));
           try {
-            SNodeAccessUtil.setProperty(tnode2, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context1, "", propertyMacro_ugw0jb_c0a0c0a0b0d0c0b9))));
+            SNodeAccessUtil.setPropertyValue(tnode2, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context1, "", propertyMacro_ugw0jb_c0a2a0a1a3a2a1j)));
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), tnode2);
@@ -257,7 +257,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
         {
           final SNode tnode2 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral"));
           try {
-            SNodeAccessUtil.setProperty(tnode2, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_1_1(new PropertyMacroContext(context1, "", propertyMacro_ugw0jb_c0a0c0a0b0d0c0b01))));
+            SNodeAccessUtil.setPropertyValue(tnode2, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), QueriesGenerated.propertyMacro_GetValue_1_1(new PropertyMacroContext(context1, "", propertyMacro_ugw0jb_c0a2a0a1a3a2a1k)));
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), tnode2);
@@ -266,7 +266,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
         {
           final SNode tnode3 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral"));
           try {
-            SNodeAccessUtil.setProperty(tnode3, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_1_2(new PropertyMacroContext(context1, "", propertyMacro_ugw0jb_c0a0c0a0b0e0c0b01))));
+            SNodeAccessUtil.setPropertyValue(tnode3, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), QueriesGenerated.propertyMacro_GetValue_1_2(new PropertyMacroContext(context1, "", propertyMacro_ugw0jb_c0a2a0a1a4a2a1k)));
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), tnode3);
@@ -275,7 +275,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
         {
           final SNode tnode4 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral"));
           try {
-            SNodeAccessUtil.setProperty(tnode4, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_1_3(new PropertyMacroContext(context1, "", propertyMacro_ugw0jb_c0a0c0a0b0f0c0b01))));
+            SNodeAccessUtil.setPropertyValue(tnode4, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), QueriesGenerated.propertyMacro_GetValue_1_3(new PropertyMacroContext(context1, "", propertyMacro_ugw0jb_c0a2a0a1a5a2a1k)));
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), tnode4);
@@ -395,11 +395,11 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
   private static final SNodePointer copySrcMacro_ugw0jb_b0a0c0e0b0c2a1i = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2643213347103793349");
   private static final SNodePointer copySrcMacro_ugw0jb_b0a0c0d0b0a2a1i_0 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710839975");
   private static final SNodePointer copySrcMacro_ugw0jb_b0a0c0e0b0a2a1i_0 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710839983");
-  private static final SNodePointer propertyMacro_ugw0jb_c0a0c0a0b0d0c0b9 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840121");
+  private static final SNodePointer propertyMacro_ugw0jb_c0a2a0a1a3a2a1j = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840121");
   private static final SNodePointer copySrcMacro_ugw0jb_b0a0c0e0c0b9 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840111");
-  private static final SNodePointer propertyMacro_ugw0jb_c0a0c0a0b0d0c0b01 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840069");
-  private static final SNodePointer propertyMacro_ugw0jb_c0a0c0a0b0e0c0b01 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840072");
-  private static final SNodePointer propertyMacro_ugw0jb_c0a0c0a0b0f0c0b01 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "6921375397022274339");
+  private static final SNodePointer propertyMacro_ugw0jb_c0a2a0a1a3a2a1k = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840069");
+  private static final SNodePointer propertyMacro_ugw0jb_c0a2a0a1a4a2a1k = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840072");
+  private static final SNodePointer propertyMacro_ugw0jb_c0a2a0a1a5a2a1k = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "6921375397022274339");
   private static final SNodePointer copySrcListMacro_ugw0jb_b0a0a1a3a2a1n = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "3342058859868692953");
 
   private static final class CONCEPTS {

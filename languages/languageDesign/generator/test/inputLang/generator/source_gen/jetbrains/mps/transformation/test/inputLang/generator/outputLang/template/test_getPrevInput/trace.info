@@ -201,20 +201,20 @@
       <node id="1202256495546" at="61,11,62,66" concept="8" />
       <node id="1202256495546" at="62,66,63,60" concept="8" />
       <node id="1202256495546" at="63,60,64,75" concept="8" />
-      <node id="1202326517570" at="65,15,66,219" concept="3" />
-      <node id="1202256495546" at="66,219,67,61" concept="8" />
+      <node id="1202326517570" at="65,15,66,200" concept="3" />
+      <node id="1202256495546" at="66,200,67,61" concept="8" />
       <node id="1202327206676" at="68,13,69,79" concept="8" />
-      <node id="1202327274818" at="70,19,71,237" concept="3" />
+      <node id="1202327274818" at="70,19,71,218" concept="3" />
       <node id="1202327206676" at="73,15,74,61" concept="3" />
       <node id="1202327206676" at="74,61,75,37" concept="10" />
       <node id="1202327778745" at="77,13,78,46" concept="8" />
       <node id="1202327778745" at="79,126,80,81" concept="8" />
-      <node id="1202327887567" at="81,21,82,238" concept="3" />
+      <node id="1202327887567" at="81,21,82,219" concept="3" />
       <node id="1202327778745" at="84,17,85,60" concept="3" />
       <node id="1202327778745" at="87,67,88,63" concept="3" />
       <node id="1202327778745" at="89,15,90,37" concept="10" />
       <node id="1202327949446" at="92,13,93,80" concept="8" />
-      <node id="1202327970030" at="94,19,95,235" concept="3" />
+      <node id="1202327970030" at="94,19,95,216" concept="3" />
       <node id="1202327949446" at="97,15,98,62" concept="3" />
       <node id="1202327949446" at="98,62,99,37" concept="10" />
       <node id="1202256495546" at="103,31,104,31" concept="3" />
@@ -228,9 +228,9 @@
       <node id="1202256495546" at="133,5,134,18" concept="9" />
       <node id="1202255620269" at="136,158,137,69" concept="8" />
       <node id="1202255620269" at="138,9,139,106" concept="3" />
-      <node id="1202255620269" at="139,106,140,75" concept="3" />
-      <node id="1202255620269" at="140,75,141,97" concept="3" />
-      <node id="1202255620269" at="141,97,142,54" concept="8" />
+      <node id="1202255620269" at="139,106,140,58" concept="3" />
+      <node id="1202255620269" at="140,58,141,80" concept="3" />
+      <node id="1202255620269" at="141,80,142,54" concept="8" />
       <node id="1202256495546" at="143,7,144,56" concept="8" />
       <node id="1202256495546" at="145,61,146,57" concept="3" />
       <node id="1202256495546" at="147,9,148,31" concept="10" />
@@ -254,11 +254,11 @@
       <node id="1202255620269" at="186,0,187,0" concept="11" trace="template_wvaolp_a0a3" />
       <node id="1202255620269" at="187,0,188,0" concept="11" trace="loopMacroRef_wvaolp_b0a0a3a3a4" />
       <node id="1202255620269" at="188,0,189,0" concept="11" trace="loopMacroRef_wvaolp_b0a0a3a4a3a4" />
-      <node id="1202255620269" at="189,0,190,0" concept="11" trace="propertyMacro_wvaolp_c0a0c0a0e0e0e0d0e" />
-      <node id="1202255620269" at="190,0,191,0" concept="11" trace="propertyMacro_wvaolp_c0a0c0a0b0c0e0e0e0d0e" />
-      <node id="1202255620269" at="191,0,192,0" concept="11" trace="propertyMacro_wvaolp_c0a0c0a0b0b0d0e0e0e0d0e" />
+      <node id="1202255620269" at="189,0,190,0" concept="11" trace="propertyMacro_wvaolp_c0a2a0a4a4a4a3a4" />
+      <node id="1202255620269" at="190,0,191,0" concept="11" trace="propertyMacro_wvaolp_c0a2a0a1a2a4a4a4a3a4" />
+      <node id="1202255620269" at="191,0,192,0" concept="11" trace="propertyMacro_wvaolp_c0a2a0a1a1a3a4a4a4a3a4" />
       <node id="1202255620269" at="192,0,193,0" concept="11" trace="ifMacroRef_wvaolp_b0a0b0d0e0e0e0d0e" />
-      <node id="1202255620269" at="193,0,194,0" concept="11" trace="propertyMacro_wvaolp_c0a0c0a0b0e0e0e0e0d0e" />
+      <node id="1202255620269" at="193,0,194,0" concept="11" trace="propertyMacro_wvaolp_c0a2a0a1a4a4a4a4a3a4" />
       <node id="1202255620269" at="34,0,36,0" concept="1" trace="Template_OutputRoot_1#()V" />
       <node id="1202255620269" at="37,0,40,0" concept="7" trace="getTemplateNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="1202256495546" at="44,39,47,7" concept="6" />
@@ -305,10 +305,10 @@
       <scope id="1202256495546" at="45,28,46,17" />
       <scope id="1202256495546" at="52,30,53,19" />
       <scope id="1202256495546" at="59,32,60,21" />
-      <scope id="1202327206676" at="70,19,71,237" />
-      <scope id="1202327778745" at="81,21,82,238" />
+      <scope id="1202327206676" at="70,19,71,218" />
+      <scope id="1202327778745" at="81,21,82,219" />
       <scope id="1202327778745" at="87,67,88,63" />
-      <scope id="1202327949446" at="94,19,95,235" />
+      <scope id="1202327949446" at="94,19,95,216" />
       <scope id="1202256495546" at="107,100,108,139" />
       <scope id="1202256495546" at="112,31,113,34" />
       <scope id="1202256495546" at="127,92,128,131" />
@@ -510,9 +510,9 @@
       <node id="1202338159177" at="37,43,38,32" concept="9" />
       <node id="1202338159177" at="40,158,41,69" concept="8" />
       <node id="1202338159177" at="42,9,43,106" concept="3" />
-      <node id="1202338159177" at="43,106,44,75" concept="3" />
-      <node id="1202338159177" at="44,75,45,97" concept="3" />
-      <node id="1202338159177" at="45,97,46,54" concept="8" />
+      <node id="1202338159177" at="43,106,44,58" concept="3" />
+      <node id="1202338159177" at="44,58,45,80" concept="3" />
+      <node id="1202338159177" at="45,80,46,54" concept="8" />
       <node id="1202338467041" at="47,7,48,58" concept="8" />
       <node id="1202338467041" at="48,58,49,163" concept="8" />
       <node id="1202338467041" at="51,32,52,21" concept="2" />
@@ -526,8 +526,8 @@
       <node id="1202338467041" at="65,36,66,25" concept="2" />
       <node id="1202338467041" at="67,15,68,70" concept="8" />
       <node id="1202338467041" at="68,70,69,79" concept="8" />
-      <node id="1202338467125" at="70,19,71,227" concept="3" />
-      <node id="1202338467041" at="71,227,72,65" concept="8" />
+      <node id="1202338467125" at="70,19,71,208" concept="3" />
+      <node id="1202338467041" at="71,208,72,65" concept="8" />
       <node id="1202338467042" at="73,17,74,68" concept="8" />
       <node id="1202338467042" at="75,19,76,252" concept="8" />
       <node id="1202338467042" at="76,252,77,44" concept="3" />
@@ -576,7 +576,7 @@
       <node id="1202338159177" at="196,0,197,0" concept="11" trace="loopMacroRef_wvaolp_b0a0a1a4a1a4" />
       <node id="1202338159177" at="197,0,198,0" concept="11" trace="loopMacroRef_wvaolp_b0a0a3a2a4a1a4" />
       <node id="1202338159177" at="198,0,199,0" concept="11" trace="loopMacroRef_wvaolp_b0a0a3a4a2a4a1a4" />
-      <node id="1202338159177" at="199,0,200,0" concept="11" trace="propertyMacro_wvaolp_c0a0c0a0d0e0e0c0e0b0e" />
+      <node id="1202338159177" at="199,0,200,0" concept="11" trace="propertyMacro_wvaolp_c0a2a0a3a4a4a2a4a1a4" />
       <node id="1202338159177" at="34,0,36,0" concept="1" trace="Template_OutputRoot_2#()V" />
       <node id="1202338159177" at="37,0,40,0" concept="7" trace="getTemplateNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="1202338467041" at="50,41,53,11" concept="6" />

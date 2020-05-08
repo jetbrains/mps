@@ -14,7 +14,6 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -129,7 +128,7 @@ public class Template_reduce_Drop extends TemplateDeclarationBase {
                               {
                                 final SNode tnode15 = environment.createOutputNode(myConcepts[6]);
                                 try {
-                                  SNodeAccessUtil.setProperty(tnode15, myProperties[0], "Cannot drop. The cell is already full.");
+                                  tnode15.setProperty(myProperties[0], "Cannot drop. The cell is already full.");
                                 } finally {
                                 }
                                 tnode14.addChild(myAggregationLinks[5], tnode15);

@@ -15,7 +15,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
-import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -48,7 +47,7 @@ public class Template_reduce_TraceMessage extends TemplateDeclarationBase {
           {
             final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
             try {
-              SNodeAccessUtil.setProperty(tnode3, myProperties[0], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_25_0(new PropertyMacroContext(context2, "message", propertyMacro_zb4n4r_c0a0c0a0b0c0b0b0c0g))));
+              SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_25_0(new PropertyMacroContext(context2, "message", propertyMacro_zb4n4r_c0a2a0a1a2a1a1a2a6)));
             } finally {
             }
             tnode2.addChild(myAggregationLinks[0], tnode3);
@@ -97,5 +96,5 @@ public class Template_reduce_TraceMessage extends TemplateDeclarationBase {
     rv[2] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
     return rv;
   }
-  private static final SNodePointer propertyMacro_zb4n4r_c0a0c0a0b0c0b0b0c0g = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3210697320273781183");
+  private static final SNodePointer propertyMacro_zb4n4r_c0a2a0a1a2a1a1a2a6 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3210697320273781183");
 }

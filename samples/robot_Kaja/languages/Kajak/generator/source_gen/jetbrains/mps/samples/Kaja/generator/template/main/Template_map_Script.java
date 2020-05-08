@@ -12,13 +12,13 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
-import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
+import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -40,7 +40,7 @@ public class Template_map_Script extends TemplateDeclarationBase {
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     try {
       environment.nodeCopied(context, tnode1, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039570165");
-      SNodeAccessUtil.setProperty(tnode1, myProperties[0], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context, "map_Script", propertyMacro_rbrxtl_c0a0c0b0b0e))));
+      SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context, "map_Script", propertyMacro_rbrxtl_c0a2a1a1a4)));
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
@@ -96,8 +96,8 @@ public class Template_map_Script extends TemplateDeclarationBase {
       {
         final SNode tnode8 = environment.createOutputNode(myConcepts[6]);
         try {
-          SNodeAccessUtil.setProperty(tnode8, myProperties[1], "false");
-          SNodeAccessUtil.setProperty(tnode8, myProperties[0], "perform");
+          tnode8.setProperty(myProperties[1], "false");
+          tnode8.setProperty(myProperties[0], "perform");
           TemplateContext context3 = context1.subContext();
           {
             final SNode tnode9 = environment.createOutputNode(myConcepts[4]);
@@ -192,7 +192,7 @@ public class Template_map_Script extends TemplateDeclarationBase {
       {
         final SNode tnode21 = environment.createOutputNode(myConcepts[8]);
         try {
-          SNodeAccessUtil.setProperty(tnode21, myProperties[0], "main");
+          tnode21.setProperty(myProperties[0], "main");
           TemplateContext context8 = context1.subContext();
           {
             final SNode tnode22 = environment.createOutputNode(myConcepts[4]);
@@ -222,7 +222,7 @@ public class Template_map_Script extends TemplateDeclarationBase {
                     final SNode tnode26 = environment.createOutputNode(myConcepts[10]);
                     try {
                       environment.nodeCopied(context10, tnode26, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039581791");
-                      SNodeAccessUtil.setProperty(tnode26, myProperties[0], "script");
+                      tnode26.setProperty(myProperties[0], "script");
                       TemplateContext context11 = context10.subContext();
                       {
                         final SNode tnode27 = environment.createOutputNode(myConcepts[2]);
@@ -341,7 +341,7 @@ public class Template_map_Script extends TemplateDeclarationBase {
           {
             final SNode tnode38 = environment.createOutputNode(myConcepts[17]);
             try {
-              SNodeAccessUtil.setProperty(tnode38, myProperties[0], "args");
+              tnode38.setProperty(myProperties[0], "args");
               TemplateContext context17 = context8.subContext();
               {
                 final SNode tnode39 = environment.createOutputNode(myConcepts[18]);
@@ -445,7 +445,7 @@ public class Template_map_Script extends TemplateDeclarationBase {
     return rv;
   }
   private static final SNodePointer template_rbrxtl_a0a3 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039570165");
-  private static final SNodePointer propertyMacro_rbrxtl_c0a0c0b0b0e = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039570172");
+  private static final SNodePointer propertyMacro_rbrxtl_c0a2a1a1a4 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039570172");
   private static final SNodePointer loopMacroRef_rbrxtl_b0a0a1a1a1a5a1a6a1a4 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039580697");
   private static final SNodePointer copySrcMacro_rbrxtl_b0a0e0c0b0b0f0b0g0b0e = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039580707");
   private static final SNodePointer loopMacroRef_rbrxtl_b0a0a1a7a1a4 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039720842");

@@ -12,9 +12,9 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
-import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
+import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -35,8 +35,8 @@ public class Template_OutputRoot_by_MappingRule extends TemplateDeclarationBase 
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     try {
       environment.nodeCopied(context, tnode1, "tpl/r:00000000-0000-4000-0000-011c895905f6/1195168984336");
-      SNodeAccessUtil.setProperty(tnode1, myProperties[0], "OutputRoot_by_MappingRule");
-      SNodeAccessUtil.setProperty(tnode1, myProperties[1], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_2_0(new PropertyMacroContext(context, "OutputRoot by MappingRule", propertyMacro_5ou570_c0a0c0c0b0e))));
+      tnode1.setProperty(myProperties[0], "OutputRoot_by_MappingRule");
+      SNodeAccessUtil.setPropertyValue(tnode1, myProperties[1], QueriesGenerated.propertyMacro_GetValue_2_0(new PropertyMacroContext(context, "OutputRoot by MappingRule", propertyMacro_5ou570_c0a2a2a1a4)));
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
@@ -81,6 +81,6 @@ public class Template_OutputRoot_by_MappingRule extends TemplateDeclarationBase 
     return rv;
   }
   private static final SNodePointer template_5ou570_a0a3 = new SNodePointer("r:00000000-0000-4000-0000-011c895905f6(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts@generator)", "1195168984336");
-  private static final SNodePointer propertyMacro_5ou570_c0a0c0c0b0e = new SNodePointer("r:00000000-0000-4000-0000-011c895905f6(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts@generator)", "1195598330257");
+  private static final SNodePointer propertyMacro_5ou570_c0a2a2a1a4 = new SNodePointer("r:00000000-0000-4000-0000-011c895905f6(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts@generator)", "1195598330257");
   private static final SNodePointer copySrcListMacro_5ou570_b0a0a1a4a1a4 = new SNodePointer("r:00000000-0000-4000-0000-011c895905f6(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts@generator)", "1195170582046");
 }

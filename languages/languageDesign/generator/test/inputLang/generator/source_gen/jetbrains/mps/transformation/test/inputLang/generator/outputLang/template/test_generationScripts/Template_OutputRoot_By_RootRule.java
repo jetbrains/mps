@@ -11,7 +11,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -32,8 +31,8 @@ public class Template_OutputRoot_By_RootRule extends TemplateDeclarationBase {
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     try {
       environment.nodeCopied(context, tnode1, "tpl/r:00000000-0000-4000-0000-011c895905f6/1195166061402");
-      SNodeAccessUtil.setProperty(tnode1, myProperties[0], "OutputRoot by RootRule");
-      SNodeAccessUtil.setProperty(tnode1, myProperties[1], "OutputRoot_By_RootRule");
+      tnode1.setProperty(myProperties[0], "OutputRoot by RootRule");
+      tnode1.setProperty(myProperties[1], "OutputRoot_By_RootRule");
     } finally {
     }
     return TemplateUtil.singletonList(tnode1);

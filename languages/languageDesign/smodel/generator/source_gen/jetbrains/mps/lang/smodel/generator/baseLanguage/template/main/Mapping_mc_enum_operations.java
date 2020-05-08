@@ -250,7 +250,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
             final SNode tnode3 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7efL, "LocalVariableDeclaration"));
             try {
               environment.nodeCopied(context2, tnode3, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948209592708");
-              SNodeAccessUtil.setProperty(tnode3, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_48_0(new PropertyMacroContext(context2, "x", propertyMacro_3ivvp5_c0a0c0b0b0d0b0c0c11))));
+              SNodeAccessUtil.setPropertyValue(tnode3, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), QueriesGenerated.propertyMacro_GetValue_48_0(new PropertyMacroContext(context2, "x", propertyMacro_3ivvp5_c0a2a1a1a3a1a2a2l)));
               TemplateContext context3 = context2.subContext();
               {
                 Collection<SNode> tlist4 = null;
@@ -644,7 +644,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
   private static final SNodePointer copySrcMacro_3ivvp5_b0a0d0c9 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630351868");
   private static final SNodePointer copySrcMacro_3ivvp5_b0a0d0c01 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630434286");
   private static final SNodePointer mapsrcMacroRef_3ivvp5_b0a0a1a1a2a2l = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948210261011");
-  private static final SNodePointer propertyMacro_3ivvp5_c0a0c0b0b0d0b0c0c11 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209777084");
+  private static final SNodePointer propertyMacro_3ivvp5_c0a2a1a1a3a1a2a2l = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209777084");
   private static final SNodePointer copySrcMacro_3ivvp5_b0a0c0d0b0d0b0c0c11 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209767286");
   private static final SNodePointer copySrcMacro_3ivvp5_b0a0f0c11 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209794829");
   private static final SNodePointer copySrcMacro_3ivvp5_b0a0d0c21 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630520036");

@@ -11,7 +11,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -33,13 +32,13 @@ public class Template_outputRoot extends TemplateDeclarationBase {
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     try {
       environment.nodeCopied(context, tnode1, "tpl/r:00000000-0000-4000-0000-011c895905f5/1209605205934");
-      SNodeAccessUtil.setProperty(tnode1, myProperties[0], "outputRoot");
-      SNodeAccessUtil.setProperty(tnode1, myProperties[1], "output for 'don't apply reduction rule twice' test");
+      tnode1.setProperty(myProperties[0], "outputRoot");
+      tnode1.setProperty(myProperties[1], "output for 'don't apply reduction rule twice' test");
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
         try {
-          SNodeAccessUtil.setProperty(tnode2, myProperties[2], "this is OutputNode_forDontApplyReductionTwice_test actually");
+          tnode2.setProperty(myProperties[2], "this is OutputNode_forDontApplyReductionTwice_test actually");
         } finally {
         }
         tnode1.addChild(myAggregationLinks[0], tnode2);

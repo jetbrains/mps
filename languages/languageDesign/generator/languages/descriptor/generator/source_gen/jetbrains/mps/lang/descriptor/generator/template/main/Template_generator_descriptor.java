@@ -11,7 +11,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.InsertMacroContext;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
@@ -34,7 +33,7 @@ public class Template_generator_descriptor extends TemplateDeclarationBase {
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     try {
       environment.nodeCopied(context, tnode1, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/7568285956000709565");
-      SNodeAccessUtil.setProperty(tnode1, myProperties[0], "generator descriptor");
+      tnode1.setProperty(myProperties[0], "generator descriptor");
       TemplateContext context1 = context.subContext();
       {
         SNode tnode2 = null;

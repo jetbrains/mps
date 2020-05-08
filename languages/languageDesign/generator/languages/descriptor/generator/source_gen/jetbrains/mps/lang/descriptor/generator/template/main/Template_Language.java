@@ -23,8 +23,8 @@ import jetbrains.mps.generator.impl.MapSrcProcessor;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.template.MapSrcMacroPostProcContext;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
-import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
+import jetbrains.mps.generator.runtime.TemplateUtil;
 import java.util.Map;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -197,7 +197,7 @@ public class Template_Language extends TemplateDeclarationBase {
     final SNode tnode2 = environment.createOutputNode(myConcepts[9]);
     try {
       environment.nodeCopied(context1, tnode2, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/9020561928507177266");
-      SNodeAccessUtil.setProperty(tnode2, myProperties[0], "Language");
+      tnode2.setProperty(myProperties[0], "Language");
       TemplateContext context2 = context1.subContext();
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[10]);
@@ -220,10 +220,10 @@ public class Template_Language extends TemplateDeclarationBase {
         final SNode tnode5 = environment.createOutputNode(myConcepts[12]);
         try {
           environment.nodeCopied(context2, tnode5, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/2800414547479137533");
-          SNodeAccessUtil.setProperty(tnode5, myProperties[1], "false");
-          SNodeAccessUtil.setProperty(tnode5, myProperties[2], "false");
-          SNodeAccessUtil.setProperty(tnode5, myProperties[0], "myId");
-          SNodeAccessUtil.setProperty(tnode5, myProperties[3], "true");
+          tnode5.setProperty(myProperties[1], "false");
+          tnode5.setProperty(myProperties[2], "false");
+          tnode5.setProperty(myProperties[0], "myId");
+          tnode5.setProperty(myProperties[3], "true");
           TemplateContext context3 = context2.subContext();
           {
             final SNode tnode6 = environment.createOutputNode(myConcepts[13]);
@@ -305,7 +305,7 @@ public class Template_Language extends TemplateDeclarationBase {
                           {
                             final SNode tnode17 = environment.createOutputNode(myConcepts[20]);
                             try {
-                              SNodeAccessUtil.setProperty(tnode17, myProperties[4], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_0_0(new PropertyMacroContext(context8, "moduleId", propertyMacro_ko6gu6_c0a0c0a0b0d0b0c0b0b0b0b0b0d0b0h0f0f))));
+                              SNodeAccessUtil.setPropertyValue(tnode17, myProperties[4], QueriesGenerated.propertyMacro_GetValue_0_0(new PropertyMacroContext(context8, "moduleId", propertyMacro_ko6gu6_c0a2a0a1a3a1a2a1a1a1a1a1a3a1a7a5a5)));
                             } finally {
                             }
                             tnode16.addChild(myAggregationLinks[2], tnode17);
@@ -347,9 +347,9 @@ public class Template_Language extends TemplateDeclarationBase {
       {
         final SNode tnode19 = environment.createOutputNode(myConcepts[21]);
         try {
-          SNodeAccessUtil.setProperty(tnode19, myProperties[5], "false");
-          SNodeAccessUtil.setProperty(tnode19, myProperties[0], "getNamespace");
-          SNodeAccessUtil.setProperty(tnode19, myProperties[6], "false");
+          tnode19.setProperty(myProperties[5], "false");
+          tnode19.setProperty(myProperties[0], "getNamespace");
+          tnode19.setProperty(myProperties[6], "false");
           TemplateContext context9 = context2.subContext();
           {
             final SNode tnode20 = environment.createOutputNode(myConcepts[22]);
@@ -370,7 +370,7 @@ public class Template_Language extends TemplateDeclarationBase {
                   {
                     final SNode tnode23 = environment.createOutputNode(myConcepts[20]);
                     try {
-                      SNodeAccessUtil.setProperty(tnode23, myProperties[4], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_0_1(new PropertyMacroContext(context11, "", propertyMacro_ko6gu6_c0a0c0a0b0b0b0b0b0f0b0j0f0f))));
+                      SNodeAccessUtil.setPropertyValue(tnode23, myProperties[4], QueriesGenerated.propertyMacro_GetValue_0_1(new PropertyMacroContext(context11, "", propertyMacro_ko6gu6_c0a2a0a1a1a1a1a1a5a1a9a5a5)));
                     } finally {
                     }
                     tnode22.addChild(myAggregationLinks[15], tnode23);
@@ -419,9 +419,9 @@ public class Template_Language extends TemplateDeclarationBase {
       {
         final SNode tnode27 = environment.createOutputNode(myConcepts[21]);
         try {
-          SNodeAccessUtil.setProperty(tnode27, myProperties[5], "false");
-          SNodeAccessUtil.setProperty(tnode27, myProperties[0], "getVersion");
-          SNodeAccessUtil.setProperty(tnode27, myProperties[6], "false");
+          tnode27.setProperty(myProperties[5], "false");
+          tnode27.setProperty(myProperties[0], "getVersion");
+          tnode27.setProperty(myProperties[6], "false");
           TemplateContext context12 = context2.subContext();
           {
             final SNode tnode28 = environment.createOutputNode(myConcepts[10]);
@@ -450,7 +450,7 @@ public class Template_Language extends TemplateDeclarationBase {
                   {
                     final SNode tnode32 = environment.createOutputNode(myConcepts[25]);
                     try {
-                      SNodeAccessUtil.setProperty(tnode32, myProperties[7], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_0_2(new PropertyMacroContext(context14, "0", propertyMacro_ko6gu6_c0a0c0a0b0b0b0b0b0g0b0l0f0f))));
+                      SNodeAccessUtil.setPropertyValue(tnode32, myProperties[7], QueriesGenerated.propertyMacro_GetValue_0_2(new PropertyMacroContext(context14, "0", propertyMacro_ko6gu6_c0a2a0a1a1a1a1a1a6a1a11a5a5)));
                     } finally {
                     }
                     tnode31.addChild(myAggregationLinks[15], tnode32);
@@ -491,11 +491,11 @@ public class Template_Language extends TemplateDeclarationBase {
       {
         final SNode tnode35 = environment.createOutputNode(myConcepts[21]);
         try {
-          SNodeAccessUtil.setProperty(tnode35, myProperties[5], "false");
-          SNodeAccessUtil.setProperty(tnode35, myProperties[0], "getId");
-          SNodeAccessUtil.setProperty(tnode35, myProperties[8], "false");
-          SNodeAccessUtil.setProperty(tnode35, myProperties[6], "false");
-          SNodeAccessUtil.setProperty(tnode35, myProperties[9], "false");
+          tnode35.setProperty(myProperties[5], "false");
+          tnode35.setProperty(myProperties[0], "getId");
+          tnode35.setProperty(myProperties[8], "false");
+          tnode35.setProperty(myProperties[6], "false");
+          tnode35.setProperty(myProperties[9], "false");
           TemplateContext context15 = context2.subContext();
           {
             final SNode tnode36 = environment.createOutputNode(myConcepts[1]);
@@ -557,10 +557,10 @@ public class Template_Language extends TemplateDeclarationBase {
       {
         final SNode tnode42 = environment.createOutputNode(myConcepts[21]);
         try {
-          SNodeAccessUtil.setProperty(tnode42, myProperties[5], "false");
-          SNodeAccessUtil.setProperty(tnode42, myProperties[0], "fillExtendedLanguages");
-          SNodeAccessUtil.setProperty(tnode42, myProperties[6], "false");
-          SNodeAccessUtil.setProperty(tnode42, myProperties[8], "false");
+          tnode42.setProperty(myProperties[5], "false");
+          tnode42.setProperty(myProperties[0], "fillExtendedLanguages");
+          tnode42.setProperty(myProperties[6], "false");
+          tnode42.setProperty(myProperties[8], "false");
           TemplateContext context18 = context2.subContext();
           {
             final SNode tnode43 = environment.createOutputNode(myConcepts[26]);
@@ -582,7 +582,7 @@ public class Template_Language extends TemplateDeclarationBase {
             final SNode tnode45 = environment.createOutputNode(myConcepts[27]);
             try {
               environment.nodeCopied(context18, tnode45, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/2800414547479207697");
-              SNodeAccessUtil.setProperty(tnode45, myProperties[0], "extendedLanguages");
+              tnode45.setProperty(myProperties[0], "extendedLanguages");
               TemplateContext context19 = context18.subContext();
               {
                 final SNode tnode46 = environment.createOutputNode(myConcepts[11]);
@@ -656,7 +656,7 @@ public class Template_Language extends TemplateDeclarationBase {
                                     {
                                       final SNode tnode56 = environment.createOutputNode(myConcepts[20]);
                                       try {
-                                        SNodeAccessUtil.setProperty(tnode56, myProperties[4], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_0_3(new PropertyMacroContext(context27, "", propertyMacro_ko6gu6_c0a0c0a0b0d0b0d0b0c0b0c0b0b0d0c0b0b0i0b0p0f0f))));
+                                        SNodeAccessUtil.setPropertyValue(tnode56, myProperties[4], QueriesGenerated.propertyMacro_GetValue_0_3(new PropertyMacroContext(context27, "", propertyMacro_ko6gu6_c0a2a0a1a3a1a3a1a2a1a2a1a1a3a2a1a1a8a1a51a5a5)));
                                       } finally {
                                       }
                                       tnode55.addChild(myAggregationLinks[2], tnode56);
@@ -670,7 +670,7 @@ public class Template_Language extends TemplateDeclarationBase {
                                 {
                                   final SNode tnode57 = environment.createOutputNode(myConcepts[20]);
                                   try {
-                                    SNodeAccessUtil.setProperty(tnode57, myProperties[4], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_0_4(new PropertyMacroContext(context26, "", propertyMacro_ko6gu6_c0a0c0a0b0e0b0c0b0c0b0b0d0c0b0b0i0b0p0f0f))));
+                                    SNodeAccessUtil.setPropertyValue(tnode57, myProperties[4], QueriesGenerated.propertyMacro_GetValue_0_4(new PropertyMacroContext(context26, "", propertyMacro_ko6gu6_c0a2a0a1a4a1a2a1a2a1a1a3a2a1a1a8a1a51a5a5)));
                                   } finally {
                                   }
                                   tnode54.addChild(myAggregationLinks[2], tnode57);
@@ -732,9 +732,9 @@ public class Template_Language extends TemplateDeclarationBase {
       {
         final SNode tnode61 = environment.createOutputNode(myConcepts[21]);
         try {
-          SNodeAccessUtil.setProperty(tnode61, myProperties[5], "false");
-          SNodeAccessUtil.setProperty(tnode61, myProperties[6], "false");
-          SNodeAccessUtil.setProperty(tnode61, myProperties[0], "createAspect");
+          tnode61.setProperty(myProperties[5], "false");
+          tnode61.setProperty(myProperties[6], "false");
+          tnode61.setProperty(myProperties[0], "createAspect");
           TemplateContext context28 = context2.subContext();
           {
             final SNode tnode62 = environment.createOutputNode(myConcepts[26]);
@@ -748,7 +748,7 @@ public class Template_Language extends TemplateDeclarationBase {
             final SNode tnode63 = environment.createOutputNode(myConcepts[28]);
             try {
               environment.nodeCopied(context28, tnode63, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/931939946132722361");
-              SNodeAccessUtil.setProperty(tnode63, myProperties[0], "T");
+              tnode63.setProperty(myProperties[0], "T");
               TemplateContext context29 = context28.subContext();
               {
                 final SNode tnode64 = environment.createOutputNode(myConcepts[11]);
@@ -777,7 +777,7 @@ public class Template_Language extends TemplateDeclarationBase {
             final SNode tnode66 = environment.createOutputNode(myConcepts[27]);
             try {
               environment.nodeCopied(context28, tnode66, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/931939946132714367");
-              SNodeAccessUtil.setProperty(tnode66, myProperties[0], "aspectClass");
+              tnode66.setProperty(myProperties[0], "aspectClass");
               TemplateContext context30 = context28.subContext();
               {
                 final SNode tnode67 = environment.createOutputNode(myConcepts[11]);
@@ -859,7 +859,7 @@ public class Template_Language extends TemplateDeclarationBase {
                       {
                         final SNode tnode78 = environment.createOutputNode(myConcepts[34]);
                         try {
-                          SNodeAccessUtil.setProperty(tnode78, myProperties[10], "AP:");
+                          tnode78.setProperty(myProperties[10], "AP:");
                         } finally {
                         }
                         tnode77.addChild(myAggregationLinks[23], tnode78);
@@ -868,7 +868,7 @@ public class Template_Language extends TemplateDeclarationBase {
                       {
                         final SNode tnode79 = environment.createOutputNode(myConcepts[34]);
                         try {
-                          SNodeAccessUtil.setProperty(tnode79, myProperties[10], "legacy");
+                          tnode79.setProperty(myProperties[10], "legacy");
                         } finally {
                         }
                         tnode77.addChild(myAggregationLinks[23], tnode79);
@@ -877,7 +877,7 @@ public class Template_Language extends TemplateDeclarationBase {
                       {
                         final SNode tnode80 = environment.createOutputNode(myConcepts[34]);
                         try {
-                          SNodeAccessUtil.setProperty(tnode80, myProperties[10], "part,");
+                          tnode80.setProperty(myProperties[10], "part,");
                         } finally {
                         }
                         tnode77.addChild(myAggregationLinks[23], tnode80);
@@ -886,7 +886,7 @@ public class Template_Language extends TemplateDeclarationBase {
                       {
                         final SNode tnode81 = environment.createOutputNode(myConcepts[34]);
                         try {
-                          SNodeAccessUtil.setProperty(tnode81, myProperties[10], "must");
+                          tnode81.setProperty(myProperties[10], "must");
                         } finally {
                         }
                         tnode77.addChild(myAggregationLinks[23], tnode81);
@@ -895,7 +895,7 @@ public class Template_Language extends TemplateDeclarationBase {
                       {
                         final SNode tnode82 = environment.createOutputNode(myConcepts[34]);
                         try {
-                          SNodeAccessUtil.setProperty(tnode82, myProperties[10], "be");
+                          tnode82.setProperty(myProperties[10], "be");
                         } finally {
                         }
                         tnode77.addChild(myAggregationLinks[23], tnode82);
@@ -904,7 +904,7 @@ public class Template_Language extends TemplateDeclarationBase {
                       {
                         final SNode tnode83 = environment.createOutputNode(myConcepts[34]);
                         try {
-                          SNodeAccessUtil.setProperty(tnode83, myProperties[10], "migrated");
+                          tnode83.setProperty(myProperties[10], "migrated");
                         } finally {
                         }
                         tnode77.addChild(myAggregationLinks[23], tnode83);
@@ -913,7 +913,7 @@ public class Template_Language extends TemplateDeclarationBase {
                       {
                         final SNode tnode84 = environment.createOutputNode(myConcepts[34]);
                         try {
-                          SNodeAccessUtil.setProperty(tnode84, myProperties[10], "from");
+                          tnode84.setProperty(myProperties[10], "from");
                         } finally {
                         }
                         tnode77.addChild(myAggregationLinks[23], tnode84);
@@ -922,7 +922,7 @@ public class Template_Language extends TemplateDeclarationBase {
                       {
                         final SNode tnode85 = environment.createOutputNode(myConcepts[34]);
                         try {
-                          SNodeAccessUtil.setProperty(tnode85, myProperties[10], "switch:");
+                          tnode85.setProperty(myProperties[10], "switch:");
                         } finally {
                         }
                         tnode77.addChild(myAggregationLinks[23], tnode85);
@@ -931,7 +931,7 @@ public class Template_Language extends TemplateDeclarationBase {
                       {
                         final SNode tnode86 = environment.createOutputNode(myConcepts[34]);
                         try {
-                          SNodeAccessUtil.setProperty(tnode86, myProperties[10], "please");
+                          tnode86.setProperty(myProperties[10], "please");
                         } finally {
                         }
                         tnode77.addChild(myAggregationLinks[23], tnode86);
@@ -940,7 +940,7 @@ public class Template_Language extends TemplateDeclarationBase {
                       {
                         final SNode tnode87 = environment.createOutputNode(myConcepts[34]);
                         try {
-                          SNodeAccessUtil.setProperty(tnode87, myProperties[10], "use");
+                          tnode87.setProperty(myProperties[10], "use");
                         } finally {
                         }
                         tnode77.addChild(myAggregationLinks[23], tnode87);
@@ -949,7 +949,7 @@ public class Template_Language extends TemplateDeclarationBase {
                       {
                         final SNode tnode88 = environment.createOutputNode(myConcepts[34]);
                         try {
-                          SNodeAccessUtil.setProperty(tnode88, myProperties[10], "lang.descriptor");
+                          tnode88.setProperty(myProperties[10], "lang.descriptor");
                         } finally {
                         }
                         tnode77.addChild(myAggregationLinks[23], tnode88);
@@ -958,7 +958,7 @@ public class Template_Language extends TemplateDeclarationBase {
                       {
                         final SNode tnode89 = environment.createOutputNode(myConcepts[34]);
                         try {
-                          SNodeAccessUtil.setProperty(tnode89, myProperties[10], "mapping");
+                          tnode89.setProperty(myProperties[10], "mapping");
                         } finally {
                         }
                         tnode77.addChild(myAggregationLinks[23], tnode89);
@@ -967,7 +967,7 @@ public class Template_Language extends TemplateDeclarationBase {
                       {
                         final SNode tnode90 = environment.createOutputNode(myConcepts[34]);
                         try {
-                          SNodeAccessUtil.setProperty(tnode90, myProperties[10], "label");
+                          tnode90.setProperty(myProperties[10], "label");
                         } finally {
                         }
                         tnode77.addChild(myAggregationLinks[23], tnode90);
@@ -1029,7 +1029,7 @@ public class Template_Language extends TemplateDeclarationBase {
                                 {
                                   final SNode tnode99 = environment.createOutputNode(myConcepts[35]);
                                   try {
-                                    SNodeAccessUtil.setProperty(tnode99, myProperties[11], "true");
+                                    tnode99.setProperty(myProperties[11], "true");
                                   } finally {
                                   }
                                   tnode97.addChild(myAggregationLinks[7], tnode99);
@@ -1114,7 +1114,7 @@ public class Template_Language extends TemplateDeclarationBase {
       {
         final SNode tnode106 = environment.createOutputNode(myConcepts[21]);
         try {
-          SNodeAccessUtil.setProperty(tnode106, myProperties[0], "contribute");
+          tnode106.setProperty(myProperties[0], "contribute");
           TemplateContext context44 = context2.subContext();
           {
             final SNode tnode107 = environment.createOutputNode(myConcepts[26]);
@@ -1135,7 +1135,7 @@ public class Template_Language extends TemplateDeclarationBase {
           {
             final SNode tnode109 = environment.createOutputNode(myConcepts[27]);
             try {
-              SNodeAccessUtil.setProperty(tnode109, myProperties[0], "extensions");
+              tnode109.setProperty(myProperties[0], "extensions");
               TemplateContext context45 = context44.subContext();
               {
                 final SNode tnode110 = environment.createOutputNode(myConcepts[11]);
@@ -1347,14 +1347,14 @@ public class Template_Language extends TemplateDeclarationBase {
   private static final SNodePointer templateNode_ko6gu6_c0a0a1a1a1a1a1a1a1a1a7a3a4 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "7716791493893806153");
   private static final SNodePointer templateNode_ko6gu6_c0a0a1a1a1a2a7a3a4 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "8878450512091481959");
   private static final SNodePointer templateNode_ko6gu6_c0a0a1a1a1a1a1a1a1a3a1a7a5a5 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2800414547479146334");
-  private static final SNodePointer propertyMacro_ko6gu6_c0a0c0a0b0d0b0c0b0b0b0b0b0d0b0h0f0f = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "6768722890464026760");
-  private static final SNodePointer propertyMacro_ko6gu6_c0a0c0a0b0b0b0b0b0f0b0j0f0f = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "5102832340571708654");
-  private static final SNodePointer propertyMacro_ko6gu6_c0a0c0a0b0b0b0b0b0g0b0l0f0f = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "5778538955526643720");
+  private static final SNodePointer propertyMacro_ko6gu6_c0a2a0a1a3a1a2a1a1a1a1a1a3a1a7a5a5 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "6768722890464026760");
+  private static final SNodePointer propertyMacro_ko6gu6_c0a2a0a1a1a1a1a1a5a1a9a5a5 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "5102832340571708654");
+  private static final SNodePointer propertyMacro_ko6gu6_c0a2a0a1a1a1a1a1a6a1a11a5a5 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "5778538955526643720");
   private static final SNodePointer templateNode_ko6gu6_c0a0a1a1a1a1a1a6a1a31a5a5 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2800414547479172315");
   private static final SNodePointer loopMacroRef_ko6gu6_b0a0a1a1a1a8a1a51a5a5 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2800414547479241754");
   private static final SNodePointer templateNode_ko6gu6_c0a0a1a1a1a1a3a2a1a1a8a1a51a5a5 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2800414547479235249");
-  private static final SNodePointer propertyMacro_ko6gu6_c0a0c0a0b0d0b0d0b0c0b0c0b0b0d0c0b0b0i0b0p0f0f = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2800414547479297312");
-  private static final SNodePointer propertyMacro_ko6gu6_c0a0c0a0b0e0b0c0b0c0b0b0d0c0b0b0i0b0p0f0f = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2800414547479294229");
+  private static final SNodePointer propertyMacro_ko6gu6_c0a2a0a1a3a1a3a1a2a1a2a1a1a3a2a1a1a8a1a51a5a5 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2800414547479297312");
+  private static final SNodePointer propertyMacro_ko6gu6_c0a2a0a1a4a1a2a1a2a1a1a3a2a1a1a8a1a51a5a5 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2800414547479294229");
   private static final SNodePointer templateNode_ko6gu6_c0a0a1a6a1a71a5a5 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "931939946132740133");
   private static final SNodePointer templateNode_ko6gu6_c0a0a1a2a1a3a1a7a1a71a5a5 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "931939946132745292");
   private static final SNodePointer loopMacroRef_ko6gu6_b0a0a1a1a1a1a3a4a1a8a1a71a5a5 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2030416617761783825");

@@ -12,7 +12,6 @@ import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -34,7 +33,7 @@ public class Template_weave_InputRoot extends TemplateDeclarationBase {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     try {
-      SNodeAccessUtil.setProperty(tnode1, myProperties[0], "weaved N1");
+      tnode1.setProperty(myProperties[0], "weaved N1");
     } finally {
     }
     FragmentResult rv = nodeFragment(0, tnode1);
@@ -44,7 +43,7 @@ public class Template_weave_InputRoot extends TemplateDeclarationBase {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     try {
-      SNodeAccessUtil.setProperty(tnode1, myProperties[0], "weaved N2");
+      tnode1.setProperty(myProperties[0], "weaved N2");
     } finally {
     }
     FragmentResult rv = nodeFragment(0, tnode1);

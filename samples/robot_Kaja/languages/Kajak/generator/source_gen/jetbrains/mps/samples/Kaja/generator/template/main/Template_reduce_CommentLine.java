@@ -12,7 +12,6 @@ import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -42,7 +41,7 @@ public class Template_reduce_CommentLine extends TemplateDeclarationBase {
           {
             final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
             try {
-              SNodeAccessUtil.setProperty(tnode3, myProperties[0], "this");
+              tnode3.setProperty(myProperties[0], "this");
             } finally {
             }
             tnode2.addChild(myAggregationLinks[0], tnode3);
@@ -51,7 +50,7 @@ public class Template_reduce_CommentLine extends TemplateDeclarationBase {
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
             try {
-              SNodeAccessUtil.setProperty(tnode4, myProperties[0], "is");
+              tnode4.setProperty(myProperties[0], "is");
             } finally {
             }
             tnode2.addChild(myAggregationLinks[0], tnode4);
@@ -60,7 +59,7 @@ public class Template_reduce_CommentLine extends TemplateDeclarationBase {
           {
             final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
             try {
-              SNodeAccessUtil.setProperty(tnode5, myProperties[0], "a");
+              tnode5.setProperty(myProperties[0], "a");
             } finally {
             }
             tnode2.addChild(myAggregationLinks[0], tnode5);
@@ -69,7 +68,7 @@ public class Template_reduce_CommentLine extends TemplateDeclarationBase {
           {
             final SNode tnode6 = environment.createOutputNode(myConcepts[2]);
             try {
-              SNodeAccessUtil.setProperty(tnode6, myProperties[0], "comment");
+              tnode6.setProperty(myProperties[0], "comment");
             } finally {
             }
             tnode2.addChild(myAggregationLinks[0], tnode6);

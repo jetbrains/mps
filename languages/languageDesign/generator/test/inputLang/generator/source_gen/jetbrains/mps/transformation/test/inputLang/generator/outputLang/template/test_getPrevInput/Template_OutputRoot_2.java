@@ -11,11 +11,10 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
-import jetbrains.mps.generator.runtime.TemplateUtil;
+import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.generator.impl.MapSrcProcessor;
@@ -23,6 +22,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.template.MapSrcMacroContext;
 import jetbrains.mps.generator.template.MapSrcMacroPostProcContext;
+import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -41,8 +41,8 @@ public class Template_OutputRoot_2 extends TemplateDeclarationBase {
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     try {
       environment.nodeCopied(context, tnode1, "tpl/r:00000000-0000-4000-0000-011c895905f7/1202338159177");
-      SNodeAccessUtil.setProperty(tnode1, myProperties[0], "OutputRoot_2");
-      SNodeAccessUtil.setProperty(tnode1, myProperties[1], "'getPrevInputTest' output root (2)");
+      tnode1.setProperty(myProperties[0], "OutputRoot_2");
+      tnode1.setProperty(myProperties[1], "'getPrevInputTest' output root (2)");
       TemplateContext context1 = context.subContext();
       {
         final List<SNode> tlist2 = new ArrayList<SNode>();
@@ -68,7 +68,7 @@ public class Template_OutputRoot_2 extends TemplateDeclarationBase {
               TemplateContext context4 = context3.subContext(itnode4);
               final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
               try {
-                SNodeAccessUtil.setProperty(tnode5, myProperties[2], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_2_0(new PropertyMacroContext(context4, "_text_", propertyMacro_wvaolp_c0a0c0a0d0e0e0c0e0b0e))));
+                SNodeAccessUtil.setPropertyValue(tnode5, myProperties[2], QueriesGenerated.propertyMacro_GetValue_2_0(new PropertyMacroContext(context4, "_text_", propertyMacro_wvaolp_c0a2a0a3a4a4a2a4a1a4)));
                 TemplateContext context5 = context4.subContext();
                 {
                   final List<SNode> tlist6 = new ArrayList<SNode>();
@@ -196,5 +196,5 @@ public class Template_OutputRoot_2 extends TemplateDeclarationBase {
   private static final SNodePointer loopMacroRef_wvaolp_b0a0a1a4a1a4 = new SNodePointer("r:00000000-0000-4000-0000-011c895905f7(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_getPrevInput@generator)", "1202338467104");
   private static final SNodePointer loopMacroRef_wvaolp_b0a0a3a2a4a1a4 = new SNodePointer("r:00000000-0000-4000-0000-011c895905f7(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_getPrevInput@generator)", "1202338467111");
   private static final SNodePointer loopMacroRef_wvaolp_b0a0a3a4a2a4a1a4 = new SNodePointer("r:00000000-0000-4000-0000-011c895905f7(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_getPrevInput@generator)", "1202338467118");
-  private static final SNodePointer propertyMacro_wvaolp_c0a0c0a0d0e0e0c0e0b0e = new SNodePointer("r:00000000-0000-4000-0000-011c895905f7(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_getPrevInput@generator)", "1202338467125");
+  private static final SNodePointer propertyMacro_wvaolp_c0a2a0a3a4a4a2a4a1a4 = new SNodePointer("r:00000000-0000-4000-0000-011c895905f7(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_getPrevInput@generator)", "1202338467125");
 }

@@ -13,7 +13,6 @@ import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
-import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -39,7 +38,7 @@ public class Template_weave_ChildConceptWeave extends TemplateDeclarationBase {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     try {
-      SNodeAccessUtil.setProperty(tnode1, myProperties[0], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_2_1(new PropertyMacroContext(context, "method", propertyMacro_5w9su2_c0a0c0a0c0g))));
+      SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_2_1(new PropertyMacroContext(context, "method", propertyMacro_5w9su2_c0a2a0a2a6)));
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
@@ -91,7 +90,7 @@ public class Template_weave_ChildConceptWeave extends TemplateDeclarationBase {
                           {
                             final SNode tnode10 = environment.createOutputNode(myConcepts[9]);
                             try {
-                              SNodeAccessUtil.setProperty(tnode10, myProperties[1], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_2_0(new PropertyMacroContext(context6, "name", propertyMacro_5w9su2_c0a0c0a0b0b0b0c0b0c0b0b0b0b0b0e0c0g))));
+                              SNodeAccessUtil.setPropertyValue(tnode10, myProperties[1], QueriesGenerated.propertyMacro_GetValue_2_0(new PropertyMacroContext(context6, "name", propertyMacro_5w9su2_c0a2a0a1a1a1a2a1a2a1a1a1a1a1a4a2a6)));
                             } finally {
                             }
                             tnode9.addChild(myAggregationLinks[3], tnode10);
@@ -100,7 +99,7 @@ public class Template_weave_ChildConceptWeave extends TemplateDeclarationBase {
                           {
                             final SNode tnode11 = environment.createOutputNode(myConcepts[9]);
                             try {
-                              SNodeAccessUtil.setProperty(tnode11, myProperties[1], "I'm");
+                              tnode11.setProperty(myProperties[1], "I'm");
                             } finally {
                             }
                             tnode9.addChild(myAggregationLinks[4], tnode11);
@@ -187,6 +186,6 @@ public class Template_weave_ChildConceptWeave extends TemplateDeclarationBase {
     rv[10] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
     return rv;
   }
-  private static final SNodePointer propertyMacro_5w9su2_c0a0c0a0c0g = new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008522554");
-  private static final SNodePointer propertyMacro_5w9su2_c0a0c0a0b0b0b0c0b0c0b0b0b0b0b0e0c0g = new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008526317");
+  private static final SNodePointer propertyMacro_5w9su2_c0a2a0a2a6 = new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008522554");
+  private static final SNodePointer propertyMacro_5w9su2_c0a2a0a1a1a1a2a1a2a1a1a1a1a1a4a2a6 = new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008526317");
 }

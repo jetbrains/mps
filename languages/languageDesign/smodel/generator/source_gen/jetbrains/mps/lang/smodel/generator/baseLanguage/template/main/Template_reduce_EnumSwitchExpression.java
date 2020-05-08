@@ -16,11 +16,11 @@ import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
-import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import java.util.Collection;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
+import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.adapter.ids.SDataTypeId;
@@ -66,7 +66,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
             {
               final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
               try {
-                SNodeAccessUtil.setProperty(tnode4, myProperties[0], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_139_0(new PropertyMacroContext(context3, "1", propertyMacro_rc46g0_c0a0c0a0b0b0e0d0b0c0g))));
+                SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_139_0(new PropertyMacroContext(context3, "1", propertyMacro_rc46g0_c0a2a0a1a1a4a3a1a2a6)));
               } finally {
               }
               tnode3.addChild(myAggregationLinks[0], tnode4);
@@ -109,8 +109,8 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
           {
             final SNode tnode11 = environment.createOutputNode(myConcepts[5]);
             try {
-              SNodeAccessUtil.setProperty(tnode11, myProperties[1], "enumSwitchIndex");
-              SNodeAccessUtil.setProperty(tnode11, myProperties[2], "true");
+              tnode11.setProperty(myProperties[1], "enumSwitchIndex");
+              tnode11.setProperty(myProperties[2], "true");
               TemplateContext context5 = context4.subContext();
               {
                 final SNode tnode12 = environment.createOutputNode(myConcepts[6]);
@@ -138,7 +138,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                       TemplateContext context8 = context6.subContext(itnode15);
                       final SNode tnode16 = environment.createOutputNode(myConcepts[7]);
                       try {
-                        SNodeAccessUtil.setProperty(tnode16, myProperties[3], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_139_1(new PropertyMacroContext(context8, "0L", propertyMacro_rc46g0_c0a0c0a0d0c0e0b0d0b0b0b0c0c0g))));
+                        SNodeAccessUtil.setPropertyValue(tnode16, myProperties[3], QueriesGenerated.propertyMacro_GetValue_139_1(new PropertyMacroContext(context8, "0L", propertyMacro_rc46g0_c0a2a0a3a2a4a1a3a1a1a1a2a2a6)));
                       } finally {
                       }
                       if (tnode16 != null) {
@@ -220,7 +220,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                               if (tlist28 == null) {
                                 final SNode tnode29 = environment.createOutputNode(myConcepts[2]);
                                 try {
-                                  SNodeAccessUtil.setProperty(tnode29, myProperties[0], "0");
+                                  tnode29.setProperty(myProperties[0], "0");
                                 } finally {
                                 }
                                 if (tnode29 != null) {
@@ -294,7 +294,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                               if (tlist38 == null) {
                                 final SNode tnode39 = environment.createOutputNode(myConcepts[2]);
                                 try {
-                                  SNodeAccessUtil.setProperty(tnode39, myProperties[0], "0");
+                                  tnode39.setProperty(myProperties[0], "0");
                                 } finally {
                                 }
                                 if (tnode39 != null) {
@@ -341,7 +341,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                           if (tlist44 == null) {
                             final SNode tnode45 = environment.createOutputNode(myConcepts[2]);
                             try {
-                              SNodeAccessUtil.setProperty(tnode45, myProperties[0], "0");
+                              tnode45.setProperty(myProperties[0], "0");
                             } finally {
                             }
                             if (tnode45 != null) {
@@ -440,11 +440,11 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
     return rv;
   }
   private static final SNodePointer loopMacroRef_rc46g0_b0a0a1a1a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630825410");
-  private static final SNodePointer propertyMacro_rc46g0_c0a0c0a0b0b0e0d0b0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630960335");
+  private static final SNodePointer propertyMacro_rc46g0_c0a2a0a1a1a4a3a1a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630960335");
   private static final SNodePointer copySrcMacro_rc46g0_b0a0c0b0c0e0d0b0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209228864");
   private static final SNodePointer ifMacroRef_rc46g0_b0a0b0c0e0d0b0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948208751015");
   private static final SNodePointer loopMacroRef_rc46g0_b0a0a1a4a1a3a1a1a1a2a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1310636635388472821");
-  private static final SNodePointer propertyMacro_rc46g0_c0a0c0a0d0c0e0b0d0b0b0b0c0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1310636635388478407");
+  private static final SNodePointer propertyMacro_rc46g0_c0a2a0a3a2a4a1a3a1a1a1a2a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1310636635388478407");
   private static final SNodePointer copySrcMacro_rc46g0_b0a0c0c0b0c0b0c0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630249348");
   private static final SNodePointer copySrcMacro_rc46g0_b0a0c0b0b0d0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948207972192");
   private static final SNodePointer ifMacroRef_rc46g0_b0a0b0b0d0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948210511963");

@@ -12,7 +12,6 @@ import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import java.util.Collection;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.generator.runtime.TemplateUtil;
@@ -41,7 +40,7 @@ public class Template_reduce_ConceptCaseBody_Hack1 extends TemplateDeclarationBa
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
         try {
-          SNodeAccessUtil.setProperty(tnode2, myProperties[0], "true");
+          tnode2.setProperty(myProperties[0], "true");
         } finally {
         }
         tnode1.addChild(myAggregationLinks[0], tnode2);

@@ -154,7 +154,7 @@ public class Switch_switch_EnumOperation extends TemplateSwitchBase implements T
         {
           final SNode tnode6 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral"));
           try {
-            SNodeAccessUtil.setProperty(tnode6, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_138_0(new PropertyMacroContext(context1, "name", propertyMacro_r03umb_c0a0c0a0b0f0c0b8))));
+            SNodeAccessUtil.setPropertyValue(tnode6, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), QueriesGenerated.propertyMacro_GetValue_138_0(new PropertyMacroContext(context1, "name", propertyMacro_r03umb_c0a2a0a1a5a2a1i)));
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), tnode6);
@@ -197,7 +197,7 @@ public class Switch_switch_EnumOperation extends TemplateSwitchBase implements T
   private static final SNodePointer copySrcMacro_r03umb_b0a0c0e0c0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3689841190253256292");
   private static final SNodePointer copySrcMacro_r03umb_b0a0c0d0c0b8 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1144794804654563133");
   private static final SNodePointer callMacro_r03umb_b0a0a1a4a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1144794804654563141");
-  private static final SNodePointer propertyMacro_r03umb_c0a0c0a0b0f0c0b8 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7002445415533147894");
+  private static final SNodePointer propertyMacro_r03umb_c0a2a0a1a5a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7002445415533147894");
   private static final SNodePointer copySrcMacro_r03umb_b0a0c0d0c0b9 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5162844862474298979");
 
   private static final class CONCEPTS {

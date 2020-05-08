@@ -17,8 +17,8 @@ import jetbrains.mps.generator.template.TemplateVarContext;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
-import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
+import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -50,7 +50,7 @@ public class Template_reduce_LanguageId_SLanguage extends TemplateDeclarationBas
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
         try {
-          SNodeAccessUtil.setProperty(tnode3, myProperties[0], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_87_0(new PropertyMacroContext(context2, "0L", propertyMacro_3k4iw9_c0a0c0a0b0d0f0g))));
+          SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_87_0(new PropertyMacroContext(context2, "0L", propertyMacro_3k4iw9_c0a2a0a1a3a5a6)));
         } finally {
         }
         tnode2.addChild(myAggregationLinks[0], tnode3);
@@ -59,7 +59,7 @@ public class Template_reduce_LanguageId_SLanguage extends TemplateDeclarationBas
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
         try {
-          SNodeAccessUtil.setProperty(tnode4, myProperties[0], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_87_1(new PropertyMacroContext(context2, "0L", propertyMacro_3k4iw9_c0a0c0a0b0e0f0g))));
+          SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_87_1(new PropertyMacroContext(context2, "0L", propertyMacro_3k4iw9_c0a2a0a1a4a5a6)));
         } finally {
         }
         tnode2.addChild(myAggregationLinks[0], tnode4);
@@ -68,7 +68,7 @@ public class Template_reduce_LanguageId_SLanguage extends TemplateDeclarationBas
       {
         final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
         try {
-          SNodeAccessUtil.setProperty(tnode5, myProperties[1], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_87_2(new PropertyMacroContext(context2, "", propertyMacro_3k4iw9_c0a0c0a0b0f0f0g))));
+          SNodeAccessUtil.setPropertyValue(tnode5, myProperties[1], QueriesGenerated.propertyMacro_GetValue_87_2(new PropertyMacroContext(context2, "", propertyMacro_3k4iw9_c0a2a0a1a5a5a6)));
         } finally {
         }
         tnode2.addChild(myAggregationLinks[0], tnode5);
@@ -114,7 +114,7 @@ public class Template_reduce_LanguageId_SLanguage extends TemplateDeclarationBas
     rv[1] = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
     return rv;
   }
-  private static final SNodePointer propertyMacro_3k4iw9_c0a0c0a0b0d0f0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "628308631243023532");
-  private static final SNodePointer propertyMacro_3k4iw9_c0a0c0a0b0e0f0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "628308631243023554");
-  private static final SNodePointer propertyMacro_3k4iw9_c0a0c0a0b0f0f0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "628308631243014266");
+  private static final SNodePointer propertyMacro_3k4iw9_c0a2a0a1a3a5a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "628308631243023532");
+  private static final SNodePointer propertyMacro_3k4iw9_c0a2a0a1a4a5a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "628308631243023554");
+  private static final SNodePointer propertyMacro_3k4iw9_c0a2a0a1a5a5a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "628308631243014266");
 }

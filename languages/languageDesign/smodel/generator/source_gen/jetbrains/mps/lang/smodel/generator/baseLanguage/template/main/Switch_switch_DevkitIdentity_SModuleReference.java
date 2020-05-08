@@ -77,7 +77,7 @@ public class Switch_switch_DevkitIdentity_SModuleReference extends TemplateSwitc
             {
               final SNode tnode4 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral"));
               try {
-                SNodeAccessUtil.setProperty(tnode4, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_127_0(new PropertyMacroContext(context2, "", propertyMacro_yjqism_c0a0c0a0b0c0b0c0c0b7))));
+                SNodeAccessUtil.setPropertyValue(tnode4, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), QueriesGenerated.propertyMacro_GetValue_127_0(new PropertyMacroContext(context2, "", propertyMacro_yjqism_c0a2a0a1a2a1a2a2a1h)));
               } finally {
               }
               tnode3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), tnode4);
@@ -93,7 +93,7 @@ public class Switch_switch_DevkitIdentity_SModuleReference extends TemplateSwitc
       return TemplateUtil.singletonList(tnode1);
     }
   }
-  private static final SNodePointer propertyMacro_yjqism_c0a0c0a0b0c0b0c0c0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7764131598616918128");
+  private static final SNodePointer propertyMacro_yjqism_c0a2a0a1a2a1a2a2a1h = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7764131598616918128");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept DevkitPointer$OX = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x721adb764b3fbd1bL, "jetbrains.mps.lang.smodel.structure.DevkitPointer");

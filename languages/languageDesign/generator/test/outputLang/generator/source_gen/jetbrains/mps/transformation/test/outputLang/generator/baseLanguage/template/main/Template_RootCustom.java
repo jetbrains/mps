@@ -11,11 +11,11 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.generator.runtime.TemplateUtil;
+import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
+import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -37,7 +37,7 @@ public class Template_RootCustom extends TemplateDeclarationBase {
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     try {
       environment.nodeCopied(context, tnode1, "tpl/r:00000000-0000-4000-0000-011c89590606/4146564171992412775");
-      SNodeAccessUtil.setProperty(tnode1, myProperties[0], "RootCustom");
+      tnode1.setProperty(myProperties[0], "RootCustom");
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
@@ -51,7 +51,7 @@ public class Template_RootCustom extends TemplateDeclarationBase {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
         try {
           environment.nodeCopied(context1, tnode3, "tpl/r:00000000-0000-4000-0000-011c89590606/5015072279636761135");
-          SNodeAccessUtil.setProperty(tnode3, myProperties[0], "q");
+          tnode3.setProperty(myProperties[0], "q");
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
@@ -109,7 +109,7 @@ public class Template_RootCustom extends TemplateDeclarationBase {
                     final SNode tnode12 = environment.createOutputNode(myConcepts[9]);
                     try {
                       environment.nodeCopied(context6, tnode12, "tpl/r:00000000-0000-4000-0000-011c89590606/5015072279636761103");
-                      SNodeAccessUtil.setProperty(tnode12, myProperties[0], "i");
+                      tnode12.setProperty(myProperties[0], "i");
                       TemplateContext context7 = context6.subContext();
                       {
                         final SNode tnode13 = environment.createOutputNode(myConcepts[4]);
@@ -122,7 +122,7 @@ public class Template_RootCustom extends TemplateDeclarationBase {
                       {
                         final SNode tnode14 = environment.createOutputNode(myConcepts[10]);
                         try {
-                          SNodeAccessUtil.setProperty(tnode14, myProperties[1], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context7, "0", propertyMacro_xizpik_c0a0c0a0b0e0e0b0b0b0b0d0b0f0b0e))));
+                          SNodeAccessUtil.setPropertyValue(tnode14, myProperties[1], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context7, "0", propertyMacro_xizpik_c0a2a0a1a4a4a1a1a1a1a3a1a5a1a4)));
                         } finally {
                         }
                         tnode12.addChild(myAggregationLinks[4], tnode14);
@@ -190,7 +190,7 @@ public class Template_RootCustom extends TemplateDeclarationBase {
       {
         final SNode tnode20 = environment.createOutputNode(myConcepts[14]);
         try {
-          SNodeAccessUtil.setProperty(tnode20, myProperties[0], "main");
+          tnode20.setProperty(myProperties[0], "main");
           TemplateContext context10 = context1.subContext();
           {
             final SNode tnode21 = environment.createOutputNode(myConcepts[6]);
@@ -286,7 +286,7 @@ public class Template_RootCustom extends TemplateDeclarationBase {
     return rv;
   }
   private static final SNodePointer template_xizpik_a0a3 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4146564171992412775");
-  private static final SNodePointer propertyMacro_xizpik_c0a0c0a0b0e0e0b0b0b0b0d0b0f0b0e = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2721957369897795323");
+  private static final SNodePointer propertyMacro_xizpik_c0a2a0a1a4a4a1a1a1a1a3a1a5a1a4 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2721957369897795323");
   private static final SNodePointer templateNode_xizpik_c0a0a1a1a1a1a1a2a1a3a1a5a1a4 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3021153905120210705");
   private static final SNodePointer templateNode_xizpik_c0a0a1a2a1a1a1a2a1a3a1a5a1a4 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4265636116363088829");
   private static final SNodePointer copySrcMacro_xizpik_b0a0c0e0b0g0b0e = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4146564171992412787");

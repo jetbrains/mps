@@ -14,7 +14,6 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -120,7 +119,7 @@ public class Template_reduce_Step extends TemplateDeclarationBase {
                               {
                                 final SNode tnode14 = environment.createOutputNode(myConcepts[5]);
                                 try {
-                                  SNodeAccessUtil.setProperty(tnode14, myProperties[0], "Oops, There's a wall in front of me. I can't make a step forward.");
+                                  tnode14.setProperty(myProperties[0], "Oops, There's a wall in front of me. I can't make a step forward.");
                                 } finally {
                                 }
                                 tnode13.addChild(myAggregationLinks[4], tnode14);

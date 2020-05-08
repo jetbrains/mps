@@ -73,7 +73,7 @@ public class Template_Quotation_to_staticMethodCall extends TemplateDeclarationB
         final SNode tnode6 = environment.createOutputNode(myConcepts[2]);
         try {
           environment.nodeCopied(context2, tnode6, "tpl/r:00000000-0000-4000-0000-011c8959034c/1025590056396661196");
-          SNodeAccessUtil.setProperty(tnode6, myProperties[0], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_2_2(new PropertyMacroContext(context2, "_quotation_createNode", propertyMacro_6fpfng_c0a0c0b0b0c0f0g))));
+          SNodeAccessUtil.setPropertyValue(tnode6, myProperties[0], QueriesGenerated.propertyMacro_GetValue_2_2(new PropertyMacroContext(context2, "_quotation_createNode", propertyMacro_6fpfng_c0a2a1a1a2a5a6)));
           TemplateContext context4 = context2.subContext();
           {
             final SNode tnode7 = environment.createOutputNode(myConcepts[3]);
@@ -101,7 +101,7 @@ public class Template_Quotation_to_staticMethodCall extends TemplateDeclarationB
               TemplateContext context5 = context4.subContext("parametersFromExpressionsQ", itnode9);
               final SNode tnode10 = environment.createOutputNode(myConcepts[5]);
               try {
-                SNodeAccessUtil.setProperty(tnode10, myProperties[0], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_2_0(new PropertyMacroContext(context5, "a", propertyMacro_6fpfng_c0a0c0a0d0c0f0b0c0f0g))));
+                SNodeAccessUtil.setPropertyValue(tnode10, myProperties[0], QueriesGenerated.propertyMacro_GetValue_2_0(new PropertyMacroContext(context5, "a", propertyMacro_6fpfng_c0a2a0a3a2a5a1a2a5a6)));
                 TemplateContext context6 = context5.subContext();
                 {
                   final SNode tnode11 = environment.createOutputNode(myConcepts[6]);
@@ -135,7 +135,7 @@ public class Template_Quotation_to_staticMethodCall extends TemplateDeclarationB
                   {
                     final SNode tnode15 = environment.createOutputNode(myConcepts[9]);
                     try {
-                      SNodeAccessUtil.setProperty(tnode15, myProperties[0], "facade");
+                      tnode15.setProperty(myProperties[0], "facade");
                       TemplateContext context9 = context8.subContext();
                       {
                         final SNode tnode16 = environment.createOutputNode(myConcepts[10]);
@@ -183,7 +183,7 @@ public class Template_Quotation_to_staticMethodCall extends TemplateDeclarationB
                       final SNode tnode21 = environment.createOutputNode(myConcepts[9]);
                       try {
                         environment.nodeCopied(context12, tnode21, "tpl/r:00000000-0000-4000-0000-011c8959034c/1025590056396681223");
-                        SNodeAccessUtil.setProperty(tnode21, myProperties[0], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_2_1(new PropertyMacroContext(context12, "_node_", propertyMacro_6fpfng_c0a0c0b0d0b0d0c0c0b0g0b0c0f0g))));
+                        SNodeAccessUtil.setPropertyValue(tnode21, myProperties[0], QueriesGenerated.propertyMacro_GetValue_2_1(new PropertyMacroContext(context12, "_node_", propertyMacro_6fpfng_c0a2a1a3a1a3a2a2a1a6a1a2a5a6)));
                         TemplateContext context13 = context12.subContext();
                         {
                           final SNode tnode22 = environment.createOutputNode(myConcepts[6]);
@@ -432,11 +432,11 @@ public class Template_Quotation_to_staticMethodCall extends TemplateDeclarationB
   }
   private static final SNodePointer templateNode_6fpfng_c0a0a1a1a5a6 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1025590056396668027");
   private static final SNodePointer copySrcListMacro_6fpfng_b0a0a1a2a1a1a5a6 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8438065045296712359");
-  private static final SNodePointer propertyMacro_6fpfng_c0a0c0b0b0c0f0g = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1025590056397541504");
+  private static final SNodePointer propertyMacro_6fpfng_c0a2a1a1a2a5a6 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1025590056397541504");
   private static final SNodePointer loopMacroRef_6fpfng_b0a0a1a5a1a2a5a6 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1025590056396672112");
-  private static final SNodePointer propertyMacro_6fpfng_c0a0c0a0d0c0f0b0c0f0g = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1025590056396672172");
+  private static final SNodePointer propertyMacro_6fpfng_c0a2a0a3a2a5a1a2a5a6 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1025590056396672172");
   private static final SNodePointer loopMacroRef_6fpfng_b0a0a1a2a1a6a1a2a5a6 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1025590056396681240");
-  private static final SNodePointer propertyMacro_6fpfng_c0a0c0b0d0b0d0c0c0b0g0b0c0f0g = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1025590056396681225");
+  private static final SNodePointer propertyMacro_6fpfng_c0a2a1a3a1a3a2a2a1a6a1a2a5a6 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1025590056396681225");
   private static final SNodePointer callMacro_6fpfng_b0a0a1a1a1a3a1a6a1a2a5a6 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "767161977424627382");
   private static final SNodePointer loopMacroRef_6fpfng_b0a0a1a4a1a6a1a2a5a6 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2038730470042886541");
   private static final SNodePointer callMacro_6fpfng_b0a0a1a2a1a2a1a1a3a2a4a1a6a1a2a5a6 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144945");

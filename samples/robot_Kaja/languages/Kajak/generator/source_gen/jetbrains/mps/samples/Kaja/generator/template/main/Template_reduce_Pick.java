@@ -14,7 +14,6 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -120,7 +119,7 @@ public class Template_reduce_Pick extends TemplateDeclarationBase {
                               {
                                 final SNode tnode14 = environment.createOutputNode(myConcepts[5]);
                                 try {
-                                  SNodeAccessUtil.setProperty(tnode14, myProperties[0], "Nothing to pick. The cell is empty.");
+                                  tnode14.setProperty(myProperties[0], "Nothing to pick. The cell is empty.");
                                 } finally {
                                 }
                                 tnode13.addChild(myAggregationLinks[4], tnode14);

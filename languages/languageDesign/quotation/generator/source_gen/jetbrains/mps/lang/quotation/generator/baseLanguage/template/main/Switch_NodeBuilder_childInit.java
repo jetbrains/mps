@@ -96,7 +96,7 @@ public class Switch_NodeBuilder_childInit extends TemplateSwitchBase implements 
         {
           final SNode tnode4 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b201L, "BooleanConstant"));
           try {
-            SNodeAccessUtil.setProperty(tnode4, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_6_0(new PropertyMacroContext(context1, "true", propertyMacro_83ulml_c0a0c0a0b0e0c0c6))));
+            SNodeAccessUtil.setPropertyValue(tnode4, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), QueriesGenerated.propertyMacro_GetValue_6_0(new PropertyMacroContext(context1, "true", propertyMacro_83ulml_c0a2a0a1a4a2a2g)));
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), tnode4);
@@ -148,7 +148,7 @@ public class Switch_NodeBuilder_childInit extends TemplateSwitchBase implements 
         {
           final SNode tnode5 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b201L, "BooleanConstant"));
           try {
-            SNodeAccessUtil.setProperty(tnode5, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_6_1(new PropertyMacroContext(context1, "true", propertyMacro_83ulml_c0a0c0a0b0e0c0c7))));
+            SNodeAccessUtil.setPropertyValue(tnode5, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), QueriesGenerated.propertyMacro_GetValue_6_1(new PropertyMacroContext(context1, "true", propertyMacro_83ulml_c0a2a0a1a4a2a2h)));
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), tnode5);
@@ -188,9 +188,9 @@ public class Switch_NodeBuilder_childInit extends TemplateSwitchBase implements 
       return TemplateUtil.singletonList(tnode1);
     }
   }
-  private static final SNodePointer propertyMacro_83ulml_c0a0c0a0b0e0c0c6 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567144984705");
+  private static final SNodePointer propertyMacro_83ulml_c0a2a0a1a4a2a2g = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567144984705");
   private static final SNodePointer copySrcMacro_83ulml_b0a0c0c0c0c7 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567144984833");
-  private static final SNodePointer propertyMacro_83ulml_c0a0c0a0b0e0c0c7 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567144984851");
+  private static final SNodePointer propertyMacro_83ulml_c0a2a0a1a4a2a2h = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567144984851");
   private static final SNodePointer callMacro_83ulml_b0a0a1a2a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567145033367");
 
   private static final class CONCEPTS {

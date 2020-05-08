@@ -79,8 +79,8 @@ public class Template_reduce_invokeWithThis extends TemplateDeclarationBase {
       {
         final SNode tnode7 = environment.createOutputNode(myConcepts[2]);
         try {
-          SNodeAccessUtil.setProperty(tnode7, myProperties[0], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_111_0(new PropertyMacroContext(context1, "A_BehaviorDescriptor", propertyMacro_peulco_c0a0c0a0b0c0c0g))));
-          SNodeAccessUtil.setProperty(tnode7, myProperties[1], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_111_1(new PropertyMacroContext(context1, "fooMethod", propertyMacro_peulco_c0a0c0b0b0c0c0g))));
+          SNodeAccessUtil.setPropertyValue(tnode7, myProperties[0], QueriesGenerated.propertyMacro_GetValue_111_0(new PropertyMacroContext(context1, "A_BehaviorDescriptor", propertyMacro_peulco_c0a2a0a1a2a2a6)));
+          SNodeAccessUtil.setPropertyValue(tnode7, myProperties[1], QueriesGenerated.propertyMacro_GetValue_111_1(new PropertyMacroContext(context1, "fooMethod", propertyMacro_peulco_c0a2a1a1a2a2a6)));
           TemplateContext context5 = context1.subContext();
           {
             final SNode tnode8 = environment.createOutputNode(myConcepts[3]);
@@ -151,7 +151,7 @@ public class Template_reduce_invokeWithThis extends TemplateDeclarationBase {
     return rv;
   }
   private static final SNodePointer callMacro_peulco_b0a0a1a2a1a1a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892152245");
-  private static final SNodePointer propertyMacro_peulco_c0a0c0a0b0c0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892152298");
-  private static final SNodePointer propertyMacro_peulco_c0a0c0b0b0c0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892152316");
+  private static final SNodePointer propertyMacro_peulco_c0a2a0a1a2a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892152298");
+  private static final SNodePointer propertyMacro_peulco_c0a2a1a1a2a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892152316");
   private static final SNodePointer copySrcMacro_peulco_b0a0c0c0b0d0b0c0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892152284");
 }

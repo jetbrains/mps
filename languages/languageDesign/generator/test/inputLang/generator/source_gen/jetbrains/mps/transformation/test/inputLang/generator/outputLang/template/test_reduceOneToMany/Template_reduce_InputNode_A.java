@@ -15,7 +15,6 @@ import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.ArrayList;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import java.util.Collection;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
@@ -46,7 +45,7 @@ public class Template_reduce_InputNode_A extends TemplateDeclarationBase {
       TemplateContext context1 = context.subContext(itnode1);
       final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
       try {
-        SNodeAccessUtil.setProperty(tnode2, myProperties[0], "child #1");
+        tnode2.setProperty(myProperties[0], "child #1");
       } finally {
       }
       if (tnode2 != null) {
@@ -60,7 +59,7 @@ public class Template_reduce_InputNode_A extends TemplateDeclarationBase {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     try {
-      SNodeAccessUtil.setProperty(tnode1, myProperties[0], "child #2");
+      tnode1.setProperty(myProperties[0], "child #2");
     } finally {
     }
     FragmentResult rv = nodeFragment(0, tnode1);

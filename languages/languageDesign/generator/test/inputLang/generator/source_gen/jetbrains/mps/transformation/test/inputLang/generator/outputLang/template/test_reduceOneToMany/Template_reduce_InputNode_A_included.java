@@ -12,7 +12,6 @@ import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -34,7 +33,7 @@ public class Template_reduce_InputNode_A_included extends TemplateDeclarationBas
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     try {
-      SNodeAccessUtil.setProperty(tnode1, myProperties[0], "child included #1");
+      tnode1.setProperty(myProperties[0], "child included #1");
     } finally {
     }
     FragmentResult rv = nodeFragment(0, tnode1);
@@ -44,7 +43,7 @@ public class Template_reduce_InputNode_A_included extends TemplateDeclarationBas
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     try {
-      SNodeAccessUtil.setProperty(tnode1, myProperties[0], "child included #2");
+      tnode1.setProperty(myProperties[0], "child included #2");
     } finally {
     }
     FragmentResult rv = nodeFragment(0, tnode1);

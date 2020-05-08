@@ -255,7 +255,7 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
         {
           final SNode tnode4 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b201L, "BooleanConstant"));
           try {
-            SNodeAccessUtil.setProperty(tnode4, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_34_0(new PropertyMacroContext(context1, "false", propertyMacro_y3pd1p_c0a0c0a0b0e0c0b6))));
+            SNodeAccessUtil.setPropertyValue(tnode4, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), QueriesGenerated.propertyMacro_GetValue_34_0(new PropertyMacroContext(context1, "false", propertyMacro_y3pd1p_c0a2a0a1a4a2a1g)));
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), tnode4);
@@ -295,7 +295,7 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
         {
           final SNode tnode4 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b201L, "BooleanConstant"));
           try {
-            SNodeAccessUtil.setProperty(tnode4, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_34_1(new PropertyMacroContext(context1, "false", propertyMacro_y3pd1p_c0a0c0a0b0e0c0b7))));
+            SNodeAccessUtil.setPropertyValue(tnode4, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), QueriesGenerated.propertyMacro_GetValue_34_1(new PropertyMacroContext(context1, "false", propertyMacro_y3pd1p_c0a2a0a1a4a2a1h)));
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), tnode4);
@@ -419,9 +419,9 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
   private static final SNodePointer switchMacroRef_y3pd1p_b0a0a0a1a4a2a1f = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1461238478127987008");
   private static final SNodePointer templateSwitchNode_y3pd1p_a0a0c0a1a1a4a2a1f = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333653355606");
   private static final SNodePointer copySrcMacro_y3pd1p_b0a0c0d0c0b6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "20719707193801061");
-  private static final SNodePointer propertyMacro_y3pd1p_c0a0c0a0b0e0c0b6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "20719707193801069");
+  private static final SNodePointer propertyMacro_y3pd1p_c0a2a0a1a4a2a1g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "20719707193801069");
   private static final SNodePointer copySrcMacro_y3pd1p_b0a0c0d0c0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "20719707193823850");
-  private static final SNodePointer propertyMacro_y3pd1p_c0a0c0a0b0e0c0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "20719707193823858");
+  private static final SNodePointer propertyMacro_y3pd1p_c0a2a0a1a4a2a1h = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "20719707193823858");
   private static final SNodePointer copySrcMacro_y3pd1p_b0a0c0d0c0b8 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "20719707193864666");
   private static final SNodePointer copySrcMacro_y3pd1p_b0a0c0e0c0b8 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "20719707193864674");
   private static final SNodePointer copySrcMacro_y3pd1p_b0a0c0d0c0b01 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4778864149394758481");

@@ -11,7 +11,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
@@ -34,8 +33,8 @@ public class Template_MyOutputRoot1 extends TemplateDeclarationBase {
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     try {
       environment.nodeCopied(context, tnode1, "tpl/r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37/7496726876599898724");
-      SNodeAccessUtil.setProperty(tnode1, myProperties[0], "MyOutputRoot1");
-      SNodeAccessUtil.setProperty(tnode1, myProperties[1], "text");
+      tnode1.setProperty(myProperties[0], "MyOutputRoot1");
+      tnode1.setProperty(myProperties[1], "text");
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;

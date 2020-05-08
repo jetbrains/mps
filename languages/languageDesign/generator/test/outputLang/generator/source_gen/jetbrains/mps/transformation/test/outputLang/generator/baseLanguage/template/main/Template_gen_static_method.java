@@ -12,7 +12,6 @@ import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.impl.reference.RefResolver;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -38,7 +37,7 @@ public class Template_gen_static_method extends TemplateDeclarationBase {
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     try {
       environment.nodeCopied(context, tnode1, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980724041");
-      SNodeAccessUtil.setProperty(tnode1, myProperties[0], "fact");
+      tnode1.setProperty(myProperties[0], "fact");
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
@@ -67,7 +66,7 @@ public class Template_gen_static_method extends TemplateDeclarationBase {
                       {
                         final SNode tnode7 = environment.createOutputNode(myConcepts[5]);
                         try {
-                          SNodeAccessUtil.setProperty(tnode7, myProperties[1], "1");
+                          tnode7.setProperty(myProperties[1], "1");
                         } finally {
                         }
                         tnode6.addChild(myAggregationLinks[1], tnode7);
@@ -99,7 +98,7 @@ public class Template_gen_static_method extends TemplateDeclarationBase {
                   {
                     final SNode tnode10 = environment.createOutputNode(myConcepts[5]);
                     try {
-                      SNodeAccessUtil.setProperty(tnode10, myProperties[1], "0");
+                      tnode10.setProperty(myProperties[1], "0");
                     } finally {
                     }
                     tnode8.addChild(myAggregationLinks[5], tnode10);
@@ -144,7 +143,7 @@ public class Template_gen_static_method extends TemplateDeclarationBase {
                           {
                             final SNode tnode16 = environment.createOutputNode(myConcepts[5]);
                             try {
-                              SNodeAccessUtil.setProperty(tnode16, myProperties[1], "1");
+                              tnode16.setProperty(myProperties[1], "1");
                             } finally {
                             }
                             tnode15.addChild(myAggregationLinks[5], tnode16);
@@ -196,7 +195,7 @@ public class Template_gen_static_method extends TemplateDeclarationBase {
         final SNode tnode19 = environment.createOutputNode(myConcepts[12]);
         try {
           environment.nodeCopied(context1, tnode19, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980724048");
-          SNodeAccessUtil.setProperty(tnode19, myProperties[0], "e");
+          tnode19.setProperty(myProperties[0], "e");
           TemplateContext context11 = context1.subContext();
           {
             final SNode tnode20 = environment.createOutputNode(myConcepts[11]);
@@ -221,7 +220,7 @@ public class Template_gen_static_method extends TemplateDeclarationBase {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     try {
-      SNodeAccessUtil.setProperty(tnode1, myProperties[0], "worker");
+      tnode1.setProperty(myProperties[0], "worker");
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[13]);
@@ -260,7 +259,7 @@ public class Template_gen_static_method extends TemplateDeclarationBase {
                   {
                     final SNode tnode7 = environment.createOutputNode(myConcepts[5]);
                     try {
-                      SNodeAccessUtil.setProperty(tnode7, myProperties[1], "3");
+                      tnode7.setProperty(myProperties[1], "3");
                     } finally {
                     }
                     tnode6.addChild(myAggregationLinks[7], tnode7);

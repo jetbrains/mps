@@ -77,7 +77,7 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
         {
           final SNode tnode4 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x3b418722717710b4L, "LongLiteral"));
           try {
-            SNodeAccessUtil.setProperty(tnode4, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, 0x3b418722717710b5L, "value"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_117_0(new PropertyMacroContext(context1, "1L", propertyMacro_vmdyp3_c0a0c0a0b0e0c0b6))));
+            SNodeAccessUtil.setPropertyValue(tnode4, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, 0x3b418722717710b5L, "value"), QueriesGenerated.propertyMacro_GetValue_117_0(new PropertyMacroContext(context1, "1L", propertyMacro_vmdyp3_c0a2a0a1a4a2a1g)));
           } finally {
           }
           tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), tnode4);
@@ -88,7 +88,7 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
           if (QueriesGenerated.ifMacro_Condition_117_0(new IfMacroContext(context1, ifMacroRef_vmdyp3_b0a0b0f0c0b6))) {
             final SNode tnode6 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral"));
             try {
-              SNodeAccessUtil.setProperty(tnode6, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_117_1(new PropertyMacroContext(context1, "v", propertyMacro_vmdyp3_c0a0c0a0b0b0f0c0b6))));
+              SNodeAccessUtil.setPropertyValue(tnode6, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), QueriesGenerated.propertyMacro_GetValue_117_1(new PropertyMacroContext(context1, "v", propertyMacro_vmdyp3_c0a2a0a1a1a5a2a1g)));
             } finally {
             }
             tlist5 = TemplateUtil.singletonList(tnode6);
@@ -204,7 +204,7 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
               {
                 final SNode tnode4 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral"));
                 try {
-                  SNodeAccessUtil.setProperty(tnode4, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "");
+                  tnode4.setProperty(MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "");
                 } finally {
                 }
                 tnode3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"), tnode4);
@@ -252,8 +252,8 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
     }
   }
   private static final SNodePointer callMacro_vmdyp3_b0a0a1a3a2a1g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553278886");
-  private static final SNodePointer propertyMacro_vmdyp3_c0a0c0a0b0e0c0b6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553278888");
-  private static final SNodePointer propertyMacro_vmdyp3_c0a0c0a0b0b0f0c0b6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553278913");
+  private static final SNodePointer propertyMacro_vmdyp3_c0a2a0a1a4a2a1g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553278888");
+  private static final SNodePointer propertyMacro_vmdyp3_c0a2a0a1a1a5a2a1g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553278913");
   private static final SNodePointer ifMacroRef_vmdyp3_b0a0b0f0c0b6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5374941486721969419");
   private static final SNodePointer callMacro_vmdyp3_b0a0a1a3a2a1h = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5171076324157703563");
   private static final SNodePointer copySrcMacro_vmdyp3_b0a0c0d0c0b8 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553294540");

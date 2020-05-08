@@ -11,7 +11,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -35,13 +34,13 @@ public class Template_map_outputNode extends TemplateDeclarationBase {
     final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
     try {
       environment.nodeCopied(context1, tnode2, "tpl/r:00000000-0000-4000-0000-011c895905fa/1218738789586");
-      SNodeAccessUtil.setProperty(tnode2, myProperties[0], "map_outputNode");
-      SNodeAccessUtil.setProperty(tnode2, myProperties[1], "output root");
+      tnode2.setProperty(myProperties[0], "map_outputNode");
+      tnode2.setProperty(myProperties[1], "output root");
       TemplateContext context2 = context1.subContext();
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
         try {
-          SNodeAccessUtil.setProperty(tnode3, myProperties[2], "this is 'special child' in root template");
+          tnode3.setProperty(myProperties[2], "this is 'special child' in root template");
         } finally {
         }
         tnode2.addChild(myAggregationLinks[0], tnode3);

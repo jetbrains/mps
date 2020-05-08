@@ -15,8 +15,8 @@ import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.IfMacroContext;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
-import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
+import jetbrains.mps.generator.runtime.TemplateUtil;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
@@ -53,7 +53,7 @@ public class Template_reduce_ConceptSwitch_SubconceptCases extends TemplateDecla
           final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
           try {
             environment.nodeCopied(context1, tnode3, "tpl/r:00000000-0000-4000-0000-011c89590303/3328175781349271983");
-            SNodeAccessUtil.setProperty(tnode3, myProperties[0], TemplateUtil.asString(QueriesGenerated.propertyMacro_GetValue_106_0(new PropertyMacroContext(context1, "noneMatched", propertyMacro_nyxx76_c0a0c0b0b0b0b0c0g))));
+            SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_106_0(new PropertyMacroContext(context1, "noneMatched", propertyMacro_nyxx76_c0a2a1a1a1a1a2a6)));
             TemplateContext context2 = context1.subContext();
             {
               final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
@@ -66,7 +66,7 @@ public class Template_reduce_ConceptSwitch_SubconceptCases extends TemplateDecla
             {
               final SNode tnode5 = environment.createOutputNode(myConcepts[3]);
               try {
-                SNodeAccessUtil.setProperty(tnode5, myProperties[1], "true");
+                tnode5.setProperty(myProperties[1], "true");
               } finally {
               }
               tnode3.addChild(myAggregationLinks[1], tnode5);
@@ -111,7 +111,7 @@ public class Template_reduce_ConceptSwitch_SubconceptCases extends TemplateDecla
                     {
                       final SNode tnode6 = environment.createOutputNode(myConcepts[3]);
                       try {
-                        SNodeAccessUtil.setProperty(tnode6, myProperties[1], "false");
+                        tnode6.setProperty(myProperties[1], "false");
                       } finally {
                       }
                       tnode5.addChild(myAggregationLinks[4], tnode6);
@@ -320,7 +320,7 @@ public class Template_reduce_ConceptSwitch_SubconceptCases extends TemplateDecla
     rv[11] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
     return rv;
   }
-  private static final SNodePointer propertyMacro_nyxx76_c0a0c0b0b0b0b0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3328175781349275249");
+  private static final SNodePointer propertyMacro_nyxx76_c0a2a1a1a1a1a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3328175781349275249");
   private static final SNodePointer ifMacroRef_nyxx76_b0a0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3328175781349628289");
   private static final SNodePointer loopMacroRef_nyxx76_b0a0a2a7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "75056552358317728");
   private static final SNodePointer templateNode_nyxx76_c0a0a1a2a1a1a1a1a1a1a3a3a7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3328175781349282728");
