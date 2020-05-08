@@ -36,7 +36,7 @@ public class Template_reduce_GetChildrenAndChildAttributesOperation extends Temp
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       environment.associate(tnode1, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "8452361719892525251");
       environment.associate(tnode1, myAssociationLinks[1], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6407023681582958584");
       TemplateContext context1 = context.subContext();
@@ -61,9 +61,6 @@ public class Template_reduce_GetChildrenAndChildAttributesOperation extends Temp
             tlist4 = environment.trySwitch(templateSwitchNode_hvlio5_a0a0c0a1a1a4a2a6, switchContext4);
             if (tlist4 == null) {
               final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
-              try {
-              } finally {
-              }
               if (tnode5 != null) {
                 tlist4 = TemplateUtil.singletonList(tnode5);
               }
@@ -75,7 +72,6 @@ public class Template_reduce_GetChildrenAndChildAttributesOperation extends Temp
         }
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(1, tnode1);
     return rv;

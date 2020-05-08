@@ -38,7 +38,7 @@ public class Template_NodeOrConceptCommon extends TemplateDeclarationBase {
     Collection<SNode> tlist1 = null;
     if (QueriesGenerated.ifMacro_Condition_115_0(new IfMacroContext(context, ifMacroRef_um8mvo_b0a0c0g))) {
       final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
-      try {
+      {
         environment.associate(tnode2, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel.generator.smodelAdapter(MPS.Core/)", "~SNodeOperations.asSConcept(org.jetbrains.mps.openapi.model.SNode)");
         environment.associate(tnode2, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel.generator.smodelAdapter(MPS.Core/)", "~SNodeOperations");
         TemplateContext context1 = context.subContext();
@@ -51,7 +51,6 @@ public class Template_NodeOrConceptCommon extends TemplateDeclarationBase {
           }
           // TODO validate child 
         }
-      } finally {
       }
       tlist1 = TemplateUtil.singletonList(tnode2);
     } else {

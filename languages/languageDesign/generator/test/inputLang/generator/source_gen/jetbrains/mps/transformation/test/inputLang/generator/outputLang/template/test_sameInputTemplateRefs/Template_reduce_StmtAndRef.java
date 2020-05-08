@@ -38,216 +38,148 @@ public class Template_reduce_StmtAndRef extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        try {
+        {
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode3.setProperty(myProperties[0], "next");
-            } finally {
-            }
+            tnode3.setProperty(myProperties[0], "next");
             tnode2.addChild(myAggregationLinks[0], tnode3);
             // TODO validate child 
           }
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode4.setProperty(myProperties[0], "2");
-            } finally {
-            }
+            tnode4.setProperty(myProperties[0], "2");
             tnode2.addChild(myAggregationLinks[0], tnode4);
             // TODO validate child 
           }
           {
             final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode5.setProperty(myProperties[0], "lines");
-            } finally {
-            }
+            tnode5.setProperty(myProperties[0], "lines");
             tnode2.addChild(myAggregationLinks[0], tnode5);
             // TODO validate child 
           }
           {
             final SNode tnode6 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode6.setProperty(myProperties[0], "have");
-            } finally {
-            }
+            tnode6.setProperty(myProperties[0], "have");
             tnode2.addChild(myAggregationLinks[0], tnode6);
             // TODO validate child 
           }
           {
             final SNode tnode7 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode7.setProperty(myProperties[0], "variable");
-            } finally {
-            }
+            tnode7.setProperty(myProperties[0], "variable");
             tnode2.addChild(myAggregationLinks[0], tnode7);
             // TODO validate child 
           }
           {
             final SNode tnode8 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode8.setProperty(myProperties[0], "declaration");
-            } finally {
-            }
+            tnode8.setProperty(myProperties[0], "declaration");
             tnode2.addChild(myAggregationLinks[0], tnode8);
             // TODO validate child 
           }
           {
             final SNode tnode9 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode9.setProperty(myProperties[0], "and");
-            } finally {
-            }
+            tnode9.setProperty(myProperties[0], "and");
             tnode2.addChild(myAggregationLinks[0], tnode9);
             // TODO validate child 
           }
           {
             final SNode tnode10 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode10.setProperty(myProperties[0], "a");
-            } finally {
-            }
+            tnode10.setProperty(myProperties[0], "a");
             tnode2.addChild(myAggregationLinks[0], tnode10);
             // TODO validate child 
           }
           {
             final SNode tnode11 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode11.setProperty(myProperties[0], "reference.");
-            } finally {
-            }
+            tnode11.setProperty(myProperties[0], "reference.");
             tnode2.addChild(myAggregationLinks[0], tnode11);
             // TODO validate child 
           }
           {
             final SNode tnode12 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode12.setProperty(myProperties[0], "Reference");
-            } finally {
-            }
+            tnode12.setProperty(myProperties[0], "Reference");
             tnode2.addChild(myAggregationLinks[0], tnode12);
             // TODO validate child 
           }
           {
             final SNode tnode13 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode13.setProperty(myProperties[0], "has");
-            } finally {
-            }
+            tnode13.setProperty(myProperties[0], "has");
             tnode2.addChild(myAggregationLinks[0], tnode13);
             // TODO validate child 
           }
           {
             final SNode tnode14 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode14.setProperty(myProperties[0], "to");
-            } finally {
-            }
+            tnode14.setProperty(myProperties[0], "to");
             tnode2.addChild(myAggregationLinks[0], tnode14);
             // TODO validate child 
           }
           {
             final SNode tnode15 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode15.setProperty(myProperties[0], "match");
-            } finally {
-            }
+            tnode15.setProperty(myProperties[0], "match");
             tnode2.addChild(myAggregationLinks[0], tnode15);
             // TODO validate child 
           }
           {
             final SNode tnode16 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode16.setProperty(myProperties[0], "variable");
-            } finally {
-            }
+            tnode16.setProperty(myProperties[0], "variable");
             tnode2.addChild(myAggregationLinks[0], tnode16);
             // TODO validate child 
           }
           {
             final SNode tnode17 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode17.setProperty(myProperties[0], "declaration");
-            } finally {
-            }
+            tnode17.setProperty(myProperties[0], "declaration");
             tnode2.addChild(myAggregationLinks[0], tnode17);
             // TODO validate child 
           }
           {
             final SNode tnode18 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode18.setProperty(myProperties[0], "from");
-            } finally {
-            }
+            tnode18.setProperty(myProperties[0], "from");
             tnode2.addChild(myAggregationLinks[0], tnode18);
             // TODO validate child 
           }
           {
             final SNode tnode19 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode19.setProperty(myProperties[0], "previous");
-            } finally {
-            }
+            tnode19.setProperty(myProperties[0], "previous");
             tnode2.addChild(myAggregationLinks[0], tnode19);
             // TODO validate child 
           }
           {
             final SNode tnode20 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode20.setProperty(myProperties[0], "line,");
-            } finally {
-            }
+            tnode20.setProperty(myProperties[0], "line,");
             tnode2.addChild(myAggregationLinks[0], tnode20);
             // TODO validate child 
           }
           {
             final SNode tnode21 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode21.setProperty(myProperties[0], "here,");
-            } finally {
-            }
+            tnode21.setProperty(myProperties[0], "here,");
             tnode2.addChild(myAggregationLinks[0], tnode21);
             // TODO validate child 
           }
           {
             final SNode tnode22 = environment.createOutputNode(myConcepts[2]);
-            try {
-              SNodeAccessUtil.setPropertyValue(tnode22, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context2, "varXdecl", propertyMacro_w0zo30_c0a2a0a1a02a1a1a2a7)));
-            } finally {
-            }
+            SNodeAccessUtil.setPropertyValue(tnode22, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context2, "varXdecl", propertyMacro_w0zo30_c0a2a0a1a02a1a1a2a7)));
             tnode2.addChild(myAggregationLinks[0], tnode22);
             // TODO validate child 
           }
           {
             final SNode tnode23 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode23.setProperty(myProperties[0], "");
-            } finally {
-            }
+            tnode23.setProperty(myProperties[0], "");
             tnode2.addChild(myAggregationLinks[0], tnode23);
             // TODO validate child 
           }
           {
             final SNode tnode24 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode24.setProperty(myProperties[0], "");
-            } finally {
-            }
+            tnode24.setProperty(myProperties[0], "");
             tnode2.addChild(myAggregationLinks[0], tnode24);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[1], tnode2);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(2, tnode1);
     return rv;
@@ -255,37 +187,29 @@ public class Template_reduce_StmtAndRef extends TemplateDeclarationBase {
   protected FragmentResult applyPart1(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[3]);
-    try {
+    {
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[4]);
-        try {
+        {
           environment.nodeCopied(context1, tnode2, "tpl/r:3974355c-942b-4134-9ce5-040d47bdb681/5110551451990212800");
           SNodeAccessUtil.setPropertyValue(tnode2, myProperties[1], QueriesGenerated.propertyMacro_GetValue_1_2(new PropertyMacroContext(context1, "x", propertyMacro_w0zo30_c0a2a1a1a1a2a8)));
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode3 = environment.createOutputNode(myConcepts[5]);
-            try {
-            } finally {
-            }
             tnode2.addChild(myAggregationLinks[3], tnode3);
             // TODO validate child 
           }
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[6]);
-            try {
-              SNodeAccessUtil.setPropertyValue(tnode4, myProperties[2], QueriesGenerated.propertyMacro_GetValue_1_1(new PropertyMacroContext(context2, "1", propertyMacro_w0zo30_c0a2a0a1a4a1a1a2a8)));
-            } finally {
-            }
+            SNodeAccessUtil.setPropertyValue(tnode4, myProperties[2], QueriesGenerated.propertyMacro_GetValue_1_1(new PropertyMacroContext(context2, "1", propertyMacro_w0zo30_c0a2a0a1a4a1a1a2a8)));
             tnode2.addChild(myAggregationLinks[4], tnode4);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[5], tnode2);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(2, tnode1);
     return rv;
@@ -293,54 +217,42 @@ public class Template_reduce_StmtAndRef extends TemplateDeclarationBase {
   protected FragmentResult applyPart2(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[7]);
-    try {
+    {
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[8]);
-        try {
+        {
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode3 = environment.createOutputNode(myConcepts[9]);
-            try {
+            {
               TemplateContext context3 = context2.subContext();
               {
                 final SNode tnode4 = environment.createOutputNode(myConcepts[6]);
-                try {
-                  SNodeAccessUtil.setPropertyValue(tnode4, myProperties[2], QueriesGenerated.propertyMacro_GetValue_1_3(new PropertyMacroContext(context3, "1", propertyMacro_w0zo30_c0a2a0a1a1a1a1a1a1a2a9)));
-                } finally {
-                }
+                SNodeAccessUtil.setPropertyValue(tnode4, myProperties[2], QueriesGenerated.propertyMacro_GetValue_1_3(new PropertyMacroContext(context3, "1", propertyMacro_w0zo30_c0a2a0a1a1a1a1a1a1a2a9)));
                 tnode3.addChild(myAggregationLinks[6], tnode4);
                 // TODO validate child 
               }
               {
                 final SNode tnode5 = environment.createOutputNode(myConcepts[10]);
-                try {
-                  environment.resolveInTemplateLater(tnode5, myAssociationLinks[0], templateNode_w0zo30_c0a0a1a2a1a1a1a1a2a9, "tpl/r:3974355c-942b-4134-9ce5-040d47bdb681/5110551451990212800", "x", context3);
-                } finally {
-                }
+                environment.resolveInTemplateLater(tnode5, myAssociationLinks[0], templateNode_w0zo30_c0a0a1a2a1a1a1a1a2a9, "tpl/r:3974355c-942b-4134-9ce5-040d47bdb681/5110551451990212800", "x", context3);
                 tnode3.addChild(myAggregationLinks[7], tnode5);
                 // TODO validate child 
               }
-            } finally {
             }
             tnode2.addChild(myAggregationLinks[8], tnode3);
             // TODO validate child 
           }
           {
             final SNode tnode6 = environment.createOutputNode(myConcepts[10]);
-            try {
-              environment.resolveInTemplateLater(tnode6, myAssociationLinks[0], templateNode_w0zo30_c0a0a1a2a1a1a2a9, "tpl/r:3974355c-942b-4134-9ce5-040d47bdb681/5110551451990212800", "x", context2);
-            } finally {
-            }
+            environment.resolveInTemplateLater(tnode6, myAssociationLinks[0], templateNode_w0zo30_c0a0a1a2a1a1a2a9, "tpl/r:3974355c-942b-4134-9ce5-040d47bdb681/5110551451990212800", "x", context2);
             tnode2.addChild(myAggregationLinks[9], tnode6);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[10], tnode2);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(2, tnode1);
     return rv;

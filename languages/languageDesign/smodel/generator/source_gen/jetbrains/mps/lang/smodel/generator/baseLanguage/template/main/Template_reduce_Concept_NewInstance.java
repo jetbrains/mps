@@ -35,13 +35,13 @@ public class Template_reduce_Concept_NewInstance extends TemplateDeclarationBase
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       environment.associate(tnode1, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527270726");
       environment.associate(tnode1, myAssociationLinks[1], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "1917749888335174992");
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
-        try {
+        {
           environment.associate(tnode2, myAssociationLinks[1], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "742658975218862661");
           environment.associate(tnode2, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286941");
           TemplateContext context2 = context1.subContext();
@@ -54,12 +54,10 @@ public class Template_reduce_Concept_NewInstance extends TemplateDeclarationBase
             }
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[0], tnode2);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(1, tnode1);
     return rv;

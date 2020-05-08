@@ -35,292 +35,238 @@ public class Template_reduce_PickMark extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        try {
+        {
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
-            try {
+            {
               TemplateContext context3 = context2.subContext();
               {
                 final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
-                try {
+                {
                   TemplateContext context4 = context3.subContext();
                   {
                     final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
-                    try {
+                    {
                       TemplateContext context5 = context4.subContext();
                       {
                         final SNode tnode6 = environment.createOutputNode(myConcepts[3]);
-                        try {
+                        {
                           environment.associate(tnode6, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3210697320273614306");
                           TemplateContext context6 = context5.subContext();
                           {
                             final SNode tnode7 = environment.createOutputNode(myConcepts[4]);
-                            try {
-                              SNodeAccessUtil.setPropertyValue(tnode7, myProperties[0], QueriesGenerated.propertyMacro_GetValue_4_0(new PropertyMacroContext(context6, "0", propertyMacro_mi0eld_c0a2a0a1a2a1a1a1a1a1a1a1a1a1a1a2a6)));
-                            } finally {
-                            }
+                            SNodeAccessUtil.setPropertyValue(tnode7, myProperties[0], QueriesGenerated.propertyMacro_GetValue_4_0(new PropertyMacroContext(context6, "0", propertyMacro_mi0eld_c0a2a0a1a2a1a1a1a1a1a1a1a1a1a1a2a6)));
                             tnode6.addChild(myAggregationLinks[0], tnode7);
                             // TODO validate child 
                           }
                           {
                             final SNode tnode8 = environment.createOutputNode(myConcepts[4]);
-                            try {
-                              SNodeAccessUtil.setPropertyValue(tnode8, myProperties[0], QueriesGenerated.propertyMacro_GetValue_4_1(new PropertyMacroContext(context6, "0", propertyMacro_mi0eld_c0a2a0a1a3a1a1a1a1a1a1a1a1a1a1a2a6)));
-                            } finally {
-                            }
+                            SNodeAccessUtil.setPropertyValue(tnode8, myProperties[0], QueriesGenerated.propertyMacro_GetValue_4_1(new PropertyMacroContext(context6, "0", propertyMacro_mi0eld_c0a2a0a1a3a1a1a1a1a1a1a1a1a1a1a2a6)));
                             tnode6.addChild(myAggregationLinks[0], tnode8);
                             // TODO validate child 
                           }
-                        } finally {
                         }
                         tnode5.addChild(myAggregationLinks[1], tnode6);
                         // TODO validate child 
                       }
                       {
                         final SNode tnode9 = environment.createOutputNode(myConcepts[1]);
-                        try {
+                        {
                           TemplateContext context7 = context5.subContext();
                           {
                             final SNode tnode10 = environment.createOutputNode(myConcepts[5]);
-                            try {
+                            {
                               TemplateContext context8 = context7.subContext();
                               {
                                 final SNode tnode11 = environment.createOutputNode(myConcepts[3]);
-                                try {
+                                {
                                   environment.associate(tnode11, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3210697320273550663");
                                   TemplateContext context9 = context8.subContext();
                                   {
                                     final SNode tnode12 = environment.createOutputNode(myConcepts[4]);
-                                    try {
-                                      SNodeAccessUtil.setPropertyValue(tnode12, myProperties[0], QueriesGenerated.propertyMacro_GetValue_4_2(new PropertyMacroContext(context9, "0", propertyMacro_mi0eld_c0a2a0a1a2a1a1a1a1a1a2a1a1a1a1a1a1a1a1a2a6)));
-                                    } finally {
-                                    }
+                                    SNodeAccessUtil.setPropertyValue(tnode12, myProperties[0], QueriesGenerated.propertyMacro_GetValue_4_2(new PropertyMacroContext(context9, "0", propertyMacro_mi0eld_c0a2a0a1a2a1a1a1a1a1a2a1a1a1a1a1a1a1a1a2a6)));
                                     tnode11.addChild(myAggregationLinks[0], tnode12);
                                     // TODO validate child 
                                   }
                                   {
                                     final SNode tnode13 = environment.createOutputNode(myConcepts[4]);
-                                    try {
-                                      SNodeAccessUtil.setPropertyValue(tnode13, myProperties[0], QueriesGenerated.propertyMacro_GetValue_4_3(new PropertyMacroContext(context9, "0", propertyMacro_mi0eld_c0a2a0a1a3a1a1a1a1a1a2a1a1a1a1a1a1a1a1a2a6)));
-                                    } finally {
-                                    }
+                                    SNodeAccessUtil.setPropertyValue(tnode13, myProperties[0], QueriesGenerated.propertyMacro_GetValue_4_3(new PropertyMacroContext(context9, "0", propertyMacro_mi0eld_c0a2a0a1a3a1a1a1a1a1a2a1a1a1a1a1a1a1a1a2a6)));
                                     tnode11.addChild(myAggregationLinks[0], tnode13);
                                     // TODO validate child 
                                   }
-                                } finally {
                                 }
                                 tnode10.addChild(myAggregationLinks[2], tnode11);
                                 // TODO validate child 
                               }
-                            } finally {
                             }
                             tnode9.addChild(myAggregationLinks[3], tnode10);
                             // TODO validate child 
                           }
                           {
                             final SNode tnode14 = environment.createOutputNode(myConcepts[5]);
-                            try {
+                            {
                               TemplateContext context10 = context7.subContext();
                               {
                                 final SNode tnode15 = environment.createOutputNode(myConcepts[3]);
-                                try {
-                                  environment.associate(tnode15, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3210697320273550615");
-                                } finally {
-                                }
+                                environment.associate(tnode15, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3210697320273550615");
                                 tnode14.addChild(myAggregationLinks[2], tnode15);
                                 // TODO validate child 
                               }
-                            } finally {
                             }
                             tnode9.addChild(myAggregationLinks[3], tnode14);
                             // TODO validate child 
                           }
-                        } finally {
                         }
                         tnode5.addChild(myAggregationLinks[4], tnode9);
                         // TODO validate child 
                       }
                       {
                         final SNode tnode16 = environment.createOutputNode(myConcepts[0]);
-                        try {
+                        {
                           TemplateContext context11 = context5.subContext();
                           {
                             final SNode tnode17 = environment.createOutputNode(myConcepts[1]);
-                            try {
+                            {
                               TemplateContext context12 = context11.subContext();
                               {
                                 final SNode tnode18 = environment.createOutputNode(myConcepts[5]);
-                                try {
+                                {
                                   TemplateContext context13 = context12.subContext();
                                   {
                                     final SNode tnode19 = environment.createOutputNode(myConcepts[3]);
-                                    try {
+                                    {
                                       environment.associate(tnode19, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039580739");
                                       TemplateContext context14 = context13.subContext();
                                       {
                                         final SNode tnode20 = environment.createOutputNode(myConcepts[6]);
-                                        try {
-                                          tnode20.setProperty(myProperties[1], "Nothing to pick. The cell is empty.");
-                                        } finally {
-                                        }
+                                        tnode20.setProperty(myProperties[1], "Nothing to pick. The cell is empty.");
                                         tnode19.addChild(myAggregationLinks[0], tnode20);
                                         // TODO validate child 
                                       }
-                                    } finally {
                                     }
                                     tnode18.addChild(myAggregationLinks[2], tnode19);
                                     // TODO validate child 
                                   }
-                                } finally {
                                 }
                                 tnode17.addChild(myAggregationLinks[3], tnode18);
                                 // TODO validate child 
                               }
                               {
                                 final SNode tnode21 = environment.createOutputNode(myConcepts[7]);
-                                try {
-                                } finally {
-                                }
                                 tnode17.addChild(myAggregationLinks[3], tnode21);
                                 // TODO validate child 
                               }
-                            } finally {
                             }
                             tnode16.addChild(myAggregationLinks[5], tnode17);
                             // TODO validate child 
                           }
-                        } finally {
                         }
                         tnode5.addChild(myAggregationLinks[6], tnode16);
                         // TODO validate child 
                       }
-                    } finally {
                     }
                     tnode4.addChild(myAggregationLinks[3], tnode5);
                     // TODO validate child 
                   }
-                } finally {
                 }
                 tnode3.addChild(myAggregationLinks[4], tnode4);
                 // TODO validate child 
               }
               {
                 final SNode tnode22 = environment.createOutputNode(myConcepts[8]);
-                try {
+                {
                   TemplateContext context15 = context3.subContext();
                   {
                     final SNode tnode23 = environment.createOutputNode(myConcepts[3]);
-                    try {
+                    {
                       environment.associate(tnode23, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3210697320273648281");
                       TemplateContext context16 = context15.subContext();
                       {
                         final SNode tnode24 = environment.createOutputNode(myConcepts[4]);
-                        try {
-                          SNodeAccessUtil.setPropertyValue(tnode24, myProperties[0], QueriesGenerated.propertyMacro_GetValue_4_4(new PropertyMacroContext(context16, "0", propertyMacro_mi0eld_c0a2a0a1a2a1a1a1a2a1a1a1a1a2a6)));
-                        } finally {
-                        }
+                        SNodeAccessUtil.setPropertyValue(tnode24, myProperties[0], QueriesGenerated.propertyMacro_GetValue_4_4(new PropertyMacroContext(context16, "0", propertyMacro_mi0eld_c0a2a0a1a2a1a1a1a2a1a1a1a1a2a6)));
                         tnode23.addChild(myAggregationLinks[0], tnode24);
                         // TODO validate child 
                       }
-                    } finally {
                     }
                     tnode22.addChild(myAggregationLinks[7], tnode23);
                     // TODO validate child 
                   }
                   {
                     final SNode tnode25 = environment.createOutputNode(myConcepts[3]);
-                    try {
+                    {
                       environment.associate(tnode25, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3210697320273648203");
                       TemplateContext context17 = context15.subContext();
                       {
                         final SNode tnode26 = environment.createOutputNode(myConcepts[4]);
-                        try {
-                          SNodeAccessUtil.setPropertyValue(tnode26, myProperties[0], QueriesGenerated.propertyMacro_GetValue_4_5(new PropertyMacroContext(context17, "0", propertyMacro_mi0eld_c0a2a0a1a2a1a2a1a2a1a1a1a1a2a6)));
-                        } finally {
-                        }
+                        SNodeAccessUtil.setPropertyValue(tnode26, myProperties[0], QueriesGenerated.propertyMacro_GetValue_4_5(new PropertyMacroContext(context17, "0", propertyMacro_mi0eld_c0a2a0a1a2a1a2a1a2a1a1a1a1a2a6)));
                         tnode25.addChild(myAggregationLinks[0], tnode26);
                         // TODO validate child 
                       }
-                    } finally {
                     }
                     tnode22.addChild(myAggregationLinks[8], tnode25);
                     // TODO validate child 
                   }
-                } finally {
                 }
                 tnode3.addChild(myAggregationLinks[1], tnode22);
                 // TODO validate child 
               }
               {
                 final SNode tnode27 = environment.createOutputNode(myConcepts[0]);
-                try {
+                {
                   TemplateContext context18 = context3.subContext();
                   {
                     final SNode tnode28 = environment.createOutputNode(myConcepts[1]);
-                    try {
+                    {
                       TemplateContext context19 = context18.subContext();
                       {
                         final SNode tnode29 = environment.createOutputNode(myConcepts[5]);
-                        try {
+                        {
                           TemplateContext context20 = context19.subContext();
                           {
                             final SNode tnode30 = environment.createOutputNode(myConcepts[3]);
-                            try {
+                            {
                               environment.associate(tnode30, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039580739");
                               TemplateContext context21 = context20.subContext();
                               {
                                 final SNode tnode31 = environment.createOutputNode(myConcepts[6]);
-                                try {
-                                  tnode31.setProperty(myProperties[1], "Attempted to pick marks outside of the playground!");
-                                } finally {
-                                }
+                                tnode31.setProperty(myProperties[1], "Attempted to pick marks outside of the playground!");
                                 tnode30.addChild(myAggregationLinks[0], tnode31);
                                 // TODO validate child 
                               }
-                            } finally {
                             }
                             tnode29.addChild(myAggregationLinks[2], tnode30);
                             // TODO validate child 
                           }
-                        } finally {
                         }
                         tnode28.addChild(myAggregationLinks[3], tnode29);
                         // TODO validate child 
                       }
-                    } finally {
                     }
                     tnode27.addChild(myAggregationLinks[5], tnode28);
                     // TODO validate child 
                   }
-                } finally {
                 }
                 tnode3.addChild(myAggregationLinks[6], tnode27);
                 // TODO validate child 
               }
-            } finally {
             }
             tnode2.addChild(myAggregationLinks[3], tnode3);
             // TODO validate child 
           }
           {
             final SNode tnode32 = environment.createOutputNode(myConcepts[9]);
-            try {
-            } finally {
-            }
             tnode2.addChild(myAggregationLinks[3], tnode32);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[5], tnode2);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(3, tnode1);
     return rv;

@@ -41,7 +41,7 @@ public class Template_reduce_GetDescendants_noConceptsList extends TemplateDecla
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       environment.associate(tnode1, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286941");
       environment.associate(tnode1, myAssociationLinks[1], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527293712");
       TemplateContext context1 = context.subContext();
@@ -64,27 +64,21 @@ public class Template_reduce_GetDescendants_noConceptsList extends TemplateDecla
       }
       {
         final SNode tnode6 = environment.createOutputNode(myConcepts[1]);
-        try {
-          SNodeAccessUtil.setPropertyValue(tnode6, myProperties[0], QueriesGenerated.propertyMacro_GetValue_22_0(new PropertyMacroContext(context1, null, propertyMacro_btzevu_c0a2a0a1a5a2a6)));
-        } finally {
-        }
+        SNodeAccessUtil.setPropertyValue(tnode6, myProperties[0], QueriesGenerated.propertyMacro_GetValue_22_0(new PropertyMacroContext(context1, null, propertyMacro_btzevu_c0a2a0a1a5a2a6)));
         tnode1.addChild(myAggregationLinks[0], tnode6);
         // TODO validate child 
       }
       {
         final SNode tnode7 = environment.createOutputNode(myConcepts[2]);
-        try {
+        {
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode8 = environment.createOutputNode(myConcepts[3]);
-            try {
+            {
               TemplateContext context3 = context2.subContext();
               {
                 final SNode tnode9 = environment.createOutputNode(myConcepts[4]);
-                try {
-                  environment.associate(tnode9, myAssociationLinks[2], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)", "~SAbstractConcept");
-                } finally {
-                }
+                environment.associate(tnode9, myAssociationLinks[2], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)", "~SAbstractConcept");
                 tnode8.addChild(myAggregationLinks[1], tnode9);
                 // TODO validate child 
               }
@@ -112,17 +106,14 @@ public class Template_reduce_GetDescendants_noConceptsList extends TemplateDecla
                 }
                 // TODO validate child 
               }
-            } finally {
             }
             tnode7.addChild(myAggregationLinks[3], tnode8);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[0], tnode7);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(4, tnode1);
     return rv;

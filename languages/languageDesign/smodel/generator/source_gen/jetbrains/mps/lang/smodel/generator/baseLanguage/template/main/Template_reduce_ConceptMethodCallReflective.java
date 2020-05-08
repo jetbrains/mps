@@ -45,9 +45,6 @@ public class Template_reduce_ConceptMethodCallReflective extends TemplateDeclara
         tlist1 = environment.trySwitch(templateSwitchNode_fdl98n_a0a0c0a1a2a6, switchContext1);
         if (tlist1 == null) {
           final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
-          try {
-          } finally {
-          }
           if (tnode2 != null) {
             tlist1 = TemplateUtil.singletonList(tnode2);
           }

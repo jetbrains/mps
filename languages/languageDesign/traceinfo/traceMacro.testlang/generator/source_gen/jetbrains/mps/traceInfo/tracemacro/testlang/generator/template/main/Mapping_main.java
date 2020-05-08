@@ -46,7 +46,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       final SNode tnode1 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10cac65f399L, "ForEachStatement"));
-      try {
+      {
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
@@ -72,10 +72,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
           final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_0_2(new SourceSubstituteMacroNodeContext(context1, traceMacro_ief6mt_b0a0a2a3a2a1d));
           // calculate output 
           final SNode tnode7 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10cac6f0962L, "ForEachVariable"));
-          try {
-            SNodeAccessUtil.setPropertyValue(tnode7, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), QueriesGenerated.propertyMacro_GetValue_0_0(new PropertyMacroContext(context1, "var", propertyMacro_ief6mt_c0a2a0a5a3a2a1d)));
-          } finally {
-          }
+          SNodeAccessUtil.setPropertyValue(tnode7, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), QueriesGenerated.propertyMacro_GetValue_0_0(new PropertyMacroContext(context1, "var", propertyMacro_ief6mt_c0a2a0a5a3a2a1d)));
           tlist6 = TemplateUtil.singletonList(tnode7);
           // put input node 
           for (SNode resultNode : CollectionSequence.fromCollection(tlist6)) {
@@ -86,7 +83,6 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
           }
           // TODO validate child 
         }
-      } finally {
       }
       environment.registerLabel(context.getInput(), tnode1, "GeneratedForeach");
       return TemplateUtil.singletonList(tnode1);
@@ -104,15 +100,12 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       final SNode tnode1 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections"), 0x10cac6fa5c3L, "ForEachVariableReference"));
-      try {
-        environment.resolve(new RefResolver(tnode1, MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6fa5c3L, 0x10cac7007baL, "variable"), context, new SNodePointer("r:75f95d80-1d60-4222-8b1e-a09f089fee3e(jetbrains.mps.traceInfo.tracemacro.testlang.generator.template.main@generator)", "7980748436587793725"), "") {
-          @Override
-          public Object resolve() {
-            return QueriesGenerated.referenceMacro_GetReferent_0_0(createQueryContext());
-          }
-        });
-      } finally {
-      }
+      environment.resolve(new RefResolver(tnode1, MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6fa5c3L, 0x10cac7007baL, "variable"), context, new SNodePointer("r:75f95d80-1d60-4222-8b1e-a09f089fee3e(jetbrains.mps.traceInfo.tracemacro.testlang.generator.template.main@generator)", "7980748436587793725"), "") {
+        @Override
+        public Object resolve() {
+          return QueriesGenerated.referenceMacro_GetReferent_0_0(createQueryContext());
+        }
+      });
       return TemplateUtil.singletonList(tnode1);
     }
   }

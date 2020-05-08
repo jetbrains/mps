@@ -34,21 +34,18 @@ public class Template_reduce_LanguageReferenceExpression extends TemplateDeclara
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        try {
-          environment.associate(tnode2, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)", "~ModuleRepositoryFacade");
-          environment.associate(tnode2, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)", "~ModuleRepositoryFacade.getInstance()");
-        } finally {
-        }
+        environment.associate(tnode2, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)", "~ModuleRepositoryFacade");
+        environment.associate(tnode2, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)", "~ModuleRepositoryFacade.getInstance()");
         tnode1.addChild(myAggregationLinks[0], tnode2);
         // TODO validate child 
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
-        try {
+        {
           environment.associate(tnode3, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)", "~ModuleRepositoryFacade.getModule(org.jetbrains.mps.openapi.module.SModuleReference,java.lang.Class)");
           TemplateContext context2 = context1.subContext();
           {
@@ -61,19 +58,14 @@ public class Template_reduce_LanguageReferenceExpression extends TemplateDeclara
           }
           {
             final SNode tnode6 = environment.createOutputNode(myConcepts[3]);
-            try {
-              environment.associate(tnode6, myAssociationLinks[2], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)", "~Language");
-            } finally {
-            }
+            environment.associate(tnode6, myAssociationLinks[2], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)", "~Language");
             tnode3.addChild(myAggregationLinks[1], tnode6);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[2], tnode3);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(3, tnode1);
     return rv;

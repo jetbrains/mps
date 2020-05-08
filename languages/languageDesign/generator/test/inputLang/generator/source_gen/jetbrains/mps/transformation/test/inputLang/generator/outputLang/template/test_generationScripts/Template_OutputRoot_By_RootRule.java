@@ -29,12 +29,9 @@ public class Template_OutputRoot_By_RootRule extends TemplateDeclarationBase {
   }
   public Collection<SNode> apply(@NotNull final TemplateExecutionEnvironment environment, @NotNull final TemplateContext context) throws GenerationException {
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
-      environment.nodeCopied(context, tnode1, "tpl/r:00000000-0000-4000-0000-011c895905f6/1195166061402");
-      tnode1.setProperty(myProperties[0], "OutputRoot by RootRule");
-      tnode1.setProperty(myProperties[1], "OutputRoot_By_RootRule");
-    } finally {
-    }
+    environment.nodeCopied(context, tnode1, "tpl/r:00000000-0000-4000-0000-011c895905f6/1195166061402");
+    tnode1.setProperty(myProperties[0], "OutputRoot by RootRule");
+    tnode1.setProperty(myProperties[1], "OutputRoot_By_RootRule");
     return TemplateUtil.singletonList(tnode1);
   }
 

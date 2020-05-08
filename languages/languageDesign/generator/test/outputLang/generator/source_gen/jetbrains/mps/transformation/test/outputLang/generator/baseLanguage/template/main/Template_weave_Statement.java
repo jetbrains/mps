@@ -34,62 +34,49 @@ public class Template_weave_Statement extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_8_0(new PropertyMacroContext(context, "statementX", propertyMacro_6c7ipi_c0a2a0a2a6)));
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        try {
-        } finally {
-        }
         tnode1.addChild(myAggregationLinks[0], tnode2);
         // TODO validate child 
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
-        try {
-        } finally {
-        }
         tnode1.addChild(myAggregationLinks[1], tnode3);
         // TODO validate child 
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
-        try {
+        {
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode5 = environment.createOutputNode(myConcepts[4]);
-            try {
+            {
               TemplateContext context3 = context2.subContext();
               {
                 final SNode tnode6 = environment.createOutputNode(myConcepts[5]);
-                try {
+                {
                   TemplateContext context4 = context3.subContext();
                   {
                     final SNode tnode7 = environment.createOutputNode(myConcepts[6]);
-                    try {
-                      tnode7.setProperty(myProperties[1], "a");
-                    } finally {
-                    }
+                    tnode7.setProperty(myProperties[1], "a");
                     tnode6.addChild(myAggregationLinks[2], tnode7);
                     // TODO validate child 
                   }
-                } finally {
                 }
                 tnode5.addChild(myAggregationLinks[3], tnode6);
                 // TODO validate child 
               }
-            } finally {
             }
             tnode4.addChild(myAggregationLinks[4], tnode5);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[5], tnode4);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(6, tnode1);
     return rv;

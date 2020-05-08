@@ -62,15 +62,12 @@ public class Template_OutputRoot_1 extends TemplateDeclarationBase {
           TemplateContext context3 = context2.subContext(itnode3);
           final List<SNode> tlist4 = new ArrayList<SNode>();
           final SNode tnode5 = environment.createOutputNode(myConcepts[0]);
-          try {
+          {
             SNodeAccessUtil.setPropertyValue(tnode5, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_3(new PropertyMacroContext(context3, "_text_", propertyMacro_wvaolp_c0a2a0a4a4a4a3a4)));
             TemplateContext context4 = context3.subContext();
             {
               final SNode tnode6 = environment.createOutputNode(myConcepts[0]);
-              try {
-                SNodeAccessUtil.setPropertyValue(tnode6, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context4, "_root_level_was_", propertyMacro_wvaolp_c0a2a0a1a2a4a4a4a3a4)));
-              } finally {
-              }
+              SNodeAccessUtil.setPropertyValue(tnode6, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context4, "_root_level_was_", propertyMacro_wvaolp_c0a2a0a1a2a4a4a4a3a4)));
               tnode5.addChild(myAggregationLinks[0], tnode6);
               // TODO validate child 
             }
@@ -78,10 +75,7 @@ public class Template_OutputRoot_1 extends TemplateDeclarationBase {
               Collection<SNode> tlist7 = null;
               if (QueriesGenerated.ifMacro_Condition_1_0(new IfMacroContext(context4, ifMacroRef_wvaolp_b0a0b0d0e0e0e0d0e))) {
                 final SNode tnode8 = environment.createOutputNode(myConcepts[0]);
-                try {
-                  SNodeAccessUtil.setPropertyValue(tnode8, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_1(new PropertyMacroContext(context4, "_level_1_was_", propertyMacro_wvaolp_c0a2a0a1a1a3a4a4a4a3a4)));
-                } finally {
-                }
+                SNodeAccessUtil.setPropertyValue(tnode8, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_1(new PropertyMacroContext(context4, "_level_1_was_", propertyMacro_wvaolp_c0a2a0a1a1a3a4a4a4a3a4)));
                 tlist7 = TemplateUtil.singletonList(tnode8);
               }
               for (SNode child9 : TemplateUtil.asNotNull(tlist7)) {
@@ -91,14 +85,10 @@ public class Template_OutputRoot_1 extends TemplateDeclarationBase {
             }
             {
               final SNode tnode10 = environment.createOutputNode(myConcepts[0]);
-              try {
-                SNodeAccessUtil.setPropertyValue(tnode10, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_2(new PropertyMacroContext(context4, "_level_2_was_", propertyMacro_wvaolp_c0a2a0a1a4a4a4a4a3a4)));
-              } finally {
-              }
+              SNodeAccessUtil.setPropertyValue(tnode10, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_2(new PropertyMacroContext(context4, "_level_2_was_", propertyMacro_wvaolp_c0a2a0a1a4a4a4a4a3a4)));
               tnode5.addChild(myAggregationLinks[0], tnode10);
               // TODO validate child 
             }
-          } finally {
           }
           if (tnode5 != null) {
             tlist4.add(tnode5);
@@ -135,7 +125,7 @@ public class Template_OutputRoot_1 extends TemplateDeclarationBase {
   }
   public Collection<SNode> apply(@NotNull final TemplateExecutionEnvironment environment, @NotNull final TemplateContext context) throws GenerationException {
     final SNode tnode1 = environment.createOutputNode(myConcepts[1]);
-    try {
+    {
       environment.nodeCopied(context, tnode1, "tpl/r:00000000-0000-4000-0000-011c895905f7/1202255620269");
       tnode1.setProperty(myProperties[1], "OutputRoot_1");
       tnode1.setProperty(myProperties[2], "'getPrevInputTest' output root (1)");
@@ -147,7 +137,6 @@ public class Template_OutputRoot_1 extends TemplateDeclarationBase {
         }
         // TODO validate child 
       }
-    } finally {
     }
     return TemplateUtil.singletonList(tnode1);
   }

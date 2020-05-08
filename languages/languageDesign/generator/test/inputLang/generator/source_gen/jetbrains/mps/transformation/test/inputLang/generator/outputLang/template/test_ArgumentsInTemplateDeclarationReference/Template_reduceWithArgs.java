@@ -37,10 +37,7 @@ public class Template_reduceWithArgs extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
-      SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context, null, propertyMacro_quugqv_c0a2a0a2a7)));
-    } finally {
-    }
+    SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context, null, propertyMacro_quugqv_c0a2a0a2a7)));
     FragmentResult rv = nodeFragment(0, tnode1);
     return rv;
   }

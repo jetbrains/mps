@@ -39,7 +39,7 @@ public class Template_OutputRoot_2 extends TemplateDeclarationBase {
   }
   public Collection<SNode> apply(@NotNull final TemplateExecutionEnvironment environment, @NotNull final TemplateContext context) throws GenerationException {
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       environment.nodeCopied(context, tnode1, "tpl/r:00000000-0000-4000-0000-011c895905f7/1202338159177");
       tnode1.setProperty(myProperties[0], "OutputRoot_2");
       tnode1.setProperty(myProperties[1], "'getPrevInputTest' output root (2)");
@@ -67,7 +67,7 @@ public class Template_OutputRoot_2 extends TemplateDeclarationBase {
               }
               TemplateContext context4 = context3.subContext(itnode4);
               final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
-              try {
+              {
                 SNodeAccessUtil.setPropertyValue(tnode5, myProperties[2], QueriesGenerated.propertyMacro_GetValue_2_0(new PropertyMacroContext(context4, "_text_", propertyMacro_wvaolp_c0a2a0a3a4a4a2a4a1a4)));
                 TemplateContext context5 = context4.subContext();
                 {
@@ -135,7 +135,6 @@ public class Template_OutputRoot_2 extends TemplateDeclarationBase {
                   }
                   // TODO validate child 
                 }
-              } finally {
               }
               if (tnode5 != null) {
                 tlist4.add(tnode5);
@@ -156,7 +155,6 @@ public class Template_OutputRoot_2 extends TemplateDeclarationBase {
         }
         // TODO validate child 
       }
-    } finally {
     }
     return TemplateUtil.singletonList(tnode1);
   }

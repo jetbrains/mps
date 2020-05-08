@@ -33,9 +33,6 @@ public class Switch_better_switch2 extends TemplateSwitchBase implements Templat
   public Collection<SNode> applyDefault(final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940cd6167L, "NullLiteral"));
-    try {
-    } finally {
-    }
     return TemplateUtil.singletonList(tnode1);
   }
 }

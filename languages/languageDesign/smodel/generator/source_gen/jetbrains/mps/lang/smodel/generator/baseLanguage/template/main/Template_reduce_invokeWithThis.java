@@ -39,11 +39,11 @@ public class Template_reduce_invokeWithThis extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        try {
+        {
           environment.associate(tnode2, myAssociationLinks[0], "d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)", "~SMethod.invoke(org.jetbrains.mps.openapi.language.SAbstractConcept,java.lang.Object...)");
           TemplateContext context2 = context1.subContext();
           {
@@ -69,20 +69,19 @@ public class Template_reduce_invokeWithThis extends TemplateDeclarationBase {
             }
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[1], tnode2);
         // TODO validate child 
       }
       {
         final SNode tnode7 = environment.createOutputNode(myConcepts[2]);
-        try {
+        {
           SNodeAccessUtil.setPropertyValue(tnode7, myProperties[0], QueriesGenerated.propertyMacro_GetValue_111_0(new PropertyMacroContext(context1, "A_BehaviorDescriptor", propertyMacro_peulco_c0a2a0a1a2a2a6)));
           SNodeAccessUtil.setPropertyValue(tnode7, myProperties[1], QueriesGenerated.propertyMacro_GetValue_111_1(new PropertyMacroContext(context1, "fooMethod", propertyMacro_peulco_c0a2a1a1a2a2a6)));
           TemplateContext context5 = context1.subContext();
           {
             final SNode tnode8 = environment.createOutputNode(myConcepts[3]);
-            try {
+            {
               environment.associate(tnode8, myAssociationLinks[1], "d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)", "~SMethod");
               TemplateContext context6 = context5.subContext();
               {
@@ -94,17 +93,14 @@ public class Template_reduce_invokeWithThis extends TemplateDeclarationBase {
                 }
                 // TODO validate child 
               }
-            } finally {
             }
             tnode7.addChild(myAggregationLinks[3], tnode8);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[4], tnode7);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(5, tnode1);
     return rv;

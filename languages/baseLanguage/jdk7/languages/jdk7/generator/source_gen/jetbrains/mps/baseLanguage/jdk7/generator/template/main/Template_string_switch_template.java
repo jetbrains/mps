@@ -41,7 +41,7 @@ public class Template_string_switch_template extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       TemplateContext context1 = context.subContext();
       {
         final List<SNode> tlist2 = new ArrayList<SNode>();
@@ -52,14 +52,11 @@ public class Template_string_switch_template extends TemplateDeclarationBase {
           }
           TemplateContext context2 = context1.subContext(itnode2);
           final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
-          try {
+          {
             TemplateContext context3 = context2.subContext();
             {
               final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
-              try {
-                SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context3, "42", propertyMacro_a36rdq_c0a2a0a1a1a3a2a1a2a6)));
-              } finally {
-              }
+              SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context3, "42", propertyMacro_a36rdq_c0a2a0a1a1a3a2a1a2a6)));
               tnode3.addChild(myAggregationLinks[0], tnode4);
               // TODO validate child 
             }
@@ -72,7 +69,6 @@ public class Template_string_switch_template extends TemplateDeclarationBase {
               }
               // TODO validate child 
             }
-          } finally {
           }
           if (tnode3 != null) {
             tlist2.add(tnode3);
@@ -94,29 +90,26 @@ public class Template_string_switch_template extends TemplateDeclarationBase {
       }
       {
         final SNode tnode10 = environment.createOutputNode(myConcepts[3]);
-        try {
+        {
           environment.associate(tnode10, myAssociationLinks[0], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)", "~Arrays.binarySearch(java.lang.Object[],java.lang.Object)");
           environment.associate(tnode10, myAssociationLinks[1], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)", "~Arrays");
           TemplateContext context4 = context1.subContext();
           {
             final SNode tnode11 = environment.createOutputNode(myConcepts[4]);
-            try {
+            {
               tnode11.setProperty(myProperties[1], "true");
               tnode11.setProperty(myProperties[2], "stringSwitchCases");
               TemplateContext context5 = context4.subContext();
               {
                 final SNode tnode12 = environment.createOutputNode(myConcepts[5]);
-                try {
+                {
                   TemplateContext context6 = context5.subContext();
                   {
                     final SNode tnode13 = environment.createOutputNode(myConcepts[6]);
-                    try {
+                    {
                       TemplateContext context7 = context6.subContext();
                       {
                         final SNode tnode14 = environment.createOutputNode(myConcepts[7]);
-                        try {
-                        } finally {
-                        }
                         tnode13.addChild(myAggregationLinks[4], tnode14);
                         // TODO validate child 
                       }
@@ -129,17 +122,14 @@ public class Template_string_switch_template extends TemplateDeclarationBase {
                         }
                         // TODO validate child 
                       }
-                    } finally {
                     }
                     tnode12.addChild(myAggregationLinks[6], tnode13);
                     // TODO validate child 
                   }
-                } finally {
                 }
                 tnode11.addChild(myAggregationLinks[7], tnode12);
                 // TODO validate child 
               }
-            } finally {
             }
             tnode10.addChild(myAggregationLinks[8], tnode11);
             // TODO validate child 
@@ -153,12 +143,10 @@ public class Template_string_switch_template extends TemplateDeclarationBase {
             }
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[9], tnode10);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(10, tnode1);
     return rv;

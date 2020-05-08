@@ -57,11 +57,11 @@ public class Template_reduce_Parameters extends TemplateDeclarationBase {
         tlist2 = tlist3;
       } else {
         final SNode tnode4 = environment.createOutputNode(myConcepts[0]);
-        try {
+        {
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
-            try {
+            {
               TemplateContext context3 = context2.subContext();
               {
                 Collection<SNode> tlist6 = null;
@@ -81,12 +81,10 @@ public class Template_reduce_Parameters extends TemplateDeclarationBase {
                 }
                 // TODO validate child 
               }
-            } finally {
             }
             tnode4.addChild(myAggregationLinks[2], tnode5);
             // TODO validate child 
           }
-        } finally {
         }
         tlist2 = TemplateUtil.singletonList(tnode4);
       }

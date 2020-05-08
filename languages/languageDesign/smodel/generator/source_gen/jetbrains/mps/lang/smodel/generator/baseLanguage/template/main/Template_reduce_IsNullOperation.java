@@ -34,17 +34,14 @@ public class Template_reduce_IsNullOperation extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        try {
+        {
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
-            try {
-            } finally {
-            }
             tnode2.addChild(myAggregationLinks[0], tnode3);
             // TODO validate child 
           }
@@ -57,12 +54,10 @@ public class Template_reduce_IsNullOperation extends TemplateDeclarationBase {
             }
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[2], tnode2);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(3, tnode1);
     return rv;

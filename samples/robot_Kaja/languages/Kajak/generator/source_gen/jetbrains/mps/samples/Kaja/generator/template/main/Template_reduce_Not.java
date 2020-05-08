@@ -34,7 +34,7 @@ public class Template_reduce_Not extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
@@ -45,7 +45,6 @@ public class Template_reduce_Not extends TemplateDeclarationBase {
         }
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(1, tnode1);
     return rv;

@@ -38,29 +38,26 @@ public class Template_reduce_IfInstanceOfStatement extends TemplateDeclarationBa
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        try {
+        {
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
-            try {
+            {
               TemplateContext context3 = context2.subContext();
               {
                 final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
-                try {
+                {
                   environment.nodeCopied(context3, tnode4, "tpl/r:00000000-0000-4000-0000-011c89590303/1883223317721110285");
                   tnode4.setProperty(myProperties[0], "true");
                   SNodeAccessUtil.setPropertyValue(tnode4, myProperties[1], QueriesGenerated.propertyMacro_GetValue_55_0(new PropertyMacroContext(context3, "n", propertyMacro_bb7ynt_c0a2a2a1a1a1a1a1a1a2a6)));
                   TemplateContext context4 = context3.subContext();
                   {
                     final SNode tnode5 = environment.createOutputNode(myConcepts[4]);
-                    try {
-                      environment.associate(tnode5, myAssociationLinks[0], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SNode");
-                    } finally {
-                    }
+                    environment.associate(tnode5, myAssociationLinks[0], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SNode");
                     tnode4.addChild(myAggregationLinks[0], tnode5);
                     // TODO validate child 
                   }
@@ -73,32 +70,27 @@ public class Template_reduce_IfInstanceOfStatement extends TemplateDeclarationBa
                     }
                     // TODO validate child 
                   }
-                } finally {
                 }
                 tnode3.addChild(myAggregationLinks[2], tnode4);
                 // TODO validate child 
               }
-            } finally {
             }
             tnode2.addChild(myAggregationLinks[3], tnode3);
             // TODO validate child 
           }
           {
             final SNode tnode8 = environment.createOutputNode(myConcepts[5]);
-            try {
+            {
               TemplateContext context5 = context2.subContext();
               {
                 final SNode tnode9 = environment.createOutputNode(myConcepts[6]);
-                try {
+                {
                   environment.associate(tnode9, myAssociationLinks[1], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527294101");
                   environment.associate(tnode9, myAssociationLinks[2], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286941");
                   TemplateContext context6 = context5.subContext();
                   {
                     final SNode tnode10 = environment.createOutputNode(myConcepts[7]);
-                    try {
-                      environment.resolveInTemplateLater(tnode10, myAssociationLinks[3], templateNode_bb7ynt_c0a0a1a3a1a1a1a2a1a1a2a6, "tpl/r:00000000-0000-4000-0000-011c89590303/1883223317721110285", "n", context6);
-                    } finally {
-                    }
+                    environment.resolveInTemplateLater(tnode10, myAssociationLinks[3], templateNode_bb7ynt_c0a0a1a3a1a1a1a2a1a1a2a6, "tpl/r:00000000-0000-4000-0000-011c89590303/1883223317721110285", "n", context6);
                     tnode9.addChild(myAggregationLinks[4], tnode10);
                     // TODO validate child 
                   }
@@ -115,7 +107,6 @@ public class Template_reduce_IfInstanceOfStatement extends TemplateDeclarationBa
                     }
                     // TODO validate child 
                   }
-                } finally {
                 }
                 tnode8.addChild(myAggregationLinks[5], tnode9);
                 // TODO validate child 
@@ -129,17 +120,14 @@ public class Template_reduce_IfInstanceOfStatement extends TemplateDeclarationBa
                 }
                 // TODO validate child 
               }
-            } finally {
             }
             tnode2.addChild(myAggregationLinks[3], tnode8);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[7], tnode2);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(8, tnode1);
     return rv;

@@ -43,7 +43,7 @@ public class Template_reduce_MethodInvocation extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       environment.resolve(new RefResolver(tnode1, myAssociationLinks[0], context, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "391057745364430041"), "bhMethodImpl") {
         @Override
         public Object resolve() {
@@ -55,17 +55,11 @@ public class Template_reduce_MethodInvocation extends TemplateDeclarationBase {
         Collection<SNode> tlist2 = null;
         if (QueriesGenerated.ifMacro_Condition_8_0(new IfMacroContext(context1, ifMacroRef_xgjiki_b0a0b0c0c0g))) {
           final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
-          try {
-            environment.resolveInTemplateLater(tnode3, myAssociationLinks[1], templateNode_xgjiki_c0a0a1a1a2a2a6, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/4547736967710446796", "node", context1);
-          } finally {
-          }
+          environment.resolveInTemplateLater(tnode3, myAssociationLinks[1], templateNode_xgjiki_c0a0a1a1a2a2a6, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/4547736967710446796", "node", context1);
           tlist2 = TemplateUtil.singletonList(tnode3);
         } else {
           final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
-          try {
-            environment.resolveInTemplateLater(tnode4, myAssociationLinks[1], templateNode_xgjiki_c0a0a1a0b0c0c0g, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/7154549807540327406", "concept", context1);
-          } finally {
-          }
+          environment.resolveInTemplateLater(tnode4, myAssociationLinks[1], templateNode_xgjiki_c0a0a1a0b0c0c0g, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/7154549807540327406", "concept", context1);
           tlist2 = TemplateUtil.singletonList(tnode4);
         }
         for (SNode child5 : TemplateUtil.asNotNull(tlist2)) {
@@ -86,15 +80,15 @@ public class Template_reduce_MethodInvocation extends TemplateDeclarationBase {
           Collection<SNode> tlist7 = null;
           if (QueriesGenerated.ifMacro_Condition_8_1(new IfMacroContext(context2, ifMacroRef_xgjiki_b0a0e0d0d0c0g))) {
             final SNode tnode8 = environment.createOutputNode(myConcepts[2]);
-            try {
+            {
               TemplateContext context3 = context2.subContext();
               {
                 final SNode tnode9 = environment.createOutputNode(myConcepts[3]);
-                try {
+                {
                   TemplateContext context4 = context3.subContext();
                   {
                     final SNode tnode10 = environment.createOutputNode(myConcepts[3]);
-                    try {
+                    {
                       TemplateContext context5 = context4.subContext();
                       {
                         Collection<SNode> tlist11 = null;
@@ -107,32 +101,24 @@ public class Template_reduce_MethodInvocation extends TemplateDeclarationBase {
                       }
                       {
                         final SNode tnode13 = environment.createOutputNode(myConcepts[4]);
-                        try {
+                        {
                           TemplateContext context6 = context5.subContext();
                           {
                             final SNode tnode14 = environment.createOutputNode(myConcepts[5]);
-                            try {
-                              SNodeAccessUtil.setPropertyValue(tnode14, myProperties[0], QueriesGenerated.propertyMacro_GetValue_8_0(new PropertyMacroContext(context6, "0", propertyMacro_xgjiki_c0a2a0a1a1a1a2a1a1a1a1a1a4a3a3a2a6)));
-                            } finally {
-                            }
+                            SNodeAccessUtil.setPropertyValue(tnode14, myProperties[0], QueriesGenerated.propertyMacro_GetValue_8_0(new PropertyMacroContext(context6, "0", propertyMacro_xgjiki_c0a2a0a1a1a1a2a1a1a1a1a1a4a3a3a2a6)));
                             tnode13.addChild(myAggregationLinks[2], tnode14);
                             // TODO validate child 
                           }
                           {
                             final SNode tnode15 = environment.createOutputNode(myConcepts[1]);
-                            try {
-                              environment.resolveInTemplateLater(tnode15, myAssociationLinks[1], templateNode_xgjiki_c0a0a1a2a1a2a1a1a1a1a1a4a3a3a2a6, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/4547736967710450024", "parameters", context6);
-                            } finally {
-                            }
+                            environment.resolveInTemplateLater(tnode15, myAssociationLinks[1], templateNode_xgjiki_c0a0a1a2a1a2a1a1a1a1a1a4a3a3a2a6, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/4547736967710450024", "parameters", context6);
                             tnode13.addChild(myAggregationLinks[3], tnode15);
                             // TODO validate child 
                           }
-                        } finally {
                         }
                         tnode10.addChild(myAggregationLinks[4], tnode13);
                         // TODO validate child 
                       }
-                    } finally {
                     }
                     tnode9.addChild(myAggregationLinks[4], tnode10);
                     // TODO validate child 
@@ -146,17 +132,15 @@ public class Template_reduce_MethodInvocation extends TemplateDeclarationBase {
                     }
                     // TODO validate child 
                   }
-                } finally {
                 }
                 tnode8.addChild(myAggregationLinks[5], tnode9);
                 // TODO validate child 
               }
-            } finally {
             }
             tlist7 = TemplateUtil.singletonList(tnode8);
           } else {
             final SNode tnode18 = environment.createOutputNode(myConcepts[3]);
-            try {
+            {
               TemplateContext context7 = context2.subContext();
               {
                 Collection<SNode> tlist19 = null;
@@ -169,32 +153,24 @@ public class Template_reduce_MethodInvocation extends TemplateDeclarationBase {
               }
               {
                 final SNode tnode21 = environment.createOutputNode(myConcepts[4]);
-                try {
+                {
                   TemplateContext context8 = context7.subContext();
                   {
                     final SNode tnode22 = environment.createOutputNode(myConcepts[5]);
-                    try {
-                      SNodeAccessUtil.setPropertyValue(tnode22, myProperties[0], QueriesGenerated.propertyMacro_GetValue_8_1(new PropertyMacroContext(context8, "0", propertyMacro_xgjiki_c0a2a0a1a1a1a2a1a0e0d0d0c0g)));
-                    } finally {
-                    }
+                    SNodeAccessUtil.setPropertyValue(tnode22, myProperties[0], QueriesGenerated.propertyMacro_GetValue_8_1(new PropertyMacroContext(context8, "0", propertyMacro_xgjiki_c0a2a0a1a1a1a2a1a0e0d0d0c0g)));
                     tnode21.addChild(myAggregationLinks[2], tnode22);
                     // TODO validate child 
                   }
                   {
                     final SNode tnode23 = environment.createOutputNode(myConcepts[1]);
-                    try {
-                      environment.resolveInTemplateLater(tnode23, myAssociationLinks[1], templateNode_xgjiki_c0a0a1a2a1a2a1a0e0d0d0c0g, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/4547736967710450024", "parameters", context8);
-                    } finally {
-                    }
+                    environment.resolveInTemplateLater(tnode23, myAssociationLinks[1], templateNode_xgjiki_c0a0a1a2a1a2a1a0e0d0d0c0g, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/4547736967710450024", "parameters", context8);
                     tnode21.addChild(myAggregationLinks[3], tnode23);
                     // TODO validate child 
                   }
-                } finally {
                 }
                 tnode18.addChild(myAggregationLinks[4], tnode21);
                 // TODO validate child 
               }
-            } finally {
             }
             tlist7 = TemplateUtil.singletonList(tnode18);
           }
@@ -207,7 +183,6 @@ public class Template_reduce_MethodInvocation extends TemplateDeclarationBase {
         }
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(6, tnode1);
     return rv;

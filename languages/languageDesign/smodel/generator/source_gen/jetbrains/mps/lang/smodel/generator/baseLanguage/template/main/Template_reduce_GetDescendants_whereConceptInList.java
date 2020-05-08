@@ -41,7 +41,7 @@ public class Template_reduce_GetDescendants_whereConceptInList extends TemplateD
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       environment.associate(tnode1, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286941");
       environment.associate(tnode1, myAssociationLinks[1], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527293848");
       TemplateContext context1 = context.subContext();
@@ -56,18 +56,15 @@ public class Template_reduce_GetDescendants_whereConceptInList extends TemplateD
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
-        try {
+        {
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
-            try {
+            {
               TemplateContext context3 = context2.subContext();
               {
                 final SNode tnode6 = environment.createOutputNode(myConcepts[3]);
-                try {
-                  environment.associate(tnode6, myAssociationLinks[2], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)", "~SAbstractConcept");
-                } finally {
-                }
+                environment.associate(tnode6, myAssociationLinks[2], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)", "~SAbstractConcept");
                 tnode5.addChild(myAggregationLinks[1], tnode6);
                 // TODO validate child 
               }
@@ -95,39 +92,31 @@ public class Template_reduce_GetDescendants_whereConceptInList extends TemplateD
                 }
                 // TODO validate child 
               }
-            } finally {
             }
             tnode4.addChild(myAggregationLinks[3], tnode5);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[0], tnode4);
         // TODO validate child 
       }
       {
         final SNode tnode10 = environment.createOutputNode(myConcepts[4]);
-        try {
-          SNodeAccessUtil.setPropertyValue(tnode10, myProperties[0], QueriesGenerated.propertyMacro_GetValue_35_0(new PropertyMacroContext(context1, null, propertyMacro_z3mp7r_c0a2a0a1a5a2a6)));
-        } finally {
-        }
+        SNodeAccessUtil.setPropertyValue(tnode10, myProperties[0], QueriesGenerated.propertyMacro_GetValue_35_0(new PropertyMacroContext(context1, null, propertyMacro_z3mp7r_c0a2a0a1a5a2a6)));
         tnode1.addChild(myAggregationLinks[0], tnode10);
         // TODO validate child 
       }
       {
         final SNode tnode11 = environment.createOutputNode(myConcepts[1]);
-        try {
+        {
           TemplateContext context6 = context1.subContext();
           {
             final SNode tnode12 = environment.createOutputNode(myConcepts[2]);
-            try {
+            {
               TemplateContext context7 = context6.subContext();
               {
                 final SNode tnode13 = environment.createOutputNode(myConcepts[3]);
-                try {
-                  environment.associate(tnode13, myAssociationLinks[2], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)", "~SAbstractConcept");
-                } finally {
-                }
+                environment.associate(tnode13, myAssociationLinks[2], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)", "~SAbstractConcept");
                 tnode12.addChild(myAggregationLinks[1], tnode13);
                 // TODO validate child 
               }
@@ -155,17 +144,14 @@ public class Template_reduce_GetDescendants_whereConceptInList extends TemplateD
                 }
                 // TODO validate child 
               }
-            } finally {
             }
             tnode11.addChild(myAggregationLinks[3], tnode12);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[0], tnode11);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(4, tnode1);
     return rv;

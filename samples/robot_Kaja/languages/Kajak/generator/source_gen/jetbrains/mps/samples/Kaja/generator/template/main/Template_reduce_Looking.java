@@ -36,7 +36,7 @@ public class Template_reduce_Looking extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       environment.resolveInTemplateLater(tnode1, myAssociationLinks[0], templateNode_yqxv9z_c0a0a2a6, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/7060824959893184061", "heading", context);
       TemplateContext context1 = context.subContext();
       {
@@ -51,9 +51,6 @@ public class Template_reduce_Looking extends TemplateDeclarationBase {
             tlist2 = environment.trySwitch(templateSwitchNode_yqxv9z_a0a0c0a1a1a2a2a6, switchContext2);
             if (tlist2 == null) {
               final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
-              try {
-              } finally {
-              }
               if (tnode3 != null) {
                 tlist2 = TemplateUtil.singletonList(tnode3);
               }
@@ -65,7 +62,6 @@ public class Template_reduce_Looking extends TemplateDeclarationBase {
         }
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(1, tnode1);
     return rv;

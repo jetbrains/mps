@@ -36,7 +36,7 @@ public class Template_reduce_Property_SetOperation extends TemplateDeclarationBa
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       environment.associate(tnode1, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527298519");
       environment.resolve(new RefResolver(tnode1, myAssociationLinks[1], context, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5162844862476901056"), "set") {
         @Override
@@ -76,7 +76,6 @@ public class Template_reduce_Property_SetOperation extends TemplateDeclarationBa
         }
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(1, tnode1);
     return rv;

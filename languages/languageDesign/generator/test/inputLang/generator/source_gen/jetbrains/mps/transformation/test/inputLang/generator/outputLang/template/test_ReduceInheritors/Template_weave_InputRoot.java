@@ -32,20 +32,14 @@ public class Template_weave_InputRoot extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
-      tnode1.setProperty(myProperties[0], "weaved N1");
-    } finally {
-    }
+    tnode1.setProperty(myProperties[0], "weaved N1");
     FragmentResult rv = nodeFragment(0, tnode1);
     return rv;
   }
   protected FragmentResult applyPart1(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
-      tnode1.setProperty(myProperties[0], "weaved N2");
-    } finally {
-    }
+    tnode1.setProperty(myProperties[0], "weaved N2");
     FragmentResult rv = nodeFragment(0, tnode1);
     return rv;
   }

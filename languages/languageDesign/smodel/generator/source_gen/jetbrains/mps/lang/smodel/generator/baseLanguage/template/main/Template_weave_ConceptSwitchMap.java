@@ -42,47 +42,40 @@ public class Template_weave_ConceptSwitchMap extends TemplateDeclarationBase {
     final TemplateExecutionEnvironment environment = contextNoLabel.getEnvironment();
     final TemplateContext context = contextNoLabel.subContext("switchField");
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       tnode1.setProperty(myProperties[0], "true");
       SNodeAccessUtil.setPropertyValue(tnode1, myProperties[1], QueriesGenerated.propertyMacro_GetValue_98_3(new PropertyMacroContext(context, "index", propertyMacro_d69nxd_c0a2a1a3a6)));
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        try {
-        } finally {
-        }
         tnode1.addChild(myAggregationLinks[0], tnode2);
         // TODO validate child 
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
-        try {
+        {
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
-            try {
+            {
               TemplateContext context3 = context2.subContext();
               {
                 final SNode tnode5 = environment.createOutputNode(myConcepts[3]);
-                try {
+                {
                   TemplateContext context4 = context3.subContext();
                   {
                     final SNode tnode6 = environment.createOutputNode(myConcepts[4]);
-                    try {
-                      environment.associate(tnode6, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)", "~ConceptSwitchIndexBuilder.<init>()");
-                    } finally {
-                    }
+                    environment.associate(tnode6, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)", "~ConceptSwitchIndexBuilder.<init>()");
                     tnode5.addChild(myAggregationLinks[1], tnode6);
                     // TODO validate child 
                   }
-                } finally {
                 }
                 tnode4.addChild(myAggregationLinks[2], tnode5);
                 // TODO validate child 
               }
               {
                 final SNode tnode7 = environment.createOutputNode(myConcepts[5]);
-                try {
+                {
                   environment.associate(tnode7, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)", "~ConceptSwitchIndexBuilder.put(jetbrains.mps.smodel.adapter.ids.SConceptId...)");
                   TemplateContext context5 = context3.subContext();
                   {
@@ -97,38 +90,28 @@ public class Template_weave_ConceptSwitchMap extends TemplateDeclarationBase {
                       TemplateContext context7 = context6;
                       context7 = context7.withVariable("var:cid", QueriesGenerated.varMacro_Value_98_0(new TemplateVarContext(context6, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904796"))));
                       final SNode tnode10 = environment.createOutputNode(myConcepts[6]);
-                      try {
+                      {
                         environment.associate(tnode10, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)", "~MetaIdFactory.conceptId(long,long,long)");
                         environment.associate(tnode10, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)", "~MetaIdFactory");
                         TemplateContext context8 = context7.subContext();
                         {
                           final SNode tnode11 = environment.createOutputNode(myConcepts[7]);
-                          try {
-                            SNodeAccessUtil.setPropertyValue(tnode11, myProperties[2], QueriesGenerated.propertyMacro_GetValue_98_0(new PropertyMacroContext(context8, "0L", propertyMacro_d69nxd_c0a2a0a1a3a6a2a2a1a2a1a1a1a4a3a6)));
-                          } finally {
-                          }
+                          SNodeAccessUtil.setPropertyValue(tnode11, myProperties[2], QueriesGenerated.propertyMacro_GetValue_98_0(new PropertyMacroContext(context8, "0L", propertyMacro_d69nxd_c0a2a0a1a3a6a2a2a1a2a1a1a1a4a3a6)));
                           tnode10.addChild(myAggregationLinks[3], tnode11);
                           // TODO validate child 
                         }
                         {
                           final SNode tnode12 = environment.createOutputNode(myConcepts[7]);
-                          try {
-                            SNodeAccessUtil.setPropertyValue(tnode12, myProperties[2], QueriesGenerated.propertyMacro_GetValue_98_1(new PropertyMacroContext(context8, "0L", propertyMacro_d69nxd_c0a2a0a1a4a6a2a2a1a2a1a1a1a4a3a6)));
-                          } finally {
-                          }
+                          SNodeAccessUtil.setPropertyValue(tnode12, myProperties[2], QueriesGenerated.propertyMacro_GetValue_98_1(new PropertyMacroContext(context8, "0L", propertyMacro_d69nxd_c0a2a0a1a4a6a2a2a1a2a1a1a1a4a3a6)));
                           tnode10.addChild(myAggregationLinks[3], tnode12);
                           // TODO validate child 
                         }
                         {
                           final SNode tnode13 = environment.createOutputNode(myConcepts[7]);
-                          try {
-                            SNodeAccessUtil.setPropertyValue(tnode13, myProperties[2], QueriesGenerated.propertyMacro_GetValue_98_2(new PropertyMacroContext(context8, "0L", propertyMacro_d69nxd_c0a2a0a1a5a6a2a2a1a2a1a1a1a4a3a6)));
-                          } finally {
-                          }
+                          SNodeAccessUtil.setPropertyValue(tnode13, myProperties[2], QueriesGenerated.propertyMacro_GetValue_98_2(new PropertyMacroContext(context8, "0L", propertyMacro_d69nxd_c0a2a0a1a5a6a2a2a1a2a1a1a1a4a3a6)));
                           tnode10.addChild(myAggregationLinks[3], tnode13);
                           // TODO validate child 
                         }
-                      } finally {
                       }
                       tlist9 = TemplateUtil.singletonList(tnode10);
                       if (tlist9 != null) {
@@ -140,40 +123,30 @@ public class Template_weave_ConceptSwitchMap extends TemplateDeclarationBase {
                     }
                     // TODO validate child 
                   }
-                } finally {
                 }
                 tnode4.addChild(myAggregationLinks[4], tnode7);
                 // TODO validate child 
               }
-            } finally {
             }
             tnode3.addChild(myAggregationLinks[2], tnode4);
             // TODO validate child 
           }
           {
             final SNode tnode15 = environment.createOutputNode(myConcepts[5]);
-            try {
-              environment.associate(tnode15, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)", "~ConceptSwitchIndexBuilder.seal()");
-            } finally {
-            }
+            environment.associate(tnode15, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)", "~ConceptSwitchIndexBuilder.seal()");
             tnode3.addChild(myAggregationLinks[4], tnode15);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[5], tnode3);
         // TODO validate child 
       }
       {
         final SNode tnode16 = environment.createOutputNode(myConcepts[8]);
-        try {
-          environment.associate(tnode16, myAssociationLinks[2], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)", "~ConceptSwitchIndex");
-        } finally {
-        }
+        environment.associate(tnode16, myAssociationLinks[2], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)", "~ConceptSwitchIndex");
         tnode1.addChild(myAggregationLinks[6], tnode16);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(7, tnode1);
     rv.label(contextNoLabel, "switchField");

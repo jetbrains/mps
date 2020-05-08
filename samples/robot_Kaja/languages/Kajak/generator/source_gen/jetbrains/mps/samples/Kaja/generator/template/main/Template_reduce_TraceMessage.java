@@ -35,28 +35,23 @@ public class Template_reduce_TraceMessage extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        try {
+        {
           environment.associate(tnode2, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3210697320273763026");
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
-            try {
-              SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_25_0(new PropertyMacroContext(context2, "message", propertyMacro_zb4n4r_c0a2a0a1a2a1a1a2a6)));
-            } finally {
-            }
+            SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_25_0(new PropertyMacroContext(context2, "message", propertyMacro_zb4n4r_c0a2a0a1a2a1a1a2a6)));
             tnode2.addChild(myAggregationLinks[0], tnode3);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[1], tnode2);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(2, tnode1);
     return rv;

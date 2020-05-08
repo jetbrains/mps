@@ -37,7 +37,7 @@ public class Template_reduce_ConceptMethodCallCommon extends TemplateDeclaration
     Collection<SNode> tlist1 = null;
     if (QueriesGenerated.ifMacro_Condition_85_0(new IfMacroContext(context, ifMacroRef_2swv9b_b0a0c0g))) {
       final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
-      try {
+      {
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist3 = null;
@@ -56,7 +56,6 @@ public class Template_reduce_ConceptMethodCallCommon extends TemplateDeclaration
           }
           // TODO validate child 
         }
-      } finally {
       }
       tlist1 = TemplateUtil.singletonList(tnode2);
     } else {

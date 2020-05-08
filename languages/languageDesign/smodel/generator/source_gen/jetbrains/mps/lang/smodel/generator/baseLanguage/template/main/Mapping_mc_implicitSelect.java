@@ -55,7 +55,7 @@ public class Mapping_mc_implicitSelect extends MapConfigBase implements Template
       Collection<SNode> tlist1 = null;
       if (QueriesGenerated.rule_Condition_50_1(new BaseMappingRuleContext(context, rule_x5z8bg_b0a0c0c4))) {
         final SNode tnode2 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf09L, "StaticMethodCall"));
-        try {
+        {
           environment.associate(tnode2, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "4877343046905094202");
           environment.associate(tnode2, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept"), "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286349");
           TemplateContext context1 = context.subContext();
@@ -81,12 +81,11 @@ public class Mapping_mc_implicitSelect extends MapConfigBase implements Template
             }
             // TODO validate child 
           }
-        } finally {
         }
         tlist1 = TemplateUtil.singletonList(tnode2);
       } else if (QueriesGenerated.rule_Condition_50_2(new BaseMappingRuleContext(context, rule_x5z8bg_b0a0c0c4))) {
         final SNode tnode7 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf09L, "StaticMethodCall"));
-        try {
+        {
           environment.associate(tnode7, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept"), "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286349");
           environment.associate(tnode7, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "4877343046905095413");
           TemplateContext context3 = context.subContext();
@@ -112,12 +111,11 @@ public class Mapping_mc_implicitSelect extends MapConfigBase implements Template
             }
             // TODO validate child 
           }
-        } finally {
         }
         tlist1 = TemplateUtil.singletonList(tnode7);
       } else if (QueriesGenerated.rule_Condition_50_3(new BaseMappingRuleContext(context, rule_x5z8bg_b0a0c0c4))) {
         final SNode tnode12 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf09L, "StaticMethodCall"));
-        try {
+        {
           environment.associate(tnode12, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "4877343046905096608");
           environment.associate(tnode12, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept"), "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286349");
           TemplateContext context5 = context.subContext();
@@ -143,7 +141,6 @@ public class Mapping_mc_implicitSelect extends MapConfigBase implements Template
             }
             // TODO validate child 
           }
-        } finally {
         }
         tlist1 = TemplateUtil.singletonList(tnode12);
       } else {

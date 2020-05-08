@@ -36,7 +36,7 @@ public class Template_reduce_ReplaceWithNewOperation extends TemplateDeclaration
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       environment.associate(tnode1, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286941");
       environment.associate(tnode1, myAssociationLinks[1], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "9116031298985481260");
       TemplateContext context1 = context.subContext();
@@ -51,19 +51,15 @@ public class Template_reduce_ReplaceWithNewOperation extends TemplateDeclaration
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
-        try {
-          environment.resolve(new RefResolver(tnode4, myAssociationLinks[2], context1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8510735242382097236"), "BaseConcept") {
-            @Override
-            public Object resolve() {
-              return QueriesGenerated.referenceMacro_GetReferent_5_0(createQueryContext());
-            }
-          });
-        } finally {
-        }
+        environment.resolve(new RefResolver(tnode4, myAssociationLinks[2], context1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8510735242382097236"), "BaseConcept") {
+          @Override
+          public Object resolve() {
+            return QueriesGenerated.referenceMacro_GetReferent_5_0(createQueryContext());
+          }
+        });
         tnode1.addChild(myAggregationLinks[0], tnode4);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(1, tnode1);
     return rv;

@@ -33,7 +33,7 @@ public class Template_OutputRoot_by_MappingRule extends TemplateDeclarationBase 
   }
   public Collection<SNode> apply(@NotNull final TemplateExecutionEnvironment environment, @NotNull final TemplateContext context) throws GenerationException {
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       environment.nodeCopied(context, tnode1, "tpl/r:00000000-0000-4000-0000-011c895905f6/1195168984336");
       tnode1.setProperty(myProperties[0], "OutputRoot_by_MappingRule");
       SNodeAccessUtil.setPropertyValue(tnode1, myProperties[1], QueriesGenerated.propertyMacro_GetValue_2_0(new PropertyMacroContext(context, "OutputRoot by MappingRule", propertyMacro_5ou570_c0a2a2a1a4)));
@@ -47,7 +47,6 @@ public class Template_OutputRoot_by_MappingRule extends TemplateDeclarationBase 
         }
         // TODO validate child 
       }
-    } finally {
     }
     return TemplateUtil.singletonList(tnode1);
   }

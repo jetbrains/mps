@@ -52,9 +52,6 @@ public class Template_reduce_InputNode extends TemplateDeclarationBase {
       tlist1 = environment.trySwitch(templateSwitchNodeNoInput_dc4xlo_a0a0c0c0h, switchContext1);
       if (tlist1 == null) {
         final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
-        try {
-        } finally {
-        }
         if (tnode2 != null) {
           tlist1 = TemplateUtil.singletonList(tnode2);
         }

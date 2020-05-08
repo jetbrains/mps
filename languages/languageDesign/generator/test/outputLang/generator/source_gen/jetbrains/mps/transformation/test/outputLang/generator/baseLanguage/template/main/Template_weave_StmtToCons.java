@@ -32,36 +32,28 @@ public class Template_weave_StmtToCons extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        try {
+        {
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode3.setProperty(myProperties[0], "to");
-            } finally {
-            }
+            tnode3.setProperty(myProperties[0], "to");
             tnode2.addChild(myAggregationLinks[0], tnode3);
             // TODO validate child 
           }
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
-            try {
-              tnode4.setProperty(myProperties[0], "ctor");
-            } finally {
-            }
+            tnode4.setProperty(myProperties[0], "ctor");
             tnode2.addChild(myAggregationLinks[0], tnode4);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[1], tnode2);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(2, tnode1);
     return rv;

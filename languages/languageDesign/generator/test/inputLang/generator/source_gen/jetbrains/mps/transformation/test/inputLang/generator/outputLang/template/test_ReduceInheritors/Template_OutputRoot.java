@@ -37,7 +37,7 @@ public class Template_OutputRoot extends TemplateDeclarationBase {
   }
   public Collection<SNode> apply(@NotNull final TemplateExecutionEnvironment environment, @NotNull final TemplateContext context) throws GenerationException {
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       environment.nodeCopied(context, tnode1, "tpl/r:00000000-0000-4000-0000-011c895905f9/1206460153890");
       tnode1.setProperty(myProperties[0], "OutputRoot");
       tnode1.setProperty(myProperties[1], "root in Reduce Inheritors test (expect: A, B, B)");
@@ -87,14 +87,10 @@ public class Template_OutputRoot extends TemplateDeclarationBase {
       }
       {
         final SNode tnode7 = environment.createOutputNode(myConcepts[1]);
-        try {
-          SNodeAccessUtil.setPropertyValue(tnode7, myProperties[2], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context1, "foobar", propertyMacro_38z9ys_c0a2a0a1a6a1a4)));
-        } finally {
-        }
+        SNodeAccessUtil.setPropertyValue(tnode7, myProperties[2], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context1, "foobar", propertyMacro_38z9ys_c0a2a0a1a6a1a4)));
         tnode1.addChild(myAggregationLinks[0], tnode7);
         // TODO validate child 
       }
-    } finally {
     }
     return TemplateUtil.singletonList(tnode1);
   }

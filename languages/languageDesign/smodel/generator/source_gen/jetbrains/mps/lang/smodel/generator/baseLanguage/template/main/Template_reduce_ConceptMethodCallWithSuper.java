@@ -37,11 +37,11 @@ public class Template_reduce_ConceptMethodCallWithSuper extends TemplateDeclarat
     Collection<SNode> tlist1 = null;
     if (QueriesGenerated.ifMacro_Condition_84_0(new IfMacroContext(context, ifMacroRef_v89n5d_b0a0c0g))) {
       final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
-      try {
+      {
         TemplateContext context1 = context.subContext();
         {
           final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
-          try {
+          {
             TemplateContext context2 = context1.subContext();
             {
               Collection<SNode> tlist4 = null;
@@ -60,12 +60,10 @@ public class Template_reduce_ConceptMethodCallWithSuper extends TemplateDeclarat
               }
               // TODO validate child 
             }
-          } finally {
           }
           tnode2.addChild(myAggregationLinks[2], tnode3);
           // TODO validate child 
         }
-      } finally {
       }
       tlist1 = TemplateUtil.singletonList(tnode2);
     } else {

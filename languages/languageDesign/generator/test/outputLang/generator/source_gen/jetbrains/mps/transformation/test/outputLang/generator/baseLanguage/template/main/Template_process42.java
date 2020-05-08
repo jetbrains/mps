@@ -38,54 +38,42 @@ public class Template_process42 extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        try {
-          tnode2.setProperty(myProperties[0], "58");
-        } finally {
-        }
+        tnode2.setProperty(myProperties[0], "58");
         tnode1.addChild(myAggregationLinks[0], tnode2);
         // TODO validate child 
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
-        try {
+        {
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
-            try {
+            {
               TemplateContext context3 = context2.subContext();
               {
                 final SNode tnode5 = environment.createOutputNode(myConcepts[4]);
-                try {
-                  SNodeAccessUtil.setPropertyValue(tnode5, myProperties[1], QueriesGenerated.propertyMacro_GetValue_4_0(new PropertyMacroContext(context3, null, propertyMacro_ye8a90_c0a2a0a1a1a1a1a1a2a2a7)));
-                } finally {
-                }
+                SNodeAccessUtil.setPropertyValue(tnode5, myProperties[1], QueriesGenerated.propertyMacro_GetValue_4_0(new PropertyMacroContext(context3, null, propertyMacro_ye8a90_c0a2a0a1a1a1a1a1a2a2a7)));
                 tnode4.addChild(myAggregationLinks[1], tnode5);
                 // TODO validate child 
               }
               {
                 final SNode tnode6 = environment.createOutputNode(myConcepts[5]);
-                try {
-                  environment.associate(tnode6, myAssociationLinks[0], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String.length()");
-                } finally {
-                }
+                environment.associate(tnode6, myAssociationLinks[0], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String.length()");
                 tnode4.addChild(myAggregationLinks[2], tnode6);
                 // TODO validate child 
               }
-            } finally {
             }
             tnode3.addChild(myAggregationLinks[3], tnode4);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[4], tnode3);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(5, tnode1);
     return rv;

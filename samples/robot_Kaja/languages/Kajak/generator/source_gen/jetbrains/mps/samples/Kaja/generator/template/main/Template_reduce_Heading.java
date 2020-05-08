@@ -35,7 +35,7 @@ public class Template_reduce_Heading extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       environment.resolveInTemplateLater(tnode1, myAssociationLinks[0], templateNode_2x0e93_c0a0a2a6, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039683754", "heading", context);
       TemplateContext context1 = context.subContext();
       {
@@ -47,7 +47,6 @@ public class Template_reduce_Heading extends TemplateDeclarationBase {
         }
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(1, tnode1);
     return rv;

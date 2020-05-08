@@ -39,28 +39,22 @@ public class Template_reduce_RoutineDefinition extends TemplateDeclarationBase {
     Collection<SNode> tlist1 = null;
     TemplateContext context1 = context.subContext("routines");
     final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_15_0(new PropertyMacroContext(context1, "bar", propertyMacro_9qqvr5_c0a2a0a4a6)));
       TemplateContext context2 = context1.subContext();
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
-        try {
-        } finally {
-        }
         tnode2.addChild(myAggregationLinks[0], tnode3);
         // TODO validate child 
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
-        try {
-        } finally {
-        }
         tnode2.addChild(myAggregationLinks[1], tnode4);
         // TODO validate child 
       }
       {
         final SNode tnode5 = environment.createOutputNode(myConcepts[3]);
-        try {
+        {
           TemplateContext context3 = context2.subContext();
           {
             Collection<SNode> tlist6 = null;
@@ -71,12 +65,10 @@ public class Template_reduce_RoutineDefinition extends TemplateDeclarationBase {
             }
             // TODO validate child 
           }
-        } finally {
         }
         tnode2.addChild(myAggregationLinks[3], tnode5);
         // TODO validate child 
       }
-    } finally {
     }
     tlist1 = TemplateUtil.singletonList(tnode2);
     environment.registerLabel(context.getInput(), tnode2, "routines");

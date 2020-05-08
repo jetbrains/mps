@@ -31,7 +31,7 @@ public class Template_OutputRoot extends TemplateDeclarationBase {
   }
   public Collection<SNode> apply(@NotNull final TemplateExecutionEnvironment environment, @NotNull final TemplateContext context) throws GenerationException {
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       environment.nodeCopied(context, tnode1, "tpl/r:eca8e1c7-93fd-4ddf-9db6-91f9c2320691/3893401255414086886");
       tnode1.setProperty(myProperties[0], "OutputRoot");
       tnode1.setProperty(myProperties[1], "chilren were generated from a single child in input node.");
@@ -45,7 +45,6 @@ public class Template_OutputRoot extends TemplateDeclarationBase {
         }
         // TODO validate child 
       }
-    } finally {
     }
     return TemplateUtil.singletonList(tnode1);
   }

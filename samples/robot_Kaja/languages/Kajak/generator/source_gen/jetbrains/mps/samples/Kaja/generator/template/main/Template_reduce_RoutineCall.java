@@ -33,23 +33,19 @@ public class Template_reduce_RoutineCall extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        try {
-          environment.resolve(new RefResolver(tnode2, myAssociationLinks[0], context1, new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039701315"), "bar") {
-            @Override
-            public Object resolve() {
-              return QueriesGenerated.referenceMacro_GetReferent_16_0(createQueryContext());
-            }
-          });
-        } finally {
-        }
+        environment.resolve(new RefResolver(tnode2, myAssociationLinks[0], context1, new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039701315"), "bar") {
+          @Override
+          public Object resolve() {
+            return QueriesGenerated.referenceMacro_GetReferent_16_0(createQueryContext());
+          }
+        });
         tnode1.addChild(myAggregationLinks[0], tnode2);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(1, tnode1);
     return rv;

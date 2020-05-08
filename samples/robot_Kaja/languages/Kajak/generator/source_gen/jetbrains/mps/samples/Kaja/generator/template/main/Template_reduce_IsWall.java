@@ -32,10 +32,7 @@ public class Template_reduce_IsWall extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
-      environment.associate(tnode1, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039569777");
-    } finally {
-    }
+    environment.associate(tnode1, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039569777");
     FragmentResult rv = nodeFragment(0, tnode1);
     return rv;
   }

@@ -36,7 +36,7 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
@@ -49,7 +49,7 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
-        try {
+        {
           environment.associate(tnode4, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527298519");
           environment.resolve(new RefResolver(tnode4, myAssociationLinks[1], context1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1139275804876"), "getString") {
             @Override
@@ -80,14 +80,13 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
             }
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[2], tnode4);
         // TODO validate child 
       }
       {
         final SNode tnode9 = environment.createOutputNode(myConcepts[1]);
-        try {
+        {
           environment.associate(tnode9, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel.generator.smodelAdapter(MPS.Core/)", "~SPropertyOperations");
           environment.resolve(new RefResolver(tnode9, myAssociationLinks[1], context1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5834820604012870031"), "stringPropRef") {
             @Override
@@ -118,14 +117,13 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
             }
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[3], tnode9);
         // TODO validate child 
       }
       {
         final SNode tnode14 = environment.createOutputNode(myConcepts[1]);
-        try {
+        {
           environment.associate(tnode14, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527298519");
           environment.resolve(new RefResolver(tnode14, myAssociationLinks[1], context1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5834820604012874896"), "assign") {
             @Override
@@ -158,18 +156,13 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
           }
           {
             final SNode tnode19 = environment.createOutputNode(myConcepts[2]);
-            try {
-            } finally {
-            }
             tnode14.addChild(myAggregationLinks[1], tnode19);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[4], tnode14);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(5, tnode1);
     return rv;

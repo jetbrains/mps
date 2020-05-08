@@ -41,37 +41,29 @@ public class Template_reduce_NodeIdentity_SNodeReference extends TemplateDeclara
     TemplateContext context1 = context;
     context1 = context1.withVariable("var:targetRef", QueriesGenerated.varMacro_Value_125_0(new TemplateVarContext(context, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904827"))));
     final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       TemplateContext context2 = context1.subContext();
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
-        try {
+        {
           environment.associate(tnode3, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)", "~SNodePointer.<init>(java.lang.String,java.lang.String)");
           TemplateContext context3 = context2.subContext();
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
-            try {
-              SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_125_0(new PropertyMacroContext(context3, "modelUID", propertyMacro_6cbgkw_c0a2a0a1a2a1a1a5a6)));
-            } finally {
-            }
+            SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_125_0(new PropertyMacroContext(context3, "modelUID", propertyMacro_6cbgkw_c0a2a0a1a2a1a1a5a6)));
             tnode3.addChild(myAggregationLinks[0], tnode4);
             // TODO validate child 
           }
           {
             final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
-            try {
-              SNodeAccessUtil.setPropertyValue(tnode5, myProperties[0], QueriesGenerated.propertyMacro_GetValue_125_1(new PropertyMacroContext(context3, "nodeID", propertyMacro_6cbgkw_c0a2a0a1a3a1a1a5a6)));
-            } finally {
-            }
+            SNodeAccessUtil.setPropertyValue(tnode5, myProperties[0], QueriesGenerated.propertyMacro_GetValue_125_1(new PropertyMacroContext(context3, "nodeID", propertyMacro_6cbgkw_c0a2a0a1a3a1a1a5a6)));
             tnode3.addChild(myAggregationLinks[0], tnode5);
             // TODO validate child 
           }
-        } finally {
         }
         tnode2.addChild(myAggregationLinks[1], tnode3);
         // TODO validate child 
       }
-    } finally {
     }
     tlist1 = TemplateUtil.singletonList(tnode2);
     FragmentResult rv = listFragment(2, tlist1);

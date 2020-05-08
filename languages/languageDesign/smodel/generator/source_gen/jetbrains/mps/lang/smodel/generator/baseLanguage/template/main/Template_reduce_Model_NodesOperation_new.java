@@ -37,7 +37,7 @@ public class Template_reduce_Model_NodesOperation_new extends TemplateDeclaratio
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       environment.associate(tnode1, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527280390");
       environment.associate(tnode1, myAssociationLinks[1], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527280778");
       TemplateContext context1 = context.subContext();
@@ -64,9 +64,6 @@ public class Template_reduce_Model_NodesOperation_new extends TemplateDeclaratio
               tlist5 = environment.trySwitch(templateSwitchNode_68un6o_a0a0c0a1a1a1a4a2a6, switchContext5);
               if (tlist5 == null) {
                 final SNode tnode6 = environment.createOutputNode(myConcepts[1]);
-                try {
-                } finally {
-                }
                 if (tnode6 != null) {
                   tlist5 = TemplateUtil.singletonList(tnode6);
                 }
@@ -76,9 +73,6 @@ public class Template_reduce_Model_NodesOperation_new extends TemplateDeclaratio
           tlist4 = tlist5;
         } else {
           final SNode tnode7 = environment.createOutputNode(myConcepts[1]);
-          try {
-          } finally {
-          }
           tlist4 = TemplateUtil.singletonList(tnode7);
         }
         for (SNode child8 : TemplateUtil.asNotNull(tlist4)) {
@@ -86,7 +80,6 @@ public class Template_reduce_Model_NodesOperation_new extends TemplateDeclaratio
         }
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(1, tnode1);
     return rv;

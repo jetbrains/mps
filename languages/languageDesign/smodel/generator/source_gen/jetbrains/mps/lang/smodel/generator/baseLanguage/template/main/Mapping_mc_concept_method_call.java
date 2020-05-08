@@ -71,11 +71,11 @@ public class Mapping_mc_concept_method_call extends MapConfigBase implements Tem
       Collection<SNode> tlist1 = null;
       if (QueriesGenerated.ifMacro_Condition_59_0(new IfMacroContext(context, ifMacroRef_ihzv2u_b0a0c0c5))) {
         final SNode tnode2 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfb4ed32b7fL, "ParenthesizedExpression"));
-        try {
+        {
           TemplateContext context1 = context.subContext();
           {
             final SNode tnode3 = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940dabe4aL, "CastExpression"));
-            try {
+            {
               TemplateContext context2 = context1.subContext();
               {
                 Collection<SNode> tlist4 = null;
@@ -94,12 +94,10 @@ public class Mapping_mc_concept_method_call extends MapConfigBase implements Tem
                 }
                 // TODO validate child 
               }
-            } finally {
             }
             tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression"), tnode3);
             // TODO validate child 
           }
-        } finally {
         }
         tlist1 = TemplateUtil.singletonList(tnode2);
       } else {

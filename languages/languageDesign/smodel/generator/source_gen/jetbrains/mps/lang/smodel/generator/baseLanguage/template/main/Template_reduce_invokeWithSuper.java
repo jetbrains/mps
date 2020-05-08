@@ -45,11 +45,11 @@ public class Template_reduce_invokeWithSuper extends TemplateDeclarationBase {
     TemplateContext context1 = context;
     context1 = context1.withVariable("var:invocationTarget", QueriesGenerated.varMacro_Value_113_0(new TemplateVarContext(context, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904811"))));
     final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       TemplateContext context2 = context1.subContext();
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
-        try {
+        {
           environment.resolve(new RefResolver(tnode3, myAssociationLinks[0], context2, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4656749346205563306"), "invokeSuper") {
             @Override
             public Object resolve() {
@@ -74,15 +74,12 @@ public class Template_reduce_invokeWithSuper extends TemplateDeclarationBase {
             Collection<SNode> tlist6 = null;
             if (QueriesGenerated.ifMacro_Condition_113_0(new IfMacroContext(context3, ifMacroRef_6fy3ro_b0a0b0d0b0b0f0g))) {
               final SNode tnode7 = environment.createOutputNode(myConcepts[2]);
-              try {
-                environment.resolve(new RefResolver(tnode7, myAssociationLinks[1], context3, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7804432302138738197"), "BaseConcept") {
-                  @Override
-                  public Object resolve() {
-                    return QueriesGenerated.referenceMacro_GetReferent_113_0(createQueryContext());
-                  }
-                });
-              } finally {
-              }
+              environment.resolve(new RefResolver(tnode7, myAssociationLinks[1], context3, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7804432302138738197"), "BaseConcept") {
+                @Override
+                public Object resolve() {
+                  return QueriesGenerated.referenceMacro_GetReferent_113_0(createQueryContext());
+                }
+              });
               tlist6 = TemplateUtil.singletonList(tnode7);
             }
             for (SNode child8 : TemplateUtil.asNotNull(tlist6)) {
@@ -100,20 +97,19 @@ public class Template_reduce_invokeWithSuper extends TemplateDeclarationBase {
             }
             // TODO validate child 
           }
-        } finally {
         }
         tnode2.addChild(myAggregationLinks[1], tnode3);
         // TODO validate child 
       }
       {
         final SNode tnode11 = environment.createOutputNode(myConcepts[3]);
-        try {
+        {
           SNodeAccessUtil.setPropertyValue(tnode11, myProperties[0], QueriesGenerated.propertyMacro_GetValue_113_0(new PropertyMacroContext(context2, "A_BehaviorDescriptor", propertyMacro_6fy3ro_c0a2a0a1a2a5a6)));
           SNodeAccessUtil.setPropertyValue(tnode11, myProperties[1], QueriesGenerated.propertyMacro_GetValue_113_1(new PropertyMacroContext(context2, "fooMethod", propertyMacro_6fy3ro_c0a2a1a1a2a5a6)));
           TemplateContext context6 = context2.subContext();
           {
             final SNode tnode12 = environment.createOutputNode(myConcepts[4]);
-            try {
+            {
               environment.associate(tnode12, myAssociationLinks[2], "d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)", "~SMethod");
               TemplateContext context7 = context6.subContext();
               {
@@ -125,17 +121,14 @@ public class Template_reduce_invokeWithSuper extends TemplateDeclarationBase {
                 }
                 // TODO validate child 
               }
-            } finally {
             }
             tnode11.addChild(myAggregationLinks[3], tnode12);
             // TODO validate child 
           }
-        } finally {
         }
         tnode2.addChild(myAggregationLinks[4], tnode11);
         // TODO validate child 
       }
-    } finally {
     }
     tlist1 = TemplateUtil.singletonList(tnode2);
     FragmentResult rv = listFragment(5, tlist1);

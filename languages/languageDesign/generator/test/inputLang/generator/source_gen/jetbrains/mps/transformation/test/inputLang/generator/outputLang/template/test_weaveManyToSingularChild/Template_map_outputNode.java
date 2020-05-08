@@ -32,21 +32,17 @@ public class Template_map_outputNode extends TemplateDeclarationBase {
     Collection<SNode> tlist1 = null;
     TemplateContext context1 = context.subContext("generated_root");
     final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       environment.nodeCopied(context1, tnode2, "tpl/r:00000000-0000-4000-0000-011c895905fa/1218738789586");
       tnode2.setProperty(myProperties[0], "map_outputNode");
       tnode2.setProperty(myProperties[1], "output root");
       TemplateContext context2 = context1.subContext();
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
-        try {
-          tnode3.setProperty(myProperties[2], "this is 'special child' in root template");
-        } finally {
-        }
+        tnode3.setProperty(myProperties[2], "this is 'special child' in root template");
         tnode2.addChild(myAggregationLinks[0], tnode3);
         // TODO validate child 
       }
-    } finally {
     }
     tlist1 = TemplateUtil.singletonList(tnode2);
     environment.registerLabel(context.getInput(), tnode2, "generated_root");

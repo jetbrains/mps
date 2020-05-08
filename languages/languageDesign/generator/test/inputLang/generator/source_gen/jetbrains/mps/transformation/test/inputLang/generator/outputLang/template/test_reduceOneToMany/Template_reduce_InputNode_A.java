@@ -44,10 +44,7 @@ public class Template_reduce_InputNode_A extends TemplateDeclarationBase {
       }
       TemplateContext context1 = context.subContext(itnode1);
       final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
-      try {
-        tnode2.setProperty(myProperties[0], "child #1");
-      } finally {
-      }
+      tnode2.setProperty(myProperties[0], "child #1");
       if (tnode2 != null) {
         tlist1.add(tnode2);
       }
@@ -58,10 +55,7 @@ public class Template_reduce_InputNode_A extends TemplateDeclarationBase {
   protected FragmentResult applyPart1(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
-      tnode1.setProperty(myProperties[0], "child #2");
-    } finally {
-    }
+    tnode1.setProperty(myProperties[0], "child #2");
     FragmentResult rv = nodeFragment(0, tnode1);
     return rv;
   }
@@ -81,9 +75,6 @@ public class Template_reduce_InputNode_A extends TemplateDeclarationBase {
       tlist1 = environment.trySwitch(templateSwitchNodeNoInput_vff4zh_a0a0c0c0j, switchContext1);
       if (tlist1 == null) {
         final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
-        try {
-        } finally {
-        }
         if (tnode2 != null) {
           tlist1 = TemplateUtil.singletonList(tnode2);
         }

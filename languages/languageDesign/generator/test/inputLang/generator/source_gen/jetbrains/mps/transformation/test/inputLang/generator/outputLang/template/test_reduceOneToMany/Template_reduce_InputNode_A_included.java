@@ -32,20 +32,14 @@ public class Template_reduce_InputNode_A_included extends TemplateDeclarationBas
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
-      tnode1.setProperty(myProperties[0], "child included #1");
-    } finally {
-    }
+    tnode1.setProperty(myProperties[0], "child included #1");
     FragmentResult rv = nodeFragment(0, tnode1);
     return rv;
   }
   protected FragmentResult applyPart1(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
-      tnode1.setProperty(myProperties[0], "child included #2");
-    } finally {
-    }
+    tnode1.setProperty(myProperties[0], "child included #2");
     FragmentResult rv = nodeFragment(0, tnode1);
     return rv;
   }

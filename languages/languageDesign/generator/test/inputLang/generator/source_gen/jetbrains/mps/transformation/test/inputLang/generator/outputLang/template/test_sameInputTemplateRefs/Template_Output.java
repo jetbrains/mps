@@ -31,17 +31,17 @@ public class Template_Output extends TemplateDeclarationBase {
   }
   public Collection<SNode> apply(@NotNull final TemplateExecutionEnvironment environment, @NotNull final TemplateContext context) throws GenerationException {
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       environment.nodeCopied(context, tnode1, "tpl/r:3974355c-942b-4134-9ce5-040d47bdb681/24324836449341733");
       tnode1.setProperty(myProperties[0], "Output");
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        try {
+        {
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
-            try {
+            {
               TemplateContext context3 = context2.subContext();
               {
                 Collection<SNode> tlist4 = null;
@@ -52,25 +52,19 @@ public class Template_Output extends TemplateDeclarationBase {
                 }
                 // TODO validate child 
               }
-            } finally {
             }
             tnode2.addChild(myAggregationLinks[1], tnode3);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[2], tnode2);
         // TODO validate child 
       }
       {
         final SNode tnode6 = environment.createOutputNode(myConcepts[3]);
-        try {
-        } finally {
-        }
         tnode1.addChild(myAggregationLinks[3], tnode6);
         // TODO validate child 
       }
-    } finally {
     }
     return TemplateUtil.singletonList(tnode1);
   }

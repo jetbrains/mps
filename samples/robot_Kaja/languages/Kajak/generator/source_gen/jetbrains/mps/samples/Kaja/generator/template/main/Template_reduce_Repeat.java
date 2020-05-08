@@ -38,39 +38,32 @@ public class Template_reduce_Repeat extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        try {
+        {
           environment.nodeCopied(context1, tnode2, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039660399");
           SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_7_0(new PropertyMacroContext(context1, "i", propertyMacro_9c7i7b_c0a2a1a1a1a2a6)));
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
-            try {
-            } finally {
-            }
             tnode2.addChild(myAggregationLinks[0], tnode3);
             // TODO validate child 
           }
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
-            try {
-              tnode4.setProperty(myProperties[1], "0");
-            } finally {
-            }
+            tnode4.setProperty(myProperties[1], "0");
             tnode2.addChild(myAggregationLinks[1], tnode4);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[2], tnode2);
         // TODO validate child 
       }
       {
         final SNode tnode5 = environment.createOutputNode(myConcepts[4]);
-        try {
+        {
           TemplateContext context3 = context1.subContext();
           {
             Collection<SNode> tlist6 = null;
@@ -81,57 +74,44 @@ public class Template_reduce_Repeat extends TemplateDeclarationBase {
             }
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[4], tnode5);
         // TODO validate child 
       }
       {
         final SNode tnode8 = environment.createOutputNode(myConcepts[5]);
-        try {
+        {
           TemplateContext context4 = context1.subContext();
           {
             final SNode tnode9 = environment.createOutputNode(myConcepts[3]);
-            try {
-              SNodeAccessUtil.setPropertyValue(tnode9, myProperties[1], QueriesGenerated.propertyMacro_GetValue_7_1(new PropertyMacroContext(context4, "10", propertyMacro_9c7i7b_c0a2a0a1a1a1a3a2a6)));
-            } finally {
-            }
+            SNodeAccessUtil.setPropertyValue(tnode9, myProperties[1], QueriesGenerated.propertyMacro_GetValue_7_1(new PropertyMacroContext(context4, "10", propertyMacro_9c7i7b_c0a2a0a1a1a1a3a2a6)));
             tnode8.addChild(myAggregationLinks[5], tnode9);
             // TODO validate child 
           }
           {
             final SNode tnode10 = environment.createOutputNode(myConcepts[6]);
-            try {
-              environment.resolveInTemplateLater(tnode10, myAssociationLinks[0], templateNode_9c7i7b_c0a0a1a2a1a3a2a6, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039660399", "i", context4);
-            } finally {
-            }
+            environment.resolveInTemplateLater(tnode10, myAssociationLinks[0], templateNode_9c7i7b_c0a0a1a2a1a3a2a6, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039660399", "i", context4);
             tnode8.addChild(myAggregationLinks[6], tnode10);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[7], tnode8);
         // TODO validate child 
       }
       {
         final SNode tnode11 = environment.createOutputNode(myConcepts[7]);
-        try {
+        {
           TemplateContext context5 = context1.subContext();
           {
             final SNode tnode12 = environment.createOutputNode(myConcepts[6]);
-            try {
-              environment.resolveInTemplateLater(tnode12, myAssociationLinks[0], templateNode_9c7i7b_c0a0a1a1a1a4a2a6, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039660399", "i", context5);
-            } finally {
-            }
+            environment.resolveInTemplateLater(tnode12, myAssociationLinks[0], templateNode_9c7i7b_c0a0a1a1a1a4a2a6, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039660399", "i", context5);
             tnode11.addChild(myAggregationLinks[8], tnode12);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[9], tnode11);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(3, tnode1);
     return rv;

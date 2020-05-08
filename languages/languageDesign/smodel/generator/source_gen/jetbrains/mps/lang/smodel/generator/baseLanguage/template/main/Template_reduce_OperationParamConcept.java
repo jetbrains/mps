@@ -52,9 +52,6 @@ public class Template_reduce_OperationParamConcept extends TemplateDeclarationBa
           tlist3 = environment.trySwitch(templateSwitchNode_t65l13_a0a0c0a1a1a5a6, switchContext3);
           if (tlist3 == null) {
             final SNode tnode4 = environment.createOutputNode(myConcepts[0]);
-            try {
-            } finally {
-            }
             if (tnode4 != null) {
               tlist3 = TemplateUtil.singletonList(tnode4);
             }
@@ -64,9 +61,6 @@ public class Template_reduce_OperationParamConcept extends TemplateDeclarationBa
       tlist2 = tlist3;
     } else {
       final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
-      try {
-      } finally {
-      }
       tlist2 = TemplateUtil.singletonList(tnode5);
     }
     tlist1 = tlist2;

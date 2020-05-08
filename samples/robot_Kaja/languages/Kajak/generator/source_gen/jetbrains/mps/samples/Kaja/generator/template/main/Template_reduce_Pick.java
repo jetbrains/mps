@@ -33,127 +33,105 @@ public class Template_reduce_Pick extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        try {
+        {
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
-            try {
+            {
               TemplateContext context3 = context2.subContext();
               {
                 final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
-                try {
-                  environment.associate(tnode4, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039569953");
-                } finally {
-                }
+                environment.associate(tnode4, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039569953");
                 tnode3.addChild(myAggregationLinks[0], tnode4);
                 // TODO validate child 
               }
               {
                 final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
-                try {
+                {
                   TemplateContext context4 = context3.subContext();
                   {
                     final SNode tnode6 = environment.createOutputNode(myConcepts[4]);
-                    try {
+                    {
                       TemplateContext context5 = context4.subContext();
                       {
                         final SNode tnode7 = environment.createOutputNode(myConcepts[3]);
-                        try {
-                          environment.associate(tnode7, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039570119");
-                        } finally {
-                        }
+                        environment.associate(tnode7, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039570119");
                         tnode6.addChild(myAggregationLinks[1], tnode7);
                         // TODO validate child 
                       }
-                    } finally {
                     }
                     tnode5.addChild(myAggregationLinks[2], tnode6);
                     // TODO validate child 
                   }
                   {
                     final SNode tnode8 = environment.createOutputNode(myConcepts[4]);
-                    try {
+                    {
                       TemplateContext context6 = context4.subContext();
                       {
                         final SNode tnode9 = environment.createOutputNode(myConcepts[3]);
-                        try {
-                          environment.associate(tnode9, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039570144");
-                        } finally {
-                        }
+                        environment.associate(tnode9, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039570144");
                         tnode8.addChild(myAggregationLinks[1], tnode9);
                         // TODO validate child 
                       }
-                    } finally {
                     }
                     tnode5.addChild(myAggregationLinks[2], tnode8);
                     // TODO validate child 
                   }
-                } finally {
                 }
                 tnode3.addChild(myAggregationLinks[3], tnode5);
                 // TODO validate child 
               }
               {
                 final SNode tnode10 = environment.createOutputNode(myConcepts[0]);
-                try {
+                {
                   TemplateContext context7 = context3.subContext();
                   {
                     final SNode tnode11 = environment.createOutputNode(myConcepts[1]);
-                    try {
+                    {
                       TemplateContext context8 = context7.subContext();
                       {
                         final SNode tnode12 = environment.createOutputNode(myConcepts[4]);
-                        try {
+                        {
                           TemplateContext context9 = context8.subContext();
                           {
                             final SNode tnode13 = environment.createOutputNode(myConcepts[3]);
-                            try {
+                            {
                               environment.associate(tnode13, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039580739");
                               TemplateContext context10 = context9.subContext();
                               {
                                 final SNode tnode14 = environment.createOutputNode(myConcepts[5]);
-                                try {
-                                  tnode14.setProperty(myProperties[0], "Nothing to pick. The cell is empty.");
-                                } finally {
-                                }
+                                tnode14.setProperty(myProperties[0], "Nothing to pick. The cell is empty.");
                                 tnode13.addChild(myAggregationLinks[4], tnode14);
                                 // TODO validate child 
                               }
-                            } finally {
                             }
                             tnode12.addChild(myAggregationLinks[1], tnode13);
                             // TODO validate child 
                           }
-                        } finally {
                         }
                         tnode11.addChild(myAggregationLinks[2], tnode12);
                         // TODO validate child 
                       }
-                    } finally {
                     }
                     tnode10.addChild(myAggregationLinks[5], tnode11);
                     // TODO validate child 
                   }
-                } finally {
                 }
                 tnode3.addChild(myAggregationLinks[6], tnode10);
                 // TODO validate child 
               }
-            } finally {
             }
             tnode2.addChild(myAggregationLinks[2], tnode3);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[5], tnode2);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(2, tnode1);
     return rv;

@@ -31,7 +31,7 @@ public class Template_generator_descriptor extends TemplateDeclarationBase {
   }
   public Collection<SNode> apply(@NotNull final TemplateExecutionEnvironment environment, @NotNull final TemplateContext context) throws GenerationException {
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       environment.nodeCopied(context, tnode1, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/7568285956000709565");
       tnode1.setProperty(myProperties[0], "generator descriptor");
       TemplateContext context1 = context.subContext();
@@ -46,7 +46,6 @@ public class Template_generator_descriptor extends TemplateDeclarationBase {
         }
         // TODO validate child 
       }
-    } finally {
     }
     return TemplateUtil.singletonList(tnode1);
   }

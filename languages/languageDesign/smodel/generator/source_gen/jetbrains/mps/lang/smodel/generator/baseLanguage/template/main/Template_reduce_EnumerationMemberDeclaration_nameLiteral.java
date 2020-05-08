@@ -39,16 +39,10 @@ public class Template_reduce_EnumerationMemberDeclaration_nameLiteral extends Te
     Collection<SNode> tlist1 = null;
     if (QueriesGenerated.ifMacro_Condition_124_0(new IfMacroContext(context, ifMacroRef_jdvjnt_b0a0c0g))) {
       final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
-      try {
-        SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_124_0(new PropertyMacroContext(context, null, propertyMacro_jdvjnt_c0a2a0a1a2a6)));
-      } finally {
-      }
+      SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_124_0(new PropertyMacroContext(context, null, propertyMacro_jdvjnt_c0a2a0a1a2a6)));
       tlist1 = TemplateUtil.singletonList(tnode2);
     } else {
       final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
-      try {
-      } finally {
-      }
       tlist1 = TemplateUtil.singletonList(tnode3);
     }
     FragmentResult rv = listFragment(0, tlist1);

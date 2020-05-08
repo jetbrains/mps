@@ -32,89 +32,73 @@ public class Template_reduce_LeftTurn extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        try {
+        {
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
-            try {
+            {
               TemplateContext context3 = context2.subContext();
               {
                 final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
-                try {
+                {
                   TemplateContext context4 = context3.subContext();
                   {
                     final SNode tnode5 = environment.createOutputNode(myConcepts[3]);
-                    try {
+                    {
                       TemplateContext context5 = context4.subContext();
                       {
                         final SNode tnode6 = environment.createOutputNode(myConcepts[4]);
-                        try {
-                          environment.associate(tnode6, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039569996");
-                        } finally {
-                        }
+                        environment.associate(tnode6, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039569996");
                         tnode5.addChild(myAggregationLinks[0], tnode6);
                         // TODO validate child 
                       }
-                    } finally {
                     }
                     tnode4.addChild(myAggregationLinks[1], tnode5);
                     // TODO validate child 
                   }
                   {
                     final SNode tnode7 = environment.createOutputNode(myConcepts[3]);
-                    try {
+                    {
                       TemplateContext context6 = context4.subContext();
                       {
                         final SNode tnode8 = environment.createOutputNode(myConcepts[4]);
-                        try {
-                          environment.associate(tnode8, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039570144");
-                        } finally {
-                        }
+                        environment.associate(tnode8, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039570144");
                         tnode7.addChild(myAggregationLinks[0], tnode8);
                         // TODO validate child 
                       }
-                    } finally {
                     }
                     tnode4.addChild(myAggregationLinks[1], tnode7);
                     // TODO validate child 
                   }
-                } finally {
                 }
                 tnode3.addChild(myAggregationLinks[2], tnode4);
                 // TODO validate child 
               }
               {
                 final SNode tnode9 = environment.createOutputNode(myConcepts[5]);
-                try {
+                {
                   TemplateContext context7 = context3.subContext();
                   {
                     final SNode tnode10 = environment.createOutputNode(myConcepts[1]);
-                    try {
-                    } finally {
-                    }
                     tnode9.addChild(myAggregationLinks[3], tnode10);
                     // TODO validate child 
                   }
-                } finally {
                 }
                 tnode3.addChild(myAggregationLinks[4], tnode9);
                 // TODO validate child 
               }
-            } finally {
             }
             tnode2.addChild(myAggregationLinks[1], tnode3);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[5], tnode2);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(1, tnode1);
     return rv;

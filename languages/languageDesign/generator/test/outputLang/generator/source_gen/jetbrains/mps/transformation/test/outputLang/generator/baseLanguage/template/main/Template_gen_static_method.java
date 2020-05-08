@@ -35,182 +35,144 @@ public class Template_gen_static_method extends TemplateDeclarationBase {
     final TemplateExecutionEnvironment environment = contextNoLabel.getEnvironment();
     final TemplateContext context = contextNoLabel.subContext("testlabel");
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       environment.nodeCopied(context, tnode1, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980724041");
       tnode1.setProperty(myProperties[0], "fact");
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        try {
-        } finally {
-        }
         tnode1.addChild(myAggregationLinks[0], tnode2);
         // TODO validate child 
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
-        try {
+        {
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
-            try {
+            {
               TemplateContext context3 = context2.subContext();
               {
                 final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
-                try {
+                {
                   TemplateContext context4 = context3.subContext();
                   {
                     final SNode tnode6 = environment.createOutputNode(myConcepts[4]);
-                    try {
+                    {
                       TemplateContext context5 = context4.subContext();
                       {
                         final SNode tnode7 = environment.createOutputNode(myConcepts[5]);
-                        try {
-                          tnode7.setProperty(myProperties[1], "1");
-                        } finally {
-                        }
+                        tnode7.setProperty(myProperties[1], "1");
                         tnode6.addChild(myAggregationLinks[1], tnode7);
                         // TODO validate child 
                       }
-                    } finally {
                     }
                     tnode5.addChild(myAggregationLinks[2], tnode6);
                     // TODO validate child 
                   }
-                } finally {
                 }
                 tnode4.addChild(myAggregationLinks[3], tnode5);
                 // TODO validate child 
               }
               {
                 final SNode tnode8 = environment.createOutputNode(myConcepts[6]);
-                try {
+                {
                   TemplateContext context6 = context3.subContext();
                   {
                     final SNode tnode9 = environment.createOutputNode(myConcepts[7]);
-                    try {
-                      environment.resolveInTemplateLater(tnode9, myAssociationLinks[0], templateNode_2hhfmn_c0a0a1a1a1a2a1a1a1a4a3a6, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980724048", "e", context6);
-                    } finally {
-                    }
+                    environment.resolveInTemplateLater(tnode9, myAssociationLinks[0], templateNode_2hhfmn_c0a0a1a1a1a2a1a1a1a4a3a6, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980724048", "e", context6);
                     tnode8.addChild(myAggregationLinks[4], tnode9);
                     // TODO validate child 
                   }
                   {
                     final SNode tnode10 = environment.createOutputNode(myConcepts[5]);
-                    try {
-                      tnode10.setProperty(myProperties[1], "0");
-                    } finally {
-                    }
+                    tnode10.setProperty(myProperties[1], "0");
                     tnode8.addChild(myAggregationLinks[5], tnode10);
                     // TODO validate child 
                   }
-                } finally {
                 }
                 tnode4.addChild(myAggregationLinks[6], tnode8);
                 // TODO validate child 
               }
-            } finally {
             }
             tnode3.addChild(myAggregationLinks[2], tnode4);
             // TODO validate child 
           }
           {
             final SNode tnode11 = environment.createOutputNode(myConcepts[4]);
-            try {
+            {
               TemplateContext context7 = context2.subContext();
               {
                 final SNode tnode12 = environment.createOutputNode(myConcepts[8]);
-                try {
+                {
                   TemplateContext context8 = context7.subContext();
                   {
                     final SNode tnode13 = environment.createOutputNode(myConcepts[7]);
-                    try {
-                      environment.resolveInTemplateLater(tnode13, myAssociationLinks[0], templateNode_2hhfmn_c0a0a1a1a1a1a1a2a1a4a3a6, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980724048", "e", context8);
-                    } finally {
-                    }
+                    environment.resolveInTemplateLater(tnode13, myAssociationLinks[0], templateNode_2hhfmn_c0a0a1a1a1a1a1a2a1a4a3a6, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980724048", "e", context8);
                     tnode12.addChild(myAggregationLinks[4], tnode13);
                     // TODO validate child 
                   }
                   {
                     final SNode tnode14 = environment.createOutputNode(myConcepts[9]);
-                    try {
+                    {
                       environment.resolveInTemplateLater(tnode14, myAssociationLinks[1], templateNode_2hhfmn_c0a0a1a2a1a1a1a2a1a4a3a6, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980724041", "fact", context8);
                       TemplateContext context9 = context8.subContext();
                       {
                         final SNode tnode15 = environment.createOutputNode(myConcepts[10]);
-                        try {
+                        {
                           TemplateContext context10 = context9.subContext();
                           {
                             final SNode tnode16 = environment.createOutputNode(myConcepts[5]);
-                            try {
-                              tnode16.setProperty(myProperties[1], "1");
-                            } finally {
-                            }
+                            tnode16.setProperty(myProperties[1], "1");
                             tnode15.addChild(myAggregationLinks[5], tnode16);
                             // TODO validate child 
                           }
                           {
                             final SNode tnode17 = environment.createOutputNode(myConcepts[7]);
-                            try {
-                              environment.resolveInTemplateLater(tnode17, myAssociationLinks[0], templateNode_2hhfmn_c0a0a1a2a1a2a1a2a1a1a1a2a1a4a3a6, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980724048", "e", context10);
-                            } finally {
-                            }
+                            environment.resolveInTemplateLater(tnode17, myAssociationLinks[0], templateNode_2hhfmn_c0a0a1a2a1a2a1a2a1a1a1a2a1a4a3a6, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980724048", "e", context10);
                             tnode15.addChild(myAggregationLinks[4], tnode17);
                             // TODO validate child 
                           }
-                        } finally {
                         }
                         tnode14.addChild(myAggregationLinks[7], tnode15);
                         // TODO validate child 
                       }
-                    } finally {
                     }
                     tnode12.addChild(myAggregationLinks[5], tnode14);
                     // TODO validate child 
                   }
-                } finally {
                 }
                 tnode11.addChild(myAggregationLinks[1], tnode12);
                 // TODO validate child 
               }
-            } finally {
             }
             tnode3.addChild(myAggregationLinks[2], tnode11);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[8], tnode3);
         // TODO validate child 
       }
       {
         final SNode tnode18 = environment.createOutputNode(myConcepts[11]);
-        try {
-        } finally {
-        }
         tnode1.addChild(myAggregationLinks[9], tnode18);
         // TODO validate child 
       }
       {
         final SNode tnode19 = environment.createOutputNode(myConcepts[12]);
-        try {
+        {
           environment.nodeCopied(context1, tnode19, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980724048");
           tnode19.setProperty(myProperties[0], "e");
           TemplateContext context11 = context1.subContext();
           {
             final SNode tnode20 = environment.createOutputNode(myConcepts[11]);
-            try {
-            } finally {
-            }
             tnode19.addChild(myAggregationLinks[10], tnode20);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[11], tnode19);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(12, tnode1);
     rv.label(contextNoLabel, "testlabel");
@@ -219,36 +181,30 @@ public class Template_gen_static_method extends TemplateDeclarationBase {
   protected FragmentResult applyPart1(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       tnode1.setProperty(myProperties[0], "worker");
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[13]);
-        try {
-        } finally {
-        }
         tnode1.addChild(myAggregationLinks[9], tnode2);
         // TODO validate child 
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
-        try {
-        } finally {
-        }
         tnode1.addChild(myAggregationLinks[0], tnode3);
         // TODO validate child 
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
-        try {
+        {
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode5 = environment.createOutputNode(myConcepts[14]);
-            try {
+            {
               TemplateContext context3 = context2.subContext();
               {
                 final SNode tnode6 = environment.createOutputNode(myConcepts[9]);
-                try {
+                {
                   environment.resolve(new RefResolver(tnode6, myAssociationLinks[1], context3, new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "5955416080080987362"), "fact") {
                     @Override
                     public Object resolve() {
@@ -258,29 +214,22 @@ public class Template_gen_static_method extends TemplateDeclarationBase {
                   TemplateContext context4 = context3.subContext();
                   {
                     final SNode tnode7 = environment.createOutputNode(myConcepts[5]);
-                    try {
-                      tnode7.setProperty(myProperties[1], "3");
-                    } finally {
-                    }
+                    tnode7.setProperty(myProperties[1], "3");
                     tnode6.addChild(myAggregationLinks[7], tnode7);
                     // TODO validate child 
                   }
-                } finally {
                 }
                 tnode5.addChild(myAggregationLinks[13], tnode6);
                 // TODO validate child 
               }
-            } finally {
             }
             tnode4.addChild(myAggregationLinks[2], tnode5);
             // TODO validate child 
           }
-        } finally {
         }
         tnode1.addChild(myAggregationLinks[8], tnode4);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(12, tnode1);
     return rv;

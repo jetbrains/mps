@@ -38,7 +38,7 @@ public class Template_reduce_GetPrevSiblingsOperation extends TemplateDeclaratio
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    try {
+    {
       environment.associate(tnode1, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286941");
       environment.associate(tnode1, myAssociationLinks[1], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527294180");
       TemplateContext context1 = context.subContext();
@@ -53,14 +53,10 @@ public class Template_reduce_GetPrevSiblingsOperation extends TemplateDeclaratio
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
-        try {
-          SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_18_0(new PropertyMacroContext(context1, null, propertyMacro_ha6uio_c0a2a0a1a4a2a6)));
-        } finally {
-        }
+        SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_18_0(new PropertyMacroContext(context1, null, propertyMacro_ha6uio_c0a2a0a1a4a2a6)));
         tnode1.addChild(myAggregationLinks[0], tnode4);
         // TODO validate child 
       }
-    } finally {
     }
     FragmentResult rv = nodeFragment(1, tnode1);
     return rv;
