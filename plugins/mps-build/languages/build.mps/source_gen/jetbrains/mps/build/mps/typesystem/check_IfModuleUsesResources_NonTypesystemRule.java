@@ -11,10 +11,10 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -33,6 +33,9 @@ public class check_IfModuleUsesResources_NonTypesystemRule extends AbstractNonTy
       return;
     }
     if ((SNodeOperations.getNodeAncestor(buildModule, CONCEPTS.BuildProject$BF, false, false) == null) || (boolean) BaseConcept__BehaviorDescriptor.isInTemplates_idhEwIMij.invoke(buildModule)) {
+      return;
+    }
+    if (isEmptyString(SPropertyOperations.getString(buildModule, PROPS.uuid$XKnR))) {
       return;
     }
     SRepository repo = SNodeOperations.getModel(buildModule).getRepository();
@@ -59,6 +62,9 @@ public class check_IfModuleUsesResources_NonTypesystemRule extends AbstractNonTy
   }
   public boolean overrides() {
     return false;
+  }
+  private static boolean isEmptyString(String str) {
+    return str == null || str.length() == 0;
   }
 
   private static final class LINKS {

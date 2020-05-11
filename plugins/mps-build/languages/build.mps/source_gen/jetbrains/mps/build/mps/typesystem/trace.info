@@ -634,66 +634,75 @@
     <file name="check_IfModuleUsesResources_NonTypesystemRule.java">
       <node id="3890521992564805618" at="32,172,33,13" concept="9" />
       <node id="6066541231570529125" at="35,194,36,13" concept="9" />
-      <node id="3890521992564858696" at="37,5,38,77" concept="8" />
-      <node id="3890521992564863797" at="38,77,39,145" concept="8" />
-      <node id="3890521992564865126" at="40,25,41,13" concept="9" />
-      <node id="3890521992564877871" at="44,7,45,66" concept="8" />
-      <node id="3890521992564877871" at="45,66,46,321" concept="8" />
-      <node id="3890521992564879039" at="47,9,48,149" concept="8" />
-      <node id="3890521992564879039" at="48,149,49,71" concept="3" />
-      <node id="3890521992564783739" at="54,50,55,39" concept="9" />
-      <node id="3890521992564783739" at="57,68,58,102" concept="9" />
-      <node id="3890521992564783739" at="60,30,61,17" concept="9" />
-      <node id="3890521992564783739" at="65,0,66,0" concept="12" trace="sources$Pqd_" />
-      <node id="3890521992564783739" at="69,0,70,0" concept="12" trace="BuildMps_ModuleResources$lI" />
-      <node id="3890521992564783739" at="70,0,71,0" concept="12" trace="BuildProject$BF" />
-      <node id="3890521992564783739" at="71,0,72,0" concept="12" trace="BuildMps_Module$j$" />
-      <node id="3890521992564783739" at="75,0,76,0" concept="12" trace="uuid$XKnR" />
+      <node id="1209930566741172576" at="38,85,39,13" concept="9" />
+      <node id="3890521992564858696" at="40,5,41,77" concept="8" />
+      <node id="3890521992564863797" at="41,77,42,145" concept="8" />
+      <node id="3890521992564865126" at="43,25,44,13" concept="9" />
+      <node id="3890521992564877871" at="47,7,48,66" concept="8" />
+      <node id="3890521992564877871" at="48,66,49,321" concept="8" />
+      <node id="3890521992564879039" at="50,9,51,149" concept="8" />
+      <node id="3890521992564879039" at="51,149,52,71" concept="3" />
+      <node id="3890521992564783739" at="57,50,58,39" concept="9" />
+      <node id="3890521992564783739" at="60,68,61,102" concept="9" />
+      <node id="3890521992564783739" at="63,30,64,17" concept="9" />
+      <node id="1209930566741172562" at="66,52,67,44" concept="9" />
+      <node id="3890521992564783739" at="71,0,72,0" concept="12" trace="sources$Pqd_" />
+      <node id="3890521992564783739" at="75,0,76,0" concept="12" trace="BuildMps_ModuleResources$lI" />
+      <node id="3890521992564783739" at="76,0,77,0" concept="12" trace="BuildProject$BF" />
+      <node id="3890521992564783739" at="77,0,78,0" concept="12" trace="BuildMps_Module$j$" />
+      <node id="3890521992564783739" at="81,0,82,0" concept="12" trace="uuid$XKnR" />
       <node id="3890521992564783739" at="29,0,31,0" concept="1" trace="check_IfModuleUsesResources_NonTypesystemRule#()V" />
       <node id="3890521992564783752" at="31,124,34,5" concept="6" />
       <node id="6066541231570428431" at="34,5,37,5" concept="6" />
-      <node id="3890521992564864254" at="39,145,42,5" concept="6" />
-      <node id="3890521992564783739" at="54,0,57,0" concept="7" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="3890521992564783739" at="57,0,60,0" concept="7" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="3890521992564783739" at="60,0,63,0" concept="7" trace="overrides#()Z" />
-      <node id="3890521992564879039" at="46,321,50,9" concept="0" />
-      <node id="3890521992564877871" at="43,151,51,7" concept="0" />
-      <node id="3890521992564873641" at="42,5,52,5" concept="6" />
-      <node id="3890521992564783739" at="31,0,54,0" concept="7" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <node id="1209930566741166427" at="37,5,40,5" concept="6" />
+      <node id="3890521992564864254" at="42,145,45,5" concept="6" />
+      <node id="3890521992564783739" at="57,0,60,0" concept="7" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="3890521992564783739" at="60,0,63,0" concept="7" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="3890521992564783739" at="63,0,66,0" concept="7" trace="overrides#()Z" />
+      <node id="1209930566741172562" at="66,0,69,0" concept="13" trace="isEmptyString#(Ljava/lang/String;)Z" />
+      <node id="3890521992564879039" at="49,321,53,9" concept="0" />
+      <node id="3890521992564877871" at="46,151,54,7" concept="0" />
+      <node id="3890521992564873641" at="45,5,55,5" concept="6" />
+      <node id="3890521992564783739" at="31,0,57,0" concept="7" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="3890521992564783739" at="29,58,29,58" />
       <scope id="3890521992564783754" at="32,172,33,13" />
       <scope id="6066541231570428433" at="35,194,36,13" />
-      <scope id="3890521992564864256" at="40,25,41,13" />
-      <scope id="3890521992564783739" at="54,50,55,39" />
-      <scope id="3890521992564783739" at="57,68,58,102" />
-      <scope id="3890521992564783739" at="60,30,61,17" />
+      <scope id="1209930566741166429" at="38,85,39,13" />
+      <scope id="3890521992564864256" at="43,25,44,13" />
+      <scope id="3890521992564783739" at="57,50,58,39" />
+      <scope id="3890521992564783739" at="60,68,61,102" />
+      <scope id="3890521992564783739" at="63,30,64,17" />
+      <scope id="1209930566741172562" at="66,52,67,44" />
       <scope id="3890521992564783739" at="29,0,31,0" />
-      <scope id="3890521992564879039" at="47,9,49,71">
+      <scope id="3890521992564879039" at="50,9,52,71">
         <var name="intentionProvider" id="3890521992564879039" />
       </scope>
-      <scope id="3890521992564783739" at="54,0,57,0" />
-      <scope id="3890521992564783739" at="57,0,60,0">
+      <scope id="3890521992564783739" at="57,0,60,0" />
+      <scope id="3890521992564783739" at="60,0,63,0">
         <var name="argument" id="3890521992564783739" />
       </scope>
-      <scope id="3890521992564783739" at="60,0,63,0" />
-      <scope id="3890521992564877871" at="44,7,50,9">
+      <scope id="3890521992564783739" at="63,0,66,0" />
+      <scope id="1209930566741172562" at="66,0,69,0">
+        <var name="str" id="1209930566741172562" />
+      </scope>
+      <scope id="3890521992564877871" at="47,7,53,9">
         <var name="_reporter_2309309498" id="3890521992564877871" />
         <var name="errorTarget" id="3890521992564877871" />
       </scope>
-      <scope id="3890521992564873643" at="43,151,51,7" />
-      <scope id="3890521992564783740" at="31,124,52,5">
+      <scope id="3890521992564873643" at="46,151,54,7" />
+      <scope id="3890521992564783740" at="31,124,55,5">
         <var name="module" id="3890521992564863798" />
         <var name="repo" id="3890521992564858697" />
       </scope>
-      <scope id="3890521992564783739" at="31,0,54,0">
+      <scope id="3890521992564783739" at="31,0,57,0">
         <var name="buildModule" id="3890521992564783739" />
         <var name="status" id="3890521992564783739" />
         <var name="typeCheckingContext" id="3890521992564783739" />
       </scope>
-      <unit id="3890521992564783739" at="64,0,67,0" name="jetbrains.mps.build.mps.typesystem.check_IfModuleUsesResources_NonTypesystemRule$LINKS" />
-      <unit id="3890521992564783739" at="74,0,77,0" name="jetbrains.mps.build.mps.typesystem.check_IfModuleUsesResources_NonTypesystemRule$PROPS" />
-      <unit id="3890521992564783739" at="68,0,73,0" name="jetbrains.mps.build.mps.typesystem.check_IfModuleUsesResources_NonTypesystemRule$CONCEPTS" />
-      <unit id="3890521992564783739" at="28,0,78,0" name="jetbrains.mps.build.mps.typesystem.check_IfModuleUsesResources_NonTypesystemRule" />
+      <unit id="3890521992564783739" at="70,0,73,0" name="jetbrains.mps.build.mps.typesystem.check_IfModuleUsesResources_NonTypesystemRule$LINKS" />
+      <unit id="3890521992564783739" at="80,0,83,0" name="jetbrains.mps.build.mps.typesystem.check_IfModuleUsesResources_NonTypesystemRule$PROPS" />
+      <unit id="3890521992564783739" at="74,0,79,0" name="jetbrains.mps.build.mps.typesystem.check_IfModuleUsesResources_NonTypesystemRule$CONCEPTS" />
+      <unit id="3890521992564783739" at="28,0,84,0" name="jetbrains.mps.build.mps.typesystem.check_IfModuleUsesResources_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)/3890521992564878833">
