@@ -30,6 +30,8 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import java.util.Set;
 import jetbrains.mps.smodel.BootstrapLanguages;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.build.mps.behavior.BuildMps_AbstractModule__BehaviorDescriptor;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.build.mps.behavior.BuildMps_Solution__BehaviorDescriptor;
@@ -602,8 +604,17 @@ public final class ModuleChecker {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(generator), CONCEPTS.BuildMps_Language$re)) {
       return;
     }
-    if (type.doCheck && (SLinkOperations.getTarget(generator, LINKS.sourceLanguage$vc9u) == null)) {
-      report("standalone generator needs its 'sourceLanguage' specified: " + SPropertyOperations.getString(myModule, PROPS.name$tAp1));
+    if (type.doCheck) {
+      if ((SLinkOperations.getTarget(generator, LINKS.sourceLanguage$vc9u) == null)) {
+        report("standalone generator needs its 'sourceLanguage' specified: " + SPropertyOperations.getString(myModule, PROPS.name$tAp1));
+      } else {
+        SModuleReference srcLang = ((GeneratorDescriptor) myModuleDescriptor).getSourceLanguage();
+        String trueLangId = PersistenceFacade.getInstance().asString(srcLang.getModuleId());
+        if (!(Objects.equals(SPropertyOperations.getString(SLinkOperations.getTarget(generator, LINKS.sourceLanguage$vc9u), PROPS.uuid$XKnR), trueLangId))) {
+          String m = "standalone generator references language module that is not its source language (expected %d, but found %s)";
+          report(String.format(m, srcLang, BuildMps_AbstractModule__BehaviorDescriptor.getModuleReference_id41K1b4v5ZCB.invoke(SLinkOperations.getTarget(generator, LINKS.sourceLanguage$vc9u))));
+        }
+      }
     }
     if (type.doPartialImport) {
       GeneratorDescriptor gd = (GeneratorDescriptor) myModuleDescriptor;
