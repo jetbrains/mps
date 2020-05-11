@@ -35,7 +35,7 @@ public class MPSEditorUtil {
     }
 
     Editor nodeEditor = ((MPSFileNodeEditor) editor).getNodeEditor();
-    if (nodeEditor == null) {
+    if (nodeEditor == null || !nodeEditor.isTabbed()) {
       return null;
     }
 

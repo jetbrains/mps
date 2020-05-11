@@ -404,22 +404,25 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
         } else if (evt instanceof SNodeRemoveEvent) {
           // SNode.getReference() for deleted node produces invalid pointer
           MPSNodeVirtualFile vf = rvf.getVirtualFile(new SNodePointer(evt.getModel().getReference(), ((SNodeRemoveEvent) evt).getChild().getNodeId()));
-          if (vf == null && ((SNodeRemoveEvent) evt).getParent() != null) {
-            vf = rvf.getVirtualFile(((SNodeRemoveEvent) evt).getParent().getReference());
-          }
           if (vf != null) {
             deletedFiles.add(vf);
+          } else if (((SNodeRemoveEvent) evt).getParent() != null) {
+            vf = rvf.getVirtualFile(((SNodeRemoveEvent) evt).getParent().getContainingRoot().getReference());
+            if (vf != null) {
+              changedFiles.add(vf);
+            }
           }
         } else if (evt instanceof SNodeAddEvent) {
           // SNode.getReference() for (later) deleted node produces invalid pointer
           MPSNodeVirtualFile vf = rvf.getVirtualFile(new SNodePointer(evt.getModel().getReference(), ((SNodeAddEvent) evt).getChild().getNodeId()));
-          if (vf == null && ((SNodeAddEvent) evt).getParent() != null) {
-            vf = rvf.getVirtualFile(((SNodeAddEvent) evt).getParent().getReference());
-          }
           if (vf != null) {
             deletedFiles.remove(vf);
+          } else {
+            vf = rvf.getVirtualFile(((SNodeAddEvent) evt).getChild().getContainingRoot().getReference());
+            if (vf != null) {
+              changedFiles.add(vf);
+            }
           }
-
         } else if (evt instanceof SReferenceChangeEvent) {
           MPSNodeVirtualFile vf = rvf.getVirtualFile(((SReferenceChangeEvent) evt).getNode().getReference());
           if (vf == null) {
