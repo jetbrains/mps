@@ -11890,343 +11890,132 @@
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/4666906971842208210">
     <file name="WhileLoopUnwrap1_Test.java">
-      <node id="4666906971842208210" at="19,34,20,25" concept="11" />
-      <node id="4666906971842208210" at="24,56,25,36" concept="2" />
-      <node id="4666906971842208210" at="30,52,31,19" concept="11" />
-      <node id="4666906971842208210" at="35,51,36,72" concept="2" />
-      <node id="1241246198920139748" at="38,44,39,76" concept="2" />
-      <node id="4666906971842208210" at="16,0,18,0" concept="9" trace="ourParamCache" />
-      <node id="4666906971842208210" at="19,0,22,0" concept="1" trace="WhileLoopUnwrap1_Test#()V" />
-      <node id="4666906971842208210" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198920139746" at="38,0,41,0" concept="5" trace="run#()V" />
-      <node id="4666906971842208210" at="23,0,27,0" concept="5" trace="test_WhileLoopUnwrap1#()V" />
-      <node id="1241246198920139744" at="36,72,41,16" concept="2" />
-      <node id="4666906971842208210" at="34,0,43,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="4666906971842208210" at="19,34,20,25" />
-      <scope id="4666906971842208210" at="24,56,25,36" />
-      <scope id="4666906971842208210" at="30,52,31,19" />
-      <scope id="1241246198920139747" at="38,44,39,76" />
-      <scope id="4666906971842208210" at="19,0,22,0" />
-      <scope id="4666906971842208210" at="30,0,33,0">
+      <node id="4666906971842208210" at="18,34,19,25" concept="11" />
+      <node id="4666906971842208210" at="23,56,24,36" concept="2" />
+      <node id="4666906971842208210" at="29,52,30,19" concept="11" />
+      <node id="4666906971842208210" at="34,51,35,71" concept="2" />
+      <node id="563261338089132001" at="35,71,36,112" concept="2" />
+      <node id="4666906971842208210" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="4666906971842208210" at="18,0,21,0" concept="1" trace="WhileLoopUnwrap1_Test#()V" />
+      <node id="4666906971842208210" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="4666906971842208210" at="22,0,26,0" concept="5" trace="test_WhileLoopUnwrap1#()V" />
+      <node id="4666906971842208210" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="4666906971842208210" at="18,34,19,25" />
+      <scope id="4666906971842208210" at="23,56,24,36" />
+      <scope id="4666906971842208210" at="29,52,30,19" />
+      <scope id="4666906971842208210" at="34,51,36,112" />
+      <scope id="4666906971842208210" at="18,0,21,0" />
+      <scope id="4666906971842208210" at="29,0,32,0">
         <var name="owner" id="4666906971842208210" />
       </scope>
-      <scope id="1241246198920139746" at="38,0,41,0" />
-      <scope id="4666906971842208210" at="23,0,27,0" />
-      <scope id="4666906971842208210" at="35,51,41,16" />
-      <scope id="4666906971842208210" at="34,0,43,0" />
-      <unit id="1241246198920139746" at="37,48,41,7" name="jetbrains.mps.editorTest.WhileLoopUnwrap1_Test$TestBody$1" />
-      <unit id="4666906971842208210" at="28,0,44,0" name="jetbrains.mps.editorTest.WhileLoopUnwrap1_Test$TestBody" />
-      <unit id="4666906971842208210" at="14,0,45,0" name="jetbrains.mps.editorTest.WhileLoopUnwrap1_Test" />
+      <scope id="4666906971842208210" at="22,0,26,0" />
+      <scope id="4666906971842208210" at="33,0,38,0" />
+      <unit id="4666906971842208210" at="27,0,39,0" name="jetbrains.mps.editorTest.WhileLoopUnwrap1_Test$TestBody" />
+      <unit id="4666906971842208210" at="13,0,40,0" name="jetbrains.mps.editorTest.WhileLoopUnwrap1_Test" />
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/4666906971842243400">
     <file name="WhileLoopUnwrap2_Test.java">
-      <node id="4666906971842243400" at="19,34,20,25" concept="11" />
-      <node id="4666906971842243400" at="24,56,25,36" concept="2" />
-      <node id="4666906971842243400" at="30,52,31,19" concept="11" />
-      <node id="4666906971842243400" at="35,51,36,72" concept="2" />
-      <node id="1241246198920140467" at="38,44,39,76" concept="2" />
-      <node id="4666906971842243400" at="16,0,18,0" concept="9" trace="ourParamCache" />
-      <node id="4666906971842243400" at="19,0,22,0" concept="1" trace="WhileLoopUnwrap2_Test#()V" />
-      <node id="4666906971842243400" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198920140465" at="38,0,41,0" concept="5" trace="run#()V" />
-      <node id="4666906971842243400" at="23,0,27,0" concept="5" trace="test_WhileLoopUnwrap2#()V" />
-      <node id="1241246198920140463" at="36,72,41,16" concept="2" />
-      <node id="4666906971842243400" at="34,0,43,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="4666906971842243400" at="19,34,20,25" />
-      <scope id="4666906971842243400" at="24,56,25,36" />
-      <scope id="4666906971842243400" at="30,52,31,19" />
-      <scope id="1241246198920140466" at="38,44,39,76" />
-      <scope id="4666906971842243400" at="19,0,22,0" />
-      <scope id="4666906971842243400" at="30,0,33,0">
+      <node id="4666906971842243400" at="18,34,19,25" concept="11" />
+      <node id="4666906971842243400" at="23,56,24,36" concept="2" />
+      <node id="4666906971842243400" at="29,52,30,19" concept="11" />
+      <node id="4666906971842243400" at="34,51,35,71" concept="2" />
+      <node id="563261338089136634" at="35,71,36,112" concept="2" />
+      <node id="4666906971842243400" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="4666906971842243400" at="18,0,21,0" concept="1" trace="WhileLoopUnwrap2_Test#()V" />
+      <node id="4666906971842243400" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="4666906971842243400" at="22,0,26,0" concept="5" trace="test_WhileLoopUnwrap2#()V" />
+      <node id="4666906971842243400" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="4666906971842243400" at="18,34,19,25" />
+      <scope id="4666906971842243400" at="23,56,24,36" />
+      <scope id="4666906971842243400" at="29,52,30,19" />
+      <scope id="4666906971842243400" at="34,51,36,112" />
+      <scope id="4666906971842243400" at="18,0,21,0" />
+      <scope id="4666906971842243400" at="29,0,32,0">
         <var name="owner" id="4666906971842243400" />
       </scope>
-      <scope id="1241246198920140465" at="38,0,41,0" />
-      <scope id="4666906971842243400" at="23,0,27,0" />
-      <scope id="4666906971842243400" at="35,51,41,16" />
-      <scope id="4666906971842243400" at="34,0,43,0" />
-      <unit id="1241246198920140465" at="37,48,41,7" name="jetbrains.mps.editorTest.WhileLoopUnwrap2_Test$TestBody$1" />
-      <unit id="4666906971842243400" at="28,0,44,0" name="jetbrains.mps.editorTest.WhileLoopUnwrap2_Test$TestBody" />
-      <unit id="4666906971842243400" at="14,0,45,0" name="jetbrains.mps.editorTest.WhileLoopUnwrap2_Test" />
+      <scope id="4666906971842243400" at="22,0,26,0" />
+      <scope id="4666906971842243400" at="33,0,38,0" />
+      <unit id="4666906971842243400" at="27,0,39,0" name="jetbrains.mps.editorTest.WhileLoopUnwrap2_Test$TestBody" />
+      <unit id="4666906971842243400" at="13,0,40,0" name="jetbrains.mps.editorTest.WhileLoopUnwrap2_Test" />
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/4666906971842245117">
     <file name="TryStatementUnwrap1_Test.java">
-      <node id="4666906971842245117" at="19,37,20,25" concept="11" />
-      <node id="4666906971842245117" at="24,59,25,36" concept="2" />
-      <node id="4666906971842245117" at="30,52,31,19" concept="11" />
-      <node id="4666906971842245117" at="35,51,36,72" concept="2" />
-      <node id="1241246198921687428" at="38,44,39,76" concept="2" />
-      <node id="4666906971842245117" at="16,0,18,0" concept="9" trace="ourParamCache" />
-      <node id="4666906971842245117" at="19,0,22,0" concept="1" trace="TryStatementUnwrap1_Test#()V" />
-      <node id="4666906971842245117" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198921687426" at="38,0,41,0" concept="5" trace="run#()V" />
-      <node id="4666906971842245117" at="23,0,27,0" concept="5" trace="test_TryStatementUnwrap1#()V" />
-      <node id="1241246198921687424" at="36,72,41,16" concept="2" />
-      <node id="4666906971842245117" at="34,0,43,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="4666906971842245117" at="19,37,20,25" />
-      <scope id="4666906971842245117" at="24,59,25,36" />
-      <scope id="4666906971842245117" at="30,52,31,19" />
-      <scope id="1241246198921687427" at="38,44,39,76" />
-      <scope id="4666906971842245117" at="19,0,22,0" />
-      <scope id="4666906971842245117" at="30,0,33,0">
+      <node id="4666906971842245117" at="18,37,19,25" concept="11" />
+      <node id="4666906971842245117" at="23,59,24,36" concept="2" />
+      <node id="4666906971842245117" at="29,52,30,19" concept="11" />
+      <node id="4666906971842245117" at="34,51,35,70" concept="2" />
+      <node id="563261338089125159" at="35,70,36,112" concept="2" />
+      <node id="4666906971842245117" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="4666906971842245117" at="18,0,21,0" concept="1" trace="TryStatementUnwrap1_Test#()V" />
+      <node id="4666906971842245117" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="4666906971842245117" at="22,0,26,0" concept="5" trace="test_TryStatementUnwrap1#()V" />
+      <node id="4666906971842245117" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="4666906971842245117" at="18,37,19,25" />
+      <scope id="4666906971842245117" at="23,59,24,36" />
+      <scope id="4666906971842245117" at="29,52,30,19" />
+      <scope id="4666906971842245117" at="34,51,36,112" />
+      <scope id="4666906971842245117" at="18,0,21,0" />
+      <scope id="4666906971842245117" at="29,0,32,0">
         <var name="owner" id="4666906971842245117" />
       </scope>
-      <scope id="1241246198921687426" at="38,0,41,0" />
-      <scope id="4666906971842245117" at="23,0,27,0" />
-      <scope id="4666906971842245117" at="35,51,41,16" />
-      <scope id="4666906971842245117" at="34,0,43,0" />
-      <unit id="1241246198921687426" at="37,48,41,7" name="jetbrains.mps.editorTest.TryStatementUnwrap1_Test$TestBody$1" />
-      <unit id="4666906971842245117" at="28,0,44,0" name="jetbrains.mps.editorTest.TryStatementUnwrap1_Test$TestBody" />
-      <unit id="4666906971842245117" at="14,0,45,0" name="jetbrains.mps.editorTest.TryStatementUnwrap1_Test" />
+      <scope id="4666906971842245117" at="22,0,26,0" />
+      <scope id="4666906971842245117" at="33,0,38,0" />
+      <unit id="4666906971842245117" at="27,0,39,0" name="jetbrains.mps.editorTest.TryStatementUnwrap1_Test$TestBody" />
+      <unit id="4666906971842245117" at="13,0,40,0" name="jetbrains.mps.editorTest.TryStatementUnwrap1_Test" />
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/4666906971842249131">
     <file name="TryStatementUnwrap2_Test.java">
-      <node id="4666906971842249131" at="19,37,20,25" concept="11" />
-      <node id="4666906971842249131" at="24,59,25,36" concept="2" />
-      <node id="4666906971842249131" at="30,52,31,19" concept="11" />
-      <node id="4666906971842249131" at="35,51,36,72" concept="2" />
-      <node id="1241246198928257514" at="38,44,39,76" concept="2" />
-      <node id="4666906971842249131" at="16,0,18,0" concept="9" trace="ourParamCache" />
-      <node id="4666906971842249131" at="19,0,22,0" concept="1" trace="TryStatementUnwrap2_Test#()V" />
-      <node id="4666906971842249131" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198928257512" at="38,0,41,0" concept="5" trace="run#()V" />
-      <node id="4666906971842249131" at="23,0,27,0" concept="5" trace="test_TryStatementUnwrap2#()V" />
-      <node id="1241246198928257510" at="36,72,41,16" concept="2" />
-      <node id="4666906971842249131" at="34,0,43,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="4666906971842249131" at="19,37,20,25" />
-      <scope id="4666906971842249131" at="24,59,25,36" />
-      <scope id="4666906971842249131" at="30,52,31,19" />
-      <scope id="1241246198928257513" at="38,44,39,76" />
-      <scope id="4666906971842249131" at="19,0,22,0" />
-      <scope id="4666906971842249131" at="30,0,33,0">
+      <node id="4666906971842249131" at="18,37,19,25" concept="11" />
+      <node id="4666906971842249131" at="23,59,24,36" concept="2" />
+      <node id="4666906971842249131" at="29,52,30,19" concept="11" />
+      <node id="4666906971842249131" at="34,51,35,71" concept="2" />
+      <node id="563261338089140375" at="35,71,36,112" concept="2" />
+      <node id="4666906971842249131" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="4666906971842249131" at="18,0,21,0" concept="1" trace="TryStatementUnwrap2_Test#()V" />
+      <node id="4666906971842249131" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="4666906971842249131" at="22,0,26,0" concept="5" trace="test_TryStatementUnwrap2#()V" />
+      <node id="4666906971842249131" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="4666906971842249131" at="18,37,19,25" />
+      <scope id="4666906971842249131" at="23,59,24,36" />
+      <scope id="4666906971842249131" at="29,52,30,19" />
+      <scope id="4666906971842249131" at="34,51,36,112" />
+      <scope id="4666906971842249131" at="18,0,21,0" />
+      <scope id="4666906971842249131" at="29,0,32,0">
         <var name="owner" id="4666906971842249131" />
       </scope>
-      <scope id="1241246198928257512" at="38,0,41,0" />
-      <scope id="4666906971842249131" at="23,0,27,0" />
-      <scope id="4666906971842249131" at="35,51,41,16" />
-      <scope id="4666906971842249131" at="34,0,43,0" />
-      <unit id="1241246198928257512" at="37,48,41,7" name="jetbrains.mps.editorTest.TryStatementUnwrap2_Test$TestBody$1" />
-      <unit id="4666906971842249131" at="28,0,44,0" name="jetbrains.mps.editorTest.TryStatementUnwrap2_Test$TestBody" />
-      <unit id="4666906971842249131" at="14,0,45,0" name="jetbrains.mps.editorTest.TryStatementUnwrap2_Test" />
-    </file>
-  </root>
-  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/4666906971842253258">
-    <file name="TryStatementUnwrap3_Test.java">
-      <node id="4666906971842253258" at="19,37,20,25" concept="11" />
-      <node id="4666906971842253258" at="24,59,25,36" concept="2" />
-      <node id="4666906971842253258" at="30,52,31,19" concept="11" />
-      <node id="4666906971842253258" at="35,51,36,72" concept="2" />
-      <node id="1241246198928258147" at="38,44,39,76" concept="2" />
-      <node id="4666906971842253258" at="16,0,18,0" concept="9" trace="ourParamCache" />
-      <node id="4666906971842253258" at="19,0,22,0" concept="1" trace="TryStatementUnwrap3_Test#()V" />
-      <node id="4666906971842253258" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198928258145" at="38,0,41,0" concept="5" trace="run#()V" />
-      <node id="4666906971842253258" at="23,0,27,0" concept="5" trace="test_TryStatementUnwrap3#()V" />
-      <node id="1241246198928258143" at="36,72,41,16" concept="2" />
-      <node id="4666906971842253258" at="34,0,43,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="4666906971842253258" at="19,37,20,25" />
-      <scope id="4666906971842253258" at="24,59,25,36" />
-      <scope id="4666906971842253258" at="30,52,31,19" />
-      <scope id="1241246198928258146" at="38,44,39,76" />
-      <scope id="4666906971842253258" at="19,0,22,0" />
-      <scope id="4666906971842253258" at="30,0,33,0">
-        <var name="owner" id="4666906971842253258" />
-      </scope>
-      <scope id="1241246198928258145" at="38,0,41,0" />
-      <scope id="4666906971842253258" at="23,0,27,0" />
-      <scope id="4666906971842253258" at="35,51,41,16" />
-      <scope id="4666906971842253258" at="34,0,43,0" />
-      <unit id="1241246198928258145" at="37,48,41,7" name="jetbrains.mps.editorTest.TryStatementUnwrap3_Test$TestBody$1" />
-      <unit id="4666906971842253258" at="28,0,44,0" name="jetbrains.mps.editorTest.TryStatementUnwrap3_Test$TestBody" />
-      <unit id="4666906971842253258" at="14,0,45,0" name="jetbrains.mps.editorTest.TryStatementUnwrap3_Test" />
+      <scope id="4666906971842249131" at="22,0,26,0" />
+      <scope id="4666906971842249131" at="33,0,38,0" />
+      <unit id="4666906971842249131" at="27,0,39,0" name="jetbrains.mps.editorTest.TryStatementUnwrap2_Test$TestBody" />
+      <unit id="4666906971842249131" at="13,0,40,0" name="jetbrains.mps.editorTest.TryStatementUnwrap2_Test" />
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/4666906971842253933">
-    <file name="TryStatementUnwrap4_Test.java">
-      <node id="4666906971842253933" at="19,37,20,25" concept="11" />
-      <node id="4666906971842253933" at="24,59,25,36" concept="2" />
-      <node id="4666906971842253933" at="30,52,31,19" concept="11" />
-      <node id="4666906971842253933" at="35,51,36,72" concept="2" />
-      <node id="1241246198920141230" at="38,44,39,76" concept="2" />
-      <node id="4666906971842253933" at="16,0,18,0" concept="9" trace="ourParamCache" />
-      <node id="4666906971842253933" at="19,0,22,0" concept="1" trace="TryStatementUnwrap4_Test#()V" />
-      <node id="4666906971842253933" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198920141228" at="38,0,41,0" concept="5" trace="run#()V" />
-      <node id="4666906971842253933" at="23,0,27,0" concept="5" trace="test_TryStatementUnwrap4#()V" />
-      <node id="1241246198920141226" at="36,72,41,16" concept="2" />
-      <node id="4666906971842253933" at="34,0,43,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="4666906971842253933" at="19,37,20,25" />
-      <scope id="4666906971842253933" at="24,59,25,36" />
-      <scope id="4666906971842253933" at="30,52,31,19" />
-      <scope id="1241246198920141229" at="38,44,39,76" />
-      <scope id="4666906971842253933" at="19,0,22,0" />
-      <scope id="4666906971842253933" at="30,0,33,0">
+    <file name="TryStatementUnwrap3_Test.java">
+      <node id="4666906971842253933" at="18,37,19,25" concept="11" />
+      <node id="4666906971842253933" at="23,59,24,36" concept="2" />
+      <node id="4666906971842253933" at="29,52,30,19" concept="11" />
+      <node id="4666906971842253933" at="34,51,35,71" concept="2" />
+      <node id="563261338089145710" at="35,71,36,112" concept="2" />
+      <node id="4666906971842253933" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="4666906971842253933" at="18,0,21,0" concept="1" trace="TryStatementUnwrap3_Test#()V" />
+      <node id="4666906971842253933" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="4666906971842253933" at="22,0,26,0" concept="5" trace="test_TryStatementUnwrap3#()V" />
+      <node id="4666906971842253933" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="4666906971842253933" at="18,37,19,25" />
+      <scope id="4666906971842253933" at="23,59,24,36" />
+      <scope id="4666906971842253933" at="29,52,30,19" />
+      <scope id="4666906971842253933" at="34,51,36,112" />
+      <scope id="4666906971842253933" at="18,0,21,0" />
+      <scope id="4666906971842253933" at="29,0,32,0">
         <var name="owner" id="4666906971842253933" />
       </scope>
-      <scope id="1241246198920141228" at="38,0,41,0" />
-      <scope id="4666906971842253933" at="23,0,27,0" />
-      <scope id="4666906971842253933" at="35,51,41,16" />
-      <scope id="4666906971842253933" at="34,0,43,0" />
-      <unit id="1241246198920141228" at="37,48,41,7" name="jetbrains.mps.editorTest.TryStatementUnwrap4_Test$TestBody$1" />
-      <unit id="4666906971842253933" at="28,0,44,0" name="jetbrains.mps.editorTest.TryStatementUnwrap4_Test$TestBody" />
-      <unit id="4666906971842253933" at="14,0,45,0" name="jetbrains.mps.editorTest.TryStatementUnwrap4_Test" />
-    </file>
-  </root>
-  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/4666906971842256356">
-    <file name="TryStatementUnwrap5_Test.java">
-      <node id="4666906971842256356" at="19,37,20,25" concept="11" />
-      <node id="4666906971842256356" at="24,59,25,36" concept="2" />
-      <node id="4666906971842256356" at="30,52,31,19" concept="11" />
-      <node id="4666906971842256356" at="35,51,36,72" concept="2" />
-      <node id="1241246198928258872" at="38,44,39,76" concept="2" />
-      <node id="4666906971842256356" at="16,0,18,0" concept="9" trace="ourParamCache" />
-      <node id="4666906971842256356" at="19,0,22,0" concept="1" trace="TryStatementUnwrap5_Test#()V" />
-      <node id="4666906971842256356" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198928258870" at="38,0,41,0" concept="5" trace="run#()V" />
-      <node id="4666906971842256356" at="23,0,27,0" concept="5" trace="test_TryStatementUnwrap5#()V" />
-      <node id="1241246198928258868" at="36,72,41,16" concept="2" />
-      <node id="4666906971842256356" at="34,0,43,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="4666906971842256356" at="19,37,20,25" />
-      <scope id="4666906971842256356" at="24,59,25,36" />
-      <scope id="4666906971842256356" at="30,52,31,19" />
-      <scope id="1241246198928258871" at="38,44,39,76" />
-      <scope id="4666906971842256356" at="19,0,22,0" />
-      <scope id="4666906971842256356" at="30,0,33,0">
-        <var name="owner" id="4666906971842256356" />
-      </scope>
-      <scope id="1241246198928258870" at="38,0,41,0" />
-      <scope id="4666906971842256356" at="23,0,27,0" />
-      <scope id="4666906971842256356" at="35,51,41,16" />
-      <scope id="4666906971842256356" at="34,0,43,0" />
-      <unit id="1241246198928258870" at="37,48,41,7" name="jetbrains.mps.editorTest.TryStatementUnwrap5_Test$TestBody$1" />
-      <unit id="4666906971842256356" at="28,0,44,0" name="jetbrains.mps.editorTest.TryStatementUnwrap5_Test$TestBody" />
-      <unit id="4666906971842256356" at="14,0,45,0" name="jetbrains.mps.editorTest.TryStatementUnwrap5_Test" />
-    </file>
-  </root>
-  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/4666906971842257539">
-    <file name="TryStatementUnwrap6_Test.java">
-      <node id="4666906971842257539" at="19,37,20,25" concept="11" />
-      <node id="4666906971842257539" at="24,59,25,36" concept="2" />
-      <node id="4666906971842257539" at="30,52,31,19" concept="11" />
-      <node id="4666906971842257539" at="35,51,36,72" concept="2" />
-      <node id="1241246198928259563" at="38,44,39,76" concept="2" />
-      <node id="4666906971842257539" at="16,0,18,0" concept="9" trace="ourParamCache" />
-      <node id="4666906971842257539" at="19,0,22,0" concept="1" trace="TryStatementUnwrap6_Test#()V" />
-      <node id="4666906971842257539" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198928259561" at="38,0,41,0" concept="5" trace="run#()V" />
-      <node id="4666906971842257539" at="23,0,27,0" concept="5" trace="test_TryStatementUnwrap6#()V" />
-      <node id="1241246198928259559" at="36,72,41,16" concept="2" />
-      <node id="4666906971842257539" at="34,0,43,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="4666906971842257539" at="19,37,20,25" />
-      <scope id="4666906971842257539" at="24,59,25,36" />
-      <scope id="4666906971842257539" at="30,52,31,19" />
-      <scope id="1241246198928259562" at="38,44,39,76" />
-      <scope id="4666906971842257539" at="19,0,22,0" />
-      <scope id="4666906971842257539" at="30,0,33,0">
-        <var name="owner" id="4666906971842257539" />
-      </scope>
-      <scope id="1241246198928259561" at="38,0,41,0" />
-      <scope id="4666906971842257539" at="23,0,27,0" />
-      <scope id="4666906971842257539" at="35,51,41,16" />
-      <scope id="4666906971842257539" at="34,0,43,0" />
-      <unit id="1241246198928259561" at="37,48,41,7" name="jetbrains.mps.editorTest.TryStatementUnwrap6_Test$TestBody$1" />
-      <unit id="4666906971842257539" at="28,0,44,0" name="jetbrains.mps.editorTest.TryStatementUnwrap6_Test$TestBody" />
-      <unit id="4666906971842257539" at="14,0,45,0" name="jetbrains.mps.editorTest.TryStatementUnwrap6_Test" />
-    </file>
-  </root>
-  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/4666906971842261824">
-    <file name="TryStatementUnwrap7_Test.java">
-      <node id="4666906971842261824" at="19,37,20,25" concept="11" />
-      <node id="4666906971842261824" at="24,59,25,36" concept="2" />
-      <node id="4666906971842261824" at="30,52,31,19" concept="11" />
-      <node id="4666906971842261824" at="35,51,36,72" concept="2" />
-      <node id="1241246198920142194" at="38,44,39,76" concept="2" />
-      <node id="4666906971842261824" at="16,0,18,0" concept="9" trace="ourParamCache" />
-      <node id="4666906971842261824" at="19,0,22,0" concept="1" trace="TryStatementUnwrap7_Test#()V" />
-      <node id="4666906971842261824" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198920142192" at="38,0,41,0" concept="5" trace="run#()V" />
-      <node id="4666906971842261824" at="23,0,27,0" concept="5" trace="test_TryStatementUnwrap7#()V" />
-      <node id="1241246198920142190" at="36,72,41,16" concept="2" />
-      <node id="4666906971842261824" at="34,0,43,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="4666906971842261824" at="19,37,20,25" />
-      <scope id="4666906971842261824" at="24,59,25,36" />
-      <scope id="4666906971842261824" at="30,52,31,19" />
-      <scope id="1241246198920142193" at="38,44,39,76" />
-      <scope id="4666906971842261824" at="19,0,22,0" />
-      <scope id="4666906971842261824" at="30,0,33,0">
-        <var name="owner" id="4666906971842261824" />
-      </scope>
-      <scope id="1241246198920142192" at="38,0,41,0" />
-      <scope id="4666906971842261824" at="23,0,27,0" />
-      <scope id="4666906971842261824" at="35,51,41,16" />
-      <scope id="4666906971842261824" at="34,0,43,0" />
-      <unit id="1241246198920142192" at="37,48,41,7" name="jetbrains.mps.editorTest.TryStatementUnwrap7_Test$TestBody$1" />
-      <unit id="4666906971842261824" at="28,0,44,0" name="jetbrains.mps.editorTest.TryStatementUnwrap7_Test$TestBody" />
-      <unit id="4666906971842261824" at="14,0,45,0" name="jetbrains.mps.editorTest.TryStatementUnwrap7_Test" />
-    </file>
-  </root>
-  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/4666906971842265325">
-    <file name="TryStatementUnwrap8_Test.java">
-      <node id="4666906971842265325" at="19,37,20,25" concept="11" />
-      <node id="4666906971842265325" at="24,59,25,36" concept="2" />
-      <node id="4666906971842265325" at="30,52,31,19" concept="11" />
-      <node id="4666906971842265325" at="35,51,36,72" concept="2" />
-      <node id="1241246198928260542" at="38,44,39,76" concept="2" />
-      <node id="4666906971842265325" at="16,0,18,0" concept="9" trace="ourParamCache" />
-      <node id="4666906971842265325" at="19,0,22,0" concept="1" trace="TryStatementUnwrap8_Test#()V" />
-      <node id="4666906971842265325" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198928260540" at="38,0,41,0" concept="5" trace="run#()V" />
-      <node id="4666906971842265325" at="23,0,27,0" concept="5" trace="test_TryStatementUnwrap8#()V" />
-      <node id="1241246198928260538" at="36,72,41,16" concept="2" />
-      <node id="4666906971842265325" at="34,0,43,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="4666906971842265325" at="19,37,20,25" />
-      <scope id="4666906971842265325" at="24,59,25,36" />
-      <scope id="4666906971842265325" at="30,52,31,19" />
-      <scope id="1241246198928260541" at="38,44,39,76" />
-      <scope id="4666906971842265325" at="19,0,22,0" />
-      <scope id="4666906971842265325" at="30,0,33,0">
-        <var name="owner" id="4666906971842265325" />
-      </scope>
-      <scope id="1241246198928260540" at="38,0,41,0" />
-      <scope id="4666906971842265325" at="23,0,27,0" />
-      <scope id="4666906971842265325" at="35,51,41,16" />
-      <scope id="4666906971842265325" at="34,0,43,0" />
-      <unit id="1241246198928260540" at="37,48,41,7" name="jetbrains.mps.editorTest.TryStatementUnwrap8_Test$TestBody$1" />
-      <unit id="4666906971842265325" at="28,0,44,0" name="jetbrains.mps.editorTest.TryStatementUnwrap8_Test$TestBody" />
-      <unit id="4666906971842265325" at="14,0,45,0" name="jetbrains.mps.editorTest.TryStatementUnwrap8_Test" />
-    </file>
-  </root>
-  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/4666906971842269487">
-    <file name="TryStatementUnwrap9_Test.java">
-      <node id="4666906971842269487" at="19,37,20,25" concept="11" />
-      <node id="4666906971842269487" at="24,59,25,36" concept="2" />
-      <node id="4666906971842269487" at="30,52,31,19" concept="11" />
-      <node id="4666906971842269487" at="35,51,36,72" concept="2" />
-      <node id="1241246198920143158" at="38,44,39,76" concept="2" />
-      <node id="4666906971842269487" at="16,0,18,0" concept="9" trace="ourParamCache" />
-      <node id="4666906971842269487" at="19,0,22,0" concept="1" trace="TryStatementUnwrap9_Test#()V" />
-      <node id="4666906971842269487" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198920143156" at="38,0,41,0" concept="5" trace="run#()V" />
-      <node id="4666906971842269487" at="23,0,27,0" concept="5" trace="test_TryStatementUnwrap9#()V" />
-      <node id="1241246198920143154" at="36,72,41,16" concept="2" />
-      <node id="4666906971842269487" at="34,0,43,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="4666906971842269487" at="19,37,20,25" />
-      <scope id="4666906971842269487" at="24,59,25,36" />
-      <scope id="4666906971842269487" at="30,52,31,19" />
-      <scope id="1241246198920143157" at="38,44,39,76" />
-      <scope id="4666906971842269487" at="19,0,22,0" />
-      <scope id="4666906971842269487" at="30,0,33,0">
-        <var name="owner" id="4666906971842269487" />
-      </scope>
-      <scope id="1241246198920143156" at="38,0,41,0" />
-      <scope id="4666906971842269487" at="23,0,27,0" />
-      <scope id="4666906971842269487" at="35,51,41,16" />
-      <scope id="4666906971842269487" at="34,0,43,0" />
-      <unit id="1241246198920143156" at="37,48,41,7" name="jetbrains.mps.editorTest.TryStatementUnwrap9_Test$TestBody$1" />
-      <unit id="4666906971842269487" at="28,0,44,0" name="jetbrains.mps.editorTest.TryStatementUnwrap9_Test$TestBody" />
-      <unit id="4666906971842269487" at="14,0,45,0" name="jetbrains.mps.editorTest.TryStatementUnwrap9_Test" />
+      <scope id="4666906971842253933" at="22,0,26,0" />
+      <scope id="4666906971842253933" at="33,0,38,0" />
+      <unit id="4666906971842253933" at="27,0,39,0" name="jetbrains.mps.editorTest.TryStatementUnwrap3_Test$TestBody" />
+      <unit id="4666906971842253933" at="13,0,40,0" name="jetbrains.mps.editorTest.TryStatementUnwrap3_Test" />
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/4666906971842273358">
@@ -12234,14 +12023,14 @@
       <node id="4666906971842273358" at="19,42,20,25" concept="11" />
       <node id="4666906971842273358" at="24,64,25,36" concept="2" />
       <node id="4666906971842273358" at="30,52,31,19" concept="11" />
-      <node id="4666906971842273358" at="35,51,36,72" concept="2" />
+      <node id="4666906971842273358" at="35,51,36,71" concept="2" />
       <node id="1241246198920144279" at="38,44,39,76" concept="2" />
       <node id="4666906971842273358" at="16,0,18,0" concept="9" trace="ourParamCache" />
       <node id="4666906971842273358" at="19,0,22,0" concept="1" trace="TryCatchStatementUnwrap1_Test#()V" />
       <node id="4666906971842273358" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="1241246198920144277" at="38,0,41,0" concept="5" trace="run#()V" />
       <node id="4666906971842273358" at="23,0,27,0" concept="5" trace="test_TryCatchStatementUnwrap1#()V" />
-      <node id="1241246198920144275" at="36,72,41,16" concept="2" />
+      <node id="1241246198920144275" at="36,71,41,16" concept="2" />
       <node id="4666906971842273358" at="34,0,43,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="4666906971842273358" at="19,42,20,25" />
       <scope id="4666906971842273358" at="24,64,25,36" />
@@ -14939,7 +14728,7 @@
       <node id="5758795789001197905" at="21,50,22,25" concept="11" />
       <node id="5758795789001197905" at="26,72,27,36" concept="2" />
       <node id="5758795789001197905" at="32,52,33,19" concept="11" />
-      <node id="5758795789001197905" at="37,51,38,72" concept="2" />
+      <node id="5758795789001197905" at="37,51,38,71" concept="2" />
       <node id="5758795789001197920" at="40,44,41,73" concept="2" />
       <node id="5758795789001197934" at="41,73,42,153" concept="2" />
       <node id="5758795789001197940" at="42,153,43,73" concept="2" />
@@ -14948,7 +14737,7 @@
       <node id="5758795789001197905" at="32,0,35,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="5758795789001197905" at="25,0,29,0" concept="5" trace="test_DeleteTryFinallyStatementTwoStep#()V" />
       <node id="1241246198926264647" at="40,0,45,0" concept="5" trace="run#()V" />
-      <node id="1241246198926264648" at="38,72,45,15" concept="2" />
+      <node id="1241246198926264648" at="38,71,45,15" concept="2" />
       <node id="5758795789001197905" at="36,0,47,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="5758795789001197905" at="21,50,22,25" />
       <scope id="5758795789001197905" at="26,72,27,36" />
@@ -15038,7 +14827,7 @@
       <node id="5758795789001408666" at="21,58,22,25" concept="11" />
       <node id="5758795789001408666" at="26,80,27,36" concept="2" />
       <node id="5758795789001408666" at="32,52,33,19" concept="11" />
-      <node id="5758795789001408666" at="37,51,38,72" concept="2" />
+      <node id="5758795789001408666" at="37,51,38,71" concept="2" />
       <node id="5758795789001408681" at="40,44,41,73" concept="2" />
       <node id="5758795789001408683" at="41,73,42,153" concept="2" />
       <node id="5758795789001408691" at="42,153,43,73" concept="2" />
@@ -15047,7 +14836,7 @@
       <node id="5758795789001408666" at="32,0,35,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="5758795789001408666" at="25,0,29,0" concept="5" trace="test_DeleteIfStatementFromOpeningBraceTwoStep#()V" />
       <node id="1241246198926264672" at="40,0,45,0" concept="5" trace="run#()V" />
-      <node id="1241246198926264673" at="38,72,45,15" concept="2" />
+      <node id="1241246198926264673" at="38,71,45,15" concept="2" />
       <node id="5758795789001408666" at="36,0,47,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="5758795789001408666" at="21,58,22,25" />
       <scope id="5758795789001408666" at="26,80,27,36" />
@@ -18989,221 +18778,184 @@
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/6412722656403834101">
     <file name="IfStatementUnwrap1_Test.java">
-      <node id="6412722656403834101" at="19,36,20,25" concept="11" />
-      <node id="6412722656403834101" at="24,58,25,36" concept="2" />
-      <node id="6412722656403834101" at="30,52,31,19" concept="11" />
-      <node id="6412722656403834101" at="35,51,36,72" concept="2" />
-      <node id="1241246198920154074" at="38,44,39,76" concept="2" />
-      <node id="6412722656403834101" at="16,0,18,0" concept="9" trace="ourParamCache" />
-      <node id="6412722656403834101" at="19,0,22,0" concept="1" trace="IfStatementUnwrap1_Test#()V" />
-      <node id="6412722656403834101" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198920154072" at="38,0,41,0" concept="5" trace="run#()V" />
-      <node id="6412722656403834101" at="23,0,27,0" concept="5" trace="test_IfStatementUnwrap1#()V" />
-      <node id="1241246198920154070" at="36,72,41,16" concept="2" />
-      <node id="6412722656403834101" at="34,0,43,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="6412722656403834101" at="19,36,20,25" />
-      <scope id="6412722656403834101" at="24,58,25,36" />
-      <scope id="6412722656403834101" at="30,52,31,19" />
-      <scope id="1241246198920154073" at="38,44,39,76" />
-      <scope id="6412722656403834101" at="19,0,22,0" />
-      <scope id="6412722656403834101" at="30,0,33,0">
+      <node id="6412722656403834101" at="18,36,19,25" concept="11" />
+      <node id="6412722656403834101" at="23,58,24,36" concept="2" />
+      <node id="6412722656403834101" at="29,52,30,19" concept="11" />
+      <node id="6412722656403834101" at="34,51,35,72" concept="2" />
+      <node id="1108126574883028392" at="35,72,36,112" concept="2" />
+      <node id="6412722656403834101" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="6412722656403834101" at="18,0,21,0" concept="1" trace="IfStatementUnwrap1_Test#()V" />
+      <node id="6412722656403834101" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6412722656403834101" at="22,0,26,0" concept="5" trace="test_IfStatementUnwrap1#()V" />
+      <node id="6412722656403834101" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="6412722656403834101" at="18,36,19,25" />
+      <scope id="6412722656403834101" at="23,58,24,36" />
+      <scope id="6412722656403834101" at="29,52,30,19" />
+      <scope id="6412722656403834101" at="34,51,36,112" />
+      <scope id="6412722656403834101" at="18,0,21,0" />
+      <scope id="6412722656403834101" at="29,0,32,0">
         <var name="owner" id="6412722656403834101" />
       </scope>
-      <scope id="1241246198920154072" at="38,0,41,0" />
-      <scope id="6412722656403834101" at="23,0,27,0" />
-      <scope id="6412722656403834101" at="35,51,41,16" />
-      <scope id="6412722656403834101" at="34,0,43,0" />
-      <unit id="1241246198920154072" at="37,48,41,7" name="jetbrains.mps.editorTest.IfStatementUnwrap1_Test$TestBody$1" />
-      <unit id="6412722656403834101" at="28,0,44,0" name="jetbrains.mps.editorTest.IfStatementUnwrap1_Test$TestBody" />
-      <unit id="6412722656403834101" at="14,0,45,0" name="jetbrains.mps.editorTest.IfStatementUnwrap1_Test" />
+      <scope id="6412722656403834101" at="22,0,26,0" />
+      <scope id="6412722656403834101" at="33,0,38,0" />
+      <unit id="6412722656403834101" at="27,0,39,0" name="jetbrains.mps.editorTest.IfStatementUnwrap1_Test$TestBody" />
+      <unit id="6412722656403834101" at="13,0,40,0" name="jetbrains.mps.editorTest.IfStatementUnwrap1_Test" />
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/6412722656403835861">
     <file name="IfStatementUnwrap2_Test.java">
-      <node id="6412722656403835861" at="19,36,20,25" concept="11" />
-      <node id="6412722656403835861" at="24,58,25,36" concept="2" />
-      <node id="6412722656403835861" at="30,52,31,19" concept="11" />
-      <node id="6412722656403835861" at="35,51,36,72" concept="2" />
-      <node id="1241246198920154698" at="38,44,39,76" concept="2" />
-      <node id="6412722656403835861" at="16,0,18,0" concept="9" trace="ourParamCache" />
-      <node id="6412722656403835861" at="19,0,22,0" concept="1" trace="IfStatementUnwrap2_Test#()V" />
-      <node id="6412722656403835861" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198920154696" at="38,0,41,0" concept="5" trace="run#()V" />
-      <node id="6412722656403835861" at="23,0,27,0" concept="5" trace="test_IfStatementUnwrap2#()V" />
-      <node id="1241246198920154694" at="36,72,41,16" concept="2" />
-      <node id="6412722656403835861" at="34,0,43,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="6412722656403835861" at="19,36,20,25" />
-      <scope id="6412722656403835861" at="24,58,25,36" />
-      <scope id="6412722656403835861" at="30,52,31,19" />
-      <scope id="1241246198920154697" at="38,44,39,76" />
-      <scope id="6412722656403835861" at="19,0,22,0" />
-      <scope id="6412722656403835861" at="30,0,33,0">
+      <node id="6412722656403835861" at="18,36,19,25" concept="11" />
+      <node id="6412722656403835861" at="23,58,24,36" concept="2" />
+      <node id="6412722656403835861" at="29,52,30,19" concept="11" />
+      <node id="6412722656403835861" at="34,51,35,72" concept="2" />
+      <node id="1108126574883196077" at="35,72,36,112" concept="2" />
+      <node id="6412722656403835861" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="6412722656403835861" at="18,0,21,0" concept="1" trace="IfStatementUnwrap2_Test#()V" />
+      <node id="6412722656403835861" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6412722656403835861" at="22,0,26,0" concept="5" trace="test_IfStatementUnwrap2#()V" />
+      <node id="6412722656403835861" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="6412722656403835861" at="18,36,19,25" />
+      <scope id="6412722656403835861" at="23,58,24,36" />
+      <scope id="6412722656403835861" at="29,52,30,19" />
+      <scope id="6412722656403835861" at="34,51,36,112" />
+      <scope id="6412722656403835861" at="18,0,21,0" />
+      <scope id="6412722656403835861" at="29,0,32,0">
         <var name="owner" id="6412722656403835861" />
       </scope>
-      <scope id="1241246198920154696" at="38,0,41,0" />
-      <scope id="6412722656403835861" at="23,0,27,0" />
-      <scope id="6412722656403835861" at="35,51,41,16" />
-      <scope id="6412722656403835861" at="34,0,43,0" />
-      <unit id="1241246198920154696" at="37,48,41,7" name="jetbrains.mps.editorTest.IfStatementUnwrap2_Test$TestBody$1" />
-      <unit id="6412722656403835861" at="28,0,44,0" name="jetbrains.mps.editorTest.IfStatementUnwrap2_Test$TestBody" />
-      <unit id="6412722656403835861" at="14,0,45,0" name="jetbrains.mps.editorTest.IfStatementUnwrap2_Test" />
+      <scope id="6412722656403835861" at="22,0,26,0" />
+      <scope id="6412722656403835861" at="33,0,38,0" />
+      <unit id="6412722656403835861" at="27,0,39,0" name="jetbrains.mps.editorTest.IfStatementUnwrap2_Test$TestBody" />
+      <unit id="6412722656403835861" at="13,0,40,0" name="jetbrains.mps.editorTest.IfStatementUnwrap2_Test" />
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/6412722656403837985">
     <file name="IfStatementUnwrap3_Test.java">
-      <node id="6412722656403837985" at="19,36,20,25" concept="11" />
-      <node id="6412722656403837985" at="24,58,25,36" concept="2" />
-      <node id="6412722656403837985" at="30,52,31,19" concept="11" />
-      <node id="6412722656403837985" at="35,51,36,72" concept="2" />
-      <node id="6412722656403838027" at="38,44,39,73" concept="2" />
-      <node id="6412722656403839111" at="39,73,40,73" concept="2" />
-      <node id="6412722656403839117" at="40,73,41,73" concept="2" />
-      <node id="6412722656403837985" at="16,0,18,0" concept="9" trace="ourParamCache" />
-      <node id="6412722656403837985" at="19,0,22,0" concept="1" trace="IfStatementUnwrap3_Test#()V" />
-      <node id="6412722656403837985" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="6412722656403837985" at="23,0,27,0" concept="5" trace="test_IfStatementUnwrap3#()V" />
-      <node id="1241246198920155423" at="38,0,43,0" concept="5" trace="run#()V" />
-      <node id="1241246198920155421" at="36,72,43,16" concept="2" />
-      <node id="6412722656403837985" at="34,0,45,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="6412722656403837985" at="19,36,20,25" />
-      <scope id="6412722656403837985" at="24,58,25,36" />
-      <scope id="6412722656403837985" at="30,52,31,19" />
-      <scope id="6412722656403837985" at="19,0,22,0" />
-      <scope id="6412722656403837985" at="30,0,33,0">
+      <node id="6412722656403837985" at="18,36,19,25" concept="11" />
+      <node id="6412722656403837985" at="23,58,24,36" concept="2" />
+      <node id="6412722656403837985" at="29,52,30,19" concept="11" />
+      <node id="6412722656403837985" at="34,51,35,72" concept="2" />
+      <node id="1108126574883353699" at="35,72,36,112" concept="2" />
+      <node id="6412722656403837985" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="6412722656403837985" at="18,0,21,0" concept="1" trace="IfStatementUnwrap3_Test#()V" />
+      <node id="6412722656403837985" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6412722656403837985" at="22,0,26,0" concept="5" trace="test_IfStatementUnwrap3#()V" />
+      <node id="6412722656403837985" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="6412722656403837985" at="18,36,19,25" />
+      <scope id="6412722656403837985" at="23,58,24,36" />
+      <scope id="6412722656403837985" at="29,52,30,19" />
+      <scope id="6412722656403837985" at="34,51,36,112" />
+      <scope id="6412722656403837985" at="18,0,21,0" />
+      <scope id="6412722656403837985" at="29,0,32,0">
         <var name="owner" id="6412722656403837985" />
       </scope>
-      <scope id="1241246198920155424" at="38,44,41,73" />
-      <scope id="6412722656403837985" at="23,0,27,0" />
-      <scope id="1241246198920155423" at="38,0,43,0" />
-      <scope id="6412722656403837985" at="35,51,43,16" />
-      <scope id="6412722656403837985" at="34,0,45,0" />
-      <unit id="1241246198920155423" at="37,48,43,7" name="jetbrains.mps.editorTest.IfStatementUnwrap3_Test$TestBody$1" />
-      <unit id="6412722656403837985" at="28,0,46,0" name="jetbrains.mps.editorTest.IfStatementUnwrap3_Test$TestBody" />
-      <unit id="6412722656403837985" at="14,0,47,0" name="jetbrains.mps.editorTest.IfStatementUnwrap3_Test" />
+      <scope id="6412722656403837985" at="22,0,26,0" />
+      <scope id="6412722656403837985" at="33,0,38,0" />
+      <unit id="6412722656403837985" at="27,0,39,0" name="jetbrains.mps.editorTest.IfStatementUnwrap3_Test$TestBody" />
+      <unit id="6412722656403837985" at="13,0,40,0" name="jetbrains.mps.editorTest.IfStatementUnwrap3_Test" />
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/6412722656403839302">
-    <file name="IfStatementUnwrap4_Test.java">
-      <node id="6412722656403839302" at="19,36,20,25" concept="11" />
-      <node id="6412722656403839302" at="24,58,25,36" concept="2" />
-      <node id="6412722656403839302" at="30,52,31,19" concept="11" />
-      <node id="6412722656403839302" at="35,51,36,72" concept="2" />
-      <node id="1241246198920156660" at="38,44,39,76" concept="2" />
-      <node id="6412722656403839302" at="16,0,18,0" concept="9" trace="ourParamCache" />
-      <node id="6412722656403839302" at="19,0,22,0" concept="1" trace="IfStatementUnwrap4_Test#()V" />
-      <node id="6412722656403839302" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198920156658" at="38,0,41,0" concept="5" trace="run#()V" />
-      <node id="6412722656403839302" at="23,0,27,0" concept="5" trace="test_IfStatementUnwrap4#()V" />
-      <node id="1241246198920156656" at="36,72,41,16" concept="2" />
-      <node id="6412722656403839302" at="34,0,43,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="6412722656403839302" at="19,36,20,25" />
-      <scope id="6412722656403839302" at="24,58,25,36" />
-      <scope id="6412722656403839302" at="30,52,31,19" />
-      <scope id="1241246198920156659" at="38,44,39,76" />
-      <scope id="6412722656403839302" at="19,0,22,0" />
-      <scope id="6412722656403839302" at="30,0,33,0">
+    <file name="IfStatementElseUnwrap_Test.java">
+      <node id="6412722656403839302" at="18,39,19,25" concept="11" />
+      <node id="6412722656403839302" at="23,61,24,36" concept="2" />
+      <node id="6412722656403839302" at="29,52,30,19" concept="11" />
+      <node id="6412722656403839302" at="34,51,35,72" concept="2" />
+      <node id="1108126574883505291" at="35,72,36,103" concept="2" />
+      <node id="6412722656403839302" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="6412722656403839302" at="18,0,21,0" concept="1" trace="IfStatementElseUnwrap_Test#()V" />
+      <node id="6412722656403839302" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6412722656403839302" at="22,0,26,0" concept="5" trace="test_IfStatementElseUnwrap#()V" />
+      <node id="6412722656403839302" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="6412722656403839302" at="18,39,19,25" />
+      <scope id="6412722656403839302" at="23,61,24,36" />
+      <scope id="6412722656403839302" at="29,52,30,19" />
+      <scope id="6412722656403839302" at="34,51,36,103" />
+      <scope id="6412722656403839302" at="18,0,21,0" />
+      <scope id="6412722656403839302" at="29,0,32,0">
         <var name="owner" id="6412722656403839302" />
       </scope>
-      <scope id="1241246198920156658" at="38,0,41,0" />
-      <scope id="6412722656403839302" at="23,0,27,0" />
-      <scope id="6412722656403839302" at="35,51,41,16" />
-      <scope id="6412722656403839302" at="34,0,43,0" />
-      <unit id="1241246198920156658" at="37,48,41,7" name="jetbrains.mps.editorTest.IfStatementUnwrap4_Test$TestBody$1" />
-      <unit id="6412722656403839302" at="28,0,44,0" name="jetbrains.mps.editorTest.IfStatementUnwrap4_Test$TestBody" />
-      <unit id="6412722656403839302" at="14,0,45,0" name="jetbrains.mps.editorTest.IfStatementUnwrap4_Test" />
+      <scope id="6412722656403839302" at="22,0,26,0" />
+      <scope id="6412722656403839302" at="33,0,38,0" />
+      <unit id="6412722656403839302" at="27,0,39,0" name="jetbrains.mps.editorTest.IfStatementElseUnwrap_Test$TestBody" />
+      <unit id="6412722656403839302" at="13,0,40,0" name="jetbrains.mps.editorTest.IfStatementElseUnwrap_Test" />
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/6412722656403846195">
-    <file name="IfStatementUnwrap5_Test.java">
-      <node id="6412722656403846195" at="19,36,20,25" concept="11" />
-      <node id="6412722656403846195" at="24,58,25,36" concept="2" />
-      <node id="6412722656403846195" at="30,52,31,19" concept="11" />
-      <node id="6412722656403846195" at="35,51,36,72" concept="2" />
-      <node id="1241246198920157526" at="38,44,39,76" concept="2" />
-      <node id="6412722656403846195" at="16,0,18,0" concept="9" trace="ourParamCache" />
-      <node id="6412722656403846195" at="19,0,22,0" concept="1" trace="IfStatementUnwrap5_Test#()V" />
-      <node id="6412722656403846195" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198920157524" at="38,0,41,0" concept="5" trace="run#()V" />
-      <node id="6412722656403846195" at="23,0,27,0" concept="5" trace="test_IfStatementUnwrap5#()V" />
-      <node id="1241246198920157522" at="36,72,41,16" concept="2" />
-      <node id="6412722656403846195" at="34,0,43,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="6412722656403846195" at="19,36,20,25" />
-      <scope id="6412722656403846195" at="24,58,25,36" />
-      <scope id="6412722656403846195" at="30,52,31,19" />
-      <scope id="1241246198920157525" at="38,44,39,76" />
-      <scope id="6412722656403846195" at="19,0,22,0" />
-      <scope id="6412722656403846195" at="30,0,33,0">
+    <file name="IfStatementElseUnwrap2_Test.java">
+      <node id="6412722656403846195" at="18,40,19,25" concept="11" />
+      <node id="6412722656403846195" at="23,62,24,36" concept="2" />
+      <node id="6412722656403846195" at="29,52,30,19" concept="11" />
+      <node id="6412722656403846195" at="34,51,35,72" concept="2" />
+      <node id="1108126574883513703" at="35,72,36,103" concept="2" />
+      <node id="6412722656403846195" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="6412722656403846195" at="18,0,21,0" concept="1" trace="IfStatementElseUnwrap2_Test#()V" />
+      <node id="6412722656403846195" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6412722656403846195" at="22,0,26,0" concept="5" trace="test_IfStatementElseUnwrap2#()V" />
+      <node id="6412722656403846195" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="6412722656403846195" at="18,40,19,25" />
+      <scope id="6412722656403846195" at="23,62,24,36" />
+      <scope id="6412722656403846195" at="29,52,30,19" />
+      <scope id="6412722656403846195" at="34,51,36,103" />
+      <scope id="6412722656403846195" at="18,0,21,0" />
+      <scope id="6412722656403846195" at="29,0,32,0">
         <var name="owner" id="6412722656403846195" />
       </scope>
-      <scope id="1241246198920157524" at="38,0,41,0" />
-      <scope id="6412722656403846195" at="23,0,27,0" />
-      <scope id="6412722656403846195" at="35,51,41,16" />
-      <scope id="6412722656403846195" at="34,0,43,0" />
-      <unit id="1241246198920157524" at="37,48,41,7" name="jetbrains.mps.editorTest.IfStatementUnwrap5_Test$TestBody$1" />
-      <unit id="6412722656403846195" at="28,0,44,0" name="jetbrains.mps.editorTest.IfStatementUnwrap5_Test$TestBody" />
-      <unit id="6412722656403846195" at="14,0,45,0" name="jetbrains.mps.editorTest.IfStatementUnwrap5_Test" />
+      <scope id="6412722656403846195" at="22,0,26,0" />
+      <scope id="6412722656403846195" at="33,0,38,0" />
+      <unit id="6412722656403846195" at="27,0,39,0" name="jetbrains.mps.editorTest.IfStatementElseUnwrap2_Test$TestBody" />
+      <unit id="6412722656403846195" at="13,0,40,0" name="jetbrains.mps.editorTest.IfStatementElseUnwrap2_Test" />
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/6412722656403961258">
     <file name="BlockStatementUnwrap1_Test.java">
-      <node id="6412722656403961258" at="19,39,20,25" concept="11" />
-      <node id="6412722656403961258" at="24,61,25,36" concept="2" />
-      <node id="6412722656403961258" at="30,52,31,19" concept="11" />
-      <node id="6412722656403961258" at="35,51,36,72" concept="2" />
-      <node id="1241246198920158228" at="38,44,39,76" concept="2" />
-      <node id="6412722656403961258" at="16,0,18,0" concept="9" trace="ourParamCache" />
-      <node id="6412722656403961258" at="19,0,22,0" concept="1" trace="BlockStatementUnwrap1_Test#()V" />
-      <node id="6412722656403961258" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198920158226" at="38,0,41,0" concept="5" trace="run#()V" />
-      <node id="6412722656403961258" at="23,0,27,0" concept="5" trace="test_BlockStatementUnwrap1#()V" />
-      <node id="1241246198920158224" at="36,72,41,16" concept="2" />
-      <node id="6412722656403961258" at="34,0,43,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="6412722656403961258" at="19,39,20,25" />
-      <scope id="6412722656403961258" at="24,61,25,36" />
-      <scope id="6412722656403961258" at="30,52,31,19" />
-      <scope id="1241246198920158227" at="38,44,39,76" />
-      <scope id="6412722656403961258" at="19,0,22,0" />
-      <scope id="6412722656403961258" at="30,0,33,0">
+      <node id="6412722656403961258" at="18,39,19,25" concept="11" />
+      <node id="6412722656403961258" at="23,61,24,36" concept="2" />
+      <node id="6412722656403961258" at="29,52,30,19" concept="11" />
+      <node id="6412722656403961258" at="34,51,35,72" concept="2" />
+      <node id="563261338091505506" at="35,72,36,113" concept="2" />
+      <node id="6412722656403961258" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="6412722656403961258" at="18,0,21,0" concept="1" trace="BlockStatementUnwrap1_Test#()V" />
+      <node id="6412722656403961258" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6412722656403961258" at="22,0,26,0" concept="5" trace="test_BlockStatementUnwrap1#()V" />
+      <node id="6412722656403961258" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="6412722656403961258" at="18,39,19,25" />
+      <scope id="6412722656403961258" at="23,61,24,36" />
+      <scope id="6412722656403961258" at="29,52,30,19" />
+      <scope id="6412722656403961258" at="34,51,36,113" />
+      <scope id="6412722656403961258" at="18,0,21,0" />
+      <scope id="6412722656403961258" at="29,0,32,0">
         <var name="owner" id="6412722656403961258" />
       </scope>
-      <scope id="1241246198920158226" at="38,0,41,0" />
-      <scope id="6412722656403961258" at="23,0,27,0" />
-      <scope id="6412722656403961258" at="35,51,41,16" />
-      <scope id="6412722656403961258" at="34,0,43,0" />
-      <unit id="1241246198920158226" at="37,48,41,7" name="jetbrains.mps.editorTest.BlockStatementUnwrap1_Test$TestBody$1" />
-      <unit id="6412722656403961258" at="28,0,44,0" name="jetbrains.mps.editorTest.BlockStatementUnwrap1_Test$TestBody" />
-      <unit id="6412722656403961258" at="14,0,45,0" name="jetbrains.mps.editorTest.BlockStatementUnwrap1_Test" />
+      <scope id="6412722656403961258" at="22,0,26,0" />
+      <scope id="6412722656403961258" at="33,0,38,0" />
+      <unit id="6412722656403961258" at="27,0,39,0" name="jetbrains.mps.editorTest.BlockStatementUnwrap1_Test$TestBody" />
+      <unit id="6412722656403961258" at="13,0,40,0" name="jetbrains.mps.editorTest.BlockStatementUnwrap1_Test" />
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/6412722656403968316">
     <file name="BlockStatementUnwrap2_Test.java">
-      <node id="6412722656403968316" at="19,39,20,25" concept="11" />
-      <node id="6412722656403968316" at="24,61,25,36" concept="2" />
-      <node id="6412722656403968316" at="30,52,31,19" concept="11" />
-      <node id="6412722656403968316" at="35,51,36,72" concept="2" />
-      <node id="1241246198920158846" at="38,44,39,76" concept="2" />
-      <node id="6412722656403968316" at="16,0,18,0" concept="9" trace="ourParamCache" />
-      <node id="6412722656403968316" at="19,0,22,0" concept="1" trace="BlockStatementUnwrap2_Test#()V" />
-      <node id="6412722656403968316" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198920158844" at="38,0,41,0" concept="5" trace="run#()V" />
-      <node id="6412722656403968316" at="23,0,27,0" concept="5" trace="test_BlockStatementUnwrap2#()V" />
-      <node id="1241246198920158842" at="36,72,41,16" concept="2" />
-      <node id="6412722656403968316" at="34,0,43,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="6412722656403968316" at="19,39,20,25" />
-      <scope id="6412722656403968316" at="24,61,25,36" />
-      <scope id="6412722656403968316" at="30,52,31,19" />
-      <scope id="1241246198920158845" at="38,44,39,76" />
-      <scope id="6412722656403968316" at="19,0,22,0" />
-      <scope id="6412722656403968316" at="30,0,33,0">
+      <node id="6412722656403968316" at="18,39,19,25" concept="11" />
+      <node id="6412722656403968316" at="23,61,24,36" concept="2" />
+      <node id="6412722656403968316" at="29,52,30,19" concept="11" />
+      <node id="6412722656403968316" at="34,51,35,72" concept="2" />
+      <node id="563261338091506953" at="35,72,36,113" concept="2" />
+      <node id="6412722656403968316" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="6412722656403968316" at="18,0,21,0" concept="1" trace="BlockStatementUnwrap2_Test#()V" />
+      <node id="6412722656403968316" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6412722656403968316" at="22,0,26,0" concept="5" trace="test_BlockStatementUnwrap2#()V" />
+      <node id="6412722656403968316" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="6412722656403968316" at="18,39,19,25" />
+      <scope id="6412722656403968316" at="23,61,24,36" />
+      <scope id="6412722656403968316" at="29,52,30,19" />
+      <scope id="6412722656403968316" at="34,51,36,113" />
+      <scope id="6412722656403968316" at="18,0,21,0" />
+      <scope id="6412722656403968316" at="29,0,32,0">
         <var name="owner" id="6412722656403968316" />
       </scope>
-      <scope id="1241246198920158844" at="38,0,41,0" />
-      <scope id="6412722656403968316" at="23,0,27,0" />
-      <scope id="6412722656403968316" at="35,51,41,16" />
-      <scope id="6412722656403968316" at="34,0,43,0" />
-      <unit id="1241246198920158844" at="37,48,41,7" name="jetbrains.mps.editorTest.BlockStatementUnwrap2_Test$TestBody$1" />
-      <unit id="6412722656403968316" at="28,0,44,0" name="jetbrains.mps.editorTest.BlockStatementUnwrap2_Test$TestBody" />
-      <unit id="6412722656403968316" at="14,0,45,0" name="jetbrains.mps.editorTest.BlockStatementUnwrap2_Test" />
+      <scope id="6412722656403968316" at="22,0,26,0" />
+      <scope id="6412722656403968316" at="33,0,38,0" />
+      <unit id="6412722656403968316" at="27,0,39,0" name="jetbrains.mps.editorTest.BlockStatementUnwrap2_Test$TestBody" />
+      <unit id="6412722656403968316" at="13,0,40,0" name="jetbrains.mps.editorTest.BlockStatementUnwrap2_Test" />
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/6450120067538677210">
@@ -27071,7 +26823,7 @@
       <node id="8979250711594096853" at="21,49,22,25" concept="11" />
       <node id="8979250711594096853" at="26,71,27,36" concept="2" />
       <node id="8979250711594096853" at="32,52,33,19" concept="11" />
-      <node id="8979250711594096853" at="37,51,38,72" concept="2" />
+      <node id="8979250711594096853" at="37,51,38,71" concept="2" />
       <node id="8979250711594096868" at="40,44,41,73" concept="2" />
       <node id="6933688539824319063" at="41,73,42,153" concept="2" />
       <node id="8979250711594096879" at="42,153,43,73" concept="2" />
@@ -27080,7 +26832,7 @@
       <node id="8979250711594096853" at="32,0,35,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="8979250711594096853" at="25,0,29,0" concept="5" trace="test_DeleteElseBlockStatementTwoStep#()V" />
       <node id="1241246198926264552" at="40,0,45,0" concept="5" trace="run#()V" />
-      <node id="1241246198926264553" at="38,72,45,15" concept="2" />
+      <node id="1241246198926264553" at="38,71,45,15" concept="2" />
       <node id="8979250711594096853" at="36,0,47,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="8979250711594096853" at="21,49,22,25" />
       <scope id="8979250711594096853" at="26,71,27,36" />
@@ -27104,7 +26856,7 @@
       <node id="8979250711594102842" at="21,56,22,25" concept="11" />
       <node id="8979250711594102842" at="26,78,27,36" concept="2" />
       <node id="8979250711594102842" at="32,52,33,19" concept="11" />
-      <node id="8979250711594102842" at="37,51,38,72" concept="2" />
+      <node id="8979250711594102842" at="37,51,38,71" concept="2" />
       <node id="8979250711594102857" at="40,44,41,73" concept="2" />
       <node id="8979250711594105222" at="41,73,42,73" concept="2" />
       <node id="8979250711594105239" at="42,73,43,73" concept="2" />
@@ -27115,7 +26867,7 @@
       <node id="8979250711594102842" at="32,0,35,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="8979250711594102842" at="25,0,29,0" concept="5" trace="test_DeleteIfStatementNonEmptyFromIfTwoStep#()V" />
       <node id="1241246198926264562" at="40,0,47,0" concept="5" trace="run#()V" />
-      <node id="1241246198926264563" at="38,72,47,15" concept="2" />
+      <node id="1241246198926264563" at="38,71,47,15" concept="2" />
       <node id="8979250711594102842" at="36,0,49,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="8979250711594102842" at="21,56,22,25" />
       <scope id="8979250711594102842" at="26,78,27,36" />
@@ -27139,7 +26891,7 @@
       <node id="8979250711594105307" at="21,44,22,25" concept="11" />
       <node id="8979250711594105307" at="26,66,27,36" concept="2" />
       <node id="8979250711594105307" at="32,52,33,19" concept="11" />
-      <node id="8979250711594105307" at="37,51,38,72" concept="2" />
+      <node id="8979250711594105307" at="37,51,38,71" concept="2" />
       <node id="8979250711594105326" at="40,44,41,73" concept="2" />
       <node id="6933688539824348948" at="41,73,42,153" concept="2" />
       <node id="8979250711594105337" at="42,153,43,73" concept="2" />
@@ -27148,7 +26900,7 @@
       <node id="8979250711594105307" at="32,0,35,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="8979250711594105307" at="25,0,29,0" concept="5" trace="test_DeleteLoopStatementTwoStep#()V" />
       <node id="1241246198926264592" at="40,0,45,0" concept="5" trace="run#()V" />
-      <node id="1241246198926264593" at="38,72,45,15" concept="2" />
+      <node id="1241246198926264593" at="38,71,45,15" concept="2" />
       <node id="8979250711594105307" at="36,0,47,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="8979250711594105307" at="21,44,22,25" />
       <scope id="8979250711594105307" at="26,66,27,36" />
@@ -27234,7 +26986,7 @@
       <node id="8979250711595766127" at="23,58,24,25" concept="11" />
       <node id="8979250711595766127" at="28,80,29,36" concept="2" />
       <node id="8979250711595766127" at="34,52,35,19" concept="11" />
-      <node id="8979250711595766127" at="39,51,40,72" concept="2" />
+      <node id="8979250711595766127" at="39,51,40,71" concept="2" />
       <node id="8979250711595766142" at="42,44,43,73" concept="2" />
       <node id="6933688539824326734" at="45,31,46,369" concept="2" />
       <node id="8979250711595766157" at="48,13,49,73" concept="2" />
@@ -27245,7 +26997,7 @@
       <node id="8979250711595766127" at="27,0,31,0" concept="5" trace="test_DeleteElseIfClauseFromIfLastBraceTwoStep#()V" />
       <node id="8979250711595778130" at="43,73,48,13" concept="2" />
       <node id="1241246198926264737" at="42,0,51,0" concept="5" trace="run#()V" />
-      <node id="1241246198926264738" at="40,72,51,15" concept="2" />
+      <node id="1241246198926264738" at="40,71,51,15" concept="2" />
       <node id="8979250711595766127" at="38,0,53,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="8979250711595766127" at="23,58,24,25" />
       <scope id="8979250711595766127" at="28,80,29,36" />

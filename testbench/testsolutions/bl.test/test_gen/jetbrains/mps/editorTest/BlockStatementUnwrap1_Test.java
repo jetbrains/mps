@@ -9,7 +9,6 @@ import jetbrains.mps.lang.test.runtime.TestParametersCache;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 
 @MPSLaunch
 public class BlockStatementUnwrap1_Test extends BaseTransformationTest {
@@ -34,11 +33,7 @@ public class BlockStatementUnwrap1_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("6412722656403961259", "6412722656403961299");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-        }
-      }, false);
+      invokeIntention("jetbrains.mps.baseLanguage.intentions.UnwrapBlockStatement_Intention", myStart.getNode());
     }
   }
 }

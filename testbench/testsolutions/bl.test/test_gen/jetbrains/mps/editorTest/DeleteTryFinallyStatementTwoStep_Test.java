@@ -35,7 +35,7 @@ public class DeleteTryFinallyStatementTwoStep_Test extends BaseTransformationTes
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("5758795789001197948", "5758795789001197963");
+      initEditorComponent("5758795789001197948", "563261338089329010");
       EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
         public void run() throws Exception {
           invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");

@@ -11,16 +11,16 @@ import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 
 @MPSLaunch
-public class TryStatementUnwrap2_Test extends BaseTransformationTest {
+public class IfStatementElseUnwrap_Test extends BaseTransformationTest {
   @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(TryStatementUnwrap2_Test.class, "${mps_home}", "r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)", false);
+  public static final TestParametersCache ourParamCache = new TestParametersCache(IfStatementElseUnwrap_Test.class, "${mps_home}", "r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)", false);
 
-  public TryStatementUnwrap2_Test() {
+  public IfStatementElseUnwrap_Test() {
     super(ourParamCache);
   }
 
   @Test
-  public void test_TryStatementUnwrap2() throws Throwable {
+  public void test_IfStatementElseUnwrap() throws Throwable {
     new TestBody(this).testMethod();
   }
 
@@ -32,8 +32,8 @@ public class TryStatementUnwrap2_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("4666906971842249132", "563261338089137886");
-      invokeIntention("jetbrains.mps.baseLanguage.intentions.UnwrapStatementList_Intention", myStart.getNode());
+      initEditorComponent("6412722656403839303", "1108126574883501404");
+      invokeIntention("jetbrains.mps.baseLanguage.intentions.UnwrapElse_Intention", myStart.getNode());
     }
   }
 }

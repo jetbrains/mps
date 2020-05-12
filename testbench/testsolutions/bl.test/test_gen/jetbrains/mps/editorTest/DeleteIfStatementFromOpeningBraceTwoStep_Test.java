@@ -35,7 +35,7 @@ public class DeleteIfStatementFromOpeningBraceTwoStep_Test extends BaseTransform
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("5758795789001408699", "5758795789001408709");
+      initEditorComponent("5758795789001408699", "563261338091816831");
       EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
         public void run() throws Exception {
           invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");

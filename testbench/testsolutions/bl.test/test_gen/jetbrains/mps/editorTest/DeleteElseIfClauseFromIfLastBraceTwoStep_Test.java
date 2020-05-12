@@ -37,7 +37,7 @@ public class DeleteElseIfClauseFromIfLastBraceTwoStep_Test extends BaseTransform
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("8979250711595766165", "8979250711595766178");
+      initEditorComponent("8979250711595766165", "563261338091671568");
       EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
         public void run() throws Exception {
           invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
