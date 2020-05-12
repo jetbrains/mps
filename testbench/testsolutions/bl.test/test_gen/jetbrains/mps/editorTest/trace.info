@@ -26789,7 +26789,7 @@
       <node id="8979250711594080917" at="21,45,22,25" concept="11" />
       <node id="8979250711594080917" at="26,67,27,36" concept="2" />
       <node id="8979250711594080917" at="32,52,33,19" concept="11" />
-      <node id="8979250711594080917" at="37,51,38,72" concept="2" />
+      <node id="8979250711594080917" at="37,51,38,71" concept="2" />
       <node id="8979250711594080932" at="40,44,41,73" concept="2" />
       <node id="6933688539824305555" at="41,73,42,153" concept="2" />
       <node id="8979250711594080953" at="42,153,43,73" concept="2" />
@@ -26799,7 +26799,7 @@
       <node id="8979250711594080917" at="32,0,35,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="8979250711594080917" at="25,0,29,0" concept="5" trace="test_DeleteBlockStatementTwoStep#()V" />
       <node id="1241246198925898844" at="40,0,45,0" concept="5" trace="run#()V" />
-      <node id="1241246198925898842" at="38,72,45,15" concept="2" />
+      <node id="1241246198925898842" at="38,71,45,15" concept="2" />
       <node id="8979250711594080917" at="36,0,48,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="8979250711594080917" at="21,45,22,25" />
       <scope id="8979250711594080917" at="26,67,27,36" />
@@ -27059,7 +27059,7 @@
       <node id="8979250711595779946" at="23,56,24,25" concept="11" />
       <node id="8979250711595779946" at="28,78,29,36" concept="2" />
       <node id="8979250711595779946" at="34,52,35,19" concept="11" />
-      <node id="8979250711595779946" at="39,51,40,72" concept="2" />
+      <node id="8979250711595779946" at="39,51,40,71" concept="2" />
       <node id="8979250711595779961" at="42,44,43,73" concept="2" />
       <node id="6933688539824323418" at="45,31,46,371" concept="2" />
       <node id="8979250711595779982" at="48,13,49,73" concept="2" />
@@ -27070,7 +27070,7 @@
       <node id="8979250711595779946" at="27,0,31,0" concept="5" trace="test_DeleteElseClauseFromIfLastBraceTwoStep#()V" />
       <node id="8979250711595779963" at="43,73,48,13" concept="2" />
       <node id="1241246198926264707" at="42,0,51,0" concept="5" trace="run#()V" />
-      <node id="1241246198926264708" at="40,72,51,15" concept="2" />
+      <node id="1241246198926264708" at="40,71,51,15" concept="2" />
       <node id="8979250711595779946" at="38,0,53,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="8979250711595779946" at="23,56,24,25" />
       <scope id="8979250711595779946" at="28,78,29,36" />
