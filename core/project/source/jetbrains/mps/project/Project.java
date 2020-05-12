@@ -21,6 +21,7 @@ import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -192,7 +193,7 @@ public abstract class Project implements MPSModuleOwner, IProject {
    *              files belong to this particular project, it's implementation responsibility to
    *              pick files it can handle (given the fact IDEA's VFS is not per-project, this might be irrelevant, though).
    */
-  public void reconcileProjectFiles(Iterable<IFile> files) {
+  public void reconcileProjectFiles(@Nullable Iterable<IFile> files) {
     // no-op
   }
 

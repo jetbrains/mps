@@ -22,10 +22,13 @@ import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.ex.ProjectManagerEx;
 import com.intellij.openapi.util.InvalidDataException;
 import com.intellij.openapi.vcs.changes.ChangeListManager;
+import com.intellij.openapi.vfs.VfsUtil;
+import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.ide.vfs.ProjectRootListenerComponent;
+import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.WorkbenchModelAccess;
@@ -33,10 +36,12 @@ import jetbrains.mps.vfs.IFile;
 import org.jdom.JDOMException;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Represents a project based on the idea platform project
@@ -148,8 +153,27 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
   }
 
   @Override
-  public void reconcileProjectFiles(Iterable<IFile> files) {
-    myProjectFileSystem.scheduleUpdateForWrittenFiles(files);
-    ChangeListManager.getInstance(myProject).scheduleUpdate();
+  public void reconcileProjectFiles(@Nullable Iterable<IFile> files) {
+    if (files == null) {
+      return;
+    }
+    // original fix was for MPS-14247, refactored now to use IDEA services and to update VCS explicitly
+    ArrayList<VirtualFile> ideaFiles = new ArrayList<>();
+    for (IFile f : files) {
+      //FIXME need smth like myProjectFileSystem.toVirtualFile(IFile):VF
+      final VirtualFile vf = VirtualFileUtils.getOrCreateVirtualFile(f);
+      if (vf == null) {
+        continue;
+      }
+      ideaFiles.add(vf);
+    }
+    // want to schedule VCS update *after* IDEA get a chance to find out about new files, hence invokeLater and synchronous refresh
+    // I don't need write nor write intent here (as invokeLater provides),  markDirtyAndRefresh is ok with read, just didn't find invokeReadLater().
+    ApplicationManager.getApplication().invokeLater(() -> {
+      // VfsUtil.markDirtyAndRefresh relies on LocalFileSystem (eventually delegates to RefreshQueue), while our
+      // BaseIdeaFileSystem.refresh uses IDEA's RefreshQueue directly. No idea what's right here.
+      VfsUtil.markDirtyAndRefresh(false, true, true, ideaFiles.toArray(new VirtualFile[0]));
+      ChangeListManager.getInstance(myProject).scheduleUpdate();
+    });
   }
 }
