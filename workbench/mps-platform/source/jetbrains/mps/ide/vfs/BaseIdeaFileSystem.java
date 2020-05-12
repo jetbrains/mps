@@ -17,12 +17,13 @@ package jetbrains.mps.ide.vfs;
 
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.ModalityState;
+import com.intellij.openapi.application.WriteAction;
 import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.openapi.vfs.VirtualFileSystem;
 import com.intellij.openapi.vfs.newvfs.RefreshQueue;
+import com.intellij.util.ThrowableRunnable;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.platform.watching.FileSystemListenersContainer;
 import jetbrains.mps.vfs.IFile;
@@ -119,9 +120,14 @@ public abstract class BaseIdeaFileSystem implements IFileSystem, CachingFileSyst
 
   @Override
   public boolean runWriteTransaction(@NotNull Runnable r) {
-    final IdeaWriteAction action = new IdeaWriteAction(r);
-    ApplicationManager.getApplication().invokeAndWait(action, ModalityState.defaultModalityState());
-    return action.getFailure() == null;
+    ThrowableRunnable<Exception> tr = r::run;
+    try {
+      WriteAction.runAndWait(tr);
+      return true;
+    } catch (Exception ex) {
+      LOG.error(ex.getMessage(), ex);
+      return false;
+    }
   }
 
   @Override

@@ -154,6 +154,7 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
 
   @Override
   public void reconcileProjectFiles(@Nullable Iterable<IFile> files) {
+    // XXX perhaps, shall pass ProgressMonitor in here?
     if (files == null) {
       return;
     }
