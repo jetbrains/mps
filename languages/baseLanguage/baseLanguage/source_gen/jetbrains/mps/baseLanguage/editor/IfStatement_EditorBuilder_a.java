@@ -108,7 +108,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
     new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
-    Delete_If.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_WhileStatement_cellMenu_eb7h0d_a0a0(), new ReplaceWith_DoWhileStatement_cellMenu_eb7h0d_b0a0(), new ReplaceWith_ForStatement_cellMenu_eb7h0d_c0a0(), new ReplaceWith_ForeachStatement_cellMenu_eb7h0d_d0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
@@ -251,7 +250,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
     new LeftBraceStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, _StyleParameter_QueryFunction_eb7h0d_a0a4a());
     editorCell.getStyle().putAll(style);
-    IfStatement_FirstBrace.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     return editorCell;
   }
