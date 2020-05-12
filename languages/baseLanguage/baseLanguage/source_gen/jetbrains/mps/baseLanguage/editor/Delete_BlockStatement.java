@@ -7,17 +7,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.editor.runtime.selection.SelectionUtil;
-import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import java.util.Objects;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SConcept;
 
 public class Delete_BlockStatement {
 
@@ -30,12 +24,7 @@ public class Delete_BlockStatement {
         if (DeletionApproverUtil.approve(editorContext, node)) {
           return;
         }
-        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.StatementList$TN)) {
-          UnwrapStatementsUtil.unwrapStatementListInContainer(node, SLinkOperations.getTarget(node, LINKS.statements$uqR0));
-        } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IfStatement$pi) && SNodeOperations.hasRole(node, LINKS.ifFalseStatement$Xnu2)) {
-          SNode nodeToSelect = UnwrapStatementsUtil.unwrapElse(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.IfStatement$pi));
-          SelectionUtil.selectCell(editorContext, nodeToSelect, SelectionManager.FIRST_CELL);
-        }
+        SNodeOperations.deleteNode(node);
       }
 
     };
@@ -80,15 +69,5 @@ public class Delete_BlockStatement {
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink statements$uqR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
-    /*package*/ static final SContainmentLink ifFalseStatement$Xnu2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
-    /*package*/ static final SConcept IfStatement$pi = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
   }
 }

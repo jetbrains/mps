@@ -20,7 +20,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root>
     <file name="IntentionsDescriptor.java">
-      <unit at="18,0,516,0" name="jetbrains.mps.baseLanguage.intentions.IntentionsDescriptor" />
+      <unit at="18,0,518,0" name="jetbrains.mps.baseLanguage.intentions.IntentionsDescriptor" />
     </file>
     <file name="_Adapters.java">
       <unit at="8,0,17,0" name="jetbrains.mps.baseLanguage.intentions._Adapters$_return_P0_E0_to__void_P0_E0_adapter" />
@@ -126,8 +126,8 @@
       <unit id="1193744597902" at="28,0,106,0" name="jetbrains.mps.baseLanguage.intentions.AddCastStatement_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1193744597902" at="228,48,229,59" concept="4" />
-      <node id="1193744597902" at="409,54,410,45" concept="4" />
+      <node id="1193744597902" at="229,48,230,59" concept="4" />
+      <node id="1193744597902" at="410,54,411,45" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1195647284978">
@@ -214,14 +214,14 @@
       <unit id="1195647284978" at="25,0,86,0" name="jetbrains.mps.baseLanguage.intentions.AddAnnotation_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1195647284978" at="199,47,200,56" concept="4" />
-      <node id="1195647284978" at="412,62,413,42" concept="4" />
+      <node id="1195647284978" at="200,47,201,56" concept="4" />
+      <node id="1195647284978" at="413,62,414,42" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1195647309293">
     <file name="IntentionsDescriptor.java">
-      <node id="1195647309293" at="271,47,272,76" concept="4" />
-      <node id="1195647309293" at="411,57,412,62" concept="4" />
+      <node id="1195647309293" at="272,47,273,76" concept="4" />
+      <node id="1195647309293" at="412,57,413,62" concept="4" />
     </file>
     <file name="SplitIntoDeclarationAndAssignment_Intention.java">
       <node id="1195647309293" at="25,0,26,0" concept="5" trace="myCachedExecutable" />
@@ -392,13 +392,13 @@
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="1195647334600" at="84,47,85,62" concept="4" />
-      <node id="1195647334600" at="413,42,414,48" concept="4" />
+      <node id="1195647334600" at="414,42,415,48" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1195647359405">
     <file name="IntentionsDescriptor.java">
-      <node id="1195647359405" at="229,59,230,60" concept="4" />
-      <node id="1195647359405" at="414,48,415,46" concept="4" />
+      <node id="1195647359405" at="230,59,231,60" concept="4" />
+      <node id="1195647359405" at="415,48,416,46" concept="4" />
     </file>
     <file name="InvertIfCondition_Intention.java">
       <node id="1195647359405" at="26,0,27,0" concept="5" trace="myCachedExecutable" />
@@ -566,8 +566,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1195647385815">
     <file name="IntentionsDescriptor.java">
-      <node id="1195647385815" at="344,47,345,71" concept="4" />
-      <node id="1195647385815" at="410,45,411,57" concept="4" />
+      <node id="1195647385815" at="345,47,346,71" concept="4" />
+      <node id="1195647385815" at="411,45,412,57" concept="4" />
     </file>
     <file name="SplitStringIntoConcatenation_Intention.java">
       <node id="1195647385815" at="25,0,26,0" concept="5" trace="myCachedExecutable" />
@@ -657,8 +657,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1199557092807">
     <file name="IntentionsDescriptor.java">
-      <node id="1199557092807" at="138,47,139,68" concept="4" />
-      <node id="1199557092807" at="415,46,416,54" concept="4" />
+      <node id="1199557092807" at="139,47,140,68" concept="4" />
+      <node id="1199557092807" at="416,46,417,54" concept="4" />
     </file>
     <file name="ReplaceEqualityWithEquals_Intention.java">
       <node id="1199557092807" at="29,0,30,0" concept="5" trace="myCachedExecutable" />
@@ -779,8 +779,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1199559711021">
     <file name="IntentionsDescriptor.java">
-      <node id="1199559711021" at="246,47,247,68" concept="4" />
-      <node id="1199559711021" at="416,54,417,54" concept="4" />
+      <node id="1199559711021" at="247,47,248,68" concept="4" />
+      <node id="1199559711021" at="417,54,418,54" concept="4" />
     </file>
     <file name="ReplaceEqualsWithEquality_Intention.java">
       <node id="1199559711021" at="28,0,29,0" concept="5" trace="myCachedExecutable" />
@@ -877,8 +877,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1199561300578">
     <file name="IntentionsDescriptor.java">
-      <node id="1199561300578" at="351,47,352,67" concept="4" />
-      <node id="1199561300578" at="417,54,418,53" concept="4" />
+      <node id="1199561300578" at="352,47,353,67" concept="4" />
+      <node id="1199561300578" at="418,54,419,53" concept="4" />
     </file>
     <file name="ReplaceConditionalWithIf_Intention.java">
       <node id="1199561300578" at="27,0,28,0" concept="5" trace="myCachedExecutable" />
@@ -1120,14 +1120,14 @@
       <unit id="1199621296757" at="25,0,104,0" name="jetbrains.mps.baseLanguage.intentions.ExtractWhileConditionToInternalIfStatement_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1199621296757" at="396,47,397,85" concept="4" />
-      <node id="1199621296757" at="418,53,419,71" concept="4" />
+      <node id="1199621296757" at="397,47,398,85" concept="4" />
+      <node id="1199621296757" at="419,53,420,71" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1199622460250">
     <file name="IntentionsDescriptor.java">
       <node id="1199622460250" at="59,47,60,62" concept="4" />
-      <node id="1199622460250" at="419,71,420,49" concept="4" />
+      <node id="1199622460250" at="420,71,421,49" concept="4" />
     </file>
     <file name="ReplaceAssertWithIf_Intention.java">
       <node id="1199622460250" at="28,0,29,0" concept="5" trace="myCachedExecutable" />
@@ -1240,8 +1240,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1199623693658">
     <file name="IntentionsDescriptor.java">
-      <node id="1199623693658" at="178,47,179,70" concept="4" />
-      <node id="1199623693658" at="420,49,421,57" concept="4" />
+      <node id="1199623693658" at="179,47,180,70" concept="4" />
+      <node id="1199623693658" at="421,49,422,57" concept="4" />
     </file>
     <file name="ReplaceForLoopWithWhileLoop_Intention.java">
       <node id="1199623693658" at="25,0,26,0" concept="5" trace="myCachedExecutable" />
@@ -1433,14 +1433,14 @@
       <unit id="1199625900037" at="26,0,95,0" name="jetbrains.mps.baseLanguage.intentions.FilpEqualsIntention_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1199625900037" at="247,68,248,62" concept="4" />
-      <node id="1199625900037" at="421,57,422,49" concept="4" />
+      <node id="1199625900037" at="248,68,249,62" concept="4" />
+      <node id="1199625900037" at="422,57,423,49" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1199627182107">
     <file name="IntentionsDescriptor.java">
-      <node id="1199627182107" at="185,47,186,76" concept="4" />
-      <node id="1199627182107" at="422,49,423,63" concept="4" />
+      <node id="1199627182107" at="186,47,187,76" concept="4" />
+      <node id="1199627182107" at="423,49,424,63" concept="4" />
     </file>
     <file name="ReplaceForEachLoopWithIndexedLoop_Intention.java">
       <node id="1199627182107" at="35,0,36,0" concept="5" trace="myCachedExecutable" />
@@ -1827,8 +1827,8 @@
       <unit id="1199627245932" at="31,0,143,0" name="jetbrains.mps.baseLanguage.intentions.ExpandBoolean_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1199627245932" at="387,47,388,56" concept="4" />
-      <node id="1199627245932" at="423,63,424,43" concept="4" />
+      <node id="1199627245932" at="388,47,389,56" concept="4" />
+      <node id="1199627245932" at="424,63,425,43" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1199627248517">
@@ -1953,14 +1953,14 @@
       <unit id="1199627248517" at="30,0,122,0" name="jetbrains.mps.baseLanguage.intentions.AddRuntimeExceptionToMethodSignature_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1199627248517" at="366,47,367,79" concept="4" />
-      <node id="1199627248517" at="424,43,425,66" concept="4" />
+      <node id="1199627248517" at="367,47,368,79" concept="4" />
+      <node id="1199627248517" at="425,43,426,66" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1199892779474">
     <file name="IntentionsDescriptor.java">
       <node id="1199892779474" at="92,47,93,69" concept="4" />
-      <node id="1199892779474" at="425,66,426,56" concept="4" />
+      <node id="1199892779474" at="426,66,427,56" concept="4" />
     </file>
     <file name="ReplaceBlockWithItsContent_Intention.java">
       <node id="1199892779474" at="27,0,28,0" concept="5" trace="myCachedExecutable" />
@@ -2064,8 +2064,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1201102619707">
     <file name="IntentionsDescriptor.java">
-      <node id="1201102619707" at="168,47,169,71" concept="4" />
-      <node id="1201102619707" at="426,56,427,58" concept="4" />
+      <node id="1201102619707" at="169,47,170,71" concept="4" />
+      <node id="1201102619707" at="427,56,428,58" concept="4" />
     </file>
     <file name="MoveInitializerToConstructor_Intention.java">
       <node id="1201102619707" at="28,0,29,0" concept="5" trace="myCachedExecutable" />
@@ -2180,8 +2180,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1202130221457">
     <file name="IntentionsDescriptor.java">
-      <node id="1202130221457" at="292,47,293,67" concept="4" />
-      <node id="1202130221457" at="427,58,428,54" concept="4" />
+      <node id="1202130221457" at="293,47,294,67" concept="4" />
+      <node id="1202130221457" at="428,58,429,54" concept="4" />
     </file>
     <file name="MergeStringConcatenation_Intention.java">
       <node id="1202130221457" at="28,0,29,0" concept="5" trace="myCachedExecutable" />
@@ -2335,14 +2335,14 @@
       <unit id="1202861044458" at="23,0,77,0" name="jetbrains.mps.baseLanguage.intentions.CreateSetAccessor_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1202861044458" at="192,47,193,60" concept="4" />
-      <node id="1202861044458" at="428,54,429,47" concept="4" />
+      <node id="1202861044458" at="193,47,194,60" concept="4" />
+      <node id="1202861044458" at="429,54,430,47" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1203413213560">
     <file name="IntentionsDescriptor.java">
       <node id="1203413213560" at="73,47,74,54" concept="4" />
-      <node id="1203413213560" at="429,47,430,41" concept="4" />
+      <node id="1203413213560" at="430,47,431,41" concept="4" />
     </file>
     <file name="MakeGeneric_Intention.java">
       <node id="1203413213560" at="25,0,26,0" concept="5" trace="myCachedExecutable" />
@@ -2507,8 +2507,8 @@
       <unit id="1203703270380" at="24,0,92,0" name="jetbrains.mps.baseLanguage.intentions.AddFinalModifierToAny_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1203703270380" at="380,47,381,64" concept="4" />
-      <node id="1203703270380" at="430,41,431,51" concept="4" />
+      <node id="1203703270380" at="381,47,382,64" concept="4" />
+      <node id="1203703270380" at="431,41,432,51" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1206063267399">
@@ -2586,8 +2586,8 @@
       <unit id="1206063267399" at="22,0,76,0" name="jetbrains.mps.baseLanguage.intentions.AddElsifClause_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1206063267399" at="230,60,231,57" concept="4" />
-      <node id="1206063267399" at="431,51,432,44" concept="4" />
+      <node id="1206063267399" at="231,60,232,57" concept="4" />
+      <node id="1206063267399" at="432,51,433,44" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1206065955177">
@@ -2688,8 +2688,8 @@
       <unit id="1206065955177" at="23,0,97,0" name="jetbrains.mps.baseLanguage.intentions.ElsifTransform_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1206065955177" at="231,57,232,57" concept="4" />
-      <node id="1206065955177" at="432,44,433,44" concept="4" />
+      <node id="1206065955177" at="232,57,233,57" concept="4" />
+      <node id="1206065955177" at="433,44,434,44" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1206066794083">
@@ -2766,14 +2766,14 @@
       <unit id="1206066794083" at="22,0,79,0" name="jetbrains.mps.baseLanguage.intentions.ElsifSwapWithMain_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1206066794083" at="130,47,131,60" concept="4" />
-      <node id="1206066794083" at="433,44,434,47" concept="4" />
+      <node id="1206066794083" at="131,47,132,60" concept="4" />
+      <node id="1206066794083" at="434,44,435,47" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1211637016819586879">
     <file name="IntentionsDescriptor.java">
-      <node id="1211637016819586879" at="309,56,310,77" concept="4" />
-      <node id="1211637016819586879" at="508,54,509,64" concept="4" />
+      <node id="1211637016819586879" at="310,56,311,77" concept="4" />
+      <node id="1211637016819586879" at="509,54,510,64" concept="4" />
     </file>
     <file name="UpdateCommentToSingleLineStructure_Intention.java">
       <node id="1211637016819586879" at="25,0,26,0" concept="5" trace="myCachedExecutable" />
@@ -2947,8 +2947,8 @@
       <unit id="1214431614908" at="25,0,91,0" name="jetbrains.mps.baseLanguage.intentions.ConvertClassCreatorToAnonimous_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1214431614908" at="108,47,109,73" concept="4" />
-      <node id="1214431614908" at="434,47,435,60" concept="4" />
+      <node id="1214431614908" at="109,47,110,73" concept="4" />
+      <node id="1214431614908" at="435,47,436,60" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1215507513710">
@@ -3045,8 +3045,8 @@
       <unit id="1215507513710" at="22,0,93,0" name="jetbrains.mps.baseLanguage.intentions.CreateReferenceOnClass_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1215507513710" at="359,47,360,65" concept="4" />
-      <node id="1215507513710" at="435,60,436,52" concept="4" />
+      <node id="1215507513710" at="360,47,361,65" concept="4" />
+      <node id="1215507513710" at="436,60,437,52" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1217838039231">
@@ -3118,8 +3118,8 @@
       <unit id="1217838039231" at="21,0,71,0" name="jetbrains.mps.baseLanguage.intentions.ConvertElseToElseIf_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1217838039231" at="232,57,233,62" concept="4" />
-      <node id="1217838039231" at="436,52,437,49" concept="4" />
+      <node id="1217838039231" at="233,57,234,62" concept="4" />
+      <node id="1217838039231" at="437,52,438,49" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1221573777472">
@@ -3219,14 +3219,14 @@
       <unit id="1221573777472" at="26,0,99,0" name="jetbrains.mps.baseLanguage.intentions.ConvertAssignmentToVariableDeclaration_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1221573777472" at="388,56,389,81" concept="4" />
-      <node id="1221573777472" at="437,49,438,68" concept="4" />
+      <node id="1221573777472" at="389,56,390,81" concept="4" />
+      <node id="1221573777472" at="438,49,439,68" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1223648378225">
     <file name="IntentionsDescriptor.java">
-      <node id="1223648378225" at="206,47,207,57" concept="4" />
-      <node id="1223648378225" at="438,68,439,44" concept="4" />
+      <node id="1223648378225" at="207,47,208,57" concept="4" />
+      <node id="1223648378225" at="439,68,440,44" concept="4" />
     </file>
     <file name="MakeDeprecated_Intention.java">
       <node id="1223648378225" at="22,0,23,0" concept="5" trace="myCachedExecutable" />
@@ -3450,8 +3450,8 @@
       <unit id="1224168785803" at="36,0,154,0" name="jetbrains.mps.baseLanguage.intentions.AddFieldForUnUsedParameter_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1224168785803" at="285,47,286,69" concept="4" />
-      <node id="1224168785803" at="439,44,440,56" concept="4" />
+      <node id="1224168785803" at="286,47,287,69" concept="4" />
+      <node id="1224168785803" at="440,44,441,56" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1226917954178">
@@ -3535,14 +3535,14 @@
       <unit id="1226917954178" at="23,0,85,0" name="jetbrains.mps.baseLanguage.intentions.ConvertToArrayType_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1226917954178" at="373,47,374,61" concept="4" />
-      <node id="1226917954178" at="440,56,441,48" concept="4" />
+      <node id="1226917954178" at="374,47,375,61" concept="4" />
+      <node id="1226917954178" at="441,56,442,48" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1226918395187">
     <file name="IntentionsDescriptor.java">
       <node id="1226918395187" at="52,47,53,58" concept="4" />
-      <node id="1226918395187" at="441,48,442,45" concept="4" />
+      <node id="1226918395187" at="442,48,443,45" concept="4" />
     </file>
     <file name="RemoveArrayType_Intention.java">
       <node id="1226918395187" at="22,0,23,0" concept="5" trace="myCachedExecutable" />
@@ -3604,8 +3604,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1227519137253">
     <file name="IntentionsDescriptor.java">
-      <node id="1227519137253" at="99,47,100,60" concept="4" />
-      <node id="1227519137253" at="442,45,443,47" concept="4" />
+      <node id="1227519137253" at="100,47,101,60" concept="4" />
+      <node id="1227519137253" at="443,45,444,47" concept="4" />
     </file>
     <file name="MakeClassAbstract_Intention.java">
       <node id="1227519137253" at="25,0,26,0" concept="5" trace="myCachedExecutable" />
@@ -3693,8 +3693,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1230290102486">
     <file name="IntentionsDescriptor.java">
-      <node id="1230290102486" at="264,47,265,55" concept="4" />
-      <node id="1230290102486" at="443,47,444,42" concept="4" />
+      <node id="1230290102486" at="265,47,266,55" concept="4" />
+      <node id="1230290102486" at="444,47,445,42" concept="4" />
     </file>
     <file name="SpecifyClass_Intention.java">
       <node id="1230290102486" at="27,0,28,0" concept="5" trace="myCachedExecutable" />
@@ -3870,13 +3870,13 @@
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="1231930815009" at="74,54,75,52" concept="4" />
-      <node id="1231930815009" at="444,42,445,39" concept="4" />
+      <node id="1231930815009" at="445,42,446,39" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1236187435379">
     <file name="IntentionsDescriptor.java">
-      <node id="1236187435379" at="254,47,255,65" concept="4" />
-      <node id="1236187435379" at="445,39,446,52" concept="4" />
+      <node id="1236187435379" at="255,47,256,65" concept="4" />
+      <node id="1236187435379" at="446,39,447,52" concept="4" />
     </file>
     <file name="ToggleBLMethodAbstract_Intention.java">
       <node id="1236187435379" at="29,0,30,0" concept="5" trace="myCachedExecutable" />
@@ -3984,8 +3984,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1238764345596">
     <file name="IntentionsDescriptor.java">
-      <node id="1238764345596" at="160,47,161,62" concept="4" />
-      <node id="1238764345596" at="446,52,447,49" concept="4" />
+      <node id="1238764345596" at="161,47,162,62" concept="4" />
+      <node id="1238764345596" at="447,52,448,49" concept="4" />
     </file>
     <file name="IterateOverIterable_Intention.java">
       <node id="1238764345596" at="33,0,34,0" concept="5" trace="myCachedExecutable" />
@@ -4138,7 +4138,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1240248297859">
     <file name="IntentionsDescriptor.java">
       <node id="1240248297859" at="75,52,76,60" concept="4" />
-      <node id="1240248297859" at="447,49,448,47" concept="4" />
+      <node id="1240248297859" at="448,49,449,47" concept="4" />
     </file>
     <file name="ToggleMethodFinal_Intention.java">
       <node id="1240248297859" at="29,0,30,0" concept="5" trace="myCachedExecutable" />
@@ -4243,8 +4243,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1240251547040">
     <file name="IntentionsDescriptor.java">
-      <node id="1240251547040" at="169,71,170,60" concept="4" />
-      <node id="1240251547040" at="448,47,449,47" concept="4" />
+      <node id="1240251547040" at="170,71,171,60" concept="4" />
+      <node id="1240251547040" at="449,47,450,47" concept="4" />
     </file>
     <file name="MakeFieldVolatile_Intention.java">
       <node id="1240251547040" at="21,0,22,0" concept="5" trace="myCachedExecutable" />
@@ -4306,8 +4306,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1328906336304312268">
     <file name="IntentionsDescriptor.java">
-      <node id="1328906336304312268" at="214,70,215,62" concept="4" />
-      <node id="1328906336304312268" at="510,50,511,50" concept="4" />
+      <node id="1328906336304312268" at="215,70,216,62" concept="4" />
+      <node id="1328906336304312268" at="511,50,512,50" concept="4" />
     </file>
     <file name="UnwrapStatementList_Intention.java">
       <node id="1328906336304312268" at="28,0,29,0" concept="5" trace="myCachedExecutable" />
@@ -4508,14 +4508,14 @@
       <unit id="1645752949779063112" at="31,0,109,0" name="jetbrains.mps.baseLanguage.intentions.AddOverrideAnnotation_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1645752949779063112" at="256,70,257,64" concept="4" />
-      <node id="1645752949779063112" at="484,42,485,51" concept="4" />
+      <node id="1645752949779063112" at="257,70,258,64" concept="4" />
+      <node id="1645752949779063112" at="485,42,486,51" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1705375422254837433">
     <file name="IntentionsDescriptor.java">
-      <node id="1705375422254837433" at="100,60,101,57" concept="4" />
-      <node id="1705375422254837433" at="451,49,452,44" concept="4" />
+      <node id="1705375422254837433" at="101,60,102,57" concept="4" />
+      <node id="1705375422254837433" at="452,49,453,44" concept="4" />
     </file>
     <file name="MakeClassFinal_Intention.java">
       <node id="1705375422254837433" at="24,0,25,0" concept="5" trace="myCachedExecutable" />
@@ -4603,8 +4603,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1809470990894798934">
     <file name="IntentionsDescriptor.java">
-      <node id="1809470990894798934" at="335,47,336,68" concept="4" />
-      <node id="1809470990894798934" at="486,57,487,55" concept="4" />
+      <node id="1809470990894798934" at="336,47,337,68" concept="4" />
+      <node id="1809470990894798934" at="487,57,488,55" concept="4" />
     </file>
     <file name="RemoveStaticFieldModifier_Intention.java">
       <node id="1809470990894798934" at="30,0,31,0" concept="5" trace="myCachedExecutable" />
@@ -4811,8 +4811,8 @@
       <unit id="1809470990895250346" at="31,0,119,0" name="jetbrains.mps.baseLanguage.intentions.AddStaticFieldModifier_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1809470990895250346" at="171,61,172,65" concept="4" />
-      <node id="1809470990895250346" at="487,55,488,52" concept="4" />
+      <node id="1809470990895250346" at="172,61,173,65" concept="4" />
+      <node id="1809470990895250346" at="488,55,489,52" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/2021838008795797353">
@@ -4991,8 +4991,8 @@
       <unit id="2021838008809605136" at="34,0,151,0" name="jetbrains.mps.baseLanguage.intentions.CreateMatchingConstructor_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="2021838008809605136" at="101,57,102,68" concept="4" />
-      <node id="2021838008809605136" at="504,43,505,55" concept="4" />
+      <node id="2021838008809605136" at="102,57,103,68" concept="4" />
+      <node id="2021838008809605136" at="505,43,506,55" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/2040594400225005124">
@@ -5081,8 +5081,8 @@
       <unit id="2040594400225005124" at="22,0,84,0" name="jetbrains.mps.baseLanguage.intentions.ConvertIfConditionToTernaryOperator_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="2040594400225005124" at="238,50,239,79" concept="4" />
-      <node id="2040594400225005124" at="482,37,483,65" concept="4" />
+      <node id="2040594400225005124" at="239,50,240,79" concept="4" />
+      <node id="2040594400225005124" at="483,37,484,65" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/2040594400225274133">
@@ -5397,8 +5397,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/2357139912674293033">
     <file name="IntentionsDescriptor.java">
-      <node id="2357139912674293033" at="255,65,256,70" concept="4" />
-      <node id="2357139912674293033" at="449,47,450,57" concept="4" />
+      <node id="2357139912674293033" at="256,65,257,70" concept="4" />
+      <node id="2357139912674293033" at="450,47,451,57" concept="4" />
     </file>
     <file name="MakeClassAbstractFromMethod_Intention.java">
       <node id="2357139912674293033" at="24,0,25,0" concept="5" trace="myCachedExecutable" />
@@ -5476,8 +5476,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/2659103337263261502">
     <file name="IntentionsDescriptor.java">
-      <node id="2659103337263261502" at="328,64,329,81" concept="4" />
-      <node id="2659103337263261502" at="499,52,500,67" concept="4" />
+      <node id="2659103337263261502" at="329,64,330,81" concept="4" />
+      <node id="2659103337263261502" at="500,52,501,67" concept="4" />
     </file>
     <file name="JoinVariableDeclarationAndInitializer_Intention.java">
       <node id="2659103337263261502" at="26,0,27,0" concept="5" trace="myCachedExecutable" />
@@ -6056,13 +6056,13 @@
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="2880942692235520135" at="66,47,67,64" concept="4" />
-      <node id="2880942692235520135" at="506,58,507,51" concept="4" />
+      <node id="2880942692235520135" at="507,58,508,51" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/2990635952104560718">
     <file name="IntentionsDescriptor.java">
-      <node id="2990635952104560718" at="148,63,149,63" concept="4" />
-      <node id="2990635952104560718" at="474,50,475,50" concept="4" />
+      <node id="2990635952104560718" at="149,63,150,63" concept="4" />
+      <node id="2990635952104560718" at="475,50,476,50" concept="4" />
     </file>
     <file name="SurroundWithIfClause_Intention.java">
       <node id="2990635952104560718" at="26,0,27,0" concept="5" trace="myCachedExecutable" />
@@ -6145,8 +6145,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/2990635952104684230">
     <file name="IntentionsDescriptor.java">
-      <node id="2990635952104684230" at="149,63,150,67" concept="4" />
-      <node id="2990635952104684230" at="475,50,476,54" concept="4" />
+      <node id="2990635952104684230" at="150,63,151,67" concept="4" />
+      <node id="2990635952104684230" at="476,50,477,54" concept="4" />
     </file>
     <file name="SurroundWithIfElseClause_Intention.java">
       <node id="2990635952104684230" at="25,0,26,0" concept="5" trace="myCachedExecutable" />
@@ -6291,13 +6291,13 @@
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="3166734731684557381" at="77,67,78,55" concept="4" />
-      <node id="3166734731684557381" at="483,65,484,42" concept="4" />
+      <node id="3166734731684557381" at="484,65,485,42" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/3366354716707474220">
     <file name="IntentionsDescriptor.java">
-      <node id="3366354716707474220" at="317,62,318,57" concept="4" />
-      <node id="3366354716707474220" at="459,46,460,44" concept="4" />
+      <node id="3366354716707474220" at="318,62,319,57" concept="4" />
+      <node id="3366354716707474220" at="460,46,461,44" concept="4" />
     </file>
     <file name="SurroundWithIf_Intention.java">
       <node id="3366354716707474220" at="26,0,27,0" concept="5" trace="myCachedExecutable" />
@@ -6376,8 +6376,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/3366354716707626696">
     <file name="IntentionsDescriptor.java">
-      <node id="3366354716707626696" at="318,57,319,61" concept="4" />
-      <node id="3366354716707626696" at="460,44,461,48" concept="4" />
+      <node id="3366354716707626696" at="319,57,320,61" concept="4" />
+      <node id="3366354716707626696" at="461,44,462,48" concept="4" />
     </file>
     <file name="SurroundWithIfElse_Intention.java">
       <node id="3366354716707626696" at="26,0,27,0" concept="5" trace="myCachedExecutable" />
@@ -6459,8 +6459,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/3366354716707714383">
     <file name="IntentionsDescriptor.java">
-      <node id="3366354716707714383" at="319,61,320,60" concept="4" />
-      <node id="3366354716707714383" at="461,48,462,47" concept="4" />
+      <node id="3366354716707714383" at="320,61,321,60" concept="4" />
+      <node id="3366354716707714383" at="462,48,463,47" concept="4" />
     </file>
     <file name="SurroundWithWhile_Intention.java">
       <node id="3366354716707714383" at="26,0,27,0" concept="5" trace="myCachedExecutable" />
@@ -6539,8 +6539,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/3366354716707819213">
     <file name="IntentionsDescriptor.java">
-      <node id="3366354716707819213" at="320,60,321,62" concept="4" />
-      <node id="3366354716707819213" at="462,47,463,49" concept="4" />
+      <node id="3366354716707819213" at="321,60,322,62" concept="4" />
+      <node id="3366354716707819213" at="463,47,464,49" concept="4" />
     </file>
     <file name="SurroundWithDoWhile_Intention.java">
       <node id="3366354716707819213" at="26,0,27,0" concept="5" trace="myCachedExecutable" />
@@ -6619,8 +6619,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/3366354716707825816">
     <file name="IntentionsDescriptor.java">
-      <node id="3366354716707825816" at="321,62,322,58" concept="4" />
-      <node id="3366354716707825816" at="463,49,464,45" concept="4" />
+      <node id="3366354716707825816" at="322,62,323,58" concept="4" />
+      <node id="3366354716707825816" at="464,49,465,45" concept="4" />
     </file>
     <file name="SurroundWithFor_Intention.java">
       <node id="3366354716707825816" at="26,0,27,0" concept="5" trace="myCachedExecutable" />
@@ -6700,8 +6700,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/3366354716707825882">
     <file name="IntentionsDescriptor.java">
-      <node id="3366354716707825882" at="322,58,323,72" concept="4" />
-      <node id="3366354716707825882" at="464,45,465,59" concept="4" />
+      <node id="3366354716707825882" at="323,58,324,72" concept="4" />
+      <node id="3366354716707825882" at="465,45,466,59" concept="4" />
     </file>
     <file name="SurroundStatementsWithForEach_Intention.java">
       <node id="3366354716707825882" at="26,0,27,0" concept="5" trace="myCachedExecutable" />
@@ -6781,8 +6781,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/3366354716707825944">
     <file name="IntentionsDescriptor.java">
-      <node id="3366354716707825944" at="323,72,324,63" concept="4" />
-      <node id="3366354716707825944" at="465,59,466,50" concept="4" />
+      <node id="3366354716707825944" at="324,72,325,63" concept="4" />
+      <node id="3366354716707825944" at="466,59,467,50" concept="4" />
     </file>
     <file name="SurroundWithTryCatch_Intention.java">
       <node id="3366354716707825944" at="43,0,44,0" concept="5" trace="myCachedExecutable" />
@@ -6935,8 +6935,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/3366354716707895805">
     <file name="IntentionsDescriptor.java">
-      <node id="3366354716707895805" at="324,63,325,65" concept="4" />
-      <node id="3366354716707895805" at="466,50,467,52" concept="4" />
+      <node id="3366354716707895805" at="325,63,326,65" concept="4" />
+      <node id="3366354716707895805" at="467,50,468,52" concept="4" />
     </file>
     <file name="SurroundWithTryFinally_Intention.java">
       <node id="3366354716707895805" at="28,0,29,0" concept="5" trace="myCachedExecutable" />
@@ -7016,8 +7016,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/3366354716707929765">
     <file name="IntentionsDescriptor.java">
-      <node id="3366354716707929765" at="325,65,326,70" concept="4" />
-      <node id="3366354716707929765" at="467,52,468,57" concept="4" />
+      <node id="3366354716707929765" at="326,65,327,70" concept="4" />
+      <node id="3366354716707929765" at="468,52,469,57" concept="4" />
     </file>
     <file name="SurroundWithTryCatchFinally_Intention.java">
       <node id="3366354716707929765" at="43,0,44,0" concept="5" trace="myCachedExecutable" />
@@ -7174,8 +7174,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/3366354716707929843">
     <file name="IntentionsDescriptor.java">
-      <node id="3366354716707929843" at="326,70,327,68" concept="4" />
-      <node id="3366354716707929843" at="468,57,469,54" concept="4" />
+      <node id="3366354716707929843" at="327,70,328,68" concept="4" />
+      <node id="3366354716707929843" at="469,57,470,54" concept="4" />
     </file>
     <file name="SurroundWithSynchronized_Intention.java">
       <node id="3366354716707929843" at="26,0,27,0" concept="5" trace="myCachedExecutable" />
@@ -7254,8 +7254,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/3366354716707929907">
     <file name="IntentionsDescriptor.java">
-      <node id="3366354716707929907" at="327,68,328,64" concept="4" />
-      <node id="3366354716707929907" at="469,54,470,50" concept="4" />
+      <node id="3366354716707929907" at="328,68,329,64" concept="4" />
+      <node id="3366354716707929907" at="470,54,471,50" concept="4" />
     </file>
     <file name="SurroundWithBrackets_Intention.java">
       <node id="3366354716707929907" at="28,0,29,0" concept="5" trace="myCachedExecutable" />
@@ -7334,7 +7334,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/3832376534040308203">
     <file name="IntentionsDescriptor.java">
       <node id="3832376534040308203" at="85,62,86,57" concept="4" />
-      <node id="3832376534040308203" at="491,54,492,44" concept="4" />
+      <node id="3832376534040308203" at="492,54,493,44" concept="4" />
     </file>
     <file name="OrToAndAndBack_Intention.java">
       <node id="3832376534040308203" at="25,0,26,0" concept="5" trace="myCachedExecutable" />
@@ -7454,8 +7454,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/3898325814824766814">
     <file name="IntentionsDescriptor.java">
-      <node id="3898325814824766814" at="389,81,390,61" concept="4" />
-      <node id="3898325814824766814" at="452,44,453,48" concept="4" />
+      <node id="3898325814824766814" at="390,81,391,61" concept="4" />
+      <node id="3898325814824766814" at="453,44,454,48" concept="4" />
     </file>
     <file name="MakeParameterFinal_Intention.java">
       <node id="3898325814824766814" at="26,0,27,0" concept="5" trace="myCachedExecutable" />
@@ -7550,7 +7550,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/4138629533259838060">
     <file name="IntentionsDescriptor.java">
       <node id="4138629533259838060" at="45,59,46,68" concept="4" />
-      <node id="4138629533259838060" at="480,40,481,55" concept="4" />
+      <node id="4138629533259838060" at="481,40,482,55" concept="4" />
     </file>
     <file name="RemoveTVDInAnonymousClass_Intention.java">
       <node id="4138629533259838060" at="22,0,23,0" concept="5" trace="myCachedExecutable" />
@@ -7622,8 +7622,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/418779379561917490">
     <file name="IntentionsDescriptor.java">
-      <node id="418779379561917490" at="146,66,147,63" concept="4" />
-      <node id="418779379561917490" at="472,53,473,50" concept="4" />
+      <node id="418779379561917490" at="147,66,148,63" concept="4" />
+      <node id="418779379561917490" at="473,53,474,50" concept="4" />
     </file>
     <file name="SurroundWithTypeCast_Intention.java">
       <node id="418779379561917490" at="30,0,31,0" concept="5" trace="myCachedExecutable" />
@@ -7757,8 +7757,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/418779379562176548">
     <file name="IntentionsDescriptor.java">
-      <node id="418779379562176548" at="147,63,148,63" concept="4" />
-      <node id="418779379562176548" at="473,50,474,50" concept="4" />
+      <node id="418779379562176548" at="148,63,149,63" concept="4" />
+      <node id="418779379562176548" at="474,50,475,50" concept="4" />
     </file>
     <file name="SurroundWithNegation_Intention.java">
       <node id="418779379562176548" at="25,0,26,0" concept="5" trace="myCachedExecutable" />
@@ -7917,8 +7917,8 @@
       <unit id="4211685044944889934" at="25,0,81,0" name="jetbrains.mps.baseLanguage.intentions.AutoSpacing_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="4211685044944889934" at="116,62,117,54" concept="4" />
-      <node id="4211685044944889934" at="500,67,501,41" concept="4" />
+      <node id="4211685044944889934" at="117,62,118,54" concept="4" />
+      <node id="4211685044944889934" at="501,67,502,41" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/4221915412198803507">
@@ -8000,14 +8000,14 @@
       <unit id="4221915412198803507" at="28,0,88,0" name="jetbrains.mps.baseLanguage.intentions.FixMissingDefaultConstructor_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="4221915412198803507" at="123,47,124,71" concept="4" />
-      <node id="4221915412198803507" at="505,55,506,58" concept="4" />
+      <node id="4221915412198803507" at="124,47,125,71" concept="4" />
+      <node id="4221915412198803507" at="506,55,507,58" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/4276006055363816691">
     <file name="IntentionsDescriptor.java">
       <node id="4276006055363816691" at="76,60,77,67" concept="4" />
-      <node id="4276006055363816691" at="477,47,478,54" concept="4" />
+      <node id="4276006055363816691" at="478,47,479,54" concept="4" />
     </file>
     <file name="ToggleMethodSynchronized_Intention.java">
       <node id="4276006055363816691" at="24,0,25,0" concept="5" trace="myCachedExecutable" />
@@ -8091,8 +8091,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/4467513934994688403">
     <file name="IntentionsDescriptor.java">
-      <node id="4467513934994688403" at="233,62,234,55" concept="4" />
-      <node id="4467513934994688403" at="456,49,457,42" concept="4" />
+      <node id="4467513934994688403" at="234,62,235,55" concept="4" />
+      <node id="4467513934994688403" at="457,49,458,42" concept="4" />
     </file>
     <file name="MakeOneLiner_Intention.java">
       <node id="4467513934994688403" at="22,0,23,0" concept="5" trace="myCachedExecutable" />
@@ -8166,8 +8166,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/4467513934994713259">
     <file name="IntentionsDescriptor.java">
-      <node id="4467513934994713259" at="234,55,235,57" concept="4" />
-      <node id="4467513934994713259" at="457,42,458,44" concept="4" />
+      <node id="4467513934994713259" at="235,55,236,57" concept="4" />
+      <node id="4467513934994713259" at="458,42,459,44" concept="4" />
     </file>
     <file name="MakeMultiLiner_Intention.java">
       <node id="4467513934994713259" at="22,0,23,0" concept="5" trace="myCachedExecutable" />
@@ -8241,8 +8241,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/4467513934995351531">
     <file name="IntentionsDescriptor.java">
-      <node id="4467513934995351531" at="235,57,236,59" concept="4" />
-      <node id="4467513934995351531" at="458,44,459,46" concept="4" />
+      <node id="4467513934995351531" at="236,57,237,59" concept="4" />
+      <node id="4467513934995351531" at="459,44,460,46" concept="4" />
     </file>
     <file name="UsedefaultLayout_Intention.java">
       <node id="4467513934995351531" at="21,0,22,0" concept="5" trace="myCachedExecutable" />
@@ -8316,8 +8316,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/4513394054604028407">
     <file name="IntentionsDescriptor.java">
-      <node id="4513394054604028407" at="239,79,240,65" concept="4" />
-      <node id="4513394054604028407" at="501,41,502,51" concept="4" />
+      <node id="4513394054604028407" at="240,79,241,65" concept="4" />
+      <node id="4513394054604028407" at="502,41,503,51" concept="4" />
     </file>
     <file name="UnwrapUnnecessaryElse_Intention.java">
       <node id="4513394054604028407" at="34,0,35,0" concept="5" trace="myCachedExecutable" />
@@ -8452,8 +8452,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/47041348238355115">
     <file name="IntentionsDescriptor.java">
-      <node id="47041348238355115" at="278,47,279,61" concept="4" />
-      <node id="47041348238355115" at="488,52,489,48" concept="4" />
+      <node id="47041348238355115" at="279,47,280,61" concept="4" />
+      <node id="47041348238355115" at="489,52,490,48" concept="4" />
     </file>
     <file name="ToggleMethodStatic_Intention.java">
       <node id="47041348238355115" at="33,0,34,0" concept="5" trace="myCachedExecutable" />
@@ -8582,8 +8582,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/4710708256402121309">
     <file name="IntentionsDescriptor.java">
-      <node id="4710708256402121309" at="308,47,309,56" concept="4" />
-      <node id="4710708256402121309" at="503,51,504,43" concept="4" />
+      <node id="4710708256402121309" at="309,47,310,56" concept="4" />
+      <node id="4710708256402121309" at="504,51,505,43" concept="4" />
     </file>
     <file name="UpdateComment_Intention.java">
       <node id="4710708256402121309" at="29,0,30,0" concept="5" trace="myCachedExecutable" />
@@ -8681,8 +8681,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/4838165336397280137">
     <file name="IntentionsDescriptor.java">
-      <node id="4838165336397280137" at="257,64,258,62" concept="4" />
-      <node id="4838165336397280137" at="509,64,510,50" concept="4" />
+      <node id="4838165336397280137" at="258,64,259,62" concept="4" />
+      <node id="4838165336397280137" at="510,64,511,50" concept="4" />
     </file>
     <file name="ToggleMethodDefault_Intention.java">
       <node id="4838165336397280137" at="28,0,29,0" concept="5" trace="myCachedExecutable" />
@@ -8793,8 +8793,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/5155195849735077874">
     <file name="IntentionsDescriptor.java">
-      <node id="5155195849735077874" at="237,53,238,50" concept="4" />
-      <node id="5155195849735077874" at="481,55,482,37" concept="4" />
+      <node id="5155195849735077874" at="238,53,239,50" concept="4" />
+      <node id="5155195849735077874" at="482,55,483,37" concept="4" />
     </file>
     <file name="SplitIf_Intention.java">
       <node id="5155195849735077874" at="25,0,26,0" concept="5" trace="myCachedExecutable" />
@@ -8958,8 +8958,8 @@
       <unit id="521412098689817330" at="23,0,78,0" name="jetbrains.mps.baseLanguage.intentions.ChangeStaticInInner_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="521412098689817330" at="115,47,116,62" concept="4" />
-      <node id="521412098689817330" at="450,57,451,49" concept="4" />
+      <node id="521412098689817330" at="116,47,117,62" concept="4" />
+      <node id="521412098689817330" at="451,57,452,49" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/528847182406392848">
@@ -9055,14 +9055,109 @@
       <unit id="528847182406392848" at="26,0,91,0" name="jetbrains.mps.baseLanguage.intentions.CleanUnmatchedParentheses_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="528847182406392848" at="150,67,151,68" concept="4" />
-      <node id="528847182406392848" at="496,77,497,55" concept="4" />
+      <node id="528847182406392848" at="151,67,152,68" concept="4" />
+      <node id="528847182406392848" at="497,77,498,55" concept="4" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/563261338089478407">
+    <file name="IntentionsDescriptor.java">
+      <node id="563261338089478407" at="93,69,94,63" concept="4" />
+      <node id="563261338089478407" at="512,50,513,51" concept="4" />
+    </file>
+    <file name="UnwrapBlockStatement_Intention.java">
+      <node id="563261338089478407" at="27,0,28,0" concept="5" trace="myCachedExecutable" />
+      <node id="563261338089478407" at="28,43,29,150" concept="15" />
+      <node id="563261338089478407" at="32,35,33,34" concept="10" />
+      <node id="563261338089478407" at="37,53,38,19" concept="10" />
+      <node id="563261338089478407" at="40,127,41,19" concept="10" />
+      <node id="563261338089478407" at="42,5,43,16" concept="10" />
+      <node id="563261338089502081" at="45,91,46,172" concept="10" />
+      <node id="563261338089491318" at="48,112,49,231" concept="10" />
+      <node id="563261338089478407" at="52,35,53,17" concept="10" />
+      <node id="563261338089478407" at="56,37,57,105" concept="4" />
+      <node id="563261338089478407" at="58,5,59,30" concept="10" />
+      <node id="563261338089572071" at="65,87,66,139" concept="10" />
+      <node id="563261338089571766" at="66,139,67,0" concept="12" />
+      <node id="563261338089565972" at="71,71,72,118" concept="4" />
+      <node id="563261338089505902" at="73,14,74,56" concept="4" />
+      <node id="563261338089478407" at="78,48,79,49" concept="10" />
+      <node id="563261338089478407" at="84,0,85,0" concept="13" trace="statements$uqR0" />
+      <node id="563261338089478407" at="85,0,86,0" concept="13" trace="statement$WHn8" />
+      <node id="563261338089478407" at="86,0,87,0" concept="13" trace="ifFalseStatement$Xnu2" />
+      <node id="563261338089478407" at="90,0,91,0" concept="13" trace="StatementList$TN" />
+      <node id="563261338089478407" at="91,0,92,0" concept="13" trace="IfStatement$pi" />
+      <node id="563261338089478407" at="62,0,64,0" concept="2" trace="IntentionImplementation#()V" />
+      <node id="563261338089565800" at="73,12,75,7" concept="0" />
+      <node id="563261338089478407" at="28,0,31,0" concept="2" trace="UnwrapBlockStatement_Intention#()V" />
+      <node id="563261338089478407" at="36,84,39,5" concept="7" />
+      <node id="563261338089478407" at="39,5,42,5" concept="7" />
+      <node id="563261338089478407" at="45,0,48,0" concept="8" trace="isApplicableToNode#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
+      <node id="563261338089478407" at="48,0,51,0" concept="8" trace="isVisibleInChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
+      <node id="563261338089478407" at="55,99,58,5" concept="7" />
+      <node id="563261338089478407" at="31,0,35,0" concept="8" trace="getPresentation#()Ljava/lang/String;" />
+      <node id="563261338089478407" at="51,0,55,0" concept="8" trace="isSurroundWith#()Z" />
+      <node id="563261338089478407" at="77,0,81,0" concept="8" trace="getDescriptor#()Ljetbrains/mps/openapi/intentions/IntentionDescriptor;" />
+      <node id="563261338089478407" at="64,0,69,0" concept="8" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/lang/String;" />
+      <node id="563261338089564534" at="70,78,75,7" concept="7" />
+      <node id="563261338089478407" at="55,0,61,0" concept="8" trace="instances#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/util/Collection;" />
+      <node id="563261338089478407" at="69,0,77,0" concept="8" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
+      <node id="563261338089478407" at="35,0,45,0" concept="8" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
+      <scope id="563261338089478407" at="62,38,62,38" />
+      <scope id="563261338089478407" at="28,43,29,150" />
+      <scope id="563261338089478407" at="32,35,33,34" />
+      <scope id="563261338089478407" at="37,53,38,19" />
+      <scope id="563261338089478407" at="40,127,41,19" />
+      <scope id="563261338089501606" at="45,91,46,172" />
+      <scope id="563261338089491038" at="48,112,49,231" />
+      <scope id="563261338089478407" at="52,35,53,17" />
+      <scope id="563261338089478407" at="56,37,57,105" />
+      <scope id="563261338089564536" at="71,71,72,118" />
+      <scope id="563261338089565801" at="73,14,74,56" />
+      <scope id="563261338089478407" at="78,48,79,49" />
+      <scope id="563261338089478407" at="62,0,64,0" />
+      <scope id="563261338089478409" at="65,87,67,0" />
+      <scope id="563261338089478407" at="28,0,31,0" />
+      <scope id="563261338089478407" at="45,0,48,0">
+        <var name="editorContext" id="563261338089478407" />
+        <var name="node" id="563261338089478407" />
+      </scope>
+      <scope id="563261338089478407" at="48,0,51,0">
+        <var name="childNode" id="563261338089478407" />
+        <var name="editorContext" id="563261338089478407" />
+        <var name="node" id="563261338089478407" />
+      </scope>
+      <scope id="563261338089478407" at="31,0,35,0" />
+      <scope id="563261338089478407" at="51,0,55,0" />
+      <scope id="563261338089478407" at="55,99,59,30" />
+      <scope id="563261338089478407" at="77,0,81,0" />
+      <scope id="563261338089478407" at="64,0,69,0">
+        <var name="editorContext" id="563261338089478407" />
+        <var name="node" id="563261338089478407" />
+      </scope>
+      <scope id="563261338089478411" at="70,78,75,7" />
+      <scope id="563261338089478407" at="55,0,61,0">
+        <var name="context" id="563261338089478407" />
+        <var name="node" id="563261338089478407" />
+      </scope>
+      <scope id="563261338089478407" at="36,84,43,16" />
+      <scope id="563261338089478407" at="69,0,77,0">
+        <var name="editorContext" id="563261338089478407" />
+        <var name="node" id="563261338089478407" />
+      </scope>
+      <scope id="563261338089478407" at="35,0,45,0">
+        <var name="editorContext" id="563261338089478407" />
+        <var name="node" id="563261338089478407" />
+      </scope>
+      <unit id="563261338089478407" at="89,0,93,0" name="jetbrains.mps.baseLanguage.intentions.UnwrapBlockStatement_Intention$CONCEPTS" />
+      <unit id="563261338089478407" at="83,0,88,0" name="jetbrains.mps.baseLanguage.intentions.UnwrapBlockStatement_Intention$LINKS" />
+      <unit id="563261338089478407" at="61,0,82,0" name="jetbrains.mps.baseLanguage.intentions.UnwrapBlockStatement_Intention$IntentionImplementation" />
+      <unit id="563261338089478407" at="26,0,94,0" name="jetbrains.mps.baseLanguage.intentions.UnwrapBlockStatement_Intention" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/6468716278899299956">
     <file name="IntentionsDescriptor.java">
-      <node id="6468716278899299956" at="337,66,338,67" concept="4" />
-      <node id="6468716278899299956" at="490,53,491,54" concept="4" />
+      <node id="6468716278899299956" at="338,66,339,67" concept="4" />
+      <node id="6468716278899299956" at="491,53,492,54" concept="4" />
     </file>
     <file name="MakeStaticFieldTransient_Intention.java">
       <node id="6468716278899299956" at="21,0,22,0" concept="5" trace="myCachedExecutable" />
@@ -9124,8 +9219,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/6468716278899347609">
     <file name="IntentionsDescriptor.java">
-      <node id="6468716278899347609" at="336,68,337,66" concept="4" />
-      <node id="6468716278899347609" at="489,48,490,53" concept="4" />
+      <node id="6468716278899347609" at="337,68,338,66" concept="4" />
+      <node id="6468716278899347609" at="490,48,491,53" concept="4" />
     </file>
     <file name="MakeStaticFieldVolatile_Intention.java">
       <node id="6468716278899347609" at="21,0,22,0" concept="5" trace="myCachedExecutable" />
@@ -9187,8 +9282,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/6526572214144685276">
     <file name="IntentionsDescriptor.java">
-      <node id="6526572214144685276" at="299,47,300,79" concept="4" />
-      <node id="6526572214144685276" at="493,49,494,66" concept="4" />
+      <node id="6526572214144685276" at="300,47,301,79" concept="4" />
+      <node id="6526572214144685276" at="494,49,495,66" concept="4" />
     </file>
     <file name="SwitchToCustomPropertyImplementation_Intention.java">
       <node id="6526572214144685276" at="24,0,25,0" concept="5" trace="myCachedExecutable" />
@@ -9272,8 +9367,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/6526572214144798617">
     <file name="IntentionsDescriptor.java">
-      <node id="6526572214144798617" at="300,79,301,80" concept="4" />
-      <node id="6526572214144798617" at="494,66,495,67" concept="4" />
+      <node id="6526572214144798617" at="301,79,302,80" concept="4" />
+      <node id="6526572214144798617" at="495,66,496,67" concept="4" />
     </file>
     <file name="SwitchToDefaultPropertyImplementation_Intention.java">
       <node id="6526572214144798617" at="24,0,25,0" concept="5" trace="myCachedExecutable" />
@@ -9347,8 +9442,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/6526572214154952610">
     <file name="IntentionsDescriptor.java">
-      <node id="6526572214154952610" at="301,80,302,90" concept="4" />
-      <node id="6526572214154952610" at="495,67,496,77" concept="4" />
+      <node id="6526572214154952610" at="302,80,303,90" concept="4" />
+      <node id="6526572214154952610" at="496,67,497,77" concept="4" />
     </file>
     <file name="SwitchToCustomConstructorPropertyImplementation_Intention.java">
       <node id="6526572214154952610" at="24,0,25,0" concept="5" trace="myCachedExecutable" />
@@ -9507,8 +9602,8 @@
       <unit id="7288587046701126243" at="24,0,81,0" name="jetbrains.mps.baseLanguage.intentions.ConvertToReturnStatement_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="7288587046701126243" at="161,62,162,67" concept="4" />
-      <node id="7288587046701126243" at="453,48,454,54" concept="4" />
+      <node id="7288587046701126243" at="162,62,163,67" concept="4" />
+      <node id="7288587046701126243" at="454,48,455,54" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/7590508941683838692">
@@ -9582,7 +9677,7 @@
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="7590508941683838692" at="37,47,38,67" concept="4" />
-      <node id="7590508941683838692" at="507,51,508,54" concept="4" />
+      <node id="7590508941683838692" at="508,51,509,54" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/7590508941684024374">
@@ -9845,13 +9940,13 @@
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="7638980610829995124" at="44,47,45,59" concept="4" />
-      <node id="7638980610829995124" at="478,54,479,46" concept="4" />
+      <node id="7638980610829995124" at="479,54,480,46" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/7940428822325910682">
     <file name="IntentionsDescriptor.java">
-      <node id="7940428822325910682" at="352,67,353,62" concept="4" />
-      <node id="7940428822325910682" at="492,44,493,49" concept="4" />
+      <node id="7940428822325910682" at="353,67,354,62" concept="4" />
+      <node id="7940428822325910682" at="493,44,494,49" concept="4" />
     </file>
     <file name="SwapTernaryBranches_Intention.java">
       <node id="7940428822325910682" at="26,0,27,0" concept="5" trace="myCachedExecutable" />
@@ -10091,8 +10186,8 @@
       <unit id="7992933469059517022" at="24,0,78,0" name="jetbrains.mps.baseLanguage.intentions.AddTypeParameters_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="7992933469059517022" at="221,47,222,60" concept="4" />
-      <node id="7992933469059517022" at="476,54,477,47" concept="4" />
+      <node id="7992933469059517022" at="222,47,223,60" concept="4" />
+      <node id="7992933469059517022" at="477,54,478,47" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/8145509665020019463">
@@ -10186,8 +10281,8 @@
       <unit id="8145509665020019463" at="24,0,92,0" name="jetbrains.mps.baseLanguage.intentions.ConvertElsifToNewIfStatement_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="8145509665020019463" at="131,60,132,71" concept="4" />
-      <node id="8145509665020019463" at="454,54,455,58" concept="4" />
+      <node id="8145509665020019463" at="132,60,133,71" concept="4" />
+      <node id="8145509665020019463" at="455,54,456,58" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/8176191621190087466">
@@ -10314,8 +10409,8 @@
       <unit id="8176191621190087466" at="27,0,112,0" name="jetbrains.mps.baseLanguage.intentions.AlterStatementListContainer_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="8176191621190087466" at="213,47,214,70" concept="4" />
-      <node id="8176191621190087466" at="485,51,486,57" concept="4" />
+      <node id="8176191621190087466" at="214,47,215,70" concept="4" />
+      <node id="8176191621190087466" at="486,51,487,57" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/8245314650930918171">
@@ -10443,8 +10538,8 @@
       <unit id="8245314650930918171" at="25,0,115,0" name="jetbrains.mps.baseLanguage.intentions.ComputeWholeExpressionValue_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="8245314650930918171" at="151,68,152,70" concept="4" />
-      <node id="8245314650930918171" at="497,55,498,57" concept="4" />
+      <node id="8245314650930918171" at="152,68,153,70" concept="4" />
+      <node id="8245314650930918171" at="498,55,499,57" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/8245314650933155415">
@@ -10575,14 +10670,14 @@
       <unit id="8245314650933155415" at="25,0,118,0" name="jetbrains.mps.baseLanguage.intentions.ComputeExpressionValue_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="8245314650933155415" at="152,70,153,65" concept="4" />
-      <node id="8245314650933155415" at="498,57,499,52" concept="4" />
+      <node id="8245314650933155415" at="153,70,154,65" concept="4" />
+      <node id="8245314650933155415" at="499,57,500,52" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/8606350594693687997">
     <file name="IntentionsDescriptor.java">
-      <node id="8606350594693687997" at="170,60,171,61" concept="4" />
-      <node id="8606350594693687997" at="470,50,471,48" concept="4" />
+      <node id="8606350594693687997" at="171,60,172,61" concept="4" />
+      <node id="8606350594693687997" at="471,50,472,48" concept="4" />
     </file>
     <file name="MakeFieldTransient_Intention.java">
       <node id="8606350594693687997" at="21,0,22,0" concept="5" trace="myCachedExecutable" />
@@ -10644,8 +10739,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/885351258699010583">
     <file name="IntentionsDescriptor.java">
-      <node id="885351258699010583" at="153,65,154,64" concept="4" />
-      <node id="885351258699010583" at="502,51,503,51" concept="4" />
+      <node id="885351258699010583" at="154,65,155,64" concept="4" />
+      <node id="885351258699010583" at="503,51,504,51" concept="4" />
     </file>
     <file name="SurroundWithPassByRef_Intention.java">
       <node id="885351258699010583" at="25,0,26,0" concept="5" trace="myCachedExecutable" />
@@ -10815,14 +10910,14 @@
       <unit id="9163255059340117948" at="22,0,94,0" name="jetbrains.mps.baseLanguage.intentions.CreateInternalLabel_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="9163255059340117948" at="316,48,317,62" concept="4" />
-      <node id="9163255059340117948" at="455,58,456,49" concept="4" />
+      <node id="9163255059340117948" at="317,48,318,62" concept="4" />
+      <node id="9163255059340117948" at="456,58,457,49" concept="4" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/917166302015890876">
     <file name="IntentionsDescriptor.java">
-      <node id="917166302015890876" at="236,59,237,53" concept="4" />
-      <node id="917166302015890876" at="479,46,480,40" concept="4" />
+      <node id="917166302015890876" at="237,59,238,53" concept="4" />
+      <node id="917166302015890876" at="480,46,481,40" concept="4" />
     </file>
     <file name="UnwrapElse_Intention.java">
       <node id="917166302015890876" at="28,0,29,0" concept="5" trace="myCachedExecutable" />
@@ -10910,8 +11005,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/985108658453262823">
     <file name="IntentionsDescriptor.java">
-      <node id="985108658453262823" at="145,47,146,66" concept="4" />
-      <node id="985108658453262823" at="471,48,472,53" concept="4" />
+      <node id="985108658453262823" at="146,47,147,66" concept="4" />
+      <node id="985108658453262823" at="472,48,473,53" concept="4" />
     </file>
     <file name="SurroundWithParenthesis_Intention.java">
       <node id="985108658453262823" at="25,0,26,0" concept="5" trace="myCachedExecutable" />

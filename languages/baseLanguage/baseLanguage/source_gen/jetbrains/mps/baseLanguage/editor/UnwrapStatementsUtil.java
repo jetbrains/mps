@@ -48,7 +48,11 @@ public class UnwrapStatementsUtil {
     unwrapStatementListInContainer(SNodeOperations.cast(oldContainer, CONCEPTS.Statement$ok), IContainsStatementList__BehaviorDescriptor.getStatementList_idi0zv5tb.invoke(oldContainer));
   }
 
-  public static void unwrapStatementListInContainer(final SNode toDelete, SNode oldContainer) {
+  public static void unwrapBlockStatement(SNode oldContainer) {
+    unwrapStatementListInContainer(oldContainer, SLinkOperations.getTarget(oldContainer, LINKS.statements$uqR0));
+  }
+
+  private static void unwrapStatementListInContainer(final SNode toDelete, SNode oldContainer) {
     if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(toDelete), CONCEPTS.StatementList$TN))) {
       SNode newBlock = SNodeOperations.replaceWithAnother(toDelete, SNodeFactoryOperations.createNewNode(CONCEPTS.BlockStatement$1i, null));
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(newBlock, LINKS.statements$uqR0), LINKS.statement$WHn8)).addElement(toDelete);
