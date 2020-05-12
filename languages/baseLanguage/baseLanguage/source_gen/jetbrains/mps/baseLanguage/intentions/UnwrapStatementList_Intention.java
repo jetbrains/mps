@@ -11,8 +11,8 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.baseLanguage.behavior.IContainsStatementList__BehaviorDescriptor;
 import java.util.Objects;
 import java.util.Collections;
@@ -44,7 +44,7 @@ public final class UnwrapStatementList_Intention extends AbstractIntentionDescri
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(node, CONCEPTS.Statement$ok) && ListSequence.fromList(SLinkOperations.getChildren(IContainsStatementList__BehaviorDescriptor.getStatementList_idi0zv5tb.invoke(node), LINKS.statement$WHn8)).isNotEmpty();
+    return SNodeOperations.isInstanceOf(node, CONCEPTS.Statement$ok) && Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(IContainsStatementList__BehaviorDescriptor.getStatementList_idi0zv5tb.invoke(node), LINKS.statement$WHn8)).isNotEmpty();
   }
   private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
     return Objects.equals(SNodeOperations.getNodeAncestor(childNode, CONCEPTS.StatementList$TN, true, false), IContainsStatementList__BehaviorDescriptor.getStatementList_idi0zv5tb.invoke(node));
