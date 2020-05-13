@@ -22,8 +22,6 @@ import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.facets.TestsFacetImpl;
 import jetbrains.mps.smodel.BootstrapLanguages;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.containers.MultiMap;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -32,11 +30,14 @@ import org.jetbrains.mps.openapi.module.FacetsFacade;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 
 /**
  * evgeny, 2/27/13
@@ -74,13 +75,15 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
 
   private FacetFactory DUMB_IDEA_PLUGIN_FACET_FACTORY;
 
-  private MultiMap<String, String> myLanguageToFacetTypes = new MultiMap<>();
+  private final MultiMap<String, String> myLanguageToFacetTypes = new MultiMap<>();
 
-  private Map<FacetFactory, String> myFactoryType = new HashMap<>();
-  private Map<String, FacetFactory> myFacetsByType = new HashMap<>();
+  private final Map<FacetFactory, String> myFactoryType = new HashMap<>();
+  private final Map<String, FacetFactory> myFacetsByType = new HashMap<>();
+
+  private final Map<String, List<Consumer<FacetFactory>>> myFacetType2Callback = new HashMap<>();
 
   @Override
-  public Set<String> getFacetTypes() {
+  public synchronized Set<String> getFacetTypes() {
     return myFacetsByType.keySet();
   }
 
@@ -108,24 +111,44 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
 
   @Nullable
   @Override
-  public FacetFactory getFacetFactory(String facetType) {
+  public synchronized FacetFactory getFacetFactory(String facetType) {
     return myFacetsByType.get(facetType);
   }
 
   @Override
-  public void addFactory(@NotNull String facetType, FacetFactory factory) {
+  public synchronized void addFactory(@NotNull String facetType, @NotNull FacetFactory factory) {
     if (myFactoryType.containsKey(factory)) {
       throw new IllegalStateException("factory is already registered");
     }
     myFactoryType.put(factory, facetType);
     myFacetsByType.put(facetType, factory);
+    goOverCallbacks(facetType, factory);
+  }
+
+  private void goOverCallbacks(@NotNull String facetType, @NotNull FacetFactory factory) {
+    List<Consumer<FacetFactory>> callbacksWeKnow = myFacetType2Callback.remove(facetType);
+    if (callbacksWeKnow != null) {
+      for (Consumer<FacetFactory> callback : callbacksWeKnow) {
+        callback.accept(factory);
+      }
+    }
   }
 
   @Override
-  public void removeFactory(FacetFactory factory) {
+  public synchronized void removeFactory(@NotNull FacetFactory factory) {
     String type = myFactoryType.remove(factory);
     if (type != null) {
       myFacetsByType.remove(type);
+    }
+  }
+
+  public synchronized void callWhenFacetFactoryAppears(@NotNull String facetFactoryType, @NotNull Consumer<FacetFactory> callback) {
+    boolean noSuchFactory = getFacetFactory(facetFactoryType) == null;
+    if (noSuchFactory) {
+      myFacetType2Callback.computeIfAbsent(facetFactoryType, k -> new ArrayList<>())
+                          .add(callback);
+    } else {
+      callback.accept(getFacetFactory(facetFactoryType));
     }
   }
 

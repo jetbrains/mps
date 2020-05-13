@@ -143,7 +143,25 @@ public interface SModule {
    *  use {@link #getFacets()} instead and filter as appropriate.
    */
   @Nullable
-  <T extends SModuleFacet> T getFacet(@NotNull Class<T> clazz);
+  default <T extends SModuleFacet> T getFacet(@NotNull Class<T> clazz) {
+    for (SModuleFacet facet : getFacets()) {
+      if (clazz.isInstance(facet)) {
+        return clazz.cast(facet);
+      }
+    }
+    return null;
+  }
+
+  @Nullable
+  default SModuleFacet getFacetOfType(@NotNull String type) {
+    for (SModuleFacet facet : getFacets()) {
+      if (facet.getFacetType().equals(type)) {
+        return facet;
+      }
+    }
+    return null;
+  }
+
 
   // FIXME document whether read lock is required to access roots
   Iterable<ModelRoot> getModelRoots();

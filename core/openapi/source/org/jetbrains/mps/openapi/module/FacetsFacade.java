@@ -17,10 +17,12 @@ package org.jetbrains.mps.openapi.module;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.language.SLanguage;
 
 import java.util.Collection;
 import java.util.Set;
+import java.util.function.Consumer;
 
 public abstract class FacetsFacade {
 
@@ -61,6 +63,12 @@ public abstract class FacetsFacade {
    */
   @Nullable
   public abstract FacetFactory getFacetFactory(String facetType);
+
+  /**
+   * for now it is only for internal use
+   */
+  @Internal
+  public abstract void callWhenFacetFactoryAppears(@NotNull String facetFactoryType, @NotNull Consumer<FacetFactory> callback);
 
   public abstract void addFactory(@NotNull String facetType, FacetFactory factory);
 

@@ -61,7 +61,7 @@ final class FacetTabsPersistence {
   @Nullable
   public Tab getFacetTab(@NotNull SModuleFacet moduleFacet) {
     final String facetType = moduleFacet.getFacetType();
-    if(!myTabFactories.containsKey(facetType)) {
+    if (!myTabFactories.containsKey(facetType)) {
       return null;
     }
     Tab tab = myFacetTabs.get(facetType);

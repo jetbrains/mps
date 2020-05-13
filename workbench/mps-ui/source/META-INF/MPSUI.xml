@@ -49,6 +49,7 @@
     <mps.modelRootEntry rootType="java_classes" title="Java &amp;Classes" className="jetbrains.mps.ide.java.ui.JavaClassStubsModelRootEntryFactory"/>
     <mps.facetTabFactory facetType="java" className="jetbrains.mps.ide.java.ui.JavaModuleFacetTabFactory"/>
     <mps.facetTabFactory facetType="generator" className="jetbrains.mps.ide.generator.CustomGenFacetTabFactory"/>
+    <mps.facetTabFactory facetType="unknown" className="jetbrains.mps.ide.ui.dialogs.properties.tabs.UnknownFacetTabFactory"/>
     <mps.projectGroupTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.SolutionProjectsGroup"/>
     <mps.solutionProjectTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.DefaultSolutionProjectTemplate"/>
     <mps.projectGroupTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.OtherProjectsGroup"/>

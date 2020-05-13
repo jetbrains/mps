@@ -113,7 +113,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   @NotNull private final FileSystem myFileSystem;
   private SModuleReference myModuleReference;
   private final Set<ModelRoot> mySModelRoots = new LinkedHashSet<>();
-  private final Set<ModuleFacetBase> myFacets = new LinkedHashSet<>();
+  private final Set<SModuleFacet> myFacets = new LinkedHashSet<>();
 
   private boolean myChanged = false;
 
@@ -451,10 +451,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
       return;
     }
 
-    for (ModuleFacetBase facet : myFacets) {
-      facet.dispose();
-    }
-    myFacets.clear();
+    clearFacets();
 
     Map<String, Memento> config = new HashMap<>();
     for (ModuleFacetDescriptor facetDescriptors : descriptor.getModuleFacetDescriptors()) {
@@ -465,26 +462,53 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     collectMandatoryFacetTypes(types);
     types.addAll(config.keySet());
 
+    FacetsFacade facetsFacade = FacetsFacade.getInstance();
     for (String facetType : types) {
-      FacetFactory factory = FacetsFacade.getInstance().getFacetFactory(facetType);
+      FacetFactory factory = facetsFacade.getFacetFactory(facetType);
+      Memento memento = config.get(facetType);
       if (factory == null) {
-        LOG.warn(String.format("no registered factory for a facet with type=`%s'", facetType));
-        continue;
-      }
-      SModuleFacet newFacet = factory.create(this);
-      if (!(newFacet instanceof ModuleFacetBase)) {
-        // FIXME review setupFacet logic (especially overrides). I'd rather perform load() for all and attach in case it's ModuleFacetBase, but not error
-        LOG.error("broken facet factory: " + factory.getClass().getName());
-        continue;
-      }
-
-      ModuleFacetBase facet = (ModuleFacetBase) newFacet;
-      Memento m = config.get(facetType);
-      facet = setupFacet(facet, m);
-      if (facet != null) {
-        myFacets.add(facet);
+        createUnknownFacet(facetsFacade, facetType, memento);
+      } else {
+        createAndLoadFacet(factory, memento);
       }
     }
+  }
+
+  private void createUnknownFacet(FacetsFacade facetsFacade, String facetType, Memento memento) {
+    LOG.warn(String.format("no registered factory for a facet with type=`%s'", facetType));
+    SModuleFacet unknownFacet = new UnknownFacet(facetType, this);
+    unknownFacet.load(memento);
+    myFacets.add(unknownFacet);
+    facetsFacade.callWhenFacetFactoryAppears(facetType, (facetFactory -> {
+      myFacets.remove(unknownFacet);
+      createAndLoadFacet(facetFactory, memento);
+    }));
+  }
+
+  private void createAndLoadFacet(FacetFactory factory, Memento memento) {
+    SModuleFacet newFacet = factory.create(this);
+    if (!(newFacet instanceof ModuleFacetBase)) {
+      // FIXME review setupFacet logic (especially overrides). I'd rather perform load() for all and attach in case it's ModuleFacetBase, but not error
+      LOG.error("not instance of ModuleFacetBase, facet factory: " + factory.getClass().getName());
+      return;
+    }
+
+    ModuleFacetBase facet = (ModuleFacetBase) newFacet;
+    facet = setupFacet(facet, memento);
+    if (facet != null) {
+      myFacets.add(facet);
+    } else {
+      LOG.error("somehow ended with null facet, facet factory: " + factory.getClass().getName());
+    }
+  }
+
+  private void clearFacets() {
+    for (SModuleFacet facet : myFacets) {
+      if (facet instanceof ModuleFacetBase) {
+        ((ModuleFacetBase) facet).dispose();
+      }
+    }
+    myFacets.clear();
   }
 
   public void onModuleLoad() {
@@ -563,10 +587,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   public void dispose() {
     assertCanChange();
     LOG.trace("Disposing the module " + this);
-    for (ModuleFacetBase f : myFacets) {
-      f.dispose();
-    }
-    myFacets.clear();
+    clearFacets();
     for (ModelRoot m : mySModelRoots) {
       ((ModelRootBase) m).dispose();
     }
@@ -698,19 +719,15 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     return myChanged;
   }
 
+  // used in mbeddr & mps
   @Nullable
   @Override
   public <T extends SModuleFacet> T getFacet(@NotNull Class<T> clazz) {
-    for (SModuleFacet facet : getFacets()) {
-      if (clazz.isInstance(facet)) {
-        return clazz.cast(facet);
-      }
-    }
-    return null;
+    return super.getFacet(clazz);
   }
 
   @NotNull
-  @Override
+  @Override // pass them here instead overriding?
   public Iterable<SModuleFacet> getFacets() {
     return Collections.unmodifiableSet(myFacets);
   }
