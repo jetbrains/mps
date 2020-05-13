@@ -125,7 +125,6 @@ public class IntroduceField_Action extends BaseAction {
           }
           current = SNodeOperations.getParent(current);
         }
-        mustBeStatic.value = false;
         candidateClasses.value = ListSequence.fromList(SNodeOperations.getNodeAncestors(nodeToRefactor, CONCEPTS.ClassConcept$IY, false)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return !(SNodeOperations.isInstanceOf(it, CONCEPTS.AnonymousClass$aF));

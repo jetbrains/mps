@@ -1484,32 +1484,31 @@
       <node id="7471568088994445510" at="122,238,123,39" concept="4" />
       <node id="7471568088994451253" at="123,39,124,18" concept="2" />
       <node id="7471568088994423043" at="125,11,126,55" concept="4" />
-      <node id="7636799564214937370" at="127,9,128,35" concept="4" />
-      <node id="2965679534750210352" at="130,43,131,83" concept="11" />
-      <node id="2315910000643749571" at="135,7,136,0" concept="13" />
-      <node id="904701484397383951" at="136,0,137,75" concept="10" />
-      <node id="904701484397878363" at="138,68,139,148" concept="10" />
-      <node id="904701484397683312" at="139,148,140,26" concept="4" />
-      <node id="904701484396923607" at="142,27,143,245" concept="4" />
-      <node id="904701484397954355" at="146,12,147,93" concept="4" />
-      <node id="904701484397708125" at="148,5,149,0" concept="13" />
-      <node id="2370003301088639" at="149,0,150,200" concept="10" />
-      <node id="2370003301088644" at="150,200,151,64" concept="10" />
-      <node id="2370003301088650" at="153,25,154,121" concept="4" />
-      <node id="2370003301088664" at="157,30,158,219" concept="10" />
-      <node id="2370003301088676" at="158,219,159,20" concept="4" />
-      <node id="2370003301088685" at="160,12,161,152" concept="4" />
-      <node id="2370003301088636" at="166,0,167,0" concept="14" trace="Expression$TP" />
-      <node id="2370003301088636" at="167,0,168,0" concept="14" trace="StaticFieldDeclaration$R5" />
-      <node id="2370003301088636" at="168,0,169,0" concept="14" trace="StaticMethodDeclaration$eX" />
-      <node id="2370003301088636" at="169,0,170,0" concept="14" trace="StaticInitializer$dH" />
-      <node id="2370003301088636" at="170,0,171,0" concept="14" trace="FieldDeclaration$Ps" />
-      <node id="2370003301088636" at="171,0,172,0" concept="14" trace="InstanceMethodDeclaration$An" />
-      <node id="2370003301088636" at="172,0,173,0" concept="14" trace="InstanceInitializer$BJ" />
-      <node id="2370003301088636" at="173,0,174,0" concept="14" trace="ClassConcept$IY" />
-      <node id="2370003301088636" at="174,0,175,0" concept="14" trace="AnonymousClass$aF" />
-      <node id="904701484397945425" at="146,10,148,5" concept="1" />
-      <node id="2370003301088683" at="160,10,162,5" concept="1" />
+      <node id="2965679534750210352" at="129,43,130,83" concept="11" />
+      <node id="2315910000643749571" at="134,7,135,0" concept="13" />
+      <node id="904701484397383951" at="135,0,136,75" concept="10" />
+      <node id="904701484397878363" at="137,68,138,148" concept="10" />
+      <node id="904701484397683312" at="138,148,139,26" concept="4" />
+      <node id="904701484396923607" at="141,27,142,245" concept="4" />
+      <node id="904701484397954355" at="145,12,146,93" concept="4" />
+      <node id="904701484397708125" at="147,5,148,0" concept="13" />
+      <node id="2370003301088639" at="148,0,149,200" concept="10" />
+      <node id="2370003301088644" at="149,200,150,64" concept="10" />
+      <node id="2370003301088650" at="152,25,153,121" concept="4" />
+      <node id="2370003301088664" at="156,30,157,219" concept="10" />
+      <node id="2370003301088676" at="157,219,158,20" concept="4" />
+      <node id="2370003301088685" at="159,12,160,152" concept="4" />
+      <node id="2370003301088636" at="165,0,166,0" concept="14" trace="Expression$TP" />
+      <node id="2370003301088636" at="166,0,167,0" concept="14" trace="StaticFieldDeclaration$R5" />
+      <node id="2370003301088636" at="167,0,168,0" concept="14" trace="StaticMethodDeclaration$eX" />
+      <node id="2370003301088636" at="168,0,169,0" concept="14" trace="StaticInitializer$dH" />
+      <node id="2370003301088636" at="169,0,170,0" concept="14" trace="FieldDeclaration$Ps" />
+      <node id="2370003301088636" at="170,0,171,0" concept="14" trace="InstanceMethodDeclaration$An" />
+      <node id="2370003301088636" at="171,0,172,0" concept="14" trace="InstanceInitializer$BJ" />
+      <node id="2370003301088636" at="172,0,173,0" concept="14" trace="ClassConcept$IY" />
+      <node id="2370003301088636" at="173,0,174,0" concept="14" trace="AnonymousClass$aF" />
+      <node id="904701484397945425" at="145,10,147,5" concept="1" />
+      <node id="2370003301088683" at="159,10,161,5" concept="1" />
       <node id="926415067892589872" at="52,0,55,0" concept="9" trace="compute#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="4122848433166370264" at="55,117,58,5" concept="8" />
       <node id="2370003301088636" at="66,95,69,5" concept="8" />
@@ -1519,9 +1518,9 @@
       <node id="2370003301088714" at="89,59,92,7" concept="8" />
       <node id="2370003301088716" at="96,53,99,7" concept="8" />
       <node id="926415067890932322" at="110,0,113,0" concept="9" trace="compute#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="2965679534750205718" at="130,0,133,0" concept="9" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="904701484396923605" at="142,0,145,0" concept="9" trace="run#()V" />
-      <node id="4424432535470967" at="153,0,156,0" concept="9" trace="run#()V" />
+      <node id="2965679534750205718" at="129,0,132,0" concept="9" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="904701484396923605" at="141,0,144,0" concept="9" trace="run#()V" />
+      <node id="4424432535470967" at="152,0,155,0" concept="9" trace="run#()V" />
       <node id="2370003301088636" at="45,0,49,0" concept="9" trace="isDumbAware#()Z" />
       <node id="2370003301088636" at="61,0,65,0" concept="9" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="7471568088994388192" at="117,33,121,11" concept="8" />
@@ -1529,21 +1528,21 @@
       <node id="2370003301088636" at="40,0,45,0" concept="3" trace="IntroduceField_Action#()V" />
       <node id="8655579351372840450" at="50,87,55,117" concept="10" />
       <node id="926415067890932316" at="108,0,113,117" concept="10" />
-      <node id="904701484398166157" at="128,35,133,28" concept="4" />
-      <node id="904701484396923602" at="140,26,145,9" concept="4" />
-      <node id="4424432535444941" at="151,64,156,7" concept="4" />
-      <node id="2370003301088662" at="156,7,162,5" concept="8" />
+      <node id="904701484398166157" at="127,9,132,28" concept="4" />
+      <node id="904701484396923602" at="139,26,144,9" concept="4" />
+      <node id="4424432535444941" at="150,64,155,7" concept="4" />
+      <node id="2370003301088662" at="155,7,161,5" concept="8" />
       <node id="2370003301088707" at="69,5,76,5" concept="1" />
       <node id="2370003301088713" at="86,5,93,5" concept="1" />
       <node id="2370003301088715" at="93,5,100,5" concept="1" />
       <node id="2370003301088711" at="76,5,86,5" concept="1" />
       <node id="7471568088994386651" at="116,66,127,9" concept="20" />
-      <node id="904701484397731506" at="137,75,148,5" concept="8" />
+      <node id="904701484397731506" at="136,75,147,5" concept="8" />
       <node id="2370003301088636" at="49,0,61,0" concept="9" trace="isApplicable#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <node id="5437828164310344632" at="115,0,135,0" concept="9" trace="run#()V" />
-      <node id="5437828164310344628" at="113,117,135,7" concept="4" />
+      <node id="5437828164310344632" at="115,0,134,0" concept="9" trace="run#()V" />
+      <node id="5437828164310344628" at="113,117,134,7" concept="4" />
       <node id="2370003301088636" at="65,0,103,0" concept="9" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <node id="2370003301088636" at="103,0,164,0" concept="9" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="2370003301088636" at="103,0,163,0" concept="9" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <scope id="2370003301088636" at="46,32,47,16" />
       <scope id="926415067892589873" at="52,30,53,136" />
       <scope id="4122848433166370265" at="56,242,57,19" />
@@ -1555,24 +1554,24 @@
       <scope id="2370003301088714" at="90,22,91,21" />
       <scope id="2370003301088716" at="97,22,98,21" />
       <scope id="926415067890932323" at="110,30,111,136" />
-      <scope id="2965679534750205719" at="130,43,131,83" />
-      <scope id="904701484396923606" at="142,27,143,245" />
-      <scope id="904701484397945426" at="146,12,147,93" />
-      <scope id="4424432535470968" at="153,25,154,121" />
-      <scope id="2370003301088684" at="160,12,161,152" />
+      <scope id="2965679534750205719" at="129,43,130,83" />
+      <scope id="904701484396923606" at="141,27,142,245" />
+      <scope id="904701484397945426" at="145,12,146,93" />
+      <scope id="4424432535470968" at="152,25,153,121" />
+      <scope id="2370003301088684" at="159,12,160,152" />
       <scope id="7471568088994388193" at="118,240,120,18" />
       <scope id="7471568088994429614" at="122,238,124,18" />
-      <scope id="2370003301088663" at="157,30,159,20">
+      <scope id="2370003301088663" at="156,30,158,20">
         <var name="dialog" id="2370003301088665" />
       </scope>
       <scope id="2370003301088636" at="40,34,43,40" />
       <scope id="926415067892589872" at="52,0,55,0" />
       <scope id="926415067890932322" at="110,0,113,0" />
-      <scope id="2965679534750205718" at="130,0,133,0">
+      <scope id="2965679534750205718" at="129,0,132,0">
         <var name="it" id="2965679534750205718" />
       </scope>
-      <scope id="904701484396923605" at="142,0,145,0" />
-      <scope id="4424432535470967" at="153,0,156,0" />
+      <scope id="904701484396923605" at="141,0,144,0" />
+      <scope id="4424432535470967" at="152,0,155,0" />
       <scope id="2370003301088636" at="45,0,49,0" />
       <scope id="2370003301088636" at="61,0,65,0">
         <var name="_params" id="2370003301088636" />
@@ -1588,7 +1587,7 @@
       <scope id="2370003301088715" at="94,5,99,7">
         <var name="p" id="2370003301088715" />
       </scope>
-      <scope id="904701484397731508" at="138,68,145,9">
+      <scope id="904701484397731508" at="137,68,144,9">
         <var name="classChooser" id="904701484397878364" />
       </scope>
       <scope id="2370003301088711" at="77,5,85,7">
@@ -1602,16 +1601,16 @@
         <var name="_params" id="2370003301088636" />
         <var name="event" id="2370003301088636" />
       </scope>
-      <scope id="5437828164310344633" at="115,25,133,28">
+      <scope id="5437828164310344633" at="115,25,132,28">
         <var name="current" id="7471568088994384655" />
       </scope>
-      <scope id="5437828164310344632" at="115,0,135,0" />
+      <scope id="5437828164310344632" at="115,0,134,0" />
       <scope id="2370003301088636" at="66,95,101,16" />
       <scope id="2370003301088636" at="65,0,103,0">
         <var name="_params" id="2370003301088636" />
         <var name="event" id="2370003301088636" />
       </scope>
-      <scope id="2370003301088636" at="104,96,162,5">
+      <scope id="2370003301088636" at="104,96,161,5">
         <var name="candidateClasses" id="904701484397718389" />
         <var name="desiredTargetClass" id="904701484397383954" />
         <var name="error" id="2370003301088645" />
@@ -1619,18 +1618,18 @@
         <var name="mustBeStatic" id="2315910000643599198" />
         <var name="nodeToRefactor" id="926415067890932317" />
       </scope>
-      <scope id="2370003301088636" at="103,0,164,0">
+      <scope id="2370003301088636" at="103,0,163,0">
         <var name="_params" id="2370003301088636" />
         <var name="event" id="2370003301088636" />
       </scope>
       <unit id="926415067892589872" at="51,63,55,5" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.IntroduceField_Action$1" />
       <unit id="926415067890932322" at="109,69,113,5" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.IntroduceField_Action$2" />
-      <unit id="2965679534750205718" at="129,148,133,9" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.IntroduceField_Action$3$1" />
-      <unit id="904701484396923605" at="141,125,145,7" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.IntroduceField_Action$4" />
-      <unit id="4424432535470967" at="152,124,156,5" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.IntroduceField_Action$5" />
-      <unit id="2370003301088636" at="165,0,176,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.IntroduceField_Action$CONCEPTS" />
-      <unit id="5437828164310344632" at="114,123,135,5" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.IntroduceField_Action$3" />
-      <unit id="2370003301088636" at="37,0,177,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.IntroduceField_Action" />
+      <unit id="2965679534750205718" at="128,148,132,9" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.IntroduceField_Action$3$1" />
+      <unit id="904701484396923605" at="140,125,144,7" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.IntroduceField_Action$4" />
+      <unit id="4424432535470967" at="151,124,155,5" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.IntroduceField_Action$5" />
+      <unit id="2370003301088636" at="164,0,175,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.IntroduceField_Action$CONCEPTS" />
+      <unit id="5437828164310344632" at="114,123,134,5" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.IntroduceField_Action$3" />
+      <unit id="2370003301088636" at="37,0,176,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.IntroduceField_Action" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
       <node id="2370003301088636" at="31,46,32,43" concept="4" />
