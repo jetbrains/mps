@@ -495,6 +495,8 @@ public class PluginLoaderRegistry implements Disposable {
               addIdeaExtPointPluginContributors(monitor);
               addContributors(monitor, contributorsDelta);
               fireAfterPluginsLoaded(contributorsDelta);
+            } catch (Throwable t) {
+              LOG.error("caught some error during #update", t);
             } finally {
               snapshot.invokePostRunnables();
             }
@@ -632,7 +634,7 @@ public class PluginLoaderRegistry implements Disposable {
     public synchronized void onUnload(@NotNull Set<ModuleClassLoader> disposingCLs) {
       Set<ReloadableModule> unloadedModules = disposingCLs.stream()
                                                           .map(ModuleClassLoader::getModule)
-                                                          .collect(Collectors.toSet());;
+                                                          .collect(Collectors.toSet());
       myDelta.unload(unloadedModules);
       myCLsToBeDisposed.addAll(disposingCLs);
     }
