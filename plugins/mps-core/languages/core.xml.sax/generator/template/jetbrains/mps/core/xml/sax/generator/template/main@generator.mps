@@ -4310,6 +4310,17 @@
           <ref role="3uigEE" to="kart:~SAXException" resolve="SAXException" />
         </node>
         <node concept="3clFbS" id="3FXqjtqcAgH" role="3clF47">
+          <node concept="3clFbF" id="DsneAc5_rb" role="3cqZAp">
+            <node concept="2OqwBi" id="DsneAc5E$A" role="3clFbG">
+              <node concept="37vLTw" id="DsneAc5_r9" role="2Oq$k0">
+                <ref role="3cqZAo" node="1E52KywEaxc" resolve="myChildHandlersStack" />
+              </node>
+              <node concept="liA8E" id="DsneAc5Iwe" role="2OqNvi">
+                <ref role="37wK5l" to="33ny:~Stack.push(java.lang.Object)" resolve="push" />
+                <node concept="10Nm6u" id="DsneAc5JJj" role="37wK5m" />
+              </node>
+            </node>
+          </node>
           <node concept="3cpWs6" id="3FXqjtqcDuy" role="3cqZAp">
             <node concept="Xjq3P" id="3FXqjtqcDH4" role="3cqZAk" />
           </node>
