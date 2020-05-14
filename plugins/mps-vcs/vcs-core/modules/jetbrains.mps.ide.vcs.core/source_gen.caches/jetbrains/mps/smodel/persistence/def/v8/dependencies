@@ -25,12 +25,10 @@
     <classNode dependClassName="jetbrains.mps.smodel.SModelHeader" />
     <classNode dependClassName="jetbrains.mps.smodel.loading.ModelLoadResult" />
     <classNode dependClassName="jetbrains.mps.smodel.loading.ModelLoadingState" />
-    <classNode dependClassName="jetbrains.mps.smodel.persistence.def.IModelWriter" />
     <classNode dependClassName="jetbrains.mps.smodel.persistence.def.v8.LineToContentMapReader8Handler" />
     <classNode dependClassName="jetbrains.mps.smodel.persistence.def.v8.ModelReader8Handler" />
     <classNode dependClassName="jetbrains.mps.smodel.persistence.lines.LineContent" />
     <classNode dependClassName="jetbrains.mps.util.xml.XMLSAXHandler" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode extendsClassName="jetbrains.mps.smodel.persistence.def.IModelPersistence" />
   </dependency>
   <dependency className="jetbrains.mps.smodel.persistence.def.v8.ModelReader8Handler">

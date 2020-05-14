@@ -20,7 +20,6 @@
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
-    <import index="5fzo" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.persistence.def(MPS.Core/)" />
     <import index="7a2w" ref="r:10bf3684-5fb2-4fa0-9dd9-1d05589df2e9(jetbrains.mps.util.xml)" />
     <import index="nh62" ref="r:83748538-cbc9-4e2d-b0e1-e282b3d0c13d(jetbrains.mps.smodel.persistence.def.v6)" />
     <import index="llmc" ref="r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)" />
@@ -40,7 +39,7 @@
       <concept id="1153422305557" name="jetbrains.mps.baseLanguage.structure.LessThanOrEqualsExpression" flags="nn" index="2dkUwp" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1239709250944" name="jetbrains.mps.baseLanguage.structure.PrefixIncrementExpression" flags="nn" index="2$rviw" />
@@ -1854,33 +1853,6 @@
       </node>
       <node concept="3Tm1VV" id="p9Lm3R6x6k" role="1B3o_S" />
       <node concept="10Oyi0" id="p9Lm3R6x6l" role="3clF45" />
-    </node>
-    <node concept="3clFb_" id="p9Lm3R6x6u" role="jymVt">
-      <property role="TrG5h" value="getModelWriter" />
-      <property role="DiZV1" value="false" />
-      <property role="od$2w" value="false" />
-      <node concept="2AHcQZ" id="p9Lm3R6x6v" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-      <node concept="37vLTG" id="p9Lm3R6x6w" role="3clF46">
-        <property role="TrG5h" value="header" />
-        <property role="3TUv4t" value="false" />
-        <node concept="2AHcQZ" id="p9Lm3R6x6x" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-        </node>
-        <node concept="3uibUv" id="p9Lm3R6x6y" role="1tU5fm">
-          <ref role="3uigEE" to="w1kc:~SModelHeader" resolve="SModelHeader" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="p9Lm3R6x6z" role="3clF47">
-        <node concept="3cpWs6" id="p9Lm3R6x6$" role="3cqZAp">
-          <node concept="10Nm6u" id="4BapoMDsl7_" role="3cqZAk" />
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="p9Lm3R6x6B" role="1B3o_S" />
-      <node concept="3uibUv" id="p9Lm3R6x6C" role="3clF45">
-        <ref role="3uigEE" to="5fzo:~IModelWriter" resolve="IModelWriter" />
-      </node>
     </node>
     <node concept="3clFb_" id="p9Lm3R6x6D" role="jymVt">
       <property role="TrG5h" value="getModelReader" />

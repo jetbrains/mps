@@ -35,7 +35,7 @@
       <concept id="1215695189714" name="jetbrains.mps.baseLanguage.structure.PlusAssignmentExpression" flags="nn" index="d57v9" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1239714755177" name="jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation" flags="nn" index="2$Kvd9">
         <child id="1239714902950" name="expression" index="2$L3a6" />
@@ -324,33 +324,6 @@
       </node>
       <node concept="3Tm1VV" id="p9Lm3R6G0t" role="1B3o_S" />
       <node concept="10Oyi0" id="p9Lm3R6G0u" role="3clF45" />
-    </node>
-    <node concept="3clFb_" id="p9Lm3R6G0A" role="jymVt">
-      <property role="TrG5h" value="getModelWriter" />
-      <property role="DiZV1" value="false" />
-      <property role="od$2w" value="false" />
-      <node concept="2AHcQZ" id="p9Lm3R6G0B" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-      <node concept="37vLTG" id="p9Lm3R6G0C" role="3clF46">
-        <property role="TrG5h" value="header" />
-        <property role="3TUv4t" value="false" />
-        <node concept="2AHcQZ" id="p9Lm3R6G0D" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-        </node>
-        <node concept="3uibUv" id="p9Lm3R6G0E" role="1tU5fm">
-          <ref role="3uigEE" to="w1kc:~SModelHeader" resolve="SModelHeader" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="p9Lm3R6G0F" role="3clF47">
-        <node concept="3cpWs6" id="p9Lm3R6G0G" role="3cqZAp">
-          <node concept="10Nm6u" id="4BapoMDt4v$" role="3cqZAk" />
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="p9Lm3R6G0I" role="1B3o_S" />
-      <node concept="3uibUv" id="p9Lm3R6G0J" role="3clF45">
-        <ref role="3uigEE" to="5fzo:~IModelWriter" resolve="IModelWriter" />
-      </node>
     </node>
     <node concept="3clFb_" id="p9Lm3R6G0K" role="jymVt">
       <property role="TrG5h" value="getModelReader" />

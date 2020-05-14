@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,8 @@
 package jetbrains.mps.smodel.persistence.def;
 
 import jetbrains.mps.persistence.FilePerRootDataSource;
+import jetbrains.mps.persistence.MetaModelInfoProvider;
+import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
 import jetbrains.mps.smodel.DefaultSModel;
 import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.smodel.SModelHeader;
@@ -25,7 +27,6 @@ import jetbrains.mps.smodel.loading.ModelLoadResult.ContentKind;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.JDOMUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.xml.XMLSAXHandler;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -164,12 +165,18 @@ public class FilePerRootFormatUtil {
         modelHeader.setPersistenceVersion(persistenceVersion);
       }
     }
+    final MetaModelInfoProvider mmiProvider;
+    if (modelHeader != null && modelHeader.getMetaInfoProvider() != null) {
+      mmiProvider = modelHeader.getMetaInfoProvider();
+    } else {
+      mmiProvider = new RegularMetaModelInfo();
+    }
 
     // save into JDOM
     if (persistenceVersion < 9) {
       modelData.getImplicitImportsSupport().calculateImplicitImports();
     }
-    Map<String, Document> result = ModelPersistence.getPersistence(persistenceVersion).getModelWriter(modelHeader).saveModelAsMultiStream(modelData);
+    Map<String, Document> result = ModelPersistence.getPersistence(persistenceVersion).getModelWriter(mmiProvider).saveModelAsMultiStream(modelData);
 
     // write to storage
     Set<String> toRemove = new HashSet<>();

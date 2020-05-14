@@ -9,6 +9,7 @@ import java.util.Stack;
 import org.xml.sax.Locator;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.DefaultSModel;
+import jetbrains.mps.smodel.persistence.def.UserObjectEncoder;
 import org.xml.sax.SAXException;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXParseException;
@@ -51,9 +52,9 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
   private NodeElementHandler nodeHandler = new NodeElementHandler();
   private PropertyElementHandler propertyHandler = new PropertyElementHandler();
   private ReferenceElementHandler referenceHandler = new ReferenceElementHandler();
+  private UserObjectElementHandler userObjectHandler = new UserObjectElementHandler();
   private IgnoredNodeElementHandler ignoredNodeHandler = new IgnoredNodeElementHandler();
-  private IgnoredPropertyElementHandler ignoredPropertyHandler = new IgnoredPropertyElementHandler();
-  private IgnoredReferenceElementHandler ignoredReferenceHandler = new IgnoredReferenceElementHandler();
+  private DefaultElementHandler defaultHandler = new DefaultElementHandler();
   private Stack<ElementHandler> myHandlersStack = new Stack<ElementHandler>();
   private Stack<ChildHandler> myChildHandlersStack = new Stack<ChildHandler>();
   private Stack<Object> myValues = new Stack<Object>();
@@ -64,6 +65,7 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
   private DefaultSModel my_modelField;
   private ImportsHelper my_importHelperField;
   private IdEncoder my_idEncoderField;
+  private UserObjectEncoder my_userObjectEncoderField;
   private boolean my_nodesIgnoredField;
   public ModelReader9Handler(SModelHeader header, IdInfoReadHelper readHelper) {
     my_headerParam = header;
@@ -171,6 +173,7 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
       my_modelField = new DefaultSModel(ref, my_headerParam);
       my_modelField.getSModelHeader().setPersistenceVersion(9);
       my_importHelperField = new ImportsHelper(ref);
+      my_userObjectEncoderField = new UserObjectEncoder();
       ModelLoadResult result = new ModelLoadResult((SModel) my_modelField, ModelLoadingState.NOT_LOADED);
       return result;
     }
@@ -546,6 +549,15 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
         });
         return nodeHandler;
       }
+      if ("uo".equals(tagName)) {
+        myChildHandlersStack.push(new ChildHandler() {
+          @Override
+          public void apply(Object resultObject, Object value) throws SAXException {
+            handleChild_6244759027867476467(resultObject, value);
+          }
+        });
+        return userObjectHandler;
+      }
       return super.createChild(resultObject, tagName, attrs);
     }
     private boolean checknode_8237920533350080210(Object resultObject, Attributes attrs) {
@@ -598,6 +610,13 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
       Tuples._2<SNode, SContainmentLink> child = (Tuples._2<SNode, SContainmentLink>) value;
       result._0().addChild(child._1(), child._0());
     }
+    private void handleChild_6244759027867476467(Object resultObject, Object value) throws SAXException {
+      Tuples._2<SNode, SContainmentLink> result = (Tuples._2<SNode, SContainmentLink>) resultObject;
+      Pair<Object, Object> child = (Pair<Object, Object>) value;
+      if (child != null) {
+        result._0().putUserObject(child.o1, child.o2);
+      }
+    }
   }
   public class PropertyElementHandler extends ElementHandler {
     public PropertyElementHandler() {
@@ -625,6 +644,22 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
       }
     }
   }
+  public class UserObjectElementHandler extends ElementHandler {
+    public UserObjectElementHandler() {
+      setRequiredAttributes("k");
+    }
+    @Override
+    protected Pair<Object, Object> createObject(Attributes attrs) throws SAXException {
+      try {
+        Object key = my_userObjectEncoderField.parse(attrs.getValue("k"));
+        Object value = (attrs.getValue("v") != null ? my_userObjectEncoderField.parse(attrs.getValue("v")) : null);
+        return new Pair<Object, Object>(key, value);
+      } catch (IllegalArgumentException ex) {
+        // ignore. I'd prefer warning, but no mechanism to report anything 
+        return null;
+      }
+    }
+  }
   public class IgnoredNodeElementHandler extends ElementHandler {
     public IgnoredNodeElementHandler() {
       setRequiredAttributes("concept");
@@ -637,27 +672,18 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
     }
     @Override
     protected ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
-      if ("property".equals(tagName)) {
-        myChildHandlersStack.push(null);
-        return ignoredPropertyHandler;
-      }
-      if ("ref".equals(tagName)) {
-        myChildHandlersStack.push(null);
-        return ignoredReferenceHandler;
-      }
-      if ("node".equals(tagName)) {
-        myChildHandlersStack.push(null);
-        return ignoredNodeHandler;
-      }
-      return super.createChild(resultObject, tagName, attrs);
+      myChildHandlersStack.push(null);
+      return defaultHandler;
     }
   }
-  public class IgnoredPropertyElementHandler extends ElementHandler {
-    public IgnoredPropertyElementHandler() {
+  public class DefaultElementHandler extends ElementHandler {
+    @Override
+    protected ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
+      myChildHandlersStack.push(null);
+      return this;
     }
-  }
-  public class IgnoredReferenceElementHandler extends ElementHandler {
-    public IgnoredReferenceElementHandler() {
+    @Override
+    protected void handleText(Object resultObject, String value) throws SAXException {
     }
   }
 }

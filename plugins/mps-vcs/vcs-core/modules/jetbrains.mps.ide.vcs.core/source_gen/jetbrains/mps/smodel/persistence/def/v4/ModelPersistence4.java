@@ -10,8 +10,6 @@ import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.SModelHeader;
 import java.util.List;
 import jetbrains.mps.smodel.persistence.lines.LineContent;
-import jetbrains.mps.smodel.persistence.def.IModelWriter;
-import org.jetbrains.annotations.Nullable;
 
 @GeneratedClass(node = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)/453110257780703213", model = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)")
 public class ModelPersistence4 implements IModelPersistence, IPersistenceWithReader {
@@ -26,10 +24,6 @@ public class ModelPersistence4 implements IModelPersistence, IPersistenceWithRea
   @Override
   public int getVersion() {
     return 4;
-  }
-  @Override
-  public IModelWriter getModelWriter(@Nullable SModelHeader header) {
-    return null;
   }
   @Override
   public IModelReader getModelReader() {

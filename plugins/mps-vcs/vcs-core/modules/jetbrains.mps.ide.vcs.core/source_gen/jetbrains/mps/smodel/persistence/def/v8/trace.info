@@ -778,36 +778,30 @@
   </root>
   <root nodeRef="r:050eb90d-d917-47d4-8d74-cc37a63452a4(jetbrains.mps.smodel.persistence.def.v8)/3479938774601117149">
     <file name="ModelPersistence8.java">
-      <node id="3479938774601117153" at="18,0,19,0" concept="12" trace="ROOT_NODE" />
-      <node id="3479938774601117160" at="20,27,21,13" concept="9" />
-      <node id="3479938774601117170" at="24,69,25,16" concept="9" />
-      <node id="453110257780658622" at="28,109,29,134" concept="9" />
-      <node id="3943561870556628249" at="32,78,33,44" concept="9" />
-      <node id="453110257780658632" at="37,121,38,89" concept="9" />
-      <node id="3479938774601117157" at="19,0,23,0" concept="7" trace="getVersion#()I" />
-      <node id="3479938774601117164" at="23,0,27,0" concept="7" trace="getModelWriter#(Ljetbrains/mps/smodel/SModelHeader;)Ljetbrains/mps/smodel/persistence/def/IModelWriter;" />
-      <node id="3479938774601117181" at="27,0,31,0" concept="7" trace="getModelReaderHandler#(Ljetbrains/mps/smodel/loading/ModelLoadingState;Ljetbrains/mps/smodel/SModelHeader;)Ljetbrains/mps/util/xml/XMLSAXHandler;" />
-      <node id="3479938774601117200" at="31,0,35,0" concept="7" trace="getLineToContentMapReaderHandler#()Ljetbrains/mps/util/xml/XMLSAXHandler;" />
-      <node id="3943561870556624635" at="36,0,40,0" concept="7" trace="getAnnotateHandler#(ZZ)Ljetbrains/mps/util/xml/XMLSAXHandler;" />
-      <scope id="3479938774601117159" at="20,27,21,13" />
-      <scope id="3479938774601117169" at="24,69,25,16" />
-      <scope id="3479938774601117187" at="28,109,29,134" />
-      <scope id="3479938774601117202" at="32,78,33,44" />
-      <scope id="3943561870556624646" at="37,121,38,89" />
-      <scope id="3479938774601117157" at="19,0,23,0" />
-      <scope id="3479938774601117164" at="23,0,27,0">
-        <var name="header" id="3479938774601117166" />
-      </scope>
-      <scope id="3479938774601117181" at="27,0,31,0">
+      <node id="3479938774601117153" at="16,0,17,0" concept="12" trace="ROOT_NODE" />
+      <node id="3479938774601117160" at="18,27,19,13" concept="9" />
+      <node id="453110257780658622" at="22,109,23,134" concept="9" />
+      <node id="3943561870556628249" at="26,78,27,44" concept="9" />
+      <node id="453110257780658632" at="31,121,32,89" concept="9" />
+      <node id="3479938774601117157" at="17,0,21,0" concept="7" trace="getVersion#()I" />
+      <node id="3479938774601117181" at="21,0,25,0" concept="7" trace="getModelReaderHandler#(Ljetbrains/mps/smodel/loading/ModelLoadingState;Ljetbrains/mps/smodel/SModelHeader;)Ljetbrains/mps/util/xml/XMLSAXHandler;" />
+      <node id="3479938774601117200" at="25,0,29,0" concept="7" trace="getLineToContentMapReaderHandler#()Ljetbrains/mps/util/xml/XMLSAXHandler;" />
+      <node id="3943561870556624635" at="30,0,34,0" concept="7" trace="getAnnotateHandler#(ZZ)Ljetbrains/mps/util/xml/XMLSAXHandler;" />
+      <scope id="3479938774601117159" at="18,27,19,13" />
+      <scope id="3479938774601117187" at="22,109,23,134" />
+      <scope id="3479938774601117202" at="26,78,27,44" />
+      <scope id="3943561870556624646" at="31,121,32,89" />
+      <scope id="3479938774601117157" at="17,0,21,0" />
+      <scope id="3479938774601117181" at="21,0,25,0">
         <var name="header" id="3479938774601117185" />
         <var name="state" id="3479938774601117183" />
       </scope>
-      <scope id="3479938774601117200" at="31,0,35,0" />
-      <scope id="3943561870556624635" at="36,0,40,0">
+      <scope id="3479938774601117200" at="25,0,29,0" />
+      <scope id="3943561870556624635" at="30,0,34,0">
         <var name="withAssociationTarget" id="3943561870556624644" />
         <var name="withPropertyValues" id="3943561870556624642" />
       </scope>
-      <unit id="3479938774601117149" at="16,0,41,0" name="jetbrains.mps.smodel.persistence.def.v8.ModelPersistence8" />
+      <unit id="3479938774601117149" at="14,0,35,0" name="jetbrains.mps.smodel.persistence.def.v8.ModelPersistence8" />
     </file>
   </root>
   <root nodeRef="r:050eb90d-d917-47d4-8d74-cc37a63452a4(jetbrains.mps.smodel.persistence.def.v8)/5797832288566425370">

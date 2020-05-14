@@ -18,6 +18,8 @@ package jetbrains.mps.smodel.persistence.def;
 import jetbrains.mps.extapi.model.PersistenceProblem;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.persistence.IndexAwareModelFactory.Callback;
+import jetbrains.mps.persistence.MetaModelInfoProvider;
+import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
 import jetbrains.mps.persistence.xml.XMLPersistence;
 import jetbrains.mps.persistence.xml.XMLPersistence.Indexer;
 import jetbrains.mps.smodel.DefaultSModel;
@@ -275,7 +277,14 @@ public class ModelPersistence {
       PersistenceProblem p = new PersistenceProblem(Kind.Save, m, String.valueOf(model.getReference()), true);
       throw new ModelSaveException(m, Collections.singleton(p));
     }
-    IModelWriter writer = modelPersistence.getModelWriter(model instanceof DefaultSModel ? ((DefaultSModel) model).getSModelHeader() : null);
+    final SModelHeader header = model instanceof DefaultSModel ? ((DefaultSModel) model).getSModelHeader() : null;
+    final MetaModelInfoProvider mmiProvider;
+    if (header != null && header.getMetaInfoProvider() != null) {
+      mmiProvider = header.getMetaInfoProvider();
+    } else {
+      mmiProvider = new RegularMetaModelInfo();
+    }
+    IModelWriter writer = modelPersistence.getModelWriter(mmiProvider);
     if (writer == null) {
       final String m = String.format("Persistence has no writer. Version %d", persistenceVersion);
       PersistenceProblem p = new PersistenceProblem(Kind.Save, m, String.valueOf(model.getReference()), true);

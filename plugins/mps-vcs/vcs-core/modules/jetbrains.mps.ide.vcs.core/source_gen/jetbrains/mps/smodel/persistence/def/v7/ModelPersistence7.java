@@ -4,13 +4,11 @@ package jetbrains.mps.smodel.persistence.def.v7;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.smodel.persistence.def.v6.ModelPersistence6;
-import jetbrains.mps.smodel.persistence.def.IModelWriter;
-import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.persistence.def.v4.IModelReader;
 import jetbrains.mps.util.xml.XMLSAXHandler;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
+import jetbrains.mps.smodel.SModelHeader;
 import java.util.List;
 import jetbrains.mps.smodel.persistence.lines.LineContent;
 
@@ -19,10 +17,6 @@ public class ModelPersistence7 extends ModelPersistence6 {
   @Override
   public int getVersion() {
     return 7;
-  }
-  @Override
-  public IModelWriter getModelWriter(@Nullable SModelHeader header) {
-    return null;
   }
   @Override
   public IModelReader getModelReader() {

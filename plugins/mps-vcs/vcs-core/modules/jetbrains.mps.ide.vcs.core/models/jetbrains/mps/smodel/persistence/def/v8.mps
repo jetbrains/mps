@@ -19,7 +19,6 @@
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="7a2w" ref="r:10bf3684-5fb2-4fa0-9dd9-1d05589df2e9(jetbrains.mps.util.xml)" />
     <import index="mdm6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.persistence.lines(MPS.Core/)" />
-    <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="i44q" ref="r:3e2c3b97-24cc-4bee-9343-0bf0b2be88e3(jetbrains.mps.smodel.persistence.def)" />
     <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
     <import index="kart" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:org.xml.sax(JDK/)" />
@@ -325,33 +324,6 @@
       </node>
       <node concept="3Tm1VV" id="31beu34diRE" role="1B3o_S" />
       <node concept="10Oyi0" id="31beu34diRF" role="3clF45" />
-    </node>
-    <node concept="3clFb_" id="31beu34diRG" role="jymVt">
-      <property role="TrG5h" value="getModelWriter" />
-      <property role="DiZV1" value="false" />
-      <property role="od$2w" value="false" />
-      <node concept="2AHcQZ" id="31beu34diRH" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-      <node concept="37vLTG" id="31beu34diRI" role="3clF46">
-        <property role="TrG5h" value="header" />
-        <property role="3TUv4t" value="false" />
-        <node concept="2AHcQZ" id="31beu34diRJ" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-        </node>
-        <node concept="3uibUv" id="31beu34diRK" role="1tU5fm">
-          <ref role="3uigEE" to="w1kc:~SModelHeader" resolve="SModelHeader" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="31beu34diRL" role="3clF47">
-        <node concept="3cpWs6" id="31beu34diRM" role="3cqZAp">
-          <node concept="10Nm6u" id="31beu34diRN" role="3cqZAk" />
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="31beu34diRO" role="1B3o_S" />
-      <node concept="3uibUv" id="31beu34diRP" role="3clF45">
-        <ref role="3uigEE" to="5fzo:~IModelWriter" resolve="IModelWriter" />
-      </node>
     </node>
     <node concept="3clFb_" id="31beu34diRX" role="jymVt">
       <property role="TrG5h" value="getModelReaderHandler" />

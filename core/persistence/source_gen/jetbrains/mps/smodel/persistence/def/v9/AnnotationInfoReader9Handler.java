@@ -274,7 +274,11 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
         });
         return nodeHandler;
       }
-      return super.createChild(resultObject, tagName, attrs);
+      myChildHandlersStack.push(null);
+      // Here I handle (in fact, just ignore) any other tag, including <uo> (user object), and tags that present in some MPS models that 
+      // were saved in a non-release v9 persistence back in Nov 2014 (e.g. check rev 19209b72) to avoid exceptions like in MPS-30616 (also see MPS-21246). 
+      // this handler here is just to hold this comment. 
+      return defaultHandler;
     }
     private void handleChild_7167172773708891066(Object resultObject, Object value) throws SAXException {
       Void child = (Void) value;
@@ -305,6 +309,7 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
   public class DefaultElementHandler extends ElementHandler {
     @Override
     protected ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
+      myChildHandlersStack.push(null);
       return this;
     }
     @Override

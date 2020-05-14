@@ -32,6 +32,7 @@ import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.smodel.persistence.def.FilePerRootFormatUtil;
 import jetbrains.mps.smodel.persistence.def.IModelWriter;
+import jetbrains.mps.smodel.persistence.def.UserObjectEncoder;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
@@ -54,14 +55,16 @@ import java.util.Set;
 public class ModelWriter9 implements IModelWriter {
   public static final int VERSION = 9;
   private final MetaModelInfoProvider myMetaInfoProvider;
+  private final UserObjectEncoder myUserObjectEncoder;
 
   private IdInfoRegistry myMetaInfo;
   private ImportsHelper myImportsHelper;
   private final IdEncoder myIdEncoder = new IdEncoder();
   private boolean myUseActualResolveInfo = true;
 
-  public ModelWriter9(@NotNull MetaModelInfoProvider mmiProvider) {
+  public ModelWriter9(@NotNull MetaModelInfoProvider mmiProvider, boolean saveUserObjects) {
     myMetaInfoProvider = mmiProvider;
+    myUserObjectEncoder = saveUserObjects ? new UserObjectEncoder() : null;
   }
 
   @Override
@@ -290,6 +293,27 @@ public class ModelWriter9 implements IModelWriter {
       }
       setNotNullAttribute(linkElement, ModelPersistence9.RESOLVE, genResolveInfo(reference));
       nodeElement.addContent(linkElement);
+    }
+
+    if (myUserObjectEncoder != null) {
+      for (Object key : node.getUserObjectKeys()) {
+        if (!myUserObjectEncoder.supported(key)) {
+          // perhaps, could report unsupported keys through myUserObjectEncoder (to keep record of already reported to warn only once)
+          continue;
+        }
+        final Object value = node.getUserObject(key);
+        if (!myUserObjectEncoder.supported(value)) {
+          continue;
+        }
+        try {
+          Element uoElement = new Element("uo");
+          uoElement.setAttribute("k", myUserObjectEncoder.toText(key));
+          uoElement.setAttribute("v", myUserObjectEncoder.toText(value));
+          nodeElement.addContent(uoElement);
+        } catch (IllegalArgumentException ex) {
+          // ignore
+        }
+      }
     }
 
     for (SNode childNode : node.getChildren()) {

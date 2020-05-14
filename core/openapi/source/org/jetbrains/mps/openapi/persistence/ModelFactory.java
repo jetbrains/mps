@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,11 +17,14 @@ package org.jetbrains.mps.openapi.persistence;
 
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.jetbrains.mps.openapi.persistence.MFProblem.NO_PROBLEM;
@@ -113,6 +116,23 @@ public interface ModelFactory {
    * Saves the model to the provided data source in the factory-specific format (including conversion when needed).
    */
   void save(@NotNull SModel model, @NotNull DataSource dataSource) throws ModelSaveException, IOException;
+
+  /**
+   * Serialize the model to the provided data source in the factory-specific format with respect to options, if any
+   * @throws ModelSaveException in case serialization fails
+   */
+  default void save(@NotNull SModel model, @NotNull DataSource dataSource, @Nullable ModelSaveOption ... options) throws ModelSaveException {
+    final ModelSaveOption mandatoryOption = options != null ? Arrays.stream(options).filter(ModelSaveOption::mandatory).findFirst().orElse(null) : null;
+    if (mandatoryOption != null) {
+      final String m = String.format("Could not handle mandatory save option %s", mandatoryOption);
+      throw new ModelSaveException(m, Collections.emptySet());
+    }
+    try {
+      save(model, dataSource);
+    } catch (IOException ex) {
+      throw new ModelSaveException(ex.getMessage(), Collections.emptySet(), ex);
+    }
+  }
 
   /**
    * Returns an id which is used to get model factory by id in the

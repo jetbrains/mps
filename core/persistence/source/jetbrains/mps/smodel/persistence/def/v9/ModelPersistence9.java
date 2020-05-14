@@ -20,6 +20,7 @@ import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.persistence.MetaModelInfoProvider.BaseMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.StuffedMetaModelInfo;
+import jetbrains.mps.persistence.UserObjectsPersistence;
 import jetbrains.mps.persistence.xml.XMLPersistence;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
@@ -31,6 +32,7 @@ import jetbrains.mps.smodel.persistence.lines.LineContent;
 import jetbrains.mps.util.xml.XMLSAXHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.persistence.ModelSaveOption;
 
 import java.util.List;
 
@@ -92,7 +94,13 @@ public class ModelPersistence9 implements IModelPersistence, XMLPersistence {
     } else {
       mmiProvider = new RegularMetaModelInfo();
     }
-    return new ModelWriter9(mmiProvider);
+    return getModelWriter(mmiProvider);
+  }
+
+  @Override
+  public IModelWriter getModelWriter(@NotNull MetaModelInfoProvider mmi, @Nullable ModelSaveOption... options) {
+    final boolean keepUserObjects = UserObjectsPersistence.DESIRED.present(options) || UserObjectsPersistence.REQUIRED.present(options);
+    return new ModelWriter9(mmi, keepUserObjects);
   }
 
   @Override
