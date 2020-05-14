@@ -29,13 +29,20 @@ public class check_HasSuperConstructorCall_NonTypesystemRule extends AbstractNon
       SNode superConstructor = ConstructorDeclaration__BehaviorDescriptor.getSuperDefaultConstructor_id6d19RW5J1tP.invoke(constructorDeclaration);
       if (superConstructor == null && !((boolean) ConstructorDeclaration__BehaviorDescriptor.hasImplicitSuperDefaultConstructor_id5lFB3KB0eQS.invoke(constructorDeclaration))) {
         SNode superClass = SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(constructorDeclaration), CONCEPTS.ClassConcept$IY), LINKS.superclass$_pqe), LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY);
-        {
-          final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(constructorDeclaration, "there is no default constructor available in superclass " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(superClass), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2782601603365247587", null, errorTarget);
+        if (SNodeOperations.getModel(superClass).isReadOnly()) {
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.CreateDefaultConstructorInSuperClass_QuickFix", false);
-            intentionProvider.putArgument("superClass", superClass);
-            _reporter_2309309498.addIntentionProvider(intentionProvider);
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(constructorDeclaration, "there is no default constructor available in superclass " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(superClass), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2782601603365247587", null, errorTarget);
+          }
+        } else {
+          {
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(constructorDeclaration, "there is no default constructor available in superclass " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(superClass), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7885548432925341377", null, errorTarget);
+            {
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.CreateDefaultConstructorInSuperClass_QuickFix", false);
+              intentionProvider.putArgument("superClass", superClass);
+              _reporter_2309309498.addIntentionProvider(intentionProvider);
+            }
           }
         }
       }

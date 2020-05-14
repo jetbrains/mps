@@ -91,7 +91,7 @@
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1224500799915" name="jetbrains.mps.baseLanguage.structure.BitwiseXorExpression" flags="nn" index="pVQyQ" />
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
@@ -22301,29 +22301,68 @@
                   </node>
                 </node>
               </node>
-              <node concept="2MkqsV" id="2qtMmDo19Dz" role="3cqZAp">
-                <node concept="3cpWs3" id="1Kf0JjMYBe9" role="2MkJ7o">
-                  <node concept="Xl_RD" id="2qtMmDo19DA" role="3uHU7B">
-                    <property role="Xl_RC" value="there is no default constructor available in superclass " />
-                  </node>
-                  <node concept="2OqwBi" id="1Kf0JjMZp16" role="3uHU7w">
-                    <node concept="37vLTw" id="1Kf0JjN3220" role="2Oq$k0">
-                      <ref role="3cqZAo" node="1Kf0JjN321Q" resolve="superClass" />
+              <node concept="3clFbJ" id="6PJ68kNDKKL" role="3cqZAp">
+                <node concept="3clFbS" id="6PJ68kNDKKN" role="3clFbx">
+                  <node concept="2MkqsV" id="2qtMmDo19Dz" role="3cqZAp">
+                    <node concept="3cpWs3" id="1Kf0JjMYBe9" role="2MkJ7o">
+                      <node concept="Xl_RD" id="2qtMmDo19DA" role="3uHU7B">
+                        <property role="Xl_RC" value="there is no default constructor available in superclass " />
+                      </node>
+                      <node concept="2OqwBi" id="1Kf0JjMZp16" role="3uHU7w">
+                        <node concept="37vLTw" id="1Kf0JjN3220" role="2Oq$k0">
+                          <ref role="3cqZAo" node="1Kf0JjN321Q" resolve="superClass" />
+                        </node>
+                        <node concept="2qgKlT" id="1Kf0JjMZp1c" role="2OqNvi">
+                          <ref role="37wK5l" to="tpcu:hEwIO9y" resolve="getFqName" />
+                        </node>
+                      </node>
                     </node>
-                    <node concept="2qgKlT" id="1Kf0JjMZp1c" role="2OqNvi">
-                      <ref role="37wK5l" to="tpcu:hEwIO9y" resolve="getFqName" />
+                    <node concept="1YBJjd" id="2qtMmDo19Em" role="1urrMF">
+                      <ref role="1YBMHb" node="2qtMmDo17Jc" resolve="constructorDeclaration" />
                     </node>
                   </node>
                 </node>
-                <node concept="1YBJjd" id="2qtMmDo19Em" role="1urrMF">
-                  <ref role="1YBMHb" node="2qtMmDo17Jc" resolve="constructorDeclaration" />
+                <node concept="2OqwBi" id="6PJ68kNDMOE" role="3clFbw">
+                  <node concept="2JrnkZ" id="6PJ68kNDMCv" role="2Oq$k0">
+                    <node concept="2OqwBi" id="6PJ68kNDLoj" role="2JrQYb">
+                      <node concept="37vLTw" id="6PJ68kNDKZU" role="2Oq$k0">
+                        <ref role="3cqZAo" node="1Kf0JjN321Q" resolve="superClass" />
+                      </node>
+                      <node concept="I4A8Y" id="6PJ68kNDM3l" role="2OqNvi" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="6PJ68kNDMY5" role="2OqNvi">
+                    <ref role="37wK5l" to="mhbf:~SModel.isReadOnly()" resolve="isReadOnly" />
+                  </node>
                 </node>
-                <node concept="3Cnw8n" id="1Kf0JjN2QJw" role="1urrFz">
-                  <ref role="QpYPw" node="1Kf0JjN2xuO" resolve="CreateDefaultConstructorInSuperClass" />
-                  <node concept="3CnSsL" id="1Kf0JjN2ZuJ" role="3Coj4f">
-                    <ref role="QkamJ" node="1Kf0JjN2TvA" resolve="superClass" />
-                    <node concept="37vLTw" id="1Kf0JjN34Th" role="3CoRuB">
-                      <ref role="3cqZAo" node="1Kf0JjN321Q" resolve="superClass" />
+                <node concept="9aQIb" id="6PJ68kNDNsH" role="9aQIa">
+                  <node concept="3clFbS" id="6PJ68kNDNsI" role="9aQI4">
+                    <node concept="2MkqsV" id="6PJ68kNDNr1" role="3cqZAp">
+                      <node concept="3cpWs3" id="6PJ68kNDNr2" role="2MkJ7o">
+                        <node concept="Xl_RD" id="6PJ68kNDNr3" role="3uHU7B">
+                          <property role="Xl_RC" value="there is no default constructor available in superclass " />
+                        </node>
+                        <node concept="2OqwBi" id="6PJ68kNDNr4" role="3uHU7w">
+                          <node concept="37vLTw" id="6PJ68kNDNr5" role="2Oq$k0">
+                            <ref role="3cqZAo" node="1Kf0JjN321Q" resolve="superClass" />
+                          </node>
+                          <node concept="2qgKlT" id="6PJ68kNDNr6" role="2OqNvi">
+                            <ref role="37wK5l" to="tpcu:hEwIO9y" resolve="getFqName" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="1YBJjd" id="6PJ68kNDNr7" role="1urrMF">
+                        <ref role="1YBMHb" node="2qtMmDo17Jc" resolve="constructorDeclaration" />
+                      </node>
+                      <node concept="3Cnw8n" id="6PJ68kNDNr8" role="1urrFz">
+                        <ref role="QpYPw" node="1Kf0JjN2xuO" resolve="CreateDefaultConstructorInSuperClass" />
+                        <node concept="3CnSsL" id="6PJ68kNDNr9" role="3Coj4f">
+                          <ref role="QkamJ" node="1Kf0JjN2TvA" resolve="superClass" />
+                          <node concept="37vLTw" id="6PJ68kNDNra" role="3CoRuB">
+                            <ref role="3cqZAo" node="1Kf0JjN321Q" resolve="superClass" />
+                          </node>
+                        </node>
+                      </node>
                     </node>
                   </node>
                 </node>
