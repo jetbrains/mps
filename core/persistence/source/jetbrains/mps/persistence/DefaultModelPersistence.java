@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.persistence;
 
+import jetbrains.mps.extapi.model.PersistenceProblem;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
@@ -29,14 +30,19 @@ import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.SModelId;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
+import jetbrains.mps.smodel.persistence.def.IModelPersistence;
+import jetbrains.mps.smodel.persistence.def.IModelWriter;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
+import jetbrains.mps.util.JDOMUtil;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.jdom.Document;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModel.Problem.Kind;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.DataSource;
@@ -47,6 +53,7 @@ import org.jetbrains.mps.openapi.persistence.ModelFactoryType;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.ModelLoadingOption;
 import org.jetbrains.mps.openapi.persistence.ModelSaveException;
+import org.jetbrains.mps.openapi.persistence.ModelSaveOption;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
@@ -217,6 +224,7 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
   }
 
 
+  // XXX if this method is removed and replaced with the one with ModelSaveOption..., please make sure mmiProvider extraction from SModelHeader is there!
   @Override
   public void save(@NotNull SModel model, @NotNull DataSource dataSource) throws ModelSaveException, UnsupportedDataSourceException {
     if (!(dataSource instanceof StreamDataSource)) {
@@ -231,6 +239,38 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     }
 
     ModelPersistence.saveModel(((SModelBase) model).getSModel(), (StreamDataSource) dataSource, persistenceVersion);
+  }
+
+  @Override
+  public void save(@NotNull SModel model, @NotNull DataSource dataSource, @Nullable ModelSaveOption... options) throws ModelSaveException {
+    if (!(dataSource instanceof StreamDataSource)) {
+      String m = String.format("Incompatible data source %s(%s) for model %s", dataSource.getType(), dataSource.getLocation(), model.getReference());
+      PersistenceProblem pp = new PersistenceProblem(Kind.Save, m, dataSource.getLocation(), true);
+      throw new ModelSaveException(pp.getText(), Collections.singleton(pp));
+    }
+    // improved alternative to ModelPersistence.saveModel
+    if (dataSource.isReadOnly()) {
+      final PersistenceProblem p = new PersistenceProblem(Kind.Save, String.format("`%s' is read-only", dataSource.getLocation()), dataSource.getLocation(), true);
+      throw new ModelSaveException(p.getText(), Collections.singleton(p));
+    }
+
+    if (model instanceof PersistenceVersionAware) {
+      int persistenceVersion = ((PersistenceVersionAware) model).getPersistenceVersion();
+      // this save() method was introduced in v9 persistence aka LAST_VERSION, don't care to upgrade persistence version.
+      // XXX note, this logic is valid unless there's v10!
+      if (persistenceVersion != ModelPersistence.LAST_VERSION) {
+        ((PersistenceVersionAware) model).setPersistenceVersion(ModelPersistence.LAST_VERSION);
+      }
+    }
+    try {
+      final IModelPersistence mpImpl = ModelPersistence.getPersistence(ModelPersistence.LAST_VERSION);
+      // FIXME extract proper mmiProvider in case we remove
+      final IModelWriter modelWriter = mpImpl.getModelWriter(new RegularMetaModelInfo(), options);
+      Document document = modelWriter.saveModel(((SModelBase) model).getSModel());
+      JDOMUtil.writeDocument(document, (StreamDataSource) dataSource);
+    } catch (Exception ex) {
+      throw new ModelSaveException(ex.getMessage(), Collections.emptySet(), ex);
+    }
   }
 
   @Override

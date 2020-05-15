@@ -22,6 +22,7 @@ import jetbrains.mps.generator.impl.SingleStreamSource;
 import jetbrains.mps.generator.plan.CheckpointIdentity;
 import jetbrains.mps.generator.plan.PlanIdentity;
 import jetbrains.mps.persistence.PersistenceUtil.InMemoryStreamDataSource;
+import jetbrains.mps.persistence.UserObjectsPersistence;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.JDOMUtil;
 import org.apache.log4j.Logger;
@@ -76,6 +77,8 @@ import java.util.stream.StreamSupport;
  * @since 3.4
  */
 public class CheckpointVault {
+  // true to indicate persistence is not capable to serialize user objects and we shall convert them into attributes
+  public static final boolean CONVERT_USER_OBJECTS = Boolean.TRUE;
   private final ModelStreamManager myStreams;
   private final List<Entry> myKnownCheckpoints;
   private ModelCheckpoints myCheckpoints;
@@ -213,7 +216,8 @@ public class CheckpointVault {
       final ModelFactory modelFactory = entry.modelFactory();
       InMemoryStreamDataSource ds = new InMemoryStreamDataSource();
       try {
-        modelFactory.save(cpState.getCheckpointModel(), ds);
+
+        modelFactory.save(cpState.getCheckpointModel(), ds, CONVERT_USER_OBJECTS ? UserObjectsPersistence.IGNORED : UserObjectsPersistence.REQUIRED);
         handler.saveStream(entry.getFilename(), ds.getContentBytes());
       } catch (Exception ex) {
         // FIXME what can I do here?
@@ -224,7 +228,7 @@ public class CheckpointVault {
   }
 
   private static class Entry {
-    private static final FileExtensionDataSourceType CP_MODEL_DATASOURCE_TYPE = PreinstalledDataSourceTypes.BINARY; // PreinstalledDataSourceTypes.MPS
+    private static final FileExtensionDataSourceType CP_MODEL_DATASOURCE_TYPE = PreinstalledDataSourceTypes.MPS; // PreinstalledDataSourceTypes.BINARY
     /*package*/ final CheckpointIdentity myCheckpoint;
     private String myFile;
     /*package*/ CheckpointState myChangedState; // non-null value indicates checkpoint model was updated and need save

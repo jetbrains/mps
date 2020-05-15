@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.generator.impl;
 
+import jetbrains.mps.extapi.model.ModelWithAttributes;
 import jetbrains.mps.generator.plan.CheckpointIdentity;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -66,7 +67,9 @@ public final class ModelTransitions {
    */
   public TransitionTrace loadTransition(@NotNull CheckpointIdentity checkpoint, @NotNull SModel checkpointModel) {
     myActiveTransition = new TransitionTrace(checkpoint, this);
-    new TransitionTracePersistence(checkpointModel).load(myActiveTransition);
+    if (!isCheckpointModelWithUserObjects(checkpointModel)) {
+      new TransitionTracePersistence(checkpointModel).load(myActiveTransition);
+    }
     return myActiveTransition;
   }
 
@@ -96,5 +99,15 @@ public final class ModelTransitions {
     CheckpointIdentity recentCheckpoint = getMostRecentCheckpoint();
     rv.myActiveTransition = recentCheckpoint == null ? new TransitionTrace(rv) : new TransitionTrace(recentCheckpoint, rv);
     return rv;
+  }
+
+  private static final String UO_ATTR = "user-objects";
+
+  /*package*/ static void markCheckpointModelAsBearingUserObject(@NotNull SModel checkpointModel) {
+    ((ModelWithAttributes) checkpointModel).setAttribute(UO_ATTR, "true");
+  }
+
+  private static boolean isCheckpointModelWithUserObjects(@NotNull SModel checkpointModel) {
+    return Boolean.parseBoolean(((ModelWithAttributes) checkpointModel).getAttribute(UO_ATTR));
   }
 }

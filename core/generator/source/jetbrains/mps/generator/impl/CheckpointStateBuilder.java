@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,10 @@
  */
 package jetbrains.mps.generator.impl;
 
+import jetbrains.mps.extapi.model.ModelWithAttributes;
 import jetbrains.mps.generator.impl.cache.MappingsMemento;
 import jetbrains.mps.generator.impl.plan.CheckpointState;
+import jetbrains.mps.generator.impl.plan.CheckpointVault;
 import jetbrains.mps.generator.plan.CheckpointIdentity;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.smodel.ModelDependencyUpdate;
@@ -120,7 +122,11 @@ class CheckpointStateBuilder {
     new ModelImports(myCheckpointModel).addModelImport(originalInputModel.getReference());
     DebugMappingsBuilder dmb = new DebugMappingsBuilder(originalInputModel.getRepository(), myTransitionTrace.getActiveTransition(), messageHandler);
     SNode debugMappings = dmb.build(myCheckpointModel, stepLabels);
-    new TransitionTracePersistence(myCheckpointModel).save(myTransitionTrace.getActiveTransition());
+    if (CheckpointVault.CONVERT_USER_OBJECTS) {
+      new TransitionTracePersistence(myCheckpointModel).save(myTransitionTrace.getActiveTransition());
+    } else {
+      ModelTransitions.markCheckpointModelAsBearingUserObject(myCheckpointModel);
+    }
     myCheckpointModel.addRootNode(debugMappings);
   }
 
