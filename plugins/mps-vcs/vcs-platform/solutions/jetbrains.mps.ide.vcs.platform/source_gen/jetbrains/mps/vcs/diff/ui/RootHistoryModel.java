@@ -11,8 +11,8 @@ import com.intellij.openapi.vcs.history.VcsFileRevision;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.persistence.lines.LineContent;
 import jetbrains.mps.vcspersistence.VCSPersistenceSupport;
-import org.apache.log4j.Level;
 import com.intellij.openapi.progress.ProcessCanceledException;
+import org.apache.log4j.Level;
 import java.util.Map;
 import java.util.HashMap;
 import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
@@ -85,6 +85,10 @@ import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
           // prevRevision, however, shall always point to the processed revision 
           prevRevision = rev;
           myOnUpdate.run();
+
+        } catch (ProcessCanceledException ex) {
+          // re-throw, it's handled further in the outside catch, just don't log. See MPS-30613 
+          throw ex;
         } catch (Exception ex) {
           if (LOG.isEnabledFor(Level.ERROR)) {
             LOG.error("Error processing revision " + rev, ex);

@@ -89,7 +89,7 @@
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="5279705229678483897" name="jetbrains.mps.baseLanguage.structure.FloatingPointFloatConstant" flags="nn" index="2$xPTn">
@@ -138,6 +138,9 @@
       <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
+      </concept>
+      <concept id="1164991038168" name="jetbrains.mps.baseLanguage.structure.ThrowStatement" flags="nn" index="YS8fn">
+        <child id="1164991057263" name="throwable" index="YScLw" />
       </concept>
       <concept id="1081256982272" name="jetbrains.mps.baseLanguage.structure.InstanceOfExpression" flags="nn" index="2ZW3vV">
         <child id="1081256993305" name="classType" index="2ZW6by" />
@@ -308,7 +311,7 @@
       </concept>
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
-        <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
+        <child id="8276990574886367509" name="finallyClause" index="1zxBo6" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
@@ -16376,6 +16379,67 @@
                         </node>
                         <node concept="liA8E" id="4N$CMvGQW0b" role="2OqNvi">
                           <ref role="37wK5l" to="wyt6:~Runnable.run()" resolve="run" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3clFbH" id="7Nn2MSn6tlE" role="3cqZAp" />
+                  </node>
+                  <node concept="3uVAMA" id="7Nn2MSn6vgr" role="1zxBo5">
+                    <node concept="XOnhg" id="7Nn2MSn6vgs" role="1zc67B">
+                      <property role="TrG5h" value="ex" />
+                      <node concept="nSUau" id="7Nn2MSn6vgt" role="1tU5fm">
+                        <node concept="3uibUv" id="7Nn2MSn6vO5" role="nSUat">
+                          <ref role="3uigEE" to="xygl:~ProcessCanceledException" resolve="ProcessCanceledException" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3clFbS" id="7Nn2MSn6vgu" role="1zc67A">
+                      <node concept="3SKdUt" id="7Nn2MSn6$vR" role="3cqZAp">
+                        <node concept="1PaTwC" id="7Nn2MSn6$vS" role="1aUNEU">
+                          <node concept="3oM_SD" id="7Nn2MSn6xr9" role="1PaTwD">
+                            <property role="3oM_SC" value="re-throw," />
+                          </node>
+                          <node concept="3oM_SD" id="7Nn2MSn6xDg" role="1PaTwD">
+                            <property role="3oM_SC" value="it's" />
+                          </node>
+                          <node concept="3oM_SD" id="7Nn2MSn6xDj" role="1PaTwD">
+                            <property role="3oM_SC" value="handled" />
+                          </node>
+                          <node concept="3oM_SD" id="7Nn2MSn6xDn" role="1PaTwD">
+                            <property role="3oM_SC" value="further" />
+                          </node>
+                          <node concept="3oM_SD" id="7Nn2MSn6ye7" role="1PaTwD">
+                            <property role="3oM_SC" value="in" />
+                          </node>
+                          <node concept="3oM_SD" id="7Nn2MSn6yed" role="1PaTwD">
+                            <property role="3oM_SC" value="the" />
+                          </node>
+                          <node concept="3oM_SD" id="7Nn2MSn6yek" role="1PaTwD">
+                            <property role="3oM_SC" value="outside" />
+                          </node>
+                          <node concept="3oM_SD" id="7Nn2MSn6z7t" role="1PaTwD">
+                            <property role="3oM_SC" value="catch," />
+                          </node>
+                          <node concept="3oM_SD" id="7Nn2MSn6ziW" role="1PaTwD">
+                            <property role="3oM_SC" value="just" />
+                          </node>
+                          <node concept="3oM_SD" id="7Nn2MSn6zj6" role="1PaTwD">
+                            <property role="3oM_SC" value="don't" />
+                          </node>
+                          <node concept="3oM_SD" id="7Nn2MSn6$Id" role="1PaTwD">
+                            <property role="3oM_SC" value="log." />
+                          </node>
+                          <node concept="3oM_SD" id="7Nn2MSn6$TY" role="1PaTwD">
+                            <property role="3oM_SC" value="See" />
+                          </node>
+                          <node concept="3oM_SD" id="7Nn2MSn6_5x" role="1PaTwD">
+                            <property role="3oM_SC" value="MPS-30613" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="YS8fn" id="7Nn2MSn6wsQ" role="3cqZAp">
+                        <node concept="37vLTw" id="7Nn2MSn6wHb" role="YScLw">
+                          <ref role="3cqZAo" node="7Nn2MSn6vgs" resolve="ex" />
                         </node>
                       </node>
                     </node>
