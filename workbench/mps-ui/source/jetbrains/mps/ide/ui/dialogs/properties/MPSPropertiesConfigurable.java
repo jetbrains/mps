@@ -35,6 +35,7 @@ import com.intellij.ui.SpeedSearchComparator;
 import com.intellij.ui.TabbedPaneWrapper;
 import com.intellij.ui.TableUtil;
 import com.intellij.ui.ToolbarDecorator;
+import com.intellij.ui.ToolbarDecorator.ElementActionButton;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.table.JBTable;
 import com.intellij.uiDesigner.core.GridConstraints;
@@ -82,7 +83,6 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -556,7 +556,7 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
     }
   }
 
-  public abstract static class FindActionButton extends AnActionButton {
+  public abstract static class FindActionButton extends ElementActionButton {
     protected final JBTable myTable;
 
     public FindActionButton(JBTable table) {
@@ -564,11 +564,6 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
       this.getTemplatePresentation().setEnabledAndVisible(true);
       this.getTemplatePresentation().setIcon(Actions.Find);
       this.getTemplatePresentation().setText(PropertiesBundle.message("model.dependencies.find.text"));
-    }
-
-    @Override
-    public boolean isEnabled() {
-      return !(myTable.getSelectionModel().isSelectionEmpty());
     }
 
     @Override
