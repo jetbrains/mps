@@ -478,7 +478,7 @@
         <group id="CutCopyPasteGroup">
           <!--MPS Patch Start: our classes-->
           <action id="$Cut" class="jetbrains.mps.workbench.actions.MPSCutAction" icon="AllIcons.Actions.Menu_cut"/>
-          <group id="CopyGroup" popup="true">
+          <group id="CopyGroup" popup="true" class="com.intellij.ide.actions.SmartPopupActionGroup">
             <action id="$Copy" class="jetbrains.mps.workbench.actions.MPSCopyAction" icon="AllIcons.Actions.Copy"/>
             <action id="CopyPaths" class="com.intellij.ide.actions.CopyPathsAction"/>
             <action id="CopyAbsolutePath" class="com.intellij.ide.actions.CopyAbsolutePathProvider" />
