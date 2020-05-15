@@ -12941,7 +12941,7 @@
             </node>
             <node concept="3clFbF" id="2alxbCQFvKu" role="3cqZAp">
               <node concept="1rXfSq" id="2alxbCQFvKt" role="3clFbG">
-                <ref role="37wK5l" to="dxuu:~JTree.scrollPathToVisible(javax.swing.tree.TreePath)" resolve="scrollPathToVisible" />
+                <ref role="37wK5l" to="2sud:~Tree.scrollPathToVisible(javax.swing.tree.TreePath)" resolve="scrollPathToVisible" />
                 <node concept="37vLTw" id="2alxbCQFxNy" role="37wK5m">
                   <ref role="3cqZAo" node="2alxbCQEtbd" resolve="path" />
                 </node>
