@@ -54,6 +54,8 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
   private ReferenceElementHandler referenceHandler = new ReferenceElementHandler();
   private UserObjectElementHandler userObjectHandler = new UserObjectElementHandler();
   private IgnoredNodeElementHandler ignoredNodeHandler = new IgnoredNodeElementHandler();
+  private DebugInfoElementHandler debugInfoHandler = new DebugInfoElementHandler();
+  private DropNodeElementHandler dropNodeHandler = new DropNodeElementHandler();
   private DefaultElementHandler defaultHandler = new DefaultElementHandler();
   private Stack<ElementHandler> myHandlersStack = new Stack<ElementHandler>();
   private Stack<ChildHandler> myChildHandlersStack = new Stack<ChildHandler>();
@@ -67,6 +69,7 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
   private IdEncoder my_idEncoderField;
   private UserObjectEncoder my_userObjectEncoderField;
   private boolean my_nodesIgnoredField;
+  private boolean my_brokenInterimV9Field;
   public ModelReader9Handler(SModelHeader header, IdInfoReadHelper readHelper) {
     my_headerParam = header;
     my_readHelperParam = readHelper;
@@ -174,6 +177,7 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
       my_modelField.getSModelHeader().setPersistenceVersion(9);
       my_importHelperField = new ImportsHelper(ref);
       my_userObjectEncoderField = new UserObjectEncoder();
+      my_brokenInterimV9Field = false;
       ModelLoadResult result = new ModelLoadResult((SModel) my_modelField, ModelLoadingState.NOT_LOADED);
       return result;
     }
@@ -198,6 +202,19 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
     }
     @Override
     protected ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
+      if ("debugInfo".equals(tagName)) {
+        myChildHandlersStack.push(new ChildHandler() {
+          @Override
+          public void apply(Object resultObject, Object value) throws SAXException {
+            handleChild_922211606852158972(resultObject, value);
+          }
+        });
+        return debugInfoHandler;
+      }
+      if ("node".equals(tagName) && checkdropNode_922211606852153706(resultObject, attrs)) {
+        myChildHandlersStack.push(null);
+        return dropNodeHandler;
+      }
       if ("node".equals(tagName) && checknode_8237920533349931304(resultObject, attrs)) {
         myChildHandlersStack.push(new ChildHandler() {
           @Override
@@ -238,8 +255,15 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
       }
       return super.createChild(resultObject, tagName, attrs);
     }
+    private boolean checkdropNode_922211606852153706(Object resultObject, Attributes attrs) {
+      return my_brokenInterimV9Field;
+    }
     private boolean checknode_8237920533349931304(Object resultObject, Attributes attrs) {
       return my_readHelperParam.isRequestedStripImplementation() && my_readHelperParam.isImplementation(my_readHelperParam.readConcept(attrs.getValue("concept")));
+    }
+    private void handleChild_922211606852158972(Object resultObject, Object value) throws SAXException {
+      Object child = (Object) value;
+      my_brokenInterimV9Field = true;
     }
     private void handleChild_8237920533349931271(Object resultObject, Object value) throws SAXException {
       Tuples._2<SContainmentLink, SConcept> child = (Tuples._2<SContainmentLink, SConcept>) value;
@@ -674,6 +698,14 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
     protected ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
       myChildHandlersStack.push(null);
       return defaultHandler;
+    }
+  }
+  public class DebugInfoElementHandler extends ElementHandler {
+    public DebugInfoElementHandler() {
+    }
+  }
+  public class DropNodeElementHandler extends ElementHandler {
+    public DropNodeElementHandler() {
     }
   }
   public class DefaultElementHandler extends ElementHandler {
