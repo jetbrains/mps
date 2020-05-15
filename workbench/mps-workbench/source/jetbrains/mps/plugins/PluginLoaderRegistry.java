@@ -16,10 +16,12 @@
 package jetbrains.mps.plugins;
 
 import com.intellij.configurationStore.JdomSerializer;
-import com.intellij.diagnostic.LoadingState;
+import com.intellij.ide.ApplicationInitializedListener;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.extensions.ExtensionPoint;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
+import com.intellij.openapi.progress.EmptyProgressIndicator;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.ProgressManager;
@@ -30,11 +32,9 @@ import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.wm.ex.WindowManagerEx;
 import com.intellij.openapi.wm.impl.ProjectFrameHelper;
-import com.intellij.util.containers.ConcurrentList;
 import com.intellij.util.xmlb.BeanBinding;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.DeployListener;
-import jetbrains.mps.classloading.MPSModuleClassLoader;
 import jetbrains.mps.classloading.ModuleClassLoader;
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.ide.MPSCoreComponents;
@@ -48,7 +48,6 @@ import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.modules.SolutionKind;
-import jetbrains.mps.smodel.CurrentProjectAccessUtil;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.util.JavaNameUtil;
@@ -74,9 +73,6 @@ import java.util.Optional;
 import java.util.Queue;
 import java.util.ServiceLoader;
 import java.util.Set;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
@@ -104,6 +100,7 @@ public class PluginLoaderRegistry implements Disposable {
   private final List<PluginReloadingListener> myReloadingListeners = new CopyOnWriteArrayList<>();
 
   private final AtomicBoolean myUpdateIsScheduledInEDT = new AtomicBoolean(false);
+  private final AtomicBoolean myAppInitialized = new AtomicBoolean();
 
   public PluginLoaderRegistry(MPSCoreComponents coreComponents) {
     Platform mpsPlatform = coreComponents.getPlatform();
@@ -114,7 +111,18 @@ public class PluginLoaderRegistry implements Disposable {
     myMakeComponent = mpsPlatform.findComponent(MakeServiceComponent.class);
 
     myClassLoaderManager.addListener(myClassesListener);
+    registerAppInitListener();
     assert myCurrentContributors.isEmpty();
+  }
+
+  private void registerAppInitListener() {
+    ApplicationInitializedListener applicationInitializedListener = new MyApplicationInitializedListener();
+    getExtensionPoint().registerExtension(applicationInitializedListener);
+  }
+
+  @NotNull
+  private static ExtensionPoint<Object> getExtensionPoint() {
+    return ApplicationManager.getApplication().getExtensionArea().getExtensionPoint("com.intellij.applicationInitializedListener");
   }
 
   private static Set<PluginContributor> createPluginContributors(Collection<ReloadableModule> modules) {
@@ -378,7 +386,7 @@ public class PluginLoaderRegistry implements Disposable {
 
     LOG.trace("running task with old/new indicator");
     UpdatingTask task = new UpdatingTask(null);
-    if (postponeIfAppIsNotLoaded()) {
+    if (!isAppLoaded()) {
       LOG.trace("rescheduling task");
       return;
     }
@@ -403,25 +411,9 @@ public class PluginLoaderRegistry implements Disposable {
 
   // we don't want to do anything until components are all #initialized
   // this is just to guarantee that we will have only one plugin reload before we open a project
-  private boolean postponeIfAppIsNotLoaded() {
-    if (!isAppLoaded()) {
-      Timer timer = new Timer();
-      TimerTask timerTask = new TimerTask() {
-        @Override
-        public void run() {
-          LOG.trace("repeat from alarm");
-          runTask(ProgressManager.getGlobalProgressIndicator());
-        }
-      };
-      timer.schedule(timerTask, 500);
-      return true;
-    }
-    return false;
-  }
-
   // consider the period when app is not loaded a dead zone for this class, the plugin update are disabled during that moment
   private boolean isAppLoaded() {
-    return LoadingState.COMPONENTS_LOADED.isOccurred();
+    return myAppInitialized.get();
   }
 
   /**
@@ -498,6 +490,8 @@ public class PluginLoaderRegistry implements Disposable {
               addIdeaExtPointPluginContributors(monitor);
               addContributors(monitor, contributorsDelta);
               fireAfterPluginsLoaded(contributorsDelta);
+            } catch (Throwable t) {
+              LOG.error("caught some error during #update", t);
             } finally {
               snapshot.invokePostRunnables();
             }
@@ -563,23 +557,31 @@ public class PluginLoaderRegistry implements Disposable {
     }
 
     private void clearIDEASerializationCaches() {
-      Optional<JdomSerializer> jdomSerializer = ServiceLoader.load(JdomSerializer.class, JdomSerializer.class.getClassLoader()).findFirst();
-      jdomSerializer.ifPresent(JdomSerializer::clearSerializationCaches);
-      BeanBinding.clearSerializationCaches();
-    }
+      try {
+        Optional<JdomSerializer> jdomSerializer = ServiceLoader.load(JdomSerializer.class, JdomSerializer.class.getClassLoader()).findFirst();
+        jdomSerializer.ifPresent(JdomSerializer::clearSerializationCaches);
+        BeanBinding.clearSerializationCaches();
+      } catch (Throwable t) {
+        LOG.error("Caught exception while clearing IDEA serialization caches", t);
+      }
+  }
 
     private void clearIDEMenusFromOurActionRefs() {
-      WindowManagerEx windowManager = WindowManagerEx.getInstanceEx();
-      for (Project project : ProjectManager.getInstance().getOpenProjects()) {
-        ProjectFrameHelper frame = windowManager.getFrameHelper(project);
+      try {
+        WindowManagerEx windowManager = WindowManagerEx.getInstanceEx();
+        for (Project project : ProjectManager.getInstance().getOpenProjects()) {
+          ProjectFrameHelper frame = windowManager.getFrameHelper(project);
+          if (frame != null) {
+            frame.updateView();
+          }
+        }
+
+        ProjectFrameHelper frame = windowManager.getFrameHelper(null);
         if (frame != null) {
           frame.updateView();
         }
-      }
-
-      ProjectFrameHelper frame = windowManager.getFrameHelper(null);
-      if (frame != null) {
-        frame.updateView();
+      } catch (Throwable t) {
+        LOG.error("Caught exception while clearing IDE menus", t);
       }
     }
   }
@@ -635,7 +637,7 @@ public class PluginLoaderRegistry implements Disposable {
     public synchronized void onUnload(@NotNull Set<ModuleClassLoader> disposingCLs) {
       Set<ReloadableModule> unloadedModules = disposingCLs.stream()
                                                           .map(ModuleClassLoader::getModule)
-                                                          .collect(Collectors.toSet());;
+                                                          .collect(Collectors.toSet());
       myDelta.unload(unloadedModules);
       myCLsToBeDisposed.addAll(disposingCLs);
     }
@@ -758,6 +760,19 @@ public class PluginLoaderRegistry implements Disposable {
       toLoad.clear();
       toUnload.clear();
       return tDelta;
+    }
+  }
+
+  private class MyApplicationInitializedListener implements ApplicationInitializedListener {
+    /**
+     * Somehow TaskModal#queue does not work properly during app initialization (see #runTask).
+     * So I call UpdatingTask#run explicitly
+     */
+    @Override
+    public void componentsInitialized() {
+      myAppInitialized.set(true);
+      new UpdatingTask(null).run(new EmptyProgressIndicator());
+//      getExtensionPoint().unregisterExtension(MyApplicationInitializedListener.class); // cleared up by IJ
     }
   }
 }
