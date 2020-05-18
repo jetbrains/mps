@@ -73897,5 +73897,177 @@
       <ref role="1YaFvo" to="tpee:4D3iSq_hhnM" resolve="TryUniversalStatement" />
     </node>
   </node>
+  <node concept="18kY7G" id="2D$udtEn5fI">
+    <property role="TrG5h" value="check_InstanceMethodDeclarationNeedsBody" />
+    <property role="3GE5qa" value="classifiers.members" />
+    <node concept="3clFbS" id="2D$udtEn5fJ" role="18ibNy">
+      <node concept="3clFbJ" id="2D$udtEn97G" role="3cqZAp">
+        <node concept="3clFbS" id="2D$udtEn97Z" role="3clFbx">
+          <node concept="Dpp1Q" id="2D$udtEniv$" role="3cqZAp">
+            <node concept="3Cnw8n" id="2D$udtEntHq" role="1urrFz">
+              <property role="ARO6o" value="true" />
+              <ref role="QpYPw" node="2D$udtEnizg" resolve="ClearMethodBody" />
+            </node>
+            <node concept="Xl_RD" id="2D$udtEniw4" role="Dpw9R">
+              <property role="Xl_RC" value="The method body can be empty" />
+            </node>
+            <node concept="1YBJjd" id="2D$udtEnixH" role="1urrMF">
+              <ref role="1YBMHb" node="2D$udtEn5fL" resolve="instanceMethodDeclaration" />
+            </node>
+          </node>
+        </node>
+        <node concept="1Wc70l" id="2D$udtEnadX" role="3clFbw">
+          <node concept="2OqwBi" id="2D$udtEnfam" role="3uHU7w">
+            <node concept="2OqwBi" id="2D$udtEnc8k" role="2Oq$k0">
+              <node concept="2OqwBi" id="2D$udtEnaRF" role="2Oq$k0">
+                <node concept="1YBJjd" id="2D$udtEnapy" role="2Oq$k0">
+                  <ref role="1YBMHb" node="2D$udtEn5fL" resolve="instanceMethodDeclaration" />
+                </node>
+                <node concept="3TrEf2" id="2D$udtEnbSW" role="2OqNvi">
+                  <ref role="3Tt5mk" to="tpee:fzclF7Z" resolve="body" />
+                </node>
+              </node>
+              <node concept="3Tsc0h" id="2D$udtEncF_" role="2OqNvi">
+                <ref role="3TtcxE" to="tpee:fzcqZ_x" resolve="statement" />
+              </node>
+            </node>
+            <node concept="3GX2aA" id="2D$udtEnit_" role="2OqNvi" />
+          </node>
+          <node concept="3fqX7Q" id="2D$udtEn9iU" role="3uHU7B">
+            <node concept="2OqwBi" id="2D$udtEn9iW" role="3fr31v">
+              <node concept="1YBJjd" id="2D$udtEn9iX" role="2Oq$k0">
+                <ref role="1YBMHb" node="2D$udtEn5fL" resolve="instanceMethodDeclaration" />
+              </node>
+              <node concept="2qgKlT" id="2D$udtEn9iY" role="2OqNvi">
+                <ref role="37wK5l" to="tpek:10BRnhak8m8" resolve="hasBody" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="2D$udtEn5fL" role="1YuTPh">
+      <property role="TrG5h" value="instanceMethodDeclaration" />
+      <ref role="1YaFvo" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
+    </node>
+  </node>
+  <node concept="Q5z_Y" id="2D$udtEnizg">
+    <property role="3GE5qa" value="classifiers.members" />
+    <property role="TrG5h" value="ClearMethodBody" />
+    <node concept="Q5ZZ6" id="2D$udtEnizh" role="Q6x$H">
+      <node concept="3clFbS" id="2D$udtEnizi" role="2VODD2">
+        <node concept="3clFbF" id="2D$udtEni$0" role="3cqZAp">
+          <node concept="2OqwBi" id="2D$udtEnmT9" role="3clFbG">
+            <node concept="2OqwBi" id="2D$udtEnkcs" role="2Oq$k0">
+              <node concept="2OqwBi" id="2D$udtEnj7d" role="2Oq$k0">
+                <node concept="1PxgMI" id="2D$udtEniGB" role="2Oq$k0">
+                  <property role="1BlNFB" value="true" />
+                  <node concept="chp4Y" id="2D$udtEniHg" role="3oSUPX">
+                    <ref role="cht4Q" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
+                  </node>
+                  <node concept="Q6c8r" id="2D$udtEnizZ" role="1m5AlR" />
+                </node>
+                <node concept="3TrEf2" id="2D$udtEnjZW" role="2OqNvi">
+                  <ref role="3Tt5mk" to="tpee:fzclF7Z" resolve="body" />
+                </node>
+              </node>
+              <node concept="3Tsc0h" id="2D$udtEnkNX" role="2OqNvi">
+                <ref role="3TtcxE" to="tpee:fzcqZ_x" resolve="statement" />
+              </node>
+            </node>
+            <node concept="2Kehj3" id="2D$udtEnq8W" role="2OqNvi" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="18kY7G" id="2D$udtEv96W">
+    <property role="TrG5h" value="check_InstanceMethodDeclarationNeedsVisibility" />
+    <property role="3GE5qa" value="classifiers.members" />
+    <node concept="3clFbS" id="2D$udtEv96X" role="18ibNy">
+      <node concept="3clFbJ" id="2D$udtEv96Y" role="3cqZAp">
+        <node concept="3clFbS" id="2D$udtEv96Z" role="3clFbx">
+          <node concept="Dpp1Q" id="2D$udtEv970" role="3cqZAp">
+            <node concept="3Cnw8n" id="2D$udtEvfM9" role="1urrFz">
+              <property role="ARO6o" value="true" />
+              <ref role="QpYPw" node="2D$udtEvblX" resolve="MakeMethodPublic" />
+            </node>
+            <node concept="Xl_RD" id="2D$udtEv972" role="Dpw9R">
+              <property role="Xl_RC" value="The method visibility must be public" />
+            </node>
+            <node concept="1YBJjd" id="2D$udtEv973" role="1urrMF">
+              <ref role="1YBMHb" node="2D$udtEv97g" resolve="instanceMethodDeclaration" />
+            </node>
+          </node>
+        </node>
+        <node concept="1Wc70l" id="1AwNf6CdmRy" role="3clFbw">
+          <node concept="3clFbT" id="1AwNf6Cdrjf" role="3uHU7w" />
+          <node concept="1Wc70l" id="2D$udtEv974" role="3uHU7B">
+            <node concept="2OqwBi" id="2D$udtEz0vi" role="3uHU7B">
+              <node concept="2OqwBi" id="2D$udtEz0ir" role="2Oq$k0">
+                <node concept="1YBJjd" id="2D$udtEyZTB" role="2Oq$k0">
+                  <ref role="1YBMHb" node="2D$udtEv97g" resolve="instanceMethodDeclaration" />
+                </node>
+                <node concept="1mfA1w" id="2D$udtEz0mk" role="2OqNvi" />
+              </node>
+              <node concept="1mIQ4w" id="2D$udtEz0L8" role="2OqNvi">
+                <node concept="chp4Y" id="2D$udtEz12q" role="cj9EA">
+                  <ref role="cht4Q" to="tpee:g7HP654" resolve="Interface" />
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="2D$udtEv976" role="3uHU7w">
+              <node concept="2OqwBi" id="2D$udtEv977" role="2Oq$k0">
+                <node concept="1YBJjd" id="2D$udtEv978" role="2Oq$k0">
+                  <ref role="1YBMHb" node="2D$udtEv97g" resolve="instanceMethodDeclaration" />
+                </node>
+                <node concept="3TrEf2" id="2D$udtEvaIs" role="2OqNvi">
+                  <ref role="3Tt5mk" to="tpee:h9B3oxE" resolve="visibility" />
+                </node>
+              </node>
+              <node concept="3w_OXm" id="2D$udtEvaYh" role="2OqNvi" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="2D$udtEv97g" role="1YuTPh">
+      <property role="TrG5h" value="instanceMethodDeclaration" />
+      <ref role="1YaFvo" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
+    </node>
+  </node>
+  <node concept="Q5z_Y" id="2D$udtEvblX">
+    <property role="3GE5qa" value="classifiers.members" />
+    <property role="TrG5h" value="MakeMethodPublic" />
+    <node concept="Q5ZZ6" id="2D$udtEvblY" role="Q6x$H">
+      <node concept="3clFbS" id="2D$udtEvblZ" role="2VODD2">
+        <node concept="3clFbF" id="2D$udtEvbq5" role="3cqZAp">
+          <node concept="2OqwBi" id="2D$udtEvcig" role="3clFbG">
+            <node concept="2OqwBi" id="2D$udtEvbY6" role="2Oq$k0">
+              <node concept="1PxgMI" id="2D$udtEvb_7" role="2Oq$k0">
+                <property role="1BlNFB" value="true" />
+                <node concept="chp4Y" id="2D$udtEvbAb" role="3oSUPX">
+                  <ref role="cht4Q" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
+                </node>
+                <node concept="Q6c8r" id="2D$udtEvbq4" role="1m5AlR" />
+              </node>
+              <node concept="3TrEf2" id="2D$udtEvc2S" role="2OqNvi">
+                <ref role="3Tt5mk" to="tpee:h9B3oxE" resolve="visibility" />
+              </node>
+            </node>
+            <node concept="2oxUTD" id="2D$udtEvcqm" role="2OqNvi">
+              <node concept="2ShNRf" id="2D$udtEvctI" role="2oxUTC">
+                <node concept="3zrR0B" id="2D$udtEvfJp" role="2ShVmc">
+                  <node concept="3Tqbb2" id="2D$udtEvfJr" role="3zrR0E">
+                    <ref role="ehGHo" to="tpee:gFTm1ZL" resolve="PublicVisibility" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 

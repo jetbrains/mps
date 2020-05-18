@@ -98,7 +98,7 @@ public final class InstanceMethodDeclaration__BehaviorDescriptor extends BaseBHD
     return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.isAbstract$cU_H)) && !(SPropertyOperations.getBoolean(__thisNode__, PROPS.isNative$LADB));
   }
   /*package*/ static boolean hasVisibility_id1X7GQqyPHmE(@NotNull SNode __thisNode__) {
-    return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.Interface$Kp)) || !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC), CONCEPTS.PublicVisibility$qe));
+    return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.Interface$Kp)) || ((SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC) != null) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC), CONCEPTS.PublicVisibility$qe)));
   }
   /*package*/ static List<SNode> getChildrenToDisplayIntention_id3vsDNFqJVhw(@NotNull SNode __thisNode__) {
     List<SNode> result = HasAnnotation__BehaviorDescriptor.getChildrenToDisplayIntention_id3vsDNFqJVhw.invokeSuper(__thisNode__, CONCEPTS.InstanceMethodDeclaration$An);
