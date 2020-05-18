@@ -193,7 +193,7 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
   @Override
   public Collection<SNode> trySwitch(SNodeReference _switch, TemplateContext context) throws GenerationException {
     FastRuleFinder rf = generator.getRuleManager().getSwitchRules(_switch);
-    Collection<SNode> outputNodes = tryToReduce(rf, context);
+    Collection<SNode> outputNodes = tryToReduce(rf, context.withNewExecutionPath());
     if (outputNodes != null) {
       // XXX it seems odd we do not do TracingUtil.fillOriginalNode(context.getInput(), outputNodes.get(0), false)
       // to record actual origin for the switch outcome. This ruins scenario like
