@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.smodel.DynamicReference.DynamicReferenceOrigin;
 import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.util.IterableUtil;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.io.ModelOutputStream;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -35,6 +36,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.function.Predicate;
 
 /**
  * Minimalistic binary persistence, straightforward, to serialize nodes individually.
@@ -53,12 +55,27 @@ public class BareNodeWriter {
   static final byte REF_THIS_MODEL = 17;
   static final byte REF_OTHER_MODEL = 18;
 
-  protected final SModelReference myModelReference;
+  protected final Predicate<SModelReference> myLocalModelReference;
   protected final ModelOutputStream myOut;
+  private final boolean myWriteUserObjects;
 
+  /**
+   * @deprecated use {@link #BareNodeWriter(Predicate, ModelOutputStream, boolean)} instead
+   */
+  @Deprecated
+  @ToRemove(version = 2020.2)
   public BareNodeWriter(@NotNull SModelReference modelReference, @NotNull ModelOutputStream os) {
-    myModelReference = modelReference;
+    this(modelReference::equals, os, true);
+  }
+
+  public BareNodeWriter(@NotNull Predicate<SModelReference> localModelRefPredicate, @NotNull ModelOutputStream os, boolean writeUserObjects) {
+    myLocalModelReference = localModelRefPredicate;
     myOut = os;
+    myWriteUserObjects = writeUserObjects;
+  }
+
+  public BareNodeWriter(@NotNull ModelOutputStream os, boolean writeUserObjects) {
+    this(x -> false, os, writeUserObjects);
   }
 
   public void writeNodes(Collection<SNode> nodes) throws IOException {
@@ -75,7 +92,9 @@ public class BareNodeWriter {
 
     writeProperties(node);
 
-    writeUserObjects(node);
+    if (myWriteUserObjects) {
+      writeUserObjects(node);
+    }
 
     writeReferences(node);
 
@@ -116,7 +135,7 @@ public class BareNodeWriter {
     } else {
       throw new IOException("cannot store reference: " + reference.toString());
     }
-    if (myModelReference.equals(targetModelReference)) {
+    if (myLocalModelReference.test(targetModelReference)) {
       myOut.writeByte(REF_THIS_MODEL);
     } else {
       myOut.writeByte(REF_OTHER_MODEL);

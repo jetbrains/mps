@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ import jetbrains.mps.persistence.binary.BareNodeReader;
 import jetbrains.mps.persistence.binary.BareNodeWriter;
 import jetbrains.mps.smodel.ModelDependencyUpdate;
 import jetbrains.mps.smodel.TrivialModelDescriptor;
-import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.io.ModelInputStream;
@@ -133,7 +132,7 @@ public abstract class FileSwapOwner implements TransientSwapOwner {
       }
       IOException ioex = null;
       try (ModelOutputStream mos = new ModelOutputStream(new FileOutputStream(swapFile))) {
-        saveModel(model.getReference(), roots, mos);
+        saveModel(roots, mos);
       } catch (IOException e) {
         ioex = e;
         LOG.error(null, e);
@@ -159,7 +158,7 @@ public abstract class FileSwapOwner implements TransientSwapOwner {
       }
 
       try (ModelInputStream mis = new ModelInputStream(new FileInputStream(swapFile))) {
-        return loadModel(mref, mis, modelData);
+        return loadModel(mis, modelData);
       } catch (IOException e) {
         LOG.error(null, e);
         throw new RuntimeException(e);
@@ -180,47 +179,45 @@ public abstract class FileSwapOwner implements TransientSwapOwner {
 
     private static final int VERSION = 49;
 
-    public <T extends SModelData> T loadModel(SModelReference modelReference, ModelInputStream is, T model) throws IOException {
+    private <T extends SModelData> T loadModel(ModelInputStream is, T model) throws IOException {
       int version = is.readInt();
       if (version != VERSION) {
         return null;
       }
 
-      new BareNodeReader(modelReference, is).readNodesInto(model);
+      new BareNodeReader(is).readNodesInto(model);
       return model;
     }
 
-    public void saveModel(SModelReference modelReference, List<SNode> roots, ModelOutputStream os) throws IOException {
+    private void saveModel(List<SNode> roots, ModelOutputStream os) throws IOException {
       os.writeInt(VERSION);
-      new BareNodeWriter(modelReference, os).writeNodes(roots);
+      new BareNodeWriter(os, true).writeNodes(roots);
     }
 
   }
 
   // method created for testing
   public static SNode writeAndReadNode(SNode node) throws IOException {
-    final SModelReference modelReference = node.getModel().getReference();
-
     ByteArrayOutputStream os = new ByteArrayOutputStream();
     ModelOutputStream mos = new ModelOutputStream(os);
-    BareNodeWriter writer = new BareNodeWriter(modelReference, mos);
+    BareNodeWriter writer = new BareNodeWriter(mos, true);
     writer.writeNode(node);
     mos.close();
 
     ByteArrayInputStream is = new ByteArrayInputStream(os.toByteArray());
-    BareNodeReader reader = new BareNodeReader(modelReference, new ModelInputStream(is));
+    BareNodeReader reader = new BareNodeReader(new ModelInputStream(is));
 
     return reader.readNode(null);
   }
 
   // method created for testing
-  // FIXME can take openapi.SModel
   public static SModel writeAndReadModel(SModel model) throws IOException {
     // write
     final ByteArrayOutputStream os = new ByteArrayOutputStream(2048);
     final ModelOutputStream mos = new ModelOutputStream(os);
     mos.writeInt(44);
-    new BareNodeWriter(model.getReference(), mos).writeNodes(IterableUtil.asCollection(model.getRootNodes()));
+    final SModelReference mr = model.getReference();
+    new BareNodeWriter(mr::equals, mos, true).writeNodes(IterableUtil.asCollection(model.getRootNodes()));
     mos.close();
 
     final jetbrains.mps.smodel.SModel resultModel = new jetbrains.mps.smodel.SModel(
@@ -233,7 +230,7 @@ public abstract class FileSwapOwner implements TransientSwapOwner {
     if (version != 44) {
       return null;
     }
-    new BareNodeReader(resultModel.getReference(), mis).readNodesInto(resultModel);
+    new BareNodeReader(resultModel::getReference, mis).readNodesInto(resultModel);
 
     SModelBase result = new TrivialModelDescriptor(resultModel);
     new ModelDependencyUpdate(result).updateUsedLanguages().updateImportedModels(model.getRepository());

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.smodel.DynamicReference.DynamicReferenceOrigin;
 import jetbrains.mps.smodel.StaticReference;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.io.ModelInputStream;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -35,6 +36,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 /**
  * Lightweight, straightforward binary serialization of individual {@link org.jetbrains.mps.openapi.model.SNode}s.
@@ -42,12 +44,27 @@ import java.util.List;
  * @author Artem Tikhomirov
  */
 public class BareNodeReader {
-  protected final SModelReference myModelReference;
+  protected final Supplier<SModelReference> myModelReference;
   protected final ModelInputStream myIn;
 
+  /**
+   * @deprecated use {@link #BareNodeReader(Supplier, ModelInputStream)} instead
+   */
+  @Deprecated
+  @ToRemove(version = 2020.2)
   public BareNodeReader(@NotNull SModelReference modelReference, @NotNull ModelInputStream is) {
-    myModelReference = modelReference;
+    this (() -> modelReference, is);
+  }
+
+  public BareNodeReader(@NotNull Supplier<SModelReference> localModelRef, @NotNull ModelInputStream is) {
+    myModelReference = localModelRef;
     myIn = is;
+  }
+
+  public BareNodeReader(@NotNull ModelInputStream is) {
+    this(() -> {
+      throw new UnsupportedOperationException();
+    }, is);
   }
 
   /**
@@ -135,7 +152,7 @@ public class BareNodeReader {
       modelRef = myIn.readModelReference();
       externalNodeReferenceRead(modelRef, targetNodeId);
     } else {
-      modelRef = myModelReference;
+      modelRef = myModelReference.get();
       localNodeReferenceRead(targetNodeId);
     }
     String resolveInfo = myIn.readString();
