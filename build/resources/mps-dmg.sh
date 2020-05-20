@@ -1,37 +1,39 @@
 #!/bin/bash
-# usage: mps-dmg buildcode
+# usage: mps-dmg buildcode workdir
 #   for making buildcode.dmg from buildcode.sit and buildcode.png + buildcode.pl
+WORKDIR=~/$2
+cd ${WORKDIR}
 EXPLODED=$1.exploded
-test -d ${EXPLODED} && chmod -R u+wx ~/${EXPLODED}/*
-rm -rf ~/${EXPLODED}
-rm -f ~/$1.dmg
-rm -f ~/$1.temp.dmg
+test -d ${EXPLODED} && chmod -R u+wx ${WORKDIR}/${EXPLODED}/*
+rm -rf ${WORKDIR}/${EXPLODED}
+rm -f ${WORKDIR}/$1.dmg
+rm -f ${WORKDIR}/$1.temp.dmg
 
-mkdir ~/${EXPLODED}
+mkdir ${WORKDIR}/${EXPLODED}
 echo "Unzipping $1.sit to ${EXPLODED}..."
-ditto -x -k $1.sit ~/${EXPLODED}/
+ditto -x -k $1.sit ${WORKDIR}/${EXPLODED}/
 #rm $1.sit
-BUILD_NAME=$(ls ~/${EXPLODED}/)
+BUILD_NAME=$(ls ${WORKDIR}/${EXPLODED}/)
 VOLNAME=`echo $BUILD_NAME | sed 's/\.app$//'`
 BG_PIC="$1.png"
 
-chmod a+x ~/${EXPLODED}/"$BUILD_NAME"/Contents/MacOS/*
-chmod a+x ~/${EXPLODED}/"$BUILD_NAME"/Contents/bin/*.py
-chmod a+x ~/${EXPLODED}/"$BUILD_NAME"/Contents/bin/fs*
-chmod a+x ~/${EXPLODED}/"$BUILD_NAME"/Contents/bin/restarter
+chmod a+x ${WORKDIR}/${EXPLODED}/"$BUILD_NAME"/Contents/MacOS/*
+chmod a+x ${WORKDIR}/${EXPLODED}/"$BUILD_NAME"/Contents/bin/*.py
+chmod a+x ${WORKDIR}/${EXPLODED}/"$BUILD_NAME"/Contents/bin/fs*
+chmod a+x ${WORKDIR}/${EXPLODED}/"$BUILD_NAME"/Contents/bin/restarter
 
-mkdir ~/${EXPLODED}/.background
-cp ~/${BG_PIC} ~/${EXPLODED}/.background
-ln -s /Applications ~/${EXPLODED}/"Applications"
+mkdir ${WORKDIR}/${EXPLODED}/.background
+cp ${WORKDIR}/${BG_PIC} ${WORKDIR}/${EXPLODED}/.background
+ln -s /Applications ${WORKDIR}/${EXPLODED}/"Applications"
 # allocate space for .DS_Store
-dd if=/dev/zero of=~/${EXPLODED}/DSStorePlaceHolder bs=1024 count=512
+dd if=/dev/zero of=${WORKDIR}/${EXPLODED}/DSStorePlaceHolder bs=1024 count=512
 
 echo "Creating unpacked r/w disk image ${VOLNAME}..."
-hdiutil create -srcfolder ./${EXPLODED} -volname "$VOLNAME" -anyowners -nospotlight -quiet -fs HFS+ -fsargs "-c c=64,a=16,e=16" -format UDRW ~/$1.temp.dmg
+hdiutil create -srcfolder ./${EXPLODED} -volname "$VOLNAME" -anyowners -nospotlight -quiet -fs HFS+ -fsargs "-c c=64,a=16,e=16" -format UDRW ${WORKDIR}/$1.temp.dmg
 
 # mount this image
 echo "Mounting unpacked r/w disk image..."
-device=$(hdiutil attach -readwrite -noverify -noautoopen ~/$1.temp.dmg | egrep '^/dev/' | sed 1q | awk '{print $1}')
+device=$(hdiutil attach -readwrite -noverify -noautoopen ${WORKDIR}/$1.temp.dmg | egrep '^/dev/' | sed 1q | awk '{print $1}')
 echo "Mounted as ${device}."
 sleep 10
 
@@ -42,9 +44,9 @@ perl $1.pl "$VOLNAME" ${BG_PIC}
 sync;sync;sync
 hdiutil detach ${device}
 
-echo "Compressing r/w disk image to ~/$1.dmg..."
-hdiutil convert ~/$1.temp.dmg -quiet -format UDZO -imagekey zlib-level=9 -o ~/$1.dmg
-rm -f ~/$1.temp.dmg
+echo "Compressing r/w disk image to ${WORKDIR}/$1.dmg..."
+hdiutil convert ${WORKDIR}/$1.temp.dmg -quiet -format UDZO -imagekey zlib-level=9 -o ${WORKDIR}/$1.dmg
+rm -f ${WORKDIR}/$1.temp.dmg
 
-hdiutil internet-enable -no ~/$1.dmg
-rm -rf ~/${EXPLODED}
+hdiutil internet-enable -no ${WORKDIR}/$1.dmg
+rm -rf ${WORKDIR}/${EXPLODED}
