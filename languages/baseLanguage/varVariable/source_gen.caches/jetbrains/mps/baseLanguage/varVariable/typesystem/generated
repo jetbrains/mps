@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="87m4dywhnroff24fle1qhkor1uple3d">
+<product version="3" modelHash="ckkpsuqqsw50jono5ofiewwsz21j08n">
   <files names="TypesystemDescriptor.java:check_VarVariableDeclaration_NonTypesystemRule.java:typeof_VarVariableDeclaration_InferenceRule.java" />
 </product>
 

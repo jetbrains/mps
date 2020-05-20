@@ -278,7 +278,7 @@ public class AbstractCreator_SubstituteMenu extends SubstituteMenuBase {
         ListSequence.fromList(types).addElement(type);
       }
       for (SConcept typeConcept : ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.Type$IG, _context.getModel()))) {
-        if (!(typeConcept.isAbstract()) && (boolean) Type__BehaviorDescriptor.isValueType_id4bFkYVCcmm2.invoke(SNodeOperations.asSConcept(typeConcept))) {
+        if (!(typeConcept.isAbstract()) && (boolean) Type__BehaviorDescriptor.isValueType_id4bFkYVCcmm2.invoke(SNodeOperations.asSConcept(typeConcept)) && !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(typeConcept), CONCEPTS.UndefinedType$1H))) {
           ListSequence.fromList(types).addElement(SNodeFactoryOperations.createNewNode(typeConcept, null));
         }
       }
@@ -412,6 +412,7 @@ public class AbstractCreator_SubstituteMenu extends SubstituteMenuBase {
     /*package*/ static final SConcept LowerBoundType$Uz = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, "jetbrains.mps.baseLanguage.structure.LowerBoundType");
     /*package*/ static final SConcept UpperBoundType$r6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, "jetbrains.mps.baseLanguage.structure.UpperBoundType");
     /*package*/ static final SConcept TypeVariableReference$vZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
+    /*package*/ static final SConcept UndefinedType$1H = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x431d52a5d09a4ea9L, "jetbrains.mps.baseLanguage.structure.UndefinedType");
     /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
     /*package*/ static final SConcept AbstractCreator$CY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab844af9bL, "jetbrains.mps.baseLanguage.structure.AbstractCreator");
     /*package*/ static final SConcept AnnotationInstance$5z = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, "jetbrains.mps.baseLanguage.structure.AnnotationInstance");

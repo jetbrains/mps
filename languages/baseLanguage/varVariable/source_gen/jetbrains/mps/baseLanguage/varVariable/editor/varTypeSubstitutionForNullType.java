@@ -18,19 +18,23 @@ import org.apache.log4j.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-public class VarType_LocalVariableDeclaration extends SubstituteMenuBase {
+public class varTypeSubstitutionForNullType extends SubstituteMenuBase {
+  public varTypeSubstitutionForNullType() {
+    super(true);
+  }
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_sr4kig_a(), CONCEPTS.VarType$lr));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_bhb2zq_a(), CONCEPTS.UndefinedType$1H));
     return result;
   }
 
@@ -38,7 +42,7 @@ public class VarType_LocalVariableDeclaration extends SubstituteMenuBase {
   @Override
   public List<SubstituteMenuItem> createMenuItems(@NotNull SubstituteMenuContext context) {
     context.getEditorMenuTrace().pushTraceInfo();
-    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("named substitute menu " + "VarType_LocalVariableDeclaration", new SNodePointer("r:c7cd0bd2-9f1a-40db-94ef-4882de6f36b2(jetbrains.mps.baseLanguage.varVariable.editor)", "4792977609794484734")));
+    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("contribution to the " + "default substitute menu for " + "UndefinedType", new SNodePointer("r:c7cd0bd2-9f1a-40db-94ef-4882de6f36b2(jetbrains.mps.baseLanguage.varVariable.editor)", "9099547223152234738")));
     try {
       return super.createMenuItems(context);
     } finally {
@@ -47,7 +51,7 @@ public class VarType_LocalVariableDeclaration extends SubstituteMenuBase {
   }
 
 
-  private class SMP_Action_sr4kig_a extends SingleItemSubstituteMenuPart {
+  private class SMP_Action_bhb2zq_a extends SingleItemSubstituteMenuPart {
 
     @Nullable
     @Override
@@ -63,7 +67,7 @@ public class VarType_LocalVariableDeclaration extends SubstituteMenuBase {
 
       _context.getEditorMenuTrace().pushTraceInfo();
       try {
-        _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:c7cd0bd2-9f1a-40db-94ef-4882de6f36b2(jetbrains.mps.baseLanguage.varVariable.editor)", "4852852411435221769")));
+        _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:c7cd0bd2-9f1a-40db-94ef-4882de6f36b2(jetbrains.mps.baseLanguage.varVariable.editor)", "9099547223153459637")));
         item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
       } finally {
         _context.getEditorMenuTrace().popTraceInfo();
@@ -75,7 +79,7 @@ public class VarType_LocalVariableDeclaration extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.VarType$lr, context);
+        super(CONCEPTS.UndefinedType$1H, context);
         _context = context;
       }
 
@@ -86,7 +90,10 @@ public class VarType_LocalVariableDeclaration extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        return SNodeFactoryOperations.createNewNode(CONCEPTS.VarType$lr, null);
+        SNode createdNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x515552c7fcc04ab4L, 0x97892f3c49344e85L, 0x112353ac52dL, "jetbrains.mps.baseLanguage.varVariable.structure.VarType"));
+        SNode var = SNodeFactoryOperations.replaceWithNewChild(_context.getParentNode(), CONCEPTS.VarVariableDeclaration$Of);
+        SLinkOperations.setTarget(var, LINKS.type$pLrO, createdNode);
+        return createdNode;
       }
 
       @Override
@@ -102,19 +109,24 @@ public class VarType_LocalVariableDeclaration extends SubstituteMenuBase {
         return canExecute_internal(pattern, true);
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-        if (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Type$IG) && SNodeOperations.hasRole(_context.getParentNode(), LINKS.type$pLrO) && (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getParent(_context.getParentNode()))), CONCEPTS.LocalVariableDeclaration$Bf) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getParent(_context.getParentNode()))), CONCEPTS.VarVariableDeclaration$Of))) {
+        if (((_context.getCurrentTargetNode() == null)) && (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getParentNode())), CONCEPTS.LocalVariableDeclaration$Bf) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getParentNode())), CONCEPTS.VarVariableDeclaration$Of))) {
           return (strictly ? "var".equals(pattern) : "var".startsWith(pattern));
         }
         return false;
+
+      }
+      @Nullable
+      @Override
+      public String getMatchingText(@NotNull String pattern) {
+        return "var";
       }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VarType$lr = MetaAdapterFactory.getConcept(0x515552c7fcc04ab4L, 0x97892f3c49344e85L, 0x112353ac52dL, "jetbrains.mps.baseLanguage.varVariable.structure.VarType");
-    /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept UndefinedType$1H = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x431d52a5d09a4ea9L, "jetbrains.mps.baseLanguage.structure.UndefinedType");
     /*package*/ static final SConcept VarVariableDeclaration$Of = MetaAdapterFactory.getConcept(0x515552c7fcc04ab4L, 0x97892f3c49344e85L, 0x11ff0aa3699L, "jetbrains.mps.baseLanguage.varVariable.structure.VarVariableDeclaration");
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
   }
 
   private static final class LINKS {
