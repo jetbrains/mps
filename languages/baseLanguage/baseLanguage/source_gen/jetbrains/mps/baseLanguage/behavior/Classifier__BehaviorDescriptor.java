@@ -51,11 +51,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.baseLanguage.scopes.ClassifierResolveUtils;
 import jetbrains.mps.baseLanguage.scopes.Scopes;
 import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
+import jetbrains.mps.lang.scopes.runtime.CompositeWithParentScope;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.scope.FilteringByNameScope;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopes;
-import jetbrains.mps.lang.scopes.runtime.CompositeWithParentScope;
 import jetbrains.mps.baseLanguage.scopes.ClassifierSignature;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -585,6 +585,18 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
 
     SAbstractConcept cncpt = kind;
     boolean noneMatched = true;
+    if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.ContextClassifierKind$Hd)) {
+      noneMatched = false;
+      return CompositeWithParentScope.from(__thisNode__, __thisNode__, kind);
+    }
+    if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.TypeVariableDeclaration$Cc)) {
+      noneMatched = false;
+      if (!(isStaticContext)) {
+        return Scopes.forTypeVariables(SLinkOperations.getChildren(__thisNode__, LINKS.typeVariableDeclaration$ziZT), ScopeUtils.lazyParentScope(__thisNode__, kind));
+      } else {
+        return ScopeUtils.lazyParentScope(__thisNode__, kind);
+      }
+    }
     if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.BaseMethodDeclaration$RR)) {
       noneMatched = false;
       // add instance fields + static fields 
@@ -637,18 +649,6 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
         }
       }
       return (addition != null ? Scopes.defaultWithNameHiding(kind, addition, ScopeUtils.lazyParentScope(__thisNode__, kind)) : ScopeUtils.lazyParentScope(__thisNode__, kind));
-    }
-    if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.ContextClassifierKind$Hd)) {
-      noneMatched = false;
-      return CompositeWithParentScope.from(__thisNode__, __thisNode__, kind);
-    }
-    if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.TypeVariableDeclaration$Cc)) {
-      noneMatched = false;
-      if (!(isStaticContext)) {
-        return Scopes.forTypeVariables(SLinkOperations.getChildren(__thisNode__, LINKS.typeVariableDeclaration$ziZT), ScopeUtils.lazyParentScope(__thisNode__, kind));
-      } else {
-        return ScopeUtils.lazyParentScope(__thisNode__, kind);
-      }
     }
 
     return ScopeUtils.lazyParentScope(__thisNode__, kind);

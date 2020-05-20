@@ -136,16 +136,8 @@
         <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
         <reference id="1144432896254" name="enumClass" index="1Px2BO" />
       </concept>
-      <concept id="1164879751025" name="jetbrains.mps.baseLanguage.structure.TryCatchStatement" flags="nn" index="SfApY">
-        <child id="1164879758292" name="body" index="SfCbr" />
-        <child id="1164903496223" name="catchClause" index="TEbGg" />
-      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
-      </concept>
-      <concept id="1164903280175" name="jetbrains.mps.baseLanguage.structure.CatchClause" flags="nn" index="TDmWw">
-        <child id="1164903359218" name="catchBody" index="TDEfX" />
-        <child id="1164903359217" name="throwable" index="TDEfY" />
       </concept>
       <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
         <child id="1137022507850" name="body" index="2VODD2" />
@@ -7154,28 +7146,8 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="SfApY" id="4Mdt1Rl4jmC" role="3cqZAp">
-                        <node concept="TDmWw" id="4Mdt1Rl4jmD" role="TEbGg">
-                          <node concept="3clFbS" id="4Mdt1Rl4jmE" role="TDEfX">
-                            <node concept="3clFbF" id="4Mdt1Rl4jmF" role="3cqZAp">
-                              <node concept="2OqwBi" id="4Mdt1Rl4jmG" role="3clFbG">
-                                <node concept="37vLTw" id="4Mdt1Rl4jmH" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="4Mdt1Rl4jmJ" resolve="e" />
-                                </node>
-                                <node concept="liA8E" id="4Mdt1Rl4jmI" role="2OqNvi">
-                                  <ref role="37wK5l" to="wyt6:~Throwable.printStackTrace()" resolve="printStackTrace" />
-                                </node>
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="3cpWsn" id="4Mdt1Rl4jmJ" role="TDEfY">
-                            <property role="TrG5h" value="e" />
-                            <node concept="3uibUv" id="4Mdt1Rl4jmK" role="1tU5fm">
-                              <ref role="3uigEE" to="zide:~RemoteException" resolve="RemoteException" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="3clFbS" id="4Mdt1Rl4jmL" role="SfCbr">
+                      <node concept="3J1_TO" id="4Mdt1Rl4jmC" role="3cqZAp">
+                        <node concept="3clFbS" id="4Mdt1Rl4jmL" role="1zxBo7">
                           <node concept="3clFbF" id="4Mdt1Rl4jmY" role="3cqZAp">
                             <node concept="2Sg_IR" id="4Mdt1Rl4p1Q" role="3clFbG">
                               <node concept="37vLTw" id="4Mdt1Rl4p1R" role="2SgG2M">
@@ -7194,6 +7166,28 @@
                               </node>
                               <node concept="3clFbT" id="4Mdt1Rl4jn6" role="37vLTx">
                                 <property role="3clFbU" value="true" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3uVAMA" id="4Mdt1Rl4jmD" role="1zxBo5">
+                          <node concept="XOnhg" id="4Mdt1Rl4jmJ" role="1zc67B">
+                            <property role="TrG5h" value="e" />
+                            <node concept="nSUau" id="5UYqLm3LiOo" role="1tU5fm">
+                              <node concept="3uibUv" id="4Mdt1Rl4jmK" role="nSUat">
+                                <ref role="3uigEE" to="zide:~RemoteException" resolve="RemoteException" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="3clFbS" id="4Mdt1Rl4jmE" role="1zc67A">
+                            <node concept="3clFbF" id="4Mdt1Rl4jmF" role="3cqZAp">
+                              <node concept="2OqwBi" id="4Mdt1Rl4jmG" role="3clFbG">
+                                <node concept="37vLTw" id="4Mdt1Rl4jmH" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="4Mdt1Rl4jmJ" resolve="e" />
+                                </node>
+                                <node concept="liA8E" id="4Mdt1Rl4jmI" role="2OqNvi">
+                                  <ref role="37wK5l" to="wyt6:~Throwable.printStackTrace()" resolve="printStackTrace" />
+                                </node>
                               </node>
                             </node>
                           </node>

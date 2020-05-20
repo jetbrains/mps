@@ -27886,10 +27886,10 @@
                 </node>
                 <node concept="1mIQ4w" id="2AY" role="2OqNvi">
                   <node concept="chp4Y" id="2B2" role="cj9EA">
-                    <ref role="cht4Q" to="tpee:20YUQaJkyY_" resolve="IHasModifiers" />
+                    <ref role="cht4Q" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
                     <node concept="cd27G" id="2B4" role="lGtFl">
                       <node concept="3u3nmq" id="2B5" role="cd27D">
-                        <property role="3u3nmv" value="7197377355157036339" />
+                        <property role="3u3nmv" value="3743760990014039244" />
                       </node>
                     </node>
                   </node>

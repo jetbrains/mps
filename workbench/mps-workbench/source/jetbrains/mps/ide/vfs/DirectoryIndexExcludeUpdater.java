@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -146,7 +146,7 @@ public class DirectoryIndexExcludeUpdater extends AbstractProjectComponent {
     @Override
     public void moduleAdded(@NotNull SModule module) {
       super.moduleAdded(module);
-      if (myMpsProject.getProjectModules().contains(module)) {
+      if (myMpsProject.isProjectModule(module)) {
         notifyRootsChanged(true);
       }
     }
@@ -154,7 +154,7 @@ public class DirectoryIndexExcludeUpdater extends AbstractProjectComponent {
     @Override
     public void moduleChanged(SModule module) {
       super.moduleChanged(module);
-      if (myMpsProject.getProjectModules().contains(module)) {
+      if (myMpsProject.isProjectModule(module)) {
         notifyRootsChanged(true);
       }
     }

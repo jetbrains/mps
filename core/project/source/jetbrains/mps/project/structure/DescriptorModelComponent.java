@@ -16,8 +16,11 @@
 package jetbrains.mps.project.structure;
 
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.util.containers.MultiMap;
+import jetbrains.mps.vfs.IFile;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelListener;
@@ -127,6 +130,12 @@ public class DescriptorModelComponent implements CoreComponent {
      * @return <code>true</code> if there's a provider interested in the module
      */
     boolean refresh(SModule module) {
+      if (module.getModuleName() == null) {
+        // At the moment, DescriptorModelProvider implementations we've got don't tolerate modules without name,
+        // as they construct a model with name based on that of module, and it's not possible to have model without a name nor it is
+        // reasonable to keep some bogus name like '<none>' or '<undefined>', therefore we don't process such modules here. See MPS-31525
+        return false;
+      }
       boolean rv = false;
       for (DescriptorModelProvider mp : myProviders) {
         if (mp.isApplicable(module)) {
@@ -175,6 +184,17 @@ public class DescriptorModelComponent implements CoreComponent {
     public void moduleAdded(@NotNull SModule module) {
       if (refresh(module)) {
         attachListeners(module);
+      } else {
+        // Try to figure out what's the cause for MPS-31525
+        if (module.getModuleName() == null) {
+          IFile descriptorFile = null;
+          if (module instanceof AbstractModule) {
+            descriptorFile = ((AbstractModule) module).getDescriptorFile();
+          }
+          final String f = "Module [%s] (id:%s), loaded from %s, has no name. No descriptor model created";
+          String m = String.format(f, module.getClass().getSimpleName(), module.getModuleReference().getModuleId(), descriptorFile);
+          Logger.getLogger(DescriptorModelComponent.class).warn(m);
+        }
       }
     }
 

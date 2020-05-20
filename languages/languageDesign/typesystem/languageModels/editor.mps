@@ -2829,11 +2829,7 @@
     <node concept="3EZMnI" id="hp8l5cx" role="2wV5jI">
       <node concept="3EZMnI" id="hp8l5cy" role="3EZMnx">
         <node concept="3F0ifn" id="hrWMSGa" role="3EZMnx">
-          <property role="3F0ifm" value="checking" />
-        </node>
-        <node concept="3F0ifn" id="hrWMTJR" role="3EZMnx">
-          <property role="3F0ifm" value="rule" />
-          <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
+          <property role="3F0ifm" value="checking rule" />
         </node>
         <node concept="3F0A7n" id="hp8l5c$" role="3EZMnx">
           <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
@@ -3416,6 +3412,21 @@
               <property role="VOm3f" value="false" />
             </node>
             <node concept="2iRfu4" id="i2ICyji" role="2iSdaV" />
+          </node>
+          <node concept="3EZMnI" id="6eD3qW7mYwn" role="3EZMnx">
+            <node concept="3F0ifn" id="6eD3qW7mYwo" role="3EZMnx">
+              <property role="3F0ifm" value="do not apply on the fly" />
+              <node concept="VPxyj" id="6eD3qW7mYwp" role="3F10Kt">
+                <property role="VOm3f" value="false" />
+              </node>
+            </node>
+            <node concept="3F0A7n" id="6eD3qW7n6HL" role="3EZMnx">
+              <ref role="1NtTu8" to="tpd4:6eD3qW7n4QW" resolve="doNotApplyOnTheFly" />
+            </node>
+            <node concept="VPM3Z" id="6eD3qW7mYws" role="3F10Kt">
+              <property role="VOm3f" value="false" />
+            </node>
+            <node concept="2iRfu4" id="6eD3qW7mYwt" role="2iSdaV" />
           </node>
           <node concept="3F0ifn" id="hrWNc7B" role="3EZMnx">
             <property role="3F0ifm" value=" " />

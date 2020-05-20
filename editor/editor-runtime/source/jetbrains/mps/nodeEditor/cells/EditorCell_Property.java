@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
+import jetbrains.mps.nodeEditor.cells.ModelAccessor.ReadOnly;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.smodel.ModelAccessHelper;
@@ -38,7 +39,7 @@ public class EditorCell_Property extends EditorCell_Label implements Synchronize
   private String myLastModelText;
 
   public EditorCell_Property(EditorContext editorContext, ModelAccessor accessor, SNode node) {
-    super(editorContext, node, accessor.getText());
+    super(editorContext, node, null);
     myModelAccessor = accessor;
     if (myModelAccessor instanceof TransactionalPropertyAccessor) {
       TransactionalPropertyAccessor propertyAccessor = (TransactionalPropertyAccessor) myModelAccessor;
@@ -77,7 +78,9 @@ public class EditorCell_Property extends EditorCell_Label implements Synchronize
   private void synchronizeViewWithModel_internal() {
     String text = myModelAccessor.getText();
     myLastModelText = text;
-    setErrorState(!isValidText(text));
+    if (!(myModelAccessor instanceof ReadOnly)) {
+      setErrorState(!isValidText(text));
+    }
     setText(text);
   }
 

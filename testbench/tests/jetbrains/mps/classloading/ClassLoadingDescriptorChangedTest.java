@@ -27,6 +27,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class ClassLoadingDescriptorChangedTest implements EnvironmentAware {
@@ -82,10 +83,14 @@ public class ClassLoadingDescriptorChangedTest implements EnvironmentAware {
   }
 
   private void performCheck(Generator generator1) {
-    Class aClass = ClassLoaderManager.getInstance().getClass(generator1, "L1.generator.template.main.QueriesGenerated");
-    Class aClass2 = ClassLoaderManager.getInstance().getClass(generator1, "L2.generator.template.main.QueriesGenerated");
-    assertTrue(aClass != null);
-    assertTrue(aClass2 != null);
+    try {
+      Class<?> aClass = generator1.getClass("L1.generator.template.main.QueriesGenerated");
+      Class<?> aClass2 = generator1.getClass("L2.generator.template.main.QueriesGenerated");
+      assertNotNull(aClass);
+      assertNotNull(aClass2);
+    } catch (ClassNotFoundException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   private class TakeGenerator implements Runnable {

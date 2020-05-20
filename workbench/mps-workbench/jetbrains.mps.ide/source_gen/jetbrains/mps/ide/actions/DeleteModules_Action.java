@@ -99,7 +99,7 @@ public class DeleteModules_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final int result = Messages.showCheckboxMessageDialog(IdeBundle.message("actions.module.delete.message"), IdeBundle.message("actions.module.delete.title"), new String[]{IdeBundle.message("actions.module.delete.ok.button.text"), Messages.CANCEL_BUTTON}, UIUtil.replaceMnemonicAmpersand(IdeBundle.message("actions.module.delete.option.files")), false, 0, 0, Messages.getQuestionIcon(), new PairFunction<Integer, JCheckBox, Integer>() {
+    final int result = Messages.showCheckboxMessageDialog(IdeBundle.message("actions.module.delete.message"), IdeBundle.message("actions.module.delete.title"), new String[]{IdeBundle.message("actions.module.delete.ok.button.text"), Messages.getCancelButton()}, UIUtil.replaceMnemonicAmpersand(IdeBundle.message("actions.module.delete.option.files")), false, 0, 0, Messages.getQuestionIcon(), new PairFunction<Integer, JCheckBox, Integer>() {
       public Integer fun(Integer exitCode, JCheckBox checkBox) {
         return (exitCode == -1 || exitCode == 1 ? Messages.CANCEL : Boolean.compare(true, checkBox.isSelected()));
       }

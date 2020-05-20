@@ -3,7 +3,7 @@
   <property name="build.dir" location="build" />
   <property name="build.tmp" location="${build.dir}/tmp/propertyPersistence" />
   <property name="build.layout" location="${build.dir}/artifacts/propertyPersistence" />
-  <property name="mps_dist" location="${basedir}/../../work/MPS 2020.1" />
+  <property name="mps_dist" location="${basedir}/../../work/MPS 2020.2" />
   <property name="idea_home" location="${mps_dist}" />
   <property name="artifacts.mps" location="${mps_dist}" />
   <property name="artifacts.IDEA" location="${idea_home}" />

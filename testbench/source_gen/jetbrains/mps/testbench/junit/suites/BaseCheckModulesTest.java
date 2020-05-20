@@ -48,7 +48,7 @@ public class BaseCheckModulesTest {
   }
 
   protected static void initEnvironment() throws InvocationTargetException, InterruptedException {
-    ourEnvironment = new MpsEnvironment(EnvironmentConfig.defaultConfig());
+    ourEnvironment = new MpsEnvironment(EnvironmentConfig.defaultConfig().withTestModeOn());
     ourEnvironment.init();
     ProjectStrategy strategy = new MPSCompositeProjectStrategy();
     ourContextProject = ourEnvironment.createProject(strategy);

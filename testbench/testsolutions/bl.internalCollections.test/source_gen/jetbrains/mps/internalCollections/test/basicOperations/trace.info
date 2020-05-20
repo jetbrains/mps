@@ -16,7 +16,6 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1163670490218:jetbrains.mps.baseLanguage.structure.SwitchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:00000000-0000-4000-0000-011c895903ed(jetbrains.mps.internalCollections.test.basicOperations)/1204981976497">
@@ -864,9 +863,6 @@
       <node id="7999094521537096528" at="41,0,116,0" concept="10" trace="iterable#()Ljava/lang/Iterable;" />
       <node id="7999094521537096521" at="39,52,116,7" concept="11" />
       <node id="7999094521537096377" at="39,0,119,0" concept="10" trace="test_distinctLazy#()V" />
-      <scope id="1241361186631" at="35,0,36,28">
-        <var name="e" id="1241361186631" />
-      </scope>
       <scope id="1241361186631" at="35,40,36,28" />
       <scope id="7999094521537096530" at="54,27,55,36" />
       <scope id="7999094521537096536" at="67,27,68,36" />
@@ -878,6 +874,9 @@
         <var name="input" id="1205777790300" />
       </scope>
       <scope id="1241361186631" at="32,9,34,20" />
+      <scope id="1241361186631" at="35,5,37,5">
+        <var name="e" id="1241361186631" />
+      </scope>
       <scope id="7999094521537096528" at="51,28,53,35" />
       <scope id="7999094521537096530" at="57,43,59,30" />
       <scope id="7999094521537096536" at="70,44,72,30" />
@@ -1230,13 +1229,7 @@
       <scope id="6312172641078882049" at="318,40,319,17" />
       <scope id="6312172641078882146" at="325,40,326,17" />
       <scope id="6312172641078882301" at="329,40,330,17" />
-      <scope id="4611582986551205784" at="368,0,369,28">
-        <var name="e" id="4611582986551205784" />
-      </scope>
       <scope id="4611582986551205784" at="368,47,369,28" />
-      <scope id="4611582986551212589" at="376,0,377,28">
-        <var name="e" id="4611582986551212589" />
-      </scope>
       <scope id="4611582986551212589" at="376,47,377,28" />
       <scope id="1205949211354" at="33,51,35,52">
         <var name="test" id="1205949241347" />
@@ -1255,7 +1248,13 @@
         <var name="ll" id="2458725063871404119" />
       </scope>
       <scope id="4611582986551205784" at="365,9,367,20" />
+      <scope id="4611582986551205784" at="368,5,370,5">
+        <var name="e" id="4611582986551205784" />
+      </scope>
       <scope id="4611582986551212589" at="373,9,375,20" />
+      <scope id="4611582986551212589" at="376,5,378,5">
+        <var name="e" id="4611582986551212589" />
+      </scope>
       <scope id="8115675450774583632" at="409,36,411,71">
         <var name="bars" id="8115675450774583658" />
       </scope>
@@ -1622,7 +1621,7 @@
       <node id="1208429091503" at="56,5,60,5" concept="8" />
       <node id="1206969226978" at="65,20,69,5" concept="8" />
       <node id="1239091401618" at="110,0,114,0" concept="10" trace="test__toString#()V" />
-      <node id="1115463791055973104" at="184,16,188,5" concept="17" />
+      <node id="1115463791055973104" at="184,16,188,5" concept="16" />
       <node id="1562299158921602877" at="31,0,36,0" concept="10" trace="test_initSize#()V" />
       <node id="1206966851401" at="47,55,52,5" concept="8" />
       <node id="1206969269805" at="69,5,74,5" concept="8" />
@@ -1638,7 +1637,7 @@
       <node id="3452893138210533037" at="199,0,208,0" concept="10" trace="test_opAssign#()V" />
       <node id="1240858568188" at="135,0,145,0" concept="10" trace="test_mapIsASequence#()V" />
       <node id="1240907736495" at="145,0,155,0" concept="10" trace="test_putAll#()V" />
-      <node id="1240855644296" at="120,37,131,5" concept="18" />
+      <node id="1240855644296" at="120,37,131,5" concept="17" />
       <node id="6445734908654411342" at="163,0,176,0" concept="10" trace="test_mappings2#()V" />
       <node id="1206969189700" at="62,0,78,0" concept="10" trace="test_mapNoInitializer#()V" />
       <node id="1206966719461" at="45,0,62,0" concept="10" trace="test_mapInitializer#()V" />
@@ -1892,7 +1891,7 @@
       <node id="4611582986551234303" at="187,0,190,0" concept="10" trace="select#(Ljava/lang/String;)Ljava/lang/String;" />
       <node id="1236250698508" at="105,0,109,0" concept="10" trace="test_contains#()V" />
       <node id="1239091286728" at="119,0,123,0" concept="10" trace="test__toString#()V" />
-      <node id="1115463791055972108" at="146,16,150,5" concept="17" />
+      <node id="1115463791055972108" at="146,16,150,5" concept="16" />
       <node id="1562299158921916469" at="27,0,32,0" concept="10" trace="test_initSize#()V" />
       <node id="1226935012255" at="44,0,49,0" concept="10" trace="test_clear#()V" />
       <node id="1226858187465" at="94,0,99,0" concept="10" trace="test_removeAll#()V" />
@@ -1926,14 +1925,8 @@
       <scope id="4611582986551234243" at="158,39,159,18" />
       <scope id="4611582986551234255" at="164,39,165,18" />
       <scope id="4611582986551234289" at="174,39,175,18" />
-      <scope id="4611582986551222756" at="182,0,183,28">
-        <var name="e" id="4611582986551222756" />
-      </scope>
       <scope id="4611582986551222756" at="182,47,183,28" />
       <scope id="4611582986551234304" at="187,39,188,18" />
-      <scope id="4611582986551222773" at="194,0,195,28">
-        <var name="e" id="4611582986551222773" />
-      </scope>
       <scope id="4611582986551222773" at="194,47,195,28" />
       <scope id="1236250698510" at="105,48,107,61">
         <var name="test" id="1236250704365" />
@@ -1942,7 +1935,13 @@
         <var name="test" id="1239091290465" />
       </scope>
       <scope id="4611582986551222756" at="179,9,181,20" />
+      <scope id="4611582986551222756" at="182,5,184,5">
+        <var name="e" id="4611582986551222756" />
+      </scope>
       <scope id="4611582986551222773" at="191,9,193,20" />
+      <scope id="4611582986551222773" at="194,5,196,5">
+        <var name="e" id="4611582986551222773" />
+      </scope>
       <scope id="1562299158921916472" at="27,48,30,78">
         <var name="hs" id="1562299158921916474" />
         <var name="lhs" id="1562299158921916486" />
@@ -2359,8 +2358,8 @@
       <node id="1237492795331" at="67,13,71,5" concept="7" />
       <node id="1240152701259" at="75,90,79,5" concept="7" />
       <node id="1240153420367" at="81,84,85,5" concept="7" />
-      <node id="5402968907645732558" at="97,23,102,7" concept="18" />
-      <node id="8293956702610678802" at="114,25,119,7" concept="18" />
+      <node id="5402968907645732558" at="97,23,102,7" concept="17" />
+      <node id="8293956702610678802" at="114,25,119,7" concept="17" />
       <node id="1237492432748" at="23,76,29,5" concept="16" />
       <node id="1237492446884" at="29,5,35,5" concept="16" />
       <node id="1237492592371" at="42,37,48,5" concept="16" />
@@ -2373,27 +2372,27 @@
       <node id="1237492318812" at="19,0,37,0" concept="10" trace="test__null#()V" />
       <node id="5402968907645727531" at="88,0,106,0" concept="10" trace="test_multiIterator#()V" />
       <node id="1237492459870" at="37,0,60,0" concept="10" trace="test_singleton#()V" />
-      <scope id="1237492432748" at="27,0,28,28">
-        <var name="e" id="1237492432748" />
-      </scope>
       <scope id="1237492432748" at="27,40,28,28" />
-      <scope id="1237492446884" at="33,0,34,28">
-        <var name="e" id="1237492446884" />
-      </scope>
       <scope id="1237492446884" at="33,40,34,28" />
-      <scope id="1237492592371" at="46,0,47,28">
-        <var name="e" id="1237492592371" />
-      </scope>
       <scope id="1237492592371" at="46,40,47,28" />
-      <scope id="1237492628728" at="56,0,57,28">
-        <var name="e" id="1237492628728" />
-      </scope>
       <scope id="1237492628728" at="56,40,57,28" />
       <scope id="1237492701381" at="63,89,64,29" />
       <scope id="1237492432748" at="24,9,26,20" />
+      <scope id="1237492432748" at="27,5,29,5">
+        <var name="e" id="1237492432748" />
+      </scope>
       <scope id="1237492446884" at="30,9,32,20" />
+      <scope id="1237492446884" at="33,5,35,5">
+        <var name="e" id="1237492446884" />
+      </scope>
       <scope id="1237492592371" at="43,9,45,20" />
+      <scope id="1237492592371" at="46,5,48,5">
+        <var name="e" id="1237492592371" />
+      </scope>
       <scope id="1237492628728" at="53,9,55,20" />
+      <scope id="1237492628728" at="56,5,58,5">
+        <var name="e" id="1237492628728" />
+      </scope>
       <scope id="1237492795332" at="68,95,70,32" />
       <scope id="1240152701260" at="76,90,78,19" />
       <scope id="1240153420368" at="82,87,84,19" />
@@ -2584,19 +2583,19 @@
       <node id="2261417478149359227" at="46,0,55,0" concept="10" trace="test_comparator#()V" />
       <node id="4611582986551252867" at="62,0,83,0" concept="10" trace="test_unmodifiable#()V" />
       <scope id="2261417478149464369" at="48,46,49,60" />
-      <scope id="4611582986551252912" at="71,0,72,28">
-        <var name="e" id="4611582986551252912" />
-      </scope>
       <scope id="4611582986551252912" at="71,47,72,28" />
-      <scope id="4611582986551252938" at="79,0,80,28">
-        <var name="e" id="4611582986551252938" />
-      </scope>
       <scope id="4611582986551252938" at="79,47,80,28" />
       <scope id="1240254375326" at="37,47,39,110">
         <var name="set" id="1240254375328" />
       </scope>
       <scope id="4611582986551252912" at="68,9,70,20" />
+      <scope id="4611582986551252912" at="71,5,73,5">
+        <var name="e" id="4611582986551252912" />
+      </scope>
       <scope id="4611582986551252938" at="76,9,78,20" />
+      <scope id="4611582986551252938" at="79,5,81,5">
+        <var name="e" id="4611582986551252938" />
+      </scope>
       <scope id="1240254273878" at="32,47,35,107">
         <var name="set" id="1240254291656" />
       </scope>
@@ -2806,18 +2805,18 @@
       <node id="1046929382680996538" at="109,34,110,34" concept="5" />
       <node id="1046929382680996892" at="110,34,111,16" concept="5" />
       <node id="1046929382680998026" at="115,5,116,28" concept="5" />
-      <node id="4091117978877223594" at="32,26,37,11" concept="18" />
-      <node id="3113011604692984276" at="51,21,56,7" concept="18" />
-      <node id="3113011604692984284" at="62,21,67,7" concept="18" />
-      <node id="3113011604693008021" at="79,21,84,7" concept="18" />
-      <node id="1046929382680996263" at="107,24,112,11" concept="18" />
+      <node id="4091117978877223594" at="32,26,37,11" concept="17" />
+      <node id="3113011604692984276" at="51,21,56,7" concept="17" />
+      <node id="3113011604692984284" at="62,21,67,7" concept="17" />
+      <node id="3113011604693008021" at="79,21,84,7" concept="17" />
+      <node id="1046929382680996263" at="107,24,112,11" concept="17" />
       <node id="4091117978877223594" at="27,32,38,9" concept="1" />
       <node id="3113011604692984276" at="46,70,57,5" concept="1" />
       <node id="3113011604692984284" at="57,5,68,5" concept="1" />
       <node id="3113011604693008021" at="74,70,85,5" concept="1" />
       <node id="1046929382680996263" at="102,28,113,9" concept="1" />
-      <node id="4091117978877210594" at="24,21,39,7" concept="18" />
-      <node id="1046929382680995881" at="99,16,114,7" concept="18" />
+      <node id="4091117978877210594" at="24,21,39,7" concept="17" />
+      <node id="1046929382680995881" at="99,16,114,7" concept="17" />
       <node id="3113011604693007986" at="71,0,88,0" concept="10" trace="test_secondShort#()V" />
       <node id="4091117978877210594" at="19,70,40,5" concept="1" />
       <node id="1046929382680995881" at="94,14,115,5" concept="1" />

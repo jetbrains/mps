@@ -99,35 +99,40 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
           return;
         }
         myIsLoadInProgress = true;
-        ASMModelLoader loader = new ASMModelLoader(getModule(), getSource().getAffectedFiles());
-        loader.skipPrivateMembers(mySkipPrivate);
-        SModel completeModelData = new SModel(getReference(), new MigratingJavaStubRefsNodeIdMap());
-        Function<ASMClass, Documentation> docSupplier;
-        if (myDocSupplier != null) {
-          myDocSupplier.acquire();
-          docSupplier = myDocSupplier;
-        } else {
-          docSupplier = new Function<ASMClass, Documentation>() {
-            @Override
-            public Documentation apply(ASMClass p0) {
-              return null;
-            }
-          };
+        boolean docSupplierNeedsRelease = false;
+        try {
+          ASMModelLoader loader = new ASMModelLoader(getModule(), getSource().getAffectedFiles());
+          loader.skipPrivateMembers(mySkipPrivate);
+          SModel completeModelData = new SModel(getReference(), new MigratingJavaStubRefsNodeIdMap());
+          Function<ASMClass, Documentation> docSupplier;
+          if (myDocSupplier != null) {
+            myDocSupplier.acquire();
+            docSupplierNeedsRelease = true;
+            docSupplier = myDocSupplier;
+          } else {
+            docSupplier = new Function<ASMClass, Documentation>() {
+              @Override
+              public Documentation apply(ASMClass p0) {
+                return null;
+              }
+            };
+          }
+          Collection<SModelReference> imports = loader.completeModel(this, completeModelData, docSupplier);
+          completeModelData.enterUpdateMode();
+          mi.enterUpdateMode();
+          new PartialModelUpdateFacility(mi, completeModelData, this).update();
+          for (SModelReference mr : imports) {
+            mi.addModelImport(new SModel.ImportElement(mr));
+          }
+          completeModelData.leaveUpdateMode();
+          mi.leaveUpdateMode();
+          setLoadingState(ModelLoadingState.FULLY_LOADED);
+        } finally {
+          if (docSupplierNeedsRelease && myDocSupplier != null) {
+            myDocSupplier.release();
+          }
+          myIsLoadInProgress = false;
         }
-        Collection<SModelReference> imports = loader.completeModel(this, completeModelData, docSupplier);
-        completeModelData.enterUpdateMode();
-        mi.enterUpdateMode();
-        new PartialModelUpdateFacility(mi, completeModelData, this).update();
-        for (SModelReference mr : imports) {
-          mi.addModelImport(new SModel.ImportElement(mr));
-        }
-        completeModelData.leaveUpdateMode();
-        mi.leaveUpdateMode();
-        if (myDocSupplier != null) {
-          myDocSupplier.release();
-        }
-        setLoadingState(ModelLoadingState.FULLY_LOADED);
-        myIsLoadInProgress = false;
       }
       fireModelStateChanged(oldState, getLoadingState());
     }

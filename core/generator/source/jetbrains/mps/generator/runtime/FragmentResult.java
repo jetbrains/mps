@@ -41,17 +41,11 @@ import java.util.Collection;
  *     HOWEVER, shall not forget about 'in-line' templates where no aggregation link is available.
  *   Therefore, I plan to use this FragmentResult to experiment with alternatives for TemplateDeclaration#apply.
  *   First, FragmentResult would help to streamline implementation of apply and weave, I'd like to keep
- *   differences between the two minimal. After all, there's
- *   Perhaps, in the future, a composite object with FragmentResult may replace #apply() return value (now
- *   {@code Collection<SNode>}) and there'd be no need for explicit
- *   {@link TemplateDeclarationWeavingAware2#weave(WeaveContext, NodeWeaveFacility)}, return value of apply would give
- *   a chance for outer code to control whether to apply or to weave TF outcome nodes.
+ *   differences between the two minimal.
  * <p/>
  * XXX If there's ever a handy way to generate sequence of optional calls a.first().second().third(),
  *     might be reasonable to return this from methods to get nice nodeFragment(tnode1).label("").reportTo() lines
  *     without intermediate local variables.
- *
- * Check {@link TemplateDeclarationWeavingAware2} for extra stuff.
  *
  * @author Artem Tikhomirov
  * @since 2018.2
@@ -84,6 +78,8 @@ public abstract class FragmentResult {
   public abstract void label(TemplateContext templateContext, String label);
 
   /**
+   * REMOVE ONCE 2020.2 is out as there's 2020.1-generated code that uses this method from TDWA2.weave() implementation method
+   *
    * @deprecated {@link #reportTo(ApplySink)} is better (with CollectorSink)
    * Report node/collection of nodes this TF has produced to supplied collection
    * @param collection never null
@@ -102,6 +98,8 @@ public abstract class FragmentResult {
   public abstract void reportTo(ApplySink sink) throws GenerationFailureException;
 
   /**
+   * REMOVE ONCE 2020.2 is out as there's 2020.1-generated code that uses this method from TDWA2.weave() implementation method
+   *
    * Code similar to {@link #reportTo(ApplySink)} intended for weave scenario, where anchor query has to be respected.
    * @deprecated to be replaced with #reportTo(ApplySink) call, where sink knows about weaving whereabouts (anchor query and context parent)
    * @param weaveFacility knows parent and how to find out anchor for newly injected node

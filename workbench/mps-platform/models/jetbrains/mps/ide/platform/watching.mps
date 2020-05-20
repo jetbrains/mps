@@ -50,6 +50,7 @@
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
     <import index="kip1" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.nodefs(MPS.Platform/)" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
+    <import index="84a8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vfs.impl.local(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -75,6 +76,10 @@
       </concept>
       <concept id="1239714755177" name="jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation" flags="nn" index="2$Kvd9">
         <child id="1239714902950" name="expression" index="2$L3a6" />
+      </concept>
+      <concept id="1173175405605" name="jetbrains.mps.baseLanguage.structure.ArrayAccessExpression" flags="nn" index="AH0OO">
+        <child id="1173175577737" name="index" index="AHEQo" />
+        <child id="1173175590490" name="array" index="AHHXb" />
       </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
@@ -289,7 +294,13 @@
         <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
+      <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
+        <child id="1163668914799" name="condition" index="3K4Cdx" />
+        <child id="1163668922816" name="ifTrue" index="3K4E3e" />
+        <child id="1163668934364" name="ifFalse" index="3K4GZi" />
+      </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
+      <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
@@ -8601,54 +8612,6 @@
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="501K0YLMPT0" role="jymVt" />
-    <node concept="3clFb_" id="501K0YLMPT1" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="initComponent" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="501K0YLMPT2" role="1B3o_S" />
-      <node concept="3cqZAl" id="501K0YLMPT3" role="3clF45" />
-      <node concept="3clFbS" id="501K0YLMPT4" role="3clF47" />
-      <node concept="2AHcQZ" id="69OmYVxl8PL" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="501K0YLMPT8" role="jymVt" />
-    <node concept="3clFb_" id="501K0YLMPT9" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="disposeComponent" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="501K0YLMPTa" role="1B3o_S" />
-      <node concept="3cqZAl" id="501K0YLMPTb" role="3clF45" />
-      <node concept="3clFbS" id="501K0YLMPTc" role="3clF47" />
-      <node concept="2AHcQZ" id="69OmYVxl9OT" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="5LhcIq1SSjm" role="jymVt" />
-    <node concept="3clFb_" id="501K0YLMPTg" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="getComponentName" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="501K0YLMPTh" role="1B3o_S" />
-      <node concept="2AHcQZ" id="501K0YLMPTj" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NonNls" resolve="NonNls" />
-      </node>
-      <node concept="2AHcQZ" id="501K0YLMPTk" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="3clFbS" id="501K0YLMPTl" role="3clF47">
-        <node concept="3clFbF" id="501K0YLMPTm" role="3cqZAp">
-          <node concept="Xl_RD" id="501K0YLMPTn" role="3clFbG">
-            <property role="Xl_RC" value="Watched Roots" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="69OmYVxlaOf" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-      <node concept="17QB3L" id="srfjDK4cTe" role="3clF45" />
-    </node>
     <node concept="2tJIrI" id="501K0YLMPTo" role="jymVt" />
     <node concept="3clFb_" id="501K0YLMPV5" role="jymVt">
       <property role="1EzhhJ" value="false" />
@@ -9064,17 +9027,175 @@
               </node>
               <node concept="3clFbJ" id="6EtKqJ$bm0I" role="3cqZAp">
                 <node concept="3clFbS" id="6EtKqJ$bm0K" role="3clFbx">
-                  <node concept="3clFbF" id="501K0YLMPXm" role="3cqZAp">
-                    <node concept="2OqwBi" id="501K0YLMPXn" role="3clFbG">
-                      <node concept="liA8E" id="501K0YLMPXp" role="2OqNvi">
-                        <ref role="37wK5l" to="jlff:~LocalFileSystem.removeWatchedRoot(com.intellij.openapi.vfs.LocalFileSystem$WatchRequest)" resolve="removeWatchedRoot" />
-                        <node concept="37vLTw" id="501K0YLMPXq" role="37wK5m">
-                          <ref role="3cqZAo" node="501K0YLMPXe" resolve="req" />
-                        </node>
+                  <node concept="3cpWs8" id="7bL9UJ7pHlC" role="3cqZAp">
+                    <node concept="3cpWsn" id="7bL9UJ7pHlD" role="3cpWs9">
+                      <property role="TrG5h" value="localFileSystem" />
+                      <node concept="3uibUv" id="7bL9UJ7pFCC" role="1tU5fm">
+                        <ref role="3uigEE" to="jlff:~LocalFileSystem" resolve="LocalFileSystem" />
                       </node>
-                      <node concept="2YIFZM" id="srfjDK4ms4" role="2Oq$k0">
+                      <node concept="2YIFZM" id="7bL9UJ7pHlE" role="33vP2m">
                         <ref role="37wK5l" to="jlff:~LocalFileSystem.getInstance()" resolve="getInstance" />
                         <ref role="1Pybhc" to="jlff:~LocalFileSystem" resolve="LocalFileSystem" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3clFbJ" id="7bL9UJ7pRYC" role="3cqZAp">
+                    <node concept="3clFbS" id="7bL9UJ7pRYE" role="3clFbx">
+                      <node concept="3SKdUt" id="7bL9UJ7q3X7" role="3cqZAp">
+                        <node concept="1PaTwC" id="7bL9UJ7q3X8" role="1aUNEU">
+                          <node concept="3oM_SD" id="7bL9UJ7q3Xa" role="1PaTwD">
+                            <property role="3oM_SC" value="TODO:" />
+                          </node>
+                          <node concept="3oM_SD" id="7bL9UJ7q415" role="1PaTwD">
+                            <property role="3oM_SC" value="remove" />
+                          </node>
+                          <node concept="3oM_SD" id="7bL9UJ7q43U" role="1PaTwD">
+                            <property role="3oM_SC" value="when" />
+                          </node>
+                          <node concept="3oM_SD" id="7bL9UJ7q44s" role="1PaTwD">
+                            <property role="3oM_SC" value="sure" />
+                          </node>
+                          <node concept="3oM_SD" id="7bL9UJ7q48h" role="1PaTwD">
+                            <property role="3oM_SC" value="that" />
+                          </node>
+                          <node concept="3oM_SD" id="7bL9UJ7q48M" role="1PaTwD">
+                            <property role="3oM_SC" value="can" />
+                          </node>
+                          <node concept="3oM_SD" id="7bL9UJ7q49v" role="1PaTwD">
+                            <property role="3oM_SC" value="not" />
+                          </node>
+                          <node concept="3oM_SD" id="7bL9UJ7q49B" role="1PaTwD">
+                            <property role="3oM_SC" value="be" />
+                          </node>
+                          <node concept="3oM_SD" id="7bL9UJ7q4a3" role="1PaTwD">
+                            <property role="3oM_SC" value="called" />
+                          </node>
+                          <node concept="3oM_SD" id="7bL9UJ7q4al" role="1PaTwD">
+                            <property role="3oM_SC" value="after" />
+                          </node>
+                          <node concept="3oM_SD" id="7bL9UJ7q4b$" role="1PaTwD">
+                            <property role="3oM_SC" value="FS" />
+                          </node>
+                          <node concept="3oM_SD" id="7bL9UJ7q4cb" role="1PaTwD">
+                            <property role="3oM_SC" value="dispose" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3cpWs8" id="7bL9UJ7q13l" role="3cqZAp">
+                        <node concept="3cpWsn" id="7bL9UJ7q13m" role="3cpWs9">
+                          <property role="TrG5h" value="stackTrace" />
+                          <node concept="10Q1$e" id="7bL9UJ7q12f" role="1tU5fm">
+                            <node concept="3uibUv" id="7bL9UJ7q12i" role="10Q1$1">
+                              <ref role="3uigEE" to="wyt6:~StackTraceElement" resolve="StackTraceElement" />
+                            </node>
+                          </node>
+                          <node concept="2OqwBi" id="7bL9UJ7q13n" role="33vP2m">
+                            <node concept="2YIFZM" id="7bL9UJ7q13o" role="2Oq$k0">
+                              <ref role="37wK5l" to="wyt6:~Thread.currentThread()" resolve="currentThread" />
+                              <ref role="1Pybhc" to="wyt6:~Thread" resolve="Thread" />
+                            </node>
+                            <node concept="liA8E" id="7bL9UJ7q13p" role="2OqNvi">
+                              <ref role="37wK5l" to="wyt6:~Thread.getStackTrace()" resolve="getStackTrace" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3cpWs8" id="7bL9UJ7pV9$" role="3cqZAp">
+                        <node concept="3cpWsn" id="7bL9UJ7pV9_" role="3cpWs9">
+                          <property role="TrG5h" value="warning" />
+                          <node concept="17QB3L" id="7bL9UJ7pV9g" role="1tU5fm" />
+                          <node concept="2YIFZM" id="7bL9UJ7pWjh" role="33vP2m">
+                            <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+                            <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                            <node concept="Xl_RD" id="7bL9UJ7pV9A" role="37wK5m">
+                              <property role="Xl_RC" value="Remove watch request submitted to disposed LocalFileSystem. Caller should be updated:%n%s" />
+                            </node>
+                            <node concept="3K4zz7" id="7bL9UJ7q2JC" role="37wK5m">
+                              <node concept="2OqwBi" id="7bL9UJ7q3ei" role="3K4E3e">
+                                <node concept="AH0OO" id="7bL9UJ7q36G" role="2Oq$k0">
+                                  <node concept="3cmrfG" id="7bL9UJ7q399" role="AHEQo">
+                                    <property role="3cmrfH" value="1" />
+                                  </node>
+                                  <node concept="37vLTw" id="7bL9UJ7q2MM" role="AHHXb">
+                                    <ref role="3cqZAo" node="7bL9UJ7q13m" resolve="stackTrace" />
+                                  </node>
+                                </node>
+                                <node concept="liA8E" id="7bL9UJ7q3tN" role="2OqNvi">
+                                  <ref role="37wK5l" to="wyt6:~StackTraceElement.toString()" resolve="toString" />
+                                </node>
+                              </node>
+                              <node concept="Xl_RD" id="7bL9UJ7q3vC" role="3K4GZi">
+                                <property role="Xl_RC" value="No stack trace available" />
+                              </node>
+                              <node concept="2d3UOw" id="7bL9UJ7q2GW" role="3K4Cdx">
+                                <node concept="2OqwBi" id="7bL9UJ7q1f0" role="3uHU7B">
+                                  <node concept="37vLTw" id="7bL9UJ7q13q" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="7bL9UJ7q13m" resolve="stackTrace" />
+                                  </node>
+                                  <node concept="1Rwk04" id="7bL9UJ7q1qf" role="2OqNvi" />
+                                </node>
+                                <node concept="3cmrfG" id="7bL9UJ7q2yP" role="3uHU7w">
+                                  <property role="3cmrfH" value="2" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="RRSsy" id="7bL9UJ7pUXe" role="3cqZAp">
+                        <property role="RRSoG" value="gZ5fksE/warn" />
+                        <node concept="37vLTw" id="7bL9UJ7pV9B" role="RRSoy">
+                          <ref role="3cqZAo" node="7bL9UJ7pV9_" resolve="warning" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="1Wc70l" id="7bL9UJ7pT7V" role="3clFbw">
+                      <node concept="3fqX7Q" id="7bL9UJ7pUI7" role="3uHU7w">
+                        <node concept="2OqwBi" id="7bL9UJ7pUI9" role="3fr31v">
+                          <node concept="2OqwBi" id="7bL9UJ7pUIa" role="2Oq$k0">
+                            <node concept="1eOMI4" id="7bL9UJ7pUIb" role="2Oq$k0">
+                              <node concept="10QFUN" id="7bL9UJ7pUIc" role="1eOMHV">
+                                <node concept="3uibUv" id="7bL9UJ7pUId" role="10QFUM">
+                                  <ref role="3uigEE" to="84a8:~LocalFileSystemImpl" resolve="LocalFileSystemImpl" />
+                                </node>
+                                <node concept="37vLTw" id="7bL9UJ7pUIe" role="10QFUP">
+                                  <ref role="3cqZAo" node="7bL9UJ7pHlD" resolve="localFileSystem" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="liA8E" id="7bL9UJ7pUIf" role="2OqNvi">
+                              <ref role="37wK5l" to="84a8:~LocalFileSystemImpl.getFileWatcher()" resolve="getFileWatcher" />
+                            </node>
+                          </node>
+                          <node concept="liA8E" id="7bL9UJ7pUIg" role="2OqNvi">
+                            <ref role="37wK5l" to="84a8:~FileWatcher.isOperational()" resolve="isOperational" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="2ZW3vV" id="7bL9UJ7pSeY" role="3uHU7B">
+                        <node concept="3uibUv" id="7bL9UJ7pSSo" role="2ZW6by">
+                          <ref role="3uigEE" to="84a8:~LocalFileSystemImpl" resolve="LocalFileSystemImpl" />
+                        </node>
+                        <node concept="37vLTw" id="7bL9UJ7pS1m" role="2ZW6bz">
+                          <ref role="3cqZAo" node="7bL9UJ7pHlD" resolve="localFileSystem" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="9aQIb" id="7bL9UJ7pULu" role="9aQIa">
+                      <node concept="3clFbS" id="7bL9UJ7pULv" role="9aQI4">
+                        <node concept="3clFbF" id="501K0YLMPXm" role="3cqZAp">
+                          <node concept="2OqwBi" id="501K0YLMPXn" role="3clFbG">
+                            <node concept="liA8E" id="501K0YLMPXp" role="2OqNvi">
+                              <ref role="37wK5l" to="jlff:~LocalFileSystem.removeWatchedRoot(com.intellij.openapi.vfs.LocalFileSystem$WatchRequest)" resolve="removeWatchedRoot" />
+                              <node concept="37vLTw" id="501K0YLMPXq" role="37wK5m">
+                                <ref role="3cqZAo" node="501K0YLMPXe" resolve="req" />
+                              </node>
+                            </node>
+                            <node concept="37vLTw" id="7bL9UJ7pHlF" role="2Oq$k0">
+                              <ref role="3cqZAo" node="7bL9UJ7pHlD" resolve="localFileSystem" />
+                            </node>
+                          </node>
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -9114,9 +9235,6 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="501K0YLMPXC" role="1B3o_S" />
-    <node concept="3uibUv" id="501K0YLMPXD" role="EKbjA">
-      <ref role="3uigEE" to="1m72:~ApplicationComponent" resolve="ApplicationComponent" />
-    </node>
     <node concept="3UR2Jj" id="501K0YLMPXE" role="lGtFl">
       <node concept="TZ5HA" id="501K0YLMPXF" role="TZ5H$">
         <node concept="1dT_AC" id="501K0YLMPXG" role="1dT_Ay">

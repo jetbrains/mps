@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,8 @@ import java.util.List;
  * and facilitates generation of array of meta-object proxies to be accessed by integer index.
  *
  * Deemed to be used from single thread or synchronized externally, no synchronization/access control here.
+ *
+ * Runtime implementation is backed up by {@link jetbrains.mps.generator.runtime.MetaObjectContainer} and respective base classes for TD, MC and Switch
  * @author Artem Tikhomirov
  */
 public class MetaObjectGenerationHelper {

@@ -142,7 +142,7 @@
             <node concept="2Ry0Ak" id="4Q7oJrne$o8" role="2Ry0An">
               <property role="2Ry0Am" value="work" />
               <node concept="2Ry0Ak" id="4Q7oJrne$o9" role="2Ry0An">
-                <property role="2Ry0Am" value="MPS 2020.1" />
+                <property role="2Ry0Am" value="MPS 2020.2" />
               </node>
             </node>
           </node>

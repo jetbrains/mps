@@ -14,10 +14,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
 
 @Generated
 public class Switch_ContrubuteLanguageExtensions extends TemplateSwitchBase implements TemplateSwitchMapping {
   public Switch_ContrubuteLanguageExtensions() {
+    super(new MO());
   }
   public SNodeReference getSwitchNode() {
     return new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "3242214770611334795");
@@ -32,5 +34,11 @@ public class Switch_ContrubuteLanguageExtensions extends TemplateSwitchBase impl
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = Collections.emptyList();
     return tlist1;
+  }
+
+  /*package*/ static final class MO implements MetaObjectContainer {
+
+
+
   }
 }

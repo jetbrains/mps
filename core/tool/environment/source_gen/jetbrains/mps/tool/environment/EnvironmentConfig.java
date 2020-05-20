@@ -35,6 +35,7 @@ public class EnvironmentConfig {
    * fixme implement with MpsEnv
    */
   private boolean myCreatePluginClassLoaders = true;
+  private boolean myTestModeOn = false;
 
   private EnvironmentConfig() {
   }
@@ -157,5 +158,14 @@ public class EnvironmentConfig {
    */
   public static EnvironmentConfig emptyConfig() {
     return new EnvironmentConfig();
+  }
+
+  public EnvironmentConfig withTestModeOn() {
+    myTestModeOn = true;
+    return this;
+  }
+
+  public boolean isTestMode() {
+    return myTestModeOn;
   }
 }

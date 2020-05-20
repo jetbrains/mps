@@ -14,11 +14,13 @@ import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.runtime.ApplySink;
+import jetbrains.mps.generator.runtime.MetaObjectContainer;
 
 @Generated
 public class Template_GDClass extends TemplateDeclarationBase {
 
   public Template_GDClass() {
+    super(new MO());
   }
 
   public SNodeReference getTemplateNode() {
@@ -44,6 +46,11 @@ public class Template_GDClass extends TemplateDeclarationBase {
     sink.add(null, rv);
   }
 
+  /*package*/ static final class MO implements MetaObjectContainer {
+
+
+
+  }
   private static final SNodePointer template_in8ni3_a0a3 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639692929");
   private static final SNodePointer callMacro_in8ni3_b0a0a1a4 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639693915");
 }

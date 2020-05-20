@@ -40,11 +40,10 @@ public abstract class EnvironmentBase implements Environment {
   }
 
   public EnvironmentBase(@NotNull EnvironmentConfig config) {
-    if (!(RuntimeFlags.isTestMode())) {
-      // XXX it is odd to enfore test mode for any use of Environment, isn't it? 
+    myConfig = config;
+    if (myConfig.isTestMode()) {
       RuntimeFlags.setTestMode(TestMode.USUAL);
     }
-    myConfig = config;
   }
 
   protected void init(Platform mpsPlatform) {

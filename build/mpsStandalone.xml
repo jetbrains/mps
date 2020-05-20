@@ -19,9 +19,6 @@
     <copy todir="${build.layout}/bin">
       <fileset file="${basedir}/bin/log.xml" />
     </copy>
-    <copy todir="${build.layout}/bin">
-      <fileset file="${basedir}/bin/log4j.dtd" />
-    </copy>
     <mkdir dir="${build.layout}/languages" />
     <copy todir="${build.layout}/languages">
       <fileset dir="${artifacts.mpsWorkbench}/languages" />

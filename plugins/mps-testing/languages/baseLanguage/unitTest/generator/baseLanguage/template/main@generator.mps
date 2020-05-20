@@ -20,6 +20,9 @@
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
+        <child id="8118189177080264854" name="classes" index="nSUat" />
+      </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
@@ -30,14 +33,6 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
-      <concept id="1164879751025" name="jetbrains.mps.baseLanguage.structure.TryCatchStatement" flags="nn" index="SfApY">
-        <child id="1164879758292" name="body" index="SfCbr" />
-        <child id="1164903496223" name="catchClause" index="TEbGg" />
-      </concept>
-      <concept id="1164903280175" name="jetbrains.mps.baseLanguage.structure.CatchClause" flags="nn" index="TDmWw">
-        <child id="1164903359218" name="catchBody" index="TDEfX" />
-        <child id="1164903359217" name="throwable" index="TDEfY" />
-      </concept>
       <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
         <child id="1137022507850" name="body" index="2VODD2" />
       </concept>
@@ -45,6 +40,7 @@
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
+      <concept id="4952749571008284462" name="jetbrains.mps.baseLanguage.structure.CatchVariable" flags="ng" index="XOnhg" />
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
@@ -100,8 +96,16 @@
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
       </concept>
+      <concept id="3093926081414150598" name="jetbrains.mps.baseLanguage.structure.MultipleCatchClause" flags="ng" index="3uVAMA">
+        <child id="8276990574895933173" name="catchBody" index="1zc67A" />
+        <child id="8276990574895933172" name="throwable" index="1zc67B" />
+      </concept>
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
+      </concept>
+      <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
+        <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
+        <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
@@ -1105,8 +1109,8 @@
     <property role="TrG5h" value="reduce_AssertThrows" />
     <property role="3GE5qa" value="assert" />
     <ref role="3gUMe" to="tpe3:h3$NIwG" resolve="AssertThrows" />
-    <node concept="SfApY" id="h3_k8lh" role="13RCb5">
-      <node concept="3clFbS" id="h3_k8li" role="SfCbr">
+    <node concept="3J1_TO" id="h3_k8lh" role="13RCb5">
+      <node concept="3clFbS" id="h3_k8li" role="1zxBo7">
         <node concept="3clFbF" id="h3_k8lj" role="3cqZAp">
           <node concept="Xl_RD" id="h3_k8lk" role="3clFbG">
             <property role="Xl_RC" value="statement" />
@@ -1148,19 +1152,21 @@
           </node>
         </node>
       </node>
-      <node concept="TDmWw" id="h3_k8lA" role="TEbGg">
-        <node concept="3cpWsn" id="h3_k8lB" role="TDEfY">
+      <node concept="3uVAMA" id="h3_k8lA" role="1zxBo5">
+        <node concept="XOnhg" id="h3_k8lB" role="1zc67B">
           <property role="TrG5h" value="e" />
-          <node concept="3uibUv" id="h3_k8lC" role="1tU5fm">
-            <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
-            <node concept="29HgVG" id="h3_k8lD" role="lGtFl">
-              <node concept="3NFfHV" id="h3_k8lE" role="3NFExx">
-                <node concept="3clFbS" id="h3_k8lF" role="2VODD2">
-                  <node concept="3cpWs6" id="h3_k8lG" role="3cqZAp">
-                    <node concept="2OqwBi" id="hxx$Pzi" role="3cqZAk">
-                      <node concept="30H73N" id="h3_k8lI" role="2Oq$k0" />
-                      <node concept="3TrEf2" id="h3_k8lJ" role="2OqNvi">
-                        <ref role="3Tt5mk" to="tpe3:h3$Qgrf" resolve="exceptionType" />
+          <node concept="nSUau" id="cu$wgZzh$M9" role="1tU5fm">
+            <node concept="3uibUv" id="h3_k8lC" role="nSUat">
+              <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
+              <node concept="29HgVG" id="h3_k8lD" role="lGtFl">
+                <node concept="3NFfHV" id="h3_k8lE" role="3NFExx">
+                  <node concept="3clFbS" id="h3_k8lF" role="2VODD2">
+                    <node concept="3cpWs6" id="h3_k8lG" role="3cqZAp">
+                      <node concept="2OqwBi" id="hxx$Pzi" role="3cqZAk">
+                        <node concept="30H73N" id="h3_k8lI" role="2Oq$k0" />
+                        <node concept="3TrEf2" id="h3_k8lJ" role="2OqNvi">
+                          <ref role="3Tt5mk" to="tpe3:h3$Qgrf" resolve="exceptionType" />
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -1169,7 +1175,7 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbS" id="h3_k8lK" role="TDEfX">
+        <node concept="3clFbS" id="h3_k8lK" role="1zc67A">
           <node concept="3SKdUt" id="6pumIWoCG3j" role="3cqZAp">
             <node concept="1PaTwC" id="ATZLwXo4tJ" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXo4tK" role="1PaTwD">

@@ -2,6 +2,7 @@
 <model ref="r:76dda237-5120-4688-b749-201ab5c5059d(jetbrains.mps.build.mps.constraints)">
   <persistence version="9" />
   <languages>
+    <use id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints" version="6" />
     <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
   </languages>
   <imports>
@@ -1703,7 +1704,7 @@
               <property role="3oM_SC" value="to" />
             </node>
             <node concept="3oM_SD" id="ATZLwXo0zE" role="1PaTwD">
-              <property role="3oM_SC" value="preven" />
+              <property role="3oM_SC" value="prevent" />
             </node>
             <node concept="3oM_SD" id="ATZLwXo0zF" role="1PaTwD">
               <property role="3oM_SC" value="reuse" />

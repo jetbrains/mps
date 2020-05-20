@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.core.aspects.constraints.rules;
 
+import jetbrains.mps.core.aspects.behaviour.SConceptC3StarMRO;
 import jetbrains.mps.core.context.Context;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
@@ -40,10 +41,12 @@ public final class RulesConstraintsRegistry {
   private static final Logger LOG = LogManager.getLogger(RulesConstraintsRegistry.class);
 
   private final LanguageRegistry myLanguageRegistry;
+  private final SConceptC3StarMRO myMro;
   private final Map<SAbstractConcept, RulesConstraintsDescriptor> myDescriptors = new HashMap<>();
 
-  public RulesConstraintsRegistry(@NotNull LanguageRegistry languageRegistry) {
+  public RulesConstraintsRegistry(@NotNull LanguageRegistry languageRegistry, @NotNull SConceptC3StarMRO mro) {
     myLanguageRegistry = languageRegistry;
+    myMro = mro;
   }
 
   @NotNull
@@ -73,7 +76,7 @@ public final class RulesConstraintsRegistry {
       descriptor = new EmptyRuleConstraintsDescriptor(concept);
       descriptor.init(this);
     }
-    LegacyAndRulesConstraintsDescriptor composite = new LegacyAndRulesConstraintsDescriptor(concept, descriptor);
+    LegacyAndRulesConstraintsDescriptor composite = new LegacyAndRulesConstraintsDescriptor(myMro, concept, descriptor);
     myDescriptors.putIfAbsent(concept, composite);
     return myDescriptors.get(concept);
   }

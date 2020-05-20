@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright 2003-2019 JetBrains s.r.o.
+  ~ Copyright 2003-2020 JetBrains s.r.o.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@
   <name>MPS Core</name>
   <category>Custom Languages</category>
   <description>MPS Core</description>
-  <version>2020.1</version>
+  <version>2020.2</version>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
-  <idea-version since-build="201.1" until-build="202.1"/>
+  <idea-version since-build="202.1" until-build="203.1"/>
 
   <depends optional="true" config-file="idea-support.xml">com.intellij.modules.java</depends>
   <depends optional="true" config-file="intellij-ides-support.xml">com.intellij.modules.platform</depends>
@@ -73,16 +73,17 @@
       <implementation-class>jetbrains.mps.repository.DummyIdeaPluginFacetComponent</implementation-class>
     </component>
     <component>
-      <!-- FIXME same in MPSWorkbench.xml -->
-      <implementation-class>jetbrains.mps.repository.FSNotificationsImprover</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.repository.RepositoryInPluginInitializer</implementation-class>
     </component>
     <component>
       <implementation-class>jetbrains.mps.idea.core.project.PluginsPathMacroCrutch</implementation-class>
     </component>
   </application-components>
+
+  <applicationListeners>
+    <!-- FIXME same in MPSWorkbench.xml -->
+    <listener class="jetbrains.mps.repository.FSNotificationsCleaner" topic="com.intellij.ide.AppLifecycleListener"/>
+  </applicationListeners>
 
   <xi:include href="../../../workbench/mps-platform/source/META-INF/MPSCore.xml" xpointer="xpointer(/components/*)"/>
   <xi:include href="../../../workbench/mps-editor/source/META-INF/MPSEditor.xml" xpointer="xpointer(/components/*)"/>
@@ -195,6 +196,8 @@
   </extensions>
 
   <extensions defaultExtensionNs="jetbrains.mps">
+    <!-- FIXME same in MPSWorkbench.xml -->
+    <applicationService serviceImplementation="jetbrains.mps.repository.FSNotificationsImprover"/>
     <NodeEditorFactory implementation="jetbrains.mps.idea.core.editor.IdeaMPSEditorOpenHandler"/>
   </extensions>
 

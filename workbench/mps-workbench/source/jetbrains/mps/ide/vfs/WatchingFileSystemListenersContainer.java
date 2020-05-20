@@ -1,5 +1,21 @@
+/*
+ * Copyright 2003-2020 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package jetbrains.mps.ide.vfs;
 
+import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.vfs.JarFileSystem;
 import jetbrains.mps.ide.platform.watching.FileSystemListenersContainer;
 import jetbrains.mps.ide.platform.watching.WatchedRoots;
@@ -21,13 +37,8 @@ import java.util.Map;
  */
 public class WatchingFileSystemListenersContainer extends FileSystemListenersContainer {
   private static final Logger LOG = LogManager.getLogger(WatchingFileSystemListenersContainer.class);
-  private final WatchedRoots myWatchedRoots;
 
   private final Map<FileSystemListener, String> myListenerToPathMap = new HashMap<>();
-
-  public WatchingFileSystemListenersContainer(@NotNull WatchedRoots watchedRoots) {
-    myWatchedRoots = watchedRoots;
-  }
 
   @Override
   public void addListener(@NotNull FileSystemListener listener) {
@@ -37,7 +48,7 @@ public class WatchingFileSystemListenersContainer extends FileSystemListenersCon
     }
     super.addListener(listener);
     @NotNull String path = lfsPath(listener.getFileToListen().getPath());
-    boolean success = myWatchedRoots.addWatchRequest(path);
+    boolean success = ServiceManager.getService(WatchedRoots.class).addWatchRequest(path);
     if (success) {
       myListenerToPathMap.put(listener, path);
     }
@@ -48,7 +59,7 @@ public class WatchingFileSystemListenersContainer extends FileSystemListenersCon
     if (listener.getFileToListen() == null) return;
     String path = myListenerToPathMap.get(listener);
     if (path != null) {
-      myWatchedRoots.removeWatchRequest(path);
+      ServiceManager.getService(WatchedRoots.class).removeWatchRequest(path);
     }
     super.removeListener(listener);
   }

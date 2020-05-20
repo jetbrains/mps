@@ -285,8 +285,8 @@
   <root nodeRef="r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/2808756344206305969">
     <file name="GoToSuperClassMethod_Action.java">
       <node id="2808756344206305969" at="37,0,38,0" concept="14" trace="ICON" />
-      <node id="2808756344206305969" at="39,40,40,42" concept="16" />
-      <node id="2808756344206305969" at="40,42,41,35" concept="4" />
+      <node id="2808756344206305969" at="39,40,40,47" concept="16" />
+      <node id="2808756344206305969" at="40,47,41,35" concept="4" />
       <node id="2808756344206305969" at="41,35,42,40" concept="4" />
       <node id="2808756344206305969" at="45,32,46,16" concept="11" />
       <node id="5634863626456935844" at="49,87,50,110" concept="10" />
@@ -406,8 +406,8 @@
   <root nodeRef="r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/2808756344206306210">
     <file name="GoToInheritedClassifier_Action.java">
       <node id="2808756344206306210" at="39,0,40,0" concept="14" trace="ICON" />
-      <node id="2808756344206306210" at="41,43,42,41" concept="16" />
-      <node id="2808756344206306210" at="42,41,43,35" concept="4" />
+      <node id="2808756344206306210" at="41,43,42,46" concept="16" />
+      <node id="2808756344206306210" at="42,46,43,35" concept="4" />
       <node id="2808756344206306210" at="43,35,44,40" concept="4" />
       <node id="2808756344206306210" at="47,32,48,16" concept="11" />
       <node id="2808756344206306411" at="51,87,52,245" concept="11" />
@@ -552,8 +552,8 @@
   <root nodeRef="r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/2808756344206465415">
     <file name="GoToImplementationClassMethod_Action.java">
       <node id="2808756344206465415" at="37,0,38,0" concept="14" trace="ICON" />
-      <node id="2808756344206465415" at="39,49,40,41" concept="16" />
-      <node id="2808756344206465415" at="40,41,41,35" concept="4" />
+      <node id="2808756344206465415" at="39,49,40,53" concept="16" />
+      <node id="2808756344206465415" at="40,53,41,35" concept="4" />
       <node id="2808756344206465415" at="41,35,42,40" concept="4" />
       <node id="2808756344206465415" at="45,32,46,16" concept="11" />
       <node id="6818267381901058908" at="49,87,50,114" concept="10" />

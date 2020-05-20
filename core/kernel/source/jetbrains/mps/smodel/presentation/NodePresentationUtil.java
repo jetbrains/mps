@@ -210,14 +210,7 @@ public class NodePresentationUtil {
     if (!concept.getShortDescription().isEmpty()) {
       return concept.getShortDescription();
     }
-    // Maybe its better to simply return a language fqName?
-    if (concept instanceof SConcept) {
-      SConcept superConcept = ((SConcept) concept).getSuperConcept();
-      if (superConcept != null) {
-        return "(" + superConcept.getName() + " in " + superConcept.getLanguage().getQualifiedName() + ")";
-      }
-    }
-    return "";
+    return "(" + NameUtil.compactNamespace(concept.getLanguage().getQualifiedName()) + ")";
   }
 
   /**

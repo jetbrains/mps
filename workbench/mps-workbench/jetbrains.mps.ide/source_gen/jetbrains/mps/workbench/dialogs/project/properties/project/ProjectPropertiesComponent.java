@@ -5,17 +5,11 @@ package jetbrains.mps.workbench.dialogs.project.properties.project;
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.ui.components.JBPanel;
 import org.jetbrains.mps.openapi.ui.Modifiable;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Arrays;
-import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.StandaloneMPSProject;
 import com.intellij.ui.components.JBList;
 import jetbrains.mps.project.structure.project.ModulePath;
 import java.util.List;
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.util.annotation.ToRemove;
-import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.uiDesigner.core.GridConstraints;
@@ -24,11 +18,16 @@ import jetbrains.mps.workbench.dialogs.project.components.parts.renderers.PathRe
 import javax.swing.ListSelectionModel;
 import com.intellij.ui.TreeUIHelper;
 import com.intellij.util.containers.Convertor;
-import java.util.function.Consumer;
-import com.intellij.openapi.vfs.VirtualFile;
 import java.util.Comparator;
+import com.intellij.openapi.vfs.VirtualFile;
+import java.util.function.Consumer;
+import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import java.util.function.Function;
+import com.intellij.openapi.util.Condition;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Arrays;
+import jetbrains.mps.project.MPSExtentions;
 import com.intellij.ui.AnActionButton;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -40,7 +39,6 @@ import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFileVisitor;
 import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.AnActionButtonRunnable;
-import com.intellij.openapi.util.Condition;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import com.intellij.ui.IdeBorderFactory;
@@ -52,23 +50,11 @@ import org.jetbrains.annotations.Nullable;
 
 @GeneratedClass(node = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)/3201642974933583134", model = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)")
 public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
-  private static final Set<String> EXTENTIONS = new HashSet<String>(Arrays.asList(MPSExtentions.LANGUAGE, MPSExtentions.SOLUTION, MPSExtentions.DEVKIT, "lib"));
-
   private final StandaloneMPSProject myProject;
   private final ProjectProperties myProperties = new ProjectProperties();
 
   private JBList<ModulePath> myModulesList;
   private final List<ProjectPrefsExtraPanel> myExtraPanels;
-
-  /**
-   * 
-   * @deprecated use {@link jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesComponent#ProjectPropertiesComponent(Project, List<ProjectPrefsExtraPanel>) instead}
-   */
-  @Deprecated
-  @ToRemove(version = 2019.2)
-  public ProjectPropertiesComponent(Project project, ProjectPrefsExtraPanel[] extraPanels) {
-    this(project, (extraPanels != null ? Arrays.asList(extraPanels) : new ArrayList<ProjectPrefsExtraPanel>()));
-  }
 
   public ProjectPropertiesComponent(Project project, @NotNull List<ProjectPrefsExtraPanel> extraPanels) {
     super(true);
@@ -102,6 +88,12 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
       }
     });
 
+    final Comparator<VirtualFile> vfPathComparator = new Comparator<VirtualFile>() {
+      @Override
+      public int compare(VirtualFile file1, VirtualFile file2) {
+        return file1.getPath().compareTo(file2.getPath());
+      }
+    };
     final Consumer<List<VirtualFile>> filesToModulePathsProcessor = new Consumer<List<VirtualFile>>() {
       /**
        * Process list of files:<br>
@@ -120,12 +112,7 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
           return;
         }
 
-        files.sort(new Comparator<VirtualFile>() {
-          @Override
-          public int compare(VirtualFile file1, VirtualFile file2) {
-            return file1.getPath().compareTo(file2.getPath());
-          }
-        });
+        files.sort(vfPathComparator);
 
         List<Integer> modulePathsToSelect = new ArrayList<Integer>(files.size());
         for (VirtualFile file : files) {
@@ -149,9 +136,10 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
     };
 
     // Check that file has one of the possible MPS module extensions 
-    final Function<VirtualFile, Boolean> isModuleFile = new Function<VirtualFile, Boolean>() {
-      @Override
-      public Boolean apply(VirtualFile file) {
+    final Condition<VirtualFile> isModuleFile = new Condition<VirtualFile>() {
+      private final Set<String> EXTENTIONS = new HashSet<String>(Arrays.asList(MPSExtentions.LANGUAGE, MPSExtentions.SOLUTION, MPSExtentions.DEVKIT, MPSExtentions.GENERATOR));
+
+      public boolean value(VirtualFile file) {
         String fileExtension = file.getExtension();
         return fileExtension != null && !(file.isDirectory()) && EXTENTIONS.contains(fileExtension.toLowerCase());
       }
@@ -171,7 +159,7 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
         VfsUtilCore.visitChildrenRecursively(folder, new VirtualFileVisitor<Void>(VirtualFileVisitor.NO_FOLLOW_SYMLINKS, VirtualFileVisitor.limit(5)) {
           @Override
           public boolean visitFile(@NotNull VirtualFile file) {
-            if (isModuleFile.apply(file)) {
+            if (isModuleFile.value(file)) {
               moduleFiles.add(file);
             }
             return super.visitFile(file);
@@ -186,11 +174,7 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
     decorator.setAddAction(new AnActionButtonRunnable() {
       @Override
       public void run(AnActionButton button) {
-        FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createMultipleFilesNoJarsDescriptor().withFileFilter(new Condition<VirtualFile>() {
-          public boolean value(VirtualFile file) {
-            return isModuleFile.apply(file);
-          }
-        });
+        FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createMultipleFilesNoJarsDescriptor().withFileFilter(isModuleFile);
 
         // Do not use method with consumer, because it uses com.intellij.util.Consumer instead of java.util.function.Consumer 
         VirtualFile[] files = FileChooser.chooseFiles(descriptor, myModulesList, myProject.getProject(), ProjectUtil.guessProjectDir(myProject.getProject()));

@@ -155,13 +155,14 @@ public abstract class SimpleTypecheckingContext<
   }
 
   @Override
-  public void setIsNonTypesystemComputation() {
-    assert false;
+  public boolean setNonTypesystemComputationMode(@NotNull NonTypesystemComputationMode mode) {
+    throw new UnsupportedOperationException(); // similarly to what was here
   }
 
+  @NotNull
   @Override
-  public void resetIsNonTypesystemComputation() {
-    assert false;
+  public NonTypesystemComputationMode getNonTypesystemComputationMode() {
+    return NonTypesystemComputationMode.OFF;
   }
 
   @Override

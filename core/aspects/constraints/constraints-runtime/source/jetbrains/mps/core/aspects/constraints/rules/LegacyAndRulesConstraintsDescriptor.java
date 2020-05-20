@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.core.aspects.constraints.rules;
 
+import jetbrains.mps.core.aspects.behaviour.SConceptC3StarMRO;
+import jetbrains.mps.core.aspects.behaviour._SAbstractConcept;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeAncestorContext;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
@@ -39,13 +41,11 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Deque;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -67,11 +67,26 @@ public final class LegacyAndRulesConstraintsDescriptor implements RulesConstrain
 
   @NotNull private final SAbstractConcept myConcept;
   @NotNull private final RulesConstraintsDescriptor myRulesDescriptor;
+  private final SConceptC3StarMRO myMro;
 
-  public LegacyAndRulesConstraintsDescriptor(@NotNull SAbstractConcept concept,
-                                             @NotNull RulesConstraintsDescriptor rulesDescriptor) {
+  public LegacyAndRulesConstraintsDescriptor(SConceptC3StarMRO mro, @NotNull SAbstractConcept concept, @NotNull RulesConstraintsDescriptor rulesDescriptor) {
+    myMro = mro;
+    if (rulesDescriptor instanceof LegacyAndRulesConstraintsDescriptor) {
+      throw new IllegalArgumentException("Cannot construct a legacy wrapper over a legacy wrapper, " + concept);
+    }
     myConcept = concept;
     myRulesDescriptor = rulesDescriptor;
+  }
+
+  @Deprecated
+  @ToRemove(version = 301)
+  public LegacyAndRulesConstraintsDescriptor(@NotNull SAbstractConcept concept, @NotNull RulesConstraintsDescriptor rulesDescriptor) {
+    if (rulesDescriptor instanceof LegacyAndRulesConstraintsDescriptor) {
+      throw new IllegalArgumentException("Cannot construct a legacy wrapper over a legacy wrapper, " + concept);
+    }
+    myConcept = concept;
+    myRulesDescriptor = rulesDescriptor;
+    myMro = new SConceptC3StarMRO();
   }
 
   @Override
@@ -118,16 +133,32 @@ public final class LegacyAndRulesConstraintsDescriptor implements RulesConstrain
   private List<Rule<?>> getDeclaredLegacyRules() {
     ConstraintsDescriptor legacy = getLegacyDescriptor(myConcept);
     List<Rule<?>> result = new ArrayList<>();
-    addCanBeChild(result, legacy);
-    addCanBeParent(result, legacy);
-    addCanBeRoot(result, legacy);
-    addCanBeAncestor(result, legacy);
+    addCanBeChild(result, legacy, myConcept);
+    addCanBeParent(result, legacy, myConcept);
+    addCanBeRoot(result, legacy, myConcept);
+    addCanBeAncestor(result, legacy, myConcept);
     return result;
   }
 
-  private void addCanBeAncestor(@Mutable List<Rule<?>> result, ConstraintsDescriptor legacy) {
+  @NotNull
+  private List<Rule<?>> getDeclaredLegacyRules(@NotNull RuleKind kind) {
+    ConstraintsDescriptor legacy = getLegacyDescriptor(myConcept);
+    List<Rule<?>> result = new ArrayList<>();
+    if (kind == PredefinedRuleKinds.CAN_BE_ROOT) {
+      addCanBeRoot(result, legacy, myConcept);
+    } else if (kind == PredefinedRuleKinds.CAN_BE_ANCESTOR) {
+      addCanBeAncestor(result, legacy, myConcept);
+    } else if (kind == PredefinedRuleKinds.CAN_BE_CHILD) {
+      addCanBeChild(result, legacy, myConcept);
+    } else if (kind == PredefinedRuleKinds.CAN_BE_PARENT) {
+      addCanBeParent(result, legacy, myConcept);
+    }
+    return result;
+  }
+
+  private static void addCanBeAncestor(@Mutable List<Rule<?>> result, ConstraintsDescriptor legacy, SAbstractConcept concept) {
     if (legacy.canBeAncestorIsDefined()) {
-      result.add(new RuleBasedOnLegacy<CanBeAncestorContext>(myConcept, PredefinedRuleKinds.CAN_BE_ANCESTOR, legacy) {
+      result.add(new RuleBasedOnLegacy<CanBeAncestorContext>(concept, PredefinedRuleKinds.CAN_BE_ANCESTOR, legacy) {
         @Override
         public boolean check(@NotNull CanBeAncestorContext context) {
           return legacy.canBeAncestor(ConstraintContext_CanBeAncestor.convert(context), myDebugInfo);
@@ -136,9 +167,9 @@ public final class LegacyAndRulesConstraintsDescriptor implements RulesConstrain
     }
   }
 
-  private void addCanBeRoot(@Mutable List<Rule<?>> result, ConstraintsDescriptor legacy) {
+  private static void addCanBeRoot(@Mutable List<Rule<?>> result, ConstraintsDescriptor legacy, SAbstractConcept concept) {
     if (legacy.canBeRootIsDefined()) {
-      result.add(new RuleBasedOnLegacy<CanBeRootContext>(myConcept, PredefinedRuleKinds.CAN_BE_ROOT, legacy) {
+      result.add(new RuleBasedOnLegacy<CanBeRootContext>(concept, PredefinedRuleKinds.CAN_BE_ROOT, legacy) {
         @Override
         public boolean check(@NotNull CanBeRootContext context) {
           return legacy.canBeRoot(ConstraintContext_CanBeRoot.convert(context), myDebugInfo);
@@ -147,9 +178,9 @@ public final class LegacyAndRulesConstraintsDescriptor implements RulesConstrain
     }
   }
 
-  private void addCanBeParent(@Mutable List<Rule<?>> result, ConstraintsDescriptor legacy) {
+  private static void addCanBeParent(@Mutable List<Rule<?>> result, ConstraintsDescriptor legacy, SAbstractConcept concept) {
     if (legacy.canBeParentIsDefined()) {
-      result.add(new RuleBasedOnLegacy<ContainmentContext>(myConcept, PredefinedRuleKinds.CAN_BE_PARENT, legacy) {
+      result.add(new RuleBasedOnLegacy<ContainmentContext>(concept, PredefinedRuleKinds.CAN_BE_PARENT, legacy) {
         @Override
         public boolean check(@NotNull ContainmentContext context) {
           return legacy.canBeParent(ConstraintContext_CanBeParent.convert(context), myDebugInfo);
@@ -158,14 +189,28 @@ public final class LegacyAndRulesConstraintsDescriptor implements RulesConstrain
     }
   }
 
-  private void addCanBeChild(@Mutable List<Rule<?>> result, ConstraintsDescriptor legacy) {
+  private static void addCanBeChild(@Mutable List<Rule<?>> result, ConstraintsDescriptor legacy, SAbstractConcept concept) {
     if (legacy.canBeChildIsDefined()) {
-      result.add(new RuleBasedOnLegacy<ContainmentContext>(myConcept, PredefinedRuleKinds.CAN_BE_CHILD, legacy) {
+      result.add(new RuleBasedOnLegacy<ContainmentContext>(concept, PredefinedRuleKinds.CAN_BE_CHILD, legacy) {
         @Override
         public boolean check(@NotNull ContainmentContext context) {
           return legacy.canBeChild(ConstraintContext_CanBeChild.convert(context), myDebugInfo);
         }
       });
+    }
+  }
+
+  private static boolean legacyRuleKindIsDefined(@NotNull RuleKind kind, ConstraintsDescriptor legacy) {
+    if (kind == PredefinedRuleKinds.CAN_BE_ROOT) {
+      return legacy.canBeRootIsDefined();
+    } else if (kind == PredefinedRuleKinds.CAN_BE_ANCESTOR) {
+      return legacy.canBeAncestorIsDefined();
+    } else if (kind == PredefinedRuleKinds.CAN_BE_CHILD) {
+      return legacy.canBeChildIsDefined();
+    } else if (kind == PredefinedRuleKinds.CAN_BE_PARENT) {
+      return legacy.canBeParentIsDefined();
+    } else {
+      return false;
     }
   }
 
@@ -180,28 +225,36 @@ public final class LegacyAndRulesConstraintsDescriptor implements RulesConstrain
   }
 
   @NotNull
+  @Override
+  public <C extends Context> Stream<Rule<C>> getRules(@NotNull RuleKind kind) {
+    return getRulesOfKind(kind).stream()
+                               .map(it -> (Rule<C>) it);
+  }
+
+  @NotNull
   private List<Rule<?>> getRulesOfKind(@NotNull RuleKind kind) {
     List<Rule<?>> result = new ArrayList<>();
-    Set<SAbstractConcept> visited = new HashSet<>();
-    Deque<SAbstractConcept> stack = new ArrayDeque<>();
-    stack.addFirst(myConcept);
-    while (!stack.isEmpty()) {
-      SAbstractConcept nextConcept = stack.pollFirst();
-      if (!visited.add(nextConcept)) continue;
-      LegacyAndRulesConstraintsDescriptor compoDescriptor = getLegacyAndRulesDescriptor(nextConcept);
-      List<Rule<?>> legacyRules = compoDescriptor.getDeclaredLegacyRules().stream()
-                                                 .filter(r1 -> r1.getKind().equals(kind))
-                                                 .collect(Collectors.toList());
-      result.addAll(legacyRules);
-      if (legacyRules.isEmpty()) {
-        // 'legacy' domination: we skip the supertree of 'concept' ancestors
-        List<Rule<?>> newRules = compoDescriptor.getDeclaredNewRules().stream()
-                                                .filter(r1 -> r1.getKind().equals(kind))
-                                                .collect(Collectors.toList());
-        result.addAll(newRules);
-        SModelUtil.getDirectSuperConcepts(nextConcept).stream()
-                  .filter(c -> !visited.contains(c))
-                  .forEach(stack::add);
+    List<_SAbstractConcept> linearization = myMro.calcLinearization(_SAbstractConcept.wrap(myConcept));
+    Deque<_SAbstractConcept> legacyAdded = new LinkedList<>();
+    Set<_SAbstractConcept> woLegacyParents = new HashSet<>();
+    for (_SAbstractConcept _concept : linearization) {
+      if (legacyAdded.stream()
+                     .anyMatch(was -> was.isSubConceptOf(_concept))) {
+        if (!woLegacyParents.contains(_concept)) continue;
+      }
+      SAbstractConcept curConcept = _concept.getPeer();
+      LegacyAndRulesConstraintsDescriptor curConceptDescriptor = getLegacyAndRulesDescriptor(curConcept);
+      if (legacyRuleKindIsDefined(kind, getLegacyDescriptor(curConcept))) {
+        result.addAll(curConceptDescriptor.getDeclaredLegacyRules(kind));
+        legacyAdded.addFirst(_concept);
+      } else {
+        woLegacyParents.addAll(_concept.getImmediateParents());
+        // NB: 'legacy' constraints domination: if legacy constraints canBe* exist then we skip the super-tree of 'concept' ancestors
+        // we use the set woLegacyParents for that purpose
+        curConceptDescriptor.getDeclaredNewRules()
+                            .stream()
+                            .filter(r1 -> r1.getKind().equals(kind))
+                            .forEach(result::add);
       }
     }
     return result;
@@ -212,12 +265,34 @@ public final class LegacyAndRulesConstraintsDescriptor implements RulesConstrain
     if (concept.equals(myConcept)) {
       return this;
     }
-    return new LegacyAndRulesConstraintsDescriptor(concept, getRegistry().getRulesDescriptor(concept));
+    return wrapIfNeeded(concept);
+  }
+
+  @NotNull
+  private LegacyAndRulesConstraintsDescriptor wrapIfNeeded(@NotNull SAbstractConcept concept) {
+    RulesConstraintsDescriptor rulesDescriptor = getRegistry().getRulesDescriptor(concept);
+    if (rulesDescriptor instanceof LegacyAndRulesConstraintsDescriptor) {
+      return (LegacyAndRulesConstraintsDescriptor) rulesDescriptor;
+    }
+    return new LegacyAndRulesConstraintsDescriptor(myMro, concept, rulesDescriptor);
   }
 
   @NotNull
   private ConstraintsDescriptor getLegacyDescriptor(@NotNull SAbstractConcept concept) {
     return ConceptRegistry.getInstance().getConstraintsDescriptor(concept);
+  }
+
+  @Override
+  public int hashCode() {
+    return myConcept.hashCode();
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj instanceof LegacyAndRulesConstraintsDescriptor) {
+      return ((LegacyAndRulesConstraintsDescriptor) obj).myConcept.equals(myConcept);
+    }
+    return false;
   }
 
   @Override

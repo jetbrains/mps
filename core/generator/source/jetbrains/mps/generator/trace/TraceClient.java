@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,5 +23,5 @@ package jetbrains.mps.generator.trace;
 public interface TraceClient {
   // instances of this interface are supposed to be reloadable (e.g. coming from a plugin), thus shall expose stuff one can
   // keep without holding the instance
-  // long getCapabilities() {0xVERSION << x | 0xFLAGS}
+  long getCapabilities(int clientToken); // {0xVERSION << x | 0xFLAGS}
 }

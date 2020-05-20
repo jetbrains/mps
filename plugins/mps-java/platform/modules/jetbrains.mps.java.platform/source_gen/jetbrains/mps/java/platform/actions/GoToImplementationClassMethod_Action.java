@@ -37,7 +37,7 @@ public class GoToImplementationClassMethod_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public GoToImplementationClassMethod_Action() {
-    super("Implementation(s)", "", ICON);
+    super("Java Method Implementation(s)", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }

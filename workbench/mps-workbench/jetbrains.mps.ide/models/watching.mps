@@ -87,10 +87,7 @@
         <child id="1070534934091" name="type" index="10QFUM" />
         <child id="1070534934092" name="expression" index="10QFUP" />
       </concept>
-      <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg">
-        <property id="8606350594693632173" name="isTransient" index="eg7rD" />
-        <property id="1240249534625" name="isVolatile" index="34CwA1" />
-      </concept>
+      <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg" />
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
         <child id="1095933932569" name="implementedInterface" index="EKbjA" />
       </concept>
@@ -1218,16 +1215,6 @@
         </node>
       </node>
     </node>
-    <node concept="312cEg" id="2FRbrNFjTTF" role="jymVt">
-      <property role="34CwA1" value="false" />
-      <property role="eg7rD" value="false" />
-      <property role="TrG5h" value="myWatchedRootsBase" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="2FRbrNFjTNG" role="1B3o_S" />
-      <node concept="3uibUv" id="501K0YLN2_I" role="1tU5fm">
-        <ref role="3uigEE" to="2eq1:501K0YLMPSm" resolve="WatchedRoots" />
-      </node>
-    </node>
     <node concept="312cEg" id="5T8zXYahxln" role="jymVt">
       <property role="TrG5h" value="myProjectManager" />
       <property role="3TUv4t" value="true" />
@@ -1255,12 +1242,6 @@
     <node concept="3clFbW" id="5T8zXYahxlt" role="jymVt">
       <node concept="3Tm1VV" id="5T8zXYahxlu" role="1B3o_S" />
       <node concept="3cqZAl" id="5T8zXYahxlv" role="3clF45" />
-      <node concept="37vLTG" id="2FRbrNFjTH$" role="3clF46">
-        <property role="TrG5h" value="watchedRoots" />
-        <node concept="3uibUv" id="501K0YLN2HV" role="1tU5fm">
-          <ref role="3uigEE" to="2eq1:501K0YLMPSm" resolve="WatchedRoots" />
-        </node>
-      </node>
       <node concept="37vLTG" id="5T8zXYahxly" role="3clF46">
         <property role="TrG5h" value="coreComponents" />
         <node concept="3uibUv" id="5T8zXYahxlz" role="1tU5fm">
@@ -1312,16 +1293,6 @@
               <node concept="37vLTw" id="5T8zXYahxlQ" role="2Oq$k0">
                 <ref role="3cqZAo" node="5T8zXYahxly" resolve="coreComponents" />
               </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="2FRbrNFjU06" role="3cqZAp">
-          <node concept="37vLTI" id="2FRbrNFjUMt" role="3clFbG">
-            <node concept="37vLTw" id="2FRbrNFjUNR" role="37vLTx">
-              <ref role="3cqZAo" node="2FRbrNFjTH$" resolve="watchedRoots" />
-            </node>
-            <node concept="37vLTw" id="2FRbrNFjU05" role="37vLTJ">
-              <ref role="3cqZAo" node="2FRbrNFjTTF" resolve="myWatchedRootsBase" />
             </node>
           </node>
         </node>

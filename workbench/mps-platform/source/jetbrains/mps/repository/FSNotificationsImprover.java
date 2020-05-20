@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,14 +16,9 @@
 package jetbrains.mps.repository;
 
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.openapi.vfs.newvfs.persistent.PersistentFS;
-import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.ide.vfs.IdeaFileSystem;
+import com.intellij.openapi.components.ServiceManager;
 import jetbrains.mps.ide.platform.watching.WatchedRoots;
 import jetbrains.mps.util.PathManager;
-import jetbrains.mps.workbench.action.ApplicationPluginHolder;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,47 +27,33 @@ import java.util.List;
 /**
  * here idea is the same as in {@code ProjectRootListenerComponent}
  */
-public class FSNotificationsImprover implements ApplicationComponent {
+public class FSNotificationsImprover {
   private List<String> myRootsToAdd = new ArrayList<>();
-  private final WatchedRoots myWatchedRoots;
 
-  //parameters left untouched while extracting from RepositoryInitializingComponentBase
-  @SuppressWarnings("UnusedParameters")
-  public FSNotificationsImprover(MPSCoreComponents coreComponents,
-                                 ApplicationPluginHolder registryManager,
-                                 IdeaPluginFacetComponent ideaPluginFacetComponent,
-                                 IdeaFileSystem fs,
-                                 WatchedRoots watchedRoots
-  ) {
-    myWatchedRoots = watchedRoots;
-  }
-
-  @Override
-  public void initComponent() {
+  /**
+   * On initialization service adds MPS distribution path and plugins path to watching roots.
+   * This allows to avoid additional sub paths in WatchedRoots - it can be very time consuming.
+   */
+  public FSNotificationsImprover() {
     ApplicationManager.getApplication().runReadAction(() -> {
       myRootsToAdd.add(PathManager.getHomePath());
       myRootsToAdd.add(com.intellij.openapi.application.PathManager.getPluginsPath());
+      final WatchedRoots watchedRoots = ServiceManager.getService(WatchedRoots.class);
 
       for (String root : myRootsToAdd) {
-        myWatchedRoots.addWatchRequest(root);
+        watchedRoots.addWatchRequest(root);
       }
     });
   }
 
-  @Override
-  public void disposeComponent() {
+  /*package*/ void stopWatchingRoots() {
     Collections.reverse(myRootsToAdd);
     ApplicationManager.getApplication().runReadAction(() -> {
+      final WatchedRoots watchedRoots = ServiceManager.getService(WatchedRoots.class);
       for (String root : myRootsToAdd) {
-        myWatchedRoots.removeWatchRequest(root);
+        watchedRoots.removeWatchRequest(root);
       }
       myRootsToAdd.clear();
     });
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return getClass().getSimpleName();
   }
 }

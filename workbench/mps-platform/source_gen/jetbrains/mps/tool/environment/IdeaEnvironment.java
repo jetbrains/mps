@@ -6,6 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
+import com.intellij.util.PlatformUtils;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.util.annotation.Hack;
 import java.util.StringJoiner;
@@ -18,8 +19,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import com.intellij.openapi.application.ApplicationManager;
 import java.awt.GraphicsEnvironment;
 import com.intellij.testFramework.TestApplicationManager;
-import com.intellij.testFramework.ThreadTracker;
-import jetbrains.mps.smodel.WorkbenchModelAccess;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.RuntimeFlags;
 import com.intellij.openapi.Disposable;
@@ -57,19 +56,14 @@ public final class IdeaEnvironment extends EnvironmentBase {
   public static final String CREATE_PLUGIN_CLASSLOADERS = "idea.run.tests.with.bundled.plugins";
 
   private Object myIdeaApplication;
-  private final boolean myUnitTestMode;
 
   static {
     EnvironmentBase.initializeLog4j();
   }
 
   public IdeaEnvironment(@NotNull EnvironmentConfig config) {
-    this(config, true);
-  }
-
-  public IdeaEnvironment(@NotNull EnvironmentConfig config, boolean unitTestMode) {
     super(config);
-    myUnitTestMode = unitTestMode;
+    PlatformUtils.setDefaultPrefixForCE();
   }
 
   public void init() {
@@ -78,7 +72,6 @@ public final class IdeaEnvironment extends EnvironmentBase {
     }
 
     addRequiredPlugins(myConfig);
-
     createIdeaApplication();
 
     MPSCoreComponents coreComponents = getMPSCoreComponents();
@@ -111,7 +104,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
   private void setPluginPathProperty() {
     // [MM]: why do we set ids from config, while path is not config-related? 
     StringJoiner pluginPathResult = new StringJoiner(File.pathSeparator);
-    if (myUnitTestMode) {
+    if (myConfig.isTestMode()) {
       // it is comfortable for us to mimic the behavior in the non-test mode when we load by default all the plugins 
       // from the app_dir/plugins folder. 
       // In order to avoid duplication plugin problem (we have IDEA loading plugins from cp, from plugin.path property, 
@@ -185,7 +178,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
       // I doubt there's any reason for an end-user to see this statistics in a regular MPS scenario. Still, they could opt to do so with system property explicitly set. 
       System.setProperty(PERF_LOG_KEY, Boolean.FALSE.toString());
     }
-    if (myUnitTestMode) {
+    if (myConfig.isTestMode()) {
       String oldValue = System.getProperty(CREATE_PLUGIN_CLASSLOADERS);
       if (oldValue == null) {
         System.setProperty(CREATE_PLUGIN_CLASSLOADERS, myConfig.doesCreatePluginClassLoaders() + "");
@@ -197,7 +190,6 @@ public final class IdeaEnvironment extends EnvironmentBase {
     } else {
       myIdeaApplication = MPSHeadlessPlatformStarter.Holder.IT.createApp();
     }
-    ThreadTracker.longRunningThreadCreated(ApplicationManager.getApplication(), WorkbenchModelAccess.THREAD_GROUP_NAME);
   }
 
   @Override

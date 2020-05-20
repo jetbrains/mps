@@ -895,6 +895,12 @@
       <property role="20lbJX" value="fLJekj4/1" />
       <ref role="20lvS9" to="3ior:IFRVVI5ZTn" resolve="BuildStringNotEmpty" />
     </node>
+    <node concept="1TJgyj" id="5pqe9hg3trp" role="1TKVEi">
+      <property role="IQ2ns" value="6222348044815161049" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="vendor" />
+      <ref role="20lvS9" to="3ior:IFRVVI5ZTn" resolve="BuildStringNotEmpty" />
+    </node>
     <node concept="1TJgyj" id="ES2LjlW$nI" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="welcomeLogo" />

@@ -17,10 +17,13 @@ package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.generator.impl.RoleValidation.RoleValidator;
 import jetbrains.mps.generator.impl.RoleValidation.Status;
-import jetbrains.mps.generator.runtime.NodeWeaveFacility;
+import jetbrains.mps.generator.runtime.ApplySink;
 import jetbrains.mps.generator.runtime.TemplateContext;
+import jetbrains.mps.generator.runtime.WeavingWithAnchor;
 import jetbrains.mps.textgen.trace.TracingUtil;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -29,34 +32,36 @@ import java.util.Iterator;
 
 /**
  * Weave support implementation
+ * FIXME refactor to avoid subclass in CallSiteImpl
  * @author Artem Tikhomirov
  * @since 3.3
  */
-public final class NodeWeaveSupport implements NodeWeaveFacility {
+@ToRemove(version = 0)  // just a gentle reminder to refactor
+public abstract class NodeWeaveSupport implements ApplySink {
   private TemplateContext myTemplateContext;
+  private final SNode myContextParentNode;
+  private final WeavingWithAnchor myAnchorQuery;
   private final SNodeReference myTemplateNode;
   private final TemplateGenerator myGenerator;
-  @NotNull
-  private final WeaveContext myWeaveContext;
 
-  /*package*/ NodeWeaveSupport(@NotNull WeaveContext weaveContext, @NotNull SNodeReference templateNodeReference, @NotNull TemplateGenerator generator) {
-    myWeaveContext = weaveContext;
-    myTemplateContext = weaveContext.getTemplateContext();
+  protected NodeWeaveSupport(@NotNull TemplateContext templateContext, @NotNull SNode outputContextNode,
+                               @Nullable WeavingWithAnchor anchorQuery, @NotNull SNodeReference templateNodeReference,
+                               @NotNull TemplateGenerator generator) {
+    myTemplateContext = templateContext;
+    myContextParentNode = outputContextNode;
+    myAnchorQuery = anchorQuery;
     myTemplateNode = templateNodeReference;
     myGenerator = generator;
   }
 
-  @NotNull
-  @Override
-  public TemplateContext getTemplateContext() {
-    return myTemplateContext;
-  }
-
-  @Override
-  public void weaveNode(@NotNull SContainmentLink childRole, @NotNull SNode outputNodeToWeave) throws GenerationFailureException {
-    SNode contextParentNode = myWeaveContext.getContextNode();
-    SNode anchor = myWeaveContext.getAnchorNode(contextParentNode, outputNodeToWeave);
-    assert anchor == null || anchor.getParent() == contextParentNode;
+  protected void weaveNode(@NotNull SContainmentLink childRole, @NotNull SNode outputNodeToWeave) throws GenerationFailureException {
+    SNode contextParentNode = myContextParentNode;
+    SNode anchor = myAnchorQuery == null ? null : myAnchorQuery.getAnchorNode(myTemplateContext, contextParentNode, outputNodeToWeave);
+    if (anchor != null && anchor.getParent() != contextParentNode) {
+      throw new TemplateProcessingFailureException(myTemplateNode, "Anchor query shall give a child of weave context parent",
+          GeneratorUtil.describe(contextParentNode, "context parent node"),
+          GeneratorUtil.describe(anchor.getParent(), "anchor parent node"));
+    }
     TracingUtil.deriveOriginalNode(myTemplateContext.getInput(), outputNodeToWeave);
 
     // check child

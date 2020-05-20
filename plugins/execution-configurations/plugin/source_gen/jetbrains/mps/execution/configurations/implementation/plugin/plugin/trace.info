@@ -20,7 +20,6 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1170075670744:jetbrains.mps.baseLanguage.structure.SynchronizedStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root>
@@ -333,9 +332,6 @@
         <var name="child" id="8279827005672912164" />
       </scope>
       <scope id="2023531404351503243" at="106,9,109,48" />
-      <scope id="2023531404351503243" at="110,0,113,7">
-        <var name="ex" id="2023531404351503243" />
-      </scope>
       <scope id="2023531404351503243" at="110,45,113,7" />
       <scope id="2023531404351503243" at="119,0,122,0" />
       <scope id="2023531404351503243" at="122,0,125,0" />
@@ -363,6 +359,9 @@
       <scope id="2023531404351503243" at="178,0,181,0" />
       <scope id="2023531404351503243" at="187,111,190,5" />
       <scope id="2023531404351503243" at="47,117,51,5" />
+      <scope id="2023531404351503243" at="110,5,114,5">
+        <var name="ex" id="2023531404351503243" />
+      </scope>
       <scope id="2023531404351503243" at="144,61,148,19">
         <var name="state" id="2023531404351503243" />
       </scope>
@@ -713,7 +712,7 @@
       <node id="2640006856203720301" at="91,0,98,0" concept="9" trace="run#()V" />
       <node id="5057842142812948186" at="100,58,107,7" concept="8" />
       <node id="2640006856203567610" at="89,0,98,34" concept="5" />
-      <node id="4337072726661557824" at="117,84,128,7" concept="21" />
+      <node id="4337072726661557824" at="117,84,128,7" concept="20" />
       <node id="4337072726661637579" at="131,0,151,0" concept="9" trace="run#()V" />
       <node id="4337072726661637574" at="129,38,151,47" concept="5" />
       <node id="33324785354130501" at="77,0,163,0" concept="9" trace="execute#(Lcom/intellij/openapi/project/Project;Lcom/intellij/execution/runners/ExecutionEnvironment;)Z" />
@@ -1074,9 +1073,6 @@
         <var name="path" id="1095250944515593345" />
       </scope>
       <scope id="468375730750988347" at="78,9,81,48" />
-      <scope id="468375730750988347" at="82,0,85,7">
-        <var name="ex" id="468375730750988347" />
-      </scope>
       <scope id="468375730750988347" at="82,45,85,7" />
       <scope id="468375730750988347" at="90,0,93,0" />
       <scope id="468375730750988347" at="93,0,96,0" />
@@ -1102,6 +1098,9 @@
       <scope id="1095250944516083174" at="63,0,67,0" />
       <scope id="1095250944515715026" at="67,0,71,0" />
       <scope id="1095250944515563994" at="71,0,75,0" />
+      <scope id="468375730750988347" at="82,5,86,5">
+        <var name="ex" id="468375730750988347" />
+      </scope>
       <scope id="468375730751048363" at="46,42,51,84" />
       <scope id="468375730751048387" at="53,42,58,84" />
       <scope id="468375730750988347" at="116,61,121,19">
@@ -1218,7 +1217,7 @@
       <node id="5057842142812605010" at="115,0,120,0" concept="9" trace="run#()V" />
       <node id="8244765753355853191" at="126,0,131,0" concept="3" trace="TemporalModuleWithDescriptorFile#(Ljava/lang/String;)V" />
       <node id="5930496931442004918" at="137,0,142,0" concept="9" trace="getFacets#()Ljava/lang/Iterable;" />
-      <node id="5057842142812859094" at="87,28,93,7" concept="21" />
+      <node id="5057842142812859094" at="87,28,93,7" concept="20" />
       <node id="5057842142812869931" at="93,7,99,7" concept="8" />
       <node id="5057842142812605006" at="113,25,120,7" concept="5" />
       <node id="5057842142812534493" at="113,0,122,0" concept="9" trace="dispose#()V" />
@@ -1354,11 +1353,11 @@
       <node id="4352072302152188706" at="102,0,107,0" concept="3" trace="BlockingReader#(Ljava/io/Reader;Lcom/intellij/openapi/util/Key;Ljava/lang/String;)V" />
       <node id="4352072302152310360" at="121,36,126,11" concept="8" />
       <node id="4352072302152342311" at="147,0,152,0" concept="9" trace="executeOnPooledThread#(Ljava/lang/Runnable;)Ljava/util/concurrent/Future;" />
-      <node id="4352072302152338101" at="136,17,143,9" concept="21" />
-      <node id="4352072302152380196" at="55,24,63,5" concept="21" />
-      <node id="4352072302152280420" at="115,38,127,9" concept="22" />
+      <node id="4352072302152338101" at="136,17,143,9" concept="20" />
+      <node id="4352072302152380196" at="55,24,63,5" concept="20" />
+      <node id="4352072302152280420" at="115,38,127,9" concept="21" />
       <node id="6106412458331198156" at="53,0,67,0" concept="9" trace="startNotify#()V" />
-      <node id="4352072302152275082" at="113,28,144,7" concept="21" />
+      <node id="4352072302152275082" at="113,28,144,7" concept="20" />
       <node id="4352072302152260943" at="112,0,146,0" concept="9" trace="doRun#()V" />
       <scope id="4352072302152425029" at="37,60,38,45" />
       <scope id="4352072302152425038" at="43,58,44,25" />
@@ -1511,14 +1510,14 @@
       <node id="5963359171344154893" at="66,67,71,5" concept="8" />
       <node id="5963359171344582185" at="125,52,130,10" concept="11" />
       <node id="5963359171344105821" at="135,0,141,0" concept="15" trace="canExecute#(Ljava/lang/String;)Z" />
-      <node id="8386475153645012397" at="93,17,102,17" concept="21" />
+      <node id="8386475153645012397" at="93,17,102,17" concept="20" />
       <node id="5963359171344582185" at="121,0,131,5" concept="1" />
       <node id="8386475153644511507" at="88,83,103,15" concept="7" />
       <node id="6826028245108311914" at="84,0,104,13" concept="8" />
       <node id="6826028245107028501" at="81,59,114,11" concept="8" />
       <node id="6826028245107028495" at="80,0,116,0" concept="9" trace="processTerminated#(Lcom/intellij/execution/process/ProcessEvent;)V" />
       <node id="6462589300834794034" at="78,178,116,9" concept="5" />
-      <node id="5963359171344154923" at="76,27,120,5" concept="21" />
+      <node id="5963359171344154923" at="76,27,120,5" concept="20" />
       <node id="5963359171344105821" at="56,0,133,0" concept="9" trace="execute#(Lcom/intellij/execution/Executor;Lcom/intellij/execution/runners/ProgramRunner;)Lcom/intellij/execution/ExecutionResult;" />
       <scope id="5963359171344105821" at="48,68,49,16" />
       <scope id="5963359171344105821" at="52,45,53,16" />
@@ -3529,7 +3528,7 @@
       <node id="7417504313513242892" at="69,0,73,0" concept="9" trace="processTerminated#(Lcom/intellij/execution/process/ProcessEvent;)V" />
       <node id="1506344457929211239" at="86,82,90,5" concept="8" />
       <node id="6062668769034024423" at="129,0,133,0" concept="9" trace="createDebuggerSettings#()Ljetbrains/mps/debug/api/IDebuggerSettings;" />
-      <node id="6062668769034024505" at="108,39,113,9" concept="21" />
+      <node id="6062668769034024505" at="108,39,113,9" concept="20" />
       <node id="6062668769034024549" at="39,0,45,0" concept="9" trace="setVirtualMachineParameters_String#(Ljava/lang/String;)Ljetbrains/mps/execution/configurations/implementation/plugin/plugin/Mps_Command;" />
       <node id="6062668769034024554" at="45,0,51,0" concept="9" trace="setJrePath_String#(Ljava/lang/String;)Ljetbrains/mps/execution/configurations/implementation/plugin/plugin/Mps_Command;" />
       <node id="4339786255639422147" at="51,0,57,0" concept="9" trace="setProject_Project#(Lorg/jetbrains/mps/openapi/project/Project;)Ljetbrains/mps/execution/configurations/implementation/plugin/plugin/Mps_Command;" />
@@ -3726,7 +3725,7 @@
       <node id="6796535740154100530" at="129,0,141,0" concept="9" trace="waitUnlessProcessIsReady#()V" />
       <node id="5745550179872137754" at="54,172,74,6" concept="10" />
       <node id="6106412458332522980" at="46,0,77,0" concept="9" trace="execute#()Lcom/intellij/execution/process/ProcessHandler;" />
-      <node id="8574241230919379985" at="85,54,120,9" concept="21" />
+      <node id="8574241230919379985" at="85,54,120,9" concept="20" />
       <node id="5745550179872053218" at="80,0,122,0" concept="9" trace="run#()V" />
       <node id="5745550179871968463" at="78,65,122,7" concept="11" />
       <node id="5745550179871949224" at="78,0,124,0" concept="9" trace="doExecute#(Ljetbrains/mps/baseLanguage/unitTest/execution/server/JUnitTestExecutor;)Ljava/util/concurrent/Future;" />
@@ -4001,9 +4000,6 @@
         <var name="context" id="6391517972808447557" />
       </scope>
       <scope id="6391517972808447557" at="58,9,61,48" />
-      <scope id="6391517972808447557" at="62,0,65,7">
-        <var name="ex" id="6391517972808447557" />
-      </scope>
       <scope id="6391517972808447557" at="62,45,65,7" />
       <scope id="6391517972808447557" at="70,0,73,0" />
       <scope id="6391517972808447557" at="74,0,77,0">
@@ -4025,6 +4021,9 @@
         <var name="element" id="6391517972808447557" />
       </scope>
       <scope id="6391517972808447557" at="48,73,52,83" />
+      <scope id="6391517972808447557" at="62,5,66,5">
+        <var name="ex" id="6391517972808447557" />
+      </scope>
       <scope id="6391517972808447557" at="93,0,97,0">
         <var name="environment" id="6391517972808447557" />
         <var name="executor" id="6391517972808447557" />
@@ -4212,7 +4211,7 @@
       <node id="6391517972808447813" at="83,0,87,0" concept="9" trace="propertyChange#(Ljava/beans/PropertyChangeEvent;)V" />
       <node id="6391517972808448022" at="57,0,62,0" concept="9" trace="updateUiFromFields#()V" />
       <node id="6391517972808447794" at="78,0,83,0" concept="9" trace="keyReleased#(Ljava/awt/event/KeyEvent;)V" />
-      <node id="6391517972808447835" at="92,68,97,7" concept="21" />
+      <node id="6391517972808447835" at="92,68,97,7" concept="20" />
       <node id="6391517972808447995" at="51,0,57,0" concept="9" trace="updateFieldsFromUi#()V" />
       <node id="6391517972808448049" at="65,0,71,0" concept="9" trace="reset#(Ljetbrains/mps/debugger/java/api/settings/DebugConnectionSettings;)V" />
       <node id="6391517972808447851" at="99,0,106,0" concept="9" trace="valueToString#(Ljava/lang/Object;)Ljava/lang/String;" />
@@ -4332,9 +4331,6 @@
       <scope id="2181232403817989858" at="40,70,42,18" />
       <scope id="5647974406689024855" at="64,0,67,0" />
       <scope id="6883107143361156570" at="70,9,73,48" />
-      <scope id="6883107143361156570" at="74,0,77,7">
-        <var name="ex" id="6883107143361156570" />
-      </scope>
       <scope id="6883107143361156570" at="74,45,77,7" />
       <scope id="6883107143361156570" at="82,0,85,0" />
       <scope id="6883107143361156570" at="86,0,89,0">
@@ -4350,6 +4346,9 @@
         <var name="element" id="6883107143361156570" />
       </scope>
       <scope id="6883107143361156570" at="57,73,61,83" />
+      <scope id="6883107143361156570" at="74,5,78,5">
+        <var name="ex" id="6883107143361156570" />
+      </scope>
       <scope id="6883107143361156570" at="94,61,99,19">
         <var name="state" id="6883107143361156570" />
       </scope>

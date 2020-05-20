@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
  *
  * @author apyshkin
  */
-/*package*/ abstract class _SAbstractConcept implements AbstractConceptLike {
+/*package*/ public abstract class _SAbstractConcept implements AbstractConceptLike {
   @NotNull
   private final SAbstractConcept myPeer;
 
@@ -76,5 +76,9 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   @NotNull
   public static SAbstractConcept unwrap(@NotNull _SAbstractConcept wrapper) {
     return wrapper.getPeer();
+  }
+
+  public final boolean isSubConceptOf(_SAbstractConcept curConcept) {
+    return myPeer.isSubConceptOf(curConcept.getPeer());
   }
 }

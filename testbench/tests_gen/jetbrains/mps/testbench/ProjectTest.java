@@ -43,7 +43,7 @@ public class ProjectTest {
   }
 
   public static void initTestEnvironment() throws InvocationTargetException, InterruptedException {
-    ourEnvironment = new MpsEnvironment(EnvironmentConfig.defaultConfig());
+    ourEnvironment = new MpsEnvironment(EnvironmentConfig.defaultConfig().withTestModeOn());
     ourEnvironment.init();
     ourContextProject = ourEnvironment.createProject(new FromProjectPathProjectStrategy());
   }

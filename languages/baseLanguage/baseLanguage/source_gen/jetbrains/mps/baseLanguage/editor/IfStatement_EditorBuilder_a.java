@@ -251,7 +251,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     new LeftBraceStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, _StyleParameter_QueryFunction_eb7h0d_a0a4a());
     editorCell.getStyle().putAll(style);
-    UnwrapStatementListContainer.setCellActions(editorCell, myNode, getEditorContext());
+    IfStatement_FirstBrace.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     return editorCell;
   }

@@ -59,6 +59,8 @@ teamcity-info.xml
 /plugins/github
 /plugins/vcs-changeReminder
 /plugins/platform-images
+/plugins/laf-macos
+/plugins/laf-win10
 
 # Main libraries folder: dependencies are downloaded before complilation with task 'install' from build/getDependencies.xml
 /lib/
@@ -71,6 +73,9 @@ teamcity-info.xml
 /bin/mac
 /bin/win
 /build/resources/mps
+
+# Path to log files which is overriden in run configuration to allow developers to see log output in run/debug console
+/log/
 
 # Versions of library dependecies required for platform (like Kotlin, JDK etc)
 /build/dependencies

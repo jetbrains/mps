@@ -31,7 +31,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.lang.text.behavior.TextElement__BehaviorDescriptor;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -60,8 +59,6 @@ public class WordRangeSelection extends AbstractMultipleSelection {
 
   public WordRangeSelection(@NotNull EditorComponent editorComponent, Map<String, String> properties, CellInfo cellInfo) throws SelectionStoreException, SelectionRestoreException {
     super(editorComponent);
-    // TODO copy spaces into the clipboard 
-    // TODO select also spaces 
     // TODO preserve and move the cursor position 
     // TODO allow per-character selection 
     if (cellInfo != null) {
@@ -242,19 +239,10 @@ public class WordRangeSelection extends AbstractMultipleSelection {
   }
 
   private String buildTextualRepresentationOfSelectedCells() {
-    StringBuilder builder = new StringBuilder("");
-    SNode current = myFirstNode;
-    while (true) {
-      builder.append(TextElement__BehaviorDescriptor.getTextualRepresentation_idfB3l81it7u.invoke(current));
-      if (current == myLastNode) {
-        break;
-      }
-      if ((SNodeOperations.getNextSibling(current) == null)) {
-        builder.append("\n");
-      } else {
-        builder.append(" ");
-      }
-      current = getNextSelectableNode(current, true);
+    StringBuilder builder = new StringBuilder();
+    for (EditorCell cell : getSelectedCells()) {
+      builder.append(cell.renderText().getText());
+      builder.append((cell.getNextSibling() == null ? "\n" : " "));
     }
     return builder.toString();
   }

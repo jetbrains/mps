@@ -146,6 +146,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   }
 
   //----reference
+  @NotNull
   @Override
   public SModuleId getModuleId() {
 //    assertCanRead(); @see getModuleReference()

@@ -32,6 +32,7 @@ import jetbrains.mps.tool.environment.EnvironmentAware;
 import jetbrains.mps.util.PathManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SRepositoryListenerBase;
 import org.junit.Test;
 
 import java.io.File;
@@ -69,9 +70,11 @@ public class ProjectMPSClassLoadingTest implements EnvironmentAware {
   @Test
   public void classesAreLoadedStress() {
     project = myEnvironment.openProject(new File(PathManager.getHomePath()));
-    project.getRepository().addRepositoryListener(ModulesReloadTestStress.CRAZY_LISTENER);
+    ClassLoaderManager clm = myEnvironment.getPlatform().findComponent(ClassLoaderManager.class);
+    SRepositoryListenerBase crazyListener = ModulesReloadTestStress.createCrazyListener(clm);
+    project.getRepository().addRepositoryListener(crazyListener);
     doTest();
-    project.getRepository().removeRepositoryListener(ModulesReloadTestStress.CRAZY_LISTENER);
+    project.getRepository().removeRepositoryListener(crazyListener);
     myEnvironment.closeProject(project);
   }
 

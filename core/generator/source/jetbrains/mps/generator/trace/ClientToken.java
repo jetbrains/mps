@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,9 @@
 package jetbrains.mps.generator.trace;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.nio.ByteBuffer;
+import java.nio.channels.ClosedChannelException;
 import java.nio.channels.ReadableByteChannel;
 import java.util.concurrent.ArrayBlockingQueue;
 
@@ -28,7 +30,15 @@ import java.util.concurrent.ArrayBlockingQueue;
  */
 public final class ClientToken {
   private final ArrayBlockingQueue<byte[]> myDatagrams = new ArrayBlockingQueue<>(50);
+  private final long myClientCaps;
   private DtgChannel myChannel = new DtgChannel();
+
+  /*package*/ ClientToken(TraceClient client) {
+    // important, no reference to TraceClient shall be kept, ever! It's reloadable code than may disappear (i.e. get unloaded) at any moment;
+    final int clientTokenId = hashCode();
+    // perform handshake with the client to ensure its capabilities
+    myClientCaps = client.getCapabilities(clientTokenId);
+  }
 
   /**
    * Clients express their interest in specific trace location
@@ -50,6 +60,23 @@ public final class ClientToken {
    *     it's registerVocabularyEntry() to generate and return the key value.
    */
   public ReadableByteChannel getMessageStream() {
+    if (!checkClientCapabilities()) {
+      return new ReadableByteChannel() {
+        @Override
+        public int read(ByteBuffer dst) throws IOException {
+          throw new ClosedChannelException();
+        }
+
+        @Override
+        public boolean isOpen() {
+          return false;
+        }
+
+        @Override
+        public void close() throws IOException {
+        }
+      };
+    }
     // I don't want to deal with synch issues accessing data, therefore no shared objects except primitives
     // These primitives shall not be modifiable by different clients (can't just share same byte[] between multiple clients)
     // Pause/improper behavior of a single client shall not affect others
@@ -75,6 +102,12 @@ public final class ClientToken {
       myChannel.closeRequestFromOwner();
       myChannel = null;
     }
+  }
+
+  private boolean checkClientCapabilities() {
+    final int MPS2020_1 = 0x20201;
+    final long caps = BigInteger.valueOf(myClientCaps).modPow(BigInteger.valueOf(0x64e10dbe40634729L), new BigInteger("b2cb30b3b5169517", 16)).longValue();
+    return (((int) ((hashCode() ^ caps) >>> 4 & 0x0fffff)) ^ MPS2020_1) == 0;
   }
 
   // XXX is there's a nice way to tell clients requires size of BB suitable to fit all datagrams?

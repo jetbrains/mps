@@ -25,13 +25,13 @@
       <sourceRoot location="java-api.jar" />
       <sourceRoot location="java-impl.jar" />
       <!-- -->
-      <sourceRoot location="netty-buffer-4.1.45.Final.jar" />
-      <sourceRoot location="netty-codec-4.1.45.Final.jar" />
-      <sourceRoot location="netty-codec-http-4.1.45.Final.jar" />
-      <sourceRoot location="netty-common-4.1.45.Final.jar" />
-      <sourceRoot location="netty-handler-4.1.45.Final.jar" />
-      <sourceRoot location="netty-resolver-4.1.45.Final.jar" />
-      <sourceRoot location="netty-transport-4.1.45.Final.jar" />
+      <sourceRoot location="netty-buffer-4.1.47.Final.jar" />
+      <sourceRoot location="netty-codec-4.1.47.Final.jar" />
+      <sourceRoot location="netty-codec-http-4.1.47.Final.jar" />
+      <sourceRoot location="netty-common-4.1.47.Final.jar" />
+      <sourceRoot location="netty-handler-4.1.47.Final.jar" />
+      <sourceRoot location="netty-resolver-4.1.47.Final.jar" />
+      <sourceRoot location="netty-transport-4.1.47.Final.jar" />
       <sourceRoot location="util.jar" />
       <sourceRoot location="extensions.jar" />
       <sourceRoot location="forms_rt.jar" />
@@ -65,13 +65,13 @@
     <stubModelEntry path="${platform_lib}/java-api.jar" />
     <stubModelEntry path="${platform_lib}/java-impl.jar" />
     <!-- aka 'idea jars' -->
-    <stubModelEntry path="${platform_lib}/netty-buffer-4.1.45.Final.jar" />
-    <stubModelEntry path="${platform_lib}/netty-codec-4.1.45.Final.jar" />
-    <stubModelEntry path="${platform_lib}/netty-codec-http-4.1.45.Final.jar" />
-    <stubModelEntry path="${platform_lib}/netty-common-4.1.45.Final.jar" />
-    <stubModelEntry path="${platform_lib}/netty-handler-4.1.45.Final.jar" />
-    <stubModelEntry path="${platform_lib}/netty-resolver-4.1.45.Final.jar" />
-    <stubModelEntry path="${platform_lib}/netty-transport-4.1.45.Final.jar" />
+    <stubModelEntry path="${platform_lib}/netty-buffer-4.1.47.Final.jar" />
+    <stubModelEntry path="${platform_lib}/netty-codec-4.1.47.Final.jar" />
+    <stubModelEntry path="${platform_lib}/netty-codec-http-4.1.47.Final.jar" />
+    <stubModelEntry path="${platform_lib}/netty-common-4.1.47.Final.jar" />
+    <stubModelEntry path="${platform_lib}/netty-handler-4.1.47.Final.jar" />
+    <stubModelEntry path="${platform_lib}/netty-resolver-4.1.47.Final.jar" />
+    <stubModelEntry path="${platform_lib}/netty-transport-4.1.47.Final.jar" />
     <stubModelEntry path="${platform_lib}/util.jar" />
     <stubModelEntry path="${platform_lib}/extensions.jar" />
     <stubModelEntry path="${platform_lib}/forms_rt.jar" />

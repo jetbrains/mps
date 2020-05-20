@@ -23,6 +23,7 @@ import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.newTypesystem.operation.AbstractOperation;
 import jetbrains.mps.newTypesystem.state.State;
 import jetbrains.mps.util.Pair;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -36,11 +37,38 @@ public abstract class TypeCheckingContext {
 
   public abstract boolean isIncrementalMode();
 
-  public abstract void setIsNonTypesystemComputation();
+  public enum NonTypesystemComputationMode {
+    OFF,
+    ON_THE_FLY,
+    NORMAL
+  }
 
-  public abstract void resetIsNonTypesystemComputation();
+  public abstract boolean setNonTypesystemComputationMode(@NotNull NonTypesystemComputationMode mode);
 
-  public abstract boolean isNonTypesystemComputation();
+  @NotNull
+  public abstract NonTypesystemComputationMode getNonTypesystemComputationMode();
+
+  /**
+   * @deprecated use {@link #setNonTypesystemComputationMode(NonTypesystemComputationMode)}
+   */
+  @ToRemove(version = 2020.2)
+  @Deprecated
+  public /*final*/ void setIsNonTypesystemComputation() {
+    setNonTypesystemComputationMode(NonTypesystemComputationMode.NORMAL);
+  }
+
+  /**
+   * @deprecated use {@link #setNonTypesystemComputationMode(NonTypesystemComputationMode)}
+   */
+  @ToRemove(version = 2020.2)
+  @Deprecated
+  public /*final*/ void resetIsNonTypesystemComputation() {
+    setNonTypesystemComputationMode(NonTypesystemComputationMode.OFF);
+  }
+
+  public /*final*/ boolean isNonTypesystemComputation() {
+    return getNonTypesystemComputationMode() != NonTypesystemComputationMode.OFF;
+  }
 
   //errors reporting
   public abstract IErrorReporter reportTypeError(SNode nodeWithError, String errorString, String ruleModel, String ruleId, QuickFixProvider intentionProvider, MessageTarget errorTarget);

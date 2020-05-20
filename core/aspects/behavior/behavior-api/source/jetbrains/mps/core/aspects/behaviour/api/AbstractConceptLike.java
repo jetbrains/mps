@@ -18,7 +18,9 @@ package jetbrains.mps.core.aspects.behaviour.api;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Unites the concept hierarchy (sources node<>/deployed SAbstractConcept)
@@ -26,16 +28,31 @@ import java.util.List;
  * @author apyshkin
  */
 public interface AbstractConceptLike {
-  @NotNull
-  String getName();
+  @NotNull String getName();
 
-  @NotNull
-  List<InterfaceConceptLike> getSuperInterfaces();
+  @NotNull List<InterfaceConceptLike> getSuperInterfaces();
+
+  @NotNull default <C extends AbstractConceptLike> List<C> getImmediateParents() {
+    return getSuperInterfaces().stream()
+                               .map(it -> (C) it)
+                               .collect(Collectors.toList());
+  }
 
   interface InterfaceConceptLike extends AbstractConceptLike {
   }
 
   interface ConceptLike extends AbstractConceptLike {
+    @NotNull
+    @Override
+    default <C extends AbstractConceptLike> List<C> getImmediateParents() {
+      List<C> res = AbstractConceptLike.super.getImmediateParents();
+      ConceptLike superConcept = getSuperConcept();
+      if (superConcept != null) {
+        res.add((C) superConcept);
+      }
+      return res;
+    }
+
     boolean isAbstract();
 
     /**

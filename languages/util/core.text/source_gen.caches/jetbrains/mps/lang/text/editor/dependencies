@@ -400,7 +400,6 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.lang.text.behavior.TextElement__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorComponent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.selection.SelectionInfoImpl" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.selection.SelectionRestoreException" />

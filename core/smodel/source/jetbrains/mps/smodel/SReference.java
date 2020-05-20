@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -190,7 +190,15 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
         if (!ourErrorReportedRefs.contains(this)) {
           ourErrorReportedRefs.add(this);
 
-          String msg = String.format("Could not resolve reference '%s' from %s.", getRole(), getSourceNode());
+          // beware, don't use node.getPresentation() or toString() (which may invoke getPresentation()) to represent a source node
+          // as it ends up in behavior method that may try to access references we are about to report as broken (see MPS-28126 and related)
+          // Perhaps, even getName() is bad (getProperty(SNodeUtil.INamedConcept_name) might be better) as smodel.SNode.getName impl goes through
+          // SNodeAccessUtil which may trigger property constraint execution.
+          String srcNodePresentation = getSourceNode().getName();
+          if (srcNodePresentation == null) {
+            srcNodePresentation = String.format("<unnamed> %s[%s] (%s)", getSourceNode().getConcept().getName(), getSourceNode().getNodeId(), model == null ? "detached" : model.getName());
+          }
+          String msg = String.format("Could not resolve reference '%s' from %s.", getRole(), srcNodePresentation);
           msg += "\n" + getSourceNode().getReference();
           if (message != null) {
             msg += "\n" + " -- " + message;

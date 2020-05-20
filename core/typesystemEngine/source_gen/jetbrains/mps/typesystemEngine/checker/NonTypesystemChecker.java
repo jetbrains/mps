@@ -43,10 +43,10 @@ public class NonTypesystemChecker extends IChecker.AbstractRootChecker<NodeRepor
         // update the types first 
         context.checkIfNotChecked(root, false);
         try {
-          context.setIsNonTypesystemComputation();
+          context.setNonTypesystemComputationMode(TypeCheckingContext.NonTypesystemComputationMode.NORMAL);
           typesComponent.applyNonTypesystemRulesToRoot(context);
         } finally {
-          context.resetIsNonTypesystemComputation();
+          context.setNonTypesystemComputationMode(TypeCheckingContext.NonTypesystemComputationMode.OFF);
         }
 
         Set<Pair<SNode, List<IErrorReporter>>> nodesWithErrors = context.getNodesWithErrors(false);

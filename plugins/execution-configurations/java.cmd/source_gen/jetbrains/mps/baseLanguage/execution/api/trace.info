@@ -15,7 +15,6 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:fc6b4266-fe93-4e02-bc36-aebff4c903c3(jetbrains.mps.baseLanguage.execution.api)/1240470842553275009">
     <file name="Java_Command.java">
@@ -240,7 +239,7 @@
       <node id="1240470842553275398" at="340,0,346,0" concept="12" trace="check_yvpt_a4a0a0e#(Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_0;)Ljava/lang/String;" />
       <node id="1240470842553275406" at="346,0,352,0" concept="12" trace="check_yvpt_a0a0f0a0a4#(Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_0;)Ljava/lang/String;" />
       <node id="1240470842553275411" at="352,0,358,0" concept="12" trace="check_yvpt_a0a5a0a0e#(Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_0;)Ljava/lang/String;" />
-      <node id="1240470842553275166" at="144,43,151,7" concept="16" />
+      <node id="1240470842553275166" at="144,43,151,7" concept="15" />
       <node id="8614586468290071230" at="222,126,229,11" concept="5" />
       <node id="1240470842553275477" at="235,0,242,0" concept="12" trace="getMaxCommandLine#()I" />
       <node id="1240470842553275035" at="116,83,124,25" concept="8" />
@@ -577,7 +576,7 @@
       <node id="1240470842553519862" at="73,0,76,0" concept="6" trace="setWorkingDirectory#(Ljava/lang/String;)V" />
       <node id="1240470842553519874" at="76,0,79,0" concept="6" trace="getWorkingDirectory#()Ljava/lang/String;" />
       <node id="1240470842553519882" at="79,0,82,0" concept="6" trace="setUseAlternativeJre#(Z)V" />
-      <node id="1240470842553519898" at="82,41,88,5" concept="16" />
+      <node id="1240470842553519898" at="82,41,88,5" concept="15" />
       <node id="1240470842553519786" at="48,0,55,0" concept="6" trace="getAlternativeJre#()Ljava/lang/String;" />
       <node id="1240470842553519894" at="82,0,90,0" concept="6" trace="getUseAlternativeJre#()Z" />
       <scope id="1240470842553519759" at="9,30,10,12" />
@@ -890,7 +889,7 @@
       <node id="7500974686090462458" at="92,0,95,0" concept="6" trace="createCloneTemplate#()Ljetbrains/mps/baseLanguage/execution/api/JavaRunParameters_Configuration;" />
       <node id="7500974686090462458" at="95,0,98,0" concept="6" trace="getEditor#()Ljetbrains/mps/baseLanguage/execution/api/JavaRunParameters_Configuration_Editor;" />
       <node id="7500974686090462458" at="29,0,33,0" concept="6" trace="writeExternal#(Lorg/jdom/Element;)V" />
-      <node id="695186566913727604" at="44,26,49,7" concept="16" />
+      <node id="695186566913727604" at="44,26,49,7" concept="15" />
       <node id="7500974686090462458" at="34,0,41,0" concept="6" trace="readExternal#(Lorg/jdom/Element;)V" />
       <node id="695186566913694230" at="43,46,50,5" concept="5" />
       <node id="7500974686090462458" at="79,0,87,0" concept="6" trace="clone#()Ljava/lang/Object;" />
@@ -916,9 +915,6 @@
         <var name="context" id="7500974686090462458" />
       </scope>
       <scope id="7500974686090462458" at="56,9,59,48" />
-      <scope id="7500974686090462458" at="60,0,63,7">
-        <var name="ex" id="7500974686090462458" />
-      </scope>
       <scope id="7500974686090462458" at="60,45,63,7" />
       <scope id="7500974686090462458" at="68,0,71,0" />
       <scope id="7500974686090462458" at="72,0,75,0">
@@ -933,6 +929,9 @@
         <var name="element" id="7500974686090462458" />
       </scope>
       <scope id="7500974686090462458" at="35,73,39,83" />
+      <scope id="7500974686090462458" at="60,5,64,5">
+        <var name="ex" id="7500974686090462458" />
+      </scope>
       <scope id="695186566913694232" at="44,26,49,7" />
       <scope id="7500974686090462458" at="80,61,85,19">
         <var name="state" id="7500974686090462458" />

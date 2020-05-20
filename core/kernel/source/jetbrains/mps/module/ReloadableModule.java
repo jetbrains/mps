@@ -111,6 +111,11 @@ public interface ReloadableModule extends SModule {
   }
 
   /**
+   * @return the hosting CLM, which offers a control over modules deployment
+   */
+  @NotNull ClassLoaderManager getCLM();
+
+  /**
    * @return not null classloader, if a specific module-related class loader is not found than the system classloader is returned
    */
   @NotNull

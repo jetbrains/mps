@@ -21,6 +21,7 @@ import com.intellij.openapi.application.ModalityInvokator;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.application.TransactionGuard;
 import com.intellij.openapi.application.TransactionGuardImpl;
+import com.intellij.util.ConcurrencyUtil;
 import com.intellij.util.ReflectionUtil;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.smodel.EDTExecutor.Task;
@@ -62,8 +63,9 @@ import static jetbrains.mps.smodel.EDTExecutor.MAX_SINGLE_EXECUTION_TIME_MS;
  */
 final class EDTExecutorInternal implements Disposable {
   private static final Logger LOG = LogManager.getLogger(EDTExecutorInternal.class);
+  private static final String EXECUTOR_NAME = "MPS EDT Executor";
 
-  private final ScheduledExecutorService EXECUTOR_SERVICE = Executors.newSingleThreadScheduledExecutor(createDaemonFactory());
+  private final ScheduledExecutorService EXECUTOR_SERVICE = ConcurrencyUtil.newSingleScheduledThreadExecutor(EXECUTOR_NAME);
 
   private final CloseableLock myLock = new CloseableLock(new ReentrantLock());
   // for #flushEvents method
@@ -80,11 +82,6 @@ final class EDTExecutorInternal implements Disposable {
   private boolean myDisposed = false; // access only in EDT!
 
   private final com.intellij.openapi.util.Condition<Boolean> myExpiredCondition = o -> myDisposed;
-
-  @NotNull
-  private static ThreadFactory createDaemonFactory() {
-    return new NamedThreadFactory(WorkbenchModelAccess.THREAD_GROUP_NAME + "-", true);
-  }
 
   void scheduleTask(Task task) {
     try (CloseableLock ignored = myLock.lock()) {
@@ -337,7 +334,7 @@ final class EDTExecutorInternal implements Disposable {
     try (CloseableLock ignored = myLock.lock()) {
       while (!myTaskQueue.isEmpty()) {
         try {
-          myQueueWasEmptyCondition.await();
+          myQueueWasEmptyCondition.await(200, TimeUnit.MILLISECONDS);
         } catch (InterruptedException ie) {
           LOG.warn("Interrupted while waiting for flush", ie);
           Thread.currentThread().interrupt();

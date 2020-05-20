@@ -27,6 +27,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class CheckExtendedClassIsImported_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public CheckExtendedClassIsImported_NonTypesystemRule() {
   }
+  @Override
+  public boolean applyOnTheFly() {
+    return false;
+  }
   public void applyRule(final SNode classifierType, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode classifier = SLinkOperations.getTarget(classifierType, LINKS.classifier$pQ_R);
     if (classifier == null) {

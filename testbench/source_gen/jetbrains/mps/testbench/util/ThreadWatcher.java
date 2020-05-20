@@ -64,6 +64,8 @@ public class ThreadWatcher implements Output {
       // com.intellij.execution.process.ProcessIOExecutorService 
       builder.append("|(I/O pool [0-9]+)");
 
+      builder.append("|(JobScheduler FJ pool.*)");
+
       // com.intellij.psi.impl.DocumentCommitThread 
       builder.append("|(Document Committing Pool)");
 
@@ -72,6 +74,9 @@ public class ThreadWatcher implements Output {
 
       // com.intellij.openapi.project.CacheUpdateRunner#createRunnable 
       builder.append("|(Indexing)");
+
+      // java.util.concurrent.ForkJoinPool#workerNamePrefix 
+      builder.append("|(ForkJoinPool.*)");
       // -------------------------------- 
 
 
@@ -81,7 +86,7 @@ public class ThreadWatcher implements Output {
       builder.append("|(MPS interrupting thread)");
 
       // jetbrains.mps.smodel.EDTExecutorInternal 
-      builder.append("|(MPS EDT Executor Thread.*)");
+      builder.append("|(MPS EDT Executor.*)");
 
       // jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry 
       builder.append("|(ChangesManager command queue)");

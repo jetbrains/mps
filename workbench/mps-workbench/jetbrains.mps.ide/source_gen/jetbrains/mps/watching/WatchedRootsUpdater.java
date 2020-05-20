@@ -10,7 +10,6 @@ import java.util.Map;
 import jetbrains.mps.library.Library;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import java.util.HashMap;
-import jetbrains.mps.ide.platform.watching.WatchedRoots;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerListener;
 import com.intellij.util.messages.MessageBusConnection;
@@ -35,16 +34,14 @@ public class WatchedRootsUpdater implements Disposable {
   private final ClassLoaderManager myClassLoaderManager;
   private final Map<Library, LocalFileSystem.WatchRequest> myLibrariesRequests = new HashMap<Library, LocalFileSystem.WatchRequest>();
   private final Map<Library, LocalFileSystem.WatchRequest> myProjectLibrariesRequests = new HashMap<Library, LocalFileSystem.WatchRequest>();
-  private final WatchedRoots myWatchedRootsBase;
   private final ProjectManager myProjectManager;
   private ProjectManagerListener myProjectManagerListener;
   private final MessageBusConnection myConnection;
 
-  public WatchedRootsUpdater(WatchedRoots watchedRoots, MPSCoreComponents coreComponents, AdditionalLibrariesManager libraryManager, ProjectManager projectManager) {
+  public WatchedRootsUpdater(MPSCoreComponents coreComponents, AdditionalLibrariesManager libraryManager, ProjectManager projectManager) {
     myLibraryManager = libraryManager;
     myProjectManager = projectManager;
     myClassLoaderManager = coreComponents.getClassLoaderManager();
-    myWatchedRootsBase = watchedRoots;
 
     processLibrariesChange();
     myProjectManagerListener = new ProjectManagerListener() {

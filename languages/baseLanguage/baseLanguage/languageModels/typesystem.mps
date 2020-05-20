@@ -583,6 +583,7 @@
         <child id="1195213635060" name="body" index="18ibNy" />
       </concept>
       <concept id="1195214364922" name="jetbrains.mps.lang.typesystem.structure.NonTypesystemRule" flags="ig" index="18kY7G">
+        <property id="7181286126212894140" name="doNotApplyOnTheFly" index="1$Xk0j" />
         <child id="2329696648448631592" name="overridenRules" index="dp_RE" />
       </concept>
       <concept id="1188811367543" name="jetbrains.mps.lang.typesystem.structure.ComparisonRule" flags="ig" index="3aFulz">
@@ -57480,6 +57481,7 @@
   </node>
   <node concept="18kY7G" id="7juMyjbyBUD">
     <property role="TrG5h" value="CheckExtendedClassIsImported" />
+    <property role="1$Xk0j" value="true" />
     <node concept="3clFbS" id="7juMyjbyC3I" role="18ibNy">
       <node concept="3cpWs8" id="7juMyjbzQ3l" role="3cqZAp">
         <node concept="3cpWsn" id="7juMyjbzQ3m" role="3cpWs9">
@@ -62252,6 +62254,68 @@
     <property role="TrG5h" value="MethodCallsFixer_Rule" />
     <property role="3GE5qa" value="classifiers.base" />
     <node concept="3clFbS" id="6S5AcYEJrdZ" role="18ibNy">
+      <node concept="3SKdUt" id="4VpcCIx9IyM" role="3cqZAp">
+        <node concept="1PaTwC" id="4VpcCIx9IyN" role="1aUNEU">
+          <node concept="3oM_SD" id="4VpcCIx9ICG" role="1PaTwD">
+            <property role="3oM_SC" value="fixme" />
+          </node>
+          <node concept="3oM_SD" id="4VpcCIx9ICI" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="4VpcCIx9ICL" role="1PaTwD">
+            <property role="3oM_SC" value="longest" />
+          </node>
+          <node concept="3oM_SD" id="4VpcCIx9ICP" role="1PaTwD">
+            <property role="3oM_SC" value="rule" />
+          </node>
+          <node concept="3oM_SD" id="4VpcCIx9ICU" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="4VpcCIx9ID0" role="1PaTwD">
+            <property role="3oM_SC" value="bl" />
+          </node>
+          <node concept="3oM_SD" id="4VpcCIx9ID7" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="4VpcCIx9IDf" role="1PaTwD">
+            <property role="3oM_SC" value="2020.1" />
+          </node>
+        </node>
+      </node>
+      <node concept="3SKdUt" id="4VpcCIx9IXa" role="3cqZAp">
+        <node concept="1PaTwC" id="4VpcCIx9IXb" role="1aUNEU">
+          <node concept="3oM_SD" id="4VpcCIx9IXc" role="1PaTwD">
+            <property role="3oM_SC" value="we" />
+          </node>
+          <node concept="3oM_SD" id="4VpcCIx9J3b" role="1PaTwD">
+            <property role="3oM_SC" value="should" />
+          </node>
+          <node concept="3oM_SD" id="4VpcCIx9J3e" role="1PaTwD">
+            <property role="3oM_SC" value="consider" />
+          </node>
+          <node concept="3oM_SD" id="4VpcCIx9J3Z" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="4VpcCIx9J3i" role="1PaTwD">
+            <property role="3oM_SC" value="softer" />
+          </node>
+          <node concept="3oM_SD" id="4VpcCIx9J3n" role="1PaTwD">
+            <property role="3oM_SC" value="strategy" />
+          </node>
+          <node concept="3oM_SD" id="4VpcCIx9J3t" role="1PaTwD">
+            <property role="3oM_SC" value="for" />
+          </node>
+          <node concept="3oM_SD" id="4VpcCIx9J3$" role="1PaTwD">
+            <property role="3oM_SC" value="auto-fixing" />
+          </node>
+          <node concept="3oM_SD" id="4VpcCIx9J3G" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="4VpcCIx9J3P" role="1PaTwD">
+            <property role="3oM_SC" value="references" />
+          </node>
+        </node>
+      </node>
       <node concept="3cpWs8" id="36YhQHIepzg" role="3cqZAp">
         <node concept="3cpWsn" id="36YhQHIepzh" role="3cpWs9">
           <property role="TrG5h" value="resolveResult" />
@@ -62373,7 +62437,7 @@
                     </node>
                   </node>
                   <node concept="Xl_RD" id="KgjTrBej8U" role="2MkJ7o">
-                    <property role="Xl_RC" value="Reference to wrong overriden method" />
+                    <property role="Xl_RC" value="Reference to wrong overridden method" />
                   </node>
                   <node concept="1YBJjd" id="KgjTrBej8T" role="1urrMF">
                     <ref role="1YBMHb" node="6S5AcYEJre1" resolve="methodCallNode" />

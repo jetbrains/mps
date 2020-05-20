@@ -57,6 +57,7 @@ public class ModulesReloadTest extends ModuleMpsTest {
   private ClassLoaderManager myManager;
 
   private static final String CLASS_TO_LOAD = "Test";
+
   private static final File TEMP_DIR = createTempDir();
   private static final String TEMP_DIR_PATH = getTempDirPath();
   private final FacetFactory FACET_FACTORY = new FacetFactory() {
@@ -73,11 +74,14 @@ public class ModulesReloadTest extends ModuleMpsTest {
       return "Java";
     }
   };
-
   private static File createTempDir() {
     File tempDir = FileUtil.createTmpDir();
     Assume.assumeTrue("Cannot write the " + tempDir + " directory", tempDir.canRead());
     return tempDir;
+  }
+
+  public ClassLoaderManager getCLM() {
+    return myManager;
   }
 
   private static String getTempDirPath() {

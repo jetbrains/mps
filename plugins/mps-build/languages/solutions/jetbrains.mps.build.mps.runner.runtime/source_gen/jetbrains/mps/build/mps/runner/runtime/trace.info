@@ -17,8 +17,8 @@
   <root nodeRef="r:1b2cd1bd-ff2e-4ac0-b85e-b80fb38b3a02(jetbrains.mps.build.mps.runner.runtime)/4271560773252657739">
     <file name="MpsRunnerWorker.java">
       <node id="4271560773252667316" at="28,43,29,20" concept="11" />
-      <node id="3307120220353975269" at="33,45,34,98" concept="6" />
-      <node id="3307120220353975273" at="34,98,35,23" concept="2" />
+      <node id="3307120220353975269" at="33,45,34,91" concept="6" />
+      <node id="3307120220353975273" at="34,91,35,23" concept="2" />
       <node id="3307120220353975275" at="35,23,36,23" concept="7" />
       <node id="2220861080746504125" at="40,22,41,79" concept="6" />
       <node id="8729880431936126551" at="41,79,42,106" concept="6" />

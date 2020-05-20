@@ -24,10 +24,13 @@ import java.util.List;
 import java.util.Set;
 
 /**
+ * Caching C3Star-like method resolution order
+ * Tries to return something in case of cycles.
+ *
  * @author apyshkin
  * @since 18.1
  */
-public final class SConceptC3StarMRO extends C3StarAncestorResolutionOrder<_SAbstractConcept> {
+public class SConceptC3StarMRO extends C3StarAncestorResolutionOrder<_SAbstractConcept> {
   private static final _SAbstractConcept BASECONCEPT_WRAP = _SAbstractConcept.wrap(SNodeUtil.concept_BaseConcept);
 
   @NotNull

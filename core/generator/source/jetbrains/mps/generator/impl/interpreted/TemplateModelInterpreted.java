@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,26 +47,20 @@ public class TemplateModelInterpreted extends TemplateModelBase {
   private final Collection<TemplateMappingConfiguration> myMappings;
   private final long myModelTimestamp;
 
-  public TemplateModelInterpreted(@NotNull TemplateModule module, @Nullable SModel model, @NotNull Class<? extends GeneratorQueryProvider> queryProviderClass) {
+  public TemplateModelInterpreted(@NotNull TemplateModule module, @NotNull SModel model, @NotNull Class<? extends GeneratorQueryProvider> queryProviderClass) {
     super(module);
     myModel = model;
-    if (myModel != null) {
-      mySwitches = new ArrayList<>();
-      myMappings = new ArrayList<>();
-      for (SNode root : myModel.getRootNodes()) {
-        SConcept c = root.getConcept();
-        if (RuleUtil.concept_TemplateSwitch.equals(c)) {
-          mySwitches.add(new TemplateSwitchMappingInterpreted(root));
-        } else if (RuleUtil.concept_MappingConfiguration.equals(c)) {
-          myMappings.add(new TemplateMappingConfigurationInterpreted(this, root));
-        }
+    mySwitches = new ArrayList<>();
+    myMappings = new ArrayList<>();
+    for (SNode root : myModel.getRootNodes()) {
+      SConcept c = root.getConcept();
+      if (RuleUtil.concept_TemplateSwitch.equals(c)) {
+        mySwitches.add(new TemplateSwitchMappingInterpreted(root));
+      } else if (RuleUtil.concept_MappingConfiguration.equals(c)) {
+        myMappings.add(new TemplateMappingConfigurationInterpreted(this, root));
       }
-      myModelTimestamp = myModel.getSource().getTimestamp();
-    } else {
-      mySwitches = Collections.emptyList();
-      myMappings = Collections.emptyList();
-      myModelTimestamp = -1;
     }
+    myModelTimestamp = myModel.getSource().getTimestamp();
     myQueryProviderClass = queryProviderClass;
   }
 
@@ -75,7 +69,7 @@ public class TemplateModelInterpreted extends TemplateModelBase {
    * 'public' just to give access from TemplateModuleInterpreted2
    */
   public boolean isStale() {
-    if (myModel == null || myModelTimestamp == -1) {
+    if (myModelTimestamp == -1) {
       return true;
     }
     return myModelTimestamp != myModel.getSource().getTimestamp();

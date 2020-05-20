@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import jetbrains.mps.generator.IGeneratorLogger.ProblemDescription;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 /**
  * Describes an issue with a particular template. Unlike {@link GenerationFailureException},
@@ -41,6 +42,12 @@ public class TemplateProcessingFailureException extends GenerationFailureExcepti
     }
     myExtras[0] = GeneratorUtil.describe(templateNode, "template node");
     setTemplateModelLocation(templateNode.getReference());
+  }
+
+  public TemplateProcessingFailureException(@NotNull SNodeReference templateNode, @NotNull String message, @Nullable ProblemDescription... extras) {
+    super(message);
+    myExtras = extras;
+    setTemplateModelLocation(templateNode);
   }
 
   public ProblemDescription[] asProblemDescription() {

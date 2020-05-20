@@ -60,7 +60,7 @@ import org.jetbrains.mps.openapi.model.SModel;
   }
 
   private boolean isProjectMigrateableModule(@NotNull SModule module) {
-    return myMpsProject.getProjectModulesWithGenerators().contains(module) && MigrationModuleUtil.isModuleMigrateable(module);
+    return myMpsProject.isProjectModule(module) && MigrationModuleUtil.isModuleMigrateable(module);
   }
 
   private void triggerOnModuleChanged(SModule module) {

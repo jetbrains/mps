@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -144,7 +144,7 @@ public abstract class Project implements MPSModuleOwner, IProject {
   }
 
   // AP todo remove from Project
-  public final boolean isProjectModule(@NotNull SModule module) {
+  public boolean isProjectModule(@NotNull SModule module) {
     return getProjectModules().contains(module);
   }
 

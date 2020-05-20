@@ -38,6 +38,7 @@ public class Launcher {
       }
     }
     System.setProperty("idea.additional.classpath", getAdditionalMPSClasspathString());
+    System.setProperty("idea.platform.prefix", "Idea");
     Main.main(args);
   }
 

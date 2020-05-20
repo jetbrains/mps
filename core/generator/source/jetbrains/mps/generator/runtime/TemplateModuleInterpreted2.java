@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,12 +29,13 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.Map.Entry;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Provisional TM implementation for interpreted generators, with module activators ({@link jetbrains.mps.smodel.language.GeneratorRuntime} instances)
@@ -75,13 +76,21 @@ public abstract class TemplateModuleInterpreted2 extends TemplateModuleBase {
         myModelWatchDog.watchIsEnded();
       }
       myModelWatchDog = new WatchModelChanges();
-      myModels = tm.myModels.entrySet().stream().map(e -> {
+      myModels = new ArrayList<>(tm.myModels.size());
+      for (Entry<SModelId, Class<? extends GeneratorQueryProvider>> e : tm.myModels.entrySet()) {
         SModel templateModel = myGenerator.getModel(e.getKey());
+        if (templateModel == null) {
+          // I expect this to be the case when a template model has been removed but generator module has not been rebuilt yet,
+          // old class reporting reference of non-existent model. Perhaps, shall modify TemplateModelInterpreted, instead, to tolerate
+          // null model (would need to passs e.getKey():SModelReference in there so that TMI could answer essential bits and not
+          // fail with NPS like in MPS-31463
+          continue;
+        }
         // XXX need to account for the fact TMI cons reads templateModel and therefore might trigger modelLoaded event.
         //     perhaps, shall construct TMI first, then watch().
         myModelWatchDog.watch(templateModel);
-        return new TemplateModelInterpreted(this, templateModel, e.getValue());
-      }).collect(Collectors.toList());
+        myModels.add(new TemplateModelInterpreted(this, templateModel, e.getValue()));
+      }
     }
     return Collections.unmodifiableCollection(myModels);
   }

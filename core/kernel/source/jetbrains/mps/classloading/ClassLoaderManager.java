@@ -22,6 +22,7 @@ import jetbrains.mps.module.ReloadableModule.DeploymentStatus;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.tempmodel.TempModule;
+import jetbrains.mps.util.ArrayWrapper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.ComputeRunnable;
 import jetbrains.mps.util.NotCondition;
@@ -39,9 +40,11 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 import org.jetbrains.mps.util.Condition;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -518,6 +521,19 @@ public class ClassLoaderManager implements CoreComponent {
     } finally {
       monitor.done();
     }
+  }
+
+  public static void reload(@NotNull List<SModule> modules) {
+    List<ReloadableModule> reloadableModules = new ArrayList<>();
+    for (SModule module : modules) {
+      if (module instanceof ReloadableModule) {
+        reloadableModules.add((ReloadableModule) module);
+      }
+    }
+    if (reloadableModules.isEmpty()) return;
+    ReloadableModule reloadableModule = reloadableModules.get(0);
+    ClassLoaderManager clm = reloadableModule.getCLM();
+    clm.reloadModules(reloadableModules);
   }
 
   /**

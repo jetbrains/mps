@@ -53,7 +53,7 @@ public final class PickOneOfManyGenerators_Intention extends AbstractIntentionDe
     if ((SLinkOperations.getTarget(node, LINKS.sourceLanguage$vc9u) == null)) {
       return false;
     }
-    SNode project = SNodeOperations.as(SNodeOperations.getContainingRoot(node), CONCEPTS.BuildProject$BF);
+    SNode project = SNodeOperations.as(SNodeOperations.getContainingRoot(SLinkOperations.getTarget(node, LINKS.sourceLanguage$vc9u)), CONCEPTS.BuildProject$BF);
     if ((project == null)) {
       return false;
     }
@@ -76,7 +76,7 @@ public final class PickOneOfManyGenerators_Intention extends AbstractIntentionDe
     return list;
   }
   private List<GeneratorDescriptor> parameter(final SNode node, final EditorContext editorContext) {
-    SNode project = SNodeOperations.as(SNodeOperations.getContainingRoot(node), CONCEPTS.BuildProject$BF);
+    SNode project = SNodeOperations.as(SNodeOperations.getContainingRoot(SLinkOperations.getTarget(node, LINKS.sourceLanguage$vc9u)), CONCEPTS.BuildProject$BF);
     if ((project == null)) {
       return Collections.emptyList();
     }

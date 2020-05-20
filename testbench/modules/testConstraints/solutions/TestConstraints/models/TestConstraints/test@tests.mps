@@ -105,7 +105,7 @@
     </language>
   </registry>
   <node concept="1lH9Xt" id="52TFb$IPN3$">
-    <property role="TrG5h" value="ConstraintsInheritence" />
+    <property role="TrG5h" value="ConstraintsInheritance" />
     <node concept="1qefOq" id="52TFb$IPN3C" role="1SKRRt">
       <node concept="1YrDLd" id="52TFb$IQ2he" role="1qenE9">
         <property role="1YrDQh" value="true" />

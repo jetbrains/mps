@@ -246,8 +246,8 @@
     <property role="9BnSM" value="JetBrains" />
     <property role="1qHB85" value="/MPS_16.png" />
     <property role="TrG5h" value="BaseLanguage Debugger Support" />
-    <property role="9BnSO" value="201.1" />
-    <property role="9BnSK" value="2020.1" />
+    <property role="9BnSO" value="202.1" />
+    <property role="9BnSK" value="2020.2" />
     <node concept="2Tc6Op" id="5ODR6dNebC9" role="2Tc6Ou">
       <property role="2Tc6Oq" value="jetbrains.mps.debugger.java" />
     </node>

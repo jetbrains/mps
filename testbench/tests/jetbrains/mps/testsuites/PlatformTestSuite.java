@@ -64,7 +64,8 @@ public class PlatformTestSuite extends OutputWatchingTestSuite {
                                              .setCreatePluginClassLoaders(false)
                                              .withVcsPlugin()
                                              .withBuildPlugin()
-                                             .withMigrationPlugin();
+                                             .withMigrationPlugin()
+                                             .withTestModeOn();
     ourEnvironment = new IdeaEnvironment(cfg);
     ourEnvironment.init();
   }

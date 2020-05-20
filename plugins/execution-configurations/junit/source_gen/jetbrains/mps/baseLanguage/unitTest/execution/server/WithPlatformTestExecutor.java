@@ -81,7 +81,7 @@ public class WithPlatformTestExecutor extends DefaultTestExecutor {
     for (IMapping<String, String> m : MapSequence.fromMap(startupArguments.getMacros())) {
       cfg.addMacro(m.key(), new File(m.value()));
     }
-    IdeaEnvironment rv = new IdeaEnvironment(cfg);
+    IdeaEnvironment rv = new IdeaEnvironment(cfg.withTestModeOn());
     rv.init();
     return rv;
   }

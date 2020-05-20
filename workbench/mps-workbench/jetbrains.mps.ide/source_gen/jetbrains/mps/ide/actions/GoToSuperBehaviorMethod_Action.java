@@ -35,7 +35,7 @@ public class GoToSuperBehaviorMethod_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public GoToSuperBehaviorMethod_Action() {
-    super("Go to Super Methods", "", ICON);
+    super("Go to Super Method(s)", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }

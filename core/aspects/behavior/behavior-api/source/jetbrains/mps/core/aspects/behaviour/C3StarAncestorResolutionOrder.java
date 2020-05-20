@@ -34,16 +34,6 @@ import java.util.List;
 public class C3StarAncestorResolutionOrder<C extends AbstractConceptLike> extends AbstractC3StarAncestorResolutionOrder<C> {
   @NotNull
   protected final List<C> getImmediateParents(@NotNull C concept) {
-    List<C> immediateParents = new ArrayList<>();
-    if (concept instanceof InterfaceConceptLike) {
-      immediateParents.addAll((List<C>) concept.getSuperInterfaces());
-    } else if (concept instanceof ConceptLike) {
-      ConceptLike superConcept = ((ConceptLike) concept).getSuperConcept();
-      if (superConcept != null) {
-        immediateParents.add((C) superConcept);
-      }
-      immediateParents.addAll((List<C>) concept.getSuperInterfaces());
-    }
-    return immediateParents;
+    return concept.getImmediateParents();
   }
 }

@@ -40,13 +40,14 @@ import java.util.concurrent.ConcurrentHashMap;
 public class BehaviorRegistryImpl implements BehaviorRegistry {
   private static final Logger LOG = LogManager.getLogger(BehaviorRegistryImpl.class);
 
-  private final CachingAncestorResolutionOrder<_SAbstractConcept> myMRO = new SConceptC3StarMRO();
+  private final CachingAncestorResolutionOrder<_SAbstractConcept> myMRO;
   private final ConceptInLoadingStorage<SAbstractConcept> myStorage = new ConceptInLoadingStorage<>();
   private final Map<SAbstractConcept, BHDescriptor> myBHDescriptors = new ConcurrentHashMap<>();
   private final LanguageRegistry myLanguageRegistry;
 
-  public BehaviorRegistryImpl(LanguageRegistry languageRegistry) {
+  public BehaviorRegistryImpl(@NotNull LanguageRegistry languageRegistry, @NotNull CachingAncestorResolutionOrder<_SAbstractConcept> mro) {
     myLanguageRegistry = languageRegistry;
+    myMRO = mro;
     BHReflectionInit.initBHReflection(this);
   }
 

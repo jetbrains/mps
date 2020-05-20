@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,8 +21,6 @@ import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.ide.IdeBundle;
 import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.library.ModulesMiner.ModuleHandle;
-import jetbrains.mps.messages.Message;
-import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.ProjectBase;
@@ -194,7 +192,9 @@ public final class Renamer {
       return module;
     }
 
-    if (checkDescriptorFileExists(module)) {
+    if (checkDescriptorFileExists(module) && !isLanguageOwnedGenerator(module)) {
+      // for a generator module sharing descriptor file with its source language, no need to rename the file.
+      // Explicit project module management is not needed, too, as Project doesn't track generators owned by a language.
       myProject.removeModule(module);
       for (AbstractModule subModule : subModules) {
         myProject.removeModule(subModule);
@@ -265,6 +265,10 @@ public final class Renamer {
     }
 
     return module;
+  }
+
+  private boolean isLanguageOwnedGenerator(AbstractModule module) {
+    return module instanceof Generator && !((Generator) module).getModuleDescriptor().isStandaloneModule();
   }
 
   // TODO-TODO-DO
@@ -421,19 +425,24 @@ public final class Renamer {
       return Collections.emptyList();
     }
     repository.getModelAccess().runReadAction(() -> {
+      final IFile topModuleSourceDir = module.getModuleSourceDir();
+      // XXX why repo.getModules, not myProject.getModules? Do we care to rename bundled modules (project repo exposes all available modules)
       for (SModule repositoryModule : repository.getModules()) {
         if (!(repositoryModule instanceof AbstractModule)) {
           continue;
         }
 
         IFile moduleSourceDir = ((AbstractModule) repositoryModule).getModuleSourceDir();
-        if (repositoryModule.isPackaged() || repositoryModule.isReadOnly() ||
-           repositoryModule instanceof Generator || moduleSourceDir == null ||
+        if (moduleSourceDir == null || repositoryModule.isPackaged() || repositoryModule.isReadOnly() ||
            repositoryModule.equals(module)) {
           continue;
         }
 
-        if (moduleSourceDir.isDescendant(module.getModuleSourceDir())) {
+        if (moduleSourceDir.isDescendant(topModuleSourceDir) && !moduleSourceDir.equals(topModuleSourceDir)) {
+          // could be a Generator, owned by a Language and sharing same module source dir, in this case don't treat it
+          // as submodule (renameModuleName() would deal with Language-owned generators). If, however, it's a
+          // generator that lives under language dir (e.g. extracted into standalone, but residing under language-dir/generator/),
+          // we have to treat it as a submodule to get renamed as well.
           subModules.add((AbstractModule) repositoryModule);
         }
       }

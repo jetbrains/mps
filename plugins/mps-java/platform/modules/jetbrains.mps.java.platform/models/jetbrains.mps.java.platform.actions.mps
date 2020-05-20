@@ -15286,7 +15286,7 @@
     <property role="TrG5h" value="GoToSuperClassMethod" />
     <property role="72QZ$" value="true" />
     <property role="3GE5qa" value="overridemethod" />
-    <property role="2uzpH1" value="Go to Super Method" />
+    <property role="2uzpH1" value="Java Go to Super Method" />
     <property role="1teQrl" value="true" />
     <node concept="2XrIbr" id="4CAk1UdgKbD" role="32lrUH">
       <property role="TrG5h" value="captionFun" />
@@ -15685,7 +15685,7 @@
     <property role="TrG5h" value="GoToInheritedClassifier" />
     <property role="72QZ$" value="true" />
     <property role="3GE5qa" value="overridemethod" />
-    <property role="2uzpH1" value="Implementation(s)" />
+    <property role="2uzpH1" value="Java Implementation(s)" />
     <property role="1teQrl" value="true" />
     <node concept="2XrIbr" id="6fXRpC8kMQb" role="32lrUH">
       <property role="TrG5h" value="captionFun" />
@@ -16219,7 +16219,7 @@
   <node concept="sE7Ow" id="2rUHgdX3hA7">
     <property role="TrG5h" value="GoToImplementationClassMethod" />
     <property role="72QZ$" value="true" />
-    <property role="2uzpH1" value="Implementation(s)" />
+    <property role="2uzpH1" value="Java Method Implementation(s)" />
     <property role="3GE5qa" value="overridemethod" />
     <property role="1teQrl" value="true" />
     <node concept="2XrIbr" id="2WqrB2Puq2s" role="32lrUH">

@@ -2109,9 +2109,14 @@
             </node>
             <node concept="2ShNRf" id="1_D5Bk1SxwM" role="33vP2m">
               <node concept="1pGfFk" id="1_D5Bk1SxYZ" role="2ShVmc">
-                <ref role="37wK5l" to="cky9:6rx4kZDkRjb" resolve="IdeaEnvironment" />
-                <node concept="37vLTw" id="1_D5Bk1SJqT" role="37wK5m">
-                  <ref role="3cqZAo" node="1_D5Bk1SJqR" resolve="cfg" />
+                <ref role="37wK5l" to="cky9:4OPNMy2crcG" resolve="IdeaEnvironment" />
+                <node concept="2OqwBi" id="28TMbOSFJNi" role="37wK5m">
+                  <node concept="37vLTw" id="1_D5Bk1SJqT" role="2Oq$k0">
+                    <ref role="3cqZAo" node="1_D5Bk1SJqR" resolve="cfg" />
+                  </node>
+                  <node concept="liA8E" id="28TMbOSFKDD" role="2OqNvi">
+                    <ref role="37wK5l" to="79ha:28TMbOSEVXt" resolve="withTestModeOn" />
+                  </node>
                 </node>
               </node>
             </node>

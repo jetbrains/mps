@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,23 +15,19 @@
  */
 package jetbrains.mps.repository;
 
-import com.intellij.openapi.vfs.newvfs.persistent.PersistentFS;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
-import jetbrains.mps.library.contributor.BootstrapLibraryContributor;
 import jetbrains.mps.library.contributor.PluginLibraryContributor;
-import jetbrains.mps.library.contributor.WorkbenchLibraryContributor;
 import jetbrains.mps.workbench.action.ApplicationPluginHolder;
 
 public final class RepositoryInPluginInitializer extends RepositoryInitializingComponentBase {
   @SuppressWarnings("UnusedParameters")
-  public RepositoryInPluginInitializer(FSNotificationsImprover improver,
-                                       MPSCoreComponents coreComponents,
+  public RepositoryInPluginInitializer(MPSCoreComponents coreComponents,
                                        ApplicationPluginHolder registryManager,
                                        IdeaPluginFacetComponent ideaPluginFacetComponent,
                                        IdeaFileSystem fs
   ) {
-    super(improver, coreComponents, registryManager, ideaPluginFacetComponent, fs);
+    super(coreComponents, registryManager, ideaPluginFacetComponent, fs);
     addContributor(new PluginLibraryContributor(getFS()));
   }
 }

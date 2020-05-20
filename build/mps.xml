@@ -63,7 +63,7 @@
     <mkdir dir="${build.tmp}/default/branding.jar/idea" />
     <echoxml file="${build.tmp}/default/branding.jar/idea/IdeaApplicationInfo.xml">
       <component>
-        <version major="2020" minor="1" eap="true" update-channel="MPS201EAP" />
+        <version major="2020" minor="2" eap="true" update-channel="MPS202EAP" />
         <company name="JetBrains s.r.o." url="https://www.jetbrains.com/?fromIDE" copyrightStart="2009" />
         <build number="${build.number}" date="${date}" />
         <logo url="/splash.png" textcolor="FFFFFF" progressColor="FFFFFF" progressX="117" progressY="280" progressHeight="3" />
@@ -83,7 +83,7 @@
         <support url="https://www.jetbrains.com/support/mps/index.html" />
         <feedback eap-url="https://www.jetbrains.com/feedback/feedback.jsp?product=mps" />
         <whatsnew url="https://www.jetbrains.com/mps/whatsnew/index.html" />
-        <keymap win="https://www.jetbrains.com/help/mps/2020.1/default-keymap-reference.html" mac="https://www.jetbrains.com/help/mps/2020.1/default-keymap-reference.html" />
+        <keymap win="https://www.jetbrains.com/help/mps/2020.2/default-keymap-reference.html" mac="https://www.jetbrains.com/help/mps/2020.2/default-keymap-reference.html" />
         <third-party url="http://www.jetbrains.org/" />
         <jetbrains-tv url="http://www.youtube.com/user/JetBrainsTV/search?query=MPS" />
         

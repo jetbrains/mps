@@ -28,13 +28,16 @@ public class EditorActionUtils {
   public EditorActionUtils() {
   }
   /*package*/ static boolean isReadonlyActionEnabled(EditorComponent editorComponent) {
-    return !(editorComponent.getNodeSubstituteChooser().isVisible()) && editorComponent.getSelectionManager().getSelection() != null;
+    return !(isPopupComponentActive(editorComponent)) && editorComponent.getSelectionManager().getSelection() != null;
   }
   public static boolean isWriteActionEnabled(EditorComponent editorComponent, Iterable<EditorCell> changingCells) {
     if (!(isReadonlyActionEnabled(editorComponent))) {
       return false;
     }
     return !(ReadOnlyUtil.isCellsReadOnlyInEditor(editorComponent, changingCells));
+  }
+  private static boolean isPopupComponentActive(EditorComponent editorComponent) {
+    return editorComponent.getNodeSubstituteChooser().isVisible() || editorComponent.isContextAssistantFocused();
   }
   /*package*/ static EditorCell getEditorCellToInsert(EditorComponent editorComponent) {
     Selection selection = editorComponent.getSelectionManager().getSelection();

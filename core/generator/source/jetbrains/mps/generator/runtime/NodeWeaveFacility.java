@@ -23,6 +23,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
 
 /**
+ * MPS 2020.1 generates a method with a signature matching TDWA2.weave(NodeWeaveFacility), which is no longer invoked in MPS 2020.2
+ * (TD.apply() with proper sink is in use, instead), therefore, this class could be deleted only once 2020.2 is out and no code referencing this class is there
+ *
  * Utility to perform weaving of a node.
  * Knows parent and anchor for nodes being weaved (either one by one or by means of another {@link #weaveTemplate(TemplateDeclaration) template}
  *
@@ -34,6 +37,7 @@ import org.jetbrains.mps.openapi.model.SNode;
  * @author Artem Tikhomirov
  * @since 3.3
  */
+@ToRemove(version = 2020.2)
 public interface NodeWeaveFacility {
 
   /**

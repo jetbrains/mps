@@ -3,12 +3,9 @@
   <persistence version="9" />
   <languages>
     <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
-    <use id="b1ab8c10-c118-4755-bf2a-cebab35cf533" name="tooltips" version="0" />
+    <use id="b1ab8c10-c118-4755-bf2a-cebab35cf533" name="jetbrains.mps.lang.editor.tooltips" version="0" />
   </languages>
   <imports>
-    <import index="bhcn" ref="r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(tooltips.structure)" />
-    <import index="g4nc" ref="r:eed912a6-16e8-466b-b48a-0e82310c46dd(tooltips.editor)" />
-    <import index="vbi9" ref="b1ab8c10-c118-4755-bf2a-cebab35cf533/i:f010101(tooltips/tooltips@descriptor)" />
     <import index="8psh" ref="r:785fbfdf-4d16-46ea-8112-f67d04b451d9(tooltips.example.structure)" implicit="true" />
   </imports>
   <registry>
@@ -38,8 +35,8 @@
         <reference id="1166049300910" name="conceptDeclaration" index="1XX52x" />
       </concept>
     </language>
-    <language id="b1ab8c10-c118-4755-bf2a-cebab35cf533" name="tooltips">
-      <concept id="1285659875393567816" name="tooltips.structure.CellModel_Tooltip" flags="ng" index="1j7BWu">
+    <language id="b1ab8c10-c118-4755-bf2a-cebab35cf533" name="jetbrains.mps.lang.editor.tooltips">
+      <concept id="1285659875393567816" name="jetbrains.mps.lang.editor.tooltips.structure.CellModel_Tooltip" flags="ng" index="1v6uyg">
         <property id="4804083432920625643" name="lazy" index="2oejA6" />
         <child id="3877544518697818164" name="tooltipCell" index="wsdo6" />
         <child id="9185659875393569181" name="visibleCell" index="1j7Clw" />
@@ -49,7 +46,7 @@
   <node concept="24kQdi" id="2Twa_fm5PR5">
     <ref role="1XX52x" to="8psh:2Twa_fm5PQU" resolve="List" />
     <node concept="3EZMnI" id="2Twa_fm5Slh" role="2wV5jI">
-      <node concept="1j7BWu" id="2Twa_fm5RI1" role="3EZMnx">
+      <node concept="1v6uyg" id="2Twa_fm5RI1" role="3EZMnx">
         <property role="2oejA6" value="true" />
         <node concept="3F0ifn" id="2Twa_fm5RI2" role="wsdo6">
           <property role="3F0ifm" value="i'm a tooltip" />
@@ -58,7 +55,7 @@
           <property role="3F0ifm" value="hover to see a tooltip" />
         </node>
       </node>
-      <node concept="1j7BWu" id="2Twa_fm5RI8" role="3EZMnx">
+      <node concept="1v6uyg" id="2Twa_fm5RI8" role="3EZMnx">
         <property role="2oejA6" value="true" />
         <node concept="3F0ifn" id="2Twa_fm5RI9" role="wsdo6">
           <property role="3F0ifm" value="the closer the cursor, the brighter the tooltip" />
@@ -78,7 +75,7 @@
         <node concept="3F0ifn" id="64OBqEtPvIm" role="3EZMnx">
           <property role="3F0ifm" value=":" />
         </node>
-        <node concept="1j7BWu" id="64OBqEtPvIw" role="3EZMnx">
+        <node concept="1v6uyg" id="64OBqEtPvIw" role="3EZMnx">
           <property role="2oejA6" value="true" />
           <node concept="3EZMnI" id="64OBqEtPvJ7" role="wsdo6">
             <node concept="2iRfu4" id="64OBqEtPvJ8" role="2iSdaV" />

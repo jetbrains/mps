@@ -35,19 +35,15 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class ReloadableModuleBase extends AbstractModule implements ReloadableModule {
   private final static Logger LOG = LogManager.getLogger(ReloadableModuleBase.class);
-  private final ClassLoaderManager myManager = ClassLoaderManager.getInstance();
+  private final ClassLoaderManager myManager = ClassLoaderManager.getInstance(); // to remove this I need to insert CLM into constructor and that is not an easy task
   private final List<SModuleDependenciesListener> myListeners = new CopyOnWriteArrayList<>();
 
-  protected ReloadableModuleBase() {
+  protected ReloadableModuleBase(){
     super();
   }
 
   protected ReloadableModuleBase(@Nullable IFile file) {
     super(file);
-  }
-
-  protected ReloadableModuleBase(@NotNull FileSystem fileSystem) {
-    super(fileSystem);
   }
 
   @NotNull
@@ -60,6 +56,12 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
   @Override
   public Class<?> getOwnClass(@NotNull String classFqName) throws ClassNotFoundException {
     return getClass(classFqName, true);
+  }
+
+  @NotNull
+  @Override
+  public ClassLoaderManager getCLM() {
+    return myManager;
   }
 
   @NotNull

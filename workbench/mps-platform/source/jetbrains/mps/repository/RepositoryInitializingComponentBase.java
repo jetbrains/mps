@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,6 @@ package jetbrains.mps.repository;
 
 import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.components.ServiceManager;
-import com.intellij.openapi.vfs.newvfs.ManagingFS;
-import com.intellij.openapi.vfs.newvfs.persistent.PersistentFS;
 import jetbrains.mps.InternalFlag;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
@@ -27,7 +25,6 @@ import jetbrains.mps.library.contributor.LibraryContributor;
 import jetbrains.mps.util.PathManager;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.VFSManager;
-import jetbrains.mps.vfs.iofs.file.LocalIoFileSystem;
 import jetbrains.mps.workbench.action.ApplicationPluginHolder;
 
 import java.util.ArrayList;
@@ -55,12 +52,12 @@ public class RepositoryInitializingComponentBase implements BaseComponent {
    * @param ideaPluginFacetComponent -- we want to load plugin library contributor after we have chosen the right idea plugin facet
    */
   @SuppressWarnings("UnusedParameters")
-  public RepositoryInitializingComponentBase(FSNotificationsImprover improver, //improve before loading any libs
-                                             MPSCoreComponents coreComponents,
+  public RepositoryInitializingComponentBase(MPSCoreComponents coreComponents,
                                              ApplicationPluginHolder registryManager,
                                              IdeaPluginFacetComponent ideaPluginFacetComponent,
                                              IdeaFileSystem fs
   ) {
+    ServiceManager.getService(FSNotificationsImprover.class); // Need this service to be initialized before other activity
     myLibraryInitializer = coreComponents.getLibraryInitializer();
     // FIXME why cons, not an abstract method invoked from initComponent() to populate contributors list?
     myFS = PathManager.isFromSources() ? fs : coreComponents.getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.JAVA_IO_FILE_FS);

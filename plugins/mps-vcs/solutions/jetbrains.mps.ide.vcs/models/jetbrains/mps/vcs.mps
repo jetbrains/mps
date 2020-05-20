@@ -2606,10 +2606,15 @@
             </node>
             <node concept="2ShNRf" id="nUYGvAWMta" role="33vP2m">
               <node concept="1pGfFk" id="nUYGvAX71W" role="2ShVmc">
-                <ref role="37wK5l" to="cky9:6rx4kZDkRjb" resolve="IdeaEnvironment" />
-                <node concept="2YIFZM" id="6LlhC3WKXaX" role="37wK5m">
-                  <ref role="1Pybhc" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
-                  <ref role="37wK5l" to="79ha:6rx4kZDkZ7z" resolve="defaultConfig" />
+                <ref role="37wK5l" to="cky9:4OPNMy2crcG" resolve="IdeaEnvironment" />
+                <node concept="2OqwBi" id="28TMbOSG0nC" role="37wK5m">
+                  <node concept="2YIFZM" id="6LlhC3WKXaX" role="2Oq$k0">
+                    <ref role="1Pybhc" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
+                    <ref role="37wK5l" to="79ha:6rx4kZDkZ7z" resolve="defaultConfig" />
+                  </node>
+                  <node concept="liA8E" id="28TMbOSG0y8" role="2OqNvi">
+                    <ref role="37wK5l" to="79ha:28TMbOSEVXt" resolve="withTestModeOn" />
+                  </node>
                 </node>
               </node>
             </node>

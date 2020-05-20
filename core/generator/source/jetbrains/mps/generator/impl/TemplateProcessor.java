@@ -39,7 +39,6 @@ import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateCallSite;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
-import jetbrains.mps.generator.runtime.TemplateSwitchMapping;
 import jetbrains.mps.generator.runtime.WeavingWithAnchor;
 import jetbrains.mps.generator.template.ITemplateProcessor;
 import jetbrains.mps.generator.template.IfMacroContext;
@@ -742,10 +741,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
       final SNodeReference switchPtr = templateSwitch.getReference();
       SNode newInputNode = getNewInputNode(templateContext);
       if (newInputNode == null) {
-        TemplateSwitchMapping tswitch = myTemplateProcessor.getGenerator().getSwitch(switchPtr);
-        if (tswitch != null) {
-          tswitch.processNull(templateContext.getEnvironment());
-        }
+        templateContext.getEnvironment().nullInputSwitch(switchPtr);
         return Collections.emptyList(); // skip template
       }
 

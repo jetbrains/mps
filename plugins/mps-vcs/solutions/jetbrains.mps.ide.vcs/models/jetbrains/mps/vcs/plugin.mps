@@ -2872,9 +2872,9 @@
     <property role="9BnSL" value="VCS features in MPS" />
     <property role="9BnSM" value="JetBrains" />
     <property role="TrG5h" value="VCS Integration for MPS" />
-    <property role="9BnSO" value="201.1" />
+    <property role="9BnSO" value="202.1" />
     <property role="1qHB85" value="/MPS_16.png" />
-    <property role="9BnSK" value="2020.1" />
+    <property role="9BnSK" value="2020.2" />
   </node>
   <node concept="1ESbSp" id="10cWl49AXwe">
     <property role="TrG5h" value="IDEAChangesViewPopup" />

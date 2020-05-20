@@ -220,9 +220,11 @@
   <dependency className="jetbrains.mps.ide.platform.watching.WatchedRoots">
     <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
     <classNode dependClassName="com.intellij.openapi.vfs.LocalFileSystem" />
+    <classNode dependClassName="com.intellij.openapi.vfs.impl.local.LocalFileSystemImpl" />
     <classNode dependClassName="java.lang.Integer" />
-    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.StackTraceElement" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.Thread" />
     <classNode dependClassName="java.util.HashMap" />
     <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
@@ -231,9 +233,7 @@
     <classNode dependClassName="org.apache.log4j.Level" />
     <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.apache.log4j.Logger" />
-    <classNode dependClassName="org.jetbrains.annotations.NonNls" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode extendsClassName="com.intellij.openapi.components.ApplicationComponent" />
   </dependency>
 </dependenciesRoot>
 

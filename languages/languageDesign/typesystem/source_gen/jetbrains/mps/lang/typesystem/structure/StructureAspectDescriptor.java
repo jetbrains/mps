@@ -1061,6 +1061,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
     b.origin("r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/1195214364922");
     b.version(2);
+    b.property("doNotApplyOnTheFly", 0x63a90daf075c4dbcL).type(PrimitiveTypeId.BOOLEAN).origin("7181286126212894140").done();
     b.aggregate("overridenRules", 0x2054bec22d32e328L).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2054bec22d01782eL).optional(true).ordered(true).multiple(true).origin("2329696648448631592").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     b.alias("Checking Rule");

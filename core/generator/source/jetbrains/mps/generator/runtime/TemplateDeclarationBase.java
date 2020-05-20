@@ -15,17 +15,13 @@
  */
 package jetbrains.mps.generator.runtime;
 
-import jetbrains.mps.generator.impl.CollectorSink;
 import jetbrains.mps.generator.impl.GenerationFailureException;
-import jetbrains.mps.util.annotation.ToRemove;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -46,18 +42,11 @@ public abstract class TemplateDeclarationBase implements TemplateDeclaration {
     myAggregationLinks = initAggregationLinks();
   }
 
-  @ToRemove(version = 0)
-  @Override
-  public Collection<SNode> apply(@NotNull TemplateExecutionEnvironment environment, @NotNull TemplateContext context) throws GenerationException {
-    // FIXME just provisional code until all uses of the method get replaced by apply(TC,AS)
-    CollectorSink s = new CollectorSink(new ArrayList<>());
-    apply(context, s);
-    return s.getCollected();
-  }
-
-  public Collection<SNode> weave(@NotNull NodeWeaveFacility weaveFacility) throws GenerationException {
-    // this code is for root templates which do not support weaving
-    throw new GenerationFailureException("This template doesn't support weaving");
+  protected TemplateDeclarationBase(MetaObjectContainer metaObjectContainer) {
+    myConcepts = metaObjectContainer.concepts();
+    myProperties = metaObjectContainer.properties();
+    myAssociationLinks = metaObjectContainer.associations();
+    myAggregationLinks = metaObjectContainer.aggregations();
   }
 
   /**

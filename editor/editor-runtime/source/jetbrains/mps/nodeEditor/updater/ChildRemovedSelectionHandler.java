@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 class ChildRemovedSelectionHandler extends ModelEventsSelectionHandler {
   private final SNode myParent;
   private final String myChildRole;
-  private int myChildIndex;
+  private final int myChildIndex;
 
   ChildRemovedSelectionHandler(@NotNull SNode parent, @NotNull String childRole, int childIndex) {
     myParent = parent;
@@ -38,11 +38,11 @@ class ChildRemovedSelectionHandler extends ModelEventsSelectionHandler {
 
   @Override
   void setEditorSelection(EditorComponent editorComponent, SNode lastSelectedNode) {
-    if (lastSelectedNode != null && lastSelectedNode.getModel() != null) {
+    if (lastSelectedNode != null && lastSelectedNode.getModel() != null && editorComponent.findNodeCell(lastSelectedNode) != null) {
       super.setEditorSelection(editorComponent, lastSelectedNode);
-      return;
+    } else {
+      doSetSelection(editorComponent);
     }
-    doSetSelection(editorComponent);
   }
 
   private void doSetSelection(EditorComponent editorComponent) {
