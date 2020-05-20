@@ -22,6 +22,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -68,7 +69,11 @@ public final class VariableDeclaration__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ static SNode deriveType_idhEwIVPz(@NotNull SNode __thisNode__, SNode expression) {
     SNode type = null;
     if (SNodeOperations.getParent(expression) == __thisNode__ && SNodeOperations.hasRole(expression, LINKS.initializer$KgD)) {
-      type = SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.type$pLrO));
+      if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.type$pLrO), CONCEPTS.UndefinedType$1H))) {
+        type = SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.type$pLrO));
+      } else {
+        type = SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(__thisNode__), CONCEPTS.Type$IG);
+      }
     }
     return type;
   }
@@ -149,6 +154,8 @@ public final class VariableDeclaration__BehaviorDescriptor extends BaseBHDescrip
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept UndefinedType$1H = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x431d52a5d09a4ea9L, "jetbrains.mps.baseLanguage.structure.UndefinedType");
+    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 
   private static final class PROPS {
