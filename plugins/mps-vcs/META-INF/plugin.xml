@@ -74,9 +74,7 @@
       <add-to-group group-id="ChangesViewPopupMenu" anchor="last"/>
       <add-to-group anchor="before" relative-to-action="SearchMenu" group-id="EditMenu"/>
     </group>
-    <action id="LocalHistory.ShowHistory" class="jetbrains.mps.history.integration.ui.actions.ShowMpsHistoryAction">
-      <add-to-group group-id="LocalHistory" anchor="before" relative-to-action="LocalHistory.PutLabel"/>
-    </action>
+    <action id="LocalHistory.ShowHistory" class="jetbrains.mps.history.integration.ui.actions.ShowMpsHistoryAction" overrides="true"/>
   </actions>
 
   <extensions defaultExtensionNs="com.intellij">
@@ -94,7 +92,8 @@
                     serviceImplementation="jetbrains.mps.vcs.platform.integration.MPSVcsHelper" overrides="true"/>
 
     <projectService serviceInterface="com.intellij.openapi.vcs.impl.VcsPathPresenter"
-                    serviceImplementation="jetbrains.mps.vcs.integration.ModuleVcsPathPresenter"/>
+                    serviceImplementation="jetbrains.mps.vcs.integration.ModuleVcsPathPresenter"
+                    overrides="true"/>
 
     <applicationService serviceInterface="jetbrains.mps.vcs.platform.mergedriver.MergeDriverPacker"
             serviceImplementation="jetbrains.mps.vcs.MergeDriverPackerImpl" />

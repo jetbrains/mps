@@ -2,7 +2,6 @@
 
   <module value="com.intellij.modules.platform"/>
   <module value="com.intellij.modules.lang"/>
-  <module value="com.intellij.modules.vcs"/>
   <!--
   <module value="com.intellij.modules.xdebugger"/>
   -->
@@ -22,10 +21,10 @@
   <xi:include href="/META-INF/Editor.xml" xpointer="xpointer(/idea-plugin/*)"/>
   <xi:include href="/META-INF/EditorEx.xml" xpointer="xpointer(/idea-plugin/*)"/>
 
+  <xi:include href="/META-INF/PlatformExtensionPoints.xml"/>
+  <xi:include href="/META-INF/LangExtensionPoints.xml"/>
+
   <extensionPoints>
-    <xi:include href="/META-INF/PlatformExtensionPoints.xml" xpointer="xpointer(/idea-plugin/extensionPoints/*)"/>
-    <xi:include href="/META-INF/VcsExtensionPoints.xml" xpointer="xpointer(/idea-plugin/extensionPoints/*)"/>
-    <xi:include href="/META-INF/LangExtensionPoints.xml" xpointer="xpointer(/idea-plugin/extensionPoints/*)"/>
     <!--
     <xi:include href="/META-INF/ExternalSystemExtensionPoints.xml" xpointer="xpointer(/idea-plugin/extensionPoints/*)"/>
     -->
@@ -132,13 +131,6 @@
                     serviceImplementation="com.intellij.openapi.vcs.changes.ui.ChangesModuleGroupingPolicy$Factory"/>
     <changesGroupingPolicy key="module" id="module"
                            implementationClass="com.intellij.openapi.vcs.changes.ui.ModuleChangesGroupingPolicy$Factory"/>
-
-    -->
-    <projectService serviceInterface="com.intellij.openapi.vcs.impl.DefaultVcsRootPolicy"
-                    serviceImplementation="com.intellij.openapi.vcs.impl.ModuleDefaultVcsRootPolicy"/>
-    <!--
-    <projectService serviceInterface="com.intellij.openapi.vcs.impl.VcsPathPresenter"
-                    serviceImplementation="com.intellij.openapi.vcs.impl.ModuleVcsPathPresenter"/>
 
     <projectService serviceInterface="com.intellij.compiler.impl.javaCompiler.javac.JavacConfiguration"
                     serviceImplementation="com.intellij.compiler.impl.javaCompiler.javac.JavacConfiguration"/>
@@ -308,7 +300,12 @@
     Framework Detection;Power Save Mode;Show control flow group"/>
   </extensions>
 
-  <xi:include href="/META-INF/VcsExtensions.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <xi:include href="/META-INF/lvcs.xml" xpointer="xpointer(/idea-plugin/*)">
+    <xi:fallback/>
+  </xi:include>
+  <xi:include href="/META-INF/VCS.xml" xpointer="xpointer(/idea-plugin/*)">
+    <xi:fallback/>
+  </xi:include>
 
   <!--
   <extensions defaultExtensionNs="org.jetbrains">
@@ -322,11 +319,6 @@
   <xi:include href="/META-INF/RemoteServersJava.xml" xpointer="xpointer(/idea-plugin/*)">
     <xi:fallback/>
   </xi:include>
-  -->
-  <xi:include href="/META-INF/vcs-log.xml" xpointer="xpointer(/idea-plugin/*)">
-    <xi:fallback/>
-  </xi:include>
-  <!--
     <xi:include href="/META-INF/vcs-log-graph.xml" xpointer="xpointer(/idea-plugin/*)">
     <xi:fallback/>
   </xi:include>
@@ -334,9 +326,6 @@
     <xi:fallback/>
   </xi:include>
   -->
-  <xi:include href="/META-INF/dvcs.xml" xpointer="xpointer(/idea-plugin/*)">
-    <xi:fallback/>
-  </xi:include>
 
   <extensionPoints>
     <!-- Copy paste from XmlPlugin.xml-->
@@ -366,5 +355,8 @@
   <extensions defaultExtensionNs="org.jetbrains">
     <urlOpener implementation="com.intellij.ide.browsers.impl.DefaultUrlOpener" order="last"/>
   </extensions>
-  <xi:include href="/META-INF/built-in-server.xml" xpointer="xpointer(/idea-plugin/*)"/>
+
+  <xi:include href="/META-INF/builtInServer.xml">
+    <xi:fallback/>
+  </xi:include>
 </idea-plugin>

@@ -56,7 +56,9 @@
 
     <action id="ActivateNavBar" class="com.intellij.ide.navigationToolbar.ActivateNavigationBarAction" popup="true"/>
 
-    <action id="EditorIndentLineOrSelection" class="com.intellij.openapi.editor.actions.IndentLineOrSelectionAction"/>
+    <action id="EditorIndentLineOrSelection" class="com.intellij.openapi.editor.actions.IndentLineOrSelectionAction">
+      <add-to-group group-id="EditorActions"/>
+    </action>
 
     <action id="BraceOrQuoteOut" class="com.intellij.codeInsight.editorActions.BraceOrQuoteOutAction"/>
 
@@ -224,10 +226,6 @@
     </action>
     -->
 
-    <action id="RecentChanges" class="com.intellij.history.integration.ui.actions.RecentChangesAction">
-      <keyboard-shortcut first-keystroke="alt shift C" keymap="$default"/>
-      <add-to-group group-id="ViewRecentActions" anchor="last"/>
-    </action>
 
     <!-- Go To -->
     <!--
@@ -511,6 +509,9 @@
       <add-to-group group-id="RunContextPopupGroup" anchor="last"/>
     </group>
 
+    <!-- VCS -->
+    <group id="VersionControlsGroup"/>
+
     <!--
     &lt;!&ndash; Toolbar &ndash;&gt;
     <group id="ToolbarFindGroup">
@@ -607,7 +608,6 @@
       -->
       <reference ref="CutCopyPasteGroup"/>
       <action id="ProjectViewEditSource" use-shortcut-of="EditSource" class="com.intellij.ide.actions.ProjectViewEditSourceAction"/>
-      <reference ref="ChangesView.ApplyPatch"/>
       <separator/>
       <!--
       <reference ref="FindUsages"/>
@@ -654,7 +654,6 @@
       <separator/>
       <reference ref="CutCopyPasteGroup"/>
       <reference ref="EditSource"/>
-      <reference ref="ChangesView.ApplyPatch"/>
       <separator/>
       <!--
       <reference ref="ViewNavigationBar"/>
@@ -690,7 +689,6 @@
       <separator/>
       <reference ref="CutCopyPasteGroup"/>
       <reference ref="EditSource"/>
-      <reference ref="ChangesView.ApplyPatch"/>
       <separator/>
       <reference ref="FindUsages"/>
       <reference ref="FindInPath"/>
@@ -1137,49 +1135,6 @@
       </group>
     </group>
 
-    <group id="LocalHistory" class="com.intellij.history.integration.ui.actions.LocalHistoryGroup" popup="true">
-      <!--
-      <action id="LocalHistory.ShowHistory" class="com.intellij.history.integration.ui.actions.ShowHistoryAction"/>
-      <action id="LocalHistory.ShowSelectionHistory" class="com.intellij.history.integration.ui.actions.ShowSelectionHistoryAction"/>
-      -->
-      <action id="LocalHistory.PutLabel" class="com.intellij.history.integration.ui.actions.PutLabelAction"/>
-
-      <add-to-group group-id="VersionControlsGroup" anchor="first"/>
-      <add-to-group group-id="VcsGroups" anchor="first"/>
-    </group>
-
-    <action id="Vcs.Operations.Popup.Annotate" class="com.intellij.openapi.vcs.actions.ShowAnnotateOperationsPopup">
-      <add-to-group group-id="VcsGeneral.KeymapGroup"/>
-    </action>
-
-    <group id="Vcs.Operations.Popup">
-      <group id="Vcs.Operations.Popup.VcsAware" class="com.intellij.openapi.vcs.actions.VcsQuickListPopupAction$VcsAware">
-        <group id="Vcs.Operations.Popup.VcsNameSeparator" class="com.intellij.openapi.vcs.actions.VcsQuickListPopupAction$VcsNameSeparator"/>
-        <reference id="ChangesView.AddUnversioned"/>
-        <reference id="CheckinProject"/>
-        <reference ref="ChangesView.ToggleCommitUi"/>
-        <reference id="CheckinFiles"/>
-        <reference id="ChangesView.Revert"/>
-        <separator/>
-        <reference id="Vcs.ShowTabbedFileHistory"/>
-        <reference id="Annotate"/>
-        <reference id="Compare.SameVersion"/>
-      </group>
-      <separator/>
-      <group id="Vcs.Operations.Popup.Vcs.Providers"
-             class="com.intellij.openapi.vcs.actions.VcsQuickListPopupAction$Providers"/>
-      <group id="Vcs.Operations.Popup.NonVcsAware" class="com.intellij.openapi.vcs.actions.VcsQuickListPopupAction$NonVcsAware">
-        <reference id="Start.Use.Vcs"/>
-      </group>
-      <separator/>
-      <group class="com.intellij.openapi.vcs.actions.ShowAnnotateOperationsPopup$Group" popup="true" id="ShowAnnotateOperationsPopupGroup"/>
-      <separator text="Local History"/>
-      <!-- Action is disabled
-      <reference id="LocalHistory.ShowHistory"/>
-      -->
-      <reference id="LocalHistory.PutLabel"/>
-    </group>
-
     <!--
     <group id="TestTreePopupMenu">
       <reference ref="RunContextGroup"/>
@@ -1204,10 +1159,6 @@
       <add-to-group anchor="first" group-id="TestTreePopupMenu"/>
     </group>
     <group id="RunTestGroup">
-      <separator/>
-      <action id="ImportTests" class="com.intellij.execution.testframework.sm.runner.history.actions.ImportTestsGroup" icon="AllIcons.Vcs.History"/>
-      <action id="ImportTestsFromFile" class="com.intellij.execution.testframework.sm.runner.history.actions.ImportTestsFromFileAction" icon="AllIcons.ToolbarDecorator.Import"/>
-      <add-to-group group-id="RunMenu" anchor="after" relative-to-action="DebugMainMenu"/>
     </group>
 
     <action id="DumpLookupElementWeights" class="com.intellij.internal.DumpLookupElementWeights">
@@ -1413,11 +1364,7 @@
         <reference ref="Stop"/>
         <separator text="type.small"/>
         <separator text="type.large"/>
-        <group id="TouchBarDefaultOptionalGroup">
-          <reference ref="Vcs.UpdateProject"/>
-          <reference ref="CheckinProject"/>
-          <reference ref="ChangesView.ToggleCommitUi"/>
-        </group>
+        <group id="TouchBarDefaultOptionalGroup" />
         <group id="TouchBarDefault_ctrl">
           <separator/>
         </group>
@@ -1517,7 +1464,8 @@
     </action>
     <group id="TodoMainGroup">
       <add-to-group group-id="Other.KeymapGroup"/>
-      <group id="TodoViewGroupByGroup" class="com.intellij.ide.todo.TodoPanel$GroupByActionGroup" popup="true">
+      <group id="TodoViewGroupByGroup" class="com.intellij.ide.todo.TodoPanel$GroupByActionGroup" icon="AllIcons.Actions.GroupBy"
+             popup="true">
         <separator text="Group By"/>
         <action class="com.intellij.ide.todo.TodoPanel$MyShowModulesAction" id="TodoViewGroupByShowModules"/>
         <action class="com.intellij.ide.todo.TodoPanel$MyShowPackagesAction" id="TodoViewGroupByShowPackages"/>

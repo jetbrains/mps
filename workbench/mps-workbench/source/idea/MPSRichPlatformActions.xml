@@ -1,8 +1,11 @@
 <component xmlns:xi="http://www.w3.org/2001/XInclude">
 
   <xi:include href="/idea/PlatformActions.xml" xpointer="xpointer(/idea-plugin/*)"/>
-  <xi:include href="/idea/VcsActions.xml" xpointer="xpointer(/idea-plugin/*)"/>
   <xi:include href="/idea/MPSLangActions.xml" xpointer="xpointer(/idea-plugin/*)"/>
+
+  <xi:include href="/META-INF/statistics-devkit.xml" xpointer="xpointer(/idea-plugin/*)">
+    <xi:fallback/>
+  </xi:include>
 
   <actions>
 
