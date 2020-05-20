@@ -4,7 +4,6 @@
       <root url="jar://$PROJECT_DIR$/plugins/git4idea/lib/resources_en.jar!/" />
       <root url="jar://$PROJECT_DIR$/plugins/git4idea/lib/git4idea.jar!/" />
       <root url="jar://$PROJECT_DIR$/plugins/svn4idea/lib/svn4idea.jar!/" />
-      <root url="jar://$PROJECT_DIR$/plugins/git4idea/lib/remote-servers-git.jar!/" />
       <root url="jar://$PROJECT_DIR$/plugins/git4idea/lib/git4idea-rt.jar!/" />
     </CLASSES>
     <JAVADOC />
