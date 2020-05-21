@@ -7447,6 +7447,12 @@
         <property role="1EzhhJ" value="false" />
         <property role="2aFKle" value="false" />
         <property role="TrG5h" value="nextProjectStep" />
+        <node concept="37vLTG" id="1gYPC58XiVP" role="3clF46">
+          <property role="TrG5h" value="migrationProgress" />
+          <node concept="3uibUv" id="1gYPC58XlPl" role="1tU5fm">
+            <ref role="3uigEE" to="bim2:1gYPC58W6xr" resolve="ProjectMigrationProgress" />
+          </node>
+        </node>
         <node concept="37vLTG" id="65hwFmZi88$" role="3clF46">
           <property role="TrG5h" value="options" />
           <node concept="3uibUv" id="65hwFmZi88_" role="1tU5fm">

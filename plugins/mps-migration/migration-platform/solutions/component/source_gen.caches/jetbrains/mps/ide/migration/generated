@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-11fr82zgd6kbl142tjw65ms329kmjsi">
-  <files names="AntTaskExecutionUtil.java:HeadlessMigrationExecutor.java:IStartupMigrationExecutor.java:MigrationBlock.java:MigrationChecker.java:MigrationCheckerImpl.java:MigrationExecutor.java:MigrationExecutorImpl.java:MigrationMakeBlocker.java:MigrationNotificationsSupport.java:MigrationRegistry.java:MigrationRegistryImpl.java:MigrationSessionImpl.java:MigrationTrigger.java:PostponedState.java:ScriptApplied.java:SilentModuleVersionUpdater.java" />
+<product version="3" modelHash="-a8161b5t1s36wbd8z47mvlwb78jy9hq">
+  <files names="AntTaskExecutionUtil.java:HeadlessMigrationExecutor.java:IStartupMigrationExecutor.java:MigrationBlock.java:MigrationChecker.java:MigrationCheckerImpl.java:MigrationExecutor.java:MigrationExecutorImpl.java:MigrationMakeBlocker.java:MigrationNotificationsSupport.java:MigrationRegistry.java:MigrationRegistryImpl.java:MigrationSessionImpl.java:MigrationTrigger.java:PostponedState.java:ProjectMigrationProgress.java:ScriptApplied.java:SilentModuleVersionUpdater.java" />
 </product>
 

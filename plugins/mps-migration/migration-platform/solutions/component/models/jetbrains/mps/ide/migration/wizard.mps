@@ -74,7 +74,7 @@
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1076505808687" name="jetbrains.mps.baseLanguage.structure.WhileStatement" flags="nn" index="2$JKZl">
@@ -88,6 +88,9 @@
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
+      </concept>
+      <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
+        <reference id="2820489544401957798" name="classifier" index="HV5vE" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -267,7 +270,7 @@
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
-        <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
+        <child id="8276990574886367509" name="finallyClause" index="1zxBo6" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
@@ -4685,6 +4688,15 @@
       <node concept="3Tm1VV" id="4hH4xQoKYdb" role="1B3o_S" />
       <node concept="3clFbS" id="4hH4xQoKYdc" role="3clF47" />
     </node>
+    <node concept="2tJIrI" id="1gYPC58WAWI" role="jymVt" />
+    <node concept="3clFb_" id="1gYPC58WBYx" role="jymVt">
+      <property role="TrG5h" value="getMigrationProgress" />
+      <node concept="3clFbS" id="1gYPC58WBY$" role="3clF47" />
+      <node concept="3Tm1VV" id="1gYPC58WBY_" role="1B3o_S" />
+      <node concept="3uibUv" id="1gYPC58WBBn" role="3clF45">
+        <ref role="3uigEE" to="bim2:1gYPC58W6xr" resolve="ProjectMigrationProgress" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="4hH4xQoKUX2" role="jymVt" />
     <node concept="3clFb_" id="1548xle9VSu" role="jymVt">
       <property role="2aFKle" value="false" />
@@ -4777,6 +4789,18 @@
           </node>
         </node>
       </node>
+      <node concept="312cEg" id="1gYPC58WE8S" role="jymVt">
+        <property role="TrG5h" value="myProjectMigrationProgress" />
+        <node concept="3Tm6S6" id="1gYPC58WD$E" role="1B3o_S" />
+        <node concept="3uibUv" id="1gYPC58WDW3" role="1tU5fm">
+          <ref role="3uigEE" to="bim2:1gYPC58W6xr" resolve="ProjectMigrationProgress" />
+        </node>
+        <node concept="2ShNRf" id="1gYPC58WEFZ" role="33vP2m">
+          <node concept="HV5vD" id="1gYPC58X2Lf" role="2ShVmc">
+            <ref role="HV5vE" to="bim2:1gYPC58W6xr" resolve="ProjectMigrationProgress" />
+          </node>
+        </node>
+      </node>
       <node concept="2tJIrI" id="1548xle3_nO" role="jymVt" />
       <node concept="3clFbW" id="1548xle39oB" role="jymVt">
         <node concept="3clFbS" id="1548xle39oC" role="3clF47" />
@@ -4863,6 +4887,23 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="1548xleazj5" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+        </node>
+      </node>
+      <node concept="3clFb_" id="1gYPC58X2XH" role="jymVt">
+        <property role="TrG5h" value="getMigrationProgress" />
+        <node concept="3Tm1VV" id="1gYPC58X2XJ" role="1B3o_S" />
+        <node concept="3uibUv" id="1gYPC58X2XK" role="3clF45">
+          <ref role="3uigEE" to="bim2:1gYPC58W6xr" resolve="ProjectMigrationProgress" />
+        </node>
+        <node concept="3clFbS" id="1gYPC58X2XL" role="3clF47">
+          <node concept="3clFbF" id="1gYPC58X2XO" role="3cqZAp">
+            <node concept="37vLTw" id="1gYPC58X3JO" role="3clFbG">
+              <ref role="3cqZAo" node="1gYPC58WE8S" resolve="myProjectMigrationProgress" />
+            </node>
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="1gYPC58X2XM" role="2AJF6D">
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
@@ -8448,6 +8489,14 @@
                       </node>
                       <node concept="liA8E" id="4hH4xQoI2JE" role="2OqNvi">
                         <ref role="37wK5l" to="bim2:4biA4YBARrw" resolve="nextProjectStep" />
+                        <node concept="2OqwBi" id="4_AC2FC9g9u" role="37wK5m">
+                          <node concept="37vLTw" id="4_AC2FC9fNu" role="2Oq$k0">
+                            <ref role="3cqZAo" node="78xBDbK6Z6y" resolve="mySession" />
+                          </node>
+                          <node concept="liA8E" id="4_AC2FC9gtC" role="2OqNvi">
+                            <ref role="37wK5l" node="1gYPC58WBYx" resolve="getMigrationProgress" />
+                          </node>
+                        </node>
                         <node concept="2OqwBi" id="PobQbOc2eN" role="37wK5m">
                           <node concept="37vLTw" id="PobQbOc21o" role="2Oq$k0">
                             <ref role="3cqZAo" node="78xBDbK6Z6y" resolve="mySession" />
@@ -9279,6 +9328,14 @@
                   </node>
                   <node concept="liA8E" id="78xBDbK8GKe" role="2OqNvi">
                     <ref role="37wK5l" to="bim2:4biA4YBARrw" resolve="nextProjectStep" />
+                    <node concept="2OqwBi" id="1gYPC58XyjN" role="37wK5m">
+                      <node concept="37vLTw" id="1gYPC58XxLA" role="2Oq$k0">
+                        <ref role="3cqZAo" node="78xBDbK6Z6y" resolve="mySession" />
+                      </node>
+                      <node concept="liA8E" id="1gYPC58Xy$V" role="2OqNvi">
+                        <ref role="37wK5l" node="1gYPC58WBYx" resolve="getMigrationProgress" />
+                      </node>
+                    </node>
                     <node concept="2OqwBi" id="78xBDbK8GKf" role="37wK5m">
                       <node concept="37vLTw" id="78xBDbK8GKg" role="2Oq$k0">
                         <ref role="3cqZAo" node="78xBDbK6Z6y" resolve="mySession" />
