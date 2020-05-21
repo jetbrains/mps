@@ -74069,5 +74069,51 @@
       </node>
     </node>
   </node>
+  <node concept="18kY7G" id="6sjyiRHaCtU">
+    <property role="TrG5h" value="check_IThrowCheckedExceptions" />
+    <node concept="3clFbS" id="6sjyiRHaCtV" role="18ibNy">
+      <node concept="3cpWs8" id="6sjyiRHaCvd" role="3cqZAp">
+        <node concept="3cpWsn" id="6sjyiRHaCve" role="3cpWs9">
+          <property role="TrG5h" value="throwables" />
+          <node concept="2hMVRd" id="6sjyiRHaCvf" role="1tU5fm">
+            <node concept="3Tqbb2" id="6sjyiRHaCvg" role="2hN53Y">
+              <ref role="ehGHo" to="tpee:fz3vP1H" resolve="Type" />
+            </node>
+          </node>
+          <node concept="2ShNRf" id="6sjyiRHaCvh" role="33vP2m">
+            <node concept="2i4dXS" id="6sjyiRHaCvi" role="2ShVmc">
+              <node concept="3Tqbb2" id="6sjyiRHaCvj" role="HW$YZ">
+                <ref role="ehGHo" to="tpee:fz3vP1H" resolve="Type" />
+              </node>
+              <node concept="2OqwBi" id="6sjyiRHaCvk" role="I$8f6">
+                <node concept="1YBJjd" id="6sjyiRHaF_a" role="2Oq$k0">
+                  <ref role="1YBMHb" node="6sjyiRHaCtX" resolve="iThrowCheckedExceptions" />
+                </node>
+                <node concept="2qgKlT" id="6sjyiRHaFXv" role="2OqNvi">
+                  <ref role="37wK5l" to="tpek:6sjyiRHavr0" resolve="getThrownExceptions" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbF" id="6sjyiRHaCvn" role="3cqZAp">
+        <node concept="2YIFZM" id="6sjyiRHaCvo" role="3clFbG">
+          <ref role="37wK5l" node="6d19RW5K2fE" resolve="check" />
+          <ref role="1Pybhc" node="h84y26V" resolve="RulesFunctions_BaseLanguage" />
+          <node concept="37vLTw" id="6sjyiRHaCvp" role="37wK5m">
+            <ref role="3cqZAo" node="6sjyiRHaCve" resolve="throwables" />
+          </node>
+          <node concept="1YBJjd" id="6sjyiRHaNQf" role="37wK5m">
+            <ref role="1YBMHb" node="6sjyiRHaCtX" resolve="iThrowCheckedExceptions" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="6sjyiRHaCtX" role="1YuTPh">
+      <property role="TrG5h" value="iThrowCheckedExceptions" />
+      <ref role="1YaFvo" to="tpee:6sjyiRHauQ$" resolve="IThrowCheckedExceptions" />
+    </node>
+  </node>
 </model>
 

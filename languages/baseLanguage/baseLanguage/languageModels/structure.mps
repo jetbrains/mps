@@ -4771,5 +4771,9 @@
       <ref role="PrY4T" to="zqge:6GJhO0n1XxQ" resolve="IHoldLines" />
     </node>
   </node>
+  <node concept="PlHQZ" id="6sjyiRHauQ$">
+    <property role="EcuMT" value="7427431040809561508" />
+    <property role="TrG5h" value="IThrowCheckedExceptions" />
+  </node>
 </model>
 
