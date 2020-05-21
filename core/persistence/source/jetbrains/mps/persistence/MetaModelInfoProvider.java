@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.persistence;
 
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.smodel.DebugRegistry;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.adapter.ids.SContainmentLinkId;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
@@ -55,12 +54,12 @@ import java.util.Map;
  * <p/>
  * The idea is to fill this provider with information read, and use it from model write. This provider shall not survive
  * single read/write pair for a given model. Although perhaps in the future we might utilize it to keep model-specific
- * {@link jetbrains.mps.smodel.DebugRegistry}, which is global at the moment.
+ * "Debug Registry", which used to be global, see {@link RegularMetaModelInfo#RegularMetaModelInfo(MetaModelInfoProvider)}.
  * <p/>
  * To certain extent, this class serves to overcome limitations of SConcept API, as it doesn't expose e.g. scope or kind. Once (and if)
  * we decide to expose these from SConcept, there would be no need in this mediator. Perhaps, it's the right way to go? XXX revisit
  * <p/>
- * Note, this class replaces {@link jetbrains.mps.persistence.ModelEnvironmentInfo} which was likely intended for the similar purpose,
+ * Note, this class replaces {@code jetbrains.mps.persistence.ModelEnvironmentInfo} which was likely intended for the similar purpose,
  * but is ugly and doesn't suite modern (v9-bis) persistence well.
  * <p/>
  * There's implementation for most use-cases, {@link jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo}, which merely delegates
@@ -75,8 +74,6 @@ import java.util.Map;
  *
  * @author Artem Tikhomirov
  * @see jetbrains.mps.persistence.MetaModelInfoProvider.BaseMetaModelInfo
- * @see jetbrains.mps.smodel.DebugRegistry
- * @see jetbrains.mps.persistence.ModelEnvironmentInfo
  */
 public interface MetaModelInfoProvider {
   /**
@@ -233,13 +230,25 @@ public interface MetaModelInfoProvider {
    * Sort of {@link jetbrains.mps.smodel.runtime.ConceptDescriptor}, limited to methods essential for persistence.
    * Ensures non-<code>null</code> values (empty strings for names to satisfy persistence) and reasonable defaults otherwise.
    * <p/>
-   * Uses {@link jetbrains.mps.smodel.DebugRegistry} to retrieve names, if available.
-   * Setter methods update {@link jetbrains.mps.smodel.DebugRegistry}.
    */
   class RegularMetaModelInfo extends BaseMetaModelInfo {
     private static final Logger LOG = Logger.wrap(LogManager.getLogger(DefaultModelPersistence.class));
+    private final MetaModelInfoProvider myDebugRegistry;
 
     public RegularMetaModelInfo() {
+      // just ensure non-null value for debugRegistry, which doesn't keep nor answer anything
+      this(new BaseMetaModelInfo());
+    }
+
+    /**
+     * Replacement for {@code DebugRegistry} singleton, that allowed to obtain 'last known' value for model write or to update the value on model read.
+     * If you've got a place to keep MetaModelInfoProvider instance (likely, {@code StuffedMetaModelInfo} and can share it between different
+     * {@code RegularMetaModelInfo} instances to accomplish the same as what {@code DebugRegistry} intended to provide.
+     *
+     * I suppose {@code new StuffedMetaModelInfo(new BaseMetaModelInfo())} would be ok to initialize that 'debug registry' instance.
+     */
+    public RegularMetaModelInfo(@NotNull MetaModelInfoProvider debugRegistry) {
+      myDebugRegistry = debugRegistry;
     }
 
     @Override
@@ -248,7 +257,7 @@ public interface MetaModelInfoProvider {
       if (langRT != null) {
         return langRT.getNamespace();
       }
-      String name = DebugRegistry.getInstance().getLanguageName(lang);
+      String name = myDebugRegistry.getLanguageName(lang);
       return name == null ? "" : name;
     }
 
@@ -258,7 +267,7 @@ public interface MetaModelInfoProvider {
       if (descriptor != null) {
         return descriptor.getConceptFqName();
       }
-      String name = DebugRegistry.getInstance().getConceptName(concept);
+      String name = myDebugRegistry.getConceptName(concept);
       return name == null ? "" : name;
     }
 
@@ -271,7 +280,7 @@ public interface MetaModelInfoProvider {
           return pd.getName();
         }
       }
-      String name = DebugRegistry.getInstance().getPropertyName(property);
+      String name = myDebugRegistry.getPropertyName(property);
       return name == null ? "" : name;
     }
 
@@ -284,7 +293,7 @@ public interface MetaModelInfoProvider {
           return ld.getName();
         }
       }
-      String name = DebugRegistry.getInstance().getRefName(link);
+      String name = myDebugRegistry.getAssociationName(link);
       return name == null ? "" : name;
     }
 
@@ -297,7 +306,7 @@ public interface MetaModelInfoProvider {
           return ld.getName();
         }
       }
-      String name = DebugRegistry.getInstance().getLinkName(link);
+      String name = myDebugRegistry.getAggregationName(link);
       return name == null ? "" : name;
     }
 
@@ -347,27 +356,27 @@ public interface MetaModelInfoProvider {
 
     @Override
     public void setLanguageName(SLanguageId lang, String name) {
-      DebugRegistry.getInstance().addLanguageName(lang, name);
+      myDebugRegistry.setLanguageName(lang, name);
     }
 
     @Override
     public void setConceptName(SConceptId concept, String name) {
-      DebugRegistry.getInstance().addConceptName(concept, name);
+      myDebugRegistry.setConceptName(concept, name);
     }
 
     @Override
     public void setPropertyName(SPropertyId property, String name) {
-      DebugRegistry.getInstance().addPropertyName(property, name);
+      myDebugRegistry.setPropertyName(property, name);
     }
 
     @Override
     public void setAssociationName(SReferenceLinkId link, String name) {
-      DebugRegistry.getInstance().addRefName(link, name);
+      myDebugRegistry.setAssociationName(link, name);
     }
 
     @Override
     public void setAggregationName(SContainmentLinkId link, String name) {
-      DebugRegistry.getInstance().addLinkName(link, name);
+      myDebugRegistry.setAggregationName(link, name);
     }
   }
 

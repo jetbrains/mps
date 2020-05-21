@@ -36,7 +36,6 @@ import jetbrains.mps.project.structure.GenericDescriptorModelProvider;
 import jetbrains.mps.project.structure.LanguageDescriptorModelProvider;
 import jetbrains.mps.resolve.ResolverComponent;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
-import jetbrains.mps.smodel.DebugRegistry;
 import jetbrains.mps.smodel.Generator.GeneratorModelsAutoImports;
 import jetbrains.mps.smodel.Language.LanguageModelsAutoImports;
 import jetbrains.mps.smodel.MPSModuleRepository;
@@ -125,7 +124,6 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
     myRepositoryRegistry = init(new SRepositoryRegistry());
     myModuleRepository = init(new MPSModuleRepository(myRepositoryRegistry));
     myClassLoaderManager = init(new ClassLoaderManager(myModuleRepository));
-    init(new DebugRegistry());
 
     init(new SModelFileTracker.Plug(myRepositoryRegistry));
     init(new ModuleRepositoryFacade(myModuleRepository));
