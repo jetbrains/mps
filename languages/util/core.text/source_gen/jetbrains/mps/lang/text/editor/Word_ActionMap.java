@@ -17,10 +17,10 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.datatransfer.PasteNodeData;
 import java.util.List;
 import java.util.Objects;
-import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.text.behavior.IHoldLines__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
+import jetbrains.mps.lang.text.behavior.IHoldLines__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -72,7 +72,9 @@ public class Word_ActionMap {
                   currentLine.value = SNodeOperations.as(SNodeOperations.insertNextSiblingChild(currentLine.value, SNodeOperations.copyNode(SNodeOperations.as(n, CONCEPTS.Line$w3))), CONCEPTS.Line$w3);
                 }
               } else {
+                SNode futureCurrentNode = (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(n, CONCEPTS.Line$w3), LINKS.elements$eRew)).isEmpty() ? currentNode.value : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(n, CONCEPTS.Line$w3), LINKS.elements$eRew)).last());
                 Line__BehaviorDescriptor.merge_id1YnOZxAMHtO.invoke(currentLine.value, SNodeOperations.cast(n, CONCEPTS.Line$w3), currentNode.value);
+                currentNode.value = futureCurrentNode;
               }
             } else if (SNodeOperations.isInstanceOf(n, CONCEPTS.IHoldLines$hX)) {
               if (ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(SNodeOperations.as(n, CONCEPTS.IHoldLines$hX))).count() == 0) {
@@ -256,7 +258,7 @@ public class Word_ActionMap {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink node$daCF = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, 0x2b7b49e536031feaL, "node");
     /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink node$daCF = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, 0x2b7b49e536031feaL, "node");
   }
 }
