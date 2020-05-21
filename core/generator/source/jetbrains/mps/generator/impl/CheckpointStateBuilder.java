@@ -122,11 +122,7 @@ class CheckpointStateBuilder {
     new ModelImports(myCheckpointModel).addModelImport(originalInputModel.getReference());
     DebugMappingsBuilder dmb = new DebugMappingsBuilder(originalInputModel.getRepository(), myTransitionTrace.getActiveTransition(), messageHandler);
     SNode debugMappings = dmb.build(myCheckpointModel, stepLabels);
-    if (CheckpointVault.CONVERT_USER_OBJECTS) {
-      new TransitionTracePersistence(myCheckpointModel).save(myTransitionTrace.getActiveTransition());
-    } else {
-      ModelTransitions.markCheckpointModelAsBearingUserObject(myCheckpointModel);
-    }
+    myTransitionTrace.saveActiveTransition(myCheckpointModel);
     myCheckpointModel.addRootNode(debugMappings);
   }
 

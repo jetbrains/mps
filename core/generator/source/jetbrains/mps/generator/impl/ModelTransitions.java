@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.generator.impl;
 
-import jetbrains.mps.extapi.model.ModelWithAttributes;
+import jetbrains.mps.generator.impl.plan.CheckpointVault;
 import jetbrains.mps.generator.plan.CheckpointIdentity;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -61,16 +61,23 @@ public final class ModelTransitions {
   }
 
   /**
-   * as long as TransitionTrace keep its values as user objects, we don't really need checkpointModel as we are not going to read it anyway,
-   * keep it here just to keep API impression (provided we may want to use other mechanism than user objects to keep origin->transformed
-   * mapping, e.g. as a distinct explicit map. Still, we'd likely need smth more than just a model, i.e. smth we can keep this map in)
+   * fill and activate new TransitionTrace for a checkpoint with the given CP identity based on information kept in the model.
+   * At the moment, transition trace values are kept as user objects, and TT consults the model directly,
+   * what we need to make sure here is that {@code checkpointModel} has proper UO values once we return from the method.
+   * We may decide to use other mechanism than user objects to keep origin->transformed mapping, e.g. as a distinct explicit map.
+   * In that case we'd need to read the mapping and fill TT appropriately.
    */
   public TransitionTrace loadTransition(@NotNull CheckpointIdentity checkpoint, @NotNull SModel checkpointModel) {
     myActiveTransition = new TransitionTrace(checkpoint, this);
-    if (!isCheckpointModelWithUserObjects(checkpointModel)) {
-      new TransitionTracePersistence(checkpointModel).load(myActiveTransition);
-    }
+    new TransitionTracePersistence(checkpointModel, CheckpointVault.CONVERT_USER_OBJECTS).load(myActiveTransition);
     return myActiveTransition;
+  }
+
+  /**
+   * 'Write' counterpart for {@code #loadTransition()}, to feed values of active TT into model ready for persistence.
+   */
+  public void saveActiveTransition(@NotNull SModel checkpointModel) {
+    new TransitionTracePersistence(checkpointModel, CheckpointVault.CONVERT_USER_OBJECTS).save(myActiveTransition);
   }
 
   @NotNull
@@ -99,15 +106,5 @@ public final class ModelTransitions {
     CheckpointIdentity recentCheckpoint = getMostRecentCheckpoint();
     rv.myActiveTransition = recentCheckpoint == null ? new TransitionTrace(rv) : new TransitionTrace(recentCheckpoint, rv);
     return rv;
-  }
-
-  private static final String UO_ATTR = "user-objects";
-
-  /*package*/ static void markCheckpointModelAsBearingUserObject(@NotNull SModel checkpointModel) {
-    ((ModelWithAttributes) checkpointModel).setAttribute(UO_ATTR, "true");
-  }
-
-  private static boolean isCheckpointModelWithUserObjects(@NotNull SModel checkpointModel) {
-    return Boolean.parseBoolean(((ModelWithAttributes) checkpointModel).getAttribute(UO_ATTR));
   }
 }

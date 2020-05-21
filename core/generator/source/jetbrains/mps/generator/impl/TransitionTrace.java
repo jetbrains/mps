@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,8 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.util.TreeIterator;
 
+import java.util.ArrayDeque;
+import java.util.Iterator;
 import java.util.function.Function;
 
 /**
@@ -95,6 +97,35 @@ public final class TransitionTrace {
   public SNodeId getOrigin(@NotNull SNode node) {
     Object rv = doGet(node);
     return rv instanceof SNodeId ? (SNodeId) rv : null;
+  }
+
+  /**
+   * DO NOT USE!
+   * Intended solely for use from TransitionTracePersistence.save()
+   *
+   * clears node of anything not necessary for persistence (e.g. user objects, except ORIGIN_TRACE, that we don't need to serialize.
+   * TT shall be capable to answer {@code getOrigin()} after this method. This method is not perfectly named/used; I just need it
+   * to remove UO other than ORIGIN_TRACE when switching to direct persistence of UO instead of OriginTrace attributes.
+   */
+  /*package*/ void prepareForSave(Iterable<SNode> nodes) {
+    ArrayDeque<Object> keysToDrop = new ArrayDeque<>();
+    for (SNode n : nodes) {
+      // FIXME in fact, might be more effective just keep UO as is and filter out at serialization time (e.g. by list of supported keys or
+      //       by special marker interface implemented by value. Latter approach would make set of supported values even extensible (now, hardcoded
+      //       in xml/binary persistence impl)
+      final Iterator<Object> userObjectKeys = n.getUserObjectKeys().iterator();
+      if (!userObjectKeys.hasNext()) {
+        continue;
+      }
+      keysToDrop.clear();
+      do {
+        final Object k = userObjectKeys.next();
+        if (ORIGIN_TRACE != k) {
+          keysToDrop.add(k);
+        }
+      } while (userObjectKeys.hasNext());
+      keysToDrop.forEach(k -> {n.putUserObject(k, null);});
+    }
   }
 
   /**

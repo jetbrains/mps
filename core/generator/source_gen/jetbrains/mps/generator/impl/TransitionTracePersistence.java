@@ -4,8 +4,8 @@ package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -13,26 +13,55 @@ import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.extapi.model.ModelWithAttributes;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 /**
- * Modifies checkpoint model, on save() creates node attribute for nodes with 'origin trace' user object, on load(), injects a user object for nodes with attribute.
- * Doesn't clear UO on save() nor node attribute on load(). Perhaps, should, no clear idea yet.
+ * Modifies checkpoint model to facilitate persistence of {@code TransitionTrace} information.
+ * On save(), may create node attribute for nodes with 'origin trace' user object, if necessary.
+ * On load(), injects a user object for nodes with respective persisted attribute.
+ * 
+ * Gives {@code TransitionTrace} a chance to clear UO on save(); but doesn't drop node attribute on load().
+ * 
  * The whole idea of this class is to fix https://youtrack.jetbrains.com/issue/MPS-28373 in a 2018.2 bugfix with least possible change. 
- * Generally, shall re-consider use of UO for origin trace and the way I save extra information along with CP model.
+ * Generally, may want to re-consider use of UO for origin trace and the way I save extra information along with CP model.
+ * At the moment, I stick to using UO as it's most effective way (persistence-wise) to perform node->TTvalue mapping. Besides, I don't need to care about node id change once I renumber 
+ * CP nodes in attempt to make them relatively stable. The drawback of using UO (itself being not a positive moment) 
+ * is the need to use persistence that supports UO serialization (e.g. default xml v9 didn't support until recently) and the need to modify user data in the model (compared to 
+ * {@code GeneratorDebug_Mappings} node which is completely under our control). Perhaps, approach like {@code TransientModelWithMetainfo} could be an alternative, to keep user model intact, and 
+ * keep both {@code GeneratorDebug_Mappings} and node->TTvalue mapping as 'metainfo' next to the model itself. Not sure if this would help tackle issue of the model serialized size (UO per node doesn't need
+ * to write source node id, while any other map has to).
  */
 @GeneratedClass(node = "r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)/7980339663309897062", model = "r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)")
 public final class TransitionTracePersistence {
+  private static final String UO_ATTR = "user-objects";
+
   private final SModel myCheckpointModel;
+  private boolean myUseAttributes;
+
 
   public TransitionTracePersistence(SModel checkpointModel) {
+    this(checkpointModel, true);
+  }
+
+  public TransitionTracePersistence(SModel checkpointModel, boolean attributesForUserObjects) {
     myCheckpointModel = checkpointModel;
+    myUseAttributes = attributesForUserObjects;
   }
 
   public void save(TransitionTrace originTrace) {
+    if (!(myUseAttributes)) {
+      // though it's likely the model is attached to a repository and can not be modified w/o write/command, let TT care about that 
+      // as long as it modifies UO only, it's fine (there's no model access guard for UO) 
+      originTrace.prepareForSave(SNodeUtil.getDescendants(myCheckpointModel));
+      markCheckpointModelAsBearingUserObject();
+      // it's assumed that CheckpointVault forces persistence of UO when we don't use attributes 
+      return;
+    }
+    markCheckpointModelAttributesForUserObject();
     // myCheckpointModel.nodes() gives a list! 
     for (SNode n : SNodeUtil.getDescendants(myCheckpointModel)) {
       if (!(originTrace.hasOrigin(n))) {
@@ -46,6 +75,9 @@ public final class TransitionTracePersistence {
   }
 
   public void load(TransitionTrace into) {
+    if (isCheckpointModelWithUserObjects()) {
+      return;
+    }
     for (SNode n : SNodeUtil.getDescendants(myCheckpointModel)) {
       SNode originTrace = AttributeOperations.getAttribute(n, new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginTrace$D0));
       if ((originTrace == null)) {
@@ -53,7 +85,20 @@ public final class TransitionTracePersistence {
       }
       SNodeId value = ((SNodeId) BHReflection.invoke0(SLinkOperations.getTarget(originTrace, LINKS.origin$zVxW), CONCEPTS.NodeIdentity$K7, SMethodTrimmedId.create("getNodeId", null, "39TODbGsIdf")));
       into.setOrigin(n, value);
+      // I'd love to save some memory by not keeping attribute, however, present pattern to use TTP is NOT the moment model is about to get serialized or just accessed from a storage. 
+      // ModelTransitions.loadTransition is invoked once trace is needed for a model that might have been loaded and published long ago, and could not be modified without proper model access 
+      // I don't care that much these days, as I plan to switch to UO persistence any moment now. 
     }
+  }
+
+  private void markCheckpointModelAsBearingUserObject() {
+    ((ModelWithAttributes) myCheckpointModel).setAttribute(UO_ATTR, "true");
+  }
+  private void markCheckpointModelAttributesForUserObject() {
+    ((ModelWithAttributes) myCheckpointModel).setAttribute(UO_ATTR, null);
+  }
+  private boolean isCheckpointModelWithUserObjects() {
+    return Boolean.parseBoolean(((ModelWithAttributes) myCheckpointModel).getAttribute(UO_ATTR));
   }
 
   private static final class CONCEPTS {
