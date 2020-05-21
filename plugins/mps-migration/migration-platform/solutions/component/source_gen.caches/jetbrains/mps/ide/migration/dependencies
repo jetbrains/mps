@@ -232,6 +232,7 @@
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.ide.migration.ProjectMigrationProgress" />
     <classNode dependClassName="jetbrains.mps.ide.migration.ScriptApplied" />
     <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.BaseScriptReference" />
     <classNode dependClassName="jetbrains.mps.migration.global.MigrationOptions" />
@@ -253,6 +254,7 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.Wrappers" />
+    <classNode dependClassName="jetbrains.mps.ide.migration.ProjectMigrationProgress" />
     <classNode dependClassName="jetbrains.mps.ide.migration.ScriptApplied" />
     <classNode dependClassName="jetbrains.mps.ide.project.ProjectHelper" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionSequence" />
@@ -384,6 +386,14 @@
     <classNode dependClassName="jetbrains.mps.migration.global.CleanupProjectMigration" />
     <classNode dependClassName="jetbrains.mps.migration.global.ProjectMigration" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
+  </dependency>
+  <dependency className="jetbrains.mps.ide.migration.ProjectMigrationProgress">
+    <classNode dependClassName="java.util.ArrayList" />
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="jetbrains.mps.migration.global.ProjectMigration" />
+    <classNode dependClassName="jetbrains.mps.project.Project" />
   </dependency>
   <dependency className="jetbrains.mps.ide.migration.ScriptApplied">
     <classNode dependClassName="java.lang.Deprecated" />

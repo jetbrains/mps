@@ -216,7 +216,7 @@ public class MigrationTask {
       addGlobalLabel(mySession.getProject(), "Cleanup started");
 
       while (true) {
-        final ProjectMigration pm = mySession.getMigrationRegistry().nextProjectStep(mySession.getOptions(), true);
+        final ProjectMigration pm = mySession.getMigrationRegistry().nextProjectStep(mySession.getMigrationProgress(), mySession.getOptions(), true);
         if (pm == null) {
           break;
         }
@@ -315,7 +315,7 @@ public class MigrationTask {
     m.start("Running project migrations...", projectStepsCount(false));
     boolean success = true;
     while (true) {
-      final ProjectMigration pm = mySession.getMigrationRegistry().nextProjectStep(mySession.getOptions(), false);
+      final ProjectMigration pm = mySession.getMigrationRegistry().nextProjectStep(mySession.getMigrationProgress(), mySession.getOptions(), false);
       if (pm == null) {
         break;
       }

@@ -111,6 +111,7 @@
     <classNode dependClassName="jetbrains.mps.ide.migration.MigrationChecker" />
     <classNode dependClassName="jetbrains.mps.ide.migration.MigrationExecutor" />
     <classNode dependClassName="jetbrains.mps.ide.migration.MigrationRegistry" />
+    <classNode dependClassName="jetbrains.mps.ide.migration.ProjectMigrationProgress" />
     <classNode dependClassName="jetbrains.mps.ide.migration.wizard.MigrationError" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
     <classNode dependClassName="jetbrains.mps.migration.global.MigrationOptions" />

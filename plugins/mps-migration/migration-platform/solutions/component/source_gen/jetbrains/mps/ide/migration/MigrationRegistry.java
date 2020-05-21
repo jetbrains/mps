@@ -18,7 +18,7 @@ public interface MigrationRegistry {
   Collection<ScriptApplied> getModuleMigrations(Iterable<SModule> modules);
 
   ScriptApplied nextModuleStep(@Nullable BaseScriptReference preferredId);
-  ProjectMigration nextProjectStep(MigrationOptions options, boolean cleanup);
+  ProjectMigration nextProjectStep(ProjectMigrationProgress migrationProgress, MigrationOptions options, boolean cleanup);
 
   boolean importVersionsUpdateRequired(Iterable<SModule> modules);
   void doUpdateImportVersions(SModule module);

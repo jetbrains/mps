@@ -9,6 +9,7 @@ import jetbrains.mps.ide.migration.MigrationRegistry;
 import jetbrains.mps.ide.migration.MigrationChecker;
 import jetbrains.mps.ide.migration.MigrationExecutor;
 import jetbrains.mps.migration.global.MigrationOptions;
+import jetbrains.mps.ide.migration.ProjectMigrationProgress;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
@@ -27,6 +28,8 @@ public interface MigrationSession {
 
   MigrationOptions getOptions();
 
+  ProjectMigrationProgress getMigrationProgress();
+
   Object getCurrentStage();
 
   void setCurrentStage(Object stage);
@@ -40,6 +43,7 @@ public interface MigrationSession {
     private Object myStage = null;
     private MigrationError myErrors = null;
     private Set<MigrationStepKind> myRequiredSteps = SetSequence.fromSet(new HashSet<MigrationStepKind>());
+    private ProjectMigrationProgress myProjectMigrationProgress = new ProjectMigrationProgress();
 
     public MigrationSessionBase() {
     }
@@ -56,6 +60,10 @@ public interface MigrationSession {
     @Override
     public void setCurrentStage(Object stage) {
       myStage = stage;
+    }
+    @Override
+    public ProjectMigrationProgress getMigrationProgress() {
+      return myProjectMigrationProgress;
     }
     @Override
     public Set<MigrationStepKind> getRequiredSteps() {

@@ -40,6 +40,7 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import java.util.Collection;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.ide.migration.ProjectMigrationProgress;
 import jetbrains.mps.migration.global.CleanupProjectMigration;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
@@ -175,7 +176,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
       }
       return (List<ScriptApplied>) ((List) Sequence.fromIterable(getModuleMigrationsApplied()).toListSequence());
     }
-    public ProjectMigration nextProjectStep(MigrationOptions options, final boolean cleanup) {
+    public ProjectMigration nextProjectStep(ProjectMigrationProgress migrationProgress, MigrationOptions options, final boolean cleanup) {
       final ProjectMigration next = CollectionSequence.fromCollection(getProjectMigrations()).where(new IWhereFilter<ProjectMigration>() {
         public boolean accept(ProjectMigration it) {
           return cleanup == (it instanceof CleanupProjectMigration);
