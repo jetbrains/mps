@@ -52,7 +52,7 @@
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
@@ -220,7 +220,7 @@
       </concept>
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
-        <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
+        <child id="8276990574886367509" name="finallyClause" index="1zxBo6" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
@@ -4042,18 +4042,45 @@
           </node>
         </node>
         <node concept="3clFbS" id="3FsEmilt3Qy" role="3clF47">
-          <node concept="3clFbF" id="3FsEmilt4wg" role="3cqZAp">
-            <node concept="2OqwBi" id="3FsEmilt4$s" role="3clFbG">
-              <node concept="37vLTw" id="3FsEmilt4wf" role="2Oq$k0">
-                <ref role="3cqZAo" node="5m3_7gRpdD" resolve="myHeader" />
-              </node>
-              <node concept="liA8E" id="3FsEmilt4Ht" role="2OqNvi">
-                <ref role="37wK5l" to="w1kc:~SModelHeader.setOptionalProperty(java.lang.String,java.lang.String)" resolve="setOptionalProperty" />
-                <node concept="37vLTw" id="3FsEmilt53I" role="37wK5m">
-                  <ref role="3cqZAo" node="3FsEmilt3Qq" resolve="key" />
+          <node concept="3clFbJ" id="3LVDKXf6QCS" role="3cqZAp">
+            <node concept="3clFbS" id="3LVDKXf6QCU" role="3clFbx">
+              <node concept="3clFbF" id="3LVDKXf6Rbh" role="3cqZAp">
+                <node concept="2OqwBi" id="3LVDKXf6RmC" role="3clFbG">
+                  <node concept="37vLTw" id="3LVDKXf6Rbf" role="2Oq$k0">
+                    <ref role="3cqZAo" node="5m3_7gRpdD" resolve="myHeader" />
+                  </node>
+                  <node concept="liA8E" id="3LVDKXf6RpQ" role="2OqNvi">
+                    <ref role="37wK5l" to="w1kc:~SModelHeader.removeOptionalProperty(java.lang.String)" resolve="removeOptionalProperty" />
+                    <node concept="37vLTw" id="3LVDKXf6RzG" role="37wK5m">
+                      <ref role="3cqZAo" node="3FsEmilt3Qq" resolve="key" />
+                    </node>
+                  </node>
                 </node>
-                <node concept="37vLTw" id="3FsEmilt5cz" role="37wK5m">
-                  <ref role="3cqZAo" node="3FsEmilt3Qt" resolve="value" />
+              </node>
+            </node>
+            <node concept="3clFbC" id="3LVDKXf6QZY" role="3clFbw">
+              <node concept="10Nm6u" id="3LVDKXf6R9n" role="3uHU7w" />
+              <node concept="37vLTw" id="3LVDKXf6QEG" role="3uHU7B">
+                <ref role="3cqZAo" node="3FsEmilt3Qt" resolve="value" />
+              </node>
+            </node>
+            <node concept="9aQIb" id="3LVDKXf6RG$" role="9aQIa">
+              <node concept="3clFbS" id="3LVDKXf6RG_" role="9aQI4">
+                <node concept="3clFbF" id="3FsEmilt4wg" role="3cqZAp">
+                  <node concept="2OqwBi" id="3FsEmilt4$s" role="3clFbG">
+                    <node concept="37vLTw" id="3FsEmilt4wf" role="2Oq$k0">
+                      <ref role="3cqZAo" node="5m3_7gRpdD" resolve="myHeader" />
+                    </node>
+                    <node concept="liA8E" id="3FsEmilt4Ht" role="2OqNvi">
+                      <ref role="37wK5l" to="w1kc:~SModelHeader.setOptionalProperty(java.lang.String,java.lang.String)" resolve="setOptionalProperty" />
+                      <node concept="37vLTw" id="3FsEmilt53I" role="37wK5m">
+                        <ref role="3cqZAo" node="3FsEmilt3Qq" resolve="key" />
+                      </node>
+                      <node concept="37vLTw" id="3FsEmilt5cz" role="37wK5m">
+                        <ref role="3cqZAo" node="3FsEmilt3Qt" resolve="value" />
+                      </node>
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>

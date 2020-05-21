@@ -180,7 +180,11 @@ public class VCSPersistenceUtil {
 
     @Override
     public void setAttribute(@NotNull String key, @Nullable String value) {
-      myHeader.setOptionalProperty(key, value);
+      if (value == null) {
+        myHeader.removeOptionalProperty(key);
+      } else {
+        myHeader.setOptionalProperty(key, value);
+      }
     }
     @Nullable
     @Override

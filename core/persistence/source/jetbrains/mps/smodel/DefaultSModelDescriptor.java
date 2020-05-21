@@ -181,7 +181,11 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
 
   @Override
   public void setAttribute(@NotNull String key, @Nullable String value) {
-    getModelHeader().setOptionalProperty(key, value);
+    if (value == null) {
+      getModelHeader().removeOptionalProperty(key);
+    } else {
+      getModelHeader().setOptionalProperty(key, value);
+    }
   }
 
   @Nullable

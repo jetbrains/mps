@@ -445,7 +445,11 @@ public class TransientModelsModule extends AbstractModule implements TransientSM
 
     @Override
     public void setAttribute(@NotNull String key, @Nullable String value) {
-      getModelHeader().setOptionalProperty(key, value);
+      if (value == null) {
+        getModelHeader().removeOptionalProperty(key);
+      } else {
+        getModelHeader().setOptionalProperty(key, value);
+      }
     }
 
     @Nullable
