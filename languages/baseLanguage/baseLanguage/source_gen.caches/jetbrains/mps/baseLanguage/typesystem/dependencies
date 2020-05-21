@@ -3904,15 +3904,11 @@
     <classNode dependClassName="java.util.HashSet" />
     <classNode dependClassName="java.util.Set" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.IThrowCheckedExceptions__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.logging.runtime.model.LoggingRuntime" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.typesystem.RulesFunctions_BaseLanguage" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
     <classNode dependClassName="jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="jetbrains.mps.typesystem.inference.TypeCheckingContext" />
-    <classNode dependClassName="org.apache.log4j.Level" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
-    <classNode dependClassName="org.apache.log4j.Logger" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SInterfaceConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />

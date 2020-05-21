@@ -4,13 +4,9 @@ package jetbrains.mps.baseLanguage.typesystem;
 
 import jetbrains.mps.lang.typesystem.runtime.AbstractNonTypesystemRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.baseLanguage.logging.runtime.model.LoggingRuntime;
-import org.apache.log4j.Level;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
@@ -20,11 +16,9 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class check_IThrowCheckedExceptions_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
-  private static final Logger LOG = LogManager.getLogger(check_IThrowCheckedExceptions_NonTypesystemRule.class);
   public check_IThrowCheckedExceptions_NonTypesystemRule() {
   }
   public void applyRule(final SNode iThrowCheckedExceptions, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    LoggingRuntime.logMsgView(Level.INFO, "CCCCCCC", check_IThrowCheckedExceptions_NonTypesystemRule.class, null, null);
     Set<SNode> throwables = SetSequence.fromSetWithValues(new HashSet<SNode>(), IThrowCheckedExceptions__BehaviorDescriptor.getThrownExceptions_id6sjyiRHavr0.invoke(iThrowCheckedExceptions));
     RulesFunctions_BaseLanguage.check(typeCheckingContext, throwables, iThrowCheckedExceptions);
   }
