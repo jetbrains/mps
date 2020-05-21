@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="efsl" ref="r:6251e85f-74a1-4ca8-86ea-f36c4b830cee(testMoveElements.constraints)" />

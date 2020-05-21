@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="sj23" ref="r:c4ad923b-e6a3-4100-863d-8a2e07caee6e(testMoveElements.typesystem)" />

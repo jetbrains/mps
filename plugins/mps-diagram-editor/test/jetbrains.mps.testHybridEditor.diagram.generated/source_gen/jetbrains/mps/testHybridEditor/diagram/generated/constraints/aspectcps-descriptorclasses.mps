@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="zefq" ref="r:1ba34458-c118-4415-8ff0-2128dbb3a8b3(jetbrains.mps.testHybridEditor.diagram.generated.constraints)" />

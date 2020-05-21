@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="60g7" ref="r:998055f5-d0ad-4aaf-a7a8-2f39ff39a8a4(jetbrains.mps.samples.heating.tabular.typesystem)" />

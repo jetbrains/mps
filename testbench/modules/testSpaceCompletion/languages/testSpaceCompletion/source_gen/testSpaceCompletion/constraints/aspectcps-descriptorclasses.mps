@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="veip" ref="r:d15f961a-7bb5-4c36-83c5-9ceeb3036783(testSpaceCompletion.constraints)" />

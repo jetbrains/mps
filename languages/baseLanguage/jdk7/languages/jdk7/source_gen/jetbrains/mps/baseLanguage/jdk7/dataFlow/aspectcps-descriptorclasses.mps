@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="zygu" ref="r:eff5fa57-b736-432e-80c4-b866c1eada21(jetbrains.mps.baseLanguage.jdk7.dataFlow)" />

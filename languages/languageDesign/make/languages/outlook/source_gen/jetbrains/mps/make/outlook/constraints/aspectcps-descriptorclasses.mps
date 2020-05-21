@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="mali" ref="r:3fdffc2d-2910-40d3-af7b-829c9c53a744(jetbrains.mps.make.outlook.constraints)" />

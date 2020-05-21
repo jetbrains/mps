@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="ntfl" ref="r:8114d15e-a68c-48b3-af01-e33470b13f18(testSpaceCompletion.typesystem)" />

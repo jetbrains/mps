@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="ic8h" ref="r:1ec420ce-e1f3-4337-ba22-fe29119e47a1(jetbrains.mps.samples.SwingBuilder.typesystem)" />

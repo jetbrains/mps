@@ -78,7 +78,7 @@ import java.util.stream.StreamSupport;
  */
 public class CheckpointVault {
   // true to indicate persistence is not capable to serialize user objects and we shall convert them into attributes
-  public static final boolean CONVERT_USER_OBJECTS = Boolean.TRUE;
+  public static final boolean CONVERT_USER_OBJECTS = Boolean.FALSE;
   private final ModelStreamManager myStreams;
   private final List<Entry> myKnownCheckpoints;
   private ModelCheckpoints myCheckpoints;

@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="ueqg" ref="r:e5954c68-45c8-4221-b04f-5fad94b764fc(jetbrains.mps.samples.highlevel.simpleEditor.typesystem)" />

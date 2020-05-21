@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="lsph" ref="r:801a4d7a-c26c-4a4a-96c4-791dde20f3b8(testPackagedLanguage.typesystem)" />

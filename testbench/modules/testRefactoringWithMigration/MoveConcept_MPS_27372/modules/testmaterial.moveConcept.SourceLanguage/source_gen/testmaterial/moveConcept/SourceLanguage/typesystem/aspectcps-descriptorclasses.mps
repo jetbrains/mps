@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="49fl" ref="r:456ebb43-db6d-499f-9bc5-4e388f52ef25(testmaterial.moveConcept.SourceLanguage.typesystem)" />

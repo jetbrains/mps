@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="zvzi" ref="r:0942d3be-7e99-4119-a1a6-6b500ef3d859(testWrappedType.constraints)" />

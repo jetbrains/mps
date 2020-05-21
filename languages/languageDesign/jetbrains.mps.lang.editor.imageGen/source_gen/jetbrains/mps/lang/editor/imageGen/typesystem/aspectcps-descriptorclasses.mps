@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="i63z" ref="r:d04a6e72-6530-499c-aa68-2a41292421c0(jetbrains.mps.lang.editor.imageGen.typesystem)" />

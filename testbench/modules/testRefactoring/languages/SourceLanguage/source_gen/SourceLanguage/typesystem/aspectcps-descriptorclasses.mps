@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="ckrm" ref="r:7f0e0ae8-552a-4939-8a10-a1d8ebaa252b(SourceLanguage.typesystem)" />

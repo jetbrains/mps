@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="27bd" ref="r:419b1c2d-945c-46d8-a974-f8d9b9c30aa5(jetbrains.mps.console.internalCommands.constraints)" />

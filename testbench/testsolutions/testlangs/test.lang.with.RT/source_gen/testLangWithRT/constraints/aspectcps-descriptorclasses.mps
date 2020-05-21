@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="2rxa" ref="r:6105b90e-8f3d-460b-aab6-fb46e4bd189d(testLangWithRT.constraints)" />

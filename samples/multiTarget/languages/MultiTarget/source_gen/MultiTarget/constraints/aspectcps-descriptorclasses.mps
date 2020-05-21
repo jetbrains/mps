@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="y3gp" ref="r:ff9e1323-d91e-49f5-b691-25a7606b5578(MultiTarget.constraints)" />

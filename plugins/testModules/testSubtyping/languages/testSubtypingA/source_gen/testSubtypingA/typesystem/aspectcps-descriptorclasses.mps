@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="2dti" ref="r:0c774945-ff0a-4229-b989-63ef469fc6f5(testSubtypingA.typesystem)" />

@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="jpv7" ref="r:e6536a22-4c15-42e0-bcef-bcbc3d1da9cd(testExtendingAnalyzer.constraints)" />

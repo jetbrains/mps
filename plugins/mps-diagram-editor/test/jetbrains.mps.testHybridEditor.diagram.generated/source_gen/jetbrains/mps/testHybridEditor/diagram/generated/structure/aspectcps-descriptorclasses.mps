@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="dtwr" ref="r:9a5893cf-7e85-4b42-81a9-a1d12ecd35f7(jetbrains.mps.testHybridEditor.diagram.generated.structure)" />

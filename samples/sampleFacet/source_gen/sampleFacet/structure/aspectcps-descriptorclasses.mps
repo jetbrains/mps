@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="ey90" ref="r:ef3bdd93-260b-4a16-89d1-13a87cfa78c9(sampleFacet.structure)" />

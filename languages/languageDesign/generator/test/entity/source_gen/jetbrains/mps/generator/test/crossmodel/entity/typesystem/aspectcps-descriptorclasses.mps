@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="9va4" ref="r:128e84de-ef01-4477-84b5-821147453424(jetbrains.mps.generator.test.crossmodel.entity.typesystem)" />

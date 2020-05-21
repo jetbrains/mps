@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="lbgu" ref="r:98e228ed-623a-4d29-93fd-384c67dcbfc6(testCustomAnalyzer.constraints)" />

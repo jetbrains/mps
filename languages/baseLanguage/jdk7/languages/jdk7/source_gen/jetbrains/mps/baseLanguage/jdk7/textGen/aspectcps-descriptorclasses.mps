@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="dvuc" ref="r:f0066008-11c1-481e-93a8-98b044efb2d2(jetbrains.mps.baseLanguage.jdk7.textGen)" />

@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="5wga" ref="r:f6247373-e62c-4ca7-9feb-853cd9feb562(jetbrains.mps.baseLanguage.jdk7.constraints)" />

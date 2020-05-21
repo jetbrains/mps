@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="nnjg" ref="r:07373ad4-6245-493d-a3c6-db69a220ea6c(testSubtypingB.constraints)" />

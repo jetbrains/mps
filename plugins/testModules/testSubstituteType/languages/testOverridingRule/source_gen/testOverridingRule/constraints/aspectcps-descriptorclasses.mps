@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="9kbr" ref="r:cf4a1d4a-6db0-4ea6-82b0-99916b56b75a(testOverridingRule.constraints)" />

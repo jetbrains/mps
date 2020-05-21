@@ -2,6 +2,7 @@
 <model ref="00000000-0000-4000-5f02-5beb5f025beb/i:f526620(checkpoints/jetbrains.mps.baseLanguage.jdk7.dataFlow@beforebaselang)">
   <persistence version="9" />
   <attribute name="checkpoint" value="BeforeBaseLang" />
+  <attribute name="user-objects" value="true" />
   <attribute name="prev-generation-plan" value="AspectCPS" />
   <attribute name="prev-checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
@@ -28,18 +29,9 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
-      <concept id="7980339663309897032" name="jetbrains.mps.lang.generator.structure.OriginTrace" flags="ng" index="cd27G">
-        <child id="7980339663309897037" name="origin" index="cd27D" />
-      </concept>
       <concept id="3864140621129707969" name="jetbrains.mps.lang.generator.structure.GeneratorDebug_Mappings" flags="nn" index="39dXUE" />
-      <concept id="3637169702552512264" name="jetbrains.mps.lang.generator.structure.ElementaryNodeId" flags="ng" index="3u3nmq">
-        <property id="3637169702552512269" name="nodeId" index="3u3nmv" />
-      </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
-        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
-      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
@@ -47,34 +39,18 @@
   </registry>
   <node concept="312cEu" id="0">
     <property role="TrG5h" value="DataFlowAspectDescriptorImpl" />
+    <uo k="s:originTrace" v="n:0" />
     <node concept="2tJIrI" id="1" role="jymVt">
-      <node concept="cd27G" id="5" role="lGtFl">
-        <node concept="3u3nmq" id="6" role="cd27D">
-          <property role="3u3nmv" value="1" />
-        </node>
-      </node>
+      <uo k="s:originTrace" v="n:1" />
     </node>
     <node concept="3Tm1VV" id="2" role="1B3o_S">
-      <node concept="cd27G" id="7" role="lGtFl">
-        <node concept="3u3nmq" id="8" role="cd27D">
-          <property role="3u3nmv" value="2" />
-        </node>
-      </node>
+      <uo k="s:originTrace" v="n:2" />
     </node>
     <node concept="3uibUv" id="3" role="1zkMxy">
       <ref role="3uigEE" to="1fjm:~DataFlowAspectDescriptorBase" resolve="DataFlowAspectDescriptorBase" />
-      <node concept="cd27G" id="9" role="lGtFl">
-        <node concept="3u3nmq" id="a" role="cd27D">
-          <property role="3u3nmv" value="3" />
-        </node>
-      </node>
-    </node>
-    <node concept="cd27G" id="4" role="lGtFl">
-      <node concept="3u3nmq" id="b" role="cd27D">
-        <property role="3u3nmv" value="0" />
-      </node>
+      <uo k="s:originTrace" v="n:3" />
     </node>
   </node>
-  <node concept="39dXUE" id="c" />
+  <node concept="39dXUE" id="4" />
 </model>
 

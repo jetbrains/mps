@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="ojbe" ref="r:a81e4062-7c67-43c9-951a-8099292aabf8(jetbrains.mps.make.reduced.structure)" />

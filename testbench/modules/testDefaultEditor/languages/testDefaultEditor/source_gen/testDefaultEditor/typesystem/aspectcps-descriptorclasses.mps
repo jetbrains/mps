@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="uzq9" ref="r:3ece6893-49db-496b-9c1e-9d891442b410(testDefaultEditor.typesystem)" />

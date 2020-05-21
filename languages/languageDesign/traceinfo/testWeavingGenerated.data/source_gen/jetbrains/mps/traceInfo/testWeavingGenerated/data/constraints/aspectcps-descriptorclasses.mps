@@ -3,6 +3,7 @@
   <persistence version="9" />
   <attribute name="checkpoint" value="DescriptorClasses" />
   <attribute name="generation-plan" value="AspectCPS" />
+  <attribute name="user-objects" value="true" />
   <languages />
   <imports>
     <import index="hcfj" ref="r:31ac5c61-4553-4fb9-b6b4-f077d9314880(jetbrains.mps.traceInfo.testWeavingGenerated.data.constraints)" />
