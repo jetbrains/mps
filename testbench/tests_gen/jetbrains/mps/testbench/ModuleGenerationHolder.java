@@ -21,6 +21,7 @@ import jetbrains.mps.internal.make.cfg.TextGenFacetInitializer;
 import jetbrains.mps.internal.make.cfg.MakeFacetInitializer;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.internal.make.cfg.GenerateFacetInitializer;
 import jetbrains.mps.make.script.IScriptController;
 import jetbrains.mps.progress.EmptyProgressMonitor;
@@ -28,7 +29,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IMapping;
-import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import difflib.Patch;
@@ -106,7 +106,7 @@ public class ModuleGenerationHolder {
     TextGenFacetInitializer tgfi = new TextGenFacetInitializer().generateDebugInfo(true);
     MakeFacetInitializer mfi = new MakeFacetInitializer().setPathToFile(new _FunctionTypes._return_P1_E0<IFile, String>() {
       public IFile invoke(String path) {
-        return tmpFile(path);
+        return FileSystem.getInstance().getFile(tmpFile(path));
       }
     });
     GenerateFacetInitializer gfi = new GenerateFacetInitializer().setGenerationOptions(optBuilder);
@@ -126,7 +126,14 @@ public class ModuleGenerationHolder {
   /*package*/ boolean hasFilesGenerated() {
     return !(MapSequence.fromMap(path2tmp).isEmpty());
   }
+
+  private Map<File, File> dirsWithDiff;
+
   public List<String> diff() {
+    // path2tmp may have few entries that may end up diffing the same dir, e.g. source_gen, source_gen/language and source_gen/language/[editor|structure|aspect].  
+    // If there's a diff in any file for an aspect, it might get reported 3 times! 
+    dirsWithDiff = new HashMap<File, File>();
+
     List<String> diffs = ListSequence.fromList(new ArrayList<String>());
     for (IMapping<String, String> p2t : MapSequence.fromMap(path2tmp).mappingsSet()) {
       File orig = new File(p2t.key());
@@ -143,19 +150,27 @@ public class ModuleGenerationHolder {
         ListSequence.fromList(diffs).addElement("Something weird here: " + orig + " or here " + revd);
       }
     }
+    dirsWithDiff = null;
     return diffs;
   }
-  private IFile tmpFile(String path) {
+
+  private String tmpFile(String path) {
     if (MapSequence.fromMap(path2tmp).containsKey(path)) {
-      return FileSystem.getInstance().getFile(MapSequence.fromMap(path2tmp).get(path));
+      return MapSequence.fromMap(path2tmp).get(path);
     }
     int idx = path.indexOf('/');
     idx = (idx < 0 ? path.indexOf(File.separator) : idx);
     String tmp = tmpPath + "/" + ((idx < 0 ? path.replace(':', '_') : path.substring(idx + 1)));
     MapSequence.fromMap(path2tmp).put(path, tmp);
-    return FileSystem.getInstance().getFile(tmp);
+    return tmp;
   }
+
   private void diffDirs(final File orig, File revd, final List<String> diffs) {
+    if (revd.equals(dirsWithDiff.get(orig))) {
+      // this pair of dirs has been diffed already, no reason to diff its files again 
+      return;
+    }
+    dirsWithDiff.put(orig, revd);
     Iterable<String> onames = Sequence.fromArray(orig.list());
     Iterable<String> rnames = Sequence.fromArray(revd.list());
     if (Sequence.fromIterable(onames).disjunction(Sequence.fromIterable(rnames)).isNotEmpty()) {
