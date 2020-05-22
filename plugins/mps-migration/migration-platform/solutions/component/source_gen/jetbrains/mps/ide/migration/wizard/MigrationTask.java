@@ -28,6 +28,8 @@ import com.intellij.openapi.wm.impl.status.InlineProgressIndicator;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.application.ApplicationManager;
 import org.apache.log4j.Level;
+import java.util.concurrent.atomic.AtomicBoolean;
+import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.migration.global.CleanupProjectMigration;
 import org.jetbrains.mps.openapi.util.Processor;
@@ -37,6 +39,7 @@ import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.project.AbstractModule;
+import java.util.concurrent.atomic.AtomicReference;
 import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
 import jetbrains.mps.util.NameUtil;
 import java.util.Objects;
@@ -208,39 +211,42 @@ public class MigrationTask {
     return noException.value;
   }
 
-  private boolean runCleanupMigrations(ProgressMonitor m) {
+  private boolean runCleanupMigrations(final ProgressMonitor m) {
     int cleanupStepsCount = projectStepsCount(true);
     m.start("Cleaning...", cleanupStepsCount);
-    boolean success = true;
+    final AtomicBoolean success = new AtomicBoolean(true);
     if (cleanupStepsCount != 0) {
       addGlobalLabel(mySession.getProject(), "Cleanup started");
+      mySession.getProject().getComponent(ClassLoaderManager.class).runNonReloadableSection(new Runnable() {
+        @Override
+        public void run() {
+          while (true) {
+            final ProjectMigration pm = mySession.getMigrationRegistry().nextProjectStep(mySession.getMigrationProgress(), mySession.getOptions(), true);
+            if (pm == null) {
+              break;
+            }
 
-      while (true) {
-        final ProjectMigration pm = mySession.getMigrationRegistry().nextProjectStep(mySession.getMigrationProgress(), mySession.getOptions(), true);
-        if (pm == null) {
-          break;
-        }
+            m.step(pm.getDescription());
+            if (!(executeSingleStep(m, pm.getDescription(), new _FunctionTypes._void_P0_E0() {
+              public void invoke() {
+                pm.execute(mySession.getProject());
+              }
+            }, null))) {
+              success.set(false);
+              if (pm instanceof CleanupProjectMigration) {
+                ((CleanupProjectMigration) pm).forceExecutionNextTime(mySession.getProject());
+              }
+              break;
+            }
 
-        m.step(pm.getDescription());
-        if (!(executeSingleStep(m, pm.getDescription(), new _FunctionTypes._void_P0_E0() {
-          public void invoke() {
-            pm.execute(mySession.getProject());
+            m.advance(1);
           }
-        }, null))) {
-          success = false;
-          if (pm instanceof CleanupProjectMigration) {
-            ((CleanupProjectMigration) pm).forceExecutionNextTime(mySession.getProject());
-          }
-          break;
         }
-
-        m.advance(1);
-      }
-
+      });
       addGlobalLabel(mySession.getProject(), "Cleanup finished");
     }
     m.done();
-    return success;
+    return success.get();
   }
 
   private List<ScriptApplied> findMissingMigrations(ProgressMonitor m) {
@@ -311,68 +317,78 @@ public class MigrationTask {
     }
   }
 
-  private boolean runProjectMigrations(ProgressMonitor m) {
+  private boolean runProjectMigrations(final ProgressMonitor m) {
     m.start("Running project migrations...", projectStepsCount(false));
-    boolean success = true;
-    while (true) {
-      final ProjectMigration pm = mySession.getMigrationRegistry().nextProjectStep(mySession.getMigrationProgress(), mySession.getOptions(), false);
-      if (pm == null) {
-        break;
-      }
+    final AtomicBoolean success = new AtomicBoolean(true);
+    mySession.getProject().getComponent(ClassLoaderManager.class).runNonReloadableSection(new Runnable() {
+      @Override
+      public void run() {
+        while (true) {
+          final ProjectMigration pm = mySession.getMigrationRegistry().nextProjectStep(mySession.getMigrationProgress(), mySession.getOptions(), false);
+          if (pm == null) {
+            break;
+          }
 
-      m.step(pm.getDescription());
-      if (!(executeSingleStep(m, pm.getDescription(), new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          mySession.getExecutor().executeProjectMigration(pm);
+          m.step(pm.getDescription());
+          if (!(executeSingleStep(m, pm.getDescription(), new _FunctionTypes._void_P0_E0() {
+            public void invoke() {
+              mySession.getExecutor().executeProjectMigration(pm);
+            }
+          }, null))) {
+            success.set(false);
+            break;
+          }
+
+          m.advance(1);
         }
-      }, null))) {
-        success = false;
-        break;
       }
-
-      m.advance(1);
-    }
+    });
     m.done();
-    return success;
+    return success.get();
   }
 
-  private boolean runLanguageMigrations(ProgressMonitor m) {
+  private boolean runLanguageMigrations(final ProgressMonitor m) {
     m.start("Running language migrations...", moduleStepsCount());
-    boolean success = true;
+    final AtomicBoolean success = new AtomicBoolean(true);
 
-    final Wrappers._T<BaseScriptReference> preferredId = new Wrappers._T<BaseScriptReference>(null);
-    while (true) {
-      final ScriptApplied sa = mySession.getMigrationRegistry().nextModuleStep(preferredId.value);
-      if (sa == null) {
-        break;
-      }
-
-      preferredId.value = sa.getScriptReference();
-      String caption = sa.getScriptReference().resolve(mySession.getProject(), false).getCaption();
-      m.step(caption + " [" + NameUtil.compactNamespace(sa.getModuleReference().getModuleName()) + "]");
-      ListSequence.fromList(myWereRun).addElement(sa);
-      if (!(executeSingleStep(m, caption, new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          mySession.getExecutor().executeModuleMigration(sa);
-        }
-      }, new _FunctionTypes._return_P0_E0<Boolean>() {
-        public Boolean invoke() {
-          ScriptApplied next = mySession.getMigrationRegistry().nextModuleStep(preferredId.value);
-          if (next == null) {
-            return false;
+    final AtomicReference<BaseScriptReference> preferredId = new AtomicReference<BaseScriptReference>();
+    mySession.getProject().getComponent(ClassLoaderManager.class).runNonReloadableSection(new Runnable() {
+      @Override
+      public void run() {
+        while (true) {
+          final ScriptApplied sa = mySession.getMigrationRegistry().nextModuleStep(preferredId.get());
+          if (sa == null) {
+            break;
           }
-          return Objects.equals(sa.getScriptReference(), next.getScriptReference());
-        }
-      }))) {
-        success = false;
-        break;
-      }
 
-      m.advance(1);
-    }
+          preferredId.set(sa.getScriptReference());
+          String caption = sa.getScriptReference().resolve(mySession.getProject(), false).getCaption();
+          m.step(caption + " [" + NameUtil.compactNamespace(sa.getModuleReference().getModuleName()) + "]");
+          ListSequence.fromList(myWereRun).addElement(sa);
+          if (!(executeSingleStep(m, caption, new _FunctionTypes._void_P0_E0() {
+            public void invoke() {
+              mySession.getExecutor().executeModuleMigration(sa);
+            }
+          }, new _FunctionTypes._return_P0_E0<Boolean>() {
+            public Boolean invoke() {
+              ScriptApplied next = mySession.getMigrationRegistry().nextModuleStep(preferredId.get());
+              if (next == null) {
+                return false;
+              }
+              return Objects.equals(sa.getScriptReference(), next.getScriptReference());
+            }
+          }))) {
+            success.set(false);
+            break;
+          }
+
+          m.advance(1);
+        }
+      }
+    });
 
     m.done();
-    return success;
+    return success.get();
   }
 
   private boolean findNotMigrated(ProgressMonitor m) {
