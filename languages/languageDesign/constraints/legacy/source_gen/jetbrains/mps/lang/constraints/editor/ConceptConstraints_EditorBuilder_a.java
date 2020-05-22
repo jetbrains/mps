@@ -226,11 +226,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(myNode, LINKS.concept$rRWx), CONCEPTS.ConceptDeclaration$qU) && SPropertyOperations.getBoolean(((SNode) SLinkOperations.getTarget(myNode, LINKS.concept$rRWx)), PROPS.rootable$vg$g);
   }
   private boolean nodeCondition_g00aa7_a11d0() {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(myNode, LINKS.concept$rRWx), CONCEPTS.ConceptDeclaration$qU))) {
-      return false;
-    }
-    SNode cd = SNodeOperations.cast(SLinkOperations.getTarget(myNode, LINKS.concept$rRWx), CONCEPTS.ConceptDeclaration$qU);
-    return isNotEmptyString(SPropertyOperations.getString(cd, PROPS.iconPath$YYV1)) || (SLinkOperations.getTarget(cd, LINKS.icon$2CxW) != null);
+    // do not show for interface concepts 
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(myNode, LINKS.concept$rRWx), CONCEPTS.ConceptDeclaration$qU);
   }
   private EditorCell createCollection_2() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
@@ -1107,13 +1104,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private static boolean isNotEmptyString(String str) {
-    return str != null && str.length() > 0;
-  }
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink concept$rRWx = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept");
-    /*package*/ static final SContainmentLink icon$2CxW = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x57cf4eb14c4f9ef5L, "icon");
     /*package*/ static final SReferenceLink defaultConcreteConcept$moAu = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a72ce9037L, "defaultConcreteConcept");
     /*package*/ static final SContainmentLink canBeChild$cGzA = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254eb05daL, "canBeChild");
     /*package*/ static final SContainmentLink canBeRoot$K86f = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11db3f8211dL, "canBeRoot");
@@ -1138,6 +1131,5 @@ import org.jetbrains.mps.openapi.language.SConcept;
     /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty abstract$moSU = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
     /*package*/ static final SProperty rootable$vg$g = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
-    /*package*/ static final SProperty iconPath$YYV1 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x10e328118ddL, "iconPath");
   }
 }
