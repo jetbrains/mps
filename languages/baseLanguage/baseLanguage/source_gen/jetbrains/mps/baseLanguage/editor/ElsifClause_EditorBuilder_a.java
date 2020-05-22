@@ -272,6 +272,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     new RightBraceStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     style.set(StyleAttributes.SELECTABLE, true);
     editorCell.getStyle().putAll(style);
+    ElseIfEnterOnEndingBrace.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     return editorCell;
   }

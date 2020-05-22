@@ -23933,6 +23933,162 @@
       <unit id="8221415467041384661" at="13,0,40,0" name="jetbrains.mps.editorTest.RT_toArray_Test" />
     </file>
   </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/8340179215567335844">
+    <file name="EnterOnEndingBrace1_Test.java">
+      <node id="8340179215567335844" at="18,37,19,25" concept="11" />
+      <node id="8340179215567335844" at="23,59,24,36" concept="2" />
+      <node id="8340179215567335844" at="29,52,30,19" concept="11" />
+      <node id="8340179215567335844" at="34,51,35,72" concept="2" />
+      <node id="8340179215567339729" at="35,72,36,69" concept="2" />
+      <node id="8340179215567335844" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="8340179215567335844" at="18,0,21,0" concept="1" trace="EnterOnEndingBrace1_Test#()V" />
+      <node id="8340179215567335844" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8340179215567335844" at="22,0,26,0" concept="5" trace="test_EnterOnEndingBrace1#()V" />
+      <node id="8340179215567335844" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="8340179215567335844" at="18,37,19,25" />
+      <scope id="8340179215567335844" at="23,59,24,36" />
+      <scope id="8340179215567335844" at="29,52,30,19" />
+      <scope id="8340179215567335844" at="34,51,36,69" />
+      <scope id="8340179215567335844" at="18,0,21,0" />
+      <scope id="8340179215567335844" at="29,0,32,0">
+        <var name="owner" id="8340179215567335844" />
+      </scope>
+      <scope id="8340179215567335844" at="22,0,26,0" />
+      <scope id="8340179215567335844" at="33,0,38,0" />
+      <unit id="8340179215567335844" at="27,0,39,0" name="jetbrains.mps.editorTest.EnterOnEndingBrace1_Test$TestBody" />
+      <unit id="8340179215567335844" at="13,0,40,0" name="jetbrains.mps.editorTest.EnterOnEndingBrace1_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/8340179215567340018">
+    <file name="EnterOnEndingBrace2_Test.java">
+      <node id="8340179215567340018" at="18,37,19,25" concept="11" />
+      <node id="8340179215567340018" at="23,59,24,36" concept="2" />
+      <node id="8340179215567340018" at="29,52,30,19" concept="11" />
+      <node id="8340179215567340018" at="34,51,35,72" concept="2" />
+      <node id="8340179215567340043" at="35,72,36,69" concept="2" />
+      <node id="8340179215567340018" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="8340179215567340018" at="18,0,21,0" concept="1" trace="EnterOnEndingBrace2_Test#()V" />
+      <node id="8340179215567340018" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8340179215567340018" at="22,0,26,0" concept="5" trace="test_EnterOnEndingBrace2#()V" />
+      <node id="8340179215567340018" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="8340179215567340018" at="18,37,19,25" />
+      <scope id="8340179215567340018" at="23,59,24,36" />
+      <scope id="8340179215567340018" at="29,52,30,19" />
+      <scope id="8340179215567340018" at="34,51,36,69" />
+      <scope id="8340179215567340018" at="18,0,21,0" />
+      <scope id="8340179215567340018" at="29,0,32,0">
+        <var name="owner" id="8340179215567340018" />
+      </scope>
+      <scope id="8340179215567340018" at="22,0,26,0" />
+      <scope id="8340179215567340018" at="33,0,38,0" />
+      <unit id="8340179215567340018" at="27,0,39,0" name="jetbrains.mps.editorTest.EnterOnEndingBrace2_Test$TestBody" />
+      <unit id="8340179215567340018" at="13,0,40,0" name="jetbrains.mps.editorTest.EnterOnEndingBrace2_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/8340179215567342658">
+    <file name="EnterOnEndingBrace3_Test.java">
+      <node id="8340179215567342658" at="18,37,19,25" concept="11" />
+      <node id="8340179215567342658" at="23,59,24,36" concept="2" />
+      <node id="8340179215567342658" at="29,52,30,19" concept="11" />
+      <node id="8340179215567342658" at="34,51,35,72" concept="2" />
+      <node id="8340179215567342683" at="35,72,36,69" concept="2" />
+      <node id="8340179215567342658" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="8340179215567342658" at="18,0,21,0" concept="1" trace="EnterOnEndingBrace3_Test#()V" />
+      <node id="8340179215567342658" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8340179215567342658" at="22,0,26,0" concept="5" trace="test_EnterOnEndingBrace3#()V" />
+      <node id="8340179215567342658" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="8340179215567342658" at="18,37,19,25" />
+      <scope id="8340179215567342658" at="23,59,24,36" />
+      <scope id="8340179215567342658" at="29,52,30,19" />
+      <scope id="8340179215567342658" at="34,51,36,69" />
+      <scope id="8340179215567342658" at="18,0,21,0" />
+      <scope id="8340179215567342658" at="29,0,32,0">
+        <var name="owner" id="8340179215567342658" />
+      </scope>
+      <scope id="8340179215567342658" at="22,0,26,0" />
+      <scope id="8340179215567342658" at="33,0,38,0" />
+      <unit id="8340179215567342658" at="27,0,39,0" name="jetbrains.mps.editorTest.EnterOnEndingBrace3_Test$TestBody" />
+      <unit id="8340179215567342658" at="13,0,40,0" name="jetbrains.mps.editorTest.EnterOnEndingBrace3_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/8340179215567344906">
+    <file name="EnterOnElseIfEndingBrace1_Test.java">
+      <node id="8340179215567344906" at="18,43,19,25" concept="11" />
+      <node id="8340179215567344906" at="23,65,24,36" concept="2" />
+      <node id="8340179215567344906" at="29,52,30,19" concept="11" />
+      <node id="8340179215567344906" at="34,51,35,72" concept="2" />
+      <node id="8340179215567348055" at="35,72,36,69" concept="2" />
+      <node id="8340179215567344906" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="8340179215567344906" at="18,0,21,0" concept="1" trace="EnterOnElseIfEndingBrace1_Test#()V" />
+      <node id="8340179215567344906" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8340179215567344906" at="22,0,26,0" concept="5" trace="test_EnterOnElseIfEndingBrace1#()V" />
+      <node id="8340179215567344906" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="8340179215567344906" at="18,43,19,25" />
+      <scope id="8340179215567344906" at="23,65,24,36" />
+      <scope id="8340179215567344906" at="29,52,30,19" />
+      <scope id="8340179215567344906" at="34,51,36,69" />
+      <scope id="8340179215567344906" at="18,0,21,0" />
+      <scope id="8340179215567344906" at="29,0,32,0">
+        <var name="owner" id="8340179215567344906" />
+      </scope>
+      <scope id="8340179215567344906" at="22,0,26,0" />
+      <scope id="8340179215567344906" at="33,0,38,0" />
+      <unit id="8340179215567344906" at="27,0,39,0" name="jetbrains.mps.editorTest.EnterOnElseIfEndingBrace1_Test$TestBody" />
+      <unit id="8340179215567344906" at="13,0,40,0" name="jetbrains.mps.editorTest.EnterOnElseIfEndingBrace1_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/8340179215567348480">
+    <file name="EnterOnElseIfEndingBrace2_Test.java">
+      <node id="8340179215567348480" at="18,43,19,25" concept="11" />
+      <node id="8340179215567348480" at="23,65,24,36" concept="2" />
+      <node id="8340179215567348480" at="29,52,30,19" concept="11" />
+      <node id="8340179215567348480" at="34,51,35,72" concept="2" />
+      <node id="8340179215567348503" at="35,72,36,69" concept="2" />
+      <node id="8340179215567348480" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="8340179215567348480" at="18,0,21,0" concept="1" trace="EnterOnElseIfEndingBrace2_Test#()V" />
+      <node id="8340179215567348480" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8340179215567348480" at="22,0,26,0" concept="5" trace="test_EnterOnElseIfEndingBrace2#()V" />
+      <node id="8340179215567348480" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="8340179215567348480" at="18,43,19,25" />
+      <scope id="8340179215567348480" at="23,65,24,36" />
+      <scope id="8340179215567348480" at="29,52,30,19" />
+      <scope id="8340179215567348480" at="34,51,36,69" />
+      <scope id="8340179215567348480" at="18,0,21,0" />
+      <scope id="8340179215567348480" at="29,0,32,0">
+        <var name="owner" id="8340179215567348480" />
+      </scope>
+      <scope id="8340179215567348480" at="22,0,26,0" />
+      <scope id="8340179215567348480" at="33,0,38,0" />
+      <unit id="8340179215567348480" at="27,0,39,0" name="jetbrains.mps.editorTest.EnterOnElseIfEndingBrace2_Test$TestBody" />
+      <unit id="8340179215567348480" at="13,0,40,0" name="jetbrains.mps.editorTest.EnterOnElseIfEndingBrace2_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/8340179215567349528">
+    <file name="EnterOnElseIfEndingBrace3_Test.java">
+      <node id="8340179215567349528" at="18,43,19,25" concept="11" />
+      <node id="8340179215567349528" at="23,65,24,36" concept="2" />
+      <node id="8340179215567349528" at="29,52,30,19" concept="11" />
+      <node id="8340179215567349528" at="34,51,35,72" concept="2" />
+      <node id="8340179215567349551" at="35,72,36,69" concept="2" />
+      <node id="8340179215567349528" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="8340179215567349528" at="18,0,21,0" concept="1" trace="EnterOnElseIfEndingBrace3_Test#()V" />
+      <node id="8340179215567349528" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8340179215567349528" at="22,0,26,0" concept="5" trace="test_EnterOnElseIfEndingBrace3#()V" />
+      <node id="8340179215567349528" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="8340179215567349528" at="18,43,19,25" />
+      <scope id="8340179215567349528" at="23,65,24,36" />
+      <scope id="8340179215567349528" at="29,52,30,19" />
+      <scope id="8340179215567349528" at="34,51,36,69" />
+      <scope id="8340179215567349528" at="18,0,21,0" />
+      <scope id="8340179215567349528" at="29,0,32,0">
+        <var name="owner" id="8340179215567349528" />
+      </scope>
+      <scope id="8340179215567349528" at="22,0,26,0" />
+      <scope id="8340179215567349528" at="33,0,38,0" />
+      <unit id="8340179215567349528" at="27,0,39,0" name="jetbrains.mps.editorTest.EnterOnElseIfEndingBrace3_Test$TestBody" />
+      <unit id="8340179215567349528" at="13,0,40,0" name="jetbrains.mps.editorTest.EnterOnElseIfEndingBrace3_Test" />
+    </file>
+  </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/8347245235043427382">
     <file name="AbstractNativeUnavailable_Test.java">
       <node id="8347245235043427382" at="18,43,19,25" concept="11" />
