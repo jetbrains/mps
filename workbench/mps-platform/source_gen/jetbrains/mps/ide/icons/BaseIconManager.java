@@ -27,6 +27,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.DevKit;
+import org.apache.log4j.Level;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import com.intellij.ui.LayeredIcon;
 import com.intellij.util.PlatformIcons;
@@ -40,7 +41,6 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.util.IconLoader;
-import org.apache.log4j.Level;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)/1315815304215925444", model = "r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)")
@@ -141,7 +141,14 @@ public class BaseIconManager {
   }
 
   private Icon getIconFromConstraints(final SNode node) {
-    IconResource altIcon = myConceptRegistry.getConstraintsDescriptor(SNodeOperations.getConcept(node)).getInstanceIcon(node);
+    IconResource altIcon = null;
+    try {
+      altIcon = myConceptRegistry.getConstraintsDescriptor(SNodeOperations.getConcept(node)).getInstanceIcon(node);
+    } catch (Throwable t) {
+      if (LOG.isEnabledFor(Level.ERROR)) {
+        LOG.error("Exception in user code", t);
+      }
+    }
     if (altIcon == null) {
       return null;
     }

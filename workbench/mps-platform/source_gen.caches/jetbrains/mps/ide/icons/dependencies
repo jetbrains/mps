@@ -6,6 +6,7 @@
     <classNode dependClassName="com.intellij.ui.RowIcon" />
     <classNode dependClassName="com.intellij.util.PlatformIcons" />
     <classNode dependClassName="java.lang.Class" />
+    <classNode dependClassName="java.lang.Throwable" />
     <classNode dependClassName="java.util.HashMap" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Map" />
