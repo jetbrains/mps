@@ -306,7 +306,7 @@ public class ClassLoaderManager implements CoreComponent {
   }
 
   /**
-   * the caller is guaranteed that no reload happen during the transaction
+   * the caller is guaranteed that no reload happen during the transaction (reload which is coming from the other thread)
    * due to possible deadlock at least the read access is demanded
    */
   @Internal
@@ -324,6 +324,20 @@ public class ClassLoaderManager implements CoreComponent {
       return transaction.compute();
     } finally {
       myLoadingModulesLock.unlock();
+    }
+  }
+
+  /**
+   * no events are triggered, classloaders do not change during this section
+   */
+  @ToRemove(version = 201)
+  @Internal
+  public void runNonReloadableSection(@NotNull Runnable runnable) {
+    myRepository.getModelAccess().runReadAction(myRepositoryListener::pause);
+    try {
+      runnable.run();
+    } finally {
+      myRepository.getModelAccess().runReadAction(myRepositoryListener::proceed);
     }
   }
 

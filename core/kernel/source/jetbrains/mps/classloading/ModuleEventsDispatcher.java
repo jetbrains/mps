@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.classloading;
 
+import jetbrains.mps.internal.collections.runtime.AbstractListSequence;
 import jetbrains.mps.smodel.SRepositoryBatchListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -23,6 +24,7 @@ import org.jetbrains.mps.openapi.repository.WriteActionListener;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * The class is responsible for listening {@link org.jetbrains.mps.openapi.module.SRepositoryListener} events like
@@ -44,6 +46,7 @@ public class ModuleEventsDispatcher implements WriteActionListener {
   private final List<SRepositoryBatchListener> myListeners = new CopyOnWriteArrayList<>();
 
   private final SRepository myRepository;
+  private final AtomicBoolean myPaused = new AtomicBoolean();
 
   public ModuleEventsDispatcher(@NotNull SRepository repository) {
     myRepository = repository;
@@ -99,8 +102,17 @@ public class ModuleEventsDispatcher implements WriteActionListener {
 
   private void fireModuleEvents(List<SRepositoryEvent> events) {
     myRepository.getModelAccess().checkWriteAccess();
+    if (myPaused.get()) return;
     for (SRepositoryBatchListener listener : myListeners) {
       listener.eventsHappened(events);
     }
+  }
+
+  public void pause() {
+    myPaused.set(true);
+  }
+
+  public void unpause() {
+    myPaused.set(false);
   }
 }
