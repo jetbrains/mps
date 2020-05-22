@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.nodeEditor.leftHighlighter;
 
-import com.intellij.diff.util.TextDiffTypeFactory;
 import com.intellij.ide.DataManager;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
@@ -31,11 +30,9 @@ import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.tooltips.TooltipComponent;
 import jetbrains.mps.nodeEditor.EditorComponent;
-import jetbrains.mps.nodeEditor.EditorComponent.ChangedInterval;
 import jetbrains.mps.nodeEditor.EditorMessageIconRenderer;
 import jetbrains.mps.nodeEditor.EditorMessageIconRenderer.IconRendererType;
 import jetbrains.mps.nodeEditor.EditorSettings;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.nodeEditor.leftHighlighter.IconPositionCalculator.IntLocation;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.update.UpdaterListenerAdapter;
@@ -56,7 +53,6 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
@@ -89,11 +85,20 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
     }
     return afap1.getWeight() - afap2.getWeight();
   };
+  private static final Comparator<BackgroundWithFoldingLinePainter> BACKGROUND_PAINTERS_COMPARATOR = (abp1, abp2) -> {
+    if (abp1.getWeight() == abp2.getWeight() && !abp1.equals(abp2)) {
+      return System.identityHashCode(abp1) - System.identityHashCode(abp2);
+    }
+    return abp1.getWeight() - abp2.getWeight();
+  };
 
   private EditorComponent myEditorComponent;
   private NavigableSet<AbstractFoldingAreaPainter> myFoldingAreaPainters = new TreeSet<>(FOLDING_AREA_PAINTERS_COMPARATOR);
   private BracketsPainter myBracketsPainter;
   private FoldingButtonsPainter myFoldingButtonsPainter;
+
+  private NavigableSet<BackgroundWithFoldingLinePainter> myBackgroundPainters = new TreeSet<>(BACKGROUND_PAINTERS_COMPARATOR);
+  private SelectedCellAreaPainter mySelectedCellAreaPainter;
 
   private List<AbstractLeftColumn> myLeftColumns = new ArrayList<>();
 
@@ -120,12 +125,18 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
     addMouseListener(new MouseAdapter() {
       @Override
       public void mouseExited(MouseEvent e) {
+        for (BackgroundWithFoldingLinePainter painter : myBackgroundPainters) {
+          painter.mouseExited(e);
+        }
         mouseExitedFoldingArea(e);
         mouseExitedIconsArea(e);
       }
 
       @Override
       public void mouseEntered(MouseEvent e) {
+        for (BackgroundWithFoldingLinePainter painter : myBackgroundPainters) {
+          painter.mouseMoved(e);
+        }
         if (isInFoldingArea(e)) {
           mouseMovedInFoldingArea(e);
         } else if (isInTextArea(e)) {
@@ -138,6 +149,9 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
     addMouseMotionListener(new MouseMotionAdapter() {
       @Override
       public void mouseMoved(MouseEvent e) {
+        for (BackgroundWithFoldingLinePainter painter : myBackgroundPainters) {
+          painter.mouseMoved(e);
+        }
         if (isInFoldingArea(e)) {
           mouseExitedIconsArea(e);
           mouseMovedInFoldingArea(e);
@@ -166,6 +180,14 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
 
     myFoldingAreaPainters.add(myBracketsPainter);
     myFoldingAreaPainters.add(myFoldingButtonsPainter);
+
+    myBackgroundPainters.add(new BackgroundWithFoldingLinePainter(this, myRightToLeft));
+    mySelectedCellAreaPainter = new SelectedCellAreaPainter(this, myRightToLeft);
+    myBackgroundPainters.add(mySelectedCellAreaPainter);
+  }
+
+  public void selectionChanged() {
+    mySelectedCellAreaPainter.updateSelection();
   }
 
   @NotNull
@@ -197,6 +219,10 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
     return myLeftFoldingAreaWidth + FOLDING_LINE_WIDTH + myRightFoldingAreaWidth;
   }
 
+  public int getFoldingLineWidth() {
+    return FOLDING_LINE_WIDTH;
+  }
+
   private boolean isInside(int offset, int width, int x) {
     return offset <= x && x < offset + width;
   }
@@ -209,6 +235,9 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
 
   public void dispose() {
     for (AbstractFoldingAreaPainter painter : myFoldingAreaPainters) {
+      painter.dispose();
+    }
+    for (BackgroundWithFoldingLinePainter painter : myBackgroundPainters) {
       painter.dispose();
     }
     for (AbstractLeftColumn column : myLeftColumns) {
@@ -235,11 +264,29 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
     repaint();
   }
 
+  public void addBackgroundPainter(BackgroundWithFoldingLinePainter painter) {
+    if (myBackgroundPainters.contains(painter)) {
+      return;
+    }
+    myBackgroundPainters.add(painter);
+    relayout(true);
+    repaint();
+  }
+
   public void removeFoldingAreaPainter(AbstractFoldingAreaPainter painter) {
     if (!myFoldingAreaPainters.contains(painter)) {
       return;
     }
     myFoldingAreaPainters.remove(painter);
+    relayout(true);
+    repaint();
+  }
+
+  public void removeBackgroundAreaPainter(BackgroundWithFoldingLinePainter painter) {
+    if (!myBackgroundPainters.contains(painter)) {
+      return;
+    }
+    myBackgroundPainters.remove(painter);
     relayout(true);
     repaint();
   }
@@ -264,7 +311,6 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
   public void paintComponent(Graphics g) {
     Rectangle clipBounds = g.getClipBounds();
     paintBackgroundAndFoldingLine(g, clipBounds);
-    paintChangedIntervals(g, clipBounds);
     paintTextColumns(g, clipBounds);
     paintIconRenderers(g, clipBounds);
     paintFoldingArea(g, clipBounds);
@@ -280,51 +326,8 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
   }
 
   private void paintBackgroundAndFoldingLine(Graphics g, Rectangle clipBounds) {
-    Graphics2D g2d = (Graphics2D) g;
-    g.setColor(myRightToLeft ? getEditorComponent().getBackground() : getBackground());
-    g.fillRect(clipBounds.x, clipBounds.y, Math.min(clipBounds.width, myFoldingLineX - clipBounds.x), clipBounds.height);
-    g.setColor(myRightToLeft ? getBackground() : getEditorComponent().getBackground());
-    g.fillRect(Math.max(clipBounds.x, myFoldingLineX), clipBounds.y, clipBounds.width - Math.max(0, myFoldingLineX - clipBounds.x), clipBounds.height);
-
-    Color fgColor = EditorSettings.getInstance().getLeftHighlighterTearLineColor();
-    EditorCell deepestCell = myEditorComponent.getDeepestSelectedCell();
-    if (deepestCell instanceof EditorCell_Label) {
-      int selectedCellY = deepestCell.getY();
-      int selectedCellHeight = deepestCell.getHeight() - deepestCell.getTopInset() - deepestCell.getBottomInset();
-      if (g.hitClip(clipBounds.x, selectedCellY, clipBounds.width, selectedCellHeight)) {
-        g.setColor(EditorSettings.getInstance().getCaretRowColor());
-        g.fillRect(clipBounds.x, selectedCellY, clipBounds.width, selectedCellHeight);
-        // Drawing folding line
-
-        UIUtil.drawVDottedLine(g2d, myFoldingLineX, clipBounds.y, selectedCellY, getBackground(), fgColor);
-        UIUtil.drawVDottedLine(g2d, myFoldingLineX, selectedCellY, selectedCellY + selectedCellHeight, EditorSettings.getInstance().getCaretRowColor(),
-                               fgColor);
-        UIUtil.drawVDottedLine(g2d, myFoldingLineX, selectedCellY + selectedCellHeight, clipBounds.y + clipBounds.height, getBackground(),
-                               fgColor);
-        return;
-      }
-    }
-    // Drawing folding line
-    UIUtil.drawVDottedLine(g2d, myFoldingLineX, clipBounds.y, clipBounds.y + clipBounds.height, getBackground(), fgColor);
-  }
-
-  private void paintChangedIntervals(Graphics g, Rectangle clipBounds) {
-    Graphics2D g2d = (Graphics2D) g;
-
-    for (ChangedInterval changedInterval : myEditorComponent.getChangedIntervals()) {
-      if (g.hitClip(clipBounds.x, changedInterval.getPosition(), clipBounds.width, changedInterval.getHeight())) {
-        g.setColor(changedInterval.getColor());
-        g.fillRect(myRightToLeft ? myFoldingLineX : clipBounds.x, changedInterval.getPosition(),
-                   myRightToLeft ? clipBounds.width - myFoldingLineX : myFoldingLineX,
-                   changedInterval.getHeight());
-        Color mixedColor = TextDiffTypeFactory.getMiddleColor(changedInterval.getColor(), getEditorComponent().getBackground());
-        g.setColor(mixedColor);
-        g.fillRect(myRightToLeft ? 0 : myFoldingLineX, changedInterval.getPosition(), myRightToLeft ? myFoldingLineX : clipBounds.width - myFoldingLineX,
-                   changedInterval.getHeight());
-
-        UIUtil.drawVDottedLine(g2d, myFoldingLineX, changedInterval.getPosition(), changedInterval.getPosition() + changedInterval.getHeight(), changedInterval.getColor(),
-                               EditorSettings.getInstance().getLeftHighlighterTearLineColor());
-      }
+    for (BackgroundWithFoldingLinePainter painter : myBackgroundPainters) {
+      painter.paint(g);
     }
   }
 
@@ -388,6 +391,7 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
     if (myRightToLeft) {
       recalculateFoldingAreaWidth();
       updateSeparatorLinePosition();
+      relayoutBackground();
       if (updateFolding) {
         for (AbstractFoldingAreaPainter painter : myFoldingAreaPainters) {
           painter.relayout();
@@ -407,8 +411,15 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
       }
       recalculateFoldingAreaWidth();
       updateSeparatorLinePosition();
+      relayoutBackground();
     }
     updatePreferredSize();
+  }
+
+  public void relayoutBackground() {
+    for (BackgroundWithFoldingLinePainter painter : myBackgroundPainters) {
+      painter.relayout();
+    }
   }
 
   // Optimization: partly layouting
@@ -527,11 +538,11 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
   }
 
   private void updatePreferredSize() {
-    int newWidth = myTextColumnWidth + myIconRenderersWidth + getFoldingAreaWidth();
-    int newHeight = myEditorComponent.getPreferredSize().height;
+    int newWidth = myTextColumnWidth + myIconRenderersWidth + getFoldingAreaWidth() + 1;
+    int newHeight = myEditorComponent.getPreferredSize().height + myEditorComponent.getHorizontalScrollBarOffset();
     if (myWidth != newWidth || myHeight != newHeight) {
       myWidth = newWidth;
-      myHeight = newHeight + myEditorComponent.getHorizontalScrollBarOffset();
+      myHeight = newHeight;
       firePreferredSizeChanged();
     }
   }
@@ -542,7 +553,7 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
 
   @Override
   public Dimension getPreferredSize() {
-    return new Dimension(myWidth + 1, myHeight);
+    return new Dimension(myWidth, myHeight);
   }
 
   //used in plugin
@@ -575,30 +586,13 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
         return iconRenderer.getTooltipText();
       }
     }
-    return getChangedIntervalText(e);
-  }
-
-  private String getChangedIntervalText(MouseEvent event) {
-    Point p = event.getPoint();
-    if (p.x < 0 || p.x > getWidth()) {
-      return null;
-    }
-    StringBuilder sb = null;
-    for (ChangedInterval changedInterval : myEditorComponent.getChangedIntervals()) {
-      if (p.y >= changedInterval.getPosition() && p.y <= changedInterval.getPosition() + changedInterval.getHeight()) {
-        if (sb == null) {
-          sb = new StringBuilder(changedInterval.getTooltipText());
-          continue;
-        }
-        sb.append("\n\n").append(changedInterval.getTooltipText());
+    for (BackgroundWithFoldingLinePainter painter : myBackgroundPainters) {
+      if (painter.getToolTipText() != null) {
+        return painter.getToolTipText();
       }
     }
-    if (sb == null){
-      return null;
-    }
-    return sb.toString().replace("\n", "<br>");
+    return null;
   }
-
 
   @Override
   protected void processMouseEvent(MouseEvent e) {
@@ -612,6 +606,14 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
           mousePressedInTextArea(e);
         } else {
           mousePressedInIconsArea(e);
+        }
+        if (!e.isConsumed()) {
+          for (BackgroundWithFoldingLinePainter painter : myBackgroundPainters) {
+            painter.mousePressed(e);
+            if (e.isConsumed()) {
+              break;
+            }
+          }
         }
         if (!e.isConsumed() && e.getButton() == MouseEvent.BUTTON3 && e.getID() == MouseEvent.MOUSE_PRESSED) {
           ActionGroup actionGroup = ActionUtils.getDefaultGroup(MPSActions.EDITOR_LEFTPANEL_GROUP);

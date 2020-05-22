@@ -124,8 +124,4 @@ public abstract class AbstractFoldingAreaPainter {
   protected int getLocalXCoordinate(MouseEvent e) {
     return e.getX() - getLeftHighlighter().getFoldingLineX();
   }
-
-  protected boolean isBackgroundPainter(){
-    return false;
-  }
 }

@@ -14,7 +14,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.project.IProject;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.nodeEditor.EditorComponent;
@@ -29,9 +28,22 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.awt.Color;
+import jetbrains.mps.nodeEditor.AbstractAdditionalPainter;
+import jetbrains.mps.nodeEditor.AdditionalPainter;
+import java.awt.Graphics;
+import com.intellij.diff.util.TextDiffTypeFactory;
+import jetbrains.mps.nodeEditor.leftHighlighter.BackgroundWithFoldingLinePainter;
+import jetbrains.mps.nodeEditor.leftHighlighter.LeftEditorHighlighter;
+import java.awt.event.MouseEvent;
+import jetbrains.mps.internal.collections.runtime.IterableUtils;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import java.awt.Point;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.nodeEditor.configuration.EditorConfiguration;
+import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
 import javax.swing.JScrollPane;
 import com.intellij.ui.ScrollPaneFactory;
 import jetbrains.mps.nodeEditor.commands.CommandContextWithVF;
@@ -49,7 +61,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 @GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4652592318748338308", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class DiffEditor implements EditorMessageOwner {
   private JBSplitter myPanel = new JBSplitter(true, 0.75f);
-  private boolean isInspectorShown;
+  private boolean myIsInspectorShown;
+  private final boolean myRightToLeft;
   private MainEditorComponent myMainEditorComponent;
   private String myTitle;
   private JComponent myTitleComponent;
@@ -60,10 +73,11 @@ public class DiffEditor implements EditorMessageOwner {
 
 
   public DiffEditor(final IProject project, SNode node, String contentTitle, boolean rightToLeft, boolean isInspectorShown) {
-    this.isInspectorShown = isInspectorShown;
+    myIsInspectorShown = isInspectorShown;
+    myRightToLeft = rightToLeft;
     myTitle = contentTitle;
-    myMainEditorComponent = new MainEditorComponent(project.getRepository(), true, rightToLeft);
-    myInspectorComponent = new MyInspectorEditorComponent(project.getRepository(), new EditorConfigurationBuilder().rightToLeft(rightToLeft).build());
+    myMainEditorComponent = new MainEditorComponent(project.getRepository(), rightToLeft);
+    myInspectorComponent = new MyInspectorEditorComponent(project.getRepository(), rightToLeft);
     Sequence.fromIterable(getEditorComponents()).visitAll(new IVisitor<EditorComponent>() {
       public void visit(EditorComponent ec) {
         EditorExtensionUtil.extendUsingProject(ec, project);
@@ -91,10 +105,10 @@ public class DiffEditor implements EditorMessageOwner {
   }
 
   public void showInspector(boolean show) {
-    if (isInspectorShown == show) {
+    if (myIsInspectorShown == show) {
       return;
     }
-    isInspectorShown = show;
+    myIsInspectorShown = show;
     myPanel.setSecondComponent((show ? getBottomComponent() : null));
   }
 
@@ -222,28 +236,172 @@ public class DiffEditor implements EditorMessageOwner {
     return Sequence.fromArray(new EditorComponent[]{myMainEditorComponent, myInspectorComponent});
   }
 
-  public DiffChangeGroupLayout getLeftChangeGroupLayout(boolean inspector) {
+  private DiffChangeGroupLayout getLeftChangeGroupLayout(boolean inspector) {
     return myLeftChangeGroupLayouts[(inspector ? 1 : 0)];
   }
 
-  public DiffChangeGroupLayout getRightChangeGroupLayout(boolean inspector) {
+  private DiffChangeGroupLayout getRightChangeGroupLayout(boolean inspector) {
     return myRightChangeGroupLayouts[(inspector ? 1 : 0)];
   }
 
-
-  public List<EditorComponent.ChangedInterval> getIntervals(boolean inspector) {
-    List<EditorComponent.ChangedInterval> areas = ListSequence.fromList(new ArrayList<EditorComponent.ChangedInterval>());
-    ListSequence.fromList(areas).addSequence(ListSequence.fromList(getIntervals(getLeftChangeGroupLayout(inspector), false)));
-    ListSequence.fromList(areas).addSequence(ListSequence.fromList(getIntervals(getRightChangeGroupLayout(inspector), true)));
-    return areas;
+  private List<ColoredStripWithTooltip> getAllColoredStrips(boolean inspector) {
+    List<ColoredStripWithTooltip> strips = ListSequence.fromList(new ArrayList<ColoredStripWithTooltip>());
+    ListSequence.fromList(strips).addSequence(CollectionSequence.fromCollection(getColoredStrips(getLeftChangeGroupLayout(inspector), false)));
+    ListSequence.fromList(strips).addSequence(CollectionSequence.fromCollection(getColoredStrips(getRightChangeGroupLayout(inspector), true)));
+    return strips;
   }
 
-  private List<EditorComponent.ChangedInterval> getIntervals(DiffChangeGroupLayout layout, boolean isLeftEditor) {
-    List<EditorComponent.ChangedInterval> areas = ListSequence.fromList(new ArrayList<EditorComponent.ChangedInterval>());
+  private static final class ColoredStripWithTooltip {
+
+    private final int y;
+    private final int height;
+    private final Color color;
+    private final String tooltipText;
+
+    public ColoredStripWithTooltip(int y, int height, Color color, String tooltipText) {
+      this.y = y;
+      this.height = height;
+      this.color = color;
+      this.tooltipText = tooltipText;
+    }
+  }
+
+  private class MyEditorComponentPainter extends AbstractAdditionalPainter {
+
+    private final boolean myInspector;
+
+    public MyEditorComponentPainter(boolean inspector) {
+      myInspector = inspector;
+    }
+    @Override
+    public boolean paintsBackground() {
+      return true;
+    }
+    @Override
+    public boolean paintsAbove() {
+      return false;
+    }
+    @Override
+    public boolean isAbove(AdditionalPainter additionalPainter, EditorComponent editorComponent) {
+      return false;
+    }
+    @Override
+    public void paint(Graphics graphics, EditorComponent component) {
+    }
+    @Override
+    public Object getItem() {
+      return null;
+    }
+
+    @Override
+    public void paintBackground(Graphics graphics, EditorComponent component) {
+      for (ColoredStripWithTooltip strip : getAllColoredStrips(myInspector)) {
+        if (graphics.hitClip(0, strip.y, component.getWidth(), strip.height)) {
+          Color color = TextDiffTypeFactory.getMiddleColor(strip.color, component.getBackground());
+          graphics.setColor(color);
+          graphics.fillRect(0, strip.y, component.getWidth(), strip.height);
+        }
+      }
+    }
+  }
+
+  private class MyLeftHighlighterPainter extends BackgroundWithFoldingLinePainter {
+
+    private final boolean myInspector;
+    private Integer myY;
+    private Integer myHeight;
+    private Color myHighlighterAreaColor;
+    private Color myEditorAreaColor;
+    private Iterable<ColoredStripWithTooltip> myColoredStripsUnderMouse = null;
+
+    public MyLeftHighlighterPainter(LeftEditorHighlighter leftEditorHighlighter, boolean inspector) {
+      super(leftEditorHighlighter, myRightToLeft);
+      myInspector = inspector;
+    }
+
+    @Override
+    public int getWeight() {
+      return 2;
+    }
+
+    @Override
+    public Integer getY() {
+      return myY;
+    }
+
+    @Override
+    public Integer getHeight() {
+      return myHeight;
+    }
+
+    @Override
+    public Color getHighlighterAreaColor() {
+      return myHighlighterAreaColor;
+    }
+
+    @Override
+    public Color getEditorAreaColor() {
+      return myEditorAreaColor;
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+      myColoredStripsUnderMouse = null;
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+      myColoredStripsUnderMouse = getColoredStripsUnderMouse(e, myInspector);
+    }
+
+    @Override
+    public String getToolTipText() {
+      return getToolTipTextFromColoredStrips(myColoredStripsUnderMouse);
+    }
+
+    @Override
+    public void paint(Graphics g) {
+      for (ColoredStripWithTooltip strip : getAllColoredStrips(myInspector)) {
+        if (!(g.hitClip(getLeftHighlighter().getX(), strip.y, getLeftHighlighter().getWidth(), strip.height))) {
+          continue;
+        }
+        myHighlighterAreaColor = strip.color;
+        myEditorAreaColor = TextDiffTypeFactory.getMiddleColor(strip.color, getEditorComponent().getBackground());
+        myY = strip.y;
+        myHeight = strip.height;
+        super.paint(g);
+      }
+    }
+  }
+
+  private String getToolTipTextFromColoredStrips(Iterable<ColoredStripWithTooltip> strips) {
+    if (strips == null) {
+      return null;
+    }
+    String text = IterableUtils.join(Sequence.fromIterable(strips).select(new ISelector<ColoredStripWithTooltip, String>() {
+      public String select(ColoredStripWithTooltip strip) {
+        return strip.tooltipText;
+      }
+    }), "<br><br>");
+    return (text == null ? null : text.replace("\n", "<br>"));
+  }
+
+  private Iterable<ColoredStripWithTooltip> getColoredStripsUnderMouse(MouseEvent e, boolean inspector) {
+    final Point p = e.getPoint();
+    return ListSequence.fromList(getAllColoredStrips(inspector)).where(new IWhereFilter<ColoredStripWithTooltip>() {
+      public boolean accept(ColoredStripWithTooltip strip) {
+        return p.y >= strip.y && p.y <= strip.y + strip.height;
+      }
+    });
+  }
+
+  private Collection<ColoredStripWithTooltip> getColoredStrips(DiffChangeGroupLayout layout, boolean isLeftEditor) {
+    Collection<ColoredStripWithTooltip> strips = CollectionSequence.fromCollection(new ArrayList<ColoredStripWithTooltip>());
     if (layout == null) {
-      return areas;
+      return strips;
     }
     int prevGroupBottomLineY = -1;
+
     for (ChangeGroup changeGroup : ListSequence.fromList(layout.getChangeGroups())) {
       Color color = ChangeColors.get(changeGroup.getChangeType());
       Bounds bounds = changeGroup.getBounds(isLeftEditor);
@@ -263,27 +421,31 @@ public class DiffEditor implements EditorMessageOwner {
         height = 2;
       }
 
-      String description = layout.getChangeGroupDescription(changeGroup);
-      ListSequence.fromList(areas).addElement(new EditorComponent.ChangedInterval(y, height, color, description));
+      String tooltipText = layout.getChangeGroupDescription(changeGroup);
+      CollectionSequence.fromCollection(strips).addElement(new ColoredStripWithTooltip(y, height, color, tooltipText));
       prevGroupBottomLineY = y + height;
     }
-    return areas;
+    return strips;
   }
 
   public class MyInspectorEditorComponent extends InspectorEditorComponent {
 
-    public MyInspectorEditorComponent(@NotNull SRepository repository, @NotNull EditorConfiguration configuration) {
-      super(repository, configuration);
+    public MyInspectorEditorComponent(@NotNull SRepository repository, boolean rightToLeft) {
+      super(repository, new EditorConfigurationBuilder().rightToLeft(rightToLeft).build());
+      addAdditionalPainter(new MyEditorComponentPainter(true));
+      LeftEditorHighlighter leftHighlighter = getLeftEditorHighlighter();
+      leftHighlighter.addBackgroundPainter(new MyLeftHighlighterPainter(leftHighlighter, true));
+    }
+
+    @Override
+    public String getToolTipText(MouseEvent event) {
+      String text = super.getToolTipText(event);
+      return (text != null ? text : getToolTipTextFromColoredStrips(getColoredStripsUnderMouse(event, false)));
     }
 
     @Override
     protected JScrollPane createScrollPane() {
       return ScrollPaneFactory.createScrollPane(null, true);
-    }
-
-    @Override
-    public List<EditorComponent.ChangedInterval> getChangedIntervals() {
-      return getIntervals(true);
     }
   }
 
@@ -291,15 +453,19 @@ public class DiffEditor implements EditorMessageOwner {
     private DiffFileEditor myDiffFileEditor;
     private CommandContextWithVF myCommandContext;
 
-    public MainEditorComponent(SRepository repository, boolean showGutter, boolean rightToLeft) {
-      super(repository, new EditorConfigurationBuilder().showErrorsGutter(showGutter).rightToLeft(rightToLeft).build());
+    public MainEditorComponent(SRepository repository, boolean rightToLeft) {
+      super(repository, new EditorConfigurationBuilder().showErrorsGutter(true).rightToLeft(rightToLeft).build());
       myDiffFileEditor = new DiffFileEditor(this);
       setDefaultPopupGroupId(((String) BHReflection.invoke0(SNodeOperations.getNode("r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)", "426251916200108583"), CONCEPTS.ActionGroupDeclaration$YL, SMethodTrimmedId.create("getGeneratedClassFQName", CONCEPTS.ActionGroupDeclaration$YL, "hEwJa8g"))));
+      addAdditionalPainter(new MyEditorComponentPainter(false));
+      LeftEditorHighlighter leftHighlighter = getLeftEditorHighlighter();
+      leftHighlighter.addBackgroundPainter(new MyLeftHighlighterPainter(leftHighlighter, false));
     }
 
     @Override
-    public List<EditorComponent.ChangedInterval> getChangedIntervals() {
-      return getIntervals(false);
+    public String getToolTipText(MouseEvent event) {
+      String text = super.getToolTipText(event);
+      return (text != null ? text : getToolTipTextFromColoredStrips(getColoredStripsUnderMouse(event, false)));
     }
 
     @Override

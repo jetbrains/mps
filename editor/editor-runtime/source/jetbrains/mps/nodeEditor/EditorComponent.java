@@ -157,6 +157,7 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 import javax.swing.KeyStroke;
@@ -659,6 +660,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
           repaint(editorCell);
         }
       }
+      myLeftHighlighter.selectionChanged();
       myLeftHighlighter.repaint();
     });
     UISettings.setupEditorAntialiasing(this);
@@ -743,7 +745,8 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   }
 
   public int getHorizontalScrollBarOffset() {
-    return myScrollPane.getHorizontalScrollBar().getPreferredSize().height;
+    JScrollBar bar = myScrollPane.getHorizontalScrollBar();
+    return bar != null && bar.isVisible() ? bar.getPreferredSize().height : 0;
   }
 
   Point getViewPosition() {
@@ -867,43 +870,20 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
         }
 
         jetbrains.mps.openapi.editor.cells.EditorCell cell = myRootCell.findLeaf(event.getX(), event.getY());
+        if (cell == null) {
+          return;
+        }
         if (isCancelRequested()) {
           confirmCancel();
           return;
         }
-        String text = null;
-        // messages from cells have higher priority than messages from changed areas.
-        if (cell != null) {
-          text = getMessagesTextFor(cell);
-        }
-        if (text == null) {
-          text = getChangedIntervalText(event);
-        }
+        String text = getMessagesTextFor(cell);
         text = text == null ? text : text.replace("\n", "<br>");
         rv.set(text);
       }
     });
     return rv.get();
   }
-
-  private String getChangedIntervalText(MouseEvent event) {
-    Point p = event.getPoint();
-    if (p.x < 0 || p.x > getWidth()) {
-      return null;
-    }
-    StringBuilder text = null;
-    for (ChangedInterval changedInterval : getChangedIntervals()) {
-      if (p.y >= changedInterval.getPosition() && p.y <= changedInterval.getPosition() + changedInterval.getHeight()) {
-        if (text == null) {
-          text = new StringBuilder(changedInterval.getTooltipText());
-          continue;
-        }
-        text.append("\n\n").append(changedInterval.getTooltipText());
-      }
-    }
-    return text == null ? null : text.toString();
-  }
-
 
   @Override
   public Point getToolTipLocation(final MouseEvent event) {
@@ -2119,7 +2099,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     jetbrains.mps.openapi.editor.cells.EditorCell deepestCell = getDeepestSelectedCell();
     if (deepestCell instanceof EditorCell_Label && ((EditorCell) deepestCell).isInClipRegion(g)) {
       EditorCell_Label label = (EditorCell_Label) deepestCell;
-
       g.setColor(setting.getCaretRowColor());
       g.fillRect(0, deepestCell.getY(), getWidth(),
                  deepestCell.getHeight() - deepestCell.getTopInset() - deepestCell.getBottomInset());
@@ -2129,15 +2108,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
                  deepestCell.getY(),
                  deepestCell.getWidth() - label.getLeftInset() - label.getRightInset(),
                  deepestCell.getHeight() - deepestCell.getTopInset() - deepestCell.getBottomInset());
-
-    }
-
-    for (ChangedInterval changedInterval : getChangedIntervals()) {
-      if (g.hitClip(0, changedInterval.getPosition(), getWidth(), changedInterval.getHeight())) {
-        Color color = TextDiffTypeFactory.getMiddleColor(changedInterval.getColor(), getBackground());
-        g.setColor(color);
-        g.fillRect(0, changedInterval.getPosition(), getWidth(), changedInterval.getHeight());
-      }
     }
 
     List<AdditionalPainter> additionalPainters = getAdditionalPainters();
@@ -3054,41 +3024,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       incrButtonField.setAccessible(true);
     } catch (NoSuchFieldException e) {
       throw new IllegalStateException(e);
-    }
-  }
-
-  public List<ChangedInterval> getChangedIntervals() {
-    return new ArrayList<>();
-  }
-
-  public static class ChangedInterval {
-
-    private final int myPosition;
-    private final int myHeight;
-    private final Color myColor;
-    private final String myTooltipText;
-
-    public ChangedInterval(int position, int height, Color color, String tooltipText) {
-      myPosition = position;
-      myHeight = height;
-      myColor = color;
-      myTooltipText = tooltipText;
-    }
-
-    public Color getColor() {
-      return myColor;
-    }
-
-    public int getPosition() {
-      return myPosition;
-    }
-
-    public int getHeight() {
-      return myHeight;
-    }
-
-    public String getTooltipText() {
-      return myTooltipText;
     }
   }
 
