@@ -11,14 +11,15 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.typechecking.TypecheckingFacade;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class SurroundWithNegation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
@@ -38,7 +39,7 @@ public final class SurroundWithNegation_Intention extends AbstractIntentionDescr
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(node), CONCEPTS.BooleanType$8G);
+    return !(SNodeOperations.isInstanceOf(node, CONCEPTS.NotExpression$oq));
   }
   @Override
   public boolean isSurroundWith() {
@@ -60,10 +61,21 @@ public final class SurroundWithNegation_Intention extends AbstractIntentionDescr
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode replacement = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.NotExpression$oq);
-      if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.ParenthesizedExpression$vE)) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(replacement, LINKS.expression$bUD_), CONCEPTS.ParenthesizedExpression$vE)) {
-        SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(replacement, LINKS.expression$bUD_), CONCEPTS.ParenthesizedExpression$vE), LINKS.expression$4_F0, node);
-      } else {
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.ParenthesizedExpression$vE)) {
         SLinkOperations.setTarget(replacement, LINKS.expression$bUD_, node);
+      } else {
+        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(replacement, LINKS.expression$bUD_), CONCEPTS.ParenthesizedExpression$vE)) {
+          SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(replacement, LINKS.expression$bUD_), CONCEPTS.ParenthesizedExpression$vE), LINKS.expression$4_F0, node);
+        } else {
+          if (!(SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(node), CONCEPTS.BooleanType$8G))) {
+            // It seems to be convenient to wrap non-boolean expressions in parens since the user is likely to edit the negated expression further 
+            SNode parens = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"));
+            SLinkOperations.setTarget(parens, LINKS.expression$4_F0, node);
+            SLinkOperations.setTarget(replacement, LINKS.expression$bUD_, parens);
+          } else {
+            SLinkOperations.setTarget(replacement, LINKS.expression$bUD_, node);
+          }
+        }
       }
     }
     @Override
@@ -73,9 +85,9 @@ public final class SurroundWithNegation_Intention extends AbstractIntentionDescr
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BooleanType$8G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType");
     /*package*/ static final SConcept NotExpression$oq = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, "jetbrains.mps.baseLanguage.structure.NotExpression");
     /*package*/ static final SConcept ParenthesizedExpression$vE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
+    /*package*/ static final SConcept BooleanType$8G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType");
   }
 
   private static final class LINKS {
