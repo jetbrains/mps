@@ -39,6 +39,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import org.jetbrains.annotations.Nullable;
+import com.intellij.openapi.util.IconLoader;
 import org.apache.log4j.Level;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -209,7 +210,12 @@ public class BaseIconManager {
       return MapSequence.fromMap(myResToIcon).get(ir);
     }
 
-    Icon icon = IconLoadingUtil.loadIcon(ir.getResourceId(), ir.getProvider());
+    Class provider = ir.getProvider();
+    Icon icon = IconLoadingUtil.loadIcon(ir.getResourceId(), provider);
+    if (provider != null && icon instanceof IconLoader.CachedImageIcon) {
+      // see MPS-30995. There's no way to ensure the provider will not be disposed already when the icon will be required the first time. That's why we ensure here that for a non-default provider we load the icon exactly at the moment it's requested 
+      icon = ((IconLoader.CachedImageIcon) icon).getRealIcon();
+    }
     if (icon == null) {
       if (LOG.isEnabledFor(Level.WARN)) {
         LOG.warn("Icon was not found for " + ir);
