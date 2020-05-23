@@ -1535,7 +1535,7 @@
         </node>
         <node concept="l2Vlx" id="6PSwRUiKoOx" role="2iSdaV" />
         <node concept="3F0ifn" id="hCGRvFj" role="3EZMnx">
-          <property role="3F0ifm" value="extends1" />
+          <property role="3F0ifm" value="extends" />
           <ref role="1k5W1q" node="hgVS8CF" resolve="KeyWord" />
           <ref role="1ERwB7" node="2L7NFMBAeoh" resolve="_ClassConcept_Extends_Delete" />
           <node concept="A1WHu" id="1wEcoXjJMHB" role="3vIgyS">
@@ -1588,7 +1588,6 @@
         </node>
         <node concept="3F2HdR" id="g7HXLFc" role="3EZMnx">
           <property role="2czwfO" value="," />
-          <property role="1cu_pB" value="hQNNVxO/attractsRecursively" />
           <ref role="1NtTu8" to="tpee:fWEKbgp" resolve="implementedInterface" />
           <ref role="APP_o" node="Y0BbFyqnS$" resolve="_ClassConcept_Implements_Delete_Last" />
           <node concept="3F0ifn" id="g7HXLFd" role="2czzBI">
