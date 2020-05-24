@@ -4,7 +4,12 @@ package jetbrains.mps.vcs.changesmanager;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.components.ProjectComponent;
+
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
+
+import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import com.intellij.openapi.vcs.FileStatus;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -97,11 +102,13 @@ public class NodeFileStatusMapping implements ProjectComponent {
           }
           CurrentDifference diff = myRegistry.getCurrentDifference(model);
           List<ModelChange> modelChanges = check_onkh7z_a0e0b0a0a0a0r(diff.getChangeSet());
+          LogManager.getLogger(NodeFileStatusMapping.class).info("filtering model changes");
           List<ModelChange> rootChanges = ListSequence.fromList(modelChanges).where(new IWhereFilter<ModelChange>() {
             public boolean accept(ModelChange ch) {
               return root.getNodeId().equals(ch.getRootId());
             }
-          }).toListSequence();
+          }).toListSequence(); // HOTSPOT
+          LogManager.getLogger(NodeFileStatusMapping.class).info("done filtering model changes");
           if (ListSequence.fromList(rootChanges).count() != 0) {
             if (ListSequence.fromList(rootChanges).first() instanceof AddRootChange) {
               VirtualFile vf = VirtualFileUtils.getProjectVirtualFile(((FileDataSource) m.getSource()).getFile());
@@ -168,15 +175,13 @@ public class NodeFileStatusMapping implements ProjectComponent {
 
   private class MyGlobalListener extends CurrentDifferenceAdapter {
     private final Set<SNodeReference> myAffectedRoots = new HashSet<SNodeReference>();
-
     private MyGlobalListener() {
     }
 
     @Override
     public void changeUpdateFinished() {
-      for (SNodeReference ref : myAffectedRoots) {
-        updateNodeStatus(ref);
-      }
+      LogManager.getLogger(MyGlobalListener.class).info("TOTAL AFFECTED " + myAffectedRoots.size());
+      myAffectedRoots.forEach(NodeFileStatusMapping.this::updateNodeStatus);
       myAffectedRoots.clear();
     }
 
