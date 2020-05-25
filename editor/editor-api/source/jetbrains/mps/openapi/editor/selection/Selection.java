@@ -60,4 +60,13 @@ public interface Selection {
   List<SNode> getSelectedNodes();
 
   void ensureVisible();
+
+  void setDirection(SelectionDirection direction);
+
+  SelectionDirection getDirection();
+
+  enum SelectionDirection {
+    LEFT, RIGHT, NONE
+  }
+
 }

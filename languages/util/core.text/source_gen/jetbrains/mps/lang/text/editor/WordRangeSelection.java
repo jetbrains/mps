@@ -180,10 +180,8 @@ public class WordRangeSelection extends AbstractMultipleSelection {
 
     if (type == CellActionType.BACKSPACE || type == CellActionType.DELETE) {
       performDeleteAction(type);
-      return;
     } else if (type == CellActionType.COPY) {
       CopyPasteUtil.copyNodesAndTextToClipboard(wrapSelectedNodesInNewLines(), null, buildTextualRepresentationOfSelectedCells());
-      return;
     } else if (type == CellActionType.CUT) {
       SNode prevSelectableNode = getNextSelectableNode(myFirstNode, false);
       SNode nextSelectableNode = getNextSelectableNode(myLastNode, true);
@@ -193,8 +191,8 @@ public class WordRangeSelection extends AbstractMultipleSelection {
         SNodeOperations.deleteNode(n);
       }
       removeEmptyLines();
-      if (selectNode(prevSelectableNode, false) || selectNode(nextSelectableNode, true)) {
-        return;
+      if (!(selectNode(prevSelectableNode, false)) && !(selectNode(nextSelectableNode, true))) {
+        super.executeAction(type);
       }
     } else if (type == CellActionType.SELECT_RIGHT) {
       selectRight(editorContext, selectionManager);
@@ -205,8 +203,9 @@ public class WordRangeSelection extends AbstractMultipleSelection {
       selectNext(editorContext, selectionManager);
     } else if (type == CellActionType.SELECT_PREVIOUS) {
       selectPrevious(editorContext, selectionManager);
+    } else {
+      super.executeAction(type);
     }
-    super.executeAction(type);
   }
 
   private List<SNode> wrapSelectedNodesInNewLines() {

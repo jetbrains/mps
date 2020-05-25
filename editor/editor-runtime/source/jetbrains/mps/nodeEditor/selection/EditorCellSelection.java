@@ -36,12 +36,11 @@ public class EditorCellSelection extends AbstractSelection implements SingularSe
   private static final String CARET_X_RELATIVE_PROPERTY_NAME = "caretXRelative";
   private static final String SIDE_SELECT_DIRECTION_PROPERTY_NAME = "sideSelectDirection";
 
-  private EditorCell myEditorCell;
+  private final EditorCell myEditorCell;
   private int myCaretX;
   private int myCaretXRelative;
   private boolean myActivateUsingRelativeCaretX = true;
   private boolean myActive = false;
-  private SideSelectDirection mySideSelectDirection = SideSelectDirection.NONE;
 
   public EditorCellSelection(EditorComponent editorComponent, Map<String, String> properties, CellInfo cellInfo) throws SelectionStoreException,
                                                                                                                         SelectionRestoreException {
@@ -58,9 +57,8 @@ public class EditorCellSelection extends AbstractSelection implements SingularSe
     myActivateUsingRelativeCaretX = cellInfo.equals(myEditorCell.getCellInfo());
     myCaretX = SelectionInfoImpl.Util.getIntProperty(properties, CARET_X_PROPERTY_NAME);
     myCaretXRelative = SelectionInfoImpl.Util.getIntProperty(properties, CARET_X_RELATIVE_PROPERTY_NAME);
-    mySideSelectDirection =
-        (SideSelectDirection) SelectionInfoImpl.Util.getEnumProperty(properties, SIDE_SELECT_DIRECTION_PROPERTY_NAME, SideSelectDirection.class,
-                                                                     mySideSelectDirection);
+    setDirection((SelectionDirection) SelectionInfoImpl.Util.getEnumProperty(properties, SIDE_SELECT_DIRECTION_PROPERTY_NAME, SelectionDirection.class,
+                                                                     getDirection()));
   }
 
   public EditorCellSelection(@NotNull EditorCell editorCell) {
@@ -76,14 +74,21 @@ public class EditorCellSelection extends AbstractSelection implements SingularSe
     return myEditorCell;
   }
 
+  /**
+   * Use {@link Selection#setDirection(jetbrains.mps.openapi.editor.selection.Selection.SelectionDirection)}
+   */
+  @Deprecated
   @Override
   public void setSideSelectDirection(SideSelectDirection direction) {
-    mySideSelectDirection = direction;
+    setDirection(direction.getDirection());
   }
 
-  @Override
+  /**
+   * Use {@link Selection#getDirection()}
+   */
+  @Deprecated
   public SideSelectDirection getSideSelectDirection() {
-    return mySideSelectDirection;
+    return SideSelectDirection.valueOf(getDirection().name());
   }
 
   public int getCaretX() {
@@ -124,7 +129,7 @@ public class EditorCellSelection extends AbstractSelection implements SingularSe
     selectionInfo.setCellInfo(myEditorCell.getCellInfo());
     selectionInfo.getPropertiesMap().put(CARET_X_PROPERTY_NAME, Integer.toString(getCaretX()));
     selectionInfo.getPropertiesMap().put(CARET_X_RELATIVE_PROPERTY_NAME, Integer.toString(getCaretXRelative()));
-    selectionInfo.getPropertiesMap().put(SIDE_SELECT_DIRECTION_PROPERTY_NAME, mySideSelectDirection.name());
+    selectionInfo.getPropertiesMap().put(SIDE_SELECT_DIRECTION_PROPERTY_NAME, getDirection().name());
     return selectionInfo;
   }
 
@@ -140,7 +145,7 @@ public class EditorCellSelection extends AbstractSelection implements SingularSe
     if (!myEditorCell.equals(that.myEditorCell)) {
       return false;
     }
-    if (mySideSelectDirection != that.mySideSelectDirection) {
+    if (getDirection() != that.getDirection()) {
       return false;
     }
     return getCaretX() == that.getCaretX();

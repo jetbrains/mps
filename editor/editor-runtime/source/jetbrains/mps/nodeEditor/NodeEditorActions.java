@@ -32,9 +32,12 @@ import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.openapi.editor.selection.Selection;
+import jetbrains.mps.openapi.editor.selection.Selection.SelectionDirection;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.selection.SingularSelection;
-import jetbrains.mps.openapi.editor.selection.SingularSelection.SideSelectDirection;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.util.Condition;
 
@@ -512,65 +515,104 @@ public class NodeEditorActions {
   }
 
   public static class SideSelect extends NavigationAction {
-    private CellSide mySide;
+    private final SelectionDirection mySide;
 
-    protected SideSelect(CellSide side) {
+    protected SideSelect(@NotNull SelectionDirection side) {
       mySide = side;
+      assert mySide == SelectionDirection.LEFT || mySide == SelectionDirection.RIGHT;
     }
 
-    private EditorCell getNextLeaf(EditorCell current) {
-      if (mySide == CellSide.LEFT) {
-        return CellTraversalUtil.getPrevLeaf(current, jetbrains.mps.openapi.editor.cells.CellConditions.SELECTABLE);
+    @Nullable
+    private EditorCell getNextLeaf(@NotNull EditorCell current) {
+      if (mySide == SelectionDirection.LEFT) {
+        return CellTraversalUtil.getPrevLeaf(current, CellConditions.SELECTABLE);
       } else {
-        return CellTraversalUtil.getNextLeaf(current, jetbrains.mps.openapi.editor.cells.CellConditions.SELECTABLE);
+        return CellTraversalUtil.getNextLeaf(current, CellConditions.SELECTABLE);
       }
     }
 
     @Override
     public boolean canExecute(EditorContext context) {
       SelectionManager selectionManager = context.getEditorComponent().getSelectionManager();
-      Selection selection = selectionManager.getSelection();
-      if (selection instanceof SingularSelection) {
-        SingularSelection singularSelection = (SingularSelection) selection;
-        if (!expandSelection(singularSelection) && selectionManager.getSelectionStackSize() > 1) {
-          return true;
-        }
-        EditorCell selected = singularSelection.getEditorCell();
-        EditorCell nextLeaf = getNextLeaf(selected);
-        return nextLeaf != null && getCommonSelectableAncestor(selected, nextLeaf) != null;
+      Selection current = selectionManager.getSelection();
+      if (shrinkingSelection(current) && selectionManager.getSelectionStackSize() > 1) {
+        return true;
       }
-      return false;
+
+      List<SNode> selectedNodes = current.getSelectedNodes();
+      if (selectedNodes.size() > 1 && current.getDirection() == SelectionDirection.NONE) {
+        return false;
+      }
+      SContainmentLink currentRole = selectedNodes.get(0).getContainmentLink();
+      SNode nextSibling = getNextSibling(selectedNodes, currentRole);
+
+      if (nextSibling != null) {
+        return true;
+      } else {
+        List<EditorCell> selectedCells = current.getSelectedCells();
+        EditorCell nextLeaf = getNextLeaf(selectedCells.get(selectedCells.size() - 1));
+        return nextLeaf != null && getCommonSelectableAncestor(nextLeaf, selectedCells) != null;
+      }
     }
 
     @Override
     public void execute(EditorContext context) {
       SelectionManager selectionManager = context.getEditorComponent().getSelectionManager();
-      SingularSelection selection = (SingularSelection) selectionManager.getSelection();
-      if (!expandSelection(selection) && selectionManager.getSelectionStackSize() > 1) {
+      Selection current = selectionManager.getSelection();
+      if (shrinkingSelection(current) && selectionManager.getSelectionStackSize() > 1) {
         selectionManager.popSelection();
         return;
       }
-      EditorCell selected = selection.getEditorCell();
-      EditorCell nextLeaf = getNextLeaf(selected);
-      EditorCell cellToSelect = getCommonSelectableAncestor(selected, nextLeaf);
-      Selection newSelection = selectionManager.createSelection(cellToSelect);
-      if (newSelection instanceof SingularSelection) {
-        ((SingularSelection) newSelection).setSideSelectDirection(mySide == CellSide.LEFT ? SideSelectDirection.LEFT : SideSelectDirection.RIGHT);
+
+      List<SNode> selectedNodes = current.getSelectedNodes();
+      if (selectedNodes.size() > 1 && current.getDirection() == SelectionDirection.NONE) {
+        return;
       }
+
+      SContainmentLink currentRole = selectedNodes.get(0).getContainmentLink();
+      SNode nextSibling = getNextSibling(selectedNodes, currentRole);
+
+      Selection newSelection;
+      if (nextSibling != null) {
+        if (mySide == SelectionDirection.RIGHT) {
+          newSelection = selectionManager.createRangeSelection(selectedNodes.get(0), nextSibling);
+        } else {
+          newSelection = selectionManager.createRangeSelection(nextSibling, selectedNodes.get(selectedNodes.size() - 1));
+        }
+      } else {
+        List<EditorCell> selectedCells = current.getSelectedCells();
+        EditorCell nextLeaf = getNextLeaf(selectedCells.get(selectedCells.size() - 1));
+        if (nextLeaf == null) {
+          return;
+        }
+        EditorCell commonSelectableAncestor = getCommonSelectableAncestor(nextLeaf, selectedCells);
+        if (commonSelectableAncestor == null) {
+          return;
+        }
+        newSelection = selectionManager.createSelection(commonSelectableAncestor);
+      }
+
+      newSelection.setDirection(mySide == SelectionDirection.LEFT ? SelectionDirection.LEFT : SelectionDirection.RIGHT);
       selectionManager.pushSelection(newSelection);
     }
 
-    private boolean expandSelection(SingularSelection selection) {
-      switch (selection.getSideSelectDirection()) {
-        case LEFT:
-          return mySide == CellSide.LEFT;
-        case RIGHT:
-          return mySide == CellSide.RIGHT;
+    @Nullable
+    private SNode getNextSibling(@NotNull List<SNode> nodes, @Nullable SContainmentLink role) {
+      SNode sibling;
+      if (mySide == SelectionDirection.RIGHT) {
+        sibling = nodes.get(nodes.size() - 1).getNextSibling();
+      } else {
+        sibling = nodes.get(0).getPrevSibling();
       }
-      return true;
+      return sibling != null && sibling.getContainmentLink().equals(role) ? sibling : null;
     }
 
-    private EditorCell getCommonSelectableAncestor(EditorCell first, EditorCell... cells) {
+    private boolean shrinkingSelection(Selection selection) {
+      SelectionDirection direction = selection.getDirection();
+      return direction != SelectionDirection.NONE && mySide != direction;
+    }
+
+    private EditorCell getCommonSelectableAncestor(EditorCell first, Iterable<EditorCell> cells) {
       EditorCell_Collection result = first instanceof EditorCell_Collection ? (EditorCell_Collection) first : first.getParent();
       while (result != null) {
         if (result.isSelectable()) {

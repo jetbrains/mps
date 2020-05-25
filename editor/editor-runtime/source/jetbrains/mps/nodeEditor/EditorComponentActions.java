@@ -34,6 +34,7 @@ import jetbrains.mps.nodeEditor.folding.CollapseRecursivelyCellAction;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
+import jetbrains.mps.openapi.editor.selection.Selection.SelectionDirection;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.ComputeRunnable;
 import org.jetbrains.annotations.NotNull;
@@ -70,8 +71,8 @@ class EditorComponentActions {
     myActionMap.put(CellActionType.SELECT_ALL, new NodeEditorActions.SelectAll());
     myActionMap.put(CellActionType.SELECT_UP, new NodeEditorActions.SelectUp());
     myActionMap.put(CellActionType.SELECT_DOWN, new NodeEditorActions.SelectDown());
-    myActionMap.put(CellActionType.SELECT_RIGHT, new NodeEditorActions.SideSelect(CellSide.RIGHT));
-    myActionMap.put(CellActionType.SELECT_LEFT, new NodeEditorActions.SideSelect(CellSide.LEFT));
+    myActionMap.put(CellActionType.SELECT_RIGHT, new NodeEditorActions.SideSelect(SelectionDirection.RIGHT));
+    myActionMap.put(CellActionType.SELECT_LEFT, new NodeEditorActions.SideSelect(SelectionDirection.LEFT));
     myActionMap.put(CellActionType.SELECT_NEXT, new NodeEditorActions.EnlargeSelection(true));
     myActionMap.put(CellActionType.SELECT_PREVIOUS, new NodeEditorActions.EnlargeSelection(false));
 
