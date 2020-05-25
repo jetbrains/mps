@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,11 +41,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -80,7 +78,7 @@ public final class TextGeneratorEngine {
   public Future<TextGenResult> generateText(@NotNull final SModel model) {
     final ArrayBlockingQueue<TextGenResult> queue = new ArrayBlockingQueue<>(1);
     schedule(model, queue);
-    return new FutureTask<>(() -> queue.take());
+    return myExecutor.submit(queue::take);
   }
 
   /**
