@@ -28,6 +28,7 @@ import com.intellij.openapi.wm.impl.status.InlineProgressIndicator;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.application.ApplicationManager;
 import org.apache.log4j.Level;
+import jetbrains.mps.project.ProjectBase;
 import java.util.concurrent.atomic.AtomicBoolean;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.migration.global.ProjectMigration;
@@ -209,6 +210,8 @@ public class MigrationTask {
           project.getRepository().getModelAccess().runWriteAction(new Runnable() {
             public void run() {
               project.getRepository().saveAll();
+              // essential for project migrations to update the list of migrations run to the disk, however, suitable also for language migrations 
+              ((ProjectBase) project).save();
             }
           });
 
