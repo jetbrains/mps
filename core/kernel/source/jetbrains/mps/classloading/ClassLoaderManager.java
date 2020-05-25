@@ -20,7 +20,6 @@ import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.module.ReloadableModule.DeploymentStatus;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.util.ArrayWrapper;
 import jetbrains.mps.util.Computable;
@@ -310,25 +309,39 @@ public class ClassLoaderManager implements CoreComponent {
   }
 
   /**
-   * the caller is guaranteed that no reload happen during the transaction
+   * the caller is guaranteed that no reload happen during the transaction (reload which is coming from the other thread)
    * due to possible deadlock at least the read access is demanded
    */
   @Internal
   public void runTransaction(@NotNull Runnable transaction) {
     myRepository.getModelAccess().checkReadAccess();
+    runTransaction(() -> {
+      transaction.run();
+      return "no_result";
+    });
+  }
 
+  private <T> T runTransaction(@NotNull Computable<T> transaction) {
     myLoadingModulesLock.lock();
     try {
-      transaction.run();
+      return transaction.compute();
     } finally {
       myLoadingModulesLock.unlock();
     }
   }
 
-  private <T> T runTransaction(@NotNull Computable<T> transaction) {
-    ComputeRunnable<T> runnable = new ComputeRunnable<>(transaction);
-    runnable.run();
-    return runnable.getResult();
+  /**
+   * no events are triggered, classloaders do not change during this section
+   */
+  @ToRemove(version = 201)
+  @Internal
+  public void runNonReloadableSection(@NotNull Runnable runnable) {
+    myRepository.getModelAccess().runReadAction(myRepositoryListener::pause);
+    try {
+      runnable.run();
+    } finally {
+      myRepository.getModelAccess().runReadAction(myRepositoryListener::proceed);
+    }
   }
 
   @NotNull

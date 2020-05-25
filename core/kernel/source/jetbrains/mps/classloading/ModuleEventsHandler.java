@@ -30,6 +30,7 @@ import org.jetbrains.mps.openapi.module.event.SModuleRemovedEvent;
 import org.jetbrains.mps.openapi.module.event.SModuleRemovingEvent;
 import org.jetbrains.mps.openapi.module.event.SRepositoryEvent;
 
+import java.lang.invoke.VarHandle;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -37,6 +38,7 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * We batch all events during write actions. (modules' events like module adding/removing/changing)
@@ -52,6 +54,7 @@ class ModuleEventsHandler implements SRepositoryBatchListener {
 
   // order for modules loading in order to reproduce any error
   private static final Comparator<Object> MODULE_COMPARATOR = Comparator.comparing(Object::toString);
+  private final AtomicBoolean myPaused = new AtomicBoolean();
 
   public ModuleEventsHandler(@NotNull SRepository repository, ModulesWatcher modulesWatcher) {
     myModulesWatcher = modulesWatcher;
@@ -74,7 +77,10 @@ class ModuleEventsHandler implements SRepositoryBatchListener {
    * @return true if refresh happened
    */
   boolean refresh() {
-    return myDispatcher.flush();
+    if (!myPaused.get()) {
+      return myDispatcher.flush();
+    }
+    return false;
   }
 
   private void addModules(List<? extends ReloadableModuleBase> modules) {
@@ -115,6 +121,16 @@ class ModuleEventsHandler implements SRepositoryBatchListener {
     if (!modulesToUnload.isEmpty()) removeModules(modulesToUnload);
     if (!modulesToLoad.isEmpty()) addModules(modulesToLoad);
     if (!modulesToUpdate.isEmpty()) updateModules(modulesToUpdate);
+  }
+
+  public void pause() {
+    myPaused.compareAndSet(false, true);
+    myDispatcher.pause();
+  }
+
+  public void proceed() {
+    myDispatcher.unpause();
+    myPaused.set(true);
   }
 
   private class MyModuleEventVisitor implements SModuleEventVisitor {

@@ -294,7 +294,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
       // -- doesn't seem to hurt to have and extra platform write (canWrite tells us state of our model RW lock only, not combined with that of IDEA).
       //    myPlatformWriteActionTracker in TryRunPlatformWriteHelper merely counts write attempts, and Application.runWriteAction is
       //    re-enterable and a precondition for a command anyway
-      // it seems to be wrong as it may lead to improper lock sequence and deadlock. Ussually we grab platform write first, then MPS write. If
+      // it seems to be wrong as it may lead to improper lock sequence and deadlock. Usually we grab platform write first, then MPS write. If
       // we happen to get here with MPS write but without IDEA's, we might get into a deadlock, which is far more complicated to discover than
       // a failed assertion.
       ApplicationManager.getApplication().assertWriteAccessAllowed();

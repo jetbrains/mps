@@ -27,6 +27,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.DevKit;
+import org.apache.log4j.Level;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import com.intellij.ui.LayeredIcon;
 import com.intellij.util.PlatformIcons;
@@ -39,7 +40,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import org.jetbrains.annotations.Nullable;
-import org.apache.log4j.Level;
+import com.intellij.openapi.util.IconLoader;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)/1315815304215925444", model = "r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)")
@@ -140,7 +141,14 @@ public class BaseIconManager {
   }
 
   private Icon getIconFromConstraints(final SNode node) {
-    IconResource altIcon = myConceptRegistry.getConstraintsDescriptor(SNodeOperations.getConcept(node)).getInstanceIcon(node);
+    IconResource altIcon = null;
+    try {
+      altIcon = myConceptRegistry.getConstraintsDescriptor(SNodeOperations.getConcept(node)).getInstanceIcon(node);
+    } catch (Throwable t) {
+      if (LOG.isEnabledFor(Level.ERROR)) {
+        LOG.error("Exception in user code", t);
+      }
+    }
     if (altIcon == null) {
       return null;
     }
@@ -209,7 +217,12 @@ public class BaseIconManager {
       return MapSequence.fromMap(myResToIcon).get(ir);
     }
 
-    Icon icon = IconLoadingUtil.loadIcon(ir.getResourceId(), ir.getProvider());
+    Class provider = ir.getProvider();
+    Icon icon = IconLoadingUtil.loadIcon(ir.getResourceId(), provider);
+    if (provider != null && icon instanceof IconLoader.CachedImageIcon) {
+      // see MPS-30995. There's no way to ensure the provider will not be disposed already when the icon will be required the first time. That's why we ensure here that for a non-default provider we load the icon exactly at the moment it's requested 
+      icon = ((IconLoader.CachedImageIcon) icon).getRealIcon();
+    }
     if (icon == null) {
       if (LOG.isEnabledFor(Level.WARN)) {
         LOG.warn("Icon was not found for " + ir);

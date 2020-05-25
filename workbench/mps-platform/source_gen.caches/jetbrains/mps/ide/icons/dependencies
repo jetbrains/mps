@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
   <dependency className="jetbrains.mps.ide.icons.BaseIconManager">
+    <classNode dependClassName="com.intellij.openapi.util.IconLoader" />
     <classNode dependClassName="com.intellij.ui.LayeredIcon" />
     <classNode dependClassName="com.intellij.ui.RowIcon" />
     <classNode dependClassName="com.intellij.util.PlatformIcons" />
+    <classNode dependClassName="java.lang.Class" />
+    <classNode dependClassName="java.lang.Throwable" />
     <classNode dependClassName="java.util.HashMap" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Map" />
