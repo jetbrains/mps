@@ -31,7 +31,7 @@
   </path>
   
   <path id="path.java.library.asm-all">
-    <fileset file="${artifacts.IDEA}/lib/asm-all-7.0.1.jar" />
+    <fileset file="${artifacts.IDEA}/lib/asm-all-8.0.1.jar" />
   </path>
   
   <path id="path.java.library.ecj">

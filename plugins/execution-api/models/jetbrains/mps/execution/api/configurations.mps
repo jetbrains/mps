@@ -51,7 +51,7 @@
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
@@ -1018,6 +1018,7 @@
       <property role="TrG5h" value="T" />
       <node concept="3uibUv" id="66CJzfk0Vrb" role="3ztrMU">
         <ref role="3uigEE" node="66CJzfk0Vr2" resolve="BaseMpsBeforeTaskProvider.BaseMpsBeforeRunTask" />
+        <node concept="3qTvmN" id="tmzruV_rDP" role="11_B2D" />
       </node>
     </node>
     <node concept="312cEg" id="66CJzfk0Vqy" role="jymVt">
@@ -1759,6 +1760,7 @@
         <property role="TrG5h" value="T" />
         <node concept="3uibUv" id="1hahyPawaeB" role="3ztrMU">
           <ref role="3uigEE" node="66CJzfk0Vr2" resolve="BaseMpsBeforeTaskProvider.BaseMpsBeforeRunTask" />
+          <node concept="3qTvmN" id="tmzruV_qia" role="11_B2D" />
         </node>
       </node>
       <node concept="3clFbW" id="66CJzfk0Vr4" role="jymVt">
