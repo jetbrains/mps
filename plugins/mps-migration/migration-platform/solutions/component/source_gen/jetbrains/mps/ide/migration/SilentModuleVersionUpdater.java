@@ -35,10 +35,12 @@ import org.jetbrains.mps.openapi.model.SModel;
   private ModelsEventsCollector myModelListener;
   private _FunctionTypes._return_P0_E0<? extends Boolean> myIsUnderReload;
   private SModelEventVisitor myVisitor = new MyModelEventsVisitor();
+  private _FunctionTypes._return_P0_E0<? extends Boolean> myIsUnderMigration;
 
-  public SilentModuleVersionUpdater(MPSProject mpsProject, _FunctionTypes._return_P0_E0<? extends Boolean> isUnderReload) {
+  public SilentModuleVersionUpdater(MPSProject mpsProject, _FunctionTypes._return_P0_E0<? extends Boolean> isUnderReload, _FunctionTypes._return_P0_E0<? extends Boolean> isUnderMigration) {
     this.myMpsProject = mpsProject;
     myIsUnderReload = isUnderReload;
+    myIsUnderMigration = isUnderMigration;
   }
 
   public void attach() {
@@ -133,6 +135,9 @@ import org.jetbrains.mps.openapi.model.SModel;
     @Override
     public void moduleAdded(@NotNull SModule module) {
       super.moduleAdded(module);
+      if (myIsUnderMigration.invoke()) {
+        return;
+      }
       // here we do not filter out non-project modules because this method is called from 'New Language' action 
       // before module is attached to project 
       if (MigrationModuleUtil.isModuleMigrateable(module)) {
@@ -143,6 +148,9 @@ import org.jetbrains.mps.openapi.model.SModel;
     @Override
     public void moduleChanged(@NotNull SModule module) {
       super.moduleChanged(module);
+      if (myIsUnderMigration.invoke()) {
+        return;
+      }
       if (MigrationModuleUtil.isModuleMigrateable(module)) {
         triggerOnModuleChanged(module);
       }

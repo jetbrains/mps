@@ -100,6 +100,8 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
 
   private MigrationNotificationsSupport myNotifications;
 
+  private volatile boolean myMigrationRunning = false;
+
   public MigrationTrigger(Project ideaProject, MPSProject p, MigrationRegistry migrationManager, MPSCoreComponents mpsCore) {
     super(ideaProject);
     myMpsProject = p;
@@ -117,6 +119,10 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     this.myVersionUpdater = new SilentModuleVersionUpdater(myMpsProject, new _FunctionTypes._return_P0_E0<Boolean>() {
       public Boolean invoke() {
         return myReloadListener.isIsUnderReload();
+      }
+    }, new _FunctionTypes._return_P0_E0<Boolean>() {
+      public Boolean invoke() {
+        return myMigrationRunning;
       }
     }) {
       @Override
@@ -392,21 +398,25 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   private Tuples._2<MigrationResult, MigrationError> runMigration(boolean update, boolean migrate) {
-    MigrationSessionImpl session = new MigrationSessionImpl(myMpsProject, myMigrationRegistry, update, migrate);
-    final MigrationWizard wizard = new MigrationWizard(myProject, session);
-    boolean finished = wizard.showAndGet();
-    MigrationError errors = session.getError();
-    MigrationResult state;
-    if (!(finished) && errors == null) {
-      // user has postponed migration 
-      state = MigrationResult.POSTPONED;
-    } else if (errors != null) {
-      state = MigrationResult.FINISHED_WITH_ERRORS;
-    } else {
-      state = MigrationResult.FINISHED;
+    myMigrationRunning = true;
+    try {
+      MigrationSessionImpl session = new MigrationSessionImpl(myMpsProject, myMigrationRegistry, update, migrate);
+      final MigrationWizard wizard = new MigrationWizard(myProject, session);
+      boolean finished = wizard.showAndGet();
+      MigrationError errors = session.getError();
+      MigrationResult state;
+      if (!(finished) && errors == null) {
+        // user has postponed migration 
+        state = MigrationResult.POSTPONED;
+      } else if (errors != null) {
+        state = MigrationResult.FINISHED_WITH_ERRORS;
+      } else {
+        state = MigrationResult.FINISHED;
+      }
+      return MultiTuple.<MigrationResult,MigrationError>from(state, errors);
+    } finally {
+      myMigrationRunning = false;
     }
-
-    return MultiTuple.<MigrationResult,MigrationError>from(state, errors);
   }
 
   private void cleanup() {
