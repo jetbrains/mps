@@ -48,15 +48,13 @@
   <dependency className="jetbrains.mps.execution.configurations.implementation.plugin.plugin.BeforeTasksInitializer_ProjectPluginPart">
     <classNode dependClassName="com.intellij.execution.BeforeRunTask" />
     <classNode dependClassName="com.intellij.execution.BeforeRunTaskProvider" />
+    <classNode dependClassName="com.intellij.openapi.Disposable" />
     <classNode dependClassName="com.intellij.openapi.extensions.ExtensionPoint" />
-    <classNode dependClassName="com.intellij.openapi.extensions.Extensions" />
+    <classNode dependClassName="com.intellij.openapi.util.Disposer" />
     <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.util.ArrayList" />
-    <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.AssemblePluginsBeforeTask_BeforeTask" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.ClearSettingsDirectoryBeforeRunTask_BeforeTask" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.MakeDeployScripts_BeforeTask" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
     <classNode extendsClassName="jetbrains.mps.plugins.part.ProjectPluginPart" />
   </dependency>

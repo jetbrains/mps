@@ -234,6 +234,7 @@
         <property id="521412098689998745" name="nonStatic" index="2bfB8j" />
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
       </concept>
+      <concept id="1171903607971" name="jetbrains.mps.baseLanguage.structure.WildCardType" flags="in" index="3qTvmN" />
       <concept id="1171903916106" name="jetbrains.mps.baseLanguage.structure.UpperBoundType" flags="in" index="3qUE_q">
         <child id="1171903916107" name="bound" index="3qUE_r" />
       </concept>
@@ -6935,26 +6936,41 @@
   <node concept="2uRRBy" id="3eSyq7SCZH9">
     <property role="TrG5h" value="BeforeTasksInitializer" />
     <property role="3GE5qa" value="before" />
-    <node concept="2BZ0e9" id="3eSyq7SD0Vp" role="2uRRBA">
-      <property role="TrG5h" value="myRegisteredBeforeTasks" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="3eSyq7SD0Vq" role="1B3o_S" />
-      <node concept="_YKpA" id="3eSyq7SD0Vr" role="1tU5fm">
-        <node concept="3uibUv" id="3eSyq7SD0Vs" role="_ZDj9">
-          <ref role="3uigEE" to="3v5a:~BeforeRunTaskProvider" resolve="BeforeRunTaskProvider" />
-        </node>
-      </node>
-      <node concept="2ShNRf" id="3eSyq7SD0Vt" role="33vP2m">
-        <node concept="Tc6Ow" id="3eSyq7SD0Vu" role="2ShVmc">
-          <node concept="3uibUv" id="3eSyq7SD0Vv" role="HW$YZ">
-            <ref role="3uigEE" to="3v5a:~BeforeRunTaskProvider" resolve="BeforeRunTaskProvider" />
-          </node>
-        </node>
+    <node concept="2BZ0e9" id="KzT7Alcx$v" role="2uRRBA">
+      <property role="TrG5h" value="myDisposable" />
+      <node concept="3Tm6S6" id="KzT7Alcx$w" role="1B3o_S" />
+      <node concept="3uibUv" id="KzT7AlcGb2" role="1tU5fm">
+        <ref role="3uigEE" to="v23q:~Disposable" resolve="Disposable" />
       </node>
     </node>
     <node concept="n94m4" id="3eSyq7SCZHa" role="lGtFl" />
     <node concept="2uRRBT" id="3eSyq7SD0Vn" role="2uRRB$">
       <node concept="3clFbS" id="3eSyq7SD0Vo" role="2VODD2">
+        <node concept="3clFbF" id="KzT7AlcGPG" role="3cqZAp">
+          <node concept="37vLTI" id="KzT7AlcHkn" role="3clFbG">
+            <node concept="2YIFZM" id="KzT7AlcHJm" role="37vLTx">
+              <ref role="1Pybhc" to="zn9m:~Disposer" resolve="Disposer" />
+              <ref role="37wK5l" to="zn9m:~Disposer.newDisposable(java.lang.String)" resolve="newDisposable" />
+              <node concept="2OqwBi" id="KzT7AlcIW5" role="37wK5m">
+                <node concept="2OqwBi" id="KzT7AlcHSN" role="2Oq$k0">
+                  <node concept="2WthIp" id="KzT7AlcHJX" role="2Oq$k0" />
+                  <node concept="liA8E" id="KzT7AlcI15" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="KzT7AlcJyN" role="2OqNvi">
+                  <ref role="37wK5l" to="wyt6:~Class.getName()" resolve="getName" />
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="KzT7AlcGPA" role="37vLTJ">
+              <node concept="2WthIp" id="KzT7AlcGPD" role="2Oq$k0" />
+              <node concept="2BZ7hE" id="KzT7AlcGPF" role="2OqNvi">
+                <ref role="2WH_rO" node="KzT7Alcx$v" resolve="myDisposable" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="3eSyq7SD33t" role="3cqZAp">
           <node concept="3cpWsn" id="3eSyq7SD33u" role="3cpWs9">
             <property role="TrG5h" value="beforeTasksExtensionPoint" />
@@ -6964,25 +6980,22 @@
                 <ref role="3uigEE" to="3v5a:~BeforeRunTaskProvider" resolve="BeforeRunTaskProvider" />
                 <node concept="3uibUv" id="3eSyq7SD33x" role="11_B2D">
                   <ref role="3uigEE" to="3v5a:~BeforeRunTask" resolve="BeforeRunTask" />
+                  <node concept="3qTvmN" id="tmzruVO7fJ" role="11_B2D" />
                 </node>
               </node>
             </node>
-            <node concept="2OqwBi" id="3eSyq7SD33y" role="33vP2m">
-              <node concept="2YIFZM" id="3eSyq7SD33z" role="2Oq$k0">
-                <ref role="1Pybhc" to="9ti4:~Extensions" resolve="Extensions" />
-                <ref role="37wK5l" to="9ti4:~Extensions.getArea(com.intellij.openapi.extensions.AreaInstance)" resolve="getArea" />
+            <node concept="2OqwBi" id="tmzruVO8Aw" role="33vP2m">
+              <node concept="10M0yZ" id="tmzruVO9Uq" role="2Oq$k0">
+                <ref role="3cqZAo" to="3v5a:~BeforeRunTaskProvider.EP_NAME" resolve="EP_NAME" />
+                <ref role="1PxDUh" to="3v5a:~BeforeRunTaskProvider" resolve="BeforeRunTaskProvider" />
+              </node>
+              <node concept="liA8E" id="tmzruVOapG" role="2OqNvi">
+                <ref role="37wK5l" to="9ti4:~ProjectExtensionPointName.getPoint(com.intellij.openapi.extensions.AreaInstance)" resolve="getPoint" />
                 <node concept="2OqwBi" id="3eSyq7SDikd" role="37wK5m">
                   <node concept="1KvdUw" id="3eSyq7SDike" role="2Oq$k0" />
                   <node concept="liA8E" id="3eSyq7SDikf" role="2OqNvi">
                     <ref role="37wK5l" to="z1c4:~MPSProject.getProject()" resolve="getProject" />
                   </node>
-                </node>
-              </node>
-              <node concept="liA8E" id="3eSyq7SD33_" role="2OqNvi">
-                <ref role="37wK5l" to="9ti4:~ExtensionsArea.getExtensionPoint(com.intellij.openapi.extensions.ExtensionPointName)" resolve="getExtensionPoint" />
-                <node concept="10M0yZ" id="3eSyq7SD33A" role="37wK5m">
-                  <ref role="1PxDUh" to="3v5a:~BeforeRunTaskProvider" resolve="BeforeRunTaskProvider" />
-                  <ref role="3cqZAo" to="3v5a:~BeforeRunTaskProvider.EXTENSION_POINT_NAME" resolve="EXTENSION_POINT_NAME" />
                 </node>
               </node>
             </node>
@@ -7053,30 +7066,21 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="3eSyq7SD34d" role="3cqZAp">
-              <node concept="2OqwBi" id="3eSyq7SD34e" role="3clFbG">
-                <node concept="2OqwBi" id="3eSyq7SD34f" role="2Oq$k0">
-                  <node concept="2WthIp" id="3eSyq7SD34g" role="2Oq$k0" />
-                  <node concept="2BZ7hE" id="3eSyq7SD34h" role="2OqNvi">
-                    <ref role="2WH_rO" node="3eSyq7SD0Vp" resolve="myRegisteredBeforeTasks" />
-                  </node>
-                </node>
-                <node concept="TSZUe" id="3eSyq7SD34i" role="2OqNvi">
-                  <node concept="37vLTw" id="3GM_nagTBNu" role="25WWJ7">
-                    <ref role="3cqZAo" node="3eSyq7SD33P" resolve="beforeTask" />
-                  </node>
-                </node>
-              </node>
-            </node>
             <node concept="3clFbF" id="3eSyq7SD34k" role="3cqZAp">
               <node concept="2OqwBi" id="3eSyq7SD34l" role="3clFbG">
                 <node concept="37vLTw" id="3GM_nagTtll" role="2Oq$k0">
                   <ref role="3cqZAo" node="3eSyq7SD33u" resolve="beforeTasksExtensionPoint" />
                 </node>
                 <node concept="liA8E" id="3eSyq7SD34n" role="2OqNvi">
-                  <ref role="37wK5l" to="9ti4:~ExtensionPoint.registerExtension(java.lang.Object)" resolve="registerExtension" />
+                  <ref role="37wK5l" to="9ti4:~ExtensionPoint.registerExtension(java.lang.Object,com.intellij.openapi.Disposable)" resolve="registerExtension" />
                   <node concept="37vLTw" id="3GM_nagTAo4" role="37wK5m">
                     <ref role="3cqZAo" node="3eSyq7SD33P" resolve="beforeTask" />
+                  </node>
+                  <node concept="2OqwBi" id="KzT7AlcJR9" role="37wK5m">
+                    <node concept="2WthIp" id="KzT7AlcJRc" role="2Oq$k0" />
+                    <node concept="2BZ7hE" id="KzT7AlcJRe" role="2OqNvi">
+                      <ref role="2WH_rO" node="KzT7Alcx$v" resolve="myDisposable" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -7104,74 +7108,29 @@
     </node>
     <node concept="2uRRBN" id="3eSyq7SD34D" role="2uRRB_">
       <node concept="3clFbS" id="3eSyq7SD34E" role="2VODD2">
-        <node concept="3cpWs8" id="3eSyq7SD34H" role="3cqZAp">
-          <node concept="3cpWsn" id="3eSyq7SD34I" role="3cpWs9">
-            <property role="TrG5h" value="beforeTasksExtensionPoint" />
-            <node concept="3uibUv" id="3eSyq7SD34J" role="1tU5fm">
-              <ref role="3uigEE" to="9ti4:~ExtensionPoint" resolve="ExtensionPoint" />
-              <node concept="3uibUv" id="3eSyq7SD34K" role="11_B2D">
-                <ref role="3uigEE" to="3v5a:~BeforeRunTaskProvider" resolve="BeforeRunTaskProvider" />
-                <node concept="3uibUv" id="3eSyq7SD34L" role="11_B2D">
-                  <ref role="3uigEE" to="3v5a:~BeforeRunTask" resolve="BeforeRunTask" />
-                </node>
-              </node>
-            </node>
-            <node concept="2OqwBi" id="3eSyq7SD34M" role="33vP2m">
-              <node concept="2YIFZM" id="3eSyq7SDi60" role="2Oq$k0">
-                <ref role="1Pybhc" to="9ti4:~Extensions" resolve="Extensions" />
-                <ref role="37wK5l" to="9ti4:~Extensions.getArea(com.intellij.openapi.extensions.AreaInstance)" resolve="getArea" />
-                <node concept="2OqwBi" id="3eSyq7SDiii" role="37wK5m">
-                  <node concept="1KvdUw" id="3eSyq7SDiih" role="2Oq$k0" />
-                  <node concept="liA8E" id="3eSyq7SDikc" role="2OqNvi">
-                    <ref role="37wK5l" to="z1c4:~MPSProject.getProject()" resolve="getProject" />
-                  </node>
-                </node>
-              </node>
-              <node concept="liA8E" id="3eSyq7SD34P" role="2OqNvi">
-                <ref role="37wK5l" to="9ti4:~ExtensionsArea.getExtensionPoint(com.intellij.openapi.extensions.ExtensionPointName)" resolve="getExtensionPoint" />
-                <node concept="10M0yZ" id="3eSyq7SD34Q" role="37wK5m">
-                  <ref role="1PxDUh" to="3v5a:~BeforeRunTaskProvider" resolve="BeforeRunTaskProvider" />
-                  <ref role="3cqZAo" to="3v5a:~BeforeRunTaskProvider.EXTENSION_POINT_NAME" resolve="EXTENSION_POINT_NAME" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="2Gpval" id="3eSyq7SD34R" role="3cqZAp">
-          <node concept="2GrKxI" id="3eSyq7SD34S" role="2Gsz3X">
-            <property role="TrG5h" value="beforeTask" />
-          </node>
-          <node concept="2OqwBi" id="3eSyq7SD34T" role="2GsD0m">
-            <node concept="2WthIp" id="3eSyq7SD34U" role="2Oq$k0" />
-            <node concept="2BZ7hE" id="3eSyq7SD34V" role="2OqNvi">
-              <ref role="2WH_rO" node="3eSyq7SD0Vp" resolve="myRegisteredBeforeTasks" />
-            </node>
-          </node>
-          <node concept="3clFbS" id="3eSyq7SD34W" role="2LFqv$">
-            <node concept="3clFbF" id="3eSyq7SD34X" role="3cqZAp">
-              <node concept="2OqwBi" id="3eSyq7SD34Y" role="3clFbG">
-                <node concept="37vLTw" id="3GM_nagTAwX" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3eSyq7SD34I" resolve="beforeTasksExtensionPoint" />
-                </node>
-                <node concept="liA8E" id="3eSyq7SD350" role="2OqNvi">
-                  <ref role="37wK5l" to="9ti4:~ExtensionPoint.unregisterExtension(java.lang.Object)" resolve="unregisterExtension" />
-                  <node concept="2GrUjf" id="3eSyq7SD351" role="37wK5m">
-                    <ref role="2Gs0qQ" node="3eSyq7SD34S" resolve="beforeTask" />
+        <node concept="3clFbJ" id="KzT7AlffR6" role="3cqZAp">
+          <node concept="3clFbS" id="KzT7AlffR8" role="3clFbx">
+            <node concept="3clFbF" id="KzT7AlcKuH" role="3cqZAp">
+              <node concept="2YIFZM" id="KzT7AlcKRG" role="3clFbG">
+                <ref role="37wK5l" to="zn9m:~Disposer.dispose(com.intellij.openapi.Disposable)" resolve="dispose" />
+                <ref role="1Pybhc" to="zn9m:~Disposer" resolve="Disposer" />
+                <node concept="2OqwBi" id="KzT7AlcL6p" role="37wK5m">
+                  <node concept="2WthIp" id="KzT7AlcL6s" role="2Oq$k0" />
+                  <node concept="2BZ7hE" id="KzT7AlcL6u" role="2OqNvi">
+                    <ref role="2WH_rO" node="KzT7Alcx$v" resolve="myDisposable" />
                   </node>
                 </node>
               </node>
             </node>
           </node>
-        </node>
-        <node concept="3clFbF" id="3eSyq7SD352" role="3cqZAp">
-          <node concept="2OqwBi" id="3eSyq7SD353" role="3clFbG">
-            <node concept="2OqwBi" id="3eSyq7SD354" role="2Oq$k0">
-              <node concept="2WthIp" id="3eSyq7SD355" role="2Oq$k0" />
-              <node concept="2BZ7hE" id="3eSyq7SD356" role="2OqNvi">
-                <ref role="2WH_rO" node="3eSyq7SD0Vp" resolve="myRegisteredBeforeTasks" />
+          <node concept="3y3z36" id="KzT7Alfgrx" role="3clFbw">
+            <node concept="10Nm6u" id="KzT7Alfgwh" role="3uHU7w" />
+            <node concept="2OqwBi" id="KzT7Alfgbp" role="3uHU7B">
+              <node concept="2WthIp" id="KzT7Alfgbs" role="2Oq$k0" />
+              <node concept="2BZ7hE" id="KzT7Alfgbu" role="2OqNvi">
+                <ref role="2WH_rO" node="KzT7Alcx$v" resolve="myDisposable" />
               </node>
             </node>
-            <node concept="2Kehj3" id="3eSyq7SD357" role="2OqNvi" />
           </node>
         </node>
       </node>

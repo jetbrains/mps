@@ -24,7 +24,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root>
     <file name="BeforeTasksInitializer_ProjectPluginPart.java">
-      <unit at="15,0,47,0" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.BeforeTasksInitializer_ProjectPluginPart" />
+      <unit at="13,0,41,0" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.BeforeTasksInitializer_ProjectPluginPart" />
     </file>
     <file name="RunConfigurationsInitializer_AppPluginPart.java">
       <unit at="20,0,101,0" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.RunConfigurationsInitializer_AppPluginPart" />
@@ -777,11 +777,10 @@
       <unit id="33324785354130501" at="45,0,165,0" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.AssemblePluginsBeforeTask_BeforeTask" />
     </file>
     <file name="BeforeTasksInitializer_ProjectPluginPart.java">
-      <node id="33324785354130501" at="22,5,23,108" concept="10" />
-      <node id="33324785354130501" at="23,108,24,122" concept="5" />
-      <node id="33324785354130501" at="24,122,25,62" concept="5" />
-      <node id="33324785354130501" at="21,188,26,5" concept="1" />
-      <scope id="33324785354130501" at="22,5,25,62">
+      <node id="33324785354130501" at="21,5,22,108" concept="10" />
+      <node id="33324785354130501" at="22,108,23,122" concept="5" />
+      <node id="33324785354130501" at="20,149,24,5" concept="1" />
+      <scope id="33324785354130501" at="21,5,23,122">
         <var name="beforeTask" id="33324785354130501" />
       </scope>
     </file>
@@ -840,11 +839,10 @@
   </root>
   <root nodeRef="r:8aafee6a-4721-443e-8020-e8986ed3f25a(jetbrains.mps.execution.configurations.implementation.plugin.plugin)/3698349269620983753">
     <file name="BeforeTasksInitializer_ProjectPluginPart.java">
-      <node id="3698349269620983753" at="32,5,33,118" concept="10" />
-      <node id="3698349269620983753" at="33,118,34,122" concept="5" />
-      <node id="3698349269620983753" at="34,122,35,62" concept="5" />
-      <node id="3698349269620983753" at="31,5,36,5" concept="1" />
-      <scope id="3698349269620983753" at="32,5,35,62">
+      <node id="3698349269620983753" at="29,5,30,118" concept="10" />
+      <node id="3698349269620983753" at="30,118,31,122" concept="5" />
+      <node id="3698349269620983753" at="28,5,32,5" concept="1" />
+      <scope id="3698349269620983753" at="29,5,31,122">
         <var name="beforeTask" id="3698349269620983753" />
       </scope>
     </file>
@@ -895,11 +893,10 @@
   </root>
   <root nodeRef="r:8aafee6a-4721-443e-8020-e8986ed3f25a(jetbrains.mps.execution.configurations.implementation.plugin.plugin)/4283566179238991813">
     <file name="BeforeTasksInitializer_ProjectPluginPart.java">
-      <node id="4283566179238991813" at="27,5,28,100" concept="10" />
-      <node id="4283566179238991813" at="28,100,29,122" concept="5" />
-      <node id="4283566179238991813" at="29,122,30,62" concept="5" />
-      <node id="4283566179238991813" at="26,5,31,5" concept="1" />
-      <scope id="4283566179238991813" at="27,5,30,62">
+      <node id="4283566179238991813" at="25,5,26,100" concept="10" />
+      <node id="4283566179238991813" at="26,100,27,122" concept="5" />
+      <node id="4283566179238991813" at="24,5,28,5" concept="1" />
+      <scope id="4283566179238991813" at="25,5,27,122">
         <var name="beforeTask" id="4283566179238991813" />
       </scope>
     </file>
