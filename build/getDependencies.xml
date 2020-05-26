@@ -285,6 +285,8 @@
     <delete dir="${basedir}/../plugins/github" failonerror="false"/>
     <delete dir="${basedir}/../plugins/vcs-changeReminder" failonerror="false"/>
     <delete dir="${basedir}/../plugins/platform-images" failonerror="false"/>
+    <delete dir="${basedir}/../plugins/laf-macos" failonerror="false"/>
+    <delete dir="${basedir}/../plugins/laf-win10" failonerror="false"/>
   </target>
 
   <target name="clean-diffutils">
