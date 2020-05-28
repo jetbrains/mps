@@ -91,7 +91,7 @@ public class ifStatement extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_dmkm09_a0b(), new TMP_Action_dmkm09_b0b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_dmkm09_a0b(), new TMP_Action_dmkm09_b0b(), new TMP_Action_dmkm09_c0b(), new TMP_Action_dmkm09_d0b());
     }
     private class TMP_Action_dmkm09_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -137,7 +137,7 @@ public class ifStatement extends TransformationMenuBase {
 
         @Override
         public boolean canExecute(@NotNull String pattern) {
-          return "else {".startsWith(pattern) || "else{".startsWith(pattern);
+          return "else {".startsWith(pattern);
         }
 
 
@@ -159,6 +159,71 @@ public class ifStatement extends TransformationMenuBase {
 
     }
     private class TMP_Action_dmkm09_b0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
+      @Nullable
+      protected TransformationMenuItem createItem(TransformationMenuContext context) {
+        Item item = new Item(context);
+        String description;
+        try {
+          description = "single item: " + item.getLabelText("");
+        } catch (Throwable t) {
+          Logger.getLogger(getClass()).error("Exception while executing getText of the item " + item, t);
+          return null;
+        }
+        context.getEditorMenuTrace().pushTraceInfo();
+        try {
+          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "7617324246592676465")));
+          item.setTraceInfo(context.getEditorMenuTrace().getTraceInfo());
+        } finally {
+          context.getEditorMenuTrace().popTraceInfo();
+        }
+        return item;
+      }
+
+      private class Item extends ActionItemBase implements SideTransformCompletionActionItem {
+        private final TransformationMenuContext _context;
+        private EditorMenuTraceInfo myEditorMenuTraceInfo;
+        private Item(TransformationMenuContext context) {
+          _context = context;
+        }
+        private void setTraceInfo(EditorMenuTraceInfo info) {
+          myEditorMenuTraceInfo = info;
+        }
+        @Nullable
+        @Override
+        public String getLabelText(String pattern) {
+          return "else{";
+        }
+
+        @Override
+        public void execute(@NotNull String pattern) {
+          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.ifFalseStatement$Xnu2, CONCEPTS.BlockStatement$1i);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$Xnu2), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+        }
+
+        @Override
+        public boolean canExecute(@NotNull String pattern) {
+          return "else{".equals(pattern);
+        }
+
+
+
+        @Override
+        public EditorMenuTraceInfo getTraceInfo() {
+          return myEditorMenuTraceInfo;
+        }
+
+        public void customize(String pattern, EditorMenuItemStyle style) {
+          EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
+          SAbstractConcept outputConcept = null;
+          EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
+          for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
+            customizer.customize(style, compositeContext);
+          }
+        }
+      }
+
+    }
+    private class TMP_Action_dmkm09_c0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
         Item item = new Item(context);
@@ -203,6 +268,71 @@ public class ifStatement extends TransformationMenuBase {
         @Override
         public boolean canExecute(@NotNull String pattern) {
           return "else if".startsWith(pattern) || "elseif".startsWith(pattern) || "elif".startsWith(pattern);
+        }
+
+
+
+        @Override
+        public EditorMenuTraceInfo getTraceInfo() {
+          return myEditorMenuTraceInfo;
+        }
+
+        public void customize(String pattern, EditorMenuItemStyle style) {
+          EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
+          SAbstractConcept outputConcept = null;
+          EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
+          for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
+            customizer.customize(style, compositeContext);
+          }
+        }
+      }
+
+    }
+    private class TMP_Action_dmkm09_d0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
+      @Nullable
+      protected TransformationMenuItem createItem(TransformationMenuContext context) {
+        Item item = new Item(context);
+        String description;
+        try {
+          description = "single item: " + item.getLabelText("");
+        } catch (Throwable t) {
+          Logger.getLogger(getClass()).error("Exception while executing getText of the item " + item, t);
+          return null;
+        }
+        context.getEditorMenuTrace().pushTraceInfo();
+        try {
+          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "7617324246593819102")));
+          item.setTraceInfo(context.getEditorMenuTrace().getTraceInfo());
+        } finally {
+          context.getEditorMenuTrace().popTraceInfo();
+        }
+        return item;
+      }
+
+      private class Item extends ActionItemBase implements SideTransformCompletionActionItem {
+        private final TransformationMenuContext _context;
+        private EditorMenuTraceInfo myEditorMenuTraceInfo;
+        private Item(TransformationMenuContext context) {
+          _context = context;
+        }
+        private void setTraceInfo(EditorMenuTraceInfo info) {
+          myEditorMenuTraceInfo = info;
+        }
+        @Nullable
+        @Override
+        public String getLabelText(String pattern) {
+          return "elseif";
+        }
+
+        @Override
+        public void execute(@NotNull String pattern) {
+          SNode elseIf = SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.elsifClauses$uXBQ, null);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), elseIf, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+        }
+
+        @Override
+        public boolean canExecute(@NotNull String pattern) {
+          return "elseif".equals(pattern);
         }
 
 

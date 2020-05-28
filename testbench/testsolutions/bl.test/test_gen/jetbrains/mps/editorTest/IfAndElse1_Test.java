@@ -34,7 +34,6 @@ public class IfAndElse1_Test extends BaseTransformationTest {
     public void testMethodImpl() throws Exception {
       initEditorComponent("8340179215568668111", "8340179215568668430");
       typeString("else{");
-      invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
     }
   }
 }

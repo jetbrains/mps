@@ -533,15 +533,15 @@
       <concept id="2870455723671203428" name="testDefaultEditor.structure.DefaultPropertyAttribute" flags="ng" index="2vfkox" />
       <concept id="2870455723671203553" name="testDefaultEditor.structure.DefaultNodeAttribute" flags="ng" index="2vfkq$" />
       <concept id="2870455723671203511" name="testDefaultEditor.structure.DefaultReferenceAttribute" flags="ng" index="2vfkrM" />
-      <concept id="3900306178895370238" name="testDefaultEditor.structure.DeletedParent" flags="ng" index="ysnKK">
-        <property id="3900306178895424082" name="name" index="ysw6s" />
-        <reference id="3900306178895424084" name="deletedParentReference" index="ysw6q" />
-        <child id="3900306178895424080" name="deletedChild" index="ysw6u" />
-        <child id="3370372833110542122" name="abstractDeletedChild" index="SUVWm" />
+      <concept id="3900306178895370238" name="" flags="ng" index="ysnKK">
+        <property id="3900306178895424082" name="" index="ysw6s" />
+        <reference id="3900306178895424084" name="" index="ysw6q" />
+        <child id="3900306178895424080" name="" index="ysw6u" />
+        <child id="3370372833110542122" name="" index="SUVWm" />
       </concept>
-      <concept id="3900306178895424079" name="testDefaultEditor.structure.DeletedChild" flags="ng" index="ysw61" />
-      <concept id="3900306178895424076" name="testDefaultEditor.structure.DeletedParentContainer" flags="ng" index="ysw62">
-        <child id="3900306178895424077" name="deletedParent" index="ysw63" />
+      <concept id="3900306178895424079" name="" flags="ng" index="ysw61" />
+      <concept id="3900306178895424076" name="" flags="ng" index="ysw62">
+        <child id="3900306178895424077" name="" index="ysw63" />
       </concept>
       <concept id="6519503956373976538" name="testDefaultEditor.structure.Canvas" flags="ng" index="H5lIk">
         <child id="6519503956373976545" name="shapes" index="H5lIJ" />
@@ -566,7 +566,7 @@
         <child id="938834323431434551" name="developer" index="32547w" />
       </concept>
       <concept id="938834323431421731" name="testDefaultEditor.structure.Company" flags="ng" index="325pZO" />
-      <concept id="1840120233258891919" name="testDefaultEditor.structure.DeletedAbstractChild" flags="ng" index="1mVH4l" />
+      <concept id="1840120233258891919" name="" flags="ng" index="1mVH4l" />
       <concept id="8629363476785337479" name="testDefaultEditor.structure.ConcreteChild" flags="ng" index="3ChbNr" />
       <concept id="8629363476785288577" name="testDefaultEditor.structure.Container" flags="ng" index="3ChvRt">
         <child id="8629363476785337473" name="parent" index="3ChbNt" />
@@ -82379,11 +82379,6 @@
       <node concept="2TK7Tu" id="7eYhcVN4g_P" role="3cqZAp">
         <property role="2TTd_B" value="else{" />
       </node>
-      <node concept="2HxZob" id="7eYhcVN4gJ4" role="3cqZAp">
-        <node concept="1iFQzN" id="7eYhcVN4gJj" role="3iKnsn">
-          <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
-        </node>
-      </node>
     </node>
   </node>
   <node concept="LiM7Y" id="7eYhcVN4gJA">
@@ -82669,11 +82664,6 @@
     <node concept="3clFbS" id="7eYhcVN6t5g" role="LjaKd">
       <node concept="2TK7Tu" id="7eYhcVN6t5h" role="3cqZAp">
         <property role="2TTd_B" value="else{" />
-      </node>
-      <node concept="2HxZob" id="7eYhcVN6tgi" role="3cqZAp">
-        <node concept="1iFQzN" id="7eYhcVN6tgW" role="3iKnsn">
-          <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
-        </node>
       </node>
     </node>
     <node concept="1qefOq" id="7eYhcVN6t5i" role="25YQFr">
