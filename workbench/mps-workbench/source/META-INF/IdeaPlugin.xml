@@ -38,7 +38,6 @@
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
     <analyzeStacktraceFilter implementation="jetbrains.mps.ide.actions.StandaloneMPSStackTraceFilter"/>
 
-    <additionalLibraryRootsProvider implementation="jetbrains.mps.ide.vfs.ProjectAdditionalRoots" />
     <directoryIndexExcludePolicy implementation="jetbrains.mps.ide.vfs.ClassesGenPolicy"/>
 
     <projectService serviceInterface="com.intellij.ide.projectView.impl.nodes.ProjectViewDirectoryHelper"

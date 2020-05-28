@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,17 +15,24 @@
  */
 package jetbrains.mps.ide.generator.index;
 
-import com.intellij.openapi.components.BaseComponent;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.IndexNotReadyException;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.startup.StartupActivity;
+import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.EverythingGlobalScope;
 import com.intellij.util.indexing.FileBasedIndex;
 import com.intellij.util.indexing.ID;
 import com.intellij.util.indexing.SingleEntryFileBasedIndexExtension;
+import jetbrains.mps.components.ComponentHost;
+import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.vfs.IdeaFile;
 import jetbrains.mps.persistence.ModelDigestHelper;
 import jetbrains.mps.persistence.ModelDigestHelper.DigestProvider;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
@@ -39,32 +46,45 @@ import java.util.List;
  * PersistenceFacility/LazyLoadFacility.getModelHash) and could easily drift away.
  * Again, here would be great to have indexing built on top of model layer, rather then vfs layer
  */
-public class IndexBasedModelDigest implements BaseComponent {
+public class IndexBasedModelDigest implements StartupActivity.Background {
 
   @Override
-  @NotNull
-  public String getComponentName() {
-    return "Index based model digest component";
-  }
-
-  @Override
-  public void initComponent() {
+  public void runActivity(@NotNull Project project) {
+    final MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
+    if (mpsProject == null) {
+      return;
+    }
+    final ComponentHost mpsPlaf = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getPlatform();
+    final ModelDigestHelper mdHelper = mpsPlaf.findComponent(ModelDigestHelper.class);
+    if (mdHelper == null) {
+      return;
+    }
     // default model persistence (.mps files)
-    ModelDigestHelper.getInstance().addDigestProvider(new BaseModelDigestProvider(ModelDigestIndex.NAME));
+    final BaseModelDigestProvider p1 = new BaseModelDigestProvider(mpsProject, ModelDigestIndex.NAME);
     // binary model persistence (.mpb files)
-    ModelDigestHelper.getInstance().addDigestProvider(new BaseModelDigestProvider(BinaryModelDigestIndex.NAME));
+    final BaseModelDigestProvider p2 = new BaseModelDigestProvider(mpsProject, BinaryModelDigestIndex.NAME);
+    mdHelper.addDigestProvider(p1);
+    mdHelper.addDigestProvider(p2);
+
+    Disposer.register(project, () -> {
+      mdHelper.removeDigestProvider(p2);
+      mdHelper.removeDigestProvider(p1);
+    });
   }
 
   private static class BaseModelDigestProvider implements DigestProvider {
+    private final MPSProject myProject;
     private final ID<Integer, String> myIndexName;
 
-    private BaseModelDigestProvider(ID<Integer, String> name) {
+    private BaseModelDigestProvider(@NotNull MPSProject mpsProject, ID<Integer, String> name) {
+      myProject = mpsProject;
       myIndexName = name;
     }
 
     @Override
     public String getGenerationHash(@NotNull IFile iFile) {
       try {
+        // FIXME MPSProject shall provide a mechanism to convert IFile to VirtualFile (in addition to existing VirtualFile->IFile)
         if (!(iFile instanceof IdeaFile)) {
           return null;
         }
@@ -76,7 +96,7 @@ public class IndexBasedModelDigest implements BaseComponent {
         // proper use of getFileKey, override-only is rather for class itself
         @SuppressWarnings("OverrideOnly")
         final int fileKey = SingleEntryFileBasedIndexExtension.getFileKey(file);
-        final List<String> values = FileBasedIndex.getInstance().getValues(myIndexName, fileKey, new EverythingGlobalScope());
+        final List<String> values = FileBasedIndex.getInstance().getValues(myIndexName, fileKey, new EverythingGlobalScope(myProject.getProject()));
         return values.isEmpty() ? null : values.get(0);
       } catch (IndexNotReadyException | ProcessCanceledException e) {
         // generally, it's bad to get here (we'd rather check for dumb mode prior accessing the index

@@ -66,9 +66,6 @@
       <implementation-class>jetbrains.mps.ide.refactoring.RefactoringSettings</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.ide.generator.index.IndexBasedModelDigest</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.ide.project.listener.AbstractModuleWorkbenchAdjuster</implementation-class>
     </component>
     <component>
@@ -172,6 +169,7 @@
 
     <fileType extensions="class" name="CLASS" fieldName="INSTANCE" implementationClass="com.intellij.ide.highlighter.JavaClassFileType"/>
     <idIndexer filetype="CLASS" implementationClass="jetbrains.mps.workbench.findusages.JavaStubIdIndexer"/>
+    <backgroundPostStartupActivity implementation="jetbrains.mps.ide.generator.index.IndexBasedModelDigest" />
   </extensions>
 
   <extensions defaultExtensionNs="jetbrains.mps">
