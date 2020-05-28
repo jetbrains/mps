@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -108,7 +108,7 @@ public class ProjectOpenCloseTest implements EnvironmentAware {
   public void reopenMPSProject2() {
     // TODO: why need to create empty project if any way existing project going to be opened?
 
-    getEnvironment().createEmptyProject();
+    final Project emptyProject1 = getEnvironment().createEmptyProject();
     Project mpsProject = getEnvironment().openProject(new File(PathManager.getHomePath()));
 
     testWait();
@@ -117,7 +117,7 @@ public class ProjectOpenCloseTest implements EnvironmentAware {
 
     testWait();
 
-    getEnvironment().createEmptyProject();
+    final Project emptyProject2 = getEnvironment().createEmptyProject();
     mpsProject = getEnvironment().openProject(new File(PathManager.getHomePath()));
 
     testWait();
@@ -125,6 +125,8 @@ public class ProjectOpenCloseTest implements EnvironmentAware {
     mpsProject.dispose();
 
     testWait();
+    getEnvironment().closeProject(emptyProject1);
+    getEnvironment().closeProject(emptyProject2);
   }
 
   private void testWait() {
