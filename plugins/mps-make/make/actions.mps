@@ -83,10 +83,10 @@
     <import index="vndm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.language(MPS.Core/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
     <import index="ud0o" ref="r:71895ceb-c89d-4545-aa38-89d1cd891f17(jetbrains.mps.make.facet)" />
+    <import index="4b2m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.messages(MPS.IDEA/)" />
+    <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" />
     <import index="7bx7" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench.action(MPS.Platform/)" implicit="true" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
-    <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" implicit="true" />
-    <import index="4b2m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.messages(MPS.IDEA/)" implicit="true" />
     <import index="31cb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.module(MPS.Core/)" implicit="true" />
   </imports>
   <registry>
@@ -216,7 +216,7 @@
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="5279705229678483897" name="jetbrains.mps.baseLanguage.structure.FloatingPointFloatConstant" flags="nn" index="2$xPTn">
@@ -408,7 +408,7 @@
       </concept>
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
-        <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
+        <child id="8276990574886367509" name="finallyClause" index="1zxBo6" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
@@ -7892,6 +7892,7 @@
         <node concept="3clFbH" id="1Q7UogT4gly" role="3cqZAp" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaTxM4" role="jymVt" />
     <node concept="3clFb_" id="hP8D6fqe6O" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="install" />
@@ -7942,7 +7943,7 @@
               </node>
             </node>
             <node concept="liA8E" id="3l7XKooFbcb" role="2OqNvi">
-              <ref role="37wK5l" to="4b2m:~MessageBusConnection.subscribe(com.intellij.util.messages.Topic,java.lang.Object)" resolve="subscribe" />
+              <ref role="37wK5l" to="4b2m:~SimpleMessageBusConnection.subscribe(com.intellij.util.messages.Topic,java.lang.Object)" resolve="subscribe" />
               <node concept="10M0yZ" id="3l7XKooFcOo" role="37wK5m">
                 <ref role="3cqZAo" to="j936:~UISettingsListener.TOPIC" resolve="TOPIC" />
                 <ref role="1PxDUh" to="j936:~UISettingsListener" resolve="UISettingsListener" />
@@ -7981,6 +7982,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaTwX1" role="jymVt" />
     <node concept="3clFb_" id="hP8D6fqe6V" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getTooltipText" />
@@ -8013,6 +8015,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaT$Pt" role="jymVt" />
     <node concept="3clFb_" id="hP8D6fqe77" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getClickConsumer" />
@@ -8358,6 +8361,7 @@
       </node>
       <node concept="3cqZAl" id="2hEKckkLhQc" role="3clF45" />
     </node>
+    <node concept="2tJIrI" id="4_rZUNaT_F6" role="jymVt" />
     <node concept="3clFb_" id="hP8D6fqe7K" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getPresentation" />
@@ -8584,6 +8588,7 @@
         <ref role="3uigEE" to="dxuu:~Icon" resolve="Icon" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaTB3q" role="jymVt" />
     <node concept="3clFb_" id="hP8D6fqe8g" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="ID" />
@@ -8604,6 +8609,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaTBSW" role="jymVt" />
     <node concept="3clFb_" id="7ipB4ZUdPew" role="jymVt">
       <property role="TrG5h" value="isSaveTransientModels" />
       <node concept="3clFbS" id="7ipB4ZUdPez" role="3clF47">
@@ -8621,6 +8627,7 @@
       <node concept="3Tm1VV" id="7ipB4ZUdPey" role="1B3o_S" />
       <node concept="10P_77" id="7ipB4ZUdPe$" role="3clF45" />
     </node>
+    <node concept="2tJIrI" id="4_rZUNaTCIv" role="jymVt" />
     <node concept="3clFb_" id="1$ZRmkX9bOD" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getComponent" />
@@ -8782,14 +8789,13 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaTD$3" role="jymVt" />
     <node concept="3clFb_" id="4hZPELmBD3a" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getText" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="4hZPELmBD3b" role="1B3o_S" />
-      <node concept="3uibUv" id="4hZPELmBD3d" role="3clF45">
-        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-      </node>
+      <node concept="17QB3L" id="4_rZUNaTJY3" role="3clF45" />
       <node concept="2AHcQZ" id="4hZPELmBD3e" role="2AJF6D">
         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
@@ -8813,14 +8819,13 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaTEWr" role="jymVt" />
     <node concept="3clFb_" id="4hZPELmBD3l" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getMaxPossibleText" />
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="4hZPELmBD3m" role="1B3o_S" />
-      <node concept="3uibUv" id="4hZPELmBD3o" role="3clF45">
-        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-      </node>
+      <node concept="17QB3L" id="4_rZUNaTJ2o" role="3clF45" />
       <node concept="2AHcQZ" id="4hZPELmBD3p" role="2AJF6D">
         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
@@ -8832,6 +8837,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaTFM1" role="jymVt" />
     <node concept="3clFb_" id="4hZPELmBD3w" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getAlignment" />
@@ -8865,6 +8871,7 @@
     <node concept="3uibUv" id="1tWJVfj_YDg" role="EKbjA">
       <ref role="3uigEE" to="mnlj:~PropertyChangeListener" resolve="PropertyChangeListener" />
     </node>
+    <node concept="2tJIrI" id="4_rZUNaTGBC" role="jymVt" />
     <node concept="3clFb_" id="2LX1rHNIXRt" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="uiSettingsChanged" />
@@ -8885,6 +8892,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaTHtg" role="jymVt" />
     <node concept="3clFb_" id="1tWJVfj_YVe" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="propertyChange" />

@@ -1432,7 +1432,7 @@
               <ref role="3cqZAo" node="2TJjT4dDZcv" resolve="myConnection" />
             </node>
             <node concept="liA8E" id="2TJjT4dE6sO" role="2OqNvi">
-              <ref role="37wK5l" to="4b2m:~MessageBusConnection.subscribe(com.intellij.util.messages.Topic,java.lang.Object)" resolve="subscribe" />
+              <ref role="37wK5l" to="4b2m:~SimpleMessageBusConnection.subscribe(com.intellij.util.messages.Topic,java.lang.Object)" resolve="subscribe" />
               <node concept="10M0yZ" id="2TJjT4dE6P6" role="37wK5m">
                 <ref role="3cqZAo" to="4nm9:~ProjectManager.TOPIC" resolve="TOPIC" />
                 <ref role="1PxDUh" to="4nm9:~ProjectManager" resolve="ProjectManager" />
@@ -2000,7 +2000,7 @@
               <ref role="3cqZAo" node="2TJjT4dDZcv" resolve="myConnection" />
             </node>
             <node concept="liA8E" id="2TJjT4dE7RB" role="2OqNvi">
-              <ref role="37wK5l" to="4b2m:~MessageBusConnection.disconnect()" resolve="disconnect" />
+              <ref role="37wK5l" to="4b2m:~SimpleMessageBusConnection.disconnect()" resolve="disconnect" />
             </node>
           </node>
         </node>

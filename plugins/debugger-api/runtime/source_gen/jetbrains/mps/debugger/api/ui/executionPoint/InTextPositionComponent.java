@@ -11,7 +11,6 @@ import com.intellij.openapi.editor.markup.RangeHighlighter;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
-import com.intellij.openapi.fileEditor.FileEditorManagerAdapter;
 import com.intellij.openapi.vfs.VirtualFile;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -56,7 +55,7 @@ public class InTextPositionComponent implements ProjectComponent {
     DebugSessionManagerComponent component = myProject.getComponent(DebugSessionManagerComponent.class);
     component.addDebugSessionListener(myCurrentDebugSessionListener);
     myConnection = myProject.getMessageBus().connect();
-    myConnection.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileEditorManagerAdapter() {
+    myConnection.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileEditorManagerListener() {
       @Override
       public void fileOpened(FileEditorManager manager, VirtualFile file) {
         reAttachPainter(getCurrentSession(), false);

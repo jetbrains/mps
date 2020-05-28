@@ -5724,7 +5724,7 @@
               </node>
             </node>
             <node concept="liA8E" id="6adHiaZVYNP" role="2OqNvi">
-              <ref role="37wK5l" to="4b2m:~MessageBusConnection.disconnect()" resolve="disconnect" />
+              <ref role="37wK5l" to="4b2m:~SimpleMessageBusConnection.disconnect()" resolve="disconnect" />
             </node>
           </node>
         </node>
@@ -5973,7 +5973,22 @@
         <node concept="3SKdUt" id="6BY6fCdU5CD" role="3cqZAp">
           <node concept="1PaTwC" id="6BY6fCdU5CE" role="1aUNEU">
             <node concept="3oM_SD" id="6BY6fCdU5CG" role="1PaTwD">
-              <property role="3oM_SC" value="TODO: find way to rewrite this" />
+              <property role="3oM_SC" value="TODO:" />
+            </node>
+            <node concept="3oM_SD" id="4_rZUNaUGlo" role="1PaTwD">
+              <property role="3oM_SC" value="find" />
+            </node>
+            <node concept="3oM_SD" id="4_rZUNaUGlp" role="1PaTwD">
+              <property role="3oM_SC" value="way" />
+            </node>
+            <node concept="3oM_SD" id="4_rZUNaUGlq" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="4_rZUNaUGlr" role="1PaTwD">
+              <property role="3oM_SC" value="rewrite" />
+            </node>
+            <node concept="3oM_SD" id="4_rZUNaUGls" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
             </node>
           </node>
         </node>
@@ -6008,7 +6023,7 @@
               </node>
             </node>
             <node concept="liA8E" id="6adHiaZW6r5" role="2OqNvi">
-              <ref role="37wK5l" to="4b2m:~MessageBusConnection.subscribe(com.intellij.util.messages.Topic,java.lang.Object)" resolve="subscribe" />
+              <ref role="37wK5l" to="4b2m:~SimpleMessageBusConnection.subscribe(com.intellij.util.messages.Topic,java.lang.Object)" resolve="subscribe" />
               <node concept="10M0yZ" id="6adHiaZW6ru" role="37wK5m">
                 <ref role="1PxDUh" to="rlg8:~EditorComponentCreateListener" resolve="EditorComponentCreateListener" />
                 <ref role="3cqZAo" to="rlg8:~EditorComponentCreateListener.EDITOR_COMPONENT_CREATION" resolve="EDITOR_COMPONENT_CREATION" />

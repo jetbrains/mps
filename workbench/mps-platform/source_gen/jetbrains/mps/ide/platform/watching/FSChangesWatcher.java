@@ -102,7 +102,7 @@ public class FSChangesWatcher implements ApplicationComponent {
     @Override
     public void after(@NotNull final List<? extends VFileEvent> events) {
       final Application application = ApplicationManager.getApplication();
-      if (application.isDisposeInProgress() || application.isDisposed()) {
+      if (application.isDisposed()) {
         return;
       }
       final List<VFileEvent> eventsOfInterest = ListSequence.fromList(events).where(new IWhereFilter<VFileEvent>() {

@@ -64,7 +64,7 @@
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1173175405605" name="jetbrains.mps.baseLanguage.structure.ArrayAccessExpression" flags="nn" index="AH0OO">
@@ -430,6 +430,7 @@
         <ref role="3uigEE" to="4b2m:~MessageBusConnection" resolve="MessageBusConnection" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaXpVv" role="jymVt" />
     <node concept="3clFbW" id="38_6U8fKv6D" role="jymVt">
       <node concept="3Tm1VV" id="38_6U8fKv6E" role="1B3o_S" />
       <node concept="3cqZAl" id="38_6U8fKv6F" role="3clF45" />
@@ -484,6 +485,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaXoA0" role="jymVt" />
     <node concept="3clFb_" id="38_6U8fKv6Z" role="jymVt">
       <property role="TrG5h" value="isInConflict" />
       <node concept="3Tm1VV" id="3zgutK7osEE" role="1B3o_S" />
@@ -681,6 +683,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaXnDK" role="jymVt" />
     <node concept="3clFb_" id="38_6U8fKv8w" role="jymVt">
       <property role="TrG5h" value="projectOpened" />
       <node concept="3Tm1VV" id="38_6U8fKv8x" role="1B3o_S" />
@@ -794,7 +797,7 @@
               <ref role="3cqZAo" node="6KGokXnAqRl" resolve="myMessageBusConnection" />
             </node>
             <node concept="liA8E" id="6KGokXnAqR_" role="2OqNvi">
-              <ref role="37wK5l" to="4b2m:~MessageBusConnection.subscribe(com.intellij.util.messages.Topic,java.lang.Object)" resolve="subscribe" />
+              <ref role="37wK5l" to="4b2m:~SimpleMessageBusConnection.subscribe(com.intellij.util.messages.Topic,java.lang.Object)" resolve="subscribe" />
               <node concept="10M0yZ" id="6KGokXnAqRA" role="37wK5m">
                 <ref role="3cqZAo" to="jlcu:~ProjectLevelVcsManager.VCS_CONFIGURATION_CHANGED" resolve="VCS_CONFIGURATION_CHANGED" />
                 <ref role="1PxDUh" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
@@ -827,6 +830,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaXmDk" role="jymVt" />
     <node concept="3clFb_" id="38_6U8fKv8$" role="jymVt">
       <property role="TrG5h" value="projectClosed" />
       <node concept="3Tm1VV" id="38_6U8fKv8_" role="1B3o_S" />
@@ -855,7 +859,7 @@
               <ref role="3cqZAo" node="6KGokXnAqRl" resolve="myMessageBusConnection" />
             </node>
             <node concept="liA8E" id="6KGokXnAqRQ" role="2OqNvi">
-              <ref role="37wK5l" to="4b2m:~MessageBusConnection.disconnect()" resolve="disconnect" />
+              <ref role="37wK5l" to="4b2m:~SimpleMessageBusConnection.disconnect()" resolve="disconnect" />
             </node>
           </node>
         </node>
@@ -864,6 +868,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaXljR" role="jymVt" />
     <node concept="3clFb_" id="38_6U8fKv8C" role="jymVt">
       <property role="TrG5h" value="getComponentName" />
       <node concept="3Tm1VV" id="38_6U8fKv8D" role="1B3o_S" />
@@ -885,6 +890,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaXknE" role="jymVt" />
     <node concept="3clFb_" id="38_6U8fKv90" role="jymVt">
       <property role="TrG5h" value="isChangeListManagerInitialized" />
       <node concept="3Tm1VV" id="38_6U8fKv91" role="1B3o_S" />
@@ -897,6 +903,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaXiR9" role="jymVt" />
     <node concept="3clFb_" id="38_6U8fKv96" role="jymVt">
       <property role="TrG5h" value="initComponent" />
       <node concept="3Tm1VV" id="38_6U8fKv97" role="1B3o_S" />
@@ -920,6 +927,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaXhUY" role="jymVt" />
     <node concept="3clFb_" id="38_6U8fKv9n" role="jymVt">
       <property role="TrG5h" value="disposeComponent" />
       <node concept="3Tm1VV" id="38_6U8fKv9o" role="1B3o_S" />
@@ -943,6 +951,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaXgYO" role="jymVt" />
     <node concept="3clFb_" id="78tlMyQ2NAc" role="jymVt">
       <property role="TrG5h" value="checkIfProjectIsConflicting" />
       <node concept="3cqZAl" id="78tlMyQ2NAd" role="3clF45" />
@@ -1107,6 +1116,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaXfum" role="jymVt" />
     <node concept="3clFb_" id="38_6U8fKv9C" role="jymVt">
       <property role="TrG5h" value="getUnversionedFilesFromChangeListManager" />
       <node concept="3Tm1VV" id="38_6U8fKv9D" role="1B3o_S" />
@@ -1133,6 +1143,8 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaXdr1" role="jymVt" />
+    <node concept="2tJIrI" id="4_rZUNaXeye" role="jymVt" />
     <node concept="2YIFZL" id="38_6U8fKv6t" role="jymVt">
       <property role="TrG5h" value="getInstance" />
       <node concept="3Tm1VV" id="38_6U8fKv6u" role="1B3o_S" />
@@ -1164,6 +1176,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaXc4o" role="jymVt" />
     <node concept="312cEu" id="38_6U8fKv4h" role="jymVt">
       <property role="TrG5h" value="StubChangeListManagerGate" />
       <node concept="3Tm1VV" id="38_6U8fKv4i" role="1B3o_S" />
@@ -1407,6 +1420,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaXb8j" role="jymVt" />
     <node concept="312cEu" id="38_6U8fKv5f" role="jymVt">
       <property role="TrG5h" value="MyChangelistBuilder" />
       <node concept="3Tm6S6" id="38_6U8fKv5g" role="1B3o_S" />
@@ -1649,6 +1663,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="4_rZUNaX9Bi" role="jymVt" />
     <node concept="312cEu" id="78tlMyQ2MOs" role="jymVt">
       <property role="TrG5h" value="MyFileStatusListener" />
       <property role="2bfB8j" value="true" />

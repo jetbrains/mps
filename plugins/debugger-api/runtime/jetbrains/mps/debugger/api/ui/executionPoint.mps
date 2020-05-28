@@ -1022,7 +1022,7 @@
               <ref role="3cqZAo" node="4QCds4yLcvm" resolve="myConnection" />
             </node>
             <node concept="liA8E" id="4QCds4yLcw9" role="2OqNvi">
-              <ref role="37wK5l" to="4b2m:~MessageBusConnection.subscribe(com.intellij.util.messages.Topic,java.lang.Object)" resolve="subscribe" />
+              <ref role="37wK5l" to="4b2m:~SimpleMessageBusConnection.subscribe(com.intellij.util.messages.Topic,java.lang.Object)" resolve="subscribe" />
               <node concept="10M0yZ" id="4QCds4yLcwc" role="37wK5m">
                 <ref role="1PxDUh" to="iwsx:~FileEditorManagerListener" resolve="FileEditorManagerListener" />
                 <ref role="3cqZAo" to="iwsx:~FileEditorManagerListener.FILE_EDITOR_MANAGER" resolve="FILE_EDITOR_MANAGER" />
@@ -1031,8 +1031,8 @@
                 <node concept="YeOm9" id="4QCds4yLcxD" role="2ShVmc">
                   <node concept="1Y3b0j" id="4QCds4yLcxE" role="YeSDq">
                     <property role="2bfB8j" value="true" />
-                    <ref role="1Y3XeK" to="iwsx:~FileEditorManagerAdapter" resolve="FileEditorManagerAdapter" />
-                    <ref role="37wK5l" to="iwsx:~FileEditorManagerAdapter.&lt;init&gt;()" resolve="FileEditorManagerAdapter" />
+                    <ref role="1Y3XeK" to="iwsx:~FileEditorManagerListener" resolve="FileEditorManagerListener" />
+                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                     <node concept="3Tm1VV" id="4QCds4yLcxF" role="1B3o_S" />
                     <node concept="3clFb_" id="4QCds4yLcxM" role="jymVt">
                       <property role="1EzhhJ" value="false" />
@@ -1127,8 +1127,8 @@
             <node concept="37vLTw" id="2BHiRxeuOPz" role="2Oq$k0">
               <ref role="3cqZAo" node="4QCds4yLcvm" resolve="myConnection" />
             </node>
-            <node concept="liA8E" id="4QCds4yLcyz" role="2OqNvi">
-              <ref role="37wK5l" to="4b2m:~MessageBusConnection.disconnect()" resolve="disconnect" />
+            <node concept="liA8E" id="4_rZUNaPl92" role="2OqNvi">
+              <ref role="37wK5l" to="4b2m:~SimpleMessageBusConnection.disconnect()" resolve="disconnect" />
             </node>
           </node>
         </node>

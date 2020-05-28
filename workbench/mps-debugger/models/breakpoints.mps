@@ -965,7 +965,7 @@
               <ref role="3cqZAo" node="3SnNvqCbyF0" resolve="myMessageBusConnection" />
             </node>
             <node concept="liA8E" id="3SnNvqCbyGu" role="2OqNvi">
-              <ref role="37wK5l" to="4b2m:~MessageBusConnection.subscribe(com.intellij.util.messages.Topic,java.lang.Object)" resolve="subscribe" />
+              <ref role="37wK5l" to="4b2m:~SimpleMessageBusConnection.subscribe(com.intellij.util.messages.Topic,java.lang.Object)" resolve="subscribe" />
               <node concept="10M0yZ" id="3SnNvqCbyGv" role="37wK5m">
                 <ref role="1PxDUh" to="rlg8:~EditorComponentCreateListener" resolve="EditorComponentCreateListener" />
                 <ref role="3cqZAo" to="rlg8:~EditorComponentCreateListener.EDITOR_COMPONENT_CREATION" resolve="EDITOR_COMPONENT_CREATION" />
@@ -1027,7 +1027,7 @@
               <ref role="3cqZAo" node="3SnNvqCbyF0" resolve="myMessageBusConnection" />
             </node>
             <node concept="liA8E" id="3SnNvqCbyGN" role="2OqNvi">
-              <ref role="37wK5l" to="4b2m:~MessageBusConnection.disconnect()" resolve="disconnect" />
+              <ref role="37wK5l" to="4b2m:~SimpleMessageBusConnection.disconnect()" resolve="disconnect" />
             </node>
           </node>
         </node>

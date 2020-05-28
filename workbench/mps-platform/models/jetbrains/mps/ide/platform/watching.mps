@@ -67,7 +67,7 @@
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1239709577448" name="jetbrains.mps.baseLanguage.structure.PrefixDecrementExpression" flags="nn" index="2$sJ78" />
@@ -291,7 +291,7 @@
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
-        <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
+        <child id="8276990574886367509" name="finallyClause" index="1zxBo6" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
@@ -1565,9 +1565,7 @@
     <node concept="3clFb_" id="7mrRUyVUvcf" role="jymVt">
       <property role="TrG5h" value="getComponentName" />
       <node concept="3Tm1VV" id="7mrRUyVUvcg" role="1B3o_S" />
-      <node concept="3uibUv" id="7mrRUyVUvch" role="3clF45">
-        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-      </node>
+      <node concept="17QB3L" id="4_rZUNaWPhx" role="3clF45" />
       <node concept="3clFbS" id="7mrRUyVUvci" role="3clF47">
         <node concept="3cpWs6" id="7mrRUyVUvcj" role="3cqZAp">
           <node concept="Xl_RD" id="7mrRUyVUvck" role="3cqZAk">
@@ -1612,7 +1610,7 @@
               <ref role="3cqZAo" node="7mrRUyVUva_" resolve="myConnection" />
             </node>
             <node concept="liA8E" id="7mrRUyVUvdf" role="2OqNvi">
-              <ref role="37wK5l" to="4b2m:~MessageBusConnection.subscribe(com.intellij.util.messages.Topic,java.lang.Object)" resolve="subscribe" />
+              <ref role="37wK5l" to="4b2m:~SimpleMessageBusConnection.subscribe(com.intellij.util.messages.Topic,java.lang.Object)" resolve="subscribe" />
               <node concept="10M0yZ" id="7mrRUyVUvdg" role="37wK5m">
                 <ref role="1PxDUh" to="jlff:~VirtualFileManager" resolve="VirtualFileManager" />
                 <ref role="3cqZAo" to="jlff:~VirtualFileManager.VFS_CHANGES" resolve="VFS_CHANGES" />
@@ -1677,7 +1675,7 @@
               <ref role="3cqZAo" node="7mrRUyVUva_" resolve="myConnection" />
             </node>
             <node concept="liA8E" id="7mrRUyVUve2" role="2OqNvi">
-              <ref role="37wK5l" to="4b2m:~MessageBusConnection.disconnect()" resolve="disconnect" />
+              <ref role="37wK5l" to="4b2m:~SimpleMessageBusConnection.disconnect()" resolve="disconnect" />
             </node>
           </node>
         </node>
@@ -1789,22 +1787,12 @@
             </node>
           </node>
           <node concept="3clFbJ" id="7mrRUyVUv74" role="3cqZAp">
-            <node concept="22lmx$" id="7mrRUyVUv75" role="3clFbw">
-              <node concept="2OqwBi" id="7mrRUyVUv76" role="3uHU7B">
-                <node concept="37vLTw" id="3GM_nagTwZN" role="2Oq$k0">
-                  <ref role="3cqZAo" node="7mrRUyVUv71" resolve="application" />
-                </node>
-                <node concept="liA8E" id="7mrRUyVUv78" role="2OqNvi">
-                  <ref role="37wK5l" to="bd8o:~Application.isDisposeInProgress()" resolve="isDisposeInProgress" />
-                </node>
+            <node concept="2OqwBi" id="7mrRUyVUv79" role="3clFbw">
+              <node concept="37vLTw" id="3GM_nagTra$" role="2Oq$k0">
+                <ref role="3cqZAo" node="7mrRUyVUv71" resolve="application" />
               </node>
-              <node concept="2OqwBi" id="7mrRUyVUv79" role="3uHU7w">
-                <node concept="37vLTw" id="3GM_nagTra$" role="2Oq$k0">
-                  <ref role="3cqZAo" node="7mrRUyVUv71" resolve="application" />
-                </node>
-                <node concept="liA8E" id="7mrRUyVUv7b" role="2OqNvi">
-                  <ref role="37wK5l" to="1m72:~ComponentManager.isDisposed()" resolve="isDisposed" />
-                </node>
+              <node concept="liA8E" id="7mrRUyVUv7b" role="2OqNvi">
+                <ref role="37wK5l" to="1m72:~ComponentManager.isDisposed()" resolve="isDisposed" />
               </node>
             </node>
             <node concept="3clFbS" id="7mrRUyVUv7c" role="3clFbx">
@@ -2047,9 +2035,7 @@
           <node concept="3cpWs8" id="7QxwFodac0H" role="3cqZAp">
             <node concept="3cpWsn" id="7QxwFodac0I" role="3cpWs9">
               <property role="TrG5h" value="path" />
-              <node concept="3uibUv" id="7QxwFodac0G" role="1tU5fm">
-                <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-              </node>
+              <node concept="17QB3L" id="4_rZUNaWOUm" role="1tU5fm" />
               <node concept="2OqwBi" id="7QxwFodac0J" role="33vP2m">
                 <node concept="37vLTw" id="7QxwFodac0K" role="2Oq$k0">
                   <ref role="3cqZAo" node="7mrRUyVUv8N" resolve="event" />

@@ -38,6 +38,7 @@ import java.beans.PropertyChangeEvent;
     myGenerationSettings = settings;
 
   }
+
   @Override
   public void install(@NotNull StatusBar bar) {
     // Use approach from com.intellij.openapi.wm.impl.status.ToolWindowsWidget 
@@ -45,6 +46,7 @@ import java.beans.PropertyChangeEvent;
     myFocusManager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
     myFocusManager.addPropertyChangeListener("focusOwner", this);
   }
+
   @Nullable
   @Override
   public String getTooltipText() {
@@ -53,6 +55,7 @@ import java.beans.PropertyChangeEvent;
     }
     return "Save transient models";
   }
+
   @Nullable
   @Override
   public Consumer<MouseEvent> getClickConsumer() {
@@ -80,6 +83,7 @@ import java.beans.PropertyChangeEvent;
     }
     myStatusBar.updateWidget(ID());
   }
+
   @Nullable
   @Override
   public StatusBarWidget.WidgetPresentation getPresentation(@NotNull StatusBarWidget.PlatformType type) {
@@ -103,14 +107,17 @@ import java.beans.PropertyChangeEvent;
     // TODO: Use only one Icon. This hack helps to avoid tests fails 
     return myIconDisable;
   }
+
   @NotNull
   @Override
   public String ID() {
     return WIDGET_ID;
   }
+
   public boolean isSaveTransientModels() {
     return myGenerationSettings.isSaveTransientModels();
   }
+
   @Override
   public JComponent getComponent() {
     if (myComponent == null) {
@@ -120,6 +127,7 @@ import java.beans.PropertyChangeEvent;
     }
     return myComponent;
   }
+
   @NotNull
   public String getText() {
     if (isSaveTransientModels()) {
@@ -127,16 +135,20 @@ import java.beans.PropertyChangeEvent;
     }
     return ":OFF";
   }
+
   @NotNull
   public String getMaxPossibleText() {
     return ":OFF";
   }
+
   public float getAlignment() {
     return JComponent.RIGHT_ALIGNMENT;
   }
+
   public void uiSettingsChanged(UISettings settings) {
     update();
   }
+
   public void propertyChange(PropertyChangeEvent event) {
     update();
   }
