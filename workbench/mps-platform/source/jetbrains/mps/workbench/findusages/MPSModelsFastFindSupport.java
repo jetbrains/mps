@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,18 +16,23 @@
 package jetbrains.mps.workbench.findusages;
 
 import com.intellij.openapi.Disposable;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.IndexNotReadyException;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.startup.StartupActivity;
+import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.findUsages.FindUsagesUtil;
 import jetbrains.mps.findUsages.NodeUsageFinder;
 import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.persistence.FilePerRootDataSource;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.progress.EmptyProgressMonitor;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.DefaultSModelDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.util.FileUtil;
@@ -60,19 +65,34 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.function.Function;
 
-// FIXME why not ProjectComponent? Would help us to deal with dumb mode and use project's FS to get VirtualFile for an IFile
-public class MPSModelsFastFindSupport implements Disposable, FindUsagesParticipant {
+// FIXME utilize project to deal with dumb mode and use project's FS to get VirtualFile for an IFile
+public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposable {
 
+  public static final class Plug implements StartupActivity.Background {
+    @Override
+    public void runActivity(@NotNull Project project) {
+      final MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
+      if (mpsProject == null) {
+        return;
+      }
+      MPSCoreComponents mpsCoreComponents = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
+      final MPSModelsFastFindSupport ffs = new MPSModelsFastFindSupport(mpsProject, mpsCoreComponents);
+      Disposer.register(project, ffs);
+    }
+  }
+
+  private final ProjectModelFilter myModelFilter;
   private final MPSCoreComponents myCoreComponents;
 
-  public MPSModelsFastFindSupport(MPSCoreComponents coreComponents) {
+  private MPSModelsFastFindSupport(@NotNull MPSProject mpsProject, @NotNull MPSCoreComponents coreComponents) {
+    myModelFilter = new ProjectModelFilter(mpsProject);
     myCoreComponents = coreComponents;
-    myCoreComponents.getPersistenceFacade().addFindUsagesParticipant(this);
+    myCoreComponents.getPlatform().findComponent(PersistenceRegistry.class).addFindUsagesParticipant(this);
   }
 
   @Override
   public void dispose() {
-    myCoreComponents.getPersistenceFacade().removeFindUsagesParticipant(this);
+    myCoreComponents.getPlatform().findComponent(PersistenceRegistry.class).removeFindUsagesParticipant(this);
   }
 
   @Override
@@ -83,13 +103,23 @@ public class MPSModelsFastFindSupport implements Disposable, FindUsagesParticipa
     if (monitor.isCanceled()) {
       return;
     }
-    MultiMap<SModel, SNode> candidates = findCandidates(scope, nodes, processedConsumer, key -> new NodeUse(key.getNodeId()), monitor);
+    monitor.start("Find usages", 3);
+    scope = myModelFilter.projectModelsOnly(scope);
+    if (scope.isEmpty()) {
+      monitor.done();
+      return;
+    }
+    monitor.advance(1);
+    MultiMap<SModel, SNode> candidates = findCandidates(scope, nodes, processedConsumer, key -> new NodeUse(key.getNodeId()), monitor.subTask(1));
+    ProgressMonitor pmCandidates = monitor.subTask(1);
+    pmCandidates.start("", candidates.size());
     for (Entry<SModel, Collection<SNode>> candidate : candidates.entrySet()) {
       if (monitor.isCanceled()) {
         break;
       }
-      new NodeUsageFinder(candidate.getValue(), consumer).collectUsages(candidate.getKey(), monitor);
+      new NodeUsageFinder(candidate.getValue(), consumer).collectUsages(candidate.getKey(), pmCandidates.subTask(1));
     }
+    monitor.done();
   }
 
   @Override
@@ -100,11 +130,24 @@ public class MPSModelsFastFindSupport implements Disposable, FindUsagesParticipa
     if (monitor.isCanceled()) {
       return;
     }
-    MultiMap<SModel, SAbstractConcept> candidates = findCandidates(scope, concepts, processedConsumer, key -> new ConceptInstance(MetaIdHelper.getConcept(key)),
-                                                                   monitor);
-    for (Entry<SModel, Collection<SAbstractConcept>> candidate : candidates.entrySet()) {
-      FindUsagesUtil.collectInstances(candidate.getKey(), candidate.getValue(), consumer, monitor);
+    monitor.start("Find instances", 3);
+    scope = myModelFilter.projectModelsOnly(scope);
+    if (scope.isEmpty()) {
+      monitor.done();
+      return;
     }
+    monitor.advance(1);
+    MultiMap<SModel, SAbstractConcept> candidates = findCandidates(scope, concepts, processedConsumer, key -> new ConceptInstance(MetaIdHelper.getConcept(key)),
+                                                                   monitor.subTask(1));
+    ProgressMonitor pmCandidates = monitor.subTask(1);
+    pmCandidates.start("", candidates.size());
+    for (Entry<SModel, Collection<SAbstractConcept>> candidate : candidates.entrySet()) {
+      if (monitor.isCanceled()) {
+        break;
+      }
+      FindUsagesUtil.collectInstances(candidate.getKey(), candidate.getValue(), consumer, pmCandidates.subTask(1));
+    }
+    monitor.done();
   }
 
   @Override
@@ -116,19 +159,31 @@ public class MPSModelsFastFindSupport implements Disposable, FindUsagesParticipa
     if (monitor.isCanceled()) {
       return;
     }
-    MultiMap<SModel, SModelReference> candidates = findCandidates(scope, modelReferences, processedConsumer, ModelUse::new, monitor);
+    monitor.start("Find model usages", 3);
+    scope = myModelFilter.projectModelsOnly(scope);
+    if (scope.isEmpty()) {
+      monitor.done();
+      return;
+    }
+    monitor.advance(1);
+    MultiMap<SModel, SModelReference> candidates = findCandidates(scope, modelReferences, processedConsumer, ModelUse::new, monitor.subTask(1));
+    ProgressMonitor pmCandidates = monitor.subTask(1);
+    pmCandidates.start("", candidates.size());
     for (Entry<SModel, Collection<SModelReference>> candidate : candidates.entrySet()) {
       if (monitor.isCanceled()) {
-        return;
+        break;
       }
       if (FindUsagesUtil.hasModelUsages(candidate.getKey(), candidate.getValue())) {
         consumer.consume(candidate.getKey());
       }
+      pmCandidates.advance(1);
     }
+    monitor.done();
   }
 
   private <T> MultiMap<SModel, T> findCandidates(Collection<SModel> models, Set<T> elems, Consumer<SModel> processedModels, Function<T, UsageEntry> id,
                                                  @NotNull ProgressMonitor monitor) {
+    monitor.start("", 3);
     // get all files in scope
     final ManyToManyMap<SModel, VirtualFile> scopeFiles = new ManyToManyMap<>();
     final ArrayList<SModel> models2consume = new ArrayList<>(models.size());
@@ -175,9 +230,11 @@ public class MPSModelsFastFindSupport implements Disposable, FindUsagesParticipa
         scopeFiles.addLink(sm, vf);
       }
     }
+    monitor.advance(1);
 
     // filter files with usages
-    ConcreteFilesGlobalSearchScope allFiles = new ConcreteFilesGlobalSearchScope(scopeFiles.getSecond());
+    // we made sure wuth myModelFilter, above, that models we look at are from this project, let indexer use it, not guess from VF
+    ConcreteFilesGlobalSearchScope allFiles = new ConcreteFilesGlobalSearchScope(myModelFilter.project().getProject(), scopeFiles.getSecond());
     // process indexes
     MultiMap<SModel, T> result = new SetBasedMultiMap<>();
     boolean fileMatchFailedAtLeastOnce = false;
@@ -204,6 +261,7 @@ public class MPSModelsFastFindSupport implements Disposable, FindUsagesParticipa
       // if any index operation failed, resort to fall-back lookup mechanism
       models2consume.forEach(processedModels::consume);
     }
+    monitor.done();
     return result;
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -75,7 +75,7 @@ public class PersistenceRegistry extends org.jetbrains.mps.openapi.persistence.P
   private final Map<String, ModelRootFactory> myRootFactories = new HashMap<>();
   private final Map<String, SModelIdFactory> myModelIdFactory = new HashMap<>();
   private final Map<String, SNodeIdFactory> myNodeIdFactory = new HashMap<>();
-  private final Set<FindUsagesParticipant> myFindUsagesParticipants = new LinkedHashSet<>();
+  private final Set<FindUsagesParticipant> myFindUsagesParticipants = Collections.synchronizedSet(new LinkedHashSet<>());
   private final Set<NavigationParticipant> myNavigationParticipants = new LinkedHashSet<>();
 
   private boolean isDisabled = false;

@@ -41,9 +41,6 @@
       <implementation-class>jetbrains.mps.ide.refactoring.RefactoringAccessImpl</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.workbench.findusages.StubModelsFastFindSupport</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.library.AdditionalLibrariesManager</implementation-class>
     </component>
     <component>
@@ -64,9 +61,6 @@
     </component>
     <component>
       <implementation-class>jetbrains.mps.ide.refactoring.RefactoringSettings</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.generator.index.IndexBasedModelDigest</implementation-class>
     </component>
     <component>
       <implementation-class>jetbrains.mps.ide.project.listener.AbstractModuleWorkbenchAdjuster</implementation-class>
@@ -169,6 +163,8 @@
 
     <fileType extensions="class" name="CLASS" fieldName="INSTANCE" implementationClass="com.intellij.ide.highlighter.JavaClassFileType"/>
     <idIndexer filetype="CLASS" implementationClass="jetbrains.mps.workbench.findusages.JavaStubIdIndexer"/>
+    <postStartupActivity implementation="jetbrains.mps.ide.generator.index.IndexBasedModelDigest" />
+    <postStartupActivity implementation="jetbrains.mps.workbench.findusages.StubModelsFastFindSupport$Plug" />
   </extensions>
 
   <extensions defaultExtensionNs="jetbrains.mps">

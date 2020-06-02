@@ -35,6 +35,7 @@ public final class MPSPersistence extends ComponentPlugin implements ComponentHo
   private final ModelFactoryService myModelFactoryService;
   private final DataSourceFactoryRuleService myDataSourceService;
   private final VFSManager myVfsManager;
+  private ModelDigestHelper myDigestHelper;
 
   public MPSPersistence(@NotNull ComponentHost mpsCore) {
     myModelFactoryService = mpsCore.findComponent(ModelFactoryService.class);
@@ -46,15 +47,25 @@ public final class MPSPersistence extends ComponentPlugin implements ComponentHo
   @Override
   public void init() {
     super.init();
+    myDigestHelper = init(new ModelDigestHelper());
     init(new DataSourceFactoryRuleCoreService(myDataSourceService));
     init(new ModelFactoryCoreService(myModelFactoryService));
     final ClassStubRootProvider srp = init(new ClassStubRootProvider());
     init(new JavaClassesPersistence(myPersistenceFacade, myVfsManager, srp));
   }
 
+  @Override
+  public void dispose() {
+    super.dispose();
+    myDigestHelper = null;
+  }
+
   @Nullable
   @Override
   public <T extends CoreComponent> T findComponent(@NotNull Class<T> componentClass) {
+    if (ModelDigestHelper.class == componentClass) {
+      return componentClass.cast(myDigestHelper);
+    }
     return null;
   }
 }

@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.persistence;
 
+import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
@@ -25,21 +26,35 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 // Left as an exercise: try to tell ModelDigestHelper from ModelDigestUtil
-public class ModelDigestHelper {
+public class ModelDigestHelper implements CoreComponent {
 
-  private static ModelDigestHelper ourInstance = new ModelDigestHelper();
+  private static ModelDigestHelper ourInstance;
   private List<DigestProvider> myProviders = new CopyOnWriteArrayList<>();
 
   public static ModelDigestHelper getInstance() {
     return ourInstance;
   }
 
-  private ModelDigestHelper() {
+  /*package*/ ModelDigestHelper() {
 
+  }
+
+  @Override
+  public void init() {
+    ourInstance = this;
+  }
+
+  @Override
+  public void dispose() {
+    ourInstance = null;
   }
 
   public void addDigestProvider(DigestProvider provider) {
     myProviders.add(provider);
+  }
+
+  public void removeDigestProvider(DigestProvider provider) {
+    myProviders.remove(provider);
   }
 
   @Nullable
