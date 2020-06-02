@@ -161,7 +161,7 @@
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1224573963862" name="jetbrains.mps.baseLanguage.structure.EnumValuesExpression" flags="nn" index="uiWXb">
         <reference id="1224573974191" name="enumClass" index="uiZuM" />
@@ -2874,7 +2874,7 @@
     <property role="TrG5h" value="VCS Integration for MPS" />
     <property role="9BnSO" value="201.1" />
     <property role="1qHB85" value="/MPS_16.png" />
-    <property role="9BnSK" value="2020.1" />
+    <property role="9BnSK" value="2020.1.1" />
   </node>
   <node concept="1ESbSp" id="10cWl49AXwe">
     <property role="TrG5h" value="IDEAChangesViewPopup" />
