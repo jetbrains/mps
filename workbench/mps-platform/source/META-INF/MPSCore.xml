@@ -145,6 +145,6 @@
     <editorTabTitleProvider implementation="jetbrains.mps.fileTypes.MPSEditorTabTitleProvider"/>
     <spellchecker.bundledDictionaryProvider implementation="jetbrains.mps.spellchecker.MPSBundledDictionariesProvider"/>
     <!-- XXX Does MPSModelsFastFindSupport need to be part of MPSCore.xml and not mps-workbench/source/META-INF/MPSComponents.xml? -->
-    <backgroundPostStartupActivity implementation="jetbrains.mps.workbench.findusages.MPSModelsFastFindSupport$Plug" />
+    <postStartupActivity implementation="jetbrains.mps.workbench.findusages.MPSModelsFastFindSupport$Plug" />
   </extensions>
 </components>

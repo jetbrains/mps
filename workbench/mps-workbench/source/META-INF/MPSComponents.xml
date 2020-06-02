@@ -166,8 +166,8 @@
 
     <fileType extensions="class" name="CLASS" fieldName="INSTANCE" implementationClass="com.intellij.ide.highlighter.JavaClassFileType"/>
     <idIndexer filetype="CLASS" implementationClass="jetbrains.mps.workbench.findusages.JavaStubIdIndexer"/>
-    <backgroundPostStartupActivity implementation="jetbrains.mps.ide.generator.index.IndexBasedModelDigest" />
-    <backgroundPostStartupActivity implementation="jetbrains.mps.workbench.findusages.StubModelsFastFindSupport$Plug" />
+    <postStartupActivity implementation="jetbrains.mps.ide.generator.index.IndexBasedModelDigest" />
+    <postStartupActivity implementation="jetbrains.mps.workbench.findusages.StubModelsFastFindSupport$Plug" />
   </extensions>
 
   <extensions defaultExtensionNs="jetbrains.mps">
