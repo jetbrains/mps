@@ -51,9 +51,8 @@ import org.jetbrains.mps.openapi.util.SubProgressKind;
             assert !((sModel instanceof EditableSModel && ((EditableSModel) sModel).isChanged()));
             next.remove(sModel);
           }
-        }, monitor);
+        }, monitor.subTask(1));
         current = next;
-        monitor.advance(1);
       }
       ProgressMonitor subMonitor = monitor.subTask(4, SubProgressKind.DEFAULT);
       subMonitor.start("", current.size() + simpleSearch.size());
@@ -62,11 +61,10 @@ import org.jetbrains.mps.openapi.util.SubProgressKind;
       current.addAll(simpleSearch);
       for (SModel m : current) {
         subMonitor.step(m.getName().getSimpleName());
-        nf.collectUsages(m, monitor);
+        nf.collectUsages(m, subMonitor.subTask(1));
         if (monitor.isCanceled()) {
           break;
         }
-        subMonitor.advance(1);
       }
       subMonitor.done();
     } finally {
