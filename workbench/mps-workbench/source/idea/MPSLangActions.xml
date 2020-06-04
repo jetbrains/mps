@@ -230,7 +230,6 @@
     </action>
 
     <!-- Go To -->
-    <!--
     <group id="GoToTargetEx">
       <action id="GotoClass" class="com.intellij.ide.actions.GotoClassAction"/>
       <action id="GotoFile" class="com.intellij.ide.actions.GotoFileAction">
@@ -240,11 +239,12 @@
         <override-text place="MainMenu"/>
       </action>
 
+      <!--
       <add-to-group group-id="GoToMenu" anchor="before" relative-to-action="GotoLine"/>
+      -->
 
     </group>
 
-    -->
     <group id="GoToCodeGroup">
       <separator/>
       <action id="SelectIn" class="com.intellij.ide.actions.SelectInAction"/>
