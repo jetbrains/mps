@@ -9,7 +9,6 @@ import org.jdom.Element;
 import jetbrains.mps.smodel.DefaultSModel;
 import org.jdom.Document;
 import jetbrains.mps.smodel.SModelHeader;
-import jetbrains.mps.smodel.SModelVersionsInfo;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import jetbrains.mps.vcspersistence.VCSPersistenceSupport;
@@ -38,7 +37,6 @@ public class ModelReader4 implements IModelReader {
   }
   @Override
   public DefaultSModel readModel(Document document, SModelHeader header) {
-    SModelVersionsInfo versionsInfo = new SModelVersionsInfo();
     Element rootElement = document.getRootElement();
     SModelReference modelReference = VCSPersistenceUtil.createModelReference(rootElement.getAttributeValue(VCSPersistenceSupport.MODEL_UID));
     DefaultSModel model = new DefaultSModel(modelReference, header);
@@ -93,7 +91,7 @@ public class ModelReader4 implements IModelReader {
     List children = rootElement.getChildren(VCSPersistenceSupport.NODE);
     for (Object child : children) {
       Element element = (Element) child;
-      SNode snode = readNode(element, model, referenceDescriptors, false, versionsInfo);
+      SNode snode = readNode(element, referenceDescriptors, false);
       if (snode != null) {
         model.addRootNode(snode);
       }
@@ -125,24 +123,11 @@ public class ModelReader4 implements IModelReader {
       }
     }
   }
-  public SNode readNode(Element nodeElement, SModel model) {
-    return readNode(nodeElement, model, true, null, new SModelVersionsInfo());
-  }
   @Nullable
-  protected SNode readNode(Element nodeElement, SModel model, boolean useUIDs, VisibleModelElements visibleModelElements, SModelVersionsInfo versionsInfo) {
-    List<IReferencePersister> referenceDescriptors = new ArrayList<IReferencePersister>();
-    SNode result = readNode(nodeElement, model, referenceDescriptors, useUIDs, versionsInfo);
-    for (IReferencePersister referencePersister : referenceDescriptors) {
-      referencePersister.createReferenceInModel(model, visibleModelElements);
-    }
-    return result;
-  }
-  @Nullable
-  protected SNode readNode(Element nodeElement, SModel model, List<IReferencePersister> referenceDescriptors, boolean useUIDs, SModelVersionsInfo versionsInfo) {
+  protected SNode readNode(Element nodeElement, List<IReferencePersister> referenceDescriptors, boolean useUIDs) {
     String rawFqName = nodeElement.getAttributeValue(VCSPersistenceSupport.TYPE);
     String conceptFqName = VersionUtil.getConceptFQName(rawFqName);
     jetbrains.mps.smodel.SNode node = SNodeFactory.newRegular(conceptFqName);
-    VersionUtil.fetchConceptVersion(rawFqName, node, versionsInfo);
     String idValue = nodeElement.getAttributeValue(VCSPersistenceSupport.ID);
     if (idValue != null) {
       SNodeId id = jetbrains.mps.smodel.SNodeId.fromString(idValue);
@@ -156,7 +141,7 @@ public class ModelReader4 implements IModelReader {
     for (Object property : properties) {
       Element propertyElement = (Element) property;
       String raw = propertyElement.getAttributeValue(VCSPersistenceSupport.NAME);
-      String propertyName = VersionUtil.getPropertyName(raw, node, versionsInfo);
+      String propertyName = VersionUtil.getPropertyName(raw);
       String propertyValue = propertyElement.getAttributeValue(VCSPersistenceSupport.VALUE);
       if (propertyValue != null) {
         SNodeAccessUtil.setProperty(node, propertyName, propertyValue);
@@ -166,7 +151,7 @@ public class ModelReader4 implements IModelReader {
     for (Object link : links) {
       Element linkElement = (Element) link;
       ReferencePersister4 referencePersister = createReferencePersister();
-      referencePersister.fillFields(linkElement, node, useUIDs, versionsInfo);
+      referencePersister.fillFields(linkElement, node, useUIDs);
       referenceDescriptors.add(referencePersister);
     }
     List childNodes = nodeElement.getChildren(VCSPersistenceSupport.NODE);
@@ -174,12 +159,11 @@ public class ModelReader4 implements IModelReader {
       Element childNodeElement = (Element) childNode1;
       String rawRole = childNodeElement.getAttributeValue(VCSPersistenceSupport.ROLE);
       String role = VersionUtil.getRole(rawRole);
-      SNode childNode = readNode(childNodeElement, model, referenceDescriptors, useUIDs, versionsInfo);
+      SNode childNode = readNode(childNodeElement, referenceDescriptors, useUIDs);
       if (role == null || childNode == null) {
         LOG.errorWithTrace("Error reading child node in node " + SNodeOperations.getDebugText(node));
       } else {
         node.addChild(role, childNode);
-        VersionUtil.fetchChildNodeRoleVersion(rawRole, childNode, versionsInfo);
       }
     }
     return node;

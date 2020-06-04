@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.loading.ModelLoadResult;
 import java.util.Stack;
 import org.xml.sax.Locator;
 import jetbrains.mps.smodel.SModelHeader;
-import jetbrains.mps.smodel.SModelVersionsInfo;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.persistence.def.IReferencePersister;
 import jetbrains.mps.smodel.persistence.def.SAXVisibleModelElements;
@@ -46,7 +45,6 @@ public class ModelReader5Handler extends XMLSAXHandler<ModelLoadResult> {
   private Locator myLocator;
   private ModelLoadResult myResult;
   private SModelHeader my_headerParam;
-  private SModelVersionsInfo my_versionsInfoField;
   private ArrayList<IReferencePersister> my_referenceDescriptorsField;
   private SAXVisibleModelElements my_visibleModelElementsField;
   private DefaultSModel my_modelField;
@@ -149,7 +147,6 @@ public class ModelReader5Handler extends XMLSAXHandler<ModelLoadResult> {
     }
     @Override
     protected ModelLoadResult createObject(Attributes attrs) throws SAXException {
-      my_versionsInfoField = new SModelVersionsInfo();
       my_referenceDescriptorsField = new ArrayList<IReferencePersister>();
       my_visibleModelElementsField = new SAXVisibleModelElements();
       my_modelField = new DefaultSModel(VCSPersistenceUtil.createModelReference(attrs.getValue("modelUID")), my_headerParam);
@@ -321,7 +318,6 @@ public class ModelReader5Handler extends XMLSAXHandler<ModelLoadResult> {
       String rawFqName = attrs.getValue("type");
       String conceptFQName = VersionUtil.getConceptFQName(rawFqName);
       SNode node = SNodeFactory.newRegular(conceptFQName);
-      VersionUtil.fetchConceptVersion(rawFqName, node, my_versionsInfoField);
       return node;
     }
     @Override
@@ -329,7 +325,6 @@ public class ModelReader5Handler extends XMLSAXHandler<ModelLoadResult> {
       SNode result = (SNode) resultObject;
       if ("role".equals(name)) {
         result.putUserObject("role", VersionUtil.getRole(value));
-        VersionUtil.fetchChildNodeRoleVersion(value, result, my_versionsInfoField);
         return;
       }
       if ("id".equals(name)) {
@@ -377,14 +372,14 @@ public class ModelReader5Handler extends XMLSAXHandler<ModelLoadResult> {
       SNode result = (SNode) resultObject;
       String[] child = (String[]) value;
       if (child[1] != null) {
-        SNodeAccessUtil.setProperty(result, VersionUtil.getPropertyName(child[0], result, my_versionsInfoField), child[1]);
+        SNodeAccessUtil.setProperty(result, VersionUtil.getPropertyName(child[0]), child[1]);
       }
     }
     private void handleChild_355506112072964454(Object resultObject, Object value) throws SAXException {
       SNode result = (SNode) resultObject;
       String[] child = (String[]) value;
       ReferencePersister4 rp = new ReferencePersister4();
-      rp.fillFields(child[0], child[1], child[2], result, false, my_versionsInfoField);
+      rp.fillFields(child[0], child[1], child[2], result, false);
       my_referenceDescriptorsField.add(rp);
     }
     private void handleChild_7707758858785937650(Object resultObject, Object value) throws SAXException {

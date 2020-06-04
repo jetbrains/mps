@@ -286,12 +286,6 @@
         <ref role="3uigEE" to="w1kc:~SModelHeader" resolve="SModelHeader" />
       </node>
     </node>
-    <node concept="CQp6Y" id="6FRttwSk6oK" role="CQp1A">
-      <property role="TrG5h" value="versionsInfo" />
-      <node concept="3uibUv" id="6FRttwSk6oM" role="CQp6X">
-        <ref role="3uigEE" to="w1kc:~SModelVersionsInfo" resolve="SModelVersionsInfo" />
-      </node>
-    </node>
     <node concept="CQp6Y" id="6FRttwSkizm" role="CQp1A">
       <property role="TrG5h" value="referenceDescriptors" />
       <node concept="3uibUv" id="6FRttwSkizp" role="CQp6X">
@@ -520,18 +514,6 @@
       </node>
       <node concept="CQp6c" id="1YV9CnIyAUm" role="CQp6k">
         <node concept="3clFbS" id="1YV9CnIyAUn" role="2VODD2">
-          <node concept="3clFbF" id="6FRttwSkf3R" role="3cqZAp">
-            <node concept="37vLTI" id="6FRttwSkf3S" role="3clFbG">
-              <node concept="CQp63" id="6FRttwSkf3T" role="37vLTJ">
-                <ref role="CQp62" node="6FRttwSk6oK" resolve="versionsInfo" />
-              </node>
-              <node concept="2ShNRf" id="6FRttwSkf3U" role="37vLTx">
-                <node concept="1pGfFk" id="6FRttwSkf3V" role="2ShVmc">
-                  <ref role="37wK5l" to="w1kc:~SModelVersionsInfo.&lt;init&gt;()" resolve="SModelVersionsInfo" />
-                </node>
-              </node>
-            </node>
-          </node>
           <node concept="3clFbF" id="6FRttwSkoLp" role="3cqZAp">
             <node concept="37vLTI" id="6FRttwSkoLr" role="3clFbG">
               <node concept="CQp63" id="6FRttwSkoLq" role="37vLTJ">
@@ -839,10 +821,6 @@
                         </node>
                         <node concept="CQp6Q" id="5CFnob0PbcI" role="AHHXb" />
                       </node>
-                      <node concept="CQp69" id="5CFnob0PbcJ" role="37wK5m" />
-                      <node concept="CQp63" id="5CFnob0PbcK" role="37wK5m">
-                        <ref role="CQp62" node="6FRttwSk6oK" resolve="versionsInfo" />
-                      </node>
                     </node>
                     <node concept="AH0OO" id="5CFnob0PbcL" role="37wK5m">
                       <node concept="3cmrfG" id="5CFnob0PbcM" role="AHEQo">
@@ -911,9 +889,6 @@
                   <node concept="CQp69" id="3VeLWs0p5gi" role="37wK5m" />
                   <node concept="3clFbT" id="3VeLWs0p5g1" role="37wK5m">
                     <property role="3clFbU" value="false" />
-                  </node>
-                  <node concept="CQp63" id="3VeLWs0p5g2" role="37wK5m">
-                    <ref role="CQp62" node="6FRttwSk6oK" resolve="versionsInfo" />
                   </node>
                 </node>
               </node>
@@ -999,17 +974,6 @@
                     <ref role="37wK5l" to="llmc:p9Lm3R6Gug" resolve="getRole" />
                     <node concept="3kJR9K" id="3pcVzyPOfNA" role="37wK5m" />
                   </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="3pcVzyPOfNH" role="3cqZAp">
-              <node concept="2YIFZM" id="3pcVzyPOfNJ" role="3clFbG">
-                <ref role="1Pybhc" to="llmc:p9Lm3R6GqT" resolve="VersionUtil" />
-                <ref role="37wK5l" to="llmc:p9Lm3R6GtR" resolve="fetchChildNodeRoleVersion" />
-                <node concept="3kJR9K" id="3pcVzyPOfNK" role="37wK5m" />
-                <node concept="CQp69" id="3pcVzyPOfNM" role="37wK5m" />
-                <node concept="CQp63" id="3pcVzyPOfNO" role="37wK5m">
-                  <ref role="CQp62" node="6FRttwSk6oK" resolve="versionsInfo" />
                 </node>
               </node>
             </node>
@@ -1114,21 +1078,6 @@
                 <node concept="37vLTw" id="4OWCAYL3H_9" role="37wK5m">
                   <ref role="3cqZAo" node="6FRttwSjy_a" resolve="conceptFQName" />
                 </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbF" id="6FRttwSjy_v" role="3cqZAp">
-            <node concept="2YIFZM" id="6FRttwSjy_x" role="3clFbG">
-              <ref role="1Pybhc" to="llmc:p9Lm3R6GqT" resolve="VersionUtil" />
-              <ref role="37wK5l" to="llmc:p9Lm3R6Gtl" resolve="fetchConceptVersion" />
-              <node concept="37vLTw" id="3GM_nagTyzS" role="37wK5m">
-                <ref role="3cqZAo" node="1YV9CnIzKwY" resolve="rawFqName" />
-              </node>
-              <node concept="37vLTw" id="3GM_nagTrYz" role="37wK5m">
-                <ref role="3cqZAo" node="6FRttwSjy_i" resolve="node" />
-              </node>
-              <node concept="CQp63" id="6FRttwSk6oO" role="37wK5m">
-                <ref role="CQp62" node="6FRttwSk6oK" resolve="versionsInfo" />
               </node>
             </node>
           </node>

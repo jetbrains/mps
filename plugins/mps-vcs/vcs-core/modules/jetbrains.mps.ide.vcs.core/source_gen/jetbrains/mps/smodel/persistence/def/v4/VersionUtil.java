@@ -4,8 +4,6 @@ package jetbrains.mps.smodel.persistence.def.v4;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.smodel.SNodeId;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.SModelVersionsInfo;
 
 @GeneratedClass(node = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)/453110257780704953", model = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)")
 public class VersionUtil {
@@ -50,46 +48,22 @@ public class VersionUtil {
     }
     return parameter + VERSION_SEPARATOR + version;
   }
-  public static void fetchConceptVersion(String rawFqName, SNode node, SModelVersionsInfo versionsInfo) {
-    int version = parseVersionedString(rawFqName);
-    if (version != NO_VERSION) {
-      versionsInfo.addConceptNameVersion(node, version);
-    }
-  }
   public static String getConceptFQName(String rawFqName) {
     return getBeforeSeparator(rawFqName);
-  }
-  public static void fetchChildNodeRoleVersion(String rawRole, SNode childNode, SModelVersionsInfo versionsInfo) {
-    int version = parseVersionedString(rawRole);
-    if (version != NO_VERSION) {
-      versionsInfo.addRoleVersion(childNode, version);
-    }
   }
   public static String getRole(String rawRole) {
     return getBeforeSeparator(rawRole);
   }
-  public static String getPropertyName(String raw, SNode node, SModelVersionsInfo versionsInfo) {
+  public static String getPropertyName(String raw) {
     String propertyName = getBeforeSeparator(raw);
-    int version = parseVersionedString(raw);
-    if (version != NO_VERSION) {
-      versionsInfo.addPropertyVersion(node, propertyName, version);
-    }
     return propertyName;
   }
-  public static String getLinkRole(String rawRole, SNode node, SModelVersionsInfo versionsInfo) {
-    int version = parseVersionedString(rawRole);
+  public static String getLinkRole(String rawRole) {
     String linkRole = getBeforeSeparator(rawRole);
-    if (version != NO_VERSION) {
-      versionsInfo.addLinkRoleVersion(node, linkRole, version);
-    }
     return linkRole;
   }
-  public static String getTargetNodeId(String targetId, String role, SNode node, SModelVersionsInfo versionsInfo) {
+  public static String getTargetNodeId(String targetId) {
     final String linkRole = getBeforeSeparator(targetId);
-    int version = parseVersionedString(targetId);
-    if (version != NO_VERSION) {
-      versionsInfo.addLinkTargetIdVersion(node, role, version);
-    }
     return linkRole;
   }
 }

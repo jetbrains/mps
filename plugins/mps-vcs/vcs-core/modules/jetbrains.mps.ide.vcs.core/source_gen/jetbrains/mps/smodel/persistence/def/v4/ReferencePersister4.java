@@ -8,7 +8,6 @@ import jetbrains.mps.logging.Logger;
 import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jdom.Element;
-import jetbrains.mps.smodel.SModelVersionsInfo;
 import jetbrains.mps.vcspersistence.VCSPersistenceSupport;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.SModel;
@@ -33,14 +32,11 @@ public class ReferencePersister4 implements IReferencePersister {
   private boolean myNotImported;
   @Override
   public void fillFields(Element linkElement, SNode sourceNode, boolean useUIDs) {
-    fillFields(linkElement, sourceNode, useUIDs, new SModelVersionsInfo());
+    fillFields(linkElement.getAttributeValue(VCSPersistenceSupport.ROLE), linkElement.getAttributeValue(VCSPersistenceSupport.RESOLVE_INFO), linkElement.getAttributeValue(VCSPersistenceSupport.TARGET_NODE_ID), sourceNode, useUIDs);
   }
-  public void fillFields(Element linkElement, SNode sourceNode, boolean useUIDs, SModelVersionsInfo versionsInfo) {
-    fillFields(linkElement.getAttributeValue(VCSPersistenceSupport.ROLE), linkElement.getAttributeValue(VCSPersistenceSupport.RESOLVE_INFO), linkElement.getAttributeValue(VCSPersistenceSupport.TARGET_NODE_ID), sourceNode, useUIDs, versionsInfo);
-  }
-  public void fillFields(String role_, String resolveInfo, String targetNodeId_, SNode sourceNode, boolean useUIDs, SModelVersionsInfo versionsInfo) {
-    String role = VersionUtil.getLinkRole(role_, sourceNode, versionsInfo);
-    String attTargetNodeId = VersionUtil.getTargetNodeId(targetNodeId_, role, sourceNode, versionsInfo);
+  public void fillFields(String role_, String resolveInfo, String targetNodeId_, SNode sourceNode, boolean useUIDs) {
+    String role = VersionUtil.getLinkRole(role_);
+    String attTargetNodeId = VersionUtil.getTargetNodeId(targetNodeId_);
     this.myUseUIDs = useUIDs;
     this.mySourceNode = sourceNode;
     this.myRole = role;
