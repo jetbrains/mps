@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -205,14 +205,18 @@ public final class CopyUtil {
   }
 
   public static void addReferences(SNode root, Map<SNode, SNode> mapping, boolean forceCloneRefs) {
-    if (root == null) return;
+    if (root == null) {
+      return;
+    }
     Iterable<SNode> thisAndDesc = SNodeUtil.getDescendants(root);
+    final boolean cloneRefs = forceCloneRefs || RuntimeFlags.isMergeDriverMode();
     for (SNode inputNode : thisAndDesc) {
       SNode outputNode = mapping.get(inputNode);
-      if (outputNode == null) continue;
+      if (outputNode == null) {
+        continue;
+      }
 
       for (SReference ref : inputNode.getReferences()) {
-        boolean cloneRefs = forceCloneRefs || RuntimeFlags.isMergeDriverMode();
         SNode inputTargetNode = cloneRefs ? null : jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref);
         if (inputTargetNode == null) { //broken reference or need to clone
           if (ref instanceof StaticReference) {
@@ -226,7 +230,7 @@ public final class CopyUtil {
             outputNode.setReference(reference.getLink(), reference);
           } else if (ref instanceof DynamicReference && cloneRefs) {
             DynamicReference dynRef = (DynamicReference) ref;
-            DynamicReference output = new DynamicReference(dynRef.getLink(), outputNode, dynRef.getTargetSModelReference(), dynRef.getResolveInfo());
+            DynamicReference output = new DynamicReference(dynRef.getLink(), outputNode, null, dynRef.getResolveInfo());
             output.setOrigin(dynRef.getOrigin());
             outputNode.setReference(output.getLink(), output);
           }
