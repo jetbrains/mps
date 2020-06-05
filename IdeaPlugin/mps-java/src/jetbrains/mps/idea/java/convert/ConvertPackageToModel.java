@@ -41,16 +41,16 @@ import com.intellij.psi.PsiManager;
 import com.intellij.psi.PsiMethod;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
-import jetbrains.mps.ide.vfs.IdeaFileSystem;
-import jetbrains.mps.java.core.newparser.JavaToMpsConverter;
 import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.idea.core.facet.MPSFacet;
 import jetbrains.mps.idea.core.facet.MPSFacetType;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiNode;
 import jetbrains.mps.idea.core.refactoring.NodePtr;
 import jetbrains.mps.idea.java.psiStubs.JavaForeignIdBuilder;
+import jetbrains.mps.java.core.newparser.JavaToMpsConverter;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.DynamicReference;
@@ -189,9 +189,8 @@ public class ConvertPackageToModel extends AnAction {
           }
 
           String resolveInfo = SNodeOperations.getResolveInfo(targetNode);
-          SReference tempDynamicRef = new DynamicReference(ref.getLink(), source, newModelRef, resolveInfo);
-          referencesToFix.add(tempDynamicRef);
-          source.setReference(tempDynamicRef.getLink(), tempDynamicRef);
+          source.setReference(ref.getLink(), SNodeOperations.qualifiedResolveInfo(ref.getLink(), newModelRef, resolveInfo));
+          referencesToFix.add(source.getReference(ref.getLink()));
 
           SModel sourceModel = source.getModel();
           ((SModelBase) sourceModel).deleteModelImport(targetModelRef);

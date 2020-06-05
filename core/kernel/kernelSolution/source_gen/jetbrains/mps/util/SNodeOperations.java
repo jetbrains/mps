@@ -25,6 +25,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.extapi.model.ModelWithDisposeInfo;
 import jetbrains.mps.extapi.model.GeneratableSModel;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -324,6 +329,32 @@ public class SNodeOperations {
   public static boolean isGeneratable(SModel model) {
     // I wonder why this method doesn't reside in SModelOperations 
     return model instanceof GeneratableSModel && ((GeneratableSModel) model).isGeneratable();
+  }
+
+  /**
+   * There used to be a hack in DynamicReference cons (d9cf57727893) to augment resolveInfo with qualified name of a target model to help
+   * resolve references in stubs. Now it's responsibility of a caller code to create qualified resolve info explicitly, if needed, no more magic in
+   * DynamicReference cons. This method mimics what DR cons used to do, and prepends model name only when the link points to a Classifier.
+   * AFAIK, it's only ClassifiersScope that knows how to deal with qualified resolve info.
+   * 
+   * FWIW, with ResolveInfo in place, don't need to mangle resolveInfo string any longer, as we can pass necessary context information as part of
+   * ResolveInfo object. However, for transition purposes and as long as DR keeps String resolveInfo, use this method to construct RI.
+   */
+  public static ResolveInfo qualifiedResolveInfo(@NotNull SReferenceLink link, @Nullable SModelReference targetModel, String resolveInfo) {
+    // The placement of this method to SNodeOperations is bad, indeed. I just didn't find a better location, and don't want to delay the whole activity 
+    // just for this subtle, yet important part. I hope to switch to RI objects soon, so that there would be no need in this code. 
+    if (targetModel == null) {
+      return ResolveInfo.of(resolveInfo);
+    }
+    String modelName = targetModel.getName().getLongName();
+    if (resolveInfo == null || modelName.isEmpty() || resolveInfo.startsWith(modelName)) {
+      // startsWith is not sufficient, indeed (additionally, shall check for '.' right after); this is the way it was in DR cons 
+      return ResolveInfo.of(resolveInfo);
+    }
+    if (link.getTargetConcept().isSubConceptOf(SNodeUtil.concept_Classifier)) {
+      return ResolveInfo.of(modelName + '.' + resolveInfo);
+    }
+    return ResolveInfo.of(resolveInfo);
   }
 
   private static final class CONCEPTS {

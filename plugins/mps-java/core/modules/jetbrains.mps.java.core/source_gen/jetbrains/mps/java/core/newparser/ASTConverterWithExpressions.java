@@ -12,9 +12,10 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.eclipse.jdt.internal.compiler.ast.TypeReference;
 import org.eclipse.jdt.internal.compiler.ast.ParameterizedSingleTypeReference;
 import org.eclipse.jdt.internal.compiler.ast.ParameterizedQualifiedTypeReference;
-import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.DynamicReference;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import jetbrains.mps.smodel.StaticReference;
 import org.eclipse.jdt.internal.compiler.ast.ASTNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -49,7 +50,6 @@ import org.eclipse.jdt.internal.compiler.ast.PrefixExpression;
 import org.eclipse.jdt.internal.compiler.ast.NullLiteral;
 import org.eclipse.jdt.internal.compiler.ast.SuperReference;
 import org.eclipse.jdt.internal.compiler.ast.QualifiedThisReference;
-import org.jetbrains.mps.openapi.model.ResolveInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.eclipse.jdt.internal.compiler.ast.NameReference;
 import org.eclipse.jdt.internal.compiler.ast.QualifiedAllocationExpression;
@@ -116,12 +116,13 @@ public class ASTConverterWithExpressions extends ASTConverter {
     }
     return sb.toString();
   }
-  private SReference adjustClassReference(SNode clsType, SNode source, SReferenceLink role) {
-    org.jetbrains.mps.openapi.model.SReference sref = clsType.getReference(LINKS.classifier$pQ_R);
+  private void adjustClassReference(SNode clsType, SNode source, SReferenceLink role) {
+    SReference sref = clsType.getReference(LINKS.classifier$pQ_R);
     if (sref instanceof DynamicReference) {
-      return new DynamicReference(role, source, null, ((DynamicReference) sref).getResolveInfo());
+      // code that used to be here ( bcea8a63) intentionally didn't pass additional target model info 
+      source.setReference(role, ResolveInfo.of(((DynamicReference) sref).getResolveInfo()));
     } else if (sref instanceof StaticReference) {
-      return new StaticReference(role, source, ((StaticReference) sref).getTargetNode());
+      source.setReferenceTarget(role, sref.getTargetNode());
     } else {
       throw new RuntimeException("Unknown type of reference: " + sref.getClass().getName());
     }
@@ -437,8 +438,7 @@ public class ASTConverterWithExpressions extends ASTConverter {
     if (!(SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$IZ))) {
       throw new JavaParseException("Type should be class in qualified this reference");
     }
-    SReference sref = adjustClassReference(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), thisRef, LINKS.classConcept$Hbij);
-    thisRef.setReference(sref.getLink(), sref);
+    adjustClassReference(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), thisRef, LINKS.classConcept$Hbij);
     return thisRef;
   }
   /*package*/ SNode convertExpression(SingleNameReference x) {
@@ -575,8 +575,7 @@ public class ASTConverterWithExpressions extends ASTConverter {
 
     if (SNodeOperations.isInstanceOf(argType, CONCEPTS.ClassifierType$IZ)) {
       SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, "jetbrains.mps.baseLanguage.structure.ClassifierClassExpression"));
-      SReference sref = adjustClassReference(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$IZ), result, LINKS.classifier$V09);
-      result.setReference(sref.getLink(), sref);
+      adjustClassReference(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$IZ), result, LINKS.classifier$V09);
       return result;
 
     } else if (SNodeOperations.isInstanceOf(argType, CONCEPTS.ArrayType$Yv)) {

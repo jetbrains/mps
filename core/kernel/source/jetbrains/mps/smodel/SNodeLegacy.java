@@ -16,6 +16,7 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
+import jetbrains.mps.util.SNodeOperations;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -90,10 +91,8 @@ public final class SNodeLegacy {
   }
 
   public void setReference(String role, SModelReference targetModel, String resolveInfo) {
-    final String modelName = targetModel == null ? null : targetModel.getModelName(); // XXX perhaps, shall be getName().getLongName(). Have to check
-    // ClassifierScope (and others?) how it deals with the dotted name. At the moment, however, there's no use for model name, hence it's all the same what to pass in there
-    final SReference ref = DynamicReference.createDynamicReference(convertToRef(role), myNode, modelName, resolveInfo);
-    myNode.setReference(ref.getLink(), ref);
+    final SReferenceLink r = convertToRef(role);
+    myNode.setReference(r, SNodeOperations.qualifiedResolveInfo(r, targetModel, resolveInfo));
   }
 
   public void setReference(String role, SModelReference targetModel, SNodeId targetNode, String resolveInfo) {

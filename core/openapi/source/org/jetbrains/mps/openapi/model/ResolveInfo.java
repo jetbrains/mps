@@ -15,6 +15,8 @@
  */
 package org.jetbrains.mps.openapi.model;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
 
 /**
@@ -22,8 +24,21 @@ import org.jetbrains.mps.annotations.Immutable;
  */
 public interface ResolveInfo {
 
+  // FIXME have to decide about the contract: could be null->null, or null->PredefinedValue, or notnull.
+  //       Later is unlikely a valid option as we rarely can control resolveInfo value (comes from a query)
   static ResolveInfo of(String resolveInfo) {
     return new S(resolveInfo);
+  }
+
+  /**
+   * Gives additional context where to resolve based on supplied resolveInfo
+   */
+  static ResolveInfo of(@Nullable SModelReference targetModel, String resolveInfo) {
+    if (targetModel == null) {
+      return new S(resolveInfo);
+    } else {
+      return new CM(targetModel, resolveInfo);
+    }
   }
 
   @Immutable
@@ -32,6 +47,26 @@ public interface ResolveInfo {
 
     private S(String resolveInfo) {
       myResolveInfo = resolveInfo;
+    }
+
+    public String getValue() {
+      return myResolveInfo;
+    }
+  }
+
+  @Immutable
+  final class CM implements ResolveInfo {
+    private final SModelReference myTargetModel;
+    private final String myResolveInfo;
+
+    private CM(@NotNull SModelReference targetModel, String resolveInfo) {
+      myTargetModel = targetModel;
+      myResolveInfo = resolveInfo;
+    }
+
+    @NotNull
+    public SModelReference getTargetModel() {
+      return myTargetModel;
     }
 
     public String getValue() {

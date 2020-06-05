@@ -66,9 +66,9 @@ public class JavaClassAnnotationValueTest {
 
       @NotNull
       @Override
-      public SReference create(SNode source, String pack, SNodeId targetNodeId, SReferenceLink role, String resolveInfo, SNodeId targetTopClassifier) {
+      public void create(SNode source, String pack, SNodeId targetNodeId, SReferenceLink role, String resolveInfo, SNodeId targetTopClassifier) {
         final SModelReference mr = bogusModelRefs.computeIfAbsent(pack, p -> new JavaPackageNameStub(p).asModelReference(moduleRef));
-        return StaticReference.create(role, source, mr, targetNodeId, resolveInfo);
+        source.setReference(role, StaticReference.create(role, source, mr, targetNodeId, resolveInfo));
       }
     };
     final SConcept cc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");

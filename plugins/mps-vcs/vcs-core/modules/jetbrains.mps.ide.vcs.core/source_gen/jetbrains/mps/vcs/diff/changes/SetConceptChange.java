@@ -18,7 +18,6 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.smodel.StaticReference;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
@@ -63,7 +62,7 @@ public class SetConceptChange extends NodeChange {
       SReferenceLink link = SLinkOperations.getRefLink(ref);
       String string = SLinkOperations.getResolveInfo(ref);
       if (targetNodeId == null) {
-        newNode.setReference(link, new DynamicReference(link, newNode, targetModelReference, string));
+        newNode.setReference(link, jetbrains.mps.util.SNodeOperations.qualifiedResolveInfo(link, targetModelReference, string));
       } else {
         newNode.setReference(link, new StaticReference(link, newNode, targetModelReference, targetNodeId, string));
       }

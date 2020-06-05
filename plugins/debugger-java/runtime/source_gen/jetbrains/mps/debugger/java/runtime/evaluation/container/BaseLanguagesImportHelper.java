@@ -16,7 +16,6 @@ import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.Objects;
-import jetbrains.mps.smodel.DynamicReference;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
@@ -67,7 +66,7 @@ public abstract class BaseLanguagesImportHelper {
           if ((resolveInfo == null || resolveInfo.length() == 0)) {
             resolveInfo = jetbrains.mps.util.SNodeOperations.getResolveInfo(SLinkOperations.getTargetNode(reference));
           }
-          node.setReference(reference.getLink(), new DynamicReference(reference.getLink(), node, scopeModel.getReference(), resolveInfo));
+          node.setReference(reference.getLink(), jetbrains.mps.util.SNodeOperations.qualifiedResolveInfo(reference.getLink(), scopeModel.getReference(), resolveInfo));
         }
       }
     }

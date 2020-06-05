@@ -12,10 +12,10 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.smodel.DynamicReference;
+import jetbrains.mps.util.SNodeOperations;
 import jetbrains.mps.vcs.diff.StructChangeSet;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.StaticReference;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/4664177994951620648", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
@@ -40,9 +40,9 @@ public class SetReferenceStructChange extends SetReferenceChange {
       node.setReferenceTarget(getRoleLink(), null);
     } else {
       SModelReference targetModelReference = (getTargetModelReference() == null ? SModelOperations.getPointer(model) : getTargetModelReference());
-      SReference reference;
+      node.setReferenceTarget(getRoleLink(), null);
       if (getTargetNodeId() == null) {
-        reference = new DynamicReference(getRoleLink(), node, targetModelReference, getResolveInfo());
+        node.setReference(getRoleLink(), SNodeOperations.qualifiedResolveInfo(getRoleLink(), targetModelReference, getResolveInfo()));
       } else {
         // try to convert SNodeId 
         StructChangeSet changeset = (StructChangeSet) getChangeSet();
@@ -51,10 +51,9 @@ public class SetReferenceStructChange extends SetReferenceChange {
         if (mapToOldId != null && Objects.equals(targetModelReference, SModelOperations.getPointer(changeset.getNewModel()))) {
           targetNodeId = mapToOldId;
         }
-        reference = new StaticReference(getRoleLink(), node, targetModelReference, targetNodeId, getResolveInfo());
+        SReference reference = new StaticReference(getRoleLink(), node, targetModelReference, targetNodeId, getResolveInfo());
+        node.setReference(getRoleLink(), reference);
       }
-      node.setReferenceTarget(getRoleLink(), null);
-      node.setReference(getRoleLink(), reference);
     }
   }
   @NotNull

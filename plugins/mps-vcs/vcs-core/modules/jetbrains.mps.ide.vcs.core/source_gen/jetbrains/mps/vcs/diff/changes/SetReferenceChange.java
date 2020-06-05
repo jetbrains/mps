@@ -14,11 +14,10 @@ import java.util.Objects;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.DynamicReference;
+import jetbrains.mps.util.SNodeOperations;
 import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.vcs.util.MergeStrategy;
 import jetbrains.mps.vcs.mergehints.runtime.VCSAspectUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/2732852465125672459", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
@@ -71,14 +70,13 @@ public class SetReferenceChange extends NodeChange {
       node.setReferenceTarget(myRole, null);
     } else {
       SModelReference targetModelReference = (myTargetModelReference == null ? SModelOperations.getPointer(model) : myTargetModelReference);
-      SReference reference;
-      if (myTargetNodeId == null) {
-        reference = new DynamicReference(myRole, node, targetModelReference, myResolveInfo);
-      } else {
-        reference = new StaticReference(myRole, node, targetModelReference, myTargetNodeId, myResolveInfo);
-      }
       node.setReferenceTarget(myRole, null);
-      node.setReference(myRole, reference);
+      if (myTargetNodeId == null) {
+        node.setReference(myRole, SNodeOperations.qualifiedResolveInfo(myRole, targetModelReference, myResolveInfo));
+      } else {
+        SReference reference = new StaticReference(myRole, node, targetModelReference, myTargetNodeId, myResolveInfo);
+        node.setReference(myRole, reference);
+      }
     }
   }
   @Nullable
@@ -90,7 +88,7 @@ public class SetReferenceChange extends NodeChange {
     if (hint != null) {
       return hint;
     }
-    return VCSAspectUtil.getDefaultMergeStrategy(SNodeOperations.getConcept(n));
+    return VCSAspectUtil.getDefaultMergeStrategy(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getConcept(n));
   }
   @Override
   public boolean isNonConflicting() {
