@@ -32,7 +32,7 @@ public class Uncomment_NodeAtLastPosition_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("2103596388770305346", "2103596388770305358");
+      initEditorComponent("2103596388770305346", "731761766747373535");
       invokeAction("jetbrains.mps.ide.editor.actions.Comment_Action");
     }
   }
