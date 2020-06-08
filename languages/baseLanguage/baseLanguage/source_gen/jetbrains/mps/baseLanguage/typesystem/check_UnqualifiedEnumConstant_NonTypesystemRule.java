@@ -10,7 +10,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -44,7 +43,7 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
     // FIXME: duplicate code with JavaToMpsConverter 
 
     SReference ref = SNodeOperations.getReference(varRef, LINKS.variableDeclaration$2ky6);
-    if (!(ref instanceof DynamicReference)) {
+    if (!(SLinkOperations.isDynamic(ref))) {
       return;
     }
     if (SLinkOperations.getTargetNode(ref) != null) {

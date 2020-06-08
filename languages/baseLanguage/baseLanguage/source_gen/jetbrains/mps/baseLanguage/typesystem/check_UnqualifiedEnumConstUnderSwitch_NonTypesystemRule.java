@@ -10,7 +10,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -37,7 +36,7 @@ public class check_UnqualifiedEnumConstUnderSwitch_NonTypesystemRule extends Abs
       return;
     }
     SReference ref = SNodeOperations.getReference(SNodeOperations.cast(caseExp, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6);
-    if (!(ref instanceof DynamicReference)) {
+    if (!(SLinkOperations.isDynamic(ref))) {
       return;
     }
 

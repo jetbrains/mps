@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -31,7 +30,7 @@ public class check_ArrayLength_NonTypesystemRule extends AbstractNonTypesystemRu
   public void applyRule(final SNode fieldRefOperation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // FIXME: almost duplicate code with MultipleFilesParser 
     SReference fieldRef = SNodeOperations.getReference(fieldRefOperation, LINKS.fieldDeclaration$mLBy);
-    if (!((fieldRef instanceof DynamicReference && "length".equals((((DynamicReference) fieldRef).getResolveInfo()))))) {
+    if (!((SLinkOperations.isDynamic(fieldRef) && "length".equals(SLinkOperations.getResolveInfo(fieldRef))))) {
       return;
     }
 
@@ -39,7 +38,7 @@ public class check_ArrayLength_NonTypesystemRule extends AbstractNonTypesystemRu
     Iterable<SReference> operandRefs = SNodeOperations.getReferences(operand);
     if (Sequence.fromIterable(operandRefs).any(new IWhereFilter<SReference>() {
       public boolean accept(SReference it) {
-        return it instanceof DynamicReference;
+        return SLinkOperations.isDynamic(it);
       }
     })) {
       // let's not mess with dynamic references 

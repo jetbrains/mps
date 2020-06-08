@@ -26,7 +26,6 @@ import jetbrains.mps.internal.collections.runtime.DequeSequence;
 import java.util.LinkedList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -76,7 +75,7 @@ public class check_UnneededJavaImports_NonTypesystemRule extends AbstractNonType
       }
 
       for (SReference ref : ListSequence.fromList(SNodeOperations.getReferences(node))) {
-        if (!(ref instanceof DynamicReference)) {
+        if (!(SLinkOperations.isDynamic(ref))) {
           continue;
         }
 

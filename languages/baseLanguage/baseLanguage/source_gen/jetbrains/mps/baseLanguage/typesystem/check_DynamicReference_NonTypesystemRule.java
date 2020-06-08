@@ -12,10 +12,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.DefaultSModelDescriptor;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.smodel.DynamicReference;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -32,7 +31,7 @@ public class check_DynamicReference_NonTypesystemRule extends AbstractNonTypesys
     }
 
     for (SReference ref : ListSequence.fromList(SNodeOperations.getReferences(node))) {
-      if (!((SReference) ref instanceof DynamicReference)) {
+      if (!(SLinkOperations.isDynamic(ref))) {
         continue;
       }
       if (ref.getTargetNode() == null) {

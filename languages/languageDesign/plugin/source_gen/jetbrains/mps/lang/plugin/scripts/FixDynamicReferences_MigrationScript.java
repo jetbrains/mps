@@ -6,10 +6,11 @@ import jetbrains.mps.lang.script.runtime.BaseMigrationScript;
 import jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import org.jetbrains.mps.openapi.model.SReference;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.smodel.DynamicReference;
+import org.jetbrains.mps.openapi.model.SReference;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -39,17 +40,17 @@ public final class FixDynamicReferences_MigrationScript extends BaseMigrationScr
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return Sequence.fromIterable(((Iterable<SReference>) node.getReferences())).any(new IWhereFilter<SReference>() {
+        return ListSequence.fromList(SNodeOperations.getReferences(node)).any(new IWhereFilter<SReference>() {
           public boolean accept(SReference it) {
-            return it instanceof DynamicReference;
+            return SLinkOperations.isDynamic(it);
           }
         });
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
         Map<SReferenceLink, SNode> roleToTarget = MapSequence.fromMap(new HashMap<SReferenceLink, SNode>());
-        for (SReference ref : node.getReferences()) {
-          if (!(ref instanceof DynamicReference)) {
+        for (SReference ref : SNodeOperations.getReferences(node)) {
+          if (!(SLinkOperations.isDynamic(ref))) {
             continue;
           }
           MapSequence.fromMap(roleToTarget).put(ref.getLink(), ref.getTargetNode());

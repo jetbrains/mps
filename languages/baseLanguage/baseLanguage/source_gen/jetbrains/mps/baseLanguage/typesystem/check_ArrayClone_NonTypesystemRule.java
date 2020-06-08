@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -31,7 +30,7 @@ public class check_ArrayClone_NonTypesystemRule extends AbstractNonTypesystemRul
   public void applyRule(final SNode instanceMethodCallOperation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // FIXME: almost duplicate code with JavaToMpsConverter 
     SReference methodRef = SNodeOperations.getReference(instanceMethodCallOperation, LINKS.baseMethodDeclaration$$A7i);
-    if (!((methodRef instanceof DynamicReference && "clone".equals((((DynamicReference) methodRef).getResolveInfo()))))) {
+    if (!((SLinkOperations.isDynamic(methodRef) && "clone".equals(SLinkOperations.getResolveInfo(methodRef))))) {
       return;
     }
 
@@ -39,7 +38,7 @@ public class check_ArrayClone_NonTypesystemRule extends AbstractNonTypesystemRul
     Iterable<SReference> operandRefs = SNodeOperations.getReferences(operand);
     if (Sequence.fromIterable(operandRefs).any(new IWhereFilter<SReference>() {
       public boolean accept(SReference it) {
-        return it instanceof DynamicReference;
+        return SLinkOperations.isDynamic(it);
       }
     })) {
       // let's not mess with dynamic references 
