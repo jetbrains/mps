@@ -1549,7 +1549,7 @@
                 <node concept="2OqwBi" id="4tEWdMGE76s" role="2Oq$k0">
                   <node concept="2OqwBi" id="4tEWdMGE4KC" role="2Oq$k0">
                     <node concept="1rXfSq" id="4tEWdMGE4dO" role="2Oq$k0">
-                      <ref role="37wK5l" to="px75:~AbstractFoldingAreaPainter.getEditorComponent()" resolve="getEditorComponent" />
+                      <ref role="37wK5l" to="px75:~AbstractHighlighterPainter.getEditorComponent()" resolve="getEditorComponent" />
                     </node>
                     <node concept="liA8E" id="4tEWdMGE6UF" role="2OqNvi">
                       <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />

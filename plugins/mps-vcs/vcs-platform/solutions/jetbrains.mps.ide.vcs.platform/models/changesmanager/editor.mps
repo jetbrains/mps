@@ -2485,7 +2485,7 @@
       <node concept="3clFbS" id="2vWZukgxAK5" role="3clF47">
         <node concept="3clFbF" id="7Y3dZoOnT_h" role="3cqZAp">
           <node concept="3nyPlj" id="7Y3dZoOnT_i" role="3clFbG">
-            <ref role="37wK5l" to="px75:~AbstractFoldingAreaPainter.getEditorComponent()" resolve="getEditorComponent" />
+            <ref role="37wK5l" to="px75:~AbstractHighlighterPainter.getEditorComponent()" resolve="getEditorComponent" />
           </node>
         </node>
       </node>
@@ -3346,7 +3346,7 @@
             <node concept="3cpWsd" id="6sqIVyMs4X3" role="33vP2m">
               <node concept="2OqwBi" id="6sqIVyMs4X4" role="3uHU7w">
                 <node concept="1rXfSq" id="4hiugqyzcfb" role="2Oq$k0">
-                  <ref role="37wK5l" to="px75:~AbstractFoldingAreaPainter.getLeftHighlighter()" resolve="getLeftHighlighter" />
+                  <ref role="37wK5l" to="px75:~AbstractHighlighterPainter.getLeftHighlighter()" resolve="getLeftHighlighter" />
                 </node>
                 <node concept="liA8E" id="6sqIVyMs4X8" role="2OqNvi">
                   <ref role="37wK5l" to="px75:~LeftEditorHighlighter.getFoldingLineX()" resolve="getFoldingLineX" />
@@ -4446,7 +4446,7 @@
         </node>
         <node concept="3clFbF" id="76itSV98wRV" role="3cqZAp">
           <node concept="3nyPlj" id="76itSV98wRW" role="3clFbG">
-            <ref role="37wK5l" to="px75:~AbstractFoldingAreaPainter.dispose()" resolve="dispose" />
+            <ref role="37wK5l" to="px75:~AbstractHighlighterPainter.dispose()" resolve="dispose" />
           </node>
         </node>
       </node>

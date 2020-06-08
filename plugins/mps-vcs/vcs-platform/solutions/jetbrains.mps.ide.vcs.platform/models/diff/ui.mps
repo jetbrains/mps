@@ -100,7 +100,7 @@
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="5279705229678483897" name="jetbrains.mps.baseLanguage.structure.FloatingPointFloatConstant" flags="nn" index="2$xPTn">
@@ -324,7 +324,7 @@
       </concept>
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
-        <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
+        <child id="8276990574886367509" name="finallyClause" index="1zxBo6" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
@@ -1157,7 +1157,7 @@
                 <node concept="2OqwBi" id="4tEWdMGDVVd" role="2Oq$k0">
                   <node concept="2OqwBi" id="4tEWdMGDUF5" role="2Oq$k0">
                     <node concept="1rXfSq" id="4tEWdMGDU0w" role="2Oq$k0">
-                      <ref role="37wK5l" to="px75:~AbstractFoldingAreaPainter.getEditorComponent()" resolve="getEditorComponent" />
+                      <ref role="37wK5l" to="px75:~AbstractHighlighterPainter.getEditorComponent()" resolve="getEditorComponent" />
                     </node>
                     <node concept="liA8E" id="4tEWdMGDVMk" role="2OqNvi">
                       <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
@@ -13757,7 +13757,7 @@
                 <node concept="2OqwBi" id="4tEWdMGEdmJ" role="2Oq$k0">
                   <node concept="2OqwBi" id="4tEWdMGEdmK" role="2Oq$k0">
                     <node concept="1rXfSq" id="4tEWdMGEdmL" role="2Oq$k0">
-                      <ref role="37wK5l" to="px75:~AbstractFoldingAreaPainter.getEditorComponent()" resolve="getEditorComponent" />
+                      <ref role="37wK5l" to="px75:~AbstractHighlighterPainter.getEditorComponent()" resolve="getEditorComponent" />
                     </node>
                     <node concept="liA8E" id="4tEWdMGEdmM" role="2OqNvi">
                       <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
@@ -13846,7 +13846,7 @@
                 <node concept="2OqwBi" id="4tEWdMGEbXR" role="2Oq$k0">
                   <node concept="2OqwBi" id="4tEWdMGEarX" role="2Oq$k0">
                     <node concept="1rXfSq" id="4tEWdMGE9xm" role="2Oq$k0">
-                      <ref role="37wK5l" to="px75:~AbstractFoldingAreaPainter.getEditorComponent()" resolve="getEditorComponent" />
+                      <ref role="37wK5l" to="px75:~AbstractHighlighterPainter.getEditorComponent()" resolve="getEditorComponent" />
                     </node>
                     <node concept="liA8E" id="4tEWdMGEbE4" role="2OqNvi">
                       <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
