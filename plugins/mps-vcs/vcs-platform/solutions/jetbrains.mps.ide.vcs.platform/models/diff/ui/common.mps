@@ -12130,7 +12130,9 @@
                   <node concept="37vLTw" id="3N64syXlqJy" role="37wK5m">
                     <ref role="3cqZAo" node="3N64syXlqJl" resolve="event" />
                   </node>
-                  <node concept="3clFbT" id="3N64syXlqJz" role="37wK5m" />
+                  <node concept="3clFbT" id="3N64syXlqJz" role="37wK5m">
+                    <property role="3clFbU" value="true" />
+                  </node>
                 </node>
               </node>
               <node concept="3y3z36" id="3N64syXlqJ$" role="3K4Cdx">
