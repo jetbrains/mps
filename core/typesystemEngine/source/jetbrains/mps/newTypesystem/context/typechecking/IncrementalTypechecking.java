@@ -72,7 +72,7 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
   private DeployListener myClassesListener = new DeployListener() {
     @Override
     public void onUnloaded(Set<ReloadableModule> unloadedModules, @NotNull ProgressMonitor monitor) {
-      myNonTypeSystemComponent.clear();
+      clear();
     }
     @Override
     public void onLoaded(Set<ReloadableModule> loadedModules, @NotNull ProgressMonitor monitor) {
