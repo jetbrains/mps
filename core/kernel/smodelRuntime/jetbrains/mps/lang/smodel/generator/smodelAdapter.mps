@@ -60,7 +60,7 @@
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1076505808687" name="jetbrains.mps.baseLanguage.structure.WhileStatement" flags="nn" index="2$JKZl">
@@ -6408,6 +6408,46 @@
             <node concept="liA8E" id="5IkW5anFcxV" role="2OqNvi">
               <ref role="37wK5l" to="w1kc:~SReference.getResolveInfo()" resolve="getResolveInfo" />
             </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2YIFZL" id="5hvwTWxptnE" role="jymVt">
+      <property role="TrG5h" value="isDynamic" />
+      <node concept="3clFbS" id="5hvwTWxptnH" role="3clF47">
+        <node concept="3cpWs6" id="5hvwTWxpue9" role="3cqZAp">
+          <node concept="2ZW3vV" id="5hvwTWxpuA0" role="3cqZAk">
+            <node concept="3uibUv" id="5hvwTWxpuJv" role="2ZW6by">
+              <ref role="3uigEE" to="w1kc:~DynamicReference" resolve="DynamicReference" />
+            </node>
+            <node concept="37vLTw" id="5hvwTWxpunO" role="2ZW6bz">
+              <ref role="3cqZAo" node="5hvwTWxptMo" resolve="reference" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="5hvwTWxpsPt" role="1B3o_S" />
+      <node concept="10P_77" id="5hvwTWxptfZ" role="3clF45" />
+      <node concept="37vLTG" id="5hvwTWxptMo" role="3clF46">
+        <property role="TrG5h" value="reference" />
+        <node concept="3uibUv" id="5hvwTWxptMn" role="1tU5fm">
+          <ref role="3uigEE" to="mhbf:~SReference" resolve="SReference" />
+        </node>
+      </node>
+      <node concept="P$JXv" id="5hvwTWxpuRy" role="lGtFl">
+        <node concept="TZ5HA" id="5hvwTWxpuRz" role="TZ5H$">
+          <node concept="1dT_AC" id="5hvwTWxpuR$" role="1dT_Ay">
+            <property role="1dT_AB" value="Tells if a reference resorts to scopes to find out its target (unlike 'static' reference that keeps complete target node identity)" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5hvwTWxpv7x" role="TZ5H$">
+          <node concept="1dT_AC" id="5hvwTWxpv7y" role="1dT_Ay">
+            <property role="1dT_AB" value="This is provisional code to get rid of DynamicReference class uses, as it exposes MPS implementation detail." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5hvwTWxpFQf" role="TZ5H$">
+          <node concept="1dT_AC" id="5hvwTWxpFQg" role="1dT_Ay">
+            <property role="1dT_AB" value="There's no counterpart in smodel language as I hope to get rid of this check eventually" />
           </node>
         </node>
       </node>

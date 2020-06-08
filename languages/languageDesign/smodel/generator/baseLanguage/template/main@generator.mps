@@ -8293,6 +8293,31 @@
         </node>
       </node>
     </node>
+    <node concept="3aamgX" id="5hvwTWxpXgD" role="3acgRq">
+      <ref role="30HIoZ" to="tp25:5hvwTWxpWvr" resolve="Reference_IsDynamic" />
+      <node concept="gft3U" id="5hvwTWxpXVV" role="1lVwrX">
+        <node concept="2YIFZM" id="5hvwTWxpZ4k" role="gfFT$">
+          <ref role="37wK5l" to="i8bi:5hvwTWxptnE" resolve="isDynamic" />
+          <ref role="1Pybhc" to="i8bi:5IkW5anFcpd" resolve="SLinkOperations" />
+          <node concept="10Nm6u" id="5hvwTWxpZ6j" role="37wK5m">
+            <node concept="29HgVG" id="5hvwTWxpZ6k" role="lGtFl">
+              <node concept="3NFfHV" id="5hvwTWxpZ6l" role="3NFExx">
+                <node concept="3clFbS" id="5hvwTWxpZ6m" role="2VODD2">
+                  <node concept="3clFbF" id="5hvwTWxpZ6n" role="3cqZAp">
+                    <node concept="2OqwBi" id="5hvwTWxpZ6o" role="3clFbG">
+                      <node concept="30H73N" id="5hvwTWxpZ6p" role="2Oq$k0" />
+                      <node concept="2qgKlT" id="5hvwTWxpZ6q" role="2OqNvi">
+                        <ref role="37wK5l" to="tpek:hEwIP$m" resolve="getOperand" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="avzCv" id="39bDtzbiZW3" role="avys_">
       <node concept="3clFbS" id="39bDtzbiZW4" role="2VODD2">
         <node concept="3clFbF" id="39bDtzbj0B3" role="3cqZAp">

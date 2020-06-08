@@ -182,6 +182,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_Reference_GetResolveInfo;
   private ConceptPresentation props_Reference_GetRoleOperation;
   private ConceptPresentation props_Reference_GetTargetOperation;
+  private ConceptPresentation props_Reference_IsDynamic;
   private ConceptPresentation props_SConceptOperation;
   private ConceptPresentation props_SConceptType;
   private ConceptPresentation props_SConceptTypeCastExpression;
@@ -1486,6 +1487,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Reference_GetTargetOperation = cpb.create();
         }
         return props_Reference_GetTargetOperation;
+      case LanguageConceptSwitch.Reference_IsDynamic:
+        if (props_Reference_IsDynamic == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("isDynamic");
+          props_Reference_IsDynamic = cpb.create();
+        }
+        return props_Reference_IsDynamic;
       case LanguageConceptSwitch.SConceptOperation:
         if (props_SConceptOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

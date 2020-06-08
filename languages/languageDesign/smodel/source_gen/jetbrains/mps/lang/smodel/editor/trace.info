@@ -24,7 +24,7 @@
       <unit at="26,0,98,0" name="jetbrains.mps.lang.smodel.editor.ConceptReference_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="20,0,643,0" name="jetbrains.mps.lang.smodel.editor.EditorAspectDescriptorImpl" />
+      <unit at="20,0,645,0" name="jetbrains.mps.lang.smodel.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="EnumMemberReference_Old_SubstituteMenu.java">
       <unit at="124,0,127,0" name="jetbrains.mps.lang.smodel.editor.EnumMemberReference_Old_SubstituteMenu$CONCEPTS" />
@@ -10980,8 +10980,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/1206480334645">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1206480334645" at="362,74,363,100" concept="8" />
-      <scope id="1206480334645" at="362,74,363,100" />
+      <node id="1206480334645" at="364,74,365,100" concept="8" />
+      <scope id="1206480334645" at="364,74,365,100" />
     </file>
     <file name="ReplaceableAlias_Comp.java">
       <node id="1206480334645" at="15,47,16,35" concept="8" />
@@ -11226,8 +11226,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/1206994531943">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1206994531943" at="360,82,361,108" concept="8" />
-      <scope id="1206994531943" at="360,82,361,108" />
+      <node id="1206994531943" at="362,82,363,108" concept="8" />
+      <scope id="1206994531943" at="362,82,363,108" />
     </file>
     <file name="ReplaceableAliasAndParms_Comp.java">
       <node id="1206994531943" at="15,47,16,35" concept="8" />
@@ -14918,8 +14918,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/1741258697587099253">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587099253" at="624,67,625,79" concept="8" />
-      <scope id="1741258697587099253" at="624,67,625,79" />
+      <node id="1741258697587099253" at="626,67,627,79" concept="8" />
+      <scope id="1741258697587099253" at="626,67,627,79" />
     </file>
     <file name="snodeOperation.java">
       <node id="1741258697587099253" at="43,118,44,140" concept="7" />
@@ -15173,8 +15173,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/1741258697587099444">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587099444" at="622,93,623,105" concept="8" />
-      <scope id="1741258697587099444" at="622,93,623,105" />
+      <node id="1741258697587099444" at="624,93,625,105" concept="8" />
+      <scope id="1741258697587099444" at="624,93,625,105" />
     </file>
     <file name="SNodeOperation_SubstituteMenu_Additional.java">
       <node id="1741258697587099444" at="23,118,24,140" concept="7" />
@@ -19935,8 +19935,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/2469893808086378768">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="2469893808086378768" at="550,90,551,102" concept="8" />
-      <scope id="2469893808086378768" at="550,90,551,102" />
+      <node id="2469893808086378768" at="552,90,553,102" concept="8" />
+      <scope id="2469893808086378768" at="552,90,553,102" />
     </file>
     <file name="RepositoryLanguages_SubstituteWrapped.java">
       <node id="2469893808086378768" at="42,118,43,140" concept="7" />
@@ -20177,8 +20177,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/2469893808088029481">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="2469893808088029481" at="427,89,428,105" concept="8" />
-      <scope id="2469893808088029481" at="427,89,428,105" />
+      <node id="2469893808088029481" at="429,89,430,105" concept="8" />
+      <scope id="2469893808088029481" at="429,89,430,105" />
     </file>
     <file name="LanguageRefExpression_Transformation.java">
       <node id="2469893808088029481" at="43,0,44,0" concept="3" trace="myLocations" />
@@ -23156,8 +23156,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/3320646261220643164">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="3320646261220643164" at="436,78,437,94" concept="8" />
-      <scope id="3320646261220643164" at="436,78,437,94" />
+      <node id="3320646261220643164" at="438,78,439,94" concept="8" />
+      <scope id="3320646261220643164" at="438,78,439,94" />
     </file>
     <file name="SNodeTypes_CompletionMenu.java">
       <node id="3320646261220643164" at="39,0,40,0" concept="3" trace="myLocations" />
@@ -25810,8 +25810,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/4747359941571311404">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="4747359941571311404" at="604,90,605,102" concept="8" />
-      <scope id="4747359941571311404" at="604,90,605,102" />
+      <node id="4747359941571311404" at="606,90,607,102" concept="8" />
+      <scope id="4747359941571311404" at="606,90,607,102" />
     </file>
     <file name="NodeAttributeQualifier_SmartReference.java">
       <node id="4747359941571311404" at="28,118,29,140" concept="7" />
@@ -25988,8 +25988,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/4747359941571311440">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="4747359941571311440" at="586,90,587,102" concept="8" />
-      <scope id="4747359941571311440" at="586,90,587,102" />
+      <node id="4747359941571311440" at="588,90,589,102" concept="8" />
+      <scope id="4747359941571311440" at="588,90,589,102" />
     </file>
     <file name="LinkAttributeQualifier_SmartReference.java">
       <node id="4747359941571311440" at="28,118,29,140" concept="7" />
@@ -26252,8 +26252,8 @@
       <unit id="4747359941571311476" at="25,0,105,0" name="jetbrains.mps.lang.smodel.editor.ChildAttributeQualifier_SmartReference" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="4747359941571311476" at="559,91,560,103" concept="8" />
-      <scope id="4747359941571311476" at="559,91,560,103" />
+      <node id="4747359941571311476" at="561,91,562,103" concept="8" />
+      <scope id="4747359941571311476" at="561,91,562,103" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/4747359941571311478">
@@ -26344,8 +26344,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/4747359941571311512">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="4747359941571311512" at="613,94,614,106" concept="8" />
-      <scope id="4747359941571311512" at="613,94,614,106" />
+      <node id="4747359941571311512" at="615,94,616,106" concept="8" />
+      <scope id="4747359941571311512" at="615,94,616,106" />
     </file>
     <file name="PropertyAttributeQualifier_SmartReference.java">
       <node id="4747359941571311512" at="28,118,29,140" concept="7" />
@@ -27150,8 +27150,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/5503407155930883466">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="5503407155930883466" at="577,79,578,91" concept="8" />
-      <scope id="5503407155930883466" at="577,79,578,91" />
+      <node id="5503407155930883466" at="579,79,580,91" concept="8" />
+      <scope id="5503407155930883466" at="579,79,580,91" />
     </file>
     <file name="IconContainer.java">
       <node id="5503407155931368939" at="9,0,10,0" concept="11" trace="RESOURCE_a0a51e3f_0" />
@@ -27404,8 +27404,8 @@
       <unit id="5503407155931295401" at="28,0,87,0" name="jetbrains.mps.lang.smodel.editor.AbstractLanguageIdentity_Transformation" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="5503407155931295401" at="409,92,410,108" concept="8" />
-      <scope id="5503407155931295401" at="409,92,410,108" />
+      <node id="5503407155931295401" at="411,92,412,108" concept="8" />
+      <scope id="5503407155931295401" at="411,92,412,108" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/5555818573523588048">
@@ -28050,8 +28050,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/5769081855528901637">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="5769081855528901637" at="595,83,596,95" concept="8" />
-      <scope id="5769081855528901637" at="595,83,596,95" />
+      <node id="5769081855528901637" at="597,83,598,95" concept="8" />
+      <scope id="5769081855528901637" at="597,83,598,95" />
     </file>
     <file name="IconContainer.java">
       <node id="5769081855528901718" at="8,0,9,0" concept="11" trace="RESOURCE_a0a51e3f" />
@@ -29015,6 +29015,51 @@
       <unit id="6039268229364359329" at="70,0,121,0" name="jetbrains.mps.lang.smodel.editor.ExactConceptCase_EditorBuilder_a$conceptSingleRoleHandler_uvvmah_b0" />
       <unit id="6039268229364359329" at="134,0,188,0" name="jetbrains.mps.lang.smodel.editor.ExactConceptCase_EditorBuilder_a$bodySingleRoleHandler_uvvmah_d0" />
       <unit id="6039268229364359329" at="27,0,194,0" name="jetbrains.mps.lang.smodel.editor.ExactConceptCase_EditorBuilder_a" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/6079722741456949656">
+    <file name="Reference_IsDynamic_Editor.java">
+      <node id="6079722741456949656" at="11,79,12,85" concept="8" />
+      <node id="6079722741456949656" at="11,0,14,0" concept="6" trace="createEditorCell#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <scope id="6079722741456949656" at="11,79,12,85" />
+      <scope id="6079722741456949656" at="11,0,14,0">
+        <var name="editorContext" id="6079722741456949656" />
+        <var name="node" id="6079722741456949656" />
+      </scope>
+      <unit id="6079722741456949656" at="10,0,15,0" name="jetbrains.mps.lang.smodel.editor.Reference_IsDynamic_Editor" />
+    </file>
+    <file name="Reference_IsDynamic_EditorBuilder_a.java">
+      <node id="6079722741456949656" at="16,99,17,19" concept="13" />
+      <node id="6079722741456949656" at="17,19,18,18" concept="2" />
+      <node id="6079722741456949656" at="23,26,24,18" concept="8" />
+      <node id="6079722741456949656" at="27,39,28,31" concept="8" />
+      <node id="6079722741456949661" at="31,42,32,130" concept="7" />
+      <node id="6079722741456949661" at="32,130,33,72" concept="7" />
+      <node id="6079722741456949661" at="34,26,35,27" concept="2" />
+      <node id="6079722741456949661" at="35,27,36,30" concept="2" />
+      <node id="6079722741456949661" at="37,5,38,22" concept="8" />
+      <node id="6079722741456949656" at="13,0,15,0" concept="3" trace="myNode" />
+      <node id="6079722741456949656" at="27,0,30,0" concept="6" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="6079722741456949656" at="16,0,20,0" concept="1" trace="Reference_IsDynamic_EditorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="6079722741456949661" at="33,72,37,5" concept="5" />
+      <node id="6079722741456949656" at="21,0,26,0" concept="6" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6079722741456949661" at="31,0,40,0" concept="6" trace="createComponent_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <scope id="6079722741456949656" at="23,26,24,18" />
+      <scope id="6079722741456949656" at="27,39,28,31" />
+      <scope id="6079722741456949656" at="16,99,18,18" />
+      <scope id="6079722741456949661" at="34,26,36,30" />
+      <scope id="6079722741456949656" at="27,0,30,0" />
+      <scope id="6079722741456949656" at="16,0,20,0">
+        <var name="context" id="6079722741456949656" />
+        <var name="node" id="6079722741456949656" />
+      </scope>
+      <scope id="6079722741456949656" at="21,0,26,0" />
+      <scope id="6079722741456949661" at="31,42,38,22">
+        <var name="bigCell" id="6079722741456949661" />
+        <var name="editorCell" id="6079722741456949661" />
+      </scope>
+      <scope id="6079722741456949661" at="31,0,40,0" />
+      <unit id="6079722741456949656" at="12,0,41,0" name="jetbrains.mps.lang.smodel.editor.Reference_IsDynamic_EditorBuilder_a" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/6138838330738724294">
@@ -32179,8 +32224,8 @@
       <unit id="8222125370833340695" at="28,0,87,0" name="jetbrains.mps.lang.smodel.editor.Devkits_Transformation" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="8222125370833340695" at="418,75,419,91" concept="8" />
-      <scope id="8222125370833340695" at="418,75,419,91" />
+      <node id="8222125370833340695" at="420,75,421,91" concept="8" />
+      <scope id="8222125370833340695" at="420,75,421,91" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/8222125370833345075">
@@ -32372,8 +32417,8 @@
       <unit id="8222125370833345075" at="35,0,186,0" name="jetbrains.mps.lang.smodel.editor.Devkits_Substitute" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="8222125370833345075" at="568,71,569,83" concept="8" />
-      <scope id="8222125370833345075" at="568,71,569,83" />
+      <node id="8222125370833345075" at="570,71,571,83" concept="8" />
+      <scope id="8222125370833345075" at="570,71,571,83" />
     </file>
     <file name="IconContainer.java">
       <node id="8222125370833345172" at="10,0,11,0" concept="11" trace="RESOURCE_a0a51e3f_1" />

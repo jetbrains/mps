@@ -18,6 +18,7 @@ import jetbrains.mps.smodel.SReference;
 import java.util.Objects;
 import java.util.List;
 import jetbrains.mps.util.IterableUtil;
+import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
@@ -209,6 +210,14 @@ public final class SLinkOperations {
       return null;
     }
     return ((SReference) reference).getResolveInfo();
+  }
+  /**
+   * Tells if a reference resorts to scopes to find out its target (unlike 'static' reference that keeps complete target node identity)
+   * This is provisional code to get rid of DynamicReference class uses, as it exposes MPS implementation detail.
+   * There's no counterpart in smodel language as I hope to get rid of this check eventually
+   */
+  public static boolean isDynamic(org.jetbrains.mps.openapi.model.SReference reference) {
+    return reference instanceof DynamicReference;
   }
 
   /**

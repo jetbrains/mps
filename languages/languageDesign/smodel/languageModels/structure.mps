@@ -3134,5 +3134,18 @@
       <ref role="20lvS9" to="tpce:fKAxPRU" resolve="DataTypeDeclaration" />
     </node>
   </node>
+  <node concept="1TIwiD" id="5hvwTWxpWvr">
+    <property role="EcuMT" value="6079722741456947163" />
+    <property role="3GE5qa" value="operation.reference" />
+    <property role="TrG5h" value="Reference_IsDynamic" />
+    <property role="34LRSv" value="isDynamic" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="5hvwTWxpWvs" role="PzmwI">
+      <ref role="PrY4T" node="1lUJQtrPjRM" resolve="IReferenceOperation" />
+    </node>
+    <node concept="t5JxF" id="5hvwTWxpX6m" role="lGtFl">
+      <property role="t5JxN" value="Tells if a reference resorts to scopes to find out its target (unlike 'static' reference that keeps complete target node identity)" />
+    </node>
+  </node>
 </model>
 

@@ -32,7 +32,7 @@ public class Mapping_mc_reflection extends MapConfigBase implements TemplateMapp
   private final Collection<TemplateReductionRule> rules;
   public Mapping_mc_reflection(@NotNull TemplateModel model) {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5692182839348358131"), "mc_reflection", model, false, new MO());
-    rules = TemplateUtil.<TemplateReductionRule>asCollection(new ReductionRule0(), new ReductionRule1(), new ReductionRule2(), new ReductionRule3(), new ReductionRule4(), new ReductionRule5());
+    rules = TemplateUtil.<TemplateReductionRule>asCollection(new ReductionRule0(), new ReductionRule1(), new ReductionRule2(), new ReductionRule3(), new ReductionRule4(), new ReductionRule5(), new ReductionRule6());
   }
   @Override
   public boolean isApplicable(@NotNull ITemplateGenerator generator) {
@@ -184,6 +184,31 @@ public class Mapping_mc_reflection extends MapConfigBase implements TemplateMapp
       return TemplateUtil.singletonList(tnode1);
     }
   }
+  /*package*/ final class ReductionRule6 extends ReductionRuleBase {
+    public ReductionRule6() {
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6079722741456950313"), CONCEPTS.Reference_IsDynamic$mj, false);
+    }
+    @Override
+    public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
+      final TemplateExecutionEnvironment environment = context.getEnvironment();
+      final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
+      {
+        environment.associate(tnode1, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6079722741456819690");
+        environment.associate(tnode1, myAssociationLinks[1], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6599163591527286349");
+        TemplateContext context1 = context.subContext();
+        {
+          Collection<SNode> tlist2 = null;
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_51_6(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_yrbd5d_b0a0c0d0c0b01));
+          tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_yrbd5d_b0a0c0d0c0b01, "tpl/r:00000000-0000-4000-0000-011c89590303/6079722741456957843", context1);
+          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
+            tnode1.addChild(myAggregationLinks[0], child3);
+          }
+          // TODO validate child 
+        }
+      }
+      return TemplateUtil.singletonList(tnode1);
+    }
+  }
 
   /*package*/ static final class MO implements MetaObjectContainer {
     @Override
@@ -215,6 +240,7 @@ public class Mapping_mc_reflection extends MapConfigBase implements TemplateMapp
   private static final SNodePointer copySrcMacro_yrbd5d_b0a0c0d0c0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023085834538");
   private static final SNodePointer copySrcMacro_yrbd5d_b0a0c0d0c0b8 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6253932327129609792");
   private static final SNodePointer copySrcMacro_yrbd5d_b0a0c0d0c0b9 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2071115835942461386");
+  private static final SNodePointer copySrcMacro_yrbd5d_b0a0c0d0c0b01 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6079722741456957844");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
@@ -223,5 +249,6 @@ public class Mapping_mc_reflection extends MapConfigBase implements TemplateMapp
     /*package*/ static final SConcept Reference_ContainingLinkOperation$xy = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x289db59e00eee79dL, "jetbrains.mps.lang.smodel.structure.Reference_ContainingLinkOperation");
     /*package*/ static final SConcept Reference_GetRoleOperation$II = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4efeb22247ff02a7L, "jetbrains.mps.lang.smodel.structure.Reference_GetRoleOperation");
     /*package*/ static final SConcept Reference_GetResolveInfo$r4 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4f37053c240837e1L, "jetbrains.mps.lang.smodel.structure.Reference_GetResolveInfo");
+    /*package*/ static final SConcept Reference_IsDynamic$mj = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x545f839f2167c7dbL, "jetbrains.mps.lang.smodel.structure.Reference_IsDynamic");
   }
 }
