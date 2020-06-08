@@ -47,7 +47,7 @@ public abstract class ChangeGroupLayout {
   protected abstract List<ChangeEditorMessage> getRightMessages(ModelChange change);
   @Nullable
   protected abstract ChangeSet getChangeSet();
-  private void calculateChangeGroups() {
+  protected void calculateChangeGroups() {
     final Map<ModelChange, Bounds> left = MapSequence.fromMap(new HashMap<ModelChange, Bounds>());
     final Map<ModelChange, Bounds> right = MapSequence.fromMap(new HashMap<ModelChange, Bounds>());
     for (ModelChange change : ListSequence.fromList(check_cuq72k_a2a21(getChangeSet(), this))) {

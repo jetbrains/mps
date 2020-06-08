@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor;
 
+import com.intellij.diff.util.TextDiffTypeFactory;
 import com.intellij.ide.BrowserUtil;
 import com.intellij.ide.CopyProvider;
 import com.intellij.ide.CutProvider;
@@ -36,7 +37,6 @@ import com.intellij.openapi.actionSystem.Separator;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.colors.EditorColors;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.openapi.editor.impl.LeftHandScrollbarLayout;
 import com.intellij.openapi.keymap.KeymapManager;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
@@ -48,6 +48,7 @@ import com.intellij.openapi.wm.ex.StatusBarEx;
 import com.intellij.ui.ScrollPaneFactory;
 import com.intellij.ui.components.JBScrollBar;
 import com.intellij.ui.components.JBScrollPane;
+import com.intellij.ui.components.JBScrollPane.Flip;
 import com.intellij.util.io.URLUtil;
 import com.intellij.util.ui.ButtonlessScrollBarUI;
 import com.intellij.util.ui.UIUtil;
@@ -156,6 +157,7 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 import javax.swing.KeyStroke;
@@ -552,9 +554,9 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   private void createUI(EditorConfiguration editorConfiguration) {
     myVerticalScrollBar = new MyScrollBar(Adjustable.VERTICAL);
 
-    myScrollPane = ScrollPaneFactory.createScrollPane();
+    myScrollPane = createScrollPane();
     if (editorConfiguration.rightToLeft) {
-      myScrollPane.setLayout(new LeftHandScrollbarLayout());
+      myScrollPane.putClientProperty(JBScrollPane.Flip.class, Flip.HORIZONTAL);
     }
     myScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
     myScrollPane.setVerticalScrollBar(myVerticalScrollBar);
@@ -658,10 +660,17 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
           repaint(editorCell);
         }
       }
+      myLeftHighlighter.selectionChanged();
       myLeftHighlighter.repaint();
     });
     UISettings.setupEditorAntialiasing(this);
   }
+
+
+  protected JScrollPane createScrollPane() {
+    return ScrollPaneFactory.createScrollPane();
+  }
+
 
   boolean hasUI() {
     return myEditorConfiguration.withUI;
@@ -733,6 +742,11 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   public JViewport getViewport() {
     assert hasUI();
     return myScrollPane.getViewport();
+  }
+
+  public int getHorizontalScrollBarOffset() {
+    JScrollBar bar = myScrollPane.getHorizontalScrollBar();
+    return bar != null && bar.isVisible() ? bar.getPreferredSize().height : 0;
   }
 
   Point getViewPosition() {
@@ -1044,7 +1058,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       }
       myCommandContext.updateContextNode();
 
-      if(needNewTypecheckingSession) {
+      if (needNewTypecheckingSession) {
         requestTypecheckingSession();
       }
 
@@ -2085,7 +2099,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     jetbrains.mps.openapi.editor.cells.EditorCell deepestCell = getDeepestSelectedCell();
     if (deepestCell instanceof EditorCell_Label && ((EditorCell) deepestCell).isInClipRegion(g)) {
       EditorCell_Label label = (EditorCell_Label) deepestCell;
-
       g.setColor(setting.getCaretRowColor());
       g.fillRect(0, deepestCell.getY(), getWidth(),
                  deepestCell.getHeight() - deepestCell.getTopInset() - deepestCell.getBottomInset());
@@ -2095,7 +2108,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
                  deepestCell.getY(),
                  deepestCell.getWidth() - label.getLeftInset() - label.getRightInset(),
                  deepestCell.getHeight() - deepestCell.getTopInset() - deepestCell.getBottomInset());
-
     }
 
     List<AdditionalPainter> additionalPainters = getAdditionalPainters();
@@ -2123,7 +2135,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
         additionalPainter.paint(g, this);
       }
     }
-
   }
 
   Dimension getPreferredComponentSize() {
