@@ -32,7 +32,7 @@ public class check_BuildMpsLayout_TestModuleGroupHasTestSources_NonTypesystemRul
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(testGroup, "The solution '" + SPropertyOperations.getString(solution, PROPS.name$tAp1) + "' sources do not include tests", "r:f8814f89-9801-40d6-822f-e0e0a3a2c53d(jetbrains.mps.build.mps.tests.typesystem)", "8789333569555671508", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.mps.tests.typesystem.addTestSources_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.mps.tests.typesystem.addTestSources_QuickFix", "8789333569555671512", false);
             intentionProvider.putArgument("solution", solution);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }

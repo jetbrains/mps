@@ -38,14 +38,14 @@ public class typeof_VariableDeclaration_InferenceRule extends AbstractInferenceR
               EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "554301099359820442", 0, null);
               {
                 BaseQuickFixProvider intentionProvider = null;
-                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", false);
+                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "4017912752403843828", false);
                 intentionProvider.putArgument("desiredType", variableDeclaration);
                 intentionProvider.putArgument("expression", initializer);
                 _info_12389875345.addIntentionProvider(intentionProvider);
               }
               {
                 BaseQuickFixProvider intentionProvider = null;
-                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeExpectedType_QuickFix", false);
+                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeExpectedType_QuickFix", "4017912752406141711", false);
                 intentionProvider.putArgument("desiredType", initializer);
                 intentionProvider.putArgument("expression", variableDeclaration);
                 _info_12389875345.addIntentionProvider(intentionProvider);
@@ -61,14 +61,14 @@ public class typeof_VariableDeclaration_InferenceRule extends AbstractInferenceR
               EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2388917569121565670", 0, null);
               {
                 BaseQuickFixProvider intentionProvider = null;
-                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", false);
+                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "2388917569142431385", false);
                 intentionProvider.putArgument("desiredType", variableDeclaration);
                 intentionProvider.putArgument("expression", initializer);
                 _info_12389875345.addIntentionProvider(intentionProvider);
               }
               {
                 BaseQuickFixProvider intentionProvider = null;
-                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeExpectedType_QuickFix", false);
+                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeExpectedType_QuickFix", "2388917569142431390", false);
                 intentionProvider.putArgument("desiredType", initializer);
                 intentionProvider.putArgument("expression", variableDeclaration);
                 _info_12389875345.addIntentionProvider(intentionProvider);

@@ -97,7 +97,7 @@ public class check_UnneededJavaImports_NonTypesystemRule extends AbstractNonType
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(clas, "Java imports annotation is present", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2235632002330933633", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveAllJavaImports_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveAllJavaImports_QuickFix", "2235632002330984367", true);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
@@ -111,7 +111,7 @@ public class check_UnneededJavaImports_NonTypesystemRule extends AbstractNonType
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(clas, "Unneeded java imports present", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2235632002330933240", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveGivenJavaImports_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveGivenJavaImports_QuickFix", "2235632002331139627", true);
           intentionProvider.putArgument("toRemove", unneeded);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
@@ -122,7 +122,7 @@ public class check_UnneededJavaImports_NonTypesystemRule extends AbstractNonType
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(clas, "Java imports annotation is present", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4988876388990444236", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveAllJavaImports_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveAllJavaImports_QuickFix", "4988876388990444239", true);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }

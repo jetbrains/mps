@@ -17,6 +17,7 @@ package jetbrains.mps.errors;
 
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 // XXX it's a bit odd to have isExecutedImmediately here, but to instantiate QuickFix_Runtime to get declaration node, could we do anything about that?
 public interface QuickFixProvider {
@@ -29,4 +30,6 @@ public interface QuickFixProvider {
 
   boolean isExecutedImmediately();
 
+  @Nullable
+  String getIntentionId();
 }

@@ -1538,5 +1538,17 @@
     <property role="34LRSv" value="including node id" />
     <ref role="1TJDcQ" node="5j9sOBrE7yu" resolve="MigrationTestOption" />
   </node>
+  <node concept="1TIwiD" id="4$lRloVW7sK">
+    <property role="EcuMT" value="5266358701722203952" />
+    <property role="3GE5qa" value="editor" />
+    <property role="TrG5h" value="ApplyQuickFix" />
+    <property role="34LRSv" value="apply quick fix" />
+    <ref role="1TJDcQ" to="tpee:fzclF8l" resolve="Statement" />
+    <node concept="1TJgyj" id="6DH2cg3TEQn" role="1TKVEi">
+      <property role="IQ2ns" value="7668795378453884311" />
+      <property role="20kJfa" value="quickfix" />
+      <ref role="20lvS9" to="tpd4:hBCnwce" resolve="TypesystemIntention" />
+    </node>
+  </node>
 </model>
 

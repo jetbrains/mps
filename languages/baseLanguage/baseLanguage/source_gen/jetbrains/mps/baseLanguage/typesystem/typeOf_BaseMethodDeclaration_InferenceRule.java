@@ -79,14 +79,14 @@ public class typeOf_BaseMethodDeclaration_InferenceRule extends AbstractInferenc
                 EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "" + expectedRetType + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1185363921400", 0, null);
                 {
                   BaseQuickFixProvider intentionProvider = null;
-                  intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", false);
+                  intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "2388917569181956696", false);
                   intentionProvider.putArgument("desiredType", expectedRetType);
                   intentionProvider.putArgument("expression", SLinkOperations.getTarget(returnStatement, LINKS.expression$EsbK));
                   _info_12389875345.addIntentionProvider(intentionProvider);
                 }
                 {
                   BaseQuickFixProvider intentionProvider = null;
-                  intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodReturnType_QuickFix", false);
+                  intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodReturnType_QuickFix", "7387411948770338366", false);
                   intentionProvider.putArgument("desiredType", SLinkOperations.getTarget(returnStatement, LINKS.expression$EsbK));
                   intentionProvider.putArgument("expression", bmd);
                   _info_12389875345.addIntentionProvider(intentionProvider);
@@ -102,14 +102,14 @@ public class typeOf_BaseMethodDeclaration_InferenceRule extends AbstractInferenc
                 EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "" + _quotation_createNode_ifzhbs_a0b0a0b0a0b0a0a0a0b0a9a1() + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2388917569121578173", 0, null);
                 {
                   BaseQuickFixProvider intentionProvider = null;
-                  intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", false);
+                  intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "2388917569181947820", false);
                   intentionProvider.putArgument("desiredType", expectedRetType);
                   intentionProvider.putArgument("expression", SLinkOperations.getTarget(returnStatement, LINKS.expression$EsbK));
                   _info_12389875345.addIntentionProvider(intentionProvider);
                 }
                 {
                   BaseQuickFixProvider intentionProvider = null;
-                  intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodReturnType_QuickFix", false);
+                  intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodReturnType_QuickFix", "7387411948770225792", false);
                   intentionProvider.putArgument("desiredType", SLinkOperations.getTarget(returnStatement, LINKS.expression$EsbK));
                   intentionProvider.putArgument("expression", bmd);
                   _info_12389875345.addIntentionProvider(intentionProvider);
@@ -135,14 +135,14 @@ public class typeOf_BaseMethodDeclaration_InferenceRule extends AbstractInferenc
               EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, expectedRetType + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1185363855090", 0, null);
               {
                 BaseQuickFixProvider intentionProvider = null;
-                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", false);
+                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "2388917569181940867", false);
                 intentionProvider.putArgument("desiredType", expectedRetType);
                 intentionProvider.putArgument("expression", SLinkOperations.getTarget(lastExpression, LINKS.expression$WIP0));
                 _info_12389875345.addIntentionProvider(intentionProvider);
               }
               {
                 BaseQuickFixProvider intentionProvider = null;
-                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodReturnType_QuickFix", false);
+                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodReturnType_QuickFix", "7387411948770159653", false);
                 intentionProvider.putArgument("desiredType", SLinkOperations.getTarget(lastExpression, LINKS.expression$WIP0));
                 intentionProvider.putArgument("expression", bmd);
                 _info_12389875345.addIntentionProvider(intentionProvider);
@@ -158,14 +158,14 @@ public class typeOf_BaseMethodDeclaration_InferenceRule extends AbstractInferenc
               EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, _quotation_createNode_ifzhbs_a1a0a1a0a1a0b0c0l0b() + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2388917569121706943", 0, null);
               {
                 BaseQuickFixProvider intentionProvider = null;
-                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", false);
+                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "2388917569181947759", false);
                 intentionProvider.putArgument("desiredType", expectedRetType);
                 intentionProvider.putArgument("expression", SLinkOperations.getTarget(lastExpression, LINKS.expression$WIP0));
                 _info_12389875345.addIntentionProvider(intentionProvider);
               }
               {
                 BaseQuickFixProvider intentionProvider = null;
-                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodReturnType_QuickFix", false);
+                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodReturnType_QuickFix", "7387411948770174237", false);
                 intentionProvider.putArgument("desiredType", SLinkOperations.getTarget(lastExpression, LINKS.expression$WIP0));
                 intentionProvider.putArgument("expression", bmd);
                 _info_12389875345.addIntentionProvider(intentionProvider);

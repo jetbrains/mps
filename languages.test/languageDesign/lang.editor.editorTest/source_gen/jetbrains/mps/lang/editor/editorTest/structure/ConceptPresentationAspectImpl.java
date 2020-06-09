@@ -92,6 +92,10 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_PlaceholderChildAttribute;
   private ConceptPresentation props_PlaceholderParent;
   private ConceptPresentation props_PlusExpression;
+  private ConceptPresentation props_QuickFixErrorTrigger;
+  private ConceptPresentation props_QuickFixResolution;
+  private ConceptPresentation props_QuickFixStatement;
+  private ConceptPresentation props_QuickFixTop;
   private ConceptPresentation props_ReferenceAnnotataion;
   private ConceptPresentation props_Selectable;
   private ConceptPresentation props_SelectableContainer;
@@ -722,6 +726,34 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_PlusExpression = cpb.create();
         }
         return props_PlusExpression;
+      case LanguageConceptSwitch.QuickFixErrorTrigger:
+        if (props_QuickFixErrorTrigger == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("trigger");
+          props_QuickFixErrorTrigger = cpb.create();
+        }
+        return props_QuickFixErrorTrigger;
+      case LanguageConceptSwitch.QuickFixResolution:
+        if (props_QuickFixResolution == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("QuickFixResolution");
+          props_QuickFixResolution = cpb.create();
+        }
+        return props_QuickFixResolution;
+      case LanguageConceptSwitch.QuickFixStatement:
+        if (props_QuickFixStatement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("statement");
+          props_QuickFixStatement = cpb.create();
+        }
+        return props_QuickFixStatement;
+      case LanguageConceptSwitch.QuickFixTop:
+        if (props_QuickFixTop == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("quic fix test");
+          props_QuickFixTop = cpb.create();
+        }
+        return props_QuickFixTop;
       case LanguageConceptSwitch.ReferenceAnnotataion:
         if (props_ReferenceAnnotataion == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

@@ -685,18 +685,18 @@ __switch__:
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(mainNode, errorString, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6468716278896138869", null, errorTarget);
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddExceptionToMethodSignature_QuickFix", false);
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddExceptionToMethodSignature_QuickFix", "6468716278896138872", false);
               intentionProvider.putArgument("throwableType", ListSequence.fromList(throwTypes).first());
               _reporter_2309309498.addIntentionProvider(intentionProvider);
             }
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SurroundExceptionWithTryCatch_QuickFix", false);
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SurroundExceptionWithTryCatch_QuickFix", "6468716278896138877", false);
               intentionProvider.putArgument("throwableTypes", throwTypes);
               intentionProvider.putArgument("createNew", true);
               _reporter_2309309498.addIntentionProvider(intentionProvider);
             }
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SurroundExceptionWithTryCatch_QuickFix", false);
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SurroundExceptionWithTryCatch_QuickFix", "6468716278896138882", false);
               intentionProvider.putArgument("throwableTypes", throwTypes);
               intentionProvider.putArgument("createNew", false);
               _reporter_2309309498.addIntentionProvider(intentionProvider);
@@ -707,12 +707,12 @@ __switch__:
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(mainNode, errorString, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4460871289557453850", null, errorTarget);
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddExceptionToMethodSignature_QuickFix", false);
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddExceptionToMethodSignature_QuickFix", "4460871289557453853", false);
               intentionProvider.putArgument("throwableType", ListSequence.fromList(throwTypes).first());
               _reporter_2309309498.addIntentionProvider(intentionProvider);
             }
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SurroundExceptionWithTryCatch_QuickFix", false);
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SurroundExceptionWithTryCatch_QuickFix", "6468716278886003851", false);
               intentionProvider.putArgument("throwableTypes", throwTypes);
               intentionProvider.putArgument("createNew", true);
               _reporter_2309309498.addIntentionProvider(intentionProvider);

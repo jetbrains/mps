@@ -58,12 +58,12 @@ public class check_ConceptBehaviorForNotImplementedMethods_NonTypesystemRule ext
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cmd, "Abstract method in non-abstract concept", "r:f7f8a091-d98d-402d-85c4-5f05cb2b8c61(jetbrains.mps.lang.behavior.typesystem)", "1198949983025", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.behavior.typesystem.MakeConceptAbstract_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.behavior.typesystem.MakeConceptAbstract_QuickFix", "8014340958387190506", false);
             intentionProvider.putArgument("conceptBehavior", nodeToCheck);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.behavior.typesystem.RemoveAbstractFromTheMethod_add_method_body_description_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.behavior.typesystem.RemoveAbstractFromTheMethod_add_method_body_description_QuickFix", "8014340958387190740", false);
             intentionProvider.putArgument("conceptMethod", cmd);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }

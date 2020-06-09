@@ -31,7 +31,7 @@ public class check_AnonymousClassWithNoConstructorInheritsDefaultConstructor_Non
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(anonymousClass, "An explicit constructor available in the class", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7340437691571939069", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveImplicitConstructorFromAnonymousClass_QuickFix", true);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveImplicitConstructorFromAnonymousClass_QuickFix", "7340437691573975743", true);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }

@@ -33,13 +33,13 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(s, myWarning, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "4844813484172611508", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_literal_once_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_literal_once_QuickFix", "4844813484172611511", false);
             intentionProvider.putArgument("caption", "Fix String");
             intentionProvider.putArgument("literal", s);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_QuickFix", "4844813484172611505", false);
             intentionProvider.putArgument("nodeToFix", node);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
@@ -56,13 +56,13 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
           final MessageTarget errorTarget = new PropertyMessageTarget(p.getProperty());
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(p.getNode(), myWarning, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "4844813484172611556", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_property_once_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_property_once_QuickFix", "4844813484172611558", false);
             intentionProvider.putArgument("caption", "Fix " + NameUtil.capitalize(p.getProperty().getName()));
             intentionProvider.putArgument("property", p);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_QuickFix", "4844813484172611549", false);
             intentionProvider.putArgument("nodeToFix", node);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }

@@ -27,7 +27,7 @@ public class check_InstanceMethodDeclarationNeedsVisibility_NonTypesystemRule ex
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(instanceMethodDeclaration, "The method visibility must be public", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3054699313863889344", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeMethodPublic_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeMethodPublic_QuickFix", "3054699313863916681", true);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }

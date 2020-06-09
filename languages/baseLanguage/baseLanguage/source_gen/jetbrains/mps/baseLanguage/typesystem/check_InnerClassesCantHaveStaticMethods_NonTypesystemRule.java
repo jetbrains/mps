@@ -30,7 +30,7 @@ public class check_InnerClassesCantHaveStaticMethods_NonTypesystemRule extends A
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(staticMethodDeclaration, "Inner classes cannot have static methods", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "498633765599059200", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeStaticMethodNotStatic_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeStaticMethodNotStatic_QuickFix", "498633765600377955", false);
             intentionProvider.putArgument("staticMethod", staticMethodDeclaration);
             intentionProvider.putArgument("containingClass", classConcept);
             _reporter_2309309498.addIntentionProvider(intentionProvider);

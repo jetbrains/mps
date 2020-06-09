@@ -2117,6 +2117,58 @@
       <unit id="3597260497452978121" at="13,0,40,0" name="jetbrains.mps.lang.editor.actions.test.Comment_InsertBeforeComment_Test" />
     </file>
   </root>
+  <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/3663569252641092361">
+    <file name="QuickFix_WarningFix_Test.java">
+      <node id="3663569252641092361" at="18,37,19,25" concept="8" />
+      <node id="3663569252641092361" at="23,59,24,36" concept="1" />
+      <node id="3663569252641092361" at="29,52,30,19" concept="8" />
+      <node id="3663569252641092361" at="34,51,35,72" concept="1" />
+      <node id="3663569252641092363" at="35,72,36,43" concept="1" />
+      <node id="3663569252641092361" at="15,0,17,0" concept="7" trace="ourParamCache" />
+      <node id="3663569252641092361" at="18,0,21,0" concept="0" trace="QuickFix_WarningFix_Test#()V" />
+      <node id="3663569252641092361" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="3663569252641092361" at="22,0,26,0" concept="3" trace="test_QuickFix_WarningFix#()V" />
+      <node id="3663569252641092361" at="33,0,38,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="3663569252641092361" at="18,37,19,25" />
+      <scope id="3663569252641092361" at="23,59,24,36" />
+      <scope id="3663569252641092361" at="29,52,30,19" />
+      <scope id="3663569252641092361" at="34,51,36,43" />
+      <scope id="3663569252641092361" at="18,0,21,0" />
+      <scope id="3663569252641092361" at="29,0,32,0">
+        <var name="owner" id="3663569252641092361" />
+      </scope>
+      <scope id="3663569252641092361" at="22,0,26,0" />
+      <scope id="3663569252641092361" at="33,0,38,0" />
+      <unit id="3663569252641092361" at="27,0,39,0" name="jetbrains.mps.lang.editor.actions.test.QuickFix_WarningFix_Test$TestBody" />
+      <unit id="3663569252641092361" at="13,0,40,0" name="jetbrains.mps.lang.editor.actions.test.QuickFix_WarningFix_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/3663569252647112228">
+    <file name="QuickFix_InfoFix_Test.java">
+      <node id="3663569252647112228" at="18,34,19,25" concept="8" />
+      <node id="3663569252647112228" at="23,56,24,36" concept="1" />
+      <node id="3663569252647112228" at="29,52,30,19" concept="8" />
+      <node id="3663569252647112228" at="34,51,35,72" concept="1" />
+      <node id="3663569252647112230" at="35,72,36,43" concept="1" />
+      <node id="3663569252647112228" at="15,0,17,0" concept="7" trace="ourParamCache" />
+      <node id="3663569252647112228" at="18,0,21,0" concept="0" trace="QuickFix_InfoFix_Test#()V" />
+      <node id="3663569252647112228" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="3663569252647112228" at="22,0,26,0" concept="3" trace="test_QuickFix_InfoFix#()V" />
+      <node id="3663569252647112228" at="33,0,38,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="3663569252647112228" at="18,34,19,25" />
+      <scope id="3663569252647112228" at="23,56,24,36" />
+      <scope id="3663569252647112228" at="29,52,30,19" />
+      <scope id="3663569252647112228" at="34,51,36,43" />
+      <scope id="3663569252647112228" at="18,0,21,0" />
+      <scope id="3663569252647112228" at="29,0,32,0">
+        <var name="owner" id="3663569252647112228" />
+      </scope>
+      <scope id="3663569252647112228" at="22,0,26,0" />
+      <scope id="3663569252647112228" at="33,0,38,0" />
+      <unit id="3663569252647112228" at="27,0,39,0" name="jetbrains.mps.lang.editor.actions.test.QuickFix_InfoFix_Test$TestBody" />
+      <unit id="3663569252647112228" at="13,0,40,0" name="jetbrains.mps.lang.editor.actions.test.QuickFix_InfoFix_Test" />
+    </file>
+  </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/3766420342434348696">
     <file name="InsertPlaceholderAfterCommentedChild_Test.java">
       <node id="3766420342434348696" at="18,54,19,25" concept="8" />
@@ -2558,6 +2610,32 @@
       <unit id="5107764459033738679" at="13,0,40,0" name="jetbrains.mps.lang.editor.actions.test.TypeOver_InsideKeyWord_Test" />
     </file>
   </root>
+  <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/5266358701723060885">
+    <file name="QuickFix_MakeAbstract_Test.java">
+      <node id="5266358701723060885" at="18,39,19,25" concept="8" />
+      <node id="5266358701723060885" at="23,61,24,36" concept="1" />
+      <node id="5266358701723060885" at="29,52,30,19" concept="8" />
+      <node id="5266358701723060885" at="34,51,35,72" concept="1" />
+      <node id="7719525437626442204" at="35,72,36,43" concept="1" />
+      <node id="5266358701723060885" at="15,0,17,0" concept="7" trace="ourParamCache" />
+      <node id="5266358701723060885" at="18,0,21,0" concept="0" trace="QuickFix_MakeAbstract_Test#()V" />
+      <node id="5266358701723060885" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="5266358701723060885" at="22,0,26,0" concept="3" trace="test_QuickFix_MakeAbstract#()V" />
+      <node id="5266358701723060885" at="33,0,38,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="5266358701723060885" at="18,39,19,25" />
+      <scope id="5266358701723060885" at="23,61,24,36" />
+      <scope id="5266358701723060885" at="29,52,30,19" />
+      <scope id="5266358701723060885" at="34,51,36,43" />
+      <scope id="5266358701723060885" at="18,0,21,0" />
+      <scope id="5266358701723060885" at="29,0,32,0">
+        <var name="owner" id="5266358701723060885" />
+      </scope>
+      <scope id="5266358701723060885" at="22,0,26,0" />
+      <scope id="5266358701723060885" at="33,0,38,0" />
+      <unit id="5266358701723060885" at="27,0,39,0" name="jetbrains.mps.lang.editor.actions.test.QuickFix_MakeAbstract_Test$TestBody" />
+      <unit id="5266358701723060885" at="13,0,40,0" name="jetbrains.mps.lang.editor.actions.test.QuickFix_MakeAbstract_Test" />
+    </file>
+  </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/5383578965096699346">
     <file name="DelOnSpecialChild1DeleteParent_Test.java">
       <node id="5383578965096699346" at="19,48,20,25" concept="8" />
@@ -2968,6 +3046,32 @@
       <unit id="5721350981295108719" at="37,48,44,7" name="jetbrains.mps.lang.editor.actions.test.DeleteAutodeletable_Test$TestBody$1" />
       <unit id="5721350981295092635" at="28,0,47,0" name="jetbrains.mps.lang.editor.actions.test.DeleteAutodeletable_Test$TestBody" />
       <unit id="5721350981295092635" at="14,0,48,0" name="jetbrains.mps.lang.editor.actions.test.DeleteAutodeletable_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/577180331592185388">
+    <file name="QuickFix_UnusedVariable_Test.java">
+      <node id="577180331592185388" at="18,41,19,25" concept="8" />
+      <node id="577180331592185388" at="23,63,24,36" concept="1" />
+      <node id="577180331592185388" at="29,52,30,19" concept="8" />
+      <node id="577180331592185388" at="34,51,35,70" concept="1" />
+      <node id="7719525437626193280" at="35,70,36,26" concept="1" />
+      <node id="577180331592185388" at="15,0,17,0" concept="7" trace="ourParamCache" />
+      <node id="577180331592185388" at="18,0,21,0" concept="0" trace="QuickFix_UnusedVariable_Test#()V" />
+      <node id="577180331592185388" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="577180331592185388" at="22,0,26,0" concept="3" trace="test_QuickFix_UnusedVariable#()V" />
+      <node id="577180331592185388" at="33,0,38,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="577180331592185388" at="18,41,19,25" />
+      <scope id="577180331592185388" at="23,63,24,36" />
+      <scope id="577180331592185388" at="29,52,30,19" />
+      <scope id="577180331592185388" at="34,51,36,26" />
+      <scope id="577180331592185388" at="18,0,21,0" />
+      <scope id="577180331592185388" at="29,0,32,0">
+        <var name="owner" id="577180331592185388" />
+      </scope>
+      <scope id="577180331592185388" at="22,0,26,0" />
+      <scope id="577180331592185388" at="33,0,38,0" />
+      <unit id="577180331592185388" at="27,0,39,0" name="jetbrains.mps.lang.editor.actions.test.QuickFix_UnusedVariable_Test$TestBody" />
+      <unit id="577180331592185388" at="13,0,40,0" name="jetbrains.mps.lang.editor.actions.test.QuickFix_UnusedVariable_Test" />
     </file>
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/5824791737913673482">
@@ -3726,6 +3830,32 @@
       <scope id="618557683846046925" at="33,0,38,0" />
       <unit id="618557683846046925" at="27,0,39,0" name="jetbrains.mps.lang.editor.actions.test.Subst_MultiChildWithCustomEmptyCellAndInsert_AddNewChildByEnter_Test$TestBody" />
       <unit id="618557683846046925" at="13,0,40,0" name="jetbrains.mps.lang.editor.actions.test.Subst_MultiChildWithCustomEmptyCellAndInsert_AddNewChildByEnter_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/6359225225084328328">
+    <file name="QuickFix_MakeVariableFinal_Test.java">
+      <node id="6359225225084328328" at="18,44,19,25" concept="8" />
+      <node id="6359225225084328328" at="23,66,24,36" concept="1" />
+      <node id="6359225225084328328" at="29,52,30,19" concept="8" />
+      <node id="6359225225084328328" at="34,51,35,72" concept="1" />
+      <node id="7719525437626173447" at="35,72,36,26" concept="1" />
+      <node id="6359225225084328328" at="15,0,17,0" concept="7" trace="ourParamCache" />
+      <node id="6359225225084328328" at="18,0,21,0" concept="0" trace="QuickFix_MakeVariableFinal_Test#()V" />
+      <node id="6359225225084328328" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6359225225084328328" at="22,0,26,0" concept="3" trace="test_QuickFix_MakeVariableFinal#()V" />
+      <node id="6359225225084328328" at="33,0,38,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="6359225225084328328" at="18,44,19,25" />
+      <scope id="6359225225084328328" at="23,66,24,36" />
+      <scope id="6359225225084328328" at="29,52,30,19" />
+      <scope id="6359225225084328328" at="34,51,36,26" />
+      <scope id="6359225225084328328" at="18,0,21,0" />
+      <scope id="6359225225084328328" at="29,0,32,0">
+        <var name="owner" id="6359225225084328328" />
+      </scope>
+      <scope id="6359225225084328328" at="22,0,26,0" />
+      <scope id="6359225225084328328" at="33,0,38,0" />
+      <unit id="6359225225084328328" at="27,0,39,0" name="jetbrains.mps.lang.editor.actions.test.QuickFix_MakeVariableFinal_Test$TestBody" />
+      <unit id="6359225225084328328" at="13,0,40,0" name="jetbrains.mps.lang.editor.actions.test.QuickFix_MakeVariableFinal_Test" />
     </file>
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/6517546124954663667">
@@ -4610,6 +4740,58 @@
       <scope id="7888199326996725782" at="33,0,41,0" />
       <unit id="7888199326996725782" at="27,0,42,0" name="jetbrains.mps.lang.editor.actions.test.Comment_ReturnExpression_NoEmptyCell_Test$TestBody" />
       <unit id="7888199326996725782" at="13,0,43,0" name="jetbrains.mps.lang.editor.actions.test.Comment_ReturnExpression_NoEmptyCell_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/8036481050508245419">
+    <file name="QuickFix_Multiple_Test.java">
+      <node id="8036481050508245419" at="18,35,19,25" concept="8" />
+      <node id="8036481050508245419" at="23,57,24,36" concept="1" />
+      <node id="8036481050508245419" at="29,52,30,19" concept="8" />
+      <node id="8036481050508245419" at="34,51,35,72" concept="1" />
+      <node id="8036481050509020951" at="35,72,36,43" concept="1" />
+      <node id="8036481050508245419" at="15,0,17,0" concept="7" trace="ourParamCache" />
+      <node id="8036481050508245419" at="18,0,21,0" concept="0" trace="QuickFix_Multiple_Test#()V" />
+      <node id="8036481050508245419" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8036481050508245419" at="22,0,26,0" concept="3" trace="test_QuickFix_Multiple#()V" />
+      <node id="8036481050508245419" at="33,0,38,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="8036481050508245419" at="18,35,19,25" />
+      <scope id="8036481050508245419" at="23,57,24,36" />
+      <scope id="8036481050508245419" at="29,52,30,19" />
+      <scope id="8036481050508245419" at="34,51,36,43" />
+      <scope id="8036481050508245419" at="18,0,21,0" />
+      <scope id="8036481050508245419" at="29,0,32,0">
+        <var name="owner" id="8036481050508245419" />
+      </scope>
+      <scope id="8036481050508245419" at="22,0,26,0" />
+      <scope id="8036481050508245419" at="33,0,38,0" />
+      <unit id="8036481050508245419" at="27,0,39,0" name="jetbrains.mps.lang.editor.actions.test.QuickFix_Multiple_Test$TestBody" />
+      <unit id="8036481050508245419" at="13,0,40,0" name="jetbrains.mps.lang.editor.actions.test.QuickFix_Multiple_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/8036481050510524698">
+    <file name="QuickFix_EquationStatement_Test.java">
+      <node id="8036481050510524698" at="18,44,19,25" concept="8" />
+      <node id="8036481050510524698" at="23,66,24,36" concept="1" />
+      <node id="8036481050510524698" at="29,52,30,19" concept="8" />
+      <node id="8036481050510524698" at="34,51,35,72" concept="1" />
+      <node id="8036481050510524721" at="35,72,36,43" concept="1" />
+      <node id="8036481050510524698" at="15,0,17,0" concept="7" trace="ourParamCache" />
+      <node id="8036481050510524698" at="18,0,21,0" concept="0" trace="QuickFix_EquationStatement_Test#()V" />
+      <node id="8036481050510524698" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8036481050510524698" at="22,0,26,0" concept="3" trace="test_QuickFix_EquationStatement#()V" />
+      <node id="8036481050510524698" at="33,0,38,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="8036481050510524698" at="18,44,19,25" />
+      <scope id="8036481050510524698" at="23,66,24,36" />
+      <scope id="8036481050510524698" at="29,52,30,19" />
+      <scope id="8036481050510524698" at="34,51,36,43" />
+      <scope id="8036481050510524698" at="18,0,21,0" />
+      <scope id="8036481050510524698" at="29,0,32,0">
+        <var name="owner" id="8036481050510524698" />
+      </scope>
+      <scope id="8036481050510524698" at="22,0,26,0" />
+      <scope id="8036481050510524698" at="33,0,38,0" />
+      <unit id="8036481050510524698" at="27,0,39,0" name="jetbrains.mps.lang.editor.actions.test.QuickFix_EquationStatement_Test$TestBody" />
+      <unit id="8036481050510524698" at="13,0,40,0" name="jetbrains.mps.lang.editor.actions.test.QuickFix_EquationStatement_Test" />
     </file>
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/8186861414697842782">

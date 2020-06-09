@@ -27,7 +27,7 @@ public class check_UnlessStatement_NonTypesystemRule extends AbstractNonTypesyst
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(us, LINKS.body$9e1t), "Empty statement block", "r:7da49c71-e19f-4b55-806c-76b351ee48dd(org.jetbrains.mps.samples.IfAndUnless.typesystem)", "1608374556136064235", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("org.jetbrains.mps.samples.IfAndUnless.typesystem.Remove_empty_unless_block_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("org.jetbrains.mps.samples.IfAndUnless.typesystem.Remove_empty_unless_block_QuickFix", "1608374556136064895", false);
           intentionProvider.putArgument("node", us);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }

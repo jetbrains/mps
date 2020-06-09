@@ -44,7 +44,7 @@ public class check_BinaryLogicalOperationCanBeSimplified_NonTypesystemRule exten
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(binaryOperation, "The binary logical expression " + ExpressionPresentationUtil.getExpressionPresentation(binaryOperation) + " can be simplified", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8626468694779180757", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SimplifyWholeBinaryLogicalExpressionWithBooleanConstant_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SimplifyWholeBinaryLogicalExpressionWithBooleanConstant_QuickFix", "8626468694779184315", false);
             intentionProvider.putArgument("operation", binaryOperation);
             intentionProvider.putArgument("value", (Boolean) binaryValue);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
@@ -78,7 +78,7 @@ public class check_BinaryLogicalOperationCanBeSimplified_NonTypesystemRule exten
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(binaryOperation, "The binary logical expression " + ExpressionPresentationUtil.getExpressionPresentation(binaryOperation) + " can be simplified", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3832376534028382760", null, errorTarget);
       {
-        BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SimplifyBinaryLogicalExpressionWithBooleanConstant_QuickFix", false);
+        BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SimplifyBinaryLogicalExpressionWithBooleanConstant_QuickFix", "3832376534028436181", false);
         intentionProvider.putArgument("remainingNode", remainingNode);
         intentionProvider.putArgument("operation", binaryOperation);
         _reporter_2309309498.addIntentionProvider(intentionProvider);

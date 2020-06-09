@@ -36,7 +36,7 @@ public class check_NotExpressionCanBeSimplified_NonTypesystemRule extends Abstra
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(notExpression, "The Not logical expression can be simplified", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3832376534031039831", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SimplifyNotExpression_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SimplifyNotExpression_QuickFix", "3832376534031109486", false);
             intentionProvider.putArgument("value", (Boolean) value);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }

@@ -31,7 +31,7 @@ public class check_PropertyAttribute_NonTypesystemRule extends AbstractNonTypesy
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(propertyAttribute, "Property attribute should have property id", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "6063712545516056435", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.add_PropertyAttribute_id_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.add_PropertyAttribute_id_QuickFix", "6063712545516056439", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
@@ -48,7 +48,7 @@ public class check_PropertyAttribute_NonTypesystemRule extends AbstractNonTypesy
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(propertyAttribute, "Property Attribute is attached to not existing property: " + SPropertyOperations.getString(propertyAttribute, PROPS.propertyId$XlG1) + "(" + reportName + ")", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "6063712545516045327", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.RemoveUndeclaredPropertyAttribute_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.RemoveUndeclaredPropertyAttribute_QuickFix", "6063712545516045352", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
@@ -57,7 +57,7 @@ public class check_PropertyAttribute_NonTypesystemRule extends AbstractNonTypesy
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(propertyAttribute, "Incorrect property name: " + reportName, "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "6063712545516052928", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.fix_PropertyAttribute_name_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.fix_PropertyAttribute_name_QuickFix", "6063712545516052936", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }

@@ -137,7 +137,7 @@ public class typeof_ClassCreator_InferenceRule extends AbstractInferenceRule_Run
             EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2062135263152102048", 0, null);
             {
               BaseQuickFixProvider intentionProvider = null;
-              intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", false);
+              intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "7387411948775284808", false);
               intentionProvider.putArgument("desiredType", gtype);
               intentionProvider.putArgument("expression", arg_var);
               _info_12389875345.addIntentionProvider(intentionProvider);
@@ -151,7 +151,7 @@ public class typeof_ClassCreator_InferenceRule extends AbstractInferenceRule_Run
               EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2062135263152102064", 0, null);
               {
                 BaseQuickFixProvider intentionProvider = null;
-                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", false);
+                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "7387411948772866659", false);
                 intentionProvider.putArgument("desiredType", type_var);
                 intentionProvider.putArgument("expression", arg_var);
                 _info_12389875345.addIntentionProvider(intentionProvider);

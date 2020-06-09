@@ -40,7 +40,7 @@ public class check_EnumConstantMustUseExplicitConstructor_NonTypesystemRule exte
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(enumConstant, "explicit constructor should be used", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1994695549479969067", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveDefaultEnumConstructor_QuickFix", true);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveDefaultEnumConstructor_QuickFix", "1994695549479969070", true);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
@@ -51,7 +51,7 @@ public class check_EnumConstantMustUseExplicitConstructor_NonTypesystemRule exte
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(enumConstant, "no constructor is declared", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4909195013914035846", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SetDefaultEnumConstructurToEnumConstant_QuickFix", true);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SetDefaultEnumConstructurToEnumConstant_QuickFix", "1994695549480847718", true);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }

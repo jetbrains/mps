@@ -39,7 +39,7 @@ public class check_BuildMpsLayout_TestModules_NonTypesystemRule extends Abstract
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(testModuleContent, "The module " + SPropertyOperations.getString(module, PROPS.name$tAp1) + " is not contained in the layout of the build script", "r:f8814f89-9801-40d6-822f-e0e0a3a2c53d(jetbrains.mps.build.mps.tests.typesystem)", "2834134232275895007", null, errorTarget);
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.mps.tests.typesystem.includeIntoLayout_QuickFix", false);
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.mps.tests.typesystem.includeIntoLayout_QuickFix", "2834134232276643490", false);
               intentionProvider.putArgument("project", project);
               intentionProvider.putArgument("module", module);
               _reporter_2309309498.addIntentionProvider(intentionProvider);

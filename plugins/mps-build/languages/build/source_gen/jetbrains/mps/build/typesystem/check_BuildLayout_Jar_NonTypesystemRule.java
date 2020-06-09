@@ -29,7 +29,7 @@ public class check_BuildLayout_Jar_NonTypesystemRule extends AbstractNonTypesyst
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(jarArchive, LINKS.containerName$Mzv5), "should end with `" + BuildLayout_Jar__BehaviorDescriptor.getExpectedExtension_id62K_yvYRytT.invoke(jarArchive) + "'", "r:2349e4dd-6518-4a4c-9022-c7887bed8b52(jetbrains.mps.build.typesystem)", "1979010778009333641", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.typesystem.fixContainerName_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.typesystem.fixContainerName_QuickFix", "1979010778009333642", false);
           intentionProvider.putArgument("newExtension", BuildLayout_Jar__BehaviorDescriptor.getExpectedExtension_id62K_yvYRytT.invoke(jarArchive));
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }

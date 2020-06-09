@@ -36,7 +36,7 @@ public class check_InstanceOf_NonTypesystemRule extends AbstractNonTypesystemRul
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(instanceOfExpression, "Invalid operator precedences for the instanceOf operator", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2643065713351096827", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.FixInstanceOfExpressionPrecedences_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.FixInstanceOfExpressionPrecedences_QuickFix", "2643065713351099141", true);
           intentionProvider.putArgument("expressionRoot", foundRoot);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }

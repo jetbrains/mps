@@ -47,7 +47,7 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
         final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.parameter$AB01);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(templateSwitch, "Parameters count doesn't match that of modified switch", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "490483628479870596", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.fix_MatchParametersOfModifiedSwitch_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.fix_MatchParametersOfModifiedSwitch_QuickFix", "490483628479984885", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
@@ -62,7 +62,7 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
           final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(p1, String.format("Name of parameter #%d, %s, doesn't match name of the original parameter (%s)", i + 1, SPropertyOperations.getString(p1, PROPS.name$tAp1), SPropertyOperations.getString(p2, PROPS.name$tAp1)), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "490483628479871387", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.fix_MatchParametersOfModifiedSwitch_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.fix_MatchParametersOfModifiedSwitch_QuickFix", "490483628479988736", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
@@ -74,7 +74,7 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
           final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.type$54u0);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(p1, String.format("Type of parameter #%d doesn't match type of the original parameter", i + 1), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "490483628479944799", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.fix_MatchParametersOfModifiedSwitch_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.fix_MatchParametersOfModifiedSwitch_QuickFix", "490483628479989443", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
@@ -95,7 +95,7 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
             final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.modifiedSwitch$$U27);
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(templateSwitch, String.format(m, generatorDependency.getModuleName(), SPropertyOperations.getString(modified, PROPS.name$tAp1)), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "6216030778770432994", null, errorTarget);
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.FixExtendsGenerator_QuickFix", false);
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.FixExtendsGenerator_QuickFix", "6216030778770471366", false);
               intentionProvider.putArgument("extendingGenerator", (Generator) module);
               intentionProvider.putArgument("extendedGenerator", generatorDependency);
               _reporter_2309309498.addIntentionProvider(intentionProvider);

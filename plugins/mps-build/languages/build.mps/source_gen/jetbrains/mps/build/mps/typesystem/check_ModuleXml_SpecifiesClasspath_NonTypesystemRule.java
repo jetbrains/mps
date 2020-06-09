@@ -33,7 +33,7 @@ public class check_ModuleXml_SpecifiesClasspath_NonTypesystemRule extends Abstra
         final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.classpathEntries$4ReF);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(n, "Module descriptor inside a jar with compiled classes doesn't specify classpath", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "8488591998065913053", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.mps.typesystem.SetModuleJarClasspathEntry_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.mps.typesystem.SetModuleJarClasspathEntry_QuickFix", "8488591998065968287", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }

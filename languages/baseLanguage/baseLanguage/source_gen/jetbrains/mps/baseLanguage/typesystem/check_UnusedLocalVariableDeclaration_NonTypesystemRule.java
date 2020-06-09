@@ -42,7 +42,7 @@ public class check_UnusedLocalVariableDeclaration_NonTypesystemRule extends Abst
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(localVariableDeclaration, "Unused local variable " + SPropertyOperations.getString(localVariableDeclaration, PROPS.name$tAp1), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "215889526508832630", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedLocalVariable_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedLocalVariable_QuickFix", "7052739266022879819", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }

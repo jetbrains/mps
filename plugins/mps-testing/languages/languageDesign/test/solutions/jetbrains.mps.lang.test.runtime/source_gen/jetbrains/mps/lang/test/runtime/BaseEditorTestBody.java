@@ -32,6 +32,17 @@ import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
 import java.awt.Component;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.errors.item.NodeReportItem;
+import jetbrains.mps.errors.item.QuickFixBase;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.errors.item.QuickFixReportItem;
+import java.util.Collection;
+import jetbrains.mps.errors.item.EditorQuickFix;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.errors.item.QuickFixRuntimeAdapter;
 import org.jetbrains.mps.util.Condition;
 import jetbrains.mps.openapi.intentions.IntentionExecutable;
 import jetbrains.mps.openapi.editor.EditorContext;
@@ -279,6 +290,44 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
     new IntentionTester(this, true).invokeMatchingIntention(new MatchIntentionById(id));
   }
 
+  protected void applyQuickFix(@Nullable final String quickFixNodeId) throws InterruptedException, InvocationTargetException {
+    runUndoableCommandInEDTAndWait(new Runnable() {
+      public void run() {
+        SNode checkedNode = getEditorContext().getSelectedNode();
+        SRepository repository = SNodeOperations.getModel(checkedNode).getRepository();
+        TestsErrorsChecker checker = new TestsErrorsChecker(myBefore);
+        Iterable<NodeReportItem> reports = checker.getErrors(checkedNode);
+        QuickFixBase fixToRun = null;
+        for (NodeReportItem report : Sequence.fromIterable(reports)) {
+          if (report instanceof QuickFixReportItem.EditorQuickfixReportItem) {
+            Collection<EditorQuickFix> fixes = QuickFixReportItem.FLAVOUR_EDITOR_QUICKFIX.get((QuickFixReportItem.EditorQuickfixReportItem) report);
+            for (EditorQuickFix fix : CollectionSequence.fromCollection(fixes)) {
+              if (matches(quickFixNodeId, fix)) {
+                if (fixToRun != null) {
+                  org.junit.Assert.fail("More than one quick fix to run is available");
+                  return;
+                }
+                fixToRun = fix;
+              }
+            }
+          }
+        }
+        if (fixToRun != null) {
+          fixToRun.execute(repository);
+        } else {
+          org.junit.Assert.fail("QuickFix not found: " + ((quickFixNodeId == null ? "<theOneAvailable>" : quickFixNodeId)));
+        }
+      }
+    });
+  }
+
+  private boolean matches(@Nullable String quickFixNodeId, @NotNull QuickFixBase fix) {
+    if (quickFixNodeId != null && fix instanceof QuickFixRuntimeAdapter) {
+      QuickFixRuntimeAdapter adapter = (QuickFixRuntimeAdapter) fix;
+      return quickFixNodeId.equals(adapter.getIntentionId());
+    }
+    return true;
+  }
 
   protected void invokeParameterizedIntention(String id, Object parameter, SNode node) throws InterruptedException, InvocationTargetException {
     invokeMatchingIntention(node, new MatchIntentionByIdAndParameter(id, parameter));

@@ -35,7 +35,7 @@ public class check_InnerClassesCantHaveStaticDeclarations_NonTypesystemRule exte
         final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classConcept, "Non-static inner classes cannot have static declarations", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "498633765600371255", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeInnerClassStatic_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeInnerClassStatic_QuickFix", "498633765600371269", false);
           intentionProvider.putArgument("innerClass", classConcept);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }

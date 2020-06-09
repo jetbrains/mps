@@ -1870,5 +1870,63 @@
       <ref role="20lvS9" node="4XAkAuboFNL" resolve="AutodeletableChild" />
     </node>
   </node>
+  <node concept="1TIwiD" id="6Y7keYNGPL5">
+    <property role="EcuMT" value="8036481050508221509" />
+    <property role="TrG5h" value="QuickFixTop" />
+    <property role="34LRSv" value="quic fix test" />
+    <property role="3GE5qa" value="quickfix" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="6Y7keYNGPLc" role="1TKVEi">
+      <property role="IQ2ns" value="8036481050508221516" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="statement" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="6Y7keYNGPL6" resolve="QuickFixStatement" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6Y7keYNGPL6">
+    <property role="EcuMT" value="8036481050508221510" />
+    <property role="3GE5qa" value="quickfix" />
+    <property role="TrG5h" value="QuickFixStatement" />
+    <property role="34LRSv" value="statement" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="6Y7keYNGPLa" role="1TKVEi">
+      <property role="IQ2ns" value="8036481050508221514" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="trigger" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="6Y7keYNGPL7" resolve="QuickFixErrorTrigger" />
+    </node>
+    <node concept="1TJgyj" id="6Y7keYNK3Kn" role="1TKVEi">
+      <property role="IQ2ns" value="8036481050509065239" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="resolution" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="6Y7keYNK2i0" resolve="QuickFixResolution" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6Y7keYNGPL7">
+    <property role="EcuMT" value="8036481050508221511" />
+    <property role="3GE5qa" value="quickfix" />
+    <property role="TrG5h" value="QuickFixErrorTrigger" />
+    <property role="34LRSv" value="trigger" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="6Y7keYNGPL8" role="1TKVEl">
+      <property role="IQ2nx" value="8036481050508221512" />
+      <property role="TrG5h" value="message" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6Y7keYNK2i0">
+    <property role="EcuMT" value="8036481050509059200" />
+    <property role="3GE5qa" value="quickfix" />
+    <property role="TrG5h" value="QuickFixResolution" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="6Y7keYNK2i1" role="1TKVEl">
+      <property role="IQ2nx" value="8036481050509059201" />
+      <property role="TrG5h" value="message" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
 </model>
 

@@ -29,7 +29,7 @@ public class check_ConstructorInvocationStatementHasConstructor_NonTypesystemRul
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(constructorInvocation, "no reference to constructor", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1241543946857", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SetConstructorDeclaration_QuickFix", true);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SetConstructorDeclaration_QuickFix", "1241544148188", true);
             intentionProvider.putArgument("constructorInvocation", constructorInvocation);
             intentionProvider.putArgument("constructorDeclaration", SNodeOperations.cast(referent, CONCEPTS.ConstructorDeclaration$5U));
             _reporter_2309309498.addIntentionProvider(intentionProvider);

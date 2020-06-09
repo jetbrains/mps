@@ -100,7 +100,7 @@ public class check_FieldDeclarationCanBeLocalVariable_NonTypesystemRule extends 
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(variableDeclaration, "Field can be converted into a local variable", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6640766779592666289", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ConvertFieldToLocalVariable_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ConvertFieldToLocalVariable_QuickFix", "6640766779592729705", false);
             intentionProvider.putArgument("method", Sequence.fromIterable(methods).first());
             intentionProvider.putArgument("alls", alls);
             _reporter_2309309498.addIntentionProvider(intentionProvider);

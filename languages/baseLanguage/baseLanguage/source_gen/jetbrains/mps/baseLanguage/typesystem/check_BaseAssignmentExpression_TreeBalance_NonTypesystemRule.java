@@ -25,7 +25,7 @@ public class check_BaseAssignmentExpression_TreeBalance_NonTypesystemRule extend
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(baseAssignmentExpression, "Unbalanced assignment expression", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8526811989163701544", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RebalanceBaseAssignmentExpression_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RebalanceBaseAssignmentExpression_QuickFix", "8526811989163705231", true);
           intentionProvider.putArgument("child", baseAssignmentExpression);
           intentionProvider.putArgument("parent", SNodeOperations.cast(SNodeOperations.getParent(baseAssignmentExpression), CONCEPTS.BinaryOperation$vf));
           _reporter_2309309498.addIntentionProvider(intentionProvider);

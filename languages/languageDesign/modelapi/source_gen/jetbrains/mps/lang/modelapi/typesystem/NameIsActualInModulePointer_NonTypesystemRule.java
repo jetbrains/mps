@@ -42,7 +42,7 @@ public class NameIsActualInModulePointer_NonTypesystemRule extends AbstractNonTy
       final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.moduleName$ZUIo);
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(ptr, String.format("Module name doesn't reflect actual value %s", actualName), "r:66a90408-763b-417f-b164-4efaf06432ea(jetbrains.mps.lang.modelapi.typesystem)", "2510235753679592683", null, errorTarget);
       {
-        BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.modelapi.typesystem.UpdateModulePointerName_QuickFix", false);
+        BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.modelapi.typesystem.UpdateModulePointerName_QuickFix", "2510235753679597037", false);
         intentionProvider.putArgument("actualName", actualName);
         _reporter_2309309498.addIntentionProvider(intentionProvider);
       }

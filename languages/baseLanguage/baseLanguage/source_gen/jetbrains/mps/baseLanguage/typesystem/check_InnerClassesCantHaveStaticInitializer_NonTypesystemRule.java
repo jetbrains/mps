@@ -30,7 +30,7 @@ public class check_InnerClassesCantHaveStaticInitializer_NonTypesystemRule exten
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(staticInitializer, "Inner classes cannot have static initializer", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "498633765599292849", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeStaticInitializerNotStatic_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeStaticInitializerNotStatic_QuickFix", "498633765600378263", false);
             intentionProvider.putArgument("staticInitializer", staticInitializer);
             intentionProvider.putArgument("containingClass", classConcept);
             _reporter_2309309498.addIntentionProvider(intentionProvider);

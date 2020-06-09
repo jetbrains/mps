@@ -26,7 +26,7 @@ public class check_CardinalityVisibility_NonTypesystemRule extends AbstractNonTy
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(compoundComponentWithCardinality, "Cardinality of 1 does not need to be shown", "r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)", "6567999678834799886", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.samples.ChemMastery.typesystem.HideCardinalityOne_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.samples.ChemMastery.typesystem.HideCardinalityOne_QuickFix", "6567999678834810834", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }

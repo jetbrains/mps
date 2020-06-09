@@ -37,7 +37,7 @@ public class check_BuildLayout_Tar_NonTypesystemRule extends AbstractNonTypesyst
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(tarArchive, LINKS.containerName$Mzv5), "should end with `" + ext + "'", "r:2349e4dd-6518-4a4c-9022-c7887bed8b52(jetbrains.mps.build.typesystem)", "1979010778009323432", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.typesystem.fixContainerName_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.typesystem.fixContainerName_QuickFix", "1979010778009329271", false);
           intentionProvider.putArgument("newExtension", ext);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }

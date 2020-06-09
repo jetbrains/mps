@@ -49,7 +49,7 @@ public class check_LightQuotationNode_requiredInitializer_NonTypesystemRule exte
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, message, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "3741790230810467494", null, errorTarget);
               {
-                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addLinkValue_QuickFix", false);
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addLinkValue_QuickFix", "3741790230810467503", false);
                 intentionProvider.putArgument("link", link);
                 _reporter_2309309498.addIntentionProvider(intentionProvider);
               }
@@ -60,7 +60,7 @@ public class check_LightQuotationNode_requiredInitializer_NonTypesystemRule exte
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(node, message, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "5721350981296883806", null, errorTarget);
               {
-                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addLinkValue_QuickFix", false);
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addLinkValue_QuickFix", "5721350981296883816", false);
                 intentionProvider.putArgument("link", link);
                 _reporter_2309309498.addIntentionProvider(intentionProvider);
               }
@@ -82,7 +82,7 @@ public class check_LightQuotationNode_requiredInitializer_NonTypesystemRule exte
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, message, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "5721350981296887946", null, errorTarget);
               {
-                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addLinkValue_QuickFix", false);
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addLinkValue_QuickFix", "5721350981296887949", false);
                 intentionProvider.putArgument("link", referenceLink);
                 _reporter_2309309498.addIntentionProvider(intentionProvider);
               }
@@ -93,7 +93,7 @@ public class check_LightQuotationNode_requiredInitializer_NonTypesystemRule exte
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(node, message, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "5721350981296887955", null, errorTarget);
               {
-                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addLinkValue_QuickFix", false);
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addLinkValue_QuickFix", "5721350981296887958", false);
                 intentionProvider.putArgument("link", referenceLink);
                 _reporter_2309309498.addIntentionProvider(intentionProvider);
               }
@@ -115,7 +115,7 @@ public class check_LightQuotationNode_requiredInitializer_NonTypesystemRule exte
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, message, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "5721350981296906886", null, errorTarget);
               {
-                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addPropertyValue_QuickFix", false);
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addPropertyValue_QuickFix", "5721350981296906889", false);
                 intentionProvider.putArgument("property", property);
                 _reporter_2309309498.addIntentionProvider(intentionProvider);
               }
@@ -126,7 +126,7 @@ public class check_LightQuotationNode_requiredInitializer_NonTypesystemRule exte
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(node, message, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "5721350981296942620", null, errorTarget);
               {
-                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addPropertyValue_QuickFix", false);
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.quotation.typesystem.addPropertyValue_QuickFix", "5721350981296942624", false);
                 intentionProvider.putArgument("property", property);
                 _reporter_2309309498.addIntentionProvider(intentionProvider);
               }

@@ -43,7 +43,7 @@ public class check_EnumerationDataTypeDeclaration_NonTypesystemRule extends Abst
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(enumerationDataTypeDeclaration, "Member identifiers could be derived from internal values, since they are specified for all enumeration members", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1447401809585273479", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.EnableDeriveFromInternalValues_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.EnableDeriveFromInternalValues_QuickFix", "1447401809585300068", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }

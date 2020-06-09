@@ -39,7 +39,7 @@ public class check_CellModel_RefCell_NotEditable_InferenceRule extends AbstractI
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(refCell, "It will be possible to change property " + SPropertyOperations.getString(SLinkOperations.getTarget(propCell, LINKS.relationDeclaration$wbRV), PROPS.name$tAp1) + " of the referenced node using this cell. In most cases it's not the desired behavior.", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "9161584445026704378", null, errorTarget);
       {
-        BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.editor.typesystem.FixRefCellReadOnly_QuickFix", false);
+        BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.editor.typesystem.FixRefCellReadOnly_QuickFix", "9161584445026747754", false);
         intentionProvider.putArgument("propCell", propCell);
         _reporter_2309309498.addIntentionProvider(intentionProvider);
       }

@@ -29,7 +29,7 @@ public class check_Expression_NonTypesystemRule extends AbstractNonTypesystemRul
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(expr, "The condition is always " + value, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SimplifyCondition_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SimplifyCondition_QuickFix", "8626468694781677016", false);
             intentionProvider.putArgument("newValue", value.toString());
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }

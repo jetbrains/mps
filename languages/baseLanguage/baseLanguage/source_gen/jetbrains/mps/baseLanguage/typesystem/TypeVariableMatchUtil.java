@@ -146,7 +146,7 @@ public class TypeVariableMatchUtil {
                   EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5977092449933510825", 0, null);
                   {
                     BaseQuickFixProvider intentionProvider = null;
-                    intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", false);
+                    intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "5977092449933510826", false);
                     intentionProvider.putArgument("desiredType", _type);
                     intentionProvider.putArgument("expression", actualArgument);
                     _info_12389875345.addIntentionProvider(intentionProvider);
@@ -163,7 +163,7 @@ public class TypeVariableMatchUtil {
               EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5977092449933510848", 0, null);
               {
                 BaseQuickFixProvider intentionProvider = null;
-                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", false);
+                intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "5977092449933510849", false);
                 intentionProvider.putArgument("desiredType", _type);
                 intentionProvider.putArgument("expression", actualArgument);
                 _info_12389875345.addIntentionProvider(intentionProvider);

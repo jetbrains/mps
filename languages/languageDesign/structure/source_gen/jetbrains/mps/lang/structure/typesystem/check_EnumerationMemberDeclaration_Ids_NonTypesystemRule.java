@@ -39,7 +39,7 @@ public class check_EnumerationMemberDeclaration_Ids_NonTypesystemRule extends Ab
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(emd, "Absent member id.\n" + "Please invoke the \"Correct ID\" intention on it", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1421157252384318991", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.CorrectDuplicateId_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.CorrectDuplicateId_QuickFix", "1421157252384318992", false);
           intentionProvider.putArgument("d", ed);
           intentionProvider.putArgument("m", emd);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
@@ -54,7 +54,7 @@ public class check_EnumerationMemberDeclaration_Ids_NonTypesystemRule extends Ab
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(emd, "Duplicate member id.\n" + "Please invoke the \"Correct ID\" intention on it", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1421157252384533593", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.CorrectDuplicateId_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.CorrectDuplicateId_QuickFix", "1421157252384533594", false);
           intentionProvider.putArgument("d", ed);
           intentionProvider.putArgument("m", emd);
           _reporter_2309309498.addIntentionProvider(intentionProvider);

@@ -37,7 +37,7 @@ public class check_LinkAttribute_NonTypesystemRule extends AbstractNonTypesystem
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(linkAttribute, "Link attribute should have link id", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "6063712545515033463", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.add_LinkAttribute_id_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.add_LinkAttribute_id_QuickFix", "6063712545515033467", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
@@ -54,7 +54,7 @@ public class check_LinkAttribute_NonTypesystemRule extends AbstractNonTypesystem
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(linkAttribute, "Reference Attribute is attached to not existing reference link: " + SPropertyOperations.getString(linkAttribute, PROPS.linkId$nvK6) + "(" + reportName + ")", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "5394253938404265823", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.RemoveUndeclaredLinkAttribute_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.RemoveUndeclaredLinkAttribute_QuickFix", "5394253938404473531", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
@@ -63,7 +63,7 @@ public class check_LinkAttribute_NonTypesystemRule extends AbstractNonTypesystem
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(linkAttribute, "Incorrect reference link name: " + reportName, "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "6063712545515037085", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.fix_LinkAttribute_name_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.fix_LinkAttribute_name_QuickFix", "6063712545515037091", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }

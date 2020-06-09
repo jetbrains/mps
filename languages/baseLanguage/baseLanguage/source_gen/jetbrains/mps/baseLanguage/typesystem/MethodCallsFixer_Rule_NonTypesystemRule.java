@@ -36,7 +36,7 @@ public class MethodCallsFixer_Rule_NonTypesystemRule extends AbstractNonTypesyst
           final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.baseMethodDeclaration$$A7i);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(methodCallNode, "Unresolved reference to method declaration", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "869282237625475452", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MethodCallsFixer_Quickfix_QuickFix", true);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MethodCallsFixer_Quickfix_QuickFix", "869282237625475997", true);
             intentionProvider.putArgument("methodCall", methodCallNode);
             intentionProvider.putArgument("properTarget", newTarget);
             _reporter_2309309498.addIntentionProvider(intentionProvider);

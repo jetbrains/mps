@@ -40,7 +40,7 @@ public class check_IExtensibleMenuPart_hasAllRequiredFeatures_NonTypesystemRule 
           }
         }, true), ", "), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "5126791860786257589", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.editor.typesystem.fix_MissingFeaturesForOneLocation_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.editor.typesystem.fix_MissingFeaturesForOneLocation_QuickFix", "5126791860786309780", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }

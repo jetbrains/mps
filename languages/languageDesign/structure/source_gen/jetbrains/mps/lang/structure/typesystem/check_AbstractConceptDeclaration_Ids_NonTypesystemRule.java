@@ -38,7 +38,7 @@ public class check_AbstractConceptDeclaration_Ids_NonTypesystemRule extends Abst
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(acd, "Concept id is not defined.\n" + "Please run MainMenu->Migration->Migrations->Language Migrations->j.m.lang.structure->Set Ids\n" + "If this concept was created manually, invoke the \"Generate IDs\" intention on it", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1587916991969781666", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.GenerateConceptIds_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.GenerateConceptIds_QuickFix", "1587916991969947421", false);
           intentionProvider.putArgument("c", acd);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
@@ -53,7 +53,7 @@ public class check_AbstractConceptDeclaration_Ids_NonTypesystemRule extends Abst
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(acd, "Duplicate concept id.\n" + "Please invoke the \"Correct ID\" intention on it", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "5424895381998262898", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.CorrectDuplicateId_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.CorrectDuplicateId_QuickFix", "5424895381998262899", false);
             intentionProvider.putArgument("c", acd);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
@@ -67,7 +67,7 @@ public class check_AbstractConceptDeclaration_Ids_NonTypesystemRule extends Abst
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(p, "Property id is not defined.\n" + "Please run MainMenu->Migration->Migrations->Language Migrations->j.m.lang.structure->Set Ids\n" + "If this property was created manually, invoke the \"Generate IDs\" intention on it", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "241647608299548534", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.GenerateConceptIds_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.GenerateConceptIds_QuickFix", "241647608299548535", false);
             intentionProvider.putArgument("c", acd);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
@@ -82,7 +82,7 @@ public class check_AbstractConceptDeclaration_Ids_NonTypesystemRule extends Abst
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(p, "Duplicate property id.\n" + "Please invoke the \"Correct ID\" intention on it", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "5424895381998286923", null, errorTarget);
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.CorrectDuplicateId_QuickFix", false);
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.CorrectDuplicateId_QuickFix", "5424895381998296115", false);
               intentionProvider.putArgument("p", p);
               _reporter_2309309498.addIntentionProvider(intentionProvider);
             }
@@ -97,7 +97,7 @@ public class check_AbstractConceptDeclaration_Ids_NonTypesystemRule extends Abst
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(l, "Link id is not defined.\n" + "Please run MainMenu->Migration->Migrations->Language Migrations->j.m.lang.structure->Set Ids\n" + "If this link was created manually, invoke the \"Generate IDs\" intention on it", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "241647608299555835", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.GenerateConceptIds_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.GenerateConceptIds_QuickFix", "241647608299555836", false);
             intentionProvider.putArgument("c", acd);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
@@ -112,7 +112,7 @@ public class check_AbstractConceptDeclaration_Ids_NonTypesystemRule extends Abst
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(l, "Duplicate link id.\n" + "Please invoke the \"Correct ID\" intention on it", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "5424895381998288260", null, errorTarget);
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.CorrectDuplicateId_QuickFix", false);
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.CorrectDuplicateId_QuickFix", "5424895381998288261", false);
               intentionProvider.putArgument("l", l);
               _reporter_2309309498.addIntentionProvider(intentionProvider);
             }

@@ -27,7 +27,7 @@ public class check_StringTypeClassifierType_NonTypesystemRule extends AbstractNo
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(node, "It's recommended to use string type", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1225197259595", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ConvertString_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ConvertString_QuickFix", "3383150178652417884", false);
           intentionProvider.putArgument("stringToConvert", node);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }

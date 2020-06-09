@@ -44,7 +44,7 @@ public class NameIsActualInModelPointer_NonTypesystemRule extends AbstractNonTyp
       final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.name$JZuS);
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(ptr, String.format("Model name doesn't reflect actual value %s", actualName), "r:66a90408-763b-417f-b164-4efaf06432ea(jetbrains.mps.lang.modelapi.typesystem)", "2510235753679604963", null, errorTarget);
       {
-        BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.modelapi.typesystem.UpdateModelPointerName_QuickFix", false);
+        BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.modelapi.typesystem.UpdateModelPointerName_QuickFix", "2510235753679627867", false);
         _reporter_2309309498.addIntentionProvider(intentionProvider);
       }
     }

@@ -27,7 +27,7 @@ public class check_MultiForEachStatement_NonTypesystemRule extends AbstractNonTy
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(multiForEachStatement, "Multiple foreah with single variable", "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "8656797459615262139", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.collections.typesystem.ConvertToSimpleForeach_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.collections.typesystem.ConvertToSimpleForeach_QuickFix", "8656797459615262365", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }

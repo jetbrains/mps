@@ -32,7 +32,7 @@ public class check_ClassDoesNotExtendFinalClass_NonTypesystemRule extends Abstra
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(superclass, "Cannot inherit from final '" + SPropertyOperations.getString(SLinkOperations.getTarget(superclass, LINKS.classifier$pQ_R), PROPS.name$tAp1) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3293010995237528278", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeClassNotFinal_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeClassNotFinal_QuickFix", "3950519302595622145", false);
             intentionProvider.putArgument("finalClass", SNodeOperations.cast(SLinkOperations.getTarget(superclass, LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY));
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }

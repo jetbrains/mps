@@ -28,7 +28,7 @@ public class check_BuildLayout_Zip_NonTypesystemRule extends AbstractNonTypesyst
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(zipArchive, LINKS.containerName$Mzv5), "should end with `.zip'", "r:2349e4dd-6518-4a4c-9022-c7887bed8b52(jetbrains.mps.build.typesystem)", "1979010778009332569", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.typesystem.fixContainerName_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.typesystem.fixContainerName_QuickFix", "1979010778009332570", false);
           intentionProvider.putArgument("newExtension", ".zip");
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }

@@ -32,7 +32,7 @@ public class check_ChildAttribute_NonTypesystemRule extends AbstractNonTypesyste
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(childAttribute, "Child attribute should have link id", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "6063712545515824603", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.add_ChildAttribute_id_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.add_ChildAttribute_id_QuickFix", "6063712545515824607", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
@@ -49,7 +49,7 @@ public class check_ChildAttribute_NonTypesystemRule extends AbstractNonTypesyste
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(childAttribute, "Child Attribute is attached to not existing aggregation link: " + SPropertyOperations.getString(childAttribute, PROPS.linkId$TmTG) + "(" + reportName + ")", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "709746936026611133", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.RemoveUndeclaredLinkAttribute_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.RemoveUndeclaredLinkAttribute_QuickFix", "709746936026611158", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
@@ -58,7 +58,7 @@ public class check_ChildAttribute_NonTypesystemRule extends AbstractNonTypesyste
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(childAttribute, "Incorrect aggregation link name: " + reportName, "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "6063712545516066366", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.fix_ChildAttribute_name_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.fix_ChildAttribute_name_QuickFix", "6063712545516066372", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }

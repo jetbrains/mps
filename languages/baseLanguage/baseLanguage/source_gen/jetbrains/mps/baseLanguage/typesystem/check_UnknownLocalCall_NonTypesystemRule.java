@@ -26,7 +26,7 @@ public class check_UnknownLocalCall_NonTypesystemRule extends AbstractNonTypesys
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(unkCall, "Resolved local call", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6021327890422133162", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ResolvedUnknownNode_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ResolvedUnknownNode_QuickFix", "6021327890422133177", true);
           intentionProvider.putArgument("unknownNode", unkCall);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }

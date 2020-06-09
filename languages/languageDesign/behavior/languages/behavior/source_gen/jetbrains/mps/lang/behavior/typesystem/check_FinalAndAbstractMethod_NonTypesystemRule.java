@@ -26,12 +26,12 @@ public class check_FinalAndAbstractMethod_NonTypesystemRule extends AbstractNonT
         final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(conceptMethodDeclaration, "Illegal combination of modifiers 'abstract' and 'final'", "r:f7f8a091-d98d-402d-85c4-5f05cb2b8c61(jetbrains.mps.lang.behavior.typesystem)", "7868761255934417558", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.behavior.typesystem.RemoveFinalFromTheMethod_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.behavior.typesystem.RemoveFinalFromTheMethod_QuickFix", "8014340958386555618", false);
           intentionProvider.putArgument("conceptMethod", conceptMethodDeclaration);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.behavior.typesystem.RemoveAbstractFromTheMethod_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.behavior.typesystem.RemoveAbstractFromTheMethod_QuickFix", "8014340958386893351", false);
           intentionProvider.putArgument("conceptMethod", conceptMethodDeclaration);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }

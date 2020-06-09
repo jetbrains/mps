@@ -48,7 +48,7 @@ public class check_IfModuleUsesResources_NonTypesystemRule extends AbstractNonTy
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(buildModule, "Module uses language that may produce resource files. Need resources entry to get these copied during build", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "3890521992564877871", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.mps.typesystem.addModuleResources_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.mps.typesystem.addModuleResources_QuickFix", "3890521992564879039", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }

@@ -34,7 +34,7 @@ public class NonFinalVariablesInAnonymousClass_NonTypesystemRule extends Abstrac
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(variableReference, "Variable must be final", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1239123004897", null, errorTarget);
               {
-                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeVariableFinal_QuickFix", false);
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeVariableFinal_QuickFix", "1241101113554", false);
                 intentionProvider.putArgument("varRef", variableReference);
                 _reporter_2309309498.addIntentionProvider(intentionProvider);
               }

@@ -441,8 +441,8 @@
     <file name="ResourceClassifierType_notIn_ResourceTypeDeclaration_NonTypesystemRule.java">
       <node id="4902420589280088721" at="24,7,25,66" concept="5" />
       <node id="4902420589280088721" at="25,66,26,236" concept="5" />
-      <node id="4902420589280150914" at="27,9,28,180" concept="5" />
-      <node id="4902420589280150914" at="28,180,29,71" concept="2" />
+      <node id="4902420589280150914" at="27,9,28,203" concept="5" />
+      <node id="4902420589280150914" at="28,203,29,71" concept="2" />
       <node id="4902420589280075077" at="34,50,35,46" concept="6" />
       <node id="4902420589280075077" at="37,68,38,102" concept="6" />
       <node id="4902420589280075077" at="40,30,41,17" concept="6" />

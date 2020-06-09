@@ -39,7 +39,7 @@ public class check_TernaryOperationCanBeSimplified_NonTypesystemRule extends Abs
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(ternaryOperatorExpression, LINKS.condition$CEb4), "The ternary operator condition is always " + value, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2857825852308875366", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SimplifyBinaryLogicalExpressionWithBooleanConstant_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SimplifyBinaryLogicalExpressionWithBooleanConstant_QuickFix", "2857825852308875369", false);
             intentionProvider.putArgument("remainingNode", remainingNode);
             intentionProvider.putArgument("operation", ternaryOperatorExpression);
             _reporter_2309309498.addIntentionProvider(intentionProvider);

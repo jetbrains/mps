@@ -49,7 +49,7 @@ public class check_Root_MappingRule_NonTypesystemRule extends AbstractNonTypesys
           final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.template$FjUa);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(rule, String.format("Root template %s misses annotation", (SNodeOperations.isInstanceOf(template, CONCEPTS.INamedConcept$nV) ? SPropertyOperations.getString(SNodeOperations.cast(template, CONCEPTS.INamedConcept$nV), PROPS.name$tAp1) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(template))), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "7312097483936371789", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.FixRootTemplateAnnotation_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.FixRootTemplateAnnotation_QuickFix", "7312097483936586160", false);
             intentionProvider.putArgument("rule", rule);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }

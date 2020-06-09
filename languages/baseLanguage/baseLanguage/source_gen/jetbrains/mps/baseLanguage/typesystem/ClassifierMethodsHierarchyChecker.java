@@ -78,7 +78,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
                 final MessageTarget errorTarget = new NodeMessageTarget();
                 IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(myNodeToReport, MessageFormat.format(msg, SPropertyOperations.getString(SNodeOperations.cast(myNodeToReport, CONCEPTS.INamedConcept$nV), PROPS.name$tAp1), SPropertyOperations.getString(abstractMethod, PROPS.name$tAp1), SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(abstractMethod), CONCEPTS.INamedConcept$nV), PROPS.name$tAp1)), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7861981782410371482", null, errorTarget);
                 {
-                  BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeClassAbstract_QuickFix", false);
+                  BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeClassAbstract_QuickFix", "7861981782410371509", false);
                   _reporter_2309309498.addIntentionProvider(intentionProvider);
                 }
               }
@@ -120,7 +120,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(method, "The method '" + fullName(method) + "' cannot override the final method '" + fullName(baseMethod) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3950519302592864485", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MatchVisibility_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MatchVisibility_QuickFix", "3950519302592872394", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
@@ -155,7 +155,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(method, "Trying to assign weaker privileges for the method '" + SPropertyOperations.getString(method, PROPS.name$tAp1) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3950519302595116711", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MatchVisibility_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MatchVisibility_QuickFix", "3950519302595116714", false);
             intentionProvider.putArgument("visibility", baseVisibility);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }

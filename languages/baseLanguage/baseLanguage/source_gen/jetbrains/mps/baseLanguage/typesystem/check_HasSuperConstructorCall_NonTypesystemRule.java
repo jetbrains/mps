@@ -39,7 +39,7 @@ public class check_HasSuperConstructorCall_NonTypesystemRule extends AbstractNon
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(constructorDeclaration, "there is no default constructor available in superclass " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(superClass), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7885548432925341377", null, errorTarget);
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.CreateDefaultConstructorInSuperClass_QuickFix", false);
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.CreateDefaultConstructorInSuperClass_QuickFix", "7885548432925341384", false);
               intentionProvider.putArgument("superClass", superClass);
               _reporter_2309309498.addIntentionProvider(intentionProvider);
             }

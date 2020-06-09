@@ -28,7 +28,7 @@ public class check_ClassifierMethodMemberVisibilityInInterfaces_NonTypesystemRul
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(method, LINKS.visibility$2GiC), "Modifier 'protected' is not allowed here", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4239960020344814997", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveProtected_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveProtected_QuickFix", "4239960020344841391", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }

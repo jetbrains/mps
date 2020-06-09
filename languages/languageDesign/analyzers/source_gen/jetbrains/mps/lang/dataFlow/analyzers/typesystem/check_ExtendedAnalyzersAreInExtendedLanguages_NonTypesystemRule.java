@@ -49,7 +49,7 @@ public class check_ExtendedAnalyzersAreInExtendedLanguages_NonTypesystemRule ext
         final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(rule, "language " + analyzerLanguage.getModuleName() + " of analyzer " + SPropertyOperations.getString(analyzer, PROPS.name$tAp1) + " is not extended by " + ruleLanguage.getModuleName(), "r:139daa25-c5a7-4ac9-85a2-eb14d22e8f56(jetbrains.mps.lang.dataFlow.analyzers.typesystem)", "1235136520823", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.AddExtendedLanguage_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.AddExtendedLanguage_QuickFix", "5837229161636473320", false);
           intentionProvider.putArgument("extLang", analyzerLanguage);
           intentionProvider.putArgument("lang", ruleLanguage);
           _reporter_2309309498.addIntentionProvider(intentionProvider);

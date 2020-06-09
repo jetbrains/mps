@@ -78,8 +78,8 @@
     <file name="check_ExplicitBond_NonTypesystemRule.java">
       <node id="3123291046851157167" at="24,7,25,66" concept="7" />
       <node id="3123291046851157167" at="25,66,26,265" concept="7" />
-      <node id="3123291046851203355" at="27,9,28,160" concept="7" />
-      <node id="3123291046851203355" at="28,160,29,71" concept="2" />
+      <node id="3123291046851203355" at="27,9,28,183" concept="7" />
+      <node id="3123291046851203355" at="28,183,29,71" concept="2" />
       <node id="3123291046851144672" at="34,50,35,36" concept="8" />
       <node id="3123291046851144672" at="37,68,38,102" concept="8" />
       <node id="3123291046851144672" at="40,30,41,17" concept="8" />
@@ -287,8 +287,8 @@
     <file name="check_CardinalityVisibility_NonTypesystemRule.java">
       <node id="6567999678834799886" at="25,7,26,66" concept="7" />
       <node id="6567999678834799886" at="26,66,27,290" concept="7" />
-      <node id="6567999678834810834" at="28,9,29,159" concept="7" />
-      <node id="6567999678834810834" at="29,159,30,71" concept="2" />
+      <node id="6567999678834810834" at="28,9,29,182" concept="7" />
+      <node id="6567999678834810834" at="29,182,30,71" concept="2" />
       <node id="6567999678834787901" at="35,50,36,56" concept="8" />
       <node id="6567999678834787901" at="38,68,39,102" concept="8" />
       <node id="6567999678834787901" at="41,30,42,17" concept="8" />

@@ -32,7 +32,7 @@ public class check_RedundantSmartReferenceAttribute_NonTypesystemRule extends Ab
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(attr, "'smart reference' attribute used for abstract concept", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "3455926958821554247", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.fix_RedundantSmartReferenceAttribute_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.fix_RedundantSmartReferenceAttribute_QuickFix", "3455926958821772079", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
@@ -43,7 +43,7 @@ public class check_RedundantSmartReferenceAttribute_NonTypesystemRule extends Ab
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(attr, "Trivial 'smart reference' attribute can be dropped", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "3455926958821552685", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.fix_RedundantSmartReferenceAttribute_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.fix_RedundantSmartReferenceAttribute_QuickFix", "3455926958821769793", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }

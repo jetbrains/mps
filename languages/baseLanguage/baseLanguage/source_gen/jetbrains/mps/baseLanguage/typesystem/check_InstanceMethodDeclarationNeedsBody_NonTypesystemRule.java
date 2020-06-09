@@ -28,7 +28,7 @@ public class check_InstanceMethodDeclarationNeedsBody_NonTypesystemRule extends 
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(instanceMethodDeclaration, "The method body can be empty", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3054699313861830628", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ClearMethodBody_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ClearMethodBody_QuickFix", "3054699313861876570", true);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }

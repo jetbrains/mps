@@ -21,6 +21,7 @@ import jetbrains.mps.util.NameUtil;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.HashMap;
@@ -29,17 +30,31 @@ import java.util.Map;
 public class BaseQuickFixProvider implements QuickFixProvider {
   private QuickFix_Runtime myQuickFix;
   private final String myClassFQName;
+  private final String myIntentionId;
   private boolean myExecuteImmediately = false;
   private Map<String, Object> myMap = new HashMap<>();
 
   public BaseQuickFixProvider(String classFQName) {
     myClassFQName = classFQName;
     myQuickFix = null;
+    this.myIntentionId = null;
+  }
+
+  public BaseQuickFixProvider(String classFQName, String intentionId, boolean executeImmediately) {
+    myClassFQName = classFQName;
+    this.myIntentionId = intentionId;
+    this.myExecuteImmediately = executeImmediately;
   }
 
   public BaseQuickFixProvider(String classFQName, boolean executeImmediately) {
     this(classFQName);
     myExecuteImmediately = executeImmediately;
+  }
+
+  @Override
+  @Nullable
+  public String getIntentionId() {
+    return myIntentionId;
   }
 
   public void putArgument(String key, Object argument) {

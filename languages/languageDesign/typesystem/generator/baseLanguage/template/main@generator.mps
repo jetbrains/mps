@@ -8360,7 +8360,7 @@
                 </node>
                 <node concept="2ShNRf" id="23iYu8ExfPD" role="33vP2m">
                   <node concept="1pGfFk" id="23iYu8ExfPE" role="2ShVmc">
-                    <ref role="37wK5l" to="2gg1:~BaseQuickFixProvider.&lt;init&gt;(java.lang.String,boolean)" resolve="BaseQuickFixProvider" />
+                    <ref role="37wK5l" to="2gg1:~BaseQuickFixProvider.&lt;init&gt;(java.lang.String,java.lang.String,boolean)" resolve="BaseQuickFixProvider" />
                     <node concept="Xl_RD" id="23iYu8ExfPF" role="37wK5m">
                       <property role="Xl_RC" value="" />
                       <node concept="17Uvod" id="23iYu8ExfPG" role="lGtFl">
@@ -8476,6 +8476,43 @@
                                       <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
                                     </node>
                                   </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="Xl_RD" id="3YnX5bLuI$w" role="37wK5m">
+                      <property role="Xl_RC" value="intentionId" />
+                      <node concept="17Uvod" id="3YnX5bLUPRs" role="lGtFl">
+                        <property role="2qtEX9" value="value" />
+                        <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070475926800/1070475926801" />
+                        <node concept="3zFVjK" id="3YnX5bLUPRt" role="3zH0cK">
+                          <node concept="3clFbS" id="3YnX5bLUPRu" role="2VODD2">
+                            <node concept="3cpWs8" id="7vdL5VO9GmO" role="3cqZAp">
+                              <node concept="3cpWsn" id="7vdL5VO9GmR" role="3cpWs9">
+                                <property role="TrG5h" value="intention" />
+                                <node concept="3Tqbb2" id="7vdL5VO9GmN" role="1tU5fm">
+                                  <ref role="ehGHo" to="tpd4:hBCnwce" resolve="TypesystemIntention" />
+                                </node>
+                                <node concept="30H73N" id="7vdL5VO9GrZ" role="33vP2m" />
+                              </node>
+                            </node>
+                            <node concept="3clFbF" id="7vdL5VO9GAu" role="3cqZAp">
+                              <node concept="2OqwBi" id="7vdL5VO9HDF" role="3clFbG">
+                                <node concept="2OqwBi" id="7vdL5VO9Hfi" role="2Oq$k0">
+                                  <node concept="2JrnkZ" id="7vdL5VO9GPB" role="2Oq$k0">
+                                    <node concept="37vLTw" id="7vdL5VO9GAs" role="2JrQYb">
+                                      <ref role="3cqZAo" node="7vdL5VO9GmR" resolve="intention" />
+                                    </node>
+                                  </node>
+                                  <node concept="liA8E" id="7vdL5VO9HvB" role="2OqNvi">
+                                    <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
+                                  </node>
+                                </node>
+                                <node concept="liA8E" id="7vdL5VO9HPH" role="2OqNvi">
+                                  <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
                                 </node>
                               </node>
                             </node>
@@ -12918,7 +12955,7 @@
                 </node>
                 <node concept="2ShNRf" id="23iYu8ExfRQ" role="33vP2m">
                   <node concept="1pGfFk" id="23iYu8ExfRR" role="2ShVmc">
-                    <ref role="37wK5l" to="2gg1:~BaseQuickFixProvider.&lt;init&gt;(java.lang.String,boolean)" resolve="BaseQuickFixProvider" />
+                    <ref role="37wK5l" to="2gg1:~BaseQuickFixProvider.&lt;init&gt;(java.lang.String,java.lang.String,boolean)" resolve="BaseQuickFixProvider" />
                     <node concept="Xl_RD" id="23iYu8ExfRS" role="37wK5m">
                       <property role="Xl_RC" value="" />
                       <node concept="17Uvod" id="23iYu8ExfRT" role="lGtFl">
@@ -13034,6 +13071,43 @@
                                       <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
                                     </node>
                                   </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="Xl_RD" id="3bnBdcDKnln" role="37wK5m">
+                      <property role="Xl_RC" value="intentionId" />
+                      <node concept="17Uvod" id="3bnBdcDKonL" role="lGtFl">
+                        <property role="2qtEX9" value="value" />
+                        <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070475926800/1070475926801" />
+                        <node concept="3zFVjK" id="3bnBdcDKonM" role="3zH0cK">
+                          <node concept="3clFbS" id="3bnBdcDKonN" role="2VODD2">
+                            <node concept="3cpWs8" id="3bnBdcDKovh" role="3cqZAp">
+                              <node concept="3cpWsn" id="3bnBdcDKovk" role="3cpWs9">
+                                <property role="TrG5h" value="intention" />
+                                <node concept="3Tqbb2" id="3bnBdcDKovg" role="1tU5fm">
+                                  <ref role="ehGHo" to="tpd4:hBCnwce" resolve="TypesystemIntention" />
+                                </node>
+                                <node concept="30H73N" id="3bnBdcDKo$H" role="33vP2m" />
+                              </node>
+                            </node>
+                            <node concept="3cpWs6" id="3bnBdcDKoYE" role="3cqZAp">
+                              <node concept="2OqwBi" id="3bnBdcDKtVw" role="3cqZAk">
+                                <node concept="2OqwBi" id="3bnBdcDKtF1" role="2Oq$k0">
+                                  <node concept="2JrnkZ" id="3bnBdcDKtoR" role="2Oq$k0">
+                                    <node concept="37vLTw" id="3bnBdcDKtaH" role="2JrQYb">
+                                      <ref role="3cqZAo" node="3bnBdcDKovk" resolve="intention" />
+                                    </node>
+                                  </node>
+                                  <node concept="liA8E" id="3bnBdcDKtMW" role="2OqNvi">
+                                    <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
+                                  </node>
+                                </node>
+                                <node concept="liA8E" id="3bnBdcDKu3E" role="2OqNvi">
+                                  <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
                                 </node>
                               </node>
                             </node>
@@ -13669,7 +13743,7 @@
                   <node concept="37vLTI" id="1uLEB8KTyoQ" role="3clFbG">
                     <node concept="2ShNRf" id="1uLEB8KTyoR" role="37vLTx">
                       <node concept="1pGfFk" id="1uLEB8KTyoS" role="2ShVmc">
-                        <ref role="37wK5l" to="2gg1:~BaseQuickFixProvider.&lt;init&gt;(java.lang.String,boolean)" resolve="BaseQuickFixProvider" />
+                        <ref role="37wK5l" to="2gg1:~BaseQuickFixProvider.&lt;init&gt;(java.lang.String,java.lang.String,boolean)" resolve="BaseQuickFixProvider" />
                         <node concept="Xl_RD" id="1uLEB8KTyoT" role="37wK5m">
                           <property role="Xl_RC" value="" />
                           <node concept="17Uvod" id="1uLEB8KTyoU" role="lGtFl">
@@ -13785,6 +13859,43 @@
                                           <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
                                         </node>
                                       </node>
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="Xl_RD" id="2R0vbCyn8HH" role="37wK5m">
+                          <property role="Xl_RC" value="intentionId" />
+                          <node concept="17Uvod" id="2R0vbCynlQ_" role="lGtFl">
+                            <property role="2qtEX9" value="value" />
+                            <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070475926800/1070475926801" />
+                            <node concept="3zFVjK" id="2R0vbCynlQA" role="3zH0cK">
+                              <node concept="3clFbS" id="2R0vbCynlQB" role="2VODD2">
+                                <node concept="3cpWs8" id="2R0vbCynnuC" role="3cqZAp">
+                                  <node concept="3cpWsn" id="2R0vbCynnuF" role="3cpWs9">
+                                    <property role="TrG5h" value="intention" />
+                                    <node concept="3Tqbb2" id="2R0vbCynnuB" role="1tU5fm">
+                                      <ref role="ehGHo" to="tpd4:hBCnwce" resolve="TypesystemIntention" />
+                                    </node>
+                                    <node concept="30H73N" id="2R0vbCynnwF" role="33vP2m" />
+                                  </node>
+                                </node>
+                                <node concept="3cpWs6" id="2R0vbCynnLA" role="3cqZAp">
+                                  <node concept="2OqwBi" id="2R0vbCynp3_" role="3cqZAk">
+                                    <node concept="2OqwBi" id="2R0vbCynoMF" role="2Oq$k0">
+                                      <node concept="2JrnkZ" id="2R0vbCynoyM" role="2Oq$k0">
+                                        <node concept="37vLTw" id="2R0vbCynohR" role="2JrQYb">
+                                          <ref role="3cqZAo" node="2R0vbCynnuF" resolve="intention" />
+                                        </node>
+                                      </node>
+                                      <node concept="liA8E" id="2R0vbCynoUO" role="2OqNvi">
+                                        <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
+                                      </node>
+                                    </node>
+                                    <node concept="liA8E" id="2R0vbCynpbq" role="2OqNvi">
+                                      <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
                                     </node>
                                   </node>
                                 </node>
@@ -18877,7 +18988,7 @@
                 </node>
                 <node concept="2ShNRf" id="23iYu8ExfLM" role="33vP2m">
                   <node concept="1pGfFk" id="23iYu8ExfLN" role="2ShVmc">
-                    <ref role="37wK5l" to="2gg1:~BaseQuickFixProvider.&lt;init&gt;(java.lang.String,boolean)" resolve="BaseQuickFixProvider" />
+                    <ref role="37wK5l" to="2gg1:~BaseQuickFixProvider.&lt;init&gt;(java.lang.String,java.lang.String,boolean)" resolve="BaseQuickFixProvider" />
                     <node concept="Xl_RD" id="23iYu8ExfLO" role="37wK5m">
                       <property role="Xl_RC" value="" />
                       <node concept="17Uvod" id="23iYu8ExfLP" role="lGtFl">
@@ -18993,6 +19104,37 @@
                                       <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
                                     </node>
                                   </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="Xl_RD" id="3bnBdcE5iaJ" role="37wK5m">
+                      <property role="Xl_RC" value="intentionId" />
+                      <node concept="17Uvod" id="3bnBdcE5iYo" role="lGtFl">
+                        <property role="2qtEX9" value="value" />
+                        <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070475926800/1070475926801" />
+                        <node concept="3zFVjK" id="3bnBdcE5iYp" role="3zH0cK">
+                          <node concept="3clFbS" id="3bnBdcE5iYq" role="2VODD2">
+                            <node concept="3clFbF" id="3bnBdcE5je8" role="3cqZAp">
+                              <node concept="2OqwBi" id="3bnBdcE5kwh" role="3clFbG">
+                                <node concept="2OqwBi" id="3bnBdcE5k0e" role="2Oq$k0">
+                                  <node concept="2JrnkZ" id="3bnBdcE5jFE" role="2Oq$k0">
+                                    <node concept="1PxgMI" id="3bnBdcE5jsK" role="2JrQYb">
+                                      <node concept="chp4Y" id="3bnBdcE5ju_" role="3oSUPX">
+                                        <ref role="cht4Q" to="tpd4:hBCnwce" resolve="TypesystemIntention" />
+                                      </node>
+                                      <node concept="30H73N" id="3bnBdcE5je7" role="1m5AlR" />
+                                    </node>
+                                  </node>
+                                  <node concept="liA8E" id="3bnBdcE5klD" role="2OqNvi">
+                                    <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
+                                  </node>
+                                </node>
+                                <node concept="liA8E" id="3bnBdcE5kHy" role="2OqNvi">
+                                  <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
                                 </node>
                               </node>
                             </node>

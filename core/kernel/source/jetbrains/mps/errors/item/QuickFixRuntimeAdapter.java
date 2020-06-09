@@ -15,11 +15,13 @@
  */
 package jetbrains.mps.errors.item;
 
+import jetbrains.mps.errors.BaseQuickFixProvider;
 import jetbrains.mps.errors.QuickFixProvider;
 import jetbrains.mps.errors.QuickFix_Runtime;
 import jetbrains.mps.errors.item.ReportItemBase.SimpleReportItemFlavour;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
@@ -38,6 +40,11 @@ public class QuickFixRuntimeAdapter implements EditorQuickFix, NodeFlavouredItem
     myLanguageRegistry = languageRegistry;
     myQuickFixProvider = quickFixProvider;
     myNode = node;
+  }
+
+  @Nullable
+  public String getIntentionId() {
+    return myQuickFixProvider.getIntentionId();
   }
 
   public QuickFix_Runtime getFixRuntime() {

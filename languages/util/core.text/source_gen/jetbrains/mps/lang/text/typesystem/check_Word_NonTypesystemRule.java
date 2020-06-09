@@ -30,7 +30,7 @@ public class check_Word_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(word, "Words should not contain spaces", "r:d1be8bd3-dfc7-4e90-8b90-965089cd0937(jetbrains.mps.lang.text.typesystem)", "4338813632905423080", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.text.typesystem.RemoveSpacesFromWord_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.text.typesystem.RemoveSpacesFromWord_QuickFix", "4338813632905423084", true);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
@@ -41,7 +41,7 @@ public class check_Word_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(word, "This word can be turned into a link", "r:d1be8bd3-dfc7-4e90-8b90-965089cd0937(jetbrains.mps.lang.text.typesystem)", "7260264510303289199", null, errorTarget);
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.text.typesystem.TurnWordIntoLink_QuickFix", false);
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.text.typesystem.TurnWordIntoLink_QuickFix", "7260264510303289203", false);
               _reporter_2309309498.addIntentionProvider(intentionProvider);
             }
           }
@@ -50,7 +50,7 @@ public class check_Word_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(word, "The text and the associated url differ.", "r:d1be8bd3-dfc7-4e90-8b90-965089cd0937(jetbrains.mps.lang.text.typesystem)", "7260264510303272851", null, errorTarget);
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.text.typesystem.TurnWordIntoLink_QuickFix", false);
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.text.typesystem.TurnWordIntoLink_QuickFix", "7260264510303272855", false);
               _reporter_2309309498.addIntentionProvider(intentionProvider);
             }
           }

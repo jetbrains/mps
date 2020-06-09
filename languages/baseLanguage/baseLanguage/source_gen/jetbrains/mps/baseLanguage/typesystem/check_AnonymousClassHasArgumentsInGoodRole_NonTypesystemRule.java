@@ -28,7 +28,7 @@ public class check_AnonymousClassHasArgumentsInGoodRole_NonTypesystemRule extend
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SNodeOperations.getParent(anonymousClass), "parameters in deprecated role", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2925336694746295123", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.FixParametersInAnonymousClass_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.FixParametersInAnonymousClass_QuickFix", "2925336694746295197", true);
           intentionProvider.putArgument("anonymousClass", anonymousClass);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }

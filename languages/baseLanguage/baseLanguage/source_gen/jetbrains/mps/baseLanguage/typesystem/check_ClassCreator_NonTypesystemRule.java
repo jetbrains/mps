@@ -35,7 +35,7 @@ public class check_ClassCreator_NonTypesystemRule extends AbstractNonTypesystemR
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classCreator, "Default constructor is available", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8899076737759409542", null, errorTarget);
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.QuickFixForClassCreator_QuickFix", true);
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.QuickFixForClassCreator_QuickFix", "8899076737759409663", true);
               _reporter_2309309498.addIntentionProvider(intentionProvider);
             }
           }

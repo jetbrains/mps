@@ -30,7 +30,7 @@ public class check_Slot_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(slot, "Not a valid value", "r:6d78acb4-911e-4959-8535-0a1b3e5c1b7e(jetbrains.mps.samples.heating.typesystem)", "2978080762093971534", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.samples.heating.typesystem.AssignCorrectValue_QuickFix", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.samples.heating.typesystem.AssignCorrectValue_QuickFix", "2978080762094034245", true);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
@@ -51,7 +51,7 @@ public class check_Slot_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(slot, "This event is not changing the temperature.", "r:6d78acb4-911e-4959-8535-0a1b3e5c1b7e(jetbrains.mps.samples.heating.typesystem)", "4664795093170882120", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.samples.heating.typesystem.RemoveSlot_QuickFix", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.samples.heating.typesystem.RemoveSlot_QuickFix", "4664795093170892528", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
@@ -63,7 +63,7 @@ public class check_Slot_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(slot, "The customizing event is setting the same temperature as the original one", "r:6d78acb4-911e-4959-8535-0a1b3e5c1b7e(jetbrains.mps.samples.heating.typesystem)", "935069066463792184", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.samples.heating.typesystem.RemoveSlot_QuickFix", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.samples.heating.typesystem.RemoveSlot_QuickFix", "935069066463833825", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
