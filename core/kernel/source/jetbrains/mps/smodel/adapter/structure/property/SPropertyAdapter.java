@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.adapter.structure.property;
 
+import jetbrains.mps.smodel.adapter.ids.SPropertyId;
 import jetbrains.mps.smodel.adapter.ids.STypeId;
 import jetbrains.mps.smodel.adapter.structure.FormatException;
 import jetbrains.mps.smodel.adapter.structure.types.InvalidDataType;
@@ -31,17 +32,26 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 public abstract class SPropertyAdapter implements SProperty {
   public static final String ID_DELIM = ":";
 
-  protected String myPropertyName;
+  protected final SPropertyId myPropertyId;
+  protected final String myPropertyName;
 
-  public SPropertyAdapter(String name) {
+  public SPropertyAdapter(@NotNull SPropertyId propertyId, @NotNull String name) {
+    myPropertyId = propertyId;
     myPropertyName = name;
   }
 
   @NotNull
   public abstract SAbstractConcept getOwner();
 
+  @NotNull
+  public final SPropertyId getId() {
+    return myPropertyId;
+  }
+
   @Nullable
-  public abstract PropertyDescriptor getPropertyDescriptor();
+  protected PropertyDescriptor getPropertyDescriptor() {
+    return null;
+  }
 
   @Override
   public boolean isValid() {

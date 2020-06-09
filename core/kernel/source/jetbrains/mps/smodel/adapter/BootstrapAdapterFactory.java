@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
 import jetbrains.mps.smodel.adapter.structure.concept.SInterfaceConceptAdapterById;
 import jetbrains.mps.smodel.adapter.structure.link.SContainmentLinkAdapterById;
+import jetbrains.mps.smodel.adapter.structure.property.SPropertyAdapter2;
 import jetbrains.mps.smodel.adapter.structure.property.SPropertyAdapterById;
 import jetbrains.mps.smodel.adapter.structure.ref.SReferenceLinkAdapterById;
 import org.jetbrains.annotations.NotNull;
@@ -66,7 +67,7 @@ public class BootstrapAdapterFactory {
 
   @NotNull
   public static SProperty getProperty(long uuidHigh, long uuidLow, long concept, long prop, String propName) {
-    return new SPropertyAdapterById(MetaIdFactory.propId(uuidHigh, uuidLow, concept, prop), propName, true);
+    return new SPropertyAdapter2(MetaIdFactory.propId(uuidHigh, uuidLow, concept, prop), propName);
   }
 
   @NotNull

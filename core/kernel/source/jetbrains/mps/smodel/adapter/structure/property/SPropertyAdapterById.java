@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ import jetbrains.mps.smodel.adapter.ids.SPropertyId;
 import jetbrains.mps.smodel.adapter.structure.ConceptFeatureHelper;
 import jetbrains.mps.smodel.adapter.structure.FormatException;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.smodel.runtime.ConceptDescriptor;
 import jetbrains.mps.smodel.runtime.PropertyDescriptor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -31,27 +30,11 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-public final class SPropertyAdapterById extends SPropertyAdapter {
+public class SPropertyAdapterById extends SPropertyAdapter {
   public static final java.lang.String PROP_PREFIX = "p";
-  private final SPropertyId myPropertyId;
-  private final boolean myIsBootstrap;
 
   public SPropertyAdapterById(@NotNull SPropertyId propertyId, @NotNull String propName) {
-    this(propertyId, propName, false);
-  }
-
-  /**
-   * @param bootstrap see BOOTSTRAP META OBJECTS javadoc for {@link jetbrains.mps.smodel.adapter.BootstrapAdapterFactory}
-   */
-  public SPropertyAdapterById(@NotNull SPropertyId propertyId, @NotNull String propName, boolean bootstrap) {
-    super(propName);
-    myPropertyId = propertyId;
-    myIsBootstrap = bootstrap;
-  }
-
-  @NotNull
-  public SPropertyId getId() {
-    return myPropertyId;
+    super(propertyId, propName);
   }
 
   @NotNull
@@ -62,6 +45,7 @@ public final class SPropertyAdapterById extends SPropertyAdapter {
 
   @Override
   public boolean equals(Object obj) {
+    // the same equal logic is for any of our subclasses (we don't care to tell 'bootstrap' or 'with owner' cases from those hardcoded in generated code.
     if (!(obj instanceof SPropertyAdapterById)) {
       return false;
     }
@@ -77,7 +61,7 @@ public final class SPropertyAdapterById extends SPropertyAdapter {
   @NotNull
   @Override
   public String getName() {
-    if (RuntimeFlags.isMergeDriverMode() || myIsBootstrap) {
+    if (RuntimeFlags.isMergeDriverMode()) {
       return myPropertyName;
     }
     PropertyDescriptor d = getPropertyDescriptor();
@@ -89,7 +73,7 @@ public final class SPropertyAdapterById extends SPropertyAdapter {
   }
 
   @Override
-  public PropertyDescriptor getPropertyDescriptor() {
+  protected PropertyDescriptor getPropertyDescriptor() {
     return ConceptFeatureHelper.getOwnerDescriptor(getId()).getPropertyDescriptor(myPropertyId);
   }
 

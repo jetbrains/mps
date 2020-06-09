@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,14 +19,12 @@ import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
 import jetbrains.mps.smodel.adapter.structure.concept.SInterfaceConceptAdapterById;
 import jetbrains.mps.smodel.adapter.structure.language.SLanguageAdapterById;
 import jetbrains.mps.smodel.adapter.structure.link.SContainmentLinkAdapterById;
-import jetbrains.mps.smodel.adapter.structure.property.SPropertyAdapterById;
+import jetbrains.mps.smodel.adapter.structure.property.SPropertyAdapter;
 import jetbrains.mps.smodel.adapter.structure.ref.SReferenceLinkAdapterById;
-import jetbrains.mps.smodel.adapter.structure.types.SConstrainedStringDatatypeAdapter;
 import jetbrains.mps.smodel.adapter.structure.types.SEnumerationAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SDataType;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -66,10 +64,10 @@ public final class MetaIdHelper {
   @NotNull
   public static SPropertyId getProperty(SProperty p) {
     //todo make serialization via serialize method
-    if (!(p instanceof SPropertyAdapterById)) {
-      return MetaIdFactory.INVALID_PROP_ID;
+    if (p instanceof SPropertyAdapter) {
+      return ((SPropertyAdapter) p).getId();
     }
-    return ((SPropertyAdapterById) p).getId();
+    return MetaIdFactory.INVALID_PROP_ID;
   }
 
   @NotNull
