@@ -220,8 +220,8 @@ public abstract class BaseLanguageTextGen {
       tgs.reportError("null reference");
       return null;
     }
-    String shortName = "";
-    String packageName = "";
+    String shortName;
+    String packageName;
     if (reference instanceof DynamicReference) {
       shortName = ((jetbrains.mps.smodel.SReference) reference).getResolveInfo();
       // hack, todo: remove! 
@@ -272,7 +272,7 @@ public abstract class BaseLanguageTextGen {
   protected static String getPackageName(SNode cls, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     if (isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getContainingRoot(cls), CONCEPTS.Classifier$hJ), PROPS.packageName$3uUR))) {
-      return SPropertyOperations.getString(cls, PROPS.packageName$3uUR);
+      return SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getContainingRoot(cls), CONCEPTS.Classifier$hJ), PROPS.packageName$3uUR);
     }
     return SModelOperations.getModelName(SNodeOperations.getModel(cls));
   }

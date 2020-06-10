@@ -186,8 +186,8 @@
       <node id="7204211436279973925" at="217,55,218,41" concept="11" />
       <node id="7204211436279973912" at="219,28,220,40" concept="5" />
       <node id="7204211436279973942" at="220,40,221,18" concept="12" />
-      <node id="7204211436279971777" at="222,5,223,26" concept="11" />
-      <node id="7204211436279971780" at="223,26,224,28" concept="11" />
+      <node id="7204211436279971777" at="222,5,223,21" concept="11" />
+      <node id="7204211436279971780" at="223,21,224,23" concept="11" />
       <node id="7204211436279971822" at="225,48,226,81" concept="5" />
       <node id="7204211436279995310" at="226,81,227,29" concept="13" />
       <node id="7204211436280011437" at="228,38,229,165" concept="12" />
@@ -215,7 +215,7 @@
       <node id="2791683072066427009" at="266,90,267,82" concept="5" />
       <node id="7204211436280011454" at="268,7,269,97" concept="12" />
       <node id="1234796511838" at="272,79,273,55" concept="11" />
-      <node id="2791683072066470356" at="274,166,275,72" concept="12" />
+      <node id="2791683072066470356" at="274,166,275,151" concept="12" />
       <node id="1234796545766" at="276,5,277,72" concept="12" />
       <node id="1236686501608" at="279,120,280,55" concept="11" />
       <node id="1237473887359" at="281,25,282,44" concept="5" />
@@ -311,7 +311,7 @@
       <node id="7204211436279971788" at="250,10,270,5" concept="1" />
       <node id="7204211436279995314" at="227,29,249,7" concept="9" />
       <node id="5729254867409121318" at="178,0,203,0" concept="16" trace="referenceToShortName#(Lorg/jetbrains/mps/openapi/model/SReference;Ljetbrains/mps/text/rt/TextGenContext;)V" />
-      <node id="7204211436279971784" at="224,28,270,5" concept="9" />
+      <node id="7204211436279971784" at="224,23,270,5" concept="9" />
       <node id="7204211436280011419" at="216,0,272,0" concept="16" trace="getPackageAndShortName#(Lorg/jetbrains/mps/openapi/model/SReference;Ljetbrains/mps/text/rt/TextGenContext;)Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_2;" />
       <scope id="1237463992099" at="48,33,49,29" />
       <scope id="1237463991792" at="64,31,65,27" />
@@ -326,7 +326,7 @@
       <scope id="7204211436280825062" at="210,38,211,13" />
       <scope id="7204211436279995315" at="228,38,229,165" />
       <scope id="3818729150937313423" at="235,45,236,126" />
-      <scope id="2791683072066456408" at="274,166,275,72" />
+      <scope id="2791683072066456408" at="274,166,275,151" />
       <scope id="1697917907976982423" at="301,89,302,55" />
       <scope id="2791683072066470332" at="304,55,305,43" />
       <scope id="4026438661936176751" at="85,178,87,16" />
