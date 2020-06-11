@@ -24,6 +24,11 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.errors.item.ModelReportItemBase;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.errors.item.ModuleReportItemBase;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 
 @GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/3719390199793466458", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public class ModelCheckerBuilder {
@@ -146,22 +151,49 @@ public class ModelCheckerBuilder {
           }));
 
           for (SModel model : ListSequence.fromList(models)) {
-            generalModelChecker.check(model, repository, errorCollector, monitor.subTask(1, SubProgressKind.REPLACING));
             if (monitor.isCanceled()) {
               break;
+            }
+            try {
+              generalModelChecker.check(model, repository, errorCollector, monitor.subTask(1, SubProgressKind.REPLACING));
+            } catch (Exception ex) {
+              if (LOG.isEnabledFor(Level.ERROR)) {
+                LOG.error("Failed to check model " + model.getName(), ex);
+              }
+              IssueKindReportItem ri = new ExceptionForModel(model.getReference(), ex);
+              errorCollector.accept(ri);
+              return;
             }
           }
 
 
           for (SModule module : ListSequence.fromList(modules)) {
-            generalModuleChecker.check(module, repository, errorCollector, monitor.subTask(1, SubProgressKind.REPLACING));
             if (monitor.isCanceled()) {
               break;
             }
+            try {
+              generalModuleChecker.check(module, repository, errorCollector, monitor.subTask(1, SubProgressKind.REPLACING));
+            } catch (Exception ex) {
+              if (LOG.isEnabledFor(Level.ERROR)) {
+                LOG.error("Failed to check module " + module.getModuleName(), ex);
+              }
+              IssueKindReportItem ri = new ExceptionForModule(module.getModuleReference(), ex);
+              errorCollector.accept(ri);
+              return;
+            }
             for (SModel model : ListSequence.fromList(myModelExtractor.getModels(module))) {
-              generalModelChecker.check(model, repository, errorCollector, monitor.subTask(1, SubProgressKind.REPLACING));
               if (monitor.isCanceled()) {
                 break;
+              }
+              try {
+                generalModelChecker.check(model, repository, errorCollector, monitor.subTask(1, SubProgressKind.REPLACING));
+              } catch (Exception ex) {
+                if (LOG.isEnabledFor(Level.ERROR)) {
+                  LOG.error("Failed to check model " + model.getName(), ex);
+                }
+                IssueKindReportItem ri = new ExceptionForModel(model.getReference(), ex);
+                errorCollector.accept(ri);
+                return;
               }
             }
           }
@@ -187,12 +219,39 @@ public class ModelCheckerBuilder {
     });
   }
 
-  public static <O> IAbstractChecker<O, IssueKindReportItem> aggreagateSpecificCheckers(@NotNull List<IChecker<O, ? extends IssueKindReportItem>> specificCheckers, final _FunctionTypes._return_P1_E0<? extends String, ? super O> getFqName) {
-    AggregatingChecker<O> aggregation = new AggregatingChecker<O>(specificCheckers, getFqName);
-    return new CatchingChecker<O, IssueKindReportItem>(aggregation, new _FunctionTypes._return_P3_E0<String, O, Exception, SRepository>() {
-      public String invoke(O m, Exception e, SRepository repository) {
-        return "Exception while checking model " + getFqName.invoke(m);
-      }
-    });
+  /*package*/ static <O> IAbstractChecker<O, IssueKindReportItem> aggreagateSpecificCheckers(@NotNull List<IChecker<O, ? extends IssueKindReportItem>> specificCheckers, _FunctionTypes._return_P1_E0<? extends String, ? super O> getFqName) {
+    return new AggregatingChecker<O>(specificCheckers, getFqName);
+  }
+
+  private static String asMessage(Exception ex) {
+    String m = ex.getMessage();
+    if (m != null && !(m.isEmpty())) {
+      return m;
+    }
+    return String.format("Exception %s; check aborted", ex.getClass().getName());
+  }
+
+  private static class ExceptionForModel extends ModelReportItemBase {
+    /*package*/ ExceptionForModel(SModelReference model, Exception ex) {
+      super(MessageStatus.ERROR, model, asMessage(ex));
+    }
+
+    @Override
+    public IssueKindReportItem.ItemKind getIssueKind() {
+      // no idea how to construct ItemKind (and no proper documentation, despite MPS-26043 marked as fixed), 
+      // just took other similar classes for inspiration 
+      return IssueKindReportItem.MODEL_PROPERTIES.deriveItemKind("exception");
+    }
+  }
+  private static class ExceptionForModule extends ModuleReportItemBase {
+    /*package*/ ExceptionForModule(SModuleReference module, Exception ex) {
+      super(MessageStatus.ERROR, module, asMessage(ex));
+    }
+
+    @Override
+    public IssueKindReportItem.ItemKind getIssueKind() {
+      // see CancelForModel#getIssueKind for whine and frustration 
+      return IssueKindReportItem.MODULE_PROPERTIES.deriveItemKind("exception");
+    }
   }
 }

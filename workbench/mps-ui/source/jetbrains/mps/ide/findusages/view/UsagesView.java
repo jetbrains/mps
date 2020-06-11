@@ -406,6 +406,11 @@ public class UsagesView implements IExternalizeable {
         }
 
         @Override
+        public void onCancel() {
+          // XXX I feel would be better to set view to some 'cancelled' message
+        }
+
+        @Override
         public void onSuccess() {
           if (mySearchResults != null) {
             myView.setContents(mySearchResults.removeDuplicates());
