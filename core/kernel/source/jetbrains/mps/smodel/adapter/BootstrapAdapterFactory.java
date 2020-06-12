@@ -18,10 +18,9 @@ package jetbrains.mps.smodel.adapter;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
 import jetbrains.mps.smodel.adapter.structure.concept.SInterfaceConceptAdapterById;
-import jetbrains.mps.smodel.adapter.structure.link.SContainmentLinkAdapterById;
+import jetbrains.mps.smodel.adapter.structure.link.SContainmentLinkAdapter2;
 import jetbrains.mps.smodel.adapter.structure.property.SPropertyAdapter2;
-import jetbrains.mps.smodel.adapter.structure.property.SPropertyAdapterById;
-import jetbrains.mps.smodel.adapter.structure.ref.SReferenceLinkAdapterById;
+import jetbrains.mps.smodel.adapter.structure.ref.SReferenceLinkAdapter2;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -72,11 +71,11 @@ public class BootstrapAdapterFactory {
 
   @NotNull
   public static SReferenceLink getReferenceLink(long uuidHigh, long uuidLow, long concept, long ref, String refName) {
-    return new SReferenceLinkAdapterById(MetaIdFactory.refId(uuidHigh, uuidLow, concept, ref), refName, true);
+    return new SReferenceLinkAdapter2(MetaIdFactory.refId(uuidHigh, uuidLow, concept, ref), refName);
   }
 
   @NotNull
   public static SContainmentLink getContainmentLink(long uuidHigh, long uuidLow, long concept, long link, String linkName) {
-    return new SContainmentLinkAdapterById(MetaIdFactory.linkId(uuidHigh, uuidLow, concept, link), linkName, true);
+    return new SContainmentLinkAdapter2(MetaIdFactory.linkId(uuidHigh, uuidLow, concept, link), linkName);
   }
 }

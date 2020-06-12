@@ -13,28 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.smodel.adapter.structure.property;
+package jetbrains.mps.smodel.adapter.structure.link;
 
-import jetbrains.mps.smodel.adapter.ids.SPropertyId;
+import jetbrains.mps.smodel.adapter.ids.SContainmentLinkId;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 /**
- * {@link SPropertyAdapter} that keeps a reference to its AbstractConcept owner (rather than obtains one from global registry)
+ * {@link SContainmentLinkAdapter} tailored for bootstrap application.
+ * see BOOTSTRAP META OBJECTS javadoc for {@link jetbrains.mps.smodel.adapter.BootstrapAdapterFactory}
  * @author Artem Tikhomirov
- * @since 2020.2
  */
-public final class SPropertyAdapter3 extends SPropertyAdapterById {
-  private final SAbstractConcept myOwner;
-
-  public SPropertyAdapter3(@NotNull SAbstractConcept owner, @NotNull SPropertyId propertyId, @NotNull String propertyName) {
-    super(propertyId, propertyName);
-    myOwner = owner;
+public final class SContainmentLinkAdapter2 extends SContainmentLinkAdapterById {
+  public SContainmentLinkAdapter2(@NotNull SContainmentLinkId roleId, @NotNull String name) {
+    super(roleId, name);
   }
 
-  @NotNull
   @Override
-  public SAbstractConcept getOwner() {
-    return myOwner;
+  public String getRoleName() {
+    return myName;
   }
 }

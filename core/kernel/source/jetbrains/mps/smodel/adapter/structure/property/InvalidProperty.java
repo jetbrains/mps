@@ -18,6 +18,7 @@ package jetbrains.mps.smodel.adapter.structure.property;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.adapter.structure.FormatException;
 import jetbrains.mps.smodel.adapter.structure.concept.InvalidConcept;
+import jetbrains.mps.smodel.runtime.PropertyDescriptor;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -41,6 +42,12 @@ public final class InvalidProperty extends SPropertyAdapter {
       //name is better to be a valid id. May be important on serialization
       myConcept = "UnknownConceptWithProperty" + NameUtil.capitalize(name);
     }
+  }
+
+  @Nullable
+  @Override
+  protected PropertyDescriptor getPropertyDescriptor() {
+    return null;
   }
 
   @Override

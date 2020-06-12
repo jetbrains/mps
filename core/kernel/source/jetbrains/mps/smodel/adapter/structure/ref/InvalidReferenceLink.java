@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.adapter.structure.ref;
 
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.adapter.structure.FormatException;
 import jetbrains.mps.smodel.adapter.structure.concept.InvalidConcept;
 import jetbrains.mps.smodel.runtime.ReferenceDescriptor;
@@ -34,7 +35,7 @@ public final class InvalidReferenceLink extends SReferenceLinkAdapter {
   private final String myConcept;
 
   public InvalidReferenceLink(@Nullable String concept, @NotNull String name) {
-    super(name);
+    super(MetaIdFactory.INVALID_REF_ID, name);
     if (concept != null) {
       myConcept = concept;
     } else {
@@ -62,7 +63,7 @@ public final class InvalidReferenceLink extends SReferenceLinkAdapter {
 
   @Nullable
   @Override
-  public ReferenceDescriptor getReferenceDescriptor() {
+  protected ReferenceDescriptor getReferenceDescriptor() {
     return null;
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,12 +18,12 @@ package jetbrains.mps.smodel.adapter.structure.ref;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
+import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
 import jetbrains.mps.smodel.adapter.structure.FormatException;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
-import jetbrains.mps.smodel.runtime.LinkDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceDescriptor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -37,9 +37,11 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 public abstract class SReferenceLinkAdapter implements SReferenceLink {
   public static final String ID_DELIM = ":";
 
-  protected String myName;
+  protected final SReferenceLinkId myRoleId;
+  protected final String myName;
 
-  protected SReferenceLinkAdapter(@NotNull String name) {
+  protected SReferenceLinkAdapter(@NotNull SReferenceLinkId linkId, @NotNull String name) {
+    myRoleId = linkId;
     myName = name;
   }
 
@@ -50,7 +52,7 @@ public abstract class SReferenceLinkAdapter implements SReferenceLink {
   }
 
   @Nullable
-  public abstract ReferenceDescriptor getReferenceDescriptor();
+  protected abstract ReferenceDescriptor getReferenceDescriptor();
 
   @Override
   public boolean isValid() {
@@ -113,6 +115,11 @@ public abstract class SReferenceLinkAdapter implements SReferenceLink {
   public SNodeReference getSourceNode() {
     ReferenceDescriptor rd = getReferenceDescriptor();
     return rd == null ? null : rd.getSourceNode();
+  }
+
+  @NotNull
+  public SReferenceLinkId getId() {
+    return myRoleId;
   }
 
   private static class SScopeAdapter implements SScope {

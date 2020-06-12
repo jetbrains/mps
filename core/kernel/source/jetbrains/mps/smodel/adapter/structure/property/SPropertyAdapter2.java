@@ -30,7 +30,7 @@ import org.jetbrains.annotations.NotNull;
  * With previous implementation, I didn't like the need to keep 'metainfo' boolean property for each and every
  * @author Artem Tikhomirov
  */
-public class SPropertyAdapter2 extends SPropertyAdapterById {
+public final class SPropertyAdapter2 extends SPropertyAdapterById {
 
   public SPropertyAdapter2(@NotNull SPropertyId propertyId, @NotNull String propName) {
     super(propertyId, propName);

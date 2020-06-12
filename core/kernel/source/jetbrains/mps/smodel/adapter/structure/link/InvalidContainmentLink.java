@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.adapter.structure.link;
 
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.adapter.structure.FormatException;
 import jetbrains.mps.smodel.adapter.structure.concept.InvalidConcept;
 import jetbrains.mps.smodel.runtime.LinkDescriptor;
@@ -33,7 +34,7 @@ public final class InvalidContainmentLink extends SContainmentLinkAdapter {
   private final String myConcept;
 
   public InvalidContainmentLink(@Nullable String concept, @NotNull String name) {
-    super(name);
+    super(MetaIdFactory.INVALID_LINK_ID, name);
     if (concept != null) {
       myConcept = concept;
     } else {
@@ -63,7 +64,7 @@ public final class InvalidContainmentLink extends SContainmentLinkAdapter {
 
   @Override
   @Nullable
-  public LinkDescriptor getLinkDescriptor() {
+  protected LinkDescriptor getLinkDescriptor() {
     return null;
   }
 

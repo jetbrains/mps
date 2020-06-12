@@ -110,6 +110,7 @@ class IdInfoReadHelper {
     assert myActualConcept != null;
     SPropertyId propertyId = myIdEncoder.parsePropertyId(myActualConcept.getConceptId(), id);
     myActualConcept.addProperty(propertyId, name);
+    // XXX MAF.getProperty(myActualConcept.asSAbstractConcept, Long.parseText(id), name)?!
     myProperties.put(index, MetaAdapterFactory.getProperty(propertyId, name));
     myMetaInfoProvider.setPropertyName(propertyId, name);
   }

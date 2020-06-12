@@ -97,10 +97,10 @@ public class IdInfoCollector {
     for (SReference ref : n.getReferences()) {
       final SReferenceLink l = ref.getLink();
       SReferenceLinkId linkId = MetaIdHelper.getAssociation(l);
-      SConceptId conceptId = linkId.getConceptId();
-      final ConceptInfo conceptInfo = registerConcept(conceptId);
+      final ConceptInfo conceptInfo = registerConcept(l, linkId);
       if (!conceptInfo.knows(linkId)) {
-        conceptInfo.addLink(linkId, myMetaInfoProvider.getAssociationName(linkId));
+        final String name = myMetaInfoProvider.getAssociationName(linkId);
+        conceptInfo.addLink(linkId, name == null || name.isEmpty() ? l.getName() : name);
       }
     }
   }
@@ -109,10 +109,10 @@ public class IdInfoCollector {
   private void fillAggregation(SNode n) {
     final SContainmentLink l = n.getContainmentLink();
     SContainmentLinkId linkId = MetaIdHelper.getAggregation(l);
-    SConceptId conceptId = linkId.getConceptId();
-    final ConceptInfo conceptInfo = registerConcept(conceptId);
+    final ConceptInfo conceptInfo = registerConcept(l, linkId);
     if (!conceptInfo.knows(linkId)) {
-      conceptInfo.addLink(linkId, myMetaInfoProvider.getAggregationName(linkId), myMetaInfoProvider.isUnordered(linkId));
+      final String name = myMetaInfoProvider.getAggregationName(linkId);
+      conceptInfo.addLink(linkId, name == null || name.isEmpty() ? l.getName() : name, myMetaInfoProvider.isUnordered(linkId));
     }
   }
 
@@ -174,7 +174,7 @@ public class IdInfoCollector {
       // resort to using conceptId value recorded in the concept feature itself
       return registerConcept(cfId.getConceptId());
     }
-    // either there's ConceptDescriptor for a feature (isValid() == true) or there's a SAbstractConcept adapter instance that knows its pieces
+    // either there's ConceptDescriptor for the feature (isValid() == true) or there's a SAbstractConcept adapter instance that knows its pieces
     // (e.g. SPropertyAdapter3 case). IOW unrecognized() == false, i.e. no runtime descriptor but it's a feature/concept
     // we have constructed earlier from some persistence data (or by other means that preserves feature owner information)
     return registerConcept(c);

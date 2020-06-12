@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,22 +32,11 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-public final class SReferenceLinkAdapterById extends SReferenceLinkAdapter {
+public class SReferenceLinkAdapterById extends SReferenceLinkAdapter {
   public static final java.lang.String REF_PREFIX = "r";
-  private final SReferenceLinkId myRoleId;
-  private final boolean myIsBootstrap;
 
   public SReferenceLinkAdapterById(@NotNull SReferenceLinkId roleId, @NotNull String refName) {
-    this(roleId, refName, false);
-  }
-
-  /**
-   * @param bootstrap see BOOTSTRAP META OBJECTS javadoc for {@link jetbrains.mps.smodel.adapter.BootstrapAdapterFactory}
-   */
-  public SReferenceLinkAdapterById(@NotNull SReferenceLinkId roleId, @NotNull String refName, boolean bootstrap) {
-    super(refName);
-    myRoleId = roleId;
-    myIsBootstrap = bootstrap;
+    super(roleId, refName);
   }
 
   @Override
@@ -65,11 +54,6 @@ public final class SReferenceLinkAdapterById extends SReferenceLinkAdapter {
   }
 
   @NotNull
-  public SReferenceLinkId getId() {
-    return myRoleId;
-  }
-
-  @NotNull
   @Override
   public SAbstractConcept getOwner() {
     return ConceptFeatureHelper.getOwner(getId());
@@ -77,7 +61,7 @@ public final class SReferenceLinkAdapterById extends SReferenceLinkAdapter {
 
   @Override
   public String getRoleName() {
-    if (RuntimeFlags.isMergeDriverMode() || myIsBootstrap) {
+    if (RuntimeFlags.isMergeDriverMode()) {
       return myName;
     }
     ReferenceDescriptor d = getReferenceDescriptor();
@@ -90,7 +74,7 @@ public final class SReferenceLinkAdapterById extends SReferenceLinkAdapter {
 
   @Override
   @Nullable
-  public ReferenceDescriptor getReferenceDescriptor() {
+  protected ReferenceDescriptor getReferenceDescriptor() {
     ConceptDescriptor cd = ConceptFeatureHelper.getOwnerDescriptor(getId());
     return cd.getRefDescriptor(myRoleId);
   }

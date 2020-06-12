@@ -13,22 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.smodel.adapter.structure.property;
+package jetbrains.mps.smodel.adapter.structure.link;
 
-import jetbrains.mps.smodel.adapter.ids.SPropertyId;
+import jetbrains.mps.smodel.adapter.ids.SContainmentLinkId;
+import jetbrains.mps.smodel.adapter.structure.ref.SReferenceLinkAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 /**
- * {@link SPropertyAdapter} that keeps a reference to its AbstractConcept owner (rather than obtains one from global registry)
+ * {@link SContainmentLinkAdapter} that keeps a reference to its AbstractConcept owner (rather than obtains one from global registry)
  * @author Artem Tikhomirov
  * @since 2020.2
  */
-public final class SPropertyAdapter3 extends SPropertyAdapterById {
+public final class SContainmentLinkAdapter3 extends SContainmentLinkAdapterById {
   private final SAbstractConcept myOwner;
 
-  public SPropertyAdapter3(@NotNull SAbstractConcept owner, @NotNull SPropertyId propertyId, @NotNull String propertyName) {
-    super(propertyId, propertyName);
+  public SContainmentLinkAdapter3(@NotNull SAbstractConcept owner, @NotNull SContainmentLinkId roleId, @NotNull String name) {
+    super(roleId, name);
     myOwner = owner;
   }
 

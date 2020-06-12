@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package jetbrains.mps.smodel.adapter.structure.link;
 
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
+import jetbrains.mps.smodel.adapter.ids.SContainmentLinkId;
 import jetbrains.mps.smodel.adapter.structure.FormatException;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.language.ConceptRegistry;
@@ -31,14 +32,16 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 public abstract class SContainmentLinkAdapter implements SContainmentLink {
   public static final String ID_DELIM = ":";
 
-  protected String myName;
+  protected final SContainmentLinkId myRoleId;
+  protected final String myName;
 
-  protected SContainmentLinkAdapter(@NotNull String name) {
+  protected SContainmentLinkAdapter(@NotNull SContainmentLinkId roleId, @NotNull String name) {
+    myRoleId = roleId;
     myName = name;
   }
 
   @Nullable
-  public abstract LinkDescriptor getLinkDescriptor();
+  protected abstract LinkDescriptor getLinkDescriptor();
 
   @Override
   public boolean isValid() {
@@ -111,6 +114,11 @@ public abstract class SContainmentLinkAdapter implements SContainmentLink {
   public SNodeReference getSourceNode() {
     LinkDescriptor ld = getLinkDescriptor();
     return ld == null ? null : ld.getSourceNode();
+  }
+
+  @NotNull
+  public SContainmentLinkId getId() {
+    return myRoleId;
   }
 
   @Override

@@ -18,9 +18,9 @@ package jetbrains.mps.smodel.adapter.ids;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
 import jetbrains.mps.smodel.adapter.structure.concept.SInterfaceConceptAdapterById;
 import jetbrains.mps.smodel.adapter.structure.language.SLanguageAdapterById;
-import jetbrains.mps.smodel.adapter.structure.link.SContainmentLinkAdapterById;
+import jetbrains.mps.smodel.adapter.structure.link.SContainmentLinkAdapter;
 import jetbrains.mps.smodel.adapter.structure.property.SPropertyAdapter;
-import jetbrains.mps.smodel.adapter.structure.ref.SReferenceLinkAdapterById;
+import jetbrains.mps.smodel.adapter.structure.ref.SReferenceLinkAdapter;
 import jetbrains.mps.smodel.adapter.structure.types.SEnumerationAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -87,19 +87,19 @@ public final class MetaIdHelper {
   @NotNull
   public static SReferenceLinkId getAssociation(SReferenceLink r) {
     //todo make serialization via serialize method
-    if (!(r instanceof SReferenceLinkAdapterById)) {
-      return MetaIdFactory.INVALID_REF_ID;
+    if (r instanceof SReferenceLinkAdapter) {
+      return ((SReferenceLinkAdapter) r).getId();
     }
-    return ((SReferenceLinkAdapterById) r).getId();
+    return MetaIdFactory.INVALID_REF_ID;
   }
 
   @NotNull
   public static SContainmentLinkId getAggregation(SContainmentLink l) {
     //todo make serialization via serialize method
-    if (!(l instanceof SContainmentLinkAdapterById)) {
-      return MetaIdFactory.INVALID_LINK_ID;
+    if (l instanceof SContainmentLinkAdapter) {
+      return ((SContainmentLinkAdapter) l).getId();
     }
-    return ((SContainmentLinkAdapterById) l).getId();
+    return MetaIdFactory.INVALID_LINK_ID;
   }
 
   @NotNull

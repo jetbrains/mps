@@ -49,9 +49,7 @@ public abstract class SPropertyAdapter implements SProperty {
   }
 
   @Nullable
-  protected PropertyDescriptor getPropertyDescriptor() {
-    return null;
-  }
+  protected abstract PropertyDescriptor getPropertyDescriptor();
 
   @Override
   public boolean isValid() {
