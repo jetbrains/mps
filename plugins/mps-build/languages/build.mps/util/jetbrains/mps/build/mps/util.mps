@@ -21672,7 +21672,7 @@
                           <property role="TrG5h" value="m" />
                           <node concept="17QB3L" id="13ayn2xymIo" role="1tU5fm" />
                           <node concept="Xl_RD" id="13ayn2xymJl" role="33vP2m">
-                            <property role="Xl_RC" value="standalone generator references language module that is not its source language (expected %d, but found %s)" />
+                            <property role="Xl_RC" value="standalone generator references language module that is not its source language (expected %s, but found %s)" />
                           </node>
                         </node>
                       </node>

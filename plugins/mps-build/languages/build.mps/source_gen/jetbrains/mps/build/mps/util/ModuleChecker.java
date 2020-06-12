@@ -611,7 +611,7 @@ public final class ModuleChecker {
         SModuleReference srcLang = ((GeneratorDescriptor) myModuleDescriptor).getSourceLanguage();
         String trueLangId = PersistenceFacade.getInstance().asString(srcLang.getModuleId());
         if (!(Objects.equals(SPropertyOperations.getString(SLinkOperations.getTarget(generator, LINKS.sourceLanguage$vc9u), PROPS.uuid$XKnR), trueLangId))) {
-          String m = "standalone generator references language module that is not its source language (expected %d, but found %s)";
+          String m = "standalone generator references language module that is not its source language (expected %s, but found %s)";
           report(String.format(m, srcLang, BuildMps_AbstractModule__BehaviorDescriptor.getModuleReference_id41K1b4v5ZCB.invoke(SLinkOperations.getTarget(generator, LINKS.sourceLanguage$vc9u))));
         }
       }

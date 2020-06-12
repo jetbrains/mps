@@ -12,6 +12,9 @@ import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.apache.log4j.Level;
 
+/**
+ * Use of this class is discouraged as it makes impossible to tell whether there's an error in some checker or if it was user that cancelled a check
+ */
 @GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/8195773907766692874", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public class CatchingChecker<O, I extends ReportItem> implements IAbstractChecker<O, I> {
   private static final Logger LOG = LogManager.getLogger(CatchingChecker.class);
