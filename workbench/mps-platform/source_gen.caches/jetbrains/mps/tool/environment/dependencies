@@ -2,6 +2,7 @@
 <dependenciesRoot>
   <dependency className="jetbrains.mps.tool.environment.IdeaEnvironment">
     <classNode dependClassName="com.intellij.ide.startup.StartupManagerEx" />
+    <classNode dependClassName="com.intellij.ide.startup.impl.StartupManagerImpl" />
     <classNode dependClassName="com.intellij.openapi.Disposable" />
     <classNode dependClassName="com.intellij.openapi.application.Application" />
     <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
@@ -10,6 +11,7 @@
     <classNode dependClassName="com.intellij.openapi.project.DumbService" />
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.project.ex.ProjectManagerEx" />
+    <classNode dependClassName="com.intellij.openapi.startup.StartupManager" />
     <classNode dependClassName="com.intellij.openapi.util.Disposer" />
     <classNode dependClassName="com.intellij.openapi.vfs.newvfs.impl.VfsRootAccess" />
     <classNode dependClassName="com.intellij.testFramework.PlatformTestUtil" />
