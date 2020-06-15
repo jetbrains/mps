@@ -16,7 +16,6 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
 import jetbrains.mps.util.InternUtil;
 import jetbrains.mps.util.WeakSet;
 import jetbrains.mps.util.annotation.ToRemove;
@@ -46,16 +45,6 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
   protected final SNode mySourceNode; // made protected only for assert in DynamicReference
   private final SReferenceLink myRoleId;
   private volatile String myResolveInfo;
-
-  /**
-   * role must be "genuine", interned
-   */
-  @Deprecated
-  protected SReference(String role, SNode sourceNode) {
-    mySourceNode = sourceNode;
-    assert sourceNode != null;
-    myRoleId = ((ConceptMetaInfoConverter) sourceNode.getConcept()).convertAssociation(role);
-  }
 
   protected SReference(@NotNull SReferenceLink role, SNode sourceNode) {
     myRoleId = role;

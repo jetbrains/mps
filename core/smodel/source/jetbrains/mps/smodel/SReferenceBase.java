@@ -16,12 +16,14 @@
 package jetbrains.mps.smodel;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 
 /**
+ * XXX There's no reason to keep this class as is; likely shall either suck up smodel.SReference (not to keep 2 SReference classes, one in smodel and
+ * another in openapi) or be abandoned altogether.
+ *
  * Igor Alshannikov
  * Sep 28, 2007
  */
