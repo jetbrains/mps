@@ -29,7 +29,12 @@ public class Element_Constraints extends BaseConstraintsDescriptor {
     }
     @Override
     public Object getValue(SNode node) {
-      return "https://www.periodni.com/" + SPropertyOperations.getString(node, PROPS.id$sqos).toLowerCase() + ".html";
+      String id = SPropertyOperations.getString(node, PROPS.id$sqos);
+      if (id != null) {
+        return "https://www.periodni.com/" + id.toLowerCase() + ".html";
+      } else {
+        return "";
+      }
     }
   }
   @Override
