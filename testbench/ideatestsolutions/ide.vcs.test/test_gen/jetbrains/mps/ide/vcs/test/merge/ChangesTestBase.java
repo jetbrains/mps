@@ -12,7 +12,6 @@ import jetbrains.mps.vcs.changesmanager.CurrentDifference;
 import com.intellij.openapi.vcs.AbstractVcs;
 import org.jetbrains.annotations.NotNull;
 import org.junit.BeforeClass;
-import jetbrains.mps.smodel.SReference;
 import com.intellij.openapi.util.registry.Registry;
 import org.junit.AfterClass;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -86,7 +85,6 @@ public abstract class ChangesTestBase implements EnvironmentAware {
 
   @BeforeClass
   public static void setUp() {
-    SReference.disableLogging();
     Registry.get("vcs.showConsole").setValue(false);
   }
 

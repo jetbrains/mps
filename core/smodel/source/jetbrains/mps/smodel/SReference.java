@@ -15,11 +15,12 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.logging.Logger;
+import jetbrains.mps.logging.Log4jUtil;
 import jetbrains.mps.util.InternUtil;
 import jetbrains.mps.util.WeakSet;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -36,12 +37,6 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
   public static final SReference[] EMPTY_ARRAY = new SReference[0];
   private static final Set<SReference> ourErrorReportedRefs = new WeakSet<>();
 
-  private final static ThreadLocal<Boolean> ourLoggingOff = new ThreadLocal<Boolean>() {
-    @Override
-    protected Boolean initialValue() {
-      return false;
-    }
-  };
   protected final SNode mySourceNode; // made protected only for assert in DynamicReference
   private final SReferenceLink myRoleId;
   private volatile String myResolveInfo;
@@ -70,19 +65,6 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
     return create(role, sourceNode, pointer.getModelReference(), pointer.getNodeId(), resolveInfo);
   }
 
-  /**
-   * @return Whether logging was really disabled by this call, i.e. it wasn't already disabled before
-   */
-  public static boolean disableLogging() {
-    boolean wasOff = ourLoggingOff.get();
-    ourLoggingOff.set(true);
-    return !wasOff;
-  }
-
-  public static void enableLogging() {
-    ourLoggingOff.set(false);
-  }
-
   @Override
   @Deprecated
   @ToRemove(version = 3.2)
@@ -104,15 +86,28 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
 
   @Override
   public final SNode getTargetNode() {
-    return getTargetNode_internal();
+    return getTargetNode_internal(new LegacyLogReporter(this));
+  }
+
+  /**
+   * Auxiliary, implementation-bound alternative to {@link #getTargetNode()} with extended control over error reporting
+   */
+  public final SNode getTargetNode(@NotNull ProblemReporter report) {
+    final SNode rv = getTargetNode_internal(report);
+    if (report instanceof ResolveProcess) {
+      if (rv == null) {
+        ((ResolveProcess) report).unresolved(this);
+      } else {
+        ((ResolveProcess) report).resolved(this, rv);
+      }
+    }
+    return rv;
   }
 
   @Override
   public SNodeReference getTargetNodeReference() {
     return new SNodePointer(getTargetSModelReference(), getTargetNodeId());
   }
-
-  //-------- factory methods -----------
 
   @Override
   @Nullable
@@ -141,50 +136,18 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
     myResolveInfo = InternUtil.intern(info);
   }
 
-  protected abstract SNode getTargetNode_internal();
+  protected abstract SNode getTargetNode_internal(/*not null*/ ProblemReporter reporter);
 
   //-------- error logging -----------
 
   /**
    * prints error to log
-   * @param onlyWarn if true then warning must be printed out. Must be true almost always.
+   * @deprecated don't use directly, stick to {@link ProblemReporter} instead
+   *             would be removed once I settle its only use in StaticReference#makeIndirect(boolean)
    */
-  protected final void error(String message, boolean onlyWarn, ProblemDescription... problems) {
-    if (!ourLoggingOff.get()) {
-      //skip errors in java stubs because they can have reference to classes that doesn't present in the class path
-      SModel model = getSourceNode().getModel();
-      if (model != null && SModelStereotype.isStubModel(model)) {
-        return;
-      }
-
-      synchronized (ourErrorReportedRefs) {
-        if (!ourErrorReportedRefs.contains(this)) {
-          ourErrorReportedRefs.add(this);
-
-          // beware, don't use node.getPresentation() or toString() (which may invoke getPresentation()) to represent a source node
-          // as it ends up in behavior method that may try to access references we are about to report as broken (see MPS-28126 and related)
-          // Perhaps, even getName() is bad (getProperty(SNodeUtil.INamedConcept_name) might be better) as smodel.SNode.getName impl goes through
-          // SNodeAccessUtil which may trigger property constraint execution.
-          String srcNodePresentation = getSourceNode().getName();
-          if (srcNodePresentation == null) {
-            srcNodePresentation = String.format("<unnamed> %s[%s] (%s)", getSourceNode().getConcept().getName(), getSourceNode().getNodeId(), model == null ? "detached" : model.getName());
-          }
-          String msg = String.format("Could not resolve reference '%s' from %s.", getRole(), srcNodePresentation);
-          msg += "\n" + getSourceNode().getReference();
-          if (message != null) {
-            msg += "\n" + " -- " + message;
-          }
-          // fixme AP: multiline log messages is a bad style
-          Logger log = Logger.wrap(LogManager.getLogger(this.getClass()));
-          if (onlyWarn) log.warning(msg); else log.error(msg);
-          if (problems != null) {
-            for (ProblemDescription pd : problems) {
-              if (onlyWarn) log.warning(pd.getMessage(), pd.getNode()); else log.error(pd.getMessage(), pd.getNode());
-            }
-          }
-        }
-      }
-    }
+  @Deprecated
+  protected final void error(String message, ProblemDescription... problems) {
+    new LegacyLogReporter(this).error(message, problems);
   }
 
   @Immutable
@@ -205,6 +168,103 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
 
     public String getMessage() {
       return myMessage;
+    }
+  }
+
+  /**
+   * PROVISIONAL API, DON'T USE OUTSIDE OF MPS CORE
+   * Right now just captures different uses of #error() method.
+   *
+   * I don't feel distinction warning/error is right, nor use of ProblemDescription object appeals to me.
+   * Perhaps, a method should return a Message object that could be further populated with extra info, and
+   * then finalized with done() (or error/warning if distinction is necessary)
+   */
+  public interface ProblemReporter {
+    default void warn(String message) {
+      // no-op
+    }
+    default void error(String message, ProblemDescription... details) {
+      // no-op
+    }
+  }
+
+
+  /**
+   * PROVISIONAL API, DON'T USE OUTSIDE OF MPS CORE
+   * Extension to {@link ProblemReporter} that receives final outcome of the resolution process, for use with {@link #getTargetNode(ProblemReporter)}
+   */
+  public interface ResolveProcess extends ProblemReporter {
+    default void unresolved(@NotNull org.jetbrains.mps.openapi.model.SReference ref) {
+      // no-op
+    }
+    default void resolved(@NotNull org.jetbrains.mps.openapi.model.SReference ref, @NotNull SNode target) {
+      // no-op
+    }
+  }
+
+  private static final class LegacyLogReporter implements ProblemReporter {
+    private final SReference myRef;
+
+    /*package*/ LegacyLogReporter(/*not null*/ SReference ref) {
+      myRef = ref;
+    }
+
+    private org.apache.log4j.Logger log() {
+      return LogManager.getLogger(SReference.class);
+    }
+
+    @Override
+    public void warn(String message) {
+      if (isStubModel(myRef.getSourceNode().getModel())) {
+        return;
+      }
+      // I don't like the design, but would like to change ProblemReporter API anyway, to be more focused on what's going
+      // on rather than on exact ways to report a message. Don't want to bother with this at the moment as my goal at the moment is getTargetNodeSilently()
+      log().warn(message);
+    }
+
+    private boolean isStubModel(SModel model) {
+      return model != null && SModelStereotype.isStubModel(model);
+    }
+
+    @Override
+    public void error(String message, ProblemDescription... problems) {
+      final SNode sourceNode = myRef.getSourceNode();
+      //skip errors in java stubs because they can have reference to classes that doesn't present in the class path
+      SModel model = sourceNode.getModel();
+      if (isStubModel(model)) {
+        return;
+      }
+
+      // XXX synchronized?!
+      final boolean shallReport;
+      synchronized (ourErrorReportedRefs) {
+        shallReport = ourErrorReportedRefs.add(myRef);
+      }
+      if (!shallReport) {
+        return;
+      }
+      // beware, don't use node.getPresentation() or toString() (which may invoke getPresentation()) to represent a source node
+      // as it ends up in behavior method that may try to access references we are about to report as broken (see MPS-28126 and related)
+      // Perhaps, even getName() is bad (getProperty(SNodeUtil.INamedConcept_name) might be better) as smodel.SNode.getName impl goes through
+      // SNodeAccessUtil which may trigger property constraint execution.
+      String srcNodePresentation = sourceNode.getName();
+      if (srcNodePresentation == null) {
+        srcNodePresentation = String.format("<unnamed> %s[%s] (%s)", sourceNode.getConcept().getName(), sourceNode.getNodeId(), model == null ? "detached" : model.getName());
+      }
+      String msg = String.format("Could not resolve reference '%s' from %s.", myRef.getRole(), srcNodePresentation);
+      msg += "\n" + sourceNode.getReference();
+      if (message != null) {
+        msg += "\n" + " -- " + message;
+      }
+      // fixme AP: multiline log messages is a bad style
+      final Logger log = log();
+      log.error(msg);
+      if (problems != null) {
+        for (ProblemDescription pd : problems) {
+          log.error(Log4jUtil.createMessageObject(pd.getMessage(), pd.getNode()));
+        }
+      }
     }
   }
 }

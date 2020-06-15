@@ -48,7 +48,6 @@ import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.project.dependency.VisibilityUtil;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
-import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.extapi.model.TransientSModel;
@@ -237,37 +236,41 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
     }
   }
   private BadReferences collectBadReferences(SNode cellNode) {
-    boolean needToEnableLogging = jetbrains.mps.smodel.SReference.disableLogging();
-    try {
-      SModel model = SNodeOperations.getModel(cellNode);
-      VisibilityUtil visibilityHelper = VisibilityUtil.forModel(model);
-      BadReferences result = new BadReferences(SetSequence.fromSet(new HashSet<SReference>()), SetSequence.fromSet(new HashSet<SReference>()));
-      for (SNode node : SNodeUtil.getDescendants(cellNode)) {
-        for (SReference ref : SNodeOperations.getReferences(node)) {
-          if (jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref) == null) {
-            SetSequence.fromSet(result.brokenReferences()).addElement(ref);
+    SModel model = SNodeOperations.getModel(cellNode);
+    final VisibilityUtil visibilityHelper = VisibilityUtil.forModel(model);
+    final BadReferences result = new BadReferences(SetSequence.fromSet(new HashSet<SReference>()), SetSequence.fromSet(new HashSet<SReference>()));
+    final jetbrains.mps.smodel.SReference.ResolveProcess h = new jetbrains.mps.smodel.SReference.ResolveProcess() {
+      @Override
+      public void unresolved(@NotNull SReference ref) {
+        SetSequence.fromSet(result.brokenReferences()).addElement(ref);
+      }
+      @Override
+      public void resolved(@NotNull SReference ref, @NotNull SNode target) {
+        SModel m = target.getModel();
+        if (m == null) {
+          return;
+        }
+        if (visibilityHelper.isVisible(m)) {
+          return;
+        }
+        SetSequence.fromSet(result.outOfModuleScope()).addElement(ref);
+      }
+    };
+    for (SNode node : SNodeUtil.getDescendants(cellNode)) {
+      for (SReference ref : SNodeOperations.getReferences(node)) {
+        if (ref instanceof jetbrains.mps.smodel.SReference) {
+          ((jetbrains.mps.smodel.SReference) ref).getTargetNode(h);
+        } else {
+          SNode tn = ref.getTargetNode();
+          if (tn == null) {
+            h.unresolved(ref);
           } else {
-            SModelReference mref = ref.getTargetSModelReference();
-            if (mref == null) {
-              continue;
-            }
-            SModel m = mref.resolve(myProject.getRepository());
-            if (m == null) {
-              continue;
-            }
-            if (visibilityHelper.isVisible(m)) {
-              continue;
-            }
-            SetSequence.fromSet(result.outOfModuleScope()).addElement(ref);
+            h.resolved(ref, tn);
           }
         }
       }
-      return result;
-    } finally {
-      if (needToEnableLogging) {
-        jetbrains.mps.smodel.SReference.enableLogging();
-      }
     }
+    return result;
   }
   private boolean isAutofix(SModel model, SRepository repository) {
     return model instanceof EditableSModel && !(model instanceof TransientSModel) && ReferenceResolverUtils.canExecuteImmediately(model, repository) && (EditorSettings.getInstance().isAutoQuickFix() || myForceAutofix);

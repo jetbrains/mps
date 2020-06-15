@@ -265,14 +265,10 @@ public class SNodeOperations {
    * Generally, ref.getTargetNode() shall be the one to use for almost every case out there; this one is intended for MPC Core uses.
    */
   public static SNode getTargetNodeSilently(SReference ref) {
-    boolean needToEnableLogging = false;
-    try {
-      needToEnableLogging = jetbrains.mps.smodel.SReference.disableLogging();
+    if (ref instanceof jetbrains.mps.smodel.SReference) {
+      return ((jetbrains.mps.smodel.SReference) ref).getTargetNode(new jetbrains.mps.smodel.SReference.ProblemReporter() {});
+    } else {
       return ref.getTargetNode();
-    } finally {
-      if (needToEnableLogging) {
-        jetbrains.mps.smodel.SReference.enableLogging();
-      }
     }
   }
   /**

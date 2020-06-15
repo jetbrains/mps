@@ -126,7 +126,7 @@ public final class StaticReference extends SReferenceBase {
   }
 
   @Override
-  protected SNode getTargetNode_internal() {
+  protected SNode getTargetNode_internal(ProblemReporter report) {
     SModelReference mr = getTargetSModelReference();
     if (mr != null) {
       NodeReadAccessCasterInEditor.fireReferenceTargetReadAccessed(getSourceNode(), mr, getTargetNodeId());
@@ -179,7 +179,7 @@ public final class StaticReference extends SReferenceBase {
     }
     targetNode = commandContext(targetModel).resolveUnregistered(targetNodeId);
     if (targetNode == null) {
-      error("target model '" + targetModel.getReference() + "' doesn't contain node with id=" + getTargetNodeId(), true);
+      report.warn("target model '" + targetModel.getReference() + "' doesn't contain node with id=" + getTargetNodeId());
     }
 
     return targetNode;
@@ -362,7 +362,9 @@ public final class StaticReference extends SReferenceBase {
       // assert sourceModel != null;
       final boolean targetNodeIsInModel = myImmatureTargetNode.getModel() != null;
       final String m = String.format("ImmatureTargetNode(modelID: %s, nodeID: %s): isRegistered = %b", myImmatureTargetNode.getModel(), myImmatureTargetNode.getNodeId(), targetNodeIsInModel);
-      error("Impossible to resolve immature reference", false, new ProblemDescription(myImmatureTargetNode.getReference(), m));
+      // XXX makeIndirect() generally was not guarded by SReference.disableLogging() (it was getTargetNode() that has been guarded in most scenarios), that's why
+      //     I don't bother passing ProblemReporter instance here at the moment
+      error("Impossible to resolve immature reference", new ProblemDescription(myImmatureTargetNode.getReference(), m));
       myImmatureTargetNode = null;
     }
     return myImmatureTargetNode == null;

@@ -113,7 +113,7 @@ public final class DynamicReference extends SReferenceBase {
   }
 
   @Override
-  protected SNode getTargetNode_internal() {
+  protected SNode getTargetNode_internal(ProblemReporter report) {
     // seems like getTargetNode() doesn't make sense if source node is detached
     if (mySourceNode.getModel() == null) {
       assert myHasBeenResolve : "Taking target node of dynamic reference whose source node is not in a model";
@@ -138,7 +138,7 @@ public final class DynamicReference extends SReferenceBase {
     try {
 
       if (getResolveInfo() == null) {
-        reportErrorWithOrigin("bad reference: no resolve info");
+        reportErrorWithOrigin("bad reference: no resolve info", report);
         return null;
       }
 
@@ -150,7 +150,7 @@ public final class DynamicReference extends SReferenceBase {
         scope = ModelConstraints.getScope(this);
       }
       if (scope instanceof ErrorScope) {
-        reportErrorWithOrigin("cannot obtain scope for reference `" + getRole() + "': " + ((ErrorScope) scope).getMessage());
+        reportErrorWithOrigin("cannot obtain scope for reference `" + getRole() + "': " + ((ErrorScope) scope).getMessage(), report);
         return null;
 
       }
@@ -163,8 +163,7 @@ public final class DynamicReference extends SReferenceBase {
       }
 
       if (targetNode == null) {
-
-        reportErrorWithOrigin("cannot resolve reference by string: '" + getResolveInfo() + "'");
+        reportErrorWithOrigin("cannot resolve reference by string: '" + getResolveInfo() + "'", report);
       }
 
       myHasBeenResolve = true;
@@ -179,14 +178,14 @@ public final class DynamicReference extends SReferenceBase {
 
   @Override
   public SNodeReference getTargetNodeReference() {
-    SNode targetNode = getTargetNode_internal();
+    SNode targetNode = getTargetNode_internal(new ProblemReporter() {});
     if (targetNode == null) {
       return new SNodePointer(null);
     }
     return targetNode.getReference();
   }
 
-  private void reportErrorWithOrigin(String message) {
+  private void reportErrorWithOrigin(String message, ProblemReporter report) {
     Set<DynamicReference> refs = currentlySourceNodeLogged.get();
     try {
       refs.add(this);
@@ -199,11 +198,11 @@ public final class DynamicReference extends SReferenceBase {
           result.add(new ProblemDescription(myOrigin.getTemplate(), " -- was template: " + myOrigin.getTemplate().toString()));
         }
         if (result.size() > 0) {
-          error(message, false, result.toArray(new ProblemDescription[0]));
+          report.error(message, result.toArray(new ProblemDescription[0]));
           return;
         }
       }
-      error(message, false);
+      report.error(message);
     } finally {
       refs.remove(this);
     }

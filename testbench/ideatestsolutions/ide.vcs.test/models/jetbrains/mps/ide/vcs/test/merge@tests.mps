@@ -100,7 +100,7 @@
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1076505808687" name="jetbrains.mps.baseLanguage.structure.WhileStatement" flags="nn" index="2$JKZl">
@@ -305,7 +305,7 @@
       </concept>
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
-        <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
+        <child id="8276990574886367509" name="finallyClause" index="1zxBo6" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
@@ -750,12 +750,6 @@
       <property role="DiZV1" value="false" />
       <node concept="3cqZAl" id="6hwF4wZObg4" role="3clF45" />
       <node concept="3clFbS" id="6hwF4wZObg6" role="3clF47">
-        <node concept="3clFbF" id="6hwF4wZOyZ2" role="3cqZAp">
-          <node concept="2YIFZM" id="6hwF4wZOyZ3" role="3clFbG">
-            <ref role="1Pybhc" to="w1kc:~SReference" resolve="SReference" />
-            <ref role="37wK5l" to="w1kc:~SReference.disableLogging()" resolve="disableLogging" />
-          </node>
-        </node>
         <node concept="3clFbF" id="21kBj8J3IH_" role="3cqZAp">
           <node concept="2OqwBi" id="21kBj8J3IHA" role="3clFbG">
             <node concept="2YIFZM" id="21kBj8J3IPF" role="2Oq$k0">
