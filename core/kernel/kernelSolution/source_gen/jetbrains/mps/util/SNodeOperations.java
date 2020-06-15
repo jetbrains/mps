@@ -261,10 +261,9 @@ public class SNodeOperations {
   }
 
   /**
-   * 
-   * @deprecated not supposed to be used not in MPS core. Use ref.getTargetNode
+   * Get reference target or fail silently if reference could not be resolved (no error is reported)
+   * Generally, ref.getTargetNode() shall be the one to use for almost every case out there; this one is intended for MPC Core uses.
    */
-  @Deprecated
   public static SNode getTargetNodeSilently(SReference ref) {
     boolean needToEnableLogging = false;
     try {

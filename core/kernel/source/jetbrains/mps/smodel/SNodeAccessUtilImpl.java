@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,18 +18,16 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.adapter.structure.types.SEnumerationAdapter;
-import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.smodel.language.ConceptRegistryUtil;
 import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
 import jetbrains.mps.util.Pair;
+import jetbrains.mps.util.SNodeOperations;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SDataType;
-import org.jetbrains.mps.openapi.language.SEnumeration;
-import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SType;
@@ -201,7 +199,7 @@ public class SNodeAccessUtilImpl extends SNodeAccessUtil {
 
     try {
       org.jetbrains.mps.openapi.model.SReference r = node.getReference(referenceLink);
-      org.jetbrains.mps.openapi.model.SNode oldReferent = r == null ? null : SReference.getTargetNodeSilently(r);
+      org.jetbrains.mps.openapi.model.SNode oldReferent = r == null ? null : SNodeOperations.getTargetNodeSilently(r);
       if (descriptor.validate(node, oldReferent, target)) {
         node.setReferenceTarget(referenceLink, target);
         descriptor.onReferenceSet(node, oldReferent, target);

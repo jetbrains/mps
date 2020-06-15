@@ -5335,15 +5335,15 @@
     <node concept="2YIFZL" id="7Yvyxcb_4ZV" role="jymVt">
       <property role="TrG5h" value="getTargetNodeSilently" />
       <property role="DiZV1" value="false" />
-      <node concept="2AHcQZ" id="2DYuqezx05$" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
       <node concept="P$JXv" id="2DYuqezx05x" role="lGtFl">
-        <node concept="TZ5HI" id="2DYuqezx05y" role="3nqlJM">
-          <node concept="TZ5HA" id="2DYuqezx05z" role="3HnX3l">
-            <node concept="1dT_AC" id="2DYuqezx07D" role="1dT_Ay">
-              <property role="1dT_AB" value="not supposed to be used not in MPS core. Use ref.getTargetNode" />
-            </node>
+        <node concept="TZ5HA" id="2b433UyaQp0" role="TZ5H$">
+          <node concept="1dT_AC" id="2b433UyaQp1" role="1dT_Ay">
+            <property role="1dT_AB" value="Get reference target or fail silently if reference could not be resolved (no error is reported)" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="2b433UyaQph" role="TZ5H$">
+          <node concept="1dT_AC" id="2b433UyaQpi" role="1dT_Ay">
+            <property role="1dT_AB" value="Generally, ref.getTargetNode() shall be the one to use for almost every case out there; this one is intended for MPC Core uses." />
           </node>
         </node>
       </node>

@@ -83,18 +83,6 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
     ourLoggingOff.set(false);
   }
 
-  public static SNode getTargetNodeSilently(org.jetbrains.mps.openapi.model.SReference ref) {
-    boolean needToEnableLogging = false;
-    try {
-      needToEnableLogging = disableLogging();
-      return ref.getTargetNode();
-    } finally {
-      if (needToEnableLogging) {
-        enableLogging();
-      }
-    }
-  }
-
   @Override
   @Deprecated
   @ToRemove(version = 3.2)
