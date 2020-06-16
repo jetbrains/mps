@@ -27,6 +27,13 @@ public class DeleteVisibility {
         SLinkOperations.setTarget(node, LINKS.visibility$2GiC, null);
         SelectionUtil.selectCell(editorContext, node, SelectionManager.FIRST_CELL);
       }
+      @Override
+      public boolean canExecute(EditorContext editorContext) {
+        return this.canExecute_internal(editorContext, node);
+      }
+      public boolean canExecute_internal(EditorContext editorContext, SNode node) {
+        return (SLinkOperations.getTarget(node, LINKS.visibility$2GiC) != null);
+      }
 
     };
   }

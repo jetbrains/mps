@@ -6346,6 +6346,7 @@
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.editor.DeleteVisibility">
     <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.cells.AbstractCellAction" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.selection.SelectionUtil" />
