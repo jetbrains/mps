@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,7 @@ import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import jetbrains.mps.smodel.adapter.ids.SPropertyId;
 import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.persistence.def.v9.IdEncoder.EncodingException;
 import jetbrains.mps.smodel.runtime.ConceptKind;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -33,6 +34,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.SNodeId;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -56,6 +58,7 @@ class IdInfoReadHelper {
   private final Map<String, SProperty> myProperties = new HashMap<>();
   private final Map<String, SReferenceLink> myAssociations = new HashMap<>();
   private final Map<String, SContainmentLink> myAggregations = new HashMap<>();
+  private final Map<String, SNodeId> myModelNodes = new HashMap<>(200);
   private final boolean myInterfaceOnly;
   private final boolean myStripImplementation;
 
@@ -187,5 +190,30 @@ class IdInfoReadHelper {
     // proper read order (first registry, then used languages). It's even more complicated for per-root
     // persistence, where usedLanguages are kept in a header file only, while registry spans few.
     return MetaAdapterFactory.getLanguage(langId, langName);
+  }
+
+  public SNodeId readNodeId(String text) {
+    SNodeId rv = myModelNodes.get(text);
+    if (rv != null) {
+      return rv;
+    }
+    try {
+      myModelNodes.put(text, rv = myIdEncoder.parseNodeId(text));
+      return rv;
+    } catch (EncodingException ex) {
+      throw new IllegalArgumentException(text, ex.getCause());
+    }
+  }
+
+  public SNodeId readLocalRefTarget(String text) {
+    SNodeId rv = myModelNodes.get(text);
+    if (rv != null) {
+      return rv;
+    }
+    rv = myIdEncoder.parseLocalNodeReference(text);
+    if (rv != null) {
+      myModelNodes.put(text, rv);
+    }
+    return rv;
   }
 }

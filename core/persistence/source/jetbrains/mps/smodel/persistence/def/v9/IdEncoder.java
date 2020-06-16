@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +17,10 @@ package jetbrains.mps.smodel.persistence.def.v9;
 
 import jetbrains.mps.persistence.registry.IdInfoRegistry;
 import jetbrains.mps.smodel.JavaFriendlyBase64;
-import jetbrains.mps.smodel.StringBasedIdForJavaStubMethods;
 import jetbrains.mps.smodel.SNodeId.Foreign;
 import jetbrains.mps.smodel.SNodeId.Regular;
 import jetbrains.mps.smodel.StaticReference;
+import jetbrains.mps.smodel.StringBasedIdForJavaStubMethods;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.adapter.ids.SContainmentLinkId;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
@@ -48,8 +48,10 @@ public final class IdEncoder implements IdInfoRegistry.IndexEncoder {
   private static final char REF_TARGET_IMPORT_SEPARATOR = ':';
   private static final String DYNAMIC_REFERENCE_ID = "^";
   private final JavaFriendlyBase64 myBase64 = new JavaFriendlyBase64();
+  private final PersistenceFacade myPersistenceFacade;
 
   public IdEncoder() {
+    myPersistenceFacade = PersistenceFacade.getInstance();
   }
 
   public String toText(SLanguageId langId) {
@@ -98,37 +100,40 @@ public final class IdEncoder implements IdInfoRegistry.IndexEncoder {
       return myBase64.toString(v);
     }
     // fall-through
-    return nodeId.toString();
+    return myPersistenceFacade.asString(nodeId);
   }
 
   public SNodeId parseNodeId(String text) throws EncodingException {
-    try {
-      if (!text.startsWith(Foreign.ID_PREFIX) && !text.startsWith(StringBasedIdForJavaStubMethods.ID_PREFIX)) {
+    if (!text.startsWith(Foreign.ID_PREFIX) && !text.startsWith(StringBasedIdForJavaStubMethods.ID_PREFIX)) {
+      try {
         long v = myBase64.parseLong(text);
         return new Regular(v);
+      } catch (IllegalArgumentException ex) {
+        // ignore, try PF factory
       }
       // fall-through
-      return jetbrains.mps.smodel.SNodeId.fromString(text);
+    }
+    try {
+      return myPersistenceFacade.createNodeId(text);
     } catch (IllegalArgumentException ex) {
-      throw new EncodingException(ex.getMessage());
+      throw new EncodingException(ex);
     }
   }
 
   public String toText(SModelReference mr) {
-    return PersistenceFacade.getInstance().asString(mr);
+    return myPersistenceFacade.asString(mr);
   }
 
   public SModelReference parseModelReference(String text) {
-    return PersistenceFacade.getInstance().createModelReference(text);
+    return myPersistenceFacade.createModelReference(text);
   }
 
   public String toText(SModuleReference ref) {
-//    return PersistenceFacade.getInstance().asString(ref); FIXME add counterpart for createModuleReference
-    return ref.toString();
+    return myPersistenceFacade.asString(ref);
   }
 
   public SModuleReference parseModuleReference(String text) {
-    return PersistenceFacade.getInstance().createModuleReference(text);
+    return myPersistenceFacade.createModuleReference(text);
   }
 
   public String toTextLocal(SReference ref) {
@@ -205,6 +210,10 @@ public final class IdEncoder implements IdInfoRegistry.IndexEncoder {
   public static class EncodingException extends Exception {
     public EncodingException(String message) {
       super(message);
+    }
+
+    public EncodingException(Throwable cause) {
+      super(cause);
     }
   }
 }

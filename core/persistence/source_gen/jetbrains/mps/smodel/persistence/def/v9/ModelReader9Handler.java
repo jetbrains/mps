@@ -516,12 +516,7 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
       if (my_readHelperParam.isRequestedInterfaceOnly()) {
         interfaceNode = (my_readHelperParam.isInterface(concept) || attrs.getValue("role") == null);
       }
-      SNodeId nodeId;
-      try {
-        nodeId = my_idEncoderField.parseNodeId(attrs.getValue("id"));
-      } catch (IdEncoder.EncodingException e) {
-        throw new IllegalArgumentException(e);
-      }
+      SNodeId nodeId = my_readHelperParam.readNodeId(attrs.getValue("id"));
       SNode result = (interfaceNode ? new InterfaceSNode(concept, nodeId) : new SNode(concept, nodeId));
       // can be root 
       return MultiTuple.<SNode,SContainmentLink>from(result, my_readHelperParam.readAggregation(attrs.getValue("role")));
@@ -660,7 +655,7 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
       SReferenceLink association = my_readHelperParam.readAssociation(attrs.getValue("role"));
       if (attrs.getValue("node") != null) {
         // local reference 
-        SNodeId targetNode = my_idEncoderField.parseLocalNodeReference(attrs.getValue("node"));
+        SNodeId targetNode = my_readHelperParam.readLocalRefTarget(attrs.getValue("node"));
         return MultiTuple.<SReferenceLink,SModelReference,SNodeId,String>from(association, my_modelField.getReference(), targetNode, attrs.getValue("resolve"));
       } else {
         Pair<SModelReference, SNodeId> r = my_idEncoderField.parseExternalNodeReference(my_importHelperField, attrs.getValue("to"));

@@ -90,7 +90,6 @@
         <child id="1070534934092" name="expression" index="10QFUP" />
       </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
-        <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
@@ -577,52 +576,20 @@
         <property role="TrG5h" value="id" />
         <node concept="CQp6y" id="6dQUqCkLgf2" role="CQp6I">
           <node concept="3clFbS" id="6dQUqCkLgf3" role="2VODD2">
-            <node concept="3J1_TO" id="6F7SoxNMIQW" role="3cqZAp">
-              <node concept="3clFbS" id="6F7SoxNMIQY" role="1zxBo7">
-                <node concept="3clFbF" id="6dQUqCkLgf4" role="3cqZAp">
-                  <node concept="2OqwBi" id="6dQUqCkLgf5" role="3clFbG">
-                    <node concept="CQp63" id="6dQUqCkLgf6" role="2Oq$k0">
-                      <ref role="CQp62" node="6dQUqCkLgdZ" resolve="accumulator" />
-                    </node>
-                    <node concept="liA8E" id="6dQUqCkLgf7" role="2OqNvi">
-                      <ref role="37wK5l" to="i44q:7E_6zdv1nkp" resolve="pushNode" />
-                      <node concept="2OqwBi" id="3HZUBMwRbWI" role="37wK5m">
-                        <node concept="2OqwBi" id="3HZUBMwRbKn" role="2Oq$k0">
-                          <node concept="CQp63" id="3HZUBMwRb4U" role="2Oq$k0">
-                            <ref role="CQp62" node="3HZUBMwQO8p" resolve="readHelper" />
-                          </node>
-                          <node concept="liA8E" id="3HZUBMwRbSU" role="2OqNvi">
-                            <ref role="37wK5l" to="mw71:~IdInfoReadHelper.getIdEncoder()" resolve="getIdEncoder" />
-                          </node>
-                        </node>
-                        <node concept="liA8E" id="3HZUBMwRc6W" role="2OqNvi">
-                          <ref role="37wK5l" to="mw71:~IdEncoder.parseNodeId(java.lang.String)" resolve="parseNodeId" />
-                          <node concept="3kJR9K" id="3HZUBMwRca4" role="37wK5m" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
+            <node concept="3clFbF" id="6dQUqCkLgf4" role="3cqZAp">
+              <node concept="2OqwBi" id="6dQUqCkLgf5" role="3clFbG">
+                <node concept="CQp63" id="6dQUqCkLgf6" role="2Oq$k0">
+                  <ref role="CQp62" node="6dQUqCkLgdZ" resolve="accumulator" />
                 </node>
-              </node>
-              <node concept="3uVAMA" id="6F7SoxNMIQZ" role="1zxBo5">
-                <node concept="XOnhg" id="6F7SoxNMIR3" role="1zc67B">
-                  <property role="3TUv4t" value="false" />
-                  <property role="TrG5h" value="e" />
-                  <node concept="nSUau" id="xvs04dGrJK" role="1tU5fm">
-                    <node concept="3uibUv" id="6F7SoxNMIUD" role="nSUat">
-                      <ref role="3uigEE" to="mw71:~IdEncoder$EncodingException" resolve="IdEncoder.EncodingException" />
+                <node concept="liA8E" id="6dQUqCkLgf7" role="2OqNvi">
+                  <ref role="37wK5l" to="i44q:7E_6zdv1nkp" resolve="pushNode" />
+                  <node concept="2OqwBi" id="3HZUBMwRbKn" role="37wK5m">
+                    <node concept="CQp63" id="3HZUBMwRb4U" role="2Oq$k0">
+                      <ref role="CQp62" node="3HZUBMwQO8p" resolve="readHelper" />
                     </node>
-                  </node>
-                </node>
-                <node concept="3clFbS" id="6F7SoxNMIR1" role="1zc67A">
-                  <node concept="YS8fn" id="6F7SoxNMJft" role="3cqZAp">
-                    <node concept="2ShNRf" id="6F7SoxNMJlZ" role="YScLw">
-                      <node concept="1pGfFk" id="6F7SoxNMJPO" role="2ShVmc">
-                        <ref role="37wK5l" to="wyt6:~IllegalArgumentException.&lt;init&gt;(java.lang.Throwable)" resolve="IllegalArgumentException" />
-                        <node concept="37vLTw" id="6F7SoxNMJSC" role="37wK5m">
-                          <ref role="3cqZAo" node="6F7SoxNMIR3" resolve="e" />
-                        </node>
-                      </node>
+                    <node concept="liA8E" id="ps5OaXB22M" role="2OqNvi">
+                      <ref role="37wK5l" to="mw71:~IdInfoReadHelper.readNodeId(java.lang.String)" resolve="readNodeId" />
+                      <node concept="3kJR9K" id="ps5OaXB245" role="37wK5m" />
                     </node>
                   </node>
                 </node>
@@ -3213,48 +3180,14 @@
               <node concept="3uibUv" id="6dQFBm8VKjL" role="1tU5fm">
                 <ref role="3uigEE" to="mhbf:~SNodeId" resolve="SNodeId" />
               </node>
-            </node>
-          </node>
-          <node concept="3J1_TO" id="6F7SoxNMWkZ" role="3cqZAp">
-            <node concept="3clFbS" id="6F7SoxNMWl1" role="1zxBo7">
-              <node concept="3clFbF" id="6dQFBm8VLOS" role="3cqZAp">
-                <node concept="37vLTI" id="6dQFBm8VLYQ" role="3clFbG">
-                  <node concept="37vLTw" id="6dQFBm8VMwu" role="37vLTJ">
-                    <ref role="3cqZAo" node="6dQFBm8VKjK" resolve="nodeId" />
-                  </node>
-                  <node concept="2OqwBi" id="6dQFBm8VH58" role="37vLTx">
-                    <node concept="CQp63" id="6dQFBm8VH59" role="2Oq$k0">
-                      <ref role="CQp62" node="5$D2sKZJIcP" resolve="idEncoder" />
-                    </node>
-                    <node concept="liA8E" id="6dQFBm8VH5a" role="2OqNvi">
-                      <ref role="37wK5l" to="mw71:~IdEncoder.parseNodeId(java.lang.String)" resolve="parseNodeId" />
-                      <node concept="CQp6E" id="6dQFBm8VH5b" role="37wK5m">
-                        <ref role="CQp6D" node="4Kem6uXVnrl" resolve="id" />
-                      </node>
-                    </node>
-                  </node>
+              <node concept="2OqwBi" id="6dQFBm8VH58" role="33vP2m">
+                <node concept="CQp63" id="ps5OaXB0bt" role="2Oq$k0">
+                  <ref role="CQp62" node="4Kem6uXVngW" resolve="readHelper" />
                 </node>
-              </node>
-            </node>
-            <node concept="3uVAMA" id="6F7SoxNMWl2" role="1zxBo5">
-              <node concept="XOnhg" id="6F7SoxNMWl6" role="1zc67B">
-                <property role="3TUv4t" value="false" />
-                <property role="TrG5h" value="e" />
-                <node concept="nSUau" id="xvs04dGrJM" role="1tU5fm">
-                  <node concept="3uibUv" id="6F7SoxNMWOV" role="nSUat">
-                    <ref role="3uigEE" to="mw71:~IdEncoder$EncodingException" resolve="IdEncoder.EncodingException" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbS" id="6F7SoxNMWl4" role="1zc67A">
-                <node concept="YS8fn" id="6F7SoxNMZrg" role="3cqZAp">
-                  <node concept="2ShNRf" id="6F7SoxNMZZI" role="YScLw">
-                    <node concept="1pGfFk" id="6F7SoxNN0Qu" role="2ShVmc">
-                      <ref role="37wK5l" to="wyt6:~IllegalArgumentException.&lt;init&gt;(java.lang.Throwable)" resolve="IllegalArgumentException" />
-                      <node concept="37vLTw" id="6F7SoxNN1qi" role="37wK5m">
-                        <ref role="3cqZAo" node="6F7SoxNMWl6" resolve="e" />
-                      </node>
-                    </node>
+                <node concept="liA8E" id="6dQFBm8VH5a" role="2OqNvi">
+                  <ref role="37wK5l" to="mw71:~IdInfoReadHelper.readNodeId(java.lang.String)" resolve="readNodeId" />
+                  <node concept="CQp6E" id="6dQFBm8VH5b" role="37wK5m">
+                    <ref role="CQp6D" node="4Kem6uXVnrl" resolve="id" />
                   </node>
                 </node>
               </node>
@@ -3426,11 +3359,11 @@
                     <ref role="3uigEE" to="mhbf:~SNodeId" resolve="SNodeId" />
                   </node>
                   <node concept="2OqwBi" id="4XryHMun2Wa" role="33vP2m">
-                    <node concept="CQp63" id="4XryHMun2Wb" role="2Oq$k0">
-                      <ref role="CQp62" node="5$D2sKZJIcP" resolve="idEncoder" />
+                    <node concept="CQp63" id="ps5OaXB0Ug" role="2Oq$k0">
+                      <ref role="CQp62" node="4Kem6uXVngW" resolve="readHelper" />
                     </node>
                     <node concept="liA8E" id="4XryHMun2Wc" role="2OqNvi">
-                      <ref role="37wK5l" to="mw71:~IdEncoder.parseLocalNodeReference(java.lang.String)" resolve="parseLocalNodeReference" />
+                      <ref role="37wK5l" to="mw71:~IdInfoReadHelper.readLocalRefTarget(java.lang.String)" resolve="readLocalRefTarget" />
                       <node concept="CQp6E" id="4XryHMun2Wd" role="37wK5m">
                         <ref role="CQp6D" node="4XryHMum$M0" resolve="node" />
                       </node>
