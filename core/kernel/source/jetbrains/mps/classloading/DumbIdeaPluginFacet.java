@@ -16,6 +16,7 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.extapi.module.ModuleFacetBase;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.Memento;
 
@@ -38,12 +39,12 @@ public class DumbIdeaPluginFacet extends ModuleFacetBase implements IdeaPluginMo
   }
 
   @Override
-  public void save(Memento memento) {
+  public void save(@NotNull Memento memento) {
     memento.put("pluginId", pluginId);
   }
 
   @Override
-  public void load(Memento memento) {
+  public void load(@NotNull Memento memento) {
     pluginId = memento.get("pluginId");
   }
 

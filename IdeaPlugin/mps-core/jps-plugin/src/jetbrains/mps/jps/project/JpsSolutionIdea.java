@@ -47,6 +47,7 @@ import org.jetbrains.jps.service.JpsServiceManager;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
+import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
@@ -157,8 +158,9 @@ public class JpsSolutionIdea extends Solution {
     return dependencies;
   }
 
+  @NotNull
   @Override
-  protected ModuleFacetBase setupFacet(ModuleFacetBase facet, Memento memento) {
+  protected SModuleFacet loadAndAttachIfNeeded(@NotNull SModuleFacet facet, Memento memento) {
     if (facet instanceof JavaModuleFacet) {
       facet = new JavaModuleFacetImpl() {
         @Override
@@ -177,9 +179,8 @@ public class JpsSolutionIdea extends Solution {
           return FileSystem.getInstance().getFile(outputDir.getPath());
         }
       };
-      facet.setModule(this);
     }
-    return super.setupFacet(facet, memento);
+    return super.loadAndAttachIfNeeded(facet, memento);
   }
 
   @Override

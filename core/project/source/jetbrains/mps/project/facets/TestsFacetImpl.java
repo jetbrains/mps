@@ -22,6 +22,7 @@ import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SModule;
 
 public class TestsFacetImpl extends ModuleFacetBase implements TestsFacet {
   private IFile myModuleHome;
@@ -30,8 +31,14 @@ public class TestsFacetImpl extends ModuleFacetBase implements TestsFacet {
     super(FACET_TYPE);
   }
 
+  public TestsFacetImpl(SModule module) {
+    super(FACET_TYPE, module);
+  }
+
   @Override
   public void attach() {
+    // fixme transfer, though currently #attach is invoked (legacy code in AbstractModule and some inheritors)
+    assert getModule() != null;
     IFile descriptorFile = ((AbstractModule) getModule()).getDescriptorFile();
     if (descriptorFile != null) {
       myModuleHome = descriptorFile.getParent();

@@ -80,13 +80,13 @@ public class CustomGenerationModuleFacet extends ModuleFacetBase implements Mode
   }
 
   @Override
-  public void load(Memento memento) {
+  public void load(@NotNull Memento memento) {
     String value = memento.get("planModel");
     myPlanModel = value == null ? null : PersistenceFacade.getInstance().createModelReference(value);
   }
 
   @Override
-  public void save(Memento memento) {
+  public void save(@NotNull Memento memento) {
     memento.put("planModel", myPlanModel == null ? null : PersistenceFacade.getInstance().asString(myPlanModel));
   }
 }

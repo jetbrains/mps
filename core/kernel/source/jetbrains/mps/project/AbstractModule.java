@@ -38,6 +38,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
+import org.jetbrains.mps.annotations.Mutable;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -431,15 +432,22 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
    * As we move forward with facets story, we likely respect actual facets for the module (e.g. would force Java facet on module creation only)
    * Need to ensure classloading could deal with modules without Java facet, then can drop these mandatory facets altogether
    */
-  protected void collectMandatoryFacetTypes(Set<String> types) {
+  protected void collectMandatoryFacetTypes(@Mutable Set<String> types) {
     // FIXME once MPS with explicit 'java' facet (introduced in 2019.3) settles down, can remove this code. Make sure newly created
     //       modules get java facet persisted (NewModuleUtil doesn't care to set proper facet descriptors into newly constructed MD)
     types.add(JavaModuleFacet.FACET_TYPE);
   }
 
-  protected ModuleFacetBase setupFacet(ModuleFacetBase facet, Memento memento) {
+  @NotNull
+  protected SModuleFacet loadAndAttachIfNeeded(@NotNull SModuleFacet facet, Memento memento) {
+    if (!facet.isAttached()) {
+      assert (facet.getModule() == null);
+      facet.attach(this);
+    }
+    if (facet instanceof ModuleFacetBase) {
+      ((ModuleFacetBase) facet).attach(); // legacy, to remove in 203
+    }
     facet.load(memento != null ? memento : new MementoImpl());
-    facet.attach();
     return facet;
   }
 
@@ -486,31 +494,18 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   }
 
   private void createAndLoadFacet(FacetFactory factory, Memento memento) {
-    if (!factory.isApplicable(this)) {
-      LOG.error("This module is not applicable for the facet factory '" + factory + "'", new IllegalStateException());
+    if (factory.isApplicable(this)) {
+      SModuleFacet facet = factory.create(this);
+      facet = loadAndAttachIfNeeded(facet, memento);
+      myFacets.add(facet);
     } else {
-      SModuleFacet newFacet = factory.create(this);
-      if (!(newFacet instanceof ModuleFacetBase)) {
-        // FIXME review setupFacet logic (especially overrides). I'd rather perform load() for all and attach in case it's ModuleFacetBase, but not error
-        LOG.error("not instance of ModuleFacetBase, facet factory: " + factory.getClass().getName());
-        return;
-      }
-
-      ModuleFacetBase facet = (ModuleFacetBase) newFacet;
-      facet = setupFacet(facet, memento);
-      if (facet != null) {
-        myFacets.add(facet);
-      } else {
-        LOG.error("somehow ended with null facet, facet factory: " + factory.getClass().getName());
-      }
+      LOG.error("This module is not applicable for the facet factory '" + factory + "'", new IllegalStateException());
     }
   }
 
   private void clearFacets() {
     for (SModuleFacet facet : myFacets) {
-      if (facet instanceof ModuleFacetBase) {
-        ((ModuleFacetBase) facet).dispose();
-      }
+      facet.detach();
     }
     myFacets.clear();
   }

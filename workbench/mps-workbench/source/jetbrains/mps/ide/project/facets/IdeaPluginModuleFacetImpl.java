@@ -20,7 +20,6 @@ import com.intellij.ide.plugins.PluginManager;
 import com.intellij.openapi.extensions.PluginId;
 import jetbrains.mps.classloading.IdeaPluginModuleFacet;
 import jetbrains.mps.extapi.module.ModuleFacetBase;
-import jetbrains.mps.project.Solution;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.Memento;
@@ -38,9 +37,8 @@ public class IdeaPluginModuleFacetImpl extends ModuleFacetBase implements IdeaPl
     super(FACET_TYPE);
   }
 
-  @Override
-  public boolean setModule(SModule module) {
-    return module instanceof Solution && super.setModule(module);
+  public IdeaPluginModuleFacetImpl(SModule module) {
+    super(FACET_TYPE, module);
   }
 
   @Override
@@ -56,13 +54,12 @@ public class IdeaPluginModuleFacetImpl extends ModuleFacetBase implements IdeaPl
   }
 
   @Override
-  public void save(Memento memento) {
+  public void save(@NotNull Memento memento) {
     memento.put("pluginId", myPersistencePluginId);
   }
 
   @Override
-  public void load(Memento memento) {
-    checkNotRegistered();
+  public void load(@NotNull Memento memento) {
     myClassloadPluginId = myPersistencePluginId = memento.get("pluginId");
   }
 

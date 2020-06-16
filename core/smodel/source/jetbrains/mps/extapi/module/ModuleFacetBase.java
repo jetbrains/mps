@@ -16,22 +16,43 @@
 package jetbrains.mps.extapi.module;
 
 import jetbrains.mps.util.annotation.ToRemove;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.DetachableFacet;
 import org.jetbrains.mps.openapi.module.FacetsFacade.FacetFactory;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.persistence.Memento;
 
+import java.util.concurrent.atomic.AtomicReference;
+
 /**
  * Base class for all module facets.
+ *
+ * fixme not thread-safe
  */
-public abstract class ModuleFacetBase implements SModuleFacet {
-  private final String myFacetType;
-  private SModule myModule;
-  private boolean isRegistered;
+public abstract class ModuleFacetBase implements SModuleFacet, DetachableFacet {
+  private static final Logger LOG = LogManager.getLogger(ModuleFacetBase.class);
 
+  private final String myFacetType;
+  private final AtomicReference<SModule> myModule = new AtomicReference<>();
+
+  /**
+   * the common flow is to have module already in construction, register it once and for all (#setModule + #attach), dispose in the end
+   *
+   * @deprecated use the constructor with module to initialize AND attach the facet in one take
+   */
+  @Deprecated
   protected ModuleFacetBase(@NotNull String facetType) {
     myFacetType = facetType;
+  }
+
+  protected ModuleFacetBase(@NotNull String facetType, @NotNull SModule module) {
+    myFacetType = facetType;
+    attach(module);
   }
 
   @NotNull
@@ -51,50 +72,61 @@ public abstract class ModuleFacetBase implements SModuleFacet {
     return getFacetType();
   }
 
-  @NotNull
+  @Nullable
   @Override
-  public SModule getModule() {
-    return myModule;
+  public final SModule getModule() {
+    return myModule.get();
   }
 
   /**
-   * FIXME javadoc @return and do we need both setModule + attach?
    * Returns null if the facet cannot work within the passed module.
    */
-  public boolean setModule(SModule module) {
+  @ScheduledForRemoval(inVersion = "2020.2")
+  @Deprecated
+  public final boolean setModule(@NotNull SModule module) {
     // FIXME the 'cannot work' logic shall move to FacetFactory.isApplicable()
-    checkNotRegistered();
-    myModule = module;
+    throwIfAlreadyAttached();
+    myModule.set(module);
     return true;
   }
 
-  protected void checkNotRegistered() {
-    if (isRegistered()) {
-      throw new IllegalStateException("cannot change properties of the registered root");
+  protected void throwIfAlreadyAttached() {
+    if (isAttached()) {
+      throw new IllegalStateException("Already attached");
     }
   }
 
-  public boolean isRegistered() {
-    return isRegistered;
-  }
-
+  @ScheduledForRemoval(inVersion = "2020.2")
+  @Deprecated
   public void attach() {
-    assert myModule != null;
-    isRegistered = true;
   }
 
+  public final void attach(@NotNull SModule module) {
+    if (myModule.get() != null) {
+      LOG.error("Could not attach to the module, already attached to " + myModule.get(), new IllegalStateException());
+      return;
+    }
+    setModule(module);
+  }
+
+  public final void detach() {
+    myModule.set(null);
+  }
+
+  /**
+   * deceitful naming, prefer #detach
+   * @deprecated
+   */
+  @ScheduledForRemoval(inVersion = "202")
+  @Deprecated
   public void dispose() {
-    isRegistered = false;
-  }
-
-
-  @Override
-  public void save(Memento memento) {
-    // no-op
   }
 
   @Override
-  public void load(Memento memento) {
-    checkNotRegistered();
+  public void save(@NotNull Memento memento) {
+  }
+
+  @Override
+  public void load(@NotNull Memento memento) {
   }
 }

@@ -221,7 +221,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     decorator.setAddAction(anActionButton -> {
       FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createMultipleFoldersDescriptor();
       descriptor.setTitle("Choose Folders with Java Sources");
-      final VirtualFile moduleDir = VirtualFileUtils.getProjectVirtualFile(myJavaModuleFacet.getModule().getModuleSourceDir());
+      final VirtualFile moduleDir = VirtualFileUtils.getProjectVirtualFile(myJavaModuleFacet.getAbstractModule().getModuleSourceDir());
 
       final VirtualFile[] files = FileChooser.chooseFiles(descriptor, getTabComponent(), null, moduleDir);
       mySourcePathsTableModel.addAll(new ArrayList<>(Arrays.asList(files)));
@@ -238,7 +238,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
   }
 
   private JComponent getLibrariesTable() {
-    final Collection<String> additionalJavaStubPaths = myJavaModuleFacet.getModule().getModuleDescriptor().getJavaLibs();
+    final Collection<String> additionalJavaStubPaths = myJavaModuleFacet.getAbstractModule().getModuleDescriptor().getJavaLibs();
     myLibrariesTableModel = new FilesTableModel(convertStringPaths2VirtualFile(additionalJavaStubPaths));
     myLibrariesTableModel.addTableModelListener(e -> myLibrariesChanged = true);
     final JBTable librariesTable = new JBTable(myLibrariesTableModel);
@@ -261,7 +261,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     decorator.setAddAction(anActionButton -> {
       FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createAllButJarContentsDescriptor();
       descriptor.setTitle("Choose Java Library File or Folder");
-      final VirtualFile moduleDir = VirtualFileUtils.getProjectVirtualFile(myJavaModuleFacet.getModule().getModuleSourceDir());
+      final VirtualFile moduleDir = VirtualFileUtils.getProjectVirtualFile(myJavaModuleFacet.getAbstractModule().getModuleSourceDir());
       final VirtualFile[] files = FileChooser.chooseFiles(descriptor, getTabComponent(), null, moduleDir);
       myLibrariesTableModel.addAll(Arrays.asList(files));
     }).setRemoveAction(anActionButton -> {
@@ -280,7 +280,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
   public boolean isModified() {
     boolean solutionCheck = false;
     if (myJavaModuleFacet.getModule() instanceof Solution) {
-      SolutionDescriptor descriptor = (SolutionDescriptor) myJavaModuleFacet.getModule().getModuleDescriptor();
+      SolutionDescriptor descriptor = (SolutionDescriptor) myJavaModuleFacet.getAbstractModule().getModuleDescriptor();
       assert descriptor != null;
       solutionCheck = descriptor.getCompileInMPS() != myCompileInMPS.isSelected() || descriptor.getKind() != mySolutionKind.getSelectedItem();
       if (myExternalIdeaCompile != null) {
@@ -296,7 +296,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
   @Override
   public void apply() {
     if (myJavaModuleFacet.getModule() instanceof Solution) {
-      SolutionDescriptor descriptor = (SolutionDescriptor) myJavaModuleFacet.getModule().getModuleDescriptor();
+      SolutionDescriptor descriptor = (SolutionDescriptor) myJavaModuleFacet.getAbstractModule().getModuleDescriptor();
       assert descriptor != null;
       descriptor.setCompileInMPS(myCompileInMPS.isSelected());
       descriptor.setKind((SolutionKind) mySolutionKind.getSelectedItem());
@@ -309,7 +309,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     // TODO: Move save of sources and libraries to JavaModuleFacetImpl#save(), when settings will be moved from ModuleDescriptor to memento
 
     if (mySourcePathsChanged) {
-      final Collection<String> sourcePaths = myJavaModuleFacet.getModule().getModuleDescriptor().getSourcePaths();
+      final Collection<String> sourcePaths = myJavaModuleFacet.getAbstractModule().getModuleDescriptor().getSourcePaths();
       sourcePaths.clear();
       final Collection<String> sourcePathsTable = convertVirtualFile2StringPaths(mySourcePathsTableModel.getFiles());
       if (!sourcePathsTable.isEmpty()) {
@@ -319,7 +319,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     }
 
     if (myLibrariesChanged) {
-      final Collection<String> libraryPaths = myJavaModuleFacet.getModule().getModuleDescriptor().getJavaLibs();
+      final Collection<String> libraryPaths = myJavaModuleFacet.getAbstractModule().getModuleDescriptor().getJavaLibs();
       // Remember list of libraries before update
       final Collection<String> oldLibraries = new ArrayList<>(libraryPaths);
       libraryPaths.clear();
@@ -330,7 +330,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       myLibrariesChanged = false;
 
       // Try to create java_classes model roots for added libraries
-      final Collection<ModelRootDescriptor> modelRoots = myJavaModuleFacet.getModule().getModuleDescriptor().getModelRootDescriptors();
+      final Collection<ModelRootDescriptor> modelRoots = myJavaModuleFacet.getAbstractModule().getModuleDescriptor().getModelRootDescriptors();
       // Need to handle only newly added libraries
       libraryPathsTable.removeAll(oldLibraries);
       for (String file : libraryPathsTable) {

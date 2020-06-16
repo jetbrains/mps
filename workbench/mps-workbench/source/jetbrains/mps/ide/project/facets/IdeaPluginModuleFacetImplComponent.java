@@ -21,6 +21,7 @@ import jetbrains.mps.extapi.module.FacetsRegistry;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.repository.IdeaPluginFacetComponent;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.FacetsFacade.FacetFactory;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -31,9 +32,7 @@ public final class IdeaPluginModuleFacetImplComponent implements IdeaPluginFacet
   private final FacetFactory IDEA_PLUGIN_FACET_FACTORY = new FacetFactory() {
     @Override
     public SModuleFacet create(@NotNull SModule module) {
-      final IdeaPluginModuleFacetImpl rv = new IdeaPluginModuleFacetImpl();
-      rv.setModule(module);
-      return rv;
+      return new IdeaPluginModuleFacetImpl(module);
     }
 
     @Override

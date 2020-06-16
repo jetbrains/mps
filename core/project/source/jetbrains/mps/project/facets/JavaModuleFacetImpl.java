@@ -63,7 +63,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
 
   @Override
   public boolean isCompileInMps() {
-    AbstractModule module = getModule();
+    AbstractModule module = getAbstractModule();
     ModuleDescriptor descriptor = module.getModuleDescriptor();
     return descriptor != null && descriptor.getCompileInMPS();
   }
@@ -81,8 +81,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   }
 
   @NotNull
-  @Override
-  public AbstractModule getModule() {
+  public AbstractModule getAbstractModule() {
     return (AbstractModule) super.getModule();
   }
 
@@ -97,7 +96,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     Set<String> libraryClassPath = new LinkedHashSet<>();
 
     // add additional java stub paths
-    ModuleDescriptor moduleDescriptor = getModule().getModuleDescriptor();
+    ModuleDescriptor moduleDescriptor = getAbstractModule().getModuleDescriptor();
     if (moduleDescriptor != null) {
       // XXX for deployed modules, we could use DD.getLibraries here. But as long as MM updates getAdditionalJavaStubPaths of a source module
       //     and source module is always present, enjoy.
@@ -116,9 +115,10 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     //     On the one hand, we might need classes compiled outside of a module to build it, OTOH, it makes classes/
     //     somewhat different from classes_gen/
     IFile classesGen = getClassesGen();
-    if (classesGen == null && getModule().isPackaged()) {
+    AbstractModule abstractModule = getAbstractModule();
+    if (classesGen == null && abstractModule.isPackaged()) {
       // Despite isPackaged(), there might be modules like stub and test that lack MD or DD, doesn't hurt to check
-      ModuleDescriptor moduleDescriptor = getModule().getModuleDescriptor();
+      ModuleDescriptor moduleDescriptor = abstractModule.getModuleDescriptor();
       if (moduleDescriptor != null && moduleDescriptor.getDeploymentDescriptor() != null) {
         // 'Right' scenario. Deployed module has DD and we take classpath from there
         result.addAll(moduleDescriptor.getDeploymentDescriptor().getClasspath());
@@ -126,11 +126,11 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
         // Compatibility code:
         // Case 1. Deployed generator modules have no DD and are read independently from their source languages.
         //         Include their separate jar (hard-coded knowledge about build layout) into classpath.
-        if (getModule() instanceof Generator) {
+        if (abstractModule instanceof Generator) {
           LOG.error(String.format("Deployed generator module %s without deployment descriptor. Generator classes would be missing. File: %s",
-                                  getModule().getModuleReference(),
-                                  getModule().getDescriptorFile()));
-        } else if (getModule().getDescriptorFile() != null) {
+                                  abstractModule.getModuleReference(),
+                                  abstractModule.getDescriptorFile()));
+        } else if (abstractModule.getDescriptorFile() != null) {
           // CASE 2. Solution(s) bundled into single jar with classes (both from hand-written and generated sources) at the root.
           // HACK. Fallback for manually bundled modules (vcs.jar or mps-core.jar):
           //   my.jar
@@ -145,7 +145,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
           //   - Patch MD in MM when loaded from modules/ location (e.g. add DD with proper classpath there). (+) keep knowledge about deployment layout
           //     inside MM.
           //   - Hack here
-          classesGen = getModule().getDescriptorFile().getBundleHome();
+          classesGen = abstractModule.getDescriptorFile().getBundleHome();
         }
       }
     }
@@ -171,7 +171,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
 
   @Override
   public Set<String> getAdditionalSourcePaths() {
-    ModuleDescriptor moduleDescriptor = getModule().getModuleDescriptor();
+    ModuleDescriptor moduleDescriptor = getAbstractModule().getModuleDescriptor();
 
     if (moduleDescriptor == null) {
       return Collections.emptySet();
@@ -181,7 +181,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   }
 
   @Override
-  public void save(Memento memento) {
+  public void save(@NotNull Memento memento) {
     super.save(memento);
     if (myJavaLanguageLevel != null) {
       memento.put(JAVA_LANGUAGE_LEVEL, myJavaLanguageLevel.name());
@@ -205,7 +205,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   }
 
   @Override
-  public void load(Memento memento) {
+  public void load(@NotNull Memento memento) {
     super.load(memento);
     String languageLevel = memento.get(JAVA_LANGUAGE_LEVEL);
     if (languageLevel != null && languageLevel.length() > 0) {
@@ -217,7 +217,8 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       //     have to respect deployed module scenario here by ignoring classes_gen, even if explicitly specified in source MD
       myGeneratedClassesLocation = null;
     } else {
-      FileSystem fs = memento instanceof MementoWithFS ? ((MementoWithFS) memento).getFileSystem() : getModule().getFileSystem();
+      // FIXME LEHA
+      FileSystem fs = memento instanceof MementoWithFS ? ((MementoWithFS) memento).getFileSystem() : getAbstractModule().getFileSystem();
       boolean hasClassesGenSerialized = false;
       for (Memento m : memento.getChildren(CLASSES_KEY)) {
         if (Boolean.parseBoolean(m.get(GENERATED_KEY))) {
@@ -239,7 +240,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       // generally, shall never get here, there's guard outside of this method that handles deployed scenario
       return null;
     }
-    ModuleDescriptor moduleDescriptor = getModule().getModuleDescriptor();
+    ModuleDescriptor moduleDescriptor = getAbstractModule().getModuleDescriptor();
     if (moduleDescriptor == null) {
       // this facet implementation doesn't know how to handle modules not based on ModuleDescriptor
       return null;
@@ -266,7 +267,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     }
     // in fact, this is what isPackaged() shall check (according to its javadoc), but at the moment it cares about
     // module source dir not being in archive, which is not exactly the same, hence extra check here.
-    ModuleDescriptor moduleDescriptor = getModule().getModuleDescriptor();
+    ModuleDescriptor moduleDescriptor = getAbstractModule().getModuleDescriptor();
     return moduleDescriptor != null && moduleDescriptor.getDeploymentDescriptor() != null;
   }
 }
