@@ -3523,7 +3523,7 @@
                               <ref role="3cqZAo" node="1r06YY4ftR7" resolve="it" />
                             </node>
                             <node concept="liA8E" id="1r06YY4fCsj" role="2OqNvi">
-                              <ref role="37wK5l" to="pj7v:~JvmMember.getName()" resolve="getName" />
+                              <ref role="37wK5l" to="dj19:~PsiField.getName()" resolve="getName" />
                             </node>
                           </node>
                         </node>
@@ -4148,7 +4148,7 @@
           <node concept="37vLTI" id="4dhvpwhVd$I" role="3clFbG">
             <node concept="2OqwBi" id="4dhvpwhVeVj" role="37vLTx">
               <node concept="liA8E" id="4dhvpwhVgqv" role="2OqNvi">
-                <ref role="37wK5l" to="pj7v:~JvmMember.getName()" resolve="getName" />
+                <ref role="37wK5l" to="dj19:~PsiField.getName()" resolve="getName" />
               </node>
               <node concept="37vLTw" id="4dhvpwhVdOu" role="2Oq$k0">
                 <ref role="3cqZAo" node="1qhkleFRgdG" resolve="x" />
@@ -4792,7 +4792,7 @@
                         <node concept="37vLTI" id="7emKVpsW5bR" role="3clFbG">
                           <node concept="2OqwBi" id="7emKVpsW7Z$" role="37vLTx">
                             <node concept="liA8E" id="7emKVpsWagm" role="2OqNvi">
-                              <ref role="37wK5l" to="pj7v:~JvmNamedElement.getName()" resolve="getName" />
+                              <ref role="37wK5l" to="dj19:~PsiParameter.getName()" resolve="getName" />
                             </node>
                             <node concept="37vLTw" id="7emKVpsW689" role="2Oq$k0">
                               <ref role="3cqZAo" node="7emKVpsVBW3" resolve="it" />
@@ -6164,25 +6164,16 @@
         <node concept="3clFbF" id="13LU1wh_IbC" role="3cqZAp">
           <node concept="2OqwBi" id="13LU1wh_IbE" role="3clFbG">
             <node concept="liA8E" id="13LU1wh_IbF" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SNode.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SReference):void" resolve="setReference" />
+              <ref role="37wK5l" to="mhbf:~SNode.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.ResolveInfo)" resolve="setReference" />
               <node concept="359W_D" id="3XJV3pMUN9T" role="37wK5m">
                 <ref role="359W_E" to="tpee:g7uibYu" resolve="ClassifierType" />
                 <ref role="359W_F" to="tpee:g7uigIF" resolve="classifier" />
               </node>
-              <node concept="2ShNRf" id="13LU1wh_IbH" role="37wK5m">
-                <node concept="1pGfFk" id="13LU1wh_IbI" role="2ShVmc">
-                  <ref role="37wK5l" to="w1kc:~DynamicReference.&lt;init&gt;(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SModelReference,java.lang.String)" resolve="DynamicReference" />
-                  <node concept="359W_D" id="3XJV3pMUNnK" role="37wK5m">
-                    <ref role="359W_E" to="tpee:g7uibYu" resolve="ClassifierType" />
-                    <ref role="359W_F" to="tpee:g7uigIF" resolve="classifier" />
-                  </node>
-                  <node concept="37vLTw" id="13LU1wh_IbK" role="37wK5m">
-                    <ref role="3cqZAo" node="4dhvpwi2f$s" resolve="clsType" />
-                  </node>
-                  <node concept="10Nm6u" id="7gzwGCY5b63" role="37wK5m" />
-                  <node concept="37vLTw" id="1ZRH$cN05NK" role="37wK5m">
-                    <ref role="3cqZAo" node="1ZRH$cMVTGg" resolve="resolveInfo" />
-                  </node>
+              <node concept="2YIFZM" id="6iNGOgn8V7r" role="37wK5m">
+                <ref role="37wK5l" to="mhbf:~ResolveInfo.of(java.lang.String)" resolve="of" />
+                <ref role="1Pybhc" to="mhbf:~ResolveInfo" resolve="ResolveInfo" />
+                <node concept="37vLTw" id="6iNGOgn8VhY" role="37wK5m">
+                  <ref role="3cqZAo" node="1ZRH$cMVTGg" resolve="resolveInfo" />
                 </node>
               </node>
             </node>
@@ -6324,25 +6315,16 @@
         <node concept="3clFbF" id="7emKVptcwb7" role="3cqZAp">
           <node concept="2OqwBi" id="7emKVptcwb8" role="3clFbG">
             <node concept="liA8E" id="7emKVptcwb9" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SNode.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SReference):void" resolve="setReference" />
+              <ref role="37wK5l" to="mhbf:~SNode.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.ResolveInfo)" resolve="setReference" />
               <node concept="359W_D" id="3XJV3pMVsy0" role="37wK5m">
                 <ref role="359W_E" to="tpee:hiAHcMF" resolve="AnnotationInstance" />
                 <ref role="359W_F" to="tpee:hiAI5P0" resolve="annotation" />
               </node>
-              <node concept="2ShNRf" id="7emKVptcwbb" role="37wK5m">
-                <node concept="1pGfFk" id="7emKVptcwbc" role="2ShVmc">
-                  <ref role="37wK5l" to="w1kc:~DynamicReference.&lt;init&gt;(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SModelReference,java.lang.String)" resolve="DynamicReference" />
-                  <node concept="359W_D" id="3XJV3pMVsGK" role="37wK5m">
-                    <ref role="359W_E" to="tpee:hiAHcMF" resolve="AnnotationInstance" />
-                    <ref role="359W_F" to="tpee:hiAI5P0" resolve="annotation" />
-                  </node>
-                  <node concept="37vLTw" id="7emKVptcwbe" role="37wK5m">
-                    <ref role="3cqZAo" node="7emKVptcwb2" resolve="anno" />
-                  </node>
-                  <node concept="10Nm6u" id="7emKVptd0K7" role="37wK5m" />
-                  <node concept="37vLTw" id="7emKVptdeiH" role="37wK5m">
-                    <ref role="3cqZAo" node="7emKVptcHt4" resolve="refText" />
-                  </node>
+              <node concept="2YIFZM" id="6iNGOgn8VHH" role="37wK5m">
+                <ref role="37wK5l" to="mhbf:~ResolveInfo.of(java.lang.String)" resolve="of" />
+                <ref role="1Pybhc" to="mhbf:~ResolveInfo" resolve="ResolveInfo" />
+                <node concept="37vLTw" id="6iNGOgn8VSc" role="37wK5m">
+                  <ref role="3cqZAo" node="7emKVptcHt4" resolve="refText" />
                 </node>
               </node>
             </node>
@@ -6755,25 +6737,16 @@
                                     <node concept="3clFbF" id="7emKVptgG8Z" role="3cqZAp">
                                       <node concept="2OqwBi" id="7emKVptgKsU" role="3clFbG">
                                         <node concept="liA8E" id="7emKVptgMvK" role="2OqNvi">
-                                          <ref role="37wK5l" to="mhbf:~SNode.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SReference):void" resolve="setReference" />
+                                          <ref role="37wK5l" to="mhbf:~SNode.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.ResolveInfo)" resolve="setReference" />
                                           <node concept="359W_D" id="3XJV3pMVT3p" role="37wK5m">
                                             <ref role="359W_E" to="tpee:hiB6LFO" resolve="AnnotationInstanceValue" />
                                             <ref role="359W_F" to="tpee:hiB6Ojz" resolve="key" />
                                           </node>
-                                          <node concept="2ShNRf" id="7emKVptgZ81" role="37wK5m">
-                                            <node concept="1pGfFk" id="7emKVpth1yz" role="2ShVmc">
-                                              <ref role="37wK5l" to="w1kc:~DynamicReference.&lt;init&gt;(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SModelReference,java.lang.String)" resolve="DynamicReference" />
-                                              <node concept="359W_D" id="3XJV3pMVXIs" role="37wK5m">
-                                                <ref role="359W_E" to="tpee:hiB6LFO" resolve="AnnotationInstanceValue" />
-                                                <ref role="359W_F" to="tpee:hiB6Ojz" resolve="key" />
-                                              </node>
-                                              <node concept="37vLTw" id="7emKVpth8L6" role="37wK5m">
-                                                <ref role="3cqZAo" node="7emKVptgtUA" resolve="annoParam" />
-                                              </node>
-                                              <node concept="10Nm6u" id="7emKVpthaIU" role="37wK5m" />
-                                              <node concept="37vLTw" id="7emKVptheHo" role="37wK5m">
-                                                <ref role="3cqZAo" node="7emKVptg85i" resolve="paramName" />
-                                              </node>
+                                          <node concept="2YIFZM" id="6iNGOgn92g_" role="37wK5m">
+                                            <ref role="37wK5l" to="mhbf:~ResolveInfo.of(java.lang.String)" resolve="of" />
+                                            <ref role="1Pybhc" to="mhbf:~ResolveInfo" resolve="ResolveInfo" />
+                                            <node concept="37vLTw" id="6iNGOgn966C" role="37wK5m">
+                                              <ref role="3cqZAo" node="7emKVptg85i" resolve="paramName" />
                                             </node>
                                           </node>
                                         </node>
@@ -6784,13 +6757,11 @@
                                         </node>
                                       </node>
                                     </node>
-                                    <node concept="3clFbH" id="7emKVptheIo" role="3cqZAp" />
                                     <node concept="3clFbF" id="7emKVpthm_k" role="3cqZAp">
                                       <node concept="37vLTw" id="7emKVpthm_j" role="3clFbG">
                                         <ref role="3cqZAo" node="7emKVptgtUA" resolve="annoParam" />
                                       </node>
                                     </node>
-                                    <node concept="3clFbH" id="7emKVptgEcL" role="3cqZAp" />
                                   </node>
                                   <node concept="Rh6nW" id="7emKVptg2WM" role="1bW2Oz">
                                     <property role="TrG5h" value="it" />
@@ -7232,48 +7203,41 @@
                     <node concept="1X3_iC" id="7gjg2Io8O5" role="lGtFl">
                       <property role="3V$3am" value="statement" />
                       <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
-                      <node concept="3clFbF" id="4H_f$ZnUUHG" role="8Wnug">
-                        <node concept="37vLTI" id="4H_f$ZnUUHI" role="3clFbG">
-                          <node concept="2ShNRf" id="4H_f$ZnTcjb" role="37vLTx">
-                            <node concept="1pGfFk" id="4H_f$ZnTcjc" role="2ShVmc">
-                              <ref role="37wK5l" to="w1kc:~StaticReference.&lt;init&gt;(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="StaticReference" />
-                              <node concept="359W_D" id="3XJV3pMWyi5" role="37wK5m">
-                                <ref role="359W_E" to="tpee:g96syBo" resolve="TypeVariableReference" />
-                                <ref role="359W_F" to="tpee:g96sUm1" resolve="typeVariableDeclaration" />
-                              </node>
-                              <node concept="37vLTw" id="4H_f$ZnTcje" role="37wK5m">
-                                <ref role="3cqZAo" node="4H_f$ZnTcj3" resolve="typeVarRef" />
-                              </node>
-                              <node concept="37vLTw" id="4H_f$ZnTcjf" role="37wK5m">
-                                <ref role="3cqZAo" node="4H_f$ZnTciQ" resolve="typeVar" />
-                              </node>
-                            </node>
+                      <node concept="2ShNRf" id="4H_f$ZnTcjb" role="8Wnug">
+                        <node concept="1pGfFk" id="4H_f$ZnTcjc" role="2ShVmc">
+                          <ref role="37wK5l" to="w1kc:~StaticReference.&lt;init&gt;(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="StaticReference" />
+                          <node concept="359W_D" id="3XJV3pMWyi5" role="37wK5m">
+                            <ref role="359W_E" to="tpee:g96syBo" resolve="TypeVariableReference" />
+                            <ref role="359W_F" to="tpee:g96sUm1" resolve="typeVariableDeclaration" />
                           </node>
-                          <node concept="37vLTw" id="4H_f$ZnUUHM" role="37vLTJ">
-                            <ref role="3cqZAo" node="4H_f$ZnUv$A" resolve="ref" />
+                          <node concept="37vLTw" id="4H_f$ZnTcje" role="37wK5m">
+                            <ref role="3cqZAo" node="4H_f$ZnTcj3" resolve="typeVarRef" />
+                          </node>
+                          <node concept="37vLTw" id="4H_f$ZnTcjf" role="37wK5m">
+                            <ref role="3cqZAo" node="4H_f$ZnTciQ" resolve="typeVar" />
                           </node>
                         </node>
                       </node>
                     </node>
-                    <node concept="3clFbF" id="5HKVUeZPrOm" role="3cqZAp">
-                      <node concept="37vLTI" id="5HKVUeZQk_6" role="3clFbG">
-                        <node concept="37vLTw" id="5HKVUeZPrOl" role="37vLTJ">
-                          <ref role="3cqZAo" node="4H_f$ZnUv$A" resolve="ref" />
-                        </node>
-                        <node concept="2ShNRf" id="5HKVUeZQtG0" role="37vLTx">
-                          <node concept="1pGfFk" id="5HKVUeZQtG1" role="2ShVmc">
-                            <ref role="37wK5l" to="w1kc:~DynamicReference.&lt;init&gt;(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SModelReference,java.lang.String)" resolve="DynamicReference" />
-                            <node concept="359W_D" id="3XJV3pMW4YU" role="37wK5m">
-                              <ref role="359W_E" to="tpee:g96syBo" resolve="TypeVariableReference" />
-                              <ref role="359W_F" to="tpee:g96sUm1" resolve="typeVariableDeclaration" />
-                            </node>
-                            <node concept="37vLTw" id="5HKVUeZQtG3" role="37wK5m">
-                              <ref role="3cqZAo" node="4H_f$ZnTcj3" resolve="typeVarRef" />
-                            </node>
-                            <node concept="10Nm6u" id="5HKVUeZQtG4" role="37wK5m" />
-                            <node concept="37vLTw" id="5HKVUeZQtG5" role="37wK5m">
+                    <node concept="3clFbF" id="6iNGOgn9H2n" role="3cqZAp">
+                      <node concept="2OqwBi" id="6iNGOgn9H2o" role="3clFbG">
+                        <node concept="liA8E" id="6iNGOgn9H2p" role="2OqNvi">
+                          <ref role="37wK5l" to="mhbf:~SNode.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.ResolveInfo)" resolve="setReference" />
+                          <node concept="359W_D" id="3XJV3pMW4YU" role="37wK5m">
+                            <ref role="359W_E" to="tpee:g96syBo" resolve="TypeVariableReference" />
+                            <ref role="359W_F" to="tpee:g96sUm1" resolve="typeVariableDeclaration" />
+                          </node>
+                          <node concept="2YIFZM" id="6iNGOgn9HBH" role="37wK5m">
+                            <ref role="37wK5l" to="mhbf:~ResolveInfo.of(java.lang.String)" resolve="of" />
+                            <ref role="1Pybhc" to="mhbf:~ResolveInfo" resolve="ResolveInfo" />
+                            <node concept="37vLTw" id="6iNGOgn9HJ4" role="37wK5m">
                               <ref role="3cqZAo" node="4H_f$Zn_lv2" resolve="name" />
                             </node>
+                          </node>
+                        </node>
+                        <node concept="2JrnkZ" id="6iNGOgn9H2u" role="2Oq$k0">
+                          <node concept="37vLTw" id="6iNGOgn9H2v" role="2JrQYb">
+                            <ref role="3cqZAo" node="4H_f$ZnTcj3" resolve="typeVarRef" />
                           </node>
                         </node>
                       </node>
@@ -7281,52 +7245,28 @@
                   </node>
                   <node concept="9aQIb" id="4H_f$ZnUvAh" role="9aQIa">
                     <node concept="3clFbS" id="4H_f$ZnUvAi" role="9aQI4">
-                      <node concept="3clFbF" id="4H_f$ZnUULn" role="3cqZAp">
-                        <node concept="37vLTI" id="4H_f$ZnUUQd" role="3clFbG">
-                          <node concept="2ShNRf" id="4H_f$ZnUUR2" role="37vLTx">
-                            <node concept="1pGfFk" id="4H_f$ZnUVlc" role="2ShVmc">
-                              <ref role="37wK5l" to="w1kc:~DynamicReference.&lt;init&gt;(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SModelReference,java.lang.String)" resolve="DynamicReference" />
-                              <node concept="359W_D" id="3XJV3pMW5pd" role="37wK5m">
-                                <ref role="359W_E" to="tpee:g96syBo" resolve="TypeVariableReference" />
-                                <ref role="359W_F" to="tpee:g96sUm1" resolve="typeVariableDeclaration" />
-                              </node>
-                              <node concept="37vLTw" id="4H_f$ZnUVnY" role="37wK5m">
-                                <ref role="3cqZAo" node="4H_f$ZnTcj3" resolve="typeVarRef" />
-                              </node>
-                              <node concept="10Nm6u" id="4H_f$ZnUVs5" role="37wK5m" />
-                              <node concept="37vLTw" id="4H_f$ZnUYgn" role="37wK5m">
+                      <node concept="3clFbF" id="4H_f$ZnTcjg" role="3cqZAp">
+                        <node concept="2OqwBi" id="4H_f$ZnTcjh" role="3clFbG">
+                          <node concept="liA8E" id="4H_f$ZnTcji" role="2OqNvi">
+                            <ref role="37wK5l" to="mhbf:~SNode.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.ResolveInfo)" resolve="setReference" />
+                            <node concept="359W_D" id="3XJV3pMW5pd" role="37wK5m">
+                              <ref role="359W_E" to="tpee:g96syBo" resolve="TypeVariableReference" />
+                              <ref role="359W_F" to="tpee:g96sUm1" resolve="typeVariableDeclaration" />
+                            </node>
+                            <node concept="2YIFZM" id="6iNGOgna5gY" role="37wK5m">
+                              <ref role="37wK5l" to="mhbf:~ResolveInfo.of(java.lang.String)" resolve="of" />
+                              <ref role="1Pybhc" to="mhbf:~ResolveInfo" resolve="ResolveInfo" />
+                              <node concept="37vLTw" id="6iNGOgna5gZ" role="37wK5m">
                                 <ref role="3cqZAo" node="4H_f$Zn_lv2" resolve="name" />
                               </node>
                             </node>
                           </node>
-                          <node concept="37vLTw" id="4H_f$ZnUULm" role="37vLTJ">
-                            <ref role="3cqZAo" node="4H_f$ZnUv$A" resolve="ref" />
+                          <node concept="2JrnkZ" id="4H_f$ZnTcjn" role="2Oq$k0">
+                            <node concept="37vLTw" id="4H_f$ZnTcjo" role="2JrQYb">
+                              <ref role="3cqZAo" node="4H_f$ZnTcj3" resolve="typeVarRef" />
+                            </node>
                           </node>
                         </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-                <node concept="3clFbH" id="4H_f$ZnUvf2" role="3cqZAp" />
-                <node concept="3clFbF" id="4H_f$ZnTcjg" role="3cqZAp">
-                  <node concept="2OqwBi" id="4H_f$ZnTcjh" role="3clFbG">
-                    <node concept="liA8E" id="4H_f$ZnTcji" role="2OqNvi">
-                      <ref role="37wK5l" to="mhbf:~SNode.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SReference):void" resolve="setReference" />
-                      <node concept="2OqwBi" id="4H_f$ZnTcjj" role="37wK5m">
-                        <node concept="37vLTw" id="4H_f$ZnTcjk" role="2Oq$k0">
-                          <ref role="3cqZAo" node="4H_f$ZnUv$A" resolve="ref" />
-                        </node>
-                        <node concept="liA8E" id="4H_f$ZnTcjl" role="2OqNvi">
-                          <ref role="37wK5l" to="w1kc:~SReference.getLink():org.jetbrains.mps.openapi.language.SReferenceLink" resolve="getLink" />
-                        </node>
-                      </node>
-                      <node concept="37vLTw" id="4H_f$ZnTcjm" role="37wK5m">
-                        <ref role="3cqZAo" node="4H_f$ZnUv$A" resolve="ref" />
-                      </node>
-                    </node>
-                    <node concept="2JrnkZ" id="4H_f$ZnTcjn" role="2Oq$k0">
-                      <node concept="37vLTw" id="4H_f$ZnTcjo" role="2JrQYb">
-                        <ref role="3cqZAo" node="4H_f$ZnTcj3" resolve="typeVarRef" />
                       </node>
                     </node>
                   </node>
