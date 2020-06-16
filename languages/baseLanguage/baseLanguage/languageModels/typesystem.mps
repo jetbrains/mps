@@ -74026,5 +74026,130 @@
       <ref role="1YaFvo" to="tpee:6sjyiRHauQ$" resolve="IThrowCheckedExceptions" />
     </node>
   </node>
+  <node concept="18kY7G" id="3FnniMqwAaQ">
+    <property role="TrG5h" value="check_ClassifierMethodMemberVisibilityInInterfaces" />
+    <property role="3GE5qa" value="classifiers.members" />
+    <node concept="3clFbS" id="3FnniMqwAaR" role="18ibNy">
+      <node concept="3clFbJ" id="3FnniMqwANq" role="3cqZAp">
+        <node concept="1Wc70l" id="3FnniMqwEax" role="3clFbw">
+          <node concept="2OqwBi" id="3FnniMqwF8c" role="3uHU7w">
+            <node concept="2OqwBi" id="3FnniMqwEzy" role="2Oq$k0">
+              <node concept="1YBJjd" id="3FnniMqwEdK" role="2Oq$k0">
+                <ref role="1YBMHb" node="3FnniMqwAaT" resolve="method" />
+              </node>
+              <node concept="1mfA1w" id="3FnniMqwEYG" role="2OqNvi" />
+            </node>
+            <node concept="1mIQ4w" id="3FnniMqwFrP" role="2OqNvi">
+              <node concept="chp4Y" id="3FnniMqwFy4" role="cj9EA">
+                <ref role="cht4Q" to="tpee:g7HP654" resolve="Interface" />
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="3FnniMqwCYf" role="3uHU7B">
+            <node concept="2OqwBi" id="3FnniMqwCrf" role="2Oq$k0">
+              <node concept="1YBJjd" id="3FnniMqwCeu" role="2Oq$k0">
+                <ref role="1YBMHb" node="3FnniMqwAaT" resolve="method" />
+              </node>
+              <node concept="3TrEf2" id="3FnniMqwCN8" role="2OqNvi">
+                <ref role="3Tt5mk" to="tpee:h9B3oxE" resolve="visibility" />
+              </node>
+            </node>
+            <node concept="1mIQ4w" id="3FnniMqwDgL" role="2OqNvi">
+              <node concept="chp4Y" id="3FnniMqwD$z" role="cj9EA">
+                <ref role="cht4Q" to="tpee:gFTmbq6" resolve="ProtectedVisibility" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbS" id="3FnniMqwANs" role="3clFbx">
+          <node concept="2MkqsV" id="3FnniMqwFQl" role="3cqZAp">
+            <node concept="Xl_RD" id="3FnniMqwFV0" role="2MkJ7o">
+              <property role="Xl_RC" value="Modifier 'protected' is not allowed here" />
+            </node>
+            <node concept="2OqwBi" id="3FnniMqwGXG" role="1urrMF">
+              <node concept="1YBJjd" id="3FnniMqwGMO" role="2Oq$k0">
+                <ref role="1YBMHb" node="3FnniMqwAaT" resolve="method" />
+              </node>
+              <node concept="3TrEf2" id="3FnniMqwHs9" role="2OqNvi">
+                <ref role="3Tt5mk" to="tpee:h9B3oxE" resolve="visibility" />
+              </node>
+            </node>
+            <node concept="3Cnw8n" id="3FnniMqwMiJ" role="1urrFz">
+              <ref role="QpYPw" node="3FnniMqwH_P" resolve="RemoveProtected" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="3FnniMqwAaT" role="1YuTPh">
+      <property role="TrG5h" value="method" />
+      <ref role="1YaFvo" to="tpee:v45EpuhBDA" resolve="ClassifierMethodMember" />
+    </node>
+  </node>
+  <node concept="Q5z_Y" id="3FnniMqwH_P">
+    <property role="3GE5qa" value="classifiers.members" />
+    <property role="TrG5h" value="RemoveProtected" />
+    <node concept="Q5ZZ6" id="3FnniMqwH_Q" role="Q6x$H">
+      <node concept="3clFbS" id="3FnniMqwH_R" role="2VODD2">
+        <node concept="3clFbF" id="3FnniMqwKoi" role="3cqZAp">
+          <node concept="37vLTI" id="3FnniMqwL_y" role="3clFbG">
+            <node concept="2ShNRf" id="3FnniMqwLDW" role="37vLTx">
+              <node concept="3zrR0B" id="3FnniMqwM5B" role="2ShVmc">
+                <node concept="3Tqbb2" id="3FnniMqwM5D" role="3zrR0E">
+                  <ref role="ehGHo" to="tpee:gFTm1ZL" resolve="PublicVisibility" />
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="3FnniMqwL1S" role="37vLTJ">
+              <node concept="1PxgMI" id="3FnniMqwKN6" role="2Oq$k0">
+                <property role="1BlNFB" value="true" />
+                <node concept="chp4Y" id="3FnniMqwKQa" role="3oSUPX">
+                  <ref role="cht4Q" to="tpee:v45EpuhBDA" resolve="ClassifierMethodMember" />
+                </node>
+                <node concept="2OqwBi" id="3FnniMq$qAP" role="1m5AlR">
+                  <node concept="Q6c8r" id="3FnniMqwKoh" role="2Oq$k0" />
+                  <node concept="1mfA1w" id="3FnniMq$qO7" role="2OqNvi" />
+                </node>
+              </node>
+              <node concept="3TrEf2" id="3FnniMqwLmF" role="2OqNvi">
+                <ref role="3Tt5mk" to="tpee:h9B3oxE" resolve="visibility" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="QznSV" id="3FnniMqwHIm" role="QzAvj">
+      <node concept="3clFbS" id="3FnniMqwHIn" role="2VODD2">
+        <node concept="3clFbF" id="3FnniMqwHO$" role="3cqZAp">
+          <node concept="3cpWs3" id="3FnniMqwJL7" role="3clFbG">
+            <node concept="Xl_RD" id="3FnniMqwJLp" role="3uHU7w">
+              <property role="Xl_RC" value=" not protected" />
+            </node>
+            <node concept="3cpWs3" id="3FnniMqwIh4" role="3uHU7B">
+              <node concept="Xl_RD" id="3FnniMqwHOz" role="3uHU7B">
+                <property role="Xl_RC" value="Make " />
+              </node>
+              <node concept="2OqwBi" id="3FnniMqwJ1n" role="3uHU7w">
+                <node concept="1PxgMI" id="3FnniMqwIA9" role="2Oq$k0">
+                  <property role="1BlNFB" value="true" />
+                  <node concept="chp4Y" id="3FnniMqwIS1" role="3oSUPX">
+                    <ref role="cht4Q" to="tpck:h0TrEE$" resolve="INamedConcept" />
+                  </node>
+                  <node concept="2OqwBi" id="3FnniMq$q1Y" role="1m5AlR">
+                    <node concept="Q6c8r" id="3FnniMqwIky" role="2Oq$k0" />
+                    <node concept="1mfA1w" id="3FnniMq$qpP" role="2OqNvi" />
+                  </node>
+                </node>
+                <node concept="3TrcHB" id="3FnniMqwJgw" role="2OqNvi">
+                  <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 
