@@ -130,7 +130,7 @@ public class ctor_InterfaceMemberBasedOnIncomplete extends SubstituteMenuBase {
           }
           SPropertyOperations.assign(result, PROPS.isNative$LADB, false);
           SPropertyOperations.assign(result, PROPS.name$tAp1, name);
-          SLinkOperations.setTarget(SNodeOperations.cast(result, CONCEPTS.ClassifierMember$9F), LINKS.visibility$2GiC, SNodeFactoryOperations.createNewNode(CONCEPTS.PublicVisibility$qe, null));
+          SLinkOperations.setTarget(SNodeOperations.cast(result, CONCEPTS.ClassifierMember$9F), LINKS.visibility$2GiC, ((SLinkOperations.getTarget(current, LINKS.visibility$2GiC) == null) ? SNodeFactoryOperations.createNewNode(CONCEPTS.PublicVisibility$qe, null) : SLinkOperations.getTarget(current, LINKS.visibility$2GiC)));
           SLinkOperations.setTarget(result, LINKS.returnType$WIkw, SLinkOperations.getTarget(current, LINKS.type$QNev));
           ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.modifiers$akE0)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(current, LINKS.modifiers$akE0)));
           return SNodeOperations.cast(result, CONCEPTS.ClassifierMethodMember$VF);

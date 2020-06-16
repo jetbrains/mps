@@ -12,12 +12,12 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordStyleClass;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
@@ -72,7 +72,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createComponent_0());
     editorCell.addEditorCell(createComponent_1());
-    editorCell.addEditorCell(createComponent_2());
+    if (nodeCondition_j4vm40_a2a()) {
+      editorCell.addEditorCell(createComponent_2());
+    }
     if (nodeCondition_j4vm40_a3a()) {
       editorCell.addEditorCell(createConstant_0());
     }
@@ -102,6 +104,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.addEditorCell(createComponent_7());
     }
     return editorCell;
+  }
+  private boolean nodeCondition_j4vm40_a2a() {
+    return (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasVisibility_id1X7GQqyPHmE.invoke(myNode);
   }
   private boolean nodeCondition_j4vm40_a3a() {
     return SPropertyOperations.getBoolean(myNode, PROPS.isFinal$I$Qu);

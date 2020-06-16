@@ -11,13 +11,15 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.lang.editor.menus.GroupMenuPart;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import java.util.function.Predicate;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.stream.Collectors;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
@@ -29,7 +31,8 @@ public class Visibility_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new SMP_Subconcepts_m0xer7_a());
+    result.add(new SMP_Group_m0xer7_a());
+    result.add(new SMP_Group_m0xer7_b());
     return result;
   }
 
@@ -46,25 +49,16 @@ public class Visibility_SubstituteMenu extends SubstituteMenuBase {
   }
 
 
-  public class SMP_Subconcepts_m0xer7_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
-    protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.Visibility$Lz).stream().filter(new Predicate<SAbstractConcept>() {
-        public boolean test(SAbstractConcept concept) {
-          return filterConcept(_context, concept);
-        }
-      }).collect(Collectors.toList());
-    }
-    private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
-      if (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Classifier$hJ) && SNodeOperations.getParent(_context.getParentNode()) == null && _context.getLink() != null) {
-        return Objects.equals(concept, CONCEPTS.PublicVisibility$qe);
-      }
-      return true;
+  public class SMP_Group_m0xer7_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    @Override
+    protected boolean isApplicable(SubstituteMenuContext _context) {
+      return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getParentNode()), CONCEPTS.Interface$Kp));
     }
     @NotNull
     @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
+    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
       context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "Visibility", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586964714")));
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "3603448665279187785")));
       try {
         return super.createItems(context);
       } finally {
@@ -73,14 +67,97 @@ public class Visibility_SubstituteMenu extends SubstituteMenuBase {
     }
 
     @Override
-    protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
-      return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
+    protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_m0xer7_a0());
+    }
+    public class SMP_Subconcepts_m0xer7_a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
+      protected Collection getConcepts(final SubstituteMenuContext _context) {
+        return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.Visibility$Lz).stream().filter(new Predicate<SAbstractConcept>() {
+          public boolean test(SAbstractConcept concept) {
+            return filterConcept(_context, concept);
+          }
+        }).collect(Collectors.toList());
+      }
+      private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
+        if (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Classifier$hJ) && SNodeOperations.getParent(_context.getParentNode()) == null && _context.getLink() != null) {
+          return Objects.equals(concept, CONCEPTS.PublicVisibility$qe);
+        }
+        return true;
+      }
+      @NotNull
+      @Override
+      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
+        context.getEditorMenuTrace().pushTraceInfo();
+        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "Visibility", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586964714")));
+        try {
+          return super.createItems(context);
+        } finally {
+          context.getEditorMenuTrace().popTraceInfo();
+        }
+      }
+
+      @Override
+      protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
+        return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
+      }
+    }
+  }
+  public class SMP_Group_m0xer7_b extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    @Override
+    protected boolean isApplicable(SubstituteMenuContext _context) {
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getParentNode()), CONCEPTS.Interface$Kp);
+    }
+    @NotNull
+    @Override
+    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
+      context.getEditorMenuTrace().pushTraceInfo();
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "3603448665279193144")));
+      try {
+        return super.createItems(context);
+      } finally {
+        context.getEditorMenuTrace().popTraceInfo();
+      }
+    }
+
+    @Override
+    protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_m0xer7_a1());
+    }
+    public class SMP_Subconcepts_m0xer7_a1 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
+      protected Collection getConcepts(final SubstituteMenuContext _context) {
+        return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.Visibility$Lz).stream().filter(new Predicate<SAbstractConcept>() {
+          public boolean test(SAbstractConcept concept) {
+            return filterConcept(_context, concept);
+          }
+        }).collect(Collectors.toList());
+      }
+      private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
+        return Objects.equals(concept, CONCEPTS.PrivateVisibility$Se);
+      }
+      @NotNull
+      @Override
+      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
+        context.getEditorMenuTrace().pushTraceInfo();
+        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "Visibility", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "3603448665279196086")));
+        try {
+          return super.createItems(context);
+        } finally {
+          context.getEditorMenuTrace().popTraceInfo();
+        }
+      }
+
+      @Override
+      protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
+        return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
+      }
     }
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
     /*package*/ static final SConcept Visibility$Lz = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af957d96eL, "jetbrains.mps.baseLanguage.structure.Visibility");
     /*package*/ static final SConcept PublicVisibility$qe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility");
     /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept PrivateVisibility$Se = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
   }
 }

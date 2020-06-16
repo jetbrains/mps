@@ -87,6 +87,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(LINKS.visibility$2GiC);
       }
+      DeleteVisibility.setCellActions(editorCell, getNode(), getEditorContext());
     }
     @Override
     protected EditorCell createEmptyCell() {
