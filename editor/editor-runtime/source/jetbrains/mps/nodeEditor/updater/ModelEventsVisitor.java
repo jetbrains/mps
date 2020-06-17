@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -84,7 +84,7 @@ class ModelEventsVisitor implements SModelEventVisitor {
     if (event.isAdded()) {
       mySelectionHandler = new ChildAddedSelectionHandler(event.getChild());
     } else {
-      mySelectionHandler = new ChildRemovedSelectionHandler(event.getParent(), event.getChildRole(), event.getChildIndex());
+      mySelectionHandler = new ChildRemovedSelectionHandler(event.getParent(), event.getAggregationLink(), event.getChildIndex());
     }
   }
 

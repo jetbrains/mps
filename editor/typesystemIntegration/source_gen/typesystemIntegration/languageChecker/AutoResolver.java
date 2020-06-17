@@ -137,7 +137,7 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
   private void runAutofix(final Set<SReference> badReferences, final EditorContext editorContext) {
     final EditorComponent editorComponent = (EditorComponent) editorContext.getEditorComponent();
     Set<EditorCell> editorErrorCells = editorComponent.getCellTracker().getErrorCells();
-    final Set<EditorCell> errorCells = SetSequence.fromSetWithValues(new HashSet<EditorCell>(), editorErrorCells);
+    final Set<jetbrains.mps.openapi.editor.cells.EditorCell> errorCells = SetSequence.fromSetWithValues(new HashSet<jetbrains.mps.openapi.editor.cells.EditorCell>(), SetSequence.fromSet(editorErrorCells).ofType(jetbrains.mps.openapi.editor.cells.EditorCell.class));
 
     final boolean wasForceAutofix = myForceAutofix;
     myForceAutofix = false;
@@ -166,8 +166,7 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
               if (sourceNode == null) {
                 continue;
               }
-              String referenceRole = brokenRef.getRole();
-              EditorCell cellWithRole = editorComponent.findNodeCellWithRole(sourceNode, referenceRole);
+              jetbrains.mps.openapi.editor.cells.EditorCell cellWithRole = editorComponent.findNodeCellWithRole(sourceNode, brokenRef.getLink());
               if (!(resolvedByScope)) {
                 if (cellWithRole == null) {
                   continue;
@@ -186,7 +185,7 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
             }
 
             // Trying to substitute all other error cells by using substitute actions. 
-            for (EditorCell errorCell : SetSequence.fromSet(errorCells)) {
+            for (jetbrains.mps.openapi.editor.cells.EditorCell errorCell : SetSequence.fromSet(errorCells)) {
               if (!(errorCell instanceof EditorCell_Label)) {
                 continue;
               }
