@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -112,7 +112,6 @@ public abstract class AbstractDefaultEditor extends DefaultNodeEditor implements
 
     for (SReference sReference : mySNode.getReferences()) {
       SReferenceLink link = sReference.getLink();
-      assert link != null : "Null meta-link from node: " + this.mySNode + ", role: " + sReference.getRole();
       if (!link.getOwner().equals(SNodeUtil.concept_BaseConcept)) {
         myReferenceLinks.add(link);
       }
