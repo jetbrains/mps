@@ -486,19 +486,23 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   }
 
   private void createAndLoadFacet(FacetFactory factory, Memento memento) {
-    SModuleFacet newFacet = factory.create(this);
-    if (!(newFacet instanceof ModuleFacetBase)) {
-      // FIXME review setupFacet logic (especially overrides). I'd rather perform load() for all and attach in case it's ModuleFacetBase, but not error
-      LOG.error("not instance of ModuleFacetBase, facet factory: " + factory.getClass().getName());
-      return;
-    }
-
-    ModuleFacetBase facet = (ModuleFacetBase) newFacet;
-    facet = setupFacet(facet, memento);
-    if (facet != null) {
-      myFacets.add(facet);
+    if (!factory.isApplicable(this)) {
+      LOG.error("This module is not applicable for the facet factory '" + factory + "'", new IllegalStateException());
     } else {
-      LOG.error("somehow ended with null facet, facet factory: " + factory.getClass().getName());
+      SModuleFacet newFacet = factory.create(this);
+      if (!(newFacet instanceof ModuleFacetBase)) {
+        // FIXME review setupFacet logic (especially overrides). I'd rather perform load() for all and attach in case it's ModuleFacetBase, but not error
+        LOG.error("not instance of ModuleFacetBase, facet factory: " + factory.getClass().getName());
+        return;
+      }
+
+      ModuleFacetBase facet = (ModuleFacetBase) newFacet;
+      facet = setupFacet(facet, memento);
+      if (facet != null) {
+        myFacets.add(facet);
+      } else {
+        LOG.error("somehow ended with null facet, facet factory: " + factory.getClass().getName());
+      }
     }
   }
 

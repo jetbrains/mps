@@ -31,8 +31,8 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
-import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import java.util.Set;
+import java.util.HashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.vcs.diff.ChangeSet;
 
@@ -167,27 +167,30 @@ public class NodeFileStatusMapping implements ProjectComponent {
   }
 
   private class MyGlobalListener extends CurrentDifferenceAdapter {
-    private List<SNodeReference> myAffectedRoots = ListSequence.fromList(new ArrayList<SNodeReference>());
+    private final Set<SNodeReference> myAffectedRoots = new HashSet<SNodeReference>();
+
     private MyGlobalListener() {
     }
+
     @Override
     public void changeUpdateFinished() {
-      ListSequence.fromList(myAffectedRoots).visitAll(new IVisitor<SNodeReference>() {
-        public void visit(SNodeReference np) {
-          updateNodeStatus(np);
-        }
-      });
-      ListSequence.fromList(myAffectedRoots).clear();
+      for (SNodeReference ref : myAffectedRoots) {
+        updateNodeStatus(ref);
+      }
+      myAffectedRoots.clear();
     }
+
     private void addAffectedRoot(@NotNull ModelChange change) {
       if (change.getRootId() != null) {
-        ListSequence.fromList(myAffectedRoots).addElement(new SNodePointer(SModelOperations.getPointer(change.getChangeSet().getNewModel()), change.getRootId()));
+        myAffectedRoots.add(new SNodePointer(SModelOperations.getPointer(change.getChangeSet().getNewModel()), change.getRootId()));
       }
     }
+
     @Override
     public void changeAdded(@NotNull ModelChange change) {
       addAffectedRoot(change);
     }
+
     @Override
     public void changeRemoved(@NotNull ModelChange change) {
       addAffectedRoot(change);

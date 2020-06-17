@@ -146,7 +146,6 @@
         <child id="3570488090019868128" name="packagingType" index="pUk7w" />
       </concept>
       <concept id="6592112598314499036" name="jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule" flags="ng" index="m$_yB">
-        <property id="4034578608468849375" name="customPackaging" index="1ZOk41" />
         <reference id="6592112598314499037" name="target" index="m$_yA" />
       </concept>
       <concept id="6592112598314499027" name="jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginDependency" flags="ng" index="m$_yC">
@@ -8370,7 +8369,6 @@
     <node concept="m$_wf" id="6sT62Z6Skkm" role="3989C9">
       <property role="m$_wk" value="test.behavior.plugin" />
       <node concept="m$_yB" id="6sT62Z6Skkn" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="6sT62Z6Skja" resolve="UtilSolution" />
       </node>
       <node concept="m$_yB" id="6sT62Z6Skko" role="m$_yh">
@@ -8415,7 +8413,6 @@
         </node>
       </node>
       <node concept="m$_yB" id="6sT62Z6SkkB" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="6sT62Z6SkjQ" resolve="TestBehaviorReflective" />
       </node>
       <node concept="m$_yC" id="6sT62Z6SkkC" role="m$_yJ">

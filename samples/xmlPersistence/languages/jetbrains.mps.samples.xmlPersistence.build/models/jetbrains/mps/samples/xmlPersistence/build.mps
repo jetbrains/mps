@@ -96,7 +96,6 @@
         <child id="3570488090019868128" name="packagingType" index="pUk7w" />
       </concept>
       <concept id="6592112598314499036" name="jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule" flags="ng" index="m$_yB">
-        <property id="4034578608468849375" name="customPackaging" index="1ZOk41" />
         <reference id="6592112598314499037" name="target" index="m$_yA" />
       </concept>
       <concept id="6592112598314499027" name="jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginDependency" flags="ng" index="m$_yC">
@@ -351,7 +350,6 @@
         <property role="2iUeEu" value="http://www.jetbrains.com/mps/" />
       </node>
       <node concept="m$_yB" id="7ZoWiKcezcR" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="7ZoWiKcez7S" resolve="jetbrains.mps.samples.xmlPersistence" />
       </node>
       <node concept="m$_yB" id="7ZoWiKcezd3" role="m$_yh">

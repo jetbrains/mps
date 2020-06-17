@@ -19,6 +19,7 @@ import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.refresh.CachingFileSystem;
+import jetbrains.mps.vfs.refresh.FileListeningPreferences;
 import jetbrains.mps.vfs.refresh.FileSystemEvent;
 import jetbrains.mps.vfs.refresh.FileSystemListener;
 import org.jetbrains.annotations.NotNull;
@@ -62,6 +63,14 @@ public class FileDataSource extends DataSourceBase implements StreamDataSource, 
   @NotNull
   public IFile getFile() {
     return myFile;
+  }
+
+  @NotNull
+  @Override
+  public FileListeningPreferences listeningPreferences() {
+    return FileListeningPreferences.construct()
+                                   .notifyOnAncestorChange() // this is when the path is under .jar
+                                   .build();
   }
 
   public void setFile(@NotNull IFile file) {

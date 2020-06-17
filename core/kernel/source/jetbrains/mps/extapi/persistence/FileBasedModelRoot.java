@@ -25,6 +25,7 @@ import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.refresh.CachingFileSystem;
 import jetbrains.mps.vfs.refresh.FileEventProcessor;
+import jetbrains.mps.vfs.refresh.FileListeningPreferences;
 import jetbrains.mps.vfs.refresh.FileSystemEvent;
 import jetbrains.mps.vfs.refresh.FileSystemListener;
 import org.jetbrains.annotations.NotNull;
@@ -388,6 +389,16 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
 
     private PathListener(@NotNull IFile path) {
       myPath = path;
+    }
+
+    @NotNull
+    @Override
+    public FileListeningPreferences listeningPreferences() {
+      return FileListeningPreferences.construct()
+                                     .notifyOnDescendantCreation()
+                                     .notifyOnParentRemoval()
+                                     .notifyOnDescendantRemoval()
+                                     .build();
     }
 
     @NotNull

@@ -42,6 +42,11 @@ public final class FileListeningPreferences {
     this.notifyOnParentRemoval = notifyOnParentRemoval;
   }
 
+  @NotNull
+  public static FileListeningPreferences empty() {
+    return construct().build();
+  }
+
   public static PreferencesBuilder construct() {
     return new PreferencesBuilder();
   }

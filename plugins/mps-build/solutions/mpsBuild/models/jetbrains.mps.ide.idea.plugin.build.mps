@@ -203,7 +203,6 @@
         <child id="3570488090019868128" name="packagingType" index="pUk7w" />
       </concept>
       <concept id="6592112598314499036" name="jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule" flags="ng" index="m$_yB">
-        <property id="4034578608468849375" name="customPackaging" index="1ZOk41" />
         <reference id="6592112598314499037" name="target" index="m$_yA" />
       </concept>
       <concept id="6592112598314499027" name="jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginDependency" flags="ng" index="m$_yC">
@@ -310,11 +309,9 @@
     <node concept="m$_wf" id="2pZ8abj52_S" role="3989C9">
       <property role="m$_wk" value="jetbrains.mps.idea.java" />
       <node concept="m$_yB" id="2xKmvAOZmkl" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" to="ffeo:2ucthr8W_1x" resolve="jetbrains.mps.java.core" />
       </node>
       <node concept="m$_yB" id="2xKmvAOZmkh" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" to="ffeo:5xwbQ0eEV3B" resolve="jetbrains.mps.java.platform" />
       </node>
       <node concept="3_J27D" id="2pZ8abj52_T" role="m$_yQ">

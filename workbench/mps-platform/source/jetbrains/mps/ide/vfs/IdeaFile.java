@@ -133,7 +133,7 @@ public class IdeaFile implements IFile, CachingFile {
       }
 
       int index = myPath.lastIndexOf(IFileSystem.SEPARATOR);
-      assert index > 0 : "illegal file path: " + myPath;
+      assert index >= 0 : "illegal file path: " + myPath;
 
       return myPath.substring(index + 1);
     }
@@ -154,7 +154,7 @@ public class IdeaFile implements IFile, CachingFile {
       }
 
       int index = myPath.lastIndexOf(IFileSystem.SEPARATOR);
-      assert index > 0 : "can't extract parent from path: " + myPath;
+      assert index >= 0 : "can't extract parent from path: " + myPath;
 
       return myFS.getFile(myPath.substring(0, index));
     }

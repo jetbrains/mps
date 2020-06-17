@@ -318,7 +318,6 @@
         <child id="3570488090019868128" name="packagingType" index="pUk7w" />
       </concept>
       <concept id="6592112598314499036" name="jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule" flags="ng" index="m$_yB">
-        <property id="4034578608468849375" name="customPackaging" index="1ZOk41" />
         <reference id="6592112598314499037" name="target" index="m$_yA" />
       </concept>
       <concept id="6592112598314499027" name="jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginDependency" flags="ng" index="m$_yC">
@@ -28779,7 +28778,6 @@
         <property role="2iUeEu" value="http://www.jetbrains.com/mps/" />
       </node>
       <node concept="m$_yB" id="5lGJ4TaqfND" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="4IP11oWmB07" resolve="jetbrains.mps.ide.modelchecker.platform" />
       </node>
       <node concept="m$_yC" id="5lGJ4TaqfOv" role="m$_yJ">
@@ -31150,31 +31148,24 @@
     <node concept="m$_wf" id="RJsmGEieyQ" role="3989C9">
       <property role="m$_wk" value="jetbrains.mps.vcs" />
       <node concept="m$_yB" id="3SChJ9XzWyx" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="39HJr_hyEqi" resolve="jetbrains.mps.ide.vcs" />
       </node>
       <node concept="m$_yB" id="306QkZP39M3" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="6ifcnI8$2j3" resolve="jetbrains.mps.vcs.mergehints" />
       </node>
       <node concept="m$_yB" id="306QkZP39O1" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="4WGKd_KIKma" resolve="jetbrains.mps.devkit.aspect.vcs" />
       </node>
       <node concept="m$_yB" id="3SChJ9XzW$j" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="39HJr_hyEzS" resolve="jetbrains.mps.ide.vcs.platform" />
       </node>
       <node concept="m$_yB" id="306QkZP39Pk" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="6ifcnI8$2iU" resolve="jetbrains.mps.ide.vcs.modelmetadata" />
       </node>
       <node concept="m$_yB" id="306QkZP39Rs" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="4WGKd_KIwrs" resolve="jetbrains.mps.vcs.mergehints.runtime" />
       </node>
       <node concept="m$_yB" id="306QkZP39Sb" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="39HJr_hyAl1" resolve="jetbrains.mps.ide.vcs.core" />
       </node>
       <node concept="3_J27D" id="RJsmGEieyS" role="m_cZH">
@@ -44588,15 +44579,12 @@
         </node>
       </node>
       <node concept="m$_yB" id="2ucthr8WQgz" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="2ucthr8W_1x" resolve="jetbrains.mps.java.core" />
       </node>
       <node concept="m$_yB" id="2ucthr8WQg3" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="5xwbQ0eEV3B" resolve="jetbrains.mps.java.platform" />
       </node>
       <node concept="m$_yB" id="4qmhgpFI_YI" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="2ucthr8W$$t" resolve="jetbrains.mps.java.workbench" />
       </node>
       <node concept="m$_yC" id="2pZ8abj57t4" role="m$_yJ">
@@ -47239,39 +47227,30 @@
         <ref role="m$_y1" node="4k71ibbKLe8" resolve="jetbrains.mps.core" />
       </node>
       <node concept="m$_yB" id="1jjxZP6JJad" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="7gQEwkA7nSV" resolve="jetbrains.mps.console" />
       </node>
       <node concept="m$_yB" id="1jjxZP6JJgi" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="7gQEwkA7rZZ" resolve="jetbrains.mps.console.base" />
       </node>
       <node concept="m$_yB" id="1jjxZP6JJmq" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="6g2V7OQGaVw" resolve="jetbrains.mps.console.scripts" />
       </node>
       <node concept="m$_yB" id="1jjxZP6JJs$" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="5Ve$VbUJDaP" resolve="jetbrains.mps.console.scripts.runtime" />
       </node>
       <node concept="m$_yB" id="1jjxZP6JJyK" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="5kU0oYlfvWH" resolve="jetbrains.mps.console.actions" />
       </node>
       <node concept="m$_yB" id="1jjxZP6JJPw" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="6g2V7OQGaPX" resolve="jetbrains.mps.console.internalCommands" />
       </node>
       <node concept="m$_yB" id="1jjxZP6JJVO" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="5xAm1dXBy5N" resolve="jetbrains.mps.console.internalCommands.runtime" />
       </node>
       <node concept="m$_yB" id="1jjxZP6JJCY" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="6g2V7OQGaJT" resolve="jetbrains.mps.console.ideCommands" />
       </node>
       <node concept="m$_yB" id="1jjxZP6JJJe" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="1whNchE_L1C" resolve="jetbrains.mps.console.ideCommands.runtime" />
       </node>
       <node concept="398BVA" id="3E9C6pCXOFv" role="I30fb">

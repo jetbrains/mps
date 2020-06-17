@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.util.FileUtil;
+import com.intellij.openapi.vfs.JarFileSystem;
 import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.refresh.FileListener;
 import org.jetbrains.annotations.Nullable;
@@ -130,6 +131,21 @@ public class FileSystemListenersContainer {
 
   private String[] normalizeAndSplit(@NotNull String path) {
     String normalized = FileUtil.normalize(path);
+    String JAR_SEP = JarFileSystem.JAR_SEPARATOR;
+    if (normalized.contains(JAR_SEP)) {
+      String[] split = normalized.split(JAR_SEP, 2);
+      String prefix = split[0];
+      String suffix = split[1];
+      List<String> result = ListSequence.fromList(new ArrayList<String>());
+      for (String part : prefix.split(Path.UNIX_SEPARATOR)) {
+        ListSequence.fromList(result).addElement(part);
+      }
+      ListSequence.fromList(result).addElement(JAR_SEP);
+      for (String part : suffix.split(Path.UNIX_SEPARATOR)) {
+        ListSequence.fromList(result).addElement(part);
+      }
+      return ListSequence.fromList(result).toGenericArray(String.class);
+    }
     return normalized.split(Path.UNIX_SEPARATOR);
   }
 

@@ -24,6 +24,7 @@ import jetbrains.mps.vfs.refresh.CachingFile;
 import jetbrains.mps.vfs.refresh.CachingFileSystem;
 import jetbrains.mps.vfs.refresh.DefaultCachingContext;
 import jetbrains.mps.vfs.refresh.FileEventProcessor;
+import jetbrains.mps.vfs.refresh.FileListeningPreferences;
 import jetbrains.mps.vfs.refresh.FileSystemEvent;
 import jetbrains.mps.vfs.refresh.FileSystemListener;
 import org.jetbrains.annotations.NotNull;
@@ -264,6 +265,17 @@ public class FolderSetDataSource extends DataSourceBase implements DataSource, F
     private PathListener(@NotNull IFile path, FileEventProcessor delegate) {
       myFile = path;
       myDelegate = delegate;
+    }
+
+    @NotNull
+    @Override
+    public FileListeningPreferences listeningPreferences() {
+      return FileListeningPreferences.construct()
+                                     .notifyOnDescendantRemoval()
+                                     .notifyOnDescendantCreation()
+                                     .notifyOnDescendantChange()
+                                     .notifyOnAncestorChange() // this is when the path is under .jar
+                                     .build();
     }
 
     @NotNull

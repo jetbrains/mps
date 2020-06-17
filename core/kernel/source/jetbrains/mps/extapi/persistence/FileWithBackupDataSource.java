@@ -17,6 +17,7 @@ package jetbrains.mps.extapi.persistence;
 
 import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.refresh.CachingFileSystem;
+import jetbrains.mps.vfs.refresh.FileListeningPreferences;
 import jetbrains.mps.vfs.refresh.FileSystemEvent;
 import jetbrains.mps.vfs.refresh.FileSystemListener;
 import jetbrains.mps.vfs.IFile;
@@ -112,6 +113,14 @@ public class FileWithBackupDataSource extends FileDataSource {
     @Override
     public IFile getFileToListen() {
       return path;
+    }
+
+    @NotNull
+    @Override
+    public FileListeningPreferences listeningPreferences() {
+      return FileListeningPreferences.construct()
+                                     .notifyOnAncestorChange() // for when we under .jar
+                                     .build();
     }
 
     @Override

@@ -20,6 +20,7 @@ import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.refresh.CachingFileSystem;
+import jetbrains.mps.vfs.refresh.FileListeningPreferences;
 import jetbrains.mps.vfs.refresh.FileSystemEvent;
 import jetbrains.mps.vfs.refresh.FileSystemListener;
 import org.jetbrains.annotations.NotNull;
@@ -201,6 +202,17 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
   @Override
   public IFile getFileToListen() {
     return myFolder;
+  }
+
+  @NotNull
+  @Override
+  public FileListeningPreferences listeningPreferences() {
+    return FileListeningPreferences.construct()
+                                   .notifyOnDescendantRemoval()
+                                   .notifyOnDescendantCreation()
+                                   .notifyOnDescendantChange()
+                                   .notifyOnAncestorChange() // this is when the path is under .jar
+                                   .build();
   }
 
   @Override

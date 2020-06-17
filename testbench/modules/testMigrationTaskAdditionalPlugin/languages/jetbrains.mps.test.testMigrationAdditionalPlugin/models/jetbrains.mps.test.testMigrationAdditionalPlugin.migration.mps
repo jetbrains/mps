@@ -262,8 +262,8 @@
                   <node concept="37vLTw" id="4pwuemXtDI2" role="2Oq$k0">
                     <ref role="3cqZAo" node="4pwuemXtDmX" resolve="pd" />
                   </node>
-                  <node concept="liA8E" id="4pwuemXtEFg" role="2OqNvi">
-                    <ref role="37wK5l" to="ctgy:~IdeaPluginDescriptor.isEnabled()" resolve="isEnabled" />
+                  <node concept="liA8E" id="7hmjf$x5MlE" role="2OqNvi">
+                    <ref role="37wK5l" to="9ti4:~PluginDescriptor.isEnabled()" resolve="isEnabled" />
                   </node>
                 </node>
                 <node concept="3y3z36" id="4pwuemXtDAE" role="3uHU7B">
