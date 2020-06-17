@@ -86,6 +86,7 @@
   </dependency>
   <dependency className="jetbrains.mps.ide.platform.watching.FileSystemListenersContainer">
     <classNode dependClassName="com.intellij.openapi.vfs.JarFileSystem" />
+    <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Collections" />
@@ -94,12 +95,14 @@
     <classNode dependClassName="java.util.concurrent.ConcurrentMap" />
     <classNode dependClassName="java.util.concurrent.locks.ReadWriteLock" />
     <classNode dependClassName="java.util.concurrent.locks.ReentrantReadWriteLock" />
+    <classNode dependClassName="java.util.function.Predicate" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.util.FileUtil" />
     <classNode dependClassName="jetbrains.mps.vfs.IFile" />
     <classNode dependClassName="jetbrains.mps.vfs.path.Path" />
     <classNode dependClassName="jetbrains.mps.vfs.refresh.FileListener" />
+    <classNode dependClassName="jetbrains.mps.vfs.refresh.FileListenerAdapter" />
     <classNode dependClassName="jetbrains.mps.vfs.refresh.FileSystemListener" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />

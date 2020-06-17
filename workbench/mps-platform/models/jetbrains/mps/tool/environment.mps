@@ -57,7 +57,7 @@
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1239709250944" name="jetbrains.mps.baseLanguage.structure.PrefixIncrementExpression" flags="nn" index="2$rviw" />
@@ -3106,8 +3106,13 @@
             </node>
           </node>
           <node concept="3fqX7Q" id="40ThwC8cQ3K" role="3clFbw">
-            <node concept="37vLTw" id="40ThwC8cQ8e" role="3fr31v">
-              <ref role="3cqZAo" node="4OPNMy2cxpb" resolve="myUnitTestMode" />
+            <node concept="2OqwBi" id="3bM_6RFzlRE" role="3fr31v">
+              <node concept="37vLTw" id="3bM_6RFzlv0" role="2Oq$k0">
+                <ref role="3cqZAo" to="79ha:3eUNqOk7wUa" resolve="myConfig" />
+              </node>
+              <node concept="liA8E" id="3bM_6RFzlWv" role="2OqNvi">
+                <ref role="37wK5l" to="79ha:28TMbOSF4Ad" resolve="isTestMode" />
+              </node>
             </node>
           </node>
         </node>

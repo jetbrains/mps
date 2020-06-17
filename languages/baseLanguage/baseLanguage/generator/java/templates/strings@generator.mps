@@ -2221,17 +2221,12 @@
                         </node>
                         <node concept="10Nm6u" id="3YWZWnqamuf" role="3uHU7w" />
                       </node>
-                      <node concept="3clFbC" id="3YWZWnqamug" role="3uHU7w">
-                        <node concept="2OqwBi" id="3YWZWnqamuh" role="3uHU7B">
-                          <node concept="37vLTw" id="2BHiRxgm64w" role="2Oq$k0">
-                            <ref role="3cqZAo" node="3YWZWnqamu9" resolve="str" />
-                          </node>
-                          <node concept="liA8E" id="3YWZWnqamuj" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:~String.length()" resolve="length" />
-                          </node>
+                      <node concept="2OqwBi" id="5_$SPto43$b" role="3uHU7w">
+                        <node concept="37vLTw" id="2BHiRxgm64w" role="2Oq$k0">
+                          <ref role="3cqZAo" node="3YWZWnqamu9" resolve="str" />
                         </node>
-                        <node concept="3cmrfG" id="3YWZWnqamuk" role="3uHU7w">
-                          <property role="3cmrfH" value="0" />
+                        <node concept="liA8E" id="5_$SPto44ts" role="2OqNvi">
+                          <ref role="37wK5l" to="wyt6:~String.isEmpty()" resolve="isEmpty" />
                         </node>
                       </node>
                     </node>

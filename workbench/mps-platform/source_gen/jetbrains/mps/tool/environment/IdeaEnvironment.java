@@ -304,7 +304,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
         }
       }
     }, ModalityState.NON_MODAL);
-    if (!(myUnitTestMode)) {
+    if (!(myConfig.isTestMode())) {
       // fixme in testmode everything works as it did (see StartupManagerImpl) 
       // probably we need to find a better way to open a project in here 
       ((StartupManagerImpl) StartupManager.getInstance(project.get())).runPostStartupActivities();
