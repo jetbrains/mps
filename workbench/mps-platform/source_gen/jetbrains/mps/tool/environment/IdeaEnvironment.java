@@ -297,6 +297,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
           if (LOG.isInfoEnabled()) {
             LOG.info("Load and open the project with path '" + filePath + "'");
           }
+          // fixme this is an IDE way of opening project 
           project.set(projectManager.loadAndOpenProject(filePath));
           refreshProjectDir(project.get());
         } catch (Exception e) {
