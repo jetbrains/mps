@@ -89,6 +89,6 @@ public class RunCodeFromSolution_Test extends EnvironmentAwareTestCase {
     okFile.delete();
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 }

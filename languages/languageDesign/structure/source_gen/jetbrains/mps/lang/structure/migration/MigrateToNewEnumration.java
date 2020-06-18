@@ -677,7 +677,7 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
     return (type.isInstance(o) ? (T) o : null);
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
   private static final Pattern REGEXP_3t318f_a0a0a0a92 = Pattern.compile("[a-zA-Z\\$_][a-zA-Z0-9\\$_]*", 0);
 

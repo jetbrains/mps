@@ -100,7 +100,7 @@ public class ReplaceSingleLineCommentsWithGenericComments extends MigrationScrip
   }
 
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
   public static String trim_o7ozeo_a0a0a0a0a0a0a0c0a0a0a0b0e(String str) {
     return (str == null ? null : str.trim());

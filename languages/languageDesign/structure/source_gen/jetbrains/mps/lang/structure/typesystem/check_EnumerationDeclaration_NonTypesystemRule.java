@@ -79,7 +79,7 @@ public class check_EnumerationDeclaration_NonTypesystemRule extends AbstractNonT
     return false;
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;

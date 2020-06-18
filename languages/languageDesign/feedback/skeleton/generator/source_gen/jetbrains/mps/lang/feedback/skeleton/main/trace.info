@@ -57,7 +57,7 @@
       <node id="6624226371216037951" at="398,3,399,54" concept="2" />
       <node id="6624226371216037951" at="417,15,418,53" concept="2" />
       <node id="6624226371216037951" at="418,53,419,17" concept="6" />
-      <node id="8878450512091060914" at="425,52,426,44" concept="6" />
+      <node id="8878450512091060914" at="425,52,426,40" concept="6" />
       <node id="668954446732559949" at="79,0,82,0" concept="8" trace="ifMacro_Condition_1_0#(Ljetbrains/mps/generator/template/IfMacroContext;)Z" />
       <node id="6624226371216015735" at="100,0,103,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="8878450512091060914" at="425,0,428,0" concept="8" trace="isEmptyString#(Ljava/lang/String;)Z" />
@@ -78,7 +78,7 @@
       <scope id="668954446732559948" at="327,15,328,61" />
       <scope id="8878450512091070846" at="388,15,389,58" />
       <scope id="1938781798616685024" at="390,15,391,58" />
-      <scope id="8878450512091060914" at="425,52,426,44" />
+      <scope id="8878450512091060914" at="425,52,426,40" />
       <scope id="8878450512091070848" at="126,78,128,22">
         <var name="repository" id="1938781798616774168" />
       </scope>

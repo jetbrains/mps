@@ -97,7 +97,7 @@ public final class CheckRootNodesNamingInternalPolicy_MigrationScript extends Ba
     return PersistenceFacade.getInstance().createNodeReference("r:00000000-0000-4000-0000-011c89590291(jetbrains.mps.lang.structure.scripts)/4975090607137555731");
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 
   private static final class CONCEPTS {

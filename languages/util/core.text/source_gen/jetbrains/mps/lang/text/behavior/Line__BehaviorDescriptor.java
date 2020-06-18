@@ -133,7 +133,7 @@ public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
     return CONCEPT;
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
   public static String trim_chdj22_a0a0e0m(String str) {
     return (str == null ? null : str.trim());

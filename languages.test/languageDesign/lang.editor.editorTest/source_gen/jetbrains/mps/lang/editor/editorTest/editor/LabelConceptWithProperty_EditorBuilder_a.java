@@ -104,7 +104,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return isEmptyString(SPropertyOperations.getString(myNode, PROPS.myProperty$IY30));
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 
   private static final class PROPS {

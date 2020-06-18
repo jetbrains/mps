@@ -1025,7 +1025,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
     }
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
   private static final Pattern REGEXP_luzgqn_a0a0a0e2e7 = Pattern.compile("\\{\\d+\\}?", 0);
   private static final Pattern REGEXP_luzgqn_a0a0d0g2e7 = Pattern.compile("^\\{(\\d+)", 0);

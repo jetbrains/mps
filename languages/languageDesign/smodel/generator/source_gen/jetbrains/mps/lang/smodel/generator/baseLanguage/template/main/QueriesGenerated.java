@@ -2631,7 +2631,7 @@ public class QueriesGenerated {
     return (SNodeReference) NodeIdentity__BehaviorDescriptor.toNodeReference_id4nxIQVLmsc4.invoke(_context.getNode());
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
   private static <T> T as_x583g4_a0a0a0a022(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);

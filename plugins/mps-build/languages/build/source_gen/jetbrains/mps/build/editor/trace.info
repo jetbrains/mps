@@ -1121,12 +1121,12 @@
     </file>
     <file name="PresentationProviders.java">
       <node id="4747359941571314411" at="98,89,99,188" concept="9" />
-      <node id="4747359941571314422" at="109,52,110,44" concept="9" />
+      <node id="4747359941571314422" at="109,52,110,40" concept="9" />
       <node id="4747359941571314422" at="109,0,112,0" concept="13" trace="isEmptyString#(Ljava/lang/String;)Z" />
       <node id="4747359941571314409" at="96,0,101,0" concept="7" trace="getPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="4747359941571314409" at="95,0,102,0" concept="12" trace="PRESENTATION_bvukwp_a0a1a" />
       <scope id="4747359941571314410" at="98,89,99,188" />
-      <scope id="4747359941571314422" at="109,52,110,44" />
+      <scope id="4747359941571314422" at="109,52,110,40" />
       <scope id="4747359941571314422" at="109,0,112,0">
         <var name="str" id="4747359941571314422" />
       </scope>

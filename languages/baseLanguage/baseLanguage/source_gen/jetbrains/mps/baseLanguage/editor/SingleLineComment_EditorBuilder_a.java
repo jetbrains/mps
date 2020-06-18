@@ -327,7 +327,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     return editorCell;
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;

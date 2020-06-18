@@ -3539,7 +3539,7 @@
       <node id="410791833644224871" at="72,70,73,0" concept="11" />
       <node id="410791833644224871" at="73,0,74,77" concept="10" />
       <node id="410791833644224872" at="75,60,76,66" concept="3" />
-      <node id="410791833644475538" at="79,52,80,44" concept="9" />
+      <node id="410791833644475538" at="79,52,80,40" concept="9" />
       <node id="410791833644224871" at="84,0,85,0" concept="12" trace="NodeBuilderNode$RN" />
       <node id="410791833644224871" at="88,0,89,0" concept="12" trace="name$tAp1" />
       <node id="410791833644224872" at="26,0,29,0" concept="7" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
@@ -3560,7 +3560,7 @@
       <scope id="410791833644224871" at="53,35,54,84" />
       <scope id="410791833644224871" at="56,41,57,87" />
       <scope id="410791833644224872" at="75,60,76,66" />
-      <scope id="410791833644475538" at="79,52,80,44" />
+      <scope id="410791833644475538" at="79,52,80,40" />
       <scope id="410791833644467418" at="30,147,32,122">
         <var name="replaced" id="410791833644391140" />
       </scope>

@@ -1890,7 +1890,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     return quotedNode_1;
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 
   private static final class PROPS {

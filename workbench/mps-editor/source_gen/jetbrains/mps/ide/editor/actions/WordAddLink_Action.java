@@ -69,7 +69,7 @@ public class WordAddLink_Action extends BaseAction {
     new AddLinkChooser(event.getData(MPSCommonDataKeys.NODE), event.getData(MPSEditorDataKeys.EDITOR_COMPONENT)).showPopup();
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 
   private static final class PROPS {

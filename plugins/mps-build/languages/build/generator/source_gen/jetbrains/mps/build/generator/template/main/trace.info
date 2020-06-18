@@ -1738,7 +1738,7 @@
       <node id="5610619299014362371" at="3480,16,3481,66" concept="6" />
       <node id="342830306171239712" at="3482,16,3483,66" concept="6" />
       <node id="342830306171239922" at="3484,16,3485,66" concept="6" />
-      <node id="2402740824034685341" at="3528,52,3529,44" concept="6" />
+      <node id="2402740824034685341" at="3528,52,3529,40" concept="6" />
       <node id="5248329904288166450" at="110,0,113,0" concept="8" trace="rule_Condition_0_0#(Ljetbrains/mps/generator/template/BaseMappingRuleContext;)Z" />
       <node id="4701820937132270526" at="113,0,116,0" concept="8" trace="rule_Condition_0_1#(Ljetbrains/mps/generator/template/BaseMappingRuleContext;)Z" />
       <node id="5610619299013114604" at="116,0,119,0" concept="8" trace="rule_Condition_0_2#(Ljetbrains/mps/generator/template/BaseMappingRuleContext;)Z" />
@@ -2601,7 +2601,7 @@
       <scope id="5610619299014362371" at="3480,16,3481,66" />
       <scope id="342830306171239712" at="3482,16,3483,66" />
       <scope id="342830306171239922" at="3484,16,3485,66" />
-      <scope id="2402740824034685341" at="3528,52,3529,44" />
+      <scope id="2402740824034685341" at="3528,52,3529,40" />
       <scope id="6837653846148504889" at="176,88,178,147">
         <var name="mf" id="6837653846148505106" />
       </scope>

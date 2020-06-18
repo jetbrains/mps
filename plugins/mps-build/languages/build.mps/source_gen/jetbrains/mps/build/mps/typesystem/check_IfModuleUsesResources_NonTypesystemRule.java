@@ -64,7 +64,7 @@ public class check_IfModuleUsesResources_NonTypesystemRule extends AbstractNonTy
     return false;
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 
   private static final class LINKS {

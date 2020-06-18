@@ -53,7 +53,7 @@ public class EnumConstantDeclaration_TextGen extends TextGenDescriptorBase {
     }
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 
   private static final class PROPS {

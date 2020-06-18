@@ -6353,7 +6353,7 @@
       <node id="5015072279636784328" at="6867,17,6868,71" concept="7" />
       <node id="3079684480025926133" at="7239,55,7240,55" concept="2" />
       <node id="3079684480025926133" at="7365,16,7366,66" concept="7" />
-      <node id="6635545314667369127" at="7408,52,7409,44" concept="7" />
+      <node id="6635545314667369127" at="7408,52,7409,40" concept="7" />
       <node id="5015072279636784130" at="673,0,676,0" concept="10" trace="propertyMacro_GetValue_50_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="6156996919798915795" at="676,0,679,0" concept="10" trace="propertyMacro_GetValue_50_1#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="6635545314667369115" at="679,89,682,5" concept="4" />
@@ -6403,7 +6403,7 @@
       <scope id="5015072279636784300" at="6865,17,6866,71" />
       <scope id="5015072279636784328" at="6867,17,6868,71" />
       <scope id="3079684480025926133" at="7365,16,7366,66" />
-      <scope id="6635545314667369127" at="7408,52,7409,44" />
+      <scope id="6635545314667369127" at="7408,52,7409,40" />
       <scope id="5015072279636784278" at="2249,79,2251,40">
         <var name="innervar" id="5015072279636784280" />
       </scope>

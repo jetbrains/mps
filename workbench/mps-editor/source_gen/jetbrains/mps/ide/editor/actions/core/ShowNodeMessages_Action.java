@@ -108,6 +108,6 @@ public class ShowNodeMessages_Action extends BaseAction {
     return str != null && str.length() > 0;
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 }

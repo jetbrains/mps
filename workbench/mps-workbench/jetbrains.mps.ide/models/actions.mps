@@ -37789,7 +37789,7 @@
         <node concept="3clFbF" id="6gDspL0DV31" role="3cqZAp">
           <node concept="2OqwBi" id="6gDspL0DVg2" role="3clFbG">
             <node concept="liA8E" id="6gDspL0E37Z" role="2OqNvi">
-              <ref role="37wK5l" to="cyln:~IdeaPluginModuleFacetImpl.setModule(org.jetbrains.mps.openapi.module.SModule)" resolve="setModule" />
+              <ref role="37wK5l" to="31cb:~ModuleFacetBase.setModule(org.jetbrains.mps.openapi.module.SModule)" resolve="setModule" />
               <node concept="37vLTw" id="6gDspL0E385" role="37wK5m">
                 <ref role="3cqZAo" node="6gDspL0CNXS" resolve="module" />
               </node>

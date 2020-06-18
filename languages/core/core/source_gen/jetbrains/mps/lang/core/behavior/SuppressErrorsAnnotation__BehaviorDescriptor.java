@@ -90,7 +90,7 @@ public final class SuppressErrorsAnnotation__BehaviorDescriptor extends BaseBHDe
     return CONCEPT;
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
 
   private static final class CONCEPTS {

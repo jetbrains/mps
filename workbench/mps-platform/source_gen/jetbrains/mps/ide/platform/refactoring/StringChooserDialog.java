@@ -168,7 +168,7 @@ public class StringChooserDialog extends RefactoringDialog {
     return dialog.getResultValue();
   }
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
   public static String trim_bn0r89_a0a0c0o(String str) {
     return (str == null ? null : str.trim());

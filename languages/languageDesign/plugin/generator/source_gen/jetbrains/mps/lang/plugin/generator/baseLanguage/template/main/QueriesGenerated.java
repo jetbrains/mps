@@ -3360,7 +3360,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private static final EnumerationLiteralsIndex enumSwitchIndex_x583g4_a0a0if = EnumerationLiteralsIndex.build(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6782cab5d9442836L, 0x6782cab5d9442837L, 0x6782cab5d9442838L, 0x6782cab5d9442890L, 0x6782cab5d9442894L);
   private static final EnumerationLiteralsIndex enumSwitchIndex_x583g4_a0a0jf = EnumerationLiteralsIndex.build(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6782cab5d9442836L, 0x6782cab5d9442837L, 0x6782cab5d9442838L, 0x6782cab5d9442890L, 0x6782cab5d9442894L);
   private static boolean isEmptyString(String str) {
-    return str == null || str.length() == 0;
+    return str == null || str.isEmpty();
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
