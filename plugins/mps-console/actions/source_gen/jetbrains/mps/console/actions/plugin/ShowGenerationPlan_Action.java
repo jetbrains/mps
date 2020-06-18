@@ -19,6 +19,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.modelapi.behavior.ModelPointer__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.console.tool.ConsoleTool;
+import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
+import jetbrains.mps.console.tool.BaseConsoleTab;
 import java.awt.event.InputEvent;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -69,10 +71,24 @@ public class ShowGenerationPlan_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final boolean alternative = ShowGenerationPlan_Action.this.isIgnoreExternalPlan(event, event);
-    SNode command = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, "jetbrains.mps.console.ideCommands.structure.ShowGenPlan"));
+    final SNode command = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, "jetbrains.mps.console.ideCommands.structure.ShowGenPlan"));
     SPropertyOperations.assign(command, PROPS.ignoreExternalPlan$FyLA, alternative);
     SLinkOperations.setTarget(command, LINKS.targetModel$v7Da, ModelPointer__BehaviorDescriptor.create_id_GDk1qZ2JP.invoke(SNodeOperations.asSConcept(CONCEPTS.ModelPointer$rg), event.getData(MPSCommonDataKeys.MODEL), event.getData(MPSCommonDataKeys.MODEL)));
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject().getComponent(ConsoleTool.class).executeCommand(command);
+    ConsoleTool ct = event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject().getComponent(ConsoleTool.class);
+    // next code comes from ConsoleTool.executeCommand(node<Command>) 
+    ConsoleTool.TabState ts = new ConsoleTool.TabState();
+    ts.isHistoryTab = true;
+    ts.title = BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(command);
+    final BaseConsoleTab tab = ct.addConsoleTab(ts, null, true);
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().executeCommand(new Runnable() {
+      public void run() {
+        tab.execute(command, null, new Runnable() {
+          public void run() {
+            tab.scrollToTop();
+          }
+        });
+      }
+    });
   }
   /*package*/ boolean isIgnoreExternalPlan(AnActionEvent evt, final AnActionEvent event) {
     if (evt.getInputEvent() != null && evt.getInputEvent().isAltDown()) {
