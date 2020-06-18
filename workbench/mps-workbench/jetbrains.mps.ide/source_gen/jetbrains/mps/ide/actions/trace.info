@@ -11723,12 +11723,11 @@
       <node id="5347901971864441474" at="74,0,75,77" concept="13" />
       <node id="4182604737394067886" at="77,92,78,88" concept="12" />
       <node id="4182604737394244079" at="79,35,80,13" concept="13" />
-      <node id="7217424793751326681" at="81,5,82,70" concept="12" />
-      <node id="7217424793751498945" at="82,70,83,28" concept="6" />
-      <node id="7217424793751532570" at="83,28,84,32" concept="6" />
-      <node id="4182604737394066265" at="84,32,85,47" concept="6" />
-      <node id="4182604737394241159" at="85,47,86,50" concept="6" />
-      <node id="7025774337360663579" at="86,50,87,37" concept="6" />
+      <node id="7217424793751326681" at="81,5,82,76" concept="12" />
+      <node id="7217424793751532570" at="82,76,83,32" concept="6" />
+      <node id="4182604737394066265" at="83,32,84,47" concept="6" />
+      <node id="4182604737394241159" at="84,47,85,50" concept="6" />
+      <node id="7025774337360663579" at="85,50,86,37" concept="6" />
       <node id="7217424793751215578" at="63,12,65,7" concept="1" />
       <node id="6460492932224949527" at="36,95,39,5" concept="10" />
       <node id="4182604737394717659" at="41,66,44,7" concept="10" />
@@ -11741,7 +11740,7 @@
       <node id="6460492932225313794" at="60,106,65,7" concept="10" />
       <node id="4182604737394717658" at="39,5,45,5" concept="1" />
       <node id="2503776137140397871" at="68,0,77,0" concept="11" trace="getPluginIdForModule#(Lorg/jetbrains/mps/openapi/module/SModule;Lcom/intellij/openapi/actionSystem/AnActionEvent;)Ljava/lang/String;" />
-      <node id="7217424793751150315" at="77,0,89,0" concept="11" trace="setPluginId#(Lorg/jetbrains/mps/openapi/module/SModule;Ljava/lang/String;Lcom/intellij/openapi/actionSystem/AnActionEvent;)V" />
+      <node id="7217424793751150315" at="77,0,88,0" concept="11" trace="setPluginId#(Lorg/jetbrains/mps/openapi/module/SModule;Ljava/lang/String;Lcom/intellij/openapi/actionSystem/AnActionEvent;)V" />
       <node id="6460492932224949527" at="35,0,48,0" concept="11" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
       <node id="6460492932225273356" at="49,96,66,5" concept="9" />
       <node id="6460492932224949527" at="48,0,68,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
@@ -11767,12 +11766,12 @@
         <var name="event" id="2503776137140397871" />
         <var name="module" id="2503776137140450464" />
       </scope>
-      <scope id="6460492932224949527" at="36,95,46,16" />
-      <scope id="7217424793751150681" at="77,92,87,37">
+      <scope id="7217424793751150681" at="77,92,86,37">
         <var name="facet" id="7217424793751326682" />
         <var name="moduleDescriptor" id="4182604737394067887" />
       </scope>
-      <scope id="7217424793751150315" at="77,0,89,0">
+      <scope id="6460492932224949527" at="36,95,46,16" />
+      <scope id="7217424793751150315" at="77,0,88,0">
         <var name="event" id="7217424793751150315" />
         <var name="module" id="7217424793751207800" />
         <var name="pluginId" id="7217424793751207804" />
@@ -11792,7 +11791,7 @@
         <var name="_params" id="6460492932224949527" />
         <var name="event" id="6460492932224949527" />
       </scope>
-      <unit id="6460492932224949527" at="22,0,90,0" name="jetbrains.mps.ide.actions.SetPluginIdToCompileInIdeaModules_Action" />
+      <unit id="6460492932224949527" at="22,0,89,0" name="jetbrains.mps.ide.actions.SetPluginIdToCompileInIdeaModules_Action" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6661528628553884549">

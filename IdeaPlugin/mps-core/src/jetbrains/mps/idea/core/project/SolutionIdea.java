@@ -41,7 +41,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.CommonProcessors.FindProcessor;
 import com.intellij.util.Processor;
 import com.intellij.util.messages.MessageBusConnection;
-import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.facet.MPSFacet;
 import jetbrains.mps.idea.core.facet.MPSFacetType;
@@ -337,7 +336,7 @@ public class SolutionIdea extends Solution {
   @Override
   protected SModuleFacet loadAndAttachIfNeeded(@NotNull SModuleFacet facet, Memento memento) {
     if (facet instanceof JavaModuleFacet) {
-      facet = new JavaModuleFacetImpl() {
+      facet = new JavaModuleFacetImpl(module) {
         @Override
         public IFile getClassesGen() {
           IFile descriptorFile = getDescriptorFile();

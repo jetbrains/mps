@@ -39,9 +39,7 @@ public final class MPSGenerator extends ComponentPlugin implements ComponentHost
   private FacetFactory myGeneratorFacetFactory = new FacetFactory() {
     @Override
     public SModuleFacet create(@NotNull SModule module) {
-      final CustomGenerationModuleFacet rv = new CustomGenerationModuleFacet();
-      rv.setModule(module);
-      return rv;
+      return new CustomGenerationModuleFacet(module);
     }
 
     @NotNull

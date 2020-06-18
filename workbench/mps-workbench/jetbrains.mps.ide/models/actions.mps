@@ -37778,24 +37778,14 @@
             <property role="TrG5h" value="facet" />
             <node concept="2ShNRf" id="6gDspL0DgZ_" role="33vP2m">
               <node concept="1pGfFk" id="6gDspL0DUYZ" role="2ShVmc">
-                <ref role="37wK5l" to="cyln:~IdeaPluginModuleFacetImpl.&lt;init&gt;()" resolve="IdeaPluginModuleFacetImpl" />
+                <ref role="37wK5l" to="cyln:~IdeaPluginModuleFacetImpl.&lt;init&gt;(org.jetbrains.mps.openapi.module.SModule)" resolve="IdeaPluginModuleFacetImpl" />
+                <node concept="37vLTw" id="5OP79TDbjEa" role="37wK5m">
+                  <ref role="3cqZAo" node="6gDspL0CNXS" resolve="module" />
+                </node>
               </node>
             </node>
             <node concept="3uibUv" id="6gDspL0DgZr" role="1tU5fm">
               <ref role="3uigEE" to="cyln:~IdeaPluginModuleFacetImpl" resolve="IdeaPluginModuleFacetImpl" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="6gDspL0DV31" role="3cqZAp">
-          <node concept="2OqwBi" id="6gDspL0DVg2" role="3clFbG">
-            <node concept="liA8E" id="6gDspL0E37Z" role="2OqNvi">
-              <ref role="37wK5l" to="31cb:~ModuleFacetBase.setModule(org.jetbrains.mps.openapi.module.SModule)" resolve="setModule" />
-              <node concept="37vLTw" id="6gDspL0E385" role="37wK5m">
-                <ref role="3cqZAo" node="6gDspL0CNXS" resolve="module" />
-              </node>
-            </node>
-            <node concept="37vLTw" id="6gDspL0DV30" role="2Oq$k0">
-              <ref role="3cqZAo" node="6gDspL0DgZq" resolve="facet" />
             </node>
           </node>
         </node>

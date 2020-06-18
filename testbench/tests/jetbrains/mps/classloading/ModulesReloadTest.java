@@ -63,8 +63,9 @@ public class ModulesReloadTest extends ModuleMpsTest {
   private final FacetFactory FACET_FACTORY = new FacetFactory() {
     @Override
     public SModuleFacet create(@NotNull SModule module) {
+      // leave this one for now as it was to test compatibility
       final TestJavaModuleFacet rv = new TestJavaModuleFacet();
-      rv.setModule(module);
+      rv.attach(module);
       return rv;
     }
 

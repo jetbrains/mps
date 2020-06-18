@@ -63,7 +63,7 @@ public final class MpsEnvironment extends EnvironmentBase {
 
       @Override
       public SModuleFacet create(@NotNull SModule module) {
-        DumbIdeaPluginFacet rv = new DumbIdeaPluginFacet() {
+        DumbIdeaPluginFacet rv = new DumbIdeaPluginFacet(module) {
           @Override
           @Nullable
           public ClassLoader getClassLoader() {
@@ -71,7 +71,6 @@ public final class MpsEnvironment extends EnvironmentBase {
             return (cl == null ? getRootClassLoader() : cl);
           }
         };
-        rv.setModule(module);
         return rv;
       }
 
@@ -82,7 +81,6 @@ public final class MpsEnvironment extends EnvironmentBase {
       }
     });
   }
-
 
   @Override
   protected void initLibraries(@NotNull LibraryInitializer libInitializer) {

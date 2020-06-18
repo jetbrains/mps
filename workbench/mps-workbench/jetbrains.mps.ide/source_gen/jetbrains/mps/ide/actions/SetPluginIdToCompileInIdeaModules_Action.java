@@ -79,8 +79,7 @@ public class SetPluginIdToCompileInIdeaModules_Action extends BaseAction {
     if (moduleDescriptor == null) {
       return;
     }
-    IdeaPluginModuleFacetImpl facet = new IdeaPluginModuleFacetImpl();
-    facet.setModule(module);
+    IdeaPluginModuleFacetImpl facet = new IdeaPluginModuleFacetImpl(module);
     facet.setPluginId(pluginId);
     moduleDescriptor.addFacetDescriptor(facet);
     moduleDescriptor.updateFacetDescriptor(facet);

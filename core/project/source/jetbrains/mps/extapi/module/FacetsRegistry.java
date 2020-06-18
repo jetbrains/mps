@@ -61,9 +61,7 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
   private final FacetFactory JAVA_MODULE_FACET_FACTORY = new FacetFactory() {
     @Override
     public SModuleFacet create(@NotNull SModule module) {
-      final JavaModuleFacetImpl rv = new JavaModuleFacetImpl();
-      rv.setModule(module);
-      return rv;
+      return new JavaModuleFacetImpl(module);
     }
 
     @NotNull
@@ -172,9 +170,7 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
       DUMB_IDEA_PLUGIN_FACET_FACTORY = new FacetFactory() {
         @Override
         public SModuleFacet create(@NotNull SModule module) {
-          final DumbIdeaPluginFacet rv = new DumbIdeaPluginFacet();
-          rv.setModule(module);
-          return rv;
+          return new DumbIdeaPluginFacet(module);
         }
 
         @NotNull

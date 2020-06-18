@@ -16,15 +16,22 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.extapi.module.ModuleFacetBase;
+import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.Memento;
 
 public class DumbIdeaPluginFacet extends ModuleFacetBase implements IdeaPluginModuleFacet {
   private String pluginId;
 
+  @Deprecated(forRemoval = true)
   public DumbIdeaPluginFacet() {
     super(FACET_TYPE);
+  }
+
+  public DumbIdeaPluginFacet(@NotNull SModule module) {
+    super(FACET_TYPE, module);
   }
 
   @Override

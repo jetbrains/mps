@@ -16,7 +16,6 @@
 package jetbrains.mps.jps.project;
 
 import com.intellij.openapi.util.io.FileUtil;
-import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.idea.core.make.MPSMakeConstants;
 import jetbrains.mps.idea.core.project.JpsModelRootContributor;
@@ -162,7 +161,7 @@ public class JpsSolutionIdea extends Solution {
   @Override
   protected SModuleFacet loadAndAttachIfNeeded(@NotNull SModuleFacet facet, Memento memento) {
     if (facet instanceof JavaModuleFacet) {
-      facet = new JavaModuleFacetImpl() {
+      facet = new JavaModuleFacetImpl(module) {
         @Override
         public IFile getClassesGen() {
           IFile descriptorFile = getDescriptorFile();

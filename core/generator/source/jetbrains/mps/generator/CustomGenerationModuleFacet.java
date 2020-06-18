@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
@@ -37,8 +38,13 @@ public class CustomGenerationModuleFacet extends ModuleFacetBase implements Mode
   private ModelGenerationPlan myCachedPlanInstance;
   private long myCachedPlanTimestamp;
 
+  @Deprecated(forRemoval = true)
   public CustomGenerationModuleFacet() {
     super(FACET_TYPE);
+  }
+
+  public CustomGenerationModuleFacet(@NotNull SModule module) {
+    super(FACET_TYPE, module);
   }
 
   @Nullable

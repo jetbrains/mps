@@ -42,10 +42,7 @@ public abstract class ModuleFacetBase implements SModuleFacet, DetachableFacet {
 
   /**
    * the common flow is to have module already in construction, register it once and for all (#setModule + #attach), dispose in the end
-   *
-   * @deprecated use the constructor with module to initialize AND attach the facet in one take
    */
-  @Deprecated
   protected ModuleFacetBase(@NotNull String facetType) {
     myFacetType = facetType;
   }
@@ -80,6 +77,8 @@ public abstract class ModuleFacetBase implements SModuleFacet, DetachableFacet {
 
   /**
    * Returns null if the facet cannot work within the passed module.
+   *
+   * @deprecated use {@link #attach(SModule)}
    */
   @ScheduledForRemoval(inVersion = "2020.2")
   @Deprecated

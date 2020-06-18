@@ -53,7 +53,7 @@
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
@@ -243,7 +243,7 @@
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
-        <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
+        <child id="8276990574886367509" name="finallyClause" index="1zxBo6" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
@@ -1863,8 +1863,8 @@
                               <node concept="YeOm9" id="tIvp9sU1jU" role="2ShVmc">
                                 <node concept="1Y3b0j" id="tIvp9sU1jV" role="YeSDq">
                                   <property role="2bfB8j" value="true" />
+                                  <ref role="37wK5l" to="3qmy:~DumbIdeaPluginFacet.&lt;init&gt;(org.jetbrains.mps.openapi.module.SModule)" resolve="DumbIdeaPluginFacet" />
                                   <ref role="1Y3XeK" to="3qmy:~DumbIdeaPluginFacet" resolve="DumbIdeaPluginFacet" />
-                                  <ref role="37wK5l" to="3qmy:~DumbIdeaPluginFacet.&lt;init&gt;()" resolve="DumbIdeaPluginFacet" />
                                   <node concept="3Tm1VV" id="tIvp9sU1jW" role="1B3o_S" />
                                   <node concept="3clFb_" id="tIvp9sU1jX" role="jymVt">
                                     <property role="1EzhhJ" value="false" />
@@ -1918,20 +1918,10 @@
                                       <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
                                     </node>
                                   </node>
+                                  <node concept="37vLTw" id="5OP79TDas37" role="37wK5m">
+                                    <ref role="3cqZAo" node="tIvp9sTWMk" resolve="module" />
+                                  </node>
                                 </node>
-                              </node>
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="3clFbF" id="tIvp9sU1VM" role="3cqZAp">
-                          <node concept="2OqwBi" id="tIvp9sU2i7" role="3clFbG">
-                            <node concept="37vLTw" id="tIvp9sU1VK" role="2Oq$k0">
-                              <ref role="3cqZAo" node="tIvp9sU1jS" resolve="rv" />
-                            </node>
-                            <node concept="liA8E" id="tIvp9sU5qc" role="2OqNvi">
-                              <ref role="37wK5l" to="31cb:~ModuleFacetBase.setModule(org.jetbrains.mps.openapi.module.SModule)" resolve="setModule" />
-                              <node concept="37vLTw" id="tIvp9sU5CC" role="37wK5m">
-                                <ref role="3cqZAo" node="tIvp9sTWMk" resolve="module" />
                               </node>
                             </node>
                           </node>
@@ -1985,7 +1975,6 @@
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="1ROuiHSTGe" role="jymVt" />
     <node concept="2tJIrI" id="1ROuiHSTK6" role="jymVt" />
     <node concept="3clFb_" id="1ROuiHSUm7" role="jymVt">
       <property role="TrG5h" value="initLibraries" />
