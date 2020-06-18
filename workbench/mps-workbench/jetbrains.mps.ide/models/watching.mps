@@ -555,13 +555,13 @@
                                                         <node concept="3uibUv" id="2S7hKDHpGq7" role="1tU5fm">
                                                           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
                                                         </node>
-                                                        <node concept="2YIFZM" id="2S7hKDHpGq8" role="33vP2m">
+                                                        <node concept="2YIFZM" id="5OP79TD_Mb2" role="33vP2m">
+                                                          <ref role="37wK5l" to="k3nr:~MPSEditorUtil.getCurrentEditedNodeFromTabbedEditor(com.intellij.openapi.project.Project,jetbrains.mps.nodefs.MPSNodeVirtualFile)" resolve="getCurrentEditedNodeFromTabbedEditor" />
                                                           <ref role="1Pybhc" to="k3nr:~MPSEditorUtil" resolve="MPSEditorUtil" />
-                                                          <ref role="37wK5l" to="k3nr:~MPSEditorUtil.getCurrentEditedNode(com.intellij.openapi.project.Project,jetbrains.mps.nodefs.MPSNodeVirtualFile)" resolve="getCurrentEditedNode" />
-                                                          <node concept="2GrUjf" id="2S7hKDHpGq9" role="37wK5m">
+                                                          <node concept="2GrUjf" id="5OP79TD_Mb3" role="37wK5m">
                                                             <ref role="2Gs0qQ" node="2S7hKDHpGpR" resolve="project" />
                                                           </node>
-                                                          <node concept="37vLTw" id="3GM_nagTA5Z" role="37wK5m">
+                                                          <node concept="37vLTw" id="5OP79TD_Mb4" role="37wK5m">
                                                             <ref role="3cqZAo" node="2S7hKDHpGpZ" resolve="nvf" />
                                                           </node>
                                                         </node>

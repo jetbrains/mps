@@ -26,9 +26,18 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
-public class MPSEditorUtil {
+public final class MPSEditorUtil {
+  /**
+   * for example,
+   * while virtual file points to some concept structure declaration,
+   * the currently edited node might be from another aspect (~tab).
+   *
+   * this method helps to eliminate this integration problem MPS-IJ
+   *
+   * @return null if the file does not point to the tabbed editor
+   */
   @Nullable
-  public static SNode getCurrentEditedNode(@NotNull Project project, @NotNull MPSNodeVirtualFile file) {
+  public static SNode getCurrentEditedNodeFromTabbedEditor(@NotNull Project project, @NotNull MPSNodeVirtualFile file) {
     FileEditor editor = FileEditorManager.getInstance(project).getSelectedEditor(file);
     if (!(editor instanceof MPSFileNodeEditor)) {
       return null;

@@ -60,7 +60,7 @@ public class ModelFocusSynchronizer implements ApplicationComponent {
                 if (vf instanceof MPSNodeVirtualFile) {
                   // XXX as long as we update VFS files, why do we care to find actual edited node? Why vf.getNode() is not sufficient? 
                   MPSNodeVirtualFile nvf = ((MPSNodeVirtualFile) vf);
-                  SNode node = MPSEditorUtil.getCurrentEditedNode(project, nvf);
+                  SNode node = MPSEditorUtil.getCurrentEditedNodeFromTabbedEditor(project, nvf);
                   if (node == null) {
                     node = nvf.getNode();
                   }

@@ -41,7 +41,7 @@ public class NodeFileStatusProvider implements FileStatusProvider {
 
     return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(new Computable<FileStatus>() {
       public FileStatus compute() {
-        SNode root = MPSEditorUtil.getCurrentEditedNode(myProject.getProject(), nodeFile);
+        SNode root = MPSEditorUtil.getCurrentEditedNodeFromTabbedEditor(myProject.getProject(), nodeFile);
         if (root == null) {
           root = check_8p3pkg_a0a0b0a0a0a0f0f(nodeFile.getNode());
         }

@@ -55,7 +55,7 @@ public class NodeFileIconProvider implements FileIconProvider, NamedComponent {
       final MPSNodeVirtualFile nodeFile = (MPSNodeVirtualFile) file;
       return new ModelComputeRunnable<>(() -> {
         if (IconDeferrer.getInstance() instanceof DefaultIconDeferrer) {
-          SNode node = MPSEditorUtil.getCurrentEditedNode(project, nodeFile);
+          SNode node = MPSEditorUtil.getCurrentEditedNodeFromTabbedEditor(project, nodeFile);
           if (node != null) {
             return GlobalIconManager.getInstance().getIconFor(node);
           }

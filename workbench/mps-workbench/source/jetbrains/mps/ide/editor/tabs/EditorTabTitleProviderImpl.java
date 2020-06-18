@@ -22,7 +22,6 @@ import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.editor.MPSEditorUtil;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -41,7 +40,7 @@ public class EditorTabTitleProviderImpl implements EditorTabTitleProvider {
       return null;
     }
     return new ModelAccessHelper(modelAccess).runReadAction(() -> {
-      SNode node = MPSEditorUtil.getCurrentEditedNode(project, (MPSNodeVirtualFile) file);
+      SNode node = MPSEditorUtil.getCurrentEditedNodeFromTabbedEditor(project, (MPSNodeVirtualFile) file);
       return node == null ? null : node.getPresentation();
     });
   }

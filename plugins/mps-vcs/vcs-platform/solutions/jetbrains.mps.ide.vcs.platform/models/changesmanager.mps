@@ -86,7 +86,7 @@
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="5293379017992965193" name="jetbrains.mps.baseLanguage.structure.StubStatementList" flags="ig" index="2lzX1y" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1076505808687" name="jetbrains.mps.baseLanguage.structure.WhileStatement" flags="nn" index="2$JKZl">
@@ -13094,18 +13094,18 @@
                           <node concept="3cpWsn" id="2n7wcdLaAXG" role="3cpWs9">
                             <property role="TrG5h" value="root" />
                             <node concept="3Tqbb2" id="2n7wcdLaAXH" role="1tU5fm" />
-                            <node concept="2YIFZM" id="2n7wcdLaAXI" role="33vP2m">
+                            <node concept="2YIFZM" id="5OP79TD_Ia6" role="33vP2m">
+                              <ref role="37wK5l" to="k3nr:~MPSEditorUtil.getCurrentEditedNodeFromTabbedEditor(com.intellij.openapi.project.Project,jetbrains.mps.nodefs.MPSNodeVirtualFile)" resolve="getCurrentEditedNodeFromTabbedEditor" />
                               <ref role="1Pybhc" to="k3nr:~MPSEditorUtil" resolve="MPSEditorUtil" />
-                              <ref role="37wK5l" to="k3nr:~MPSEditorUtil.getCurrentEditedNode(com.intellij.openapi.project.Project,jetbrains.mps.nodefs.MPSNodeVirtualFile)" resolve="getCurrentEditedNode" />
-                              <node concept="2OqwBi" id="3RVEVD6wEmA" role="37wK5m">
-                                <node concept="37vLTw" id="2BHiRxeu$r6" role="2Oq$k0">
+                              <node concept="2OqwBi" id="5OP79TD_Ia7" role="37wK5m">
+                                <node concept="37vLTw" id="5OP79TD_Ia8" role="2Oq$k0">
                                   <ref role="3cqZAo" node="2n7wcdLaAX3" resolve="myProject" />
                                 </node>
-                                <node concept="liA8E" id="3RVEVD6wEFu" role="2OqNvi">
+                                <node concept="liA8E" id="5OP79TD_Ia9" role="2OqNvi">
                                   <ref role="37wK5l" to="z1c3:~MPSProject.getProject()" resolve="getProject" />
                                 </node>
                               </node>
-                              <node concept="37vLTw" id="3GM_nagTshO" role="37wK5m">
+                              <node concept="37vLTw" id="5OP79TD_Iaa" role="37wK5m">
                                 <ref role="3cqZAo" node="2n7wcdLaAXA" resolve="nodeFile" />
                               </node>
                             </node>
