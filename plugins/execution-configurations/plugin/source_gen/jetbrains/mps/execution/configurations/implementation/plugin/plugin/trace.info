@@ -3387,7 +3387,7 @@
   </root>
   <root nodeRef="r:8aafee6a-4721-443e-8020-e8986ed3f25a(jetbrains.mps.execution.configurations.implementation.plugin.plugin)/6062668769034024381">
     <file name="MPSInstance_Configuration.java">
-      <node id="3698349269621039956" at="142,75,143,28" concept="5" />
+      <node id="3698349269621039956" at="142,75,143,29" concept="5" />
       <node id="33324785351947745" at="145,65,146,28" concept="5" />
       <node id="3698349269621039956" at="149,67,150,90" concept="11" />
       <node id="33324785351947745" at="152,57,153,123" concept="11" />
@@ -3395,7 +3395,7 @@
       <node id="33324785351947745" at="144,5,147,5" concept="8" />
       <node id="3698349269621039956" at="149,0,152,0" concept="9" trace="createClearSettingsDirectoryBeforeRunTaskTask#()[Ljava/lang/Object;" />
       <node id="33324785351947745" at="152,0,155,0" concept="9" trace="createAssemblePluginsBeforeTaskTask#()[Ljava/lang/Object;" />
-      <scope id="3698349269621039956" at="142,75,143,28" />
+      <scope id="3698349269621039956" at="142,75,143,29" />
       <scope id="33324785351947745" at="145,65,146,28" />
       <scope id="3698349269621039956" at="149,67,150,90" />
       <scope id="33324785351947745" at="152,57,153,123" />

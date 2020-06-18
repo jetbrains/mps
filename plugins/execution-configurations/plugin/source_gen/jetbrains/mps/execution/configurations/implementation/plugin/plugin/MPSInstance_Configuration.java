@@ -140,7 +140,7 @@ public class MPSInstance_Configuration extends BaseMpsRunConfiguration implement
   }
   public static void configureBeforeTaskDefaults(Key<? extends BeforeRunTask> providerID, BeforeRunTask task) {
     if (providerID == ClearSettingsDirectoryBeforeRunTask_BeforeTask.KEY) {
-      task.setEnabled(true);
+      task.setEnabled(false);
     }
     if (providerID == AssemblePluginsBeforeTask_BeforeTask.KEY) {
       task.setEnabled(true);

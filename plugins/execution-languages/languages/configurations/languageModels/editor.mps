@@ -55,6 +55,9 @@
         <child id="1080736633877" name="cellModel" index="2wV5jI" />
       </concept>
       <concept id="8371900013785948369" name="jetbrains.mps.lang.editor.structure.QueryFunction_SubstituteMenu_Parameter" flags="ig" index="2$S_p_" />
+      <concept id="6718020819487620873" name="jetbrains.mps.lang.editor.structure.TransformationMenuReference_Named" flags="ng" index="A1WHu">
+        <reference id="6718020819487620874" name="menu" index="A1WHt" />
+      </concept>
       <concept id="3473224453637651916" name="jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform_PlaceInCellHolder" flags="ng" index="CtIbL">
         <property id="3473224453637651917" name="placeInCell" index="CtIbK" />
       </concept>
@@ -149,6 +152,7 @@
       <concept id="1073389214265" name="jetbrains.mps.lang.editor.structure.EditorCellModel" flags="ng" index="3EYTF0">
         <child id="1142887637401" name="renderingCondition" index="pqm2j" />
         <child id="1164826688380" name="menuDescriptor" index="P5bDN" />
+        <child id="4202667662392416064" name="transformationMenu" index="3vIgyS" />
       </concept>
       <concept id="1073389446423" name="jetbrains.mps.lang.editor.structure.CellModel_Collection" flags="sn" stub="3013115976261988961" index="3EZMnI">
         <child id="1106270802874" name="cellLayout" index="2iSdaV" />
@@ -1010,6 +1014,9 @@
         <property role="1QpmdY" value="true" />
         <node concept="3F0ifn" id="7ArQL0$n5Jb" role="1QoS34">
           <property role="3F0ifm" value="enabled by default" />
+          <node concept="A1WHu" id="5OP79TDAXsY" role="3vIgyS">
+            <ref role="A1WHt" node="7ArQL0$pQvq" resolve="togglingEnabledByDefaultProp" />
+          </node>
         </node>
         <node concept="pkWqt" id="7ArQL0$n5Jc" role="3e4ffs">
           <node concept="3clFbS" id="7ArQL0$n5Je" role="2VODD2">
@@ -1027,6 +1034,9 @@
         </node>
         <node concept="3F0ifn" id="7ArQL0$n5QG" role="1QoVPY">
           <property role="3F0ifm" value="disabled by default" />
+          <node concept="A1WHu" id="5OP79TDAXt0" role="3vIgyS">
+            <ref role="A1WHt" node="7ArQL0$pQvq" resolve="togglingEnabledByDefaultProp" />
+          </node>
         </node>
         <node concept="3vyZuw" id="7ArQL0$n7Fj" role="3F10Kt">
           <property role="VOm3f" value="true" />
