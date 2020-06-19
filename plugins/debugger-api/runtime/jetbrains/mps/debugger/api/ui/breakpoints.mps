@@ -11628,6 +11628,12 @@
           </node>
         </node>
       </node>
+      <node concept="2B6LJw" id="5Kg_Wlnj4vX" role="2B76xF">
+        <ref role="2B6OnR" to="1m72:~State.reportStatistic()" resolve="reportStatistic" />
+        <node concept="3clFbT" id="5Kg_WlnjfwP" role="2B70Vg">
+          <property role="3clFbU" value="true" />
+        </node>
+      </node>
     </node>
     <node concept="312cEg" id="3SnNvqCbzpz" role="jymVt">
       <property role="TrG5h" value="myState" />

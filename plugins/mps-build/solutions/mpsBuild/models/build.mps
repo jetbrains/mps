@@ -27389,7 +27389,7 @@
       </node>
       <node concept="NbPM2" id="57dcfYPuvRk" role="IvIn7">
         <node concept="3Mxwew" id="57dcfYPuvRj" role="3MwsjC">
-          <property role="3MwjfP" value="http://plugins.jetbrains.com/" />
+          <property role="3MwjfP" value="https://plugins.jetbrains.com/" />
         </node>
       </node>
       <node concept="NbPM2" id="57dcfYPuvRo" role="3$Ir1d">
@@ -27419,11 +27419,7 @@
           </node>
         </node>
       </node>
-      <node concept="NbPM2" id="57dcfYPyp3M" role="3$iogF">
-        <node concept="3Mxwew" id="57dcfYPyp3L" role="3MwsjC">
-          <property role="3MwjfP" value="http://www.jetbrains.org/" />
-        </node>
-      </node>
+      <node concept="NbPM2" id="57dcfYPyp3M" role="3$iogF" />
       <node concept="NbPM2" id="5VYK1npNzOH" role="27hAJg">
         <node concept="3Mxwew" id="5VYK1npNzOG" role="3MwsjC">
           <property role="3MwjfP" value="280" />
@@ -27454,7 +27450,7 @@
         <node concept="2pNUuL" id="5VYK1npK8$P" role="2pNNFR">
           <property role="2pNUuO" value="url" />
           <node concept="2pMdtt" id="5VYK1npK8$R" role="2pMdts">
-            <property role="2pMdty" value="http://www.youtube.com/user/JetBrainsTV/search?query=MPS" />
+            <property role="2pMdty" value="https://www.youtube.com/user/JetBrainsTV/search?query=MPS" />
           </node>
         </node>
       </node>
@@ -27518,12 +27514,12 @@
       <node concept="1zDKOm" id="6Iq8148f_YT" role="2Etnp4">
         <node concept="3_J27D" id="6Iq8148f_YU" role="2EtnoL">
           <node concept="3Mxwew" id="6Iq8148f_YY" role="3MwsjC">
-            <property role="3MwjfP" value="http://www.jetbrains.com/mps/update.xml" />
+            <property role="3MwjfP" value="https://www.jetbrains.com/mps/update.xml" />
           </node>
         </node>
         <node concept="3_J27D" id="6Iq8148f_YV" role="2EtnoK">
           <node concept="3Mxwew" id="6Iq8148f_YZ" role="3MwsjC">
-            <property role="3MwjfP" value="http://www.jetbrains.com/mps/download/" />
+            <property role="3MwjfP" value="https://www.jetbrains.com/mps/download/" />
           </node>
         </node>
         <node concept="NbPM2" id="6Iq8148f_YW" role="HFWMp">
@@ -27565,7 +27561,7 @@
         <node concept="NbPM2" id="4oyKb4mw2ku" role="1xUO3G" />
         <node concept="3_J27D" id="6Iq8148f_ZH" role="1xUO3y">
           <node concept="3Mxwew" id="6Iq8148f_ZN" role="3MwsjC">
-            <property role="3MwjfP" value="http://www.jetbrains.com/mps/webhelp/" />
+            <property role="3MwjfP" value="https://www.jetbrains.com/mps/webhelp/" />
           </node>
         </node>
         <node concept="3_J27D" id="6Iq8148f_ZI" role="1xUO3z">

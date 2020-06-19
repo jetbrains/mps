@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 @com.intellij.openapi.components.State(name = "OverrideImplementMethodComponent", storages = @Storage(value = StoragePathMacros.WORKSPACE_FILE)
-)
+, reportStatistic = true)
 @GeneratedClass(node = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/8838506468326925850", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
 public class OverrideImplementMethodComponent implements ProjectComponent, PersistentStateComponent<OverrideImplementMethodComponent.State> {
   private State myState;

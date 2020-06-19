@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,7 +42,8 @@ import java.util.List;
 
 @State(
     name = "MpsEditorSettings",
-    storages = @Storage("mpsEditor.xml")
+    storages = @Storage("mpsEditor.xml"),
+    reportStatistic = true
 )
 public class EditorSettings implements ApplicationComponent, PersistentStateComponent<MyState> {
   private static final Logger LOG = LogManager.getLogger(EditorSettings.class);

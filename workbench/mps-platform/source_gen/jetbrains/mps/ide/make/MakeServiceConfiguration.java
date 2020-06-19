@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.progress.PerformInBackgroundOption;
 
 @State(name = "mpsMakeService", storages = @Storage(value = StoragePathMacros.WORKSPACE_FILE)
-)
+, reportStatistic = true)
 @GeneratedClass(node = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)/3361535663822413166", model = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)")
 public final class MakeServiceConfiguration implements PersistentStateComponent<MakeServiceConfiguration> {
   private boolean myMakeInBackground = false;

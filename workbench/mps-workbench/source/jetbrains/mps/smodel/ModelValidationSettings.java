@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,6 @@ package jetbrains.mps.smodel;
 
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
@@ -32,8 +30,9 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.Icon;
 
 @State(
-  name = "ModelValidationSettings",
-  storages = @Storage("mpsModelValidationSettings.xml")
+    name = "ModelValidationSettings",
+    storages = @Storage("mpsModelValidationSettings.xml"),
+    reportStatistic = true
 )
 public class ModelValidationSettings implements PersistentStateComponent<MyState>, IModelValidationSettings, Disposable {
   private boolean myDisableTypeWasNotCalculated = true;

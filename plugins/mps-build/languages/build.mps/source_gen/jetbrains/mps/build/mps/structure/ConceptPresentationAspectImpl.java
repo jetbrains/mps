@@ -196,6 +196,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           cpb.deprecateAggregation(0x54c4eb89feb0001cL, "icon32opaque");
           cpb.deprecateAggregation(0x5efec015d9c0dee8L, "iconToolWindow");
           cpb.deprecateAggregation(0x54a6365f080e9d69L, "editorBGUrl");
+          cpb.deprecateAggregation(0x51cd30ffb584b4d4L, "thirdparty");
           cpb.shortDesc("name, version and images of your custom IDE");
           cpb.presentationByName();
           props_BuildMps_Branding = cpb.create();
