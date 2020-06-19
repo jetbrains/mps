@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -85,6 +85,7 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
       // ok, it's the first time we see the module
       ModelGenerationPlan.Provider f = fromModuleFacets(ownerModule);
       if (f != null) {
+        myMessageHandler.handle(Message.info(GenPlanExtractor.class, String.format("Module %s has facet that provides generation plans", ownerModule.getModuleName()), ownerModule.getModuleReference(), null));
         myOwnerModuleToFacet.put(ownerModule, f);
         return f.getPlan(model);
       } else {
@@ -136,12 +137,14 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
         ModelGenerationPlan.Provider mgpProvider;
         final SModelReference dkPlan;
         if (devkit.getModuleDescriptor() != null && (dkPlan = devkit.getModuleDescriptor().getAssociatedGenPlan()) != null) {
+          myMessageHandler.handle(Message.info(GenPlanExtractor.class, String.format("Devkit %s has associated plan %s", devkit.getModuleName(), dkPlan.getName()), dkPlan, null));
           mgpProvider = new InterpretedPlanProvider(LanguageRegistry.getInstance(myRepository), myMessageHandler, dkPlan, myRepository);
           myDevkitToPlan.put(dkRef, new PlanProviderInfo(mgpProvider, true));
           return mgpProvider.getPlan(model);
         } else {
           mgpProvider = fromModuleFacets(devkit);
           if (mgpProvider != null) {
+            myMessageHandler.handle(Message.info(GenPlanExtractor.class, String.format("Devkit %s has module facet that provides generation plans", devkit.getModuleName()), devkit.getModuleReference(), null));
             myDevkitToPlan.put(dkRef, new PlanProviderInfo(mgpProvider, false));
             facetAssociatedPlan.add(mgpProvider);
           } else {

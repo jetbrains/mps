@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -65,7 +65,7 @@ public class Message implements IMessage {
   /**
    * @return <code>this</code> for convenience
    */
-  public Message setException(Throwable exception) {
+  public Message setException(@Nullable Throwable exception) {
     myException = exception;
     return this;
   }
@@ -143,5 +143,9 @@ public class Message implements IMessage {
       m.setException(ex);
     }
     return m;
+  }
+
+  public static IMessage info(@NotNull Class<?> sender, @NotNull String text, @Nullable Object hint, @Nullable Throwable ex) {
+    return new Message(MessageKind.INFORMATION, sender, text).setHintObject(hint).setException(ex);
   }
 }

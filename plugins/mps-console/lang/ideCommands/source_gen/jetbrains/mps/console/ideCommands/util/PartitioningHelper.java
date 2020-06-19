@@ -83,11 +83,21 @@ public class PartitioningHelper {
       List<Pair<String, TemplateMappingConfiguration>> strings = GenerationPartitioningUtil.toStrings(mappingSet);
       for (Pair<String, TemplateMappingConfiguration> string : strings) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x360b134fc0467d73L, "jetbrains.mps.console.ideCommands.structure.ClickableGenerator"));
-        SPropertyOperations.assign(node, PROPS.moduleId$3xxZ, PersistenceFacade.getInstance().asString(string.o2.getModel().getModule().getModuleReference().getModuleId()));
+        TemplateModule templateModule = string.o2.getModel().getModule();
+        SPropertyOperations.assign(node, PROPS.moduleId$3xxZ, PersistenceFacade.getInstance().asString(templateModule.getModuleReference().getModuleId()));
         SPropertyOperations.assign(node, PROPS.text$fNjX, string.o1);
         console.addText(indentString);
         console.addText(" ");
         console.addNode(node);
+        // if there's a template model with simple name like 'main', one needs to click on the entry to find out owner generator module 
+        String namespace = templateModule.getModuleReference().getModuleName();
+        if (namespace != null && namespace.indexOf('#') > 0) {
+          // MPS legacy, generator names often use '#' in their names 
+          namespace = namespace.substring(0, namespace.indexOf('#'));
+        }
+        if (!(string.o1.startsWith(namespace))) {
+          console.addText(String.format(" [%s]", templateModule.getModuleReference().getModuleName()));
+        }
         console.addText("\n");
       }
     } else if (step instanceof ModelGenerationPlan.Fork) {

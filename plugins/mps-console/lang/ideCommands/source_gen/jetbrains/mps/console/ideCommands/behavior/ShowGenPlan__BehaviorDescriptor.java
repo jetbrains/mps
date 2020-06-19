@@ -21,10 +21,17 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.modelapi.behavior.ModelIdentity__BehaviorDescriptor;
 import jetbrains.mps.ide.messages.MessagesViewTool;
+import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.generator.GenPlanExtractor;
+import java.util.HashSet;
+import jetbrains.mps.messages.IMessage;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.lang.modelapi.behavior.NodePointer__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.generator.ModelGenerationPlan;
 import jetbrains.mps.console.ideCommands.util.PartitioningHelper;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.generator.impl.plan.GenerationPlan;
 import jetbrains.mps.generator.impl.plan.EngagedGeneratorCollector;
 import java.util.ArrayList;
@@ -34,6 +41,7 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class ShowGenPlan__BehaviorDescriptor extends BaseBHDescriptor {
@@ -46,9 +54,9 @@ public final class ShowGenPlan__BehaviorDescriptor extends BaseBHDescriptor {
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static void doExecute_id2SpVAIqougW(@NotNull SNode __thisNode__, ConsoleContext context, ConsoleStream console) {
+  /*package*/ static void doExecute_id2SpVAIqougW(@NotNull SNode __thisNode__, ConsoleContext context, final ConsoleStream console) {
     SRepository repo = context.getProject().getRepository();
-    SModel model;
+    final SModel model;
     if ((SLinkOperations.getTarget(__thisNode__, LINKS.targetModel$v7Da) != null)) {
       model = ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.targetModel$v7Da)).resolve(repo);
     } else {
@@ -63,7 +71,25 @@ public final class ShowGenPlan__BehaviorDescriptor extends BaseBHDescriptor {
     // by default, show generation plan as Make/Generate would see it. 
     // If forced, however, may ignore context and show default (model content based) plan. 
 
-    GenPlanExtractor gpExtractor = new GenPlanExtractor(repo, messagesView.newHandler());
+    IMessageHandler mh = messagesView.newHandler();
+    GenPlanExtractor gpExtractor = new GenPlanExtractor(repo, mh.compose(new IMessageHandler() {
+      private final HashSet<String> dupMsg = new HashSet<String>();
+      @Override
+      public void handle(IMessage m) {
+        // GPE reports some of its processing details via IMessageHandler, show them to user to help him understand the process of picking GP 
+        if (dupMsg.add(m.getText())) {
+          if (m.getHintObject() instanceof SNodeReference) {
+            SNode cn = SModelOperations.createNewNode(model, null, CONCEPTS.ClickableNode$Xe);
+            SLinkOperations.setTarget(cn, LINKS.target$2tUW, NodePointer__BehaviorDescriptor.create_id4nxIQVL$eu9.invoke(SNodeOperations.asSConcept(CONCEPTS.NodePointer$qL), model, (SNodeReference) m.getHintObject()));
+            SPropertyOperations.assign(cn, PROPS.text$fNjX, m.getText());
+            console.addNode(cn);
+          } else {
+            console.addText(m.getText());
+          }
+          console.addText("\n");
+        }
+      }
+    }));
     final ModelGenerationPlan externalPlan = (gpExtractor.hasPlan(model) ? gpExtractor.getPlan(model) : null);
 
     PartitioningHelper helper = new PartitioningHelper(messagesView, console);
@@ -145,9 +171,16 @@ public final class ShowGenPlan__BehaviorDescriptor extends BaseBHDescriptor {
   private static final class LINKS {
     /*package*/ static final SContainmentLink targetModel$v7Da = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x70ee8fac615b4f33L, "targetModel");
     /*package*/ static final SContainmentLink targetModelOld$qKbK = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x61f2dd6de47f867aL, "targetModelOld");
+    /*package*/ static final SContainmentLink target$2tUW = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x72ed699ef9552c28L, 0x72ed699ef9552c2dL, "target");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept ClickableNode$Xe = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x72ed699ef9552c28L, "jetbrains.mps.console.ideCommands.structure.ClickableNode");
+    /*package*/ static final SConcept NodePointer$qL = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e35fL, "jetbrains.mps.lang.modelapi.structure.NodePointer");
   }
 
   private static final class PROPS {
+    /*package*/ static final SProperty text$fNjX = MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x2095ece53bb9f5b0L, 0x360b134fc047ce2aL, "text");
     /*package*/ static final SProperty ignoreExternalPlan$FyLA = MetaAdapterFactory.getProperty(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x2c510b378f8ce5ddL, "ignoreExternalPlan");
   }
 }

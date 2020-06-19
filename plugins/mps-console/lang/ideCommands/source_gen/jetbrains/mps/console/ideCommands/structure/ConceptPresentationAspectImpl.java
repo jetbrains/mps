@@ -16,6 +16,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_CallActionExpression;
   private ConceptPresentation props_Clean;
   private ConceptPresentation props_ClickableGenerator;
+  private ConceptPresentation props_ClickableNode;
   private ConceptPresentation props_GlobalScope;
   private ConceptPresentation props_GlobalScope_old;
   private ConceptPresentation props_GlobalStatisticTarget;
@@ -92,6 +93,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ClickableGenerator = cpb.create();
         }
         return props_ClickableGenerator;
+      case LanguageConceptSwitch.ClickableNode:
+        if (props_ClickableNode == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("ClickableNode");
+          props_ClickableNode = cpb.create();
+        }
+        return props_ClickableNode;
       case LanguageConceptSwitch.GlobalScope:
         if (props_GlobalScope == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

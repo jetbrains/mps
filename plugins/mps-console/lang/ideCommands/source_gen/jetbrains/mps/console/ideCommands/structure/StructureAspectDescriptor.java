@@ -20,6 +20,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptCallActionExpression = createDescriptorForCallActionExpression();
   /*package*/ final ConceptDescriptor myConceptClean = createDescriptorForClean();
   /*package*/ final ConceptDescriptor myConceptClickableGenerator = createDescriptorForClickableGenerator();
+  /*package*/ final ConceptDescriptor myConceptClickableNode = createDescriptorForClickableNode();
   /*package*/ final ConceptDescriptor myConceptGlobalScope = createDescriptorForGlobalScope();
   /*package*/ final ConceptDescriptor myConceptGlobalScope_old = createDescriptorForGlobalScope_old();
   /*package*/ final ConceptDescriptor myConceptGlobalStatisticTarget = createDescriptorForGlobalStatisticTarget();
@@ -63,7 +64,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAbsractMake, myConceptActionCallDeclaredParameter, myConceptActionCallGlobalParameter, myConceptActionCallParameter, myConceptCallActionExpression, myConceptClean, myConceptClickableGenerator, myConceptGlobalScope, myConceptGlobalScope_old, myConceptGlobalStatisticTarget, myConceptINodeSetReference, myConceptIStatisticsTarget, myConceptMake, myConceptModelProperties, myConceptModelReference, myConceptModelStatisticsTarget, myConceptModuleProperties, myConceptNodeReference, myConceptOfAspectOperation_old, myConceptProjectStatisticsTarget, myConceptRemoveGenSources, myConceptShowBrokenReferences, myConceptShowExpression, myConceptShowGenPlan, myConceptStatCommand, myConceptSubtreeStatisticsTarget, myConceptVisibleModulesScope, myConceptWithDependencies);
+    return Arrays.asList(myConceptAbsractMake, myConceptActionCallDeclaredParameter, myConceptActionCallGlobalParameter, myConceptActionCallParameter, myConceptCallActionExpression, myConceptClean, myConceptClickableGenerator, myConceptClickableNode, myConceptGlobalScope, myConceptGlobalScope_old, myConceptGlobalStatisticTarget, myConceptINodeSetReference, myConceptIStatisticsTarget, myConceptMake, myConceptModelProperties, myConceptModelReference, myConceptModelStatisticsTarget, myConceptModuleProperties, myConceptNodeReference, myConceptOfAspectOperation_old, myConceptProjectStatisticsTarget, myConceptRemoveGenSources, myConceptShowBrokenReferences, myConceptShowExpression, myConceptShowGenPlan, myConceptStatCommand, myConceptSubtreeStatisticsTarget, myConceptVisibleModulesScope, myConceptWithDependencies);
   }
 
   @Override
@@ -84,6 +85,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptClean;
       case LanguageConceptSwitch.ClickableGenerator:
         return myConceptClickableGenerator;
+      case LanguageConceptSwitch.ClickableNode:
+        return myConceptClickableNode;
       case LanguageConceptSwitch.GlobalScope:
         return myConceptGlobalScope;
       case LanguageConceptSwitch.GlobalScope_old:
@@ -199,6 +202,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:135a606f-0376-4c5c-9ab8-4030f051a062(jetbrains.mps.console.ideCommands.structure)/3894227536041114995");
     b.version(2);
     b.property("moduleId", 0x360b134fc0525d7fL).type(PrimitiveTypeId.STRING).origin("3894227536041893247").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForClickableNode() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.console.ideCommands", "ClickableNode", 0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x72ed699ef9552c28L);
+    b.class_(false, false, false);
+    b.parent(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x2095ece53bb9f5b0L);
+    b.origin("r:135a606f-0376-4c5c-9ab8-4030f051a062(jetbrains.mps.console.ideCommands.structure)/8281391421313068072");
+    b.version(2);
+    b.aggregate("target", 0x72ed699ef9552c2dL).target(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a208f7L).optional(false).ordered(true).multiple(false).origin("8281391421313068077").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForGlobalScope() {

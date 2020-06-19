@@ -21,6 +21,9 @@
         <property id="1225118929411" name="build" index="YLPcu" />
         <property id="1225118933224" name="comment" index="YLQ7P" />
       </concept>
+      <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
+        <property id="7862711839422615217" name="text" index="t5JxN" />
+      </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
         <property id="4628067390765907488" name="conceptShortDescription" index="R4oN_" />
@@ -435,6 +438,25 @@
     <property role="EcuMT" value="2362304834941041875" />
     <property role="R4oN_" value="visible modules in repository" />
     <ref role="1TJDcQ" to="3xdn:238_VGTIKuy" resolve="ScopeParameter" />
+  </node>
+  <node concept="1TIwiD" id="7bHqpVTliKC">
+    <property role="EcuMT" value="8281391421313068072" />
+    <property role="3GE5qa" value="response" />
+    <property role="TrG5h" value="ClickableNode" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="7bHqpVTliKH" role="1TKVEi">
+      <property role="IQ2ns" value="8281391421313068077" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="target" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="dvox:k2ZBl8CwzR" resolve="NodeIdentity" />
+    </node>
+    <node concept="t5JxF" id="7bHqpVTliKD" role="lGtFl">
+      <property role="t5JxN" value="Navigation to a node" />
+    </node>
+    <node concept="PrWs8" id="7bHqpVTliKF" role="PzmwI">
+      <ref role="PrY4T" to="eynw:22lVekVIvmK" resolve="IClickable" />
+    </node>
   </node>
 </model>
 

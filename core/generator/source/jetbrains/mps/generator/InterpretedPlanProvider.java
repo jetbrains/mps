@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import jetbrains.mps.generator.impl.GenPlanTranslator;
 import jetbrains.mps.generator.impl.plan.EngagedGeneratorCollector;
 import jetbrains.mps.generator.impl.plan.RegularPlanBuilder;
 import jetbrains.mps.messages.IMessageHandler;
+import jetbrains.mps.messages.Message;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -66,6 +67,7 @@ public final class InterpretedPlanProvider implements ModelGenerationPlan.Provid
     if (planDecl == null) {
       return null;
     }
+    myMessageHandler.handle(Message.info(InterpretedPlanProvider.class, String.format("Interpreted plan from node %s", planDecl.getPresentation()), planDecl.getReference(), null));
     GenPlanTranslator gpt = new GenPlanTranslator(planDecl);
     // FIXME in fact, shall respect additional languages passed through GenerationParametersProviderEx.getAdditionalLanguages(SModel), like
     // original GenerationPlan did. However, it's rarely (if ever) used feature and contemporary GPs replace it completely, so I do not bother.
