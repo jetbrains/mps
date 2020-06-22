@@ -214,7 +214,6 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
       throw new UnsupportedDataSourceException(dataSource);
     }
     try {
-
       SModelHeader header = ModelPersistence.loadDescriptor((StreamDataSource) dataSource);
       return header.getPersistenceVersion() < ModelPersistence.LAST_VERSION;
     } catch (ModelReadException ex) {

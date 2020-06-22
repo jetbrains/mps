@@ -66,10 +66,7 @@ public class SNodePointer implements SNodeReference {
 
       SModel model = myModelReference.resolve(repo);
       if (model != null) {
-        SNode node = model.getNode(myNodeId);
-        if (node != null) {
-          return node;
-        }
+        return model.getNode(myNodeId);
       }
     }
 

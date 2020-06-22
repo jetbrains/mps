@@ -167,6 +167,7 @@ public class ChangesTracking {
     SRepository repo = ProjectHelper.fromIdeaProject(myProject).getRepository();
     final Wrappers._boolean doNotContinue = new Wrappers._boolean(true);
     final Wrappers._boolean useEmptyBaseModel = new Wrappers._boolean(false);
+    LOG.info("READ ACESS FIRST");
     repo.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         synchronized (LOCK) {
@@ -196,6 +197,7 @@ public class ChangesTracking {
         }
       }
     });
+    LOG.info("READ ACESS FIRST finished");
     if (doNotContinue.value) {
       return;
     }
@@ -223,19 +225,26 @@ public class ChangesTracking {
       }
       return;
     }
-
+    LOG.info("READ STARTED");
     repo.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         synchronized (LOCK) {
           if (!(myDisposed)) {
             DiffModelUtil.renameModel(baseVersionModel.value, "repository");
+            LOG.debug("building change set");
             ChangeSet changeSet = ChangeSetBuilder.buildChangeSet(baseVersionModel.value, myModelDescriptor, true);
+            LOG.debug("change set built ");
+            LOG.debug("setting change set");
             myDifference.setChangeSet((ChangeSetImpl) changeSet);
+            LOG.debug("change set set");
+            LOG.debug("building caches");
             buildCaches();
+            LOG.debug("caches built");
           }
         }
       }
     });
+    LOG.info("READ FINISHED");
   }
 
   private boolean isUnderVcs(@NotNull SModel model) {
