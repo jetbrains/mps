@@ -130,19 +130,6 @@ public class SNodeOperations {
   /**
    * todo rewrite the code using this
    * 
-   * @deprecated use either SNode.getReference.select(it->it.role) or SNode.getConcept.getReferenceLinks depending on what you want to get
-   */
-  @Deprecated
-  public static Set<String> getReferenceRoles(SNode n) {
-    Set<String> res = SetSequence.fromSet(new HashSet<String>());
-    for (SReference ref : Sequence.fromIterable(n.getReferences())) {
-      SetSequence.fromSet(res).addElement(ref.getRole());
-    }
-    return res;
-  }
-  /**
-   * todo rewrite the code using this
-   * 
    * @deprecated SNode.getParent!=null mostly (if done in "user" code which operates with nodes inside models)
    */
   @Deprecated

@@ -24,7 +24,6 @@
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="5ijk" ref="r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
-    <import index="unno" ref="r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)" />
     <import index="cj4x" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor(MPS.Editor/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
@@ -253,6 +252,21 @@
         <property id="890797661671409019" name="forceMultiLine" index="3yWfEV" />
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
+      </concept>
+    </language>
+    <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
+      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
+        <child id="5383422241790532083" name="tags" index="3nqlJM" />
+      </concept>
+      <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
+      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
+        <child id="8970989240999019149" name="part" index="1dT_Ay" />
+      </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
+        <child id="2667874559098216723" name="text" index="3HnX3l" />
+      </concept>
+      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
+        <property id="8970989240999019144" name="text" index="1dT_AB" />
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
@@ -3788,36 +3802,61 @@
               </node>
             </node>
           </node>
+          <node concept="3cpWs8" id="4eh1_gMtY8K" role="3cqZAp">
+            <node concept="3cpWsn" id="4eh1_gMtY8L" role="3cpWs9">
+              <property role="TrG5h" value="cellWithRole" />
+              <node concept="3uibUv" id="4eh1_gMtY1k" role="1tU5fm">
+                <ref role="3uigEE" to="f4zo:~EditorCell" resolve="EditorCell" />
+              </node>
+              <node concept="2OqwBi" id="4eh1_gMtY8M" role="33vP2m">
+                <node concept="2OqwBi" id="4eh1_gMtY8N" role="2Oq$k0">
+                  <node concept="37vLTw" id="4eh1_gMtY8O" role="2Oq$k0">
+                    <ref role="3cqZAo" node="1$3BPv3W07T" resolve="editorContext" />
+                  </node>
+                  <node concept="liA8E" id="4eh1_gMtY8P" role="2OqNvi">
+                    <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent()" resolve="getEditorComponent" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="4eh1_gMtY8Q" role="2OqNvi">
+                  <ref role="37wK5l" to="cj4x:~EditorComponent.findNodeCellWithRole(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SReferenceLink)" resolve="findNodeCellWithRole" />
+                  <node concept="37vLTw" id="4eh1_gMtY8R" role="37wK5m">
+                    <ref role="3cqZAo" node="2uxkWp9Y5Ap" resolve="sourceNode" />
+                  </node>
+                  <node concept="2OqwBi" id="4eh1_gMtY8S" role="37wK5m">
+                    <node concept="37vLTw" id="4eh1_gMtY8T" role="2Oq$k0">
+                      <ref role="3cqZAo" to="k2t0:~RefScopeChecker$ResolveReferenceQuickFix.myReference" resolve="myReference" />
+                    </node>
+                    <node concept="liA8E" id="4eh1_gMtY8U" role="2OqNvi">
+                      <ref role="37wK5l" to="mhbf:~SReference.getLink()" resolve="getLink" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbJ" id="4eh1_gMtYBu" role="3cqZAp">
+            <node concept="3clFbS" id="4eh1_gMtYBw" role="3clFbx">
+              <node concept="3cpWs6" id="4eh1_gMtZuw" role="3cqZAp" />
+            </node>
+            <node concept="3clFbC" id="4eh1_gMtZfE" role="3clFbw">
+              <node concept="10Nm6u" id="4eh1_gMtZkM" role="3uHU7w" />
+              <node concept="37vLTw" id="4eh1_gMtYT5" role="3uHU7B">
+                <ref role="3cqZAo" node="4eh1_gMtY8L" resolve="cellWithRole" />
+              </node>
+            </node>
+          </node>
           <node concept="3clFbF" id="4InNjD1HNfx" role="3cqZAp">
-            <node concept="2YIFZM" id="4InNjD1HNAr" role="3clFbG">
-              <ref role="37wK5l" node="4InNjD1HoV3" resolve="resolveInEditor" />
+            <node concept="2YIFZM" id="4eh1_gMtZwv" role="3clFbG">
+              <ref role="37wK5l" node="77jjuPIbobs" resolve="substituteCell" />
               <ref role="1Pybhc" node="4InNjD1Gavm" resolve="EditorBasedReferenceResolverUtils" />
-              <node concept="2OqwBi" id="5NI6bHme1TT" role="37wK5m">
-                <node concept="37vLTw" id="5NI6bHme1Dz" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1$3BPv3W07T" resolve="editorContext" />
-                </node>
-                <node concept="liA8E" id="5NI6bHme2bk" role="2OqNvi">
-                  <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent()" resolve="getEditorComponent" />
-                </node>
+              <node concept="37vLTw" id="4eh1_gMu0m2" role="37wK5m">
+                <ref role="3cqZAo" node="4eh1_gMtY8L" resolve="cellWithRole" />
               </node>
-              <node concept="37vLTw" id="4InNjD1HObC" role="37wK5m">
-                <ref role="3cqZAo" node="2uxkWp9Y5Ap" resolve="sourceNode" />
-              </node>
-              <node concept="37vLTw" id="4InNjD1HOsk" role="37wK5m">
+              <node concept="37vLTw" id="4eh1_gMtZwx" role="37wK5m">
                 <ref role="3cqZAo" node="1$3BPv3VZvH" resolve="resolveInfo" />
               </node>
-              <node concept="2OqwBi" id="u6B29mHLW8" role="37wK5m">
-                <node concept="2OqwBi" id="4InNjD1HOFi" role="2Oq$k0">
-                  <node concept="37vLTw" id="4InNjD1HOFj" role="2Oq$k0">
-                    <ref role="3cqZAo" to="k2t0:~RefScopeChecker$ResolveReferenceQuickFix.myReference" resolve="myReference" />
-                  </node>
-                  <node concept="liA8E" id="4InNjD1HOFk" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SReference.getLink()" resolve="getLink" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="u6B29mHMFA" role="2OqNvi">
-                  <ref role="37wK5l" to="c17a:~SNamedElement.getName()" resolve="getName" />
-                </node>
+              <node concept="37vLTw" id="4eh1_gMu0_J" role="37wK5m">
+                <ref role="3cqZAo" node="1$3BPv3W07T" resolve="editorContext" />
               </node>
             </node>
           </node>
@@ -3919,6 +3958,18 @@
       </node>
       <node concept="3Tm1VV" id="4InNjD1Holp" role="1B3o_S" />
       <node concept="10P_77" id="4InNjD1HqRH" role="3clF45" />
+      <node concept="P$JXv" id="4eh1_gMu1w5" role="lGtFl">
+        <node concept="TZ5HI" id="4eh1_gMu1w6" role="3nqlJM">
+          <node concept="TZ5HA" id="4eh1_gMu1w7" role="3HnX3l">
+            <node concept="1dT_AC" id="4eh1_gMu21l" role="1dT_Ay">
+              <property role="1dT_AB" value="unused, depends on legacy metamodel api, scheduled for remove in MPS 2020.2" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="4eh1_gMu1w8" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+      </node>
     </node>
     <node concept="2YIFZL" id="77jjuPIbobs" role="jymVt">
       <property role="TrG5h" value="substituteCell" />

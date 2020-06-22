@@ -14,6 +14,11 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 
 @GeneratedClass(node = "r:74808b88-3d1c-4dc8-8642-164154f3f3a7(typesystemIntegration.languageChecker)/5447047924421797846", model = "r:74808b88-3d1c-4dc8-8642-164154f3f3a7(typesystemIntegration.languageChecker)")
 public class EditorBasedReferenceResolverUtils {
+  /**
+   * 
+   * @deprecated unused, depends on legacy metamodel api, scheduled for remove in MPS 2020.2
+   */
+  @Deprecated
   public static boolean resolveInEditor(EditorComponent editorComponent, SNode sourceNode, String resolveInfo, String referenceRole) {
     EditorCell cellWithRole = editorComponent.findNodeCellWithRole(sourceNode, referenceRole);
     if (cellWithRole == null) {

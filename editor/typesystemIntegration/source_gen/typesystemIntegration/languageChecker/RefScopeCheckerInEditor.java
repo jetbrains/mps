@@ -34,6 +34,7 @@ import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.resolve.ResolverComponent;
 import jetbrains.mps.resolve.ReferenceResolverUtils;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
 
 @GeneratedClass(node = "r:74808b88-3d1c-4dc8-8642-164154f3f3a7(typesystemIntegration.languageChecker)/2855655749838535756", model = "r:74808b88-3d1c-4dc8-8642-164154f3f3a7(typesystemIntegration.languageChecker)")
 public class RefScopeCheckerInEditor extends RefScopeChecker {
@@ -167,7 +168,11 @@ public class RefScopeCheckerInEditor extends RefScopeChecker {
       if (resolveInfo == null) {
         return;
       }
-      EditorBasedReferenceResolverUtils.resolveInEditor(editorContext.getEditorComponent(), sourceNode, resolveInfo, myReference.getLink().getName());
+      EditorCell cellWithRole = editorContext.getEditorComponent().findNodeCellWithRole(sourceNode, myReference.getLink());
+      if (cellWithRole == null) {
+        return;
+      }
+      EditorBasedReferenceResolverUtils.substituteCell(cellWithRole, resolveInfo, editorContext);
     }
   }
 }

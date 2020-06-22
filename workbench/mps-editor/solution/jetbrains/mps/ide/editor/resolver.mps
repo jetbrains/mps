@@ -6,7 +6,6 @@
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
   </languages>
   <imports>
-    <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" />
     <import index="5ijk" ref="r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)" />
     <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
     <import index="3a50" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide(MPS.Platform/)" />
@@ -16,6 +15,7 @@
     <import index="wexy" ref="r:74808b88-3d1c-4dc8-8642-164154f3f3a7(typesystemIntegration.languageChecker)" />
     <import index="7a0s" ref="r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
+    <import index="f4zo" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.cells(MPS.Editor/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -115,7 +115,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
-        <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
+        <child id="8276990574886367509" name="finallyClause" index="1zxBo6" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
@@ -334,25 +334,62 @@
                 </node>
               </node>
             </node>
+            <node concept="3cpWs8" id="4eh1_gMtIm7" role="3cqZAp">
+              <node concept="3cpWsn" id="4eh1_gMtIm8" role="3cpWs9">
+                <property role="TrG5h" value="cellWithRole" />
+                <node concept="3uibUv" id="4eh1_gMtI6$" role="1tU5fm">
+                  <ref role="3uigEE" to="f4zo:~EditorCell" resolve="EditorCell" />
+                </node>
+                <node concept="2OqwBi" id="4eh1_gMtIm9" role="33vP2m">
+                  <node concept="37vLTw" id="4eh1_gMtIma" role="2Oq$k0">
+                    <ref role="3cqZAo" node="1$3BPv3VYXj" resolve="headlessEditor" />
+                  </node>
+                  <node concept="liA8E" id="4eh1_gMtImb" role="2OqNvi">
+                    <ref role="37wK5l" to="exr9:~EditorComponent.findNodeCellWithRole(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SReferenceLink)" resolve="findNodeCellWithRole" />
+                    <node concept="37vLTw" id="4eh1_gMtImc" role="37wK5m">
+                      <ref role="3cqZAo" node="1$3BPv3VW9s" resolve="sourceNode" />
+                    </node>
+                    <node concept="2OqwBi" id="4eh1_gMtImd" role="37wK5m">
+                      <node concept="37vLTw" id="4eh1_gMtIme" role="2Oq$k0">
+                        <ref role="3cqZAo" node="1$3BPv3VW9p" resolve="reference" />
+                      </node>
+                      <node concept="liA8E" id="4eh1_gMtImf" role="2OqNvi">
+                        <ref role="37wK5l" to="mhbf:~SReference.getLink()" resolve="getLink" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="4eh1_gMtISF" role="3cqZAp">
+              <node concept="3clFbS" id="4eh1_gMtISH" role="3clFbx">
+                <node concept="3cpWs6" id="4eh1_gMtJje" role="3cqZAp">
+                  <node concept="3clFbT" id="4eh1_gMtJnA" role="3cqZAk" />
+                </node>
+              </node>
+              <node concept="3clFbC" id="4eh1_gMtJcI" role="3clFbw">
+                <node concept="10Nm6u" id="4eh1_gMtJiz" role="3uHU7w" />
+                <node concept="37vLTw" id="4eh1_gMtJ4j" role="3uHU7B">
+                  <ref role="3cqZAo" node="4eh1_gMtIm8" resolve="cellWithRole" />
+                </node>
+              </node>
+            </node>
             <node concept="3cpWs6" id="4InNjD1HHCg" role="3cqZAp">
-              <node concept="2YIFZM" id="4InNjD1Hwx4" role="3cqZAk">
+              <node concept="2YIFZM" id="4eh1_gMtJZj" role="3cqZAk">
+                <ref role="37wK5l" to="wexy:77jjuPIbobs" resolve="substituteCell" />
                 <ref role="1Pybhc" to="wexy:4InNjD1Gavm" resolve="EditorBasedReferenceResolverUtils" />
-                <ref role="37wK5l" to="wexy:4InNjD1HoV3" resolve="resolveInEditor" />
-                <node concept="37vLTw" id="4InNjD1HwC2" role="37wK5m">
-                  <ref role="3cqZAo" node="1$3BPv3VYXj" resolve="headlessEditor" />
+                <node concept="37vLTw" id="4eh1_gMtKha" role="37wK5m">
+                  <ref role="3cqZAo" node="4eh1_gMtIm8" resolve="cellWithRole" />
                 </node>
-                <node concept="37vLTw" id="4InNjD1HwHX" role="37wK5m">
-                  <ref role="3cqZAo" node="1$3BPv3VW9s" resolve="sourceNode" />
-                </node>
-                <node concept="37vLTw" id="4InNjD1HwRd" role="37wK5m">
+                <node concept="37vLTw" id="4eh1_gMtJZm" role="37wK5m">
                   <ref role="3cqZAo" node="1$3BPv3VZvH" resolve="resolveInfo" />
                 </node>
-                <node concept="2OqwBi" id="4InNjD1HwXM" role="37wK5m">
-                  <node concept="37vLTw" id="4InNjD1HwXN" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1$3BPv3VW9p" resolve="reference" />
+                <node concept="2OqwBi" id="4eh1_gMtLxA" role="37wK5m">
+                  <node concept="37vLTw" id="4eh1_gMtKLk" role="2Oq$k0">
+                    <ref role="3cqZAo" node="1$3BPv3VYXj" resolve="headlessEditor" />
                   </node>
-                  <node concept="liA8E" id="4InNjD1HwXO" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SReference.getRole()" resolve="getRole" />
+                  <node concept="liA8E" id="4eh1_gMtMAu" role="2OqNvi">
+                    <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
                   </node>
                 </node>
               </node>
