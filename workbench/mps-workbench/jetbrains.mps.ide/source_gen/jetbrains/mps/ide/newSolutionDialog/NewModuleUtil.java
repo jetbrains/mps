@@ -127,7 +127,7 @@ public class NewModuleUtil {
     generatorLocation.mkdirs();
 
     //  it's the first and only generator in the language, no need to generate some unique long value 
-    final GeneratorDescriptor generatorDescriptor = createGeneratorDescriptor(languageDescriptor.getNamespace() + "#01", generatorLocation, null);
+    final GeneratorDescriptor generatorDescriptor = createGeneratorDescriptor(languageDescriptor.getNamespace() + ".generator", generatorLocation, null);
     generatorDescriptor.setSourceLanguage(languageDescriptor.getModuleReference());
     languageDescriptor.getGenerators().add(generatorDescriptor);
 
@@ -232,9 +232,13 @@ public class NewModuleUtil {
       }
     }
     if (!(alreadyOwnsTemplateModel)) {
-      SModel templateModel = SModuleOperations.createModelWithAdjustments(new SModelName(null, "main", SModelStereotype.GENERATOR).getValue(), newGenerator.getModelRoots().iterator().next());
+      String namespace = newGenerator.getModuleName();
+      if (namespace.indexOf('#') > 0) {
+        namespace = namespace.substring(0, namespace.indexOf('#'));
+      }
+      SModel templateModel = SModuleOperations.createModelWithAdjustments(new SModelName(namespace, "templates", SModelStereotype.GENERATOR).getValue(), newGenerator.getModelRoots().iterator().next());
       SNode mappingConfiguration = SModelOperations.createNewNode(templateModel, null, CONCEPTS.MappingConfiguration$rB);
-      // both model and MC named 'main' is a bit confusing 
+      // both model and MC named 'main' was a bit confusing (not to mention 'main' alias of the module itself), therefore the model to hold templates is 'templates' now 
       SPropertyOperations.assign(mappingConfiguration, PROPS.name$tAp1, "main");
       SModelOperations.addRootNode(templateModel, mappingConfiguration);
       ((EditableSModel) templateModel).save();

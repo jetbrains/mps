@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -91,7 +91,7 @@ public class ProjectCreationTest implements EnvironmentAware {
       rv[i] = String.format(PATH_IN_PROJECT, projectName, LANGUAGES_ROOT, languageNamespace, Language.LANGUAGE_MODELS, languageNamespace + "." + aspects[i].getName(), MPSExtentions.MODEL);
     }
     rv[aspects.length] =
-        String.format(PATH_IN_PROJECT, projectName, LANGUAGES_ROOT, languageNamespace, "generator/templates", "main@generator", MPSExtentions.MODEL);
+        String.format(PATH_IN_PROJECT, projectName, LANGUAGES_ROOT, languageNamespace, "generator/templates", languageNamespace + ".generator.templates@generator", MPSExtentions.MODEL);
     return Arrays.asList(rv);
   }
 

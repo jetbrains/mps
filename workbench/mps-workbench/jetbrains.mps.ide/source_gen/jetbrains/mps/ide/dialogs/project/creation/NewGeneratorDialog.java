@@ -204,7 +204,7 @@ public class NewGeneratorDialog extends DialogWrapper {
     // XXX in fact, need to be specific here whether I care about project modules or all available modules not to match namespace 
     final ModuleRepositoryFacade mrf = new ModuleRepositoryFacade(myProject);
     do {
-      namespace = String.format("%s#%02d", mySourceLanguage.getModuleName(), cnt++);
+      namespace = String.format("%s.generator%02d", mySourceLanguage.getModuleName(), cnt++);
     } while (!(mrf.getModulesByName(namespace).isEmpty()));
     return namespace;
   }
