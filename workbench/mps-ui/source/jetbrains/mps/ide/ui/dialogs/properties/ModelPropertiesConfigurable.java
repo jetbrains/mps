@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,10 @@ import jetbrains.mps.extapi.model.TransientSModel;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.extapi.persistence.FolderDataSource;
 import jetbrains.mps.findUsages.CompositeFinder;
+import jetbrains.mps.generator.GenPlanExtractor;
+import jetbrains.mps.generator.ModelGenerationPlan;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
+import jetbrains.mps.generator.runtime.TemplateModule;
 import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.icons.MPSIcons.General;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
@@ -362,12 +365,21 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
 
     @Override
     protected TableCellRenderer getTableCellRender() {
-      SRepository contextRepo = myMPSProject.getRepository();
+      final SRepository contextRepo = myMPSProject.getRepository();
       Set<SLanguage> inUse = new ModelAccessHelper(myMPSProject.getModelAccess()).runReadAction(new ComputeUsedLanguages(myModelDescriptor));
       myInUseCondition = new IsLanguageInUse(inUse, myModelProperties.getUsedLanguages());
       LanguageTableCellRenderer usedInModel = new LanguageTableCellRenderer(contextRepo);
-      usedInModel.addCellState(NotCondition.negate(new ValidImportCondition(myMPSProject)), DependencyCellState.NOT_AVAILABLE);
+      // if the language is not in use, don't bother to check if it's valid, just report as unused so that one would remove it right away
       usedInModel.addCellState(NotCondition.negate(myInUseCondition), DependencyCellState.UNUSED);
+      usedInModel.addCellState(NotCondition.negate(new ValidImportCondition(myMPSProject)), DependencyCellState.NOT_AVAILABLE);
+      final IsCoveredByGenPlan isCoveredByGenPlan = new ModelAccessHelper(myMPSProject.getModelAccess()).runReadAction(() -> {
+        GenPlanExtractor gpe = new GenPlanExtractor(contextRepo, null);
+        ModelGenerationPlan gp = gpe.hasPlan(myModelDescriptor) ? gpe.getPlan(myModelDescriptor) : null;
+        return gp == null ? null : new IsCoveredByGenPlan(gp);
+      });
+      if (isCoveredByGenPlan != null) {
+        usedInModel.addCellState(NotCondition.negate(isCoveredByGenPlan), DependencyCellState.WARN_NOT_IN_GP);
+      }
       return usedInModel;
     }
 
@@ -612,6 +624,31 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
         return CollectionUtil.intersects(burstDeps, myActualUse);
       }
       return false;
+    }
+  }
+
+  /**
+   * answers whether given language is covered by a generation plan
+   */
+  private static class IsCoveredByGenPlan implements Condition<UsedLangsTableModel.Import> {
+    private final HashSet<SLanguage> myCovered = new HashSet<>();
+
+    public IsCoveredByGenPlan(ModelGenerationPlan gp) {
+      for (TemplateModule tm : gp.getGenerators()) {
+        myCovered.add(tm.getSourceLanguage().getIdentity());
+      }
+    }
+
+    @Override
+    public boolean met(UsedLangsTableModel.Import entry) {
+      if (entry == null) {
+        return true;
+      }
+      if (entry.myLanguage != null) {
+        return myCovered.contains(entry.myLanguage);
+      }
+      // we can't say anything about entry that is not a language one; pretend they are covered/ok
+      return true;
     }
   }
 
