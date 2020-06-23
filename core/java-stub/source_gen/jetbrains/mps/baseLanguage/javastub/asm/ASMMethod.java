@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.ArrayList;
 import org.jetbrains.org.objectweb.asm.tree.AnnotationNode;
 import org.jetbrains.org.objectweb.asm.tree.LocalVariableNode;
+import javax.lang.model.SourceVersion;
 import org.jetbrains.org.objectweb.asm.Opcodes;
 
 @GeneratedClass(node = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860005690", model = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)")
@@ -115,15 +116,16 @@ public class ASMMethod {
     }
     if (!(myParameterTypes.isEmpty())) {
       myParameterNames = new ArrayList<String>(myParameterTypes.size());
-      for (int i = 0; i < myParameterTypes.size(); i++) {
+      for (int i = 1; i <= myParameterTypes.size(); i++) {
         myParameterNames.add("p" + i);
       }
       if (method.localVariables != null && myParameterTypes.size() < method.localVariables.size()) {
-        int offset = (!(isStatic()) ? 1 : 0);
+        // 'this' comes first for instance methods 
+        final int offset = (isStatic() ? 0 : 1);
         for (Object lv : method.localVariables) {
           LocalVariableNode node = ((LocalVariableNode) lv);
           int index = node.index - offset;
-          if (index >= 0 && index < myParameterTypes.size()) {
+          if (index >= 0 && index < myParameterTypes.size() && SourceVersion.isIdentifier(node.name)) {
             myParameterNames.set(index, node.name);
           }
         }
