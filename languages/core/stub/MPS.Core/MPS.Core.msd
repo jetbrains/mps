@@ -15,12 +15,14 @@
       <sourceRoot location="mps-persistence.jar" />
       <!-- FIXME make sure nobody references these runtimes through MPS.Core. These are regular solutions, clients shall reference source nodes, not stubs-->
       <sourceRoot location="mps-constraints-runtime.jar" />
+      <Sources zipPath="${mps_home}/lib/MPS-src.zip"/>
+    </modelRoot>
+    <modelRoot contentPath="${platform_lib}" type="java_classes">
       <!-- For historical reasons, next libraries were exposed through MPS.Core; need to write migration code to update references to proper solutions -->
       <sourceRoot location="log4j.jar" />
       <sourceRoot location="trove4j.jar" />
       <sourceRoot location="jdom.jar" />
       <sourceRoot location="ecj-4.13.jar" />
-      <Sources zipPath="${mps_home}/lib/MPS-src.zip"/>
     </modelRoot>
   </models>
   <facets>
