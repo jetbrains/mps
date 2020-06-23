@@ -18,7 +18,6 @@ import java.util.ArrayList;
 @GeneratedClass(node = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)/5060092229902868305", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
 public abstract class Feature {
   private final SModelReference myModelReference;
-  private int myHashCode;
   protected Feature(@NotNull SModelReference modelReference) {
     myModelReference = modelReference;
   }
@@ -28,28 +27,6 @@ public abstract class Feature {
   }
   @Nullable
   protected abstract Feature getParent(SRepository repo);
-  @Override
-  public int hashCode() {
-    if (myHashCode == 0) {
-      myHashCode = toString().hashCode();
-      if (myHashCode == 0) {
-        assert false : "Feature hash code cannot be 0";
-      }
-    }
-    return myHashCode;
-  }
-  @Override
-  public boolean equals(Object object) {
-    if (this.getClass() == object.getClass()) {
-      Feature that = ((Feature) object);
-      if (this.hashCode() == that.hashCode()) {
-        if (this.myModelReference.equals(that.myModelReference)) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
   @NotNull
   @Override
   public abstract String toString();

@@ -13,6 +13,20 @@ public class ModelFeature extends Feature {
   public ModelFeature(@NotNull SModelReference modelReference) {
     super(modelReference);
   }
+
+  @Override
+  public int hashCode() {
+    return getModelReference().hashCode();
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj instanceof ModelFeature) {
+      return getModelReference().equals(((ModelFeature) obj).getModelReference());
+    }
+    return false;
+  }
+
   @Nullable
   @Override
   protected Feature getParent(SRepository repo) {

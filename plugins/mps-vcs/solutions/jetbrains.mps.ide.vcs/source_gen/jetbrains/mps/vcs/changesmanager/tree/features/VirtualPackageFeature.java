@@ -10,16 +10,33 @@ import org.jetbrains.mps.openapi.module.SRepository;
 
 @GeneratedClass(node = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)/8214059917935786316", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
 public class VirtualPackageFeature extends Feature {
-  private String myVirtualPackage;
+  private final String myVirtualPackage;
+
   public VirtualPackageFeature(@NotNull SModelReference modelReference, @NotNull String virtualPackage) {
     super(modelReference);
     myVirtualPackage = virtualPackage;
   }
+
   @NotNull
   @Override
   public String toString() {
     return "Virtual Package {" + getModelReference().toString() + "|" + myVirtualPackage + "}";
   }
+
+  @Override
+  public int hashCode() {
+    return getModelReference().hashCode() * 37 + myVirtualPackage.hashCode();
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj instanceof VirtualPackageFeature) {
+      return getModelReference().equals(((VirtualPackageFeature) obj).getModelReference())
+          && myVirtualPackage.equals(((VirtualPackageFeature) obj).myVirtualPackage);
+    }
+    return false;
+  }
+
   @Nullable
   @Override
   protected Feature getParent(SRepository repo) {

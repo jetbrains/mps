@@ -11,7 +11,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 
 @GeneratedClass(node = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)/5060092229902868645", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
 public class ReferenceFeature extends AbstractNodeFeature {
-  private SReferenceLink myReference;
+  private final SReferenceLink myReference;
   public ReferenceFeature(@NotNull SNodeReference nodePointer, @NotNull SReferenceLink ref) {
     super(nodePointer);
     myReference = ref;
@@ -25,10 +25,21 @@ public class ReferenceFeature extends AbstractNodeFeature {
   protected Feature getParent(SRepository repo) {
     return new ReferencesFeature(getNodePointer());
   }
+
   @Override
-  public boolean equals(Object object) {
-    return super.equals(object) && this.myReference.equals(((ReferenceFeature) object).myReference);
+  public int hashCode() {
+    return myReference.hashCode() * 13 + getNodePointer().hashCode() * 29;
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj instanceof ReferenceFeature) {
+      return getNodePointer().equals(((ReferenceFeature) obj).getNodePointer()) &&
+             myReference.equals(((ReferenceFeature) obj).myReference);
+    }
+    return false;
+  }
+
   @Override
   @NotNull
   public String toString() {

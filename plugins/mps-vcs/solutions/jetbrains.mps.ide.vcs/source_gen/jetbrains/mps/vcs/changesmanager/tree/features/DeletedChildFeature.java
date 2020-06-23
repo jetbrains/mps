@@ -8,15 +8,33 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SRepository;
 
+import java.util.Objects;
+
 @GeneratedClass(node = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)/5060092229902868246", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
 public class DeletedChildFeature extends AbstractNodeFeature {
-  private String myRole;
-  private int myIndex;
+  private final String myRole;
+  private final int myIndex;
   public DeletedChildFeature(@NotNull SNodeReference nodePointer, String role, int index) {
     super(nodePointer);
     myRole = role;
     myIndex = index;
   }
+
+  @Override
+  public int hashCode() {
+    return myRole.hashCode() * 37 + myIndex + getNodePointer().hashCode() * 53;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj instanceof DeletedChildFeature) {
+      return getNodePointer().equals(((DeletedChildFeature) obj).getNodePointer()) &&
+             myRole.equals(((DeletedChildFeature) obj).myRole) &&
+             myIndex == ((DeletedChildFeature) obj).myIndex;
+    }
+    return false;
+  }
+
   @NotNull
   @Override
   public String toString() {

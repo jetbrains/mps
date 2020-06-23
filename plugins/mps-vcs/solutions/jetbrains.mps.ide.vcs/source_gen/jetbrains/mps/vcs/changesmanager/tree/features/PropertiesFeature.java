@@ -11,6 +11,20 @@ public class PropertiesFeature extends NodeAggregationFeature {
   public PropertiesFeature(@NotNull SNodeReference nodePointer) {
     super(nodePointer);
   }
+
+  @Override
+  public int hashCode() {
+    return getNodePointer().hashCode() * 19;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj instanceof PropertiesFeature) {
+      return getNodePointer().equals(((PropertiesFeature) obj).getNodePointer());
+    }
+    return false;
+  }
+
   @Override
   @NotNull
   public String toString() {

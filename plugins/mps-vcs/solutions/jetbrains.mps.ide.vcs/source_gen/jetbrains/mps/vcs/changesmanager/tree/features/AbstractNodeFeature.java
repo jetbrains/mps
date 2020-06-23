@@ -18,10 +18,7 @@ public abstract class AbstractNodeFeature extends Feature {
   public SNodeReference getNodePointer() {
     return myNodeRef;
   }
-  @Override
-  public boolean equals(Object object) {
-    return super.equals(object) && myNodeRef.equals(((AbstractNodeFeature) object).myNodeRef);
-  }
+
   protected final String getNodePointerString() {
     return SNodePointer.serialize(myNodeRef);
   }

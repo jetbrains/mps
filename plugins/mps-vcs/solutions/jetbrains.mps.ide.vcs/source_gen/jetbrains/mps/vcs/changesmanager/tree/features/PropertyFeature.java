@@ -11,7 +11,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 
 @GeneratedClass(node = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)/5060092229902868568", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
 public class PropertyFeature extends AbstractNodeFeature {
-  private SProperty myProperty;
+  private final SProperty myProperty;
   public PropertyFeature(@NotNull SNodeReference nodePointer, @NotNull SProperty p) {
     super(nodePointer);
     myProperty = p;
@@ -32,8 +32,18 @@ public class PropertyFeature extends AbstractNodeFeature {
   }
   @Override
   public boolean equals(Object object) {
-    return super.equals(object) && this.myProperty.equals(((PropertyFeature) object).myProperty);
+    if (object instanceof PropertyFeature) {
+      return getNodePointer().equals(((PropertyFeature) object).getNodePointer()) &&
+             myProperty.equals(((PropertyFeature) object).myProperty);
+    }
+    return false;
   }
+
+  @Override
+  public int hashCode() {
+    return getNodePointer().hashCode() * 37 + myProperty.hashCode();
+  }
+
   @Override
   @NotNull
   public String toString() {

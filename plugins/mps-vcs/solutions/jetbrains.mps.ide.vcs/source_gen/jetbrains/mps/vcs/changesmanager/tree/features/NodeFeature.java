@@ -14,26 +14,60 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @GeneratedClass(node = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)/5060092229902868493", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
 public class NodeFeature extends AbstractNodeFeature {
+  public static Map<SNodeReference, Integer> ourCounter = new HashMap<>();
+  public static Map<SNodeReference, Long> ourTimeResolve = new HashMap<>();
+  public static Map<SNodeReference, Long> ourTimeParent = new HashMap<>();
+  public static Map<SNodeReference, Long> ourTimeProp = new HashMap<>();
   public NodeFeature(SNodeReference nodePointer) {
     super(nodePointer);
   }
   @Nullable
   @Override
   protected Feature getParent(SRepository repo) {
-    SNode node = getNodePointer().resolve(repo);
+    SNodeReference nodePointer = getNodePointer();
+    int was0 = ourCounter.getOrDefault(nodePointer, 0);
+    ourCounter.put(nodePointer, was0 + 1);
+    long cur = System.nanoTime();
+    SNode node = nodePointer.resolve(repo);
+    long was = ourTimeResolve.getOrDefault(nodePointer, 0L);
+    ourTimeResolve.put(nodePointer, was + System.nanoTime() - cur);
+    cur = System.nanoTime();
     SNode parentNode = SNodeOperations.getParent(node);
+    was = ourTimeParent.getOrDefault(nodePointer, 0L);
+    ourTimeParent.put(nodePointer, was + System.nanoTime() - cur);
     if (parentNode == null) {
+      cur = System.nanoTime();
       String virtualPackage = SPropertyOperations.getString(node, PROPS.virtualPackage$j19t);
-      if ((virtualPackage == null || virtualPackage.length() == 0)) {
+      was = ourTimeProp.getOrDefault(nodePointer, 0L);
+      ourTimeProp.put(nodePointer, was + System.nanoTime() - cur);
+
+      if ((virtualPackage == null || virtualPackage.isEmpty())) {
         return null;
       } else {
         return new VirtualPackageFeature(getModelReference(), virtualPackage);
       }
     }
-    return new NodeFeature(new SNodePointer(parentNode));
+    return new NodeFeature(parentNode.getReference());
   }
+
+  @Override
+  public int hashCode() {
+    return getNodePointer().hashCode() * 13;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj instanceof NodeFeature) {
+      return getNodePointer().equals(((NodeFeature) obj).getNodePointer());
+    }
+    return false;
+  }
+
   @Override
   @NotNull
   public String toString() {

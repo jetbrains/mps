@@ -11,6 +11,20 @@ public class ReferencesFeature extends NodeAggregationFeature {
   public ReferencesFeature(@NotNull SNodeReference nodePointer) {
     super(nodePointer);
   }
+
+  @Override
+  public int hashCode() {
+    return getNodePointer().hashCode() * 23;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj instanceof ReferencesFeature) {
+      return getNodePointer().equals(((ReferencesFeature) obj).getNodePointer());
+    }
+    return false;
+  }
+
   @Override
   @NotNull
   public String toString() {
