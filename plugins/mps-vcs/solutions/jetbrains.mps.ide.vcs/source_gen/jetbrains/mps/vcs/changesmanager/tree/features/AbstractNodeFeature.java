@@ -15,11 +15,11 @@ public abstract class AbstractNodeFeature extends Feature {
     super(nodePointer.getModelReference());
     myNodeRef = nodePointer;
   }
-  public SNodeReference getNodePointer() {
+  public final SNodeReference getNodePointer() {
     return myNodeRef;
   }
 
-  protected final String getNodePointerString() {
+  final String getNodePointerString() {
     return SNodePointer.serialize(myNodeRef);
   }
 }

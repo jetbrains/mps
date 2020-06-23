@@ -12,6 +12,8 @@ import org.jetbrains.mps.openapi.module.SRepository;
 @GeneratedClass(node = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)/5060092229902868645", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
 public class ReferenceFeature extends AbstractNodeFeature {
   private final SReferenceLink myReference;
+  private final ReferencesFeature myParentFeature = new ReferencesFeature(getNodePointer());
+
   public ReferenceFeature(@NotNull SNodeReference nodePointer, @NotNull SReferenceLink ref) {
     super(nodePointer);
     myReference = ref;
@@ -23,7 +25,7 @@ public class ReferenceFeature extends AbstractNodeFeature {
   @Nullable
   @Override
   protected Feature getParent(SRepository repo) {
-    return new ReferencesFeature(getNodePointer());
+    return myParentFeature;
   }
 
   @Override

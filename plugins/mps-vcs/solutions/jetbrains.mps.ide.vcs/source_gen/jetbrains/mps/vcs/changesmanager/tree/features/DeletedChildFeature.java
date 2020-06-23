@@ -14,6 +14,8 @@ import java.util.Objects;
 public class DeletedChildFeature extends AbstractNodeFeature {
   private final String myRole;
   private final int myIndex;
+  private final NodeFeature myParentFeature = new NodeFeature(getNodePointer());
+
   public DeletedChildFeature(@NotNull SNodeReference nodePointer, String role, int index) {
     super(nodePointer);
     myRole = role;
@@ -43,6 +45,6 @@ public class DeletedChildFeature extends AbstractNodeFeature {
   @Nullable
   @Override
   protected Feature getParent(SRepository repo) {
-    return new NodeFeature(getNodePointer());
+    return myParentFeature;
   }
 }
