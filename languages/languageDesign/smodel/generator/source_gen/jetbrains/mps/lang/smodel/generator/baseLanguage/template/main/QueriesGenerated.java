@@ -57,6 +57,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.lang.modelapi.behavior.NodeIdentity__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.behavior.DevkitIdentity__BehaviorDescriptor;
+import jetbrains.mps.smodel.adapter.ids.SDataTypeId;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
 import jetbrains.mps.lang.behavior.generator.template.util.Constants;
@@ -963,6 +964,15 @@ public class QueriesGenerated {
     return ((Integer) _context.getVariable("cv:i"));
   }
   public static Object propertyMacro_GetValue_139_1(final PropertyMacroContext _context) {
+    return "0x" + Long.toHexString(((SDataTypeId) _context.getVariable("var:datatypeId")).getLanguageId().getHighBits()) + 'L';
+  }
+  public static Object propertyMacro_GetValue_139_2(final PropertyMacroContext _context) {
+    return "0x" + Long.toHexString(((SDataTypeId) _context.getVariable("var:datatypeId")).getLanguageId().getLowBits()) + 'L';
+  }
+  public static Object propertyMacro_GetValue_139_3(final PropertyMacroContext _context) {
+    return "0x" + Long.toHexString(((SDataTypeId) _context.getVariable("var:datatypeId")).getIdValue()) + 'L';
+  }
+  public static Object propertyMacro_GetValue_139_4(final PropertyMacroContext _context) {
     return "0x" + Long.toHexString(MetaIdByDeclaration.getEnumLiteralId(SLinkOperations.getTarget(_context.getNode(), LINKS.decl$Hqa_)).getIdValue()) + 'L';
   }
   public static Object propertyMacro_GetValue_140_0(final PropertyMacroContext _context) {
@@ -988,9 +998,9 @@ public class QueriesGenerated {
   }
   public static Object referenceMacro_GetReferent_0_0(final ReferenceMacroContext _context) {
     {
-      SNode coercedNode_x583g4_a0mj = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.conceptArgument$N8Tv)), CONCEPTS.SConceptType$nF);
-      if (coercedNode_x583g4_a0mj != null) {
-        SNode targetConcept = SLinkOperations.getTarget(coercedNode_x583g4_a0mj, LINKS.conceptDeclaraton$l1qw);
+      SNode coercedNode_x583g4_a0pj = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.conceptArgument$N8Tv)), CONCEPTS.SConceptType$nF);
+      if (coercedNode_x583g4_a0pj != null) {
+        SNode targetConcept = SLinkOperations.getTarget(coercedNode_x583g4_a0pj, LINKS.conceptDeclaraton$l1qw);
         if (AbstractConceptUtil.hasSurelyNoInterfacesBeneath(targetConcept)) {
           return new SNodePointer("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6410670351274205144");
         }
@@ -2460,9 +2470,6 @@ public class QueriesGenerated {
   public static Object templateArgumentQuery_116_0(final TemplateArgumentContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.baseMethodDeclaration$$A7i);
   }
-  public static Object templateArgumentQuery_139_0(final TemplateArgumentContext _context) {
-    return MetaIdByDeclaration.getDatatypeId(SLinkOperations.getTarget(TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.enumExpression$4kEb)), CONCEPTS.SEnumerationMemberType$rH), LINKS.enum$WChI));
-  }
   public static Object templateArgumentQuery_0_0(final TemplateArgumentContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$itDQ), CONCEPTS.SNodeCreator$co), LINKS.createdType$EjOY), LINKS.concept$HWFQ);
   }
@@ -2626,6 +2633,9 @@ public class QueriesGenerated {
   }
   public static Object varMacro_Value_125_0(final TemplateVarContext _context) {
     return (SNodeReference) NodeIdentity__BehaviorDescriptor.toNodeReference_id4nxIQVLmsc4.invoke(_context.getNode());
+  }
+  public static Object varMacro_Value_139_0(final TemplateVarContext _context) {
+    return MetaIdByDeclaration.getDatatypeId(SLinkOperations.getTarget(TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.enumExpression$4kEb)), CONCEPTS.SEnumerationMemberType$rH), LINKS.enum$WChI));
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
