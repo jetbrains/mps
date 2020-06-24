@@ -33,7 +33,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Ant_Command {
-  private SNode myTarget_SNode;
+  private SNode myTarget_NodeINamedConcept;
   private String myAntLocation_String = Ant_Command.getDefaultAntHome();
   private String myOptions_String;
   private Project myMpsProject_Project;
@@ -42,9 +42,9 @@ public class Ant_Command {
   private Project myProject_Project;
   public Ant_Command() {
   }
-  public Ant_Command setTarget_SNode(SNode target) {
+  public Ant_Command setTarget_NodeINamedConcept(SNode target) {
     if (target != null) {
-      myTarget_SNode = target;
+      myTarget_NodeINamedConcept = target;
     }
     return this;
   }
@@ -86,7 +86,7 @@ public class Ant_Command {
   }
 
   public ProcessHandler createProcess(SNode project) throws ExecutionException {
-    SNode target = myTarget_SNode;
+    SNode target = myTarget_NodeINamedConcept;
     String targetName = SPropertyOperations.getString(target, PROPS.name$tAp1);
     return new Ant_Command().setAntLocation_String(myAntLocation_String).setOptions_String(myOptions_String).setTargetName_String(targetName).setProject_Project(myMpsProject_Project).createProcess(Ant_Command.getGeneratedFileName(project));
   }

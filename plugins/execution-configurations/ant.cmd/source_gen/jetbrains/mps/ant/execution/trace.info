@@ -169,14 +169,14 @@
   </root>
   <root nodeRef="r:d3378a35-13da-49cb-8ad1-afbd30e88ad8(jetbrains.mps.ant.execution)/352677614185351672">
     <file name="Ant_Command.java">
-      <node id="352677614185351700" at="36,0,37,0" concept="2" trace="myTarget_SNode" />
+      <node id="352677614185351700" at="36,0,37,0" concept="2" trace="myTarget_NodeINamedConcept" />
       <node id="352677614185351702" at="37,0,38,0" concept="2" trace="myAntLocation_String" />
       <node id="352677614185351707" at="38,0,39,0" concept="2" trace="myOptions_String" />
       <node id="4339786255639459977" at="39,0,40,0" concept="2" trace="myMpsProject_Project" />
       <node id="352677614185351780" at="40,0,41,0" concept="2" trace="myTargetName_String" />
       <node id="8927840084194130378" at="41,0,42,0" concept="2" trace="myMacroToDefine_ListString" />
       <node id="4339786255639422147" at="42,0,43,0" concept="2" trace="myProject_Project" />
-      <node id="352677614185351700" at="46,25,47,30" concept="1" />
+      <node id="352677614185351700" at="46,25,47,42" concept="1" />
       <node id="352677614185351700" at="48,5,49,16" concept="7" />
       <node id="352677614185351702" at="52,30,53,41" concept="1" />
       <node id="352677614185351702" at="54,5,55,16" concept="7" />
@@ -190,8 +190,8 @@
       <node id="8927840084194130378" at="78,5,79,16" concept="7" />
       <node id="4339786255639422147" at="82,26,83,34" concept="1" />
       <node id="4339786255639422147" at="84,5,85,16" concept="7" />
-      <node id="1908995601061473409" at="88,80,89,34" concept="6" />
-      <node id="1908995601061473419" at="89,34,90,79" concept="6" />
+      <node id="1908995601061473409" at="88,80,89,46" concept="6" />
+      <node id="1908995601061473419" at="89,46,90,79" concept="6" />
       <node id="352677614185351685" at="90,79,91,240" concept="7" />
       <node id="352677614185351712" at="93,85,94,47" concept="6" />
       <node id="352677614185351720" at="95,53,96,70" concept="13" />
@@ -230,7 +230,7 @@
       <node id="352677614185351948" at="168,92,169,26" concept="7" />
       <node id="352677614185351672" at="173,0,174,0" concept="10" trace="name$tAp1" />
       <node id="352677614185351672" at="43,0,45,0" concept="0" trace="Ant_Command#()V" />
-      <node id="352677614185351700" at="45,52,48,5" concept="4" />
+      <node id="352677614185351700" at="45,64,48,5" concept="4" />
       <node id="352677614185351702" at="51,64,54,5" concept="4" />
       <node id="352677614185351707" at="57,56,60,5" concept="4" />
       <node id="4339786255639459977" at="63,64,66,5" concept="4" />
@@ -251,7 +251,7 @@
       <node id="352677614185351675" at="88,0,93,0" concept="5" trace="createProcess#(Lorg/jetbrains/mps/openapi/model/SNode;)Lcom/intellij/execution/process/ProcessHandler;" />
       <node id="8696860480643499415" at="119,73,124,8" concept="1" />
       <node id="8927840084194645855" at="136,64,141,5" concept="4" />
-      <node id="352677614185351700" at="45,0,51,0" concept="5" trace="setTarget_SNode#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/ant/execution/Ant_Command;" />
+      <node id="352677614185351700" at="45,0,51,0" concept="5" trace="setTarget_NodeINamedConcept#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/ant/execution/Ant_Command;" />
       <node id="352677614185351702" at="51,0,57,0" concept="5" trace="setAntLocation_String#(Ljava/lang/String;)Ljetbrains/mps/ant/execution/Ant_Command;" />
       <node id="352677614185351707" at="57,0,63,0" concept="5" trace="setOptions_String#(Ljava/lang/String;)Ljetbrains/mps/ant/execution/Ant_Command;" />
       <node id="4339786255639459977" at="63,0,69,0" concept="5" trace="setMpsProject_Project#(Lorg/jetbrains/mps/openapi/project/Project;)Ljetbrains/mps/ant/execution/Ant_Command;" />
@@ -265,7 +265,7 @@
       <node id="352677614185351796" at="105,0,128,0" concept="11" trace="getAntClassPath#(Ljava/lang/String;)Ljava/util/List;" />
       <node id="352677614185351862" at="128,0,160,0" concept="11" trace="getMacroValues#(Ljava/util/List;Ljava/lang/String;)Ljava/lang/Iterable;" />
       <scope id="352677614185351672" at="43,24,43,24" />
-      <scope id="352677614185351700" at="46,25,47,30" />
+      <scope id="352677614185351700" at="46,25,47,42" />
       <scope id="352677614185351702" at="52,30,53,41" />
       <scope id="352677614185351707" at="58,26,59,33" />
       <scope id="4339786255639459977" at="64,29,65,40" />
@@ -307,7 +307,7 @@
         <var name="macroName" id="6271661604550594596" />
         <var name="options" id="6271661604550594565" />
       </scope>
-      <scope id="352677614185351700" at="45,52,49,16" />
+      <scope id="352677614185351700" at="45,64,49,16" />
       <scope id="352677614185351702" at="51,64,55,16" />
       <scope id="352677614185351707" at="57,56,61,16" />
       <scope id="4339786255639459977" at="63,64,67,16" />
