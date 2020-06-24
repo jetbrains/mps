@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.openapi.editor;
 
+import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.openapi.editor.DeletionApprover.DummyDeletionApprover;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -137,4 +138,10 @@ public interface EditorComponent {
   default DeletionApprover getDeletionApprover() {
     return new DummyDeletionApprover();
   }
+
+  /**
+   * Shows error/warning messages inside the editor pane.
+   */
+  @NotNull
+  IMessageHandler getMessageHandler();
 }

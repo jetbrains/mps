@@ -15,10 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
-import jetbrains.mps.ide.messages.MessagesViewTool;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.nodeEditor.AbstractDefaultEditor;
@@ -38,7 +35,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SLanguage;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collection;
@@ -122,16 +118,12 @@ public class EditorCellFactoryImpl implements EditorCellFactory {
   }
 
   private void reportError(SNode node, Throwable e) {
-    IMessageHandler messageHandler = ProjectHelper.getProject(myEditorContext.getRepository()).getComponent(MessagesViewTool.class).newHandler("Editor");
-
-    SModel model = node.getModel();
     SLanguage language = node.getConcept().getLanguage();
-    String text = String.format("Error creating editor cell: Model: %s, Language: %s", model.getName(), language.getQualifiedName());
-
+    String text = String.format("Error creating editor cell: Node: %s (%s from %s)", node.getPresentation(), node.getConcept().getName(), language.getQualifiedName());
     Message message = new Message(MessageKind.ERROR, this.getClass(), text);
     message.setException(e);
     message.setHintObject(node.getReference());
-    messageHandler.handle(message);
+    myEditorContext.getEditorComponent().getMessageHandler().handle(message);
   }
 
   private EditorCell createCell(SNode node, boolean isInspector, ConceptEditor editor) {

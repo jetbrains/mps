@@ -68,6 +68,7 @@ import jetbrains.mps.ide.projectView.ProjectViewSelectInProvider;
 import jetbrains.mps.ide.tooltips.TooltipComponent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.nodeEditor.actions.ActionHandlerImpl;
 import jetbrains.mps.nodeEditor.assist.DefaultContextAssistantManager;
@@ -309,6 +310,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   private MyScrollBar myVerticalScrollBar;
   //TODO: make @NotNull after separating UI-less logic into AbstractEditorComponent class
   private JComponent myContainer;
+  private final EditorMessagesPanel myMessageHandler;
 
   protected EditorCell myRootCell;
   private int myShiftX = 15;
@@ -379,6 +381,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     myCommandContext = createCommandContext();
     myUpdater = createUpdater(myCommandContext);
     myHighlightManager = new NodeHighlightManager(this);
+    myMessageHandler = new EditorMessagesPanel(ProjectHelper.toIdeaProject(ProjectHelper.getProject(repository)));
 
     if (ApplicationManager.getApplication() != null && ApplicationManager.getApplication().getComponent(MPSCoreComponents.class) != null) {
       myClassLoaderManager = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getClassLoaderManager();
@@ -604,7 +607,13 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     };
     myContainer.setMinimumSize(new Dimension(0, 0));
     myContainer.setLayout(new BorderLayout());
-    myContainer.add(myScrollPane, BorderLayout.CENTER);
+
+    myMessageHandler.init();
+    JPanel contentAndMessages = new JPanel(new BorderLayout());
+    contentAndMessages.add(myScrollPane, BorderLayout.CENTER);
+    contentAndMessages.add(myMessageHandler, BorderLayout.NORTH);
+
+    myContainer.add(contentAndMessages, BorderLayout.CENTER);
 
     myMessagesGutter = new MessagesGutter(this, editorConfiguration.rightToLeft);
     if (editorConfiguration.showErrorsGutter) {
@@ -1030,6 +1039,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       return;
     }
     clearModelDisposedTrace();
+    myMessageHandler.clear();
 
     getModelAccess().runReadAction(() -> {
       if (node != null) {
@@ -2749,6 +2759,12 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     }
     myCommandContext.updateContextNode();
     requestTypecheckingSession();
+  }
+
+  @NotNull
+  @Override
+  public IMessageHandler getMessageHandler() {
+    return myMessageHandler;
   }
 
   private static class MyBaseAction extends BaseAction implements DumbAware {
