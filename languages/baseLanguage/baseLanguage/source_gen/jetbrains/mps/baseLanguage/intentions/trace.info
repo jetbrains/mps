@@ -8705,7 +8705,7 @@
       <node id="4838165336397280137" at="33,35,34,33" concept="10" />
       <node id="4838165336397280137" at="38,53,39,19" concept="10" />
       <node id="4838165336397280137" at="40,5,41,16" concept="10" />
-      <node id="4838165336397283424" at="43,91,44,140" concept="10" />
+      <node id="4838165336397283424" at="43,91,44,262" concept="10" />
       <node id="4838165336397280137" at="47,35,48,17" concept="10" />
       <node id="4838165336397280137" at="51,37,52,105" concept="4" />
       <node id="4838165336397280137" at="53,5,54,30" concept="10" />
@@ -8717,13 +8717,15 @@
       <node id="4838165336397326276" at="81,14,82,93" concept="4" />
       <node id="2209098755809742593" at="82,93,83,68" concept="4" />
       <node id="4838165336397280137" at="87,48,88,48" concept="10" />
-      <node id="4838165336397280137" at="93,0,94,0" concept="13" trace="Classifier$hJ" />
-      <node id="4838165336397280137" at="94,0,95,0" concept="13" trace="Interface$Kp" />
-      <node id="4838165336397280137" at="95,0,96,0" concept="13" trace="DefaultModifier$Z2" />
-      <node id="4838165336397280137" at="99,0,100,0" concept="13" trace="name$tAp1" />
-      <node id="4838165336397280137" at="103,0,104,0" concept="13" trace="modifiers$akE0" />
-      <node id="4838165336397280137" at="104,0,105,0" concept="13" trace="body$WIlu" />
-      <node id="4838165336397280137" at="105,0,106,0" concept="13" trace="statement$WHn8" />
+      <node id="4838165336397280137" at="93,0,94,0" concept="13" trace="visibility$2GiC" />
+      <node id="4838165336397280137" at="94,0,95,0" concept="13" trace="modifiers$akE0" />
+      <node id="4838165336397280137" at="95,0,96,0" concept="13" trace="body$WIlu" />
+      <node id="4838165336397280137" at="96,0,97,0" concept="13" trace="statement$WHn8" />
+      <node id="4838165336397280137" at="100,0,101,0" concept="13" trace="PrivateVisibility$Se" />
+      <node id="4838165336397280137" at="101,0,102,0" concept="13" trace="Classifier$hJ" />
+      <node id="4838165336397280137" at="102,0,103,0" concept="13" trace="Interface$Kp" />
+      <node id="4838165336397280137" at="103,0,104,0" concept="13" trace="DefaultModifier$Z2" />
+      <node id="4838165336397280137" at="107,0,108,0" concept="13" trace="name$tAp1" />
       <node id="4838165336397280137" at="57,0,59,0" concept="2" trace="IntentionImplementation#()V" />
       <node id="4838165336397280137" at="29,0,32,0" concept="2" trace="ToggleMethodDefault_Intention#()V" />
       <node id="4838165336397280137" at="37,84,40,5" concept="7" />
@@ -8747,7 +8749,7 @@
       <scope id="4838165336397280137" at="29,42,30,152" />
       <scope id="4838165336397280137" at="33,35,34,33" />
       <scope id="4838165336397280137" at="38,53,39,19" />
-      <scope id="4838165336397282948" at="43,91,44,140" />
+      <scope id="4838165336397282948" at="43,91,44,262" />
       <scope id="4838165336397280137" at="47,35,48,17" />
       <scope id="4838165336397280137" at="51,37,52,105" />
       <scope id="2024206242378027906" at="63,41,64,79" />
@@ -8797,13 +8799,13 @@
         <var name="editorContext" id="4838165336397280137" />
         <var name="node" id="4838165336397280137" />
       </scope>
-      <unit id="4838165336397280137" at="98,0,101,0" name="jetbrains.mps.baseLanguage.intentions.ToggleMethodDefault_Intention$PROPS" />
+      <unit id="4838165336397280137" at="106,0,109,0" name="jetbrains.mps.baseLanguage.intentions.ToggleMethodDefault_Intention$PROPS" />
       <unit id="2024206242378027905" at="62,101,66,7" name="jetbrains.mps.baseLanguage.intentions.ToggleMethodDefault_Intention$IntentionImplementation$1" />
       <unit id="2024206242378067823" at="70,97,74,7" name="jetbrains.mps.baseLanguage.intentions.ToggleMethodDefault_Intention$IntentionImplementation$2" />
-      <unit id="4838165336397280137" at="92,0,97,0" name="jetbrains.mps.baseLanguage.intentions.ToggleMethodDefault_Intention$CONCEPTS" />
-      <unit id="4838165336397280137" at="102,0,107,0" name="jetbrains.mps.baseLanguage.intentions.ToggleMethodDefault_Intention$LINKS" />
+      <unit id="4838165336397280137" at="92,0,98,0" name="jetbrains.mps.baseLanguage.intentions.ToggleMethodDefault_Intention$LINKS" />
+      <unit id="4838165336397280137" at="99,0,105,0" name="jetbrains.mps.baseLanguage.intentions.ToggleMethodDefault_Intention$CONCEPTS" />
       <unit id="4838165336397280137" at="56,0,91,0" name="jetbrains.mps.baseLanguage.intentions.ToggleMethodDefault_Intention$IntentionImplementation" />
-      <unit id="4838165336397280137" at="27,0,108,0" name="jetbrains.mps.baseLanguage.intentions.ToggleMethodDefault_Intention" />
+      <unit id="4838165336397280137" at="27,0,110,0" name="jetbrains.mps.baseLanguage.intentions.ToggleMethodDefault_Intention" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/5155195849735077874">

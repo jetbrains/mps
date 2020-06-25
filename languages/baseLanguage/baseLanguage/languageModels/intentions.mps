@@ -26886,20 +26886,37 @@
     <node concept="2SaL7w" id="4c$BrPw$nU3" role="2ZfVeh">
       <node concept="3clFbS" id="4c$BrPw$nU4" role="2VODD2">
         <node concept="3clFbF" id="4c$BrPw$o1w" role="3cqZAp">
-          <node concept="2OqwBi" id="1KnrdDd4Dv2" role="3clFbG">
-            <node concept="2OqwBi" id="1KnrdDd4C9k" role="2Oq$k0">
-              <node concept="2Sf5sV" id="1KnrdDd4BC0" role="2Oq$k0" />
-              <node concept="2Xjw5R" id="1KnrdDd4D3v" role="2OqNvi">
-                <node concept="1xMEDy" id="1KnrdDd4D3x" role="1xVPHs">
-                  <node concept="chp4Y" id="1KnrdDd4D5Y" role="ri$Ld">
-                    <ref role="cht4Q" to="tpee:g7pOWCK" resolve="Classifier" />
+          <node concept="1Wc70l" id="2Yan1X5EfpM" role="3clFbG">
+            <node concept="3fqX7Q" id="2Yan1X5EkT3" role="3uHU7w">
+              <node concept="2OqwBi" id="2Yan1X5EkT5" role="3fr31v">
+                <node concept="2OqwBi" id="2Yan1X5EkT6" role="2Oq$k0">
+                  <node concept="2Sf5sV" id="2Yan1X5EkT7" role="2Oq$k0" />
+                  <node concept="3TrEf2" id="2Yan1X5EkT8" role="2OqNvi">
+                    <ref role="3Tt5mk" to="tpee:h9B3oxE" resolve="visibility" />
+                  </node>
+                </node>
+                <node concept="1mIQ4w" id="2Yan1X5EkT9" role="2OqNvi">
+                  <node concept="chp4Y" id="2Yan1X5EkTa" role="cj9EA">
+                    <ref role="cht4Q" to="tpee:gFTm6Wc" resolve="PrivateVisibility" />
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="1mIQ4w" id="1KnrdDd4E1s" role="2OqNvi">
-              <node concept="chp4Y" id="1KnrdDd4E9D" role="cj9EA">
-                <ref role="cht4Q" to="tpee:g7HP654" resolve="Interface" />
+            <node concept="2OqwBi" id="1KnrdDd4Dv2" role="3uHU7B">
+              <node concept="2OqwBi" id="1KnrdDd4C9k" role="2Oq$k0">
+                <node concept="2Sf5sV" id="1KnrdDd4BC0" role="2Oq$k0" />
+                <node concept="2Xjw5R" id="1KnrdDd4D3v" role="2OqNvi">
+                  <node concept="1xMEDy" id="1KnrdDd4D3x" role="1xVPHs">
+                    <node concept="chp4Y" id="1KnrdDd4D5Y" role="ri$Ld">
+                      <ref role="cht4Q" to="tpee:g7pOWCK" resolve="Classifier" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="1mIQ4w" id="1KnrdDd4E1s" role="2OqNvi">
+                <node concept="chp4Y" id="1KnrdDd4E9D" role="cj9EA">
+                  <ref role="cht4Q" to="tpee:g7HP654" resolve="Interface" />
+                </node>
               </node>
             </node>
           </node>

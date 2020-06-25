@@ -68649,31 +68649,54 @@
       <node concept="3ft6gW" id="uD1GcGTkDY" role="3ft5RY">
         <node concept="3clFbS" id="uD1GcGTkDZ" role="2VODD2">
           <node concept="3clFbF" id="7$np8hIzQNJ" role="3cqZAp">
-            <node concept="1Wc70l" id="7$Z2wsJgen9" role="3clFbG">
-              <node concept="2OqwBi" id="7$Z2wsJgkw6" role="3uHU7w">
-                <node concept="3bvxqY" id="7$Z2wsJghub" role="2Oq$k0" />
-                <node concept="1mIQ4w" id="7$Z2wsJgkD1" role="2OqNvi">
-                  <node concept="chp4Y" id="7$Z2wsJgkP2" role="cj9EA">
-                    <ref role="cht4Q" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
+            <node concept="1Wc70l" id="2Yan1X5_6zw" role="3clFbG">
+              <node concept="3fqX7Q" id="2Yan1X5_lb3" role="3uHU7w">
+                <node concept="2OqwBi" id="2Yan1X5_lb5" role="3fr31v">
+                  <node concept="2OqwBi" id="2Yan1X5_lb6" role="2Oq$k0">
+                    <node concept="1PxgMI" id="2Yan1X5_lb7" role="2Oq$k0">
+                      <property role="1BlNFB" value="true" />
+                      <node concept="chp4Y" id="2Yan1X5_lb8" role="3oSUPX">
+                        <ref role="cht4Q" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
+                      </node>
+                      <node concept="3bvxqY" id="2Yan1X5_lb9" role="1m5AlR" />
+                    </node>
+                    <node concept="3TrEf2" id="2Yan1X5_lba" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tpee:h9B3oxE" resolve="visibility" />
+                    </node>
+                  </node>
+                  <node concept="1mIQ4w" id="2Yan1X5_lbb" role="2OqNvi">
+                    <node concept="chp4Y" id="2Yan1X5_lbc" role="cj9EA">
+                      <ref role="cht4Q" to="tpee:gFTm6Wc" resolve="PrivateVisibility" />
+                    </node>
                   </node>
                 </node>
               </node>
-              <node concept="2OqwBi" id="7$np8hIzWgA" role="3uHU7B">
-                <node concept="Rm8GO" id="7$np8hIzQNL" role="2Oq$k0">
-                  <ref role="Rm8GQ" to="b0pz:~JavaLanguageLevel.JAVA_8" resolve="JAVA_8" />
-                  <ref role="1Px2BO" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
-                </node>
-                <node concept="liA8E" id="7$np8hIzWNF" role="2OqNvi">
-                  <ref role="37wK5l" to="b0pz:~JavaLanguageLevel.covers(jetbrains.mps.project.facets.JavaLanguageLevel)" resolve="covers" />
-                  <node concept="2OqwBi" id="7btLLcgYCc8" role="37wK5m">
-                    <node concept="2ShNRf" id="7btLLcgYCc9" role="2Oq$k0">
-                      <node concept="HV5vD" id="7btLLcgYCca" role="2ShVmc">
-                        <ref role="HV5vE" to="pz2c:7$LYU9arBWF" resolve="BaseLanguageEnvironmentHelper" />
+              <node concept="1Wc70l" id="7$Z2wsJgen9" role="3uHU7B">
+                <node concept="2OqwBi" id="7$np8hIzWgA" role="3uHU7B">
+                  <node concept="Rm8GO" id="7$np8hIzQNL" role="2Oq$k0">
+                    <ref role="Rm8GQ" to="b0pz:~JavaLanguageLevel.JAVA_8" resolve="JAVA_8" />
+                    <ref role="1Px2BO" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
+                  </node>
+                  <node concept="liA8E" id="7$np8hIzWNF" role="2OqNvi">
+                    <ref role="37wK5l" to="b0pz:~JavaLanguageLevel.covers(jetbrains.mps.project.facets.JavaLanguageLevel)" resolve="covers" />
+                    <node concept="2OqwBi" id="7btLLcgYCc8" role="37wK5m">
+                      <node concept="2ShNRf" id="7btLLcgYCc9" role="2Oq$k0">
+                        <node concept="HV5vD" id="7btLLcgYCca" role="2ShVmc">
+                          <ref role="HV5vE" to="pz2c:7$LYU9arBWF" resolve="BaseLanguageEnvironmentHelper" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="7btLLcgYCcb" role="2OqNvi">
+                        <ref role="37wK5l" to="pz2c:uD1GcGTtSC" resolve="getLanguageLevel" />
+                        <node concept="1rpKSd" id="uD1GcGTHVh" role="37wK5m" />
                       </node>
                     </node>
-                    <node concept="liA8E" id="7btLLcgYCcb" role="2OqNvi">
-                      <ref role="37wK5l" to="pz2c:uD1GcGTtSC" resolve="getLanguageLevel" />
-                      <node concept="1rpKSd" id="uD1GcGTHVh" role="37wK5m" />
+                  </node>
+                </node>
+                <node concept="2OqwBi" id="7$Z2wsJgkw6" role="3uHU7w">
+                  <node concept="3bvxqY" id="7$Z2wsJghub" role="2Oq$k0" />
+                  <node concept="1mIQ4w" id="7$Z2wsJgkD1" role="2OqNvi">
+                    <node concept="chp4Y" id="7$Z2wsJgkP2" role="cj9EA">
+                      <ref role="cht4Q" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
                     </node>
                   </node>
                 </node>
