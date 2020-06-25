@@ -46,7 +46,7 @@
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1239709250944" name="jetbrains.mps.baseLanguage.structure.PrefixIncrementExpression" flags="nn" index="2$rviw" />
@@ -1307,15 +1307,11 @@
                       </node>
                     </node>
                     <node concept="2OqwBi" id="2ETmHUYugcB" role="37wK5m">
-                      <node concept="2OqwBi" id="2ETmHUYuf6t" role="2Oq$k0">
-                        <node concept="37vLTw" id="2ETmHUYueZ0" role="2Oq$k0">
+                      <node concept="2YIFZM" id="745ui02Lw24" role="2Oq$k0">
+                        <ref role="37wK5l" to="57ty:~MessagesViewTool.getInstance(jetbrains.mps.project.Project)" resolve="getInstance" />
+                        <ref role="1Pybhc" to="57ty:~MessagesViewTool" resolve="MessagesViewTool" />
+                        <node concept="37vLTw" id="745ui02LwAD" role="37wK5m">
                           <ref role="3cqZAo" node="MCyGswqxmq" resolve="project" />
-                        </node>
-                        <node concept="liA8E" id="2ETmHUYuflM" role="2OqNvi">
-                          <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
-                          <node concept="3VsKOn" id="2ETmHUYufZY" role="37wK5m">
-                            <ref role="3VsUkX" to="57ty:~MessagesViewTool" resolve="MessagesViewTool" />
-                          </node>
                         </node>
                       </node>
                       <node concept="liA8E" id="2ETmHUYugz5" role="2OqNvi">

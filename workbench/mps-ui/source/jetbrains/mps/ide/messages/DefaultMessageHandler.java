@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ public class DefaultMessageHandler implements IMessageHandler {
   private final IMessageHandler myDelegate;
 
   public DefaultMessageHandler(Project project) {
-    MessagesViewTool tool = project.getComponent(MessagesViewTool.class);
+    MessagesViewTool tool = project.getService(MessagesViewTool.class);
     if (tool != null) {
       myDelegate = tool.newHandler();
     } else {

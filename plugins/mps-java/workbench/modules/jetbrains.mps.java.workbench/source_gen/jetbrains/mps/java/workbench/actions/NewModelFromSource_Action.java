@@ -162,7 +162,7 @@ public class NewModelFromSource_Action extends BaseAction {
     }
     final List<IFile> ifilesToParse = Sequence.fromIterable(JavaConvertUtil.flattenDirs(chosenIFiles)).toListSequence();
 
-    final JavaToMpsConverter parser = new JavaToMpsConverter(((SModule) MapSequence.fromMap(_params).get("module")), repository, ((Project) MapSequence.fromMap(_params).get("ideaProject")).getComponent(MessagesViewTool.class).newHandler());
+    final JavaToMpsConverter parser = new JavaToMpsConverter(((SModule) MapSequence.fromMap(_params).get("module")), repository, ((Project) MapSequence.fromMap(_params).get("ideaProject")).getService(MessagesViewTool.class).newHandler());
 
 
     ProgressManager.getInstance().run(new Task.Modal(null, "Convert to MPS", false) {

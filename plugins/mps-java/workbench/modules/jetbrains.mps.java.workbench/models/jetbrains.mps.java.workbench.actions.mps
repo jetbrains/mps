@@ -2383,7 +2383,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="2ETmHUYtGIm" role="2OqNvi">
-                      <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
+                      <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
                       <node concept="3VsKOn" id="2ETmHUYtH4e" role="37wK5m">
                         <ref role="3VsUkX" to="57ty:~MessagesViewTool" resolve="MessagesViewTool" />
                       </node>
@@ -3243,7 +3243,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="2ETmHUYtJZi" role="2OqNvi">
-                      <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
+                      <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
                       <node concept="3VsKOn" id="2ETmHUYtJZj" role="37wK5m">
                         <ref role="3VsUkX" to="57ty:~MessagesViewTool" resolve="MessagesViewTool" />
                       </node>

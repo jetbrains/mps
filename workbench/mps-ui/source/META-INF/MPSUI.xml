@@ -4,15 +4,19 @@
       <implementation-class>jetbrains.mps.ide.findusages.view.UsagesViewTool</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.ide.messages.MessagesViewTool</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.ide.platform.actions.AnalyzeDependenciesViewTool</implementation-class>
     </component>
   </project-components>
   <extensions defaultExtensionNs="com.intellij">
     <projectService serviceImplementation="jetbrains.mps.ide.messages.navigation.NavigationManager"/>
+    <projectService serviceImplementation="jetbrains.mps.ide.messages.MessagesViewTool"/>
+    <postStartupActivity implementation="jetbrains.mps.ide.messages.MessagesViewTool$MessageViewToolInitialization"/>
   </extensions>
+
+  <applicationListeners>
+    <listener class="jetbrains.mps.ide.messages.MessagesViewTool$MessagesViewProjectListener"
+              topic="com.intellij.openapi.project.ProjectManagerListener"/>
+  </applicationListeners>
 
   <extensionPoints>
     <extensionPoint qualifiedName="com.intellij.mps.modelRootEntry" beanClass="jetbrains.mps.ide.ui.dialogs.properties.persistence.ModelRootEntryEP"/>

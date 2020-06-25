@@ -66,7 +66,7 @@ public final class ShowGenPlan__BehaviorDescriptor extends BaseBHDescriptor {
       return;
     }
 
-    MessagesViewTool messagesView = context.getProject().getComponent(MessagesViewTool.class);
+    MessagesViewTool messagesView = MessagesViewTool.getInstance(context.getProject());
 
     // by default, show generation plan as Make/Generate would see it. 
     // If forced, however, may ignore context and show default (model content based) plan. 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,7 +59,7 @@ public class DeleteModelHelper {
   public static void deleteModel(Project project, SModule contextModule, SModel modelDescriptor, boolean safeDelete, boolean deleteFiles) {
     if (LanguageAspect.STRUCTURE.is(modelDescriptor)) {
       Message msg = new Message(MessageKind.WARNING, DeleteModelHelper.class, "Can't delete structure model " + modelDescriptor.getModelName());
-      project.getComponent(MessagesViewTool.class).add(msg);
+      MessagesViewTool.getInstance(project).add(msg);
       return;
     }
 
@@ -197,7 +197,9 @@ public class DeleteModelHelper {
     @Nullable
     @Override
     public SearchResults getAffectedNodes(RefactoringContext refactoringContext) {
-      if (refactoringContext.getSelectedModel() == null) return null;
+      if (refactoringContext.getSelectedModel() == null) {
+        return null;
+      }
 
       SearchQuery searchQuery = new SearchQuery(refactoringContext.getSelectedModel().getReference(), GlobalScope.getInstance());
       return FindUtils.getSearchResults(new EmptyProgressMonitor(), searchQuery, new ModelImportsUsagesFinder());

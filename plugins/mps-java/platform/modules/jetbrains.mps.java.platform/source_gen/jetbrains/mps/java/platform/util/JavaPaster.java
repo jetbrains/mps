@@ -136,7 +136,7 @@ public class JavaPaster {
       }
 
       // trying to resolve names when nodes are already in a model 
-      JavaToMpsConverter mfParser = new JavaToMpsConverter(model, project.getRepository(), project.getComponent(MessagesViewTool.class).newHandler());
+      JavaToMpsConverter mfParser = new JavaToMpsConverter(model, project.getRepository(), MessagesViewTool.getInstance(project).newHandler());
       mfParser.tryResolveRefs(nodes, featureKind, new EmptyProgressMonitor());
 
     } catch (final JavaParseException ex) {

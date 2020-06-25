@@ -131,7 +131,7 @@ public class ConvertPackageToModel extends AnAction {
       }
     }
 
-    final JavaToMpsConverter parser = new JavaToMpsConverter(mpsModule, mpsProject.getRepository(), true, true, mpsProject.getComponent(ModelFactoryService.class), project.getComponent(MessagesViewTool.class).newHandler());
+    final JavaToMpsConverter parser = new JavaToMpsConverter(mpsModule, mpsProject.getRepository(), true, true, mpsProject.getComponent(ModelFactoryService.class), project.getService(MessagesViewTool.class).newHandler());
     final List<IFile> javaFiles = toIFiles(mpsProject, psiJavaFiles);
 
     ApplicationManager.getApplication().saveAll();

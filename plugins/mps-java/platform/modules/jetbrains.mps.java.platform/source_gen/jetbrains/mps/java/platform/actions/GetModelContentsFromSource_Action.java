@@ -110,7 +110,7 @@ public class GetModelContentsFromSource_Action extends BaseAction {
     }
     final List<IFile> ifilesToParse = Sequence.fromIterable(JavaConvertUtil.flattenDirs(chosenIFiles)).toListSequence();
 
-    final JavaToMpsConverter parser = new JavaToMpsConverter(((SModel) MapSequence.fromMap(_params).get("model")), ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository(), ideaProject.getComponent(MessagesViewTool.class).newHandler());
+    final JavaToMpsConverter parser = new JavaToMpsConverter(((SModel) MapSequence.fromMap(_params).get("model")), ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository(), ideaProject.getService(MessagesViewTool.class).newHandler());
     ProgressManager.getInstance().run(new Task.Modal(null, "Convert to MPS", false) {
       public void run(@NotNull ProgressIndicator indicator) {
         parser.convertToMps(ifilesToParse, new ProgressMonitorAdapter(indicator));

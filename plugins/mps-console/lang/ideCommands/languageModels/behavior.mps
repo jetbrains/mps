@@ -2122,19 +2122,15 @@
             <node concept="3uibUv" id="4dzOCaryA3O" role="1tU5fm">
               <ref role="3uigEE" to="57ty:~MessagesViewTool" resolve="MessagesViewTool" />
             </node>
-            <node concept="2OqwBi" id="4dzOCaryA3P" role="33vP2m">
-              <node concept="2OqwBi" id="7vhSOKo2fse" role="2Oq$k0">
-                <node concept="37vLTw" id="7vhSOKo2fop" role="2Oq$k0">
+            <node concept="2YIFZM" id="745ui02Kl3P" role="33vP2m">
+              <ref role="37wK5l" to="57ty:~MessagesViewTool.getInstance(jetbrains.mps.project.Project)" resolve="getInstance" />
+              <ref role="1Pybhc" to="57ty:~MessagesViewTool" resolve="MessagesViewTool" />
+              <node concept="2OqwBi" id="745ui02Kmfr" role="37wK5m">
+                <node concept="37vLTw" id="745ui02Klts" role="2Oq$k0">
                   <ref role="3cqZAo" node="67MRmR$wIVQ" resolve="context" />
                 </node>
-                <node concept="liA8E" id="7vhSOKo2fy8" role="2OqNvi">
+                <node concept="liA8E" id="745ui02KmUN" role="2OqNvi">
                   <ref role="37wK5l" to="qgo0:3MPHfSuPT3Y" resolve="getProject" />
-                </node>
-              </node>
-              <node concept="liA8E" id="4dzOCaryA3R" role="2OqNvi">
-                <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="4dzOCaryA3S" role="37wK5m">
-                  <ref role="3VsUkX" to="57ty:~MessagesViewTool" resolve="MessagesViewTool" />
                 </node>
               </node>
             </node>

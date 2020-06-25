@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,7 +54,7 @@ public class GenerateModelsInProcess {
   public void generate(@Nullable final MPSMakeConfigurator makeConfigurator) {
     GenerationSettingsProvider.getInstance().setGenerationSettings(new DefaultModifiableGenerationSettings());
     Iterable<IResource> resources = new ModelsToResources(myModels).resources();
-    MessagesViewTool messagesView = myProject.getComponent(MessagesViewTool.class);
+    MessagesViewTool messagesView = myProject.getService(MessagesViewTool.class);
     IMessageHandler msgHandler = messagesView.newHandler("MPS generator");
 
     final MakeSession makeSession = new MakeSession(ProjectHelper.fromIdeaProject(myProject), msgHandler, true);

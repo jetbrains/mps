@@ -8688,15 +8688,11 @@
             <node concept="3uibUv" id="7USPsgtRSJc" role="1tU5fm">
               <ref role="3uigEE" to="57ty:~MessagesViewTool" resolve="MessagesViewTool" />
             </node>
-            <node concept="2OqwBi" id="7USPsgtR$sK" role="33vP2m">
-              <node concept="37vLTw" id="2BjwmTxYKu3" role="2Oq$k0">
+            <node concept="2YIFZM" id="745ui02Kb24" role="33vP2m">
+              <ref role="37wK5l" to="57ty:~MessagesViewTool.getInstance(jetbrains.mps.project.Project)" resolve="getInstance" />
+              <ref role="1Pybhc" to="57ty:~MessagesViewTool" resolve="MessagesViewTool" />
+              <node concept="37vLTw" id="745ui02KbmL" role="37wK5m">
                 <ref role="3cqZAo" node="3wGjY11t7jE" resolve="project" />
-              </node>
-              <node concept="liA8E" id="7USPsgtR$Mq" role="2OqNvi">
-                <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="7USPsgtROJC" role="37wK5m">
-                  <ref role="3VsUkX" to="57ty:~MessagesViewTool" resolve="MessagesViewTool" />
-                </node>
               </node>
             </node>
           </node>

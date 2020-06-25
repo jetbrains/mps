@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="e8pdqo5fleimnxgm04etzhmvbra7kff">
+<product version="3" modelHash="a1fa2gkz459e7dw84c6t3reuezyletu">
   <files names="AddWordToDictionary_Action.java:AnalyzeClasspath_Action.java:ChangeMethodSignatureDialog.java:ChangeMethodSignature_Action.java:JavaWorkbenchActions.xml:MigrateSourcesToMPS_Action.java:NewModelFromSource_Action.java:TouchBarDefault_shift_ActionGroup.java" />
 </product>
 
