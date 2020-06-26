@@ -5,6 +5,11 @@
       <sourceRoot location="models" />
     </modelRoot>
   </models>
+  <facets>
+    <facet type="java">
+      <classes generated="true" path="${module}/classes_gen" />
+    </facet>
+  </facets>
   <accessoryModels />
   <generators>
     <generator namespace="NewLanguage2#4706665036333155758" uuid="b85de3f8-4119-4244-86cf-a7759fa2a985">
@@ -13,6 +18,11 @@
           <sourceRoot location="generator/template" />
         </modelRoot>
       </models>
+      <facets>
+        <facet type="java">
+          <classes generated="true" path="${module}/generator/classes_gen" />
+        </facet>
+      </facets>
       <external-templates />
       <languageVersions>
         <language slang="l:9d4153a9-a100-4911-9688-094a7ba99d12:NewLanguage2" version="-1" />

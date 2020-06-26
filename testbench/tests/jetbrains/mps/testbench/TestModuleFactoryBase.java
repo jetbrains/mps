@@ -18,15 +18,19 @@ package jetbrains.mps.testbench;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
+import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.persistence.PersistenceUtil.InMemoryStreamDataSource;
 import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.Solution;
+import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.structure.modules.DevkitDescriptor;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
+import jetbrains.mps.project.structure.modules.ModuleDescriptor;
+import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.smodel.BaseMPSModuleOwner;
 import jetbrains.mps.smodel.Generator;
@@ -130,6 +134,7 @@ public class TestModuleFactoryBase implements TestModuleFactory {
     String uuid = UUID.randomUUID().toString();
     descriptor.setNamespace(TEST_PREFIX_SOLUTION + "_" + getNewId() + "_" + uuid);
     descriptor.setId(ModuleId.fromString(uuid));
+    withJavaFacet(descriptor);
     final Solution solution = (Solution) myModuleFactory.instantiate(descriptor, descriptorFile);
     populate(solution);
     return solution;
@@ -145,6 +150,7 @@ public class TestModuleFactoryBase implements TestModuleFactory {
     // shall move TEST_PREFIX_GENERATOR... to setAlias() and setNamespace() to that based on source language's one.
     generatorDescriptor.setNamespace(TEST_PREFIX_GENERATOR + "_" + getNewId() + "_" + uuid);
     generatorDescriptor.setId(ModuleId.fromString(uuid));
+    withJavaFacet(generatorDescriptor);
     LanguageDescriptor languageDescriptor = createLanguageDescriptor();
     generatorDescriptor.setSourceLanguage(languageDescriptor.getModuleReference());
     languageDescriptor.getGenerators().add(generatorDescriptor);
@@ -157,6 +163,7 @@ public class TestModuleFactoryBase implements TestModuleFactory {
     LanguageDescriptor descriptor = new LanguageDescriptor();
     descriptor.setNamespace(name);
     descriptor.setId(ModuleId.fromString(id.toString()));
+    withJavaFacet(descriptor);
     descriptor.getRuntimeModules().addAll(Arrays.asList(runtimes));
     return descriptor;
   }
@@ -276,5 +283,15 @@ public class TestModuleFactoryBase implements TestModuleFactory {
       }
     }
     Assert.fail("No model to keep used language in the module " + client.getModuleName());
+  }
+
+  // with no implicit module facets, add Java one as it's the one we add by default to newly created modules
+  public static void withJavaFacet(ModuleDescriptor descriptor) {
+    // XXX perhaps, shall fill the memento with classgen/source-gen locations, but no idea what
+    // are the modules we create are used for. There're tests (ModulesReloadTest) that register their own
+    // facet implementation that doesn't load/save anything from memento at the moment, thus the empty one is ok.
+    // It might be the default one, JavaModuleFacetImpl that would care to get populated memento (now it falls back to legacy defaults)
+    final MementoImpl memento = new MementoImpl();
+    descriptor.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(JavaModuleFacet.FACET_TYPE, memento));
   }
 }

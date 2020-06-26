@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,6 +40,7 @@ import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.testbench.TestModuleFactoryBase;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
 import jetbrains.mps.util.IFileUtil;
@@ -285,6 +286,7 @@ public class TestMakeOnRealProject implements EnvironmentAware {
 
     solutionDescriptor.getModelRootDescriptors().add(DefaultModelRoot.createSingleFolderDescriptor(runtimeSolutionDescriptorFile.getParent()));
     solutionDescriptor.getDependencies().add(new Dependency(BootstrapLanguages.jdkRef(), true));
+    TestModuleFactoryBase.withJavaFacet(solutionDescriptor);
 
     runtimeSolutionDescriptorFile.createNewFile();
     Solution solution = (Solution) new GeneralModuleFactory().instantiate(solutionDescriptor, runtimeSolutionDescriptorFile);
@@ -301,6 +303,7 @@ public class TestMakeOnRealProject implements EnvironmentAware {
     d.setNamespace(languageNamespace);
     d.getRuntimeModules().add(myCreatedRuntimeSolution.getModuleReference());
     d.setGenPath(descriptorFile.getParent().findChild("src_gen").getPath());
+    TestModuleFactoryBase.withJavaFacet(d);
 
 
     IFile languageModels = descriptorFile.getParent().findChild(Language.LANGUAGE_MODELS);
@@ -322,6 +325,7 @@ public class TestMakeOnRealProject implements EnvironmentAware {
     solutionDescriptor.setId(ModuleId.regular());
     String name = fileName.substring(0, fileName.length() - 4);
     solutionDescriptor.setNamespace(name);
+    TestModuleFactoryBase.withJavaFacet(solutionDescriptor);
     solutionDescriptor.setOutputPath(descriptorFile.getParent().findChild("src_gen").getPath());
 
     solutionDescriptor.getModelRootDescriptors().add(DefaultModelRoot.createSingleFolderDescriptor(descriptorFile.getParent()));

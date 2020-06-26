@@ -39,7 +39,6 @@ public class Solution extends ReloadableModuleBase {
     setModuleReference(descriptor.getModuleReference());
   }
 
-
   @NotNull
   @Override
   public SolutionDescriptor getModuleDescriptor() {

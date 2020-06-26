@@ -8,6 +8,7 @@
     </modelRoot>
   </models>
   <facets>
+    <facet type="java"/>
     <facet pluginId="com.intellij" type="ideaPlugin" />
   </facets>
   <stubModelEntries>

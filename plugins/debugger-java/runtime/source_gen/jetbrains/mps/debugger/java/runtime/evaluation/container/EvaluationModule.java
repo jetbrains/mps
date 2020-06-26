@@ -30,6 +30,7 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
  * This module contains a necessary information for the 'evaluate expression'
  * action during a debug session.
  * Currently extends AbstractModule though it is obviously not one.
+ * Note, no standard module facets (like Java) is necessary here
  */
 @GeneratedClass(node = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)/846214144107996104", model = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)")
 public final class EvaluationModule extends AbstractModule implements SModule {
@@ -95,10 +96,4 @@ public final class EvaluationModule extends AbstractModule implements SModule {
   public boolean isReadOnly() {
     return false;
   }
-
-  @Override
-  protected void collectMandatoryFacetTypes(Set<String> types) {
-    // we don't need there standard java facet 
-  }
-
 }

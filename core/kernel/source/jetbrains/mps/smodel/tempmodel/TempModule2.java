@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,8 +21,6 @@ import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Set;
 
 /**
  * Alternative temporary module, not a subject to classloading (not a {@link jetbrains.mps.module.ReloadableModule}).
@@ -60,11 +58,6 @@ public class TempModule2 extends AbstractModule {
   public ModuleDescriptor getModuleDescriptor() {
     // descriptor is needed as at the moment it's the only way to record added module dependencies
     return myDescriptor;
-  }
-
-  @Override
-  protected void collectMandatoryFacetTypes(Set<String> types) {
-    // no-op, we don't need standard Java Module Facet (in fact, it's odd that it's not controlled by module descriptor)
   }
 
   @Override

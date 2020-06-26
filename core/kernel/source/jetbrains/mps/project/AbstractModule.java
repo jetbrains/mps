@@ -21,7 +21,6 @@ import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.extapi.persistence.ModelRootBase;
 import jetbrains.mps.module.SDependencyImpl;
 import jetbrains.mps.persistence.MementoImpl;
-import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.Dependency;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
@@ -428,14 +427,14 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   }
 
   /**
-   * For the time being, MPS enforces certain facets for modules (e.g. Java facet is essential for classloading mechanism).
-   * As we move forward with facets story, we likely respect actual facets for the module (e.g. would force Java facet on module creation only)
-   * Need to ensure classloading could deal with modules without Java facet, then can drop these mandatory facets altogether
+   * Mechanism for sublclasses to enforce certain facets for a module, if necessary.
+   * MPS itself respects actual facets for a module as defined in a ModuleDescriptor and doesn't impose any mandatory facet any longer
+   * (for a long time , it would force Java facet, which is essential for classloading mechanism). When needed, necessary module facets
+   * are added at module creation time.
+   * The method is no-op, subclasses are not obliged to invoke it as MPS unlikely ever to get back to mandatory facets.
+   * It's unlikely there's even a reason to keep this extension point, left in 2020.2 for compatibility and future consideration.
    */
   protected void collectMandatoryFacetTypes(@Mutable Set<String> types) {
-    // FIXME once MPS with explicit 'java' facet (introduced in 2019.3) settles down, can remove this code. Make sure newly created
-    //       modules get java facet persisted (NewModuleUtil doesn't care to set proper facet descriptors into newly constructed MD)
-    types.add(JavaModuleFacet.FACET_TYPE);
   }
 
   @NotNull

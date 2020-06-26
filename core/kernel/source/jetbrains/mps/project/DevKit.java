@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -195,10 +195,5 @@ public class DevKit extends AbstractModule {
 
   public boolean isHidden() {
     return false;
-  }
-
-  @Override
-  protected void collectMandatoryFacetTypes(Set<String> types) {
-    // no-op
   }
 }

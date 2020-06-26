@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import jetbrains.mps.classloading.IdeaPluginModuleFacet;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.persistence.MementoUtil;
 import jetbrains.mps.project.ModuleId;
+import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleReference;
@@ -72,6 +73,7 @@ public final class MPSConfigurationBean {
     sd.setOutputPath(myState.generatorOutputPath);
     sd.setCompileInMPS(false);
     sd.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(IdeaPluginModuleFacet.FACET_TYPE, new MementoImpl()));
+    sd.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(JavaModuleFacet.FACET_TYPE, new MementoImpl()));
     Map<SLanguage, Integer> languageVersions = sd.getLanguageVersions();
     final PersistenceFacade pf = PersistenceFacade.getInstance();
     if (myState.languageVersions != null) {
