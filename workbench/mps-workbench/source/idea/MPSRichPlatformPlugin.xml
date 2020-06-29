@@ -9,20 +9,23 @@
   <module value="com.intellij.modules.externalSystem"/>
 
   <xi:include href="/componentSets/MPSIdeaComponents.xml" xpointer="xpointer(/idea-plugin/*)"/>
-  <xi:include href="/idea/MPSRichPlatformActions.xml" xpointer="xpointer(/component/*)"/>
+  <xi:include href="/idea/MPSRichPlatformActions.xml"/>
 
-  <xi:include href="/META-INF/Core.xml" xpointer="xpointer(/idea-plugin/*)"/>
-  <xi:include href="/META-INF/CoreImpl.xml" xpointer="xpointer(/idea-plugin/*)"/>
-  <xi:include href="/META-INF/Analysis.xml" xpointer="xpointer(/idea-plugin/*)"/>
-  <xi:include href="/META-INF/AnalysisImpl.xml" xpointer="xpointer(/idea-plugin/*)"/>
-  <xi:include href="/META-INF/ProjectModel.xml" xpointer="xpointer(/idea-plugin/*)"/>
-  <xi:include href="/META-INF/ProjectModelImpl.xml" xpointer="xpointer(/idea-plugin/*)"/>
-  <xi:include href="/META-INF/Indexing.xml" xpointer="xpointer(/idea-plugin/*)"/>
-  <xi:include href="/META-INF/Editor.xml" xpointer="xpointer(/idea-plugin/*)"/>
-  <xi:include href="/META-INF/EditorEx.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <xi:include href="/META-INF/Core.xml"/>
+  <xi:include href="/META-INF/CoreImpl.xml"/>
+  <xi:include href="/META-INF/Analysis.xml"/>
+  <xi:include href="/META-INF/AnalysisImpl.xml"/>
+  <xi:include href="/META-INF/ProjectModel.xml"/>
+  <xi:include href="/META-INF/ProjectModelImpl.xml"/>
+  <xi:include href="/META-INF/Indexing.xml"/>
+  <xi:include href="/META-INF/Editor.xml"/>
+  <xi:include href="/META-INF/EditorEx.xml"/>
 
   <xi:include href="/META-INF/PlatformExtensionPoints.xml"/>
   <xi:include href="/META-INF/LangExtensionPoints.xml"/>
+
+  <xi:include href="/META-INF/MPSPlatformExtensions.xml"/>
+  <xi:include href="/META-INF/MPSLangExtensions.xml"/>
 
   <extensionPoints>
     <!--
@@ -32,8 +35,6 @@
   </extensionPoints>
 
   <extensions defaultExtensionNs="com.intellij">
-    <xi:include href="/META-INF/MPSPlatformExtensions.xml" xpointer="xpointer(/idea-plugin/extensions/*)"/>
-    <xi:include href="/META-INF/MPSLangExtensions.xml" xpointer="xpointer(/idea-plugin/extensions/*)"/>
     <!--
     <xi:include href="/META-INF/ExternalSystemExtensions.xml" xpointer="xpointer(/idea-plugin/extensions/*)"/>
 
