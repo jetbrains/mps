@@ -68,12 +68,15 @@
       <root url="jar://$PROJECT_DIR$/lib/platform-impl.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-objectSerializer.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-objectSerializer-annotations.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/platform-rd-community.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-serviceContainer.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-statistics.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/platform-statistics-config.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-statistics-devkit.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-statistics-uploader.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-util-ui.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-util-ex.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/platform-util-ui-xml.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/spellchecker.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/configuration-store-impl.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jps-model.jar!/" />
