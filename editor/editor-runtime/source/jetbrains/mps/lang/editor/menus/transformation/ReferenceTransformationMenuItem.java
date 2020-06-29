@@ -144,9 +144,9 @@ public class ReferenceTransformationMenuItem extends ActionItemBase implements B
   @Override
   public void customize(String pattern, EditorMenuItemStyle style) {
     if (myContext != null) {
-      TransformationMenuContextToEditorMenuItemCustomizationContext
-          context = new TransformationMenuContextToEditorMenuItemCustomizationContext(myContext, null, myLink);
-      EditorMenuItemCompositeCustomizationContext compositeContext = getCompositeContext(pattern, context);
+      EditorMenuItemModifyingCustomizationContext
+          creationContext = new EditorMenuItemModifyingCustomizationContext(myContext.getNode(), null, null, myLink);
+      EditorMenuItemCompositeCustomizationContext compositeContext = getCompositeContext(pattern, creationContext);
       for (EditorMenuItemCustomizer customizer : myContext.getCustomizers()) {
         customizer.customize(style, compositeContext);
       }

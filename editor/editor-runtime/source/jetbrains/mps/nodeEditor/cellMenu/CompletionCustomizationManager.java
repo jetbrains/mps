@@ -64,6 +64,8 @@ class CompletionCustomizationManager {
   private SReferenceLink myReferenceLink;
   @Nullable
   private SProperty myProperty;
+
+  private boolean myIsBigCell;
   private final Set<EditorMenuItemCustomizer> myCustomizers;
 
   private boolean myShouldApplyCustomStyle;
@@ -86,6 +88,7 @@ class CompletionCustomizationManager {
 
   private void initContext(@NotNull EditorCell contextCell) {
     EditorCell currentCell = contextCell;
+    myIsBigCell = currentCell.isBig();
     do {
       if (currentCell.getSRole() instanceof SReferenceLink) {
         myNodeLocation = new SNodeLocation.FromNode(currentCell.getSNode());
@@ -200,10 +203,12 @@ class CompletionCustomizationManager {
       EditorMenuItemModifyingCustomizationContext contextNodeCustomizationContext =
           new EditorMenuItemModifyingCustomizationContext(myNodeLocation.getContextNode(), null, myProperty,
                                                           myReferenceLink);
-      EditorMenuItemModifyingCustomizationContext parentNodeCustomizationContext =
-          new EditorMenuItemModifyingCustomizationContext(myNodeLocation.getParent(), myNodeLocation.getContainmentLink(), null, null);
       customizeWithModificationContext(contextNodeCustomizationContext, itemInformation, completionItemStyle);
-      customizeWithModificationContext(parentNodeCustomizationContext, itemInformation, completionItemStyle);
+      if (myProperty == null && myReferenceLink == null && myIsBigCell) {
+        EditorMenuItemModifyingCustomizationContext parentNodeCustomizationContext =
+            new EditorMenuItemModifyingCustomizationContext(myNodeLocation.getParent(), myNodeLocation.getContainmentLink(), null, null);
+        customizeWithModificationContext(parentNodeCustomizationContext, itemInformation, completionItemStyle);
+      }
     }
   }
 

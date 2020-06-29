@@ -18,6 +18,7 @@ package jetbrains.mps.lang.editor.menus.transformation;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
 import jetbrains.mps.nodeEditor.cellMenu.BaseCompletionActionItem;
 import jetbrains.mps.nodeEditor.cellMenu.CompletionItemCustomizationUtil;
 import jetbrains.mps.openapi.editor.EditorContext;
@@ -95,8 +96,8 @@ public class PropertyTransformationMenuItem extends ActionItemBase implements Ba
 
   @Override
   public void customize(String pattern, EditorMenuItemStyle style) {
-    TransformationMenuContextToEditorMenuItemCustomizationContext
-        creationContext = new TransformationMenuContextToEditorMenuItemCustomizationContext(myContext, myProperty, null);
+    EditorMenuItemModifyingCustomizationContext
+        creationContext = new EditorMenuItemModifyingCustomizationContext(myContext.getNode(), null, myProperty, null);
     CompletionItemInformation completionItemInformation =
         new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
     for (EditorMenuItemCustomizer customizer : myContext.getCustomizers()) {

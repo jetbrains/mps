@@ -17,6 +17,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_TestCompletionCustomization_ChildSimpleSubstituteMenu;
   private ConceptPresentation props_TestCompletionCustomization_ChildToReference;
   private ConceptPresentation props_TestCompletionCustomization_ChildWithPriority;
+  private ConceptPresentation props_TestCompletionCustomization_ChildWithPropertyAndLink;
   private ConceptPresentation props_TestCompletionCustomization_ChildWrapSubstituteMenu;
   private ConceptPresentation props_TestCompletionCustomization_ConceptToWrap;
   private ConceptPresentation props_TestCompletionCustomization_ConceptToWrapNoPriority;
@@ -86,6 +87,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_TestCompletionCustomization_ChildWithPriority = cpb.create();
         }
         return props_TestCompletionCustomization_ChildWithPriority;
+      case LanguageConceptSwitch.TestCompletionCustomization_ChildWithPropertyAndLink:
+        if (props_TestCompletionCustomization_ChildWithPropertyAndLink == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("TestCompletionCustomization_ChildWithPropertyAndLink");
+          props_TestCompletionCustomization_ChildWithPropertyAndLink = cpb.create();
+        }
+        return props_TestCompletionCustomization_ChildWithPropertyAndLink;
       case LanguageConceptSwitch.TestCompletionCustomization_ChildWrapSubstituteMenu:
         if (props_TestCompletionCustomization_ChildWrapSubstituteMenu == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

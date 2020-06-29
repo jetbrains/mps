@@ -154,6 +154,12 @@
       <property role="20lbJX" value="fLJekj5/_0__n" />
       <ref role="20lvS9" node="41xlIweVvle" resolve="TestCompletionCustomization_ContextMatcherChildInMatchingLink" />
     </node>
+    <node concept="1TJgyj" id="6_BK34DZsM3" role="1TKVEi">
+      <property role="IQ2ns" value="7595250613974060163" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="childWithPropertyAndLink" />
+      <ref role="20lvS9" node="6_BK34DZqnw" resolve="TestCompletionCustomization_ChildWithPropertyAndLink" />
+    </node>
   </node>
   <node concept="1TIwiD" id="4AL49kg_TAi">
     <property role="EcuMT" value="5310043668061067666" />
@@ -311,6 +317,22 @@
       <property role="TrG5h" value="no_priority" />
       <property role="1L1pqM" value="no priority" />
       <property role="3tVfz5" value="5310043668063133686" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6_BK34DZqnw">
+    <property role="EcuMT" value="7595250613974050272" />
+    <property role="3GE5qa" value="contextMatcher.children" />
+    <property role="TrG5h" value="TestCompletionCustomization_ChildWithPropertyAndLink" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="6_BK34DZriX" role="1TKVEi">
+      <property role="IQ2ns" value="7595250613974054077" />
+      <property role="20kJfa" value="reference" />
+      <ref role="20lvS9" node="41xlIweUVhd" resolve="TestCompletionCustomization_RootToReference" />
+    </node>
+    <node concept="1TJgyi" id="6_BK34DZreV" role="1TKVEl">
+      <property role="IQ2nx" value="7595250613974053819" />
+      <property role="TrG5h" value="property" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
   </node>
 </model>
