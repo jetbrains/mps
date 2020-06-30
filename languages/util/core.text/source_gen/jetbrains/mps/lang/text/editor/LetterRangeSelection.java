@@ -15,10 +15,10 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.nodeEditor.selection.SelectionInfoImpl;
+import java.util.Objects;
 import java.util.List;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import java.util.ArrayList;
-import java.util.Objects;
 import jetbrains.mps.openapi.editor.selection.SelectionInfo;
 import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -97,6 +97,18 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
   }
   public LetterRangeSelection(@NotNull EditorComponent editorComponent, @NotNull SNode firstNode, @NotNull SNode lastNode, boolean growingForward, String emptyCellId) {
     super(editorComponent);
+    // swap first and last letter if needed 
+    Iterable<? extends SNode> letters = getChildIterable(SNodeOperations.as(SNodeOperations.getParent(firstNode), CONCEPTS.Paragraph$V6));
+    for (SNode l : letters) {
+      if (Objects.equals(l, firstNode)) {
+        break;
+      }
+      if (Objects.equals(l, lastNode)) {
+        lastNode = firstNode;
+        firstNode = l;
+        break;
+      }
+    }
     myFirstNode = firstNode;
     myLastNode = lastNode;
     myFirstParentNode = SNodeOperations.as(SNodeOperations.getParent(myFirstNode), CONCEPTS.Paragraph$V6);
@@ -115,7 +127,7 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     List<EditorCell> selectedCells = new ArrayList<EditorCell>();
     boolean withinSelection = false;
     boolean breakLoop = false;
-    for (SNode child : getChildIterable()) {
+    for (SNode child : getChildIterable(myFirstParentNode)) {
       if (Objects.equals(myFirstNode, child) || Objects.equals(myLastNode, child)) {
         if (withinSelection || Objects.equals(myFirstNode, myLastNode)) {
           breakLoop = true;
@@ -287,14 +299,18 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
       @Override
       public void doExecute() {
         if (!(myGrowingForward) && !(Objects.equals(myFirstParentNode, myLastParentNode))) {
-          SNode nextLine = SNodeOperations.as(SNodeOperations.getNextSibling(myFirstParentNode), CONCEPTS.Paragraph$V6);
-          if (nextLine != null) {
-            selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.letters$8nfv)).first(), myLastNode, false));
+          SNode nodeBelowFirst = findNodeBelow(myFirstNode, getFirstCell());
+          if (nodeBelowFirst == null) {
+            selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), myLastNode, myLastNode, false));
+          } else {
+            selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), nodeBelowFirst, myLastNode, false));
           }
         } else {
-          SNode nextLine = SNodeOperations.as(SNodeOperations.getNextSibling(myLastParentNode), CONCEPTS.Paragraph$V6);
-          if (nextLine != null) {
-            selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), myFirstNode, ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.letters$8nfv)).last(), true));
+          SNode nodeBelowLast = findNodeBelow(myLastNode, getLastCell());
+          if (nodeBelowLast == null) {
+            selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), myFirstNode, ListSequence.fromList(SLinkOperations.getChildren(myLastParentNode, LINKS.letters$8nfv)).last(), true));
+          } else {
+            selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), myFirstNode, nodeBelowLast, true));
           }
         }
       }
@@ -306,14 +322,18 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
       @Override
       public void doExecute() {
         if (myGrowingForward && !(Objects.equals(myFirstParentNode, myLastParentNode))) {
-          SNode previousLine = SNodeOperations.as(SNodeOperations.getPrevSibling(myLastParentNode), CONCEPTS.Paragraph$V6);
-          if (previousLine != null) {
-            selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), myFirstNode, ListSequence.fromList(SLinkOperations.getChildren(previousLine, LINKS.letters$8nfv)).last(), true));
+          SNode nodeAboveLast = findNodeAbove(myLastNode, getLastCell());
+          if (nodeAboveLast == null) {
+            selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), myFirstNode, myFirstNode, true));
+          } else {
+            selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), myFirstNode, nodeAboveLast, true));
           }
         } else {
-          SNode previousLine = SNodeOperations.as(SNodeOperations.getPrevSibling(myFirstParentNode), CONCEPTS.Paragraph$V6);
-          if (previousLine != null) {
-            selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), ListSequence.fromList(SLinkOperations.getChildren(previousLine, LINKS.letters$8nfv)).first(), myLastNode, false));
+          SNode nodeAboveFirst = findNodeAbove(myFirstNode, getFirstCell());
+          if (nodeAboveFirst == null) {
+            selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), ListSequence.fromList(SLinkOperations.getChildren(myFirstParentNode, LINKS.letters$8nfv)).first(), myLastNode, false));
+          } else {
+            selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), nodeAboveFirst, myLastNode, false));
           }
         }
       }
@@ -414,9 +434,9 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     }
     return node != null;
   }
-  private SNode getNextSelectableNode(SNode anchorNode, boolean forward) {
+  public static SNode getNextSelectableNode(SNode anchorNode, boolean forward) {
     SNode prevNode = null;
-    Iterable<? extends SNode> childrenIterable = getChildIterable();
+    Iterable<? extends SNode> childrenIterable = getChildIterable(SNodeOperations.as(SNodeOperations.getParent(anchorNode), CONCEPTS.Paragraph$V6));
     for (SNode child : childrenIterable) {
       if (forward && prevNode == anchorNode) {
         return child;
@@ -428,8 +448,8 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     }
     return null;
   }
-  private Iterable<? extends SNode> getChildIterable() {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(myFirstParentNode, true), CONCEPTS.Paragraph$V6)).translate(new ITranslator2<SNode, SNode>() {
+  public static Iterable<? extends SNode> getChildIterable(SNode paragraph) {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(paragraph, true), CONCEPTS.Paragraph$V6)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode line) {
         return SLinkOperations.getChildren(line, LINKS.letters$8nfv);
       }
@@ -452,7 +472,7 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     }
   }
 
-  public static SNode findNodeAbove(SNode node, EditorCell cell, EditorContext editorContext) {
+  public static SNode findNodeAbove(SNode node, EditorCell cell) {
     EditorCell rootCell = cell.getRootParent();
     EditorCell currentCell = cell;
     EditorCell foundLeaf = rootCell.findLeaf(currentCell.getX(), currentCell.getY() - currentCell.getHeight());
@@ -463,13 +483,13 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     return (foundLeaf != null ? SNodeOperations.as(foundLeaf.getSNode(), CONCEPTS.TextualElement$73) : null);
   }
 
-  public static SNode findNodeBelow(SNode node, EditorCell cell, EditorContext editorContext) {
+  public static SNode findNodeBelow(SNode node, EditorCell cell) {
     EditorCell rootCell = cell.getRootParent();
     EditorCell currentCell = cell;
     EditorCell foundLeaf = rootCell.findLeaf(currentCell.getX(), currentCell.getY() + currentCell.getHeight());
     while ((foundLeaf == null && currentCell.getPrevSibling() != null)) {
       currentCell = currentCell.getPrevSibling();
-      foundLeaf = rootCell.findLeaf(currentCell.getX(), currentCell.getY() - currentCell.getHeight());
+      foundLeaf = rootCell.findLeaf(currentCell.getX(), currentCell.getY() + currentCell.getHeight());
     }
     return (foundLeaf != null ? SNodeOperations.as(foundLeaf.getSNode(), CONCEPTS.TextualElement$73) : null);
   }

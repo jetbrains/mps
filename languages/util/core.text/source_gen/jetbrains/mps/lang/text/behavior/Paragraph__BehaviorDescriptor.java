@@ -34,7 +34,7 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph");
 
   public static final SMethod<Void> merge_id4HqBHuNzqyw = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("merge").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4HqBHuNzqyw").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Void> merge_id4HqBHuNzqyK = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("merge").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4HqBHuNzqyK").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> merge_id4HqBHuNzqyK = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("merge").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4HqBHuNzqyK").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
   public static final SMethod<SNode> split_id4HqBHuN_RSC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("split").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4HqBHuN_RSC").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> isEmptyLine_id4HqBHuN_RTk = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEmptyLine").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4HqBHuN_RTk").build();
 
@@ -44,9 +44,9 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static void merge_id4HqBHuNzqyw(@NotNull SNode __thisNode__, SNode other) {
-    Paragraph__BehaviorDescriptor.merge_id4HqBHuNzqyK.invoke(__thisNode__, other, ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$8nfv)).last());
+    Paragraph__BehaviorDescriptor.merge_id4HqBHuNzqyK.invoke(__thisNode__, other, ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$8nfv)).last(), ((boolean) false));
   }
-  /*package*/ static void merge_id4HqBHuNzqyK(@NotNull SNode __thisNode__, SNode other, SNode position) {
+  /*package*/ static void merge_id4HqBHuNzqyK(@NotNull SNode __thisNode__, SNode other, SNode position, final boolean inFrontOfPosition) {
     if (!(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$8nfv)).contains(position))) {
       return;
     }
@@ -54,10 +54,14 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
     final Wrappers._T<SNode> currentPosition = new Wrappers._T<SNode>(position);
     ListSequence.fromList(SLinkOperations.getChildren(other, LINKS.letters$8nfv)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode element) {
-        currentPosition.value = SNodeOperations.insertNextSiblingChild(currentPosition.value, element);
+        if (inFrontOfPosition) {
+          SNodeOperations.insertPrevSiblingChild(currentPosition.value, element);
+        } else {
+          currentPosition.value = SNodeOperations.insertNextSiblingChild(currentPosition.value, element);
+        }
       }
     });
-    if (ListSequence.fromList(SLinkOperations.getChildren(other, LINKS.letters$8nfv)).isNotEmpty() && isEmptyString(trim_7af07r_a0a0e0m(SPropertyOperations.getString(SNodeOperations.as(position, CONCEPTS.Letter$hC), PROPS.value$cK70)))) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(other, LINKS.letters$8nfv)).isNotEmpty() && isEmptyString(trim_7af07r_a0a0e0m(SPropertyOperations.getString(SNodeOperations.as(position, CONCEPTS.Letter$hC), PROPS.value$OMJc)))) {
       SNodeOperations.deleteNode(position);
     }
   }
@@ -75,7 +79,7 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static boolean isEmptyLine_id4HqBHuN_RTk(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$8nfv)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$8nfv)).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$hC) && isEmptyString(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Letter$hC), PROPS.value$cK70));
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$hC) && isEmptyString(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Letter$hC), PROPS.value$OMJc));
       }
     });
   }
@@ -99,7 +103,7 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
         merge_id4HqBHuNzqyw(node, (SNode) parameters[0]);
         return null;
       case 1:
-        merge_id4HqBHuNzqyK(node, (SNode) parameters[0], (SNode) parameters[1]);
+        merge_id4HqBHuNzqyK(node, (SNode) parameters[0], (SNode) parameters[1], ((boolean) (Boolean) parameters[2]));
         return null;
       case 2:
         return (T) ((SNode) split_id4HqBHuN_RSC(node, (SNode) parameters[0]));
@@ -150,6 +154,6 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$cK70 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty value$OMJc = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
   }
 }

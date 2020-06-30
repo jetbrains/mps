@@ -16,9 +16,9 @@ import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.ide.datatransfer.SNodeTransferable;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.datatransfer.PasteNodeData;
 import java.util.List;
 import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
@@ -122,19 +122,30 @@ public class LetterActions {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         int pos = ((EditorCell_Label) editorContext.getSelectedCell()).getCaretPosition();
+        boolean firstPositionOnLine = pos == 0 && (SNodeOperations.getPrevSibling(node) == null);
+        final Wrappers._T<SNode> currentNode = new Wrappers._T<SNode>(node);
         Object dataFromClipboard = TextEditorHelper.getDataFromClipboard();
+
         if (dataFromClipboard instanceof String) {
-          String text = trim_v3f5yj_a0a0a2a1a0a0a4(dataFromClipboard.toString());
-          SNode currentNode = node;
+          String text = trim_v3f5yj_a0a0a5a1a0a0a4(dataFromClipboard.toString());
           for (int i = 0; i < text.length(); i++) {
-            SNode newLetter = SNodeOperations.insertNextSiblingChild(currentNode, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter")));
-            SPropertyOperations.assign(newLetter, PROPS.value$OMJc, String.valueOf(text.charAt(i)));
-            currentNode = newLetter;
+            if (firstPositionOnLine) {
+              SNode newLetter = SNodeOperations.insertPrevSiblingChild(currentNode.value, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter")));
+              SPropertyOperations.assign(newLetter, PROPS.value$OMJc, String.valueOf(text.charAt(i)));
+            } else {
+              SNode newLetter = SNodeOperations.insertNextSiblingChild(currentNode.value, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter")));
+              SPropertyOperations.assign(newLetter, PROPS.value$OMJc, String.valueOf(text.charAt(i)));
+              currentNode.value = newLetter;
+            }
           }
-          SelectionUtil.selectCell(editorContext, currentNode, SelectionManager.LAST_CELL);
+          if (firstPositionOnLine) {
+            SelectionUtil.selectCell(editorContext, SNodeOperations.getPrevSibling(currentNode.value), SelectionManager.LAST_CELL);
+          } else {
+            SelectionUtil.selectCell(editorContext, currentNode.value, SelectionManager.LAST_CELL);
+          }
         }
+
         if (dataFromClipboard instanceof SNodeTransferable) {
-          final Wrappers._T<SNode> currentNode = new Wrappers._T<SNode>(node);
           PasteNodeData pasteData = ((SNodeTransferable) dataFromClipboard).createNodeData();
           List<SNode> data = pasteData.getNodes();
 
@@ -149,14 +160,16 @@ public class LetterActions {
               }
             } else if (SNodeOperations.isInstanceOf(n, CONCEPTS.Paragraph$V6)) {
               if (copyMultipleLinesToMultipleLines) {
-                if (Objects.equals(n, data.get(0))) {
+                if (Objects.equals(n, data.get(0)) && !(firstPositionOnLine)) {
                   TextEditorHelper.insertParagraphIntoParagraph(currentParagraph.value, currentNode.value, SNodeOperations.copyNode(SNodeOperations.as(n, CONCEPTS.Paragraph$V6)));
+                } else if (firstPositionOnLine) {
+                  SNodeOperations.insertPrevSiblingChild(currentParagraph.value, SNodeOperations.copyNode(SNodeOperations.as(n, CONCEPTS.Paragraph$V6)));
                 } else {
                   currentParagraph.value = SNodeOperations.as(SNodeOperations.insertNextSiblingChild(currentParagraph.value, SNodeOperations.copyNode(SNodeOperations.as(n, CONCEPTS.Paragraph$V6))), CONCEPTS.Paragraph$V6);
                 }
               } else {
                 SNode futureCurrentNode = (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(n, CONCEPTS.Paragraph$V6), LINKS.letters$8nfv)).isEmpty() ? currentNode.value : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(n, CONCEPTS.Paragraph$V6), LINKS.letters$8nfv)).last());
-                Paragraph__BehaviorDescriptor.merge_id4HqBHuNzqyK.invoke(currentParagraph.value, SNodeOperations.cast(n, CONCEPTS.Paragraph$V6), currentNode.value);
+                Paragraph__BehaviorDescriptor.merge_id4HqBHuNzqyK.invoke(currentParagraph.value, SNodeOperations.cast(n, CONCEPTS.Paragraph$V6), currentNode.value, ((boolean) firstPositionOnLine));
                 currentNode.value = futureCurrentNode;
               }
             } else if (SNodeOperations.isInstanceOf(n, CONCEPTS.IHoldParagraphs$bG)) {
@@ -197,9 +210,13 @@ public class LetterActions {
 
             } else {
               SNode wrapper = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dcb4fL, "jetbrains.mps.lang.text.structure.NodeWrapperTextualElement"));
-              SLinkOperations.setTarget(wrapper, LINKS.node$daCF, n);
-              SNodeOperations.insertNextSiblingChild(currentNode.value, wrapper);
-              currentNode.value = wrapper;
+              SLinkOperations.setTarget(wrapper, LINKS.node$Hsx2, n);
+              if (firstPositionOnLine) {
+                SNodeOperations.insertPrevSiblingChild(currentNode.value, wrapper);
+              } else {
+                SNodeOperations.insertNextSiblingChild(currentNode.value, wrapper);
+                currentNode.value = wrapper;
+              }
             }
           }
           SelectionUtil.selectCell(editorContext, currentNode.value, SelectionManager.LAST_CELL);
@@ -271,7 +288,7 @@ public class LetterActions {
       editorCell.setAction(actionType, createAction_PASTE(node));
     }
   }
-  public static String trim_v3f5yj_a0a0a2a1a0a0a4(String str) {
+  public static String trim_v3f5yj_a0a0a5a1a0a0a4(String str) {
     return (str == null ? null : str.trim());
   }
   private static boolean isEmptyString(String str) {
@@ -286,7 +303,7 @@ public class LetterActions {
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink letters$8nfv = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
-    /*package*/ static final SContainmentLink node$daCF = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, 0x2b7b49e536031feaL, "node");
+    /*package*/ static final SContainmentLink node$Hsx2 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dcb4fL, 0x2b7b49e536031feaL, "node");
   }
 
   private static final class PROPS {

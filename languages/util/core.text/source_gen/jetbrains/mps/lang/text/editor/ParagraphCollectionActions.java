@@ -10,9 +10,9 @@ import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.cells.CellAction;
@@ -37,16 +37,10 @@ public class ParagraphCollectionActions {
         SNode currentLetter = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextualElement$73);
 
         EditorCell cell = selection.getEditorCell();
-        SNode nodeAbove = LetterRangeSelection.findNodeAbove(currentLetter, cell, editorContext);
+        SNode nodeAbove = LetterRangeSelection.findNodeAbove(currentLetter, cell);
         if (nodeAbove == null) {
           SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentLetter), CONCEPTS.Paragraph$V6);
-          SNode previousLine = SNodeOperations.as(SNodeOperations.getPrevSibling(currentLine), CONCEPTS.Paragraph$V6);
-          boolean includeCurrentLineInSelection = selection.getSelectionEnd() != selection.getSelectionStart() || !(cell instanceof EditorCell_Property) || selection.getSelectionStart() != 0 || (SNodeOperations.getPrevSibling(currentLetter) != null) || (previousLine == null);
-
-          SNode lineToSelect = (includeCurrentLineInSelection ? currentLine : previousLine);
-          SNode first = ListSequence.fromList(SLinkOperations.getChildren(lineToSelect, LINKS.letters$8nfv)).first();
-          SNode last = ListSequence.fromList(SLinkOperations.getChildren(lineToSelect, LINKS.letters$8nfv)).last();
-          LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), SNodeOperations.as(first, CONCEPTS.TextualElement$73), SNodeOperations.as(last, CONCEPTS.TextualElement$73), false);
+          LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), ListSequence.fromList(SLinkOperations.getChildren(currentLine, LINKS.letters$8nfv)).first(), currentLetter, false);
           selectionManager.pushSelection(ws);
         } else {
           LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), SNodeOperations.as(nodeAbove, CONCEPTS.TextualElement$73), SNodeOperations.as(currentLetter, CONCEPTS.TextualElement$73), false);
@@ -94,29 +88,23 @@ public class ParagraphCollectionActions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
+        int pos = ((EditorCell_Label) editorContext.getSelectedCell()).getCaretPosition();
+
         SelectionManager selectionManager = editorContext.getSelectionManager();
-        EditorCellLabelSelection selection = as_82br6w_a0a1a1a0a0a3(selectionManager.getSelection(), EditorCellLabelSelection.class);
+        EditorCellLabelSelection selection = as_82br6w_a0a3a1a0a0a3(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
         SNode currentLetter = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextualElement$73);
 
         EditorCell cell = selection.getEditorCell();
-        SNode nodeBelow = LetterRangeSelection.findNodeBelow(currentLetter, cell, editorContext);
-
+        SNode nodeBelow = LetterRangeSelection.findNodeBelow(currentLetter, cell);
+        SNode nextSelectableNode = (pos != 0 ? LetterRangeSelection.getNextSelectableNode(currentLetter, true) : null);
         if (nodeBelow == null) {
           SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentLetter), CONCEPTS.Paragraph$V6);
-          SNode nextLine = SNodeOperations.as(SNodeOperations.getNextSibling(currentLine), CONCEPTS.Paragraph$V6);
-
-          boolean includeCurrentLineInSelection = selection.getSelectionEnd() != selection.getSelectionStart() || !(cell instanceof EditorCell_Property) || !(((EditorCell_Property) cell).isLastCaretPosition()) || (SNodeOperations.getNextSibling(currentLetter) != null) || (nextLine == null);
-
-          SNode lineToSelect = (includeCurrentLineInSelection ? currentLine : nextLine);
-          SNode first = ListSequence.fromList(SLinkOperations.getChildren(lineToSelect, LINKS.letters$8nfv)).first();
-          SNode last = ListSequence.fromList(SLinkOperations.getChildren(lineToSelect, LINKS.letters$8nfv)).last();
-
-          LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), SNodeOperations.as(first, CONCEPTS.TextualElement$73), SNodeOperations.as(last, CONCEPTS.TextualElement$73), true);
+          LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), (nextSelectableNode != null ? nextSelectableNode : currentLetter), ListSequence.fromList(SLinkOperations.getChildren(currentLine, LINKS.letters$8nfv)).last(), true);
           selectionManager.pushSelection(ws);
         } else {
-          LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), SNodeOperations.as(currentLetter, CONCEPTS.TextualElement$73), SNodeOperations.as(nodeBelow, CONCEPTS.TextualElement$73), false);
+          LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), (nextSelectableNode != null ? nextSelectableNode : currentLetter), SNodeOperations.as(nodeBelow, CONCEPTS.TextualElement$73), true);
           selectionManager.pushSelection(ws);
         }
 
@@ -130,9 +118,8 @@ public class ParagraphCollectionActions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-
         SelectionManager selectionManager = editorContext.getSelectionManager();
-        EditorCellLabelSelection selection = as_82br6w_a0a2a1a0a0a4(selectionManager.getSelection(), EditorCellLabelSelection.class);
+        EditorCellLabelSelection selection = as_82br6w_a0a1a1a0a0a4(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
         SNode currentLetter = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextualElement$73);
@@ -231,10 +218,10 @@ public class ParagraphCollectionActions {
   private static <T> T as_82br6w_a0a1a1a0a0a2(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_82br6w_a0a1a1a0a0a3(Object o, Class<T> type) {
+  private static <T> T as_82br6w_a0a3a1a0a0a3(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_82br6w_a0a2a1a0a0a4(Object o, Class<T> type) {
+  private static <T> T as_82br6w_a0a1a1a0a0a4(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 
