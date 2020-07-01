@@ -645,6 +645,32 @@
             <property role="VOm3f" value="true" />
           </node>
         </node>
+        <node concept="3F0ifn" id="6_BK34DZtbp" role="3EZMnx">
+          <node concept="pVoyu" id="6_BK34DZtbq" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="6_BK34DZtbn" role="3EZMnx">
+          <property role="3F0ifm" value="child with property and link" />
+          <node concept="pVoyu" id="6_BK34DZtbo" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="6_BK34DZtbk" role="3EZMnx">
+          <property role="3F0ifm" value=":" />
+          <node concept="11L4FC" id="6_BK34DZtbl" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+          <node concept="ljvvj" id="6_BK34DZtbm" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F1sOY" id="6_BK34DZtxr" role="3EZMnx">
+          <ref role="1NtTu8" to="wrtb:6_BK34DZsM3" resolve="childWithPropertyAndLink" />
+          <node concept="lj46D" id="6_BK34DZt$s" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
       </node>
       <node concept="3F0ifn" id="4AL49kg_T$k" role="3EZMnx">
         <property role="3F0ifm" value="}" />
@@ -1950,6 +1976,69 @@
               <node concept="Xl_RD" id="41xlIwf2Yol" role="3clFbG">
                 <property role="Xl_RC" value="no priority" />
               </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="6_BK34DZrpp">
+    <property role="3GE5qa" value="contextMatcher.children" />
+    <ref role="1XX52x" to="wrtb:6_BK34DZqnw" resolve="TestCompletionCustomization_ChildWithPropertyAndLink" />
+    <node concept="3EZMnI" id="6_BK34DZrqr" role="2wV5jI">
+      <node concept="3F0ifn" id="6_BK34DZrry" role="3EZMnx">
+        <property role="3F0ifm" value="with property and reference" />
+      </node>
+      <node concept="3F0ifn" id="6_BK34DZrAI" role="3EZMnx">
+        <property role="3F0ifm" value="property:" />
+        <node concept="pVoyu" id="6_BK34DZrDM" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="lj46D" id="6_BK34DZrEO" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F0A7n" id="6_BK34DZrH7" role="3EZMnx">
+        <ref role="1NtTu8" to="wrtb:6_BK34DZreV" resolve="property" />
+      </node>
+      <node concept="3F0ifn" id="6_BK34DZrKt" role="3EZMnx">
+        <property role="3F0ifm" value="reference:" />
+        <node concept="pVoyu" id="6_BK34DZrL_" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="lj46D" id="6_BK34DZrR3" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="1iCGBv" id="6_BK34DZrOK" role="3EZMnx">
+        <ref role="1NtTu8" to="wrtb:6_BK34DZriX" resolve="reference" />
+        <node concept="1sVBvm" id="6_BK34DZrOM" role="1sWHZn">
+          <node concept="3F0A7n" id="6_BK34DZrQ0" role="2wV5jI">
+            <property role="1Intyy" value="true" />
+            <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+          </node>
+        </node>
+      </node>
+      <node concept="l2Vlx" id="6_BK34DZrqu" role="2iSdaV" />
+    </node>
+  </node>
+  <node concept="3dRTYf" id="6_BK34DZsjL">
+    <property role="3GE5qa" value="contextMatcher.children" />
+    <property role="TrG5h" value="ChildWithPropertyAndLink_Customization" />
+    <node concept="3Tm1VV" id="6_BK34DZsjM" role="1B3o_S" />
+    <node concept="KNhPl" id="6_BK34DZsAQ" role="KNiz3">
+      <ref role="2RIln$" to="wrtb:4AL49kg_Tz7" resolve="TestCompletionCustomization_ParentTestContextMatcher" />
+      <node concept="3koIoq" id="6_BK34DZtVw" role="3koIrf">
+        <ref role="3koIov" to="wrtb:6_BK34DZsM3" resolve="childWithPropertyAndLink" />
+      </node>
+    </node>
+    <node concept="3lBaaS" id="6_BK34DZsjO" role="3l$a4r">
+      <node concept="3clFbS" id="6_BK34DZsjP" role="2VODD2">
+        <node concept="3clFbF" id="6_BK34DZu5x" role="3cqZAp">
+          <node concept="2OqwBi" id="6_BK34DZucA" role="3clFbG">
+            <node concept="3lBNjA" id="6_BK34DZu5w" role="2Oq$k0" />
+            <node concept="liA8E" id="6_BK34DZulH" role="2OqNvi">
+              <ref role="37wK5l" to="av1m:~EditorMenuItemStyle.hide()" resolve="hide" />
             </node>
           </node>
         </node>

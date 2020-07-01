@@ -17,16 +17,17 @@ public final class LanguageConceptSwitch {
   public static final int TestCompletionCustomization_ChildSimpleSubstituteMenu = 5;
   public static final int TestCompletionCustomization_ChildToReference = 6;
   public static final int TestCompletionCustomization_ChildWithPriority = 7;
-  public static final int TestCompletionCustomization_ChildWrapSubstituteMenu = 8;
-  public static final int TestCompletionCustomization_ConceptToWrap = 9;
-  public static final int TestCompletionCustomization_ConceptToWrapNoPriority = 10;
-  public static final int TestCompletionCustomization_ConceptToWrapWithPriority = 11;
-  public static final int TestCompletionCustomization_ContextMatcherBaseChild = 12;
-  public static final int TestCompletionCustomization_ContextMatcherChildInMatchingLink = 13;
-  public static final int TestCompletionCustomization_ContextMatcherChildToSubstitute = 14;
-  public static final int TestCompletionCustomization_ParentTestContextMatcher = 15;
-  public static final int TestCompletionCustomization_ParentTestStyle = 16;
-  public static final int TestCompletionCustomization_RootToReference = 17;
+  public static final int TestCompletionCustomization_ChildWithPropertyAndLink = 8;
+  public static final int TestCompletionCustomization_ChildWrapSubstituteMenu = 9;
+  public static final int TestCompletionCustomization_ConceptToWrap = 10;
+  public static final int TestCompletionCustomization_ConceptToWrapNoPriority = 11;
+  public static final int TestCompletionCustomization_ConceptToWrapWithPriority = 12;
+  public static final int TestCompletionCustomization_ContextMatcherBaseChild = 13;
+  public static final int TestCompletionCustomization_ContextMatcherChildInMatchingLink = 14;
+  public static final int TestCompletionCustomization_ContextMatcherChildToSubstitute = 15;
+  public static final int TestCompletionCustomization_ParentTestContextMatcher = 16;
+  public static final int TestCompletionCustomization_ParentTestStyle = 17;
+  public static final int TestCompletionCustomization_RootToReference = 18;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xb4a430be169648bfL, 0xbb724333242e590cL);
@@ -38,6 +39,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x49b1109510ac9aacL, TestCompletionCustomization_ChildSimpleSubstituteMenu);
     builder.put(0x406156e80eebb44eL, TestCompletionCustomization_ChildToReference);
     builder.put(0x49b1109510979993L, TestCompletionCustomization_ChildWithPriority);
+    builder.put(0x6967c03129fda5e0L, TestCompletionCustomization_ChildWithPropertyAndLink);
     builder.put(0x49b1109510b5c8a8L, TestCompletionCustomization_ChildWrapSubstituteMenu);
     builder.put(0x49b1109510b5c8dcL, TestCompletionCustomization_ConceptToWrap);
     builder.put(0x49b1109510b5c8deL, TestCompletionCustomization_ConceptToWrapNoPriority);
