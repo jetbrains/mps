@@ -64,6 +64,10 @@ public final class StartupModuleMakerImpl extends StartupModuleMaker {
 
   @Override
   public void initComponent() {
+    if (ApplicationManager.getApplication().isUnitTestMode()) {
+      return;
+    }
+
     if (ProgressManager.getInstance().getProgressIndicator() != null) {
       executeUnderOldIndicator();
     } else {
