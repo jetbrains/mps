@@ -339,7 +339,7 @@ public class PluginLoaderRegistry implements Disposable {
    */
   private void update() {
     if (myUpdateIsScheduledInEDT.compareAndSet(false, true)) {
-      runTaskLater();
+      ApplicationManager.getApplication().runReadAction(this::runTaskLater);
     }
   }
 
@@ -369,7 +369,7 @@ public class PluginLoaderRegistry implements Disposable {
 
   // we need to get out of application read since it is impossible to #invokeAndWait from read, lets postpone
   private void runTaskLater() {
-    assert (ApplicationManager.getApplication().isReadAccessAllowed() || ApplicationManager.getApplication().isHeadlessEnvironment());
+    assert (ApplicationManager.getApplication().isReadAccessAllowed());
     LOG.debug("running the task later");
     ProgressIndicator globalProgressIndicator = ProgressManager.getGlobalProgressIndicator();
     // trying to pass the current indicator, for example this helps us to reload plugins within the global project open indicator

@@ -447,8 +447,8 @@
     <welcomeTabFactory id="PluginsWelcomeTab" implementation="com.intellij.openapi.wm.impl.welcomeScreen.PluginsTabFactory"
                        order="after CustomizeWelcomeTab"/>
 
-    <themeProvider id="JetBrainsHighContrastTheme" path="/themes/HighContrast.theme.json"/>
-    <themeProvider id="JetBrainsLightTheme" path="/themes/Light.theme.json"/>
+    <themeProvider id="JetBrainsHighContrastTheme" path="themes/HighContrast.theme.json"/>
+    <themeProvider id="JetBrainsLightTheme" path="themes/Light.theme.json"/>
 
     <themeMetadataProvider path="/themes/metadata/IntelliJPlatform.themeMetadata.json"/>
     <themeMetadataProvider path="/themes/metadata/JDK.themeMetadata.json"/>
