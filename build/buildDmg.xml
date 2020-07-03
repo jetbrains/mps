@@ -86,11 +86,6 @@
         <include name="**/${build.code}.dmg"/>
       </fileset>
     </ftp>
-    <ftp server="${mac.host}" remotedir="${remote.dir.base}" action="rmdir" userid="${mac.user}" password="${mac.password}">
-      <fileset>
-        <include name="**/${build.code}"/>
-      </fileset>
-    </ftp>
     <delete dir="${build.tmp}"/>
 
     <fail message=".dmg build failed">
