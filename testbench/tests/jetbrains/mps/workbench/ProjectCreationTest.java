@@ -15,10 +15,10 @@
  */
 package jetbrains.mps.workbench;
 
-import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ex.ProjectManagerEx;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.Solution;
@@ -60,7 +60,7 @@ public class ProjectCreationTest implements EnvironmentAware {
   private static final String PROJECT_NAME = "CreatedTestProject";
   private static final String LANGUAGE_NAMESPACE = "CreatedLanguage";
   private static final String SOLUTION_NAMESPACE = "CreatedSandbox";
-  private static final String DEVEKIT_NAMESPACE = "CreatedDevkit";
+  private static final String DEVKIT_NAMESPACE = "CreatedDevkit";
   private static final String PROJECT_PROPERTIES_DIR = PROJECT_NAME + "/.mps";
   private static final List<String> PROJECT_PROPERTIES_DIR_CONTENT = Arrays.asList(
       PROJECT_PROPERTIES_DIR + "/modules.xml",
@@ -114,7 +114,7 @@ public class ProjectCreationTest implements EnvironmentAware {
     List<String> template = new ArrayList<>();
     final String languageModule = PROJECT_NAME + "/" + LANGUAGES_ROOT + "/" + LANGUAGE_NAMESPACE + "/" + LANGUAGE_NAMESPACE + MPSExtentions.DOT_LANGUAGE;
     final String solutionModule = PROJECT_NAME + "/" + SOLUTIONS_ROOT + "/" + SOLUTION_NAMESPACE + "/" + SOLUTION_NAMESPACE + MPSExtentions.DOT_SOLUTION;
-    final String devkitModule = PROJECT_NAME + "/" + DEVKIT_ROOT + "/" + DEVEKIT_NAMESPACE + "/" + DEVEKIT_NAMESPACE + MPSExtentions.DOT_DEVKIT;
+    final String devkitModule = PROJECT_NAME + "/" + DEVKIT_ROOT + "/" + DEVKIT_NAMESPACE + "/" + DEVKIT_NAMESPACE + MPSExtentions.DOT_DEVKIT;
     template.add(languageModule);
     template.add(solutionModule);
     template.add(devkitModule);
@@ -150,40 +150,29 @@ public class ProjectCreationTest implements EnvironmentAware {
 
   private void invokeTest(final ProjectOptionsProvider projectOptionsProvider, List<String> expectedPathList) {
     final Reference<Throwable> refThrowable = new Reference<>();
-    ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-      @Override
-      public void run() {
-        ApplicationManager.getApplication().runWriteAction(new Runnable() {
-          @Override
-          public void run() {
-            try {
-              myTmpDir = IFileUtil.createTmpDir();
-              try {
-                ProjectFactory factory = new ProjectFactory(projectOptionsProvider.getProjectOptions(myTmpDir));
-                myProject = factory.createProject();
-                factory.activate();
-                myProject.save();
-              } catch (ProjectNotCreatedException e) {
-                Assert.fail();
-              }
-            } catch (Throwable t) {
-              refThrowable.set(t);
-            }
-          }
-        });
+    ApplicationManager.getApplication().invokeAndWait(() -> {
+      try {
+        myTmpDir = IFileUtil.createTmpDir();
+        try {
+          ProjectFactory factory = new ProjectFactory(projectOptionsProvider.getProjectOptions(myTmpDir));
+          myProject = factory.createProject();
+          factory.activate();
+          myProject.save();
+        } catch (ProjectNotCreatedException e) {
+          Assert.fail();
+        }
+      } catch (Throwable t) {
+        refThrowable.set(t);
       }
     }, ModalityState.defaultModalityState());
     if (!refThrowable.isNull()) {
       throw new RuntimeException(refThrowable.get());
     }
-    Exception exception = ThreadUtils.runInUIThreadAndWait(new Runnable() {
-      @Override
-      public void run() {
-        try {
-          ProjectUtil.closeAndDispose(myProject);
-        } catch (Throwable t) {
-          refThrowable.set(t);
-        }
+    Exception exception = ThreadUtils.runInUIThreadAndWait(() -> {
+      try {
+        ProjectManagerEx.getInstanceEx().closeAndDispose(myProject);
+      } catch (Throwable t) {
+        refThrowable.set(t);
       }
     });
     if (exception != null) {
@@ -235,7 +224,7 @@ public class ProjectCreationTest implements EnvironmentAware {
   }
 
   private static class EmptyProjectProvider implements ProjectOptionsProvider {
-    private boolean myDefaultScheme;
+    private final boolean myDefaultScheme;
 
     public EmptyProjectProvider(boolean defaultScheme) {
       myDefaultScheme = defaultScheme;
@@ -258,7 +247,7 @@ public class ProjectCreationTest implements EnvironmentAware {
   }
 
   private static class ProjectWithModulesProvider implements ProjectOptionsProvider {
-    private boolean myDefaultScheme;
+    private final boolean myDefaultScheme;
 
     public ProjectWithModulesProvider(boolean defaultScheme) {
       myDefaultScheme = defaultScheme;
@@ -283,8 +272,8 @@ public class ProjectCreationTest implements EnvironmentAware {
       options.setCreateModel(true);
 
       options.setCreateNewDevkit(true);
-      options.setDevkitNamespace(DEVEKIT_NAMESPACE);
-      options.setDevkitPath(projectDir.findChild(DEVKIT_ROOT).findChild(DEVEKIT_NAMESPACE).getPath());
+      options.setDevkitNamespace(DEVKIT_NAMESPACE);
+      options.setDevkitPath(projectDir.findChild(DEVKIT_ROOT).findChild(DEVKIT_NAMESPACE).getPath());
 
       return options;
     }
