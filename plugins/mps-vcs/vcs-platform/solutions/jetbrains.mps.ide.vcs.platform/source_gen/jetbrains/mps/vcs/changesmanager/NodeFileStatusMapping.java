@@ -10,8 +10,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -32,16 +30,17 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 @GeneratedClass(node = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/2722286076674338162", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
 public class NodeFileStatusMapping implements ProjectComponent {
   private final CurrentDifferenceRegistry myRegistry;
-  private final Map<SNodeReference, FileStatus> myFileStatusMap = MapSequence.fromMap(new HashMap<SNodeReference, FileStatus>());
+  private final Map<SNodeReference, FileStatus> myFileStatusMap = new ConcurrentHashMap<>();
   private final CurrentDifferenceListener myGlobalListener = new MyGlobalListener();
   protected final MPSProject myProject;
 
@@ -98,23 +97,25 @@ public class NodeFileStatusMapping implements ProjectComponent {
             return FileStatus.MERGED_WITH_CONFLICTS;
           }
           CurrentDifference diff = myRegistry.getCurrentDifference(model);
-          List<ModelChange> modelChanges = check_onkh7z_a0e0b0a0a0a0r(diff.getChangeSet());
+          if (diff.getChangeSet() == null) return FileStatus.NOT_CHANGED;
 //          LogManager.getLogger(NodeFileStatusMapping.class).info("filtering model changes");
-          List<ModelChange> rootChanges = ListSequence.fromList(modelChanges).where(new IWhereFilter<ModelChange>() {
-            public boolean accept(ModelChange ch) {
-              return root.getNodeId().equals(ch.getRootId());
-            }
-          }).toListSequence(); // HOTSPOT
+          List<ModelChange> modelChanges = diff.getChangeSet().getModelChanges();
+          List<ModelChange> rootChanges = modelChanges.stream()
+                                                      .filter(ch -> root.getNodeId().equals(ch.getRootId()))
+                                                      .distinct()
+                                                      .collect(Collectors.toList());
 //          LogManager.getLogger(NodeFileStatusMapping.class).info("done filtering model changes");
-          if (ListSequence.fromList(rootChanges).count() != 0) {
-            if (ListSequence.fromList(rootChanges).first() instanceof AddRootChange) {
+
+
+          if (!rootChanges.isEmpty()) {
+            if (rootChanges.get(0) instanceof AddRootChange) {
               VirtualFile vf = VirtualFileUtils.getProjectVirtualFile(((FileDataSource) m.getSource()).getFile());
               if (vf != null) {
                 FileStatus modelStatus = FileStatusManager.getInstance(ideaProject).getStatus(vf);
                 if (BaseVersionUtil.isAddedFileStatus(modelStatus)) {
                   return modelStatus;
                 }
-                }
+              }
               return FileStatus.ADDED;
             }
             return FileStatus.MODIFIED;
@@ -124,15 +125,10 @@ public class NodeFileStatusMapping implements ProjectComponent {
       }
     });
     myProject.getModelAccess().runReadAction(cr);
+
     FileStatus status = cr.getResult();
-    synchronized (myFileStatusMap) {
-      if (MapSequence.fromMap(myFileStatusMap).get(root) != status) {
-        MapSequence.fromMap(myFileStatusMap).put(root, status);
-        return true;
-      } else {
-        return false;
-      }
-    }
+
+    return myFileStatusMap.put(root, status) != status;
   }
 
   @Nullable
@@ -154,16 +150,12 @@ public class NodeFileStatusMapping implements ProjectComponent {
         });
       }
     });
-    synchronized (myFileStatusMap) {
-      return MapSequence.fromMap(myFileStatusMap).get(nodePointer);
-    }
+    return MapSequence.fromMap(myFileStatusMap).get(nodePointer);
   }
 
   @Nullable
   public FileStatus getStatus(@NotNull SNodeReference nodePointer) {
-    synchronized (myFileStatusMap) {
-      return MapSequence.fromMap(myFileStatusMap).get(nodePointer);
-    }
+    return MapSequence.fromMap(myFileStatusMap).get(nodePointer);
   }
 
   protected NodeVirtualFileSystem getNodeFileSystem() {
