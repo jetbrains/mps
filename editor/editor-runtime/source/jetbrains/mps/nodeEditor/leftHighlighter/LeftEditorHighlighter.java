@@ -130,6 +130,7 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
         }
         mouseExitedFoldingArea(e);
         mouseExitedIconsArea(e);
+        mouseExitedTextArea(e);
       }
 
       @Override
@@ -140,6 +141,10 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
         if (isInFoldingArea(e)) {
           mouseMovedInFoldingArea(e);
         } else if (isInTextArea(e)) {
+          AbstractLeftColumn leftColumn = getTextColumnByX(e.getX());
+          if(leftColumn!= null){
+            leftColumn.mouseEntered(e);
+          }
           mouseMovedInTextArea(e);
         } else {
           mouseMovedInIconsArea(e);
@@ -154,12 +159,14 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
         }
         if (isInFoldingArea(e)) {
           mouseExitedIconsArea(e);
+          mouseExitedTextArea(e);
           mouseMovedInFoldingArea(e);
         } else if (isInTextArea(e)) {
           mouseExitedFoldingArea(e);
           mouseExitedIconsArea(e);
           mouseMovedInTextArea(e);
         } else {
+          mouseExitedTextArea(e);
           mouseExitedFoldingArea(e);
           mouseMovedInIconsArea(e);
         }
@@ -171,6 +178,9 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
         assert SwingUtilities.isEventDispatchThread() : "LeftEditorHighlighter$RebuildListener should be called in eventDispatchThread";
         for (AbstractFoldingAreaPainter painter : myFoldingAreaPainters) {
           painter.editorRebuilt();
+        }
+        for(AbstractLeftColumn column : myLeftColumns){
+          column.editorRebuilt();
         }
         relayout(true);
       }
@@ -222,7 +232,7 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
     return myRightToLeft ? getFoldingAreaWidth() + myIconRenderersWidth : 0;
   }
 
-  private int getFoldingAreaWidth() {
+  public int getFoldingAreaWidth() {
     return myLeftFoldingAreaWidth + FOLDING_LINE_WIDTH + myRightFoldingAreaWidth;
   }
 
@@ -709,6 +719,15 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
     }
   }
 
+  private void mouseExitedTextArea(MouseEvent e){
+    setCursor(null);
+    for(AbstractLeftColumn leftColumn : myLeftColumns){
+      if(leftColumn.isMouseInside()){
+        leftColumn.mouseExited(e);
+      }
+    }
+  }
+
   private void mouseExitedIconsArea(MouseEvent e) {
     if (!myMouseIsInFoldingArea && myRendererUnderMouse != null && !isInTextArea(e)) {
       setCursor(null);
@@ -733,6 +752,23 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
       setCursor(textColumn.getCursor(e));
     } else {
       setCursor(null);
+    }
+    AbstractLeftColumn prevColumnWithMouse = null;
+    for(AbstractLeftColumn leftColumn : myLeftColumns){
+      if(leftColumn.isMouseInside()){
+        prevColumnWithMouse = leftColumn;
+        break;
+      }
+    }
+    if(textColumn!=null){
+      if(textColumn != prevColumnWithMouse){
+        textColumn.mouseEntered(e);
+      }else{
+        textColumn.mouseMoved(e);
+      }
+    }
+    if(prevColumnWithMouse!=null && prevColumnWithMouse != textColumn){
+      prevColumnWithMouse.mouseExited(e);
     }
   }
 

@@ -4,72 +4,82 @@ package jetbrains.mps.vcs.annotate;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.nodeEditor.leftHighlighter.AbstractLeftColumn;
-import java.awt.Color;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
+import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
+import jetbrains.mps.project.MPSProject;
+import com.intellij.openapi.vcs.AbstractVcs;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.awt.Font;
 import jetbrains.mps.nodeEditor.EditorSettings;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import java.util.Map;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import java.util.HashMap;
-import com.intellij.openapi.vcs.annotate.FileAnnotation;
-import com.intellij.openapi.vcs.history.VcsRevisionNumber;
+import jetbrains.mps.vcs.diff.ui.common.Bounds;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
-import com.intellij.openapi.vcs.annotate.LineAnnotationAspect;
-import org.jetbrains.mps.openapi.model.EditableSModel;
-import jetbrains.mps.smodel.persistence.lines.LineContent;
-import jetbrains.mps.vcs.diff.changes.ModelChange;
-import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
+import jetbrains.mps.vcs.diff.changes.ModelChange;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.util.HashMap;
+import com.intellij.openapi.util.Couple;
+import com.intellij.openapi.vcs.history.VcsRevisionNumber;
+import java.awt.Color;
+import jetbrains.mps.nodeEditor.RootAnnotation;
+import jetbrains.mps.openapi.editor.style.StyleRegistry;
+import jetbrains.mps.nodeEditor.EditorTooltipProvider;
 import jetbrains.mps.nodeEditor.leftHighlighter.LeftEditorHighlighter;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import com.intellij.openapi.vcs.actions.AnnotationColors;
-import com.intellij.ui.ColorUtil;
 import org.jetbrains.mps.openapi.module.SRepository;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.vcs.changesmanager.CurrentDifference;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import jetbrains.mps.vcs.diff.ModelChangeSet;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener;
-import jetbrains.mps.vcs.diff.changes.SetPropertyChange;
-import jetbrains.mps.smodel.persistence.lines.PropertyLineContent;
-import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
-import jetbrains.mps.smodel.persistence.lines.ReferenceLineContent;
-import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
-import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
-import jetbrains.mps.vcs.diff.changes.SetConceptChange;
-import jetbrains.mps.vcs.diff.changes.NodeIdChange;
-import jetbrains.mps.nodeEditor.EditorComponent;
+import com.intellij.openapi.editor.colors.EditorColorsScheme;
+import com.intellij.openapi.vcs.actions.AnnotationsSettings;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import java.util.function.BiConsumer;
+import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
+import jetbrains.mps.nodeEditor.EditorComponent;
+import org.jetbrains.annotations.Nullable;
 import java.awt.Graphics;
 import jetbrains.mps.nodeEditor.cells.FontRegistry;
 import java.awt.Graphics2D;
+import jetbrains.mps.internal.collections.runtime.IMapping;
 import java.awt.FontMetrics;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
-import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.openapi.editor.cells.EditorCell;
-import org.jetbrains.mps.util.Condition;
-import jetbrains.mps.openapi.editor.cells.CellConditions;
-import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
-import java.util.Collections;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import java.util.Iterator;
-import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
+import javax.swing.SwingUtilities;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
-import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
+import jetbrains.mps.nodeEditor.messageTargets.EditorMessageWithTarget;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.awt.event.MouseEvent;
+import com.intellij.ide.util.PropertiesComponent;
+import git4idea.GitFileRevision;
+import java.util.Date;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.vcs.log.impl.VcsLogApplicationSettings;
+import com.intellij.vcs.log.impl.CommonUiProperties;
+import git4idea.annotate.AnnotationTooltipBuilder;
+import com.intellij.util.containers.Convertor;
+import git4idea.log.GitCommitTooltipLinkHandler;
+import com.intellij.openapi.vcs.VcsBundle;
+import com.intellij.util.text.DateFormatUtil;
+import org.jetbrains.idea.svn.history.SvnFileRevision;
 import java.awt.Cursor;
-import com.intellij.openapi.vcs.annotate.LineAnnotationAspectAdapter;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.internal.collections.runtime.IterableUtils;
+import jetbrains.mps.vcs.diff.changes.ChangeType;
+import jetbrains.mps.vcs.diff.ui.common.ChangeColors;
+import com.intellij.openapi.vcs.annotate.ShowAllAffectedGenericAction;
+import org.jetbrains.mps.openapi.model.SModel;
 import javax.swing.JPopupMenu;
 import com.intellij.openapi.actionSystem.AnAction;
 import jetbrains.mps.workbench.action.BaseAction;
@@ -77,141 +87,197 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.Separator;
 import com.intellij.openapi.ide.CopyPasteManager;
 import com.intellij.util.ui.TextTransferable;
+import jetbrains.mps.workbench.action.BaseGroup;
+import com.intellij.openapi.actionSystem.ToggleAction;
+import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.workbench.action.ActionUtils;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
-import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.codeInsight.hint.TooltipGroup;
+import jetbrains.mps.codeInsight.hint.TooltipRenderer;
+import jetbrains.mps.codeInsight.hint.TooltipController;
+import jetbrains.mps.openapi.editor.cells.CellMessagesUtil;
+import com.intellij.openapi.ui.popup.Balloon;
+import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessageFactory;
+import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
-import org.jetbrains.mps.openapi.model.SNodeId;
-import jetbrains.mps.vcs.diff.ChangeSet;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/309173295241373953", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
-public class AnnotationColumn extends AbstractLeftColumn {
-  private static final Color ANNOTATION_COLOR = StyleRegistry.getInstance().getColor("ANNOTATIONS_COLOR");
+public class AnnotationColumn extends AbstractLeftColumn implements EditorMessageOwner {
+  private final MPSProject myMpsProject;
+  private final AbstractVcs myVcs;
+  private final SNode myRoot;
   private Font myFont = EditorSettings.getInstance().getDefaultEditorFont();
   private List<AnnotationAspectSubcolumn> myAspectSubcolumns = ListSequence.fromList(new ArrayList<AnnotationAspectSubcolumn>());
-  private List<Integer> myPseudoLinesY;
-  private List<LineRevisionRecord> myEditorLineRecords;
+  private Map<Bounds, VcsFileRevision> myLineRevisionMap = new ConcurrentHashMap<Bounds, VcsFileRevision>();
   private int mySubcolumnInterval;
-  private Map<String, Color> myAuthorsToColors = MapSequence.fromMap(new HashMap<String, Color>());
-  private final FileAnnotation myFileAnnotation;
-  private Map<VcsRevisionNumber, VcsFileRevision> myRevisionNumberToRevision = MapSequence.fromMap(new HashMap<VcsRevisionNumber, VcsFileRevision>());
-  private LineAnnotationAspect myAuthorAnnotationAspect;
-  private final EditableSModel myModel;
-  private final List<LineContent> myFileLineToContent;
-  private Map<ModelChange, LineContent[]> myChangesToLineContents = MapSequence.fromMap(new HashMap<ModelChange, LineContent[]>());
-  private Set<Integer> myCurrentPseudoLines = null;
   private VcsRevisionRange myRevisionRange;
   private ViewActionGroup myViewActionGroup;
   private MyDifferenceListener myDifferenceListener = new MyDifferenceListener();
   private boolean myShowAdditionalInfo = false;
   private MessageBusConnection myMessageBusConnection;
   private final CurrentDifferenceRegistry myDiffRegistry;
+  private final Map<ModelChange, List<AnnotationEditorMessage>> myLocalChangesMessageMap = new ConcurrentHashMap<ModelChange, List<AnnotationEditorMessage>>();
+  private final Map<EditorCell, VcsFileRevision> myCellRevisionMap = MapSequence.fromMap(new HashMap<EditorCell, VcsFileRevision>());
+  private Couple<Map<VcsRevisionNumber, Color>> myBgColorMap;
+  private VcsFileRevision myRevisionUnderMouse;
+  private final RootAnnotation myRootAnnotation;
+  private List<AnnotatedCellMessage> myHighlightedMessages;
+  private static final Color ANNOTATION_COLOR = StyleRegistry.getInstance().getColor("ANNOTATIONS_COLOR");
+  private static final String TOOLTIP_ACTION_KEY = "annotate.show.tooltips";
+  private static final String HIGHLIGHT_CELLS_ACTION_KEY = "annotate.show.highlightcells";
+  private static final String ANNOTATE_CELLS_ACTION_KEY = "annotate.show.annotatecells";
+  private volatile boolean myLocalChangeIsAdding;
+  private EditorTooltipProvider myEditorTooltipProvider;
 
 
-  /*package*/ AnnotationColumn(LeftEditorHighlighter leftEditorHighlighter, SNode root, @NotNull FileAnnotation fileAnnotation, @NotNull List<LineContent> lineToContent) {
+  public AnnotationColumn(LeftEditorHighlighter leftEditorHighlighter, MPSProject mpsProject, AbstractVcs vcs, SNode root, RootAnnotation annotation) {
     super(leftEditorHighlighter);
-    myModel = (EditableSModel) SNodeOperations.getModel(root);
-    myFileAnnotation = fileAnnotation;
-    myFileLineToContent = lineToContent;
-    myAuthorAnnotationAspect = Sequence.fromIterable(Sequence.fromArray(myFileAnnotation.getAspects())).findFirst(new IWhereFilter<LineAnnotationAspect>() {
-      public boolean accept(LineAnnotationAspect a) {
-        return LineAnnotationAspect.AUTHOR.equals(a.getId());
-      }
-    });
-    ListSequence.fromList(myAspectSubcolumns).addSequence(Sequence.fromIterable(Sequence.fromArray(fileAnnotation.getAspects())).select(new ISelector<LineAnnotationAspect, AnnotationAspectSubcolumn>() {
-      public AnnotationAspectSubcolumn select(LineAnnotationAspect a) {
-        return new AnnotationAspectSubcolumn(AnnotationColumn.this, a);
-      }
-    }));
-    ListSequence.fromList(myAspectSubcolumns).addElement(new CommitNumberSubcolumn(this, myFileAnnotation));
-    for (VcsFileRevision revision : ListSequence.fromList(myFileAnnotation.getRevisions())) {
-      String author = revision.getAuthor();
-      if (!(MapSequence.fromMap(myAuthorsToColors).containsKey(author))) {
-        Color color = AnnotationColors.BG_COLORS[MapSequence.fromMap(myAuthorsToColors).count() % AnnotationColors.BG_COLORS.length];
-        if (StyleRegistry.getInstance().isDarkTheme()) {
-          color = ColorUtil.shift(color, 0.3);
-        }
-        MapSequence.fromMap(myAuthorsToColors).put(author, color);
-      }
-      //  XXX can use FA.getCurrentFileRevisionProvider() 
-      MapSequence.fromMap(myRevisionNumberToRevision).put(revision.getRevisionNumber(), revision);
-    }
+    myMpsProject = mpsProject;
+    myVcs = vcs;
+    myRoot = root;
+    myRootAnnotation = annotation;
+
+    ListSequence.fromList(myAspectSubcolumns).addElement(new RevisionAspectSubcolumn(this));
+    ListSequence.fromList(myAspectSubcolumns).addElement(new DateAspectSubcolumn(this));
+    AuthorAspectSubcolumn authorAspectSubcolumn = new AuthorAspectSubcolumn(this);
+    ListSequence.fromList(myAspectSubcolumns).addElement(authorAspectSubcolumn);
+    ListSequence.fromList(myAspectSubcolumns).addElement(new CommitNumberSubcolumn(this));
     myViewActionGroup = new ViewActionGroup(this, myAspectSubcolumns);
+    authorAspectSubcolumn.setViewActionGroup(myViewActionGroup);
     myRevisionRange = new VcsRevisionRange(this);
     ListSequence.fromList(myAspectSubcolumns).addElement(new HighlightRevisionSubcolumn(this, myRevisionRange));
+
+    updateAnnotations();
+    myBgColorMap = computeBgColors();
+
     final SRepository editorRepo = getEditorComponent().getEditorContext().getRepository();
-    final Project ideaProject = fileAnnotation.getProject();
+    final Project ideaProject = myMpsProject.getProject();
     myDiffRegistry = CurrentDifferenceRegistry.getInstance(ideaProject);
     myDiffRegistry.getCommandQueue().runTask(new Runnable() {
       public void run() {
-        final CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference(myModel);
+        final CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference((EditableSModel) myRoot.getModel());
+        currentDifference.addDifferenceListener(myDifferenceListener);
+        myLocalChangeIsAdding = true;
         editorRepo.getModelAccess().runReadAction(new Runnable() {
           public void run() {
-            ListSequence.fromList(check_5mnya_a0a0a0a1a0a0o0w(currentDifference.getChangeSet())).visitAll(new IVisitor<ModelChange>() {
-              public void visit(ModelChange ch) {
-                saveChange(ch);
+            ListSequence.fromList(check_5mnya_a0a0a0a3a0a0w0bb(((ModelChangeSet) currentDifference.getChangeSet()))).visitAll(new IVisitor<ModelChange>() {
+              public void visit(ModelChange it) {
+                addLocalChange(it);
               }
             });
           }
         });
-        currentDifference.addDifferenceListener(myDifferenceListener);
+        myLocalChangeIsAdding = false;
+        updateAnnotations();
       }
     });
     myMessageBusConnection = ideaProject.getMessageBus().connect();
     myMessageBusConnection.subscribe(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION, new MyEditorComponentCreateListener());
   }
-  private void saveChange(ModelChange ch) {
-    if (ch instanceof SetPropertyChange) {
-      SetPropertyChange spc = (SetPropertyChange) ch;
-      MapSequence.fromMap(myChangesToLineContents).put(ch, new LineContent[]{new PropertyLineContent(spc.getAffectedNodeId(), spc.getProperty())});
-    } else if (ch instanceof SetReferenceChange) {
-      SetReferenceChange src = (SetReferenceChange) ch;
-      MapSequence.fromMap(myChangesToLineContents).put(ch, new LineContent[]{new ReferenceLineContent(src.getAffectedNodeId(), src.getRoleLink())});
-    } else if (ch instanceof NodeGroupChange) {
-      NodeGroupChange ngc = (NodeGroupChange) ch;
-      Iterable<SNode> newChildren = AttributeOperations.getChildNodesAndAttributes(((SNode) myModel.getNode(ngc.getNewParentNodeId())), ngc.getRoleLink());
-      MapSequence.fromMap(myChangesToLineContents).put(ch, Sequence.fromIterable(newChildren).page(ngc.getResultBegin(), ngc.getResultEnd()).select(new ISelector<SNode, NodeLineContent>() {
-        public NodeLineContent select(SNode n) {
-          return new NodeLineContent(n.getNodeId());
-        }
-      }).toGenericArray(NodeLineContent.class));
-    } else if (ch instanceof SetConceptChange) {
-      SetConceptChange src = (SetConceptChange) ch;
-      MapSequence.fromMap(myChangesToLineContents).put(ch, new LineContent[]{new NodeLineContent(src.getAffectedNodeId())});
-    } else if (ch instanceof NodeIdChange) {
-      NodeIdChange nic = (NodeIdChange) ch;
-      MapSequence.fromMap(myChangesToLineContents).put(ch, new LineContent[]{new NodeLineContent(nic.getNodeId(true))});
+
+
+  /**
+   * Copied from AnnotationToggleAction.computeBgColors
+   */
+  private Couple<Map<VcsRevisionNumber, Color>> computeBgColors() {
+
+    Map<VcsRevisionNumber, Color> commitOrderColors = new HashMap<VcsRevisionNumber, Color>();
+    final Map<VcsRevisionNumber, Color> commitAuthorColors = new HashMap<VcsRevisionNumber, Color>();
+
+    EditorSettings editorSettings = EditorSettings.getInstance();
+    EditorColorsScheme colorsScheme = editorSettings.getColorScheme();
+    AnnotationsSettings settings = AnnotationsSettings.getInstance();
+    List<Color> authorsColorPalette = settings.getAuthorsColors(colorsScheme);
+    List<Color> orderedColorPalette = settings.getOrderedColors(colorsScheme);
+
+    Map<VcsRevisionNumber, String> authorsMap = myRootAnnotation.getAuthors();
+
+    final Map<String, Color> authorColors = MapSequence.fromMap(new HashMap<String, Color>());
+    List<String> authors = ListSequence.fromList(new ArrayList<String>());
+    ListSequence.fromList(authors).addSequence(CollectionSequence.fromCollection(authorsMap.values()));
+    for (String author : ListSequence.fromList(authors).distinct().sort(new ISelector<String, String>() {
+      public String select(String it) {
+        return it;
+      }
+    }, true)) {
+      int index = MapSequence.fromMap(authorColors).count();
+      Color color = authorsColorPalette.get(index % authorsColorPalette.size());
+      MapSequence.fromMap(authorColors).put(author, color);
     }
+    authorsMap.forEach(new BiConsumer<VcsRevisionNumber, String>() {
+      public void accept(VcsRevisionNumber revisionNumber, String author) {
+        MapSequence.fromMap(commitAuthorColors).put(revisionNumber, MapSequence.fromMap(authorColors).get(author));
+      }
+    });
+
+
+    List<List<VcsRevisionNumber>> orderedRevisions = myRootAnnotation.getOrderedRevisionNumbers();
+    List<List<VcsRevisionNumber>> actualOrderedRevisions = new ArrayList<List<VcsRevisionNumber>>();
+    Set<VcsRevisionNumber> actualRevisions = SetSequence.fromSetWithValues(new HashSet<VcsRevisionNumber>(), Sequence.fromIterable(MapSequence.fromMap(myCellRevisionMap).values()).where(new NotNullWhereFilter<VcsFileRevision>()).select(new ISelector<VcsFileRevision, VcsRevisionNumber>() {
+      public VcsRevisionNumber select(VcsFileRevision it) {
+        return it.getRevisionNumber();
+      }
+    }));
+    for (List<VcsRevisionNumber> numbers : orderedRevisions) {
+      List<VcsRevisionNumber> actualNumbers = new ArrayList<VcsRevisionNumber>();
+      for (VcsRevisionNumber number : numbers) {
+        if (SetSequence.fromSet(actualRevisions).contains(number)) {
+          actualNumbers.add(number);
+        }
+      }
+      if (!(actualNumbers.isEmpty())) {
+        actualOrderedRevisions.add(actualNumbers);
+      }
+    }
+
+    int revisionsCount = actualOrderedRevisions.size();
+    for (int index = 0; index < revisionsCount; index++) {
+      Color color = orderedColorPalette.get(orderedColorPalette.size() * index / revisionsCount);
+      List<VcsRevisionNumber> numbers = actualOrderedRevisions.get(index);
+      for (VcsRevisionNumber number : numbers) {
+        MapSequence.fromMap(commitOrderColors).put(number, color);
+      }
+    }
+
+    return Couple.of((MapSequence.fromMap(commitOrderColors).count() > 0 ? commitOrderColors : null), (MapSequence.fromMap(commitAuthorColors).count() > 0 ? commitAuthorColors : null));
   }
-  private void calculateCurrentPseudoLinesLater() {
+
+  private void repaintHighlighter() {
     EditorComponent ec = getEditorComponent();
     if (ec == null || ec.isDisposed()) {
       return;
     }
     ec.getEditorContext().getRepository().getModelAccess().runReadInEDT(new Runnable() {
       public void run() {
-        myCurrentPseudoLines = SetSequence.fromSet(new HashSet<Integer>());
-        for (LineContent[] lineContents : MapSequence.fromMap(myChangesToLineContents).values()) {
-          for (LineContent lc : lineContents) {
-            SetSequence.fromSet(myCurrentPseudoLines).addSequence(Sequence.fromIterable(getPseudoLinesForContent(lc)));
-          }
-        }
         getLeftEditorHighlighter().repaint();
       }
     });
   }
+
   @Override
   public String getName() {
     return "Annotations";
   }
+
+
+  @Nullable
+  private Color getRevisionColor(VcsFileRevision revision) {
+    ViewActionGroup.ColorsOption colorsOption = myViewActionGroup.getSelectedColorsOption();
+    if (colorsOption != ViewActionGroup.ColorsOption.HIDE) {
+      Map<VcsRevisionNumber, Color> colorMap = (colorsOption == ViewActionGroup.ColorsOption.AUTHOR ? myBgColorMap.second : myBgColorMap.first);
+      return (colorMap == null ? null : MapSequence.fromMap(colorMap).get(revision.getRevisionNumber()));
+    }
+    return null;
+  }
+
   @Override
-  public void paint(Graphics graphics) {
+  public void paint(final Graphics graphics) {
     graphics.setFont(myFont);
     final Font boldFont = FontRegistry.getInstance().getFont(myFont.getName(), myFont.getStyle() | Font.BOLD, myFont.getSize());
     EditorComponent.turnOnAliasingIfPossible((Graphics2D) graphics);
-    Map<AnnotationAspectSubcolumn, Integer> subcolumnToX = MapSequence.fromMap(new HashMap<AnnotationAspectSubcolumn, Integer>());
+    final Map<AnnotationAspectSubcolumn, Integer> subcolumnToX = MapSequence.fromMap(new HashMap<AnnotationAspectSubcolumn, Integer>());
     int x = getX() + 1;
     for (AnnotationAspectSubcolumn subcolumn : ListSequence.fromList(myAspectSubcolumns)) {
       MapSequence.fromMap(subcolumnToX).put(subcolumn, x);
@@ -219,47 +285,43 @@ public class AnnotationColumn extends AbstractLeftColumn {
         x += subcolumn.getWidth() + mySubcolumnInterval;
       }
     }
-    for (int pseudoLine = 0; pseudoLine < ListSequence.fromList(myPseudoLinesY).count(); pseudoLine++) {
-      if (SetSequence.fromSet(myCurrentPseudoLines).contains(pseudoLine)) {
-        continue;
-      }
-      LineRevisionRecord record = ListSequence.fromList(myEditorLineRecords).getElement(pseudoLine);
-      if (record == null) {
-        // XXX is it possible to face this? Previous code didn't account for myPseudoLinesToFileLines[pseudoLine] == -1 
-        continue;
-      }
-
-      int height = (pseudoLine == ListSequence.fromList(myPseudoLinesY).count() - 1 ? getEditorComponent().getHeight() - ListSequence.fromList(myPseudoLinesY).last() : ListSequence.fromList(myPseudoLinesY).getElement(pseudoLine + 1) - ListSequence.fromList(myPseudoLinesY).getElement(pseudoLine));
-      if (myAuthorAnnotationAspect != null && ViewAction.isSet(ViewAction.COLORS)) {
-        String author = record.rev.getAuthor();
-        graphics.setColor(MapSequence.fromMap(myAuthorsToColors).get(author));
-        graphics.fillRect(getX(), ListSequence.fromList(myPseudoLinesY).getElement(pseudoLine), getWidth(), height);
-      }
-
-      graphics.setColor(ANNOTATION_COLOR);
-      if (myRevisionRange.isRevisionHighlighted(record.rev)) {
-        graphics.setFont(boldFont);
-      } else {
-        graphics.setFont(myFont);
-      }
-      FontMetrics metrics = graphics.getFontMetrics();
-      if (height < metrics.getHeight()) {
-        continue;
-      }
-      for (AnnotationAspectSubcolumn subcolumn : ListSequence.fromList(myAspectSubcolumns).where(new IWhereFilter<AnnotationAspectSubcolumn>() {
-        public boolean accept(AnnotationAspectSubcolumn s) {
-          return myShowAdditionalInfo || s.isEnabled();
+    MapSequence.fromMap(myLineRevisionMap).visitAll(new IVisitor<IMapping<Bounds, VcsFileRevision>>() {
+      public void visit(IMapping<Bounds, VcsFileRevision> it) {
+        VcsFileRevision revision = it.value();
+        int y = (int) it.key().start();
+        int height = it.key().length();
+        Color color = getRevisionColor(revision);
+        if (color != null) {
+          graphics.setColor(color);
+          graphics.fillRect(getX(), y, getWidth(), height);
         }
-      })) {
-        String text = subcolumn.getTextForFileLine(record);
-        int textX = MapSequence.fromMap(subcolumnToX).get(subcolumn);
-        if (subcolumn.isRightAligned()) {
-          textX += subcolumn.getWidth() - metrics.stringWidth(text);
+
+        graphics.setColor(ANNOTATION_COLOR);
+        if (myRevisionRange.isRevisionHighlighted(revision)) {
+          graphics.setFont(boldFont);
+        } else {
+          graphics.setFont(myFont);
         }
-        graphics.drawString(text, textX, metrics.getAscent() + ListSequence.fromList(myPseudoLinesY).getElement(pseudoLine));
+        FontMetrics metrics = graphics.getFontMetrics();
+        // display text only if at least half of it can be visible 
+        if (2 * height >= metrics.getHeight()) {
+          for (AnnotationAspectSubcolumn subcolumn : ListSequence.fromList(myAspectSubcolumns).where(new IWhereFilter<AnnotationAspectSubcolumn>() {
+            public boolean accept(AnnotationAspectSubcolumn s) {
+              return myShowAdditionalInfo || s.isEnabled();
+            }
+          })) {
+            String text = subcolumn.getText(revision);
+            int textX = MapSequence.fromMap(subcolumnToX).get(subcolumn);
+            if (subcolumn.isRightAligned()) {
+              textX += subcolumn.getWidth() - metrics.stringWidth(text);
+            }
+            graphics.drawString(text, textX, y + metrics.getAscent());
+          }
+        }
       }
-    }
+    });
   }
+
   @Override
   public int getWidth() {
     return (ListSequence.fromList(myAspectSubcolumns).isEmpty() ? 0 : ListSequence.fromList(myAspectSubcolumns).select(new ISelector<AnnotationAspectSubcolumn, Integer>() {
@@ -273,267 +335,409 @@ public class AnnotationColumn extends AbstractLeftColumn {
     }) + 1 + mySubcolumnInterval / 2);
   }
 
-  @Nullable
-  private VcsFileRevision fileRevForLine(int fileLine) {
-    return MapSequence.fromMap(myRevisionNumberToRevision).get(myFileAnnotation.getLineRevisionNumber(fileLine));
-  }
-
-  @Nullable
-  private EditorCell findCellForContent(@Nullable LineContent content) {
-    if (content == null) {
-      return null;
+  private void updateAnnotations() {
+    if (myLocalChangeIsAdding) {
+      return;
     }
-    EditorComponent editor = getEditorComponent();
-    SNode editedNode = editor.getEditedNode();
-    SNode node = editedNode.getModel().getNode(content.getNodeId());
-    if (node == null || !(ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).contains(editedNode))) {
-      return null;
-    }
-
-    jetbrains.mps.nodeEditor.cells.EditorCell bigCellForNode = editor.getBigValidCellForNode(node);
-    if (bigCellForNode == null) {
-      return null;
-    }
-
-    if (content instanceof NodeLineContent) {
-      // FIXME treat node annotations so that they don't grab chnages of the annotated node just because they are 'big' cells 
-      return bigCellForNode;
-    } else if (content instanceof PropertyLineContent) {
-      PropertyLineContent plc = (PropertyLineContent) content;
-      final Condition<EditorCell> isPropCell;
-      if (plc.getProperty() != null) {
-        isPropCell = new CellConditions.PropertyCellCondition(node, plc.getProperty());
-      } else {
-        isPropCell = new jetbrains.mps.nodeEditor.cells.CellConditions.LegacyPropertyCellCondition(node, plc.getName());
-      }
-      return CellFinderUtil.findChildByCondition(bigCellForNode, isPropCell, true, true);
-    } else if (content instanceof ReferenceLineContent) {
-      ReferenceLineContent rlc = (ReferenceLineContent) content;
-      final Condition<EditorCell> isRefCell;
-      if (rlc.getLink() != null) {
-        isRefCell = new CellConditions.AssociationCellCondition(node, rlc.getLink());
-      } else {
-        isRefCell = new jetbrains.mps.nodeEditor.cells.CellConditions.LegacyAssociationCellCondition(node, rlc.getRole());
-      }
-      return CellFinderUtil.findChildByCondition(bigCellForNode, isRefCell, true, true);
-    } else {
-      return null;
-    }
-
-  }
-  private Iterable<Integer> getPseudoLinesForContent(@Nullable LineContent content) {
-    // XXX what makes me feel uneasy is that findCellForContent gives whole node cell in case respective cell for Property/Reference LineContent have not been found 
-    //     On one hand, the change is indeed there and we might want to reflect the fact node has been changed. OTOH, it might be technical/private property not reflected in the editor and 
-    //     there's no reason to tell it's a change for complete node. 
-    EditorCell cell = findCellForContent(content);
-    if (cell == null) {
-      return Sequence.fromIterable(Collections.<Integer>emptyList());
-    }
-    final Wrappers._int startPseudoLine = new Wrappers._int(Collections.binarySearch((List) myPseudoLinesY, cell.getY()));
-    if (startPseudoLine.value < 0) {
-      startPseudoLine.value = -startPseudoLine.value - 1;
-    }
-    final Wrappers._int endPseudoLine = new Wrappers._int(Collections.binarySearch((List) myPseudoLinesY, cell.getY() + cell.getHeight()));
-    if (endPseudoLine.value < 0) {
-      endPseudoLine.value = -endPseudoLine.value - 1;
-    }
-    return new _FunctionTypes._return_P0_E0<Iterable<Integer>>() {
-      public Iterable<Integer> invoke() {
-        return new Iterable<Integer>() {
-          public Iterator<Integer> iterator() {
-            return new YieldingIterator<Integer>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
-__loop__:
-                do {
-__switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this._2_pseudoLine = startPseudoLine.value;
-                    case 3:
-                      if (!(_2_pseudoLine < endPseudoLine.value)) {
-                        this.__CP__ = 1;
-                        break;
-                      }
-                      this.__CP__ = 4;
-                      break;
-                    case 5:
-                      _2_pseudoLine++;
-                      this.__CP__ = 3;
-                      break;
-                    case 6:
-                      this.__CP__ = 5;
-                      this.yield(_2_pseudoLine);
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    case 4:
-                      this.__CP__ = 6;
-                      break;
-                    default:
-                      break __loop__;
-                  }
-                } while (true);
-                return false;
-              }
-              private int _2_pseudoLine;
-            };
-          }
-        };
-      }
-    }.invoke();
-  }
-  @Override
-  public void relayout() {
     EditorComponent editor = getEditorComponent();
     if (editor == null || editor.isDisposed()) {
       return;
     }
-    Iterable<EditorCell> nonTrivialCells = Sequence.fromIterable(EditorUtils.getCellDescendants(editor.getRootCell())).where(new IWhereFilter<EditorCell>() {
-      public boolean accept(EditorCell cell) {
-        return !((cell instanceof EditorCell_Collection)) && cell.getWidth() * cell.getHeight() != 0;
+    computeAnnotations();
+    repaintHighlighter();
+    if (cellsAreAnnotated()) {
+      SwingUtilities.invokeLater(new Runnable() {
+        public void run() {
+          annotateCells();
+        }
+      });
+    }
+  }
+
+  private void updateMessagesLeafCells(Iterable<AnnotationEditorMessage> messages, final Iterable<EditorCell> allLeafCells) {
+    final Map<EditorCell, Set<EditorCell_Collection>> leafToParentsMap = MapSequence.fromMap(new HashMap<EditorCell, Set<EditorCell_Collection>>());
+
+    Sequence.fromIterable(allLeafCells).visitAll(new IVisitor<EditorCell>() {
+      public void visit(EditorCell leaf) {
+        Set<EditorCell_Collection> parents = SetSequence.fromSet(new HashSet<EditorCell_Collection>());
+        EditorCell_Collection parent = leaf.getParent();
+        while (parent != null) {
+          SetSequence.fromSet(parents).addElement(parent);
+          parent = parent.getParent();
+        }
+        MapSequence.fromMap(leafToParentsMap).put(leaf, parents);
       }
     });
-    Set<Integer> yCoordinatesSet = SetSequence.fromSetWithValues(new HashSet<Integer>(), Sequence.fromIterable(nonTrivialCells).select(new ISelector<EditorCell, Integer>() {
+    Sequence.fromIterable(messages).visitAll(new IVisitor<AnnotationEditorMessage>() {
+      public void visit(AnnotationEditorMessage it) {
+        it.updateLeafCells(getEditorComponent(), allLeafCells, leafToParentsMap);
+      }
+    });
+  }
+
+  private List<Integer> computeLines(Iterable<EditorCell> allLeafCells) {
+    Set<Integer> yCoordinatesSet = SetSequence.fromSetWithValues(new HashSet<Integer>(), Sequence.fromIterable(allLeafCells).select(new ISelector<EditorCell, Integer>() {
       public Integer select(EditorCell cell) {
         return cell.getY();
       }
     }));
-    myPseudoLinesY = SetSequence.fromSet(yCoordinatesSet).sort(new ISelector<Integer, Integer>() {
+    final List<Integer> lines = SetSequence.fromSet(yCoordinatesSet).sort(new ISelector<Integer, Integer>() {
       public Integer select(Integer y) {
         return y;
       }
     }, true).toListSequence();
-    myEditorLineRecords = ListSequence.fromList(new ArrayList<LineRevisionRecord>());
-    ListSequence.fromList(myPseudoLinesY).visitAll(new IVisitor<Integer>() {
-      public void visit(Integer t) {
-        ListSequence.fromList(myEditorLineRecords).addElement(null);
+    int bottomY = Sequence.fromIterable(allLeafCells).where(new IWhereFilter<EditorCell>() {
+      public boolean accept(EditorCell cell) {
+        return cell.getY() == (int) ListSequence.fromList(lines).last();
       }
-    });
-    editor.getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        // It seems the reason for model read is getPseudoLinedForContent->findCellForContent that deals with model of edited node 
-        for (int fileLine = 0; fileLine < ListSequence.fromList(myFileLineToContent).count(); fileLine++) {
-          LineContent lineContent = ListSequence.fromList(myFileLineToContent).getElement(fileLine);
-          final VcsFileRevision fileLineRev = fileRevForLine(fileLine);
-          if (fileLineRev == null) {
-            // though it's odd, it happens that FileAnnotation.getLineRevisionNumber gives VcsRevisionNumber 
-            // that has not been reported from FA.getRevisions().getRevisionNumber(), and the mapping is null 
-            // FIXME figure out why is that and what one can do not to get empty lines in annotate 
-            continue;
-          }
-          for (int pseudoLine : getPseudoLinesForContent(lineContent)) {
-            final LineRevisionRecord lr = ListSequence.fromList(myEditorLineRecords).getElement(pseudoLine);
-            if (lr == null) {
-              // XXX we might want to share same LRR instance for the group of editor lines, but then need to be careful 
-              // when updating its actual revision 
-              ListSequence.fromList(myEditorLineRecords).setElement(pseudoLine, new LineRevisionRecord(lineContent.getNodeId(), fileLineRev, fileLine));
-            } else {
-              // we've got info for the editor line already, and it's attributed to some node and a revision 
-              if (lr.nodeId.equals(lineContent.getNodeId())) {
-                // same node is reported, but different revision, perhaps? Update if newer, keep previous otherwise 
-                if (lr.rev.getRevisionDate().before(fileLineRev.getRevisionDate())) {
-                  lr.rev = fileLineRev;
-                  lr.fileLine = fileLine;
-                }
-              } else {
-                // new node is reported for the line 
-                // XXX it might be child of the original and therefore needs to take precedence over parent 
-                //     or it might be parent again after child put its record earlier, replacing parent record 
-                //     (keep in mind nested and closing tags <node parent><node child/></node parent>) 
-                if (!(lr.isAmongPrevious(lineContent.getNodeId()))) {
-                  // treat actual LineContent as more relevant and overwrite editor line record, yet keep knowledge about nodeid of the original record 
-                  ListSequence.fromList(myEditorLineRecords).setElement(pseudoLine, new LineRevisionRecord(lineContent.getNodeId(), fileLineRev, fileLine, lr));
-                }
-                // else this editor line has been recorded for the node of actual lineContent and later overwritten with another node 
-                // assume that other node is more relevant (e.g. actual LineContent represents closing </node> tag of a parent node 
-                // indeed, it's not necessarily true (we'd better record 'technical' lines like closing tag right in LineContent), but this heuristic is still better 
-                // than 'just take the latest' approach 
-              }
-            }
-          }
+    }).sort(new ISelector<EditorCell, Integer>() {
+      public Integer select(EditorCell it) {
+        return it.getBottom();
+      }
+    }, false).first().getBottom();
+    ListSequence.fromList(lines).addElement(bottomY);
+    return lines;
+  }
+
+
+  private static int compareRevisions(VcsFileRevision a, VcsFileRevision b) {
+    if ((a == null && b == null) || a == b) {
+      return 0;
+    }
+    if (b == null) {
+      return -1;
+    }
+    if (a == null) {
+      return 1;
+    }
+    return (a.getRevisionDate().after(b.getRevisionDate()) ? 1 : -1);
+  }
+
+  private VcsFileRevision getLatestRevision(Iterable<VcsFileRevision> revisions) {
+    VcsFileRevision latestRevision = null;
+    for (VcsFileRevision revision : revisions) {
+      if (revision == null) {
+        return null;
+      }
+      if (latestRevision == null || compareRevisions(revision, latestRevision) > 0) {
+        latestRevision = revision;
+      }
+    }
+    return latestRevision;
+  }
+
+  private synchronized void computeAnnotations() {
+    List<AnnotationEditorMessage> messages = ListSequence.fromList(new ArrayList<AnnotationEditorMessage>());
+    for (EditorMessageWithTarget message : myRootAnnotation.getMessages()) {
+      ListSequence.fromList(messages).addElement((AnnotationEditorMessage) message);
+    }
+    ListSequence.fromList(messages).addSequence(Sequence.fromIterable(getLocalMessages()));
+
+    Iterable<EditorCell> allLeafCells = ListSequence.fromListWithValues(new ArrayList<EditorCell>(), Sequence.fromIterable(EditorUtils.getCellDescendants(getEditorComponent().getRootCell())).where(new IWhereFilter<EditorCell>() {
+      public boolean accept(EditorCell cell) {
+        return !((cell instanceof EditorCell_Collection)) && cell.getWidth() * cell.getHeight() != 0;
+      }
+    }).toListSequence());
+
+    updateMessagesLeafCells(messages, allLeafCells);
+
+    final List<Integer> pseudoLines = computeLines(allLeafCells);
+    Map<Bounds, VcsFileRevision> lineRevisionMap = MapSequence.fromMap(new HashMap<Bounds, VcsFileRevision>());
+    for (final Wrappers._int line = new Wrappers._int(0); line.value < ListSequence.fromList(pseudoLines).count() - 1; line.value++) {
+      Bounds bounds = new Bounds(ListSequence.fromList(pseudoLines).getElement(line.value), ListSequence.fromList(pseudoLines).getElement(line.value + 1));
+      List<VcsFileRevision> lineRevisions = ListSequence.fromList(new ArrayList<VcsFileRevision>());
+      Iterable<EditorCell> lineCells = Sequence.fromIterable(allLeafCells).where(new IWhereFilter<EditorCell>() {
+        public boolean accept(EditorCell it) {
+          return it.getY() == (int) ListSequence.fromList(pseudoLines).getElement(line.value);
         }
+      });
+      for (final EditorCell leaf : lineCells) {
+        Iterable<VcsFileRevision> cellRevisions = ListSequence.fromList(messages).where(new IWhereFilter<AnnotationEditorMessage>() {
+          public boolean accept(AnnotationEditorMessage message) {
+            return ListSequence.fromList(message.getLeafCells()).contains(leaf);
+          }
+        }).select(new ISelector<AnnotationEditorMessage, VcsFileRevision>() {
+          public VcsFileRevision select(AnnotationEditorMessage it) {
+            return it.getRevision();
+          }
+        });
+        VcsFileRevision cellRevision = getLatestRevision(cellRevisions);
+        MapSequence.fromMap(myCellRevisionMap).put(leaf, cellRevision);
+        ListSequence.fromList(lineRevisions).addElement(cellRevision);
+      }
+      VcsFileRevision latestRevision = getLatestRevision(lineRevisions);
+      if (latestRevision != null) {
+        MapSequence.fromMap(lineRevisionMap).put(bounds, latestRevision);
+      }
+    }
+    MapSequence.fromMap(myLineRevisionMap).clear();
+    MapSequence.fromMap(myLineRevisionMap).putAll(lineRevisionMap);
+  }
+
+  @Override
+  public void editorRebuilt() {
+    SwingUtilities.invokeLater(new Runnable() {
+      public void run() {
+        updateAnnotations();
       }
     });
+  }
+
+  @Override
+  public void relayout() {
     FontMetrics metrics = FontRegistry.getInstance().getFontMetrics(myFont);
     for (AnnotationAspectSubcolumn aspectSubcolumn : ListSequence.fromList(myAspectSubcolumns)) {
-      aspectSubcolumn.computeWidth(metrics, ListSequence.fromList(myEditorLineRecords).where(new NotNullWhereFilter<LineRevisionRecord>()));
+      aspectSubcolumn.computeWidth(metrics, Sequence.fromIterable(MapSequence.fromMap(myLineRevisionMap).values()).where(new NotNullWhereFilter<VcsFileRevision>()));
     }
     mySubcolumnInterval = metrics.stringWidth(" ");
-    calculateCurrentPseudoLinesLater();
+
+    repaintHighlighter();
   }
+
   @Override
   public String getTooltipText(MouseEvent event) {
-    int fileLine = findFileLineByY(event.getY());
-    if (fileLine == -1) {
+    if (!(PropertiesComponent.getInstance().getBoolean(TOOLTIP_ACTION_KEY))) {
       return null;
-    } else {
-      return myFileAnnotation.getToolTip(fileLine);
     }
+    return getRevisionTooltip(getRevisionByY(event.getY()));
   }
+
+  /*package*/ String getRevisionTooltip(VcsFileRevision revision) {
+    if (revision == null) {
+      return null;
+    }
+
+    String tooltipText = null;
+    if (revision instanceof GitFileRevision) {
+      GitFileRevision gitRevision = (GitFileRevision) revision;
+      Date date = (Boolean.TRUE.equals(ApplicationManager.getApplication().getService(VcsLogApplicationSettings.class).get(CommonUiProperties.PREFER_COMMIT_DATE)) ? gitRevision.getRevisionDate() : gitRevision.getAuthorDate());
+
+      AnnotationTooltipBuilder atb = new AnnotationTooltipBuilder(myMpsProject.getProject(), true);
+
+      atb.appendRevisionLine(revision.getRevisionNumber(), new Convertor<VcsRevisionNumber, String>() {
+        public String convert(VcsRevisionNumber number) {
+          return GitCommitTooltipLinkHandler.createLink(number.asString(), number);
+        }
+      });
+      atb.appendLine(VcsBundle.message("commit.description.tooltip.author", revision.getAuthor()));
+      atb.appendLine(VcsBundle.message("commit.description.tooltip.date", DateFormatUtil.formatDate(date)));
+      atb.appendCommitMessageBlock(revision.getCommitMessage());
+      tooltipText = atb.toString();
+    } else if (revision instanceof SvnFileRevision) {
+      tooltipText = AnnotationTooltipBuilder.buildSimpleTooltip(myMpsProject.getProject(), true, "Revision", String.valueOf(revision.getRevisionNumber()), revision.getCommitMessage());
+    }
+    if (tooltipText != null) {
+      tooltipText = tooltipText.replace("\n", "<br>");
+    }
+    return tooltipText;
+  }
+
+
   @Nullable
   @Override
   public Cursor getCursor(MouseEvent event) {
-    return (findFileLineByY(event.getY()) == -1 ? null : new Cursor(Cursor.HAND_CURSOR));
+    return (getRevisionByY(event.getY()) == null ? null : new Cursor(Cursor.HAND_CURSOR));
   }
+
   @Override
   public void mousePressed(MouseEvent event) {
     if (event.getButton() == MouseEvent.BUTTON1 && event.getID() == MouseEvent.MOUSE_RELEASED) {
       event.consume();
-      int fileLine = findFileLineByY(event.getY());
-      ((LineAnnotationAspectAdapter) myFileAnnotation.getAspects()[0]).doAction(fileLine);
+      showPathsAffectedByRevision(getRevisionByY(event.getY()));
     } else {
       super.mousePressed(event);
     }
   }
+
   @Override
-  public void dispose() {
-    myDiffRegistry.getCommandQueue().runTask(new Runnable() {
-      public void run() {
-        myDiffRegistry.getCurrentDifference(myModel).removeDifferenceListener(myDifferenceListener);
+  public void mouseExited(MouseEvent e) {
+    super.mouseExited(e);
+    if (!(cellsAreAnnotated())) {
+      unhighlightAllMessages();
+    }
+    myRevisionUnderMouse = null;
+  }
+
+  @Override
+  public void mouseEntered(MouseEvent e) {
+    super.mouseEntered(e);
+    mouseMoved(e);
+  }
+
+  private static boolean cellsAreHighlighted() {
+    return PropertiesComponent.getInstance().getBoolean(HIGHLIGHT_CELLS_ACTION_KEY);
+  }
+
+  private static boolean cellsAreAnnotated() {
+    return PropertiesComponent.getInstance().getBoolean(ANNOTATE_CELLS_ACTION_KEY);
+  }
+
+
+  @Override
+  public void mouseMoved(MouseEvent e) {
+    if (cellsAreAnnotated() || !(cellsAreHighlighted())) {
+      return;
+    }
+    VcsFileRevision revision = getRevisionByY(e.getY());
+    boolean revisionNotChanged = (revision == null ? myRevisionUnderMouse == null : revision == myRevisionUnderMouse);
+    if (revisionNotChanged) {
+      return;
+    }
+    highlightMessagesForRevision(revision);
+    myRevisionUnderMouse = revision;
+  }
+
+  private void unhighlightAllMessages() {
+    synchronized (this) {
+      if (myHighlightedMessages != null) {
+        ListSequence.fromList(myHighlightedMessages).visitAll(new IVisitor<AnnotatedCellMessage>() {
+          public void visit(AnnotatedCellMessage message) {
+            getEditorComponent().getHighlightManager().unmark(message);
+          }
+        });
+        myHighlightedMessages = null;
+      }
+      if (myEditorTooltipProvider != null) {
+        getEditorComponent().removeTooltipProvider(myEditorTooltipProvider);
+        myEditorTooltipProvider = null;
+      }
+    }
+    getEditorComponent().getHighlightManager().repaintAndRebuildEditorMessages();
+  }
+
+
+  private Iterable<AnnotationEditorMessage> getLocalMessages() {
+    return MapSequence.fromMap(myLocalChangesMessageMap).translate(new ITranslator2<IMapping<ModelChange, List<AnnotationEditorMessage>>, AnnotationEditorMessage>() {
+      public Iterable<AnnotationEditorMessage> translate(IMapping<ModelChange, List<AnnotationEditorMessage>> it) {
+        return it.value();
       }
     });
-    myMessageBusConnection.disconnect();
-    myFileAnnotation.dispose();
   }
+
+
+  private Iterable<AnnotationEditorMessage> getCellMessages(final EditorCell cell, final VcsFileRevision revision) {
+    List<AnnotationEditorMessage> allMessages = ListSequence.fromList(new ArrayList<AnnotationEditorMessage>());
+    if (revision == null) {
+      ListSequence.fromList(allMessages).addSequence(Sequence.fromIterable(getLocalMessages()));
+    } else {
+      for (EditorMessageWithTarget message : myRootAnnotation.getMessages()) {
+        ListSequence.fromList(allMessages).addElement((AnnotationEditorMessage) message);
+      }
+    }
+    return ListSequence.fromList(allMessages).where(new IWhereFilter<AnnotationEditorMessage>() {
+      public boolean accept(AnnotationEditorMessage it) {
+        return compareRevisions(it.getRevision(), revision) == 0 && ListSequence.fromList(it.getLeafCells()).contains(cell);
+      }
+    });
+  }
+
+
+  /*package*/ void highlightMessagesForRevision(final VcsFileRevision revision) {
+
+    synchronized (this) {
+      if (myHighlightedMessages != null) {
+        ListSequence.fromList(myHighlightedMessages).visitAll(new IVisitor<AnnotatedCellMessage>() {
+          public void visit(AnnotatedCellMessage message) {
+            getEditorComponent().getHighlightManager().unmark(message);
+          }
+        });
+        myHighlightedMessages = null;
+      }
+      if (revision != null) {
+        myHighlightedMessages = ListSequence.fromList(new ArrayList<AnnotatedCellMessage>());
+        MapSequence.fromMap(myCellRevisionMap).visitAll(new IVisitor<IMapping<EditorCell, VcsFileRevision>>() {
+          public void visit(IMapping<EditorCell, VcsFileRevision> it) {
+            VcsFileRevision cellRevision = it.value();
+            if (revision == cellRevision) {
+              EditorCell leaf = it.key();
+              Iterable<AnnotationEditorMessage> messages = getCellMessages(leaf, revision);
+              if (cellRevision == null || !(Sequence.fromIterable(messages).isEmpty())) {
+                Color color = (cellRevision == null ? getEditorComponent().getBackground() : getHighlightedColor(messages));
+                String changesText = IterableUtils.join(Sequence.fromIterable(messages).select(new ISelector<AnnotationEditorMessage, String>() {
+                  public String select(AnnotationEditorMessage it) {
+                    return it.getChangeDescription();
+                  }
+                }), "\n");
+                ListSequence.fromList(myHighlightedMessages).addElement(new AnnotatedCellMessage(leaf, color, revision, changesText, AnnotationColumn.this));
+              }
+            }
+          }
+        });
+        getEditorComponent().getHighlightManager().mark(myHighlightedMessages);
+      }
+    }
+    getEditorComponent().getHighlightManager().repaintAndRebuildEditorMessages();
+  }
+
+  private Color getHighlightedColor(Iterable<AnnotationEditorMessage> leafMessages) {
+    final Wrappers._T<ChangeType> changeType = new Wrappers._T<ChangeType>(null);
+    final Wrappers._boolean oneColor = new Wrappers._boolean(true);
+    Sequence.fromIterable(leafMessages).visitAll(new IVisitor<AnnotationEditorMessage>() {
+      public void visit(AnnotationEditorMessage it) {
+        if (oneColor.value) {
+          ChangeType messageType = it.getChange().getType();
+          if (changeType.value == null) {
+            changeType.value = messageType;
+          } else if (messageType != changeType.value) {
+            oneColor.value = false;
+          }
+        }
+      }
+    });
+    if (!(oneColor.value)) {
+      return ChangeColors.get(ChangeType.CHANGE);
+    }
+    return ChangeColors.get(changeType.value);
+  }
+
+  private void showPathsAffectedByRevision(VcsFileRevision revision) {
+    if (revision == null) {
+      return;
+    }
+    ShowAllAffectedGenericAction.showSubmittedFiles(myMpsProject.getProject(), revision.getRevisionNumber(), myRootAnnotation.getFile(), myVcs.getKeyInstanceMethod());
+  }
+
+  @Override
+  public void dispose() {
+    final SModel rootModel = myRoot.getModel();
+    if (rootModel != null) {
+      myDiffRegistry.getCommandQueue().runTask(new Runnable() {
+        public void run() {
+          myDiffRegistry.getCurrentDifference((EditableSModel) rootModel).removeDifferenceListener(myDifferenceListener);
+        }
+      });
+    }
+    unhighlightAllMessages();
+    AnnotationColumnsUtil.removeAnnotatedColumn(this);
+    myMessageBusConnection.disconnect();
+  }
+
 
   public void close() {
     getLeftEditorHighlighter().removeLeftColumn(this);
     dispose();
   }
 
-  private int findPseudoLineByY(int y) {
-    int pseudoLine = Collections.binarySearch((List) myPseudoLinesY, y);
-    if (pseudoLine < 0) {
-      pseudoLine = -pseudoLine - 2;
-    }
-    if (pseudoLine < 0 || pseudoLine >= ListSequence.fromList(myEditorLineRecords).count()) {
-      return -1;
-    }
-    return pseudoLine;
+  public List<VcsFileRevision> getRevisions() {
+    return myRootAnnotation.getRevisions();
   }
-  private int findFileLineByY(int y) {
-    int pseudoLine = findPseudoLineByY(y);
-    if (pseudoLine == -1) {
-      return -1;
-    }
-    if (SetSequence.fromSet(myCurrentPseudoLines).contains(pseudoLine)) {
-      return -1;
-    }
-    LineRevisionRecord record = ListSequence.fromList(myEditorLineRecords).getElement(pseudoLine);
-    if (record == null) {
-      return -1;
-    }
-    return record.fileLine;
+
+  public Project getProject() {
+    return myMpsProject.getProject();
   }
+
+  private VcsFileRevision getRevisionByY(final int y) {
+    return check_5mnya_a0a401(MapSequence.fromMap(myLineRevisionMap).findFirst(new IWhereFilter<IMapping<Bounds, VcsFileRevision>>() {
+      public boolean accept(IMapping<Bounds, VcsFileRevision> it) {
+        return it.key().contains(y);
+      }
+    }));
+  }
+
   @Override
   public JPopupMenu getPopupMenu(MouseEvent event) {
     List<AnAction> actions = ListSequence.fromList(new ArrayList<AnAction>());
-    final int fileLine = findFileLineByY(event.getY());
+    final VcsFileRevision revision = getRevisionByY(event.getY());
     ListSequence.fromList(actions).addElement(new BaseAction("Close Annotations") {
       @Override
       protected void doExecute(AnActionEvent e, Map<String, Object> _params) {
@@ -541,48 +745,182 @@ __switch__:
       }
     });
     ListSequence.fromList(actions).addElement(Separator.getInstance());
+    if (revision != null) {
+      ListSequence.fromList(actions).addElement(new ShowDiffFromAnnotationAction(myRootAnnotation.getPreviousRevision(revision), revision, myRoot, getProject(), myRootAnnotation.getFile().getExtension()));
+    }
     ListSequence.fromList(actions).addElement(myViewActionGroup);
-    if (fileLine != -1) {
-      ListSequence.fromList(actions).addElement(new ShowDiffFromAnnotationAction(myFileAnnotation, fileLine, ListSequence.fromList(myFileLineToContent).getElement(fileLine)));
+    if (revision != null) {
       ListSequence.fromList(actions).addElement(new BaseAction("Copy revision number") {
         @Override
         protected void doExecute(AnActionEvent e, Map<String, Object> params) {
-          String asString = myFileAnnotation.getLineRevisionNumber(fileLine).asString();
+          String asString = revision.getRevisionNumber().asString();
           CopyPasteManager.getInstance().setContents(new TextTransferable(asString, asString));
         }
       });
     }
     ListSequence.fromList(actions).addElement(Separator.getInstance());
-    ListSequence.fromList(actions).addElement(myRevisionRange);
-    ListSequence.fromList(actions).addElement(new ShowAdditionalInfoAction(this));
+
+    BaseGroup mouseOverGroup = new BaseGroup("Mouse hover options");
+    mouseOverGroup.setPopup(true);
+    mouseOverGroup.add(new ToggleAction("Show revision info") {
+      @Override
+      public boolean isSelected(@NotNull AnActionEvent p0) {
+        return PropertiesComponent.getInstance().getBoolean(TOOLTIP_ACTION_KEY);
+      }
+      @Override
+      public void setSelected(@NotNull AnActionEvent p0, boolean p1) {
+        PropertiesComponent.getInstance().setValue(TOOLTIP_ACTION_KEY, p1);
+      }
+    });
+    mouseOverGroup.add(new ToggleAction("Highlight cells for a revision") {
+      @Override
+      public boolean isSelected(@NotNull AnActionEvent p0) {
+        return cellsAreHighlighted();
+      }
+      @Override
+      public void setSelected(@NotNull AnActionEvent p0, boolean p1) {
+        PropertiesComponent.getInstance().setValue(HIGHLIGHT_CELLS_ACTION_KEY, p1);
+        if (!(p1) && !(cellsAreAnnotated())) {
+          unhighlightAllMessages();
+        }
+      }
+    });
+    ListSequence.fromList(actions).addElement(mouseOverGroup);
+    ListSequence.fromList(actions).addElement(Separator.getInstance());
+    ListSequence.fromList(actions).addElement(new ToggleAction("Annotate cells") {
+      @Override
+      public boolean isSelected(@NotNull AnActionEvent p0) {
+        return PropertiesComponent.getInstance().getBoolean(ANNOTATE_CELLS_ACTION_KEY);
+      }
+      @Override
+      public void setSelected(@NotNull AnActionEvent p0, boolean p1) {
+        PropertiesComponent.getInstance().setValue(ANNOTATE_CELLS_ACTION_KEY, p1);
+        AnnotationColumnsUtil.annotateCellsOptionUpdated(p1);
+      }
+    });
 
     DefaultActionGroup actionGroup = ActionUtils.groupFromActions(ListSequence.fromList(actions).toGenericArray(AnAction.class));
     return ActionManager.getInstance().createActionPopupMenu(ActionPlaces.UNKNOWN, actionGroup).getComponent();
   }
-  private int getFileLineWithMaxRevision(int a, int b) {
-    if (b == -1) {
-      return a;
+
+  public void annotateCells(boolean annotate) {
+    if (annotate) {
+      SwingUtilities.invokeLater(new Runnable() {
+        public void run() {
+          annotateCells();
+        }
+      });
+    } else {
+      SwingUtilities.invokeLater(new Runnable() {
+        public void run() {
+          unhighlightAllMessages();
+        }
+      });
     }
-    if (a == -1) {
-      return b;
-    }
-    VcsRevisionNumber aRevision = myFileAnnotation.getLineRevisionNumber(a);
-    VcsRevisionNumber bRevision = myFileAnnotation.getLineRevisionNumber(b);
-    if (bRevision == null) {
-      return a;
-    }
-    if (aRevision == null) {
-      return b;
-    }
-    int c = aRevision.compareTo(bRevision);
-    if (MapSequence.fromMap(myRevisionNumberToRevision).get(aRevision) != null && MapSequence.fromMap(myRevisionNumberToRevision).get(bRevision) != null) {
-      c = MapSequence.fromMap(myRevisionNumberToRevision).get(aRevision).getRevisionDate().compareTo(MapSequence.fromMap(myRevisionNumberToRevision).get(bRevision).getRevisionDate());
-    }
-    if (c < 0) {
-      return b;
-    }
-    return a;
   }
+
+  private void annotateCells() {
+    synchronized (this) {
+      if (myHighlightedMessages != null) {
+        ListSequence.fromList(myHighlightedMessages).visitAll(new IVisitor<AnnotatedCellMessage>() {
+          public void visit(AnnotatedCellMessage message) {
+            getEditorComponent().getHighlightManager().unmark(message);
+          }
+        });
+      }
+      myHighlightedMessages = ListSequence.fromList(new ArrayList<AnnotatedCellMessage>());
+      MapSequence.fromMap(myCellRevisionMap).visitAll(new IVisitor<IMapping<EditorCell, VcsFileRevision>>() {
+        public void visit(IMapping<EditorCell, VcsFileRevision> it) {
+          EditorCell leaf = it.key();
+          VcsFileRevision revision = it.value();
+          Color color = (revision == null ? getEditorComponent().getBackground() : getRevisionColor(revision));
+          String messagesText = IterableUtils.join(Sequence.fromIterable(getCellMessages(leaf, revision)).select(new ISelector<AnnotationEditorMessage, String>() {
+            public String select(AnnotationEditorMessage it) {
+              return it.getChangeDescription();
+            }
+          }), "\n");
+          ListSequence.fromList(myHighlightedMessages).addElement(new AnnotatedCellMessage(leaf, color, revision, messagesText, AnnotationColumn.this));
+        }
+      });
+      getEditorComponent().getHighlightManager().mark(myHighlightedMessages);
+      if (myEditorTooltipProvider != null) {
+        getEditorComponent().removeTooltipProvider(myEditorTooltipProvider);
+      }
+      myEditorTooltipProvider = new MyTooltipProvider();
+    }
+    getEditorComponent().addTooltipProvider(myEditorTooltipProvider);
+    getEditorComponent().getHighlightManager().repaintAndRebuildEditorMessages();
+  }
+
+  private class MyTooltipProvider implements EditorTooltipProvider {
+
+    private EditorCell myLastCellUnderMouse;
+    private final TooltipGroup myTooltipGroup = new TooltipGroup("ANNOTATION_TOOLTIP_GROUP", 0);
+
+
+    @Override
+    public boolean supressOtherTooltips() {
+      return true;
+    }
+
+    @Override
+    public TooltipRenderer getTooltipRenderer(MouseEvent e) {
+
+      EditorCell cell = getEditorComponent().getCellAtPoint(e.getPoint());
+
+      if (cell != myLastCellUnderMouse) {
+        TooltipController.getInstance().cancelTooltip(myTooltipGroup, null, true);
+        myLastCellUnderMouse = cell;
+      }
+      AnnotatedCellMessage message = getMessage(cell);
+      if (cell == null || message == null) {
+        TooltipController.getInstance().cancelTooltip(myTooltipGroup, null, false);
+        return null;
+      }
+      return new AnnotatedCellTooltipRenderer(message, myMpsProject.getProject(), getRevisionActions(message.getRevision()));
+    }
+
+    private List<AnAction> getRevisionActions(final VcsFileRevision revision) {
+      List<AnAction> actions = ListSequence.fromList(new ArrayList<AnAction>());
+      if (revision != null) {
+        ListSequence.fromList(actions).addElement(new ShowDiffFromAnnotationAction(myRootAnnotation.getPreviousRevision(revision), revision, myRoot, getProject(), myRootAnnotation.getFile().getExtension()));
+        ListSequence.fromList(actions).addElement(new ShowAffectedFilesAction(getProject(), revision, myRootAnnotation.getFile(), myVcs.getKeyInstanceMethod()));
+        ListSequence.fromList(actions).addElement(new AnAction("Copy Revision Number") {
+          @Override
+          public void actionPerformed(AnActionEvent p1) {
+            String asString = revision.getRevisionNumber().asString();
+            CopyPasteManager.getInstance().setContents(new TextTransferable(asString, asString));
+          }
+        });
+      }
+      return actions;
+    }
+
+    private AnnotatedCellMessage getMessage(EditorCell cell) {
+      EditorCell parent = cell;
+      while (parent != null) {
+        if (cell.getBottom() < parent.getBottom() && parent.getSNode() != cell.getSNode()) {
+          return null;
+        }
+        List<AnnotatedCellMessage> messages = CellMessagesUtil.getMessages(parent, AnnotatedCellMessage.class);
+        if (!(messages.isEmpty())) {
+          return messages.get(0);
+        }
+        parent = parent.getParent();
+      }
+      return null;
+    }
+
+    @Override
+    public Balloon.Position getPreferredPosition() {
+      return Balloon.Position.below;
+    }
+    @Override
+    public TooltipGroup getTooltipGroup() {
+      return myTooltipGroup;
+    }
+  }
+
   public void invalidateLayout() {
     ApplicationManager.getApplication().invokeLater(new Runnable() {
       public void run() {
@@ -590,43 +928,46 @@ __switch__:
       }
     });
   }
-  public boolean isShowAdditionalInfo() {
-    return myShowAdditionalInfo;
-  }
-  public void setShowAdditionalInfo(boolean showAdditionalInfo) {
-    myShowAdditionalInfo = showAdditionalInfo;
-    invalidateLayout();
+
+  private void addLocalChange(ModelChange change) {
+    if (change.getRootId() == null || !(change.getRootId().equals(myRoot.getNodeId()))) {
+      return;
+    }
+    MapSequence.fromMap(myLocalChangesMessageMap).put(change, ListSequence.fromList(ChangeEditorMessageFactory.createMessages(getEditorComponent().getEditedNode().getModel(), false, change, AnnotationColumn.this, null)).select(new ISelector<ChangeEditorMessage, AnnotationEditorMessage>() {
+      public AnnotationEditorMessage select(ChangeEditorMessage it) {
+        return new AnnotationEditorMessage(it, null);
+      }
+    }).toListSequence());
   }
 
-  /**
-   * 
-   * 
-   * @return revisions from FileAnnotation, in the same order (from newest to oldest)
-   */
-  /*package*/ List<VcsFileRevision> getRevisions() {
-    return myFileAnnotation.getRevisions();
-  }
-
-  /*package*/ Project getProject() {
-    return myFileAnnotation.getProject();
+  private void removeLocalChange(ModelChange change) {
+    MapSequence.fromMap(myLocalChangesMessageMap).removeKey(change);
   }
 
   private class MyDifferenceListener extends CurrentDifferenceAdapter {
     public MyDifferenceListener() {
     }
+
+    @Override
+    public void changeUpdateStarted() {
+      myLocalChangeIsAdding = true;
+      unhighlightAllMessages();
+    }
     @Override
     public void changeUpdateFinished() {
-      calculateCurrentPseudoLinesLater();
+      myLocalChangeIsAdding = false;
+      updateAnnotations();
     }
     @Override
     public void changeRemoved(@NotNull ModelChange change) {
-      MapSequence.fromMap(myChangesToLineContents).removeKey(change);
+      removeLocalChange(change);
     }
     @Override
     public void changeAdded(@NotNull ModelChange change) {
-      saveChange(change);
+      addLocalChange(change);
     }
   }
+
   private class MyEditorComponentCreateListener implements EditorComponentCreateListener {
     public MyEditorComponentCreateListener() {
     }
@@ -641,47 +982,15 @@ __switch__:
     }
   }
 
-  /*package*/ static class LineRevisionRecord {
-    /*package*/ final SNodeId nodeId;
-
-    /**
-     * VcsFileRevision, not VcsRevisionNumber, as it gives both vcsRevNumber and author and facilitates ordering (VcsRevisionNumber.compareTo uses 
-     * timestamp field which doesn't reflect revision date but rather the moment annotate was constructed)
-     * Intentionally not final as it's updated if we find newer revision for the node
-     */
-    /*package*/ VcsFileRevision rev;
-    /**
-     * provisional, just to get legacy code that relies on file line number working
-     * indicates file line where we picked rev from
-     */
-    /*package*/ int fileLine;
-    private final List<SNodeId> prevRecordNodeId;
-
-    /*package*/ LineRevisionRecord(SNodeId nid, VcsFileRevision n, int fileLineNumber) {
-      nodeId = nid;
-      rev = n;
-      fileLine = fileLineNumber;
-      prevRecordNodeId = null;
-    }
-
-    /*package*/ LineRevisionRecord(SNodeId nid, VcsFileRevision n, int fileLineNumber, LineRevisionRecord prev) {
-      nodeId = nid;
-      rev = n;
-      fileLine = fileLineNumber;
-      prevRecordNodeId = ListSequence.fromList(new ArrayList<SNodeId>());
-      ListSequence.fromList(prevRecordNodeId).addElement(prev.nodeId);
-      if (ListSequence.fromList(prev.prevRecordNodeId).isNotEmpty()) {
-        ListSequence.fromList(prevRecordNodeId).addSequence(ListSequence.fromList(prev.prevRecordNodeId));
-      }
-    }
-
-    /*package*/ boolean isAmongPrevious(SNodeId nid) {
-      return ListSequence.fromList(prevRecordNodeId).contains(nid);
-    }
-  }
-  private static List<ModelChange> check_5mnya_a0a0a0a1a0a0o0w(ChangeSet checkedDotOperand) {
+  private static List<ModelChange> check_5mnya_a0a0a0a3a0a0w0bb(ModelChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelChanges();
+    }
+    return null;
+  }
+  private static VcsFileRevision check_5mnya_a0a401(IMapping<Bounds, VcsFileRevision> checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.value();
     }
     return null;
   }

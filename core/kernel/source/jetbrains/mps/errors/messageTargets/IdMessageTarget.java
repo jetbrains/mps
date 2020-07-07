@@ -15,10 +15,26 @@
  */
 package jetbrains.mps.errors.messageTargets;
 
+
+import org.jetbrains.mps.annotations.Immutable;
+
 /**
- * @deprecated needed to provide different behavior, which has to be accomplished by respective methods internally in {@link MessageTarget} implementations
+ * Cyril.Konopko, 18.02.2010
  */
-@Deprecated
-public enum MessageTargetEnum {
-  NODE, REFERENCE, PROPERTY, DELETED_CHILD, ID
+@Immutable
+public final class IdMessageTarget implements MessageTarget {
+  @Override
+  public MessageTargetEnum getTarget() {
+    return MessageTargetEnum.ID;
+  }
+
+  @Override
+  public String getRole() {
+    return null;
+  }
+
+  @Override
+  public boolean sameAs(MessageTarget errorTarget) {
+    return errorTarget instanceof IdMessageTarget;
+  }
 }

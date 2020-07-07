@@ -8,12 +8,25 @@ import javax.swing.Icon;
 import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.vcs.annotate.AnnotationHelper;
-import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.vcs.annotate.AnnotationColumnsUtil;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import com.intellij.openapi.vfs.VirtualFile;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import com.intellij.openapi.vcs.AbstractVcs;
+import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.project.MPSProject;
+import java.util.List;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.vcs.annotate.AnnotationColumn;
+import jetbrains.mps.nodeEditor.RootAnnotation;
+import com.intellij.openapi.progress.ProgressManager;
+import jetbrains.mps.vcs.annotate.AnnotateBackgroundableTask;
+import jetbrains.mps.nodeEditor.leftHighlighter.AbstractLeftColumn;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 
 @GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/4551090891612013049", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public class Annotate_Action extends BaseAction {
@@ -29,8 +42,27 @@ public class Annotate_Action extends BaseAction {
     return true;
   }
   @Override
-  public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return new AnnotationHelper(event.getData(MPSCommonDataKeys.MPS_PROJECT)).isAnnotateable(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
+  public boolean isApplicable(final AnActionEvent event, final Map<String, Object> _params) {
+    if (AnnotationColumnsUtil.isEditorInProgress(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT))) {
+      return false;
+    }
+    if (Annotate_Action.this.findAnnotationColumn(event) != null) {
+      return true;
+    }
+    final Wrappers._T<VirtualFile> vf = new Wrappers._T<VirtualFile>();
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        vf.value = VcsActionsUtil.getFileFromModel(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), event.getData(MPSCommonDataKeys.NODES));
+      }
+    });
+    if (vf.value == null) {
+      return false;
+    }
+    AbstractVcs activeVCS = ProjectLevelVcsManager.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject()).getVcsFor(vf.value);
+    if (activeVCS == null) {
+      return false;
+    }
+    return AbstractVcs.fileInVcsByFileStatus(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), vf.value);
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -56,10 +88,59 @@ public class Annotate_Action extends BaseAction {
         return false;
       }
     }
+    {
+      List<SNode> p = event.getData(MPSCommonDataKeys.NODES);
+      if (p == null) {
+        return false;
+      }
+      if (p.isEmpty()) {
+        return false;
+      }
+    }
+    {
+      SModel p = event.getData(MPSCommonDataKeys.CONTEXT_MODEL);
+      if (p == null) {
+        return false;
+      }
+    }
     return true;
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    new AnnotationHelper(event.getData(MPSCommonDataKeys.MPS_PROJECT)).annotate(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
+    if (AnnotationColumnsUtil.isEditorInProgress(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT))) {
+      return;
+    }
+    AnnotationColumn annotationColumn = Annotate_Action.this.findAnnotationColumn(event);
+    if (annotationColumn != null) {
+      annotationColumn.close();
+      return;
+    }
+    final Wrappers._T<VirtualFile> vf = new Wrappers._T<VirtualFile>();
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        vf.value = VcsActionsUtil.getFileFromModel(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), event.getData(MPSCommonDataKeys.NODES));
+      }
+    });
+    AbstractVcs activeVCS = ProjectLevelVcsManager.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject()).getVcsFor(vf.value);
+    RootAnnotation rootAnnotation = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getRootAnnotation();
+    if (rootAnnotation != null) {
+      AnnotationColumnsUtil.addColumn(event.getData(MPSCommonDataKeys.MPS_PROJECT), activeVCS, event.getData(MPSEditorDataKeys.EDITOR_COMPONENT), event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode(), rootAnnotation);
+      return;
+    }
+    String taskName = "Retrieving annotations for " + event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode().getName();
+    AnnotationColumnsUtil.setEditorInProgress(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
+    try {
+      ProgressManager.getInstance().run(new AnnotateBackgroundableTask(event.getData(MPSCommonDataKeys.MPS_PROJECT), taskName, event.getData(MPSEditorDataKeys.EDITOR_COMPONENT), vf.value, activeVCS));
+    } catch (Throwable t) {
+      AnnotationColumnsUtil.stopEditorProgress(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
+    }
+  }
+  /*package*/ AnnotationColumn findAnnotationColumn(final AnActionEvent event) {
+    for (AbstractLeftColumn column : ListSequence.fromList(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getLeftEditorHighlighter().getLeftColumns())) {
+      if (column instanceof AnnotationColumn) {
+        return ((AnnotationColumn) column);
+      }
+    }
+    return null;
   }
 }

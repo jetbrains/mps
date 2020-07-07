@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor;
 
+import com.intellij.codeInsight.hint.TooltipGroup;
 import com.intellij.ide.BrowserUtil;
 import com.intellij.ide.CopyProvider;
 import com.intellij.ide.CutProvider;
@@ -41,12 +42,16 @@ import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.keymap.KeymapManager;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.ui.popup.Balloon;
+import com.intellij.openapi.ui.popup.Balloon.Position;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.IdeGlassPane;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.openapi.wm.ex.StatusBarEx;
+import com.intellij.ui.HintHint;
 import com.intellij.ui.ScrollPaneFactory;
+import com.intellij.ui.awt.RelativePoint;
 import com.intellij.ui.components.JBScrollBar;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.components.JBScrollPane.Flip;
@@ -54,8 +59,13 @@ import com.intellij.util.io.URLUtil;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.ButtonlessScrollBarUI;
 import com.intellij.util.ui.UIUtil;
+import com.intellij.util.ui.accessibility.ScreenReader;
+import gnu.trove.THashSet;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.DeployListener;
+import jetbrains.mps.codeInsight.hint.LineTooltipRenderer;
+import jetbrains.mps.codeInsight.hint.TooltipController;
+import jetbrains.mps.codeInsight.hint.TooltipRenderer;
 import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.editor.runtime.commands.EditorCommandAdapter;
@@ -203,6 +213,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseMotionListener;
 import java.awt.im.InputMethodRequests;
 import java.lang.reflect.Field;
@@ -376,6 +387,9 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   @NotNull
   private final EditorHighlighter myHighlighter = new EditorHighlighter(this);
 
+  private RootAnnotation myRootAnnotation;
+  List<EditorTooltipProvider> myTooltipProviders = new ArrayList<>();
+
   @NotNull
   private final EditorComponentFocusTracker myFocusTracker = new EditorComponentFocusTracker(this);
 
@@ -480,6 +494,15 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       }
     }, KeyStroke.getKeyStroke("shift F3"), WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 
+    myTooltipProviders.add(new HighlighterMessagesTooltipProvider());
+    addMouseMotionListener(new MouseMotionAdapter() {
+
+      @Override
+      public void mouseMoved(MouseEvent e) {
+        showToolTip(e);
+      }
+    });
+
     addMouseListener(new MouseAdapter() {
       @Override
       public void mousePressed(final MouseEvent e) {
@@ -574,6 +597,141 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     if (configuration.withUI) {
       createUI(configuration);
     }
+  }
+
+  protected void showToolTip(@NotNull MouseEvent e) {
+
+    EditorTooltipProvider tooltipProvider = getTopTooltipProvider(e);
+    if (tooltipProvider == null) {
+      return;
+    }
+    TooltipController controller = TooltipController.getInstance();
+    TooltipRenderer tr = tooltipProvider.getTooltipRenderer(e);
+
+    if (tr == null || this.isDisposed()) {
+      controller.cancelTooltip(tooltipProvider.getTooltipGroup(), null, false);
+      return;
+    }
+    if (getExternalComponent().getRootPane() == null) {
+      return;
+    }
+    RelativePoint showPoint = new RelativePoint(this, e.getPoint());
+    HintHint hint = new HintHint(this, e.getPoint())
+                        .setAwtTooltip(true)
+                        .setPreferredPosition(tooltipProvider.getPreferredPosition())
+                        .setRequestFocus(ScreenReader.isActive());
+    controller.showTooltipByMouseMove(this, showPoint, tr, false, tooltipProvider.getTooltipGroup(), hint);
+  }
+
+  @Nullable
+  private EditorTooltipProvider getTopTooltipProvider(@NotNull MouseEvent e) {
+    synchronized (myTooltipProviders) {
+      if (myTooltipProviders.isEmpty()) {
+        return null;
+      }
+      for (int i = myTooltipProviders.size() - 1; i >= 0; i--) {
+        EditorTooltipProvider provider = myTooltipProviders.get(i);
+        if (provider.getTooltipRenderer(e) != null) {
+          return provider;
+        }
+        if (provider.supressOtherTooltips()) {
+          return null;
+        }
+      }
+      return null;
+    }
+  }
+
+  public void removeTooltipProvider(EditorTooltipProvider tooltipProvider) {
+    synchronized (myTooltipProviders) {
+      myTooltipProviders.remove(tooltipProvider);
+    }
+  }
+
+  public void addTooltipProvider(EditorTooltipProvider tooltipProvider) {
+    synchronized (myTooltipProviders) {
+      myTooltipProviders.add(tooltipProvider);
+    }
+  }
+
+  private class HighlighterMessagesTooltipProvider implements EditorTooltipProvider {
+
+    jetbrains.mps.openapi.editor.cells.EditorCell myLastCellUnderMouse;
+    private final TooltipGroup MPS_EDITOR_TOOLTIP_GROUP = new TooltipGroup("MPS_EDITOR_TOOLTIP_GROUP", 0);
+
+    @Override
+    public TooltipGroup getTooltipGroup() {
+      return MPS_EDITOR_TOOLTIP_GROUP;
+    }
+
+    @Override
+    public TooltipRenderer getTooltipRenderer(MouseEvent e) {
+      jetbrains.mps.openapi.editor.cells.EditorCell cell = getCellAtPoint(e.getPoint());
+      if (cell != myLastCellUnderMouse) {
+        TooltipController.getInstance().cancelTooltip(MPS_EDITOR_TOOLTIP_GROUP, e, true);
+        myLastCellUnderMouse = cell;
+      }
+
+      List<HighlighterMessage> messages = getHighlighterMessagesFor(cell);
+      if (cell == null || messages.isEmpty()) {
+        TooltipController.getInstance().cancelTooltip(MPS_EDITOR_TOOLTIP_GROUP, null, false);
+        return null;
+      }
+
+      LineTooltipRenderer bigRenderer = null;
+      //do not show same tooltip twice
+      Set<String> tooltips = null;
+
+      for (ListIterator<HighlighterMessage> it = messages.listIterator(messages.size()); it.hasPrevious(); ) {
+        SimpleEditorMessage message = it.previous();
+        final String text = message.getMessage();
+        if (text == null || text.isEmpty()) {
+          continue;
+        }
+        if (tooltips == null) {
+          tooltips = new THashSet<>();
+        }
+        if (tooltips.add(text)) {
+          if (bigRenderer == null) {
+            bigRenderer = new LineTooltipRenderer(text, new Object[]{messages});
+          } else {
+            bigRenderer.addBelow(text);
+          }
+        }
+      }
+      return bigRenderer;
+    }
+
+    @Override
+    public Position getPreferredPosition() {
+      return Balloon.Position.atRight;
+    }
+  }
+
+  @NotNull
+  @Override
+  public JComponent getComponent() {
+    return getExternalComponent();
+  }
+
+  @NotNull
+  @Override
+  public JComponent getContentComponent() {
+    return this;
+  }
+
+  public jetbrains.mps.project.Project getProject() {
+    return getCurrentProject();
+  }
+
+  @Override
+  public void addEditorMouseListener(MouseListener mouseListener) {
+    getContentComponent().addMouseListener(mouseListener);
+  }
+
+  @Override
+  public void removeEditorMouseListener(MouseListener mouseListener) {
+    getContentComponent().removeMouseListener(mouseListener);
   }
 
   // TODO:
@@ -774,6 +932,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return myShiftX;
   }
 
+  @Override
   public JViewport getViewport() {
     assert hasUI();
     return myScrollPane.getViewport();
@@ -893,13 +1052,12 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return myNodePointer;
   }
 
+  /**
+   * This method is not used anymore to show tooltip.
+   */
+  @Deprecated
   @Override
   public String getMPSTooltipText(MouseEvent event) {
-    return getToolTipText(event);
-  }
-
-  @Override
-  public String getToolTipText(MouseEvent event) {
     final Reference<String> rv = new Reference<>(null);
     getModelAccess().runReadAction(new CancellableReadAction() {
       @Override
@@ -924,6 +1082,10 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return rv.get();
   }
 
+  /**
+   * This method is not used anymore to show tooltip.
+   */
+  @Deprecated
   @Override
   public Point getToolTipLocation(final MouseEvent event) {
     final Reference<Point> rv = new Reference<>(null);
@@ -949,6 +1111,22 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     });
     return rv.get();
   }
+
+  public jetbrains.mps.openapi.editor.cells.EditorCell getCellAtPoint(Point point) {
+    final Reference<jetbrains.mps.openapi.editor.cells.EditorCell> rv = new Reference<>(null);
+    getModelAccess().runReadAction(new CancellableReadAction() {
+      @Override
+      protected void execute() {
+        if (isDisposed()) {
+          return;
+        }
+        jetbrains.mps.openapi.editor.cells.EditorCell cell = myRootCell.findLeaf(point.x, point.y);
+        rv.set(cell);
+      }
+    });
+    return rv.get();
+  }
+
 
   public void updateStatusBarMessage() {
     if (!isFocusOwner()) {
@@ -3217,4 +3395,13 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       return jetbrains.mps.openapi.editor.EditorComponent.super.getDeletionApprover();
     }
   }
+
+  public RootAnnotation getRootAnnotation() {
+    return myRootAnnotation;
+  }
+
+  public void setRootAnnotation(RootAnnotation rootAnnotation) {
+    myRootAnnotation = rootAnnotation;
+  }
+
 }

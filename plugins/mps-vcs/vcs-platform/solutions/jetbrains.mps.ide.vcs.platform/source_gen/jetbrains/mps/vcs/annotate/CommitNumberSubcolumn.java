@@ -7,15 +7,14 @@ import java.util.Map;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import com.intellij.openapi.vcs.annotate.FileAnnotation;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/6566909625908996008", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public class CommitNumberSubcolumn extends AnnotationAspectSubcolumn {
   private final Map<VcsFileRevision, Integer> myRevisionsToNumbers = MapSequence.fromMap(new HashMap<VcsFileRevision, Integer>());
-  public CommitNumberSubcolumn(AnnotationColumn annotationColumn, FileAnnotation fileAnnotation) {
-    super(annotationColumn, null);
+  public CommitNumberSubcolumn(AnnotationColumn annotationColumn) {
+    super(annotationColumn, "Commit number");
     myRightAligned = true;
     // Utilize the fact FileAnnotation.getRevision gives ordered list, from newest to oldest; index in reversed order (rev #1 means oldest) 
     List<VcsFileRevision> revisions = annotationColumn.getRevisions();
@@ -24,11 +23,7 @@ public class CommitNumberSubcolumn extends AnnotationAspectSubcolumn {
     }
   }
   @Override
-  public String getTextForFileLine(AnnotationColumn.LineRevisionRecord lineRec) {
-    return "" + MapSequence.fromMap(myRevisionsToNumbers).get(lineRec.rev);
-  }
-  @Override
-  public String getId() {
-    return "Commit number";
+  public String getText(VcsFileRevision revision) {
+    return "" + MapSequence.fromMap(myRevisionsToNumbers).get(revision);
   }
 }

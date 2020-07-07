@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,12 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.errors.messageTargets;
+package jetbrains.mps.nodeEditor;
 
-/**
- * @deprecated needed to provide different behavior, which has to be accomplished by respective methods internally in {@link MessageTarget} implementations
- */
-@Deprecated
-public enum MessageTargetEnum {
-  NODE, REFERENCE, PROPERTY, DELETED_CHILD, ID
+import com.intellij.codeInsight.hint.TooltipGroup;
+import com.intellij.openapi.ui.popup.Balloon.Position;
+import jetbrains.mps.codeInsight.hint.TooltipRenderer;
+
+import java.awt.event.MouseEvent;
+
+public interface EditorTooltipProvider {
+  TooltipRenderer getTooltipRenderer(MouseEvent e);
+
+  Position getPreferredPosition();
+
+  TooltipGroup getTooltipGroup();
+
+  default boolean supressOtherTooltips(){
+    return false;
+  }
 }

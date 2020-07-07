@@ -276,7 +276,7 @@ __switch__:
     }).toListSequence();
   }
 
-  private static VirtualFile getFileFromModel(SModel model, List<SNode> nodes) {
+  public static VirtualFile getFileFromModel(SModel model, List<SNode> nodes) {
     DataSource ds = model.getSource();
     if (ds instanceof FileDataSource) {
       return VirtualFileUtils.getProjectVirtualFile(((FileDataSource) ds).getFile());

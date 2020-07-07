@@ -47,6 +47,7 @@ public class EditorMessageWithTarget extends DefaultEditorMessage {
 
     switch (myMessageTarget.getTarget()) {
       case NODE:
+      case ID:
         return cell.isBig();
       case REFERENCE:
         if (cell.isReferenceCell()) {
@@ -69,6 +70,7 @@ public class EditorMessageWithTarget extends DefaultEditorMessage {
   public EditorCell getCell(EditorComponent editor) {
     switch (myMessageTarget.getTarget()) {
       case NODE:
+      case ID:
         return super.getCell(editor);
       case REFERENCE:
         return CellFinder.getCellForReference(editor, getNode(), myMessageTarget.getRole());

@@ -23,6 +23,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.commands.CommandContext;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.update.Updater;
+import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -30,6 +31,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
+import javax.swing.JComponent;
+import javax.swing.JViewport;
+import java.awt.event.MouseListener;
 import java.util.List;
 
 /**
@@ -51,6 +55,31 @@ public interface EditorComponent {
   List<SNode> getSelectedNodes();
 
   /**
+   * Returns the component for the entire editor including the scrollbars, error stripe, gutter
+   * and other decorations.
+   *
+   * @return the component instance.
+   */
+  @NotNull
+  JComponent getComponent();
+
+  /**
+   * Returns the component for the content area of the editor.
+   *
+   * @return the component instance.
+   */
+  @NotNull
+  JComponent getContentComponent();
+
+  /**
+   * Returns the project to which the editor is related.
+   *
+   * @return the project instance, or {@code null} if the editor is not related to any project.
+   */
+//  @Nullable
+  Project getProject();
+
+  /**
    * @return Non-null root cell if this {@link EditorComponent} was not disposed yet
    */
   EditorCell getRootCell();
@@ -70,7 +99,7 @@ public interface EditorComponent {
 
   /**
    * Look up a cell for given node which represents specified association.
-   *
+   * <p>
    * NOTE, default implementation is just for smooth transition, subclasses shall implement this method, default implementation would be removed later.
    *
    * @param node {@code null} value seems to be tolerated, though the contract here is generally the same as for other find* methods
@@ -84,7 +113,7 @@ public interface EditorComponent {
 
   /**
    * Look up a cell for given node in a given aggregation link.
-   *
+   * <p>
    * NOTE, default implementation is just for smooth transition, subclasses shall implement this method, default implementation would be removed later.
    *
    * @param node {@code null} value seems to be tolerated, though the contract here is generally the same as for other find* methods
@@ -99,6 +128,12 @@ public interface EditorComponent {
   void scrollToNode(SNode node);
 
   void scrollToCell(@NotNull EditorCell cell);
+
+  JViewport getViewport();
+
+  void addEditorMouseListener(MouseListener mouseListener);
+
+  void removeEditorMouseListener(MouseListener mouseListener);
 
   /**
    * Can be called update editor in accordance with actual state of the currently
