@@ -14,7 +14,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 public class SetPropertyStructChange extends SetPropertyChange {
   private SNodeId myOppositeNodeId;
 
-  public SetPropertyStructChange(@NotNull ChangeSet changeSet, @NotNull SNodeId oldNodeId, @NotNull SNodeId newNodeId, SProperty property, String newValue) {
+  public SetPropertyStructChange(@NotNull ChangeSet changeSet, @NotNull SNodeId oldNodeId, @NotNull SNodeId newNodeId,
+                                 SProperty property, String newValue) {
     super(changeSet, oldNodeId, property, newValue);
     myOppositeNodeId = newNodeId;
   }

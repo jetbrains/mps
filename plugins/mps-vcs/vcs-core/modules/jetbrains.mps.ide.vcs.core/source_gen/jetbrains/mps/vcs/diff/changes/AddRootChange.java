@@ -14,13 +14,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 public class AddRootChange extends ModelChange {
   private SNodeId myNodeId;
   public AddRootChange(@NotNull ChangeSet changeSet, @NotNull SNodeId nodeId) {
-    super(changeSet);
+    super(changeSet, nodeId);
     myNodeId = nodeId;
-  }
-  @NotNull
-  @Override
-  public SNodeId getRootId() {
-    return myNodeId;
   }
   @Override
   public void apply(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {

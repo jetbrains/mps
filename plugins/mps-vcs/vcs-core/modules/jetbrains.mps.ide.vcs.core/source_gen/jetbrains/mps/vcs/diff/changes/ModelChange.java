@@ -17,16 +17,26 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 public abstract class ModelChange {
   private final ChangeSet myChangeSet;
   private ModelChange myOpposite = null;
+  private final SNodeId myRootId;
+
+  @Deprecated(forRemoval = true)
   protected ModelChange(@NotNull ChangeSet changeSet) {
     myChangeSet = changeSet;
+    myRootId = null;
   }
+
+  protected ModelChange(@NotNull ChangeSet changeSet, @Nullable SNodeId rootId) {
+    myChangeSet = changeSet;
+    myRootId = rootId;
+  }
+
   @NotNull
   public final ChangeSet getChangeSet() {
     return myChangeSet;
   }
   @Nullable
-  public SNodeId getRootId() {
-    return null;
+  public final SNodeId getRootId() {
+    return myRootId;
   }
   public abstract void apply(@NotNull SModel model, @NotNull NodeCopier nodeCopier);
   public ModelChange getOppositeChange() {

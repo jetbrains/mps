@@ -36,13 +36,23 @@ public class NodeGroupChange extends ModelChange {
   private List<SNodeId> myPreparedIdsToDelete = null;
   private SNodeId myBeforeAnchorId = null;
   public NodeGroupChange(@NotNull ChangeSet changeSet, @NotNull SNodeId parentNodeId, @NotNull SContainmentLink role, int begin, int end, int resultBegin, int resultEnd) {
-    super(changeSet);
+    super(changeSet, calcRootId(changeSet, parentNodeId));
     myParentNodeId = parentNodeId;
     myRole = role;
     myBegin = begin;
     myEnd = end;
     myResultBegin = resultBegin;
     myResultEnd = resultEnd;
+  }
+
+  @Nullable
+  private static SNodeId calcRootId(ChangeSet changeSet, SNodeId parentNodeId) {
+    SModel oldModel = changeSet.getOldModel();
+    SNode node = oldModel.getNode(parentNodeId);
+    if (node == null) {
+      return null;
+    }
+    return SNodeOperations.getContainingRoot(node).getNodeId();
   }
   @NotNull
   public SNodeId getParentNodeId() {
@@ -92,7 +102,8 @@ public class NodeGroupChange extends ModelChange {
     return VCSAspectUtil.getDefaultMergeStrategy(SNodeOperations.getConcept(n));
   }
   private SNode getParent(boolean isNewModel) {
-    return ((isNewModel ? getChangeSet().getNewModel() : getChangeSet().getOldModel())).getNode(getParentNodeId(isNewModel));
+    return (isNewModel ? getChangeSet().getNewModel()
+                       : getChangeSet().getOldModel()).getNode(getParentNodeId(isNewModel));
   }
 
   public final List<SNode> getChangedCollection(boolean isNewModel) {
@@ -142,11 +153,6 @@ public class NodeGroupChange extends ModelChange {
     SContainmentLink link = (SNodeOperations.isInstanceOf(newNode, CONCEPTS.ChildAttribute$XQ) ? LINKS.smodelAttribute$K8bJ : myRole);
     parent.insertChildBefore(link, newNode, anchor);
     return newNode;
-  }
-  @Nullable
-  @Override
-  public SNodeId getRootId() {
-    return SNodeOperations.getContainingRoot(getParent(false)).getNodeId();
   }
   @NotNull
   @Override

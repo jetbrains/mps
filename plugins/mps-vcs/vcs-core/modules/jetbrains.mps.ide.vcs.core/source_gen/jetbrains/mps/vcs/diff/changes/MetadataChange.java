@@ -11,12 +11,7 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/6562343564267115985", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public abstract class MetadataChange extends ModelChange {
   protected MetadataChange(@NotNull ChangeSet changeSet) {
-    super(changeSet);
-  }
-  @Nullable
-  @Override
-  public final SNodeId getRootId() {
-    return null;
+    super(changeSet, null);
   }
   @Override
   public String getDescription() {
