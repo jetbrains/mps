@@ -11,4 +11,5 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 public interface ModelChangeSet extends ChangeSet {
   Iterable<ModelChange> getChangesForRoot(@Nullable SNodeId rootId);
   Iterable<SNodeId> getAffectedRoots();
+  Iterable<ModelChange> getChangesForNode(@Nullable SNodeId nodeId);
 }

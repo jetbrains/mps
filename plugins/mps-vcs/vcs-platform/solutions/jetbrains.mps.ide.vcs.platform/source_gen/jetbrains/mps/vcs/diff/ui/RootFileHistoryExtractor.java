@@ -18,8 +18,8 @@ import java.util.HashMap;
 import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
 
 @GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/6427926084137231861", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
-/*package*/ final class RootHistoryModel implements Runnable {
-  private static final Logger LOG = LogManager.getLogger(RootHistoryModel.class);
+/*package*/ final class RootFileHistoryExtractor implements RevisionsExtractor {
+  private static final Logger LOG = LogManager.getLogger(RootFileHistoryExtractor.class);
   private final SNodeId myRoot;
   private final List<VcsFileRevision> myFilteredRevisions = new ArrayList<VcsFileRevision>();
   private final List<VcsFileRevision> myInitialRevisions;
@@ -28,28 +28,32 @@ import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
   private final int myTotalRevisions;
   private int myProcessedRevisions;
 
-  /*package*/ RootHistoryModel(List<VcsFileRevision> initialRevisions, SNodeId root, Runnable onUpdate) {
+  /*package*/ RootFileHistoryExtractor(List<VcsFileRevision> initialRevisions, SNodeId root, Runnable onUpdate) {
     myInitialRevisions = initialRevisions;
     myRoot = root;
     myOnUpdate = onUpdate;
     myTotalRevisions = initialRevisions.size();
   }
 
-  /*package*/ boolean isLoading() {
+  @Override
+  public boolean isLoading() {
     return myLoading;
   }
 
-  /*package*/ List<VcsFileRevision> revisions() {
+  @Override
+  public List<VcsFileRevision> getRevisions() {
     synchronized (myFilteredRevisions) {
       return new ArrayList<VcsFileRevision>(myFilteredRevisions);
     }
   }
 
-  /*package*/ int totalRevisions() {
+  @Override
+  public int getTotalRevisionsNumber() {
     return myTotalRevisions;
   }
 
-  /*package*/ int processedRevisions() {
+  @Override
+  public int getProcessedRevisionsNumber() {
     return myProcessedRevisions;
   }
 

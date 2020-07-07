@@ -25,7 +25,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -48,6 +47,7 @@ import javax.swing.JScrollPane;
 import com.intellij.ui.ScrollPaneFactory;
 import jetbrains.mps.nodeEditor.commands.CommandContextWithVF;
 import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
@@ -143,9 +143,7 @@ public class DiffEditor implements EditorMessageOwner {
 
   public void editRoot(@Nullable SNodeId rootId, @NotNull SModel model) {
     SNode root = (rootId == null ? null : model.getNode(rootId));
-    if (SNodeOperations.getParent(root) == null) {
-      getMainEditor().editNode(root);
-    }
+    getMainEditor().editNode(root);
   }
 
   public void editNode(@NotNull SNodeId nodeId, @NotNull SModel model) {

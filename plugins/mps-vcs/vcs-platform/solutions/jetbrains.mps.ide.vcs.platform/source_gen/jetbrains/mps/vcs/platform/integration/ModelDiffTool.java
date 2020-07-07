@@ -13,7 +13,7 @@ import com.intellij.diff.requests.ContentDiffRequest;
 
 @GeneratedClass(node = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)/2146316116462340798", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
 public class ModelDiffTool implements FrameDiffTool {
-  public static final FileType[] DIFF_SUPPORTED_TYPES = {MPSFileTypeFactory.MPS_FILE_TYPE, MPSFileTypeFactory.MPS_HEADER_FILE_TYPE, MPSFileTypeFactory.MPS_ROOT_FILE_TYPE};
+  public static final FileType[] DIFF_SUPPORTED_TYPES = {MPSFileTypeFactory.MPS_FILE_TYPE, MPSFileTypeFactory.MPS_HEADER_FILE_TYPE, MPSFileTypeFactory.MPS_ROOT_FILE_TYPE, MPSFileTypeFactory.MPS_BINARY_FILE_TYPE};
 
   @NotNull
   public String getName() {

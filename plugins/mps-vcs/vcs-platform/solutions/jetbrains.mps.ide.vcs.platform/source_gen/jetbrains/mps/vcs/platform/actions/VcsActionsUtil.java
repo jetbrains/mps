@@ -34,11 +34,14 @@ import org.apache.log4j.Level;
 import com.intellij.openapi.vcs.changes.ContentRevision;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import com.intellij.diff.DiffContentFactory;
-import java.util.List;
 import com.intellij.diff.contents.DiffContent;
+import com.intellij.openapi.vcs.changes.BinaryContentRevision;
+import java.io.IOException;
+import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import com.intellij.diff.requests.SimpleDiffRequest;
+import java.util.Arrays;
 import jetbrains.mps.vcs.platform.integration.ModelDiffViewer;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.diff.DiffManager;
@@ -52,6 +55,18 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.AbstractModule;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.extapi.persistence.FileDataSource;
+import jetbrains.mps.persistence.FilePerRootDataSource;
+import java.util.Map;
+import jetbrains.mps.smodel.persistence.def.FilePerRootFormatUtil;
+import com.intellij.openapi.vcs.history.VcsCachingHistory;
+import com.intellij.vcsUtil.VcsUtil;
+import com.intellij.openapi.vcs.impl.VcsBackgroundableActions;
+import com.intellij.util.Consumer;
+import com.intellij.openapi.vcs.history.VcsHistorySession;
+import jetbrains.mps.vcs.diff.ui.RootHistoryDialog;
 
 @GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/8230098746512809101", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public final class VcsActionsUtil {
@@ -116,13 +131,22 @@ public final class VcsActionsUtil {
           }
 
           DiffContentFactory diffContentFactory = DiffContentFactory.getInstance();
-          String content = revision.getContent();
-          if (content == null) {
+          String revisionStringContent = revision.getContent();
+          if (revisionStringContent == null) {
             throw new VcsException("Failed to load content");
           }
-          List<DiffContent> contents = ListSequence.fromListAndArray(new ArrayList<DiffContent>(), diffContentFactory.create(content, vFile.getFileType()), diffContentFactory.create(ideaProject, vFile));
+          DiffContent revisionContent;
+          try {
+            revisionContent = (revision instanceof BinaryContentRevision ? diffContentFactory.createBinary(ideaProject, ((BinaryContentRevision) revision).getBinaryContent(), vFile.getFileType(), vFile.getName()) : diffContentFactory.create(revisionStringContent, vFile.getFileType()));
+          } catch (IOException e) {
+            if (LOG.isEnabledFor(Level.WARN)) {
+              LOG.warn("error when reading revision content from file " + vFile + " revision=" + revisionNumber, e);
+            }
+            return;
+          }
+          DiffContent currentContent = diffContentFactory.create(ideaProject, vFile);
           List<String> titles = ListSequence.fromListAndArray(new ArrayList<String>(), revisionNumber.asString() + " (Read-Only)", "Your Version");
-          DiffRequest req = new SimpleDiffRequest(myContainingRootName, contents, titles);
+          DiffRequest req = new SimpleDiffRequest(myContainingRootName, Arrays.asList(revisionContent, currentContent), titles);
           // put hint to show only one root and navigate 
           req.putUserData(ModelDiffViewer.DIFF_SHOW_ROOTID, id);
           req.putUserData(ModelDiffViewer.DIFF_NAVIGATE_TO, bounds);
@@ -149,7 +173,6 @@ public final class VcsActionsUtil {
         }
       }
     });
-
   }
 
   private static Iterable<VirtualFile> collectUnversionedFiles(final VcsFileStatusProvider fileStatusProvider, @NotNull final VirtualFile dir) {
@@ -244,11 +267,63 @@ __switch__:
     }
     return collectUnversionedFiles(statusProvider, virtualFile);
   }
+
   public static List<VirtualFile> getUnversionedFilesForModules(@NotNull final Project project, List<SModule> module) {
     return ListSequence.fromList(module).translate(new ITranslator2<SModule, VirtualFile>() {
       public Iterable<VirtualFile> translate(SModule m) {
         return getUnversionedFilesForModule(project, m);
       }
     }).toListSequence();
+  }
+
+  private static VirtualFile getFileFromModel(SModel model, List<SNode> nodes) {
+    DataSource ds = model.getSource();
+    if (ds instanceof FileDataSource) {
+      return VirtualFileUtils.getProjectVirtualFile(((FileDataSource) ds).getFile());
+    }
+    if (ds instanceof FilePerRootDataSource) {
+      SNode containingRoot = nodes.iterator().next().getContainingRoot();
+      Map<SNodeId, String> streamNames = FilePerRootFormatUtil.getStreamNames(model.getRootNodes());
+      String rootStream = streamNames.get(containingRoot.getNodeId());
+      if (rootStream == null) {
+        return null;
+      } else {
+        IFile file = ((FilePerRootDataSource) ds).getFile(rootStream);
+        return VirtualFileUtils.getProjectVirtualFile(file);
+      }
+    }
+    return null;
+  }
+
+  public static boolean modelHistoryIsTrackedInVcs(SModel model, MPSProject mpsProject, List<SNode> nodes) {
+    VirtualFile vf = VcsActionsUtil.getFileFromModel(model, nodes);
+    if (vf == null) {
+      return false;
+    }
+    if (ProjectLevelVcsManager.getInstance(mpsProject.getProject()).getVcsFor(vf) == null) {
+      return false;
+    }
+    return AbstractVcs.fileInVcsByFileStatus(mpsProject.getProject(), vf);
+  }
+
+  public static void showNodeHistory(final SModel model, final MPSProject mpsProject, final List<SNode> nodes, final SNodeId nodeId, final String dialogTitle, final boolean compareModels) {
+    final Wrappers._T<VirtualFile> vf = new Wrappers._T<VirtualFile>();
+    mpsProject.getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        vf.value = VcsActionsUtil.getFileFromModel(model, nodes);
+      }
+    });
+    final AbstractVcs activeVCS = ProjectLevelVcsManager.getInstance(mpsProject.getProject()).getVcsFor(vf.value);
+    // see RootHistoryDialog.show for explanation why I resort to roots. The reason I do it here, not in show(), as I don't want to care about model read access there (it's likely in background). 
+    // copied from IDEA's SelectedBlockHistoryAction 
+    VcsCachingHistory.collectInBackground(activeVCS, VcsUtil.getFilePath(vf.value), VcsBackgroundableActions.HISTORY_FOR_SELECTION, new Consumer<VcsHistorySession>() {
+      public void consume(VcsHistorySession vcsSession) {
+        if (vcsSession != null) {
+          RootHistoryDialog dlg = new RootHistoryDialog(mpsProject, vf.value, activeVCS, vcsSession, compareModels);
+          dlg.setTitle(dialogTitle);
+          dlg.show(Collections.singleton(nodeId));
+        }
+      }
+    });
   }
 }

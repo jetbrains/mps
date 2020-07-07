@@ -147,6 +147,12 @@
     <classNode extendsClassName="com.intellij.openapi.project.DumbAware" />
     <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
   </dependency>
+  <dependency className="jetbrains.mps.vcs.diff.ui.RevisionsExtractor">
+    <classNode dependClassName="com.intellij.openapi.vcs.history.VcsFileRevision" />
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode extendsClassName="java.lang.Runnable" />
+  </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.RootDifferencePane">
     <classNode dependClassName="com.intellij.diff.tools.util.DiffSplitter" />
     <classNode dependClassName="com.intellij.diff.tools.util.side.TwosideContentPanel" />
@@ -209,6 +215,27 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.module.ModelAccess" />
     <classNode extendsClassName="java.beans.PropertyChangeListener" />
     <classNode extendsClassName="jetbrains.mps.vcs.diff.ui.IHighlighter" />
+  </dependency>
+  <dependency className="jetbrains.mps.vcs.diff.ui.RootFileHistoryExtractor">
+    <classNode dependClassName="com.intellij.openapi.progress.ProcessCanceledException" />
+    <classNode dependClassName="com.intellij.openapi.vcs.history.VcsFileRevision" />
+    <classNode dependClassName="java.lang.Exception" />
+    <classNode dependClassName="java.lang.Integer" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.Runnable" />
+    <classNode dependClassName="java.util.ArrayList" />
+    <classNode dependClassName="java.util.HashMap" />
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="java.util.Map" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.smodel.persistence.lines.LineContent" />
+    <classNode dependClassName="jetbrains.mps.smodel.persistence.lines.NodeLineContent" />
+    <classNode dependClassName="jetbrains.mps.vcspersistence.VCSPersistenceSupport" />
+    <classNode dependClassName="org.apache.log4j.Level" />
+    <classNode dependClassName="org.apache.log4j.LogManager" />
+    <classNode dependClassName="org.apache.log4j.Logger" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeId" />
+    <classNode extendsClassName="jetbrains.mps.vcs.diff.ui.RevisionsExtractor" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.RootHistoryDialog">
     <classNode dependClassName="com.intellij.diff.DiffManager" />
@@ -283,9 +310,10 @@
     <classNode dependClassName="javax.swing.event.ListSelectionListener" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.ide.actions.MPSCommonDataKeys" />
-    <classNode dependClassName="jetbrains.mps.project.MPSExtentions" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
-    <classNode dependClassName="jetbrains.mps.vcs.diff.ui.RootHistoryModel" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.ui.RevisionsExtractor" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.ui.RootFileHistoryExtractor" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.ui.RootModelHistoryExtractor" />
     <classNode dependClassName="jetbrains.mps.vcs.platform.integration.ModelDiffViewer" />
     <classNode dependClassName="jetbrains.mps.vcspersistence.VCSPersistenceUtil" />
     <classNode dependClassName="jetbrains.mps.vfs.tracking.ModelDiffContent" />
@@ -297,25 +325,26 @@
     <classNode extendsClassName="com.intellij.openapi.actionSystem.DataProvider" />
     <classNode extendsClassName="com.intellij.openapi.ui.FrameWrapper" />
   </dependency>
-  <dependency className="jetbrains.mps.vcs.diff.ui.RootHistoryModel">
+  <dependency className="jetbrains.mps.vcs.diff.ui.RootModelHistoryExtractor">
     <classNode dependClassName="com.intellij.openapi.progress.ProcessCanceledException" />
     <classNode dependClassName="com.intellij.openapi.vcs.history.VcsFileRevision" />
     <classNode dependClassName="java.lang.Exception" />
-    <classNode dependClassName="java.lang.Integer" />
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.Runnable" />
+    <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.ArrayList" />
-    <classNode dependClassName="java.util.HashMap" />
     <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.smodel.persistence.lines.LineContent" />
-    <classNode dependClassName="jetbrains.mps.smodel.persistence.lines.NodeLineContent" />
-    <classNode dependClassName="jetbrains.mps.vcspersistence.VCSPersistenceSupport" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.Wrappers" />
+    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.ChangeSetBuilder" />
+    <classNode dependClassName="jetbrains.mps.vcspersistence.VCSPersistenceUtil" />
     <classNode dependClassName="org.apache.log4j.Level" />
     <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.apache.log4j.Logger" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeId" />
-    <classNode extendsClassName="java.lang.Runnable" />
+    <classNode extendsClassName="jetbrains.mps.vcs.diff.ui.RevisionsExtractor" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.StructDiffButtonsPainter">
     <classNode dependClassName="java.lang.Iterable" />

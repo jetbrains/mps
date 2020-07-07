@@ -356,7 +356,7 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
   }
 
   private Iterable<ModelChange> getChangesToHighlight() {
-    return Sequence.fromIterable(myChangeSet.getChangesForRoot(myRootId)).where(new IWhereFilter<ModelChange>() {
+    return Sequence.fromIterable(myChangeSet.getChangesForNode(myRootId)).where(new IWhereFilter<ModelChange>() {
       public boolean accept(ModelChange change) {
         if (change instanceof NodeIdChange && myHideIdChanges) {
           return false;

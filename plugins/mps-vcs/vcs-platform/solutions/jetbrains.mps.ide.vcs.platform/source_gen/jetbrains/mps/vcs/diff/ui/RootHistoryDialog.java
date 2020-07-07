@@ -52,8 +52,8 @@ import com.intellij.ui.PopupHandler;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.AnAction;
 import java.util.Collection;
-import com.intellij.util.ui.update.Update;
 import com.intellij.openapi.progress.util.BackgroundTaskUtil;
+import com.intellij.util.ui.update.Update;
 import java.util.Collections;
 import com.intellij.diff.requests.NoDiffRequest;
 import com.intellij.diff.util.IntPair;
@@ -78,7 +78,6 @@ import org.jetbrains.annotations.Nullable;
 import com.intellij.diff.contents.EmptyContent;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
-import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.vfs.tracking.ModelDiffContent;
 import com.intellij.openapi.util.Disposer;
 
@@ -109,18 +108,18 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
   private final AnimatedIcon myStatusSpinner = new AsyncProcessIcon(getClass().getSimpleName());
   private final JEditorPane myComments;
   private final MergingUpdateQueue myUpdateQueue;
-
-  private RootHistoryModel myHistoryExtractor;
-
+  private RevisionsExtractor myRevisionsExtractor;
+  private final boolean myCompareModels;
   private boolean myIsDuringUpdate = false;
 
 
-  public RootHistoryDialog(MPSProject project, VirtualFile actualFile, AbstractVcs vcs, VcsHistorySession session) {
+  public RootHistoryDialog(MPSProject project, VirtualFile actualFile, AbstractVcs vcs, VcsHistorySession session, boolean compareModels) {
     super(project.getProject(), "MPS.RootHistoryDialog", false);
     // no idea why VcsSelectionHistoryDialog uses isDialog == false 
     myMPSProject = project;
     myActualFile = actualFile;
     myActiveVcs = vcs;
+    myCompareModels = compareModels;
     VcsHistoryProvider vcsHistoryProvider = vcs.getVcsHistoryProvider();
 
     // copied from VcsSelectionHistoryDialog 
@@ -178,7 +177,9 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
         if (components.getRevisionListener() != null) {
           components.getRevisionListener().consume(revision);
         }
-        updateDiff();
+        if (!(e.getValueIsAdjusting())) {
+          updateDiff();
+        }
       }
     };
     myList.getSelectionModel().addListSelectionListener(selectionListener);
@@ -194,13 +195,27 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
     setComponent(mySplitter);
     setPreferredFocusedComponent(myList);
     closeOnEsc();
-
   }
 
   public void show(Collection<SNodeId> selection) {
     // for the moment, I support single node scenario. Moreover, root node, as DiffModelViewer (along with ChangeSet) is incapable to show changes for anything but root 
     myRoot = selection.iterator().next();
-    myHistoryExtractor = new RootHistoryModel(myRevisions, myRoot, new Runnable() {
+    myRevisionsExtractor = createHistoryExtractor();
+    BackgroundTaskUtil.executeOnPooledThread(this, myRevisionsExtractor);
+    updateRevisionList();
+    show();
+  }
+
+  private RevisionsExtractor createHistoryExtractor() {
+    if (myCompareModels) {
+      return new RootModelHistoryExtractor(myMPSProject, myRevisions, myRoot, myActualFile.getExtension(), getUpdateListener());
+    } else {
+      return new RootFileHistoryExtractor(myRevisions, myRoot, getUpdateListener());
+    }
+  }
+
+  private Runnable getUpdateListener() {
+    return new Runnable() {
       public void run() {
         myUpdateQueue.queue(new Update(this) {
           @Override
@@ -210,16 +225,12 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
           }
         });
       }
-    });
-    BackgroundTaskUtil.executeOnPooledThread(this, myHistoryExtractor);
-    updateRevisionList();
-
-    show();
+    };
   }
 
   /*package*/ void updateStatusLine() {
-    if (myHistoryExtractor.isLoading()) {
-      myStatusLabel.setText(String.format("Analyzing revision %d/%d ...", myHistoryExtractor.processedRevisions(), myHistoryExtractor.totalRevisions()));
+    if (myRevisionsExtractor.isLoading()) {
+      myStatusLabel.setText(String.format("Analyzing revision %d/%d ...", myRevisionsExtractor.getProcessedRevisionsNumber(), myRevisionsExtractor.getTotalRevisionsNumber()));
       myStatusSpinner.resume();
       myStatusSpinner.setVisible(true);
     } else {
@@ -235,9 +246,13 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
         return;
       }
       myIsDuringUpdate = true;
+      if (myListModel.getItems().size() == myRevisionsExtractor.getRevisions().size()) {
+        return;
+      }
 
       final List<VcsFileRevision> oldSelection = myList.getSelectedObjects();
-      myListModel.setItems(myHistoryExtractor.revisions());
+      myListModel.setItems(myRevisionsExtractor.getRevisions());
+
       if (oldSelection.isEmpty()) {
         if (myListModel.getRowCount() > 0) {
           myList.setSelection(Collections.singleton(myListModel.getItem(0)));
@@ -245,11 +260,12 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
       } else {
         myList.setSelection(oldSelection);
       }
-
     } finally {
       myIsDuringUpdate = false;
     }
+    updateDiff();
   }
+
 
   private void updateDiff() {
     if (isDisposed() || myIsDuringUpdate) {
@@ -279,8 +295,7 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
       myDiffPanel.setRequest(rq, new IntPair(revIndex1, revIndex2));
       return;
     }
-
-    if (myHistoryExtractor.isLoading()) {
+    if (myRevisionsExtractor.isLoading()) {
       myDiffPanel.setRequest(new LoadingDiffRequest());
     } else {
       // FIXME throw an exception from createDiffContent, catch it here and present to user through MessageDiffRequest (there's no DiffContent that could do that instead) 
@@ -344,6 +359,22 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
     return null;
   }
 
+  @Nullable
+  private DiffContent createDiffContent(int revIndex) {
+    if (revIndex == myRevisions.size()) {
+      return new EmptyContent();
+    }
+    VcsFileRevision rev = myRevisions.get(revIndex);
+    SModel loaded;
+    try {
+      loaded = VCSPersistenceUtil.loadModel(rev.loadContent(), myActualFile.getExtension());
+    } catch (Exception ex) {
+      return null;
+    }
+    // ModelDiffViewer doesn't tolerate reusable detached models, it registers and disposes such models solely on its own discretion 
+    return (loaded == null ? new EmptyContent() : new ModelDiffContent(loaded));
+  }
+
   @NotNull
   private IntPair getSelectedRevisionsRange() {
     List<VcsFileRevision> selection = myList.getSelectedObjects();
@@ -357,21 +388,6 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
     return new IntPair(startIndex, endIndex + 1);
   }
 
-  @Nullable
-  private DiffContent createDiffContent(int revIndex) {
-    if (revIndex == myRevisions.size()) {
-      return new EmptyContent();
-    }
-    VcsFileRevision rev = myRevisions.get(revIndex);
-    SModel loaded;
-    try {
-      loaded = VCSPersistenceUtil.loadModel(rev.loadContent(), MPSExtentions.MODEL);
-    } catch (Exception ex) {
-      return null;
-    }
-    // ModelDiffViewer doesn't tolerate reusable detached models, it registers and disposes such models solely on its own discretion 
-    return (loaded == null ? new EmptyContent() : new ModelDiffContent(loaded));
-  }
   @Override
   public void dispose() {
     Disposer.dispose(myDiffPanel);

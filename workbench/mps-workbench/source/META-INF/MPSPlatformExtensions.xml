@@ -1028,6 +1028,9 @@
     <projectService serviceImplementation="com.intellij.openapi.fileTypes.impl.FileTypeHintPersistentComponent" configurationSchemaKey="fileTypes"/>
     <fileTypeOverrider implementation="com.intellij.openapi.fileTypes.impl.FileTypeHintService"/>
 
+    <registryKey key="vcs.show.root.history.compare.models" defaultValue="true"
+                 description="Show Root History action uses models comparison if true, otherwise the persisted files comparison is used."/>
+
     <!--
     <defaultHighlightingSettingProvider implementation="com.intellij.codeInsight.actions.ReaderModeHighlightingSettingsProvider"/>
     -->
