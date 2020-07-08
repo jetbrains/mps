@@ -31135,6 +31135,11 @@
           <ref role="3bR37D" node="4wxeloVufXp" resolve="jetbrains.mps.git4idea.stubs" />
         </node>
       </node>
+      <node concept="1SiIV0" id="1A9$eqshWhq" role="3bR37C">
+        <node concept="3bR9La" id="1A9$eqshWhr" role="1SiIV1">
+          <ref role="3bR37D" node="7Kfy9QB6Lg8" resolve="jetbrains.mps.runtime" />
+        </node>
+      </node>
     </node>
     <node concept="m$_wf" id="RJsmGEieyQ" role="3989C9">
       <property role="m$_wk" value="jetbrains.mps.vcs" />
