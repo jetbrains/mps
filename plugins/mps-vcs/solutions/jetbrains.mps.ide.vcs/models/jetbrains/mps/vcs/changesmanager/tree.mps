@@ -1516,14 +1516,22 @@
                 <ref role="3uigEE" to="gwd2:4oT3Lbm4LXh" resolve="Feature" />
               </node>
             </node>
-            <node concept="2OqwBi" id="4uLJMq1g9tn" role="33vP2m">
-              <node concept="37vLTw" id="4uLJMq1g9tm" role="2Oq$k0">
-                <ref role="3cqZAo" node="4uLJMq1fZya" resolve="myFeature2Change" />
-              </node>
-              <node concept="liA8E" id="4uLJMq1g9to" role="2OqNvi">
-                <ref role="37wK5l" to="e8no:~BidirectionalMap.getKeysByValue(java.lang.Object)" resolve="getKeysByValue" />
-                <node concept="37vLTw" id="4uLJMq1g9tp" role="37wK5m">
-                  <ref role="3cqZAo" node="4uLJMq1fZBq" resolve="change" />
+            <node concept="2ShNRf" id="1A9$eqsspIg" role="33vP2m">
+              <node concept="1pGfFk" id="1A9$eqssqCM" role="2ShVmc">
+                <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;(java.util.Collection)" resolve="ArrayList" />
+                <node concept="3uibUv" id="1A9$eqssqED" role="1pMfVU">
+                  <ref role="3uigEE" to="gwd2:4oT3Lbm4LXh" resolve="Feature" />
+                </node>
+                <node concept="2OqwBi" id="1A9$eqssqKz" role="37wK5m">
+                  <node concept="37vLTw" id="1A9$eqssqK$" role="2Oq$k0">
+                    <ref role="3cqZAo" node="4uLJMq1fZya" resolve="myFeature2Change" />
+                  </node>
+                  <node concept="liA8E" id="1A9$eqssqK_" role="2OqNvi">
+                    <ref role="37wK5l" to="e8no:~BidirectionalMap.getKeysByValue(java.lang.Object)" resolve="getKeysByValue" />
+                    <node concept="37vLTw" id="1A9$eqssqKA" role="37wK5m">
+                      <ref role="3cqZAo" node="4uLJMq1fZBq" resolve="change" />
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
