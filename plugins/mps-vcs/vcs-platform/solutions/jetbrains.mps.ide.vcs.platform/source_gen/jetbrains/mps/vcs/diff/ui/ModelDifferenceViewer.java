@@ -85,7 +85,7 @@ public class ModelDifferenceViewer implements DataProvider {
         }
       }
     });
-    project.getRepository().getModelAccess().runReadAction(new Runnable() { // also a problem
+    project.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         myChangeSet = ChangeSetBuilder.buildChangeSet(oldModel, newModel, true);
       }

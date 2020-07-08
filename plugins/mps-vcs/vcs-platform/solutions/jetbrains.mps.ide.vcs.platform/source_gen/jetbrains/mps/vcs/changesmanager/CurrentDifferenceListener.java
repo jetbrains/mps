@@ -4,10 +4,10 @@ package jetbrains.mps.vcs.changesmanager;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import java.util.EventListener;
-import java.util.List;
-
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
+import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 
 @GeneratedClass(node = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/6756213824749053844", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
 public interface CurrentDifferenceListener extends EventListener {
@@ -17,10 +17,14 @@ public interface CurrentDifferenceListener extends EventListener {
   void changeUpdateFinished();
 
   default void changesAdded(@NotNull List<ModelChange> changes) {
-    for (ModelChange c : changes) changeAdded(c);
-
+    for (ModelChange c : ListSequence.fromList(changes)) {
+      changeAdded(c);
+    }
   }
+
   default void changesRemoved(@NotNull List<ModelChange> changes) {
-    for (ModelChange c : changes) changeRemoved(c);
+    for (ModelChange c : ListSequence.fromList(changes)) {
+      changeRemoved(c);
+    }
   }
 }

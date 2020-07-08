@@ -26,10 +26,9 @@ public class ChangeSetImpl implements ModelChangeSet {
   private final SModel myOldModel;
   private final SModel myNewModel;
   private final List<ModelChange> myModelChanges = new CopyOnWriteArrayList<ModelChange>();
-  private final Map<SNodeId, List<ModelChange>> myRootToChanges = MapSequence.fromMap(new HashMap<SNodeId, List<ModelChange>>());
-  private final List<ModelChange> myMetadataChanges = ListSequence.fromList(new ArrayList<ModelChange>());
+  private Map<SNodeId, List<ModelChange>> myRootToChanges = MapSequence.fromMap(new HashMap<SNodeId, List<ModelChange>>());
+  private List<ModelChange> myMetadataChanges = ListSequence.fromList(new ArrayList<ModelChange>());
   private ChangeSetImpl myOppositeChangeSet = null;
-
   public ChangeSetImpl(@NotNull SModel oldModel, @NotNull SModel newModel) {
     myOldModel = oldModel;
     myNewModel = newModel;

@@ -4,26 +4,26 @@ package jetbrains.mps.vcs.changesmanager.tree.features;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.model.SNodeId;
 
 @GeneratedClass(node = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)/5060092229902868722", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
 public class ReferencesFeature extends NodeAggregationFeature {
-  public ReferencesFeature(SNodeReference nodePointer, SNodeId rootId) {
+  public ReferencesFeature(@NotNull SNodeReference nodePointer, SNodeId rootId) {
     super(nodePointer, rootId);
   }
 
   @Override
-  public int hashCode() {
-    return getNodePointer().hashCode() * 23;
+  public boolean equals(Object object) {
+    if (object instanceof ReferencesFeature) {
+      return getNodePointer().equals(((ReferencesFeature) object).getNodePointer());
+    }
+    return false;
   }
 
   @Override
-  public boolean equals(Object obj) {
-    if (obj instanceof ReferencesFeature) {
-      return getNodePointer().equals(((ReferencesFeature) obj).getNodePointer());
-    }
-    return false;
+  public int hashCode() {
+    return getNodePointer().hashCode() * 37;
   }
 
   @Override

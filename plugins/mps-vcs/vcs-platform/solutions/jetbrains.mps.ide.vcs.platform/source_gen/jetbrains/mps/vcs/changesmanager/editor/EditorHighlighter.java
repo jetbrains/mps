@@ -12,8 +12,6 @@ import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.vcs.changesmanager.CurrentDifference;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
@@ -218,23 +216,14 @@ public class EditorHighlighter implements EditorMessageOwner {
       }
       if (!(ListSequence.fromList(myAddedMessages).isEmpty()) || !(ListSequence.fromList(myRemovedMessages).isEmpty())) {
         NodeHighlightManager nodeHighlightManager = getHighlightManager();
-        Logger logger = LogManager.getLogger(EditorHighlighter.class);
-        logger.info("unmark " + myRemovedMessages.size() + " messages");
         for (ChangeEditorMessage removedMessage : ListSequence.fromList(myRemovedMessages)) {
           nodeHighlightManager.unmark(removedMessage);
         }
-        logger.info("done unmark ");
-        logger.info("mark " + myAddedMessages.size() + " messages");
         for (ChangeEditorMessage addedMessage : ListSequence.fromList(myAddedMessages)) {
           nodeHighlightManager.mark(addedMessage);
         }
-        logger.info("done mark " + " ");
-        logger.info("relayout " + " ");
         check_urq9my_a3a1a5r(myStripsPainter);
-        logger.info("done relayout " + " ");
-        logger.info("repaint " + " ");
         nodeHighlightManager.repaintAndRebuildEditorMessages();
-        logger.info("done repaint " + " ");
         ListSequence.fromList(myAddedMessages).clear();
         ListSequence.fromList(myRemovedMessages).clear();
       }

@@ -18,9 +18,7 @@ import jetbrains.mps.ide.hierarchy.AbstractHierarchyTree;
 public class TreeHighlighterFactory implements ProjectComponent {
   private final CurrentDifferenceRegistry myRegistry;
   private final FeatureForestMapSupport myFeatureForestMapSupport;
-  private final MergingUpdateQueue myQueue = new MergingUpdateQueue("MPS Changes Manager RehighlightAll Watcher Queue", 500,
-                                                                    true, null, null, null,
-                                                                    false);
+  private final MergingUpdateQueue myQueue = new MergingUpdateQueue("MPS Changes Manager RehighlightAll Watcher Queue", 500, true, null, null, null, false);
 
   public TreeHighlighterFactory(@NotNull Project project, @NotNull CurrentDifferenceRegistry registry, @NotNull FeatureForestMapSupport featureForestMapSupport) {
     myRegistry = registry;

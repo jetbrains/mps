@@ -9,13 +9,13 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vcs.diff.ChangeSet;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.vcs.util.MergeStrategy;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.vcs.util.MergeStrategy;
 import jetbrains.mps.vcs.mergehints.runtime.VCSAspectUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
@@ -35,6 +35,7 @@ public class NodeGroupChange extends ModelChange {
   private final int myResultEnd;
   private List<SNodeId> myPreparedIdsToDelete = null;
   private SNodeId myBeforeAnchorId = null;
+
   public NodeGroupChange(@NotNull ChangeSet changeSet, @NotNull SNodeId parentNodeId, @NotNull SContainmentLink role, int begin, int end, int resultBegin, int resultEnd) {
     super(changeSet, calcRootId(changeSet, parentNodeId));
     myParentNodeId = parentNodeId;
@@ -45,23 +46,28 @@ public class NodeGroupChange extends ModelChange {
     myResultEnd = resultEnd;
   }
 
+  @NotNull
+  public SNodeId getParentNodeId() {
+    return myParentNodeId;
+  }
+
+  @NotNull
+  public SNodeId getParentNodeId(boolean isNewModel) {
+    return myParentNodeId;
+  }
+
   @Nullable
   private static SNodeId calcRootId(ChangeSet changeSet, SNodeId parentNodeId) {
     SModel oldModel = changeSet.getOldModel();
     SNode node = oldModel.getNode(parentNodeId);
     if (node == null) {
+      // I don't fully understand how this can happen 
       return null;
     }
-    return SNodeOperations.getContainingRoot(node).getNodeId();
+    SNode containingRoot = node.getContainingRoot();
+    return containingRoot.getNodeId();
   }
-  @NotNull
-  public SNodeId getParentNodeId() {
-    return myParentNodeId;
-  }
-  @NotNull
-  public SNodeId getParentNodeId(boolean isNewModel) {
-    return myParentNodeId;
-  }
+
   /**
    * 
    * @deprecated use getRoleLink()
@@ -71,25 +77,32 @@ public class NodeGroupChange extends ModelChange {
   public String getRole() {
     return myRole.getRoleName();
   }
+
   @NotNull
   public SContainmentLink getRoleLink() {
     return myRole;
   }
+
   public boolean isAbout(SContainmentLink link) {
     return myRole.equals(link);
   }
+
   public int getBegin() {
     return myBegin;
   }
+
   public int getEnd() {
     return myEnd;
   }
+
   public int getResultEnd() {
     return myResultEnd;
   }
+
   public int getResultBegin() {
     return myResultBegin;
   }
+
   @Nullable
   @Override
   public MergeStrategy getMergeHint() {
@@ -101,13 +114,13 @@ public class NodeGroupChange extends ModelChange {
     }
     return VCSAspectUtil.getDefaultMergeStrategy(SNodeOperations.getConcept(n));
   }
+
   private SNode getParent(boolean isNewModel) {
-    return (isNewModel ? getChangeSet().getNewModel()
-                       : getChangeSet().getOldModel()).getNode(getParentNodeId(isNewModel));
+    return ((isNewModel ? getChangeSet().getNewModel() : getChangeSet().getOldModel())).getNode(getParentNodeId(isNewModel));
   }
 
   public final List<SNode> getChangedCollection(boolean isNewModel) {
-    return check_yjf6x2_a0a12(check_yjf6x2_a0a0v(getParent(isNewModel), myRole, this), this);
+    return check_yjf6x2_a0a53(check_yjf6x2_a0a0jb(getParent(isNewModel), myRole, this), this);
   }
 
 
@@ -123,6 +136,7 @@ public class NodeGroupChange extends ModelChange {
       myBeforeAnchorId = (myEnd >= ListSequence.fromList(children).count() ? null : children.get(myEnd).getNodeId());
     }
   }
+
   @Override
   public void apply(@NotNull final SModel model, @NotNull final NodeCopier nodeCopier) {
     // delete old nodes 
@@ -130,7 +144,7 @@ public class NodeGroupChange extends ModelChange {
     // some nodes can be already deleted in editor (if editing is allowed) 
     ListSequence.fromList(myPreparedIdsToDelete).visitAll(new IVisitor<SNodeId>() {
       public void visit(SNodeId id) {
-        check_yjf6x2_a0a0a0d0z(model.getNode(id));
+        check_yjf6x2_a0a0a0d0ob(model.getNode(id));
       }
     });
     myPreparedIdsToDelete = null;
@@ -149,11 +163,13 @@ public class NodeGroupChange extends ModelChange {
       insertNodeBeforeAnchor(parent, newNode, beforeAnchor);
     }
   }
+
   private SNode insertNodeBeforeAnchor(SNode parent, SNode newNode, SNode anchor) {
     SContainmentLink link = (SNodeOperations.isInstanceOf(newNode, CONCEPTS.ChildAttribute$XQ) ? LINKS.smodelAttribute$K8bJ : myRole);
     parent.insertChildBefore(link, newNode, anchor);
     return newNode;
   }
+
   @NotNull
   @Override
   public ChangeType getType() {
@@ -165,6 +181,7 @@ public class NodeGroupChange extends ModelChange {
     }
     return ChangeType.CHANGE;
   }
+
   @Override
   public String toString() {
     if (myEnd == myBegin) {
@@ -175,10 +192,12 @@ public class NodeGroupChange extends ModelChange {
     }
     return String.format("Replace %s with nodes %s in role %s of node %s", nodeRange(myBegin, myEnd), nodeRange(myResultBegin, myResultEnd), myRole, myParentNodeId);
   }
+
   @Override
   public String getDescription() {
     return getDescription(true);
   }
+
   public String getDescription(boolean verbose) {
     List<SNode> newChildren = null;
     String newIds = null;
@@ -217,27 +236,29 @@ public class NodeGroupChange extends ModelChange {
       return String.format("Replaced %s with %s", oldStuff, newStuff);
     }
   }
+
   @NotNull
   @Override
   protected ModelChange createOppositeChange() {
     return new NodeGroupChange(getChangeSet().getOppositeChangeSet(), myParentNodeId, myRole, myResultBegin, myResultEnd, myBegin, myEnd);
   }
+
   private static String nodeRange(int begin, int end) {
     return (begin + 1 == end ? String.format("node #%d", begin) : String.format("nodes #%d-%d", begin, end - 1));
   }
-  private static List<SNode> check_yjf6x2_a0a12(Iterable<SNode> checkedDotOperand, NodeGroupChange checkedDotThisExpression) {
+  private static List<SNode> check_yjf6x2_a0a53(Iterable<SNode> checkedDotOperand, NodeGroupChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return Sequence.fromIterable(checkedDotOperand).toListSequence();
     }
     return null;
   }
-  private static Iterable<SNode> check_yjf6x2_a0a0v(SNode checkedDotOperand, SContainmentLink myRole, NodeGroupChange checkedDotThisExpression) {
+  private static Iterable<SNode> check_yjf6x2_a0a0jb(SNode checkedDotOperand, SContainmentLink myRole, NodeGroupChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return AttributeOperations.getChildNodesAndAttributes(checkedDotOperand, myRole);
     }
     return null;
   }
-  private static void check_yjf6x2_a0a0a0d0z(SNode checkedDotOperand) {
+  private static void check_yjf6x2_a0a0a0d0ob(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.delete();
     }

@@ -18,9 +18,9 @@ public class ModelFeature extends Feature {
   }
 
   @Override
-  public boolean equals(Object obj) {
-    if (obj instanceof ModelFeature) {
-      return getModelReference().equals(((ModelFeature) obj).getModelReference());
+  public boolean equals(Object object) {
+    if (object instanceof ModelFeature) {
+      return getModelReference().equals(((ModelFeature) object).getModelReference());
     }
     return false;
   }

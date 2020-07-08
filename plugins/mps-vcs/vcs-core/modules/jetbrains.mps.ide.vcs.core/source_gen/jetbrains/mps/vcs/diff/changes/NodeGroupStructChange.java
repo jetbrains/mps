@@ -22,17 +22,16 @@ public class NodeGroupStructChange extends NodeGroupChange {
   public SNodeId getParentNodeId(boolean isNewModel) {
     return (isNewModel ? myOppositeNodeId : super.getParentNodeId(false));
   }
+
   @Override
   public void apply(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
     assert model == getChangeSet().getOldModel();
     super.apply(model, nodeCopier);
   }
+
   @NotNull
   @Override
   protected ModelChange createOppositeChange() {
-    return new NodeGroupStructChange(getChangeSet().getOppositeChangeSet(),
-                                     getParentNodeId(true),
-                                     getParentNodeId(false),
-                                     getRoleLink(), getResultBegin(), getResultEnd(), getBegin(), getEnd());
+    return new NodeGroupStructChange(getChangeSet().getOppositeChangeSet(), getParentNodeId(true), getParentNodeId(false), getRoleLink(), getResultBegin(), getResultEnd(), getBegin(), getEnd());
   }
 }

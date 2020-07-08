@@ -4,8 +4,8 @@ package jetbrains.mps.vcs.changesmanager.tree.features;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.model.SNodeId;
 
 @GeneratedClass(node = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)/5060092229902868543", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
 public class PropertiesFeature extends NodeAggregationFeature {
@@ -14,16 +14,16 @@ public class PropertiesFeature extends NodeAggregationFeature {
   }
 
   @Override
-  public int hashCode() {
-    return getNodePointer().hashCode() * 19;
+  public boolean equals(Object object) {
+    if (object instanceof PropertiesFeature) {
+      return getNodePointer().equals(((PropertiesFeature) object).getNodePointer());
+    }
+    return false;
   }
 
   @Override
-  public boolean equals(Object obj) {
-    if (obj instanceof PropertiesFeature) {
-      return getNodePointer().equals(((PropertiesFeature) obj).getNodePointer());
-    }
-    return false;
+  public int hashCode() {
+    return getNodePointer().hashCode() * 31;
   }
 
   @Override

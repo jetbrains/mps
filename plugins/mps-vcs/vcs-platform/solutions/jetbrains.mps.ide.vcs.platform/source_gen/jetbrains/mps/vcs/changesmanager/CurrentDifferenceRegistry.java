@@ -66,6 +66,7 @@ public class CurrentDifferenceRegistry implements ProjectComponent {
       }
     });
   }
+
   @Override
   public void projectClosed() {
     myFileStatusManager.removeFileStatusListener(myFileStatusListener);
@@ -130,6 +131,7 @@ public class CurrentDifferenceRegistry implements ProjectComponent {
       }
     }
   }
+
   /**
    * get existing or create a new one
    */
@@ -147,26 +149,32 @@ public class CurrentDifferenceRegistry implements ProjectComponent {
   @Nullable
   public CurrentDifference getExistingCurDifference(@NotNull SModelReference modelReference) {
     synchronized (myCurrentDifferences) {
-      return myCurrentDifferences.get(modelReference);
+      return MapSequence.fromMap(myCurrentDifferences).get(modelReference);
     }
   }
+
 
   public void addGlobalDifferenceListener(@NotNull CurrentDifferenceListener listener) {
     myGlobalBroadcaster.addDifferenceListener(listener);
   }
+
   public void removeGlobalDifferenceListener(@NotNull CurrentDifferenceListener listener) {
     myGlobalBroadcaster.removeDifferenceListener(listener);
   }
+
   @NotNull
   public SimpleCommandQueue getCommandQueue() {
     return myCommandQueue;
   }
+
   /*package*/ CurrentDifferenceBroadcaster getGlobalBroadcaster() {
     return myGlobalBroadcaster;
   }
+
   /*package*/ void addEventCollector(SModel model, SModelCommandListener listener) {
     myEventsCollector.addListener(model, listener);
   }
+
   /*package*/ void removeEventCollector(SModel model, SModelCommandListener listener) {
     myEventsCollector.removeListener(model, listener);
   }

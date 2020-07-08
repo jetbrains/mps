@@ -5,8 +5,8 @@ package jetbrains.mps.vcs.changesmanager.tree.features;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.model.SNodeId;
 
 @GeneratedClass(node = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)/5060092229902868568", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
 public class PropertyFeature extends AbstractNodeFeature {
@@ -16,20 +16,22 @@ public class PropertyFeature extends AbstractNodeFeature {
     super(nodePointer, new NodeFeature(nodePointer, rootId));
     myProperty = p;
   }
+
   @NotNull
   @Deprecated
   public String getPropertyName() {
     return myProperty.getName();
   }
+
   @NotNull
   public SProperty getProperty() {
     return myProperty;
   }
+
   @Override
   public boolean equals(Object object) {
     if (object instanceof PropertyFeature) {
-      return getNodePointer().equals(((PropertyFeature) object).getNodePointer()) &&
-             myProperty.equals(((PropertyFeature) object).myProperty);
+      return getNodePointer().equals(((PropertyFeature) object).getNodePointer()) && myProperty.equals(((PropertyFeature) object).myProperty);
     }
     return false;
   }

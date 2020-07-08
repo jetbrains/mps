@@ -4,9 +4,9 @@ package jetbrains.mps.vcs.diff.changes;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.vcs.diff.ChangeSet;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.util.MergeStrategy;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -34,11 +34,14 @@ public abstract class ModelChange {
   public final ChangeSet getChangeSet() {
     return myChangeSet;
   }
+
   @Nullable
   public final SNodeId getRootId() {
     return myRootId;
   }
+
   public abstract void apply(@NotNull SModel model, @NotNull NodeCopier nodeCopier);
+
   public ModelChange getOppositeChange() {
     if (myOpposite == null) {
       myOpposite = createOppositeChange();
@@ -46,21 +49,28 @@ public abstract class ModelChange {
     }
     return myOpposite;
   }
+
   @NotNull
   protected abstract ModelChange createOppositeChange();
+
   @NotNull
   public abstract ChangeType getType();
+
   public boolean isNonConflicting() {
     // true - change can never conflict with other change and should be ignored if connected change exists (e.g. resolveInfo change) 
     return getMergeHint() != null;
   }
+
   @Nullable
   public MergeStrategy getMergeHint() {
     return null;
   }
+
   @Override
   public abstract String toString();
+
   public abstract String getDescription();
+
   public static void rollbackChanges(Iterable<ModelChange> changes) {
     assert Sequence.fromIterable(changes).isNotEmpty();
     final SModel model = Sequence.fromIterable(changes).first().getChangeSet().getNewModel();

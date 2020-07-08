@@ -20,29 +20,4 @@ public class VirtualPackageFeature extends Feature {
   public String toString() {
     return "Virtual Package {" + getModelReference().toString() + "|" + myVirtualPackage + "}";
   }
-
-  @Override
-  public int hashCode() {
-    return getModelReference().hashCode() * 37 + myVirtualPackage.hashCode();
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (obj instanceof VirtualPackageFeature) {
-      return getModelReference().equals(((VirtualPackageFeature) obj).getModelReference())
-          && myVirtualPackage.equals(((VirtualPackageFeature) obj).myVirtualPackage);
-    }
-    return false;
-  }
-
-//  @Nullable
-//  private Feature calcParentFeature() {
-//    int lastIndexOf = myVirtualPackage.lastIndexOf('.');
-//    if (lastIndexOf == -1) {
-//      return null;
-//    } else {
-//      String parentPackage = myVirtualPackage.substring(0, lastIndexOf);
-//      return new VirtualPackageFeature(getModelReference(), parentPackage);
-//    }
-//  }
 }

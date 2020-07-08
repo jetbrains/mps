@@ -63,6 +63,7 @@ public class MergeConflictsBuilder {
 
     collectConflicts();
   }
+
   private void addPossibleConflict(ModelChange a, ModelChange b) {
     if (a.isNonConflicting() || b.isNonConflicting()) {
       addSymmetric(a, b);
@@ -70,23 +71,29 @@ public class MergeConflictsBuilder {
       addConflict(a, b);
     }
   }
+
   private void addConflict(ModelChange a, ModelChange b) {
     addChangeLink(myConflictingChanges, a, b);
   }
+
   private void addSymmetric(ModelChange a, ModelChange b) {
     addChangeLink(mySymmetricChanges, a, b);
   }
+
   private <K, C extends ModelChange> Tuples._2<Map<K, C>, Map<K, C>> arrangeChanges(_FunctionTypes._return_P1_E0<? extends K, ? super C> changeToKey, Class<C> changeClass) {
     return MultiTuple.<Map<K, C>,Map<K, C>>from(MergeConflictsBuilder.<K,C>arrangeChanges(myMineChangeSet, changeToKey, changeClass), MergeConflictsBuilder.<K,C>arrangeChanges(myRepositoryChangeSet, changeToKey, changeClass));
   }
+
   private <K, C extends ModelChange> void collectSymmetricChanges(Map<K, C> mine, Map<K, C> repo) {
     for (K key : SetSequence.fromSet(MapSequence.fromMap(mine).keySet()).intersect(SetSequence.fromSet(MapSequence.fromMap(repo).keySet()))) {
       addSymmetric(MapSequence.fromMap(mine).get(key), MapSequence.fromMap(repo).get(key));
     }
   }
+
   private <K, C extends ModelChange> void collectSymmetricChanges(Tuples._2<Map<K, C>, Map<K, C>> mineAndRepo) {
     collectSymmetricChanges(mineAndRepo._0(), mineAndRepo._1());
   }
+
   private <K, C extends ModelChange> void collectSymmetricChanges(_FunctionTypes._return_P1_E0<? extends K, ? super C> changeToKey, Class<C> changeClass) {
     collectSymmetricChanges(arrangeChanges(changeToKey, changeClass));
   }
@@ -135,6 +142,7 @@ public class MergeConflictsBuilder {
       }
     }
   }
+
   private void collectPropertyConflicts() {
     Tuples._2<Map<Tuples._2<SNodeId, String>, SetPropertyChange>, Map<Tuples._2<SNodeId, String>, SetPropertyChange>> arranged;
     arranged = this.<Tuples._2<SNodeId, String>,SetPropertyChange>arrangeChanges(new _FunctionTypes._return_P1_E0<Tuples._2<SNodeId, String>, SetPropertyChange>() {
@@ -152,6 +160,7 @@ public class MergeConflictsBuilder {
       }
     }
   }
+
   private void collectReferenceConflicts() {
     Tuples._2<Map<Tuples._2<SNodeId, String>, SetReferenceChange>, Map<Tuples._2<SNodeId, String>, SetReferenceChange>> arranged;
     arranged = this.<Tuples._2<SNodeId, String>,SetReferenceChange>arrangeChanges(new _FunctionTypes._return_P1_E0<Tuples._2<SNodeId, String>, SetReferenceChange>() {
@@ -169,6 +178,7 @@ public class MergeConflictsBuilder {
       }
     }
   }
+
   private void collectConceptConflicts() {
     Tuples._2<Map<SNodeId, SetConceptChange>, Map<SNodeId, SetConceptChange>> arranged;
     arranged = this.<SNodeId,SetConceptChange>arrangeChanges(new _FunctionTypes._return_P1_E0<SNodeId, SetConceptChange>() {
@@ -186,6 +196,7 @@ public class MergeConflictsBuilder {
       }
     }
   }
+
   private void collectSymmetricRootDeletes() {
     collectSymmetricChanges(new _FunctionTypes._return_P1_E0<SNodeId, DeleteRootChange>() {
       public SNodeId invoke(DeleteRootChange drc) {
@@ -193,6 +204,7 @@ public class MergeConflictsBuilder {
       }
     }, DeleteRootChange.class);
   }
+
   private void collectConflictingRootAdds() {
     Tuples._2<Map<SNodeId, AddRootChange>, Map<SNodeId, AddRootChange>> arranged;
     arranged = this.<SNodeId,AddRootChange>arrangeChanges(new _FunctionTypes._return_P1_E0<SNodeId, AddRootChange>() {
@@ -210,6 +222,7 @@ public class MergeConflictsBuilder {
       }
     }
   }
+
   private boolean nodeGroupChangesSymmetric(NodeGroupChange mine, NodeGroupChange repository) {
     if (mine.getBegin() == repository.getBegin() && mine.getEnd() == repository.getEnd()) {
       if (mine.getResultEnd() - mine.getResultBegin() == repository.getResultEnd() - repository.getResultBegin()) {
@@ -225,6 +238,7 @@ public class MergeConflictsBuilder {
     }
     return false;
   }
+
   private void collectSymmetricImportedModelChanges() {
     collectSymmetricChanges(new _FunctionTypes._return_P1_E0<SModelReference, ImportedModelChange>() {
       public SModelReference invoke(ImportedModelChange imc) {
@@ -232,6 +246,7 @@ public class MergeConflictsBuilder {
       }
     }, ImportedModelChange.class);
   }
+
   private void collectSymmetricModuleDependencyChanges() {
     collectSymmetricChanges(new _FunctionTypes._return_P1_E0<Tuples._2<SModuleReference, ModuleDependencyChange.DependencyType>, ModuleDependencyChange>() {
       public Tuples._2<SModuleReference, ModuleDependencyChange.DependencyType> invoke(ModuleDependencyChange mdc) {
@@ -239,6 +254,7 @@ public class MergeConflictsBuilder {
       }
     }, ModuleDependencyChange.class);
   }
+
   private void collectSymmetricAndConflictedUsedLanguageChanges() {
     final Map<SLanguage, UsedLanguageChange> mine = MapSequence.fromMap(new HashMap<SLanguage, UsedLanguageChange>());
     final Map<SLanguage, UsedLanguageChange> repo = MapSequence.fromMap(new HashMap<SLanguage, UsedLanguageChange>());
@@ -271,6 +287,7 @@ public class MergeConflictsBuilder {
       }
     }
   }
+
   private void collectConflicts() {
     Map<Tuples._2<SNodeId, SContainmentLink>, List<NodeGroupChange>> mineGroupChanges = arrangeNodeGroupChanges(myMineChangeSet);
     Map<Tuples._2<SNodeId, SContainmentLink>, List<NodeGroupChange>> repositoryGroupChanges = arrangeNodeGroupChanges(myRepositoryChangeSet);
@@ -308,6 +325,7 @@ public class MergeConflictsBuilder {
     collectSymmetricAndConflictedUsedLanguageChanges();
     collectSymmetricModuleDependencyChanges();
   }
+
   private static Map<Tuples._2<SNodeId, SContainmentLink>, List<NodeGroupChange>> arrangeNodeGroupChanges(ChangeSet changeSet) {
     Map<Tuples._2<SNodeId, SContainmentLink>, List<NodeGroupChange>> nodeRoleToGroupChanges = MapSequence.fromMap(new HashMap<Tuples._2<SNodeId, SContainmentLink>, List<NodeGroupChange>>());
     for (NodeGroupChange change : Sequence.fromIterable(changeSet.getModelChanges(NodeGroupChange.class))) {
@@ -319,17 +337,20 @@ public class MergeConflictsBuilder {
     }
     return nodeRoleToGroupChanges;
   }
+
   private static void addOneWayChangeLink(Map<ModelChange, List<ModelChange>> map, ModelChange a, ModelChange b) {
     if (MapSequence.fromMap(map).get(a) == null) {
       MapSequence.fromMap(map).put(a, ListSequence.fromList(new ArrayList<ModelChange>()));
     }
     ListSequence.fromList(MapSequence.fromMap(map).get(a)).addElement(b);
   }
+
   private static void addChangeLink(Map<ModelChange, List<ModelChange>> map, ModelChange a, ModelChange b) {
     assert a.getChangeSet() != b.getChangeSet();
     addOneWayChangeLink(map, a, b);
     addOneWayChangeLink(map, b, a);
   }
+
   private static <K, C extends ModelChange> Map<K, C> arrangeChanges(ChangeSet changeSet, final _FunctionTypes._return_P1_E0<? extends K, ? super C> changeToKey, Class<C> changeClass) {
     final Map<K, C> map = MapSequence.fromMap(new HashMap<K, C>());
     Sequence.fromIterable(changeSet.getModelChanges(changeClass)).visitAll(new IVisitor<C>() {

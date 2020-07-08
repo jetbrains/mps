@@ -14,21 +14,23 @@ import org.jetbrains.mps.openapi.model.SNode;
 public class SetPropertyStructChange extends SetPropertyChange {
   private SNodeId myOppositeNodeId;
 
-  public SetPropertyStructChange(@NotNull ChangeSet changeSet, @NotNull SNodeId oldNodeId, @NotNull SNodeId newNodeId,
-                                 SProperty property, String newValue) {
+  public SetPropertyStructChange(@NotNull ChangeSet changeSet, @NotNull SNodeId oldNodeId, @NotNull SNodeId newNodeId, SProperty property, String newValue) {
     super(changeSet, oldNodeId, property, newValue);
     myOppositeNodeId = newNodeId;
   }
+
   @NotNull
   @Override
   public SNodeId getAffectedNodeId(boolean isNewModel) {
     return (isNewModel ? myOppositeNodeId : super.getAffectedNodeId(false));
   }
+
   @Override
   public void apply(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
     assert model == getChangeSet().getOldModel();
     super.apply(model, nodeCopier);
   }
+
   @NotNull
   @Override
   protected ModelChange createOppositeChange() {

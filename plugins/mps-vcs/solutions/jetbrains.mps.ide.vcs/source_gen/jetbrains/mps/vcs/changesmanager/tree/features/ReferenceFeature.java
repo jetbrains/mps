@@ -5,21 +5,24 @@ package jetbrains.mps.vcs.changesmanager.tree.features;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNodeId;
 
 @GeneratedClass(node = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)/5060092229902868645", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
 public class ReferenceFeature extends AbstractNodeFeature {
   private final SReferenceLink myReference;
 
-  public ReferenceFeature(@NotNull SNodeReference nodePointer, @NotNull SReferenceLink ref, SNodeId rootId) {
+  public ReferenceFeature(@NotNull SNodeReference nodePointer, @NotNull SReferenceLink ref, @Nullable SNodeId rootId) {
     super(nodePointer, new NodeFeature(nodePointer, rootId));
     myReference = ref;
   }
+
   @NotNull
   public SReferenceLink getReference() {
     return myReference;
   }
+
   @Override
   public int hashCode() {
     return myReference.hashCode() * 13 + getNodePointer().hashCode() * 29;
@@ -28,8 +31,7 @@ public class ReferenceFeature extends AbstractNodeFeature {
   @Override
   public boolean equals(Object obj) {
     if (obj instanceof ReferenceFeature) {
-      return getNodePointer().equals(((ReferenceFeature) obj).getNodePointer()) &&
-             myReference.equals(((ReferenceFeature) obj).myReference);
+      return getNodePointer().equals(((ReferenceFeature) obj).getNodePointer()) && myReference.equals(((ReferenceFeature) obj).myReference);
     }
     return false;
   }

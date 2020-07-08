@@ -12,30 +12,36 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/6359197607515881703", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class AddRootChange extends ModelChange {
-  private SNodeId myNodeId;
+  private final SNodeId myNodeId;
+
   public AddRootChange(@NotNull ChangeSet changeSet, @NotNull SNodeId nodeId) {
     super(changeSet, nodeId);
     myNodeId = nodeId;
   }
+
   @Override
   public void apply(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
     SNode newNode = getChangeSet().getNewModel().getNode(myNodeId);
     SModelOperations.addRootNode(model, nodeCopier.copyNode(newNode));
   }
+
   @NotNull
   @Override
   protected ModelChange createOppositeChange() {
     return new DeleteRootChange(getChangeSet().getOppositeChangeSet(), myNodeId);
   }
+
   @NotNull
   @Override
   public ChangeType getType() {
     return ChangeType.ADD;
   }
+
   @Override
   public String toString() {
     return "Add root " + myNodeId;
   }
+
   @Override
   public String getDescription() {
     return "Added root #" + myNodeId;
