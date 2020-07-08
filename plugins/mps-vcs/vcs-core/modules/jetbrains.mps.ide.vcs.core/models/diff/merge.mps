@@ -396,6 +396,7 @@
       <concept id="1165530316231" name="jetbrains.mps.baseLanguage.collections.structure.IsEmptyOperation" flags="nn" index="1v1jN8" />
       <concept id="1225727723840" name="jetbrains.mps.baseLanguage.collections.structure.FindFirstOperation" flags="nn" index="1z4cxt" />
       <concept id="1202120902084" name="jetbrains.mps.baseLanguage.collections.structure.WhereOperation" flags="nn" index="3zZkjj" />
+      <concept id="1202128969694" name="jetbrains.mps.baseLanguage.collections.structure.SelectOperation" flags="nn" index="3$u5V9" />
       <concept id="1240824834947" name="jetbrains.mps.baseLanguage.collections.structure.ValueAccessOperation" flags="nn" index="3AV6Ez" />
       <concept id="1240825616499" name="jetbrains.mps.baseLanguage.collections.structure.KeyAccessOperation" flags="nn" index="3AY5_j" />
       <concept id="1197932370469" name="jetbrains.mps.baseLanguage.collections.structure.MapElement" flags="nn" index="3EllGN">
@@ -7078,18 +7079,53 @@
               </node>
             </node>
           </node>
+          <node concept="3cpWs8" id="1A9$eqsvPhw" role="3cqZAp">
+            <node concept="3cpWsn" id="1A9$eqsvPhx" role="3cpWs9">
+              <property role="TrG5h" value="seq" />
+              <node concept="A3Dl8" id="1A9$eqsvKep" role="1tU5fm">
+                <node concept="3uibUv" id="1A9$eqsvPi_" role="A3Ik2">
+                  <ref role="3uigEE" to="btf5:7Dh0CRFZxgO" resolve="ModelChange" />
+                </node>
+              </node>
+              <node concept="2OqwBi" id="1A9$eqsvPzu" role="33vP2m">
+                <node concept="2OqwBi" id="1A9$eqsvPhy" role="2Oq$k0">
+                  <node concept="37vLTw" id="1A9$eqsvPhz" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3P5BSgf_z4G" resolve="nodeChanges" />
+                  </node>
+                  <node concept="UnYns" id="1A9$eqsvPh$" role="2OqNvi">
+                    <node concept="3uibUv" id="1A9$eqsvPh_" role="UnYnz">
+                      <ref role="3uigEE" to="btf5:5x0q8wkvVi1" resolve="DeleteRootChange" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3$u5V9" id="1A9$eqsvPLl" role="2OqNvi">
+                  <node concept="1bVj0M" id="1A9$eqsvPLn" role="23t8la">
+                    <node concept="3clFbS" id="1A9$eqsvPLo" role="1bW5cS">
+                      <node concept="3clFbF" id="1A9$eqsvPMN" role="3cqZAp">
+                        <node concept="10QFUN" id="1A9$eqsvPQR" role="3clFbG">
+                          <node concept="3uibUv" id="1A9$eqsvPR6" role="10QFUM">
+                            <ref role="3uigEE" to="btf5:7Dh0CRFZxgO" resolve="ModelChange" />
+                          </node>
+                          <node concept="37vLTw" id="1A9$eqsvPMM" role="10QFUP">
+                            <ref role="3cqZAo" node="1A9$eqsvPLp" resolve="it" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="Rh6nW" id="1A9$eqsvPLp" role="1bW2Oz">
+                      <property role="TrG5h" value="it" />
+                      <node concept="2jxLKc" id="1A9$eqsvPLq" role="1tU5fm" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="3clFbF" id="3MvRjja6wSL" role="3cqZAp">
             <node concept="1rXfSq" id="3MvRjja6wSJ" role="3clFbG">
               <ref role="37wK5l" node="3MvRjja6g7U" resolve="resolveChanges" />
-              <node concept="2OqwBi" id="6gD0X1mcGJc" role="37wK5m">
-                <node concept="37vLTw" id="6gD0X1mcGJd" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3P5BSgf_z4G" resolve="nodeChanges" />
-                </node>
-                <node concept="UnYns" id="6gD0X1mcGJe" role="2OqNvi">
-                  <node concept="3uibUv" id="6gD0X1mcGJf" role="UnYnz">
-                    <ref role="3uigEE" to="btf5:5x0q8wkvVi1" resolve="DeleteRootChange" />
-                  </node>
-                </node>
+              <node concept="37vLTw" id="1A9$eqsvPhA" role="37wK5m">
+                <ref role="3cqZAo" node="1A9$eqsvPhx" resolve="seq" />
               </node>
             </node>
           </node>

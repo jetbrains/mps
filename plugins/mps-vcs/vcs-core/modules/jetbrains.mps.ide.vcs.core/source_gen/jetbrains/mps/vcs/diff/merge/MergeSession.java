@@ -35,6 +35,7 @@ import jetbrains.mps.vcs.diff.ChangeSetImpl;
 import jetbrains.mps.persistence.PersistenceVersionAware;
 import jetbrains.mps.smodel.SModelAdapter;
 import jetbrains.mps.smodel.event.SModelEvent;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.event.SModelReferenceEvent;
@@ -356,7 +357,12 @@ public final class MergeSession {
     private void invalidateDeletedRoot(SModelEvent event) {
       assert event.getAffectedRoot() != null;
       List<ModelChange> nodeChanges = MapSequence.fromMap(myNodeToChanges).get(event.getAffectedRoot().getNodeId());
-      resolveChanges(ListSequence.fromList(nodeChanges).ofType(DeleteRootChange.class));
+      Iterable<ModelChange> seq = ListSequence.fromList(nodeChanges).ofType(DeleteRootChange.class).select(new ISelector<DeleteRootChange, ModelChange>() {
+        public ModelChange select(DeleteRootChange it) {
+          return (ModelChange) it;
+        }
+      });
+      resolveChanges(seq);
       invalidateChanges();
     }
     private void beforeNodeRemovedRecursively(SNode node) {
