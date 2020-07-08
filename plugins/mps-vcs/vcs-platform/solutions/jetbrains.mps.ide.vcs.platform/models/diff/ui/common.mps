@@ -9467,7 +9467,7 @@
                   <node concept="3clFbF" id="42hl10VHa$u" role="3cqZAp">
                     <node concept="2OqwBi" id="42hl10VHa$v" role="3clFbG">
                       <node concept="liA8E" id="42hl10VHa$z" role="2OqNvi">
-                        <ref role="37wK5l" to="px75:~LeftEditorHighlighter.setDefaultFoldingAreaPaintersEnabled(boolean)" resolve="setDefaultFoldingAreaPaintersEnabled" />
+                        <ref role="37wK5l" to="px75:~LeftEditorHighlighter.setDefaultPaintersEnabled(boolean)" resolve="setDefaultPaintersEnabled" />
                         <node concept="3clFbT" id="42hl10VHa$$" role="37wK5m">
                           <property role="3clFbU" value="false" />
                         </node>
@@ -12047,6 +12047,14 @@
               </node>
             </node>
           </node>
+          <node concept="3clFbF" id="YGerYhPMrd" role="3cqZAp">
+            <node concept="1rXfSq" id="YGerYhPMre" role="3clFbG">
+              <ref role="37wK5l" to="exr9:~EditorComponent.removeAdditionalPainter(jetbrains.mps.nodeEditor.AdditionalPainter)" resolve="removeAdditionalPainter" />
+              <node concept="37vLTw" id="YGerYhPMrf" role="37wK5m">
+                <ref role="3cqZAo" to="exr9:~EditorComponent.mySelectedLinePainter" resolve="mySelectedLinePainter" />
+              </node>
+            </node>
+          </node>
           <node concept="3clFbF" id="3N64syXloFX" role="3cqZAp">
             <node concept="1rXfSq" id="3N64syXloFY" role="3clFbG">
               <ref role="37wK5l" to="exr9:~EditorComponent.addAdditionalPainter(jetbrains.mps.nodeEditor.AdditionalPainter)" resolve="addAdditionalPainter" />
@@ -12243,6 +12251,14 @@
               </node>
               <node concept="liA8E" id="3gquIuDtRKv" role="2OqNvi">
                 <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.build()" resolve="build" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="YGerYhPHGi" role="3cqZAp">
+            <node concept="1rXfSq" id="YGerYhPHGg" role="3clFbG">
+              <ref role="37wK5l" to="exr9:~EditorComponent.removeAdditionalPainter(jetbrains.mps.nodeEditor.AdditionalPainter)" resolve="removeAdditionalPainter" />
+              <node concept="37vLTw" id="YGerYhPLk5" role="37wK5m">
+                <ref role="3cqZAo" to="exr9:~EditorComponent.mySelectedLinePainter" resolve="mySelectedLinePainter" />
               </node>
             </node>
           </node>

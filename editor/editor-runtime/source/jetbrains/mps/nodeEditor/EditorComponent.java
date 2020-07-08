@@ -270,6 +270,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     }
     return o1.equals(o2) ? 0 : Integer.signum(System.identityHashCode(o1) - System.identityHashCode(o2));
   });
+  protected SelectedLinePainter mySelectedLinePainter = new SelectedLinePainter();
   private Map<Object, AdditionalPainter> myItemsToAdditionalPainters = new HashMap<>();
 
   private final List<LeftMarginMouseListener> myLeftMarginPressListeners = new ArrayList<>(0);
@@ -395,6 +396,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     myRootCell.setSelectable(false);
 
     setBackground(StyleRegistry.getInstance().getEditorBackground());
+    myAdditionalPainters.add(mySelectedLinePainter);
 
     setFocusCycleRoot(true);
     setFocusTraversalPolicy(new FocusTraversalPolicy() {
@@ -2133,20 +2135,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     Rectangle bounds = g.getClipBounds();
 
     g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
-
-    jetbrains.mps.openapi.editor.cells.EditorCell deepestCell = getDeepestSelectedCell();
-    if (deepestCell instanceof EditorCell_Label && ((EditorCell) deepestCell).isInClipRegion(g)) {
-      EditorCell_Label label = (EditorCell_Label) deepestCell;
-      g.setColor(setting.getCaretRowColor());
-      g.fillRect(0, deepestCell.getY(), getWidth(),
-                 deepestCell.getHeight() - deepestCell.getTopInset() - deepestCell.getBottomInset());
-
-      g.setColor(EditorColorsManager.getInstance().getGlobalScheme().getAttributes(EditorColors.IDENTIFIER_UNDER_CARET_ATTRIBUTES).getBackgroundColor());
-      g.fillRect(deepestCell.getX() + label.getLeftInset(),
-                 deepestCell.getY(),
-                 deepestCell.getWidth() - label.getLeftInset() - label.getRightInset(),
-                 deepestCell.getHeight() - deepestCell.getTopInset() - deepestCell.getBottomInset());
-    }
 
     List<AdditionalPainter> additionalPainters = getAdditionalPainters();
     for (AdditionalPainter additionalPainter : additionalPainters) {

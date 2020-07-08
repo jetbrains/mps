@@ -88,7 +88,7 @@ public class DiffEditor implements EditorMessageOwner {
     myInspectorComponent.getExternalComponent().setPreferredSize(new Dimension());
     Sequence.fromIterable(getEditorComponents()).visitAll(new IVisitor<EditorComponent>() {
       public void visit(EditorComponent ec) {
-        ec.getLeftEditorHighlighter().setDefaultFoldingAreaPaintersEnabled(false);
+        ec.getLeftEditorHighlighter().setDefaultPaintersEnabled(false);
       }
     });
 
@@ -405,6 +405,7 @@ public class DiffEditor implements EditorMessageOwner {
 
     public MyInspectorEditorComponent(@NotNull SRepository repository, boolean rightToLeft) {
       super(repository, new EditorConfigurationBuilder().rightToLeft(rightToLeft).build());
+      removeAdditionalPainter(mySelectedLinePainter);
       addAdditionalPainter(new MyEditorComponentPainter(true));
       LeftEditorHighlighter leftHighlighter = getLeftEditorHighlighter();
       leftHighlighter.addBackgroundPainter(new MyLeftHighlighterPainter(leftHighlighter, true));
@@ -428,6 +429,7 @@ public class DiffEditor implements EditorMessageOwner {
 
     public MainEditorComponent(SRepository repository, boolean rightToLeft) {
       super(repository, new EditorConfigurationBuilder().showErrorsGutter(true).rightToLeft(rightToLeft).build());
+      removeAdditionalPainter(mySelectedLinePainter);
       myDiffFileEditor = new DiffFileEditor(this);
       setDefaultPopupGroupId(((String) BHReflection.invoke0(SNodeOperations.getNode("r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)", "426251916200108583"), CONCEPTS.ActionGroupDeclaration$YL, SMethodTrimmedId.create("getGeneratedClassFQName", CONCEPTS.ActionGroupDeclaration$YL, "hEwJa8g"))));
       addAdditionalPainter(new MyEditorComponentPainter(false));

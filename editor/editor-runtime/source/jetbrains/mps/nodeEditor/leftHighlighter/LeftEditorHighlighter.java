@@ -239,13 +239,15 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
     }
   }
 
-  public void setDefaultFoldingAreaPaintersEnabled(boolean enabled) {
+  public void setDefaultPaintersEnabled(boolean enabled) {
     if (enabled) {
       addFoldingAreaPainter(myBracketsPainter);
       addFoldingAreaPainter(myFoldingButtonsPainter);
+      addBackgroundPainter(mySelectedCellAreaPainter);
     } else {
       removeFoldingAreaPainter(myBracketsPainter);
       removeFoldingAreaPainter(myFoldingButtonsPainter);
+      removeBackgroundAreaPainter(mySelectedCellAreaPainter);
     }
   }
 
