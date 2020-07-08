@@ -138,6 +138,7 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
       <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
+      <concept id="1178893518978" name="jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" flags="nn" index="1VxSAg" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
@@ -577,20 +578,12 @@
       <node concept="3cqZAl" id="4oT3Lbm4M0h" role="3clF45" />
       <node concept="3Tm1VV" id="4oT3Lbm4M0i" role="1B3o_S" />
       <node concept="3clFbS" id="4oT3Lbm4M0j" role="3clF47">
-        <node concept="XkiVB" id="4oT3Lbm4M0k" role="3cqZAp">
-          <ref role="37wK5l" node="5sv3blr07ZW" resolve="AbstractNodeFeature" />
-          <node concept="37vLTw" id="2BHiRxgm88I" role="37wK5m">
+        <node concept="1VxSAg" id="1A9$eqssrno" role="3cqZAp">
+          <ref role="37wK5l" node="1A9$eqssqQn" resolve="NodeFeature" />
+          <node concept="37vLTw" id="1A9$eqssrnA" role="37wK5m">
             <ref role="3cqZAo" node="4oT3Lbm4M0m" resolve="nodePointer" />
           </node>
-          <node concept="1rXfSq" id="4uLJMq1lekB" role="37wK5m">
-            <ref role="37wK5l" node="4uLJMq1kYFN" resolve="calcParentFeature" />
-            <node concept="37vLTw" id="4uLJMq1lel3" role="37wK5m">
-              <ref role="3cqZAo" node="4oT3Lbm4M0m" resolve="nodePointer" />
-            </node>
-            <node concept="37vLTw" id="4uLJMq1lelt" role="37wK5m">
-              <ref role="3cqZAo" node="4uLJMq1kYBN" resolve="rootId" />
-            </node>
-          </node>
+          <node concept="10Nm6u" id="1A9$eqssrnV" role="37wK5m" />
         </node>
       </node>
       <node concept="37vLTG" id="4oT3Lbm4M0m" role="3clF46">
@@ -599,12 +592,40 @@
           <ref role="3uigEE" to="mhbf:~SNodeReference" resolve="SNodeReference" />
         </node>
       </node>
-      <node concept="37vLTG" id="4uLJMq1kYBN" role="3clF46">
+    </node>
+    <node concept="2tJIrI" id="1A9$eqssqSs" role="jymVt" />
+    <node concept="3clFbW" id="1A9$eqssqQn" role="jymVt">
+      <node concept="3cqZAl" id="1A9$eqssqQo" role="3clF45" />
+      <node concept="3Tm1VV" id="1A9$eqssqQp" role="1B3o_S" />
+      <node concept="3clFbS" id="1A9$eqssqQq" role="3clF47">
+        <node concept="XkiVB" id="1A9$eqssqQr" role="3cqZAp">
+          <ref role="37wK5l" node="5sv3blr07ZW" resolve="AbstractNodeFeature" />
+          <node concept="37vLTw" id="1A9$eqssqQs" role="37wK5m">
+            <ref role="3cqZAo" node="1A9$eqssqQw" resolve="nodePointer" />
+          </node>
+          <node concept="1rXfSq" id="1A9$eqssqQt" role="37wK5m">
+            <ref role="37wK5l" node="4uLJMq1kYFN" resolve="calcParentFeature" />
+            <node concept="37vLTw" id="1A9$eqssqQu" role="37wK5m">
+              <ref role="3cqZAo" node="1A9$eqssqQw" resolve="nodePointer" />
+            </node>
+            <node concept="37vLTw" id="1A9$eqssqQv" role="37wK5m">
+              <ref role="3cqZAo" node="1A9$eqssqQy" resolve="rootId" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="1A9$eqssqQw" role="3clF46">
+        <property role="TrG5h" value="nodePointer" />
+        <node concept="3uibUv" id="1A9$eqssqQx" role="1tU5fm">
+          <ref role="3uigEE" to="mhbf:~SNodeReference" resolve="SNodeReference" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="1A9$eqssqQy" role="3clF46">
         <property role="TrG5h" value="rootId" />
-        <node concept="3uibUv" id="4uLJMq1kYBX" role="1tU5fm">
+        <node concept="3uibUv" id="1A9$eqssqQz" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNodeId" resolve="SNodeId" />
         </node>
-        <node concept="2AHcQZ" id="4uLJMq1kYDG" role="2AJF6D">
+        <node concept="2AHcQZ" id="1A9$eqssqQ$" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
         </node>
       </node>

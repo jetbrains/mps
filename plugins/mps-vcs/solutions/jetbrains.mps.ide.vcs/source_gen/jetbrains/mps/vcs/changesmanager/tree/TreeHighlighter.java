@@ -59,6 +59,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
   private final MyFeatureForestMapListener myFeatureListener = new MyFeatureForestMapListener();
   private final FeaturesHolder myFeaturesVisibleInTree = new FeaturesHolder();
   private final MergingUpdateQueue myQueue;
+
   /**
    * use TreeHighlighterFactory to instantiate
    */

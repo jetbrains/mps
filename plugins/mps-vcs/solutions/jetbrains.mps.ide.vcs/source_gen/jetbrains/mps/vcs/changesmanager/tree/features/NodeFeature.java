@@ -11,6 +11,10 @@ import jetbrains.mps.smodel.SNodePointer;
 
 @GeneratedClass(node = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)/5060092229902868493", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
 public class NodeFeature extends AbstractNodeFeature {
+  public NodeFeature(SNodeReference nodePointer) {
+    this(nodePointer, null);
+  }
+
   public NodeFeature(SNodeReference nodePointer, @Nullable SNodeId rootId) {
     super(nodePointer, calcParentFeature(nodePointer, rootId));
   }
