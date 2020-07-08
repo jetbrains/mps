@@ -56,8 +56,12 @@ import jetbrains.mps.ide.ui.tree.TreeHighlighterExtension;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SNodeGroupTreeNode;
 import jetbrains.mps.openapi.editor.EditorComponent;
+import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.ModelReadRunnable;
+import jetbrains.mps.smodel.tempmodel.TempModule;
+import jetbrains.mps.smodel.tempmodel.TempModule2;
 import jetbrains.mps.util.annotation.Hack;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -86,11 +90,18 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
   private final SRepositoryListenerBase myRepositoryListener = new SRepositoryListenerBase() {
     @Override
     public void moduleAdded(@NotNull SModule module) {
+      if (module instanceof TempModule || module instanceof TempModule2) {
+        return;
+      }
+      // fixme why do not we add only module node here?
       ProjectPane.this.updateFromRoot(true);
     }
 
     @Override
-    public void moduleRemoved(@NotNull SModuleReference module) {
+    public void beforeModuleRemoved(@NotNull SModule module) {
+      if (module instanceof TempModule || module instanceof TempModule2) {
+        return;
+      }
       ProjectPane.this.updateFromRoot(true);
     }
   };
