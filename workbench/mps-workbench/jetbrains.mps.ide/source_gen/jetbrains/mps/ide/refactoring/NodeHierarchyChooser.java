@@ -36,6 +36,8 @@ public class NodeHierarchyChooser extends JBScrollPane {
     ThreadUtils.runInUIThreadNoWait(new Runnable() {
       public void run() {
         NodeHierarchyChooser.this.myTree.rebuildNow();
+        NodeHierarchyChooser.this.myTree.expandAll();
+        NodeHierarchyChooser.this.myTree.setSelectionRow((NodeHierarchyChooser.this.myTree.getRowCount() > 1 ? 1 : 0));
       }
     });
   }
@@ -54,9 +56,11 @@ public class NodeHierarchyChooser extends JBScrollPane {
 
   public static class MyHierarchyTree extends AbstractHierarchyTree {
     private ConceptAncestorsProvider ancestorsProvider;
+
     public MyHierarchyTree(SRepository repo) {
       super(repo);
     }
+
     @Override
     protected Set<SNode> getDescendants(SNode node, Set<SNode> visited) {
       this.ancestorsProvider = new ConceptAncestorsProvider();
@@ -67,14 +71,17 @@ public class NodeHierarchyChooser extends JBScrollPane {
         }
       }));
     }
+
     @Override
     protected SNode getParent(SNode node) {
       return null;
     }
+
     @Override
     protected Set<SNode> getParents(SNode node, Set<SNode> visited) {
       return new HashSet<SNode>();
     }
+
     @Override
     protected String noNodeString() {
       return "no node";
