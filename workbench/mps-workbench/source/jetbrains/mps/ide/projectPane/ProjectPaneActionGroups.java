@@ -153,7 +153,7 @@ public class ProjectPaneActionGroups {
         return ActionUtils.getGroup(CREATE_ROOT_ACTIONS);
       }
     }
-    if (treeNode instanceof SModelTreeNode) {
+    if (treeNode instanceof SModelTreeNode || treeNode instanceof SNodeTreeNode) {
       return ActionUtils.getGroup(CREATE_ROOT_ACTIONS);
     }
     if (treeNode instanceof ProjectModuleTreeNode) {

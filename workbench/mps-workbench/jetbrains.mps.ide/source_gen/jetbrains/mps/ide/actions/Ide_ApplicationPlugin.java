@@ -150,6 +150,7 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     addGroup(new NamespaceMakeActions_ActionGroup(this));
     addGroup(new NamespaceNewActions_ActionGroup(this));
     addGroup(new NodeActions_ActionGroup(this));
+    addGroup(new NodeNewActions_ActionGroup(this));
     addGroup(new PackageActions_ActionGroup(this));
     addGroup(new PackageNewActions_ActionGroup(this));
     addGroup(new PrintNodePosition_Addition_ActionGroup(this));
@@ -217,6 +218,7 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     insertGroupIntoAnother(FileSystemNewActions_ActionGroup.ID, AbstractFileActions_ActionGroup.ID, AbstractFileActions_ActionGroup.LABEL_ID_new);
     insertGroupIntoAnother(NamespaceNewActions_ActionGroup.ID, FlyingActions_ActionGroup.ID, null);
     insertGroupIntoAnother(PackageNewActions_ActionGroup.ID, PackageActions_ActionGroup.ID, PackageActions_ActionGroup.LABEL_ID_newActions);
+    insertGroupIntoAnother(NodeNewActions_ActionGroup.ID, NodeActions_ActionGroup.ID, NodeActions_ActionGroup.LABEL_ID_newActions);
     insertGroupIntoAnother(SolutionRefactoring_ActionGroup.ID, CommonModuleActions_ActionGroup.ID, CommonModuleActions_ActionGroup.LABEL_ID_refactoring);
     insertGroupIntoAnother(CreateRootNodeAdapter_ActionGroup.ID, CreateRootNode_ActionGroup.ID, CreateRootNode_ActionGroup.LABEL_ID_newRoot);
     insertGroupIntoAnother(Tools_ActionGroup.ID, "ToolsMenu", null);
@@ -245,6 +247,7 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     insertGroupIntoAnother(FindUsages_ActionGroup.ID, "EditorPopup_ActionGroupfind", null);
     insertGroupIntoAnother(BehaviourPopup_ActionGroup.ID, "GoToEditorPopupAddition_ActionGroupother", null);
     insertGroupIntoAnother(CreateRootNode_ActionGroup.ID, ModelNewActions_ActionGroup.ID, ModelNewActions_ActionGroup.LABEL_ID_newRoot);
+    insertGroupIntoAnother(CreateRootNode_ActionGroup.ID, NodeNewActions_ActionGroup.ID, NodeNewActions_ActionGroup.LABEL_ID_newRoot);
     insertGroupIntoAnother(CreateRootNode_ActionGroup.ID, PackageNewActions_ActionGroup.ID, null);
     insertGroupIntoAnother(EditorPopup_Show_ActionGroup.ID, "EditorPopup_ActionGroupshowIn", null);
     insertGroupIntoAnother(EditorPopupEx_ActionGroup.ID, "EditorPopup_ActionGroupnew", null);

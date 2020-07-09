@@ -23694,6 +23694,10 @@
       <ref role="tU$_T" node="3x0JEQldoed" resolve="FlyingActions" />
     </node>
     <node concept="ftmFs" id="h$fDSTY" role="ftER_">
+      <node concept="10WQ6h" id="7jff0wjeeqm" role="ftvYc">
+        <property role="TrG5h" value="newActions" />
+      </node>
+      <node concept="2a7GMi" id="6A$87NVr3Iu" role="ftvYc" />
       <node concept="10WQ6h" id="28s6IYZxj4I" role="ftvYc">
         <property role="TrG5h" value="showGeneratedText" />
       </node>
@@ -40192,6 +40196,10 @@
     <node concept="tT9cl" id="1wNvKTcoknn" role="2f5YQi">
       <ref role="tU$_T" node="5tc$o3kzWsk" resolve="PackageNewActions" />
     </node>
+    <node concept="tT9cl" id="7jff0wjees6" role="2f5YQi">
+      <ref role="tU$_T" node="6A$87NVpRz7" resolve="NodeNewActions" />
+      <ref role="2f8Tey" node="6A$87NVr3H5" resolve="newRoot" />
+    </node>
     <node concept="ftmFs" id="1wNvKTcoalp" role="ftER_">
       <node concept="10WQ6h" id="6iZ8s2UYsKa" role="ftvYc">
         <property role="TrG5h" value="mainRoot" />
@@ -49843,6 +49851,21 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="1MoLHx0BSr0" role="1B3o_S" />
+  </node>
+  <node concept="tC5Ba" id="6A$87NVpRz7">
+    <property role="TrG5h" value="NodeNewActions" />
+    <property role="3GE5qa" value="Menu.ProjectPane.Node" />
+    <property role="1XlLyE" value="true" />
+    <property role="2f7twF" value="New" />
+    <node concept="ftmFs" id="6A$87NVr3H2" role="ftER_">
+      <node concept="10WQ6h" id="6A$87NVr3H5" role="ftvYc">
+        <property role="TrG5h" value="newRoot" />
+      </node>
+    </node>
+    <node concept="tT9cl" id="6A$87NVr3He" role="2f5YQi">
+      <ref role="tU$_T" node="hyf4Gvz" resolve="NodeActions" />
+      <ref role="2f8Tey" node="7jff0wjeeqm" resolve="newActions" />
+    </node>
   </node>
 </model>
 

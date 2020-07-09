@@ -13,6 +13,7 @@ import com.intellij.openapi.extensions.PluginId;
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991215587", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class NodeActions_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.NodeActions_ActionGroup";
+  public static final String LABEL_ID_newActions = ID + "newActions";
   public static final String LABEL_ID_showGeneratedText = ID + "showGeneratedText";
   public static final String LABEL_ID_copy = ID + "copy";
   public static final String LABEL_ID_find = ID + "find";
@@ -28,6 +29,13 @@ public class NodeActions_ActionGroup extends GeneratedActionGroup {
     super("NodeActions", ID, plugin);
     setIsInternal(false);
     setPopup(false);
+    {
+      LabelledAnchor action = new LabelledAnchor(NodeActions_ActionGroup.LABEL_ID_newActions);
+      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
+      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
+      NodeActions_ActionGroup.this.addAction(action);
+    }
+    NodeActions_ActionGroup.this.addSeparator();
     {
       LabelledAnchor action = new LabelledAnchor(NodeActions_ActionGroup.LABEL_ID_showGeneratedText);
       ActionManagerEx manager = ActionManagerEx.getInstanceEx();
