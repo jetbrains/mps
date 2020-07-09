@@ -20,14 +20,9 @@ import com.intellij.openapi.editor.colors.EditorColorsManager;
 import jetbrains.mps.nodeEditor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 
-import java.awt.Color;
 import java.awt.Graphics;
 
 public class SelectedLinePainter extends AbstractAdditionalPainter {
-
-  private final Color myBgColor = EditorSettings.getInstance().getCaretRowColor();
-  private final Color myUnderCaretBgColor =
-      EditorColorsManager.getInstance().getGlobalScheme().getAttributes(EditorColors.IDENTIFIER_UNDER_CARET_ATTRIBUTES).getBackgroundColor();
 
   @Override
   public boolean paintsAbove() {
@@ -49,11 +44,11 @@ public class SelectedLinePainter extends AbstractAdditionalPainter {
     jetbrains.mps.openapi.editor.cells.EditorCell deepestCell = editorComponent.getDeepestSelectedCell();
     if (deepestCell instanceof EditorCell_Label && ((EditorCell) deepestCell).isInClipRegion(g)) {
       EditorCell_Label label = (EditorCell_Label) deepestCell;
-      g.setColor(myBgColor);
+      g.setColor(EditorSettings.getInstance().getCaretRowColor());
       g.fillRect(0, deepestCell.getY(), editorComponent.getWidth(),
                  deepestCell.getHeight() - deepestCell.getTopInset() - deepestCell.getBottomInset());
 
-      g.setColor(myUnderCaretBgColor);
+      g.setColor(EditorColorsManager.getInstance().getGlobalScheme().getAttributes(EditorColors.IDENTIFIER_UNDER_CARET_ATTRIBUTES).getBackgroundColor());
       g.fillRect(deepestCell.getX() + label.getLeftInset(),
                  deepestCell.getY(),
                  deepestCell.getWidth() - label.getLeftInset() - label.getRightInset(),
