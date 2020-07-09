@@ -405,13 +405,15 @@
     -->
 
     <!-- Refactor -->
-    <!--
     <group id="RefactoringMenu" popup="true">
-    <action id="Refactorings.QuickListPopupAction" class="com.intellij.refactoring.actions.RefactoringQuickListPopupAction"/>
+    <!--
+      <action id="Refactorings.QuickListPopupAction" class="com.intellij.refactoring.actions.RefactoringQuickListPopupAction"/>
       <action id="RenameElement" class="com.intellij.refactoring.actions.RenameElementAction"/>
       <action id="ChangeSignature" class="com.intellij.refactoring.actions.ChangeSignatureAction"/>
       <separator/>
+      -->
       <action id="Move" class="com.intellij.refactoring.actions.MoveAction"/>
+      <!--
       <action id="CopyElement" class="com.intellij.ide.actions.CopyElementAction"/>
       <action id="SafeDelete" class="com.intellij.refactoring.actions.SafeDeleteAction"/>
       <separator/>
@@ -442,8 +444,8 @@
       <action id="MembersPullUp" class="com.intellij.refactoring.actions.PullUpAction"/>
       <action id="MemberPushDown" class="com.intellij.refactoring.actions.PushDownAction"/>
       <add-to-group group-id="MainMenu" anchor="after" relative-to-action="CodeMenu"/>
-    </group>
     -->
+    </group>
 
     <!-- Run -->
     <group id="RunMenu" popup="true">
