@@ -4735,6 +4735,12 @@
                     <node concept="3clFbS" id="hGATemd" role="2LFqv$">
                       <node concept="3clFbF" id="hGATknK" role="3cqZAp">
                         <node concept="2OqwBi" id="hGATmeJ" role="3clFbG">
+                          <node concept="2OqwBi" id="4lzrZLcnGTL" role="2Oq$k0">
+                            <node concept="2WthIp" id="4lzrZLcnGTM" role="2Oq$k0" />
+                            <node concept="1DTwFV" id="4lzrZLcnGTN" role="2OqNvi">
+                              <ref role="2WH_rO" node="hHNVdOE" resolve="project" />
+                            </node>
+                          </node>
                           <node concept="liA8E" id="hGATm$z" role="2OqNvi">
                             <ref role="37wK5l" to="z1c3:~ProjectBase.setVirtualFolder(org.jetbrains.mps.openapi.module.SModule,java.lang.String)" resolve="setVirtualFolder" />
                             <node concept="37vLTw" id="3GM_nagTtQN" role="37wK5m">
@@ -4742,12 +4748,6 @@
                             </node>
                             <node concept="37vLTw" id="3GM_nagT$T9" role="37wK5m">
                               <ref role="3cqZAo" node="hGASHw2" resolve="newFolder" />
-                            </node>
-                          </node>
-                          <node concept="2OqwBi" id="4lzrZLcnGTL" role="2Oq$k0">
-                            <node concept="2WthIp" id="4lzrZLcnGTM" role="2Oq$k0" />
-                            <node concept="1DTwFV" id="4lzrZLcnGTN" role="2OqNvi">
-                              <ref role="2WH_rO" node="hHNVdOE" resolve="project" />
                             </node>
                           </node>
                         </node>
@@ -8795,11 +8795,11 @@
                       <property role="Xl_RC" value="actions.module.delete.ok.button.text" />
                     </node>
                   </node>
-                  <node concept="17QB3L" id="3MVzvf08TnR" role="3g7fb8" />
                   <node concept="2YIFZM" id="2CyWARzNu1f" role="3g7hyw">
                     <ref role="37wK5l" to="jkm4:~Messages.getCancelButton()" resolve="getCancelButton" />
                     <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
                   </node>
+                  <node concept="17QB3L" id="3MVzvf08TnR" role="3g7fb8" />
                 </node>
               </node>
               <node concept="2YIFZM" id="3MVzvf08RK6" role="37wK5m">
@@ -23693,6 +23693,10 @@
       <ref role="tU$_T" node="3x0JEQldoed" resolve="FlyingActions" />
     </node>
     <node concept="ftmFs" id="h$fDSTY" role="ftER_">
+      <node concept="10WQ6h" id="7jff0wjeeqm" role="ftvYc">
+        <property role="TrG5h" value="newActions" />
+      </node>
+      <node concept="2a7GMi" id="6A$87NVr3Iu" role="ftvYc" />
       <node concept="10WQ6h" id="28s6IYZxj4I" role="ftvYc">
         <property role="TrG5h" value="showGeneratedText" />
       </node>
@@ -40189,6 +40193,10 @@
         <property role="TrG5h" value="newRoot" />
       </node>
     </node>
+    <node concept="tT9cl" id="7jff0wjees6" role="2f5YQi">
+      <ref role="tU$_T" node="6A$87NVpRz7" resolve="NodeNewActions" />
+      <ref role="2f8Tey" node="6A$87NVr3H5" resolve="newRoot" />
+    </node>
   </node>
   <node concept="312cEu" id="_dGddVVXqt">
     <property role="TrG5h" value="PopupWithNodeEditorUI" />
@@ -49832,6 +49840,21 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="1MoLHx0BSr0" role="1B3o_S" />
+  </node>
+  <node concept="tC5Ba" id="6A$87NVpRz7">
+    <property role="TrG5h" value="NodeNewActions" />
+    <property role="3GE5qa" value="Menu.ProjectPane.Node" />
+    <property role="1XlLyE" value="true" />
+    <property role="2f7twF" value="New" />
+    <node concept="ftmFs" id="6A$87NVr3H2" role="ftER_">
+      <node concept="10WQ6h" id="6A$87NVr3H5" role="ftvYc">
+        <property role="TrG5h" value="newRoot" />
+      </node>
+    </node>
+    <node concept="tT9cl" id="6A$87NVr3He" role="2f5YQi">
+      <ref role="tU$_T" node="hyf4Gvz" resolve="NodeActions" />
+      <ref role="2f8Tey" node="7jff0wjeeqm" resolve="newActions" />
+    </node>
   </node>
 </model>
 

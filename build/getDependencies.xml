@@ -223,6 +223,8 @@
     <jar basedir="${basedir}/../plugins/java/lib/java-impl/" destfile="${basedir}/../lib/java-impl.jar"/>
     <jar basedir="${basedir}/../plugins/java/lib/java-impl/" destfile="${basedir}/../plugins/java/lib/java-impl.jar"/>
     <delete dir="${basedir}/../plugins/java/lib/java-impl/"/>
+    <!-- JavaPsiBundle needs its resources. See MPS-31934 -->
+    <copy file="${basedir}/../plugins/java/lib/java_resources_en.jar" todir="${basedir}/../lib/"/>
   </target>
 
   <!--Repackage the platform jar see IDEA-235927, hopefully to be gone in 2020.1 -->

@@ -98,6 +98,7 @@
       <root url="jar://$PROJECT_DIR$/lib/java-compatibility-1.0.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/java-api.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/java-impl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/java_resources_en.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/bcprov-jdk15on-1.65.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/bcpkix-jdk15on-1.65.jar!/" />
     </CLASSES>
