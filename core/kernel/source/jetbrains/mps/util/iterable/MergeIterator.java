@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Iterator;
 
 /**
- * XXX what's the benefit having distinct MergeIterator when there's FlattenIterable (@see IterableUtul#merge())?
+ * XXX what's the benefit having distinct MergeIterator when there's FlattenIterable (@see IterableUtil#merge())?
  * Evgeny Gryaznov, 9/13/11
  */
 public class MergeIterator<T> implements Iterable<T>, Iterator<T> {

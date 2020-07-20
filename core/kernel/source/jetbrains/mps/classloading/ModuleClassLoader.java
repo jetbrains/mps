@@ -20,6 +20,7 @@ import jetbrains.mps.reloading.ClassBytesProvider.ClassBytes;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.ProtectionDomainUtil;
 import jetbrains.mps.util.iterable.IterableEnumeration;
+import jetbrains.mps.util.iterable.MergeIterator;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NonNls;
@@ -33,7 +34,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -45,14 +45,13 @@ import java.util.concurrent.ConcurrentMap;
  * in {@link ClassLoaderManager} instance (old deprecated way).
  * Note that these methods yield additional error information in the case of failure.
  * Users of class loading API are supposed to process it on their own behalf.
- *
+ * <p>
  * This classloader implementation supports a redeploy of the module classes on the fly
  * For example, all language modules possess an instance of such classloader.
  *
+ * @author apyshkin
  * @see jetbrains.mps.classloading.ModuleIsNotLoadableException
  * @see jetbrains.mps.classloading.ModuleClassNotFoundException
- *
- * @author apyshkin
  */
 public final class ModuleClassLoader extends MPSModuleClassLoader {
   private static final Logger LOG = LogManager.getLogger(ModuleClassLoader.class);
@@ -110,7 +109,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   }
 
   @Override
-  protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException{
+  protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
     return loadClass(name, resolve, false);
   }
 
@@ -122,7 +121,9 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
     }
 
     Class<?> aClass = getClassFromCache(fqName);
-    if (aClass != null) return aClass;
+    if (aClass != null) {
+      return aClass;
+    }
 
     aClass = loadFromSelf(fqName);
     if (aClass != null) {
@@ -148,10 +149,10 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
 
   /**
    * @return new class if there was no same class already defined
-   *         or an old class if there is another definition already recorded into the map.
+   * or an old class if there is another definition already recorded into the map.
    */
   private Class<?> recordClass(String fqName, Class<?> aClass) {
-    Optional<Class<?>> previousValue =  myClasses.putIfAbsent(fqName, Optional.ofNullable(aClass));
+    Optional<Class<?>> previousValue = myClasses.putIfAbsent(fqName, Optional.ofNullable(aClass));
     if (previousValue != null) { // class has been already defined in a concurrent thread
       aClass = previousValue.orElse(null);
     }
@@ -236,7 +237,9 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
 
   private Class<?> loadFromParent(String name) throws ClassNotFoundException {
     ClassLoader parent = getParent();
-    if (parent == null) return null;
+    if (parent == null) {
+      return null;
+    }
     return parent.loadClass(name);
   }
 
@@ -256,7 +259,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
     Enumeration<URL> ownResources = findResources(name);
     Enumeration<URL> parentResources = getParent().getResources(name);
     //noinspection unchecked
-    return new CompoundEnumeration<>(new Enumeration[]{ownResources, parentResources});
+    return new IterableEnumeration<>(() -> new MergeIterator<>(ownResources::asIterator, parentResources::asIterator));
   }
 
   @Override
@@ -269,7 +272,9 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
       if (dep instanceof ModuleClassLoader) {
         URL res;
         res = ((ModuleClassLoader) dep).mySupport.findResource(name);
-        if (res != null) return res;
+        if (res != null) {
+          return res;
+        }
       }
     }
 
@@ -287,7 +292,9 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
       if (dep instanceof ModuleClassLoader) {
         Enumeration<URL> resources;
         resources = ((ModuleClassLoader) dep).mySupport.findResources(name);
-        while (resources.hasMoreElements()) result.add(resources.nextElement());
+        while (resources.hasMoreElements()) {
+          result.add(resources.nextElement());
+        }
       }
     }
 
@@ -335,37 +342,6 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
 
     public ReloadableModule getModule() {
       return myModule;
-    }
-  }
-
-  // copied from JDK 8
-  final class CompoundEnumeration<E> implements Enumeration<E> {
-    private final Enumeration<E>[] enums;
-    private int index;
-
-    public CompoundEnumeration(Enumeration<E>[] enums) {
-      this.enums = enums;
-    }
-
-    private boolean next() {
-      while (index < enums.length) {
-        if (enums[index] != null && enums[index].hasMoreElements()) {
-          return true;
-        }
-        index++;
-      }
-      return false;
-    }
-
-    public boolean hasMoreElements() {
-      return next();
-    }
-
-    public E nextElement() {
-      if (!next()) {
-        throw new NoSuchElementException();
-      }
-      return enums[index].nextElement();
     }
   }
 }
