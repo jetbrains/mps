@@ -17,15 +17,15 @@ package jetbrains.mps.ide.findusages.view;
 
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.ide.findusages.model.SearchResults;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.util.IterableUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Sorts the search results: roots of the result nodes are sorted by presentation;
@@ -36,45 +36,98 @@ import java.util.List;
 /*package*/ final class SearchResultsSorter {
   private final SearchResults<?> myResults;
 
-  SearchResultsSorter(@NotNull SearchResults results) {
+  SearchResultsSorter(@NotNull SearchResults<?> results) {
     myResults = results;
-  }
-
-  private boolean areAllNodes() {
-    for (SearchResult result : myResults.getSearchResults()) {
-      if (!(result.getObject() instanceof SNode)) {
-        return false;
-      }
-    }
-    return true;
   }
 
   @NotNull
   SearchResults<?> sortNodeResultsByLocationInTheEditor() {
-    if (!areAllNodes()) {
-      // some of them might be models according to MM
-      return myResults;
-    }
-    List<SearchResult<SNode>> sortedList = new ArrayList<>();
+    List<SearchResult<?>> resultingUsages = new ArrayList<>();
+    Map<SNode, List<SNode>> node2Ancestors = new HashMap<>();
     for (SearchResult<?> oldResult : myResults.getSearchResults2()) {
-      sortedList.add(new SearchResult<>((SearchResult<SNode>) oldResult));
-    }
-    sortedList.sort((result1, result2) -> compareNodes(result1.getObject(), result2.getObject()));
-    return new SearchResults(myResults.getSearchedObjects(), sortedList);
-  }
-
-  private static int compareNodes(SNode n1, SNode n2) {
-    List<SNode> pathFromRoot1 = ListSequence.fromList(SNodeOperations.getNodeAncestors(n1, null, true)).reversedList();
-    List<SNode> pathFromRoot2 = ListSequence.fromList(SNodeOperations.getNodeAncestors(n2, null, true)).reversedList();
-    for (int i = 0; i < pathFromRoot1.size() && i < pathFromRoot2.size(); ++i) {
-      if (pathFromRoot1.get(i) != pathFromRoot2.get(i)) {
-        return compareKthElementsOfThePathFromRoot(pathFromRoot1.get(i), pathFromRoot2.get(i));
+      if (oldResult.getObject() instanceof SNode) {
+        resultingUsages.add(new SearchResult<>((SearchResult<SNode>) oldResult));
+        SNode node = (SNode) oldResult.getObject();
+        List<SNode> nodeAncestors = SNodeOperations.getNodeAncestors(node, null, true);
+        node2Ancestors.putIfAbsent(node, nodeAncestors);
       }
     }
-    return pathFromRoot1.size() - pathFromRoot2.size();
+    sortListWithNodes(resultingUsages, node2Ancestors);
+    addOtherResults(resultingUsages);
+    return new SearchResults(myResults.getSearchedObjects(), resultingUsages);
+  }
+
+  private void addOtherResults(List<SearchResult<?>> result) {
+    for (SearchResult<?> oldResult : myResults.getSearchResults2()) {
+      if (!(oldResult.getObject() instanceof SNode)) {
+        result.add(oldResult);
+      }
+    }
+  }
+
+  private void sortListWithNodes(List<SearchResult<?>> sortedList, Map<SNode, List<SNode>> node2Ancestors) {
+    checkIfNotTooBig(sortedList, node2Ancestors);
+    sortedList.sort((result1, result2) -> {
+      SNode n1 = (SNode) result1.getObject();
+      SNode n2 = (SNode) result2.getObject();
+      return compareNodes(node2Ancestors, n1, n2);
+    });
+  }
+
+  private void checkIfNotTooBig(List<SearchResult<?>> sortedList, Map<SNode, List<SNode>> node2Ancestors) {
+    if (sortedList.size() < 100) {
+      for (int i = 0; i < sortedList.size() - 1; ++i) {
+        for (int j = i + 1; j < sortedList.size(); ++j) {
+          SNode n1 = (SNode) sortedList.get(i).getObject();
+          SNode n2 = (SNode) sortedList.get(j).getObject();
+          if (n1.equals(n2)) {
+            assert compareNodes(node2Ancestors, n1, n2) == 0 : "n1 " + n1 + "; n2 " + n2;
+          } else {
+            assert (compareNodes(node2Ancestors, n1, n2) == -compareNodes(node2Ancestors, n2, n1)) : "n1 " + n1 + "; n2 " + n2;
+          }
+        }
+      }
+      for (int i = 0; i < sortedList.size() - 1; ++i) {
+        for (int j = i + 1; j < sortedList.size(); ++j) {
+          for (int h = j + 1; h < sortedList.size(); ++h) {
+            SNode n1 = (SNode) sortedList.get(i).getObject();
+            SNode n2 = (SNode) sortedList.get(j).getObject();
+            SNode n3 = (SNode) sortedList.get(h).getObject();
+            int c1 = compareNodes(node2Ancestors, n1, n2);
+            int c2 = compareNodes(node2Ancestors, n2, n3);
+            int c3 = compareNodes(node2Ancestors, n1, n3);
+            if (c1 <= 0 && c2 <= 0) {
+              assert c3 <= 0 : "n1 " + n1 + "; n2 " + n2 + "; n3 " + n3;
+            }
+            if ((c1 < 0 && c2 <= 0) || (c1 <= 0 && c2 < 0)) {
+              assert c3 < 0 : "n1 " + n1 + "; n2 " + n2 + "; n3 " + n3;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  private int compareNodes(Map<SNode, List<SNode>> node2Ancestors, SNode n1, SNode n2) {
+    if (n1.equals(n2)) {
+      return 0;
+    }
+    List<SNode> pathFromRoot1 = node2Ancestors.get(n1);
+    List<SNode> pathFromRoot2 = node2Ancestors.get(n2);
+    int sz1 = pathFromRoot1.size();
+    int sz2 = pathFromRoot2.size();
+    for (int i = 0; i < sz1 && i < sz2; ++i) {
+      SNode p1 = pathFromRoot1.get(sz1 - 1 - i);
+      SNode p2 = pathFromRoot2.get(sz2 - 1 - i);
+      if (p1 != p2) {
+        return compareKthElementsOfThePathFromRoot(p1, p2);
+      }
+    }
+    return sz1 - sz2;
   }
 
   private static int compareKthElementsOfThePathFromRoot(SNode n1, SNode n2) {
+    assert (n1 != n2);
     if (isRoot(n1) || isRoot(n2)) {
       assert isRoot(n1) && isRoot(n2) : String.format("Root node is supposed to be a 'brother' of another root node only. n1=%s; n2=%s",
                                                       n1.getPresentation(),
@@ -83,15 +136,14 @@ import java.util.List;
     }
 
 
-    SNode parentN1 = SNodeOperations.getParent(n1);
-    SNode parentN2 = SNodeOperations.getParent(n2);
-    // up to now both of the paths from root coincide
-    assert parentN1 == parentN2;
-    List<SNode> siblingsOfN1 = IterableUtil.asList(parentN1.getChildren());
-    return siblingsOfN1.indexOf(n1) - siblingsOfN1.indexOf(n2);
+    SNode p1 = n1.getParent();
+    SNode p2 = n2.getParent();
+    assert p1.equals(p2); // up to now both of the paths from root coincide
+    List<SNode> children = IterableUtil.asList(p1.getChildren());
+    return children.indexOf(n1) - children.indexOf(n2);
   }
 
   private static boolean isRoot(SNode n1) {
-    return SNodeOperations.getContainingLink(n1) == null;
+    return n1.getContainmentLink() == null;
   }
 }
