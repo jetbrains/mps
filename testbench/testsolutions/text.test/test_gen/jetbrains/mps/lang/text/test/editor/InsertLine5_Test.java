@@ -32,7 +32,7 @@ public class InsertLine5_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("7035802921536458389", "7035802921536458401");
+      initEditorComponent("7035802921536458389", "4534926158309669332");
       invokeAction("jetbrains.mps.ide.editor.actions.InsertBefore_Action");
     }
   }
