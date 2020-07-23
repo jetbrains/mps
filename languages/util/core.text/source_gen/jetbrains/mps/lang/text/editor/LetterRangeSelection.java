@@ -32,6 +32,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
@@ -39,7 +40,6 @@ import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -212,7 +212,13 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     } else if (type == CellActionType.SELECT_NEXT) {
       selectNext(editorContext, selectionManager);
     } else if (type == CellActionType.SELECT_PREVIOUS) {
-      selectPrevious(editorContext, selectionManager);
+      selectAll(editorContext, selectionManager);
+    } else if (type == CellActionType.SELECT_ALL) {
+      selectAll(editorContext, selectionManager);
+    } else if (type == CellActionType.SELECT_HOME) {
+    } else if (type == CellActionType.SELECT_END) {
+    } else if (type == CellActionType.SELECT_LOCAL_HOME) {
+    } else if (type == CellActionType.SELECT_LOCAL_END) {
     } else {
       super.executeAction(type);
     }
@@ -336,6 +342,18 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
             selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), nodeAboveFirst, myLastNode, false));
           }
         }
+      }
+    });
+  }
+  private void selectAll(final EditorContext editorContext, final SelectionManager selectionManager) {
+    editorContext.getRepository().getModelAccess().executeCommand(new EditorCommand(editorContext) {
+      @Override
+      public void doExecute() {
+        Iterable<SNode> paragraphs = SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(myFirstParentNode, true), CONCEPTS.Paragraph$V6);
+        SNode f = ListSequence.fromList(SLinkOperations.getChildren(Sequence.fromIterable(paragraphs).first(), LINKS.letters$8nfv)).first();
+        SNode l = ListSequence.fromList(SLinkOperations.getChildren(Sequence.fromIterable(paragraphs).last(), LINKS.letters$8nfv)).last();
+
+        selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), f, l, true));
       }
     });
   }
