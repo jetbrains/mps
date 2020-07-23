@@ -10,21 +10,23 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 public final class LanguageConceptSwitch {
   private final LanguageConceptIndex myIndex;
   public static final int Chapter = 0;
-  public static final int IHoldLines = 1;
-  public static final int IHoldParagraphs = 2;
-  public static final int Letter = 3;
-  public static final int Line = 4;
-  public static final int NodeWrapperElement = 5;
-  public static final int NodeWrapperTextualElement = 6;
-  public static final int Paragraph = 7;
-  public static final int Text = 8;
-  public static final int TextElement = 9;
-  public static final int TextualElement = 10;
-  public static final int Word = 11;
+  public static final int EmptyParagraphLetter = 1;
+  public static final int IHoldLines = 2;
+  public static final int IHoldParagraphs = 3;
+  public static final int Letter = 4;
+  public static final int Line = 5;
+  public static final int NodeWrapperElement = 6;
+  public static final int NodeWrapperTextualElement = 7;
+  public static final int Paragraph = 8;
+  public static final int Text = 9;
+  public static final int TextElement = 10;
+  public static final int TextualElement = 11;
+  public static final int Word = 12;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L);
     builder.put(0x61a4317ad7d0a36dL, Chapter);
+    builder.put(0x17c01c7f100e844bL, EmptyParagraphLetter);
     builder.put(0x6b2f47401707d876L, IHoldLines);
     builder.put(0x2c99af34e20dd8a1L, IHoldParagraphs);
     builder.put(0x7ee31bf598f4ac1dL, Letter);

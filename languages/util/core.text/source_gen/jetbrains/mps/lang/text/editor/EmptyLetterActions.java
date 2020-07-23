@@ -17,8 +17,18 @@ import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 
-public class EmptyParagraphActions {
+public class EmptyLetterActions {
 
+  /*package*/ static AbstractCellAction createAction_COMMENT(final SNode node) {
+    return new AbstractCellAction() {
+      public void execute(EditorContext editorContext) {
+        this.execute_internal(editorContext, node);
+      }
+      public void execute_internal(EditorContext editorContext, SNode node) {
+      }
+
+    };
+  }
   /*package*/ static AbstractCellAction createAction_BACKSPACE(final SNode node) {
     return new AbstractCellAction() {
       public void execute(EditorContext editorContext) {
@@ -27,12 +37,26 @@ public class EmptyParagraphActions {
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode currentNode = editorContext.getSelectedNode();
         if (!(Objects.equals(currentNode, node))) {
-          SNodeOperations.deleteNode(node);
+          SNodeOperations.deleteNode(SNodeOperations.getParent(node));
         } else {
-          SNode prev = SNodeOperations.getPrevSibling(currentNode);
-          SNodeOperations.deleteNode(currentNode);
-          SelectionUtil.selectLabelCellAnSetCaret(editorContext, prev, SelectionManager.LAST_CELL, -1);
+          SNode prev = SNodeOperations.getPrevSibling(SNodeOperations.getParent(currentNode));
+          SNodeOperations.deleteNode(SNodeOperations.getParent(currentNode));
+          if ((prev != null)) {
+            SelectionUtil.selectLabelCellAnSetCaret(editorContext, prev, SelectionManager.LAST_CELL, -1);
+          }
         }
+      }
+
+    };
+  }
+  /*package*/ static AbstractCellAction createAction_DELETE(final SNode node) {
+    return new AbstractCellAction() {
+      public void execute(EditorContext editorContext) {
+        this.execute_internal(editorContext, node);
+      }
+      public void execute_internal(EditorContext editorContext, SNode node) {
+        SNode currentNode = editorContext.getSelectedNode().getParent();
+        SNodeOperations.deleteNode(currentNode);
       }
 
     };
@@ -43,7 +67,7 @@ public class EmptyParagraphActions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode next = SNodeOperations.insertNextSiblingChild(node, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph")));
+        SNode next = SNodeOperations.insertNextSiblingChild(SNodeOperations.getParent(node), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph")));
         Paragraph__BehaviorDescriptor.initialize_id1v077Wg2A59.invoke(next);
       }
 
@@ -78,7 +102,9 @@ public class EmptyParagraphActions {
     // set cell actions from all imported action maps 
 
     // set cell actions defined directly in this action map 
+    editorCell.setAction(CellActionType.COMMENT, createAction_COMMENT(node));
     editorCell.setAction(CellActionType.BACKSPACE, createAction_BACKSPACE(node));
+    editorCell.setAction(CellActionType.DELETE, createAction_DELETE(node));
     editorCell.setAction(CellActionType.INSERT, createAction_INSERT(node));
   }
 
@@ -87,8 +113,14 @@ public class EmptyParagraphActions {
     // set cell action(s) of the given type from imported action maps 
 
     // set cell action of the given type defined directly in this action map 
+    if (Objects.equals(actionType, CellActionType.COMMENT)) {
+      editorCell.setAction(actionType, createAction_COMMENT(node));
+    }
     if (Objects.equals(actionType, CellActionType.BACKSPACE)) {
       editorCell.setAction(actionType, createAction_BACKSPACE(node));
+    }
+    if (Objects.equals(actionType, CellActionType.DELETE)) {
+      editorCell.setAction(actionType, createAction_DELETE(node));
     }
     if (Objects.equals(actionType, CellActionType.INSERT)) {
       editorCell.setAction(actionType, createAction_INSERT(node));

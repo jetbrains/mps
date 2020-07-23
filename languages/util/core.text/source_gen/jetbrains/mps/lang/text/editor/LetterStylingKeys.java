@@ -15,19 +15,19 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-public class LetterStyling extends KeyMapImpl {
-  public LetterStyling() {
+public class LetterStylingKeys extends KeyMapImpl {
+  public LetterStylingKeys() {
     this.setApplicableToEveryModel(false);
     KeyMapAction action;
-    action = new LetterStyling_Action0();
+    action = new LetterStylingKeys_Action0();
     this.putAction("ctrl", "VK_B", action);
-    action = new LetterStyling_Action1();
+    action = new LetterStylingKeys_Action1();
     this.putAction("ctrl", "VK_I", action);
-    action = new LetterStyling_Action2();
+    action = new LetterStylingKeys_Action2();
     this.putAction("ctrl", "VK_U", action);
   }
-  public static class LetterStyling_Action0 extends KeyMapActionImpl {
-    public LetterStyling_Action0() {
+  public static class LetterStylingKeys_Action0 extends KeyMapActionImpl {
+    public LetterStylingKeys_Action0() {
       this.setShownInPopupMenu(false);
     }
     public boolean isMenuAlwaysShown() {
@@ -58,8 +58,8 @@ public class LetterStyling extends KeyMapImpl {
       return "ctrl B";
     }
   }
-  public static class LetterStyling_Action1 extends KeyMapActionImpl {
-    public LetterStyling_Action1() {
+  public static class LetterStylingKeys_Action1 extends KeyMapActionImpl {
+    public LetterStylingKeys_Action1() {
       this.setShownInPopupMenu(false);
     }
     public boolean isMenuAlwaysShown() {
@@ -90,8 +90,8 @@ public class LetterStyling extends KeyMapImpl {
       return "ctrl I";
     }
   }
-  public static class LetterStyling_Action2 extends KeyMapActionImpl {
-    public LetterStyling_Action2() {
+  public static class LetterStylingKeys_Action2 extends KeyMapActionImpl {
+    public LetterStylingKeys_Action2() {
       this.setShownInPopupMenu(false);
     }
     public boolean isMenuAlwaysShown() {

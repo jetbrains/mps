@@ -14,6 +14,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -129,14 +130,13 @@ public class ParagraphCollectionActions {
           SNode nextParagraph = SNodeOperations.as(SNodeOperations.getNextSibling(SNodeOperations.getParent(currentLetter)), CONCEPTS.Paragraph$V6);
           if (nextParagraph != null) {
             SNode firstLetter = ListSequence.fromList(SLinkOperations.getChildren(nextParagraph, LINKS.letters$8nfv)).first();
-            // todo fix selecting empty lines 
             nextNode = (firstLetter != null ? firstLetter : currentLetter);
           } else {
             nextNode = currentLetter;
           }
         }
 
-        LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), nextNode, nextNode, true);
+        LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), ((SNodeOperations.getPrevSibling(currentLetter) != null) || selection.getSelectionStart() > 0 ? nextNode : currentLetter), nextNode, true);
         selectionManager.pushSelection(ws);
       }
 
@@ -148,7 +148,8 @@ public class ParagraphCollectionActions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeOperations.insertNewPrevSiblingChild(node, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph"));
+        SNode prev = SNodeOperations.insertNewPrevSiblingChild(node, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph"));
+        Paragraph__BehaviorDescriptor.initialize_id1v077Wg2A59.invoke(prev);
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, SelectionManager.FIRST_CELL, 0);
 
       }

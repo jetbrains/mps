@@ -251,5 +251,11 @@
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
   </node>
+  <node concept="1TIwiD" id="1v077Wg3Chb">
+    <property role="EcuMT" value="1711399190456599627" />
+    <property role="3GE5qa" value="textual" />
+    <property role="TrG5h" value="EmptyParagraphLetter" />
+    <ref role="1TJDcQ" node="2MpFNjy3pNV" resolve="TextualElement" />
+  </node>
 </model>
 
