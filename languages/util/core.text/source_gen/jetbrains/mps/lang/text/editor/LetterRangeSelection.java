@@ -34,6 +34,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.text.behavior.TextualElement__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
@@ -43,6 +44,7 @@ import jetbrains.mps.util.Computable;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class LetterRangeSelection extends AbstractMultipleSelection {
   private static final String MODEL_ID_PROPERTY_NAME = "modelId";
@@ -391,6 +393,13 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
           SNode nextSelectableChild = getNextSelectableNode(myLastNode, false);
           if (nextSelectableChild != null) {
             SNode f = TextualElement__BehaviorDescriptor.findPreviousWordStart_id3VJiP1sDlYQ.invoke(nextSelectableChild);
+            f = getNextSelectableNode(f, false);
+            if (Objects.equals(SPropertyOperations.getString(SNodeOperations.as(f, CONCEPTS.Letter$hC), PROPS.value$OMJc), " ") && (SNodeOperations.getPrevSibling(f) != null)) {
+              f = SNodeOperations.as(SNodeOperations.getPrevSibling(f), CONCEPTS.TextualElement$73);
+            }
+            if (!(lettersInCorrentOrder(myFirstNode, f))) {
+              f = myFirstNode;
+            }
             selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), SNodeOperations.as(getFirstNode(), CONCEPTS.TextualElement$73), f, myGrowingForward));
           }
         } else {
@@ -412,6 +421,13 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
           SNode nextSelectableChild = getNextSelectableNode(myFirstNode, true);
           if (nextSelectableChild != null) {
             SNode l = TextualElement__BehaviorDescriptor.findNextWordEnd_id3VJiP1sDz5g.invoke(nextSelectableChild);
+            l = getNextSelectableNode(l, true);
+            if (Objects.equals(SPropertyOperations.getString(SNodeOperations.as(l, CONCEPTS.Letter$hC), PROPS.value$OMJc), " ") && (SNodeOperations.getNextSibling(l) != null)) {
+              l = SNodeOperations.as(SNodeOperations.getNextSibling(l), CONCEPTS.TextualElement$73);
+            }
+            if (!(lettersInCorrentOrder(l, myLastNode))) {
+              l = myLastNode;
+            }
             selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), l, myLastNode, myGrowingForward));
           }
         } else {
@@ -424,6 +440,10 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
 
       }
     });
+  }
+
+  private static boolean lettersInCorrentOrder(SNode first, SNode second) {
+    return SNodeOperations.getIndexInParent(SNodeOperations.getParent(first)) < SNodeOperations.getIndexInParent(SNodeOperations.getParent(second)) || (SNodeOperations.getIndexInParent(SNodeOperations.getParent(first)) == SNodeOperations.getIndexInParent(SNodeOperations.getParent(second)) && SNodeOperations.getIndexInParent(first) <= SNodeOperations.getIndexInParent(second));
   }
 
   @NotNull
@@ -582,10 +602,15 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
   private static final class CONCEPTS {
     /*package*/ static final SConcept TextualElement$73 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL, "jetbrains.mps.lang.text.structure.TextualElement");
     /*package*/ static final SConcept Paragraph$V6 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph");
+    /*package*/ static final SConcept Letter$hC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter");
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink letters$8nfv = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
     /*package*/ static final SContainmentLink paragraphs$$xDo = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x61a4317ad7d0a36dL, 0x61a4317ad7d0a52eL, "paragraphs");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty value$OMJc = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
   }
 }

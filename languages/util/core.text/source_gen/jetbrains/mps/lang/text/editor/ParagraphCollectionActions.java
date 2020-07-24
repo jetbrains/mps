@@ -179,7 +179,7 @@ public class ParagraphCollectionActions {
         SNode currentLetter = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextualElement$73);
         SNode f = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getPrevSiblings(currentLetter, true), CONCEPTS.TextualElement$73)).first();
 
-        LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), f, currentLetter, true);
+        LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), f, currentLetter, false);
         selectionManager.pushSelection(ws);
       }
 
@@ -228,7 +228,7 @@ public class ParagraphCollectionActions {
         }
 
         SNode start = TextualElement__BehaviorDescriptor.findPreviousWordStart_id3VJiP1sDlYQ.invoke(currentLetter);
-        LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), start, currentLetter, true);
+        LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), start, currentLetter, false);
         selectionManager.pushSelection(ws);
       }
 
