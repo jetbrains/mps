@@ -181,9 +181,6 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
   }
   @Override
   public boolean canExecuteAction(CellActionType type) {
-    if (1 < 5) {
-      throw new RuntimeException("test " + type);
-    }
     return type == CellActionType.SELECT_RIGHT || type == CellActionType.SELECT_LEFT || type == CellActionType.BACKSPACE || type == CellActionType.DELETE || type == CellActionType.PASTE || type == CellActionType.SELECT_HOME || type == CellActionType.SELECT_END || type == CellActionType.SELECT_LOCAL_HOME || type == CellActionType.SELECT_LOCAL_END || type == CellActionType.SELECT_ALL || super.canExecuteAction(type);
   }
   @Override
@@ -390,7 +387,8 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     editorContext.getRepository().getModelAccess().executeCommand(new EditorCommand(editorContext) {
       @Override
       public void doExecute() {
-        SNode f = TextualElement__BehaviorDescriptor.findPreviousWordStart_id3VJiP1sDlYQ.invoke(myFirstNode);
+        SNode prev = SNodeOperations.as(SNodeOperations.getPrevSibling(myFirstNode), CONCEPTS.TextualElement$73);
+        SNode f = TextualElement__BehaviorDescriptor.findPreviousWordStart_id3VJiP1sDlYQ.invoke(((prev != null ? prev : myFirstNode)));
         selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), f, myLastNode, false));
       }
     });
@@ -400,7 +398,8 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     editorContext.getRepository().getModelAccess().executeCommand(new EditorCommand(editorContext) {
       @Override
       public void doExecute() {
-        SNode l = TextualElement__BehaviorDescriptor.findNextWordEnd_id3VJiP1sDz5g.invoke(myLastNode);
+        SNode next = SNodeOperations.as(SNodeOperations.getNextSibling(myLastNode), CONCEPTS.TextualElement$73);
+        SNode l = TextualElement__BehaviorDescriptor.findNextWordEnd_id3VJiP1sDz5g.invoke(((next != null ? next : myLastNode)));
         selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), myFirstNode, l, true));
       }
     });

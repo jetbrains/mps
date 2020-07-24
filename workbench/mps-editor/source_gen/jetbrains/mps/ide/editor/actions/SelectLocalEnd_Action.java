@@ -31,7 +31,7 @@ public class SelectLocalEnd_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return EditorActionUtils.isReadonlyActionEnabled(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent"))) && ((EditorCell) MapSequence.fromMap(_params).get("editorCell")) instanceof EditorCell_Label;
+    return EditorActionUtils.isReadonlyActionEnabled(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent"))) && ((((EditorCell) MapSequence.fromMap(_params).get("editorCell")) == null && ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getSelectionManager().getSelection() != null) || ((EditorCell) MapSequence.fromMap(_params).get("editorCell")) instanceof EditorCell_Label);
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -45,9 +45,6 @@ public class SelectLocalEnd_Action extends BaseAction {
     {
       EditorCell p = event.getData(MPSEditorDataKeys.EDITOR_CELL);
       MapSequence.fromMap(_params).put("editorCell", p);
-      if (p == null) {
-        return false;
-      }
     }
     {
       EditorComponent editorComponent = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT);
@@ -63,6 +60,10 @@ public class SelectLocalEnd_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getActionHandler().executeAction(((EditorCell) MapSequence.fromMap(_params).get("editorCell")), CellActionType.SELECT_LOCAL_END);
+    if (((EditorCell) MapSequence.fromMap(_params).get("editorCell")) == null) {
+      ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getSelectionManager().getSelection().executeAction(CellActionType.SELECT_LOCAL_END);
+    } else {
+      ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getActionHandler().executeAction(((EditorCell) MapSequence.fromMap(_params).get("editorCell")), CellActionType.SELECT_LOCAL_END);
+    }
   }
 }

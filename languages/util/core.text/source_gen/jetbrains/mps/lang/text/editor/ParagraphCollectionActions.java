@@ -217,6 +217,9 @@ public class ParagraphCollectionActions {
         List<SNode> selectedNodes = selection.getSelectedNodes();
         SNode currentLetter = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextualElement$73);
         SNode start = TextualElement__BehaviorDescriptor.findPreviousWordStart_id3VJiP1sDlYQ.invoke(currentLetter);
+        if ((SNodeOperations.getPrevSibling(currentLetter) == null) && selection.getSelectionStart() == 0) {
+          return;
+        }
 
         LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), start, currentLetter, true);
         selectionManager.pushSelection(ws);
@@ -236,7 +239,7 @@ public class ParagraphCollectionActions {
         List<SNode> selectedNodes = selection.getSelectedNodes();
         SNode currentLetter = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextualElement$73);
         SNode nextNode = SNodeOperations.as(SNodeOperations.getNextSibling(currentLetter), CONCEPTS.TextualElement$73);
-        SNode end = TextualElement__BehaviorDescriptor.findNextWordEnd_id3VJiP1sDz5g.invoke(currentLetter);
+        SNode end = TextualElement__BehaviorDescriptor.findNextWordEnd_id3VJiP1sDz5g.invoke(((nextNode != null ? nextNode : currentLetter)));
 
         LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), ((SNodeOperations.getPrevSibling(currentLetter) != null) || selection.getSelectionStart() > 0 ? nextNode : currentLetter), end, true);
         selectionManager.pushSelection(ws);

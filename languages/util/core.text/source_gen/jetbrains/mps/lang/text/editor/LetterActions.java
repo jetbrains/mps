@@ -46,6 +46,23 @@ public class LetterActions {
 
     };
   }
+  /*package*/ static AbstractCellAction createAction_SELECT_LOCAL_END(final SNode node) {
+    return new AbstractCellAction() {
+      public void execute(EditorContext editorContext) {
+        this.execute_internal(editorContext, node);
+      }
+      public void execute_internal(EditorContext editorContext, SNode node) {
+      }
+      @Override
+      public boolean canExecute(EditorContext editorContext) {
+        return this.canExecute_internal(editorContext, node);
+      }
+      public boolean canExecute_internal(EditorContext editorContext, SNode node) {
+        return false;
+      }
+
+    };
+  }
   /*package*/ static AbstractCellAction createAction_BACKSPACE(final SNode node) {
     return new AbstractCellAction() {
       public void execute(EditorContext editorContext) {
@@ -148,7 +165,7 @@ public class LetterActions {
         Object dataFromClipboard = TextEditorHelper.getDataFromClipboard();
 
         if (dataFromClipboard instanceof String) {
-          String text = trim_v3f5yj_a0a0a5a1a0a0a5(dataFromClipboard.toString());
+          String text = trim_v3f5yj_a0a0a5a1a0a0a6(dataFromClipboard.toString());
           for (int i = 0; i < text.length(); i++) {
             if (firstPositionOnLine) {
               SNode newLetter = SNodeOperations.insertPrevSiblingChild(currentNode.value, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter")));
@@ -281,6 +298,7 @@ public class LetterActions {
 
     // set cell actions defined directly in this action map 
     editorCell.setAction(CellActionType.COMMENT, createAction_COMMENT(node));
+    editorCell.setAction(CellActionType.SELECT_LOCAL_END, createAction_SELECT_LOCAL_END(node));
     editorCell.setAction(CellActionType.BACKSPACE, createAction_BACKSPACE(node));
     editorCell.setAction(CellActionType.DELETE, createAction_DELETE(node));
     editorCell.setAction(CellActionType.INSERT, createAction_INSERT(node));
@@ -295,6 +313,9 @@ public class LetterActions {
     if (Objects.equals(actionType, CellActionType.COMMENT)) {
       editorCell.setAction(actionType, createAction_COMMENT(node));
     }
+    if (Objects.equals(actionType, CellActionType.SELECT_LOCAL_END)) {
+      editorCell.setAction(actionType, createAction_SELECT_LOCAL_END(node));
+    }
     if (Objects.equals(actionType, CellActionType.BACKSPACE)) {
       editorCell.setAction(actionType, createAction_BACKSPACE(node));
     }
@@ -308,7 +329,7 @@ public class LetterActions {
       editorCell.setAction(actionType, createAction_PASTE(node));
     }
   }
-  public static String trim_v3f5yj_a0a0a5a1a0a0a5(String str) {
+  public static String trim_v3f5yj_a0a0a5a1a0a0a6(String str) {
     return (str == null ? null : str.trim());
   }
   private static boolean isEmptyString(String str) {
