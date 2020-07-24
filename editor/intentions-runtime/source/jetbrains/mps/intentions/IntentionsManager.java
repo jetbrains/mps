@@ -89,7 +89,7 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
   }
 
   public synchronized Kind getHighestAvailableBaseIntentionType(final SNode node, final EditorContext editorContext) {
-    final GetHighestAvailableIntentionTypeVisitor visitor = new GetHighestAvailableIntentionTypeVisitor();
+    final GetHighestAvailableIntentionTypeVisitor visitor = new GetHighestAvailableIntentionTypeVisitor(editorContext);
     // FIXME invoking runWithSession is unnecessary here b/c the only client takes care of that already
     if (((EditorComponent) editorContext.getEditorComponent()).getTypecheckingSession() == null) return null;
     
@@ -231,44 +231,9 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
 
   private Map<IntentionExecutable, Kind> getAvailableIntentionsForExactNode(@NotNull final SNode node, @NotNull final EditorContext context, boolean isAncestor,
                                                                             Filter filter) {
-    CollectAvailableIntentionsVisitor visitor = new CollectAvailableIntentionsVisitor();
+    CollectAvailableIntentionsVisitor visitor = new CollectAvailableIntentionsVisitor(context);
     visitIntentions(node, visitor, filter, isAncestor, context);
-
-    Map<IntentionExecutable, Kind> result = new HashMap<>();
-    for (IntentionFactory factory : visitor.getAvailableIntentionFactories()) {
-      try {
-        for (IntentionExecutable executable : factory.instances(node, context)) {
-          result.put(executable, factory.getKind());
-        }
-      } catch (Throwable t) {
-        LOG.error("Exception during parameterized intentions instantiation", t);
-      }
-    }
-
-    List<ReportItem> messages = new ArrayList<>();
-    for (SimpleEditorMessage simpleEditorMessage : ((EditorComponent) context.getEditorComponent()).getHighlightManager().getMessagesFor(node)) {
-      if (simpleEditorMessage instanceof HighlighterMessage) {
-        HighlighterMessage highlighterMessage = (HighlighterMessage) simpleEditorMessage;
-        messages.add(highlighterMessage.getReportItem());
-      }
-    }
-    for (ReportItem message : messages) {
-      Collection<EditorQuickFix> intentionProviders = TypesystemReportItemAdapter.FLAVOUR_EDITOR_QUICKFIX.getCollection(message);
-      for (EditorQuickFix intentionProvider : intentionProviders) {
-        QuickFixAdapter intention = new QuickFixAdapter(intentionProvider, message.getSeverity());
-        if (!filter.accept(intention) ||(isAncestor && !intention.isAvailableInChildNodes()) || !intention.isApplicable(node, context)) {
-          continue;
-        }
-        try {
-          for (IntentionExecutable executable : intention.instances(node, context)) {
-            result.put(executable, intention.getKind());
-          }
-        } catch (Throwable t) {
-          LOG.error("Exception during quickfix intentions instantiation", t);
-        }
-      }
-    }
-    return result;
+    return visitor.getResult();
   }
 
   public synchronized boolean isIntentionDisabled(String persistentStateKey) {
@@ -335,6 +300,11 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
     if (node.getModel() == null) {
       return true;
     }
+    return visitIntentionsImpl(node, visitor, filter, isAncestor, editorContext)
+           && visitQuickFixes(node, visitor, filter, isAncestor, editorContext);
+  }
+
+  private boolean visitIntentionsImpl(SNode node, IntentionsVisitor visitor, Filter filter, boolean isAncestor, EditorContext editorContext) {
     LanguageRegistry languageRegistry = myLanguageRegistry;
     // respect intentions from imported languages only
     ArrayList<IntentionAspectDescriptor> activeIntentionAspects = new ArrayList<>();
@@ -388,7 +358,30 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
           continue;
         }
 
-        if (!visitor.visit(intentionFactory)) {
+        if (!visitor.visit(intentionFactory, node)) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  private boolean visitQuickFixes(SNode node, IntentionsVisitor visitor, Filter filter, boolean isAncestor, EditorContext context) {
+    List<ReportItem> messages = new ArrayList<>();
+    for (SimpleEditorMessage simpleEditorMessage : ((EditorComponent) context.getEditorComponent()).getHighlightManager().getMessagesFor(node)) {
+      if (simpleEditorMessage instanceof HighlighterMessage) {
+        HighlighterMessage highlighterMessage = (HighlighterMessage) simpleEditorMessage;
+        messages.add(highlighterMessage.getReportItem());
+      }
+    }
+    for (ReportItem message : messages) {
+      Collection<EditorQuickFix> intentionProviders = TypesystemReportItemAdapter.FLAVOUR_EDITOR_QUICKFIX.getCollection(message);
+      for (EditorQuickFix intentionProvider : intentionProviders) {
+        QuickFixAdapter intention = new QuickFixAdapter(intentionProvider, message.getSeverity());
+        if (!filter.accept(intention) || (isAncestor && !intention.isAvailableInChildNodes()) || !intention.isApplicable(node, context)) {
+          continue;
+        }
+        if (!visitor.visit(intention, node)) {
           return false;
         }
       }

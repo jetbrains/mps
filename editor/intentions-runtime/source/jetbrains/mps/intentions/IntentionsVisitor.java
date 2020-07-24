@@ -15,57 +15,81 @@
  */
 package jetbrains.mps.intentions;
 
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.intentions.IntentionExecutable;
 import jetbrains.mps.openapi.intentions.IntentionFactory;
 import jetbrains.mps.openapi.intentions.Kind;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * User: shatalin
  * Date: 11/1/12
  */
 interface IntentionsVisitor {
-  boolean visit(IntentionFactory intentionFactory);
+
+  boolean visit(@NotNull IntentionFactory intentionFactory, SNode node);
 
   class CollectAvailableIntentionsVisitor implements IntentionsVisitor {
-    private Set<IntentionFactory> myAvailableIntentionFactories = new HashSet<>();
+
+    private static final Logger LOG = LogManager.getLogger(IntentionsManager.class);
+    private final EditorContext myEditorContext;
+    private final Map<IntentionExecutable, Kind> result = new HashMap<>();
+
+    CollectAvailableIntentionsVisitor(EditorContext editorContext) {
+      myEditorContext = editorContext;
+    }
 
     @Override
-    public boolean visit(IntentionFactory intentionFactory) {
-      myAvailableIntentionFactories.add(intentionFactory);
+    public boolean visit(@NotNull IntentionFactory intentionFactory, SNode node) {
+      for (IntentionExecutable executable : intentionFactory.instances(node, myEditorContext)) {
+        try {
+          result.put(executable, intentionFactory.getKind());
+        } catch (Exception e) {
+          LOG.error("Exception during parameterized intentions instantiation", e);
+        }
+      }
       return true;
     }
 
-    public Set<IntentionFactory> getAvailableIntentionFactories() {
-      return myAvailableIntentionFactories;
+    public Map<IntentionExecutable, Kind> getResult() {
+      return result;
     }
   }
 
   class GetHighestAvailableIntentionTypeVisitor implements IntentionsVisitor {
+
+    private final EditorContext myEditorContext;
     private Kind myIntentionKind = null;
 
+    GetHighestAvailableIntentionTypeVisitor(@NotNull EditorContext editorContext) {
+      myEditorContext = editorContext;
+    }
+
     @Override
-    public boolean visit(IntentionFactory intentionFactory) {
-      return visit(intentionFactory.getKind());
-    }
-
-    public Kind getIntentionKind() {
-      return myIntentionKind;
-    }
-
-    private boolean visit(Kind intentionKind) {
-      if (hasHigherPriority(intentionKind)) {
-        myIntentionKind = intentionKind;
+    public boolean visit(@NotNull IntentionFactory intentionFactory, SNode node) {
+      if (intentionFactory.instances(node, myEditorContext).size() > 0) {
+        myIntentionKind = intentionFactory.getKind();
       }
-      return myIntentionKind.ordinal() > 0;
+      return myIntentionKind == null || myIntentionKind.ordinal() > 0;
+    }
+
+    @Nullable
+    Kind getIntentionKind() {
+      return myIntentionKind;
     }
 
     /**
      * return true if passed intentionType has higher priority then one currently stored by this visitor
      */
     public boolean hasHigherPriority(Kind intentionType) {
-      return myIntentionKind == null || myIntentionKind.ordinal() < intentionType.ordinal();
+      return myIntentionKind == null || myIntentionKind.ordinal() > intentionType.ordinal();
     }
   }
 }
