@@ -33,6 +33,7 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.text.behavior.TextualElement__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
@@ -180,7 +181,10 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
   }
   @Override
   public boolean canExecuteAction(CellActionType type) {
-    return type == CellActionType.SELECT_RIGHT || type == CellActionType.SELECT_LEFT || type == CellActionType.BACKSPACE || type == CellActionType.DELETE || super.canExecuteAction(type);
+    if (1 < 5) {
+      throw new RuntimeException("test " + type);
+    }
+    return type == CellActionType.SELECT_RIGHT || type == CellActionType.SELECT_LEFT || type == CellActionType.BACKSPACE || type == CellActionType.DELETE || type == CellActionType.PASTE || type == CellActionType.SELECT_HOME || type == CellActionType.SELECT_END || type == CellActionType.SELECT_LOCAL_HOME || type == CellActionType.SELECT_LOCAL_END || type == CellActionType.SELECT_ALL || super.canExecuteAction(type);
   }
   @Override
   public void executeAction(CellActionType type) {
@@ -212,13 +216,17 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     } else if (type == CellActionType.SELECT_NEXT) {
       selectNext(editorContext, selectionManager);
     } else if (type == CellActionType.SELECT_PREVIOUS) {
-      selectAll(editorContext, selectionManager);
+      selectPrevious(editorContext, selectionManager);
     } else if (type == CellActionType.SELECT_ALL) {
       selectAll(editorContext, selectionManager);
     } else if (type == CellActionType.SELECT_HOME) {
+      selectHome(editorContext, selectionManager);
     } else if (type == CellActionType.SELECT_END) {
+      selectEnd(editorContext, selectionManager);
     } else if (type == CellActionType.SELECT_LOCAL_HOME) {
+      selectLocalHome(editorContext, selectionManager);
     } else if (type == CellActionType.SELECT_LOCAL_END) {
+      selectLocalEnd(editorContext, selectionManager);
     } else {
       super.executeAction(type);
     }
@@ -354,6 +362,46 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
         SNode l = ListSequence.fromList(SLinkOperations.getChildren(Sequence.fromIterable(paragraphs).last(), LINKS.letters$8nfv)).last();
 
         selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), f, l, true));
+      }
+    });
+  }
+
+  private void selectHome(final EditorContext editorContext, final SelectionManager selectionManager) {
+    editorContext.getRepository().getModelAccess().executeCommand(new EditorCommand(editorContext) {
+      @Override
+      public void doExecute() {
+        SNode f = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getPrevSiblings(myFirstNode, false), CONCEPTS.TextualElement$73)).last();
+        selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), f, myLastNode, false));
+      }
+    });
+  }
+
+  private void selectEnd(final EditorContext editorContext, final SelectionManager selectionManager) {
+    editorContext.getRepository().getModelAccess().executeCommand(new EditorCommand(editorContext) {
+      @Override
+      public void doExecute() {
+        SNode l = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(myLastNode, false), CONCEPTS.TextualElement$73)).last();
+        selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), myFirstNode, l, true));
+      }
+    });
+  }
+
+  private void selectLocalHome(final EditorContext editorContext, final SelectionManager selectionManager) {
+    editorContext.getRepository().getModelAccess().executeCommand(new EditorCommand(editorContext) {
+      @Override
+      public void doExecute() {
+        SNode f = TextualElement__BehaviorDescriptor.findPreviousWordStart_id3VJiP1sDlYQ.invoke(myFirstNode);
+        selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), f, myLastNode, false));
+      }
+    });
+  }
+
+  private void selectLocalEnd(final EditorContext editorContext, final SelectionManager selectionManager) {
+    editorContext.getRepository().getModelAccess().executeCommand(new EditorCommand(editorContext) {
+      @Override
+      public void doExecute() {
+        SNode l = TextualElement__BehaviorDescriptor.findNextWordEnd_id3VJiP1sDz5g.invoke(myLastNode);
+        selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), myFirstNode, l, true));
       }
     });
   }

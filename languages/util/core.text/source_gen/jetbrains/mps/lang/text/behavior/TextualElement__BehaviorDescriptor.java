@@ -41,11 +41,11 @@ public final class TextualElement__BehaviorDescriptor extends BaseBHDescriptor {
     if ((SNodeOperations.getPrevSibling(__thisNode__) == null)) {
       return __thisNode__;
     }
-    SNode closest = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getPrevSiblings(__thisNode__, false), CONCEPTS.Letter$hC)).where(new IWhereFilter<SNode>() {
+    SNode closest = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getPrevSiblings(__thisNode__, false), CONCEPTS.TextualElement$73)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.value$OMJc), " ");
+        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$hC)) || Objects.equals(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Letter$hC), PROPS.value$OMJc), " ");
       }
-    }).first();
+    }).last();
     if ((closest == null)) {
       return SNodeOperations.as(ListSequence.fromList(SNodeOperations.getPrevSiblings(__thisNode__, false)).first(), CONCEPTS.TextualElement$73);
     } else {
@@ -56,9 +56,9 @@ public final class TextualElement__BehaviorDescriptor extends BaseBHDescriptor {
     if ((SNodeOperations.getNextSibling(__thisNode__) == null)) {
       return __thisNode__;
     }
-    SNode closest = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(__thisNode__, false), CONCEPTS.Letter$hC)).where(new IWhereFilter<SNode>() {
+    SNode closest = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(__thisNode__, false), CONCEPTS.TextualElement$73)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.value$OMJc), " ");
+        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$hC)) || Objects.equals(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Letter$hC), PROPS.value$OMJc), " ");
       }
     }).first();
     if ((closest == null)) {
@@ -117,8 +117,8 @@ public final class TextualElement__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Letter$hC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter");
     /*package*/ static final SConcept TextualElement$73 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL, "jetbrains.mps.lang.text.structure.TextualElement");
+    /*package*/ static final SConcept Letter$hC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter");
   }
 
   private static final class PROPS {
