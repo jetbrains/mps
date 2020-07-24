@@ -6,12 +6,13 @@ import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.lang.text.behavior.TextualElement__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
-import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
+import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
@@ -46,6 +47,23 @@ public class LetterActions {
 
     };
   }
+  /*package*/ static AbstractCellAction createAction_SELECT_LOCAL_HOME(final SNode node) {
+    return new AbstractCellAction() {
+      public void execute(EditorContext editorContext) {
+        this.execute_internal(editorContext, node);
+      }
+      public void execute_internal(EditorContext editorContext, SNode node) {
+      }
+      @Override
+      public boolean canExecute(EditorContext editorContext) {
+        return this.canExecute_internal(editorContext, node);
+      }
+      public boolean canExecute_internal(EditorContext editorContext, SNode node) {
+        return false;
+      }
+
+    };
+  }
   /*package*/ static AbstractCellAction createAction_SELECT_LOCAL_END(final SNode node) {
     return new AbstractCellAction() {
       public void execute(EditorContext editorContext) {
@@ -59,6 +77,47 @@ public class LetterActions {
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
         return false;
+      }
+
+    };
+  }
+  /*package*/ static AbstractCellAction createAction_LOCAL_HOME(final SNode node) {
+    return new AbstractCellAction() {
+      public void execute(EditorContext editorContext) {
+        this.execute_internal(editorContext, node);
+      }
+      public void execute_internal(EditorContext editorContext, SNode node) {
+        if ((SNodeOperations.getPrevSibling(node) != null)) {
+          SelectionUtil.selectLabelCellAnSetCaret(editorContext, TextualElement__BehaviorDescriptor.findPreviousWordStart_id3VJiP1sDlYQ.invoke(node), SelectionManager.FIRST_CELL, 0);
+        } else {
+          SNode l = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(node)), CONCEPTS.Paragraph$V6), LINKS.letters$8nfv)).last();
+          if ((l != null)) {
+            SelectionUtil.selectLabelCellAnSetCaret(editorContext, l, SelectionManager.LAST_CELL, -1);
+          }
+        }
+      }
+
+    };
+  }
+  /*package*/ static AbstractCellAction createAction_LOCAL_END(final SNode node) {
+    return new AbstractCellAction() {
+      public void execute(EditorContext editorContext) {
+        this.execute_internal(editorContext, node);
+      }
+      public void execute_internal(EditorContext editorContext, SNode node) {
+        SNode nextNode = SNodeOperations.as(SNodeOperations.getNextSibling(node), CONCEPTS.TextualElement$73);
+        if ((nextNode != null)) {
+          if (SNodeOperations.isInstanceOf(nextNode, CONCEPTS.Letter$hC)) {
+            SelectionUtil.selectLabelCellAnSetCaret(editorContext, TextualElement__BehaviorDescriptor.findNextWordEnd_id3VJiP1sDz5g.invoke(nextNode), SelectionManager.LAST_CELL, -1);
+          } else {
+            SelectionUtil.selectCell(editorContext, nextNode, SelectionManager.FIRST_EDITABLE_CELL);
+          }
+        } else {
+          SNode f = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getNextSibling(SNodeOperations.getParent(node)), CONCEPTS.Paragraph$V6), LINKS.letters$8nfv)).first();
+          if ((f != null)) {
+            SelectionUtil.selectLabelCellAnSetCaret(editorContext, f, SelectionManager.FIRST_CELL, 0);
+          }
+        }
       }
 
     };
@@ -165,7 +224,7 @@ public class LetterActions {
         Object dataFromClipboard = TextEditorHelper.getDataFromClipboard();
 
         if (dataFromClipboard instanceof String) {
-          String text = trim_v3f5yj_a0a0a5a1a0a0a6(dataFromClipboard.toString());
+          String text = trim_v3f5yj_a0a0a5a1a0a0a9(dataFromClipboard.toString());
           for (int i = 0; i < text.length(); i++) {
             if (firstPositionOnLine) {
               SNode newLetter = SNodeOperations.insertPrevSiblingChild(currentNode.value, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter")));
@@ -298,7 +357,10 @@ public class LetterActions {
 
     // set cell actions defined directly in this action map 
     editorCell.setAction(CellActionType.COMMENT, createAction_COMMENT(node));
+    editorCell.setAction(CellActionType.SELECT_LOCAL_HOME, createAction_SELECT_LOCAL_HOME(node));
     editorCell.setAction(CellActionType.SELECT_LOCAL_END, createAction_SELECT_LOCAL_END(node));
+    editorCell.setAction(CellActionType.LOCAL_HOME, createAction_LOCAL_HOME(node));
+    editorCell.setAction(CellActionType.LOCAL_END, createAction_LOCAL_END(node));
     editorCell.setAction(CellActionType.BACKSPACE, createAction_BACKSPACE(node));
     editorCell.setAction(CellActionType.DELETE, createAction_DELETE(node));
     editorCell.setAction(CellActionType.INSERT, createAction_INSERT(node));
@@ -313,8 +375,17 @@ public class LetterActions {
     if (Objects.equals(actionType, CellActionType.COMMENT)) {
       editorCell.setAction(actionType, createAction_COMMENT(node));
     }
+    if (Objects.equals(actionType, CellActionType.SELECT_LOCAL_HOME)) {
+      editorCell.setAction(actionType, createAction_SELECT_LOCAL_HOME(node));
+    }
     if (Objects.equals(actionType, CellActionType.SELECT_LOCAL_END)) {
       editorCell.setAction(actionType, createAction_SELECT_LOCAL_END(node));
+    }
+    if (Objects.equals(actionType, CellActionType.LOCAL_HOME)) {
+      editorCell.setAction(actionType, createAction_LOCAL_HOME(node));
+    }
+    if (Objects.equals(actionType, CellActionType.LOCAL_END)) {
+      editorCell.setAction(actionType, createAction_LOCAL_END(node));
     }
     if (Objects.equals(actionType, CellActionType.BACKSPACE)) {
       editorCell.setAction(actionType, createAction_BACKSPACE(node));
@@ -329,7 +400,7 @@ public class LetterActions {
       editorCell.setAction(actionType, createAction_PASTE(node));
     }
   }
-  public static String trim_v3f5yj_a0a0a5a1a0a0a6(String str) {
+  public static String trim_v3f5yj_a0a0a5a1a0a0a9(String str) {
     return (str == null ? null : str.trim());
   }
   private static boolean isEmptyString(String str) {
@@ -339,8 +410,8 @@ public class LetterActions {
   private static final class CONCEPTS {
     /*package*/ static final SConcept Paragraph$V6 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph");
     /*package*/ static final SConcept TextualElement$73 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL, "jetbrains.mps.lang.text.structure.TextualElement");
-    /*package*/ static final SConcept EmptyParagraphLetter$Tx = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x17c01c7f100e844bL, "jetbrains.mps.lang.text.structure.EmptyParagraphLetter");
     /*package*/ static final SConcept Letter$hC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter");
+    /*package*/ static final SConcept EmptyParagraphLetter$Tx = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x17c01c7f100e844bL, "jetbrains.mps.lang.text.structure.EmptyParagraphLetter");
     /*package*/ static final SInterfaceConcept IHoldParagraphs$bG = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dd8a1L, "jetbrains.mps.lang.text.structure.IHoldParagraphs");
   }
 

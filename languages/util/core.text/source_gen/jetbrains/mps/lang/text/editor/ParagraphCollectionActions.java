@@ -216,11 +216,18 @@ public class ParagraphCollectionActions {
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
         SNode currentLetter = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextualElement$73);
-        SNode start = TextualElement__BehaviorDescriptor.findPreviousWordStart_id3VJiP1sDlYQ.invoke(currentLetter);
+
         if ((SNodeOperations.getPrevSibling(currentLetter) == null) && selection.getSelectionStart() == 0) {
-          return;
+          // cursor at the beginning of a paragraph 
+          SNode l = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(currentLetter)), CONCEPTS.Paragraph$V6), LINKS.letters$8nfv)).last();
+          if ((l != null)) {
+            currentLetter = l;
+          } else {
+            return;
+          }
         }
 
+        SNode start = TextualElement__BehaviorDescriptor.findPreviousWordStart_id3VJiP1sDlYQ.invoke(currentLetter);
         LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), start, currentLetter, true);
         selectionManager.pushSelection(ws);
       }

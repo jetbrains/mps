@@ -14,8 +14,8 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -38,16 +38,13 @@ public final class TextualElement__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode findPreviousWordStart_id3VJiP1sDlYQ(@NotNull SNode __thisNode__) {
-    if ((SNodeOperations.getPrevSibling(__thisNode__) == null)) {
-      return __thisNode__;
-    }
     SNode closest = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getPrevSiblings(__thisNode__, false), CONCEPTS.TextualElement$73)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$hC)) || Objects.equals(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Letter$hC), PROPS.value$OMJc), " ");
       }
     }).last();
     if ((closest == null)) {
-      return SNodeOperations.as(ListSequence.fromList(SNodeOperations.getPrevSiblings(__thisNode__, false)).first(), CONCEPTS.TextualElement$73);
+      return SNodeOperations.as(ListSequence.fromList(SNodeOperations.getPrevSiblings(__thisNode__, true)).first(), CONCEPTS.TextualElement$73);
     } else {
       return SNodeOperations.as(SNodeOperations.getNextSibling(closest), CONCEPTS.TextualElement$73);
     }

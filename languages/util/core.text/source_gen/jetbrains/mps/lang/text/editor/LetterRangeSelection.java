@@ -387,9 +387,19 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     editorContext.getRepository().getModelAccess().executeCommand(new EditorCommand(editorContext) {
       @Override
       public void doExecute() {
-        SNode prev = SNodeOperations.as(SNodeOperations.getPrevSibling(myFirstNode), CONCEPTS.TextualElement$73);
-        SNode f = TextualElement__BehaviorDescriptor.findPreviousWordStart_id3VJiP1sDlYQ.invoke(((prev != null ? prev : myFirstNode)));
-        selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), f, myLastNode, false));
+        if (myGrowingForward && getFirstNode() != getLastNode()) {
+          SNode nextSelectableChild = getNextSelectableNode(myLastNode, false);
+          if (nextSelectableChild != null) {
+            SNode f = TextualElement__BehaviorDescriptor.findPreviousWordStart_id3VJiP1sDlYQ.invoke(nextSelectableChild);
+            selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), SNodeOperations.as(getFirstNode(), CONCEPTS.TextualElement$73), f, myGrowingForward));
+          }
+        } else {
+          SNode prev = getNextSelectableNode(myFirstNode, false);
+          if (prev != null) {
+            SNode f = TextualElement__BehaviorDescriptor.findPreviousWordStart_id3VJiP1sDlYQ.invoke(prev);
+            selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), f, myLastNode, false));
+          }
+        }
       }
     });
   }
@@ -398,9 +408,20 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     editorContext.getRepository().getModelAccess().executeCommand(new EditorCommand(editorContext) {
       @Override
       public void doExecute() {
-        SNode next = SNodeOperations.as(SNodeOperations.getNextSibling(myLastNode), CONCEPTS.TextualElement$73);
-        SNode l = TextualElement__BehaviorDescriptor.findNextWordEnd_id3VJiP1sDz5g.invoke(((next != null ? next : myLastNode)));
-        selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), myFirstNode, l, true));
+        if (!(myGrowingForward) && getFirstNode() != getLastNode()) {
+          SNode nextSelectableChild = getNextSelectableNode(myFirstNode, true);
+          if (nextSelectableChild != null) {
+            SNode l = TextualElement__BehaviorDescriptor.findNextWordEnd_id3VJiP1sDz5g.invoke(nextSelectableChild);
+            selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), l, myLastNode, myGrowingForward));
+          }
+        } else {
+          SNode nextSelectableChild = getNextSelectableNode(myLastNode, true);
+          if (nextSelectableChild != null) {
+            SNode l = TextualElement__BehaviorDescriptor.findNextWordEnd_id3VJiP1sDz5g.invoke(nextSelectableChild);
+            selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), myFirstNode, l, true));
+          }
+        }
+
       }
     });
   }
