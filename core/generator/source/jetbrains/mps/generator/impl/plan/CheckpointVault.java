@@ -33,6 +33,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
+import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
@@ -151,9 +152,12 @@ public class CheckpointVault {
    * read xml that lists all checkpoint models from all generation plans for the given model
    */
   /*package*/ void readCheckpointRegistry() {
-    try {
-      myKnownCheckpoints.clear();
-      try (InputStream is = myStreams.getOutputLocation().openInputStream("checkpoints")) {
+    myKnownCheckpoints.clear();
+    StreamDataSource source = myStreams.getOutputLocation().getStreamByName("checkpoints");
+    if (!source.exists()) {
+      Logger.getLogger(GenerationPlan.class).debug("No checkpoint registry file found");
+    } else {
+      try (InputStream is = source.openInputStream()) {
         Document cpDoc = JDOMUtil.loadDocument(is);
         for (Element planElement : cpDoc.getRootElement().getChildren("plan")) {
           PlanIdentity pi = new PlanIdentity(planElement.getAttributeValue("id"));
@@ -166,11 +170,9 @@ public class CheckpointVault {
             myKnownCheckpoints.add(new Entry(cpId, file));
           }
         }
+      } catch(IOException | JDOMException ex){
+        Logger.getLogger(GenerationPlan.class).warn("Failed to read checkpoint registry", ex);
       }
-    } catch (FileNotFoundException ex) {
-      Logger.getLogger(GenerationPlan.class).debug("No checkpoint registry file found");
-    } catch (IOException | JDOMException ex) {
-      Logger.getLogger(GenerationPlan.class).warn("Failed to read checkpoint registry", ex);
     }
   }
 

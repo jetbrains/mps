@@ -51,4 +51,10 @@ public interface StreamDataSource extends DataSource {
    * @return true if success
    */
   boolean delete();
+
+  /**
+   * if rv == false, then {@link #openInputStream()} will throw IOException
+   * so check it before reading
+   */
+  boolean exists();
 }

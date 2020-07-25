@@ -20,7 +20,9 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * Bare input source for models backed by plain byte array.
@@ -30,7 +32,7 @@ import java.io.InputStream;
  * @author Artem Tikhomirov
  * @since 3.4
  */
-public class ByteArrayInputSource extends StreamDataSourceBase {
+public final class ByteArrayInputSource extends StreamDataSourceBase {
   private final byte[] myInput;
 
   public ByteArrayInputSource(@NotNull byte[] input) {
@@ -56,8 +58,19 @@ public class ByteArrayInputSource extends StreamDataSourceBase {
     return new ByteArrayInputStream(myInput);
   }
 
+  @NotNull
   @Override
-  public boolean isReadOnly() {
+  public final OutputStream openOutputStream() throws IOException {
+    throw new UnsupportedOperationException("I am unable to write, only read " + this);
+  }
+
+  @Override
+  public final boolean exists() {
+    return true;
+  }
+
+  @Override
+  public final boolean isReadOnly() {
     return true;
   }
 

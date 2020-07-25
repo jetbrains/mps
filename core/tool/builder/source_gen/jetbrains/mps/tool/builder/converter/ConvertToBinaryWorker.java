@@ -112,6 +112,11 @@ public final class ConvertToBinaryWorker {
       return false;
     }
 
+    @Override
+    public boolean exists() {
+      return myFile.exists();
+    }
+
 
     @Override
     public boolean isReadOnly() {

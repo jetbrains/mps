@@ -184,9 +184,20 @@ public final class PersistenceUtil {
 
     @NotNull
     @Override
+    public InputStream openInputStream() throws IOException {
+      throw new UnsupportedOperationException("I am not able to read only to write " + this);
+    }
+
+    @NotNull
+    @Override
     public OutputStream openOutputStream() {
       myStream.compareAndSet(null, new ByteArrayOutputStream());
       return myStream.get();
+    }
+
+    @Override
+    public boolean exists() {
+      return true;
     }
 
     @Override

@@ -26,6 +26,7 @@ import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.stream.Stream;
 
 /**
@@ -73,13 +74,26 @@ public class DeployedStreamManager implements ModelStreamManager {
       if (!isMCLAlive(myModule)) {
         throw new IOException(String.format("Could not access model stream %s in module %s due to missing ClassLoader", getStreamName(), myModule.getModuleName()));
       }
-      var name = getStreamName();
-      if (exists(myModule, myParentLocation, name)) {
+      String name = getStreamName();
+      if (exists()) {
         final ClassLoader cl = myModule.getClassLoader();
         assert cl != null;
         return cl.getResourceAsStream(toResourceName(myParentLocation, name));
+      } else {
+        throw new FileNotFoundException(
+            String.format("Couldn't find model stream '%s' in module %s (at %s)", name, myModule.getModuleName(), myParentLocation));
       }
-      throw new FileNotFoundException(String.format("Couldn't find model stream '%s' in module %s (at %s)", name, myModule.getModuleName(), myParentLocation));
+    }
+
+    @NotNull
+    @Override
+    public OutputStream openOutputStream() throws IOException {
+      throw new UnsupportedOperationException("I am readonly " + this);
+    }
+
+    @Override
+    public boolean exists() {
+      return DeployedStreamManager.exists(myModule, myParentLocation, getStreamName());
     }
 
     @Override

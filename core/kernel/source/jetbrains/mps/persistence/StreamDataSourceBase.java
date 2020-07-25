@@ -46,20 +46,8 @@ public abstract class StreamDataSourceBase implements StreamDataSource, StreamAs
 
   @NotNull
   @Override
-  public String getLocation() {
+  public final String getLocation() {
     return myLocation;
-  }
-
-  @NotNull
-  @Override
-  public InputStream openInputStream() throws IOException {
-    throw new UnsupportedOperationException();
-  }
-
-  @NotNull
-  @Override
-  public OutputStream openOutputStream() throws IOException {
-    throw new UnsupportedOperationException();
   }
 
   @Override

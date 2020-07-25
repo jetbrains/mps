@@ -31,6 +31,7 @@ import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -107,7 +108,7 @@ public class FileDataSource extends DataSourceBase implements StreamDataSource, 
 
   @NotNull
   @Override
-  public InputStream openInputStream() throws IOException {
+  public InputStream openInputStream() throws IOException, FileNotFoundException {
     return myFile.openInputStream();
   }
 
@@ -160,6 +161,11 @@ public class FileDataSource extends DataSourceBase implements StreamDataSource, 
       return myFile.delete();
     }
     return false;
+  }
+
+  @Override
+  public boolean exists() {
+    return myFile.exists();
   }
 
   protected void stopListening() {

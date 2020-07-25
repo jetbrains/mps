@@ -225,5 +225,10 @@ import java.io.OutputStream;
       }
       return subs.get(0).openOutputStream();
     }
+
+    @Override
+    public boolean exists() {
+      return true;
+    }
   }
 }

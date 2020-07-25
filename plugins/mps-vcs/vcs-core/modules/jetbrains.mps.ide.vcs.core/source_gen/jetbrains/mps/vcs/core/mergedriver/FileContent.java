@@ -63,6 +63,11 @@ public class FileContent extends DataSourceBase implements StreamDataSource {
   }
 
   @Override
+  public boolean exists() {
+    return myFile.exists();
+  }
+
+  @Override
   public boolean isReadOnly() {
     return false;
   }
