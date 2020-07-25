@@ -79,6 +79,12 @@ public interface MultiStreamDataSource extends DataSource {
     return streamByName;
   }
 
+  /**
+   * counterpart for {@link #getStreamByNameOrFail(String)}, which allows to add new streams
+   * btw it'd be great if {@link StreamDataSource#delete} invoked on substreams
+   * make them disappear from the return value of this method.
+   * currently this is so
+   */
   @NotNull
   StreamDataSource getStreamByNameOrCreate(@NotNull String name);
 
