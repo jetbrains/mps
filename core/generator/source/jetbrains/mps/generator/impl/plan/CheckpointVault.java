@@ -153,9 +153,9 @@ public class CheckpointVault {
    */
   /*package*/ void readCheckpointRegistry() {
     myKnownCheckpoints.clear();
-    StreamDataSource source = myStreams.getOutputLocation().getStreamByName("checkpoints");
+    StreamDataSource source = myStreams.getOutputLocation().getStreamByNameOrCreate("checkpoints");
     if (!source.exists()) {
-      Logger.getLogger(GenerationPlan.class).debug("No checkpoint registry file found");
+      Logger.getLogger(GenerationPlan.class).info("No checkpoint registry file found");
     } else {
       try (InputStream is = source.openInputStream()) {
         Document cpDoc = JDOMUtil.loadDocument(is);
@@ -193,7 +193,7 @@ public class CheckpointVault {
   }
 
   private SModel loadModel(Entry entry) throws IOException, ModelLoadException {
-    final StreamDataSource source = myStreams.getOutputLocation().getStreamByNameOrFail(entry.getFilename());
+    final StreamDataSource source = myStreams.getOutputLocation().getStreamByNameOrCreate(entry.getFilename());
     final ModelFactory modelFactory = entry.modelFactory();
     return modelFactory.load(source);
   }

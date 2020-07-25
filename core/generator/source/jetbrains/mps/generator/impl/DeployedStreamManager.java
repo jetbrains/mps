@@ -27,6 +27,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Stream;
 
 /**
@@ -87,13 +90,13 @@ public class DeployedStreamManager implements ModelStreamManager {
 
     @NotNull
     @Override
-    public OutputStream openOutputStream() throws IOException {
+    public OutputStream openOutputStream() {
       throw new UnsupportedOperationException("I am readonly " + this);
     }
 
     @Override
     public boolean exists() {
-      return DeployedStreamManager.exists(myModule, myParentLocation, getStreamName());
+      return isMCLAlive(myModule) && DeployedStreamManager.exists(myModule, myParentLocation, getStreamName());
     }
 
     @Override
@@ -117,6 +120,7 @@ public class DeployedStreamManager implements ModelStreamManager {
   private static class DataSourceImpl extends MultiStreamDataSourceBase {
     private final ReloadableModule myModule;
     private final String myLocation;
+    private final List<StreamDataSource> mySubs = new CopyOnWriteArrayList<>();
 
     DataSourceImpl(@NotNull ReloadableModule module, @NotNull String location) {
       super(location);
@@ -127,18 +131,18 @@ public class DeployedStreamManager implements ModelStreamManager {
     @NotNull
     @Override
     public Stream<StreamDataSource> getSubStreams() {
-      if (!isMCLAlive(myModule)) {
-        return Stream.empty();
-      }
-      return Stream.of("exports")
-                   .filter(str -> DeployedStreamManager.exists(myModule, myLocation, str))
-                   .map(it -> new SingleDataSourceImpl(myModule, myLocation, it));
+      return mySubs.stream();
     }
 
     @NotNull
     @Override
     public StreamDataSource getStreamByNameOrCreate(@NotNull String name) {
-      return null;
+      StreamDataSource streamByName = getStreamByName(name);
+      if (streamByName == null) {
+        streamByName = new SingleDataSourceImpl(myModule, myLocation, name);
+        mySubs.add(streamByName);
+      }
+      return streamByName;
     }
 
     @Override

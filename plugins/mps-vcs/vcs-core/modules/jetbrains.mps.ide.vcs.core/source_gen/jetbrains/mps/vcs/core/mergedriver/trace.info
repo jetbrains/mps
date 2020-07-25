@@ -21,46 +21,58 @@
   <root nodeRef="r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)/1578360511938004001">
     <file name="FileContent.java">
       <node id="1578360511938160823" at="21,0,22,0" concept="3" trace="myFile" />
-      <node id="1578360511938380203" at="22,0,23,0" concept="3" trace="data" />
+      <node id="1578360511938380203" at="22,0,23,0" concept="3" trace="myData" />
       <node id="1578360511938161321" at="24,52,25,18" concept="2" />
       <node id="1578360511941890180" at="25,18,26,51" concept="8" />
-      <node id="1578360511941930241" at="27,9,28,40" concept="2" />
+      <node id="1578360511941930241" at="27,9,28,37" concept="2" />
       <node id="1578360511941899509" at="29,15,30,37" concept="2" />
-      <node id="1578360511938206046" at="34,25,35,18" concept="9" />
-      <node id="1578360511938383795" at="38,27,39,16" concept="9" />
-      <node id="8635503400119467193" at="43,40,44,42" concept="9" />
-      <node id="8635503400119460437" at="48,61,49,40" concept="9" />
-      <node id="8635503400119720044" at="53,31,54,17" concept="9" />
-      <node id="8635503400119724945" at="59,31,60,28" concept="9" />
-      <node id="1578360511938206042" at="34,0,37,0" concept="7" trace="getFile#()Ljava/io/File;" />
-      <node id="1578360511938383790" at="38,0,41,0" concept="7" trace="getData#()[B" />
-      <node id="1578360511938823416" at="42,0,46,0" concept="7" trace="openInputStream#()Ljava/io/InputStream;" />
-      <node id="8635503400119458904" at="47,0,51,0" concept="7" trace="openOutputStream#()Ljava/io/OutputStream;" />
-      <node id="8635503400119718379" at="52,0,56,0" concept="7" trace="isReadOnly#()Z" />
+      <node id="7995818696743898288" at="36,33,37,46" concept="9" />
+      <node id="1578360511938206046" at="40,25,41,18" concept="9" />
+      <node id="1578360511938383795" at="44,27,45,18" concept="9" />
+      <node id="8635503400119467193" at="50,40,51,44" concept="9" />
+      <node id="8635503400119460437" at="56,61,57,40" concept="9" />
+      <node id="8635503400119720044" at="61,31,62,17" concept="9" />
+      <node id="7995818696743902210" at="66,27,67,27" concept="9" />
+      <node id="7995818696743902331" at="71,27,72,27" concept="9" />
+      <node id="8635503400119724945" at="77,31,78,28" concept="9" />
+      <node id="1578360511938206042" at="40,0,43,0" concept="7" trace="getFile#()Ljava/io/File;" />
+      <node id="1578360511938383790" at="44,0,47,0" concept="7" trace="getData#()[B" />
+      <node id="8635503400119718379" at="60,0,64,0" concept="7" trace="isReadOnly#()Z" />
+      <node id="7995818696743902206" at="65,0,69,0" concept="7" trace="delete#()Z" />
+      <node id="7995818696743902327" at="70,0,74,0" concept="7" trace="exists#()Z" />
       <node id="1578360511941889359" at="26,51,31,5" concept="17" />
-      <node id="8635503400119723314" at="57,0,62,0" concept="7" trace="getLocation#()Ljava/lang/String;" />
+      <node id="7995818696743898167" at="34,0,39,0" concept="7" trace="getStreamName#()Ljava/lang/String;" />
+      <node id="1578360511938823416" at="48,0,53,0" concept="7" trace="openInputStream#()Ljava/io/InputStream;" />
+      <node id="8635503400119458904" at="54,0,59,0" concept="7" trace="openOutputStream#()Ljava/io/OutputStream;" />
+      <node id="8635503400119723314" at="75,0,80,0" concept="7" trace="getLocation#()Ljava/lang/String;" />
       <node id="1578360511938161313" at="24,0,33,0" concept="1" trace="FileContent#(Ljava/io/File;)V" />
-      <scope id="1578360511941889361" at="27,9,28,40" />
+      <scope id="1578360511941889361" at="27,9,28,37" />
       <scope id="1578360511941889362" at="29,15,30,37" />
-      <scope id="1578360511938206045" at="34,25,35,18" />
-      <scope id="1578360511938383794" at="38,27,39,16" />
-      <scope id="1578360511938823419" at="43,40,44,42" />
-      <scope id="8635503400119458911" at="48,61,49,40" />
-      <scope id="8635503400119718383" at="53,31,54,17" />
-      <scope id="8635503400119723319" at="59,31,60,28" />
-      <scope id="1578360511938206042" at="34,0,37,0" />
-      <scope id="1578360511938383790" at="38,0,41,0" />
-      <scope id="1578360511938823416" at="42,0,46,0" />
-      <scope id="8635503400119458904" at="47,0,51,0" />
-      <scope id="8635503400119718379" at="52,0,56,0" />
-      <scope id="8635503400119723314" at="57,0,62,0" />
+      <scope id="7995818696743898170" at="36,33,37,46" />
+      <scope id="1578360511938206045" at="40,25,41,18" />
+      <scope id="1578360511938383794" at="44,27,45,18" />
+      <scope id="1578360511938823419" at="50,40,51,44" />
+      <scope id="8635503400119458911" at="56,61,57,40" />
+      <scope id="8635503400119718383" at="61,31,62,17" />
+      <scope id="7995818696743902209" at="66,27,67,27" />
+      <scope id="7995818696743902330" at="71,27,72,27" />
+      <scope id="8635503400119723319" at="77,31,78,28" />
+      <scope id="1578360511938206042" at="40,0,43,0" />
+      <scope id="1578360511938383790" at="44,0,47,0" />
+      <scope id="8635503400119718379" at="60,0,64,0" />
+      <scope id="7995818696743902206" at="65,0,69,0" />
+      <scope id="7995818696743902327" at="70,0,74,0" />
+      <scope id="7995818696743898167" at="34,0,39,0" />
+      <scope id="1578360511938823416" at="48,0,53,0" />
+      <scope id="8635503400119458904" at="54,0,59,0" />
+      <scope id="8635503400119723314" at="75,0,80,0" />
       <scope id="1578360511938161317" at="24,52,31,5">
         <var name="stream" id="1578360511941890181" />
       </scope>
       <scope id="1578360511938161313" at="24,0,33,0">
         <var name="file" id="1578360511938161320" />
       </scope>
-      <unit id="1578360511938004001" at="19,0,63,0" name="jetbrains.mps.vcs.core.mergedriver.FileContent" />
+      <unit id="1578360511938004001" at="19,0,81,0" name="jetbrains.mps.vcs.core.mergedriver.FileContent" />
     </file>
   </root>
   <root nodeRef="r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)/3342666646761693517">

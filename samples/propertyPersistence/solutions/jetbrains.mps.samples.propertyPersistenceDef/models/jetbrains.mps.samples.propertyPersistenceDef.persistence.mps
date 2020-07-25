@@ -1668,7 +1668,7 @@
       <node concept="3Tm1VV" id="3urGXjhzdfq" role="1B3o_S" />
       <node concept="3clFbS" id="3urGXjhzdfs" role="3clF47">
         <node concept="XkiVB" id="3urGXjhzdfu" role="3cqZAp">
-          <ref role="37wK5l" to="ends:~FolderDataSource.&lt;init&gt;(jetbrains.mps.vfs.IFile,org.jetbrains.mps.openapi.persistence.ModelRoot)" resolve="FolderDataSource" />
+          <ref role="37wK5l" to="ends:~FolderDataSource.&lt;init&gt;(jetbrains.mps.vfs.IFile,java.util.function.Predicate)" resolve="FolderDataSource" />
           <node concept="37vLTw" id="3urGXjhzdfz" role="37wK5m">
             <ref role="3cqZAo" node="3urGXjhzdfv" resolve="folder" />
           </node>

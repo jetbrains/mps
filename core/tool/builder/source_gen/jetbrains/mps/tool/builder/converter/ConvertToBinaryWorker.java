@@ -23,11 +23,11 @@ import java.io.IOException;
 import org.jetbrains.mps.openapi.persistence.ModelSaveException;
 import jetbrains.mps.extapi.persistence.DataSourceBase;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
+import org.jetbrains.annotations.NotNull;
 import java.io.InputStream;
 import java.io.FileInputStream;
 import java.io.OutputStream;
 import java.io.FileOutputStream;
-import org.jetbrains.annotations.NotNull;
 
 @GeneratedClass(node = "r:39e596a9-ed2d-4e2f-b055-9544a1f3a151(jetbrains.mps.tool.builder.converter)/7841036633975757760", model = "r:39e596a9-ed2d-4e2f-b055-9544a1f3a151(jetbrains.mps.tool.builder.converter)")
 public final class ConvertToBinaryWorker {
@@ -87,34 +87,18 @@ public final class ConvertToBinaryWorker {
       myFile = file;
     }
 
-    @NotNull
     @Override
-    public String getStreamName() {
-      return myFile.getName();
-    }
-
     @NotNull
-    @Override
     public InputStream openInputStream() throws IOException {
       return new FileInputStream(myFile);
     }
 
-    @NotNull
     @Override
+    @NotNull
     public OutputStream openOutputStream() throws IOException {
       myFile.getParentFile().mkdirs();
       myFile.createNewFile();
       return new FileOutputStream(myFile);
-    }
-
-    @Override
-    public boolean delete() {
-      return false;
-    }
-
-    @Override
-    public boolean exists() {
-      return myFile.exists();
     }
 
 
@@ -128,6 +112,22 @@ public final class ConvertToBinaryWorker {
     @Override
     public String getLocation() {
       return myFile.getPath();
+    }
+
+    @NotNull
+    @Override
+    public String getStreamName() {
+      return myFile.getName();
+    }
+
+    @Override
+    public boolean exists() {
+      return myFile.exists();
+    }
+
+    @Override
+    public boolean delete() {
+      return myFile.delete();
     }
   }
 }

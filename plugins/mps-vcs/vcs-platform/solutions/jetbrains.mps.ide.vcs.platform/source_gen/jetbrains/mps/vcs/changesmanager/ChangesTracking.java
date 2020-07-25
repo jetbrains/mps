@@ -337,14 +337,21 @@ public class ChangesTracking {
         return FileStatus.MERGED_WITH_CONFLICTS;
       }
       if (statuses.isEmpty()) {
-        return FileStatus.NOT_CHANGED;
+        return FileStatus.UNKNOWN;
       }
       if (statuses.size() == 1) {
         return statuses.get(0);
+      } else if (statuses.size() == 2 && statuses.contains(FileStatus.NOT_CHANGED)) {
+        return statuses.stream().filter(new Predicate<FileStatus>() {
+          @Override
+          public boolean test(FileStatus p1) {
+            return p1 != FileStatus.NOT_CHANGED;
+          }
+        }).findAny().orElseThrow();
       }
       return FileStatus.MODIFIED;
     }
-    return FileStatus.NOT_CHANGED;
+    return FileStatus.UNKNOWN;
   }
 
   private void addChange(@NotNull ModelChange change) {

@@ -26,7 +26,7 @@
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
@@ -159,7 +159,7 @@
       </concept>
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
-        <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
+        <child id="8276990574886367509" name="finallyClause" index="1zxBo6" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
@@ -830,6 +830,9 @@
         <node concept="2AHcQZ" id="1XAHtgEITM9" role="2AJF6D">
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
+        <node concept="2AHcQZ" id="6VQQFQNQaUh" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
       </node>
       <node concept="2tJIrI" id="1XAHtgEJ0tl" role="jymVt" />
       <node concept="3clFb_" id="1XAHtgEITMc" role="jymVt">
@@ -880,6 +883,9 @@
         </node>
         <node concept="2AHcQZ" id="1XAHtgEITMk" role="2AJF6D">
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+        </node>
+        <node concept="2AHcQZ" id="6VQQFQNQaUk" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
       <node concept="2tJIrI" id="1XAHtgEJ3U3" role="jymVt" />
@@ -996,12 +1002,80 @@
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
+      <node concept="2tJIrI" id="6VQQFQNQawI" role="jymVt" />
       <node concept="3Tm6S6" id="1XAHtgEIQS2" role="1B3o_S" />
       <node concept="3uibUv" id="1XAHtgEITh6" role="1zkMxy">
         <ref role="3uigEE" to="ends:~DataSourceBase" resolve="DataSourceBase" />
       </node>
       <node concept="3uibUv" id="1XAHtgEIT$5" role="EKbjA">
         <ref role="3uigEE" to="dush:~StreamDataSource" resolve="StreamDataSource" />
+      </node>
+      <node concept="3clFb_" id="6VQQFQNQ9vk" role="jymVt">
+        <property role="TrG5h" value="getStreamName" />
+        <node concept="3Tm1VV" id="6VQQFQNQ9vl" role="1B3o_S" />
+        <node concept="2AHcQZ" id="6VQQFQNQ9vn" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+        <node concept="3uibUv" id="6VQQFQNQ9vo" role="3clF45">
+          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+        </node>
+        <node concept="3clFbS" id="6VQQFQNQ9vr" role="3clF47">
+          <node concept="3clFbF" id="6VQQFQNQayE" role="3cqZAp">
+            <node concept="2OqwBi" id="6VQQFQNQaPI" role="3clFbG">
+              <node concept="37vLTw" id="6VQQFQNQayB" role="2Oq$k0">
+                <ref role="3cqZAo" node="1XAHtgEIUoy" resolve="myFile" />
+              </node>
+              <node concept="liA8E" id="6VQQFQNQaUa" role="2OqNvi">
+                <ref role="37wK5l" to="guwi:~File.getName()" resolve="getName" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="6VQQFQNQ9vs" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+        </node>
+      </node>
+      <node concept="2tJIrI" id="6VQQFQNQauX" role="jymVt" />
+      <node concept="3clFb_" id="6VQQFQNQ9vv" role="jymVt">
+        <property role="TrG5h" value="exists" />
+        <node concept="3Tm1VV" id="6VQQFQNQ9vw" role="1B3o_S" />
+        <node concept="10P_77" id="6VQQFQNQ9vy" role="3clF45" />
+        <node concept="3clFbS" id="6VQQFQNQ9v_" role="3clF47">
+          <node concept="3clFbF" id="6VQQFQNQ9vC" role="3cqZAp">
+            <node concept="2OqwBi" id="6VQQFQNQblQ" role="3clFbG">
+              <node concept="37vLTw" id="6VQQFQNQba8" role="2Oq$k0">
+                <ref role="3cqZAo" node="1XAHtgEIUoy" resolve="myFile" />
+              </node>
+              <node concept="liA8E" id="6VQQFQNQbqi" role="2OqNvi">
+                <ref role="37wK5l" to="guwi:~File.exists()" resolve="exists" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="6VQQFQNQ9vA" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+        </node>
+      </node>
+      <node concept="2tJIrI" id="6VQQFQNQbso" role="jymVt" />
+      <node concept="3clFb_" id="6VQQFQNQbql" role="jymVt">
+        <property role="TrG5h" value="delete" />
+        <node concept="3Tm1VV" id="6VQQFQNQbqm" role="1B3o_S" />
+        <node concept="10P_77" id="6VQQFQNQbqn" role="3clF45" />
+        <node concept="3clFbS" id="6VQQFQNQbqo" role="3clF47">
+          <node concept="3clFbF" id="6VQQFQNQbqp" role="3cqZAp">
+            <node concept="2OqwBi" id="6VQQFQNQbqq" role="3clFbG">
+              <node concept="37vLTw" id="6VQQFQNQbqr" role="2Oq$k0">
+                <ref role="3cqZAo" node="1XAHtgEIUoy" resolve="myFile" />
+              </node>
+              <node concept="liA8E" id="6VQQFQNQbJ2" role="2OqNvi">
+                <ref role="37wK5l" to="guwi:~File.delete()" resolve="delete" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="6VQQFQNQbqt" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+        </node>
       </node>
     </node>
   </node>

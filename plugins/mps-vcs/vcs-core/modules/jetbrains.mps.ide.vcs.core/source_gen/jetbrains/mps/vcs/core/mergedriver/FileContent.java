@@ -11,24 +11,30 @@ import java.io.InputStream;
 import java.io.FileInputStream;
 import jetbrains.mps.util.ReadUtil;
 import jetbrains.mps.util.FileUtil;
+import org.jetbrains.annotations.NotNull;
 import java.io.ByteArrayInputStream;
 import java.io.OutputStream;
 import java.io.FileOutputStream;
-import org.jetbrains.annotations.NotNull;
 
 @GeneratedClass(node = "r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)/1578360511938004001", model = "r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)")
 public class FileContent extends DataSourceBase implements StreamDataSource {
   private final File myFile;
-  private final byte[] data;
+  private final byte[] myData;
 
   public FileContent(File file) throws IOException {
     myFile = file;
     InputStream stream = new FileInputStream(file);
     try {
-      this.data = ReadUtil.read(stream);
+      myData = ReadUtil.read(stream);
     } finally {
       FileUtil.closeFileSafe(stream);
     }
+  }
+
+  @Override
+  @NotNull
+  public String getStreamName() {
+    return "file-content " + myFile.getName();
   }
 
   public File getFile() {
@@ -36,19 +42,13 @@ public class FileContent extends DataSourceBase implements StreamDataSource {
   }
 
   public byte[] getData() {
-    return data;
-  }
-
-  @NotNull
-  @Override
-  public String getStreamName() {
-    return "";
+    return myData;
   }
 
   @NotNull
   @Override
   public InputStream openInputStream() {
-    return new ByteArrayInputStream(data);
+    return new ByteArrayInputStream(myData);
   }
 
   @NotNull
@@ -58,18 +58,18 @@ public class FileContent extends DataSourceBase implements StreamDataSource {
   }
 
   @Override
-  public boolean delete() {
+  public boolean isReadOnly() {
     return false;
+  }
+
+  @Override
+  public boolean delete() {
+    return myFile.delete();
   }
 
   @Override
   public boolean exists() {
     return myFile.exists();
-  }
-
-  @Override
-  public boolean isReadOnly() {
-    return false;
   }
 
   @NotNull

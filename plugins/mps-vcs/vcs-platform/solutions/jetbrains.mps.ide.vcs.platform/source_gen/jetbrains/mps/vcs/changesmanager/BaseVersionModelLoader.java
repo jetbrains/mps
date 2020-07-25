@@ -21,6 +21,8 @@ import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 import jetbrains.mps.persistence.MultiStreamDataSourceBase;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.function.Function;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
@@ -38,8 +40,6 @@ import com.intellij.openapi.vcs.changes.BinaryContentRevision;
 import jetbrains.mps.util.FileUtil;
 import com.intellij.openapi.vcs.VcsException;
 import java.io.InputStream;
-import java.util.List;
-import java.util.stream.Collectors;
 import java.io.OutputStream;
 
 @GeneratedClass(node = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/2253323551303625635", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
@@ -99,16 +99,16 @@ import java.io.OutputStream;
     private final Project myProject;
 
     private RedirectingDataSource(@NotNull MultiStreamDataSource original, Project project) {
-      super("IJ VCS VFS");
+      super("IJ VCSVFS");
       myProject = project;
       myOriginal = original;
-      mySubs = convertSubStreams(original).collect(Collectors.toList());
+      mySubs = ((List<StreamDataSource>) convertSubStreams(original).collect(Collectors.toList()));
     }
 
     private Stream<StreamDataSource> convertSubStreams(MultiStreamDataSource original) {
       return original.getSubStreams().flatMap(new Function<StreamDataSource, Stream<StreamDataSource>>() {
         @Override
-        public Stream<StreamDataSource> apply(StreamDataSource dataSource) {
+        public Stream<StreamDataSource> apply(final StreamDataSource dataSource) {
           if (dataSource instanceof FileSystemBasedDataSource) {
             return ((FileSystemBasedDataSource) dataSource).getAffectedFilesWithDirsExtracted().map(new Function<IFile, StreamDataSource>() {
               @Override
@@ -156,6 +156,12 @@ import java.io.OutputStream;
     public boolean isReadOnly() {
       return true;
     }
+
+    @Override
+    public boolean exists() {
+      return true;
+    }
+
 
     @Nullable
     private byte[] getBaseVersionContent(@NotNull VirtualFile file) {
@@ -224,11 +230,6 @@ import java.io.OutputStream;
         throw new IOException("The original ds " + myOriginal + " has only " + subs.size() + " substreams");
       }
       return subs.get(0).openOutputStream();
-    }
-
-    @Override
-    public boolean exists() {
-      return true;
     }
   }
 }

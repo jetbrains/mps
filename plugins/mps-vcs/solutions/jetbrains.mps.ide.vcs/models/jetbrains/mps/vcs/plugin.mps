@@ -161,7 +161,7 @@
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1224573963862" name="jetbrains.mps.baseLanguage.structure.EnumValuesExpression" flags="nn" index="uiWXb">
         <reference id="1224573974191" name="enumClass" index="uiZuM" />
@@ -1894,8 +1894,8 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="liA8E" id="46IaplawtU4" role="2OqNvi">
-                    <ref role="37wK5l" to="pa15:~PersistenceVersionAware.getModelFactory()" resolve="getModelFactory" />
+                  <node concept="liA8E" id="FrvtFCaHo3" role="2OqNvi">
+                    <ref role="37wK5l" to="pa15:~LoadedStrategyAware.getModelFactory()" resolve="getModelFactory" />
                   </node>
                 </node>
                 <node concept="37vLTw" id="46IaplawtWs" role="37vLTJ">
