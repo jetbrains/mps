@@ -38,7 +38,7 @@ public class DeploymentConcurrencyTest implements EnvironmentAware {
   private final static Logger LOG = LogManager.getLogger(DeploymentConcurrencyTest.class);
 
   private final static int nThreads = 10;
-  private final static long TIME_OUT_MS = 10000;
+  private final static long TIME_OUT_MS = 20000;
   private Environment myEnvironment;
 
   @Override
@@ -72,7 +72,7 @@ public class DeploymentConcurrencyTest implements EnvironmentAware {
     }
     try {
       pool.invokeAll(taskList, TIME_OUT_MS, TimeUnit.MILLISECONDS);
-      new ExecutorServiceShutdownHelper(pool).shutdownAndAwaitTermination(5000);
+      new ExecutorServiceShutdownHelper(pool).shutdownAndAwaitTermination(20000);
     } catch (InterruptedException e) {
       e.printStackTrace();
       Assert.fail();
