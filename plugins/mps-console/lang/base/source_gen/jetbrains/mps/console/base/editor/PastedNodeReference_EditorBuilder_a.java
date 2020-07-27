@@ -56,7 +56,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       setCellContext(bigCell);
     }
     Style style = new StyleImpl();
-    style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.orange));
+    style.set(StyleAttributes.BACKGROUND_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.gray));
     editorCell.getStyle().putAll(style);
     return editorCell;
   }
