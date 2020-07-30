@@ -549,8 +549,6 @@
 
     <applicationService serviceImplementation="com.intellij.openapi.editor.ex.EditorSettingsExternalizable"/>
     <applicationService serviceImplementation="com.intellij.openapi.editor.ex.EditorSettingsExternalizable$OsSpecificState"/>
-    <!-- MPS Patch: hide this options for now. See https://youtrack.jetbrains.com/issue/MPS-26270
-    TODO: enable back after fix https://youtrack.jetbrains.com/issue/MPS-26286
     <applicationConfigurable
         groupId="editor"
         groupWeight="188"
@@ -558,7 +556,6 @@
         key="configurable.font.name"
         instance="com.intellij.application.options.editor.fonts.AppEditorFontConfigurable"
     />
-    -->
 
     <applicationService serviceImplementation="com.intellij.codeInsight.hints.settings.ParameterNameHintsSettings"/>
     <applicationService serviceImplementation="com.intellij.openapi.keymap.NationalKeyboardSupport"/>
