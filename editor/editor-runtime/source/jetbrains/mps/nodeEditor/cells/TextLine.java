@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
+import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.DarculaColors;
 import com.intellij.ui.JBColor;
@@ -35,6 +36,8 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.font.TextAttribute;
+import java.util.Collections;
 import java.util.Set;
 
 public class TextLine {
@@ -203,7 +206,9 @@ public class TextLine {
       String family = styleFontFamily != null ? styleFontFamily : settings.getFontFamily();
       int fontSize = styleFontSize != null ? styleFontSize : settings.getFontSize();
 
-      myFont = FontRegistry.getInstance().getFont(family, style, fontSize);
+      final Font font = FontRegistry.getInstance().getFont(family, style, fontSize);
+      myFont = EditorColorsManager.getInstance().getGlobalScheme().getFontPreferences().useLigatures() ?
+               font.deriveFont(Collections.singletonMap(TextAttribute.LIGATURES, TextAttribute.LIGATURES_ON)) : font;
       myFontMetrics = myFontMetricsProvider.getFontMetrics(family, style, fontSize);
       myFontCorrectionRightGap = FontRegistry.getInstance().isFakeItalic(family, style) ? 1 : 0;
       myFontCorrectionTextShift = (style & Font.ITALIC) > 0 ? -1 : 0;
