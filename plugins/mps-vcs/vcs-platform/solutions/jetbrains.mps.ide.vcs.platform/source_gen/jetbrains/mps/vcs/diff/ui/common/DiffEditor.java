@@ -404,8 +404,7 @@ public class DiffEditor implements EditorMessageOwner {
   public class MyInspectorEditorComponent extends InspectorEditorComponent {
 
     public MyInspectorEditorComponent(@NotNull SRepository repository, boolean rightToLeft) {
-      super(repository, new EditorConfigurationBuilder().rightToLeft(rightToLeft).build());
-      removeAdditionalPainter(mySelectedLinePainter);
+      super(repository, new EditorConfigurationBuilder().rightToLeft(rightToLeft).showSelectionLine(false).build());
       addAdditionalPainter(new MyEditorComponentPainter(true));
       LeftEditorHighlighter leftHighlighter = getLeftEditorHighlighter();
       leftHighlighter.addBackgroundPainter(new MyLeftHighlighterPainter(leftHighlighter, true));
@@ -428,8 +427,7 @@ public class DiffEditor implements EditorMessageOwner {
     private CommandContextWithVF myCommandContext;
 
     public MainEditorComponent(SRepository repository, boolean rightToLeft) {
-      super(repository, new EditorConfigurationBuilder().showErrorsGutter(true).rightToLeft(rightToLeft).build());
-      removeAdditionalPainter(mySelectedLinePainter);
+      super(repository, new EditorConfigurationBuilder().showErrorsGutter(true).showSelectionLine(false).rightToLeft(rightToLeft).build());
       myDiffFileEditor = new DiffFileEditor(this);
       setDefaultPopupGroupId(((String) BHReflection.invoke0(SNodeOperations.getNode("r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)", "426251916200108583"), CONCEPTS.ActionGroupDeclaration$YL, SMethodTrimmedId.create("getGeneratedClassFQName", CONCEPTS.ActionGroupDeclaration$YL, "hEwJa8g"))));
       addAdditionalPainter(new MyEditorComponentPainter(false));
@@ -447,6 +445,7 @@ public class DiffEditor implements EditorMessageOwner {
     protected JScrollPane createScrollPane() {
       return ScrollPaneFactory.createScrollPane(null, true);
     }
+
 
     @Override
     public EditorCell createEmptyCell() {

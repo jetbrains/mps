@@ -270,7 +270,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     }
     return o1.equals(o2) ? 0 : Integer.signum(System.identityHashCode(o1) - System.identityHashCode(o2));
   });
-  protected SelectedLinePainter mySelectedLinePainter = new SelectedLinePainter();
   private Map<Object, AdditionalPainter> myItemsToAdditionalPainters = new HashMap<>();
 
   private final List<LeftMarginMouseListener> myLeftMarginPressListeners = new ArrayList<>(0);
@@ -396,7 +395,9 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     myRootCell.setSelectable(false);
 
     setBackground(StyleRegistry.getInstance().getEditorBackground());
-    myAdditionalPainters.add(mySelectedLinePainter);
+    if(configuration.showSelectionLine){
+      myAdditionalPainters.add(new SelectedLinePainter());
+    }
 
     setFocusCycleRoot(true);
     setFocusTraversalPolicy(new FocusTraversalPolicy() {

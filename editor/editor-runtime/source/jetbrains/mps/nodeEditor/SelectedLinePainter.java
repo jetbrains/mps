@@ -22,7 +22,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 
 import java.awt.Graphics;
 
-public class SelectedLinePainter extends AbstractAdditionalPainter {
+public class SelectedLinePainter extends AbstractAdditionalPainter<Object> {
 
   @Override
   public boolean paintsAbove() {

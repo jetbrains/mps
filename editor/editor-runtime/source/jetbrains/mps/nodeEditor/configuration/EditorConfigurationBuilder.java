@@ -30,6 +30,7 @@ public class EditorConfigurationBuilder {
   private boolean myWithUI = true;
   private boolean myReadOnly;
   private boolean myHasContextMenu = true;
+  private boolean myShowSelectionLine = true;
   private EditorPanelManager myEditorPanelManager;
   private CaretManager myCaretManager = CaretManager.getInstance();
 
@@ -67,6 +68,11 @@ public class EditorConfigurationBuilder {
     return this;
   }
 
+  public EditorConfigurationBuilder showSelectionLine(boolean showSelectionLine){
+    myShowSelectionLine = showSelectionLine;
+    return this;
+  }
+
   public EditorConfigurationBuilder editorPanelManager(EditorPanelManager editorPanelManager) {
     myEditorPanelManager = editorPanelManager;
     return this;
@@ -85,6 +91,7 @@ public class EditorConfigurationBuilder {
         myWithUI,
         myReadOnly,
         myHasContextMenu,
+        myShowSelectionLine,
         myEditorPanelManager,
         myCaretManager);
   }

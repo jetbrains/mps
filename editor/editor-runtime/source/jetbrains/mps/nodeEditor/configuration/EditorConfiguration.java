@@ -34,6 +34,7 @@ public class EditorConfiguration {
   public final boolean withUI;
   public final boolean readOnly;
   public final boolean hasContextMenu;
+  public final boolean showSelectionLine;
 
   protected EditorConfiguration(
       boolean rightToLeft,
@@ -42,6 +43,7 @@ public class EditorConfiguration {
       boolean withUI,
       boolean readOnly,
       boolean hasContextMenu,
+      boolean showSelectionLine,
       EditorPanelManager editorPanelManager,
       @NotNull CaretManager caretManager) {
     this.rightToLeft = rightToLeft;
@@ -50,6 +52,7 @@ public class EditorConfiguration {
     this.withUI = withUI;
     this.readOnly = readOnly;
     this.hasContextMenu = hasContextMenu;
+    this.showSelectionLine = showSelectionLine;
     this.editorPanelManager = editorPanelManager;
     this.caretManager = caretManager;
   }
