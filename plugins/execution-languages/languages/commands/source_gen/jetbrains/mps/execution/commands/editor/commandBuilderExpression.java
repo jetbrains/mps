@@ -120,7 +120,7 @@ public class commandBuilderExpression extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode builder = SNodeFactoryOperations.createNewNode(CONCEPTS.CommandBuilderExpression$Pf, null);
-          SLinkOperations.setTarget(builder, LINKS.commandPart$vwzX, myParameterObject);
+          SLinkOperations.setTarget(builder, LINKS.commandPart$gLqz, myParameterObject);
           return builder;
         }
 
@@ -143,7 +143,7 @@ public class commandBuilderExpression extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.name$tAp1);
+          return SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v);
         }
         @Nullable
         @Override
@@ -161,10 +161,10 @@ public class commandBuilderExpression extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink commandPart$vwzX = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bf4L, 0x550ea9458ea1ac11L, "commandPart");
+    /*package*/ static final SReferenceLink commandPart$gLqz = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bf4L, 0x550ea9458ea1ac11L, "commandPart");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

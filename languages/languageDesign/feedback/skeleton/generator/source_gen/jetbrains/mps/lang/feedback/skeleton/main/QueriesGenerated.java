@@ -68,10 +68,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getTemplateValue() + NameUtil.multiWordCapitalize(simpleName);
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v);
   }
   public static Object referenceMacro_GetReferent_3_0(final ReferenceMacroContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.concept$KXj8);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.concept$HGgS);
   }
   public static Object referenceMacro_GetReferent_3_1(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "feedbackMember");
@@ -83,10 +83,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SModelOperations.roots(_context.getInputModel(), CONCEPTS.FeedbackPerConceptRoot$oJ);
   }
   public static Iterable<SNode> sourceNodesQuery_3_0(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.getChildren(_context.getNode(), LINKS.feedbacks$nSHS);
+    return SLinkOperations.getChildren(_context.getNode(), LINKS.feedbacks$$ue8);
   }
   public static Iterable<SNode> sourceNodesQuery_3_1(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.getChildren(_context.getNode(), LINKS.feedbacks$nSHS);
+    return SLinkOperations.getChildren(_context.getNode(), LINKS.feedbacks$$ue8);
   }
   public static void mapSrcMacro_post_1_0(final MapSrcMacroPostProcContext _context) {
     Iterable<SNode> seq = Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:models"))).select(new ISelector<SNode, SNode>() {
@@ -104,14 +104,14 @@ public class QueriesGenerated extends QueryProviderBase {
     if (Sequence.fromIterable(seq).isEmpty()) {
       SNodeOperations.deleteNode(SNodeOperations.getNodeAncestor(_context.getOutputNode(), CONCEPTS.IfStatement$pi, false, false));
     } else {
-      final List<SNode> args = SLinkOperations.getChildren(SNodeOperations.cast(_context.getOutputNode(), CONCEPTS.StaticMethodCall$eu), LINKS.actualArgument$$A7L);
+      final List<SNode> args = SLinkOperations.getChildren(SNodeOperations.cast(_context.getOutputNode(), CONCEPTS.StaticMethodCall$eu), LINKS.actualArgument$ItKJ);
       ListSequence.fromList(args).clear();
       Sequence.fromIterable(seq).visitAll(new IVisitor<SNode>() {
         public void visit(SNode feedbackClass) {
           SNode newExpr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, "jetbrains.mps.baseLanguage.structure.GenericNewExpression"));
           SNode classCreator = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, "jetbrains.mps.baseLanguage.structure.DefaultClassCreator"));
-          SLinkOperations.setTarget(classCreator, LINKS.classifier$bk50, feedbackClass);
-          SLinkOperations.setTarget(newExpr, LINKS.creator$itDQ, classCreator);
+          SLinkOperations.setTarget(classCreator, LINKS.classifier$uIr0, feedbackClass);
+          SLinkOperations.setTarget(newExpr, LINKS.creator$Wnha, classCreator);
           ListSequence.fromList(args).addElement(newExpr);
         }
       });
@@ -131,10 +131,10 @@ public class QueriesGenerated extends QueryProviderBase {
     // rather we generate in lang.descriptor refs to all ILanguageAspect instances in all of the models in the module, 
     // then we use weaves/reductions to use this references in order to restore the ref to the <GeneratedAspectDescriptor>. 
     //  
-    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.language$g16), LINKS.model$8rak)).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.language$7KxU), LINKS.model$59ZG)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         SModel resolved = ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(it).resolve(((SRepository) _context.getVariable("var:repo")));
-        return isEmptyString(SPropertyOperations.getString(it, PROPS.stereotype$MaYH)) && resolved != null;
+        return isEmptyString(SPropertyOperations.getString(it, PROPS.stereotype$jknN)) && resolved != null;
       }
     });
   }
@@ -434,17 +434,17 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty stereotype$MaYH = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, 0x5c5cb5cdd09abfb1L, "stereotype");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty stereotype$jknN = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, 0x5c5cb5cdd09abfb1L, "stereotype");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$KXj8 = MetaAdapterFactory.getReferenceLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x63c2f3669ce56d5dL, "concept");
-    /*package*/ static final SContainmentLink feedbacks$nSHS = MetaAdapterFactory.getContainmentLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x6530303593ae9cf2L, "feedbacks");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SReferenceLink classifier$bk50 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
-    /*package*/ static final SContainmentLink creator$itDQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
-    /*package*/ static final SContainmentLink language$g16 = MetaAdapterFactory.getContainmentLink(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x7d2f7947ef1533a5L, 0x179194ecf7e0953bL, "language");
-    /*package*/ static final SContainmentLink model$8rak = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe2bL, "model");
+    /*package*/ static final SReferenceLink concept$HGgS = MetaAdapterFactory.getReferenceLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x63c2f3669ce56d5dL, "concept");
+    /*package*/ static final SContainmentLink feedbacks$$ue8 = MetaAdapterFactory.getContainmentLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x6530303593ae9cf2L, "feedbacks");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink classifier$uIr0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
+    /*package*/ static final SContainmentLink creator$Wnha = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
+    /*package*/ static final SContainmentLink language$7KxU = MetaAdapterFactory.getContainmentLink(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x7d2f7947ef1533a5L, 0x179194ecf7e0953bL, "language");
+    /*package*/ static final SContainmentLink model$59ZG = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe2bL, "model");
   }
 }

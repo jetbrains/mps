@@ -28,7 +28,7 @@ public class InsertMemberAfterMember {
       }
       public void execute_internal(EditorContext editorContext, final SNode node) {
         SNode block = RuleBlockMember__BehaviorDescriptor.getBlock_id1BFxp3HHhy9.invoke(node);
-        SNode newNode = SNodeOperations.insertNextSiblingChild(ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.members$ipQw)).findFirst(new IWhereFilter<SNode>() {
+        SNode newNode = SNodeOperations.insertNextSiblingChild(ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.members$Uxpw)).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return Objects.equals(it, SNodeOperations.getParent(node));
           }
@@ -81,6 +81,6 @@ public class InsertMemberAfterMember {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink members$ipQw = MetaAdapterFactory.getContainmentLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, 0x19eb8590edb5174bL, "members");
+    /*package*/ static final SContainmentLink members$Uxpw = MetaAdapterFactory.getContainmentLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, 0x19eb8590edb5174bL, "members");
   }
 }

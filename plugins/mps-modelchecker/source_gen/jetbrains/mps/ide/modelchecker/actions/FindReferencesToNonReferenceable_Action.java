@@ -106,7 +106,7 @@ public class FindReferencesToNonReferenceable_Action extends BaseAction {
                 SNode ccp = SNodeOperations.as(SNodeOperations.asNode(SNodeOperations.getConcept(i)), CONCEPTS.ConceptDeclaration$qU);
                 if (ccp != null) {
                   total.value++;
-                  if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(ccp, PROPS.staticScope$SzuZ), 0x4b014033eedc8becL))) {
+                  if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(ccp, PROPS.staticScope$pc0x), 0x4b014033eedc8becL))) {
                     referenceable.value++;
                     String cname = ((String) BHReflection.invoke0(ccp, CONCEPTS.INamedConcept$nV, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
                     if (MapSequence.fromMap(used).containsKey(cname)) {
@@ -140,6 +140,6 @@ public class FindReferencesToNonReferenceable_Action extends BaseAction {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty staticScope$SzuZ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x4b014033eedc8a48L, "staticScope");
+    /*package*/ static final SProperty staticScope$pc0x = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x4b014033eedc8a48L, "staticScope");
   }
 }

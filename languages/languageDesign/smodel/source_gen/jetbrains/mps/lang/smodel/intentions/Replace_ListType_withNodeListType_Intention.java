@@ -37,7 +37,7 @@ public final class Replace_ListType_withNodeListType_Intention extends AbstractI
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.elementType$xJJW), CONCEPTS.SNodeType$gn);
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.elementType$m8e4), CONCEPTS.SNodeType$gn);
   }
   @Override
   public boolean isSurroundWith() {
@@ -67,7 +67,7 @@ public final class Replace_ListType_withNodeListType_Intention extends AbstractI
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$xJJW = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType");
+    /*package*/ static final SContainmentLink elementType$m8e4 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType");
   }
 
   private static final class CONCEPTS {

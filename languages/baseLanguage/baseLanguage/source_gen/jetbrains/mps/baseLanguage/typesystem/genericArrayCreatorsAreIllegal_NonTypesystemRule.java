@@ -26,9 +26,9 @@ public class genericArrayCreatorsAreIllegal_NonTypesystemRule extends AbstractNo
   public genericArrayCreatorsAreIllegal_NonTypesystemRule() {
   }
   public void applyRule(final SNode arrayCreator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode componentType = SLinkOperations.getTarget(arrayCreator, LINKS.componentType$aKPo);
-    if ((SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(componentType)), CONCEPTS.ClassifierType$IZ) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(componentType)), CONCEPTS.NamedTupleType$$b)) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(componentType, CONCEPTS.ClassifierType$IZ), LINKS.parameter$dQne)).isNotEmpty()) {
-      for (SNode p : SLinkOperations.getChildren(SNodeOperations.cast(componentType, CONCEPTS.ClassifierType$IZ), LINKS.parameter$dQne)) {
+    SNode componentType = SLinkOperations.getTarget(arrayCreator, LINKS.componentType$dDQC);
+    if ((SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(componentType)), CONCEPTS.ClassifierType$IZ) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(componentType)), CONCEPTS.NamedTupleType$$b)) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(componentType, CONCEPTS.ClassifierType$IZ), LINKS.parameter$HlfM)).isNotEmpty()) {
+      for (SNode p : SLinkOperations.getChildren(SNodeOperations.cast(componentType, CONCEPTS.ClassifierType$IZ), LINKS.parameter$HlfM)) {
         if (!(SNodeOperations.isInstanceOf(p, CONCEPTS.WildCardType$29))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
@@ -42,7 +42,7 @@ public class genericArrayCreatorsAreIllegal_NonTypesystemRule extends AbstractNo
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(componentType, "generic array creation is illegal", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8918460683225653209", null, errorTarget);
       }
-    } else if (SNodeOperations.isInstanceOf(componentType, CONCEPTS.SequenceType$n9) && (SLinkOperations.getTarget(SNodeOperations.cast(componentType, CONCEPTS.SequenceType$n9), LINKS.elementType$2gFy) != null)) {
+    } else if (SNodeOperations.isInstanceOf(componentType, CONCEPTS.SequenceType$n9) && (SLinkOperations.getTarget(SNodeOperations.cast(componentType, CONCEPTS.SequenceType$n9), LINKS.elementType$655u) != null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(componentType, "generic array creation is illegal", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6709363801298065263", null, errorTarget);
@@ -75,9 +75,9 @@ public class genericArrayCreatorsAreIllegal_NonTypesystemRule extends AbstractNo
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$aKPo = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e49578edL, "componentType");
-    /*package*/ static final SContainmentLink elementType$2gFy = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SContainmentLink componentType$dDQC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e49578edL, "componentType");
+    /*package*/ static final SContainmentLink elementType$655u = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
   }
 
   private static final class CONCEPTS {

@@ -42,7 +42,7 @@ public final class NodeTypeSystemWarningCheckOperation__BehaviorDescriptor exten
     return new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__), MessageStatus.WARNING, NodeTypeSystemWarningCheckOperation__BehaviorDescriptor.getExpectedMessageText_id3q9wAW4tyBj.invoke(__thisNode__), ruleRepository, host);
   }
   /*package*/ static String getExpectedMessageText_id3q9wAW4tyBj(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.expectedMessage$gXqz), PROPS.text$lGWw);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.expectedMessage$dJQX), PROPS.text$wLjw);
   }
   /*package*/ static String getDefaultName_id7scb9XJdmH2(@NotNull SNode __thisNode__) {
     return "NodeTypeSystemWarningCheck";
@@ -99,10 +99,10 @@ public final class NodeTypeSystemWarningCheckOperation__BehaviorDescriptor exten
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expectedMessage$gXqz = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a42d28aL, 0x9dc8d126017d5dbL, "expectedMessage");
+    /*package*/ static final SContainmentLink expectedMessage$dJQX = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a42d28aL, 0x9dc8d126017d5dbL, "expectedMessage");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$lGWw = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x9dc8d126017d59cL, 0x9dc8d126017d59dL, "text");
+    /*package*/ static final SProperty text$wLjw = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x9dc8d126017d59cL, 0x9dc8d126017d59dL, "text");
   }
 }

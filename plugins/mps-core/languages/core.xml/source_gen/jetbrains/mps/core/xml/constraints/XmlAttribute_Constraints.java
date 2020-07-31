@@ -23,7 +23,7 @@ public class XmlAttribute_Constraints extends BaseConstraintsDescriptor {
 
   public static class AttrName_Property extends BasePropertyConstraintsDescriptor {
     public AttrName_Property(ConstraintsDescriptor container) {
-      super(PROPS.attrName$j_5Y, container);
+      super(PROPS.attrName$uXT2, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,7 +45,7 @@ public class XmlAttribute_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.attrName$j_5Y, new AttrName_Property(this));
+    properties.put(PROPS.attrName$uXT2, new AttrName_Property(this));
     return properties;
   }
 
@@ -54,6 +54,6 @@ public class XmlAttribute_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty attrName$j_5Y = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54b8df6L, "attrName");
+    /*package*/ static final SProperty attrName$uXT2 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54b8df6L, "attrName");
   }
 }

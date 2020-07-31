@@ -76,13 +76,13 @@ import org.jetbrains.mps.openapi.language.SProperty;
     return editorCell;
   }
   private boolean nodeCondition_5ng77o_a1a() {
-    return (ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$_gGy)).isEmpty()) || ((ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$_gGy)).count() == 1) && (SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$_gGy)).first(), CONCEPTS.TextCommentPart$lb) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$_gGy)).first(), CONCEPTS.TextCommentPart$lb), PROPS.text$AaEw))));
+    return (ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$35$u)).isEmpty()) || ((ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$35$u)).count() == 1) && (SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$35$u)).first(), CONCEPTS.TextCommentPart$lb) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$35$u)).first(), CONCEPTS.TextCommentPart$lb), PROPS.text$va_w))));
   }
   private boolean nodeCondition_5ng77o_a2a() {
-    return (ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$_gGy)).count() > 1) || (SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$_gGy)).first(), CONCEPTS.TextCommentPart$lb) && isNotEmptyString(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$_gGy)).first(), CONCEPTS.TextCommentPart$lb), PROPS.text$AaEw)));
+    return (ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$35$u)).count() > 1) || (SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$35$u)).first(), CONCEPTS.TextCommentPart$lb) && isNotEmptyString(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$35$u)).first(), CONCEPTS.TextCommentPart$lb), PROPS.text$va_w)));
   }
   private boolean nodeCondition_5ng77o_a3a() {
-    return (ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$_gGy)).isEmpty()) || ((ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$_gGy)).count() == 1) && (SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$_gGy)).first(), CONCEPTS.TextCommentPart$lb) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$_gGy)).first(), CONCEPTS.TextCommentPart$lb), PROPS.text$AaEw))));
+    return (ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$35$u)).isEmpty()) || ((ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$35$u)).count() == 1) && (SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$35$u)).first(), CONCEPTS.TextCommentPart$lb) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentPart$35$u)).first(), CONCEPTS.TextCommentPart$lb), PROPS.text$va_w))));
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "//");
@@ -124,7 +124,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.text$BOhB;
+      return LINKS.text$ikxT;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.Line$w3;
@@ -137,7 +137,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(textListHandler_5ng77o_a1a.this.getNode(), LINKS.text$BOhB));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(textListHandler_5ng77o_a1a.this.getNode(), LINKS.text$ikxT));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -199,7 +199,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.commentPart$_gGy;
+      return LINKS.commentPart$35$u;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.CommentPart$kd;
@@ -212,7 +212,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(commentPartListHandler_5ng77o_c0.this.getNode(), LINKS.commentPart$_gGy));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(commentPartListHandler_5ng77o_c0.this.getNode(), LINKS.commentPart$35$u));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -266,8 +266,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink commentPart$_gGy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart");
-    /*package*/ static final SContainmentLink text$BOhB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text");
+    /*package*/ static final SContainmentLink commentPart$35$u = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart");
+    /*package*/ static final SContainmentLink text$ikxT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text");
   }
 
   private static final class CONCEPTS {
@@ -277,6 +277,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$AaEw = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
+    /*package*/ static final SProperty text$va_w = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
   }
 }

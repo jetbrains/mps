@@ -38,7 +38,7 @@ public class EnumSwitchQuieries {
   }
 
   public static boolean controlflowPreserved(SNode body) {
-    SNode lastStatement = StatementList__BehaviorDescriptor.getLastStatement_id28aPEVv8l7T.invoke(SLinkOperations.getTarget(body, LINKS.statementList$6WT0));
+    SNode lastStatement = StatementList__BehaviorDescriptor.getLastStatement_id28aPEVv8l7T.invoke(SLinkOperations.getTarget(body, LINKS.statementList$nvB0));
     return !(SNodeOperations.isInstanceOf(lastStatement, CONCEPTS.ThrowStatement$yK)) && !(SNodeOperations.isInstanceOf(lastStatement, CONCEPTS.ReturnStatement$SF));
   }
 
@@ -52,6 +52,6 @@ public class EnumSwitchQuieries {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statementList$6WT0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc9L, 0x220ad6aedf1fdccaL, "statementList");
+    /*package*/ static final SContainmentLink statementList$nvB0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc9L, 0x220ad6aedf1fdccaL, "statementList");
   }
 }

@@ -50,7 +50,7 @@ public class DocMethodParameterReference_SubstituteMenu extends SubstituteMenuBa
 
     public SMP_ReferenceScope_7j3pri_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.DocMethodParameterReference$2E, LINKS.param$T$cs);
+      super((SAbstractConcept) CONCEPTS.DocMethodParameterReference$2E, LINKS.param$Sy1$);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class DocMethodParameterReference_SubstituteMenu extends SubstituteMenuBa
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink param$T$cs = MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86d7L, 0x5ed0d79d7dbe86dcL, "param");
+    /*package*/ static final SReferenceLink param$Sy1$ = MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86d7L, 0x5ed0d79d7dbe86dcL, "param");
   }
 }

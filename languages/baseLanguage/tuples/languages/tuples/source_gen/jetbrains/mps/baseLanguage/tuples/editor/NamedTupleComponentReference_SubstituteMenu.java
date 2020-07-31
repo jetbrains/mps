@@ -50,7 +50,7 @@ public class NamedTupleComponentReference_SubstituteMenu extends SubstituteMenuB
 
     public SMP_ReferenceScope_1dtstp_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.NamedTupleComponentReference$8m, LINKS.componentDeclaration$iLy0);
+      super((SAbstractConcept) CONCEPTS.NamedTupleComponentReference$8m, LINKS.componentDeclaration$5Zu0);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class NamedTupleComponentReference_SubstituteMenu extends SubstituteMenuB
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink componentDeclaration$iLy0 = MetaAdapterFactory.getReferenceLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L, 0x1209b91a766L, "componentDeclaration");
+    /*package*/ static final SReferenceLink componentDeclaration$5Zu0 = MetaAdapterFactory.getReferenceLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L, 0x1209b91a766L, "componentDeclaration");
   }
 }

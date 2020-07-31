@@ -12,12 +12,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class OtherRoot_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    for (SNode child : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.child$Nivu))) {
+    for (SNode child : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.child$PXfy))) {
       _context.getBuilder().build((SNode) child);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink child$Nivu = MetaAdapterFactory.getContainmentLink(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, 0x623d57b40400d6baL, 0x623d57b40400d6bdL, "child");
+    /*package*/ static final SContainmentLink child$PXfy = MetaAdapterFactory.getContainmentLink(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, 0x623d57b40400d6baL, 0x623d57b40400d6bdL, "child");
   }
 }

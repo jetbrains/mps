@@ -61,7 +61,7 @@ public final class AddMayBeUnreachable_Intention extends AbstractIntentionDescri
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.EmitMayBeUnreachable$ph, null);
       SNodeOperations.replaceWithAnother(node, result);
-      SLinkOperations.setTarget(result, LINKS.emitStatement$Zn2B, node);
+      SLinkOperations.setTarget(result, LINKS.emitStatement$GagT, node);
       SelectionUtil.selectNode(editorContext, node);
     }
     @Override
@@ -75,6 +75,6 @@ public final class AddMayBeUnreachable_Intention extends AbstractIntentionDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink emitStatement$Zn2B = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118eb0b6674L, 0x118eb0b872cL, "emitStatement");
+    /*package*/ static final SContainmentLink emitStatement$GagT = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118eb0b6674L, 0x118eb0b872cL, "emitStatement");
   }
 }

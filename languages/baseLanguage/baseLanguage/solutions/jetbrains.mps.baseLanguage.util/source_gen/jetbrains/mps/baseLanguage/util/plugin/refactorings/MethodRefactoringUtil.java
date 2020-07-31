@@ -19,7 +19,7 @@ public class MethodRefactoringUtil {
     if (SNodeOperations.isInstanceOf(methodOrMethodCall, CONCEPTS.BaseMethodDeclaration$RR)) {
       return SNodeOperations.cast(methodOrMethodCall, CONCEPTS.BaseMethodDeclaration$RR);
     }
-    return SLinkOperations.getTarget(SNodeOperations.cast(methodOrMethodCall, CONCEPTS.IMethodCall$ln), LINKS.baseMethodDeclaration$$A7i);
+    return SLinkOperations.getTarget(SNodeOperations.cast(methodOrMethodCall, CONCEPTS.IMethodCall$ln), LINKS.baseMethodDeclaration$ItxI);
   }
 
   private static final class CONCEPTS {
@@ -28,6 +28,6 @@ public class MethodRefactoringUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

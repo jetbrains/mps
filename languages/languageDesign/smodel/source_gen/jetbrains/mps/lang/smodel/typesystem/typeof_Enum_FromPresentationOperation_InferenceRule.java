@@ -29,7 +29,7 @@ public class typeof_Enum_FromPresentationOperation_InferenceRule extends Abstrac
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.presentationExpression$8Lyp);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.presentationExpression$fZE7);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "7029133697938595411", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "7029133697938595413", true), (SNode) _quotation_createNode_8nrbec_a1a0c0a0b0b(), true, true, _info_12389875345);
       }
@@ -59,7 +59,7 @@ public class typeof_Enum_FromPresentationOperation_InferenceRule extends Abstrac
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink presentationExpression$8Lyp = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802da23a6eL, 0x6563631ab590888cL, "presentationExpression");
+    /*package*/ static final SContainmentLink presentationExpression$fZE7 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802da23a6eL, 0x6563631ab590888cL, "presentationExpression");
   }
 
   private static final class CONCEPTS {

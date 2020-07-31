@@ -41,7 +41,7 @@ public final class RuleBlockMember__BehaviorDescriptor extends BaseBHDescriptor 
     return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.RulesBlock$2N, false, false);
   }
   /*package*/ static SNode getRuleKind_id1BFxp3HHhyj(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(RuleBlockMember__BehaviorDescriptor.getBlock_id1BFxp3HHhy9.invoke(__thisNode__), LINKS.kind$ipQZ);
+    return SLinkOperations.getTarget(RuleBlockMember__BehaviorDescriptor.getBlock_id1BFxp3HHhy9.invoke(__thisNode__), LINKS.kind$UxCx);
   }
   @Hack
   /*package*/ static SNode getHighestMember_id2mL_UKGkn8G(@NotNull SNode __thisNode__) {
@@ -104,6 +104,6 @@ public final class RuleBlockMember__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink kind$ipQZ = MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, 0x19eb8590edb5174cL, "kind");
+    /*package*/ static final SReferenceLink kind$UxCx = MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, 0x19eb8590edb5174cL, "kind");
   }
 }

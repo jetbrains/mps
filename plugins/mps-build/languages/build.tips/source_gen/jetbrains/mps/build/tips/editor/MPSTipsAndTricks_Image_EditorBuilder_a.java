@@ -95,7 +95,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.width$aNoz;
+      final SProperty property = PROPS.width$eSSX;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, true), myNode);
       editorCell.setDefaultText("<width>");
@@ -144,7 +144,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.height$aNp2;
+      final SProperty property = PROPS.height$eT7Y;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, true), myNode);
       editorCell.setDefaultText("<height>");
@@ -193,7 +193,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_2() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.file$s3gA;
+      final SProperty property = PROPS.file$__2q;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no file>");
@@ -227,7 +227,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private JComponent _QueryFunction_JComponent_hfhp3k_a8a() {
-    return EditorUtil.createSelectImageButton(myNode, PROPS.file$s3gA, getEditorContext());
+    return EditorUtil.createSelectImageButton(myNode, PROPS.file$__2q, getEditorContext());
   }
   private EditorCell createConstant_5() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "preview:");
@@ -262,7 +262,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_hfhp3k_a11a() {
-    return isEmptyString(SPropertyOperations.getString(myNode, PROPS.file$s3gA));
+    return isEmptyString(SPropertyOperations.getString(myNode, PROPS.file$__2q));
   }
   private EditorCell createConstant_7() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "<preview>");
@@ -308,7 +308,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell_Image fromImageCellProvider0() {
     String imagePath = (new _FunctionTypes._return_P0_E0<String>() {
       public String invoke() {
-        return MacrosFactory.forModule((SNodeOperations.getModel(myNode).getModule())).expandPath(SPropertyOperations.getString(myNode, PROPS.file$s3gA));
+        return MacrosFactory.forModule((SNodeOperations.getModel(myNode).getModule())).expandPath(SPropertyOperations.getString(myNode, PROPS.file$__2q));
       }
     }).invoke();
     return EditorCell_Image.createImageCell(getEditorContext(), myNode, imagePath);
@@ -327,9 +327,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty width$aNoz = MetaAdapterFactory.getProperty(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x1377553280f03b1dL, 0x1377553280f5dba2L, "width");
-    /*package*/ static final SProperty height$aNp2 = MetaAdapterFactory.getProperty(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x1377553280f03b1dL, 0x1377553280f5dba3L, "height");
-    /*package*/ static final SProperty file$s3gA = MetaAdapterFactory.getProperty(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x1377553280f03b1dL, 0x1377553280f17f4bL, "file");
+    /*package*/ static final SProperty width$eSSX = MetaAdapterFactory.getProperty(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x1377553280f03b1dL, 0x1377553280f5dba2L, "width");
+    /*package*/ static final SProperty height$eT7Y = MetaAdapterFactory.getProperty(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x1377553280f03b1dL, 0x1377553280f5dba3L, "height");
+    /*package*/ static final SProperty file$__2q = MetaAdapterFactory.getProperty(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x1377553280f03b1dL, 0x1377553280f17f4bL, "file");
   }
 
   private static final class CONCEPTS {

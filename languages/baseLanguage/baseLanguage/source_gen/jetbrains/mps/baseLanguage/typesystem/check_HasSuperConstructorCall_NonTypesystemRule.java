@@ -28,7 +28,7 @@ public class check_HasSuperConstructorCall_NonTypesystemRule extends AbstractNon
     if ((boolean) ConstructorDeclaration__BehaviorDescriptor.containsImplicitSuperConstructorCall_id6d19RW5IPof.invoke(constructorDeclaration)) {
       SNode superConstructor = ConstructorDeclaration__BehaviorDescriptor.getSuperDefaultConstructor_id6d19RW5J1tP.invoke(constructorDeclaration);
       if (superConstructor == null && !((boolean) ConstructorDeclaration__BehaviorDescriptor.hasImplicitSuperDefaultConstructor_id5lFB3KB0eQS.invoke(constructorDeclaration))) {
-        SNode superClass = SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(constructorDeclaration), CONCEPTS.ClassConcept$IY), LINKS.superclass$_pqe), LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY);
+        SNode superClass = SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(constructorDeclaration), CONCEPTS.ClassConcept$IY), LINKS.superclass$7jGM), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY);
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(constructorDeclaration, "there is no default constructor available in superclass " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(superClass), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2782601603365247587", null, errorTarget);
@@ -57,7 +57,7 @@ public class check_HasSuperConstructorCall_NonTypesystemRule extends AbstractNon
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

@@ -50,7 +50,7 @@ public class LoopLabelReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_6lvr1q_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.LoopLabelReference$20, LINKS.loopLabel$GZ00);
+      super((SAbstractConcept) CONCEPTS.LoopLabelReference$20, LINKS.loopLabel$Mx00);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class LoopLabelReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink loopLabel$GZ00 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, 0x50c493bf955512aL, "loopLabel");
+    /*package*/ static final SReferenceLink loopLabel$Mx00 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, 0x50c493bf955512aL, "loopLabel");
   }
 }

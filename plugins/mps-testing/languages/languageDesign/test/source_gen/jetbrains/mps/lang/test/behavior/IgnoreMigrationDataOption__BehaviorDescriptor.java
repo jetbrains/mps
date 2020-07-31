@@ -41,9 +41,9 @@ public final class IgnoreMigrationDataOption__BehaviorDescriptor extends BaseBHD
     return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.MigrationTestCase$Sn);
   }
   /*package*/ static List<SNode> getProducingData_id5j9sOBrGDSz(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(IgnoreMigrationDataOption__BehaviorDescriptor.getTestCase_id5j9sOBrGD7H.invoke(__thisNode__), LINKS.migration$wvkx)).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(IgnoreMigrationDataOption__BehaviorDescriptor.getTestCase_id5j9sOBrGD7H.invoke(__thisNode__), LINKS.migration$JaVZ)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return IMigrationUnit__BehaviorDescriptor.getProducedAnnotationData_id5TUCQr2CN0$.invoke(SLinkOperations.getTarget(it, LINKS.migration$RUsw)) != null;
+        return IMigrationUnit__BehaviorDescriptor.getProducedAnnotationData_id5TUCQr2CN0$.invoke(SLinkOperations.getTarget(it, LINKS.migration$5jNw)) != null;
       }
     }).toListSequence();
   }
@@ -101,7 +101,7 @@ public final class IgnoreMigrationDataOption__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink migration$wvkx = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, 0x5bf7864595df8b02L, "migration");
-    /*package*/ static final SReferenceLink migration$RUsw = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5bf7864595dddf89L, 0x5bf7864595dddf8aL, "migration");
+    /*package*/ static final SContainmentLink migration$JaVZ = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, 0x5bf7864595df8b02L, "migration");
+    /*package*/ static final SReferenceLink migration$5jNw = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5bf7864595dddf89L, 0x5bf7864595dddf8aL, "migration");
   }
 }

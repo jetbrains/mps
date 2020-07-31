@@ -23,7 +23,7 @@ public final class CheckNodeForErrors__BehaviorDescriptor extends BaseBHDescript
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.includeSelf$MCk9, true);
+    SPropertyOperations.assign(__thisNode__, PROPS.includeSelf$xxKn, true);
   }
 
 
@@ -72,6 +72,6 @@ public final class CheckNodeForErrors__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty includeSelf$MCk9 = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11ae82817b8L, 0x33f30f661f90afb9L, "includeSelf");
+    /*package*/ static final SProperty includeSelf$xxKn = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11ae82817b8L, 0x33f30f661f90afb9L, "includeSelf");
   }
 }

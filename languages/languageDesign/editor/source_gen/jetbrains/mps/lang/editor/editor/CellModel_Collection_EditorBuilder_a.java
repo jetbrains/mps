@@ -172,7 +172,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.childCellModel$3prw;
+      return LINKS.childCellModel$Dkkw;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.EditorCellModel$5c;
@@ -191,7 +191,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childCellModelListHandler_cvgoyj_b1a0a.this.getNode(), LINKS.childCellModel$3prw));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childCellModelListHandler_cvgoyj_b1a0a.this.getNode(), LINKS.childCellModel$Dkkw));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -325,7 +325,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.childCellModel$3prw;
+      return LINKS.childCellModel$Dkkw;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.EditorCellModel$5c;
@@ -338,7 +338,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childCellModelListHandler_cvgoyj_b0a0.this.getNode(), LINKS.childCellModel$3prw));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childCellModelListHandler_cvgoyj_b0a0.this.getNode(), LINKS.childCellModel$Dkkw));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -441,7 +441,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.childCellModel$3prw;
+      return LINKS.childCellModel$Dkkw;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.EditorCellModel$5c;
@@ -454,7 +454,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childCellModelListHandler_cvgoyj_b0a.this.getNode(), LINKS.childCellModel$3prw));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childCellModelListHandler_cvgoyj_b0a.this.getNode(), LINKS.childCellModel$Dkkw));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -516,7 +516,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink childCellModel$3prw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel");
+    /*package*/ static final SContainmentLink childCellModel$Dkkw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel");
   }
 
   private static final class CONCEPTS {

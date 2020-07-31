@@ -69,21 +69,21 @@ public final class UnwrapTryCatch_Intention extends AbstractIntentionDescriptor 
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode body = (SNodeOperations.isInstanceOf(node, CONCEPTS.TryStatement$Vw) ? SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.TryStatement$Vw), LINKS.body$TQ1f) : SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.TryCatchStatement$x5), LINKS.body$9KDK));
+      SNode body = (SNodeOperations.isInstanceOf(node, CONCEPTS.TryStatement$Vw) ? SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.TryStatement$Vw), LINKS.body$1aAh) : SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.TryCatchStatement$x5), LINKS.body$I$eg));
 
       if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.StatementList$TN)) {
         final SNode statementList = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.StatementList$TN);
-        final Wrappers._int index = new Wrappers._int(ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$WHn8)).indexOf(SNodeOperations.cast(node, CONCEPTS.Statement$ok)));
-        ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$WHn8)).removeElementAt(index.value);
-        ListSequence.fromList(SLinkOperations.getChildren(body, LINKS.statement$WHn8)).visitAll(new IVisitor<SNode>() {
+        final Wrappers._int index = new Wrappers._int(ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$pYcS)).indexOf(SNodeOperations.cast(node, CONCEPTS.Statement$ok)));
+        ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$pYcS)).removeElementAt(index.value);
+        ListSequence.fromList(SLinkOperations.getChildren(body, LINKS.statement$pYcS)).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
-            ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$WHn8)).insertElement(index.value, it);
+            ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$pYcS)).insertElement(index.value, it);
             index.value += 1;
           }
         });
       } else {
         SNode statement = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.BlockStatement$1i);
-        SLinkOperations.setTarget(statement, LINKS.statements$uqR0, body);
+        SLinkOperations.setTarget(statement, LINKS.statements$J0D0, body);
       }
     }
     @Override
@@ -102,9 +102,9 @@ public final class UnwrapTryCatch_Intention extends AbstractIntentionDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$TQ1f = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacec83aeL, "body");
-    /*package*/ static final SContainmentLink body$9KDK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f383e83d4L, "body");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink statements$uqR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
+    /*package*/ static final SContainmentLink body$1aAh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacec83aeL, "body");
+    /*package*/ static final SContainmentLink body$I$eg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f383e83d4L, "body");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statements$J0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
   }
 }

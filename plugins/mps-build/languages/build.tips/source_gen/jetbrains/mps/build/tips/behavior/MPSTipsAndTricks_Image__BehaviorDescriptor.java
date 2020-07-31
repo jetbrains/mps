@@ -45,7 +45,7 @@ public final class MPSTipsAndTricks_Image__BehaviorDescriptor extends BaseBHDesc
     }
 
     MacroHelper macroHelper = MacrosFactory.forModule(module);
-    String path = macroHelper.expandPath(SPropertyOperations.getString(__thisNode__, PROPS.file$s3gA));
+    String path = macroHelper.expandPath(SPropertyOperations.getString(__thisNode__, PROPS.file$__2q));
     if (path == null) {
       return false;
     }
@@ -109,6 +109,6 @@ public final class MPSTipsAndTricks_Image__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty file$s3gA = MetaAdapterFactory.getProperty(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x1377553280f03b1dL, 0x1377553280f17f4bL, "file");
+    /*package*/ static final SProperty file$__2q = MetaAdapterFactory.getProperty(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x1377553280f03b1dL, 0x1377553280f17f4bL, "file");
   }
 }

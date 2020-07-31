@@ -66,31 +66,31 @@ public class NewVarMacro extends MigrationScriptBase {
     //  identical to ReplaceWithNewVarMacro intention 
     List<SNode> taVarRef = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getParent(vm), CONCEPTS.TemplateArgumentVariableRefExpression$mg, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.varmacro$CKSt) == vm;
+        return SLinkOperations.getTarget(it, LINKS.varmacro$JFm3) == vm;
       }
     }).toListSequence();
     List<SNode> gcoVarRef = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getParent(vm), CONCEPTS.GenerationContextOp_VarRef$c3, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.varmacro$expa) == vm;
+        return SLinkOperations.getTarget(it, LINKS.varmacro$2bbQ) == vm;
       }
     }).toListSequence();
     SNode vd = SModelOperations.createNewNode(md, null, CONCEPTS.VarDeclaration$SX);
-    SLinkOperations.setTarget(vd, LINKS.type$4Giu, SLinkOperations.getTarget(vm, LINKS.type$46HZ));
-    SLinkOperations.setTarget(vd, LINKS.value$4Gt8, SLinkOperations.getTarget(vm, LINKS.value$40R5));
-    SPropertyOperations.assign(vd, PROPS.name$tAp1, SPropertyOperations.getString(vm, PROPS.name$tAp1));
-    String comment = SPropertyOperations.getString(vm, PROPS.comment$Mo0J);
-    SNode ml = SLinkOperations.getTarget(vm, LINKS.mappingLabel$yUiS);
+    SLinkOperations.setTarget(vd, LINKS.type$hsWy, SLinkOperations.getTarget(vm, LINKS.type$Zghx));
+    SLinkOperations.setTarget(vd, LINKS.value$hy6S, SLinkOperations.getTarget(vm, LINKS.value$WqFr));
+    SPropertyOperations.assign(vd, PROPS.name$lA7v, SPropertyOperations.getString(vm, PROPS.name$lA7v));
+    String comment = SPropertyOperations.getString(vm, PROPS.comment$pCmL);
+    SNode ml = SLinkOperations.getTarget(vm, LINKS.mappingLabel$Uf98);
     SNode vmNew = SNodeOperations.replaceWithNewChild(vm, CONCEPTS.VarMacro2$J_);
-    SLinkOperations.setTarget(vmNew, LINKS.mappingLabel$yUiS, ml);
-    SPropertyOperations.assign(vmNew, PROPS.comment$Mo0J, comment);
-    ListSequence.fromList(SLinkOperations.getChildren(vmNew, LINKS.variables$4GjX)).addElement(vd);
+    SLinkOperations.setTarget(vmNew, LINKS.mappingLabel$Uf98, ml);
+    SPropertyOperations.assign(vmNew, PROPS.comment$pCmL, comment);
+    ListSequence.fromList(SLinkOperations.getChildren(vmNew, LINKS.variables$htEz)).addElement(vd);
     for (SNode vref : ListSequence.fromList(taVarRef)) {
       SNode refNew = SNodeOperations.replaceWithNewChild(vref, CONCEPTS.TemplateArgumentVarRefExpression2$mg);
-      SLinkOperations.setTarget(refNew, LINKS.vardecl$pgS0, vd);
+      SLinkOperations.setTarget(refNew, LINKS.vardecl$fb80, vd);
     }
     for (SNode vref : ListSequence.fromList(gcoVarRef)) {
       SNode refNew = SNodeOperations.replaceWithNewChild(vref, CONCEPTS.GenerationContextOp_VarRef2$D1);
-      SLinkOperations.setTarget(refNew, LINKS.vardecl$Sjfw, vd);
+      SLinkOperations.setTarget(refNew, LINKS.vardecl$hkww, vd);
     }
 
   }
@@ -106,20 +106,20 @@ public class NewVarMacro extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink varmacro$CKSt = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3d6f2506d88aa028L, 0x25c655ce6e80fddaL, "varmacro");
-    /*package*/ static final SReferenceLink varmacro$expa = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x25c655ce6e80fdd8L, 0x25c655ce6e80fddaL, "varmacro");
-    /*package*/ static final SContainmentLink type$4Giu = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, 0xe8e73f957fc2b89L, "type");
-    /*package*/ static final SContainmentLink type$46HZ = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a3d34eL, 0x45991daad6a644fbL, "type");
-    /*package*/ static final SContainmentLink value$4Gt8 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, 0xe8e73f957fc2b8aL, "value");
-    /*package*/ static final SContainmentLink value$40R5 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a3d34eL, 0x45991daad6a644d4L, "value");
-    /*package*/ static final SReferenceLink mappingLabel$yUiS = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, 0x1179bf24befL, "mappingLabel");
-    /*package*/ static final SContainmentLink variables$4GjX = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, 0xe8e73f957fc2b8dL, "variables");
-    /*package*/ static final SReferenceLink vardecl$pgS0 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, 0xe8e73f9584aee10L, "vardecl");
-    /*package*/ static final SReferenceLink vardecl$Sjfw = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0xe8e73f957fd5246L, 0xe8e73f957fd5247L, "vardecl");
+    /*package*/ static final SReferenceLink varmacro$JFm3 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3d6f2506d88aa028L, 0x25c655ce6e80fddaL, "varmacro");
+    /*package*/ static final SReferenceLink varmacro$2bbQ = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x25c655ce6e80fdd8L, 0x25c655ce6e80fddaL, "varmacro");
+    /*package*/ static final SContainmentLink type$hsWy = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, 0xe8e73f957fc2b89L, "type");
+    /*package*/ static final SContainmentLink type$Zghx = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a3d34eL, 0x45991daad6a644fbL, "type");
+    /*package*/ static final SContainmentLink value$hy6S = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, 0xe8e73f957fc2b8aL, "value");
+    /*package*/ static final SContainmentLink value$WqFr = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a3d34eL, 0x45991daad6a644d4L, "value");
+    /*package*/ static final SReferenceLink mappingLabel$Uf98 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, 0x1179bf24befL, "mappingLabel");
+    /*package*/ static final SContainmentLink variables$htEz = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, 0xe8e73f957fc2b8dL, "variables");
+    /*package*/ static final SReferenceLink vardecl$fb80 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, 0xe8e73f9584aee10L, "vardecl");
+    /*package*/ static final SReferenceLink vardecl$hkww = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0xe8e73f957fd5246L, 0xe8e73f957fd5247L, "vardecl");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty comment$Mo0J = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11dc0f7933bL, 0x2d521c90e9601e88L, "comment");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty comment$pCmL = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11dc0f7933bL, 0x2d521c90e9601e88L, "comment");
   }
 }

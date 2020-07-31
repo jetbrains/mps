@@ -31,7 +31,7 @@ public class XMLSAXFieldReference_Constraints extends BaseConstraintsDescriptor 
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$Ywf0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$hBh0, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -48,7 +48,7 @@ public class XMLSAXFieldReference_Constraints extends BaseConstraintsDescriptor 
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode n = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.XMLSAXParser$Sn, true, false);
             if ((n != null)) {
-              return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(n, LINKS.fields$YAg8)).concat(ListSequence.fromList(SLinkOperations.getChildren(n, LINKS.parameters$YA4w))));
+              return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(n, LINKS.fields$kxNS)).concat(ListSequence.fromList(SLinkOperations.getChildren(n, LINKS.parameters$ksbw))));
             }
             return null;
           }
@@ -67,8 +67,8 @@ public class XMLSAXFieldReference_Constraints extends BaseConstraintsDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$Ywf0 = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2e0L, 0x1f6c736337b5e2e1L, "declaration");
-    /*package*/ static final SContainmentLink fields$YAg8 = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, 0x1f6c736337b5e305L, "fields");
-    /*package*/ static final SContainmentLink parameters$YA4w = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, 0x1f6c736337b5e302L, "parameters");
+    /*package*/ static final SReferenceLink declaration$hBh0 = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2e0L, 0x1f6c736337b5e2e1L, "declaration");
+    /*package*/ static final SContainmentLink fields$kxNS = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, 0x1f6c736337b5e305L, "fields");
+    /*package*/ static final SContainmentLink parameters$ksbw = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, 0x1f6c736337b5e302L, "parameters");
   }
 }

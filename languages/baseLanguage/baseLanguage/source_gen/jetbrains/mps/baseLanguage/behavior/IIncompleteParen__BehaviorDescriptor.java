@@ -31,17 +31,17 @@ public final class IIncompleteParen__BehaviorDescriptor extends BaseBHDescriptor
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(increaseCount_idVufYxgmE1y, decreaseCount_idVufYxgmFtR, isSingleParen_idVufYxgmHsD);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.count$alNw, 1);
+    SPropertyOperations.assign(__thisNode__, PROPS.count$zWw, 1);
   }
 
   /*package*/ static void increaseCount_idVufYxgmE1y(@NotNull SNode __thisNode__) {
-    BLOperations.plusAssign(SPropertyOperations.intPropRef(__thisNode__, PROPS.count$alNw), 1);
+    BLOperations.plusAssign(SPropertyOperations.intPropRef(__thisNode__, PROPS.count$zWw), 1);
   }
   /*package*/ static void decreaseCount_idVufYxgmFtR(@NotNull SNode __thisNode__) {
-    BLOperations.minusAssign(SPropertyOperations.intPropRef(__thisNode__, PROPS.count$alNw), 1);
+    BLOperations.minusAssign(SPropertyOperations.intPropRef(__thisNode__, PROPS.count$zWw), 1);
   }
   /*package*/ static boolean isSingleParen_idVufYxgmHsD(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getInteger(__thisNode__, PROPS.count$alNw) == 1;
+    return SPropertyOperations.getInteger(__thisNode__, PROPS.count$zWw) == 1;
   }
 
   /*package*/ IIncompleteParen__BehaviorDescriptor() {
@@ -97,6 +97,6 @@ public final class IIncompleteParen__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty count$alNw = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xede3fe8510255edL, 0xede3fe8510255eeL, "count");
+    /*package*/ static final SProperty count$zWw = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xede3fe8510255edL, 0xede3fe8510255eeL, "count");
   }
 }

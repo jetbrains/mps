@@ -22,7 +22,7 @@ public class checkThrowedByThrowIsCaught_NonTypesystemRule extends AbstractNonTy
   public checkThrowedByThrowIsCaught_NonTypesystemRule() {
   }
   public void applyRule(final SNode throwStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode throwable = SLinkOperations.getTarget(throwStatement, LINKS.throwable$o3ty);
+    SNode throwable = SLinkOperations.getTarget(throwStatement, LINKS.throwable$DFju);
     if ((throwable == null)) {
       return;
     }
@@ -46,7 +46,7 @@ public class checkThrowedByThrowIsCaught_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink throwable$o3ty = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, 0x10f3ee0cd6fL, "throwable");
+    /*package*/ static final SContainmentLink throwable$DFju = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, 0x10f3ee0cd6fL, "throwable");
   }
 
   private static final class CONCEPTS {

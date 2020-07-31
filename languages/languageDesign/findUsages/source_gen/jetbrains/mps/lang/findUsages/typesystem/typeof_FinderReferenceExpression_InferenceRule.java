@@ -39,7 +39,7 @@ public class typeof_FinderReferenceExpression_InferenceRule extends AbstractInfe
   private static SNode createClassifierType_hid3c2_a1a0c0b0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ClassifierType$IZ);
-    rootBuilder1.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)"), facade.createNodeId("8267733531687413132")));
+    rootBuilder1.setReference(LINKS.classifier$xslD, new SNodePointer(facade.createModelReference("r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)"), facade.createNodeId("8267733531687413132")));
     return rootBuilder1.getResult();
   }
 
@@ -49,6 +49,6 @@ public class typeof_FinderReferenceExpression_InferenceRule extends AbstractInfe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

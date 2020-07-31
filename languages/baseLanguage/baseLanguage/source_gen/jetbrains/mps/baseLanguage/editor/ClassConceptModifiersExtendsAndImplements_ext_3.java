@@ -71,7 +71,7 @@ public class ClassConceptModifiersExtendsAndImplements_ext_3 extends Transformat
   public class TMP_Group_52qbso_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.implementedInterface$mdc6)).isEmpty();
+      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.implementedInterface$KoQU)).isEmpty();
     }
 
     @NotNull
@@ -127,7 +127,7 @@ public class ClassConceptModifiersExtendsAndImplements_ext_3 extends Transformat
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.implementedInterface$mdc6, null);
+          SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.implementedInterface$KoQU, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -153,6 +153,6 @@ public class ClassConceptModifiersExtendsAndImplements_ext_3 extends Transformat
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink implementedInterface$mdc6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
   }
 }

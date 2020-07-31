@@ -37,13 +37,13 @@ public final class PastedNodeReference__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static SNode getTargetNode_id36vPRrqnscn(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.target$9y$J);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.target$BJML);
   }
   /*package*/ static String getText_id5E451QuvdoB(@NotNull SNode __thisNode__) {
     if (((boolean) INodeWithReference__BehaviorDescriptor.isBroken_id7m$hACyVN2F.invoke(__thisNode__))) {
       return INodeWithReference__BehaviorDescriptor.getTextWhenBroken_idigjXyuNrou.invoke(__thisNode__);
     } else {
-      return PastedNodeReference__BehaviorDescriptor.getText_id25MaZwhj0R7.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__)), SLinkOperations.getTarget(__thisNode__, LINKS.target$9y$J).getNodeId());
+      return PastedNodeReference__BehaviorDescriptor.getText_id25MaZwhj0R7.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__)), SLinkOperations.getTarget(__thisNode__, LINKS.target$BJML).getNodeId());
     }
   }
   /*package*/ static String getText_id25MaZwhj0R7(@NotNull SAbstractConcept __thisConcept__, SNodeId targetNodeId) {
@@ -54,7 +54,7 @@ public final class PastedNodeReference__BehaviorDescriptor extends BaseBHDescrip
     return "nodeRef@" + ((id >>> 16) + (id << 16 >>> 16));
   }
   /*package*/ static String getTextWhenBroken_idigjXyuNrou(@NotNull SNode __thisNode__) {
-    SNodeId targetNodeId = __thisNode__.getReference(LINKS.target$9y$J).getTargetNodeId();
+    SNodeId targetNodeId = __thisNode__.getReference(LINKS.target$BJML).getTargetNodeId();
     return PastedNodeReference__BehaviorDescriptor.getText_id25MaZwhj0R7.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__)), targetNodeId) + "(deleted node)";
   }
   /*package*/ static boolean canExecute_id2QdC0h7dh1h(@NotNull SNode __thisNode__) {
@@ -116,6 +116,6 @@ public final class PastedNodeReference__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$9y$J = MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x36ac6f29ae8c1fb5L, 0x4904fd89e74fc6fL, "target");
+    /*package*/ static final SReferenceLink target$BJML = MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x36ac6f29ae8c1fb5L, 0x4904fd89e74fc6fL, "target");
   }
 }

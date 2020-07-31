@@ -41,7 +41,7 @@ public final class EnumSwitchCaseBody_StatementList__BehaviorDescriptor extends 
     return (boolean) EnumSwitchExpression__BehaviorDescriptor.evaluatesValue_id28aPEVwg1gU.invoke(SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.getParent(__thisNode__)), CONCEPTS.EnumSwitchExpression$R0));
   }
   /*package*/ static SNode getStatementList_id28aPEVv_31A(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.statementList$6WT0);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.statementList$nvB0);
   }
 
   /*package*/ EnumSwitchCaseBody_StatementList__BehaviorDescriptor() {
@@ -99,6 +99,6 @@ public final class EnumSwitchCaseBody_StatementList__BehaviorDescriptor extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statementList$6WT0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc9L, 0x220ad6aedf1fdccaL, "statementList");
+    /*package*/ static final SContainmentLink statementList$nvB0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc9L, 0x220ad6aedf1fdccaL, "statementList");
   }
 }

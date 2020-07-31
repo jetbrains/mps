@@ -35,10 +35,10 @@ public final class ExtensionPointDeclaration__BehaviorDescriptor extends BaseBHD
 
   @Deprecated
   /*package*/ static SNode getObjectClassifierType_id5Sg$D5FMgdu(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.objectType$NJyf), CONCEPTS.InternalClassifierType$bm)) {
-      return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.objectType$NJyf), CONCEPTS.ClassifierType$IZ);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.objectType$41_h), CONCEPTS.InternalClassifierType$bm)) {
+      return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.objectType$41_h), CONCEPTS.ClassifierType$IZ);
     } else {
-      return TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(__thisNode__, LINKS.objectType$NJyf), CONCEPTS.ClassifierType$IZ);
+      return TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(__thisNode__, LINKS.objectType$41_h), CONCEPTS.ClassifierType$IZ);
     }
   }
 
@@ -89,7 +89,7 @@ public final class ExtensionPointDeclaration__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink objectType$NJyf = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x6f6f7f3b7a17bd0bL, "objectType");
+    /*package*/ static final SContainmentLink objectType$41_h = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x6f6f7f3b7a17bd0bL, "objectType");
   }
 
   private static final class CONCEPTS {

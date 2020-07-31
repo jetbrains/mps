@@ -21,7 +21,7 @@ public class voidArraysAreIllegal_NonTypesystemRule extends AbstractNonTypesyste
   public voidArraysAreIllegal_NonTypesystemRule() {
   }
   public void applyRule(final SNode arrayType, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(arrayType, LINKS.componentType$10w), CONCEPTS.VoidType$aT)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(arrayType, LINKS.componentType$vfw), CONCEPTS.VoidType$aT)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(arrayType, "void array is illegal", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4646069078286000769", null, errorTarget);
@@ -39,7 +39,7 @@ public class voidArraysAreIllegal_NonTypesystemRule extends AbstractNonTypesyste
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$10w = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
   }
 
   private static final class CONCEPTS {

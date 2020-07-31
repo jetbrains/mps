@@ -61,11 +61,11 @@ public final class SurroundWithIndentCollection_Intention extends AbstractIntent
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.CellModel_Collection$CD, null);
-      SLinkOperations.setTarget(result, LINKS.cellLayout$usNp, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Indent$tI, null));
+      SLinkOperations.setTarget(result, LINKS.cellLayout$JWT7, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Indent$tI, null));
       List<SNode> nodes = editorContext.getSelectedNodes();
       SNodeOperations.insertNextSiblingChild(ListSequence.fromList(nodes).last(), result);
       for (SNode sn : nodes) {
-        ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.childCellModel$3prw)).addElement(SNodeOperations.cast(sn, CONCEPTS.EditorCellModel$5c));
+        ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.childCellModel$Dkkw)).addElement(SNodeOperations.cast(sn, CONCEPTS.EditorCellModel$5c));
       }
     }
     @Override
@@ -81,7 +81,7 @@ public final class SurroundWithIndentCollection_Intention extends AbstractIntent
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cellLayout$usNp = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
-    /*package*/ static final SContainmentLink childCellModel$3prw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel");
+    /*package*/ static final SContainmentLink cellLayout$JWT7 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
+    /*package*/ static final SContainmentLink childCellModel$Dkkw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel");
   }
 }

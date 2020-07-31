@@ -32,7 +32,7 @@ public class BuildMps_TipsPackage_Constraints extends BaseConstraintsDescriptor 
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.tips$aWHS, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.tips$jqe8, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -50,7 +50,7 @@ public class BuildMps_TipsPackage_Constraints extends BaseConstraintsDescriptor 
             List<SNode> descendants = SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.BuildProject$BF, false, false), CONCEPTS.BuildMps_Tips$aF, false, new SAbstractConcept[]{});
             return new ListScope(descendants) {
               public String getName(SNode child) {
-                return SPropertyOperations.getString(SNodeOperations.cast(child, CONCEPTS.BuildMps_Tips$aF), PROPS.name$tAp1);
+                return SPropertyOperations.getString(SNodeOperations.cast(child, CONCEPTS.BuildMps_Tips$aF), PROPS.name$lA7v);
               }
             };
           }
@@ -70,10 +70,10 @@ public class BuildMps_TipsPackage_Constraints extends BaseConstraintsDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink tips$aWHS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5ea1926fded234efL, 0x65a11ce3e4101393L, "tips");
+    /*package*/ static final SReferenceLink tips$jqe8 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5ea1926fded234efL, 0x65a11ce3e4101393L, "tips");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

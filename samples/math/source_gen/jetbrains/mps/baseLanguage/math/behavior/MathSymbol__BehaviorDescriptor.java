@@ -38,8 +38,8 @@ public final class MathSymbol__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static void getVisibleIndices_idhZx_LLY(@NotNull SNode __thisNode__, SNode sender, List<SNode> indices) {
     SNode sI = SNodeOperations.getNodeAncestor(sender, CONCEPTS.AbstractIndex$zB, true, false);
-    if (sI != SLinkOperations.getTarget(__thisNode__, LINKS.var$6cGH)) {
-      ListSequence.fromList(indices).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.var$6cGH));
+    if (sI != SLinkOperations.getTarget(__thisNode__, LINKS.var$9DN)) {
+      ListSequence.fromList(indices).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.var$9DN));
     }
     SNode ms = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.MathSymbol$FB, false, false);
     if (ms != null) {
@@ -110,6 +110,6 @@ public final class MathSymbol__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink var$6cGH = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11fe0cae7f6L, "var");
+    /*package*/ static final SContainmentLink var$9DN = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11fe0cae7f6L, "var");
   }
 }

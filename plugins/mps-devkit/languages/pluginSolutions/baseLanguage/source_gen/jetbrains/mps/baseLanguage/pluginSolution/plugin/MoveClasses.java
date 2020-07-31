@@ -45,7 +45,7 @@ public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction 
   public boolean isApplicable(MPSProject project, List<SNode> nodes) {
     return super.isApplicable(project, nodes) && ListSequence.fromList(nodes).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$hJ) && (SNodeOperations.getParent(it) == null || SNodeOperations.hasRole(it, LINKS.member$oYX5));
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$hJ) && (SNodeOperations.getParent(it) == null || SNodeOperations.hasRole(it, LINKS.member$6v_r));
       }
     });
   }
@@ -56,7 +56,7 @@ public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction 
     final Wrappers._boolean isMember = new Wrappers._boolean();
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        isMember.value = SNodeOperations.hasRole(ListSequence.fromList(nodesToMove).first(), LINKS.member$oYX5);
+        isMember.value = SNodeOperations.hasRole(ListSequence.fromList(nodesToMove).first(), LINKS.member$6v_r);
       }
     });
     if (isMember.value) {
@@ -77,7 +77,7 @@ public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction 
       public void process(List<SNode> nodeRoots, Map<SNode, RefactoringParticipant.KeepOldNodes> ifKeepOldNodes, RefactoringSession refactoringSession) {
         Map<SNode, String> packageNames = MapSequence.fromMap(new HashMap<SNode, String>());
         for (SNode oldNode : ListSequence.fromList(nodeRoots)) {
-          MapSequence.fromMap(packageNames).put(oldNode, SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getContainingRoot(oldNode), CONCEPTS.Classifier$hJ), PROPS.packageName$3uUR));
+          MapSequence.fromMap(packageNames).put(oldNode, SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getContainingRoot(oldNode), CONCEPTS.Classifier$hJ), PROPS.packageName$FYwD));
         }
         super.process(nodeRoots, ifKeepOldNodes, refactoringSession);
         NodeCopyTracker copyMap = NodeCopyTracker.get(refactoringSession);
@@ -85,9 +85,9 @@ public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction 
           SNode newNode = SNodeOperations.cast(MapSequence.fromMap(copyMap.getCopyMap()).get(oldNode), CONCEPTS.Classifier$hJ);
           if (myNodeLocation.isRoot()) {
             if (myNodeLocation.isRoot() && SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(oldNode), CONCEPTS.Classifier$hJ)) {
-              SPropertyOperations.assign(newNode, PROPS.packageName$3uUR, MapSequence.fromMap(packageNames).get(oldNode));
-              if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(newNode, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se)) {
-                SLinkOperations.setTarget(newNode, LINKS.visibility$2GiC, null);
+              SPropertyOperations.assign(newNode, PROPS.packageName$FYwD, MapSequence.fromMap(packageNames).get(oldNode));
+              if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(newNode, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se)) {
+                SLinkOperations.setTarget(newNode, LINKS.visibility$jt1o, null);
               }
             }
           }
@@ -102,15 +102,15 @@ public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction 
   public boolean tryToSetRole(SRepository repo, List<SNode> nodesToMove, NodeLocation.NodeLocationChild selectedObject) {
     SNode selectedNode = selectedObject.getNode().resolve(repo);
     if (SNodeOperations.getContainingLink(ListSequence.fromList(nodesToMove).first()) == null && SNodeOperations.isInstanceOf(selectedNode, CONCEPTS.Classifier$hJ)) {
-      selectedObject.setRole(LINKS.member$oYX5);
+      selectedObject.setRole(LINKS.member$6v_r);
       return true;
     }
     return super.tryToSetRole(repo, nodesToMove, selectedObject);
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 
   private static final class CONCEPTS {
@@ -119,6 +119,6 @@ public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty packageName$3uUR = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x26be0cf68be19d69L, "packageName");
+    /*package*/ static final SProperty packageName$FYwD = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x26be0cf68be19d69L, "packageName");
   }
 }

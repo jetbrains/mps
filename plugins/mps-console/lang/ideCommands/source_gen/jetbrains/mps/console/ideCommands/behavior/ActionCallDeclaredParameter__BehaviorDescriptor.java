@@ -32,7 +32,7 @@ public final class ActionCallDeclaredParameter__BehaviorDescriptor extends BaseB
   }
 
   /*package*/ static SNode getParameterDeclaration_id4PRmqZe_o$D(@NotNull SNode __thisNode__) {
-    return ActionParameter__BehaviorDescriptor.getFieldDeclaration_id112RIkgil0h.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$Qc10));
+    return ActionParameter__BehaviorDescriptor.getFieldDeclaration_id112RIkgil0h.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$fOv0));
   }
 
   /*package*/ ActionCallDeclaredParameter__BehaviorDescriptor() {
@@ -82,6 +82,6 @@ public final class ActionCallDeclaredParameter__BehaviorDescriptor extends BaseB
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$Qc10 = MetaAdapterFactory.getReferenceLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587a7L, 0x4d7759afce9587a8L, "declaration");
+    /*package*/ static final SReferenceLink declaration$fOv0 = MetaAdapterFactory.getReferenceLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587a7L, 0x4d7759afce9587a8L, "declaration");
   }
 }

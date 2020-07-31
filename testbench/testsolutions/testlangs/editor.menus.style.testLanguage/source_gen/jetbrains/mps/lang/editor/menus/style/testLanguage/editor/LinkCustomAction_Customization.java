@@ -40,7 +40,7 @@ public class LinkCustomAction_Customization implements EditorMenuItemCustomizer 
           return doMatchesContext_(getContextNode(context_), getContainmentLink(context_), getReference(context_), getProperty(context_)) && getCompletionItemInformation(context_) != null;
         }
         protected boolean doMatchesContext_(SNode contextNode, SContainmentLink containmentLink, SReferenceLink referenceLink, SProperty property) {
-          return Objects.equals(containmentLink, LINKS.customActionChildInMatchingLink$33n8);
+          return Objects.equals(containmentLink, LINKS.customActionChildInMatchingLink$uCcS);
         }
       }.matchesContext(context);
     }
@@ -78,7 +78,7 @@ public class LinkCustomAction_Customization implements EditorMenuItemCustomizer 
 
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink customActionChildInMatchingLink$33n8 = MetaAdapterFactory.getContainmentLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x34d3e9eb931272b0L, "customActionChildInMatchingLink");
+    /*package*/ static final SContainmentLink customActionChildInMatchingLink$uCcS = MetaAdapterFactory.getContainmentLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x34d3e9eb931272b0L, "customActionChildInMatchingLink");
   }
 
   private static final class CONCEPTS {

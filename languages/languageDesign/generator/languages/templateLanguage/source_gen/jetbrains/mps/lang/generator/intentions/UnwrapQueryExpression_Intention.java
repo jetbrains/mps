@@ -44,7 +44,7 @@ public final class UnwrapQueryExpression_Intention extends AbstractIntentionDesc
     if (!(InternalFlag.isInternalMode())) {
       return false;
     }
-    List<SNode> statements = SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.query$7zg9), LINKS.body$pTP2), LINKS.statement$WHn8);
+    List<SNode> statements = SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.query$E4On), LINKS.body$z0FY), LINKS.statement$pYcS);
     if (ListSequence.fromList(statements).count() != 1) {
       return false;
     }
@@ -70,20 +70,20 @@ public final class UnwrapQueryExpression_Intention extends AbstractIntentionDesc
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode stmt = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.query$7zg9), LINKS.body$pTP2), LINKS.statement$WHn8)).first();
+      SNode stmt = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.query$E4On), LINKS.body$z0FY), LINKS.statement$pYcS)).first();
       SNode expr = null;
       if (SNodeOperations.isInstanceOf(stmt, CONCEPTS.ReturnStatement$SF)) {
-        expr = SLinkOperations.getTarget(SNodeOperations.as(stmt, CONCEPTS.ReturnStatement$SF), LINKS.expression$EsbK);
+        expr = SLinkOperations.getTarget(SNodeOperations.as(stmt, CONCEPTS.ReturnStatement$SF), LINKS.expression$zDGg);
       } else if (SNodeOperations.isInstanceOf(stmt, CONCEPTS.ExpressionStatement$nm)) {
-        expr = SLinkOperations.getTarget(SNodeOperations.as(stmt, CONCEPTS.ExpressionStatement$nm), LINKS.expression$WIP0);
+        expr = SLinkOperations.getTarget(SNodeOperations.as(stmt, CONCEPTS.ExpressionStatement$nm), LINKS.expression$qFF0);
       }
       if (expr == null) {
         return;
       }
       // use node id of the TemplateArgumentQuery node, to leave name of generated QG.templateArgument_xxx() method intact 
-      SNodeId taqNodeId = SLinkOperations.getTarget(node, LINKS.query$7zg9).getNodeId();
+      SNodeId taqNodeId = SLinkOperations.getTarget(node, LINKS.query$E4On).getNodeId();
       // first, shall detach expr node, so that its id could get changed 
-      SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.query$7zg9));
+      SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.query$E4On));
       if (expr instanceof jetbrains.mps.smodel.SNode) {
         ((jetbrains.mps.smodel.SNode) expr).setId(taqNodeId);
       }
@@ -96,11 +96,11 @@ public final class UnwrapQueryExpression_Intention extends AbstractIntentionDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink query$7zg9 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x380132d742e8ccb0L, 0x380132d742e94e82L, "query");
-    /*package*/ static final SContainmentLink body$pTP2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink expression$EsbK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
-    /*package*/ static final SContainmentLink expression$WIP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink query$E4On = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x380132d742e8ccb0L, 0x380132d742e94e82L, "query");
+    /*package*/ static final SContainmentLink body$z0FY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink expression$zDGg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
+    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
   }
 
   private static final class CONCEPTS {

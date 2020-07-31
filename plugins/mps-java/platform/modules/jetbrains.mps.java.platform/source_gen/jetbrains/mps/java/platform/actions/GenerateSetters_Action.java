@@ -121,13 +121,13 @@ public class GenerateSetters_Action extends BaseAction {
           String parameterName = GenerateGettersAndSettersUtil.getParameterNameForField(field, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
 
           SNode dotExpr = _quotation_createNode_fimngf_a0f0a0a41a0();
-          SLinkOperations.setTarget(dotExpr, LINKS.operand$Lcrr, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression")));
-          SLinkOperations.setTarget(dotExpr, LINKS.operation$X4R8, _quotation_createNode_fimngf_a0h0a0a41a0(field));
+          SLinkOperations.setTarget(dotExpr, LINKS.operand$P1i5, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression")));
+          SLinkOperations.setTarget(dotExpr, LINKS.operation$_mGS, _quotation_createNode_fimngf_a0h0a0a41a0(field));
 
           if (SNodeOperations.isInstanceOf(field, CONCEPTS.FieldDeclaration$Ps)) {
-            lastAdded.value = ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$oYX5)).addElement(_quotation_createNode_fimngf_a0a0a0j0a0a41a0(dotExpr, SLinkOperations.getTarget(field, LINKS.type$pLrO), parameterName, setterName));
+            lastAdded.value = ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$6v_r)).addElement(_quotation_createNode_fimngf_a0a0a0j0a0a41a0(dotExpr, SLinkOperations.getTarget(field, LINKS.type$uWuc), parameterName, setterName));
           } else {
-            lastAdded.value = ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$oYX5)).addElement(_quotation_createNode_fimngf_a0a0a0a9a0a0o0a(dotExpr, SLinkOperations.getTarget(field, LINKS.type$pLrO), parameterName, setterName));
+            lastAdded.value = ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$6v_r)).addElement(_quotation_createNode_fimngf_a0a0a0a9a0a0o0a(dotExpr, SLinkOperations.getTarget(field, LINKS.type$uWuc), parameterName, setterName));
           }
         }
       }
@@ -150,7 +150,7 @@ public class GenerateSetters_Action extends BaseAction {
         Iterable<SNode> statMethods = ((Iterable<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.ClassConcept$IY, SMethodTrimmedId.create("staticMethods", CONCEPTS.ClassConcept$IY, "4_LVZ3pCeXr")));
         return !(Sequence.fromIterable(methods).union(Sequence.fromIterable(statMethods)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode method) {
-            return setterName.equals(SPropertyOperations.getString(method, PROPS.name$tAp1)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).count() == 1;
+            return setterName.equals(SPropertyOperations.getString(method, PROPS.name$lA7v)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).count() == 1;
           }
         }));
       }
@@ -261,14 +261,14 @@ public class GenerateSetters_Action extends BaseAction {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

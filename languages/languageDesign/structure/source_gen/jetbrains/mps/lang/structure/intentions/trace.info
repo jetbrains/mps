@@ -119,7 +119,7 @@
       <node id="8612260069361773414" at="80,173,81,0" concept="10" />
       <node id="1957700446085940217" at="82,64,83,97" concept="2" />
       <node id="1957700446084421329" at="89,48,90,66" concept="8" />
-      <node id="1957700446084421329" at="95,0,96,0" concept="11" trace="staticScope$SzuZ" />
+      <node id="1957700446084421329" at="95,0,96,0" concept="11" trace="staticScope$pc0x" />
       <node id="1957700446084421329" at="99,0,100,0" concept="11" trace="ConceptDeclaration$qU" />
       <node id="1957700446084421329" at="62,0,64,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="1957700446084421329" at="33,0,36,0" concept="1" trace="ForbidIncomingReferencesInSubconcepts_Intention#()V" />
@@ -232,8 +232,8 @@
       <node id="2686330069581322162" at="82,48,83,55" concept="8" />
       <node id="2686330069581322162" at="88,0,89,0" concept="11" trace="ConceptDeclaration$qU" />
       <node id="2686330069581322162" at="89,0,90,0" concept="11" trace="InterfaceConceptDeclaration$MT" />
-      <node id="2686330069581322162" at="93,0,94,0" concept="11" trace="extends$3Y1p" />
-      <node id="2686330069581322162" at="94,0,95,0" concept="11" trace="implements$oQDh" />
+      <node id="2686330069581322162" at="93,0,94,0" concept="11" trace="extends$V2F7" />
+      <node id="2686330069581322162" at="94,0,95,0" concept="11" trace="implements$2tZf" />
       <node id="2686330069581322162" at="56,0,58,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="2686330069581322162" at="28,0,31,0" concept="1" trace="ConvertConceptAndInterface_Intention#()V" />
       <node id="2686330069581322162" at="36,84,39,5" concept="5" />
@@ -316,17 +316,17 @@
       <node id="2686330069582457150" at="23,185,24,193" concept="2" />
       <node id="2686330069582459280" at="24,193,25,107" concept="2" />
       <node id="2686330069582615765" at="25,107,26,113" concept="2" />
-      <node id="2686330069581401003" at="30,0,31,0" concept="11" trace="name$tAp1" />
-      <node id="2686330069581401003" at="31,0,32,0" concept="11" trace="virtualPackage$j19t" />
-      <node id="2686330069581401003" at="32,0,33,0" concept="11" trace="conceptAlias$YIL2" />
-      <node id="2686330069581401003" at="33,0,34,0" concept="11" trace="conceptShortDescription$RrvA" />
-      <node id="2686330069581401003" at="34,0,35,0" concept="11" trace="conceptId$TMc5" />
-      <node id="2686330069581401003" at="35,0,36,0" concept="11" trace="languageId$T8k_" />
-      <node id="2686330069581401003" at="39,0,40,0" concept="11" trace="smodelAttribute$K8bJ" />
-      <node id="2686330069581401003" at="40,0,41,0" concept="11" trace="linkDeclaration$lL6$" />
-      <node id="2686330069581401003" at="41,0,42,0" concept="11" trace="propertyDeclaration$lL73" />
-      <node id="2686330069581401003" at="42,0,43,0" concept="11" trace="helpURL$Xrma" />
-      <node id="2686330069581401003" at="43,0,44,0" concept="11" trace="sourceNode$pB4_" />
+      <node id="2686330069581401003" at="30,0,31,0" concept="11" trace="name$lA7v" />
+      <node id="2686330069581401003" at="31,0,32,0" concept="11" trace="virtualPackage$dz_3" />
+      <node id="2686330069581401003" at="32,0,33,0" concept="11" trace="conceptAlias$oDJY" />
+      <node id="2686330069581401003" at="33,0,34,0" concept="11" trace="conceptShortDescription$Qkjq" />
+      <node id="2686330069581401003" at="34,0,35,0" concept="11" trace="conceptId$ZjQr" />
+      <node id="2686330069581401003" at="35,0,36,0" concept="11" trace="languageId$F1XV" />
+      <node id="2686330069581401003" at="39,0,40,0" concept="11" trace="smodelAttribute$jXFL" />
+      <node id="2686330069581401003" at="40,0,41,0" concept="11" trace="linkDeclaration$yMbs" />
+      <node id="2686330069581401003" at="41,0,42,0" concept="11" trace="propertyDeclaration$yMqt" />
+      <node id="2686330069581401003" at="42,0,43,0" concept="11" trace="helpURL$KfIQ" />
+      <node id="2686330069581401003" at="43,0,44,0" concept="11" trace="sourceNode$pVdV" />
       <node id="2686330069582693924" at="15,0,28,0" concept="12" trace="copy#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <scope id="2686330069581401235" at="15,49,26,113" />
       <scope id="2686330069582693924" at="15,0,28,0">
@@ -354,7 +354,7 @@
       <node id="2799938697970315267" at="47,87,48,113" concept="8" />
       <node id="2799938697970315280" at="51,78,52,122" concept="2" />
       <node id="2799938697970315260" at="55,48,56,41" concept="8" />
-      <node id="2799938697970315260" at="61,0,62,0" concept="11" trace="rootable$vg$g" />
+      <node id="2799938697970315260" at="61,0,62,0" concept="11" trace="rootable$91zK" />
       <node id="2799938697970315260" at="44,0,46,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="2799938697970315260" at="22,0,25,0" concept="1" trace="MakeRootable_Intention#()V" />
       <node id="2799938697970315260" at="37,99,40,5" concept="5" />
@@ -504,9 +504,9 @@
       <node id="4672725010143212656" at="52,78,53,119" concept="2" />
       <node id="4672725010144279798" at="54,70,55,63" concept="2" />
       <node id="4672725010143198841" at="59,48,60,50" concept="8" />
-      <node id="4672725010143198841" at="65,0,66,0" concept="11" trace="name$tAp1" />
-      <node id="4672725010143198841" at="66,0,67,0" concept="11" trace="abstract$moSU" />
-      <node id="4672725010143198841" at="67,0,68,0" concept="11" trace="final$moVl" />
+      <node id="4672725010143198841" at="65,0,66,0" concept="11" trace="name$lA7v" />
+      <node id="4672725010143198841" at="66,0,67,0" concept="11" trace="abstract$Q3$6" />
+      <node id="4672725010143198841" at="67,0,68,0" concept="11" trace="final$Q4Jb" />
       <node id="4672725010143198841" at="44,0,46,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="4672725010143198841" at="22,0,25,0" concept="1" trace="ToggleConceptAbstract_Intention#()V" />
       <node id="4672725010143198841" at="37,99,40,5" concept="5" />
@@ -574,8 +574,8 @@
       <node id="4672725010143794942" at="51,78,52,113" concept="2" />
       <node id="4672725010144270019" at="53,67,54,66" concept="2" />
       <node id="4672725010143787708" at="58,48,59,38" concept="8" />
-      <node id="4672725010143787708" at="64,0,65,0" concept="11" trace="final$moVl" />
-      <node id="4672725010143787708" at="65,0,66,0" concept="11" trace="abstract$moSU" />
+      <node id="4672725010143787708" at="64,0,65,0" concept="11" trace="final$Q4Jb" />
+      <node id="4672725010143787708" at="65,0,66,0" concept="11" trace="abstract$Q3$6" />
       <node id="4672725010143787708" at="44,0,46,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="4672725010143787708" at="22,0,25,0" concept="1" trace="MakeFinal_Intention#()V" />
       <node id="4672725010143787708" at="37,99,40,5" concept="5" />
@@ -886,8 +886,8 @@
       <node id="3552690486230119793" at="90,93,91,62" concept="9" />
       <node id="1439765373154233281" at="91,62,92,21" concept="2" />
       <node id="3552690486230190774" at="94,30,95,60" concept="7" />
-      <node id="3812503751491372022" at="95,60,96,129" concept="2" />
-      <node id="26772201241661301" at="96,129,97,39" concept="2" />
+      <node id="3812503751491372022" at="95,60,96,130" concept="2" />
+      <node id="26772201241661301" at="96,130,97,39" concept="2" />
       <node id="3552690486230220664" at="100,158,101,62" concept="9" />
       <node id="3552690486230220675" at="101,62,102,21" concept="2" />
       <node id="3552690486230220685" at="104,31,105,60" concept="7" />
@@ -917,11 +917,11 @@
       <node id="7590508941684025013" at="162,54,163,19" concept="2" />
       <node id="7590508941684024993" at="168,0,169,0" concept="6" trace="exec#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P0_E0;)V" />
       <node id="26772201241553010" at="170,93,171,95" concept="7" />
-      <node id="26772201241553010" at="171,95,172,60" concept="2" />
-      <node id="26772201241553010" at="172,60,173,36" concept="8" />
+      <node id="26772201241553010" at="171,95,172,61" concept="2" />
+      <node id="26772201241553010" at="172,61,173,36" concept="8" />
       <node id="26772201241595680" at="175,93,176,95" concept="7" />
-      <node id="26772201241595680" at="176,95,177,60" concept="2" />
-      <node id="26772201241595680" at="177,60,178,36" concept="8" />
+      <node id="26772201241595680" at="176,95,177,61" concept="2" />
+      <node id="26772201241595680" at="177,61,178,36" concept="8" />
       <node id="6886053617682514975" at="180,73,181,88" concept="7" />
       <node id="6886053617682514975" at="181,88,182,86" concept="2" />
       <node id="6886053617682514975" at="182,86,183,36" concept="8" />
@@ -932,12 +932,12 @@
       <node id="7590508941684024374" at="193,0,194,0" concept="11" trace="InterfaceConceptReference$Yh" />
       <node id="7590508941684024374" at="194,0,195,0" concept="11" trace="ConceptDeclaration$qU" />
       <node id="7590508941684024374" at="195,0,196,0" concept="11" trace="InterfaceConceptDeclaration$MT" />
-      <node id="7590508941684024374" at="199,0,200,0" concept="11" trace="target$egp8" />
-      <node id="7590508941684024374" at="200,0,201,0" concept="11" trace="intfc$fO5" />
-      <node id="7590508941684024374" at="201,0,202,0" concept="11" trace="implements$oQDh" />
-      <node id="7590508941684024374" at="202,0,203,0" concept="11" trace="extends$LQV3" />
-      <node id="7590508941684024374" at="203,0,204,0" concept="11" trace="extends$3Y1p" />
-      <node id="7590508941684024374" at="207,0,208,0" concept="11" trace="name$tAp1" />
+      <node id="7590508941684024374" at="199,0,200,0" concept="11" trace="target$TWaS" />
+      <node id="7590508941684024374" at="200,0,201,0" concept="11" trace="intfc$7Eer" />
+      <node id="7590508941684024374" at="201,0,202,0" concept="11" trace="implements$2tZf" />
+      <node id="7590508941684024374" at="202,0,203,0" concept="11" trace="extends$9AAt" />
+      <node id="7590508941684024374" at="203,0,204,0" concept="11" trace="extends$V2F7" />
+      <node id="7590508941684024374" at="207,0,208,0" concept="11" trace="name$lA7v" />
       <node id="7590508941684025001" at="157,0,159,0" concept="6" trace="exec#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P0_E0;)V" />
       <node id="7590508941684024403" at="37,0,40,0" concept="6" trace="dryRun#()Z" />
       <node id="7590508941684024411" at="41,0,44,0" concept="6" trace="run#()V" />
@@ -1171,7 +1171,7 @@
       <node id="7862711839427201355" at="55,87,56,43" concept="8" />
       <node id="7862711839427231442" at="59,78,60,73" concept="2" />
       <node id="7862711839427200790" at="63,48,64,39" concept="8" />
-      <node id="7862711839427200790" at="69,0,70,0" concept="11" trace="seeAlso$hzj8" />
+      <node id="7862711839427200790" at="69,0,70,0" concept="11" trace="seeAlso$w6gS" />
       <node id="7862711839427200790" at="52,0,54,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="7862711839427200790" at="24,0,27,0" concept="1" trace="AddSeeAlso_Intention#()V" />
       <node id="7862711839427200790" at="32,84,35,5" concept="5" />
@@ -1270,9 +1270,9 @@
       <node id="8130203123066050777" at="96,173,97,173" concept="2" />
       <node id="8130203123066050777" at="97,173,98,24" concept="8" />
       <node id="8130203123066392745" at="100,52,101,44" concept="8" />
-      <node id="8130203123065979039" at="105,0,106,0" concept="11" trace="icon$2CxW" />
-      <node id="8130203123065979039" at="109,0,110,0" concept="11" trace="rootable$vg$g" />
-      <node id="8130203123065979039" at="110,0,111,0" concept="11" trace="name$tAp1" />
+      <node id="8130203123065979039" at="105,0,106,0" concept="11" trace="icon$hCs4" />
+      <node id="8130203123065979039" at="109,0,110,0" concept="11" trace="rootable$91zK" />
+      <node id="8130203123065979039" at="110,0,111,0" concept="11" trace="name$lA7v" />
       <node id="8130203123065979039" at="58,0,60,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="8130203123065979039" at="30,0,33,0" concept="1" trace="CreateConceptIcon_Intention#()V" />
       <node id="8130203123065979039" at="38,84,41,5" concept="5" />
@@ -1399,7 +1399,7 @@
       <node id="8842732777750321607" at="64,147,65,317" concept="2" />
       <node id="8842732777748598574" at="69,48,70,58" concept="8" />
       <node id="8842732777748598574" at="75,0,76,0" concept="11" trace="SmartReferenceAttribute$Lg" />
-      <node id="8842732777748598574" at="79,0,80,0" concept="11" trace="charactersticReference$hNpW" />
+      <node id="8842732777748598574" at="79,0,80,0" concept="11" trace="charactersticReference$BT$4" />
       <node id="8842732777748598574" at="55,0,57,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="8842732777748598574" at="27,0,30,0" concept="1" trace="AttachSmartReferenceAttribute_Intention#()V" />
       <node id="8842732777748598574" at="35,84,38,5" concept="5" />

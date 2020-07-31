@@ -46,9 +46,9 @@ public final class OrExpression__BehaviorDescriptor extends BaseBHDescriptor {
     return null;
   }
   /*package*/ static NextProgramPoint getNextProgramPoint_id3F8BxGibk8h(@NotNull SNode __thisNode__, @NotNull SNode child, boolean value) {
-    if (child == SLinkOperations.getTarget(__thisNode__, LINKS.leftExpression$rxLZ)) {
-      if (!(value) && SLinkOperations.getTarget(__thisNode__, LINKS.rightExpression$rxBl) != null) {
-        return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, LINKS.rightExpression$rxBl), false);
+    if (child == SLinkOperations.getTarget(__thisNode__, LINKS.leftExpression$lndx)) {
+      if (!(value) && SLinkOperations.getTarget(__thisNode__, LINKS.rightExpression$li3b) != null) {
+        return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, LINKS.rightExpression$li3b), false);
       } else {
         if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.IConditional$bU)) {
           NextProgramPoint point = IConditional__BehaviorDescriptor.getNextProgramPoint_id3F8BxGibk8h.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.IConditional$bU), __thisNode__, ((boolean) value));
@@ -57,7 +57,7 @@ public final class OrExpression__BehaviorDescriptor extends BaseBHDescriptor {
           }
         }
       }
-    } else if (child == SLinkOperations.getTarget(__thisNode__, LINKS.rightExpression$rxBl)) {
+    } else if (child == SLinkOperations.getTarget(__thisNode__, LINKS.rightExpression$li3b)) {
       if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.IConditional$bU)) {
         return IConditional__BehaviorDescriptor.getNextProgramPoint_id3F8BxGibk8h.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.IConditional$bU), __thisNode__, ((boolean) value));
       }
@@ -116,8 +116,8 @@ public final class OrExpression__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
   }
 
   private static final class CONCEPTS {

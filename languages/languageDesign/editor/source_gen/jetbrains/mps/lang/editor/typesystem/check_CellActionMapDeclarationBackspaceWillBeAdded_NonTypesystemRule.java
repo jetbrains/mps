@@ -26,9 +26,9 @@ public class check_CellActionMapDeclarationBackspaceWillBeAdded_NonTypesystemRul
   public check_CellActionMapDeclarationBackspaceWillBeAdded_NonTypesystemRule() {
   }
   public void applyRule(final SNode cellActionMapDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode deleteItem = ListSequence.fromList(SLinkOperations.getChildren(cellActionMapDeclaration, LINKS.item$VI8u)).where(new IWhereFilter<SNode>() {
+    SNode deleteItem = ListSequence.fromList(SLinkOperations.getChildren(cellActionMapDeclaration, LINKS.item$Vm6y)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.actionId$TiJc), 0x109519a19b4L);
+        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.actionId$K4QO), 0x109519a19b4L);
       }
     }).first();
     if ((deleteItem != null) && !((boolean) CellActionMapDeclaration__BehaviorDescriptor.containsItemOfType_id2pg2GNQgnKJ.invoke(cellActionMapDeclaration, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951993667L, "jetbrains.mps.lang.editor.structure.CellActionId"), 0x7d41f11ce69df74aL, "backspace_action_id")))) {
@@ -49,11 +49,11 @@ public class check_CellActionMapDeclarationBackspaceWillBeAdded_NonTypesystemRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink item$VI8u = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, 0x10951978d01L, "item");
+    /*package*/ static final SContainmentLink item$Vm6y = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, 0x10951978d01L, "item");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty actionId$TiJc = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, 0x1095198c0daL, "actionId");
+    /*package*/ static final SProperty actionId$K4QO = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, 0x1095198c0daL, "actionId");
   }
 
   private static final class CONCEPTS {

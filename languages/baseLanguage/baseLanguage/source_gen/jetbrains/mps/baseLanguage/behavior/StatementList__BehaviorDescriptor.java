@@ -82,11 +82,11 @@ public final class StatementList__BehaviorDescriptor extends BaseBHDescriptor {
     return (boolean) IContainsStatementList__BehaviorDescriptor.isStatementListCompact_idi0zxZ6o.invoke(parent);
   }
   /*package*/ static boolean isOneLiner_idi0z3USV(@NotNull SNode __thisNode__) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8)).count() > 1) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$pYcS)).count() > 1) {
       return false;
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8)).count() == 1) {
-      SNode statement = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8)).first();
+    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$pYcS)).count() == 1) {
+      SNode statement = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$pYcS)).first();
       if (SNodeOperations.isInstanceOf(statement, CONCEPTS.IContainsStatementList$2n)) {
         return false;
       }
@@ -97,7 +97,7 @@ public final class StatementList__BehaviorDescriptor extends BaseBHDescriptor {
     return true;
   }
   /*package*/ static List<SNode> getLocalVariableElements_idi1I$XiP(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8);
+    return SLinkOperations.getChildren(__thisNode__, LINKS.statement$pYcS);
   }
   /*package*/ static Set<SNode> uncaughtThrowables_id2SVUfbZ9Qq1(@NotNull SNode __thisNode__, boolean ignoreMayBeThrowables) {
     Set<SNode> result = SetSequence.fromSet(new HashSet<SNode>());
@@ -105,12 +105,12 @@ public final class StatementList__BehaviorDescriptor extends BaseBHDescriptor {
     return result;
   }
   /*package*/ static void collectUncaughtThrowables_id4Gt7ANIVHca(@NotNull SNode __thisNode__, Set<SNode> throwables, boolean ignoreMayBeThrowables) {
-    for (SNode statement : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8))) {
+    for (SNode statement : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$pYcS))) {
       Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVH8f.invoke(statement, throwables, ((boolean) ignoreMayBeThrowables));
     }
   }
   /*package*/ static SNode getFirstStatement_id4GU1DgEHJ2u(@NotNull SNode __thisNode__) {
-    for (SNode statement : SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8)) {
+    for (SNode statement : SLinkOperations.getChildren(__thisNode__, LINKS.statement$pYcS)) {
       if (SNodeOperations.isInstanceOf(statement, CONCEPTS.SingleLineComment$jI) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(statement)), CONCEPTS.Statement$ok)) {
         continue;
       }
@@ -119,7 +119,7 @@ public final class StatementList__BehaviorDescriptor extends BaseBHDescriptor {
     return null;
   }
   /*package*/ static SNode getLastStatement_id28aPEVv8l7T(@NotNull SNode __thisNode__) {
-    List<SNode> statements = SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8);
+    List<SNode> statements = SLinkOperations.getChildren(__thisNode__, LINKS.statement$pYcS);
     for (int index = ListSequence.fromList(statements).count() - 1; index >= 0; index--) {
       SNode statement = ListSequence.fromList(statements).getElement(index);
       if (SNodeOperations.isInstanceOf(statement, CONCEPTS.SingleLineComment$jI) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(statement)), CONCEPTS.Statement$ok)) {
@@ -131,9 +131,9 @@ public final class StatementList__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static List<SNode> getScopeVariables_id4pl5GY7LKmA(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode statement : SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8)) {
+    for (SNode statement : SLinkOperations.getChildren(__thisNode__, LINKS.statement$pYcS)) {
       if (SNodeOperations.isInstanceOf(statement, CONCEPTS.LocalVariableDeclarationStatement$BI)) {
-        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(SNodeOperations.cast(statement, CONCEPTS.LocalVariableDeclarationStatement$BI), LINKS.localVariableDeclaration$O0D0));
+        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(SNodeOperations.cast(statement, CONCEPTS.LocalVariableDeclarationStatement$BI), LINKS.localVariableDeclaration$cjR0));
       }
     }
     return result;
@@ -146,7 +146,7 @@ public final class StatementList__BehaviorDescriptor extends BaseBHDescriptor {
       childStatement = SNodeOperations.getParent(childStatement);
     }
 
-    for (SNode statement : SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8)) {
+    for (SNode statement : SLinkOperations.getChildren(__thisNode__, LINKS.statement$pYcS)) {
       if (childStatement == statement) {
         break;
       }
@@ -159,12 +159,12 @@ public final class StatementList__BehaviorDescriptor extends BaseBHDescriptor {
     return result;
   }
   /*package*/ static List<SNode> getLocalVariableDeclarations_id7WLeqcv1izg(@NotNull SNode __thisNode__, int index) {
-    assert index == 0 || index < ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8)).count();
+    assert index == 0 || index < ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$pYcS)).count();
     List<SNode> result = new ArrayList<SNode>();
 
     for (int num = 0; num < index; num++) {
-      if (SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8)).getElement(num), CONCEPTS.ILocalVariableElement$U$)) {
-        ListSequence.fromList(result).addElement(ILocalVariableElement__BehaviorDescriptor.getLocalVariableDeclaration_idi1ItFZH.invoke(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8)).getElement(num), CONCEPTS.ILocalVariableElement$U$)));
+      if (SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$pYcS)).getElement(num), CONCEPTS.ILocalVariableElement$U$)) {
+        ListSequence.fromList(result).addElement(ILocalVariableElement__BehaviorDescriptor.getLocalVariableDeclaration_idi1ItFZH.invoke(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$pYcS)).getElement(num), CONCEPTS.ILocalVariableElement$U$)));
       }
     }
 
@@ -266,7 +266,7 @@ public final class StatementList__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink localVariableDeclaration$O0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink localVariableDeclaration$cjR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
   }
 }

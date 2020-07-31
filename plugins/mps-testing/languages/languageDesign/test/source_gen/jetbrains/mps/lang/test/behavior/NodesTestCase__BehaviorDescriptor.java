@@ -45,7 +45,7 @@ public final class NodesTestCase__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static List<SNode> getTestSet_idhGB2z8L(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode method : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.testMethods$jorf))) {
+    for (SNode method : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.testMethods$oPch))) {
       ListSequence.fromList(result).addElement(method);
     }
     for (SNode operation : ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.INodesTestMethod$ck, false, new SAbstractConcept[]{}))) {
@@ -67,7 +67,7 @@ public final class NodesTestCase__BehaviorDescriptor extends BaseBHDescriptor {
     return "TestBody";
   }
   /*package*/ static boolean needsWriteAction_id5vTxdEzuQjU(@NotNull SNode __thisNode__) {
-    return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.needsNoWriteAction$$Gzc));
+    return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.needsNoWriteAction$L_2O));
   }
 
   /*package*/ NodesTestCase__BehaviorDescriptor() {
@@ -127,7 +127,7 @@ public final class NodesTestCase__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink testMethods$jorf = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, 0x11b78c499b5L, "testMethods");
+    /*package*/ static final SContainmentLink testMethods$oPch = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, 0x11b78c499b5L, "testMethods");
   }
 
   private static final class CONCEPTS {
@@ -136,6 +136,6 @@ public final class NodesTestCase__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty needsNoWriteAction$$Gzc = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, 0x57f984daa37add4aL, "needsNoWriteAction");
+    /*package*/ static final SProperty needsNoWriteAction$L_2O = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, 0x57f984daa37add4aL, "needsNoWriteAction");
   }
 }

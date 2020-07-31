@@ -94,7 +94,7 @@ public class Replacement_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode literal = SNodeFactoryOperations.createNewNode(CONCEPTS.LiteralReplacement$zq, null);
-        SPropertyOperations.assign(literal, PROPS.text$$vcr, pattern);
+        SPropertyOperations.assign(literal, PROPS.text$F715, pattern);
         return literal;
       }
 
@@ -154,6 +154,6 @@ public class Replacement_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$$vcr = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94cL, 0x34ae970c192b203bL, "text");
+    /*package*/ static final SProperty text$F715 = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94cL, 0x34ae970c192b203bL, "text");
   }
 }

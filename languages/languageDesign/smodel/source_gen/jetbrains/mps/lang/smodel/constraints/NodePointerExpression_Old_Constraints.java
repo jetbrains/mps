@@ -30,7 +30,7 @@ public class NodePointerExpression_Old_Constraints extends BaseConstraintsDescri
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.referentNode$RAe0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.referentNode$VwM0, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -45,7 +45,7 @@ public class NodePointerExpression_Old_Constraints extends BaseConstraintsDescri
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), !(SPropertyOperations.getBoolean(_context.getReferenceNode(), PROPS.includeNonRoot$_2Fe)), CONCEPTS.INamedConcept$nV);
+            return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), !(SPropertyOperations.getBoolean(_context.getReferenceNode(), PROPS.includeNonRoot$WiVM)), CONCEPTS.INamedConcept$nV);
           }
         };
       }
@@ -62,10 +62,10 @@ public class NodePointerExpression_Old_Constraints extends BaseConstraintsDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink referentNode$RAe0 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x195fd0576ac9bb49L, 0x195fd0576ac9bb4aL, "referentNode");
+    /*package*/ static final SReferenceLink referentNode$VwM0 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x195fd0576ac9bb49L, 0x195fd0576ac9bb4aL, "referentNode");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty includeNonRoot$_2Fe = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x195fd0576ac9bb49L, 0x7c1f84a957591e85L, "includeNonRoot");
+    /*package*/ static final SProperty includeNonRoot$WiVM = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x195fd0576ac9bb49L, 0x7c1f84a957591e85L, "includeNonRoot");
   }
 }

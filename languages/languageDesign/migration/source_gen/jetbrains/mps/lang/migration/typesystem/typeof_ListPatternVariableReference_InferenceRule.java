@@ -21,7 +21,7 @@ public class typeof_ListPatternVariableReference_InferenceRule extends AbstractI
     {
       SNode _nodeToCheck_1029348928467 = lvr;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6129256022887940548", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6129256022887940555", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(lvr, LINKS.declaration$ZCtw), "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6129256022887940550", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6129256022887940555", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(lvr, LINKS.declaration$OAiw), "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6129256022887940550", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -35,7 +35,7 @@ public class typeof_ListPatternVariableReference_InferenceRule extends AbstractI
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$ZCtw = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x550f7de0eda8c07aL, 0x550f7de0eda8c07bL, "declaration");
+    /*package*/ static final SReferenceLink declaration$OAiw = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x550f7de0eda8c07aL, 0x550f7de0eda8c07bL, "declaration");
   }
 
   private static final class CONCEPTS {

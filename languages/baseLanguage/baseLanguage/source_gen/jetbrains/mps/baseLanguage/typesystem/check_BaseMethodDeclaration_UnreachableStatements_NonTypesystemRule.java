@@ -25,7 +25,7 @@ public class check_BaseMethodDeclaration_UnreachableStatements_NonTypesystemRule
     if (!((boolean) BaseMethodDeclaration__BehaviorDescriptor.isDataFlowChecked_idhRptrfk.invoke(nodeToCheck))) {
       return;
     }
-    if ((SLinkOperations.getTarget(nodeToCheck, LINKS.body$WIlu) == null)) {
+    if ((SLinkOperations.getTarget(nodeToCheck, LINKS.body$qspy) == null)) {
       return;
     }
 
@@ -42,7 +42,7 @@ public class check_BaseMethodDeclaration_UnreachableStatements_NonTypesystemRule
       checkReturns = false;
     }
 
-    DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(nodeToCheck, LINKS.body$WIlu), checkReturns);
+    DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(nodeToCheck, LINKS.body$qspy), checkReturns);
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.BaseMethodDeclaration$RR;
@@ -55,7 +55,7 @@ public class check_BaseMethodDeclaration_UnreachableStatements_NonTypesystemRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
   }
 
   private static final class CONCEPTS {

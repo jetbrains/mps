@@ -24,7 +24,7 @@ public class typeof_NodeListSource_InferenceRule extends AbstractInferenceRule_R
     {
       SNode _nodeToCheck_1029348928467 = nodeListSource;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "529406319400446706", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "529406319400446703", true), (SNode) _quotation_createNode_eijui7_a1a0c0a0b(SLinkOperations.getTarget(nodeListSource, LINKS.concept$62p)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "529406319400446703", true), (SNode) _quotation_createNode_eijui7_a1a0c0a0b(SLinkOperations.getTarget(nodeListSource, LINKS.concept$2Va7)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -45,7 +45,7 @@ public class typeof_NodeListSource_InferenceRule extends AbstractInferenceRule_R
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$62p = MetaAdapterFactory.getReferenceLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6552f0adf299246fL, 0x6552f0adf2992692L, "concept");
+    /*package*/ static final SReferenceLink concept$2Va7 = MetaAdapterFactory.getReferenceLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6552f0adf299246fL, 0x6552f0adf2992692L, "concept");
   }
 
   private static final class CONCEPTS {

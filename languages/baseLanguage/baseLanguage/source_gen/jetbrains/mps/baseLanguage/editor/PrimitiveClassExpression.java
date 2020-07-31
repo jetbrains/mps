@@ -91,7 +91,7 @@ public class PrimitiveClassExpression extends SubstituteMenuBase {
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
           SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.PrimitiveClassExpression$Nt, null);
-          SLinkOperations.setTarget(result, LINKS.primitiveType$e71w, nodeToWrap);
+          SLinkOperations.setTarget(result, LINKS.primitiveType$PpIw, nodeToWrap);
           return result;
         }
 
@@ -150,6 +150,6 @@ public class PrimitiveClassExpression extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink primitiveType$e71w = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3f57ea36bd70a4e1L, 0x3f57ea36bd70a4e2L, "primitiveType");
+    /*package*/ static final SContainmentLink primitiveType$PpIw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3f57ea36bd70a4e1L, 0x3f57ea36bd70a4e2L, "primitiveType");
   }
 }

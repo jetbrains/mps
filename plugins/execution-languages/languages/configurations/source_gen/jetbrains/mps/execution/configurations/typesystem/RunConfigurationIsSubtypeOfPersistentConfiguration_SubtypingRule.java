@@ -18,7 +18,7 @@ public class RunConfigurationIsSubtypeOfPersistentConfiguration_SubtypingRule ex
   public RunConfigurationIsSubtypeOfPersistentConfiguration_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode runConfigurationType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return createPersistentConfigurationType_xmktnv_a0a1(SLinkOperations.getTarget(runConfigurationType, LINKS.persistentConfiguration$28v0));
+    return createPersistentConfigurationType_xmktnv_a0a1(SLinkOperations.getTarget(runConfigurationType, LINKS.persistentConfiguration$2710));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.RunConfigurationType$qY;
@@ -31,12 +31,12 @@ public class RunConfigurationIsSubtypeOfPersistentConfiguration_SubtypingRule ex
   }
   private static SNode createPersistentConfigurationType_xmktnv_a0a1(SNode node0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.PersistentConfigurationType$e2);
-    rootBuilder1.setReferenceTarget(LINKS.persistentConfiguration$28v0, node0);
+    rootBuilder1.setReferenceTarget(LINKS.persistentConfiguration$2710, node0);
     return rootBuilder1.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink persistentConfiguration$28v0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
+    /*package*/ static final SReferenceLink persistentConfiguration$2710 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
   }
 
   private static final class CONCEPTS {

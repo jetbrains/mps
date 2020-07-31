@@ -27,8 +27,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class ConceptAspectsHelper {
   public static SNode attachNewConceptAspect(SNode conceptNode, SNode aspectNode, SModel aspectModel) {
     BHReflection.invoke0(aspectNode, CONCEPTS.IConceptAspect$9g, SMethodTrimmedId.create("setBaseConcept", null, "5r_35Ihc58c"), conceptNode);
-    if (SPropertyOperations.getString(conceptNode, PROPS.virtualPackage$j19t) != null) {
-      SPropertyOperations.assign(aspectNode, PROPS.virtualPackage$j19t, SPropertyOperations.getString(conceptNode, PROPS.virtualPackage$j19t));
+    if (SPropertyOperations.getString(conceptNode, PROPS.virtualPackage$dz_3) != null) {
+      SPropertyOperations.assign(aspectNode, PROPS.virtualPackage$dz_3, SPropertyOperations.getString(conceptNode, PROPS.virtualPackage$dz_3));
     }
     SModelOperations.addRootNode(aspectModel, aspectNode);
     return aspectNode;
@@ -86,6 +86,6 @@ public class ConceptAspectsHelper {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty virtualPackage$j19t = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 }

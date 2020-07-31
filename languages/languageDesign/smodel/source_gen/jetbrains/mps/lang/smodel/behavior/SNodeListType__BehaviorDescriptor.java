@@ -52,13 +52,13 @@ public final class SNodeListType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    SNode conceptDeclaration = SLinkOperations.getTarget(__thisNode__, LINKS.elementConcept$AB72);
-    return (conceptDeclaration == null ? "nlist< >" : "nlist<" + SPropertyOperations.getString(conceptDeclaration, PROPS.name$tAp1) + ">");
+    SNode conceptDeclaration = SLinkOperations.getTarget(__thisNode__, LINKS.elementConcept$GWpY);
+    return (conceptDeclaration == null ? "nlist< >" : "nlist<" + SPropertyOperations.getString(conceptDeclaration, PROPS.name$lA7v) + ">");
   }
   /*package*/ static List<String> getVariableSuffixes_idhEwIzNo(@NotNull SNode __thisNode__) {
     List<String> variableSuffixes = ListSequence.fromListAndArray(new ArrayList<String>(), "nodes");
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.elementConcept$AB72) != null)) {
-      String name = NameUtil.pluralize(NameUtil.decapitalize(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.elementConcept$AB72), PROPS.name$tAp1)));
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.elementConcept$GWpY) != null)) {
+      String name = NameUtil.pluralize(NameUtil.decapitalize(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.elementConcept$GWpY), PROPS.name$lA7v)));
       ListSequence.fromList(variableSuffixes).addSequence(ListSequence.fromList(NameUtil.splitByCamels(name)));
     }
     return variableSuffixes;
@@ -68,14 +68,14 @@ public final class SNodeListType__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static SNode getAbstractCreator_idhEwIzNW(@NotNull SNode __thisNode__) {
     SNode creator = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10ab923b94aL, "jetbrains.mps.lang.smodel.structure.SNodeListCreator"));
-    SLinkOperations.setTarget(creator, LINKS.createdType$QKiI, SNodeOperations.copyNode(__thisNode__));
+    SLinkOperations.setTarget(creator, LINKS.createdType$xp4i, SNodeOperations.copyNode(__thisNode__));
     return creator;
   }
   /*package*/ static SNode getClassExpression_idhEwIzOd(@NotNull SNode __thisNode__) {
     return _quotation_createNode_r176b6_a0a4();
   }
   /*package*/ static boolean hasMissingParameters_id32KZwowVoMu(@NotNull SNode __thisNode__) {
-    return (SLinkOperations.getTarget(__thisNode__, LINKS.elementConcept$AB72) == null);
+    return (SLinkOperations.getTarget(__thisNode__, LINKS.elementConcept$GWpY) == null);
   }
   /*package*/ static boolean canBeCoerced_id476YRQvP9l3(@NotNull SNode __thisNode__, SAbstractConcept c) {
     if (CONCEPTS.LinkedListType$bW.equals(c) || CONCEPTS.DequeType$X6.equals(c) || CONCEPTS.StackType$pL.equals(c) || CONCEPTS.QueueType$4E.equals(c)) {
@@ -167,12 +167,12 @@ public final class SNodeListType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink elementConcept$AB72 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aae26be32L, 0x10aae27c421L, "elementConcept");
-    /*package*/ static final SContainmentLink createdType$QKiI = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10ab923b94aL, 0x10ab92468d9L, "createdType");
+    /*package*/ static final SReferenceLink elementConcept$GWpY = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aae26be32L, 0x10aae27c421L, "elementConcept");
+    /*package*/ static final SContainmentLink createdType$xp4i = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10ab923b94aL, 0x10ab92468d9L, "createdType");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

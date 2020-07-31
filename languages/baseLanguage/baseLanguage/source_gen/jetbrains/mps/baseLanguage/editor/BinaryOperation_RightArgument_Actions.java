@@ -31,14 +31,14 @@ public class BinaryOperation_RightArgument_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.rightExpression$rxBl))) {
+        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.rightExpression$li3b))) {
           return;
         }
-        if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.rightExpression$rxBl))), SNodeOperations.asSConcept(CONCEPTS.Expression$TP)))) {
-          SLinkOperations.setTarget(node, LINKS.rightExpression$rxBl, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
+        if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.rightExpression$li3b))), SNodeOperations.asSConcept(CONCEPTS.Expression$TP)))) {
+          SLinkOperations.setTarget(node, LINKS.rightExpression$li3b, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
           return;
         }
-        SNode leftExpression = SLinkOperations.getTarget(node, LINKS.leftExpression$rxLZ);
+        SNode leftExpression = SLinkOperations.getTarget(node, LINKS.leftExpression$lndx);
         SNodeOperations.replaceWithAnother(node, leftExpression);
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, leftExpression, SelectionManager.LAST_CELL, -1);
       }
@@ -88,8 +88,8 @@ public class BinaryOperation_RightArgument_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
   }
 
   private static final class CONCEPTS {

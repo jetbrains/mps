@@ -34,13 +34,13 @@ public final class ColorReference__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Color findColor_id1Os2kBLuoy8(@NotNull SNode __thisNode__) {
-    SNode color = SLinkOperations.getTarget(__thisNode__, LINKS.target$oYjX);
+    SNode color = SLinkOperations.getTarget(__thisNode__, LINKS.target$6bEz);
     if (color == null) {
       return Color.BLUE;
     }
     Class<Color> clazz = Color.class;
     try {
-      return (Color) clazz.getField(SPropertyOperations.getString(color, PROPS.name$tAp1)).get(clazz);
+      return (Color) clazz.getField(SPropertyOperations.getString(color, PROPS.name$lA7v)).get(clazz);
     } catch (SecurityException e) {
       return Color.BLUE;
     } catch (IllegalAccessException e) {
@@ -98,10 +98,10 @@ public final class ColorReference__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$oYjX = MetaAdapterFactory.getReferenceLink(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x3a2b0182df2201afL, 0x3a2b0182df22029aL, "target");
+    /*package*/ static final SReferenceLink target$6bEz = MetaAdapterFactory.getReferenceLink(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x3a2b0182df2201afL, 0x3a2b0182df22029aL, "target");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

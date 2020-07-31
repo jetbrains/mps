@@ -33,21 +33,21 @@ public class check_GenericNewExpressionTypeParameters_NonTypesystemRule extends 
   public check_GenericNewExpressionTypeParameters_NonTypesystemRule() {
   }
   public void applyRule(final SNode genericNE, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(genericNE, LINKS.creator$itDQ) == null)) {
+    if ((SLinkOperations.getTarget(genericNE, LINKS.creator$Wnha) == null)) {
       return;
     }
     SNode classifier;
     List<SNode> parameters;
 
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(genericNE, LINKS.creator$itDQ), CONCEPTS.ClassCreator$yU)) {
-      classifier = SNodeOperations.as((SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(genericNE, LINKS.creator$itDQ), CONCEPTS.ClassCreator$yU), LINKS.baseMethodDeclaration$$A7i))), CONCEPTS.Classifier$hJ);
-      parameters = SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(genericNE, LINKS.creator$itDQ), CONCEPTS.ClassCreator$yU), LINKS.typeParameter$swNi);
-    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(genericNE, LINKS.creator$itDQ), CONCEPTS.DefaultClassCreator$sQ)) {
-      classifier = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(genericNE, LINKS.creator$itDQ), CONCEPTS.DefaultClassCreator$sQ), LINKS.classifier$bk50);
-      parameters = SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(genericNE, LINKS.creator$itDQ), CONCEPTS.DefaultClassCreator$sQ), LINKS.typeParameter$PRff);
-    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(genericNE, LINKS.creator$itDQ), CONCEPTS.AnonymousClassCreator$N6)) {
-      classifier = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(genericNE, LINKS.creator$itDQ), CONCEPTS.AnonymousClassCreator$N6), LINKS.cls$xt3G), LINKS.classifier$1y5e);
-      parameters = SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(genericNE, LINKS.creator$itDQ), CONCEPTS.AnonymousClassCreator$N6), LINKS.cls$xt3G), LINKS.typeParameter$uY4E);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(genericNE, LINKS.creator$Wnha), CONCEPTS.ClassCreator$yU)) {
+      classifier = SNodeOperations.as((SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(genericNE, LINKS.creator$Wnha), CONCEPTS.ClassCreator$yU), LINKS.baseMethodDeclaration$ItxI))), CONCEPTS.Classifier$hJ);
+      parameters = SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(genericNE, LINKS.creator$Wnha), CONCEPTS.ClassCreator$yU), LINKS.typeParameter$NSPI);
+    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(genericNE, LINKS.creator$Wnha), CONCEPTS.DefaultClassCreator$sQ)) {
+      classifier = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(genericNE, LINKS.creator$Wnha), CONCEPTS.DefaultClassCreator$sQ), LINKS.classifier$uIr0);
+      parameters = SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(genericNE, LINKS.creator$Wnha), CONCEPTS.DefaultClassCreator$sQ), LINKS.typeParameter$5Koh);
+    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(genericNE, LINKS.creator$Wnha), CONCEPTS.AnonymousClassCreator$N6)) {
+      classifier = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(genericNE, LINKS.creator$Wnha), CONCEPTS.AnonymousClassCreator$N6), LINKS.cls$d4Mk), LINKS.classifier$JwxM);
+      parameters = SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(genericNE, LINKS.creator$Wnha), CONCEPTS.AnonymousClassCreator$N6), LINKS.cls$d4Mk), LINKS.typeParameter$4gm);
     } else {
       return;
     }
@@ -55,7 +55,7 @@ public class check_GenericNewExpressionTypeParameters_NonTypesystemRule extends 
     Map<SNode, SNode> substitutions = MapSequence.fromMap(new HashMap<SNode, SNode>());
     {
       Iterator<SNode> typeParameter_it = ListSequence.fromList(parameters).iterator();
-      Iterator<SNode> typeVar_it = ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$ziZT)).iterator();
+      Iterator<SNode> typeVar_it = ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$6cWB)).iterator();
       SNode typeParameter_var;
       SNode typeVar_var;
       while (typeParameter_it.hasNext() && typeVar_it.hasNext()) {
@@ -66,30 +66,30 @@ public class check_GenericNewExpressionTypeParameters_NonTypesystemRule extends 
       }
     }
     for (SNode typeParameter : parameters) {
-      if (!(!(TypecheckingFacade.getFromContext().isStrongSubtype(typeParameter, SLinkOperations.getTarget(_quotation_createNode_nhxavr_a1a0a0a0i0b(), LINKS.descriptor$ZkDR))))) {
+      if (!(!(TypecheckingFacade.getFromContext().isStrongSubtype(typeParameter, SLinkOperations.getTarget(_quotation_createNode_nhxavr_a1a0a0a0i0b(), LINKS.descriptor$F0hD))))) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(typeParameter, "primitive types not allowed", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4853049144089199522", null, errorTarget);
       }
     }
-    if (ListSequence.fromList(parameters).count() == ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$ziZT)).count()) {
+    if (ListSequence.fromList(parameters).count() == ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$6cWB)).count()) {
       {
         Iterator<SNode> typeArgument_it = ListSequence.fromList(parameters).iterator();
-        Iterator<SNode> typeVar_it = ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$ziZT)).iterator();
+        Iterator<SNode> typeVar_it = ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$6cWB)).iterator();
         SNode typeArgument_var;
         SNode typeVar_var;
         while (typeArgument_it.hasNext() && typeVar_it.hasNext()) {
           typeArgument_var = typeArgument_it.next();
           typeVar_var = typeVar_it.next();
 
-          if ((SLinkOperations.getTarget(typeVar_var, LINKS.bound$dqDF) != null)) {
-            if (!((boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(SLinkOperations.getTarget(typeVar_var, LINKS.bound$dqDF), typeArgument_var, substitutions))) {
+          if ((SLinkOperations.getTarget(typeVar_var, LINKS.bound$vUbP) != null)) {
+            if (!((boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(SLinkOperations.getTarget(typeVar_var, LINKS.bound$vUbP), typeArgument_var, substitutions))) {
               {
                 final MessageTarget errorTarget = new NodeMessageTarget();
                 IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(typeArgument_var, "The type " + typeArgument_var + " is not a valid substitute for the bounded parameter " + typeVar_var, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4853049144095798837", null, errorTarget);
               }
             }
           }
-          for (SNode auxBound : SLinkOperations.getChildren(typeVar_var, LINKS.auxBounds$jS6R)) {
+          for (SNode auxBound : SLinkOperations.getChildren(typeVar_var, LINKS.auxBounds$CbkD)) {
             SNode concreteBound = RulesFunctions_BaseLanguage.concretifyType(auxBound, typeParamsToArgs);
             if (!(TypecheckingFacade.getFromContext().isSubtype(typeArgument_var, concreteBound))) {
               final MessageTarget errorTarget = new NodeMessageTarget();
@@ -118,18 +118,18 @@ public class check_GenericNewExpressionTypeParameters_NonTypesystemRule extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink creator$itDQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink typeParameter$swNi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
-    /*package*/ static final SReferenceLink classifier$bk50 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
-    /*package*/ static final SContainmentLink typeParameter$PRff = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0accfdb3L, "typeParameter");
-    /*package*/ static final SContainmentLink cls$xt3G = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls");
-    /*package*/ static final SReferenceLink classifier$1y5e = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
-    /*package*/ static final SContainmentLink typeParameter$uY4E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SReferenceLink descriptor$ZkDR = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
-    /*package*/ static final SContainmentLink bound$dqDF = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound");
-    /*package*/ static final SContainmentLink auxBounds$jS6R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae913a476L, "auxBounds");
+    /*package*/ static final SContainmentLink creator$Wnha = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink typeParameter$NSPI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
+    /*package*/ static final SReferenceLink classifier$uIr0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
+    /*package*/ static final SContainmentLink typeParameter$5Koh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0accfdb3L, "typeParameter");
+    /*package*/ static final SContainmentLink cls$d4Mk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls");
+    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SContainmentLink typeParameter$4gm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SReferenceLink descriptor$F0hD = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
+    /*package*/ static final SContainmentLink bound$vUbP = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound");
+    /*package*/ static final SContainmentLink auxBounds$CbkD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae913a476L, "auxBounds");
   }
 
   private static final class CONCEPTS {

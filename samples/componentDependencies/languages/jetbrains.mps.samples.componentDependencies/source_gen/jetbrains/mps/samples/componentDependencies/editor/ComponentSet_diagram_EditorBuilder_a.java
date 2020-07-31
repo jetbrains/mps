@@ -90,22 +90,22 @@ import org.jetbrains.mps.openapi.language.SProperty;
   private class DiagramCellImpl_amytw9_a0a extends DiagramCell {
     private DiagramCellImpl_amytw9_a0a(EditorContext editorContext, SNode node) {
       super(editorContext, node);
-      setSubstituteInfo(new CompositeSubstituteInfo(editorContext, new BasicCellContext(node), new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.Component$vB, LINKS.component$CfKz, new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
+      setSubstituteInfo(new CompositeSubstituteInfo(editorContext, new BasicCellContext(node), new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.Component$vB, LINKS.component$vCwX, new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
         public void invoke(SNode node, Integer x, Integer y) {
-          SPropertyOperations.assign(node, PROPS.name$tAp1, "New component");
-          SPropertyOperations.assign(node, PROPS.x$FXkA, x);
-          SPropertyOperations.assign(node, PROPS.y$FXl$, y);
+          SPropertyOperations.assign(node, PROPS.name$lA7v, "New component");
+          SPropertyOperations.assign(node, PROPS.x$iGYq, x);
+          SPropertyOperations.assign(node, PROPS.y$iHss, y);
         }
       })}));
       synchronize();
     }
 
     protected SubstituteInfoPartExt[] createPaletteBlockSubstituteInfoPartExts() {
-      return new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.Component$vB, LINKS.component$CfKz, new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
+      return new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.Component$vB, LINKS.component$vCwX, new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
         public void invoke(SNode node, Integer x, Integer y) {
-          SPropertyOperations.assign(node, PROPS.name$tAp1, "New component");
-          SPropertyOperations.assign(node, PROPS.x$FXkA, x);
-          SPropertyOperations.assign(node, PROPS.y$FXl$, y);
+          SPropertyOperations.assign(node, PROPS.name$lA7v, "New component");
+          SPropertyOperations.assign(node, PROPS.x$iGYq, x);
+          SPropertyOperations.assign(node, PROPS.y$iHss, y);
         }
       })};
     }
@@ -175,10 +175,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
       ListIterator<SNode> blocksIterator = myBlocks.listIterator();
       Set<SNode> existingConnectors = new HashSet<SNode>(myConnectors);
       ListIterator<SNode> connectorsIterator = myConnectors.listIterator();
-      syncDiagramElements(SLinkOperations.getChildren(getSNode(), LINKS.component$CfKz), blocksIterator, existingBlocks, connectorsIterator, existingConnectors);
-      syncDiagramElements(ListSequence.fromList(SLinkOperations.getChildren(getSNode(), LINKS.component$CfKz)).translate(new ITranslator2<SNode, SNode>() {
+      syncDiagramElements(SLinkOperations.getChildren(getSNode(), LINKS.component$vCwX), blocksIterator, existingBlocks, connectorsIterator, existingConnectors);
+      syncDiagramElements(ListSequence.fromList(SLinkOperations.getChildren(getSNode(), LINKS.component$vCwX)).translate(new ITranslator2<SNode, SNode>() {
         public Iterable<SNode> translate(SNode it) {
-          return SLinkOperations.getChildren(it, LINKS.dep$oYBD);
+          return SLinkOperations.getChildren(it, LINKS.dep$6lcR);
         }
       }), blocksIterator, existingBlocks, connectorsIterator, existingConnectors);
       purgeTailNodes(blocksIterator);
@@ -195,13 +195,13 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink component$CfKz = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814242bL, 0x565e197638146fa8L, "component");
-    /*package*/ static final SContainmentLink dep$oYBD = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e19763814f147L, "dep");
+    /*package*/ static final SContainmentLink component$vCwX = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814242bL, 0x565e197638146fa8L, "component");
+    /*package*/ static final SContainmentLink dep$6lcR = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e19763814f147L, "dep");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty x$FXkA = MetaAdapterFactory.getProperty(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e1976381bdb4dL, "x");
-    /*package*/ static final SProperty y$FXl$ = MetaAdapterFactory.getProperty(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e1976381bdb4fL, "y");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty x$iGYq = MetaAdapterFactory.getProperty(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e1976381bdb4dL, "x");
+    /*package*/ static final SProperty y$iHss = MetaAdapterFactory.getProperty(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e1976381bdb4fL, "y");
   }
 }

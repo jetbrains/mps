@@ -96,7 +96,7 @@ public enum ShowingKind {
     if (seqType == null) {
       return null;
     }
-    SNode elementType = SLinkOperations.getTarget(seqType, LINKS.elementType$2gFy);
+    SNode elementType = SLinkOperations.getTarget(seqType, LINKS.elementType$655u);
     if (TypecheckingFacade.getFromContext().isSubtype(elementType, _quotation_createNode_jbl8q4_b0a3a1())) {
       return ShowingKind.NODE;
     }
@@ -179,6 +179,6 @@ public enum ShowingKind {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$2gFy = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
+    /*package*/ static final SContainmentLink elementType$655u = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
   }
 }

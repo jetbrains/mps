@@ -40,7 +40,7 @@ public final class CreateScript_Intention extends AbstractIntentionDescriptor im
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SLinkOperations.getTarget(node, LINKS.mappingScript$YoG1) == null);
+    return (SLinkOperations.getTarget(node, LINKS.mappingScript$dXkv) == null);
   }
   @Override
   public boolean isSurroundWith() {
@@ -62,11 +62,11 @@ public final class CreateScript_Intention extends AbstractIntentionDescriptor im
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode script = SNodeFactoryOperations.createNewRootNode(SNodeOperations.getModel(node), CONCEPTS.MappingScript$D9, null);
-      SPropertyOperations.set(script, PROPS.name$tAp1, "script");
-      if (SNodeOperations.hasRole(node, LINKS.preMappingScript$DukP)) {
-        SPropertyOperations.setEnum(script, PROPS.scriptKind$P4GV, 0x1165f07f3c2L, "pre_processing");
+      SPropertyOperations.set(script, PROPS.name$lA7v, "script");
+      if (SNodeOperations.hasRole(node, LINKS.preMappingScript$5G5F)) {
+        SPropertyOperations.setEnum(script, PROPS.scriptKind$HhK_, 0x1165f07f3c2L, "pre_processing");
       }
-      SLinkOperations.setTarget(node, LINKS.mappingScript$YoG1, script);
+      SLinkOperations.setTarget(node, LINKS.mappingScript$dXkv, script);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -75,8 +75,8 @@ public final class CreateScript_Intention extends AbstractIntentionDescriptor im
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink mappingScript$YoG1 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x116597b27aaL, 0x116597b663aL, "mappingScript");
-    /*package*/ static final SContainmentLink preMappingScript$DukP = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x116597a610dL, "preMappingScript");
+    /*package*/ static final SReferenceLink mappingScript$dXkv = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x116597b27aaL, 0x116597b663aL, "mappingScript");
+    /*package*/ static final SContainmentLink preMappingScript$5G5F = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x116597a610dL, "preMappingScript");
   }
 
   private static final class CONCEPTS {
@@ -84,7 +84,7 @@ public final class CreateScript_Intention extends AbstractIntentionDescriptor im
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty scriptKind$P4GV = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1165958fcd6L, 0x1165f0cf1aaL, "scriptKind");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty scriptKind$HhK_ = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1165958fcd6L, 0x1165f0cf1aaL, "scriptKind");
   }
 }

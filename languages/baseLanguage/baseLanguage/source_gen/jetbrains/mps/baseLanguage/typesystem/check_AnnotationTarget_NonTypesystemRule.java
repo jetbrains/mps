@@ -26,10 +26,10 @@ public class check_AnnotationTarget_NonTypesystemRule extends AbstractNonTypesys
   public check_AnnotationTarget_NonTypesystemRule() {
   }
   public void applyRule(final SNode annotationInstance, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode annotationDeclaration = SLinkOperations.getTarget(annotationInstance, LINKS.annotation$zNxu);
+    SNode annotationDeclaration = SLinkOperations.getTarget(annotationInstance, LINKS.annotation$lXdy);
     SNode targetAi = null;
-    for (SNode ai : SLinkOperations.getChildren(annotationDeclaration, LINKS.annotation$oVP4)) {
-      if (SLinkOperations.hasPointer(ai, LINKS.annotation$zNxu, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.annotation(JDK/)", "~Target"))) {
+    for (SNode ai : SLinkOperations.getChildren(annotationDeclaration, LINKS.annotation$4YGW)) {
+      if (SLinkOperations.hasPointer(ai, LINKS.annotation$lXdy, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.annotation(JDK/)", "~Target"))) {
         targetAi = ai;
         break;
       }
@@ -37,7 +37,7 @@ public class check_AnnotationTarget_NonTypesystemRule extends AbstractNonTypesys
     if (targetAi == null || (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(annotationInstance), CONCEPTS.HasAnnotation$cu))) && SNodeOperations.getNodeAncestor(annotationInstance, CONCEPTS.AnnotationInstance$5z, false, false) != null) {
       return;
     }
-    boolean goodTarget = AnnotationUtil.accept(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(targetAi, LINKS.value$EXfF)).first(), LINKS.value$Bis), SNodeOperations.as(SNodeOperations.getParent(annotationInstance), CONCEPTS.HasAnnotation$cu));
+    boolean goodTarget = AnnotationUtil.accept(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(targetAi, LINKS.value$NE_P)).first(), LINKS.value$j1V$), SNodeOperations.as(SNodeOperations.getParent(annotationInstance), CONCEPTS.HasAnnotation$cu));
     if (!(goodTarget)) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(annotationInstance, "wrong target of annotation", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8695552310380242272", null, errorTarget);
@@ -54,10 +54,10 @@ public class check_AnnotationTarget_NonTypesystemRule extends AbstractNonTypesys
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SContainmentLink value$EXfF = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a71c697fL, "value");
-    /*package*/ static final SContainmentLink value$Bis = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71c0fc4L, "value");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SContainmentLink value$NE_P = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a71c697fL, "value");
+    /*package*/ static final SContainmentLink value$j1V$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71c0fc4L, "value");
   }
 
   private static final class CONCEPTS {

@@ -30,34 +30,34 @@ public class AdaptableClassifierTarget {
       allAdaptable = ListSequence.fromList(new ArrayList<SNode>());
       genContext.putStepObject(Keys.ALL_NEEDS_ADAPTED, allAdaptable);
     }
-    if (!(ListSequence.fromList(allAdaptable).contains(SLinkOperations.getTarget(adaptable, LINKS.classifier$pQ_R)))) {
-      ListSequence.fromList(allAdaptable).addElement(SLinkOperations.getTarget(adaptable, LINKS.classifier$pQ_R));
+    if (!(ListSequence.fromList(allAdaptable).contains(SLinkOperations.getTarget(adaptable, LINKS.classifier$xslD)))) {
+      ListSequence.fromList(allAdaptable).addElement(SLinkOperations.getTarget(adaptable, LINKS.classifier$xslD));
     }
     List<SNode> trgList = getOrCreateTargets(adaptable);
     if (!(ListSequence.fromList(trgList).any(new IWhereFilter<SNode>() {
       @Override
       public boolean accept(SNode cr) {
-        return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(target, LINKS.classifier$pQ_R)).equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(cr));
+        return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(target, LINKS.classifier$xslD)).equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(cr));
       }
     }))) {
-      ListSequence.fromList(trgList).addElement(SLinkOperations.getTarget(target, LINKS.classifier$pQ_R));
-      Values.ADAPTABLE.set(genContext, SLinkOperations.getTarget(target, LINKS.classifier$pQ_R), SLinkOperations.getTarget(adaptable, LINKS.classifier$pQ_R));
+      ListSequence.fromList(trgList).addElement(SLinkOperations.getTarget(target, LINKS.classifier$xslD));
+      Values.ADAPTABLE.set(genContext, SLinkOperations.getTarget(target, LINKS.classifier$xslD), SLinkOperations.getTarget(adaptable, LINKS.classifier$xslD));
     }
   }
   private List<SNode> getOrCreateTargets(SNode adaptable) {
-    List<SNode> trgList = (List<SNode>) genContext.getStepObject(Keys.NEEDS_ADAPTER.compose(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(adaptable, LINKS.classifier$pQ_R))));
+    List<SNode> trgList = (List<SNode>) genContext.getStepObject(Keys.NEEDS_ADAPTER.compose(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(adaptable, LINKS.classifier$xslD))));
     if (trgList == null) {
       trgList = ListSequence.fromList(new ArrayList<SNode>());
-      genContext.putStepObject(Keys.NEEDS_ADAPTER.compose(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(adaptable, LINKS.classifier$pQ_R))), trgList);
+      genContext.putStepObject(Keys.NEEDS_ADAPTER.compose(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(adaptable, LINKS.classifier$xslD))), trgList);
     }
     return trgList;
   }
   public String getTargetName(SNode target) {
     SNode adaptable = (SNode) Values.ADAPTABLE.get(genContext, target);
-    String aname = SPropertyOperations.getString(adaptable, PROPS.name$tAp1);
+    String aname = SPropertyOperations.getString(adaptable, PROPS.name$lA7v);
     int aldidx = aname.lastIndexOf(".");
     aname = (aldidx >= 0 ? aname.substring(aldidx + 1) : aname);
-    String tname = SPropertyOperations.getString(target, PROPS.name$tAp1);
+    String tname = SPropertyOperations.getString(target, PROPS.name$lA7v);
     int tldidx = tname.lastIndexOf(".");
     tname = (tldidx >= 0 ? tname.substring(tldidx + 1) : tname);
     return aname + "_to_" + tname + "_adapter";
@@ -67,7 +67,7 @@ public class AdaptableClassifierTarget {
     ntype = (ntype == null ? TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(expr), CONCEPTS.ClassifierType$IZ) : ntype);
     assert ntype != null;
     final String trgFQname = (String) Values.PREP_DATA.get(genContext, expr);
-    SNode target = ListSequence.fromList(getTargets(SLinkOperations.getTarget(ntype, LINKS.classifier$pQ_R))).findFirst(new IWhereFilter<SNode>() {
+    SNode target = ListSequence.fromList(getTargets(SLinkOperations.getTarget(ntype, LINKS.classifier$xslD))).findFirst(new IWhereFilter<SNode>() {
       @Override
       public boolean accept(SNode cr) {
         return trgFQname.equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(cr));
@@ -87,11 +87,11 @@ public class AdaptableClassifierTarget {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

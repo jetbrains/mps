@@ -37,17 +37,17 @@ public final class ConceptNodeType__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    SNode concept = SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaraton$Qe25);
+    SNode concept = SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaraton$gN0r);
     if (concept == null) {
       return "conceptNode< >";
     } else {
-      return "conceptNode<" + SPropertyOperations.getString(concept, PROPS.name$tAp1) + ">";
+      return "conceptNode<" + SPropertyOperations.getString(concept, PROPS.name$lA7v) + ">";
     }
   }
   /*package*/ static List<String> getVariableSuffixes_idhEwIzNo(@NotNull SNode __thisNode__) {
     List<String> variableSuffixes = ListSequence.fromListAndArray(new ArrayList<String>(), "concept");
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaraton$Qe25) != null)) {
-      String name = NameUtil.decapitalize(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaraton$Qe25), PROPS.name$tAp1));
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaraton$gN0r) != null)) {
+      String name = NameUtil.decapitalize(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaraton$gN0r), PROPS.name$lA7v));
       for (String element : NameUtil.splitByCamels(name)) {
         ListSequence.fromList(variableSuffixes).addElement(element + "Concept");
       }
@@ -104,10 +104,10 @@ public final class ConceptNodeType__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaraton$Qe25 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, 0x112da284156L, "conceptDeclaraton");
+    /*package*/ static final SReferenceLink conceptDeclaraton$gN0r = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, 0x112da284156L, "conceptDeclaraton");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

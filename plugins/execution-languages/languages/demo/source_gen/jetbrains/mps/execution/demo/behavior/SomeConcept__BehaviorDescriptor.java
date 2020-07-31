@@ -31,7 +31,7 @@ public final class SomeConcept__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static boolean isNodeRunnable_id431DWIovi3C(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getBoolean(__thisNode__, PROPS.valid$$Z1J);
+    return SPropertyOperations.getBoolean(__thisNode__, PROPS.valid$UxPL);
   }
 
   /*package*/ SomeConcept__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class SomeConcept__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty valid$$Z1J = MetaAdapterFactory.getProperty(0xe6081818930c4926L, 0xbdef3537bcc59087L, 0x446739e63be33684L, 0x446739e63be7cbc4L, "valid");
+    /*package*/ static final SProperty valid$UxPL = MetaAdapterFactory.getProperty(0xe6081818930c4926L, 0xbdef3537bcc59087L, 0x446739e63be33684L, 0x446739e63be7cbc4L, "valid");
   }
 }

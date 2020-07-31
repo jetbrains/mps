@@ -41,19 +41,19 @@ public final class PreferencesComponentDeclaration__BehaviorDescriptor extends B
   }
 
   /*package*/ static String getClassName_idhEwIw5J(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1) + "_PreferencesComponent";
+    return SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v) + "_PreferencesComponent";
   }
   /*package*/ static String getGeneratedClassFQName_id4gD2fissWfp(@NotNull SNode __thisNode__) {
     return SNodeOperations.getModelLongName(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getModel(__thisNode__)) + "." + PreferencesComponentDeclaration__BehaviorDescriptor.getClassName_idhEwIw5J.invoke(__thisNode__);
   }
   /*package*/ static SNode createType_idhEwJimy(@NotNull SNode __thisNode__) {
     SNode type = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119c497fc64L, "jetbrains.mps.lang.plugin.structure.PreferencesComponentType"));
-    SLinkOperations.setTarget(type, LINKS.componentDeclaration$KpMu, __thisNode__);
+    SLinkOperations.setTarget(type, LINKS.componentDeclaration$svsy, __thisNode__);
     return type;
   }
   /*package*/ static List<SNode> getMembers_idhEwJioW(@NotNull SNode __thisNode__) {
     List<SNode> members = new ArrayList<SNode>();
-    ListSequence.fromList(members).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.persistenPropertyDeclaration$kaoD)));
+    ListSequence.fromList(members).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.persistenPropertyDeclaration$L1VR)));
     return members;
   }
 
@@ -110,11 +110,11 @@ public final class PreferencesComponentDeclaration__BehaviorDescriptor extends B
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink componentDeclaration$KpMu = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119c497fc64L, 0x119c4987dc8L, "componentDeclaration");
-    /*package*/ static final SContainmentLink persistenPropertyDeclaration$kaoD = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119c44c226fL, 0x119c456be96L, "persistenPropertyDeclaration");
+    /*package*/ static final SReferenceLink componentDeclaration$svsy = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119c497fc64L, 0x119c4987dc8L, "componentDeclaration");
+    /*package*/ static final SContainmentLink persistenPropertyDeclaration$L1VR = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119c44c226fL, 0x119c456be96L, "persistenPropertyDeclaration");
   }
 }

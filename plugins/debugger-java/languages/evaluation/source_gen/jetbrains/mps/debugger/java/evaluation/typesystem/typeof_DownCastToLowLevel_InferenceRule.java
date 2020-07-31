@@ -20,7 +20,7 @@ public class typeof_DownCastToLowLevel_InferenceRule extends AbstractInferenceRu
   }
   public void applyRule(final SNode downCastToLowLevel, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      final SNode e = typeCheckingContext.typeOf(SLinkOperations.getTarget(downCastToLowLevel, LINKS.expression$vmO6), "r:1b2caefb-8c76-452e-a59a-bbd2c73d0b03(jetbrains.mps.debugger.java.evaluation.typesystem)", "7915630211773500867", true);
+      final SNode e = typeCheckingContext.typeOf(SLinkOperations.getTarget(downCastToLowLevel, LINKS.expression$c3eU), "r:1b2caefb-8c76-452e-a59a-bbd2c73d0b03(jetbrains.mps.debugger.java.evaluation.typesystem)", "7915630211773500867", true);
       typeCheckingContext.whenConcrete(e, new Runnable() {
         public void run() {
           {
@@ -29,7 +29,7 @@ public class typeof_DownCastToLowLevel_InferenceRule extends AbstractInferenceRu
               {
                 SNode _nodeToCheck_1029348928467 = downCastToLowLevel;
                 EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:1b2caefb-8c76-452e-a59a-bbd2c73d0b03(jetbrains.mps.debugger.java.evaluation.typesystem)", "7915630211773498604", 0, null);
-                typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:1b2caefb-8c76-452e-a59a-bbd2c73d0b03(jetbrains.mps.debugger.java.evaluation.typesystem)", "7915630211773498601", true), (SNode) SLinkOperations.getTarget(coercedNode_pc09cd_a0a0, LINKS.lowType$UDHw), _info_12389875345);
+                typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:1b2caefb-8c76-452e-a59a-bbd2c73d0b03(jetbrains.mps.debugger.java.evaluation.typesystem)", "7915630211773498601", true), (SNode) SLinkOperations.getTarget(coercedNode_pc09cd_a0a0, LINKS.lowType$qd2w), _info_12389875345);
               }
             } else {
             }
@@ -49,8 +49,8 @@ public class typeof_DownCastToLowLevel_InferenceRule extends AbstractInferenceRu
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$vmO6 = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x6dd9f7bd221bb1d5L, 0x6dd9f7bd221bb39eL, "expression");
-    /*package*/ static final SContainmentLink lowType$UDHw = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, 0x3f11b1341fa25ed9L, "lowType");
+    /*package*/ static final SContainmentLink expression$c3eU = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x6dd9f7bd221bb1d5L, 0x6dd9f7bd221bb39eL, "expression");
+    /*package*/ static final SContainmentLink lowType$qd2w = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, 0x3f11b1341fa25ed9L, "lowType");
   }
 
   private static final class CONCEPTS {

@@ -25,7 +25,7 @@ public final class SwitchExpressionPW_PasteWrapper_1 implements PasteWrapper {
   }
   private static SNode createEnumSwitchCaseBody_Expression_degi1_a0a0b(SNode node0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.EnumSwitchCaseBody_Expression$Xi);
-    rootBuilder1.forChild(LINKS.expression$6WR0).initNode(node0, CONCEPTS.Expression$TP, true);
+    rootBuilder1.forChild(LINKS.expression$nuD0).initNode(node0, CONCEPTS.Expression$TP, true);
     return rootBuilder1.getResult();
   }
 
@@ -36,6 +36,6 @@ public final class SwitchExpressionPW_PasteWrapper_1 implements PasteWrapper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$6WR0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc5L, 0x220ad6aedf1fdcc6L, "expression");
+    /*package*/ static final SContainmentLink expression$nuD0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc5L, 0x220ad6aedf1fdcc6L, "expression");
   }
 }

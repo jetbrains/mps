@@ -1358,7 +1358,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
           if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.ClassifierType$IZ))) {
             return false;
           }
-          return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.ClassifierType$IZ), LINKS.parameter$dQne)).contains(variable);
+          return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.ClassifierType$IZ), LINKS.parameter$HlfM)).contains(variable);
         }
         public SNode convert(SNode contextNode, String role, SNode variable, boolean isAggregation) {
           return _quotation_createNode_3ist9o_a0a1a0a0a0tm0a();
@@ -1414,8 +1414,8 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
   }
   public static class CustomOverloadedOperationsTypesProvider_a extends OverloadedOperationsTypesProvider {
     public CustomOverloadedOperationsTypesProvider_a(SAbstractConcept concept) {
-      this.myLeftOperandType = SLinkOperations.getTarget(_quotation_createNode_3ist9o_a0a0a0b(), LINKS.descriptor$ZkDR);
-      this.myRightOperandType = SLinkOperations.getTarget(_quotation_createNode_3ist9o_a0a1a0b(), LINKS.descriptor$ZkDR);
+      this.myLeftOperandType = SLinkOperations.getTarget(_quotation_createNode_3ist9o_a0a0a0b(), LINKS.descriptor$F0hD);
+      this.myRightOperandType = SLinkOperations.getTarget(_quotation_createNode_3ist9o_a0a1a0b(), LINKS.descriptor$F0hD);
       this.myOperationConcept = concept;
       this.myLeftTypeIsExact = false;
       this.myRightTypeIsExact = false;
@@ -1452,8 +1452,8 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
   }
   public static class CustomOverloadedOperationsTypesProvider_g extends OverloadedOperationsTypesProvider {
     public CustomOverloadedOperationsTypesProvider_g(SAbstractConcept concept) {
-      this.myLeftOperandType = SLinkOperations.getTarget(_quotation_createNode_3ist9o_a0a0a0c(), LINKS.descriptor$ZkDR);
-      this.myRightOperandType = SLinkOperations.getTarget(_quotation_createNode_3ist9o_a0a1a0c(), LINKS.descriptor$ZkDR);
+      this.myLeftOperandType = SLinkOperations.getTarget(_quotation_createNode_3ist9o_a0a0a0c(), LINKS.descriptor$F0hD);
+      this.myRightOperandType = SLinkOperations.getTarget(_quotation_createNode_3ist9o_a0a1a0c(), LINKS.descriptor$F0hD);
       this.myOperationConcept = concept;
       this.myLeftTypeIsExact = false;
       this.myRightTypeIsExact = false;
@@ -1492,7 +1492,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
   }
   public static class CustomOverloadedOperationsTypesProvider_h extends OverloadedOperationsTypesProvider {
     public CustomOverloadedOperationsTypesProvider_h(SAbstractConcept concept) {
-      this.myLeftOperandType = SLinkOperations.getTarget(_quotation_createNode_3ist9o_a0a0a0d(), LINKS.descriptor$ZkDR);
+      this.myLeftOperandType = SLinkOperations.getTarget(_quotation_createNode_3ist9o_a0a0a0d(), LINKS.descriptor$F0hD);
       this.myRightOperandType = _quotation_createNode_3ist9o_a0b0a3();
       this.myOperationConcept = concept;
       this.myLeftTypeIsExact = false;
@@ -1533,7 +1533,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
   }
   public static class CustomOverloadedOperationsTypesProvider_b extends OverloadedOperationsTypesProvider {
     public CustomOverloadedOperationsTypesProvider_b(SAbstractConcept concept) {
-      this.myLeftOperandType = SLinkOperations.getTarget(_quotation_createNode_3ist9o_a0a0a0e(), LINKS.descriptor$ZkDR);
+      this.myLeftOperandType = SLinkOperations.getTarget(_quotation_createNode_3ist9o_a0a0a0e(), LINKS.descriptor$F0hD);
       this.myRightOperandType = _quotation_createNode_3ist9o_a0b0a4();
       this.myOperationConcept = concept;
       this.myLeftTypeIsExact = false;
@@ -1720,7 +1720,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
-    /*package*/ static final SReferenceLink descriptor$ZkDR = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SReferenceLink descriptor$F0hD = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
   }
 }

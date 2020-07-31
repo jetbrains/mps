@@ -40,8 +40,8 @@ public final class ConstraintFunction_PropertyGetter__BehaviorDescriptor extends
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
     SNode propertyConstraint = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.NodePropertyConstraint$pW, false, false);
-    SNode property = SLinkOperations.getTarget(propertyConstraint, LINKS.applicableProperty$j$lM);
-    SNode dataType = SLinkOperations.getTarget(property, LINKS.dataType$fLUl);
+    SNode property = SLinkOperations.getTarget(propertyConstraint, LINKS.applicableProperty$uAze);
+    SNode dataType = SLinkOperations.getTarget(property, LINKS.dataType$Dbgb);
     if (dataType != null) {
       return RulesUtil.datatypeBLType(dataType);
     }
@@ -114,7 +114,7 @@ public final class ConstraintFunction_PropertyGetter__BehaviorDescriptor extends
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableProperty$j$lM = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a5eaa48L, 0x10b2a61697bL, "applicableProperty");
-    /*package*/ static final SReferenceLink dataType$fLUl = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SReferenceLink applicableProperty$uAze = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a5eaa48L, 0x10b2a61697bL, "applicableProperty");
+    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
   }
 }

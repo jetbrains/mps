@@ -53,15 +53,15 @@ public class CopyPrefPageIconsToResources extends MigrationScriptBase {
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PreferencePage$Fj, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return isNotEmptyString(SPropertyOperations.getString(it, PROPS.iconPath$NqJR));
+          return isNotEmptyString(SPropertyOperations.getString(it, PROPS.iconPath$TXbD));
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           // we re-shrink paths to convert ${language_descriptoe} to ${module} at the same time 
           MacroHelper macros = MacrosFactory.forModule(m);
-          String newPath = macros.shrinkPath(macros.expandPath(SPropertyOperations.getString(it, PROPS.iconPath$NqJR)));
-          SPropertyOperations.assign(SLinkOperations.setNewChild(it, LINKS.icon$eNnp, CONCEPTS.FileIcon$ne), PROPS.file$xmj_, newPath);
-          it.setProperty(PROPS.iconPath$NqJR, null);
+          String newPath = macros.shrinkPath(macros.expandPath(SPropertyOperations.getString(it, PROPS.iconPath$TXbD)));
+          SPropertyOperations.assign(SLinkOperations.setNewChild(it, LINKS.icon$aSl7, CONCEPTS.FileIcon$ne), PROPS.file$9NuV, newPath);
+          it.setProperty(PROPS.iconPath$TXbD, null);
         }
       });
       Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SModel>() {
@@ -88,7 +88,7 @@ public class CopyPrefPageIconsToResources extends MigrationScriptBase {
       };
       result = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PreferencePage$Fj, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return isNotEmptyString(SPropertyOperations.getString(it, PROPS.iconPath$NqJR));
+          return isNotEmptyString(SPropertyOperations.getString(it, PROPS.iconPath$TXbD));
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
@@ -116,11 +116,11 @@ public class CopyPrefPageIconsToResources extends MigrationScriptBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty iconPath$NqJR = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119e269a79fL, 0x119e28e412bL, "iconPath");
-    /*package*/ static final SProperty file$xmj_ = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x26417c377428f6b3L, "file");
+    /*package*/ static final SProperty iconPath$TXbD = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119e269a79fL, 0x119e28e412bL, "iconPath");
+    /*package*/ static final SProperty file$9NuV = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x26417c377428f6b3L, "file");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink icon$eNnp = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119e269a79fL, 0xf7553d42b3b5673L, "icon");
+    /*package*/ static final SContainmentLink icon$aSl7 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119e269a79fL, 0xf7553d42b3b5673L, "icon");
   }
 }

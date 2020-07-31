@@ -36,7 +36,7 @@ public final class CodeSnippet__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static String buildCommentText_id7Qt73fl2z8k(@NotNull SNode __thisNode__) {
 
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$rsT5)).select(new ISelector<SNode, String>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$iZDr)).select(new ISelector<SNode, String>() {
       public String select(SNode it) {
         return (String) BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(it);
       }
@@ -94,6 +94,6 @@ public final class CodeSnippet__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$rsT5 = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x2398cefbc261e3ffL, 0x2398cefbc26369e1L, "statement");
+    /*package*/ static final SContainmentLink statement$iZDr = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x2398cefbc261e3ffL, 0x2398cefbc26369e1L, "statement");
   }
 }

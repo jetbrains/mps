@@ -39,7 +39,7 @@ public class IOperation_Constraints extends BaseConstraintsDescriptor {
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     //  an operation can only be 'operation' child in DotExpression 
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$6a) && (link == LINKS.operation$X4R8);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$6a) && (link == LINKS.operation$_mGS);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "1227128029536558606");
 
@@ -49,6 +49,6 @@ public class IOperation_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 }

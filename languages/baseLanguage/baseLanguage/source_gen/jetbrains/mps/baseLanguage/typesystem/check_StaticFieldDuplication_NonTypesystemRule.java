@@ -22,8 +22,8 @@ public class check_StaticFieldDuplication_NonTypesystemRule extends AbstractNonT
   public void applyRule(final SNode decl, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (CheckingUtil.isFieldDuplicated(decl)) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(decl, "Field " + SPropertyOperations.getString(decl, PROPS.name$tAp1) + " is already declared", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "576141512673851244", null, errorTarget);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(decl, "Field " + SPropertyOperations.getString(decl, PROPS.name$lA7v) + " is already declared", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "576141512673851244", null, errorTarget);
       }
     }
   }
@@ -38,7 +38,7 @@ public class check_StaticFieldDuplication_NonTypesystemRule extends AbstractNonT
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

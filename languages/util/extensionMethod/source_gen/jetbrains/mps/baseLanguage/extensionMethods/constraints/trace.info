@@ -36,18 +36,18 @@
       <node id="1550313277221324861" at="96,0,97,0" concept="8" trace="DotExpression$6a" />
       <node id="1550313277221324861" at="97,0,98,0" concept="8" trace="TypeExtension$sE" />
       <node id="1550313277221324861" at="98,0,99,0" concept="8" trace="SimpleExtensionMethodsContainer$5i" />
-      <node id="1550313277221324861" at="102,0,103,0" concept="8" trace="baseMethodDeclaration$$A7i" />
-      <node id="1550313277221324861" at="103,0,104,0" concept="8" trace="operand$Lcrr" />
-      <node id="1550313277221324861" at="104,0,105,0" concept="8" trace="methods$uEwv" />
-      <node id="1550313277221324861" at="105,0,106,0" concept="8" trace="type$UU3" />
-      <node id="1550313277221324861" at="106,0,107,0" concept="8" trace="extendedType$S0L" />
+      <node id="1550313277221324861" at="102,0,103,0" concept="8" trace="baseMethodDeclaration$ItxI" />
+      <node id="1550313277221324861" at="103,0,104,0" concept="8" trace="operand$P1i5" />
+      <node id="1550313277221324861" at="104,0,105,0" concept="8" trace="methods$Q_J1" />
+      <node id="1550313277221324861" at="105,0,106,0" concept="8" trace="type$sy7t" />
+      <node id="1550313277221324861" at="106,0,107,0" concept="8" trace="extendedType$r8nJ" />
       <node id="1550313277221324861" at="37,0,40,0" concept="0" trace="ExtensionMethodCall_Constraints#()V" />
       <node id="445563756713842514" at="63,120,66,19" concept="3" />
-      <node id="445563756713842554" at="72,286,75,19" concept="3" />
+      <node id="445563756713842554" at="72,287,75,19" concept="3" />
       <node id="445563756713895314" at="80,0,83,0" concept="4" trace="getName#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="7997068947889524883" at="44,0,48,0" concept="4" trace="hasOwnScopeProvider#()Z" />
       <node id="7997068947889524883" at="52,0,56,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="445563756713842508" at="62,279,67,17" concept="2" />
+      <node id="445563756713842508" at="62,280,67,17" concept="2" />
       <node id="445563756713842552" at="71,118,76,17" concept="3" />
       <node id="445563756713872210" at="78,13,83,14" concept="6" />
       <node id="445563756713842506" at="61,180,68,15" concept="3" />
@@ -67,14 +67,14 @@
       <scope id="445563756713895320" at="80,50,81,104" />
       <scope id="1550313277221324861" at="37,0,40,0" />
       <scope id="445563756713842513" at="63,120,66,19" />
-      <scope id="445563756713842553" at="72,286,75,19" />
+      <scope id="445563756713842553" at="72,287,75,19" />
       <scope id="445563756713895314" at="80,0,83,0">
         <var name="child" id="445563756713895318" />
       </scope>
       <scope id="7997068947889524883" at="44,0,48,0" />
       <scope id="7997068947889524883" at="52,0,56,0" />
-      <scope id="445563756713842507" at="62,279,67,17" />
-      <scope id="445563756713842508" at="62,279,67,17">
+      <scope id="445563756713842507" at="62,280,67,17" />
+      <scope id="445563756713842508" at="62,280,67,17">
         <var name="method" id="445563756713842509" />
       </scope>
       <scope id="445563756713842551" at="71,118,76,17" />
@@ -133,8 +133,8 @@
       <node id="2763618064981525308" at="70,0,71,0" concept="8" trace="ExtensionMethodDeclaration$9b" />
       <node id="2763618064981525308" at="71,0,72,0" concept="8" trace="PrivateVisibility$Se" />
       <node id="2763618064981525308" at="72,0,73,0" concept="8" trace="PublicVisibility$qe" />
-      <node id="2763618064981525308" at="76,0,77,0" concept="8" trace="methods$uEwv" />
-      <node id="2763618064981525308" at="77,0,78,0" concept="8" trace="visibility$2GiC" />
+      <node id="2763618064981525308" at="76,0,77,0" concept="8" trace="methods$Q_J1" />
+      <node id="2763618064981525308" at="77,0,78,0" concept="8" trace="visibility$jt1o" />
       <node id="2763618064981525308" at="23,0,26,0" concept="0" trace="ExtensionMethodDeclaration_Constraints#()V" />
       <node id="2763618064981525308" at="33,0,36,9" concept="3" />
       <node id="2763618064981525308" at="48,0,51,9" concept="3" />
@@ -254,7 +254,7 @@
       <node id="52119067404165172" at="69,0,70,0" concept="8" trace="TypeExtension$sE" />
       <node id="52119067404165172" at="70,0,71,0" concept="8" trace="Expression$TP" />
       <node id="52119067404165172" at="71,0,72,0" concept="8" trace="PublicVisibility$qe" />
-      <node id="52119067404165172" at="75,0,76,0" concept="8" trace="visibility$2GiC" />
+      <node id="52119067404165172" at="75,0,76,0" concept="8" trace="visibility$jt1o" />
       <node id="52119067404165172" at="22,0,25,0" concept="0" trace="TypeExtension_Constraints#()V" />
       <node id="52119067404165172" at="32,0,35,9" concept="3" />
       <node id="52119067404165172" at="47,0,50,9" concept="3" />
@@ -324,8 +324,8 @@
       <node id="5431167396203858786" at="58,0,59,0" concept="8" trace="breakingNode_xefsui_a0a0a0a0a1a0a0a0c" />
       <node id="5431167396203858786" at="61,0,62,0" concept="8" trace="ExtensionStaticFieldReference$3s" />
       <node id="5431167396203858786" at="62,0,63,0" concept="8" trace="BaseExtensionMethodContainer$b0" />
-      <node id="5431167396203858786" at="66,0,67,0" concept="8" trace="variableDeclaration$2ky6" />
-      <node id="5431167396203858786" at="67,0,68,0" concept="8" trace="staticFields$ULMW" />
+      <node id="5431167396203858786" at="66,0,67,0" concept="8" trace="variableDeclaration$7WwU" />
+      <node id="5431167396203858786" at="67,0,68,0" concept="8" trace="staticFields$u7F4" />
       <node id="5431167396203858786" at="27,0,30,0" concept="0" trace="ExtensionStaticFieldReference_Constraints#()V" />
       <node id="3097384118511835567" at="34,0,38,0" concept="4" trace="hasOwnScopeProvider#()Z" />
       <node id="3097384118511835567" at="42,0,46,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -393,8 +393,8 @@
       <node id="7685333756920187171" at="119,0,120,0" concept="8" trace="StaticMethodDeclaration$eX" />
       <node id="7685333756920187171" at="120,0,121,0" concept="8" trace="ExtensionMethodDeclaration$9b" />
       <node id="7685333756920187171" at="121,0,122,0" concept="8" trace="Classifier$hJ" />
-      <node id="7685333756920187171" at="125,0,126,0" concept="8" trace="baseMethodDeclaration$$A7i" />
-      <node id="7685333756920187171" at="129,0,130,0" concept="8" trace="name$tAp1" />
+      <node id="7685333756920187171" at="125,0,126,0" concept="8" trace="baseMethodDeclaration$ItxI" />
+      <node id="7685333756920187171" at="129,0,130,0" concept="8" trace="name$lA7v" />
       <node id="7685333756920187171" at="42,0,45,0" concept="0" trace="LocalExtendedMethodCall_Constraints#()V" />
       <node id="7685333756920187171" at="52,0,55,9" concept="3" />
       <node id="6836281137582818954" at="78,56,81,13" concept="3" />

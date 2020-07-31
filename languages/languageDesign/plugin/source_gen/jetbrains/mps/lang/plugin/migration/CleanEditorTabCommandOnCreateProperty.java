@@ -41,7 +41,7 @@ public class CleanEditorTabCommandOnCreateProperty extends MigrationScriptBase {
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EditorTab$AL, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SPropertyOperations.remove(it, PROPS.commandOnCreate$rEbZ);
+          SPropertyOperations.remove(it, PROPS.commandOnCreate$prNx);
         }
       });
     }
@@ -55,6 +55,6 @@ public class CleanEditorTabCommandOnCreateProperty extends MigrationScriptBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty commandOnCreate$rEbZ = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x33f4c34299ff0d2fL, 0x71dc7d539b7857cfL, "commandOnCreate");
+    /*package*/ static final SProperty commandOnCreate$prNx = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x33f4c34299ff0d2fL, 0x71dc7d539b7857cfL, "commandOnCreate");
   }
 }

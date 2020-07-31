@@ -22,7 +22,7 @@ public class SplitExpression_InferenceRule extends AbstractInferenceRule_Runtime
   }
   public void applyRule(final SNode se, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(se, LINKS.expr$VEs1);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(se, LINKS.expr$Tz$v);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590517(jetbrains.mps.baseLanguage.regexp.typesystem)", "1178179183642", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590517(jetbrains.mps.baseLanguage.regexp.typesystem)", "1178179183643", true), (SNode) _quotation_createNode_l306ck_a1a0c0a0b(), false, true, _info_12389875345);
     }
@@ -59,7 +59,7 @@ public class SplitExpression_InferenceRule extends AbstractInferenceRule_Runtime
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expr$VEs1 = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1119d41c734L, 0x1119d425aa1L, "expr");
+    /*package*/ static final SContainmentLink expr$Tz$v = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1119d41c734L, 0x1119d425aa1L, "expr");
   }
 
   private static final class CONCEPTS {

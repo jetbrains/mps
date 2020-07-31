@@ -74,16 +74,16 @@
       <node id="2034046503361626216" at="168,32,169,236" concept="1" />
       <node id="2034046503361626216" at="169,236,170,447" concept="1" />
       <node id="2034046503361626216" at="170,447,171,26" concept="5" />
-      <node id="5487985028841968449" at="176,0,177,0" concept="7" trace="annotation$zNxu" />
-      <node id="5487985028841968449" at="177,0,178,0" concept="7" trace="annotation$oVP4" />
-      <node id="5487985028841968449" at="178,0,179,0" concept="7" trace="testCase$fEcz" />
-      <node id="5487985028841968449" at="179,0,180,0" concept="7" trace="klass$fEdo" />
-      <node id="5487985028841968449" at="180,0,181,0" concept="7" trace="classifier$pQ_R" />
-      <node id="5487985028841968449" at="181,0,182,0" concept="7" trace="klass$Q7$q" />
+      <node id="5487985028841968449" at="176,0,177,0" concept="7" trace="annotation$lXdy" />
+      <node id="5487985028841968449" at="177,0,178,0" concept="7" trace="annotation$4YGW" />
+      <node id="5487985028841968449" at="178,0,179,0" concept="7" trace="testCase$_s4X" />
+      <node id="5487985028841968449" at="179,0,180,0" concept="7" trace="klass$_suC" />
+      <node id="5487985028841968449" at="180,0,181,0" concept="7" trace="classifier$xslD" />
+      <node id="5487985028841968449" at="181,0,182,0" concept="7" trace="klass$dECA" />
       <node id="5487985028841968449" at="185,0,186,0" concept="7" trace="ITestCase$uo" />
       <node id="5487985028841968449" at="186,0,187,0" concept="7" trace="ClassConcept$IY" />
       <node id="5487985028841968449" at="187,0,188,0" concept="7" trace="Classifier$hJ" />
-      <node id="5487985028841968449" at="191,0,192,0" concept="7" trace="abstractClass$gY5l" />
+      <node id="5487985028841968449" at="191,0,192,0" concept="7" trace="abstractClass$e4_b" />
       <node id="5487985028841968864" at="34,0,36,0" concept="0" trace="TestCollector#()V" />
       <node id="5487985028841968452" at="44,0,46,0" concept="0" trace="TestCaseCollector#()V" />
       <node id="5487985028841968560" at="80,0,82,0" concept="0" trace="JUnit4TestCollector#()V" />
@@ -279,7 +279,7 @@
       <node id="7763823021516159816" at="107,0,108,0" concept="7" trace="BuildMps_Solution$qJ" />
       <node id="7763823021516159816" at="108,0,109,0" concept="7" trace="BuildMps_AbstractModule$fB" />
       <node id="7763823021516159816" at="109,0,110,0" concept="7" trace="ITestRef$Qb" />
-      <node id="7763823021516159816" at="113,0,114,0" concept="7" trace="modules$mNDD" />
+      <node id="7763823021516159816" at="113,0,114,0" concept="7" trace="modules$31aR" />
       <node id="8921182888217897552" at="36,0,39,0" concept="3" trace="translate#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/Iterable;" />
       <node id="8921182888217897542" at="40,0,43,0" concept="3" trace="translate#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
       <node id="8921182888217897572" at="44,0,47,0" concept="3" trace="translate#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />

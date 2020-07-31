@@ -38,14 +38,14 @@ public final class CellActionMapImportSelectorByActionId__BehaviorDescriptor ext
   }
 
   /*package*/ static SEnumerationLiteral getActionId_id3XXPjz_5Jxc(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getEnum(__thisNode__, PROPS.actionId$YSaD);
+    return SPropertyOperations.getEnum(__thisNode__, PROPS.actionId$td9R);
   }
   /*package*/ static boolean selectsActionId_id3XXPjz_pJfc(@NotNull SNode __thisNode__, SEnumerationLiteral id) {
     return Objects.equals(CellActionMapImportSelectorByActionId__BehaviorDescriptor.getActionId_id3XXPjz_5Jxc.invoke(__thisNode__), id);
   }
   /*package*/ static CheckingResult checkPresenceOfImportee_id3XXPjz_qqny(@NotNull SNode __thisNode__, SNode actionMap) {
     SEnumerationLiteral actionId = CellActionMapImportSelectorByActionId__BehaviorDescriptor.getActionId_id3XXPjz_5Jxc.invoke(__thisNode__);
-    return ((boolean) CellActionMapDeclaration__BehaviorDescriptor.containsItemOfType_id2pg2GNQgnKJ.invoke(actionMap, actionId) ? CheckingResult.success() : CheckingResult.failure("Action map " + SPropertyOperations.getString(actionMap, PROPS.name$tAp1) + " does not define or import " + SEnumOperations.getMemberPresentation(actionId)));
+    return ((boolean) CellActionMapDeclaration__BehaviorDescriptor.containsItemOfType_id2pg2GNQgnKJ.invoke(actionMap, actionId) ? CheckingResult.success() : CheckingResult.failure("Action map " + SPropertyOperations.getString(actionMap, PROPS.name$lA7v) + " does not define or import " + SEnumOperations.getMemberPresentation(actionId)));
   }
   /*package*/ static SNode getNavigatableNodeWithin_id5Sx2dSLnDj7(@NotNull SNode __thisNode__, SNode actionMap) {
     // navigate to the action item of the matching type 
@@ -105,7 +105,7 @@ public final class CellActionMapImportSelectorByActionId__BehaviorDescriptor ext
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty actionId$YSaD = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4f883d0411451703L, 0x4f883d0411451706L, "actionId");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty actionId$td9R = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4f883d0411451703L, 0x4f883d0411451706L, "actionId");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

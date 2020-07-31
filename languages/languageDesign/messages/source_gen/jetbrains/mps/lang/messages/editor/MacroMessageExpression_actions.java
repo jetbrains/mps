@@ -35,13 +35,13 @@ public class MacroMessageExpression_actions {
           return;
         }
         if (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(node), CONCEPTS.LiteralMessageExpression$Ga) && SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(node), CONCEPTS.LiteralMessageExpression$Ga)) {
-          String prevMessage = SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getPrevSibling(node), CONCEPTS.LiteralMessageExpression$Ga), PROPS.message$vnr0);
-          String nextMessage = SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getNextSibling(node), CONCEPTS.LiteralMessageExpression$Ga), PROPS.message$vnr0);
+          String prevMessage = SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getPrevSibling(node), CONCEPTS.LiteralMessageExpression$Ga), PROPS.message$cm50);
+          String nextMessage = SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getNextSibling(node), CONCEPTS.LiteralMessageExpression$Ga), PROPS.message$cm50);
           SNode replacement = SNodeOperations.replaceWithAnother(node, createLiteralMessageExpression_jg075k_a0a0c0b0a0(prevMessage + nextMessage));
           SNodeOperations.deleteNode(SNodeOperations.getPrevSibling(replacement));
           SNodeOperations.deleteNode(SNodeOperations.getNextSibling(replacement));
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, replacement, SelectionManager.FIRST_EDITABLE_CELL, prevMessage.length());
-        } else if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.CombinedMessageExpression$e_), LINKS.part$x7tZ)).count() == 1) {
+        } else if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.CombinedMessageExpression$e_), LINKS.part$2Bxx)).count() == 1) {
           SNodeOperations.deleteNode(SNodeOperations.getParent(node));
         } else {
           SNode toSelect = SNodeOperations.getParent(node);
@@ -128,17 +128,17 @@ public class MacroMessageExpression_actions {
   }
   private static SNode createLiteralMessageExpression_jg075k_a0a0c0b0a0(Object p0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
-    rootBuilder1.setProperty(PROPS.message$vnr0, PROPS.message$vnr0.getType().toString(p0));
+    rootBuilder1.setProperty(PROPS.message$cm50, PROPS.message$cm50.getType().toString(p0));
     return rootBuilder1.getResult();
   }
   private static SNode createLiteralMessageExpression_jg075k_a0a0a0b() {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
-    rootBuilder1.setProperty(PROPS.message$vnr0, "");
+    rootBuilder1.setProperty(PROPS.message$cm50, "");
     return rootBuilder1.getResult();
   }
   private static SNode createLiteralMessageExpression_jg075k_a0a0a0c() {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
-    rootBuilder1.setProperty(PROPS.message$vnr0, "");
+    rootBuilder1.setProperty(PROPS.message$cm50, "");
     return rootBuilder1.getResult();
   }
 
@@ -148,10 +148,10 @@ public class MacroMessageExpression_actions {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty message$vnr0 = MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message");
+    /*package*/ static final SProperty message$cm50 = MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink part$x7tZ = MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, 0x48f860fc0e404561L, "part");
+    /*package*/ static final SContainmentLink part$2Bxx = MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, 0x48f860fc0e404561L, "part");
   }
 }

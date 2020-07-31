@@ -25,8 +25,8 @@
       <node id="2614955748379649003" at="38,131,39,42" concept="1" />
       <node id="2614955748379648780" at="39,42,40,22" concept="5" />
       <node id="2614955748379648780" at="44,0,45,0" concept="7" trace="TestRefConstraints_BaseReference_Handler$Qt" />
-      <node id="2614955748379648780" at="48,0,49,0" concept="7" trace="target$b4zu" />
-      <node id="2614955748379648780" at="52,0,53,0" concept="7" trace="debug$rsx5" />
+      <node id="2614955748379648780" at="48,0,49,0" concept="7" trace="target$ndby" />
+      <node id="2614955748379648780" at="52,0,53,0" concept="7" trace="debug$iO1r" />
       <node id="2614955748379648780" at="18,0,21,0" concept="0" trace="TestRefConstraints_BaseReference_Handler_Constraints#()V" />
       <node id="2614955748379649003" at="25,0,29,0" concept="3" trace="hasOwnOnReferenceSetHandler#()Z" />
       <node id="2614955748379649003" at="29,0,33,0" concept="3" trace="validate#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -71,8 +71,8 @@
       <node id="2614955748379655751" at="38,131,39,42" concept="1" />
       <node id="2614955748379655528" at="39,42,40,22" concept="5" />
       <node id="2614955748379655528" at="44,0,45,0" concept="7" trace="TestRefConstraints_SubReference_HandlerSuperScoping$ES" />
-      <node id="2614955748379655528" at="48,0,49,0" concept="7" trace="target$rEaS" />
-      <node id="2614955748379655528" at="52,0,53,0" concept="7" trace="debug$rsx5" />
+      <node id="2614955748379655528" at="48,0,49,0" concept="7" trace="target$prh8" />
+      <node id="2614955748379655528" at="52,0,53,0" concept="7" trace="debug$iO1r" />
       <node id="2614955748379655528" at="18,0,21,0" concept="0" trace="TestRefConstraints_SubReference_HandlerSuperScoping_Constraints#()V" />
       <node id="2614955748379655751" at="25,0,29,0" concept="3" trace="hasOwnOnReferenceSetHandler#()Z" />
       <node id="2614955748379655751" at="29,0,33,0" concept="3" trace="validate#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -119,10 +119,10 @@
       <node id="2614955748379661723" at="65,0,66,0" concept="7" trace="breakingNode_irssh6_a0a0a0a0a1a0a0a0c" />
       <node id="2614955748379661723" at="68,0,69,0" concept="7" trace="TestRefConstraints_SubReference_ScopingSuperScoping$Ep" />
       <node id="2614955748379661723" at="69,0,70,0" concept="7" trace="TestRefConstraints_Container$Ur" />
-      <node id="2614955748379661723" at="73,0,74,0" concept="7" trace="target$rEaS" />
-      <node id="2614955748379661723" at="74,0,75,0" concept="7" trace="targets$r$3X" />
-      <node id="2614955748379661723" at="78,0,79,0" concept="7" trace="inScopeAdvanced$dYuu" />
-      <node id="2614955748379661723" at="79,0,80,0" concept="7" trace="inScope$rszw" />
+      <node id="2614955748379661723" at="73,0,74,0" concept="7" trace="target$prh8" />
+      <node id="2614955748379661723" at="74,0,75,0" concept="7" trace="targets$mtUz" />
+      <node id="2614955748379661723" at="78,0,79,0" concept="7" trace="inScopeAdvanced$LgKy" />
+      <node id="2614955748379661723" at="79,0,80,0" concept="7" trace="inScope$iPcw" />
       <node id="2614955748379661723" at="31,0,34,0" concept="0" trace="TestRefConstraints_SubReference_ScopingSuperScoping_Constraints#()V" />
       <node id="2614955748379694123" at="53,0,56,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="2614955748379662107" at="38,0,42,0" concept="3" trace="hasOwnScopeProvider#()Z" />
@@ -175,9 +175,9 @@
       <node id="2614955748379901164" at="65,0,66,0" concept="7" trace="breakingNode_xmudho_a0a0a0a0a1a0a0a0c" />
       <node id="2614955748379901164" at="68,0,69,0" concept="7" trace="TestRefConstraints_BaseReference_Scoping$qT" />
       <node id="2614955748379901164" at="69,0,70,0" concept="7" trace="TestRefConstraints_Container$Ur" />
-      <node id="2614955748379901164" at="73,0,74,0" concept="7" trace="target$rEaS" />
-      <node id="2614955748379901164" at="74,0,75,0" concept="7" trace="targets$r$3X" />
-      <node id="2614955748379901164" at="78,0,79,0" concept="7" trace="inScope$rszw" />
+      <node id="2614955748379901164" at="73,0,74,0" concept="7" trace="target$prh8" />
+      <node id="2614955748379901164" at="74,0,75,0" concept="7" trace="targets$mtUz" />
+      <node id="2614955748379901164" at="78,0,79,0" concept="7" trace="inScope$iPcw" />
       <node id="2614955748379901164" at="31,0,34,0" concept="0" trace="TestRefConstraints_BaseReference_Scoping_Constraints#()V" />
       <node id="2614955748379926989" at="53,0,56,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="2614955748379901165" at="38,0,42,0" concept="3" trace="hasOwnScopeProvider#()Z" />
@@ -236,8 +236,8 @@
       <node id="2614955748380020916" at="38,131,39,42" concept="1" />
       <node id="2614955748380020915" at="39,42,40,22" concept="5" />
       <node id="2614955748380020915" at="44,0,45,0" concept="7" trace="TestRefConstraints_SubReference_HandlerSuperHandler$Rp" />
-      <node id="2614955748380020915" at="48,0,49,0" concept="7" trace="target$b4zu" />
-      <node id="2614955748380020915" at="52,0,53,0" concept="7" trace="debug$rsx5" />
+      <node id="2614955748380020915" at="48,0,49,0" concept="7" trace="target$ndby" />
+      <node id="2614955748380020915" at="52,0,53,0" concept="7" trace="debug$iO1r" />
       <node id="2614955748380020915" at="18,0,21,0" concept="0" trace="TestRefConstraints_SubReference_HandlerSuperHandler_Constraints#()V" />
       <node id="2614955748380020916" at="25,0,29,0" concept="3" trace="hasOwnOnReferenceSetHandler#()Z" />
       <node id="2614955748380020916" at="29,0,33,0" concept="3" trace="validate#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -284,9 +284,9 @@
       <node id="2614955748380029701" at="65,0,66,0" concept="7" trace="breakingNode_mav7ye_a0a0a0a0a1a0a0a0c" />
       <node id="2614955748380029701" at="68,0,69,0" concept="7" trace="TestRefConstraints_SubReference_ScopingSuperHandler$PW" />
       <node id="2614955748380029701" at="69,0,70,0" concept="7" trace="TestRefConstraints_Container$Ur" />
-      <node id="2614955748380029701" at="73,0,74,0" concept="7" trace="target$b4zu" />
-      <node id="2614955748380029701" at="74,0,75,0" concept="7" trace="targets$r$3X" />
-      <node id="2614955748380029701" at="78,0,79,0" concept="7" trace="inScope$rszw" />
+      <node id="2614955748380029701" at="73,0,74,0" concept="7" trace="target$ndby" />
+      <node id="2614955748380029701" at="74,0,75,0" concept="7" trace="targets$mtUz" />
+      <node id="2614955748380029701" at="78,0,79,0" concept="7" trace="inScope$iPcw" />
       <node id="2614955748380029701" at="31,0,34,0" concept="0" trace="TestRefConstraints_SubReference_ScopingSuperHandler_Constraints#()V" />
       <node id="2614955748380060762" at="53,0,56,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="2614955748380029702" at="38,0,42,0" concept="3" trace="hasOwnScopeProvider#()Z" />
@@ -335,7 +335,7 @@
       <node id="2614955748380194136" at="47,0,48,0" concept="7" trace="breakingNode_4c311l_a0a0a0a0a0a0a0a2" />
       <node id="2614955748380194136" at="50,0,51,0" concept="7" trace="TestRefConstraints_Target$ro" />
       <node id="2614955748380194136" at="51,0,52,0" concept="7" trace="TestRefConstraints_Container$Ur" />
-      <node id="2614955748380194136" at="55,0,56,0" concept="7" trace="targets$r$3X" />
+      <node id="2614955748380194136" at="55,0,56,0" concept="7" trace="targets$mtUz" />
       <node id="2614955748380194136" at="25,0,28,0" concept="0" trace="TestRefConstraints_Target_Constraints#()V" />
       <node id="2614955748380194136" at="35,0,39,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="2614955748380194136" at="39,0,43,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
@@ -377,7 +377,7 @@
       <node id="5816870305080488340" at="45,0,46,0" concept="7" trace="canBeChildBreakingPoint" />
       <node id="5816870305080488340" at="48,0,49,0" concept="7" trace="TestConstraintsInheritance_Base$vN" />
       <node id="5816870305080488340" at="49,0,50,0" concept="7" trace="TestConstraintsInheritance_Container$gj" />
-      <node id="5816870305080488340" at="53,0,54,0" concept="7" trace="triggerBase$I1dp" />
+      <node id="5816870305080488340" at="53,0,54,0" concept="7" trace="triggerBase$i_v7" />
       <node id="5816870305080488340" at="23,0,26,0" concept="0" trace="TestConstraintsInheritance_Base_Constraints#()V" />
       <node id="5816870305080488340" at="33,0,36,9" concept="2" />
       <node id="5816870305080488340" at="42,0,45,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -421,7 +421,7 @@
       <node id="5816870305080501533" at="45,0,46,0" concept="7" trace="canBeChildBreakingPoint" />
       <node id="5816870305080501533" at="48,0,49,0" concept="7" trace="TestConstraintsInheritance_Derived1_Constrained$UB" />
       <node id="5816870305080501533" at="49,0,50,0" concept="7" trace="TestConstraintsInheritance_Container$gj" />
-      <node id="5816870305080501533" at="53,0,54,0" concept="7" trace="triggerD1$I1en" />
+      <node id="5816870305080501533" at="53,0,54,0" concept="7" trace="triggerD1$i_X9" />
       <node id="5816870305080501533" at="23,0,26,0" concept="0" trace="TestConstraintsInheritance_Derived1_Constrained_Constraints#()V" />
       <node id="5816870305080501533" at="33,0,36,9" concept="2" />
       <node id="5816870305080501533" at="42,0,45,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -465,7 +465,7 @@
       <node id="5816870305080509279" at="45,0,46,0" concept="7" trace="canBeChildBreakingPoint" />
       <node id="5816870305080509279" at="48,0,49,0" concept="7" trace="TestConstraintsInheritance_Derived2_Constrained$SF" />
       <node id="5816870305080509279" at="49,0,50,0" concept="7" trace="TestConstraintsInheritance_Container$gj" />
-      <node id="5816870305080509279" at="53,0,54,0" concept="7" trace="triggerD2$I1fO" />
+      <node id="5816870305080509279" at="53,0,54,0" concept="7" trace="triggerD2$iAEc" />
       <node id="5816870305080509279" at="23,0,26,0" concept="0" trace="TestConstraintsInheritance_Derived2_Constrained_Constraints#()V" />
       <node id="5816870305080509279" at="33,0,36,9" concept="2" />
       <node id="5816870305080509279" at="42,0,45,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />

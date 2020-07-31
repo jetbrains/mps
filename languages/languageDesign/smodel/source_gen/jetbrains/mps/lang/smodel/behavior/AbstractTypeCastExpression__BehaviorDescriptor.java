@@ -32,10 +32,10 @@ public final class AbstractTypeCastExpression__BehaviorDescriptor extends BaseBH
   }
 
   /*package*/ static SNode getSyntacticallyLeftSideExpression_id1wHCnsn590c(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.leftExpression$NqCX);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.leftExpression$TTPz);
   }
   /*package*/ static void setSyntacticallyLeftSideExpression_id1wHCnsn58ZK(@NotNull SNode __thisNode__, SNode expr) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.leftExpression$NqCX, expr);
+    SLinkOperations.setTarget(__thisNode__, LINKS.leftExpression$TTPz, expr);
   }
 
   /*package*/ AbstractTypeCastExpression__BehaviorDescriptor() {
@@ -88,6 +88,6 @@ public final class AbstractTypeCastExpression__BehaviorDescriptor extends BaseBH
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$NqCX = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67cd19L, "leftExpression");
+    /*package*/ static final SContainmentLink leftExpression$TTPz = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67cd19L, "leftExpression");
   }
 }

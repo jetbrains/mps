@@ -50,7 +50,7 @@ public class StateMachineTestMethod_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_ro57qv_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.StateMachineTestMethod$vX, LINKS.finalState$YINP);
+      super((SAbstractConcept) CONCEPTS.StateMachineTestMethod$vX, LINKS.finalState$oF6F);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class StateMachineTestMethod_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink finalState$YINP = MetaAdapterFactory.getReferenceLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c1d2af8aL, 0x116c1f8ec2bL, "finalState");
+    /*package*/ static final SReferenceLink finalState$oF6F = MetaAdapterFactory.getReferenceLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c1d2af8aL, 0x116c1f8ec2bL, "finalState");
   }
 }

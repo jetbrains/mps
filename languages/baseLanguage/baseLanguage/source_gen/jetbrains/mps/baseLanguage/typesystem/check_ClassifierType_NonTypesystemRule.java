@@ -32,16 +32,16 @@ public class check_ClassifierType_NonTypesystemRule extends AbstractNonTypesyste
   public check_ClassifierType_NonTypesystemRule() {
   }
   public void applyRule(final SNode classifierType, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode classifier = SLinkOperations.getTarget(classifierType, LINKS.classifier$pQ_R);
-    if (!(ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$dQne)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$dQne)).count() == ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$ziZT)).count())) {
+    SNode classifier = SLinkOperations.getTarget(classifierType, LINKS.classifier$xslD);
+    if (!(ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$HlfM)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$HlfM)).count() == ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$6cWB)).count())) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classifierType, "wrong number of type parameters", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1195494591081", null, errorTarget);
     }
     Map<SNode, SNode> typeParamsToArgs = MapSequence.fromMap(new HashMap<SNode, SNode>());
     Map<SNode, SNode> substitutions = MapSequence.fromMap(new HashMap<SNode, SNode>());
     {
-      Iterator<SNode> typeParameter_it = ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$dQne)).iterator();
-      Iterator<SNode> typeVar_it = ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$ziZT)).iterator();
+      Iterator<SNode> typeParameter_it = ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$HlfM)).iterator();
+      Iterator<SNode> typeVar_it = ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$6cWB)).iterator();
       SNode typeParameter_var;
       SNode typeVar_var;
       while (typeParameter_it.hasNext() && typeVar_it.hasNext()) {
@@ -51,30 +51,30 @@ public class check_ClassifierType_NonTypesystemRule extends AbstractNonTypesyste
         MapSequence.fromMap(substitutions).put(typeVar_var, typeParameter_var);
       }
     }
-    for (SNode typeParameter : SLinkOperations.getChildren(classifierType, LINKS.parameter$dQne)) {
-      if (!(!(TypecheckingFacade.getFromContext().isStrongSubtype(typeParameter, SLinkOperations.getTarget(_quotation_createNode_i2c76q_a1a0a0a0f0b(), LINKS.descriptor$ZkDR))))) {
+    for (SNode typeParameter : SLinkOperations.getChildren(classifierType, LINKS.parameter$HlfM)) {
+      if (!(!(TypecheckingFacade.getFromContext().isStrongSubtype(typeParameter, SLinkOperations.getTarget(_quotation_createNode_i2c76q_a1a0a0a0f0b(), LINKS.descriptor$F0hD))))) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(typeParameter, "primitive types not allowed", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1195494591112", null, errorTarget);
       }
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$dQne)).count() == ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$ziZT)).count()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$HlfM)).count() == ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$6cWB)).count()) {
       {
-        Iterator<SNode> typeArgument_it = ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$dQne)).iterator();
-        Iterator<SNode> typeVar_it = ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$ziZT)).iterator();
+        Iterator<SNode> typeArgument_it = ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$HlfM)).iterator();
+        Iterator<SNode> typeVar_it = ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$6cWB)).iterator();
         SNode typeArgument_var;
         SNode typeVar_var;
         while (typeArgument_it.hasNext() && typeVar_it.hasNext()) {
           typeArgument_var = typeArgument_it.next();
           typeVar_var = typeVar_it.next();
-          if ((SLinkOperations.getTarget(typeVar_var, LINKS.bound$dqDF) != null) && !(SNodeOperations.isInstanceOf(typeArgument_var, CONCEPTS.WildCardType$29))) {
-            if (!((boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(SLinkOperations.getTarget(typeVar_var, LINKS.bound$dqDF), typeArgument_var, substitutions))) {
+          if ((SLinkOperations.getTarget(typeVar_var, LINKS.bound$vUbP) != null) && !(SNodeOperations.isInstanceOf(typeArgument_var, CONCEPTS.WildCardType$29))) {
+            if (!((boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(SLinkOperations.getTarget(typeVar_var, LINKS.bound$vUbP), typeArgument_var, substitutions))) {
               {
                 final MessageTarget errorTarget = new NodeMessageTarget();
                 IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(typeArgument_var, "The type " + typeArgument_var + " is not a valid substitute for the bounded parameter " + typeVar_var, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928248660343", null, errorTarget);
               }
             }
           }
-          for (SNode auxBound : SLinkOperations.getChildren(typeVar_var, LINKS.auxBounds$jS6R)) {
+          for (SNode auxBound : SLinkOperations.getChildren(typeVar_var, LINKS.auxBounds$CbkD)) {
             SNode concreteBound = RulesFunctions_BaseLanguage.concretifyType(auxBound, typeParamsToArgs);
             if (!(TypecheckingFacade.getFromContext().isSubtype(typeArgument_var, concreteBound))) {
               final MessageTarget errorTarget = new NodeMessageTarget();
@@ -103,12 +103,12 @@ public class check_ClassifierType_NonTypesystemRule extends AbstractNonTypesyste
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SReferenceLink descriptor$ZkDR = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
-    /*package*/ static final SContainmentLink bound$dqDF = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound");
-    /*package*/ static final SContainmentLink auxBounds$jS6R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae913a476L, "auxBounds");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SReferenceLink descriptor$F0hD = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
+    /*package*/ static final SContainmentLink bound$vUbP = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound");
+    /*package*/ static final SContainmentLink auxBounds$CbkD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae913a476L, "auxBounds");
   }
 
   private static final class CONCEPTS {

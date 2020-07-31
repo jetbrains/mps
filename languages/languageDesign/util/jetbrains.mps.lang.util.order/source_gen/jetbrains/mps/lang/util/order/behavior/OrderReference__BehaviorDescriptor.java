@@ -32,10 +32,10 @@ public final class OrderReference__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static boolean presents_id1jgMklchcXk(@NotNull SNode __thisNode__, SNode elem) {
-    return (boolean) Order__BehaviorDescriptor.presents_id1jgMklchcXk.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.order$m$p0), elem);
+    return (boolean) Order__BehaviorDescriptor.presents_id1jgMklchcXk.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.order$VC70), elem);
   }
   /*package*/ static SNode getOrderDeclaration_id2CFL3ni7A9T(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.order$m$p0);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.order$VC70);
   }
 
   /*package*/ OrderReference__BehaviorDescriptor() {
@@ -87,6 +87,6 @@ public final class OrderReference__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink order$m$p0 = MetaAdapterFactory.getReferenceLink(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd79211L, 0x22035699bdd79212L, "order");
+    /*package*/ static final SReferenceLink order$VC70 = MetaAdapterFactory.getReferenceLink(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd79211L, 0x22035699bdd79212L, "order");
   }
 }

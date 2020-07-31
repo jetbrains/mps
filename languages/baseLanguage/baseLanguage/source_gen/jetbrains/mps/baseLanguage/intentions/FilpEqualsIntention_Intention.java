@@ -40,13 +40,13 @@ public final class FilpEqualsIntention_Intention extends AbstractIntentionDescri
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$$A7i) == null) {
+    if (SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI) == null) {
       return false;
     }
-    if (SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$$A7i), PROPS.name$tAp1) == null) {
+    if (SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI), PROPS.name$lA7v) == null) {
       return false;
     }
-    return SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$$A7i), PROPS.name$tAp1).equals("equals") && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$$A7i), LINKS.parameter$WIkZ)).count() == 1;
+    return SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI), PROPS.name$lA7v).equals("equals") && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI), LINKS.parameter$qsax)).count() == 1;
   }
   @Override
   public boolean isSurroundWith() {
@@ -67,9 +67,9 @@ public final class FilpEqualsIntention_Intention extends AbstractIntentionDescri
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode parameter = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$$A7L)).first();
-      SNodeOperations.replaceWithAnother(parameter, SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.DotExpression$6a, false, false), LINKS.operand$Lcrr));
-      SLinkOperations.setTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.DotExpression$6a, false, false), LINKS.operand$Lcrr, parameter);
+      SNode parameter = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$ItKJ)).first();
+      SNodeOperations.replaceWithAnother(parameter, SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.DotExpression$6a, false, false), LINKS.operand$P1i5));
+      SLinkOperations.setTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.DotExpression$6a, false, false), LINKS.operand$P1i5, parameter);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -78,14 +78,14 @@ public final class FilpEqualsIntention_Intention extends AbstractIntentionDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

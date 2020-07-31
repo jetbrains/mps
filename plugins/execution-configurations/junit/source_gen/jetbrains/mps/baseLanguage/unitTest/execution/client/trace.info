@@ -37,9 +37,9 @@
       <node id="10142208936047300" at="59,46,60,159" concept="10" />
       <node id="10142208936047308" at="60,159,61,96" concept="10" />
       <node id="10142208936047317" at="61,96,62,105" concept="11" />
-      <node id="10142208936037586" at="70,0,71,0" concept="14" trace="plugin$hRNK" />
-      <node id="10142208936037586" at="71,0,72,0" concept="14" trace="containerName$29AG" />
-      <node id="10142208936037586" at="75,0,76,0" concept="14" trace="id$rLiV" />
+      <node id="10142208936037586" at="70,0,71,0" concept="14" trace="plugin$E24g" />
+      <node id="10142208936037586" at="71,0,72,0" concept="14" trace="containerName$2DJk" />
+      <node id="10142208936037586" at="75,0,76,0" concept="14" trace="id$sSa_" />
       <node id="10142208936038826" at="30,0,32,0" concept="6" trace="mySettings" />
       <node id="10142208936041376" at="33,0,36,0" concept="3" trace="UserProvidedPluginsCalculator#(Ljetbrains/mps/baseLanguage/unitTest/execution/client/TestsWithParametersAndConfiguration;)V" />
       <node id="10142208936047246" at="40,47,43,5" concept="8" />
@@ -193,8 +193,8 @@
       <node id="2024340988248531915" at="43,61,44,449" concept="11" />
       <node id="2024340988248531910" at="48,0,49,0" concept="14" trace="ClassConcept$IY" />
       <node id="2024340988248531910" at="49,0,50,0" concept="14" trace="PublicVisibility$qe" />
-      <node id="2024340988248531910" at="53,0,54,0" concept="14" trace="name$tAp1" />
-      <node id="2024340988248531910" at="57,0,58,0" concept="14" trace="visibility$2GiC" />
+      <node id="2024340988248531910" at="53,0,54,0" concept="14" trace="name$lA7v" />
+      <node id="2024340988248531910" at="57,0,58,0" concept="14" trace="visibility$jt1o" />
       <node id="2024340988248531911" at="43,0,46,0" concept="15" trace="isTestMethod#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="2024340988248531961" at="27,0,31,0" concept="9" trace="isTestCase#()Z" />
       <node id="6340472395757129941" at="32,0,36,0" concept="9" trace="getName#()Ljava/lang/String;" />
@@ -235,7 +235,7 @@
       <node id="6340472395756838444" at="48,27,49,18" concept="11" />
       <node id="918181594240235941" at="54,29,55,27" concept="11" />
       <node id="8526392799785587193" at="62,62,63,37" concept="11" />
-      <node id="2024340988248531992" at="69,0,70,0" concept="14" trace="name$tAp1" />
+      <node id="2024340988248531992" at="69,0,70,0" concept="14" trace="name$lA7v" />
       <node id="2024340988248531992" at="73,0,74,0" concept="14" trace="InstanceMethodDeclaration$An" />
       <node id="6340472395756959777" at="32,0,35,0" concept="9" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6340472395756990315" at="36,0,39,0" concept="9" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/baseLanguage/unitTest/execution/client/JUnit3MethodWrapper;" />
@@ -300,10 +300,10 @@
       <node id="4573127675650073070" at="70,5,71,16" concept="11" />
       <node id="2024340988248532071" at="75,0,76,0" concept="14" trace="ClassConcept$IY" />
       <node id="2024340988248532071" at="76,0,77,0" concept="14" trace="PublicVisibility$qe" />
-      <node id="2024340988248532071" at="80,0,81,0" concept="14" trace="name$tAp1" />
-      <node id="2024340988248532071" at="84,0,85,0" concept="14" trace="annotation$oVP4" />
-      <node id="2024340988248532071" at="85,0,86,0" concept="14" trace="visibility$2GiC" />
-      <node id="2024340988248532071" at="86,0,87,0" concept="14" trace="annotation$zNxu" />
+      <node id="2024340988248532071" at="80,0,81,0" concept="14" trace="name$lA7v" />
+      <node id="2024340988248532071" at="84,0,85,0" concept="14" trace="annotation$4YGW" />
+      <node id="2024340988248532071" at="85,0,86,0" concept="14" trace="visibility$jt1o" />
+      <node id="2024340988248532071" at="86,0,87,0" concept="14" trace="annotation$lXdy" />
       <node id="8024509436353587522" at="49,114,52,9" concept="8" />
       <node id="8024509436353587605" at="52,9,55,9" concept="8" />
       <node id="4573127675650072675" at="61,72,64,5" concept="8" />
@@ -375,8 +375,8 @@
       <node id="2024340988248532185" at="71,122,72,19" concept="11" />
       <node id="2024340988248532199" at="75,59,76,20" concept="11" />
       <node id="2024340988248532203" at="78,5,79,17" concept="11" />
-      <node id="2024340988248532176" at="83,0,84,0" concept="14" trace="name$tAp1" />
-      <node id="2024340988248532176" at="84,0,85,0" concept="14" trace="abstractClass$gY5l" />
+      <node id="2024340988248532176" at="83,0,84,0" concept="14" trace="name$lA7v" />
+      <node id="2024340988248532176" at="84,0,85,0" concept="14" trace="abstractClass$e4_b" />
       <node id="2024340988248532176" at="88,0,89,0" concept="14" trace="InstanceMethodDeclaration$An" />
       <node id="2024340988248532176" at="89,0,90,0" concept="14" trace="ClassConcept$IY" />
       <node id="6340472395757045952" at="34,0,37,0" concept="9" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -572,10 +572,10 @@
       <node id="2024340988248532422" at="199,0,200,0" concept="14" trace="Classifier$hJ" />
       <node id="2024340988248532422" at="200,0,201,0" concept="14" trace="InstanceMethodDeclaration$An" />
       <node id="2024340988248532422" at="201,0,202,0" concept="14" trace="GeneratorTest$vD" />
-      <node id="2024340988248532422" at="205,0,206,0" concept="14" trace="abstractClass$gY5l" />
-      <node id="2024340988248532422" at="206,0,207,0" concept="14" trace="compileInMPS$8r6V" />
-      <node id="2024340988248532422" at="210,0,211,0" concept="14" trace="superclass$_pqe" />
-      <node id="2024340988248532422" at="211,0,212,0" concept="14" trace="classifier$pQ_R" />
+      <node id="2024340988248532422" at="205,0,206,0" concept="14" trace="abstractClass$e4_b" />
+      <node id="2024340988248532422" at="206,0,207,0" concept="14" trace="compileInMPS$58m_" />
+      <node id="2024340988248532422" at="210,0,211,0" concept="14" trace="superclass$7jGM" />
+      <node id="2024340988248532422" at="211,0,212,0" concept="14" trace="classifier$xslD" />
       <node id="2024340988248532854" at="127,0,129,0" concept="9" trace="wrap#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/baseLanguage/unitTest/execution/client/ITestNodeWrapper;" />
       <node id="2024340988248532572" at="34,62,37,7" concept="8" />
       <node id="8343726804225742813" at="37,7,40,7" concept="8" />
@@ -1097,11 +1097,11 @@
       <node id="5644250828347696265" at="165,5,166,17" concept="11" />
       <node id="5644250828347920160" at="168,72,169,112" concept="12" />
       <node id="5644250828347389040" at="171,39,172,172" concept="11" />
-      <node id="5881102044690179017" at="178,0,179,0" concept="14" trace="implementedInterface$mdc6" />
-      <node id="5881102044690179017" at="179,0,180,0" concept="14" trace="classifier$pQ_R" />
-      <node id="5881102044690179017" at="180,0,181,0" concept="14" trace="superclass$_pqe" />
-      <node id="5881102044690179017" at="181,0,182,0" concept="14" trace="annotation$oVP4" />
-      <node id="5881102044690179017" at="182,0,183,0" concept="14" trace="annotation$zNxu" />
+      <node id="5881102044690179017" at="178,0,179,0" concept="14" trace="implementedInterface$KoQU" />
+      <node id="5881102044690179017" at="179,0,180,0" concept="14" trace="classifier$xslD" />
+      <node id="5881102044690179017" at="180,0,181,0" concept="14" trace="superclass$7jGM" />
+      <node id="5881102044690179017" at="181,0,182,0" concept="14" trace="annotation$4YGW" />
+      <node id="5881102044690179017" at="182,0,183,0" concept="14" trace="annotation$lXdy" />
       <node id="5881102044690179017" at="186,0,187,0" concept="14" trace="ClassConcept$IY" />
       <node id="5881102044690179018" at="28,0,30,0" concept="6" trace="myNodePointer" />
       <node id="5644250828348307137" at="115,10,117,5" concept="1" />
@@ -2659,7 +2659,7 @@
       <node id="4727632598642420291" at="68,33,69,19" concept="11" />
       <node id="4727632598642420300" at="74,43,75,24" concept="11" />
       <node id="4727632598642441831" at="79,29,80,20" concept="11" />
-      <node id="6340472395757379476" at="85,0,86,0" concept="14" trace="tests$4Ktx" />
+      <node id="6340472395757379476" at="85,0,86,0" concept="14" trace="tests$juiZ" />
       <node id="2062028767196020930" at="37,0,40,0" concept="9" trace="isTestCase#()Z" />
       <node id="2062028767196053403" at="41,0,45,0" concept="9" trace="getName#()Ljava/lang/String;" />
       <node id="2062028767196058592" at="46,0,50,0" concept="9" trace="getFqName#()Ljava/lang/String;" />

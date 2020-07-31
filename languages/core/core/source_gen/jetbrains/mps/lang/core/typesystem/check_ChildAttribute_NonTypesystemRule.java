@@ -27,7 +27,7 @@ public class check_ChildAttribute_NonTypesystemRule extends AbstractNonTypesyste
   public check_ChildAttribute_NonTypesystemRule() {
   }
   public void applyRule(final SNode childAttribute, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SPropertyOperations.getString(childAttribute, PROPS.linkId$TmTG) == null) {
+    if (SPropertyOperations.getString(childAttribute, PROPS.linkId$M5Wk) == null) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(childAttribute, "Child attribute should have link id", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "6063712545515824603", null, errorTarget);
@@ -47,7 +47,7 @@ public class check_ChildAttribute_NonTypesystemRule extends AbstractNonTypesyste
       if (existingLink == null) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(childAttribute, "Child Attribute is attached to not existing aggregation link: " + SPropertyOperations.getString(childAttribute, PROPS.linkId$TmTG) + "(" + reportName + ")", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "709746936026611133", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(childAttribute, "Child Attribute is attached to not existing aggregation link: " + SPropertyOperations.getString(childAttribute, PROPS.linkId$M5Wk) + "(" + reportName + ")", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "709746936026611133", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.RemoveUndeclaredLinkAttribute_QuickFix", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
@@ -76,7 +76,7 @@ public class check_ChildAttribute_NonTypesystemRule extends AbstractNonTypesyste
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty linkId$TmTG = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, 0x9d98713f249b587L, "linkId");
+    /*package*/ static final SProperty linkId$M5Wk = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, 0x9d98713f249b587L, "linkId");
   }
 
   private static final class CONCEPTS {

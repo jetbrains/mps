@@ -33,7 +33,7 @@ public class NodeFactory_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.applicableConcept$mqSo, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.applicableConcept$R1jC, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -54,7 +54,7 @@ public class NodeFactory_Constraints extends BaseConstraintsDescriptor {
             // XXX in fact, shall include concepts from extended languages as well 
             return new ListScope(SModelOperations.roots(structureModel, CONCEPTS.AbstractConceptDeclaration$UN)) {
               public String getName(SNode child) {
-                return SPropertyOperations.getString(child, PROPS.name$tAp1);
+                return SPropertyOperations.getString(child, PROPS.name$lA7v);
               }
             };
           }
@@ -73,10 +73,10 @@ public class NodeFactory_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$mqSo = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x10dc7f1f421L, 0x10dc7f54734L, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$R1jC = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x10dc7f1f421L, 0x10dc7f54734L, "applicableConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

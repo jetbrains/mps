@@ -30,7 +30,7 @@ public class check_UnqualifiedStaticFieldReference_NonTypesystemRule extends Abs
       return;
     }
 
-    SReference ref = SNodeOperations.getReference(varRef, LINKS.variableDeclaration$2ky6);
+    SReference ref = SNodeOperations.getReference(varRef, LINKS.variableDeclaration$7WwU);
     if (!(ref instanceof StaticReference)) {
       return;
     }
@@ -48,8 +48,8 @@ public class check_UnqualifiedStaticFieldReference_NonTypesystemRule extends Abs
     // out of scope, let's make this reference non-local, but qualified 
     SNode thatClass = SNodeOperations.getNodeAncestor(target, CONCEPTS.Classifier$hJ, false, false);
     SNode sfr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference"));
-    SLinkOperations.setTarget(sfr, LINKS.classifier$ZTjE, thatClass);
-    SLinkOperations.setTarget(sfr, LINKS.variableDeclaration$2ky6, SNodeOperations.cast(target, CONCEPTS.StaticFieldDeclaration$R5));
+    SLinkOperations.setTarget(sfr, LINKS.classifier$WKxm, thatClass);
+    SLinkOperations.setTarget(sfr, LINKS.variableDeclaration$7WwU, SNodeOperations.cast(target, CONCEPTS.StaticFieldDeclaration$R5));
 
     {
       final MessageTarget errorTarget = new NodeMessageTarget();
@@ -79,7 +79,7 @@ public class check_UnqualifiedStaticFieldReference_NonTypesystemRule extends Abs
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SReferenceLink classifier$ZTjE = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink classifier$WKxm = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
   }
 }

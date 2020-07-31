@@ -30,12 +30,12 @@ public class check_GenericNewExpression_PointingToNonStaticFromStatic_NonTypesys
   }
   public void applyRule(final SNode genericNewExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final Wrappers._T<SNode> target = new Wrappers._T<SNode>();
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$itDQ), CONCEPTS.DefaultClassCreator$sQ)) {
-      target.value = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$itDQ), CONCEPTS.DefaultClassCreator$sQ), LINKS.classifier$bk50);
-    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$itDQ), CONCEPTS.ClassCreator$yU)) {
-      target.value = SNodeOperations.as(SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$itDQ), CONCEPTS.ClassCreator$yU), LINKS.baseMethodDeclaration$$A7i)), CONCEPTS.Classifier$hJ);
-    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$itDQ), CONCEPTS.AnonymousClassCreator$N6)) {
-      target.value = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$itDQ), CONCEPTS.AnonymousClassCreator$N6), LINKS.cls$xt3G), LINKS.classifier$1y5e);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$Wnha), CONCEPTS.DefaultClassCreator$sQ)) {
+      target.value = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$Wnha), CONCEPTS.DefaultClassCreator$sQ), LINKS.classifier$uIr0);
+    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$Wnha), CONCEPTS.ClassCreator$yU)) {
+      target.value = SNodeOperations.as(SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$Wnha), CONCEPTS.ClassCreator$yU), LINKS.baseMethodDeclaration$ItxI)), CONCEPTS.Classifier$hJ);
+    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$Wnha), CONCEPTS.AnonymousClassCreator$N6)) {
+      target.value = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$Wnha), CONCEPTS.AnonymousClassCreator$N6), LINKS.cls$d4Mk), LINKS.classifier$JwxM);
     } else {
       return;
     }
@@ -54,7 +54,7 @@ public class check_GenericNewExpression_PointingToNonStaticFromStatic_NonTypesys
     if ((boolean) Classifier__BehaviorDescriptor.isInner_idsWroEc0xXl.invoke(target.value) && !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(target.value))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$itDQ), "No enclosing instance of type " + SNodeOperations.getParent(target.value) + " is accessible", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "966837649713150029", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$Wnha), "No enclosing instance of type " + SNodeOperations.getParent(target.value) + " is accessible", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "966837649713150029", null, errorTarget);
       }
     }
   }
@@ -69,11 +69,11 @@ public class check_GenericNewExpression_PointingToNonStaticFromStatic_NonTypesys
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink creator$itDQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
-    /*package*/ static final SReferenceLink classifier$bk50 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink cls$xt3G = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls");
-    /*package*/ static final SReferenceLink classifier$1y5e = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SContainmentLink creator$Wnha = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
+    /*package*/ static final SReferenceLink classifier$uIr0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink cls$d4Mk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls");
+    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
   }
 
   private static final class CONCEPTS {

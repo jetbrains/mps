@@ -63,7 +63,7 @@ public class OverridingFields_Finder extends GeneratedFinder {
           fieldsOfSameKind = Classifier__BehaviorDescriptor.staticFields_id4_LVZ3pBr7M.invoke(SNodeOperations.cast(classNode, CONCEPTS.ClassConcept$IY));
         }
         for (SNode field : Sequence.fromIterable(fieldsOfSameKind)) {
-          if (SPropertyOperations.getString(field, PROPS.name$tAp1).equals(SPropertyOperations.getString(node, PROPS.name$tAp1)) && Type__BehaviorDescriptor.getErasureSignature_idhEwIzNx.invoke(SLinkOperations.getTarget(field, LINKS.type$pLrO)).equals(Type__BehaviorDescriptor.getErasureSignature_idhEwIzNx.invoke(SLinkOperations.getTarget(node, LINKS.type$pLrO)))) {
+          if (SPropertyOperations.getString(field, PROPS.name$lA7v).equals(SPropertyOperations.getString(node, PROPS.name$lA7v)) && Type__BehaviorDescriptor.getErasureSignature_idhEwIzNx.invoke(SLinkOperations.getTarget(field, LINKS.type$uWuc)).equals(Type__BehaviorDescriptor.getErasureSignature_idhEwIzNx.invoke(SLinkOperations.getTarget(node, LINKS.type$uWuc)))) {
             callback.onUsageFound(createSingleResult(field));
           }
         }
@@ -92,10 +92,10 @@ public class OverridingFields_Finder extends GeneratedFinder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

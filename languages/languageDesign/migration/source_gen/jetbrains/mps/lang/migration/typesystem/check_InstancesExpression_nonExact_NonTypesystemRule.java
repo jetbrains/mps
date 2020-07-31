@@ -26,8 +26,8 @@ public class check_InstancesExpression_nonExact_NonTypesystemRule extends Abstra
   public void applyRule(final SNode instancesExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode enclosingMigration = SNodeOperations.as(SNodeOperations.getContainingRoot(instancesExpression), CONCEPTS.MigrationScript$u3);
     if (enclosingMigration != null) {
-      if ((SLinkOperations.getTarget(instancesExpression, LINKS.parameter$ew30) == null)) {
-        if (Objects.equals(SLinkOperations.getPointer(SNodeOperations.getNodeAncestor(instancesExpression, CONCEPTS.MethodInstance$XT, false, false), LINKS.decl$UAdi), new SNodePointer("90746344-04fd-4286-97d5-b46ae6a81709/r:52a3d974-bd4f-4651-ba6e-a2de5e336d95(jetbrains.mps.lang.migration/jetbrains.mps.lang.migration.methods)", "5155329496662709030"))) {
+      if ((SLinkOperations.getTarget(instancesExpression, LINKS.parameter$1xt0) == null)) {
+        if (Objects.equals(SLinkOperations.getPointer(SNodeOperations.getNodeAncestor(instancesExpression, CONCEPTS.MethodInstance$XT, false, false), LINKS.decl$owrI), new SNodePointer("90746344-04fd-4286-97d5-b46ae6a81709/r:52a3d974-bd4f-4651-ba6e-a2de5e336d95(jetbrains.mps.lang.migration/jetbrains.mps.lang.migration.methods)", "5155329496662709030"))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(instancesExpression, "Non-exact instances search", "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "8113079483879675730", null, errorTarget);
@@ -53,7 +53,7 @@ public class check_InstancesExpression_nonExact_NonTypesystemRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink decl$UAdi = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d154L, 0x443e89bb321537L, "decl");
-    /*package*/ static final SContainmentLink parameter$ew30 = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, 0x3bc644217616e548L, "parameter");
+    /*package*/ static final SReferenceLink decl$owrI = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d154L, 0x443e89bb321537L, "decl");
+    /*package*/ static final SContainmentLink parameter$1xt0 = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, 0x3bc644217616e548L, "parameter");
   }
 }

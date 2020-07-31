@@ -132,7 +132,7 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
         @Override
         public void execute(@NotNull String pattern) {
           SNode field = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.FieldDeclaration$Ps);
-          SPropertyOperations.set(field, PROPS.isTransient$cz2$, true);
+          SPropertyOperations.set(field, PROPS.isTransient$4Yfs, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.FieldDeclaration$Ps), "transientModifier", -1);
         }
 
@@ -199,7 +199,7 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
         @Override
         public void execute(@NotNull String pattern) {
           SNode field = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.FieldDeclaration$Ps);
-          SPropertyOperations.set(field, PROPS.isVolatile$v3l9, true);
+          SPropertyOperations.set(field, PROPS.isVolatile$2Bfn, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.FieldDeclaration$Ps), "volatileModifier", -1);
         }
 
@@ -305,7 +305,7 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isTransient$cz2$ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x776fe644792f90adL, "isTransient");
-    /*package*/ static final SProperty isVolatile$v3l9 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x120c4a208a1L, "isVolatile");
+    /*package*/ static final SProperty isTransient$4Yfs = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x776fe644792f90adL, "isTransient");
+    /*package*/ static final SProperty isVolatile$2Bfn = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x120c4a208a1L, "isVolatile");
   }
 }

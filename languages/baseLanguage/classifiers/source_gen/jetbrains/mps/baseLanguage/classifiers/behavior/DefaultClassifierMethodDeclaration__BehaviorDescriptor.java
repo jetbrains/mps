@@ -39,7 +39,7 @@ public final class DefaultClassifierMethodDeclaration__BehaviorDescriptor extend
   }
 
   /*package*/ static SNode getVisiblity_idhEwIBC5(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.visibility$jt1o);
   }
   /*package*/ static boolean canBeAnnotated_idhWp4PwP(@NotNull SNode __thisNode__) {
     return true;
@@ -104,7 +104,7 @@ public final class DefaultClassifierMethodDeclaration__BehaviorDescriptor extend
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 
   private static final class CONCEPTS {

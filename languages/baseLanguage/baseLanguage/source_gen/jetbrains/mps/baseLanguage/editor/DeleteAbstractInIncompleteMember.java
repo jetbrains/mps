@@ -26,7 +26,7 @@ public class DeleteAbstractInIncompleteMember {
         if (DeletionApproverUtil.approve(editorContext, node, "staticKeyword")) {
           return;
         }
-        SPropertyOperations.set(node, PROPS.abstract$290, false);
+        SPropertyOperations.set(node, PROPS.abstract$12n0, false);
         editorContext.selectWRTFocusPolicy(node);
       }
 
@@ -75,6 +75,6 @@ public class DeleteAbstractInIncompleteMember {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstract$290 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdaf99L, "abstract");
+    /*package*/ static final SProperty abstract$12n0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdaf99L, "abstract");
   }
 }

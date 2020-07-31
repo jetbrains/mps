@@ -94,7 +94,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
   public class TMP_Group_z6skvi_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.globalReplace$etkf));
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.globalReplace$cNh));
     }
 
     @NotNull
@@ -150,7 +150,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.globalReplace$etkf, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.globalReplace$cNh, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -186,7 +186,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
   public class TMP_Group_z6skvi_b1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.multiLine$etjh));
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.multiLine$clf));
     }
 
     @NotNull
@@ -242,7 +242,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.multiLine$etjh, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.multiLine$clf, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -278,7 +278,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
   public class TMP_Group_z6skvi_c1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.dotAll$etiM));
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.dotAll$c6e));
     }
 
     @NotNull
@@ -334,7 +334,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.dotAll$etiM, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.dotAll$c6e, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -370,7 +370,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
   public class TMP_Group_z6skvi_d1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.caseInsensitive$etjK));
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.caseInsensitive$c$g));
     }
 
     @NotNull
@@ -426,7 +426,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.caseInsensitive$etjK, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.caseInsensitive$c$g, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -466,9 +466,9 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty globalReplace$etkf = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee69L, "globalReplace");
-    /*package*/ static final SProperty multiLine$etjh = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee67L, "multiLine");
-    /*package*/ static final SProperty dotAll$etiM = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee66L, "dotAll");
-    /*package*/ static final SProperty caseInsensitive$etjK = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee68L, "caseInsensitive");
+    /*package*/ static final SProperty globalReplace$cNh = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee69L, "globalReplace");
+    /*package*/ static final SProperty multiLine$clf = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee67L, "multiLine");
+    /*package*/ static final SProperty dotAll$c6e = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee66L, "dotAll");
+    /*package*/ static final SProperty caseInsensitive$c$g = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee68L, "caseInsensitive");
   }
 }

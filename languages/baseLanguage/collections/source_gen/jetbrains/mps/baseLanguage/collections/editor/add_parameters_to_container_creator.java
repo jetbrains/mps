@@ -73,7 +73,7 @@ public class add_parameters_to_container_creator extends TransformationMenuBase 
   public class TMP_Group_wtne74_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (boolean) AbstractContainerCreator__BehaviorDescriptor.canHaveParameter_id1XyaNs207wP.invoke(_context.getNode()) && ((SLinkOperations.getTarget(_context.getNode(), LINKS.initSize$vxGw) == null) || !((boolean) AbstractContainerCreator__BehaviorDescriptor.hasInitSize_id1653mnvAgtY.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getNode()))))) && ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.initValue$K4zR)).isEmpty() && (SLinkOperations.getTarget(_context.getNode(), LINKS.copyFrom$oKp$) == null);
+      return (boolean) AbstractContainerCreator__BehaviorDescriptor.canHaveParameter_id1XyaNs207wP.invoke(_context.getNode()) && ((SLinkOperations.getTarget(_context.getNode(), LINKS.initSize$hkzw) == null) || !((boolean) AbstractContainerCreator__BehaviorDescriptor.hasInitSize_id1653mnvAgtY.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getNode()))))) && ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.initValue$idnD)).isEmpty() && (SLinkOperations.getTarget(_context.getNode(), LINKS.copyFrom$Zsos) == null);
     }
 
     @NotNull
@@ -129,7 +129,7 @@ public class add_parameters_to_container_creator extends TransformationMenuBase 
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.initValue$K4zR, null);
+          SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.initValue$idnD, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -194,7 +194,7 @@ public class add_parameters_to_container_creator extends TransformationMenuBase 
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.copyFrom$oKp$, null);
+          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.copyFrom$Zsos, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -224,8 +224,8 @@ public class add_parameters_to_container_creator extends TransformationMenuBase 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink copyFrom$oKp$ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202e9082e6L, "copyFrom");
-    /*package*/ static final SContainmentLink initSize$vxGw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x15ae66cec05cb2eaL, "initSize");
-    /*package*/ static final SContainmentLink initValue$K4zR = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24ea0L, "initValue");
+    /*package*/ static final SContainmentLink copyFrom$Zsos = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202e9082e6L, "copyFrom");
+    /*package*/ static final SContainmentLink initSize$hkzw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x15ae66cec05cb2eaL, "initSize");
+    /*package*/ static final SContainmentLink initValue$idnD = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24ea0L, "initValue");
   }
 }

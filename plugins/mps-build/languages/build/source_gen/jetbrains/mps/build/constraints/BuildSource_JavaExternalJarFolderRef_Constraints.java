@@ -30,7 +30,7 @@ public class BuildSource_JavaExternalJarFolderRef_Constraints extends BaseConstr
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.folder$mC20, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.folder$XoY0, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -67,6 +67,6 @@ public class BuildSource_JavaExternalJarFolderRef_Constraints extends BaseConstr
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink folder$mC20 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb65a3fL, 0x4ddcec86afb65a40L, "folder");
+    /*package*/ static final SReferenceLink folder$XoY0 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb65a3fL, 0x4ddcec86afb65a40L, "folder");
   }
 }

@@ -24,7 +24,7 @@ public class typeof_GenerationContextOp_GetOutputByLabel_InferenceRule extends A
     {
       SNode _nodeToCheck_1029348928467 = op;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "1216860931325", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "1216860931336", true), (SNode) _quotation_createNode_tgcadk_a1a0c0a0b(SLinkOperations.getTarget(SLinkOperations.getTarget(op, LINKS.label$GKQ0), LINKS.targetConcept$f8gl)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "1216860931336", true), (SNode) _quotation_createNode_tgcadk_a1a0c0a0b(SLinkOperations.getTarget(SLinkOperations.getTarget(op, LINKS.label$FEa0), LINKS.targetConcept$kZUb)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -45,8 +45,8 @@ public class typeof_GenerationContextOp_GetOutputByLabel_InferenceRule extends A
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink label$GKQ0 = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0d6L, 0x11b5282d0d7L, "label");
-    /*package*/ static final SReferenceLink targetConcept$f8gl = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179bfe3866L, "targetConcept");
+    /*package*/ static final SReferenceLink label$FEa0 = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0d6L, 0x11b5282d0d7L, "label");
+    /*package*/ static final SReferenceLink targetConcept$kZUb = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179bfe3866L, "targetConcept");
   }
 
   private static final class CONCEPTS {

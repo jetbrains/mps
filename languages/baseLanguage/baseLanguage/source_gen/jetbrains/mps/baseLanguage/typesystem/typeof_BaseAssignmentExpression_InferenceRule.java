@@ -22,8 +22,8 @@ public class typeof_BaseAssignmentExpression_InferenceRule extends AbstractInfer
   }
   public void applyRule(final SNode baseAssignmentExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final SNode ae = baseAssignmentExpression;
-    final SNode lval = SLinkOperations.getTarget(ae, LINKS.lValue$J0D4);
-    final SNode rval = SLinkOperations.getTarget(ae, LINKS.rValue$J0E2);
+    final SNode lval = SLinkOperations.getTarget(ae, LINKS.lValue$LjSW);
+    final SNode rval = SLinkOperations.getTarget(ae, LINKS.rValue$LkmY);
     {
       final SNode lType = typeCheckingContext.typeOf(lval, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6460384142106933485", true);
       typeCheckingContext.whenConcrete(lType, new Runnable() {
@@ -37,14 +37,14 @@ public class typeof_BaseAssignmentExpression_InferenceRule extends AbstractInfer
                   BaseQuickFixProvider intentionProvider = null;
                   intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", false);
                   intentionProvider.putArgument("desiredType", lval);
-                  intentionProvider.putArgument("expression", SLinkOperations.getTarget(ae, LINKS.rValue$J0E2));
+                  intentionProvider.putArgument("expression", SLinkOperations.getTarget(ae, LINKS.rValue$LkmY));
                   _info_12389875345.addIntentionProvider(intentionProvider);
                 }
                 {
                   BaseQuickFixProvider intentionProvider = null;
                   intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeExpectedType_QuickFix", false);
                   intentionProvider.putArgument("desiredType", rval);
-                  intentionProvider.putArgument("expression", SLinkOperations.getTarget(ae, LINKS.lValue$J0D4));
+                  intentionProvider.putArgument("expression", SLinkOperations.getTarget(ae, LINKS.lValue$LjSW));
                   _info_12389875345.addIntentionProvider(intentionProvider);
                 }
                 typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(rval, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1175519338112", true), (SNode) typeCheckingContext.getExpandedNode(lType), true, true, _info_12389875345);
@@ -60,14 +60,14 @@ public class typeof_BaseAssignmentExpression_InferenceRule extends AbstractInfer
                   BaseQuickFixProvider intentionProvider = null;
                   intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", false);
                   intentionProvider.putArgument("desiredType", lval);
-                  intentionProvider.putArgument("expression", SLinkOperations.getTarget(ae, LINKS.rValue$J0E2));
+                  intentionProvider.putArgument("expression", SLinkOperations.getTarget(ae, LINKS.rValue$LkmY));
                   _info_12389875345.addIntentionProvider(intentionProvider);
                 }
                 {
                   BaseQuickFixProvider intentionProvider = null;
                   intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeExpectedType_QuickFix", false);
                   intentionProvider.putArgument("desiredType", rval);
-                  intentionProvider.putArgument("expression", SLinkOperations.getTarget(ae, LINKS.lValue$J0D4));
+                  intentionProvider.putArgument("expression", SLinkOperations.getTarget(ae, LINKS.lValue$LjSW));
                   _info_12389875345.addIntentionProvider(intentionProvider);
                 }
                 typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(rval, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2388917569121567045", true), (SNode) _quotation_createNode_ovac31_a1a0e0a0b0a0a0a0b0a1a3a1(), true, true, _info_12389875345);
@@ -101,8 +101,8 @@ public class typeof_BaseAssignmentExpression_InferenceRule extends AbstractInfer
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lValue$J0D4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SContainmentLink rValue$J0E2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
   }
 
   private static final class CONCEPTS {

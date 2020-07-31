@@ -37,18 +37,18 @@ public final class EnumerationDataTypeDeclaration_Old__BehaviorDescriptor extend
   }
 
   /*package*/ static SNode toBaseLanguageType_idhEwI9ym(@NotNull SNode __thisNode__) {
-    SNode memberDataType = SLinkOperations.getTarget(__thisNode__, LINKS.memberDataType$IU7B);
+    SNode memberDataType = SLinkOperations.getTarget(__thisNode__, LINKS.memberDataType$I9FT);
     return RulesUtil.datatypeBLType(memberDataType);
   }
   /*package*/ static SNode getDefaultMember_idhEwIM$p(@NotNull SNode __thisNode__) {
-    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.hasNoDefaultMember$9RJG)) {
+    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.hasNoDefaultMember$M06k)) {
       return null;
     }
-    SNode defaultMember = SLinkOperations.getTarget(__thisNode__, LINKS.defaultMember$C9qo);
+    SNode defaultMember = SLinkOperations.getTarget(__thisNode__, LINKS.defaultMember$szLC);
     if (defaultMember != null) {
       return defaultMember;
     }
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.member$_cRv)).first();
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.member$1eS1)).first();
   }
 
   /*package*/ EnumerationDataTypeDeclaration_Old__BehaviorDescriptor() {
@@ -100,12 +100,12 @@ public final class EnumerationDataTypeDeclaration_Old__BehaviorDescriptor extend
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink memberDataType$IU7B = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3210ef05L, "memberDataType");
-    /*package*/ static final SReferenceLink defaultMember$C9qo = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3640a77dL, "defaultMember");
-    /*package*/ static final SContainmentLink member$_cRv = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc32151efeL, "member");
+    /*package*/ static final SReferenceLink memberDataType$I9FT = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3210ef05L, "memberDataType");
+    /*package*/ static final SReferenceLink defaultMember$szLC = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3640a77dL, "defaultMember");
+    /*package*/ static final SContainmentLink member$1eS1 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc32151efeL, "member");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty hasNoDefaultMember$9RJG = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x11a35a5efdaL, "hasNoDefaultMember");
+    /*package*/ static final SProperty hasNoDefaultMember$M06k = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x11a35a5efdaL, "hasNoDefaultMember");
   }
 }

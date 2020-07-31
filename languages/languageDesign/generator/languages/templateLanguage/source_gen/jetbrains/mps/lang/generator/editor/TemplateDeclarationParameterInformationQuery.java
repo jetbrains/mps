@@ -24,7 +24,7 @@ public class TemplateDeclarationParameterInformationQuery implements ParametersI
   public TemplateDeclarationParameterInformationQuery() {
   }
   public Iterable<SNode> getMethods(SNode node, EditorContext editorContext) {
-    return Sequence.<SNode>singleton(SLinkOperations.getTarget(node, LINKS.template$yiTA));
+    return Sequence.<SNode>singleton(SLinkOperations.getTarget(node, LINKS.template$B9Tq));
   }
   public void getStyledMethodPresentation(SNode node, EditorContext editorContext, SNode parameterObject, StyledTextPrinter styledText) {
     this.fillPresentation(parameterObject, this.getSelectedActualArgument(editorContext, node), styledText);
@@ -39,33 +39,33 @@ public class TemplateDeclarationParameterInformationQuery implements ParametersI
     }
     return ListSequence.fromList(SNodeOperations.getNodeAncestors(selectedNode, CONCEPTS.Expression$TP, true)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.getParent(it) == templateCall && Objects.equals(SNodeOperations.getContainingLink(it), LINKS.actualArgument$yh2s);
+        return SNodeOperations.getParent(it) == templateCall && Objects.equals(SNodeOperations.getContainingLink(it), LINKS.actualArgument$Agb$);
       }
     });
   }
   /*package*/ void fillPresentation(SNode templateDeclaration, SNode selectedActualArgument, StyledTextPrinter styledText) {
-    if (SPropertyOperations.getString(templateDeclaration, PROPS.name$tAp1) != null) {
-      styledText.append(SPropertyOperations.getString(templateDeclaration, PROPS.name$tAp1));
+    if (SPropertyOperations.getString(templateDeclaration, PROPS.name$lA7v) != null) {
+      styledText.append(SPropertyOperations.getString(templateDeclaration, PROPS.name$lA7v));
     } else {
       styledText.append("<no name>");
     }
 
     int argumentIndex = (selectedActualArgument != null ? SNodeOperations.getIndexInParent(selectedActualArgument) : -1);
     styledText.append("(");
-    for (SNode param : SLinkOperations.getChildren(templateDeclaration, LINKS.parameter$AB01)) {
+    for (SNode param : SLinkOperations.getChildren(templateDeclaration, LINKS.parameter$GT0v)) {
       if (SNodeOperations.getIndexInParent(param) > 0) {
         styledText.append(", ");
       }
       if (SNodeOperations.getIndexInParent(param) == argumentIndex) {
         styledText.setBold(true);
       }
-      if (SLinkOperations.getTarget(param, LINKS.type$54u0) != null) {
-        styledText.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(param, LINKS.type$54u0)));
+      if (SLinkOperations.getTarget(param, LINKS.type$tay0) != null) {
+        styledText.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(param, LINKS.type$tay0)));
       } else {
         styledText.append("???");
       }
-      if (SPropertyOperations.getString(param, PROPS.name$tAp1) != null) {
-        styledText.append(" " + SPropertyOperations.getString(param, PROPS.name$tAp1));
+      if (SPropertyOperations.getString(param, PROPS.name$lA7v) != null) {
+        styledText.append(" " + SPropertyOperations.getString(param, PROPS.name$lA7v));
       }
       styledText.setBold(false);
     }
@@ -73,10 +73,10 @@ public class TemplateDeclarationParameterInformationQuery implements ParametersI
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink template$yiTA = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
-    /*package*/ static final SContainmentLink actualArgument$yh2s = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3125L, "actualArgument");
-    /*package*/ static final SContainmentLink parameter$AB01 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter");
-    /*package*/ static final SContainmentLink type$54u0 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, 0x190d31fe6a096acfL, "type");
+    /*package*/ static final SReferenceLink template$B9Tq = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
+    /*package*/ static final SContainmentLink actualArgument$Agb$ = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3125L, "actualArgument");
+    /*package*/ static final SContainmentLink parameter$GT0v = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter");
+    /*package*/ static final SContainmentLink type$tay0 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, 0x190d31fe6a096acfL, "type");
   }
 
   private static final class CONCEPTS {
@@ -84,6 +84,6 @@ public class TemplateDeclarationParameterInformationQuery implements ParametersI
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -43,7 +43,7 @@ public final class StringLiteral__BehaviorDescriptor extends BaseBHDescriptor {
     return true;
   }
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.value$kiE0);
+    return SPropertyOperations.getString(__thisNode__, PROPS.value$P2m0);
   }
   /*package*/ static boolean isCorrect_idhLEXzwL(@NotNull SNode __thisNode__) {
     boolean isEscapeMode = false;
@@ -51,12 +51,12 @@ public final class StringLiteral__BehaviorDescriptor extends BaseBHDescriptor {
     boolean isSymbolCodeMode = false;
     int digitNumber = 0;
     int unicodeDigitNumber = 0;
-    String value = SPropertyOperations.getString(__thisNode__, PROPS.value$kiE0);
+    String value = SPropertyOperations.getString(__thisNode__, PROPS.value$P2m0);
     if (value == null) {
       return true;
     }
     for (int i = 0; i < value.length(); i++) {
-      char c = SPropertyOperations.getString(__thisNode__, PROPS.value$kiE0).charAt(i);
+      char c = SPropertyOperations.getString(__thisNode__, PROPS.value$P2m0).charAt(i);
       if (isEscapeMode) {
         if (c == 'u') {
           isUnicodeMode = true;
@@ -106,7 +106,7 @@ public final class StringLiteral__BehaviorDescriptor extends BaseBHDescriptor {
     return lc >= 'a' && lc <= 'f';
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return "StringLiteral='" + SPropertyOperations.getString(__thisNode__, PROPS.value$kiE0) + "'";
+    return "StringLiteral='" + SPropertyOperations.getString(__thisNode__, PROPS.value$P2m0) + "'";
   }
 
   /*package*/ StringLiteral__BehaviorDescriptor() {
@@ -166,6 +166,6 @@ public final class StringLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$kiE0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 }

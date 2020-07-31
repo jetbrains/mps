@@ -44,13 +44,13 @@ public class DropMigratedRefPresentationQueries extends MigrationScriptBase {
         }
       };
       Collection<SNode> conceptConstraints = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptConstraints$St, false);
-      for (SNode rc : Sequence.fromIterable(SLinkOperations.collectMany(conceptConstraints, LINKS.referent$4reg))) {
-        if ((SLinkOperations.getTarget(rc, LINKS.presentation$9PzF) == null)) {
+      for (SNode rc : Sequence.fromIterable(SLinkOperations.collectMany(conceptConstraints, LINKS.referent$9bTK))) {
+        if ((SLinkOperations.getTarget(rc, LINKS.presentation$KWhP) == null)) {
           continue;
         }
-        SNode migrated = AttributeOperations.getAttribute(SLinkOperations.getTarget(rc, LINKS.presentation$9PzF), new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$N3));
-        if ((migrated != null) && ListSequence.fromList(SLinkOperations.getChildren(migrated, LINKS.problems$o$Ki)).isEmpty()) {
-          SNodeOperations.deleteNode(SLinkOperations.getTarget(rc, LINKS.presentation$9PzF));
+        SNode migrated = AttributeOperations.getAttribute(SLinkOperations.getTarget(rc, LINKS.presentation$KWhP), new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$N3));
+        if ((migrated != null) && ListSequence.fromList(SLinkOperations.getChildren(migrated, LINKS.problems$TNoI)).isEmpty()) {
+          SNodeOperations.deleteNode(SLinkOperations.getTarget(rc, LINKS.presentation$KWhP));
         }
       }
     }
@@ -65,8 +65,8 @@ public class DropMigratedRefPresentationQueries extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink presentation$9PzF = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x36367902116a44c4L, "presentation");
-    /*package*/ static final SContainmentLink problems$o$Ki = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x583cd121d513aabeL, 0x4fd9d41024c6d474L, "problems");
-    /*package*/ static final SContainmentLink referent$4reg = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a726c901bL, "referent");
+    /*package*/ static final SContainmentLink presentation$KWhP = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x36367902116a44c4L, "presentation");
+    /*package*/ static final SContainmentLink problems$TNoI = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x583cd121d513aabeL, 0x4fd9d41024c6d474L, "problems");
+    /*package*/ static final SContainmentLink referent$9bTK = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a726c901bL, "referent");
   }
 }

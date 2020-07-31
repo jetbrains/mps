@@ -14,7 +14,7 @@ public class CommentAttribute_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.append("<!--");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$u_B5));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$OdVr));
     tgs.append("-->");
     tgs.newLine();
     tgs.indent();
@@ -22,6 +22,6 @@ public class CommentAttribute_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$u_B5 = MetaAdapterFactory.getProperty(0xe8e38af60cf34cc1L, 0xbaa3ba261722e8f3L, 0x63feb1ccbe205151L, 0x63feb1ccbe205158L, "text");
+    /*package*/ static final SProperty text$OdVr = MetaAdapterFactory.getProperty(0xe8e38af60cf34cc1L, 0xbaa3ba261722e8f3L, 0x63feb1ccbe205151L, 0x63feb1ccbe205158L, "text");
   }
 }

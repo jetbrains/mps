@@ -33,14 +33,14 @@ public class DeleteStaticInMethodDeclaration {
         SNode replacing = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.InstanceMethodDeclaration$An);
         MemberDeclarationRefactoringUtil.rewireMethodReferences(node, replacing);
         if (!((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasBody_id10BRnhak8m8.invoke(replacing))) {
-          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(replacing, LINKS.body$WIlu), LINKS.statement$WHn8)).clear();
+          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(replacing, LINKS.body$qspy), LINKS.statement$pYcS)).clear();
         }
-        if (SPropertyOperations.getBoolean(replacing, PROPS.isSynchronized$PMx)) {
+        if (SPropertyOperations.getBoolean(replacing, PROPS.isSynchronized$q3tZ)) {
           SelectionUtil.selectCell(editorContext, replacing, "synchronizedModifier");
-        } else if (SPropertyOperations.getBoolean(replacing, PROPS.isNative$LADB)) {
+        } else if (SPropertyOperations.getBoolean(replacing, PROPS.isNative$1I9T)) {
           SelectionUtil.selectCell(editorContext, replacing, "nativeModifier");
         } else {
-          SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(replacing, LINKS.returnType$WIkw), SelectionManager.FIRST_EDITABLE_CELL, 0);
+          SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(replacing, LINKS.returnType$qrVw), SelectionManager.FIRST_EDITABLE_CELL, 0);
         }
       }
 
@@ -55,10 +55,10 @@ public class DeleteStaticInMethodDeclaration {
         SNode replacing = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.InstanceMethodDeclaration$An);
         MemberDeclarationRefactoringUtil.rewireMethodReferences(node, replacing);
         if (!((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasBody_id10BRnhak8m8.invoke(replacing))) {
-          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(replacing, LINKS.body$WIlu), LINKS.statement$WHn8)).clear();
+          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(replacing, LINKS.body$qspy), LINKS.statement$pYcS)).clear();
         }
 
-        if (SPropertyOperations.getBoolean(replacing, PROPS.isFinal$I$Qu)) {
+        if (SPropertyOperations.getBoolean(replacing, PROPS.isFinal$zQoy)) {
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, replacing, "finalModifier", -1);
         } else {
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, replacing, SelectionManager.FIRST_EDITABLE_CELL, -1);
@@ -118,14 +118,14 @@ public class DeleteStaticInMethodDeclaration {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isNative$LADB = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, 0x73f30e3df95c0b73L, "isNative");
-    /*package*/ static final SProperty isSynchronized$PMx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
-    /*package*/ static final SProperty isFinal$I$Qu = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
+    /*package*/ static final SProperty isNative$1I9T = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, 0x73f30e3df95c0b73L, "isNative");
+    /*package*/ static final SProperty isSynchronized$q3tZ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
+    /*package*/ static final SProperty isFinal$zQoy = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
   }
 }

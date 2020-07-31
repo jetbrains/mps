@@ -37,7 +37,7 @@ public final class BaseCommentAttribute__BehaviorDescriptor extends BaseBHDescri
 
   /*package*/ static boolean suppress_id3612de_vrfV(@NotNull SNode __thisNode__, NodeReportItem reportItem) {
     SNode errorNode = reportItem.getNode().resolve(SNodeOperations.getModel(__thisNode__).getRepository());
-    if (ListSequence.fromList(SNodeOperations.getNodeAncestors(errorNode, null, true)).contains(SLinkOperations.getTarget(__thisNode__, LINKS.commentedNode$I8FA))) {
+    if (ListSequence.fromList(SNodeOperations.getNodeAncestors(errorNode, null, true)).contains(SLinkOperations.getTarget(__thisNode__, LINKS.commentedNode$md7q))) {
       IssueKindReportItem.KindLevel kindLevel = reportItem.getIssueKind().getChecker().getKindLevel();
       if (kindLevel == IssueKindReportItem.KindLevel.CONSTRAINTS) {
         return true;
@@ -105,6 +105,6 @@ public final class BaseCommentAttribute__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink commentedNode$I8FA = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, 0x2ab99f0d2248e89dL, "commentedNode");
+    /*package*/ static final SContainmentLink commentedNode$md7q = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, 0x2ab99f0d2248e89dL, "commentedNode");
   }
 }

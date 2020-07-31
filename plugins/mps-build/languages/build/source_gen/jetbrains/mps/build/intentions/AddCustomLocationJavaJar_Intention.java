@@ -34,7 +34,7 @@ public final class AddCustomLocationJavaJar_Intention extends AbstractIntentionD
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SLinkOperations.getTarget(node, LINKS.customLocation$bMlA) == null);
+    return (SLinkOperations.getTarget(node, LINKS.customLocation$Hotq) == null);
   }
   @Override
   public boolean isSurroundWith() {
@@ -55,7 +55,7 @@ public final class AddCustomLocationJavaJar_Intention extends AbstractIntentionD
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SLinkOperations.setNewChild(node, LINKS.customLocation$bMlA, null);
+      SLinkOperations.setNewChild(node, LINKS.customLocation$Hotq, null);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -64,6 +64,6 @@ public final class AddCustomLocationJavaJar_Intention extends AbstractIntentionD
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink customLocation$bMlA = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x11779a1dbcff551aL, 0x78d465945dbd7c46L, "customLocation");
+    /*package*/ static final SContainmentLink customLocation$Hotq = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x11779a1dbcff551aL, 0x78d465945dbd7c46L, "customLocation");
   }
 }

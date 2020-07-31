@@ -42,8 +42,8 @@
       <node id="2034914114981264791" at="53,30,54,234" concept="2" />
       <node id="2034914114981264791" at="54,234,55,438" concept="2" />
       <node id="2034914114981264791" at="55,438,56,24" concept="5" />
-      <node id="2034914114981264597" at="60,0,61,0" concept="6" trace="message$b$_u" />
-      <node id="2034914114981264597" at="61,0,62,0" concept="6" trace="throwable$b$As" />
+      <node id="2034914114981264597" at="60,0,61,0" concept="6" trace="message$AI9y" />
+      <node id="2034914114981264597" at="61,0,62,0" concept="6" trace="throwable$AIB$" />
       <node id="2034914114981264597" at="65,0,66,0" concept="6" trace="LogLowLevelStatement$g1" />
       <node id="2034914114981264597" at="21,0,23,0" concept="1" trace="typeof_LogLowLevelStatement_InferenceRule#()V" />
       <node id="2034914114981264597" at="35,0,38,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -130,9 +130,9 @@
       <node id="5721587534047288621" at="65,30,66,234" concept="2" />
       <node id="5721587534047288621" at="66,234,67,468" concept="2" />
       <node id="5721587534047288621" at="67,468,68,24" concept="5" />
-      <node id="5721587534047288599" at="72,0,73,0" concept="6" trace="message$75e4" />
-      <node id="5721587534047288599" at="73,0,74,0" concept="6" trace="throwable$75ez" />
-      <node id="5721587534047288599" at="74,0,75,0" concept="6" trace="project$7jw5" />
+      <node id="5721587534047288599" at="72,0,73,0" concept="6" trace="message$rxNW" />
+      <node id="5721587534047288599" at="73,0,74,0" concept="6" trace="throwable$ry2X" />
+      <node id="5721587534047288599" at="74,0,75,0" concept="6" trace="project$ysyr" />
       <node id="5721587534047288599" at="78,0,79,0" concept="6" trace="MsgStatement$2f" />
       <node id="5721587534047288599" at="21,0,23,0" concept="1" trace="typeof_MsgStatement_InferenceRule#()V" />
       <node id="5721587534047288599" at="40,0,43,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

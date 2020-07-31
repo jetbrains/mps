@@ -115,12 +115,12 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
       List<SNode> subConcepts = ListSequence.fromList(new ArrayList<SNode>());
       ListSequence.fromList(subConcepts).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$qU, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SLinkOperations.getPointer(it, LINKS.extends$LQV3), initialState._0().reference());
+          return Objects.equals(SLinkOperations.getPointer(it, LINKS.extends$9AAt), initialState._0().reference());
         }
       }).toListSequence());
       ListSequence.fromList(subConcepts).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.InterfaceConceptDeclaration$MT, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.extends$3Y1p)).any(new IWhereFilter<SNode>() {
+          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.extends$V2F7)).any(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
               return Objects.equals(SNodeOperations.getPointer(it), initialState._0().reference());
             }
@@ -129,7 +129,7 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
       }).toListSequence());
       ListSequence.fromList(subConcepts).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$qU, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.implements$oQDh)).any(new IWhereFilter<SNode>() {
+          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.implements$2tZf)).any(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
               return Objects.equals(SNodeOperations.getPointer(it), initialState._0().reference());
             }
@@ -166,7 +166,7 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
     return createConceptMigrationReference_8k3jue_a0a51(NodeReferenceUtil.makeReflection(initialState._0().reference(), initialState._0().name()), initialState._1().getVersion(), PersistenceFacade.getInstance().asString(initialState._1().getLanguage()));
   }
   public Tuples._2<NamedNodeReference, MigrationScriptRef> deserializeInitialState(SNode serialized) {
-    return MultiTuple.<NamedNodeReference,MigrationScriptRef>from(new NamedNodeReference(AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(serialized, LINKS.oldConcept$BI1t)), BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(serialized, LINKS.oldConcept$BI1t))), new MigrationScriptRef(PersistenceFacade.getInstance().createModuleReference(SPropertyOperations.getString(SLinkOperations.getTarget(serialized, LINKS.migrationScript$BI00), PROPS.module$CX3T)), SPropertyOperations.getInteger(SLinkOperations.getTarget(serialized, LINKS.migrationScript$BI00), PROPS.fromVersion$6eac)));
+    return MultiTuple.<NamedNodeReference,MigrationScriptRef>from(new NamedNodeReference(AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(serialized, LINKS.oldConcept$fiH3)), BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(serialized, LINKS.oldConcept$fiH3))), new MigrationScriptRef(PersistenceFacade.getInstance().createModuleReference(SPropertyOperations.getString(SLinkOperations.getTarget(serialized, LINKS.migrationScript$fi00), PROPS.module$P$SB)), SPropertyOperations.getInteger(SLinkOperations.getTarget(serialized, LINKS.migrationScript$fi00), PROPS.fromVersion$QVO)));
   }
   public SNode serializeFinalState(Void finalState) {
     return null;
@@ -191,17 +191,17 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
   }
   private static SNode createIncludeMigrationPart_8k3jue_a0a1a1a0a0a0a0a0a5a2a21(SNode node0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.IncludeMigrationPart$zz);
-    rootBuilder1.setReferenceTarget(LINKS.target$s$xW, node0);
+    rootBuilder1.setReferenceTarget(LINKS.target$PGs4, node0);
     return rootBuilder1.getResult();
   }
   private static SNode createConceptMigrationReference_8k3jue_a0a51(SNode node0, Object p0, Object p1) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ConceptMigrationReference$$0);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.migrationScript$BI00).init(CONCEPTS.MigrationScriptReference$AH);
-      n2.setProperty(PROPS.fromVersion$6eac, PROPS.fromVersion$6eac.getType().toString(p0));
-      n2.setProperty(PROPS.module$CX3T, PROPS.module$CX3T.getType().toString(p1));
+      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.migrationScript$fi00).init(CONCEPTS.MigrationScriptReference$AH);
+      n2.setProperty(PROPS.fromVersion$QVO, PROPS.fromVersion$QVO.getType().toString(p0));
+      n2.setProperty(PROPS.module$P$SB, PROPS.module$P$SB.getType().toString(p1));
     }
-    rootBuilder1.forChild(LINKS.oldConcept$BI1t).initNode(node0, CONCEPTS.AbstractNodeReference$T6, true);
+    rootBuilder1.forChild(LINKS.oldConcept$fiH3).initNode(node0, CONCEPTS.AbstractNodeReference$T6, true);
     return rootBuilder1.getResult();
   }
 
@@ -217,16 +217,16 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$LQV3 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
-    /*package*/ static final SContainmentLink extends$3Y1p = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
-    /*package*/ static final SContainmentLink implements$oQDh = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
-    /*package*/ static final SContainmentLink oldConcept$BI1t = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x36182c4cf6238c95L, 0x36182c4cf6238c99L, "oldConcept");
-    /*package*/ static final SContainmentLink migrationScript$BI00 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x36182c4cf6238c95L, 0x36182c4cf6238c96L, "migrationScript");
-    /*package*/ static final SReferenceLink target$s$xW = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x267418e6b5c2b903L, 0x267418e6b5c2b960L, "target");
+    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SContainmentLink extends$V2F7 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
+    /*package*/ static final SContainmentLink implements$2tZf = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
+    /*package*/ static final SContainmentLink oldConcept$fiH3 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x36182c4cf6238c95L, 0x36182c4cf6238c99L, "oldConcept");
+    /*package*/ static final SContainmentLink migrationScript$fi00 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x36182c4cf6238c95L, 0x36182c4cf6238c96L, "migrationScript");
+    /*package*/ static final SReferenceLink target$PGs4 = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x267418e6b5c2b903L, 0x267418e6b5c2b960L, "target");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty module$CX3T = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x66eed171c5f83bcaL, 0x66eed171c602da74L, "module");
-    /*package*/ static final SProperty fromVersion$6eac = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x66eed171c5f83bcaL, 0x66eed171c5f90222L, "fromVersion");
+    /*package*/ static final SProperty module$P$SB = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x66eed171c5f83bcaL, 0x66eed171c602da74L, "module");
+    /*package*/ static final SProperty fromVersion$QVO = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x66eed171c5f83bcaL, 0x66eed171c5f90222L, "fromVersion");
   }
 }

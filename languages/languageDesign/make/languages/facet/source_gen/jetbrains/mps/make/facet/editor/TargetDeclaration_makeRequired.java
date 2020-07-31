@@ -26,7 +26,7 @@ public class TargetDeclaration_makeRequired {
         if (DeletionApproverUtil.approve(editorContext, node, "optionalKeyword")) {
           return;
         }
-        SPropertyOperations.assign(node, PROPS.optional$_txg, false);
+        SPropertyOperations.assign(node, PROPS.optional$9j6K, false);
       }
 
     };
@@ -74,6 +74,6 @@ public class TargetDeclaration_makeRequired {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty optional$_txg = MetaAdapterFactory.getProperty(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x642ffc6d854ec1c5L, "optional");
+    /*package*/ static final SProperty optional$9j6K = MetaAdapterFactory.getProperty(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x642ffc6d854ec1c5L, "optional");
   }
 }

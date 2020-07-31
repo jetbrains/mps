@@ -45,11 +45,11 @@ public final class ChangeRoot_Intention extends AbstractIntentionDescriptor impl
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (SPropertyOperations.getBoolean(node, PROPS.root$tPkC) ? "Make Non Root" : "Make Root");
+      return (SPropertyOperations.getBoolean(node, PROPS.root$sOZo) ? "Make Non Root" : "Make Root");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.root$tPkC, !(SPropertyOperations.getBoolean(node, PROPS.root$tPkC)));
+      SPropertyOperations.assign(node, PROPS.root$sOZo, !(SPropertyOperations.getBoolean(node, PROPS.root$sOZo)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -58,6 +58,6 @@ public final class ChangeRoot_Intention extends AbstractIntentionDescriptor impl
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty root$tPkC = MetaAdapterFactory.getProperty(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e38L, 0x6524536b2e1bddd7L, "root");
+    /*package*/ static final SProperty root$sOZo = MetaAdapterFactory.getProperty(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e38L, 0x6524536b2e1bddd7L, "root");
   }
 }

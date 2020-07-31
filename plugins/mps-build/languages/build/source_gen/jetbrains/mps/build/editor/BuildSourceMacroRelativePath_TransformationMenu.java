@@ -90,7 +90,7 @@ public class BuildSourceMacroRelativePath_TransformationMenu extends Transformat
   public class TMP_Group_dh81t5_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.compositePart$gwj7) == null);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.compositePart$ZDgp) == null);
     }
 
     @NotNull
@@ -146,7 +146,7 @@ public class BuildSourceMacroRelativePath_TransformationMenu extends Transformat
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.compositePart$gwj7, null);
+          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.compositePart$ZDgp, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -176,6 +176,6 @@ public class BuildSourceMacroRelativePath_TransformationMenu extends Transformat
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink compositePart$gwj7 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
+    /*package*/ static final SContainmentLink compositePart$ZDgp = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
   }
 }

@@ -21,7 +21,7 @@ public class RegexpDeclaration_Constraints extends BaseConstraintsDescriptor {
 
   public static class ShortDescription_Property extends BasePropertyConstraintsDescriptor {
     public ShortDescription_Property(ConstraintsDescriptor container) {
-      super(PROPS.shortDescription$w2Xj, container);
+      super(PROPS.shortDescription$xrGd, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -29,7 +29,7 @@ public class RegexpDeclaration_Constraints extends BaseConstraintsDescriptor {
     }
     @Override
     public Object getValue(SNode node) {
-      return (isNotEmptyString(SPropertyOperations.getString(node, PROPS.description$Y0wz)) ? SPropertyOperations.getString(node, PROPS.description$Y0wz) : "regular expression");
+      return (isNotEmptyString(SPropertyOperations.getString(node, PROPS.description$2fKX)) ? SPropertyOperations.getString(node, PROPS.description$2fKX) : "regular expression");
     }
     private static boolean isNotEmptyString(String str) {
       return str != null && str.length() > 0;
@@ -38,7 +38,7 @@ public class RegexpDeclaration_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.shortDescription$w2Xj, new ShortDescription_Property(this));
+    properties.put(PROPS.shortDescription$xrGd, new ShortDescription_Property(this));
     return properties;
   }
 
@@ -47,7 +47,7 @@ public class RegexpDeclaration_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty shortDescription$w2Xj = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
-    /*package*/ static final SProperty description$Y0wz = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a6454dL, 0x1117f5e9a48L, "description");
+    /*package*/ static final SProperty shortDescription$xrGd = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
+    /*package*/ static final SProperty description$2fKX = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a6454dL, 0x1117f5e9a48L, "description");
   }
 }

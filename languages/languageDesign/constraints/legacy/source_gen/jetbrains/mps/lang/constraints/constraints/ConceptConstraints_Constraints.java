@@ -62,7 +62,7 @@ public class ConceptConstraints_Constraints extends BaseConstraintsDescriptor {
   }
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$tAp1, container);
+      super(PROPS.name$lA7v, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -71,8 +71,8 @@ public class ConceptConstraints_Constraints extends BaseConstraintsDescriptor {
     @Override
     public Object getValue(SNode node) {
       String conceptName;
-      if ((SLinkOperations.getTarget(node, LINKS.concept$rRWx) != null)) {
-        conceptName = SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.concept$rRWx), PROPS.name$tAp1);
+      if ((SLinkOperations.getTarget(node, LINKS.concept$w6jZ) != null)) {
+        conceptName = SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.concept$w6jZ), PROPS.name$lA7v);
       } else {
         conceptName = "???";
       }
@@ -82,12 +82,12 @@ public class ConceptConstraints_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$tAp1, new Name_Property(this));
+    properties.put(PROPS.name$lA7v, new Name_Property(this));
     return properties;
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.concept$rRWx, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.concept$w6jZ, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -116,7 +116,7 @@ public class ConceptConstraints_Constraints extends BaseConstraintsDescriptor {
         };
       }
     };
-    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.defaultConcreteConcept$moAu, this) {
+    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.defaultConcreteConcept$PUCy, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -131,13 +131,13 @@ public class ConceptConstraints_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            final SNode conceptNode = SLinkOperations.getTarget(SNodeOperations.as(_context.getReferenceNode(), CONCEPTS.ConceptConstraints$St), LINKS.concept$rRWx);
+            final SNode conceptNode = SLinkOperations.getTarget(SNodeOperations.as(_context.getReferenceNode(), CONCEPTS.ConceptConstraints$St), LINKS.concept$w6jZ);
             // why not for the same language? 
             return new FilteringScope(Scopes.forLanguageConcepts(conceptNode, CONCEPTS.ConceptDeclaration$qU)) {
               @Override
               public boolean isExcluded(SNode n) {
                 SNode otherConceptNode = SNodeOperations.cast(n, CONCEPTS.ConceptDeclaration$qU);
-                return !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(otherConceptNode, conceptNode)) || SPropertyOperations.getBoolean(otherConceptNode, PROPS.abstract$moSU);
+                return !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(otherConceptNode, conceptNode)) || SPropertyOperations.getBoolean(otherConceptNode, PROPS.abstract$Q3$6);
               }
             };
           }
@@ -169,12 +169,12 @@ public class ConceptConstraints_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty abstract$moSU = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty abstract$Q3$6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$rRWx = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept");
-    /*package*/ static final SReferenceLink defaultConcreteConcept$moAu = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a72ce9037L, "defaultConcreteConcept");
+    /*package*/ static final SReferenceLink concept$w6jZ = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept");
+    /*package*/ static final SReferenceLink defaultConcreteConcept$PUCy = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a72ce9037L, "defaultConcreteConcept");
   }
 }

@@ -26,7 +26,7 @@ public class delete_moduleDepReexport {
         if (DeletionApproverUtil.approve(editorContext, node, "reexportKeyword")) {
           return;
         }
-        SPropertyOperations.assign(node, PROPS.reexport$gb$r, false);
+        SPropertyOperations.assign(node, PROPS.reexport$PAD5, false);
       }
 
     };
@@ -74,6 +74,6 @@ public class delete_moduleDepReexport {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty reexport$gb$r = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cc1L, "reexport");
+    /*package*/ static final SProperty reexport$PAD5 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cc1L, "reexport");
   }
 }

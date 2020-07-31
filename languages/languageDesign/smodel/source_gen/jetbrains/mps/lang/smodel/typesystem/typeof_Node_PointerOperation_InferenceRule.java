@@ -24,7 +24,7 @@ public class typeof_Node_PointerOperation_InferenceRule extends AbstractInferenc
   public typeof_Node_PointerOperation_InferenceRule() {
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    final SNode operand = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(op), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
+    final SNode operand = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(op), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
     if ((operand == null)) {
       {
         SNode _nodeToCheck_1029348928467 = op;
@@ -44,7 +44,7 @@ public class typeof_Node_PointerOperation_InferenceRule extends AbstractInferenc
               {
                 SNode _nodeToCheck_1029348928467 = op;
                 EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "5312793114533519558", 0, null);
-                typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "5312793114533519567", true), (SNode) _quotation_createNode_91gkjb_a1a0c0a0b0a0a0a1a0b0d0b(SLinkOperations.getTarget(coercedNode_gixyfg_a0d0, LINKS.concept$HWFQ)), _info_12389875345);
+                typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "5312793114533519567", true), (SNode) _quotation_createNode_91gkjb_a1a0c0a0b0a0a0a1a0b0d0b(SLinkOperations.getTarget(coercedNode_gixyfg_a0d0, LINKS.concept$gpfa)), _info_12389875345);
               }
             } else {
               {
@@ -94,7 +94,7 @@ public class typeof_Node_PointerOperation_InferenceRule extends AbstractInferenc
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SReferenceLink concept$HWFQ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
   }
 }

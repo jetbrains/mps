@@ -24,7 +24,7 @@ public class check_EditorCellModel_emptyCell_NonTypesystemRule extends AbstractN
   public check_EditorCellModel_emptyCell_NonTypesystemRule() {
   }
   public void applyRule(final SNode cellModel_RefNode, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode emptyCellModel = SLinkOperations.getTarget(cellModel_RefNode, LINKS.emptyCellModel$GqNr);
+    SNode emptyCellModel = SLinkOperations.getTarget(cellModel_RefNode, LINKS.emptyCellModel$wYU5);
     if (emptyCellModel == null) {
       return;
     }
@@ -50,7 +50,7 @@ public class check_EditorCellModel_emptyCell_NonTypesystemRule extends AbstractN
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink emptyCellModel$GqNr = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb05cdc7L, 0x3a4d559b42e5cbL, "emptyCellModel");
+    /*package*/ static final SContainmentLink emptyCellModel$wYU5 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb05cdc7L, 0x3a4d559b42e5cbL, "emptyCellModel");
   }
 
   private static final class CONCEPTS {

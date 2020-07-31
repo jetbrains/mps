@@ -31,7 +31,7 @@ public final class RemarkStatement__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static boolean isTodo_idhEwITPs(@NotNull SNode __thisNode__) {
-    String v = SPropertyOperations.getString(__thisNode__, PROPS.value$ATQL);
+    String v = SPropertyOperations.getString(__thisNode__, PROPS.value$Q1xJ);
     boolean isToDo = false;
     if (v != null) {
       isToDo = v.startsWith("TODO:") || v.startsWith("FIX:") || v.startsWith("todo:");
@@ -86,6 +86,6 @@ public final class RemarkStatement__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$ATQL = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, 0x110175cdb2bL, "value");
+    /*package*/ static final SProperty value$Q1xJ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, 0x110175cdb2bL, "value");
   }
 }

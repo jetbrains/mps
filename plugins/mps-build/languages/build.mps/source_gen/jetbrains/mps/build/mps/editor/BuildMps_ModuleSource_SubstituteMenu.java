@@ -94,7 +94,7 @@ public class BuildMps_ModuleSource_SubstituteMenu extends SubstituteMenuBase {
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
           SNode res = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.BuildMps_ModuleJavaSource$lI);
-          SLinkOperations.setTarget(res, LINKS.folder$99Dv, nodeToWrap);
+          SLinkOperations.setTarget(res, LINKS.folder$rF61, nodeToWrap);
           return res;
         }
 
@@ -153,6 +153,6 @@ public class BuildMps_ModuleSource_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink folder$99Dv = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334bdeaL, 0x48e82d508334bdecL, "folder");
+    /*package*/ static final SContainmentLink folder$rF61 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334bdeaL, 0x48e82d508334bdecL, "folder");
   }
 }

@@ -22,7 +22,7 @@ public class check_AbstractSetOperation_NonTypesystemRule extends AbstractNonTyp
   public check_AbstractSetOperation_NonTypesystemRule() {
   }
   public void applyRule(final SNode aso, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(aso), CONCEPTS.DotExpression$6a) && (TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(aso), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr)), CONCEPTS.SetType$1N) != null))) {
+    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(aso), CONCEPTS.DotExpression$6a) && (TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(aso), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5)), CONCEPTS.SetType$1N) != null))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(aso, "not available here", "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4998595809121278530", null, errorTarget);
     }
@@ -44,6 +44,6 @@ public class check_AbstractSetOperation_NonTypesystemRule extends AbstractNonTyp
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 }

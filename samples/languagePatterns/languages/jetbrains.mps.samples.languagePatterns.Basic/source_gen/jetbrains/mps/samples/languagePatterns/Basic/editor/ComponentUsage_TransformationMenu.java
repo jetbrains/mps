@@ -101,11 +101,11 @@ public class ComponentUsage_TransformationMenu extends TransformationMenuBase {
     }
     @Override
     protected SReferenceLink getReferenceLink(TransformationMenuContext context) {
-      return LINKS.usedComponent$4v6T;
+      return LINKS.usedComponent$b4lB;
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink usedComponent$4v6T = MetaAdapterFactory.getReferenceLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x4ed97160b0a7fb71L, 0x4ed97160b0a7fba5L, "usedComponent");
+    /*package*/ static final SReferenceLink usedComponent$b4lB = MetaAdapterFactory.getReferenceLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x4ed97160b0a7fb71L, 0x4ed97160b0a7fba5L, "usedComponent");
   }
 }

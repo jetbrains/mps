@@ -24,7 +24,7 @@
       <node id="1280144168199457725" at="55,0,56,0" concept="5" trace="breakingNode_qx1fe9_a0a0a0a0a1a0a0a0c" />
       <node id="1280144168199457725" at="58,0,59,0" concept="5" trace="JUnit3TestCaseRef$PG" />
       <node id="1280144168199457725" at="59,0,60,0" concept="5" trace="ModuleSuite$D_" />
-      <node id="1280144168199457725" at="63,0,64,0" concept="5" trace="klass$Q7$q" />
+      <node id="1280144168199457725" at="63,0,64,0" concept="5" trace="klass$dECA" />
       <node id="1280144168199457725" at="25,0,28,0" concept="0" trace="JUnit3TestCaseRef_Constraints#()V" />
       <node id="1280144168199457728" at="32,0,36,0" concept="2" trace="hasOwnScopeProvider#()Z" />
       <node id="1280144168199457728" at="40,0,44,0" concept="2" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -69,7 +69,7 @@
       <node id="1280144168199519457" at="54,0,55,0" concept="5" trace="breakingNode_d3a0zo_a0a0a0a0a1a0a0a0c" />
       <node id="1280144168199519457" at="57,0,58,0" concept="5" trace="TestCaseRef$Ez" />
       <node id="1280144168199519457" at="58,0,59,0" concept="5" trace="BaseConcept$Sz" />
-      <node id="1280144168199519457" at="62,0,63,0" concept="5" trace="testCase$fEcz" />
+      <node id="1280144168199519457" at="62,0,63,0" concept="5" trace="testCase$_s4X" />
       <node id="1280144168199519457" at="24,0,27,0" concept="0" trace="TestCaseRef_Constraints#()V" />
       <node id="1280144168199519458" at="31,0,35,0" concept="2" trace="hasOwnScopeProvider#()Z" />
       <node id="1280144168199519458" at="39,0,43,0" concept="2" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -112,8 +112,8 @@
       <node id="1280144168199745454" at="39,119,40,61" concept="1" />
       <node id="1280144168199745453" at="40,61,41,22" concept="4" />
       <node id="1280144168199745453" at="45,0,46,0" concept="5" trace="ModuleSuite$D_" />
-      <node id="1280144168199745453" at="49,0,50,0" concept="5" trace="name$tAp1" />
-      <node id="1280144168199745453" at="53,0,54,0" concept="5" trace="moduleRef$cQ0V" />
+      <node id="1280144168199745453" at="49,0,50,0" concept="5" trace="name$lA7v" />
+      <node id="1280144168199745453" at="53,0,54,0" concept="5" trace="moduleRef$eas_" />
       <node id="1280144168199745453" at="20,0,23,0" concept="0" trace="ModuleSuite_Constraints#()V" />
       <node id="1280144168199745454" at="25,0,28,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="1280144168199745454" at="28,0,32,0" concept="2" trace="hasOwnGetter#()Z" />
@@ -154,7 +154,7 @@
       <node id="4504141816188599490" at="55,0,56,0" concept="5" trace="breakingNode_qd3c0x_a0a0a0a0a1a0a0a0c" />
       <node id="4504141816188599490" at="58,0,59,0" concept="5" trace="JUnit4TestCaseRef$Pd" />
       <node id="4504141816188599490" at="59,0,60,0" concept="5" trace="ModuleSuite$D_" />
-      <node id="4504141816188599490" at="63,0,64,0" concept="5" trace="klass$fEdo" />
+      <node id="4504141816188599490" at="63,0,64,0" concept="5" trace="klass$_suC" />
       <node id="4504141816188599490" at="25,0,28,0" concept="0" trace="JUnit4TestCaseRef_Constraints#()V" />
       <node id="4504141816188599491" at="32,0,36,0" concept="2" trace="hasOwnScopeProvider#()Z" />
       <node id="4504141816188599491" at="40,0,44,0" concept="2" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />

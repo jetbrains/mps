@@ -25,10 +25,10 @@ public class ExternalViewClassifierScope extends FilteringScope {
   @Override
   public boolean isExcluded(SNode node) {
     SNode classConcept = SNodeOperations.cast(node, CONCEPTS.ClassConcept$IY);
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classConcept, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classConcept, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se)) {
       return true;
     }
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classConcept, LINKS.visibility$2GiC), CONCEPTS.PublicVisibility$qe)) && SNodeOperations.getModel(classConcept) != myModel) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classConcept, LINKS.visibility$jt1o), CONCEPTS.PublicVisibility$qe)) && SNodeOperations.getModel(classConcept) != myModel) {
       return true;
     }
     if ((boolean) Classifier__BehaviorDescriptor.isInner_idsWroEc0xXl.invoke(classConcept) && !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(classConcept))) {
@@ -44,6 +44,6 @@ public class ExternalViewClassifierScope extends FilteringScope {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 }

@@ -26,7 +26,7 @@ public class check_ActionParameterInUse_NonTypesystemRule extends AbstractNonTyp
   public void applyRule(final SNode actionParameter, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     boolean inUse = ListSequence.fromList(SNodeOperations.getNodeDescendantsWhereConceptInList(SNodeOperations.getNodeAncestor(actionParameter, CONCEPTS.ActionDeclaration$VX, false, false), new SAbstractConcept[]{CONCEPTS.ActionParameterReferenceOperation$fx, CONCEPTS.ActionDataParameterReferenceOperation$gU}, false, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.member$hrpI) == actionParameter;
+        return SLinkOperations.getTarget(it, LINKS.member$shti) == actionParameter;
       }
     });
     if (!(inUse)) {
@@ -54,6 +54,6 @@ public class check_ActionParameterInUse_NonTypesystemRule extends AbstractNonTyp
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink member$hrpI = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
+    /*package*/ static final SReferenceLink member$shti = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
   }
 }

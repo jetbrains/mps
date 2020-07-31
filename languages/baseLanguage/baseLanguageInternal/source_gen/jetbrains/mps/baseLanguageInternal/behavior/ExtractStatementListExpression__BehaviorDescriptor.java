@@ -34,8 +34,8 @@ public final class ExtractStatementListExpression__BehaviorDescriptor extends Ba
 
   /*package*/ static List<SNode> getLocalVariableElements_idi1I$XiP(@NotNull SNode __thisNode__) {
     List<SNode> elems = new ArrayList<SNode>();
-    ListSequence.fromList(elems).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.stmts$6Cok), LINKS.statement$WHn8)));
-    ListSequence.fromList(elems).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.innerExpr$Zn8s));
+    ListSequence.fromList(elems).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.stmts$dzLG), LINKS.statement$pYcS)));
+    ListSequence.fromList(elems).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.innerExpr$Gd5$));
     return elems;
   }
 
@@ -86,8 +86,8 @@ public final class ExtractStatementListExpression__BehaviorDescriptor extends Ba
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink stmts$6Cok = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2c5dbc7b762fd2a7L, 0x2c5dbc7b762fdcf9L, "stmts");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink innerExpr$Zn8s = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2c5dbc7b762fd2a7L, 0x2c5dbc7b7630f550L, "innerExpr");
+    /*package*/ static final SContainmentLink stmts$dzLG = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2c5dbc7b762fd2a7L, 0x2c5dbc7b762fdcf9L, "stmts");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink innerExpr$Gd5$ = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2c5dbc7b762fd2a7L, 0x2c5dbc7b7630f550L, "innerExpr");
   }
 }

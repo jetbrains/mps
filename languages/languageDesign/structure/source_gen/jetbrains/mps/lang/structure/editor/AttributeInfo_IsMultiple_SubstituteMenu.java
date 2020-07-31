@@ -117,7 +117,7 @@ public class AttributeInfo_IsMultiple_SubstituteMenu extends SubstituteMenuBase 
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5405fd034959f7dcL, "jetbrains.mps.lang.structure.structure.AttributeInfo_IsMultiple"));
-          SPropertyOperations.set(result, PROPS.value$Wv6W, myParameterObject.booleanValue());
+          SPropertyOperations.set(result, PROPS.value$j4n4, myParameterObject.booleanValue());
           return result;
         }
 
@@ -154,6 +154,6 @@ public class AttributeInfo_IsMultiple_SubstituteMenu extends SubstituteMenuBase 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$Wv6W = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5405fd034959f7dcL, 0x5405fd03495a2dceL, "value");
+    /*package*/ static final SProperty value$j4n4 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5405fd034959f7dcL, 0x5405fd03495a2dceL, "value");
   }
 }

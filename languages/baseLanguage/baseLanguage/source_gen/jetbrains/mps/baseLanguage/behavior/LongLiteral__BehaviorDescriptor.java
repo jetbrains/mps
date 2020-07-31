@@ -37,7 +37,7 @@ public final class LongLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
     try {
-      String value = (SPropertyOperations.getString(__thisNode__, PROPS.value$ODo0).endsWith("l") || SPropertyOperations.getString(__thisNode__, PROPS.value$ODo0).endsWith("L") ? SPropertyOperations.getString(__thisNode__, PROPS.value$ODo0).substring(0, SPropertyOperations.getString(__thisNode__, PROPS.value$ODo0).length() - 1) : SPropertyOperations.getString(__thisNode__, PROPS.value$ODo0));
+      String value = (SPropertyOperations.getString(__thisNode__, PROPS.value$w2C0).endsWith("l") || SPropertyOperations.getString(__thisNode__, PROPS.value$w2C0).endsWith("L") ? SPropertyOperations.getString(__thisNode__, PROPS.value$w2C0).substring(0, SPropertyOperations.getString(__thisNode__, PROPS.value$w2C0).length() - 1) : SPropertyOperations.getString(__thisNode__, PROPS.value$w2C0));
       return Long.parseLong(value);
     } catch (NumberFormatException e) {
       return null;
@@ -93,6 +93,6 @@ public final class LongLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$ODo0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, 0x3b418722717710b5L, "value");
+    /*package*/ static final SProperty value$w2C0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, 0x3b418722717710b5L, "value");
   }
 }

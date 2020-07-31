@@ -99,10 +99,10 @@
       <node id="1592627013225958174" at="166,108,167,47" concept="1" />
       <node id="1592627013225958174" at="167,47,168,34" concept="1" />
       <node id="1592627013225958174" at="168,34,169,22" concept="6" />
-      <node id="1592627013225788461" at="173,0,174,0" concept="8" trace="ref$uT96" />
+      <node id="1592627013225788461" at="173,0,174,0" concept="8" trace="ref$XFpU" />
       <node id="1592627013225788461" at="177,0,178,0" concept="8" trace="LinkAttribute$7j" />
       <node id="1592627013225788461" at="178,0,179,0" concept="8" trace="PropertyAttribute$jT" />
-      <node id="1592627013225788461" at="182,0,183,0" concept="8" trace="name$tAp1" />
+      <node id="1592627013225788461" at="182,0,183,0" concept="8" trace="name$lA7v" />
       <node id="1592627013225788461" at="42,0,44,0" concept="2" trace="myNode" />
       <node id="5258059200641869328" at="116,0,118,0" concept="2" trace="myNode" />
       <node id="1592627013225788461" at="56,0,59,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -271,10 +271,10 @@
       <node id="2554379189374329856" at="153,91,154,147" concept="6" />
       <node id="2554379189374329856" at="155,14,156,26" concept="6" />
       <node id="2554379189374329856" at="157,17,158,42" concept="1" />
-      <node id="1592627013225788461" at="164,0,165,0" concept="8" trace="kind$Wl20" />
+      <node id="1592627013225788461" at="164,0,165,0" concept="8" trace="kind$ebY0" />
       <node id="1592627013225788461" at="168,0,169,0" concept="8" trace="LinkAttribute$7j" />
       <node id="1592627013225788461" at="169,0,170,0" concept="8" trace="PropertyAttribute$jT" />
-      <node id="1592627013225788461" at="173,0,174,0" concept="8" trace="name$tAp1" />
+      <node id="1592627013225788461" at="173,0,174,0" concept="8" trace="name$lA7v" />
       <node id="1592627013225788461" at="40,0,42,0" concept="2" trace="myNode" />
       <node id="2554379189374329855" at="113,0,115,0" concept="2" trace="myNode" />
       <node id="1592627013225788461" at="54,0,57,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />

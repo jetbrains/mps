@@ -25,7 +25,7 @@ public class delete_XmlElement_shortNotation {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SPropertyOperations.assign(node, PROPS.shortEmptyNotation$5AI0, false);
+        SPropertyOperations.assign(node, PROPS.shortEmptyNotation$HKi0, false);
       }
 
     };
@@ -73,6 +73,6 @@ public class delete_XmlElement_shortNotation {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty shortEmptyNotation$5AI0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x61218fae7b61b5d5L, "shortEmptyNotation");
+    /*package*/ static final SProperty shortEmptyNotation$HKi0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x61218fae7b61b5d5L, "shortEmptyNotation");
   }
 }

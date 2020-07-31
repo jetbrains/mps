@@ -41,7 +41,7 @@ public class RemoveNodeConceptMethodCallDirectCallProperty extends MigrationScri
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Node_ConceptMethodCall$l3, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SPropertyOperations.remove(it, PROPS.directCall$q2U);
+          SPropertyOperations.remove(it, PROPS.directCall$cBq6);
         }
       });
     }
@@ -55,6 +55,6 @@ public class RemoveNodeConceptMethodCallDirectCallProperty extends MigrationScri
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty directCall$q2U = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1129a43046bL, 0x27990abcdcff2f1dL, "directCall");
+    /*package*/ static final SProperty directCall$cBq6 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1129a43046bL, 0x27990abcdcff2f1dL, "directCall");
   }
 }

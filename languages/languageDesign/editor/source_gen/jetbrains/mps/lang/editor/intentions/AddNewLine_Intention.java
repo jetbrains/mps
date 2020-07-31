@@ -41,7 +41,7 @@ public final class AddNewLine_Intention extends AbstractIntentionDescriptor impl
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SNodeOperations.getParent(node) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.CellModel_Collection$CD) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.CellModel_Collection$CD), LINKS.cellLayout$usNp), CONCEPTS.CellLayout_Indent$tI) && !((boolean) EditorCellModel__BehaviorDescriptor.isNewLine_idi0pLPAc.invoke(node));
+    return (SNodeOperations.getParent(node) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.CellModel_Collection$CD) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.CellModel_Collection$CD), LINKS.cellLayout$JWT7), CONCEPTS.CellLayout_Indent$tI) && !((boolean) EditorCellModel__BehaviorDescriptor.isNewLine_idi0pLPAc.invoke(node));
   }
   @Override
   public boolean isSurroundWith() {
@@ -63,8 +63,8 @@ public final class AddNewLine_Intention extends AbstractIntentionDescriptor impl
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode newLine = SNodeFactoryOperations.createNewNode(CONCEPTS.IndentLayoutNewLineStyleClassItem$OG, null);
-      SPropertyOperations.set(newLine, PROPS.flag$7rl, true);
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.styleItem$$mEY)).addElement(newLine);
+      SPropertyOperations.set(newLine, PROPS.flag$3Afb, true);
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.styleItem$AYO2)).addElement(newLine);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -79,11 +79,11 @@ public final class AddNewLine_Intention extends AbstractIntentionDescriptor impl
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cellLayout$usNp = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
-    /*package*/ static final SContainmentLink styleItem$$mEY = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
+    /*package*/ static final SContainmentLink cellLayout$JWT7 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
+    /*package*/ static final SContainmentLink styleItem$AYO2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty flag$7rl = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x1143bd161dbL, "flag");
+    /*package*/ static final SProperty flag$3Afb = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x1143bd161dbL, "flag");
   }
 }

@@ -18,7 +18,7 @@ public class check_AbstractSubtypingRule_NonTypesystemRule extends AbstractNonTy
   public check_AbstractSubtypingRule_NonTypesystemRule() {
   }
   public void applyRule(final SNode abstractSubtypingRule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(abstractSubtypingRule, LINKS.body$tq5r));
+    DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(abstractSubtypingRule, LINKS.body$fCC5));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.AbstractSubtypingRule$9o;
@@ -31,7 +31,7 @@ public class check_AbstractSubtypingRule_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$tq5r = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1119c40dfb0L, 0x1119c41b754L, "body");
+    /*package*/ static final SContainmentLink body$fCC5 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1119c40dfb0L, 0x1119c41b754L, "body");
   }
 
   private static final class CONCEPTS {

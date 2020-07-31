@@ -36,7 +36,7 @@ public final class NestedNewExpression__BehaviorDescriptor extends BaseBHDescrip
 
   /*package*/ static boolean doesOperandHaveInnerClassesToInstantiateHere_id6GtiBfDgtyx(@NotNull SAbstractConcept __thisConcept__, SNode parentNode) {
     if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$6a)) {
-      SNode type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(parentNode, CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr));
+      SNode type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(parentNode, CONCEPTS.DotExpression$6a), LINKS.operand$P1i5));
       if (SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$IZ) && (Sequence.fromIterable(DefaultClassCreator__BehaviorDescriptor.retrieveInstantiationPoints_id5qAZxlfYCBV.invoke(SNodeOperations.asSConcept(CONCEPTS.DefaultClassCreator$sQ), SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), parentNode)).isNotEmpty() || Sequence.fromIterable(ClassCreator__BehaviorDescriptor.retrieveInstantiationPoints_id5qAZxlfY81X.invoke(SNodeOperations.asSConcept(CONCEPTS.ClassCreator$yU), SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), parentNode)).isNotEmpty() || Sequence.fromIterable(AnonymousClassCreator__BehaviorDescriptor.retrieveInstantiationPoints_id5qAZxlfYyVZ.invoke(SNodeOperations.asSConcept(CONCEPTS.AnonymousClassCreator$N6), SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), parentNode)).isNotEmpty())) {
         return true;
       }
@@ -99,6 +99,6 @@ public final class NestedNewExpression__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 }

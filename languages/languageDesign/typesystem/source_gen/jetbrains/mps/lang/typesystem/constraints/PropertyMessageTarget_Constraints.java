@@ -34,7 +34,7 @@ public class PropertyMessageTarget_Constraints extends BaseConstraintsDescriptor
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.propertyDeclaration$T4As, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.propertyDeclaration$DeB$, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -53,11 +53,11 @@ public class PropertyMessageTarget_Constraints extends BaseConstraintsDescriptor
             if (messageStatement == null) {
               return ListScope.forResolvableElements(Sequence.fromIterable(Collections.<SNode>emptyList()));
             }
-            SNode nodetype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(messageStatement, LINKS.nodeToReport$r7g8));
+            SNode nodetype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(messageStatement, LINKS.nodeToReport$8wNS));
             {
               SNode coercedNode_hhynfx_d0b0a0a0b0a0a0a2 = TypecheckingFacade.getFromContext().coerceType(nodetype, CONCEPTS.SNodeType$gn);
               if (coercedNode_hhynfx_d0b0a0a0b0a0a0a2 != null) {
-                return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(coercedNode_hhynfx_d0b0a0a0b0a0a0a2, LINKS.concept$HWFQ)));
+                return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(coercedNode_hhynfx_d0b0a0a0b0a0a0a2, LINKS.concept$gpfa)));
               } else {
                 return ListScope.forResolvableElements(Sequence.fromIterable(Collections.<SNode>emptyList()));
               }
@@ -79,8 +79,8 @@ public class PropertyMessageTarget_Constraints extends BaseConstraintsDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink propertyDeclaration$T4As = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a6a000L, 0x11db4a6fbeeL, "propertyDeclaration");
-    /*package*/ static final SContainmentLink nodeToReport$r7g8 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5a5dL, "nodeToReport");
-    /*package*/ static final SReferenceLink concept$HWFQ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SReferenceLink propertyDeclaration$DeB$ = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a6a000L, 0x11db4a6fbeeL, "propertyDeclaration");
+    /*package*/ static final SContainmentLink nodeToReport$8wNS = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5a5dL, "nodeToReport");
+    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
   }
 }

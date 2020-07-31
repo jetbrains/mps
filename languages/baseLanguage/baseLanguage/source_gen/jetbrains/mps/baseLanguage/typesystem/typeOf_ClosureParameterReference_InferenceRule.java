@@ -21,7 +21,7 @@ public class typeOf_ClosureParameterReference_InferenceRule extends AbstractInfe
     {
       SNode _nodeToCheck_1029348928467 = closureParmRef;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1223981484871", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1223981484876", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(closureParmRef, LINKS.closureParameter$gO5e), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1177075613260", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1223981484876", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(closureParmRef, LINKS.closureParameter$9exM), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1177075613260", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -35,7 +35,7 @@ public class typeOf_ClosureParameterReference_InferenceRule extends AbstractInfe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink closureParameter$gO5e = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c7edba8b3L, 0x10c7edc81a4L, "closureParameter");
+    /*package*/ static final SReferenceLink closureParameter$9exM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c7edba8b3L, 0x10c7edc81a4L, "closureParameter");
   }
 
   private static final class CONCEPTS {

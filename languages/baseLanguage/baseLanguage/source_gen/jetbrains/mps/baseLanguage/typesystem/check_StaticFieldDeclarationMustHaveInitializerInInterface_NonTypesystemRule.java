@@ -21,7 +21,7 @@ public class check_StaticFieldDeclarationMustHaveInitializerInInterface_NonTypes
   public check_StaticFieldDeclarationMustHaveInitializerInInterface_NonTypesystemRule() {
   }
   public void applyRule(final SNode staticFieldDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(staticFieldDeclaration), CONCEPTS.Interface$Kp) && (SLinkOperations.getTarget(staticFieldDeclaration, LINKS.initializer$KgD) == null)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(staticFieldDeclaration), CONCEPTS.Interface$Kp) && (SLinkOperations.getTarget(staticFieldDeclaration, LINKS.initializer$no3R) == null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(staticFieldDeclaration, "An initializer must be provided to a final field.", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1187415722601439417", null, errorTarget);
@@ -39,7 +39,7 @@ public class check_StaticFieldDeclarationMustHaveInitializerInInterface_NonTypes
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 
   private static final class CONCEPTS {

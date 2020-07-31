@@ -56,12 +56,12 @@ public final class IBLDeprecatable__BehaviorDescriptor extends BaseBHDescriptor 
   }
   /*package*/ static boolean hasDeprecatedAnnotation_id7UfLy9aMQ9M(@NotNull SNode __thisNode__) {
     if (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.HasAnnotation$cu)) {
-      for (SNode annotation : SLinkOperations.getChildren(SNodeOperations.cast(__thisNode__, CONCEPTS.HasAnnotation$cu), LINKS.annotation$oVP4)) {
-        SNode annotationLink = SLinkOperations.getTarget(annotation, LINKS.annotation$zNxu);
-        if ((annotation == null) || (annotationLink == null) || SPropertyOperations.getString(annotationLink, PROPS.name$tAp1) == null) {
+      for (SNode annotation : SLinkOperations.getChildren(SNodeOperations.cast(__thisNode__, CONCEPTS.HasAnnotation$cu), LINKS.annotation$4YGW)) {
+        SNode annotationLink = SLinkOperations.getTarget(annotation, LINKS.annotation$lXdy);
+        if ((annotation == null) || (annotationLink == null) || SPropertyOperations.getString(annotationLink, PROPS.name$lA7v) == null) {
           continue;
         }
-        if (SPropertyOperations.getString(annotationLink, PROPS.name$tAp1).equals("Deprecated")) {
+        if (SPropertyOperations.getString(annotationLink, PROPS.name$lA7v).equals("Deprecated")) {
           return true;
         }
       }
@@ -69,19 +69,19 @@ public final class IBLDeprecatable__BehaviorDescriptor extends BaseBHDescriptor 
     return false;
   }
   /*package*/ static boolean hasDeprecatedBlockDocTag_id3yvWaPI09DC(@NotNull SNode __thisNode__) {
-    return (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.BaseMethodDeclaration$RR) && ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(SNodeOperations.cast(__thisNode__, CONCEPTS.BaseMethodDeclaration$RR), new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$Vx)), LINKS.tags$LJD$)).any(new IWhereFilter<SNode>() {
+    return (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.BaseMethodDeclaration$RR) && ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(SNodeOperations.cast(__thisNode__, CONCEPTS.BaseMethodDeclaration$RR), new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$Vx)), LINKS.tags$658s)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode docTag) {
         return SNodeOperations.isInstanceOf(docTag, CONCEPTS.DeprecatedBlockDocTag$ma);
       }
-    })) || (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.FieldDeclaration$Ps) && ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(SNodeOperations.cast(__thisNode__, CONCEPTS.FieldDeclaration$Ps), new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8)), LINKS.tags$LJD$)).any(new IWhereFilter<SNode>() {
+    })) || (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.FieldDeclaration$Ps) && ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(SNodeOperations.cast(__thisNode__, CONCEPTS.FieldDeclaration$Ps), new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8)), LINKS.tags$658s)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode docTag) {
         return SNodeOperations.isInstanceOf(docTag, CONCEPTS.DeprecatedBlockDocTag$ma);
       }
-    })) || (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.StaticFieldDeclaration$R5) && ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(SNodeOperations.cast(__thisNode__, CONCEPTS.StaticFieldDeclaration$R5), new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8)), LINKS.tags$LJD$)).any(new IWhereFilter<SNode>() {
+    })) || (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.StaticFieldDeclaration$R5) && ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(SNodeOperations.cast(__thisNode__, CONCEPTS.StaticFieldDeclaration$R5), new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8)), LINKS.tags$658s)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode docTag) {
         return SNodeOperations.isInstanceOf(docTag, CONCEPTS.DeprecatedBlockDocTag$ma);
       }
-    })) || (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.Classifier$hJ) && ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(SNodeOperations.cast(__thisNode__, CONCEPTS.Classifier$hJ), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$$4)), LINKS.tags$LJD$)).any(new IWhereFilter<SNode>() {
+    })) || (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.Classifier$hJ) && ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(SNodeOperations.cast(__thisNode__, CONCEPTS.Classifier$hJ), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$$4)), LINKS.tags$658s)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode docTag) {
         return SNodeOperations.isInstanceOf(docTag, CONCEPTS.DeprecatedBlockDocTag$ma);
       }
@@ -93,7 +93,7 @@ public final class IBLDeprecatable__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ static void markDeprecated_id6Va_BJexupi(@NotNull SNode __thisNode__) {
   }
   /*package*/ static void removeDeprecationFromDoc_id63oBH1IM79r(@NotNull SNode __thisNode__, SNode comment) {
-    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$LJD$)).where(new IWhereFilter<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$ma);
       }
@@ -102,7 +102,7 @@ public final class IBLDeprecatable__BehaviorDescriptor extends BaseBHDescriptor 
         SNodeOperations.deleteNode(it);
       }
     });
-    if ((boolean) BaseDocComment__BehaviorDescriptor.isTagSectionEmpty_id7lVCwDcz6WN.invoke(comment) && !((boolean) BaseDocComment__BehaviorDescriptor.hasTags_id4iGwz$GSfd_.invoke(comment)) && ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.body$ULZO)).isEmpty()) {
+    if ((boolean) BaseDocComment__BehaviorDescriptor.isTagSectionEmpty_id7lVCwDcz6WN.invoke(comment) && !((boolean) BaseDocComment__BehaviorDescriptor.hasTags_id4iGwz$GSfd_.invoke(comment)) && ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.body$udUc)).isEmpty()) {
       SNodeOperations.deleteNode(comment);
     }
   }
@@ -113,7 +113,7 @@ public final class IBLDeprecatable__BehaviorDescriptor extends BaseBHDescriptor 
     result.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(__thisNode__));
     result.append(" is deprecated");
 
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.smodelAttribute$K8bJ)).where(new IWhereFilter<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.smodelAttribute$jXFL)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.IDeprecatable$EE);
       }
@@ -194,15 +194,15 @@ public final class IBLDeprecatable__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SContainmentLink tags$LJD$ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
-    /*package*/ static final SContainmentLink body$ULZO = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SContainmentLink tags$658s = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
+    /*package*/ static final SContainmentLink body$udUc = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

@@ -50,7 +50,7 @@ public class QuickFixFieldReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_gea767_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.QuickFixFieldReference$OK, LINKS.quickFixField$QTC0);
+      super((SAbstractConcept) CONCEPTS.QuickFixFieldReference$OK, LINKS.quickFixField$_Uo0);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class QuickFixFieldReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink quickFixField$QTC0 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x70489eee8479b55dL, 0x70489eee8479b55eL, "quickFixField");
+    /*package*/ static final SReferenceLink quickFixField$_Uo0 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x70489eee8479b55dL, 0x70489eee8479b55eL, "quickFixField");
   }
 }

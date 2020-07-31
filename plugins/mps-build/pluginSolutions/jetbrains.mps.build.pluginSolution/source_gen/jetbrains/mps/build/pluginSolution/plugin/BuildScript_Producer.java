@@ -61,7 +61,7 @@ public final class BuildScript_Producer {
       SNode containingRoot = SNodeOperations.getContainingRoot(source);
       if (SNodeOperations.isInstanceOf(containingRoot, CONCEPTS.BuildProject$BF) && !(SNodeOperations.getModel(containingRoot).getModule().isPackaged())) {
         SNode buildProject = SNodeOperations.cast(containingRoot, CONCEPTS.BuildProject$BF);
-        String name = SPropertyOperations.getString(buildProject, PROPS.name$tAp1);
+        String name = SPropertyOperations.getString(buildProject, PROPS.name$lA7v);
         if (name == null) {
           return null;
         }
@@ -113,6 +113,6 @@ public final class BuildScript_Producer {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

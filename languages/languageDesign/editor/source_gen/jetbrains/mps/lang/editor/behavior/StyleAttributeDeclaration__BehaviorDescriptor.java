@@ -40,10 +40,10 @@ public final class StyleAttributeDeclaration__BehaviorDescriptor extends BaseBHD
     return SNodeOperations.getModel(__thisNode__).getModule().getModuleName();
   }
   /*package*/ static SNode getDefaultValue_id6EcLR7UbKOp(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.defaultValue$fHfJ);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.defaultValue$AUBL);
   }
   /*package*/ static SNode getType_id6EcLR7UbLta(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.valueType$A7Sx);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.valueType$tOnZ);
   }
   /*package*/ static SNode getClassifierType_id5eGiGGHenb_(@NotNull SNode __thisNode__) {
     return TypecheckingFacade.getFromContext().coerceType(StyleAttributeDeclaration__BehaviorDescriptor.getType_id6EcLR7UbLta.invoke(__thisNode__), CONCEPTS.ClassifierType$IZ);
@@ -102,8 +102,8 @@ public final class StyleAttributeDeclaration__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink defaultValue$fHfJ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea545afbL, "defaultValue");
-    /*package*/ static final SContainmentLink valueType$A7Sx = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea53826eL, "valueType");
+    /*package*/ static final SContainmentLink defaultValue$AUBL = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea545afbL, "defaultValue");
+    /*package*/ static final SContainmentLink valueType$tOnZ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea53826eL, "valueType");
   }
 
   private static final class CONCEPTS {

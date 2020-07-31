@@ -36,7 +36,7 @@ public final class addHandler_Intention extends AbstractIntentionDescriptor impl
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SLinkOperations.getTarget(node, LINKS.handler$YvJZ) == null);
+    return (SLinkOperations.getTarget(node, LINKS.handler$hofx) == null);
   }
   @Override
   public boolean isSurroundWith() {
@@ -57,7 +57,7 @@ public final class addHandler_Intention extends AbstractIntentionDescriptor impl
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SLinkOperations.setTarget(node, LINKS.handler$YvJZ, SNodeFactoryOperations.createNewNode(CONCEPTS.XMLSAXAttributeHandler$x0, null));
+      SLinkOperations.setTarget(node, LINKS.handler$hofx, SNodeFactoryOperations.createNewNode(CONCEPTS.XMLSAXAttributeHandler$x0, null));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -66,7 +66,7 @@ public final class addHandler_Intention extends AbstractIntentionDescriptor impl
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink handler$YvJZ = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2cbL, 0x1f6c736337b5e2cdL, "handler");
+    /*package*/ static final SContainmentLink handler$hofx = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2cbL, 0x1f6c736337b5e2cdL, "handler");
   }
 
   private static final class CONCEPTS {

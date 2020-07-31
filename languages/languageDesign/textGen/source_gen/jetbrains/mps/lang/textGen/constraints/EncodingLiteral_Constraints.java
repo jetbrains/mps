@@ -24,7 +24,7 @@ public class EncodingLiteral_Constraints extends BaseConstraintsDescriptor {
 
   public static class Encoding_Property extends BasePropertyConstraintsDescriptor {
     public Encoding_Property(ConstraintsDescriptor container) {
-      super(PROPS.encoding$n30w, container);
+      super(PROPS.encoding$atfw, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -60,7 +60,7 @@ public class EncodingLiteral_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.encoding$n30w, new Encoding_Property(this));
+    properties.put(PROPS.encoding$atfw, new Encoding_Property(this));
     return properties;
   }
 
@@ -69,6 +69,6 @@ public class EncodingLiteral_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty encoding$n30w = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x63754d97e1c86b8cL, 0x63754d97e1c86b8dL, "encoding");
+    /*package*/ static final SProperty encoding$atfw = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x63754d97e1c86b8cL, 0x63754d97e1c86b8dL, "encoding");
   }
 }

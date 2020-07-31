@@ -44,22 +44,22 @@ public class ConvertDeprecatedCollectionsOperations extends MigrationScriptBase 
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AddSetElementOperation$R, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(it, _quotation_createNode_oas78t_a0a0a0a0a0a0g(SNodeOperations.copyNode(SLinkOperations.getTarget(it, LINKS.argument$hDsv))));
+          SNodeOperations.replaceWithAnother(it, _quotation_createNode_oas78t_a0a0a0a0a0a0g(SNodeOperations.copyNode(SLinkOperations.getTarget(it, LINKS.argument$z4N1))));
         }
       });
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AddAllSetElementsOperation$Fl, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(it, _quotation_createNode_oas78t_a0a0a0a0b0a0g(SNodeOperations.copyNode(SLinkOperations.getTarget(it, LINKS.argument$i8R5))));
+          SNodeOperations.replaceWithAnother(it, _quotation_createNode_oas78t_a0a0a0a0b0a0g(SNodeOperations.copyNode(SLinkOperations.getTarget(it, LINKS.argument$MiFr))));
         }
       });
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.RemoveSetElementOperation$7o, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(it, _quotation_createNode_oas78t_a0a0a0a0c0a0g(SNodeOperations.copyNode(SLinkOperations.getTarget(it, LINKS.argument$798v))));
+          SNodeOperations.replaceWithAnother(it, _quotation_createNode_oas78t_a0a0a0a0c0a0g(SNodeOperations.copyNode(SLinkOperations.getTarget(it, LINKS.argument$tr71))));
         }
       });
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.RemoveAllSetElementsOperation$kF, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(it, _quotation_createNode_oas78t_a0a0a0a0d0a0g(SNodeOperations.copyNode(SLinkOperations.getTarget(it, LINKS.argument$bWHU))));
+          SNodeOperations.replaceWithAnother(it, _quotation_createNode_oas78t_a0a0a0a0d0a0g(SNodeOperations.copyNode(SLinkOperations.getTarget(it, LINKS.argument$Mqf6))));
         }
       });
     }
@@ -121,9 +121,9 @@ public class ConvertDeprecatedCollectionsOperations extends MigrationScriptBase 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$hDsv = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d9514ebd8L, 0x11d951a651bL, "argument");
-    /*package*/ static final SContainmentLink argument$i8R5 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d969dca87L, 0x11d969e1c69L, "argument");
-    /*package*/ static final SContainmentLink argument$798v = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d968cae32L, 0x11d968cfea4L, "argument");
-    /*package*/ static final SContainmentLink argument$bWHU = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d96b14ae4L, 0x11d96b1a226L, "argument");
+    /*package*/ static final SContainmentLink argument$z4N1 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d9514ebd8L, 0x11d951a651bL, "argument");
+    /*package*/ static final SContainmentLink argument$MiFr = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d969dca87L, 0x11d969e1c69L, "argument");
+    /*package*/ static final SContainmentLink argument$tr71 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d968cae32L, 0x11d968cfea4L, "argument");
+    /*package*/ static final SContainmentLink argument$Mqf6 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d96b14ae4L, 0x11d96b1a226L, "argument");
   }
 }

@@ -29,8 +29,8 @@ public class DefaultClassifierMethodParameterInformationQuery implements Paramet
   public Iterable<SNode> getMethods(SNode node, EditorContext editorContext) {
     SNode selectedActualArgument = this.getSelectedActualArgument(editorContext);
     SNode methodCall = (selectedActualArgument != null ? SNodeOperations.cast(SNodeOperations.getParent(selectedActualArgument), CONCEPTS.DefaultClassifierMethodCallOperation$9K) : node);
-    Scope scope = ModelConstraints.getReferenceDescriptor(methodCall, LINKS.member$hrpI).getScope();
-    String name = SPropertyOperations.getString(SLinkOperations.getTarget(methodCall, LINKS.member$hrpI), PROPS.name$tAp1);
+    Scope scope = ModelConstraints.getReferenceDescriptor(methodCall, LINKS.member$shti).getScope();
+    String name = SPropertyOperations.getString(SLinkOperations.getTarget(methodCall, LINKS.member$shti), PROPS.name$lA7v);
     Iterable<SNode> availableElements = scope.getAvailableElements((name != null ? name : ""));
     return Sequence.fromIterable(availableElements).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
@@ -46,7 +46,7 @@ public class DefaultClassifierMethodParameterInformationQuery implements Paramet
     BaseMethodParameterInformationQueryUtil.fillPresentation(parameterObject, this.getSelectedActualArgument(editorContext), styledText);
   }
   public boolean isMethodCurrent(SNode node, EditorContext editorContext, SNode parameterObject) {
-    return SLinkOperations.getTarget(node, LINKS.member$hrpI) == parameterObject;
+    return SLinkOperations.getTarget(node, LINKS.member$shti) == parameterObject;
   }
   private SNode getSelectedActualArgument(EditorContext editorContext) {
     SNode selectedNode = editorContext.getSelectedNode();
@@ -55,7 +55,7 @@ public class DefaultClassifierMethodParameterInformationQuery implements Paramet
     }
     return ListSequence.fromList(SNodeOperations.getNodeAncestors(selectedNode, CONCEPTS.Expression$TP, true)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.DefaultClassifierMethodCallOperation$9K) && Objects.equals(SNodeOperations.getContainingLink(it), LINKS.actualArgument$sDji);
+        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.DefaultClassifierMethodCallOperation$9K) && Objects.equals(SNodeOperations.getContainingLink(it), LINKS.actualArgument$S0lI);
       }
     });
   }
@@ -67,11 +67,11 @@ public class DefaultClassifierMethodParameterInformationQuery implements Paramet
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink member$hrpI = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
-    /*package*/ static final SContainmentLink actualArgument$sDji = MetaAdapterFactory.getContainmentLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd711e29L, 0x118bd877799L, "actualArgument");
+    /*package*/ static final SReferenceLink member$shti = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
+    /*package*/ static final SContainmentLink actualArgument$S0lI = MetaAdapterFactory.getContainmentLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd711e29L, 0x118bd877799L, "actualArgument");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

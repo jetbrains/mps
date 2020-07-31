@@ -34,8 +34,8 @@ public final class NodeFactory__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getQueryMethodName_idhKujcRH(@NotNull SNode __thisNode__) {
-    String conceptName = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.applicableConcept$mqSo), PROPS.name$tAp1);
-    SNode setupFunction = SLinkOperations.getTarget(__thisNode__, LINKS.setupFunction$YFH);
+    String conceptName = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.applicableConcept$R1jC), PROPS.name$lA7v);
+    SNode setupFunction = SLinkOperations.getTarget(__thisNode__, LINKS.setupFunction$unaN);
     return "nodeFactory_NodeSetup_" + conceptName + "_" + setupFunction.getNodeId().toString();
   }
 
@@ -86,11 +86,11 @@ public final class NodeFactory__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$mqSo = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x10dc7f1f421L, 0x10dc7f54734L, "applicableConcept");
-    /*package*/ static final SContainmentLink setupFunction$YFH = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x10dc7f1f421L, 0x10dc7fcfd46L, "setupFunction");
+    /*package*/ static final SReferenceLink applicableConcept$R1jC = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x10dc7f1f421L, 0x10dc7f54734L, "applicableConcept");
+    /*package*/ static final SContainmentLink setupFunction$unaN = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x10dc7f1f421L, 0x10dc7fcfd46L, "setupFunction");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

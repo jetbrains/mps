@@ -50,11 +50,11 @@ public class ConstraintScopeFactory_NodeToConcept extends MigrationScriptBase {
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptConstraints$St, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode node) {
-          ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.defaultScope$INPk), LINKS.searchScopeFactory$g0q0), problems);
+          ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.defaultScope$F6OG), LINKS.searchScopeFactory$KcA0), problems);
 
-          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.referent$4reg)).visitAll(new IVisitor<SNode>() {
+          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.referent$9bTK)).visitAll(new IVisitor<SNode>() {
             public void visit(SNode referent) {
-              ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(referent, LINKS.searchScopeFactory$Aavv), problems);
+              ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(referent, LINKS.searchScopeFactory$v5g1), problems);
             }
           });
         }
@@ -71,9 +71,9 @@ public class ConstraintScopeFactory_NodeToConcept extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink defaultScope$INPk = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a727527f6L, "defaultScope");
-    /*package*/ static final SContainmentLink searchScopeFactory$g0q0 = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10dead47852L, 0x10dead647b3L, "searchScopeFactory");
-    /*package*/ static final SContainmentLink referent$4reg = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a726c901bL, "referent");
-    /*package*/ static final SContainmentLink searchScopeFactory$Aavv = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7319e797L, "searchScopeFactory");
+    /*package*/ static final SContainmentLink defaultScope$F6OG = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a727527f6L, "defaultScope");
+    /*package*/ static final SContainmentLink searchScopeFactory$KcA0 = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10dead47852L, 0x10dead647b3L, "searchScopeFactory");
+    /*package*/ static final SContainmentLink referent$9bTK = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a726c901bL, "referent");
+    /*package*/ static final SContainmentLink searchScopeFactory$v5g1 = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7319e797L, "searchScopeFactory");
   }
 }

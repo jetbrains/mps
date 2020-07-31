@@ -38,7 +38,7 @@ public class PropertyInstances_Finder extends GeneratedFinder {
   @Override
   protected void doFind0(@NotNull SNode node, SearchScope scope, IFinder.FindCallback callback, ProgressMonitor monitor) {
     try {
-      String role = SPropertyOperations.getString(node, PROPS.name$tAp1);
+      String role = SPropertyOperations.getString(node, PROPS.name$lA7v);
       SNode conceptDeclaration = SNodeOperations.getNodeAncestor(node, CONCEPTS.AbstractConceptDeclaration$UN, false, false);
       if (!((conceptDeclaration == null))) {
         for (SNode instance : FindUtils.executeFinder("jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder", conceptDeclaration, scope, monitor)) {
@@ -70,6 +70,6 @@ public class PropertyInstances_Finder extends GeneratedFinder {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

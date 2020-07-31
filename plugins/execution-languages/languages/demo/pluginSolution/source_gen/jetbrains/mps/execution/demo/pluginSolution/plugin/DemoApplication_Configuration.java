@@ -44,7 +44,7 @@ public class DemoApplication_Configuration extends BaseMpsRunConfiguration imple
   private static final Logger LOG = LogManager.getLogger(DemoApplication_Configuration.class);
   private NodeByConcept_Configuration myNode = new NodeByConcept_Configuration(CONCEPTS.SomeConcept$39, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
     public Boolean invoke(SNode node) {
-      return SPropertyOperations.getBoolean(SNodeOperations.cast(node, CONCEPTS.SomeConcept$39), PROPS.valid$$Z1J);
+      return SPropertyOperations.getBoolean(SNodeOperations.cast(node, CONCEPTS.SomeConcept$39), PROPS.valid$UxPL);
     }
   });
 
@@ -143,6 +143,6 @@ public class DemoApplication_Configuration extends BaseMpsRunConfiguration imple
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty valid$$Z1J = MetaAdapterFactory.getProperty(0xe6081818930c4926L, 0xbdef3537bcc59087L, 0x446739e63be33684L, 0x446739e63be7cbc4L, "valid");
+    /*package*/ static final SProperty valid$UxPL = MetaAdapterFactory.getProperty(0xe6081818930c4926L, 0xbdef3537bcc59087L, 0x446739e63be33684L, 0x446739e63be7cbc4L, "valid");
   }
 }

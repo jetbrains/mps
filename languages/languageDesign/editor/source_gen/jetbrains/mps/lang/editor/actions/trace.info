@@ -28,12 +28,12 @@
       <node id="1158947431096" at="68,0,69,0" concept="5" trace="CellModel_RefCell$VD" />
       <node id="1158947431096" at="69,0,70,0" concept="5" trace="CellModel_Collection$CD" />
       <node id="1158947431096" at="70,0,71,0" concept="5" trace="EditorCellModel$5c" />
-      <node id="1158947431096" at="74,0,75,0" concept="5" trace="readOnly$pDcw" />
-      <node id="1158947431096" at="75,0,76,0" concept="5" trace="vertical$a5xa" />
-      <node id="1158947431096" at="79,0,80,0" concept="5" trace="cellLayout$usNp" />
-      <node id="1158947431096" at="80,0,81,0" concept="5" trace="childCellModel$3prw" />
-      <node id="1158947431096" at="81,0,82,0" concept="5" trace="ifTrueCellModel$C2k5" />
-      <node id="1158947431096" at="82,0,83,0" concept="5" trace="cellLayout$63td" />
+      <node id="1158947431096" at="74,0,75,0" concept="5" trace="readOnly$qX3w" />
+      <node id="1158947431096" at="75,0,76,0" concept="5" trace="vertical$SF3Q" />
+      <node id="1158947431096" at="79,0,80,0" concept="5" trace="cellLayout$JWT7" />
+      <node id="1158947431096" at="80,0,81,0" concept="5" trace="childCellModel$Dkkw" />
+      <node id="1158947431096" at="81,0,82,0" concept="5" trace="ifTrueCellModel$p7Ir" />
+      <node id="1158947431096" at="82,0,83,0" concept="5" trace="cellLayout$VF9j" />
       <node id="1158948124192" at="21,119,24,7" concept="1" />
       <node id="1239813782084" at="30,103,33,9" concept="1" />
       <node id="1187370382914" at="37,117,40,9" concept="1" />
@@ -109,18 +109,18 @@
     <file name="StyleClassItem.java">
       <node id="1222177425047" at="19,86,20,180" concept="0" />
       <node id="1222177551938" at="20,180,21,173" concept="0" />
-      <node id="1222178817561" at="27,88,28,177" concept="0" />
+      <node id="1222178817561" at="27,88,28,179" concept="0" />
       <node id="1222179024482" at="34,86,35,178" concept="0" />
       <node id="4088952938557968625" at="41,90,42,177" concept="0" />
       <node id="1222177296905" at="48,0,49,0" concept="5" trace="ColorStyleClassItem$42" />
       <node id="1222177296905" at="49,0,50,0" concept="5" trace="BooleanStyleSheetItem$jc" />
       <node id="1222177296905" at="50,0,51,0" concept="5" trace="FloatStyleClassItem$k9" />
       <node id="1222177296905" at="51,0,52,0" concept="5" trace="AttributeStyleClassItem$u_" />
-      <node id="1222177296905" at="55,0,56,0" concept="5" trace="color$cEqb" />
-      <node id="1222177296905" at="56,0,57,0" concept="5" trace="flag$7rl" />
-      <node id="1222177296905" at="57,0,58,0" concept="5" trace="value$F1Ij" />
-      <node id="1222177296905" at="61,0,62,0" concept="5" trace="query$o5Tm" />
-      <node id="1222177296905" at="62,0,63,0" concept="5" trace="query$XZtw" />
+      <node id="1222177296905" at="55,0,56,0" concept="5" trace="color$8yFl" />
+      <node id="1222177296905" at="56,0,57,0" concept="5" trace="flag$3Afb" />
+      <node id="1222177296905" at="57,0,58,0" concept="5" trace="value$PPrd" />
+      <node id="1222177296905" at="61,0,62,0" concept="5" trace="query$EQLE" />
+      <node id="1222177296905" at="62,0,63,0" concept="5" trace="query$1Jiw" />
       <node id="1222178784676" at="26,91,29,7" concept="1" />
       <node id="1222179005614" at="33,91,36,7" concept="1" />
       <node id="4088952938557967597" at="40,91,43,7" concept="1" />
@@ -129,7 +129,7 @@
       <node id="1222178992987" at="33,0,38,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <node id="4088952938557965240" at="40,0,45,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <node id="1222177342204" at="18,0,24,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
-      <scope id="1222178784678" at="27,88,28,177" />
+      <scope id="1222178784678" at="27,88,28,179" />
       <scope id="1222179005616" at="34,86,35,178" />
       <scope id="4088952938557967598" at="41,90,42,177" />
       <scope id="1222177380023" at="19,86,21,173" />
@@ -219,8 +219,8 @@
       <node id="7985135009829710970" at="25,55,26,128" concept="4" />
       <node id="7985135009829714672" at="30,40,31,150" concept="0" />
       <node id="7985135009829579182" at="38,0,39,0" concept="5" trace="TransformationMenuSection$H0" />
-      <node id="7985135009829579182" at="42,0,43,0" concept="5" trace="locations$aTw0" />
-      <node id="7985135009829579182" at="43,0,44,0" concept="5" trace="features$645q" />
+      <node id="7985135009829579182" at="42,0,43,0" concept="5" trace="locations$hQw0" />
+      <node id="7985135009829579182" at="43,0,44,0" concept="5" trace="features$VYBA" />
       <node id="7985135009829710968" at="25,0,28,0" concept="2" trace="translate#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
       <node id="7985135009829714477" at="30,0,33,0" concept="2" trace="visit#(Lorg/jetbrains/mps/openapi/language/SConcept;)V" />
       <node id="7985135009829710957" at="23,97,28,9" concept="3" />

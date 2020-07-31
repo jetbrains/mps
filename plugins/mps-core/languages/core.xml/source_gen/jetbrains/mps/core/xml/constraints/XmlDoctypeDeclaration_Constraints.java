@@ -47,7 +47,7 @@ public class XmlDoctypeDeclaration_Constraints extends BaseConstraintsDescriptor
   }
   public static class DoctypeName_Property extends BasePropertyConstraintsDescriptor {
     public DoctypeName_Property(ConstraintsDescriptor container) {
-      super(PROPS.doctypeName$ETfD, container);
+      super(PROPS.doctypeName$LI$R, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -69,7 +69,7 @@ public class XmlDoctypeDeclaration_Constraints extends BaseConstraintsDescriptor
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.doctypeName$ETfD, new DoctypeName_Property(this));
+    properties.put(PROPS.doctypeName$LI$R, new DoctypeName_Property(this));
     return properties;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
@@ -86,6 +86,6 @@ public class XmlDoctypeDeclaration_Constraints extends BaseConstraintsDescriptor
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty doctypeName$ETfD = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f4069bL, 0x1d9c27c394f4069eL, "doctypeName");
+    /*package*/ static final SProperty doctypeName$LI$R = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f4069bL, 0x1d9c27c394f4069eL, "doctypeName");
   }
 }

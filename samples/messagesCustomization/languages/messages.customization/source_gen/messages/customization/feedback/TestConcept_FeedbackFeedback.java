@@ -23,14 +23,14 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class TestConcept_FeedbackFeedback extends BaseFeedbackDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "messages.customization.structure.TestConcept");
 
-  private static final FeedbackProvider<FailingPropertyConstraintContext> MSGPROVIDER_WhenPropertyConstraintFails_pavl6x_a = new BaseMessageProvider<FailingPropertyConstraintContext>(new FailingPropertyConstraintProblemId(PROPS.prop$PGpb)) {
+  private static final FeedbackProvider<FailingPropertyConstraintContext> MSGPROVIDER_WhenPropertyConstraintFails_pavl6x_a = new BaseMessageProvider<FailingPropertyConstraintContext>(new FailingPropertyConstraintProblemId(PROPS.prop$wcl)) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(FailingPropertyConstraintContext context) {
       return new MessageProvider.StringMsg("Property constraints are broken for the property" + " " + context.getProperty() + " " + " ");
     }
   };
-  private static final FeedbackProvider<RefOutOfScopeContext> MSGPROVIDER_WhenReferenceIsOutOfScope_pavl6x_b = new BaseMessageProvider<RefOutOfScopeContext>(new RefOutOfScopeProblemId(LINKS.link$1Bcs)) {
+  private static final FeedbackProvider<RefOutOfScopeContext> MSGPROVIDER_WhenReferenceIsOutOfScope_pavl6x_b = new BaseMessageProvider<RefOutOfScopeContext>(new RefOutOfScopeProblemId(LINKS.link$LZ1$)) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(RefOutOfScopeContext context) {
@@ -51,10 +51,10 @@ public final class TestConcept_FeedbackFeedback extends BaseFeedbackDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty prop$PGpb = MetaAdapterFactory.getProperty(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x50310db2af989958L, "prop");
+    /*package*/ static final SProperty prop$wcl = MetaAdapterFactory.getProperty(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x50310db2af989958L, "prop");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink link$1Bcs = MetaAdapterFactory.getReferenceLink(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x161a25d497067a9eL, "link");
+    /*package*/ static final SReferenceLink link$LZ1$ = MetaAdapterFactory.getReferenceLink(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x161a25d497067a9eL, "link");
   }
 }

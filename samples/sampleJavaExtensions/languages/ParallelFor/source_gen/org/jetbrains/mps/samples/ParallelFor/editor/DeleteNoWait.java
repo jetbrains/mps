@@ -26,7 +26,7 @@ public class DeleteNoWait {
         if (DeletionApproverUtil.approve(editorContext, node, "noWaitKeyword")) {
           return;
         }
-        SPropertyOperations.assign(node, PROPS.nowait$ez6i, false);
+        SPropertyOperations.assign(node, PROPS.nowait$302I, false);
       }
 
     };
@@ -74,6 +74,6 @@ public class DeleteNoWait {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nowait$ez6i = MetaAdapterFactory.getProperty(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x74391c966b0f1304L, "nowait");
+    /*package*/ static final SProperty nowait$302I = MetaAdapterFactory.getProperty(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x74391c966b0f1304L, "nowait");
   }
 }

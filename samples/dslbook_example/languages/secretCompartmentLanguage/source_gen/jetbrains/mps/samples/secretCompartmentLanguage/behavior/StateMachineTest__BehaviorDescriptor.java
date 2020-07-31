@@ -33,7 +33,7 @@ public final class StateMachineTest__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static String getStateMachineName_idhr1J3q0(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.stateMachine$YJgr), PROPS.stateMachineName$OEbJ);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.stateMachine$oSX5), PROPS.stateMachineName$wrFL);
   }
 
   /*package*/ StateMachineTest__BehaviorDescriptor() {
@@ -83,10 +83,10 @@ public final class StateMachineTest__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink stateMachine$YJgr = MetaAdapterFactory.getReferenceLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c17a1865L, 0x116c1878903L, "stateMachine");
+    /*package*/ static final SReferenceLink stateMachine$oSX5 = MetaAdapterFactory.getReferenceLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c17a1865L, 0x116c1878903L, "stateMachine");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty stateMachineName$OEbJ = MetaAdapterFactory.getProperty(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116bbacae3cL, 0x116bcaff7e0L, "stateMachineName");
+    /*package*/ static final SProperty stateMachineName$wrFL = MetaAdapterFactory.getProperty(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116bbacae3cL, 0x116bcaff7e0L, "stateMachineName");
   }
 }

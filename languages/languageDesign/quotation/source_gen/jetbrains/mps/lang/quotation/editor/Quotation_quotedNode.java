@@ -50,8 +50,8 @@ public class Quotation_quotedNode extends AbstractCellMenuComponent {
       this.handleAction_impl((SAbstractConcept) parameterObject, node, model, operationContext, editorContext);
     }
     public void handleAction_impl(SAbstractConcept parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SNode oldInstance = SLinkOperations.getTarget(node, LINKS.quotedNode$kInw);
-      SLinkOperations.setTarget(node, LINKS.quotedNode$kInw, SNodeFactoryOperations.createNewNode(parameterObject, null));
+      SNode oldInstance = SLinkOperations.getTarget(node, LINKS.quotedNode$2tow);
+      SLinkOperations.setTarget(node, LINKS.quotedNode$2tow, SNodeFactoryOperations.createNewNode(parameterObject, null));
       if (oldInstance != null) {
         SNodeOperations.deleteNode(oldInstance);
       }
@@ -67,6 +67,6 @@ public class Quotation_quotedNode extends AbstractCellMenuComponent {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink quotedNode$kInw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465aL, "quotedNode");
+    /*package*/ static final SContainmentLink quotedNode$2tow = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465aL, "quotedNode");
   }
 }

@@ -91,7 +91,7 @@ public class NodePointer_SubstituteMenu extends SubstituteMenuBase {
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
           SNode nodePtr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e35fL, "jetbrains.mps.lang.modelapi.structure.NodePointer"));
-          SLinkOperations.setTarget(nodePtr, LINKS.modelRef$nNf5, nodeToWrap);
+          SLinkOperations.setTarget(nodePtr, LINKS.modelRef$xOjr, nodeToWrap);
           return nodePtr;
         }
 
@@ -128,6 +128,6 @@ public class NodePointer_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modelRef$nNf5 = MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e35fL, 0x45e1bb6ef159cf84L, "modelRef");
+    /*package*/ static final SContainmentLink modelRef$xOjr = MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e35fL, 0x45e1bb6ef159cf84L, "modelRef");
   }
 }

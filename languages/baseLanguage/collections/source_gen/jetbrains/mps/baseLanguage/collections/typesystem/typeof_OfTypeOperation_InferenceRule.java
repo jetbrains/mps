@@ -31,7 +31,7 @@ public class typeof_OfTypeOperation_InferenceRule extends AbstractInferenceRule_
     {
       SNode _nodeToCheck_1029348928467 = oto;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4611582986551319127", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4611582986551319124", true), (SNode) _quotation_createNode_kdtwov_a1a0c0c0b(SNodeOperations.copyNode(SLinkOperations.getTarget(oto, LINKS.requestedType$2N06))), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4611582986551319124", true), (SNode) _quotation_createNode_kdtwov_a1a0c0c0b(SNodeOperations.copyNode(SLinkOperations.getTarget(oto, LINKS.requestedType$mH2U))), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -67,7 +67,7 @@ public class typeof_OfTypeOperation_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink requestedType$2N06 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x3fffa24b05a04797L, 0x3fffa24b05a047a8L, "requestedType");
+    /*package*/ static final SContainmentLink requestedType$mH2U = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x3fffa24b05a04797L, 0x3fffa24b05a047a8L, "requestedType");
   }
 
   private static final class CONCEPTS {

@@ -23,7 +23,7 @@ public class XmlEntityRef_Constraints extends BaseConstraintsDescriptor {
 
   public static class EntityName_Property extends BasePropertyConstraintsDescriptor {
     public EntityName_Property(ConstraintsDescriptor container) {
-      super(PROPS.entityName$nUu1, container);
+      super(PROPS.entityName$_kyv, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,7 +45,7 @@ public class XmlEntityRef_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.entityName$nUu1, new EntityName_Property(this));
+    properties.put(PROPS.entityName$_kyv, new EntityName_Property(this));
     return properties;
   }
 
@@ -54,6 +54,6 @@ public class XmlEntityRef_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty entityName$nUu1 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9c6f4dL, 0x16838b3fce9c6f8fL, "entityName");
+    /*package*/ static final SProperty entityName$_kyv = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9c6f4dL, 0x16838b3fce9c6f8fL, "entityName");
   }
 }

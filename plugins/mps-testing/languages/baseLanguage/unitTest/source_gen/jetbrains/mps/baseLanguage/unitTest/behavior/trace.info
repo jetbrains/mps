@@ -50,8 +50,8 @@
       <node id="7727541049306224048" at="111,234,112,438" concept="1" />
       <node id="7727541049306224048" at="112,438,113,24" concept="6" />
       <node id="1213877238815" at="117,0,118,0" concept="8" trace="BTestCase$o9" />
-      <node id="1213877238815" at="121,0,122,0" concept="8" trace="name$tAp1" />
-      <node id="1213877238815" at="125,0,126,0" concept="8" trace="throwsItem$gr7e" />
+      <node id="1213877238815" at="121,0,122,0" concept="8" trace="name$lA7v" />
+      <node id="1213877238815" at="125,0,126,0" concept="8" trace="throwsItem$X8vM" />
       <node id="1213877238815" at="41,0,43,0" concept="9" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877238815" at="59,0,61,0" concept="0" trace="TestMethod__BehaviorDescriptor#()V" />
       <node id="1213877238815" at="69,49,72,5" concept="3" />
@@ -182,16 +182,16 @@
       <node id="1213877487741" at="154,14,155,58" concept="11" />
       <node id="1213877487741" at="161,48,162,22" concept="6" />
       <node id="1213877487741" at="167,40,168,19" concept="6" />
-      <node id="1213877487741" at="172,0,173,0" concept="8" trace="superclass$_pqe" />
-      <node id="1213877487741" at="173,0,174,0" concept="8" trace="classifier$pQ_R" />
-      <node id="1213877487741" at="174,0,175,0" concept="8" trace="testMethodList$9DFw" />
-      <node id="1213877487741" at="175,0,176,0" concept="8" trace="testMethod$z_o0" />
-      <node id="1213877487741" at="176,0,177,0" concept="8" trace="annotation$oVP4" />
-      <node id="1213877487741" at="177,0,178,0" concept="8" trace="annotation$zNxu" />
+      <node id="1213877487741" at="172,0,173,0" concept="8" trace="superclass$7jGM" />
+      <node id="1213877487741" at="173,0,174,0" concept="8" trace="classifier$xslD" />
+      <node id="1213877487741" at="174,0,175,0" concept="8" trace="testMethodList$Fc4w" />
+      <node id="1213877487741" at="175,0,176,0" concept="8" trace="testMethod$f6C0" />
+      <node id="1213877487741" at="176,0,177,0" concept="8" trace="annotation$4YGW" />
+      <node id="1213877487741" at="177,0,178,0" concept="8" trace="annotation$lXdy" />
       <node id="1213877487741" at="181,0,182,0" concept="8" trace="ITestCase$uo" />
       <node id="1213877487741" at="182,0,183,0" concept="8" trace="BTestCase$o9" />
-      <node id="1213877487741" at="186,0,187,0" concept="8" trace="abstractClass$gY5l" />
-      <node id="1213877487741" at="187,0,188,0" concept="8" trace="name$tAp1" />
+      <node id="1213877487741" at="186,0,187,0" concept="8" trace="abstractClass$e4_b" />
+      <node id="1213877487741" at="187,0,188,0" concept="8" trace="name$lA7v" />
       <node id="1213877487741" at="51,0,53,0" concept="9" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877487741" at="113,0,115,0" concept="0" trace="BTestCase__BehaviorDescriptor#()V" />
       <node id="8084800926155112057" at="64,0,67,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -438,8 +438,8 @@
       <node id="1216130717292" at="93,14,94,58" concept="11" />
       <node id="1216130717292" at="100,48,101,22" concept="6" />
       <node id="1216130717292" at="106,40,107,19" concept="6" />
-      <node id="1216130717292" at="111,0,112,0" concept="8" trace="name$tAp1" />
-      <node id="1216130717292" at="112,0,113,0" concept="8" trace="canNotRunInProcess$QfFh" />
+      <node id="1216130717292" at="111,0,112,0" concept="8" trace="name$lA7v" />
+      <node id="1216130717292" at="112,0,113,0" concept="8" trace="canNotRunInProcess$h_Xf" />
       <node id="1216130717292" at="37,0,39,0" concept="9" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1216130717292" at="58,0,60,0" concept="0" trace="ITestCase__BehaviorDescriptor#()V" />
       <node id="2980771771223850546" at="41,43,44,5" concept="3" />

@@ -98,7 +98,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.textExpression$hJ4Z;
+      return LINKS.textExpression$_Nqx;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.Expression$TP;
@@ -111,7 +111,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(textExpressionListHandler_nmgex1_c0.this.getNode(), LINKS.textExpression$hJ4Z));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(textExpressionListHandler_nmgex1_c0.this.getNode(), LINKS.textExpression$_Nqx));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_2();
@@ -190,7 +190,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink textExpression$hJ4Z = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1100a2cc320L, 0x1100a2d9863L, "textExpression");
+    /*package*/ static final SContainmentLink textExpression$_Nqx = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1100a2cc320L, 0x1100a2d9863L, "textExpression");
   }
 
   private static final class CONCEPTS {

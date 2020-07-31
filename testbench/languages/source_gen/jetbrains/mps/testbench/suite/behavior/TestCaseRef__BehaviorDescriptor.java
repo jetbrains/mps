@@ -40,20 +40,20 @@ public final class TestCaseRef__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getTargetTest_id7BTZ519MNAR(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.testCase$fEcz);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.testCase$_s4X);
   }
   /*package*/ static boolean isSame_id1ouvi_ymQH(@NotNull SNode __thisNode__, SNode testRef) {
-    return SLinkOperations.getTarget(SNodeOperations.as(testRef, CONCEPTS.TestCaseRef$Ez), LINKS.testCase$fEcz) == SLinkOperations.getTarget(__thisNode__, LINKS.testCase$fEcz);
+    return SLinkOperations.getTarget(SNodeOperations.as(testRef, CONCEPTS.TestCaseRef$Ez), LINKS.testCase$_s4X) == SLinkOperations.getTarget(__thisNode__, LINKS.testCase$_s4X);
   }
   /*package*/ static String fqClassName_id2$98zG5liRT(@NotNull SNode __thisNode__) {
-    return (String) ITestCase__BehaviorDescriptor.getClassName_idhGBnqtL.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.testCase$fEcz));
+    return (String) ITestCase__BehaviorDescriptor.getClassName_idhGBnqtL.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.testCase$_s4X));
   }
   /*package*/ static Iterable<String> testNames_id3z1mdFUF$j3(@NotNull SNode __thisNode__) {
     List<SNode> testMethods;
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.testCase$fEcz), CONCEPTS.NodesTestCase$7I)) {
-      testMethods = ITestCase__BehaviorDescriptor.getTestSet_idhGB2z8L.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.testCase$fEcz));
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.testCase$_s4X), CONCEPTS.NodesTestCase$7I)) {
+      testMethods = ITestCase__BehaviorDescriptor.getTestSet_idhGB2z8L.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.testCase$_s4X));
     } else {
-      testMethods = ITestCase__BehaviorDescriptor.getTestMethods_id1RfJDyhAUar.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.testCase$fEcz));
+      testMethods = ITestCase__BehaviorDescriptor.getTestMethods_id1RfJDyhAUar.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.testCase$_s4X));
     }
     return ListSequence.fromList(testMethods).select(new ISelector<SNode, String>() {
       public String select(SNode m) {
@@ -115,7 +115,7 @@ public final class TestCaseRef__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink testCase$fEcz = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb7L, 0x3e81ed1e2be77cc0L, "testCase");
+    /*package*/ static final SReferenceLink testCase$_s4X = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb7L, 0x3e81ed1e2be77cc0L, "testCase");
   }
 
   private static final class CONCEPTS {

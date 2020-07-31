@@ -30,7 +30,7 @@ public class Application_Argument_actions {
         if (DeletionApproverUtil.approve(editorContext, node, "argumentCollection")) {
           return;
         }
-        SNode function = SLinkOperations.getTarget(node, LINKS.function$bGdD);
+        SNode function = SLinkOperations.getTarget(node, LINKS.function$EqAR);
         SNodeOperations.replaceWithAnother(node, function);
       }
 
@@ -79,6 +79,6 @@ public class Application_Argument_actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink function$bGdD = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dddL, 0x37d11ba7d7ee2de0L, "function");
+    /*package*/ static final SContainmentLink function$EqAR = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dddL, 0x37d11ba7d7ee2de0L, "function");
   }
 }

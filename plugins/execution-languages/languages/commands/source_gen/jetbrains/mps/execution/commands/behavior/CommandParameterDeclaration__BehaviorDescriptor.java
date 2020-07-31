@@ -55,13 +55,13 @@ public final class CommandParameterDeclaration__BehaviorDescriptor extends BaseB
     return "set" + CommandParameterDeclaration__BehaviorDescriptor.getUpperCaseName_id6mJVBGGsi5H.invoke(__thisNode__);
   }
   /*package*/ static String getSetterLongName_id3gpm$NHlR8F(@NotNull SNode __thisNode__) {
-    return CommandParameterDeclaration__BehaviorDescriptor.getSetterName_id6mJVBGGsi5s.invoke(__thisNode__) + "_" + CommandParameterDeclaration__BehaviorDescriptor.getTypeSuffix_id3gpm$NHlXW7.invoke(SNodeOperations.asSConcept(CONCEPTS.CommandParameterDeclaration$14), SLinkOperations.getTarget(__thisNode__, LINKS.type$pLrO));
+    return CommandParameterDeclaration__BehaviorDescriptor.getSetterName_id6mJVBGGsi5s.invoke(__thisNode__) + "_" + CommandParameterDeclaration__BehaviorDescriptor.getTypeSuffix_id3gpm$NHlXW7.invoke(SNodeOperations.asSConcept(CONCEPTS.CommandParameterDeclaration$14), SLinkOperations.getTarget(__thisNode__, LINKS.type$uWuc));
   }
   /*package*/ static String getUpperCaseName_id6mJVBGGsi5H(@NotNull SNode __thisNode__) {
-    return (String) CommandParameterDeclaration__BehaviorDescriptor.getUpperCaseName_id6mJVBGGsi5Q.invoke(SNodeOperations.asSConcept(CONCEPTS.CommandParameterDeclaration$14), SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1));
+    return (String) CommandParameterDeclaration__BehaviorDescriptor.getUpperCaseName_id6mJVBGGsi5Q.invoke(SNodeOperations.asSConcept(CONCEPTS.CommandParameterDeclaration$14), SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v));
   }
   /*package*/ static String getFieldName_id6mJVBGGspQq(@NotNull SNode __thisNode__) {
-    return CommandParameterDeclaration__BehaviorDescriptor.getFieldName_id6mJVBGGsi69.invoke(SNodeOperations.asSConcept(CONCEPTS.CommandParameterDeclaration$14), SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1)) + "_" + CommandParameterDeclaration__BehaviorDescriptor.getTypeSuffix_id3gpm$NHlXW7.invoke(SNodeOperations.asSConcept(CONCEPTS.CommandParameterDeclaration$14), SLinkOperations.getTarget(__thisNode__, LINKS.type$pLrO));
+    return CommandParameterDeclaration__BehaviorDescriptor.getFieldName_id6mJVBGGsi69.invoke(SNodeOperations.asSConcept(CONCEPTS.CommandParameterDeclaration$14), SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v)) + "_" + CommandParameterDeclaration__BehaviorDescriptor.getTypeSuffix_id3gpm$NHlXW7.invoke(SNodeOperations.asSConcept(CONCEPTS.CommandParameterDeclaration$14), SLinkOperations.getTarget(__thisNode__, LINKS.type$uWuc));
   }
   /*package*/ static String getFieldName_id6mJVBGGsi69(@NotNull SAbstractConcept __thisConcept__, String name) {
     return "my" + CommandParameterDeclaration__BehaviorDescriptor.getUpperCaseName_id6mJVBGGsi5Q.invoke(SNodeOperations.asSConcept(CONCEPTS.CommandParameterDeclaration$14), name);
@@ -141,10 +141,10 @@ public final class CommandParameterDeclaration__BehaviorDescriptor extends BaseB
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -22,7 +22,7 @@ public class check_InstanceMethodDeclarationForAbstractPrivateModifiers_NonTypes
   public check_InstanceMethodDeclarationForAbstractPrivateModifiers_NonTypesystemRule() {
   }
   public void applyRule(final SNode instanceMethodDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(instanceMethodDeclaration) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(instanceMethodDeclaration, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se)) {
+    if ((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(instanceMethodDeclaration) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(instanceMethodDeclaration, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(instanceMethodDeclaration, "Abstract methods cannot have private visibility", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2834737865478670840", null, errorTarget);
@@ -40,7 +40,7 @@ public class check_InstanceMethodDeclarationForAbstractPrivateModifiers_NonTypes
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 
   private static final class CONCEPTS {

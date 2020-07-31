@@ -43,11 +43,11 @@ public final class ElementaryNodeId__BehaviorDescriptor extends BaseBHDescriptor
   }
   /*package*/ static SNode create_id6UZRahyzeh3(@NotNull SAbstractConcept __thisConcept__, SModel where, SNodeId nid) {
     SNode rv = SModelOperations.createNewNode(where, null, CONCEPTS.ElementaryNodeId$ix);
-    SPropertyOperations.assign(rv, PROPS.nodeId$9Axs, nid.toString());
+    SPropertyOperations.assign(rv, PROPS.nodeId$DEc$, nid.toString());
     return rv;
   }
   /*package*/ static SNodeId getNodeId_id39TODbGsIdf(@NotNull SNode __thisNode__) {
-    return PersistenceFacade.getInstance().createNodeId(SPropertyOperations.getString(__thisNode__, PROPS.nodeId$9Axs));
+    return PersistenceFacade.getInstance().createNodeId(SPropertyOperations.getString(__thisNode__, PROPS.nodeId$DEc$));
   }
   /*package*/ static boolean match_id1si_nSrb46O(@NotNull SNode __thisNode__, SNode n) {
     return n.getNodeId().equals(NodeIdentity__BehaviorDescriptor.getNodeId_id39TODbGsIdf.invoke(__thisNode__));
@@ -110,6 +110,6 @@ public final class ElementaryNodeId__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nodeId$9Axs = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3279d292ec74a708L, 0x3279d292ec74a70dL, "nodeId");
+    /*package*/ static final SProperty nodeId$DEc$ = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3279d292ec74a708L, 0x3279d292ec74a70dL, "nodeId");
   }
 }

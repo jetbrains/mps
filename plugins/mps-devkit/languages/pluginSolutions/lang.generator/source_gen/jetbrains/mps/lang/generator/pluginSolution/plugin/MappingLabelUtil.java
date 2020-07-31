@@ -23,8 +23,8 @@ public class MappingLabelUtil {
     SNode mappingLabel = null;
     List<SNode> mappingConfigurations = SModelOperations.rootsIncludingImported(SNodeOperations.getModel(templateNode), CONCEPTS.MappingConfiguration$rB);
     for (SNode mc : ListSequence.fromList(mappingConfigurations)) {
-      for (SNode ml : ListSequence.fromList(SLinkOperations.getChildren(mc, LINKS.mappingLabel$9pST))) {
-        if (labelName.equals(SPropertyOperations.getString(ml, PROPS.name$tAp1))) {
+      for (SNode ml : ListSequence.fromList(SLinkOperations.getChildren(mc, LINKS.mappingLabel$zyzB))) {
+        if (labelName.equals(SPropertyOperations.getString(ml, PROPS.name$lA7v))) {
           mappingLabel = ml;
           break;
         }
@@ -37,7 +37,7 @@ public class MappingLabelUtil {
       if (ListSequence.fromList(localMCs).isNotEmpty()) {
         mc = ListSequence.fromList(localMCs).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.mappingLabel$9pST)).isNotEmpty();
+            return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.mappingLabel$zyzB)).isNotEmpty();
           }
         }).first();
         if (mc == null) {
@@ -45,11 +45,11 @@ public class MappingLabelUtil {
         }
       } else {
         mc = SNodeFactoryOperations.createNewRootNode(SNodeOperations.getModel(templateNode), CONCEPTS.MappingConfiguration$rB, null);
-        SPropertyOperations.assign(mc, PROPS.name$tAp1, "MappingLabels");
+        SPropertyOperations.assign(mc, PROPS.name$lA7v, "MappingLabels");
       }
       // new mapping label 
-      SNode newLabel = SNodeFactoryOperations.addNewChild(mc, LINKS.mappingLabel$9pST, CONCEPTS.MappingLabelDeclaration$7f);
-      SPropertyOperations.assign(newLabel, PROPS.name$tAp1, labelName);
+      SNode newLabel = SNodeFactoryOperations.addNewChild(mc, LINKS.mappingLabel$zyzB, CONCEPTS.MappingLabelDeclaration$7f);
+      SPropertyOperations.assign(newLabel, PROPS.name$lA7v, labelName);
       mappingLabel = newLabel;
     }
     return mappingLabel;
@@ -61,10 +61,10 @@ public class MappingLabelUtil {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink mappingLabel$9pST = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x1179be725f9L, "mappingLabel");
+    /*package*/ static final SContainmentLink mappingLabel$zyzB = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x1179be725f9L, "mappingLabel");
   }
 }

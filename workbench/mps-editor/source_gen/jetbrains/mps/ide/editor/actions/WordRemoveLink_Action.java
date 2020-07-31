@@ -32,7 +32,7 @@ public class WordRemoveLink_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return isNotEmptyString(SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.url$WUb8));
+    return isNotEmptyString(SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.url$wboS));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -56,14 +56,14 @@ public class WordRemoveLink_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    SPropertyOperations.assign(event.getData(MPSCommonDataKeys.NODE), PROPS.url$WUb8, null);
+    SPropertyOperations.assign(event.getData(MPSCommonDataKeys.NODE), PROPS.url$wboS, null);
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty url$WUb8 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
+    /*package*/ static final SProperty url$wboS = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
   }
 
   private static final class CONCEPTS {

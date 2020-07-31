@@ -28,9 +28,9 @@ public final class MPSTipsAndTricks_Text__BehaviorDescriptor extends BaseBHDescr
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SNode elem = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement"));
-    SPropertyOperations.assign(elem, PROPS.tagName$U00C, "p");
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.element$bOEE)).addElement(elem);
-    SPropertyOperations.assign(__thisNode__, PROPS.language$5AFb, "");
+    SPropertyOperations.assign(elem, PROPS.tagName$60jo, "p");
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.element$IwEm)).addElement(elem);
+    SPropertyOperations.assign(__thisNode__, PROPS.language$HIUl, "");
   }
 
 
@@ -79,11 +79,11 @@ public final class MPSTipsAndTricks_Text__BehaviorDescriptor extends BaseBHDescr
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty tagName$U00C = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName");
-    /*package*/ static final SProperty language$5AFb = MetaAdapterFactory.getProperty(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf32687cL, 0x5ea1926fdf40725aL, "language");
+    /*package*/ static final SProperty tagName$60jo = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName");
+    /*package*/ static final SProperty language$HIUl = MetaAdapterFactory.getProperty(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf32687cL, 0x5ea1926fdf40725aL, "language");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink element$bOEE = MetaAdapterFactory.getContainmentLink(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf32687cL, 0x5ea1926fdf38a2a2L, "element");
+    /*package*/ static final SContainmentLink element$IwEm = MetaAdapterFactory.getContainmentLink(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf32687cL, 0x5ea1926fdf38a2a2L, "element");
   }
 }

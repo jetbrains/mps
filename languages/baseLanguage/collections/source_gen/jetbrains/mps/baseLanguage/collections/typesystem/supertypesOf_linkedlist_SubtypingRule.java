@@ -24,9 +24,9 @@ public class supertypesOf_linkedlist_SubtypingRule extends SubtypingRule_Runtime
   }
   public List<SNode> getSubOrSuperTypes(SNode llt, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> res = new ArrayList<SNode>();
-    ListSequence.fromList(res).addElement(_quotation_createNode_vg4yju_a0a1a1(SLinkOperations.getTarget(llt, LINKS.elementType$xJJW)));
-    ListSequence.fromList(res).addElement(_quotation_createNode_vg4yju_a0a2a1(SLinkOperations.getTarget(llt, LINKS.elementType$xJJW)));
-    ListSequence.fromList(res).addElement(_quotation_createNode_vg4yju_a0a3a1(SLinkOperations.getTarget(llt, LINKS.elementType$xJJW)));
+    ListSequence.fromList(res).addElement(_quotation_createNode_vg4yju_a0a1a1(SLinkOperations.getTarget(llt, LINKS.elementType$m8e4)));
+    ListSequence.fromList(res).addElement(_quotation_createNode_vg4yju_a0a2a1(SLinkOperations.getTarget(llt, LINKS.elementType$m8e4)));
+    ListSequence.fromList(res).addElement(_quotation_createNode_vg4yju_a0a3a1(SLinkOperations.getTarget(llt, LINKS.elementType$m8e4)));
     return res;
   }
   public SAbstractConcept getApplicableConcept() {
@@ -73,7 +73,7 @@ public class supertypesOf_linkedlist_SubtypingRule extends SubtypingRule_Runtime
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$xJJW = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType");
+    /*package*/ static final SContainmentLink elementType$m8e4 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType");
   }
 
   private static final class CONCEPTS {

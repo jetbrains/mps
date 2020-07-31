@@ -36,10 +36,10 @@ public final class ColorLiteral__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static int getIntValue_id1BguvjG4ybo(@NotNull SNode __thisNode__) {
     try {
-      return Integer.parseInt(SPropertyOperations.getString(__thisNode__, PROPS.val$ym18), 16);
+      return Integer.parseInt(SPropertyOperations.getString(__thisNode__, PROPS.val$CEyS), 16);
     } catch (NumberFormatException e) {
       if (LOG.isEnabledFor(Level.ERROR)) {
-        LOG.error("Wrong color value: " + SPropertyOperations.getString(__thisNode__, PROPS.val$ym18));
+        LOG.error("Wrong color value: " + SPropertyOperations.getString(__thisNode__, PROPS.val$CEyS));
       }
       return 0;
     }
@@ -92,6 +92,6 @@ public final class ColorLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty val$ym18 = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bddL, 0x19d079f4ec114be1L, "val");
+    /*package*/ static final SProperty val$CEyS = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bddL, 0x19d079f4ec114be1L, "val");
   }
 }

@@ -114,7 +114,7 @@ public class AbstractRequestDescription_SubstituteMenu extends SubstituteMenuBas
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode desc = SNodeFactoryOperations.createNewNode(CONCEPTS.StringDescription$EU, null);
-        SPropertyOperations.assign(desc, PROPS.value$8G30, pattern);
+        SPropertyOperations.assign(desc, PROPS.value$dlt0, pattern);
         return desc;
       }
 
@@ -152,6 +152,6 @@ public class AbstractRequestDescription_SubstituteMenu extends SubstituteMenuBas
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$8G30 = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x1a2a793c4db223d5L, 0x1a2a793c4db223d6L, "value");
+    /*package*/ static final SProperty value$dlt0 = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x1a2a793c4db223d5L, 0x1a2a793c4db223d6L, "value");
   }
 }

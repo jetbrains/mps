@@ -41,20 +41,20 @@ public final class CustomMapCreator__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static SNode createType_id1ny5gPbZSFj(@NotNull SNode __thisNode__) {
-    SNode res = SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.containerDeclaration$q3D), LINKS.containerType$zGt_));
+    SNode res = SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.containerDeclaration$cBKR), LINKS.containerType$iykV));
     //  workaround an SModel's dumbness 
     final List<SNode> params = ListSequence.fromList(new ArrayList<SNode>());
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.keyType$j6a1) != null)) {
-      ListSequence.fromList(params).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.keyType$j6a1));
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.keyType$fYQv) != null)) {
+      ListSequence.fromList(params).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.keyType$fYQv));
     }
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.valueType$WE1r) != null)) {
-      ListSequence.fromList(params).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.valueType$WE1r));
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.valueType$omG5) != null)) {
+      ListSequence.fromList(params).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.valueType$omG5));
     }
-    final List<SNode> tvars = SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.containerDeclaration$q3D), LINKS.typeVariableDeclaration$ziZT);
+    final List<SNode> tvars = SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.containerDeclaration$cBKR), LINKS.typeVariableDeclaration$6cWB);
     ListSequence.fromList(SNodeOperations.getChildren(res)).toListSequence().visitAll(new IVisitor<SNode>() {
       public void visit(SNode chld) {
         if (SNodeOperations.isInstanceOf(chld, CONCEPTS.TypeVariableReference$vZ)) {
-          int index = ListSequence.fromList(tvars).indexOf(SLinkOperations.getTarget(SNodeOperations.cast(chld, CONCEPTS.TypeVariableReference$vZ), LINKS.typeVariableDeclaration$U0X4));
+          int index = ListSequence.fromList(tvars).indexOf(SLinkOperations.getTarget(SNodeOperations.cast(chld, CONCEPTS.TypeVariableReference$vZ), LINKS.typeVariableDeclaration$6t$W));
           SNode realType = ((index >= 0 && index < ListSequence.fromList(params).count()) ? SNodeOperations.copyNode(ListSequence.fromList(params).getElement(index)) : null);
           SNodeOperations.replaceWithAnother(chld, realType);
         }
@@ -66,7 +66,7 @@ public final class CustomMapCreator__BehaviorDescriptor extends BaseBHDescriptor
     return false;
   }
   /*package*/ static String getEntityName_id6LXz$urfgAS(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.containerDeclaration$q3D), PROPS.name$tAp1);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.containerDeclaration$cBKR), PROPS.name$lA7v);
   }
 
   /*package*/ CustomMapCreator__BehaviorDescriptor() {
@@ -120,12 +120,12 @@ public final class CustomMapCreator__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink containerDeclaration$q3D = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x15e2150d4bff8a67L, 0x15e2150d4bff8a6aL, "containerDeclaration");
-    /*package*/ static final SContainmentLink containerType$zGt_ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x54a5d587c1f3c7e0L, 0x54a5d587c1f3c83fL, "containerType");
-    /*package*/ static final SContainmentLink keyType$j6a1 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5b4d0L, "keyType");
-    /*package*/ static final SContainmentLink valueType$WE1r = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5d76dL, "valueType");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SReferenceLink typeVariableDeclaration$U0X4 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
+    /*package*/ static final SReferenceLink containerDeclaration$cBKR = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x15e2150d4bff8a67L, 0x15e2150d4bff8a6aL, "containerDeclaration");
+    /*package*/ static final SContainmentLink containerType$iykV = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x54a5d587c1f3c7e0L, 0x54a5d587c1f3c83fL, "containerType");
+    /*package*/ static final SContainmentLink keyType$fYQv = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5b4d0L, "keyType");
+    /*package*/ static final SContainmentLink valueType$omG5 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5d76dL, "valueType");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SReferenceLink typeVariableDeclaration$6t$W = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
   }
 
   private static final class CONCEPTS {
@@ -133,6 +133,6 @@ public final class CustomMapCreator__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -33,16 +33,16 @@ public class BaseLanguageUtil {
     }
     return ListSequence.fromList(((List<SNode>) BHReflection.invoke0(fromClassifier, CONCEPTS.Classifier$hJ, SMethodTrimmedId.create("getExtendedClassifierTypes", null, "1UeCwxlWKny")))).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.classifier$pQ_R);
+        return SLinkOperations.getTarget(it, LINKS.classifier$xslD);
       }
     }).contains(toClassifier);
   }
   public static SNode getSuperclass(SNode subClass) {
-    return SNodeOperations.cast(check_b9g70l_a0a0c(SLinkOperations.getTarget(subClass, LINKS.superclass$_pqe)), CONCEPTS.ClassConcept$IY);
+    return SNodeOperations.cast(check_b9g70l_a0a0c(SLinkOperations.getTarget(subClass, LINKS.superclass$7jGM)), CONCEPTS.ClassConcept$IY);
   }
   private static SNode check_b9g70l_a0a0c(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return SLinkOperations.getTarget(checkedDotOperand, LINKS.classifier$pQ_R);
+      return SLinkOperations.getTarget(checkedDotOperand, LINKS.classifier$xslD);
     }
     return null;
   }
@@ -53,7 +53,7 @@ public class BaseLanguageUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
   }
 }

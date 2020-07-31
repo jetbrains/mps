@@ -20,7 +20,7 @@ public class typeof_Node_InsertPrevSiblingOperation_InferenceRule extends Abstra
   public typeof_Node_InsertPrevSiblingOperation_InferenceRule() {
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode parameter = SLinkOperations.getTarget(op, LINKS.insertedNode$SRWu);
+    SNode parameter = SLinkOperations.getTarget(op, LINKS.insertedNode$z6iy);
     if (!((parameter == null))) {
       {
         SNode _nodeToCheck_1029348928467 = parameter;
@@ -32,7 +32,7 @@ public class typeof_Node_InsertPrevSiblingOperation_InferenceRule extends Abstra
     {
       SNode _nodeToCheck_1029348928467 = op;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1225408525102", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1225408525109", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(op, LINKS.insertedNode$SRWu), "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1225408525104", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1225408525109", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(op, LINKS.insertedNode$z6iy), "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1225408525104", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -52,7 +52,7 @@ public class typeof_Node_InsertPrevSiblingOperation_InferenceRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink insertedNode$SRWu = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a2d77d0e1L, 0x10a2d77d0e4L, "insertedNode");
+    /*package*/ static final SContainmentLink insertedNode$z6iy = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a2d77d0e1L, 0x10a2d77d0e4L, "insertedNode");
   }
 
   private static final class CONCEPTS {

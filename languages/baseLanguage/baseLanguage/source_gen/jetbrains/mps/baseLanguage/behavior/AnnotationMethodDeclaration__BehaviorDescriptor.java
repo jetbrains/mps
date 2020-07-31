@@ -43,7 +43,7 @@ public final class AnnotationMethodDeclaration__BehaviorDescriptor extends BaseB
       return false;
     }
     if (SNodeOperations.isInstanceOf(type, CONCEPTS.ArrayType$Yv)) {
-      SNode componentType = SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.ArrayType$Yv), LINKS.componentType$10w);
+      SNode componentType = SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.ArrayType$Yv), LINKS.componentType$vfw);
       if (SNodeOperations.isInstanceOf(componentType, CONCEPTS.ArrayType$Yv)) {
         // nested array types are prohibited 
         return false;
@@ -51,7 +51,7 @@ public final class AnnotationMethodDeclaration__BehaviorDescriptor extends BaseB
       return ((boolean) AnnotationMethodDeclaration__BehaviorDescriptor.isGoodReturnType_id5JI19Xbr7EK.invoke(__thisNode__, componentType));
     }
     if (SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$IZ)) {
-      SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R);
+      SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD);
       if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.EnumClass$uy)) {
         return true;
       }
@@ -134,7 +134,7 @@ public final class AnnotationMethodDeclaration__BehaviorDescriptor extends BaseB
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$10w = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

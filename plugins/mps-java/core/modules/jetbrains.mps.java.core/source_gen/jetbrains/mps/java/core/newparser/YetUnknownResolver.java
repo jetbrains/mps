@@ -112,7 +112,7 @@ public class YetUnknownResolver {
     progress.start("Ambiguous concepts...", Sequence.fromIterable(roots).count());
     myResolutionMap = MapSequence.fromMap(new HashMap<SNode, SNode>());
     for (SNode node : Sequence.fromIterable(roots)) {
-      progress.step((SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$nV) ? ("node: " + SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.INamedConcept$nV), PROPS.name$tAp1)) : ""));
+      progress.step((SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$nV) ? ("node: " + SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v)) : ""));
       List<SNode> unknowns = SNodeOperations.getNodeDescendants(node, CONCEPTS.IYetUnresolved$Oi, false, new SAbstractConcept[]{CONCEPTS.IYetUnresolved$Oi});
       for (SNode unk : ListSequence.fromList(unknowns)) {
         final SNode unkNode = unk;
@@ -178,6 +178,6 @@ public class YetUnknownResolver {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -29,11 +29,11 @@ public class LocalVariableDeclaration_Initializer_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SLinkOperations.getTarget(node, LINKS.initializer$KgD) != null) {
-          if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.initializer$KgD))) {
+        if (SLinkOperations.getTarget(node, LINKS.initializer$no3R) != null) {
+          if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.initializer$no3R))) {
             return;
           }
-          SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.initializer$KgD));
+          SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.initializer$no3R));
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, SelectionManager.LAST_CELL, -1);
         } else {
           if (DeletionApproverUtil.approve(editorContext, node)) {
@@ -88,6 +88,6 @@ public class LocalVariableDeclaration_Initializer_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 }

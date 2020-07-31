@@ -54,13 +54,13 @@ public final class AddContext_Intention extends AbstractIntentionDescriptor impl
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode tNode = SLinkOperations.getTarget(node, LINKS.templateNode$7wRg);
-      SLinkOperations.setTarget(node, LINKS.templateNode$7wRg, null);
+      SNode tNode = SLinkOperations.getTarget(node, LINKS.templateNode$CUKK);
+      SLinkOperations.setTarget(node, LINKS.templateNode$CUKK, null);
       SNode result = SNodeOperations.replaceWithNewChild(node, CONCEPTS.InlineTemplateWithContext_RuleConsequence$tA);
       if (SNodeOperations.isInstanceOf(tNode, CONCEPTS.Expression$TP)) {
-        SLinkOperations.setTarget(result, LINKS.contentNode$QBS9, _quotation_createNode_4m6r5j_a0a0d0a(SNodeOperations.cast(tNode, CONCEPTS.Expression$TP)));
+        SLinkOperations.setTarget(result, LINKS.contentNode$tkcn, _quotation_createNode_4m6r5j_a0a0d0a(SNodeOperations.cast(tNode, CONCEPTS.Expression$TP)));
       } else {
-        SLinkOperations.setTarget(result, LINKS.contentNode$QBS9, tNode);
+        SLinkOperations.setTarget(result, LINKS.contentNode$tkcn, tNode);
       }
       EditingUtil.createTemplateFragment(tNode);
     }
@@ -88,8 +88,8 @@ public final class AddContext_Intention extends AbstractIntentionDescriptor impl
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink templateNode$7wRg = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, 0x112103ebf76L, "templateNode");
-    /*package*/ static final SContainmentLink contentNode$QBS9 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, 0x7b85dded0be53d6fL, "contentNode");
+    /*package*/ static final SContainmentLink templateNode$CUKK = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, 0x112103ebf76L, "templateNode");
+    /*package*/ static final SContainmentLink contentNode$tkcn = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, 0x7b85dded0be53d6fL, "contentNode");
   }
 
   private static final class CONCEPTS {

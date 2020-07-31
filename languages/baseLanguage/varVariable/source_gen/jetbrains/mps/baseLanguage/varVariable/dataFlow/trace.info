@@ -11,11 +11,11 @@
   <root nodeRef="r:04eb0d47-e25d-4def-b754-199026c42388(jetbrains.mps.baseLanguage.varVariable.dataFlow)/8067700594454574148">
     <file name="VarVariableDeclaration_DataFlow.java">
       <node id="1206990208534" at="13,60,14,139" concept="0" />
-      <node id="8067700594454574165" at="14,139,15,110" concept="0" />
-      <node id="8067700594454574178" at="15,110,16,237" concept="0" />
-      <node id="8067700594454574148" at="20,0,21,0" concept="2" trace="initializer$KgD" />
+      <node id="8067700594454574165" at="14,139,15,111" concept="0" />
+      <node id="8067700594454574178" at="15,111,16,238" concept="0" />
+      <node id="8067700594454574148" at="20,0,21,0" concept="2" trace="initializer$no3R" />
       <node id="8067700594454574148" at="13,0,18,0" concept="1" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-      <scope id="8067700594454574150" at="13,60,16,237" />
+      <scope id="8067700594454574150" at="13,60,16,238" />
       <scope id="8067700594454574148" at="13,0,18,0">
         <var name="_context" id="8067700594454574148" />
       </scope>

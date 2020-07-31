@@ -49,7 +49,7 @@ public class CreateDefaultEditor_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     SNode conceptDeclaration = SNodeOperations.as(((SNode) MapSequence.fromMap(_params).get("selectedNode")), CONCEPTS.ConceptDeclaration$qU);
-    if (conceptDeclaration == null || SPropertyOperations.getBoolean(conceptDeclaration, PROPS.abstract$moSU) || SPropertyOperations.getString(conceptDeclaration, PROPS.name$tAp1) == null) {
+    if (conceptDeclaration == null || SPropertyOperations.getBoolean(conceptDeclaration, PROPS.abstract$Q3$6) || SPropertyOperations.getString(conceptDeclaration, PROPS.name$lA7v) == null) {
       return false;
     }
 
@@ -117,7 +117,7 @@ public class CreateDefaultEditor_Action extends BaseAction {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstract$moSU = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty abstract$Q3$6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

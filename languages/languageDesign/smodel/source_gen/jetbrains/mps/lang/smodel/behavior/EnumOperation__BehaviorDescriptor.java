@@ -34,7 +34,7 @@ public final class EnumOperation__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getEnumDecl_id66cvXGSmQgk(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(SNodeOperations.as(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(__thisNode__), CONCEPTS.EnumerationIdRefExpression$E1), LINKS.enumDeclaration$7yJw);
+    return SLinkOperations.getTarget(SNodeOperations.as(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(__thisNode__), CONCEPTS.EnumerationIdRefExpression$E1), LINKS.enumDeclaration$DP0w);
   }
 
   /*package*/ EnumOperation__BehaviorDescriptor() {
@@ -88,6 +88,6 @@ public final class EnumOperation__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink enumDeclaration$7yJw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802d81bed4L, 0x50352c802d81bed5L, "enumDeclaration");
+    /*package*/ static final SReferenceLink enumDeclaration$DP0w = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802d81bed4L, 0x50352c802d81bed5L, "enumDeclaration");
   }
 }

@@ -30,14 +30,14 @@ public class ClassLikeMethodChecker {
 
   private boolean doCheck(final SNode method, ClassLikeMethodProblemVisitor visitor) throws StopMethodCheckerException {
     // name 
-    if (!(Objects.equals(SPropertyOperations.getString(method, PROPS.name$tAp1), SPropertyOperations.getString(SLinkOperations.getTarget(method, LINKS.decl$UAdi), PROPS.name$tAp1)))) {
-      visitor.visitName(method, SPropertyOperations.getString(SLinkOperations.getTarget(method, LINKS.decl$UAdi), PROPS.name$tAp1));
+    if (!(Objects.equals(SPropertyOperations.getString(method, PROPS.name$lA7v), SPropertyOperations.getString(SLinkOperations.getTarget(method, LINKS.decl$owrI), PROPS.name$lA7v)))) {
+      visitor.visitName(method, SPropertyOperations.getString(SLinkOperations.getTarget(method, LINKS.decl$owrI), PROPS.name$lA7v));
     }
 
     // ret type 
-    final SNode retType = MethodDescriptor__BehaviorDescriptor.getReturnType_id3m06Jgso0l8.invoke(SLinkOperations.getTarget(method, LINKS.decl$UAdi));
+    final SNode retType = MethodDescriptor__BehaviorDescriptor.getReturnType_id3m06Jgso0l8.invoke(SLinkOperations.getTarget(method, LINKS.decl$owrI));
     if (SNodeOperations.isInstanceOf(retType, CONCEPTS.DependentTypeDescriptor$1L)) {
-      if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$WIkw), CONCEPTS.DependentTypeInstance$to)) || SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(method, LINKS.returnType$WIkw), CONCEPTS.DependentTypeInstance$to), LINKS.decl$HVk0) != retType) {
+      if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$qrVw), CONCEPTS.DependentTypeInstance$to)) || SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(method, LINKS.returnType$qrVw), CONCEPTS.DependentTypeInstance$to), LINKS.decl$fIG0) != retType) {
         visitor.visitReturnType(method, new _FunctionTypes._return_P0_E0<SNode>() {
           public SNode invoke() {
             return (SNode) DependentTypeDescriptor__BehaviorDescriptor.create_id2h59CdJp8nr.invoke(SNodeOperations.cast(retType, CONCEPTS.DependentTypeDescriptor$1L), method);
@@ -45,7 +45,7 @@ public class ClassLikeMethodChecker {
         });
       }
     } else {
-      if (!((MatchingUtil.matchNodes(SLinkOperations.getTarget(method, LINKS.returnType$WIkw), retType)))) {
+      if (!((MatchingUtil.matchNodes(SLinkOperations.getTarget(method, LINKS.returnType$qrVw), retType)))) {
         visitor.visitReturnType(method, new _FunctionTypes._return_P0_E0<SNode>() {
           public SNode invoke() {
             return SNodeOperations.copyNode(retType);
@@ -55,10 +55,10 @@ public class ClassLikeMethodChecker {
     }
 
     // parameters 
-    for (int i = 0, cur = 0; i < ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.decl$UAdi), LINKS.param$HVhF)).count(); i++) {
-      final SNode formalPar = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.decl$UAdi), LINKS.param$HVhF)).getElement(i);
-      if (cur == ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).count()) {
-        if (SLinkOperations.getTarget(formalPar, LINKS.condition$TOMj) == null || (boolean) ParameterDescriptor__BehaviorDescriptor.isNeeded_id7GXvAHO1j1d.invoke(formalPar, method)) {
+    for (int i = 0, cur = 0; i < ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.decl$owrI), LINKS.param$fHzP)).count(); i++) {
+      final SNode formalPar = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.decl$owrI), LINKS.param$fHzP)).getElement(i);
+      if (cur == ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).count()) {
+        if (SLinkOperations.getTarget(formalPar, LINKS.condition$$nd) == null || (boolean) ParameterDescriptor__BehaviorDescriptor.isNeeded_id7GXvAHO1j1d.invoke(formalPar, method)) {
           visitor.visitMissingParam(method, cur++, new _FunctionTypes._return_P0_E0<SNode>() {
             public SNode invoke() {
               return (SNode) ParameterDescriptor__BehaviorDescriptor.create_id2h59CdJp99Y.invoke(formalPar, method);
@@ -68,14 +68,14 @@ public class ClassLikeMethodChecker {
         continue;
       }
 
-      SNode actualPar = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).getElement(cur);
+      SNode actualPar = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).getElement(cur);
 
       // todo this condition should be removed after migration to our params 
       if (SNodeOperations.isInstanceOf(actualPar, CONCEPTS.MethodParameterInstance$yX)) {
         // conditional? need to check presence conforms with condition 
-        if (SLinkOperations.getTarget(formalPar, LINKS.condition$TOMj) != null) {
+        if (SLinkOperations.getTarget(formalPar, LINKS.condition$$nd) != null) {
           // needed, but not present 
-          if ((boolean) ParameterDescriptor__BehaviorDescriptor.isNeeded_id7GXvAHO1j1d.invoke(formalPar, method) && SLinkOperations.getTarget(SNodeOperations.cast(actualPar, CONCEPTS.MethodParameterInstance$yX), LINKS.decl$HZxr) != formalPar) {
+          if ((boolean) ParameterDescriptor__BehaviorDescriptor.isNeeded_id7GXvAHO1j1d.invoke(formalPar, method) && SLinkOperations.getTarget(SNodeOperations.cast(actualPar, CONCEPTS.MethodParameterInstance$yX), LINKS.decl$hLc5) != formalPar) {
             visitor.visitMissingParam(method, cur++, new _FunctionTypes._return_P0_E0<SNode>() {
               public SNode invoke() {
                 return (SNode) ParameterDescriptor__BehaviorDescriptor.create_id2h59CdJp99Y.invoke(formalPar, method);
@@ -84,35 +84,35 @@ public class ClassLikeMethodChecker {
             continue;
           }
           // not needed, but present 
-          if (!((boolean) ParameterDescriptor__BehaviorDescriptor.isNeeded_id7GXvAHO1j1d.invoke(formalPar, method)) && SLinkOperations.getTarget(SNodeOperations.cast(actualPar, CONCEPTS.MethodParameterInstance$yX), LINKS.decl$HZxr) == formalPar) {
+          if (!((boolean) ParameterDescriptor__BehaviorDescriptor.isNeeded_id7GXvAHO1j1d.invoke(formalPar, method)) && SLinkOperations.getTarget(SNodeOperations.cast(actualPar, CONCEPTS.MethodParameterInstance$yX), LINKS.decl$hLc5) == formalPar) {
             visitor.visitOddParam(actualPar);
             continue;
           }
           // otherwise, check as a regular parameter 
         }
 
-        if (SLinkOperations.getTarget(SNodeOperations.cast(actualPar, CONCEPTS.MethodParameterInstance$yX), LINKS.decl$HZxr) != formalPar) {
+        if (SLinkOperations.getTarget(SNodeOperations.cast(actualPar, CONCEPTS.MethodParameterInstance$yX), LINKS.decl$hLc5) != formalPar) {
           visitor.visitUnknownParam(method, cur++);
         }
       }
 
-      if (!(Objects.equals(SPropertyOperations.getString(actualPar, PROPS.name$tAp1), SPropertyOperations.getString(formalPar, PROPS.name$tAp1)))) {
-        visitor.visitParamName(actualPar, SPropertyOperations.getString(formalPar, PROPS.name$tAp1));
+      if (!(Objects.equals(SPropertyOperations.getString(actualPar, PROPS.name$lA7v), SPropertyOperations.getString(formalPar, PROPS.name$lA7v)))) {
+        visitor.visitParamName(actualPar, SPropertyOperations.getString(formalPar, PROPS.name$lA7v));
       }
 
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(formalPar, LINKS.type$HV6v), CONCEPTS.DependentTypeDescriptor$1L)) {
-        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(actualPar, LINKS.type$pLrO), CONCEPTS.DependentTypeInstance$to))) {
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(formalPar, LINKS.type$fC91), CONCEPTS.DependentTypeDescriptor$1L)) {
+        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(actualPar, LINKS.type$uWuc), CONCEPTS.DependentTypeInstance$to))) {
           visitor.visitParamType(actualPar, new _FunctionTypes._return_P0_E0<SNode>() {
             public SNode invoke() {
-              return (SNode) DependentTypeDescriptor__BehaviorDescriptor.create_id2h59CdJp8nr.invoke(SNodeOperations.cast(SLinkOperations.getTarget(formalPar, LINKS.type$HV6v), CONCEPTS.DependentTypeDescriptor$1L), method);
+              return (SNode) DependentTypeDescriptor__BehaviorDescriptor.create_id2h59CdJp8nr.invoke(SNodeOperations.cast(SLinkOperations.getTarget(formalPar, LINKS.type$fC91), CONCEPTS.DependentTypeDescriptor$1L), method);
             }
           });
         }
       } else {
-        if (!((MatchingUtil.matchNodes(SLinkOperations.getTarget(actualPar, LINKS.type$pLrO), SLinkOperations.getTarget(formalPar, LINKS.type$HV6v))))) {
+        if (!((MatchingUtil.matchNodes(SLinkOperations.getTarget(actualPar, LINKS.type$uWuc), SLinkOperations.getTarget(formalPar, LINKS.type$fC91))))) {
           visitor.visitParamType(actualPar, new _FunctionTypes._return_P0_E0<SNode>() {
             public SNode invoke() {
-              return SNodeOperations.copyNode(SLinkOperations.getTarget(formalPar, LINKS.type$HV6v));
+              return SNodeOperations.copyNode(SLinkOperations.getTarget(formalPar, LINKS.type$fC91));
             }
           });
         }
@@ -133,19 +133,19 @@ public class ClassLikeMethodChecker {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink decl$UAdi = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d154L, 0x443e89bb321537L, "decl");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SReferenceLink decl$HVk0 = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d16bL, 0x340eb2bd2e03d16cL, "decl");
-    /*package*/ static final SContainmentLink param$HVhF = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d167L, 0x340eb2bd2e03d168L, "param");
-    /*package*/ static final SContainmentLink condition$TOMj = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d164L, 0x1c6f8dad3c495fe9L, "condition");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SReferenceLink decl$HZxr = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x7b3d7e6b74000c44L, 0x7b3d7e6b7400c831L, "decl");
-    /*package*/ static final SContainmentLink type$HV6v = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d164L, 0x340eb2bd2e03d166L, "type");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SReferenceLink decl$owrI = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d154L, 0x443e89bb321537L, "decl");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SReferenceLink decl$fIG0 = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d16bL, 0x340eb2bd2e03d16cL, "decl");
+    /*package*/ static final SContainmentLink param$fHzP = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d167L, 0x340eb2bd2e03d168L, "param");
+    /*package*/ static final SContainmentLink condition$$nd = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d164L, 0x1c6f8dad3c495fe9L, "condition");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SReferenceLink decl$hLc5 = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x7b3d7e6b74000c44L, 0x7b3d7e6b7400c831L, "decl");
+    /*package*/ static final SContainmentLink type$fC91 = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d164L, 0x340eb2bd2e03d166L, "type");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

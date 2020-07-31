@@ -29,7 +29,7 @@
       <node id="2025969025281848028" at="63,60,64,223" concept="5" />
       <node id="2025969025281848028" at="66,51,67,149" concept="5" />
       <node id="2025969025281848028" at="71,0,72,0" concept="6" trace="PropertyPatternVariableReference$wp" />
-      <node id="2025969025281848028" at="75,0,76,0" concept="6" trace="declaration$Swc3" />
+      <node id="2025969025281848028" at="75,0,76,0" concept="6" trace="declaration$n_Pt" />
       <node id="2025969025281848028" at="23,0,26,0" concept="3" trace="getCaption#()Ljava/lang/String;" />
       <node id="2025969025281852244" at="39,0,42,0" concept="3" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
       <node id="2025969025281848028" at="63,0,66,0" concept="3" trace="executeAfter#()Ljava/lang/Iterable;" />
@@ -133,10 +133,10 @@
       <node id="7335099364349550834" at="150,0,151,0" concept="6" trace="QuotationConsequence$w" />
       <node id="7335099364349550834" at="151,0,152,0" concept="6" trace="ListPatternVariableReference$c_" />
       <node id="7335099364349550834" at="152,0,153,0" concept="6" trace="Expression$TP" />
-      <node id="7335099364349550834" at="156,0,157,0" concept="6" trace="createdByScript$1_lw" />
-      <node id="7335099364349550834" at="157,0,158,0" concept="6" trace="reasonShort$1$U0" />
-      <node id="7335099364349550834" at="158,0,159,0" concept="6" trace="todo$1_4E" />
-      <node id="7335099364349550834" at="159,0,160,0" concept="6" trace="readableId$1_59" />
+      <node id="7335099364349550834" at="156,0,157,0" concept="6" trace="createdByScript$L5qw" />
+      <node id="7335099364349550834" at="157,0,158,0" concept="6" trace="reasonShort$KS60" />
+      <node id="7335099364349550834" at="158,0,159,0" concept="6" trace="todo$KXgm" />
+      <node id="7335099364349550834" at="159,0,160,0" concept="6" trace="readableId$KXvn" />
       <node id="7335099364349550834" at="36,0,39,0" concept="3" trace="getCaption#()Ljava/lang/String;" />
       <node id="7335099364350603114" at="49,0,52,0" concept="3" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="7335099364349816359" at="54,0,57,0" concept="3" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />

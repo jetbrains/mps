@@ -21,19 +21,19 @@ public class typeOf_ArrayCreatorWithInitializer_InferenceRule extends AbstractIn
   public typeOf_ArrayCreatorWithInitializer_InferenceRule() {
   }
   public void applyRule(final SNode arrayCreator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    for (SNode value : SLinkOperations.getChildren(arrayCreator, LINKS.initValue$C3sh)) {
+    for (SNode value : SLinkOperations.getChildren(arrayCreator, LINKS.initValue$pEGf)) {
       if (!(typeCheckingContext.isSingleTypeComputation())) {
         {
           SNode _nodeToCheck_1029348928467 = value;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1175600269225", 0, null);
-          typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1175600272400", true), (SNode) SLinkOperations.getTarget(arrayCreator, LINKS.componentType$5JdX), true, true, _info_12389875345);
+          typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1175600272400", true), (SNode) SLinkOperations.getTarget(arrayCreator, LINKS.componentType$LRKz), true, true, _info_12389875345);
         }
       }
     }
     {
       SNode _nodeToCheck_1029348928467 = arrayCreator;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1205279600879", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1205279600881", true), (SNode) _quotation_createNode_azlnjc_a1a0c0b0b(SNodeOperations.copyNode(SLinkOperations.getTarget(arrayCreator, LINKS.componentType$5JdX))), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1205279600881", true), (SNode) _quotation_createNode_azlnjc_a1a0c0b0b(SNodeOperations.copyNode(SLinkOperations.getTarget(arrayCreator, LINKS.componentType$LRKz))), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -58,8 +58,8 @@ public class typeOf_ArrayCreatorWithInitializer_InferenceRule extends AbstractIn
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initValue$C3sh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01d19acL, "initValue");
-    /*package*/ static final SContainmentLink componentType$5JdX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01cf3c4L, "componentType");
+    /*package*/ static final SContainmentLink initValue$pEGf = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01d19acL, "initValue");
+    /*package*/ static final SContainmentLink componentType$LRKz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01cf3c4L, "componentType");
   }
 
   private static final class CONCEPTS {

@@ -34,7 +34,7 @@ public class set_type_equivalent_to_subconcepts_InequationReplacementRule extend
       SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1241473625701", 0, null);
       _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
-      typeCheckingContext.createEquation((SNode) SLinkOperations.getTarget(subtype, LINKS.elementType$ZAgX), (SNode) SLinkOperations.getTarget(supertype, LINKS.elementType$ZAgX), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) SLinkOperations.getTarget(subtype, LINKS.elementType$Nydz), (SNode) SLinkOperations.getTarget(supertype, LINKS.elementType$Nydz), _info_12389875345);
     }
   }
   public boolean checkInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
@@ -42,7 +42,7 @@ public class set_type_equivalent_to_subconcepts_InequationReplacementRule extend
     if (!(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(subtype)), SNodeOperations.asSConcept(SNodeOperations.getConcept(supertype))))) {
       result_14532009 = false;
     }
-    result_14532009 = result_14532009 && MatchingUtil.matchNodes((SNode) SLinkOperations.getTarget(subtype, LINKS.elementType$ZAgX), (SNode) SLinkOperations.getTarget(supertype, LINKS.elementType$ZAgX));
+    result_14532009 = result_14532009 && MatchingUtil.matchNodes((SNode) SLinkOperations.getTarget(subtype, LINKS.elementType$Nydz), (SNode) SLinkOperations.getTarget(supertype, LINKS.elementType$Nydz));
     return result_14532009;
   }
   public boolean isWeak() {
@@ -63,7 +63,7 @@ public class set_type_equivalent_to_subconcepts_InequationReplacementRule extend
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$ZAgX = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, 0x11d91cc51e3L, "elementType");
+    /*package*/ static final SContainmentLink elementType$Nydz = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, 0x11d91cc51e3L, "elementType");
   }
 
   private static final class CONCEPTS {

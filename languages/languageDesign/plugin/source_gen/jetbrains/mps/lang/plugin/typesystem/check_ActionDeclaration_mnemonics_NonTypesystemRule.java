@@ -20,13 +20,13 @@ public class check_ActionDeclaration_mnemonics_NonTypesystemRule extends Abstrac
   public check_ActionDeclaration_mnemonics_NonTypesystemRule() {
   }
   public void applyRule(final SNode a, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (isEmptyString(SPropertyOperations.getString(a, PROPS.mnemonic$X3ep))) {
+    if (isEmptyString(SPropertyOperations.getString(a, PROPS.mnemonic$$zY7))) {
       return;
     }
-    String err = MnemonicChecker.check(SPropertyOperations.getString(a, PROPS.caption$_nKE), SPropertyOperations.getString(a, PROPS.mnemonic$X3ep));
+    String err = MnemonicChecker.check(SPropertyOperations.getString(a, PROPS.caption$6w$m), SPropertyOperations.getString(a, PROPS.mnemonic$$zY7));
     if (err != null) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.mnemonic$X3ep);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.mnemonic$$zY7);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(a, err, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "5908642177599283073", null, errorTarget);
       }
     }
@@ -45,8 +45,8 @@ public class check_ActionDeclaration_mnemonics_NonTypesystemRule extends Abstrac
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty mnemonic$X3ep = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11b1742d216L, "mnemonic");
-    /*package*/ static final SProperty caption$_nKE = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x1189e8d9a59L, "caption");
+    /*package*/ static final SProperty mnemonic$$zY7 = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11b1742d216L, "mnemonic");
+    /*package*/ static final SProperty caption$6w$m = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x1189e8d9a59L, "caption");
   }
 
   private static final class CONCEPTS {

@@ -21,7 +21,7 @@ public class TestRefConstraints_SubReference_HandlerSuperScoping_Constraints ext
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$rEaS, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$prh8, this) {
       @Override
       public boolean hasOwnOnReferenceSetHandler() {
         return true;
@@ -32,7 +32,7 @@ public class TestRefConstraints_SubReference_HandlerSuperScoping_Constraints ext
       }
       @Override
       public void onReferenceSet(final SNode referenceNode, final SNode oldReferentNode, final SNode newReferentNode) {
-        SPropertyOperations.assign(newReferentNode, PROPS.debug$rsx5, TestRefConstraints_Constants.SUB_REF_HANDLER_SUPER_SCOPING);
+        SPropertyOperations.assign(newReferentNode, PROPS.debug$iO1r, TestRefConstraints_Constants.SUB_REF_HANDLER_SUPER_SCOPING);
       }
     };
     Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
@@ -45,10 +45,10 @@ public class TestRefConstraints_SubReference_HandlerSuperScoping_Constraints ext
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$rEaS = MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c73L, 0x244a306605641d21L, "target");
+    /*package*/ static final SReferenceLink target$prh8 = MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c73L, 0x244a306605641d21L, "target");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty debug$rsx5 = MetaAdapterFactory.getProperty(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c74L, 0x244a306605641c7bL, "debug");
+    /*package*/ static final SProperty debug$iO1r = MetaAdapterFactory.getProperty(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c74L, 0x244a306605641c7bL, "debug");
   }
 }

@@ -24,7 +24,7 @@ public class typeof_ListCustomParameter_InferenceRule extends AbstractInferenceR
     {
       SNode _nodeToCheck_1029348928467 = listCustomParameter;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:c19fbfce-5c58-4528-8b93-60edfa062cac(jetbrains.mps.baseLanguage.constructors.typesystem)", "4739047193854376705", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:c19fbfce-5c58-4528-8b93-60edfa062cac(jetbrains.mps.baseLanguage.constructors.typesystem)", "4739047193854376715", true), (SNode) _quotation_createNode_c9qmyp_a1a0c0a0b(SLinkOperations.getTarget(listCustomParameter, LINKS.type$C2Zd)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:c19fbfce-5c58-4528-8b93-60edfa062cac(jetbrains.mps.baseLanguage.constructors.typesystem)", "4739047193854376715", true), (SNode) _quotation_createNode_c9qmyp_a1a0c0a0b(SLinkOperations.getTarget(listCustomParameter, LINKS.type$psBj)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -49,7 +49,7 @@ public class typeof_ListCustomParameter_InferenceRule extends AbstractInferenceR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$C2Zd = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b7431819L, 0x4aa85872b7433028L, "type");
+    /*package*/ static final SContainmentLink type$psBj = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b7431819L, 0x4aa85872b7433028L, "type");
   }
 
   private static final class CONCEPTS {

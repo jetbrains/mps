@@ -256,7 +256,7 @@
       <node id="4125795553994047765" at="67,14,68,58" concept="9" />
       <node id="4125795553994047765" at="74,48,75,22" concept="5" />
       <node id="4125795553994047765" at="80,40,81,19" concept="5" />
-      <node id="4125795553994047765" at="85,0,86,0" concept="6" trace="expectedOption$wR_5" />
+      <node id="4125795553994047765" at="85,0,86,0" concept="6" trace="expectedOption$UUXr" />
       <node id="4125795553994047765" at="31,0,33,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4125795553994047765" at="38,0,40,0" concept="0" trace="OptionType__BehaviorDescriptor#()V" />
       <node id="4125795553994047765" at="34,0,37,0" concept="7" trace="classifierName_id3ZSHU3pg$b_#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -331,7 +331,7 @@
       <node id="4902420588995682280" at="70,14,71,58" concept="9" />
       <node id="4902420588995682280" at="77,48,78,22" concept="5" />
       <node id="4902420588995682280" at="83,40,84,19" concept="5" />
-      <node id="4902420588995682280" at="88,0,89,0" concept="6" trace="classifierType$Fi0v" />
+      <node id="4902420588995682280" at="88,0,89,0" concept="6" trace="classifierType$XIf1" />
       <node id="4902420588995682280" at="33,0,35,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4902420588995682280" at="41,0,43,0" concept="0" trace="ResourceType__BehaviorDescriptor#()V" />
       <node id="4902420588995682280" at="51,49,54,5" concept="2" />
@@ -576,7 +576,7 @@
       <node id="8486446835277382810" at="69,14,70,58" concept="9" />
       <node id="8486446835277382810" at="76,48,77,22" concept="5" />
       <node id="8486446835277382810" at="82,40,83,19" concept="5" />
-      <node id="8486446835277382810" at="87,0,88,0" concept="6" trace="name$tAp1" />
+      <node id="8486446835277382810" at="87,0,88,0" concept="6" trace="name$lA7v" />
       <node id="8486446835277382810" at="33,0,35,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8486446835277382810" at="40,0,42,0" concept="0" trace="QueryDefinition__BehaviorDescriptor#()V" />
       <node id="8486446835277382810" at="36,0,39,0" concept="7" trace="classifierName_id3ZSHU3pg$b_#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -651,8 +651,8 @@
       <node id="8853708281362145849" at="70,14,71,58" concept="9" />
       <node id="8853708281362145849" at="77,48,78,22" concept="5" />
       <node id="8853708281362145849" at="83,40,84,19" concept="5" />
-      <node id="8853708281362145849" at="88,0,89,0" concept="6" trace="defaultOption$57Ad" />
-      <node id="8853708281362145849" at="89,0,90,0" concept="6" trace="name$tAp1" />
+      <node id="8853708281362145849" at="88,0,89,0" concept="6" trace="defaultOption$uFwj" />
+      <node id="8853708281362145849" at="89,0,90,0" concept="6" trace="name$lA7v" />
       <node id="8853708281362145849" at="41,0,43,0" concept="0" trace="ExpectedOption__BehaviorDescriptor#()V" />
       <node id="8853708281362145849" at="33,0,36,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8853708281362145849" at="37,0,40,0" concept="7" trace="classifierName_id3ZSHU3pg$b_#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />

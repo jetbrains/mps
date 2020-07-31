@@ -65,11 +65,11 @@ public final class Statement__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static void collectUncaughtMethodThrowables_id4Gt7ANIVBW7(@NotNull SAbstractConcept __thisConcept__, final Set<SNode> throwables, SNode arg) {
     ListSequence.fromList(SNodeOperations.getNodeDescendants(arg, CONCEPTS.IMethodCall$ln, true, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$$A7i), LINKS.throwsItem$gr7e);
+        return SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$ItxI), LINKS.throwsItem$X8vM);
       }
     }).union(ListSequence.fromList(SNodeOperations.getNodeDescendants(arg, CONCEPTS.DefaultClassifierMethodCallOperation$9K, false, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.member$hrpI), LINKS.throwsItem$gr7e);
+        return SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.member$shti), LINKS.throwsItem$X8vM);
       }
     })).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
@@ -77,7 +77,7 @@ public final class Statement__BehaviorDescriptor extends BaseBHDescriptor {
       }
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode throwable) {
-        SetSequence.fromSet(throwables).addElement(SLinkOperations.getTarget(SNodeOperations.cast(throwable, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R));
+        SetSequence.fromSet(throwables).addElement(SLinkOperations.getTarget(SNodeOperations.cast(throwable, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD));
       }
     });
   }
@@ -146,9 +146,9 @@ public final class Statement__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink throwsItem$gr7e = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
-    /*package*/ static final SReferenceLink member$hrpI = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink throwsItem$X8vM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
+    /*package*/ static final SReferenceLink member$shti = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

@@ -26,7 +26,7 @@ public class check_WeaveMacro_NonTypesystemRule extends AbstractNonTypesystemRul
   public check_WeaveMacro_NonTypesystemRule() {
   }
   public void applyRule(final SNode macro, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode template = TemplateDeclarationReference__BehaviorDescriptor.getTemplate_idQzR6ThtRo7.invoke(SLinkOperations.getTarget(macro, LINKS.ruleConsequence$C6oC));
+    SNode template = TemplateDeclarationReference__BehaviorDescriptor.getTemplate_idQzR6ThtRo7.invoke(SLinkOperations.getTarget(macro, LINKS.ruleConsequence$r5Vo));
     if ((template == null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -34,9 +34,9 @@ public class check_WeaveMacro_NonTypesystemRule extends AbstractNonTypesystemRul
       }
     } else {
       SNode inputNodeConcept = NodeMacro__BehaviorDescriptor.getInputNodeTypeInsideOfMacro_idhEwIosJ.invoke(macro);
-      if ((SLinkOperations.getTarget(template, LINKS.applicableConcept$r_1F) != null) && (inputNodeConcept != null)) {
-        if (!(MetaAdapterByDeclaration.getConcept(inputNodeConcept).isSubConceptOf(MetaAdapterByDeclaration.getConcept(SLinkOperations.getTarget(template, LINKS.applicableConcept$r_1F))))) {
-          String msg = String.format("Input node (%s) is not an instance of template's expected concept (%s)", SPropertyOperations.getString(inputNodeConcept, PROPS.name$tAp1), SPropertyOperations.getString(SLinkOperations.getTarget(template, LINKS.applicableConcept$r_1F), PROPS.name$tAp1));
+      if ((SLinkOperations.getTarget(template, LINKS.applicableConcept$mVNP) != null) && (inputNodeConcept != null)) {
+        if (!(MetaAdapterByDeclaration.getConcept(inputNodeConcept).isSubConceptOf(MetaAdapterByDeclaration.getConcept(SLinkOperations.getTarget(template, LINKS.applicableConcept$mVNP))))) {
+          String msg = String.format("Input node (%s) is not an instance of template's expected concept (%s)", SPropertyOperations.getString(inputNodeConcept, PROPS.name$lA7v), SPropertyOperations.getString(SLinkOperations.getTarget(template, LINKS.applicableConcept$mVNP), PROPS.name$lA7v));
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(macro, msg, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "3850501259760058987", null, errorTarget);
@@ -56,12 +56,12 @@ public class check_WeaveMacro_NonTypesystemRule extends AbstractNonTypesystemRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ruleConsequence$C6oC = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x300c02df884235d3L, 0x300c02df884261edL, "ruleConsequence");
-    /*package*/ static final SReferenceLink applicableConcept$r_1F = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0x1100343ad9eL, "applicableConcept");
+    /*package*/ static final SContainmentLink ruleConsequence$r5Vo = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x300c02df884235d3L, 0x300c02df884261edL, "ruleConsequence");
+    /*package*/ static final SReferenceLink applicableConcept$mVNP = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0x1100343ad9eL, "applicableConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

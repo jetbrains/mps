@@ -27,8 +27,8 @@ public class checkCircularCustomization_NonTypesystemRule extends AbstractNonTyp
   public void applyRule(final SNode dailyPlan, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode plan = dailyPlan;
     List<SNode> visitedPlans = new ArrayList<SNode>();
-    while ((SLinkOperations.getTarget(plan, LINKS.customizes$a6Ia) != null)) {
-      plan = SLinkOperations.getTarget(SLinkOperations.getTarget(plan, LINKS.customizes$a6Ia), LINKS.target$bW60);
+    while ((SLinkOperations.getTarget(plan, LINKS.customizes$TgmQ) != null)) {
+      plan = SLinkOperations.getTarget(SLinkOperations.getTarget(plan, LINKS.customizes$TgmQ), LINKS.target$M6U0);
       if (Objects.equals(plan, dailyPlan)) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
@@ -53,8 +53,8 @@ public class checkCircularCustomization_NonTypesystemRule extends AbstractNonTyp
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink customizes$a6Ia = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0xcfa085c9af881f8L, "customizes");
-    /*package*/ static final SReferenceLink target$bW60 = MetaAdapterFactory.getReferenceLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0xcfa085c9af5e830L, 0xcfa085c9af5e831L, "target");
+    /*package*/ static final SContainmentLink customizes$TgmQ = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0xcfa085c9af881f8L, "customizes");
+    /*package*/ static final SReferenceLink target$M6U0 = MetaAdapterFactory.getReferenceLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0xcfa085c9af5e830L, 0xcfa085c9af5e831L, "target");
   }
 
   private static final class CONCEPTS {

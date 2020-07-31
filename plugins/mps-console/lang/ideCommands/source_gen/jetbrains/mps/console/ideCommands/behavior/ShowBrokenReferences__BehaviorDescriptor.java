@@ -48,7 +48,7 @@ public final class ShowBrokenReferences__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static void doExecute_id2SpVAIqougW(@NotNull SNode __thisNode__, final ConsoleContext context, ConsoleStream console) {
-    final List<SReference> brokenReferences = Sequence.fromIterable(INodeSetReference__BehaviorDescriptor.getNodes_id4x3U0fq41hN.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$3Wsw), context)).translate(new ITranslator2<SNode, SReference>() {
+    final List<SReference> brokenReferences = Sequence.fromIterable(INodeSetReference__BehaviorDescriptor.getNodes_id4x3U0fq41hN.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$UhNw), context)).translate(new ITranslator2<SNode, SReference>() {
       public Iterable<SReference> translate(SNode it) {
         return SNodeOperations.getReferences(it);
       }
@@ -141,6 +141,6 @@ public final class ShowBrokenReferences__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink target$3Wsw = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x1cf75b72b0ac828cL, 0x1cf75b72b0ac828dL, "target");
+    /*package*/ static final SContainmentLink target$UhNw = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x1cf75b72b0ac828cL, 0x1cf75b72b0ac828dL, "target");
   }
 }

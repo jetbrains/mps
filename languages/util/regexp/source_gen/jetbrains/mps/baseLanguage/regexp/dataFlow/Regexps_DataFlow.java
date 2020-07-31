@@ -11,12 +11,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Regexps_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    for (SNode regexp : SLinkOperations.getChildren(_context.getNode(), LINKS.regexp$nu5N)) {
+    for (SNode regexp : SLinkOperations.getChildren(_context.getNode(), LINKS.regexp$n$NH)) {
       _context.getBuilder().build((SNode) regexp);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink regexp$nu5N = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f550b6dL, 0x1117f554ef2L, "regexp");
+    /*package*/ static final SContainmentLink regexp$n$NH = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f550b6dL, 0x1117f554ef2L, "regexp");
   }
 }

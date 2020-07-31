@@ -36,7 +36,7 @@
       <node id="1230052406738" at="69,9,70,336" concept="7" />
       <node id="1230052406738" at="70,336,71,335" concept="7" />
       <node id="1230052406738" at="71,335,72,162" concept="2" />
-      <node id="1230052406553" at="81,0,82,0" concept="10" trace="variableDeclaration$2ky6" />
+      <node id="1230052406553" at="81,0,82,0" concept="10" trace="variableDeclaration$7WwU" />
       <node id="1230052406553" at="32,0,34,0" concept="10" trace="ourParamCache" />
       <node id="1230052406553" at="34,0,36,0" concept="3" trace="myWithCommandRule" />
       <node id="1230052406553" at="37,0,40,0" concept="1" trace="ChangeMethodParametersForStatement_Test#()V" />
@@ -865,8 +865,8 @@
       <node id="1230052684505" at="64,7,65,592" concept="7" />
       <node id="1230052684505" at="65,592,66,591" concept="7" />
       <node id="1230052684505" at="66,591,67,160" concept="2" />
-      <node id="1230052684456" at="75,0,76,0" concept="10" trace="classConcept$BsUa" />
-      <node id="1230052684456" at="76,0,77,0" concept="10" trace="baseMethodDeclaration$$A7i" />
+      <node id="1230052684456" at="75,0,76,0" concept="10" trace="classConcept$70aQ" />
+      <node id="1230052684456" at="76,0,77,0" concept="10" trace="baseMethodDeclaration$ItxI" />
       <node id="1230052684456" at="31,0,33,0" concept="10" trace="ourParamCache" />
       <node id="1230052684456" at="33,0,35,0" concept="3" trace="myWithCommandRule" />
       <node id="1230052684456" at="36,0,39,0" concept="1" trace="ExtractFromIntention_Test#()V" />
@@ -917,8 +917,8 @@
       <node id="1230052684776" at="65,7,66,585" concept="7" />
       <node id="1230052684776" at="66,585,67,584" concept="7" />
       <node id="1230052684776" at="67,584,68,160" concept="2" />
-      <node id="1230052684686" at="76,0,77,0" concept="10" trace="baseMethodDeclaration$$A7i" />
-      <node id="1230052684686" at="77,0,78,0" concept="10" trace="classConcept$BsUa" />
+      <node id="1230052684686" at="76,0,77,0" concept="10" trace="baseMethodDeclaration$ItxI" />
+      <node id="1230052684686" at="77,0,78,0" concept="10" trace="classConcept$70aQ" />
       <node id="1230052684686" at="31,0,33,0" concept="10" trace="ourParamCache" />
       <node id="1230052684686" at="33,0,35,0" concept="3" trace="myWithCommandRule" />
       <node id="1230052684686" at="36,0,39,0" concept="1" trace="staticContainerClassTest_Test#()V" />
@@ -968,7 +968,7 @@
       <node id="1230052902961" at="69,32,70,236" concept="2" />
       <node id="1230052902961" at="70,236,71,451" concept="2" />
       <node id="1230052902961" at="71,451,72,26" concept="8" />
-      <node id="1230052902925" at="77,0,78,0" concept="10" trace="throwsItem$gr7e" />
+      <node id="1230052902925" at="77,0,78,0" concept="10" trace="throwsItem$X8vM" />
       <node id="1230052902925" at="32,0,34,0" concept="10" trace="ourParamCache" />
       <node id="1230052902925" at="34,0,36,0" concept="3" trace="myWithCommandRule" />
       <node id="1230052902925" at="37,0,40,0" concept="1" trace="AddThrowDeclaration_Test#()V" />
@@ -1018,7 +1018,7 @@
       <node id="1230052903023" at="56,7,57,334" concept="7" />
       <node id="1230052903023" at="57,334,58,333" concept="7" />
       <node id="1230052903023" at="58,333,59,160" concept="2" />
-      <node id="1230052902977" at="67,0,68,0" concept="10" trace="name$tAp1" />
+      <node id="1230052902977" at="67,0,68,0" concept="10" trace="name$lA7v" />
       <node id="1230052902977" at="29,0,31,0" concept="10" trace="ourParamCache" />
       <node id="1230052902977" at="31,0,33,0" concept="3" trace="myWithCommandRule" />
       <node id="1230052902977" at="34,0,37,0" concept="1" trace="ChangeMethodName_Test#()V" />
@@ -1062,7 +1062,7 @@
       <node id="1230052903075" at="56,7,57,334" concept="7" />
       <node id="1230052903075" at="57,334,58,333" concept="7" />
       <node id="1230052903075" at="58,333,59,160" concept="2" />
-      <node id="1230052903026" at="67,0,68,0" concept="10" trace="returnType$WIkw" />
+      <node id="1230052903026" at="67,0,68,0" concept="10" trace="returnType$qrVw" />
       <node id="1230052903026" at="29,0,31,0" concept="10" trace="ourParamCache" />
       <node id="1230052903026" at="31,0,33,0" concept="3" trace="myWithCommandRule" />
       <node id="1230052903026" at="34,0,37,0" concept="1" trace="ChangeReturningType_Test#()V" />
@@ -1114,7 +1114,7 @@
       <node id="1230052903228" at="64,7,65,334" concept="7" />
       <node id="1230052903228" at="65,334,66,333" concept="7" />
       <node id="1230052903228" at="66,333,67,160" concept="2" />
-      <node id="1230052903078" at="75,0,76,0" concept="10" trace="parameter$WIkZ" />
+      <node id="1230052903078" at="75,0,76,0" concept="10" trace="parameter$qsax" />
       <node id="1230052903078" at="29,0,31,0" concept="10" trace="ourParamCache" />
       <node id="1230052903078" at="31,0,33,0" concept="3" trace="myWithCommandRule" />
       <node id="1230052903078" at="34,0,37,0" concept="1" trace="ChangeSignatureOfStaticMethod_Test#()V" />
@@ -1169,7 +1169,7 @@
       <node id="1230052943800" at="71,150,72,229" concept="2" />
       <node id="1230052943800" at="72,229,73,173" concept="2" />
       <node id="1230052943800" at="73,173,74,26" concept="8" />
-      <node id="1230052943763" at="79,0,80,0" concept="10" trace="parameter$WIkZ" />
+      <node id="1230052943763" at="79,0,80,0" concept="10" trace="parameter$qsax" />
       <node id="1230052943763" at="31,0,33,0" concept="10" trace="ourParamCache" />
       <node id="1230052943763" at="33,0,35,0" concept="3" trace="myWithCommandRule" />
       <node id="1230052943763" at="36,0,39,0" concept="1" trace="AddParameter_Test#()V" />
@@ -1220,8 +1220,8 @@
       <node id="1230052943880" at="58,7,59,334" concept="7" />
       <node id="1230052943880" at="59,334,60,333" concept="7" />
       <node id="1230052943880" at="60,333,61,160" concept="2" />
-      <node id="1230052943817" at="69,0,70,0" concept="10" trace="parameter$WIkZ" />
-      <node id="1230052943817" at="73,0,74,0" concept="10" trace="name$tAp1" />
+      <node id="1230052943817" at="69,0,70,0" concept="10" trace="parameter$qsax" />
+      <node id="1230052943817" at="73,0,74,0" concept="10" trace="name$lA7v" />
       <node id="1230052943817" at="31,0,33,0" concept="10" trace="ourParamCache" />
       <node id="1230052943817" at="33,0,35,0" concept="3" trace="myWithCommandRule" />
       <node id="1230052943817" at="36,0,39,0" concept="1" trace="ChangeParameterName_Test#()V" />
@@ -1270,8 +1270,8 @@
       <node id="1230052943920" at="67,65,68,32" concept="7" />
       <node id="1230052943920" at="68,32,69,232" concept="2" />
       <node id="1230052943920" at="69,232,70,26" concept="8" />
-      <node id="1230052943883" at="75,0,76,0" concept="10" trace="parameter$WIkZ" />
-      <node id="1230052943883" at="76,0,77,0" concept="10" trace="type$pLrO" />
+      <node id="1230052943883" at="75,0,76,0" concept="10" trace="parameter$qsax" />
+      <node id="1230052943883" at="76,0,77,0" concept="10" trace="type$uWuc" />
       <node id="1230052943883" at="31,0,33,0" concept="10" trace="ourParamCache" />
       <node id="1230052943883" at="33,0,35,0" concept="3" trace="myWithCommandRule" />
       <node id="1230052943883" at="36,0,39,0" concept="1" trace="ChangeParameterType_Test#()V" />
@@ -1328,7 +1328,7 @@
       <node id="1230052944078" at="63,7,64,334" concept="7" />
       <node id="1230052944078" at="64,334,65,333" concept="7" />
       <node id="1230052944078" at="65,333,66,160" concept="2" />
-      <node id="1230052943946" at="74,0,75,0" concept="10" trace="parameter$WIkZ" />
+      <node id="1230052943946" at="74,0,75,0" concept="10" trace="parameter$qsax" />
       <node id="1230052943946" at="29,0,31,0" concept="10" trace="ourParamCache" />
       <node id="1230052943946" at="31,0,33,0" concept="3" trace="myWithCommandRule" />
       <node id="1230052943946" at="34,0,37,0" concept="1" trace="ChangeParametersOrder_Test#()V" />
@@ -1375,7 +1375,7 @@
       <node id="1230052944129" at="56,7,57,334" concept="7" />
       <node id="1230052944129" at="57,334,58,333" concept="7" />
       <node id="1230052944129" at="58,333,59,160" concept="2" />
-      <node id="1230052944081" at="67,0,68,0" concept="10" trace="parameter$WIkZ" />
+      <node id="1230052944081" at="67,0,68,0" concept="10" trace="parameter$qsax" />
       <node id="1230052944081" at="29,0,31,0" concept="10" trace="ourParamCache" />
       <node id="1230052944081" at="31,0,33,0" concept="3" trace="myWithCommandRule" />
       <node id="1230052944081" at="34,0,37,0" concept="1" trace="RemoveParameter_Test#()V" />
@@ -1420,8 +1420,8 @@
       <node id="1230052944208" at="59,7,60,334" concept="7" />
       <node id="1230052944208" at="60,334,61,333" concept="7" />
       <node id="1230052944208" at="61,333,62,160" concept="2" />
-      <node id="1230052944132" at="70,0,71,0" concept="10" trace="parameter$WIkZ" />
-      <node id="1230052944132" at="74,0,75,0" concept="10" trace="name$tAp1" />
+      <node id="1230052944132" at="70,0,71,0" concept="10" trace="parameter$qsax" />
+      <node id="1230052944132" at="74,0,75,0" concept="10" trace="name$lA7v" />
       <node id="1230052944132" at="31,0,33,0" concept="10" trace="ourParamCache" />
       <node id="1230052944132" at="33,0,35,0" concept="3" trace="myWithCommandRule" />
       <node id="1230052944132" at="36,0,39,0" concept="1" trace="TwoParametersWithSameType_Test#()V" />
@@ -3388,7 +3388,7 @@
       <node id="418758558327166218" at="57,7,58,339" concept="7" />
       <node id="418758558327166218" at="58,339,59,338" concept="7" />
       <node id="418758558327166218" at="59,338,60,160" concept="2" />
-      <node id="3925159399320841060" at="68,0,69,0" concept="10" trace="name$tAp1" />
+      <node id="3925159399320841060" at="68,0,69,0" concept="10" trace="name$lA7v" />
       <node id="3925159399320841060" at="29,0,31,0" concept="10" trace="ourParamCache" />
       <node id="3925159399320841060" at="31,0,33,0" concept="3" trace="myWithCommandRule" />
       <node id="3925159399320841060" at="34,0,37,0" concept="1" trace="ChangeSigantureOfInterface_Test#()V" />

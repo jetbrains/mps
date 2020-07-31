@@ -13,7 +13,7 @@
     <file name="TypedIdentifier_preserveName.java">
       <node id="315923949159713056" at="17,75,18,165" concept="0" />
       <node id="315923949159711975" at="24,0,25,0" concept="3" trace="TypedDef$hM" />
-      <node id="315923949159711975" at="28,0,29,0" concept="3" trace="name$tAp1" />
+      <node id="315923949159711975" at="28,0,29,0" concept="3" trace="name$lA7v" />
       <node id="315923949159711989" at="16,91,19,7" concept="1" />
       <node id="315923949159711976" at="16,0,21,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <scope id="315923949159711991" at="17,75,18,165" />

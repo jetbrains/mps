@@ -20,7 +20,7 @@ public class typeof_Concept_IsSubConceptOfOperation_InferenceRule extends Abstra
   public typeof_Concept_IsSubConceptOfOperation_InferenceRule() {
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode conceptArg = SLinkOperations.getTarget(op, LINKS.conceptArgument$nsp0);
+    SNode conceptArg = SLinkOperations.getTarget(op, LINKS.conceptArgument$mK70);
     {
       SNode _nodeToCheck_1029348928467 = conceptArg;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "8933148862033727264", 0, null);
@@ -56,7 +56,7 @@ public class typeof_Concept_IsSubConceptOfOperation_InferenceRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink conceptArgument$nsp0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x112bf601180L, 0x112bf601181L, "conceptArgument");
+    /*package*/ static final SContainmentLink conceptArgument$mK70 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x112bf601180L, 0x112bf601181L, "conceptArgument");
   }
 
   private static final class CONCEPTS {

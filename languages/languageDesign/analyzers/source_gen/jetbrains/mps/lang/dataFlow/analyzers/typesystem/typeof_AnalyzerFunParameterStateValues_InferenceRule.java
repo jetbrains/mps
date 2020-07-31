@@ -23,7 +23,7 @@ public class typeof_AnalyzerFunParameterStateValues_InferenceRule extends Abstra
   public typeof_AnalyzerFunParameterStateValues_InferenceRule() {
   }
   public void applyRule(final SNode values, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode type = Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(values, CONCEPTS.Analyzer$Q4, false, false), LINKS.latticeElementType$HN$b));
+    SNode type = Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(values, CONCEPTS.Analyzer$Q4, false, false), LINKS.latticeElementType$bYxl));
     {
       SNode _nodeToCheck_1029348928467 = values;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:139daa25-c5a7-4ac9-85a2-eb14d22e8f56(jetbrains.mps.lang.dataFlow.analyzers.typesystem)", "9120988775422995292", 0, null);
@@ -62,6 +62,6 @@ public class typeof_AnalyzerFunParameterStateValues_InferenceRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink latticeElementType$HN$b = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x7f5b799a00c51bbbL, "latticeElementType");
+    /*package*/ static final SContainmentLink latticeElementType$bYxl = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x7f5b799a00c51bbbL, "latticeElementType");
   }
 }

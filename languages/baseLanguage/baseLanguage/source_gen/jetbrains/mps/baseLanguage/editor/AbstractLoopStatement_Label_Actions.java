@@ -22,7 +22,7 @@ public class AbstractLoopStatement_Label_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SPropertyOperations.set(node, PROPS.label$5$eZ, null);
+        SPropertyOperations.set(node, PROPS.label$Gzgx, null);
       }
 
     };
@@ -70,6 +70,6 @@ public class AbstractLoopStatement_Label_Actions {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty label$5$eZ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x11745b5371dL, "label");
+    /*package*/ static final SProperty label$Gzgx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x11745b5371dL, "label");
   }
 }

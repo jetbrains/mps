@@ -27,36 +27,36 @@ public class MethodCallAdapter {
   }
   public SNode getMethodDeclaration() {
     if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.IMethodCall$ln)) {
-      return SLinkOperations.getTarget(SNodeOperations.cast(this.myMethodCall, CONCEPTS.IMethodCall$ln), LINKS.baseMethodDeclaration$$A7i);
+      return SLinkOperations.getTarget(SNodeOperations.cast(this.myMethodCall, CONCEPTS.IMethodCall$ln), LINKS.baseMethodDeclaration$ItxI);
     }
     if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9K)) {
-      return SLinkOperations.getTarget(SNodeOperations.cast(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9K), LINKS.member$hrpI);
+      return SLinkOperations.getTarget(SNodeOperations.cast(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9K), LINKS.member$shti);
     }
     return null;
   }
   public List<SNode> getMethodArguments() {
     if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.IMethodCall$ln)) {
-      return SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.IMethodCall$ln), LINKS.actualArgument$$A7L);
+      return SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.IMethodCall$ln), LINKS.actualArgument$ItKJ);
     }
     if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9K)) {
-      return SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9K), LINKS.actualArgument$sDji);
+      return SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9K), LINKS.actualArgument$S0lI);
     }
     return null;
   }
   public void removeArguments() {
     if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.IMethodCall$ln)) {
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.IMethodCall$ln), LINKS.actualArgument$$A7L)).clear();
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.IMethodCall$ln), LINKS.actualArgument$ItKJ)).clear();
     }
     if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9K)) {
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9K), LINKS.actualArgument$sDji)).clear();
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9K), LINKS.actualArgument$S0lI)).clear();
     }
   }
   public void addArgument(SNode arguemnt) {
     if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.IMethodCall$ln)) {
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.IMethodCall$ln), LINKS.actualArgument$$A7L)).addElement(arguemnt);
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.IMethodCall$ln), LINKS.actualArgument$ItKJ)).addElement(arguemnt);
     }
     if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9K)) {
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9K), LINKS.actualArgument$sDji)).addElement(arguemnt);
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9K), LINKS.actualArgument$S0lI)).addElement(arguemnt);
     }
   }
   @NotNull
@@ -73,9 +73,9 @@ public class MethodCallAdapter {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink member$hrpI = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink actualArgument$sDji = MetaAdapterFactory.getContainmentLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd711e29L, 0x118bd877799L, "actualArgument");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink member$shti = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink actualArgument$S0lI = MetaAdapterFactory.getContainmentLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd711e29L, 0x118bd877799L, "actualArgument");
   }
 }

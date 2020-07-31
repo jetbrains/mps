@@ -26,10 +26,10 @@ public class CellModel_RefNodeList_RemoveSeparatorQuery_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.separatorTextQuery$ttHL))) {
+        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.separatorTextQuery$hpaJ))) {
           return;
         }
-        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.separatorTextQuery$ttHL));
+        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.separatorTextQuery$hpaJ));
         SelectionUtil.selectCell(editorContext, node, "*" + CellIdManager.createPropertyId("separatorText"));
       }
       @Override
@@ -37,7 +37,7 @@ public class CellModel_RefNodeList_RemoveSeparatorQuery_Actions {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return (SLinkOperations.getTarget(node, LINKS.separatorTextQuery$ttHL) != null);
+        return (SLinkOperations.getTarget(node, LINKS.separatorTextQuery$hpaJ) != null);
       }
 
     };
@@ -85,6 +85,6 @@ public class CellModel_RefNodeList_RemoveSeparatorQuery_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink separatorTextQuery$ttHL = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0xce215999c843265L, "separatorTextQuery");
+    /*package*/ static final SContainmentLink separatorTextQuery$hpaJ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0xce215999c843265L, "separatorTextQuery");
   }
 }

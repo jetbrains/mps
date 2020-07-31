@@ -19,16 +19,16 @@ public class InternalPartialInstanceMethodCall_TextGen extends TextGenDescriptor
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.instance$eKq) != null)) {
-      if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.instance$eKq), CONCEPTS.InternalThisExpression$XS))) {
-        tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.instance$eKq));
+    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.instance$79sA) != null)) {
+      if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.instance$79sA), CONCEPTS.InternalThisExpression$XS))) {
+        tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.instance$79sA));
         tgs.append(".");
       }
     }
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.methodName$gCLw));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.methodName$3JYw));
     tgs.append("(");
     {
-      Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.actualArgument$FkBm);
+      Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.actualArgument$YZ3E);
       final SNode lastItem = Sequence.fromIterable(collection).last();
       for (SNode item : collection) {
         tgs.appendNode(item);
@@ -41,8 +41,8 @@ public class InternalPartialInstanceMethodCall_TextGen extends TextGenDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink instance$eKq = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L, 0x1116ac91a89L, "instance");
-    /*package*/ static final SContainmentLink actualArgument$FkBm = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L, 0x1116ad1a966L, "actualArgument");
+    /*package*/ static final SContainmentLink instance$79sA = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L, 0x1116ac91a89L, "instance");
+    /*package*/ static final SContainmentLink actualArgument$YZ3E = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L, 0x1116ad1a966L, "actualArgument");
   }
 
   private static final class CONCEPTS {
@@ -50,6 +50,6 @@ public class InternalPartialInstanceMethodCall_TextGen extends TextGenDescriptor
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty methodName$gCLw = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L, 0x1116964d747L, "methodName");
+    /*package*/ static final SProperty methodName$3JYw = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L, 0x1116964d747L, "methodName");
   }
 }

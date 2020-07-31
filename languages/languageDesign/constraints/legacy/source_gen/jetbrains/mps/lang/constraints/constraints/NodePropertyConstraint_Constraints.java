@@ -31,7 +31,7 @@ public class NodePropertyConstraint_Constraints extends BaseConstraintsDescripto
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.applicableProperty$j$lM, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.applicableProperty$uAze, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -51,9 +51,9 @@ public class NodePropertyConstraint_Constraints extends BaseConstraintsDescripto
             if (applicableConcept == null) {
               SNode root = SNodeOperations.getContainingRoot(_context.getContextNode());
               if (SNodeOperations.isInstanceOf(root, CONCEPTS.ConceptConstraints$St)) {
-                applicableConcept = SLinkOperations.getTarget(SNodeOperations.cast(root, CONCEPTS.ConceptConstraints$St), LINKS.concept$rRWx);
+                applicableConcept = SLinkOperations.getTarget(SNodeOperations.cast(root, CONCEPTS.ConceptConstraints$St), LINKS.concept$w6jZ);
               } else {
-                applicableConcept = SLinkOperations.getTarget(SNodeOperations.cast(root, CONCEPTS.ConceptBehavior$8P), LINKS.concept$v6ns);
+                applicableConcept = SLinkOperations.getTarget(SNodeOperations.cast(root, CONCEPTS.ConceptBehavior$8P), LINKS.concept$45m$);
               }
             }
             return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(applicableConcept));
@@ -74,8 +74,8 @@ public class NodePropertyConstraint_Constraints extends BaseConstraintsDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableProperty$j$lM = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a5eaa48L, 0x10b2a61697bL, "applicableProperty");
-    /*package*/ static final SReferenceLink concept$rRWx = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept");
-    /*package*/ static final SReferenceLink concept$v6ns = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
+    /*package*/ static final SReferenceLink applicableProperty$uAze = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a5eaa48L, 0x10b2a61697bL, "applicableProperty");
+    /*package*/ static final SReferenceLink concept$w6jZ = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept");
+    /*package*/ static final SReferenceLink concept$45m$ = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
   }
 }

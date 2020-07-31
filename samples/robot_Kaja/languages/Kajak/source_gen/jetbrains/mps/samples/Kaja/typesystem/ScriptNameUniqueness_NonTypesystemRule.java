@@ -30,12 +30,12 @@ public class ScriptNameUniqueness_NonTypesystemRule extends AbstractNonTypesyste
   public void applyRule(final SNode script, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     Iterable<String> scriptNames = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(script), CONCEPTS.Script$1X)).select(new ISelector<SNode, String>() {
       public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$tAp1);
+        return SPropertyOperations.getString(it, PROPS.name$lA7v);
       }
     });
     Iterable<String> libraryNames = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(script), CONCEPTS.Library$IO)).select(new ISelector<SNode, String>() {
       public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$tAp1);
+        return SPropertyOperations.getString(it, PROPS.name$lA7v);
       }
     });
     List<String> allNames = ListSequence.fromListWithValues(new ArrayList<String>(), scriptNames);
@@ -43,7 +43,7 @@ public class ScriptNameUniqueness_NonTypesystemRule extends AbstractNonTypesyste
 
     if (ListSequence.fromList(allNames).where(new IWhereFilter<String>() {
       public boolean accept(String it) {
-        return it != null && it.equals(SPropertyOperations.getString(script, PROPS.name$tAp1));
+        return it != null && it.equals(SPropertyOperations.getString(script, PROPS.name$lA7v));
       }
     }).count() > 1) {
       {
@@ -68,6 +68,6 @@ public class ScriptNameUniqueness_NonTypesystemRule extends AbstractNonTypesyste
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

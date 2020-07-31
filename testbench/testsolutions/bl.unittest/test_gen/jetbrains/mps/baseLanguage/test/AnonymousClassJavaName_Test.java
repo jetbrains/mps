@@ -41,17 +41,17 @@ public class AnonymousClassJavaName_Test extends BaseTransformationTest {
 
     public void test_testJavaNames() throws Exception {
       addNodeById("6649467621789725811");
-      assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("6649467621789782586"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x1133e3b449aL, "AnonymousClassCreator"))), LINKS.cls$xt3G)).endsWith("Foo$Bar$1");
-      assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("6649467621789787135"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x1133e3b449aL, "AnonymousClassCreator"))), LINKS.cls$xt3G)).endsWith("Foo$Bar$2");
-      assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("6649467621789793415"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x1133e3b449aL, "AnonymousClassCreator"))), LINKS.cls$xt3G)).endsWith("Foo$Bar$2$1");
-      assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("6649467621789799984"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x1133e3b449aL, "AnonymousClassCreator"))), LINKS.cls$xt3G)).endsWith("Foo$Bar$2$2");
-      assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("7102466869931833255"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x1133e3b449aL, "AnonymousClassCreator"))), LINKS.cls$xt3G)).endsWith("Foo$Bar$3$Baz$1");
+      assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("6649467621789782586"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x1133e3b449aL, "AnonymousClassCreator"))), LINKS.cls$d4Mk)).endsWith("Foo$Bar$1");
+      assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("6649467621789787135"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x1133e3b449aL, "AnonymousClassCreator"))), LINKS.cls$d4Mk)).endsWith("Foo$Bar$2");
+      assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("6649467621789793415"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x1133e3b449aL, "AnonymousClassCreator"))), LINKS.cls$d4Mk)).endsWith("Foo$Bar$2$1");
+      assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("6649467621789799984"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x1133e3b449aL, "AnonymousClassCreator"))), LINKS.cls$d4Mk)).endsWith("Foo$Bar$2$2");
+      assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("7102466869931833255"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x1133e3b449aL, "AnonymousClassCreator"))), LINKS.cls$d4Mk)).endsWith("Foo$Bar$3$Baz$1");
     }
 
 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cls$xt3G = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls");
+    /*package*/ static final SContainmentLink cls$d4Mk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls");
   }
 }

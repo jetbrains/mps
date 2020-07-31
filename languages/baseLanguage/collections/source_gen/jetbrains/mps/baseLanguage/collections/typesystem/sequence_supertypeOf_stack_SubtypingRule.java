@@ -20,7 +20,7 @@ public class sequence_supertypeOf_stack_SubtypingRule extends SubtypingRule_Runt
   public sequence_supertypeOf_stack_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode stackType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return _quotation_createNode_1nphrp_a0a1(SLinkOperations.getTarget(stackType, LINKS.elementType$B4nw));
+    return _quotation_createNode_1nphrp_a0a1(SLinkOperations.getTarget(stackType, LINKS.elementType$V7ow));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.StackType$pL;
@@ -44,7 +44,7 @@ public class sequence_supertypeOf_stack_SubtypingRule extends SubtypingRule_Runt
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$B4nw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf8c39bL, 0x4eec26fcbaf8c39cL, "elementType");
+    /*package*/ static final SContainmentLink elementType$V7ow = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf8c39bL, 0x4eec26fcbaf8c39cL, "elementType");
   }
 
   private static final class CONCEPTS {

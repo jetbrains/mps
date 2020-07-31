@@ -41,8 +41,8 @@ public class RemoveMigrationScriptDeprecatedProperties extends MigrationScriptBa
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MigrationScript$c5, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SPropertyOperations.remove(it, PROPS.migrationFromBuild$ju4P);
-          SPropertyOperations.remove(it, PROPS.category$8lee);
+          SPropertyOperations.remove(it, PROPS.migrationFromBuild$r$lF);
+          SPropertyOperations.remove(it, PROPS.category$2hSM);
         }
       });
     }
@@ -56,7 +56,7 @@ public class RemoveMigrationScriptDeprecatedProperties extends MigrationScriptBa
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty migrationFromBuild$ju4P = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x118d28c5944L, "migrationFromBuild");
-    /*package*/ static final SProperty category$8lee = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x118d28cf5b3L, "category");
+    /*package*/ static final SProperty migrationFromBuild$r$lF = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x118d28c5944L, "migrationFromBuild");
+    /*package*/ static final SProperty category$2hSM = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x118d28cf5b3L, "category");
   }
 }

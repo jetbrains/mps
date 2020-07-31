@@ -52,28 +52,28 @@ public final class JUnit3TestCaseRef__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static SNode getTargetTest_id7BTZ519MNAR(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.klass$Q7$q);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.klass$dECA);
   }
   /*package*/ static boolean isSame_id1ouvi_ymQH(@NotNull SNode __thisNode__, SNode testRef) {
-    return SLinkOperations.getTarget(SNodeOperations.as(testRef, CONCEPTS.JUnit3TestCaseRef$PG), LINKS.klass$Q7$q) == SLinkOperations.getTarget(__thisNode__, LINKS.klass$Q7$q);
+    return SLinkOperations.getTarget(SNodeOperations.as(testRef, CONCEPTS.JUnit3TestCaseRef$PG), LINKS.klass$dECA) == SLinkOperations.getTarget(__thisNode__, LINKS.klass$dECA);
   }
   /*package*/ static String fqClassName_id2$98zG5liRT(@NotNull SNode __thisNode__) {
-    return (String) UnitConcept__BehaviorDescriptor.getUnitName_id4pl5GY7LKmR.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.klass$Q7$q));
+    return (String) UnitConcept__BehaviorDescriptor.getUnitName_id4pl5GY7LKmR.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.klass$dECA));
   }
   /*package*/ static Iterable<String> testNames_id3z1mdFUF$j3(@NotNull SNode __thisNode__) {
-    final SNode ignoreAnn = SLinkOperations.getTarget(_quotation_createNode_6e9f36_a0a0a3(), LINKS.annotation$zNxu);
+    final SNode ignoreAnn = SLinkOperations.getTarget(_quotation_createNode_6e9f36_a0a0a3(), LINKS.annotation$lXdy);
 
-    return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.klass$Q7$q))).where(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.klass$dECA))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode m) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(m, LINKS.visibility$2GiC), CONCEPTS.PublicVisibility$qe) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(m, LINKS.returnType$WIkw), CONCEPTS.VoidType$aT) && SPropertyOperations.getString(m, PROPS.name$tAp1).startsWith("test") && !(ListSequence.fromList(SLinkOperations.getChildren(m, LINKS.annotation$oVP4)).any(new IWhereFilter<SNode>() {
+        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(m, LINKS.visibility$jt1o), CONCEPTS.PublicVisibility$qe) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(m, LINKS.returnType$qrVw), CONCEPTS.VoidType$aT) && SPropertyOperations.getString(m, PROPS.name$lA7v).startsWith("test") && !(ListSequence.fromList(SLinkOperations.getChildren(m, LINKS.annotation$4YGW)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode mann) {
-            return SLinkOperations.getTarget(mann, LINKS.annotation$zNxu) == ignoreAnn;
+            return SLinkOperations.getTarget(mann, LINKS.annotation$lXdy) == ignoreAnn;
           }
         }));
       }
     }).select(new ISelector<SNode, String>() {
       public String select(SNode m) {
-        return SPropertyOperations.getString(m, PROPS.name$tAp1);
+        return SPropertyOperations.getString(m, PROPS.name$lA7v);
       }
     });
   }
@@ -82,13 +82,13 @@ public final class JUnit3TestCaseRef__BehaviorDescriptor extends BaseBHDescripto
       public Iterable<SNode> translate(SModel it) {
         return ListSequence.fromList(SModelOperations.roots(((SModel) it), CONCEPTS.ClassConcept$IY)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(it, SLinkOperations.getTarget(_quotation_createNode_6e9f36_a0a0a0a0a0a0a0a0a4(), LINKS.classifier$pQ_R));
+            return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(it, SLinkOperations.getTarget(_quotation_createNode_6e9f36_a0a0a0a0a0a0a0a0a4(), LINKS.classifier$xslD));
           }
         });
       }
     }).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(SPropertyOperations.getBoolean(it, PROPS.abstractClass$gY5l));
+        return !(SPropertyOperations.getBoolean(it, PROPS.abstractClass$e4_b));
       }
     });
   }
@@ -162,12 +162,12 @@ public final class JUnit3TestCaseRef__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink klass$Q7$q = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb9L, 0x11c3fc56a6d10bbfL, "klass");
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink klass$dECA = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb9L, 0x11c3fc56a6d10bbfL, "klass");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {
@@ -178,7 +178,7 @@ public final class JUnit3TestCaseRef__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty abstractClass$gY5l = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty abstractClass$e4_b = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
   }
 }

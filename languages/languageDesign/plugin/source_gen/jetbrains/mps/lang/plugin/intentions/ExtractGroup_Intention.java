@@ -61,8 +61,8 @@ public final class ExtractGroup_Intention extends AbstractIntentionDescriptor im
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode rootGroup = SNodeFactoryOperations.createNewRootNode(SNodeOperations.getModel(node), CONCEPTS.ActionGroupDeclaration$YL, null);
-      SPropertyOperations.set(rootGroup, PROPS.name$tAp1, SPropertyOperations.getString(node, PROPS.name$tAp1));
-      SLinkOperations.setTarget(rootGroup, LINKS.contents$qi3t, SLinkOperations.getTarget(node, LINKS.contents$qi3t));
+      SPropertyOperations.set(rootGroup, PROPS.name$lA7v, SPropertyOperations.getString(node, PROPS.name$lA7v));
+      SLinkOperations.setTarget(rootGroup, LINKS.contents$IJF3, SLinkOperations.getTarget(node, LINKS.contents$IJF3));
       SNodeOperations.deleteNode(node);
     }
     @Override
@@ -76,10 +76,10 @@ public final class ExtractGroup_Intention extends AbstractIntentionDescriptor im
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink contents$qi3t = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, 0x1190f76acfcL, "contents");
+    /*package*/ static final SContainmentLink contents$IJF3 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, 0x1190f76acfcL, "contents");
   }
 }

@@ -114,10 +114,10 @@ public class csharp_rTransform_Expression extends TransformationMenuBase {
         SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.AsExpression$7k, null);
         SNode type = ExpectedType_FactoryUtil.createExpectedType(_context.getNode());
         if (SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$IZ)) {
-          SLinkOperations.setTarget(result, LINKS.classifierType$w7mv, SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ));
+          SLinkOperations.setTarget(result, LINKS.classifierType$zzT1, SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ));
         }
         SNodeOperations.replaceWithAnother(_context.getNode(), result);
-        SLinkOperations.setTarget(result, LINKS.expression$w7m0, _context.getNode());
+        SLinkOperations.setTarget(result, LINKS.expression$zzE0, _context.getNode());
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), result, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
@@ -162,7 +162,7 @@ public class csharp_rTransform_Expression extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink classifierType$w7mv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d00538bdfL, 0x11d00538be1L, "classifierType");
-    /*package*/ static final SContainmentLink expression$w7m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d00538bdfL, 0x11d00538be0L, "expression");
+    /*package*/ static final SContainmentLink classifierType$zzT1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d00538bdfL, 0x11d00538be1L, "classifierType");
+    /*package*/ static final SContainmentLink expression$zzE0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d00538bdfL, 0x11d00538be0L, "expression");
   }
 }

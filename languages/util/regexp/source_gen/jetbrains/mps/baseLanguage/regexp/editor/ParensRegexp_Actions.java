@@ -25,7 +25,7 @@ public class ParensRegexp_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode nn = SLinkOperations.getTarget(node, LINKS.expr$ebmO);
+        SNode nn = SLinkOperations.getTarget(node, LINKS.expr$Rw3c);
         SNodeOperations.replaceWithAnother(node, nn);
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, nn, SelectionManager.LAST_CELL, -1);
       }
@@ -75,6 +75,6 @@ public class ParensRegexp_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expr$ebmO = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, 0x1117521177bL, "expr");
+    /*package*/ static final SContainmentLink expr$Rw3c = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, 0x1117521177bL, "expr");
   }
 }

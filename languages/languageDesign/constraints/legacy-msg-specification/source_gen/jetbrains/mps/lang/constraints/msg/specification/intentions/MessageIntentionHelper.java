@@ -60,21 +60,21 @@ public class MessageIntentionHelper {
     List<SNode> roots = SModelOperations.roots(feedbackModel, CONCEPTS.FeedbackPerConceptRoot$oJ);
     SNode newFeedbackRoot = ListSequence.fromList(roots).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.concept$KXj8), myConcept);
+        return Objects.equals(SLinkOperations.getTarget(it, LINKS.concept$HGgS), myConcept);
       }
     });
     if (newFeedbackRoot == null) {
       newFeedbackRoot = SModelOperations.createNewRootNode(feedbackModel, MetaAdapterFactory.getConcept(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, "jetbrains.mps.lang.feedback.skeleton.structure.FeedbackPerConceptRoot"));
-      SLinkOperations.setTarget(newFeedbackRoot, LINKS.concept$KXj8, myConcept);
+      SLinkOperations.setTarget(newFeedbackRoot, LINKS.concept$HGgS, myConcept);
     }
     assert newFeedbackRoot != null;
-    SNode newMessage = SNodeFactoryOperations.addNewChild(newFeedbackRoot, LINKS.feedbacks$nSHS, CONCEPTS.ShowMessage$3M);
-    SLinkOperations.setTarget(newMessage, LINKS.problem$7FCD, myProblem);
-    SLinkOperations.setTarget(newMessage, LINKS.message$mGgm, SNodeFactoryOperations.createNewNode(CONCEPTS.CombinedMessageExpression$e_, null));
+    SNode newMessage = SNodeFactoryOperations.addNewChild(newFeedbackRoot, LINKS.feedbacks$$ue8, CONCEPTS.ShowMessage$3M);
+    SLinkOperations.setTarget(newMessage, LINKS.problem$I8FR, myProblem);
+    SLinkOperations.setTarget(newMessage, LINKS.message$ZrUE, SNodeFactoryOperations.createNewNode(CONCEPTS.CombinedMessageExpression$e_, null));
     EditorPanelManager editorPanelManager = context.getEditorPanelManager();
     if (editorPanelManager != null) {
       editorPanelManager.openEditor(newFeedbackRoot);
-      context.selectWRTFocusPolicy(SLinkOperations.getTarget(newMessage, LINKS.message$mGgm));
+      context.selectWRTFocusPolicy(SLinkOperations.getTarget(newMessage, LINKS.message$ZrUE));
     }
     SModel structureModel = SNodeOperations.getModel(myConcept);
     ModelImporter importer = new ModelImporter(SNodeOperations.getModel(newMessage));
@@ -91,9 +91,9 @@ public class MessageIntentionHelper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$KXj8 = MetaAdapterFactory.getReferenceLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x63c2f3669ce56d5dL, "concept");
-    /*package*/ static final SContainmentLink feedbacks$nSHS = MetaAdapterFactory.getContainmentLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x6530303593ae9cf2L, "feedbacks");
-    /*package*/ static final SContainmentLink problem$7FCD = MetaAdapterFactory.getContainmentLink(0xcd17a113ca4e472fL, 0xa8dec49008f9eea8L, 0x573ae5b8b8ccc349L, 0x573ae5b8b8ccc34cL, "problem");
-    /*package*/ static final SContainmentLink message$mGgm = MetaAdapterFactory.getContainmentLink(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, 0x48f860fc0e362dc8L, "message");
+    /*package*/ static final SReferenceLink concept$HGgS = MetaAdapterFactory.getReferenceLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x63c2f3669ce56d5dL, "concept");
+    /*package*/ static final SContainmentLink feedbacks$$ue8 = MetaAdapterFactory.getContainmentLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x6530303593ae9cf2L, "feedbacks");
+    /*package*/ static final SContainmentLink problem$I8FR = MetaAdapterFactory.getContainmentLink(0xcd17a113ca4e472fL, 0xa8dec49008f9eea8L, 0x573ae5b8b8ccc349L, 0x573ae5b8b8ccc34cL, "problem");
+    /*package*/ static final SContainmentLink message$ZrUE = MetaAdapterFactory.getContainmentLink(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, 0x48f860fc0e362dc8L, "message");
   }
 }

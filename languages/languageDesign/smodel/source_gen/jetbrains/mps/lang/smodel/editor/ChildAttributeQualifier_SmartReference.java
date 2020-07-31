@@ -48,7 +48,7 @@ public class ChildAttributeQualifier_SmartReference extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_82wwvv_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.ChildAttributeQualifier$N, LINKS.attributeConcept$OUQZ);
+      super((SAbstractConcept) CONCEPTS.ChildAttributeQualifier$N, LINKS.attributeConcept$CwCx);
     }
     @NotNull
     @Override
@@ -99,6 +99,6 @@ public class ChildAttributeQualifier_SmartReference extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink attributeConcept$OUQZ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x9d98713f24a0e5bL, 0x9d98713f24a0e5dL, "attributeConcept");
+    /*package*/ static final SReferenceLink attributeConcept$CwCx = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x9d98713f24a0e5bL, 0x9d98713f24a0e5dL, "attributeConcept");
   }
 }

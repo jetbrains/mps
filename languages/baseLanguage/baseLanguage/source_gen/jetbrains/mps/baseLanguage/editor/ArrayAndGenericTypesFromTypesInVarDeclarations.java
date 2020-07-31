@@ -77,7 +77,7 @@ public class ArrayAndGenericTypesFromTypesInVarDeclarations extends Transformati
   public class TMP_Group_y9ko6u_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.type$pLrO) != null);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.type$uWuc) != null);
     }
 
     @NotNull
@@ -133,9 +133,9 @@ public class ArrayAndGenericTypesFromTypesInVarDeclarations extends Transformati
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode originalType = SLinkOperations.getTarget(_context.getNode(), LINKS.type$pLrO);
-          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.type$pLrO, CONCEPTS.ArrayType$Yv);
-          SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.type$pLrO), CONCEPTS.ArrayType$Yv), LINKS.componentType$10w, originalType);
+          SNode originalType = SLinkOperations.getTarget(_context.getNode(), LINKS.type$uWuc);
+          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.type$uWuc, CONCEPTS.ArrayType$Yv);
+          SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.type$uWuc), CONCEPTS.ArrayType$Yv), LINKS.componentType$vfw, originalType);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -171,7 +171,7 @@ public class ArrayAndGenericTypesFromTypesInVarDeclarations extends Transformati
   public class TMP_Group_y9ko6u_b0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.type$pLrO), CONCEPTS.ClassifierType$IZ) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.type$pLrO), CONCEPTS.ClassifierType$IZ), LINKS.parameter$dQne)).isEmpty();
+      return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.type$uWuc), CONCEPTS.ClassifierType$IZ) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.type$uWuc), CONCEPTS.ClassifierType$IZ), LINKS.parameter$HlfM)).isEmpty();
     }
 
     @NotNull
@@ -227,8 +227,8 @@ public class ArrayAndGenericTypesFromTypesInVarDeclarations extends Transformati
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode originalType = SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.type$pLrO), CONCEPTS.ClassifierType$IZ);
-          SNodeFactoryOperations.addNewChild(originalType, LINKS.parameter$dQne, null);
+          SNode originalType = SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.type$uWuc), CONCEPTS.ClassifierType$IZ);
+          SNodeFactoryOperations.addNewChild(originalType, LINKS.parameter$HlfM, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -263,9 +263,9 @@ public class ArrayAndGenericTypesFromTypesInVarDeclarations extends Transformati
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink componentType$10w = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
   }
 
   private static final class CONCEPTS {

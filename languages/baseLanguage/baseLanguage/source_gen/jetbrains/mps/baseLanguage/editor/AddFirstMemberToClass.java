@@ -49,7 +49,7 @@ public class AddFirstMemberToClass extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNodeFactoryOperations.addNewChild(node, LINKS.member$oYX5, CONCEPTS.PlaceholderMember$Zm);
+      SNodeFactoryOperations.addNewChild(node, LINKS.member$6v_r, CONCEPTS.PlaceholderMember$Zm);
     }
     public String getKeyStroke() {
       return " letter";
@@ -62,6 +62,6 @@ public class AddFirstMemberToClass extends KeyMapImpl {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 }

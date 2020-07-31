@@ -55,7 +55,7 @@ public class VisibleClassConstructorsScope extends Scope {
   @Nullable
   @Override
   public String getReferenceText(SNode contextNode, @NotNull SNode node) {
-    return SPropertyOperations.getString(SNodeOperations.cast(contextNode, CONCEPTS.ConstructorDeclaration$5U), PROPS.name$tAp1);
+    return SPropertyOperations.getString(SNodeOperations.cast(contextNode, CONCEPTS.ConstructorDeclaration$5U), PROPS.name$lA7v);
   }
   @Nullable
   @Override
@@ -75,8 +75,8 @@ public class VisibleClassConstructorsScope extends Scope {
     if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.ClassCreator$yU))) {
       return null;
     }
-    List<SNode> actualArguments = SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.ClassCreator$yU), LINKS.actualArgument$$A7L);
-    List<SNode> typeParameters = SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.ClassCreator$yU), LINKS.typeParameter$swNi);
+    List<SNode> actualArguments = SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.ClassCreator$yU), LINKS.actualArgument$ItKJ);
+    List<SNode> typeParameters = SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.ClassCreator$yU), LINKS.typeParameter$NSPI);
 
     // use arguments count 
     constructors = (List<SNode>) MethodResolveUtil.selectByParmCount(constructors, actualArguments);
@@ -86,7 +86,7 @@ public class VisibleClassConstructorsScope extends Scope {
 
     // use types 
     Iterator<SNode> typeParms = (Iterator<SNode>) typeParameters.iterator();
-    Iterator<SNode> typeVars = (Iterator<SNode>) SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$ziZT).iterator();
+    Iterator<SNode> typeVars = (Iterator<SNode>) SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$6cWB).iterator();
     Map<SNode, SNode> typeByTypeVar = new HashMap<SNode, SNode>();
     while (typeParms.hasNext() && typeVars.hasNext()) {
       typeByTypeVar.put(typeVars.next(), typeParms.next());
@@ -103,12 +103,12 @@ public class VisibleClassConstructorsScope extends Scope {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink typeParameter$swNi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink typeParameter$NSPI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
   }
 }

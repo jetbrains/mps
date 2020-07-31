@@ -64,7 +64,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.targetCurrency$7WgF;
+      final SProperty property = PROPS.targetCurrency$Qc4P;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no targetCurrency>");
@@ -88,7 +88,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty targetCurrency$7WgF = MetaAdapterFactory.getProperty(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x18d8e0833b34209aL, 0x18d8e0833b34345fL, "targetCurrency");
+    /*package*/ static final SProperty targetCurrency$Qc4P = MetaAdapterFactory.getProperty(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x18d8e0833b34209aL, 0x18d8e0833b34345fL, "targetCurrency");
   }
 
   private static final class CONCEPTS {

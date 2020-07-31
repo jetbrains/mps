@@ -40,15 +40,15 @@ public final class MockScopeProvider__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, final SAbstractConcept kind, SNode child) {
-    if (!(ScopeUtils.comeFrom(LINKS.node$EGim, __thisNode__, child))) {
+    if (!(ScopeUtils.comeFrom(LINKS.node$FsSE, __thisNode__, child))) {
       return ScopeUtils.lazyParentScope(__thisNode__, kind);
     }
 
-    Iterable<SNode> nodes = SLinkOperations.collect(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.entries$pou7)).findFirst(new IWhereFilter<SNode>() {
+    Iterable<SNode> nodes = SLinkOperations.collect(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.entries$iQ_p)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.kind$A3Ar) == SNodeOperations.asNode(kind);
+        return SLinkOperations.getTarget(it, LINKS.kind$rJB5) == SNodeOperations.asNode(kind);
       }
-    }), LINKS.nodes$tFru), LINKS.node$ROqF);
+    }), LINKS.nodes$o2jy), LINKS.node$2oUP);
     return (Sequence.fromIterable(nodes).isEmpty() ? new EmptyScope() : new NamedElementsScope(nodes));
   }
 
@@ -99,10 +99,10 @@ public final class MockScopeProvider__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink node$EGim = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1de1fbd5fbf63919L, 0x1de1fbd5fbfc8785L, "node");
-    /*package*/ static final SContainmentLink entries$pou7 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1de1fbd5fbf63919L, 0x1de1fbd5fbf67b13L, "entries");
-    /*package*/ static final SReferenceLink kind$A3Ar = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1de1fbd5fbf67ae2L, 0x1de1fbd5fbf99684L, "kind");
-    /*package*/ static final SContainmentLink nodes$tFru = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1de1fbd5fbf67ae2L, 0x1de1fbd5fbf67ae5L, "nodes");
-    /*package*/ static final SReferenceLink node$ROqF = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1de1fbd5fbf9c211L, 0x1de1fbd5fbf9c212L, "node");
+    /*package*/ static final SContainmentLink node$FsSE = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1de1fbd5fbf63919L, 0x1de1fbd5fbfc8785L, "node");
+    /*package*/ static final SContainmentLink entries$iQ_p = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1de1fbd5fbf63919L, 0x1de1fbd5fbf67b13L, "entries");
+    /*package*/ static final SReferenceLink kind$rJB5 = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1de1fbd5fbf67ae2L, 0x1de1fbd5fbf99684L, "kind");
+    /*package*/ static final SContainmentLink nodes$o2jy = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1de1fbd5fbf67ae2L, 0x1de1fbd5fbf67ae5L, "nodes");
+    /*package*/ static final SReferenceLink node$2oUP = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1de1fbd5fbf9c211L, 0x1de1fbd5fbf9c212L, "node");
   }
 }

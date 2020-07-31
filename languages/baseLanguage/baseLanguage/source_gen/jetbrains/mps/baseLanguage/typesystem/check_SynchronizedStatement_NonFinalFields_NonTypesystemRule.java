@@ -24,14 +24,14 @@ public class check_SynchronizedStatement_NonFinalFields_NonTypesystemRule extend
   public check_SynchronizedStatement_NonFinalFields_NonTypesystemRule() {
   }
   public void applyRule(final SNode synchronizedStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode expression = SLinkOperations.getTarget(synchronizedStatement, LINKS.expression$K1Pl);
+    SNode expression = SLinkOperations.getTarget(synchronizedStatement, LINKS.expression$gSPb);
     SNode field = null;
     if (SNodeOperations.isInstanceOf(expression, CONCEPTS.StaticFieldReference$K8)) {
-      field = SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.StaticFieldReference$K8), LINKS.variableDeclaration$2ky6);
-    } else if (SNodeOperations.isInstanceOf(expression, CONCEPTS.DotExpression$6a) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.DotExpression$6a), LINKS.operation$X4R8), CONCEPTS.FieldReferenceOperation$N8)) {
-      field = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.DotExpression$6a), LINKS.operation$X4R8), CONCEPTS.FieldReferenceOperation$N8), LINKS.fieldDeclaration$mLBy);
+      field = SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.StaticFieldReference$K8), LINKS.variableDeclaration$7WwU);
+    } else if (SNodeOperations.isInstanceOf(expression, CONCEPTS.DotExpression$6a) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.DotExpression$6a), LINKS.operation$_mGS), CONCEPTS.FieldReferenceOperation$N8)) {
+      field = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.DotExpression$6a), LINKS.operation$_mGS), CONCEPTS.FieldReferenceOperation$N8), LINKS.fieldDeclaration$229u);
     }
-    if (field != null && !(SPropertyOperations.getBoolean(field, PROPS.isFinal$hIht))) {
+    if (field != null && !(SPropertyOperations.getBoolean(field, PROPS.isFinal$_qt3))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(expression, "synchronization on non-final field", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3207444945806619713", null, errorTarget);
@@ -49,10 +49,10 @@ public class check_SynchronizedStatement_NonFinalFields_NonTypesystemRule extend
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$K1Pl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1106df1d8d8L, 0x1106df2b910L, "expression");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SReferenceLink fieldDeclaration$mLBy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SContainmentLink expression$gSPb = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1106df1d8d8L, 0x1106df2b910L, "expression");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
   }
 
   private static final class CONCEPTS {
@@ -63,6 +63,6 @@ public class check_SynchronizedStatement_NonFinalFields_NonTypesystemRule extend
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

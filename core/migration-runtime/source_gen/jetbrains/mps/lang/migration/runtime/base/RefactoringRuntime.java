@@ -35,7 +35,7 @@ public class RefactoringRuntime {
       return;
     }
 
-    Iterable<SNode> attributes = (Iterable<SNode>) node.getChildren(LINKS.smodelAttribute$K8bJ);
+    Iterable<SNode> attributes = (Iterable<SNode>) node.getChildren(LINKS.smodelAttribute$jXFL);
     Sequence.fromIterable(SNodeOperations.ofConcept(attributes, CONCEPTS.PropertyAttribute$jT)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return ((SProperty) BHReflection.invoke0(it, CONCEPTS.PropertyAttribute$jT, SMethodTrimmedId.create("getProperty", CONCEPTS.PropertyAttribute$jT, "1avfQ4BBzOo"))).equals(oldProp);
@@ -57,7 +57,7 @@ public class RefactoringRuntime {
       return;
     }
 
-    Iterable<SNode> attributes = (Iterable<SNode>) node.getChildren(LINKS.smodelAttribute$K8bJ);
+    Iterable<SNode> attributes = (Iterable<SNode>) node.getChildren(LINKS.smodelAttribute$jXFL);
     Sequence.fromIterable(SNodeOperations.ofConcept(attributes, CONCEPTS.ChildAttribute$XQ)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return ((SContainmentLink) BHReflection.invoke0(it, CONCEPTS.ChildAttribute$XQ, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$XQ, "BpxLfMirzf"))).equals(oldLink);
@@ -81,7 +81,7 @@ public class RefactoringRuntime {
       return;
     }
 
-    Iterable<SNode> attributes = (Iterable<SNode>) node.getChildren(LINKS.smodelAttribute$K8bJ);
+    Iterable<SNode> attributes = (Iterable<SNode>) node.getChildren(LINKS.smodelAttribute$jXFL);
     Sequence.fromIterable(SNodeOperations.ofConcept(attributes, CONCEPTS.LinkAttribute$7j)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return ((SReferenceLink) BHReflection.invoke0(it, CONCEPTS.LinkAttribute$7j, SMethodTrimmedId.create("getLink", CONCEPTS.LinkAttribute$7j, "1avfQ4BEFo6"))).equals(oldLink);
@@ -141,7 +141,7 @@ public class RefactoringRuntime {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 
   private static final class CONCEPTS {

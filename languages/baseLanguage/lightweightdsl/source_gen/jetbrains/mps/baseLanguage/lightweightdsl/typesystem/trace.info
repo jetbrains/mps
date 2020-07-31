@@ -55,9 +55,9 @@
       <node id="4194369961464668647" at="70,63,71,30" concept="9" />
       <node id="4194369961464668647" at="71,30,72,229" concept="3" />
       <node id="4194369961464668647" at="72,229,73,24" concept="10" />
-      <node id="1825613483881473717" at="77,0,78,0" concept="13" trace="initializer$7lug" />
-      <node id="1825613483881473717" at="78,0,79,0" concept="13" trace="parameter$WRt7" />
-      <node id="1825613483881473717" at="82,0,83,0" concept="13" trace="name$tAp1" />
+      <node id="1825613483881473717" at="77,0,78,0" concept="13" trace="initializer$zpDK" />
+      <node id="1825613483881473717" at="78,0,79,0" concept="13" trace="parameter$uR6p" />
+      <node id="1825613483881473717" at="82,0,83,0" concept="13" trace="name$lA7v" />
       <node id="1825613483881473717" at="86,0,87,0" concept="13" trace="DSLDescriptor$dS" />
       <node id="1825613483881473717" at="28,0,30,0" concept="1" trace="typeof_ClassLikeDescriptor_InferenceRule#()V" />
       <node id="293220601665589860" at="30,116,33,5" concept="7" />
@@ -131,8 +131,8 @@
       </scope>
     </file>
     <file name="typeof_ParameterDescriptor_InferenceRule.java">
-      <node id="2049012130657191712" at="25,7,26,95" concept="9" />
-      <node id="2049012130657191712" at="26,95,27,286" concept="9" />
+      <node id="2049012130657191712" at="25,7,26,94" concept="9" />
+      <node id="2049012130657191712" at="26,94,27,286" concept="9" />
       <node id="2049012130657191712" at="27,286,28,392" concept="3" />
       <node id="2049012130657190059" at="32,50,33,43" concept="10" />
       <node id="2049012130657190059" at="35,68,36,102" concept="10" />
@@ -148,7 +148,7 @@
       <node id="2049012130657191732" at="49,170,50,230" concept="3" />
       <node id="2049012130657191732" at="50,230,51,167" concept="3" />
       <node id="2049012130657191732" at="51,167,52,24" concept="10" />
-      <node id="2049012130657190059" at="56,0,57,0" concept="13" trace="condition$TOMj" />
+      <node id="2049012130657190059" at="56,0,57,0" concept="13" trace="condition$$nd" />
       <node id="2049012130657190059" at="60,0,61,0" concept="13" trace="ParameterDescriptor$fO" />
       <node id="2049012130657190059" at="21,0,23,0" concept="1" trace="typeof_ParameterDescriptor_InferenceRule#()V" />
       <node id="2049012130657190059" at="32,0,35,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -208,7 +208,7 @@
       <node id="2141245758541632491" at="44,50,45,36" concept="10" />
       <node id="2141245758541632491" at="47,68,48,102" concept="10" />
       <node id="2141245758541632491" at="50,30,51,17" concept="10" />
-      <node id="2141245758541632491" at="55,0,56,0" concept="13" trace="classLikeMember$UT6r" />
+      <node id="2141245758541632491" at="55,0,56,0" concept="13" trace="classLikeMember$xE75" />
       <node id="2141245758541632491" at="59,0,60,0" concept="13" trace="ClassConcept$IY" />
       <node id="2141245758541632491" at="24,0,26,0" concept="1" trace="check_ClassLikeMember_unique_NonTypesystemRule#()V" />
       <node id="2141245758541661954" at="26,122,29,5" concept="7" />
@@ -274,7 +274,7 @@
       <node id="2603987804376010929" at="40,50,41,36" concept="10" />
       <node id="2603987804376010929" at="43,68,44,102" concept="10" />
       <node id="2603987804376010929" at="46,30,47,17" concept="10" />
-      <node id="2603987804376010929" at="51,0,52,0" concept="13" trace="classLikeMember$UT6r" />
+      <node id="2603987804376010929" at="51,0,52,0" concept="13" trace="classLikeMember$xE75" />
       <node id="2603987804376010929" at="55,0,56,0" concept="13" trace="ClassConcept$IY" />
       <node id="2603987804376010929" at="24,0,26,0" concept="1" trace="check_ClassLike_allRequired_NonTypesystemRule#()V" />
       <node id="2603987804376010931" at="26,122,29,5" concept="7" />
@@ -384,7 +384,7 @@
       <node id="9097849371504921554" at="49,228,50,454" concept="3" />
       <node id="9097849371504921554" at="50,454,51,167" concept="3" />
       <node id="9097849371504921554" at="51,167,52,24" concept="10" />
-      <node id="3751132065236799722" at="56,0,57,0" concept="13" trace="getter$HURw" />
+      <node id="3751132065236799722" at="56,0,57,0" concept="13" trace="getter$fwSw" />
       <node id="3751132065236799722" at="60,0,61,0" concept="13" trace="DependentTypeDescriptor$1L" />
       <node id="3751132065236799722" at="21,0,23,0" concept="1" trace="typeof_DepType_InferenceRule#()V" />
       <node id="3751132065236799722" at="32,0,35,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -607,10 +607,10 @@
       <node id="3855110916779806178" at="45,50,46,40" concept="10" />
       <node id="3855110916779806178" at="48,68,49,102" concept="10" />
       <node id="3855110916779806178" at="51,30,52,17" concept="10" />
-      <node id="3855110916779806178" at="56,0,57,0" concept="13" trace="name$tAp1" />
-      <node id="3855110916779806178" at="60,0,61,0" concept="13" trace="decl$Ails" />
-      <node id="3855110916779806178" at="61,0,62,0" concept="13" trace="type$pLrO" />
-      <node id="3855110916779806178" at="62,0,63,0" concept="13" trace="type$4FJP" />
+      <node id="3855110916779806178" at="56,0,57,0" concept="13" trace="name$lA7v" />
+      <node id="3855110916779806178" at="60,0,61,0" concept="13" trace="decl$ySo$" />
+      <node id="3855110916779806178" at="61,0,62,0" concept="13" trace="type$uWuc" />
+      <node id="3855110916779806178" at="62,0,63,0" concept="13" trace="type$hcaF" />
       <node id="3855110916779806178" at="66,0,67,0" concept="13" trace="PropertyInstance$LJ" />
       <node id="3855110916779806178" at="27,0,29,0" concept="1" trace="check_ClassLikeProperty_NonTypesystemRule#()V" />
       <node id="2337637792721515837" at="29,121,32,5" concept="7" />
@@ -669,15 +669,15 @@
       <node id="4507527286374459039" at="38,50,39,42" concept="10" />
       <node id="4507527286374459039" at="41,68,42,102" concept="10" />
       <node id="4507527286374459039" at="44,30,45,17" concept="10" />
-      <node id="4507527286374459039" at="49,0,50,0" concept="13" trace="descriptor$6cHY" />
-      <node id="4507527286374459039" at="50,0,51,0" concept="13" trace="implModel$pBbn" />
+      <node id="4507527286374459039" at="49,0,50,0" concept="13" trace="descriptor$ah2" />
+      <node id="4507527286374459039" at="50,0,51,0" concept="13" trace="implModel$pYw9" />
       <node id="4507527286374459039" at="54,0,55,0" concept="13" trace="ImplementationCode$jA" />
       <node id="4507527286374459039" at="23,0,25,0" concept="1" trace="check_ImplementationCode_NonTypesystemRule#()V" />
       <node id="4507527286374459039" at="38,0,41,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="4507527286374459039" at="41,0,44,0" concept="8" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="4507527286374459039" at="44,0,47,0" concept="8" trace="overrides#()Z" />
-      <node id="4507527286374464191" at="26,121,30,7" concept="0" />
-      <node id="4507527286374473820" at="31,245,35,7" concept="0" />
+      <node id="4507527286374464191" at="26,120,30,7" concept="0" />
+      <node id="4507527286374473820" at="31,244,35,7" concept="0" />
       <node id="4507527286374461986" at="25,114,36,5" concept="7" />
       <node id="4507527286374459039" at="25,0,38,0" concept="8" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="4507527286374459039" at="23,55,23,55" />
@@ -698,8 +698,8 @@
         <var name="argument" id="4507527286374459039" />
       </scope>
       <scope id="4507527286374459039" at="44,0,47,0" />
-      <scope id="4507527286374461988" at="26,121,30,7" />
-      <scope id="4507527286374465793" at="31,245,35,7" />
+      <scope id="4507527286374461988" at="26,120,30,7" />
+      <scope id="4507527286374465793" at="31,244,35,7" />
       <scope id="4507527286374459040" at="25,114,36,5" />
       <scope id="4507527286374459039" at="25,0,38,0">
         <var name="n" id="4507527286374459039" />
@@ -772,7 +772,7 @@
       <node id="6499732580828658707" at="71,121,72,0" concept="12" />
       <node id="6499732580828658708" at="72,0,73,77" concept="11" />
       <node id="6499732580828658712" at="74,89,75,71" concept="11" />
-      <node id="6499732580828658716" at="76,81,77,37" concept="11" />
+      <node id="6499732580828658716" at="76,80,77,37" concept="11" />
       <node id="5159371149174290722" at="80,37,81,118" concept="10" />
       <node id="6499732580828658734" at="83,15,84,21" concept="2" />
       <node id="6499732580828658746" at="85,11,86,37" concept="11" />
@@ -788,16 +788,16 @@
       <node id="5159371149174486101" at="114,35,115,101" concept="10" />
       <node id="6499732580828658866" at="119,7,120,12" concept="3" />
       <node id="6499732580828658883" at="121,5,122,17" concept="10" />
-      <node id="6499732580828617299" at="136,0,137,0" concept="13" trace="decl$UAdi" />
-      <node id="6499732580828617299" at="137,0,138,0" concept="13" trace="returnType$WIkw" />
-      <node id="6499732580828617299" at="138,0,139,0" concept="13" trace="decl$HVk0" />
-      <node id="6499732580828617299" at="139,0,140,0" concept="13" trace="param$HVhF" />
-      <node id="6499732580828617299" at="140,0,141,0" concept="13" trace="condition$TOMj" />
-      <node id="6499732580828617299" at="141,0,142,0" concept="13" trace="parameter$WIkZ" />
-      <node id="6499732580828617299" at="142,0,143,0" concept="13" trace="decl$HZxr" />
-      <node id="6499732580828617299" at="143,0,144,0" concept="13" trace="type$HV6v" />
-      <node id="6499732580828617299" at="144,0,145,0" concept="13" trace="type$pLrO" />
-      <node id="6499732580828617299" at="148,0,149,0" concept="13" trace="name$tAp1" />
+      <node id="6499732580828617299" at="136,0,137,0" concept="13" trace="decl$owrI" />
+      <node id="6499732580828617299" at="137,0,138,0" concept="13" trace="returnType$qrVw" />
+      <node id="6499732580828617299" at="138,0,139,0" concept="13" trace="decl$fIG0" />
+      <node id="6499732580828617299" at="139,0,140,0" concept="13" trace="param$fHzP" />
+      <node id="6499732580828617299" at="140,0,141,0" concept="13" trace="condition$$nd" />
+      <node id="6499732580828617299" at="141,0,142,0" concept="13" trace="parameter$qsax" />
+      <node id="6499732580828617299" at="142,0,143,0" concept="13" trace="decl$hLc5" />
+      <node id="6499732580828617299" at="143,0,144,0" concept="13" trace="type$fC91" />
+      <node id="6499732580828617299" at="144,0,145,0" concept="13" trace="type$uWuc" />
+      <node id="6499732580828617299" at="148,0,149,0" concept="13" trace="name$lA7v" />
       <node id="6499732580828617299" at="152,0,153,0" concept="13" trace="DependentTypeDescriptor$1L" />
       <node id="6499732580828617299" at="153,0,154,0" concept="13" trace="DependentTypeInstance$to" />
       <node id="6499732580828617299" at="154,0,155,0" concept="13" trace="MethodParameterInstance$yX" />
@@ -814,7 +814,7 @@
       <node id="6499732580828668480" at="23,80,28,5" concept="17" />
       <node id="5159371149174139774" at="40,309,45,11" concept="3" />
       <node id="5159371149174141313" at="48,108,53,11" concept="3" />
-      <node id="5159371149174196208" at="61,183,66,13" concept="3" />
+      <node id="5159371149174196208" at="61,182,66,13" concept="3" />
       <node id="5159371149174290715" at="78,244,83,15" concept="3" />
       <node id="5159371149174480122" at="104,136,109,13" concept="3" />
       <node id="5159371149174486094" at="112,153,117,13" concept="3" />
@@ -858,7 +858,7 @@
       <scope id="6499732580828626540" at="23,80,28,5" />
       <scope id="6499732580828658607" at="40,309,45,11" />
       <scope id="6499732580828658642" at="48,108,53,11" />
-      <scope id="2252981212138512788" at="61,183,66,13" />
+      <scope id="2252981212138512788" at="61,182,66,13" />
       <scope id="6499732580828658817" at="104,136,109,13" />
       <scope id="6499732580828658840" at="112,153,117,13" />
       <scope id="6499732580828658719" at="78,244,84,21" />
@@ -871,7 +871,7 @@
       <scope id="6499732580828658815" at="103,133,110,9" />
       <scope id="6499732580828658838" at="111,14,118,9" />
       <scope id="6499732580828658677" at="60,108,68,17" />
-      <scope id="6499732580828658715" at="76,81,91,53" />
+      <scope id="6499732580828658715" at="76,80,91,53" />
       <scope id="6499732580828658711" at="74,89,96,9" />
       <scope id="6499732580828658665" at="58,169,120,12">
         <var name="actualPar" id="6499732580828658700" />
@@ -910,10 +910,10 @@
       <node id="5159371149174403867" at="32,115,33,66" concept="16" />
       <node id="5159371149174424162" at="36,118,37,66" concept="3" />
       <node id="5159371149174521312" at="40,160,41,77" concept="3" />
-      <node id="6499732580828838334" at="45,0,46,0" concept="13" trace="name$tAp1" />
-      <node id="6499732580828838334" at="49,0,50,0" concept="13" trace="returnType$WIkw" />
-      <node id="6499732580828838334" at="50,0,51,0" concept="13" trace="parameter$WIkZ" />
-      <node id="6499732580828838334" at="51,0,52,0" concept="13" trace="type$pLrO" />
+      <node id="6499732580828838334" at="45,0,46,0" concept="13" trace="name$lA7v" />
+      <node id="6499732580828838334" at="49,0,50,0" concept="13" trace="returnType$qrVw" />
+      <node id="6499732580828838334" at="50,0,51,0" concept="13" trace="parameter$qsax" />
+      <node id="6499732580828838334" at="51,0,52,0" concept="13" trace="type$uWuc" />
       <node id="5777317442205667779" at="16,0,19,0" concept="8" trace="visitName#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)V" />
       <node id="5159371149174139115" at="20,0,23,0" concept="8" trace="visitReturnType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P0_E0;)V" />
       <node id="5159371149174271338" at="24,0,27,0" concept="8" trace="visitMissingParam#(Lorg/jetbrains/mps/openapi/model/SNode;ILjetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P0_E0;)V" />
@@ -1038,8 +1038,8 @@
       <node id="6647275119336526138" at="21,165,22,13" concept="10" />
       <node id="6647275119336521250" at="24,5,25,85" concept="9" />
       <node id="6647275119336521250" at="25,85,26,394" concept="9" />
-      <node id="6647275119336520033" at="31,0,32,0" concept="13" trace="cncpt$4E7Y" />
-      <node id="6647275119336520033" at="35,0,36,0" concept="13" trace="name$tAp1" />
+      <node id="6647275119336520033" at="31,0,32,0" concept="13" trace="cncpt$gpR2" />
+      <node id="6647275119336520033" at="35,0,36,0" concept="13" trace="name$lA7v" />
       <node id="6647275119336521248" at="20,123,23,5" concept="7" />
       <node id="6647275119336521250" at="23,5,27,5" concept="0" />
       <node id="6647275119336520049" at="19,0,29,0" concept="14" trace="checkCustomMemberConcept#(Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -1112,7 +1112,7 @@
       <node id="1901385213798227015" at="28,5,29,60" concept="3" />
       <node id="759587583637484590" at="33,0,34,0" concept="13" trace="MemberInstance$D8" />
       <node id="759587583637484590" at="34,0,35,0" concept="13" trace="MethodInstance$XT" />
-      <node id="759587583637484590" at="38,0,39,0" concept="13" trace="body$WIlu" />
+      <node id="759587583637484590" at="38,0,39,0" concept="13" trace="body$qspy" />
       <node id="759587583637484590" at="18,0,21,0" concept="1" trace="fix_SignatureMismatch_QuickFix#()V" />
       <node id="759587583637484590" at="21,0,24,0" concept="8" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="3855110916780206786" at="25,299,28,5" concept="7" />
@@ -1152,8 +1152,8 @@
       <node id="9097849371505460195" at="33,50,34,39" concept="10" />
       <node id="9097849371505460195" at="36,68,37,102" concept="10" />
       <node id="9097849371505460195" at="39,30,40,17" concept="10" />
-      <node id="9097849371505460195" at="44,0,45,0" concept="13" trace="baseMethodDeclaration$$A7i" />
-      <node id="9097849371505460195" at="45,0,46,0" concept="13" trace="returnType$WIkw" />
+      <node id="9097849371505460195" at="44,0,45,0" concept="13" trace="baseMethodDeclaration$ItxI" />
+      <node id="9097849371505460195" at="45,0,46,0" concept="13" trace="returnType$qrVw" />
       <node id="9097849371505460195" at="49,0,50,0" concept="13" trace="DependentTypeInstance$to" />
       <node id="9097849371505460195" at="50,0,51,0" concept="13" trace="LocalMethodCall$77" />
       <node id="9097849371505460195" at="21,0,23,0" concept="1" trace="typeof_LocalMethodCall_InferenceRule#()V" />

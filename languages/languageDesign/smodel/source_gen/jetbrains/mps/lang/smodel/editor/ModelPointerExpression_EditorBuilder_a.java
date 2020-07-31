@@ -78,7 +78,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new modelRefSingleRoleHandler_wm88cg_c0(myNode, LINKS.modelRef$RfYQ, getEditorContext());
+    SingleRoleCellProvider provider = new modelRefSingleRoleHandler_wm88cg_c0(myNode, LINKS.modelRef$KJsa, getEditorContext());
     return provider.createCell();
   }
   private static class modelRefSingleRoleHandler_wm88cg_c0 extends SingleRoleCellProvider {
@@ -98,8 +98,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.modelRef$RfYQ, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.modelRef$RfYQ, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.modelRef$KJsa, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.modelRef$KJsa, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -111,7 +111,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.modelRef$RfYQ);
+        editorCell.setSRole(LINKS.modelRef$KJsa);
       }
       Style style = new StyleImpl();
       new ReferenceDecoratedStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
@@ -121,7 +121,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.modelRef$RfYQ));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.modelRef$KJsa));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_modelRef");
@@ -147,7 +147,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modelRef$RfYQ = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x19dc9460645cfdd7L, 0x19dc9460645d0827L, "modelRef");
+    /*package*/ static final SContainmentLink modelRef$KJsa = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x19dc9460645cfdd7L, 0x19dc9460645d0827L, "modelRef");
   }
 
   private static final class CONCEPTS {

@@ -16,13 +16,13 @@ public class NF_Container {
   public static class NodeFactory_7789927720474697827 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Container$tb)) {
-        ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.containers$X6FX)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.Container$tb), LINKS.containers$X6FX)));
+        ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.containers$Afiz)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.Container$tb), LINKS.containers$Afiz)));
       }
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink containers$X6FX = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6c1b61fd2cd1eefeL, 0x6c1b61fd2cd1ef02L, "containers");
+    /*package*/ static final SContainmentLink containers$Afiz = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6c1b61fd2cd1eefeL, 0x6c1b61fd2cd1ef02L, "containers");
   }
 
   private static final class CONCEPTS {

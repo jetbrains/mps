@@ -63,15 +63,15 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       final String classifierName = ((String) BHReflection.invoke0(classifier, CONCEPTS.INamedConcept$nV, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
       if (isMethod) {
         SNode method = SNodeOperations.cast(node, CONCEPTS.BaseMethodDeclaration$RR);
-        final String methodName = SPropertyOperations.getString(method, PROPS.name$tAp1);
-        final int paramCount = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).count();
+        final String methodName = SPropertyOperations.getString(method, PROPS.name$lA7v);
+        final int paramCount = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).count();
         return open(new _FunctionTypes._void_P1_E1<IProjectHandler, RemoteException>() {
           public void invoke(IProjectHandler h) throws RemoteException {
             h.openMethod(classifierName, methodName, paramCount);
           }
         }, p);
       } else if (isConstructor) {
-        final int paramCount = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.ConstructorDeclaration$5U), LINKS.parameter$WIkZ)).count();
+        final int paramCount = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.ConstructorDeclaration$5U), LINKS.parameter$qsax)).count();
         return open(new _FunctionTypes._void_P1_E1<IProjectHandler, RemoteException>() {
           public void invoke(IProjectHandler h) throws RemoteException {
             h.openConstructor(classifierName, paramCount);
@@ -123,10 +123,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 }

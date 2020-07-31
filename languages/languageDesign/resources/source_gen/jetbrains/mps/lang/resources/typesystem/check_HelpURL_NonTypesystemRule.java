@@ -19,14 +19,14 @@ public class check_HelpURL_NonTypesystemRule extends AbstractNonTypesystemRule_R
   public check_HelpURL_NonTypesystemRule() {
   }
   public void applyRule(final SNode url, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(url, LINKS.baseURL$oVbU) != null)) {
+    if ((SLinkOperations.getTarget(url, LINKS.baseURL$4EL6) != null)) {
       return;
     }
-    if (isEmptyString(SPropertyOperations.getString(url, PROPS.url$W1e0))) {
+    if (isEmptyString(SPropertyOperations.getString(url, PROPS.url$4_M0))) {
       return;
     }
 
-    URLCheckUtil.check(typeCheckingContext, url, SPropertyOperations.getString(url, PROPS.url$W1e0));
+    URLCheckUtil.check(typeCheckingContext, url, SPropertyOperations.getString(url, PROPS.url$4_M0));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.HelpURL$gf;
@@ -42,11 +42,11 @@ public class check_HelpURL_NonTypesystemRule extends AbstractNonTypesystemRule_R
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseURL$oVbU = MetaAdapterFactory.getReferenceLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L, 0x4197d5560e6966c4L, "baseURL");
+    /*package*/ static final SReferenceLink baseURL$4EL6 = MetaAdapterFactory.getReferenceLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L, 0x4197d5560e6966c4L, "baseURL");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty url$W1e0 = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L, 0x47d8f9811b73d398L, "url");
+    /*package*/ static final SProperty url$4_M0 = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L, 0x47d8f9811b73d398L, "url");
   }
 
   private static final class CONCEPTS {

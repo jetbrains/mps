@@ -33,7 +33,7 @@ public class Developer_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.bestFriend$Lwbt, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.bestFriend$Y_z3, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -64,7 +64,7 @@ public class Developer_Constraints extends BaseConstraintsDescriptor {
                   SNode team = SNodeOperations.getParent(devnode);
                   if (SNodeOperations.isInstanceOf(team, CONCEPTS.Team$k5)) {
                     SNode teamNode = SNodeOperations.cast(team, CONCEPTS.Team$k5);
-                    ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(teamNode, LINKS.developer$HD3C)));
+                    ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(teamNode, LINKS.developer$6SKo)));
                   } else {
                     ListSequence.fromList(result).addElement(devnode);
                   }
@@ -116,7 +116,7 @@ public class Developer_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink bestFriend$Lwbt = MetaAdapterFactory.getReferenceLink(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0xd0768d7cf132939L, 0xd0768d7cf132953L, "bestFriend");
-    /*package*/ static final SContainmentLink developer$HD3C = MetaAdapterFactory.getContainmentLink(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0xd0768d7cf12f792L, 0xd0768d7cf132937L, "developer");
+    /*package*/ static final SReferenceLink bestFriend$Y_z3 = MetaAdapterFactory.getReferenceLink(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0xd0768d7cf132939L, 0xd0768d7cf132953L, "bestFriend");
+    /*package*/ static final SContainmentLink developer$6SKo = MetaAdapterFactory.getContainmentLink(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0xd0768d7cf12f792L, 0xd0768d7cf132937L, "developer");
   }
 }

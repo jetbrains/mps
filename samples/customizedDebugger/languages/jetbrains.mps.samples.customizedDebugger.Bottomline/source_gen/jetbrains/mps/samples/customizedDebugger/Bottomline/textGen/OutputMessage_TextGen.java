@@ -20,7 +20,7 @@ public class OutputMessage_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     tgs.indent();
     tgs.append("System.out.println(\"");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$Zo0u));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$GCey));
     tgs.append("\");");
     tgs.newLine();
     if (tgs.needPositions()) {
@@ -29,7 +29,7 @@ public class OutputMessage_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$Zo0u = MetaAdapterFactory.getProperty(0x3f028972a2904cf2L, 0xa87e9b8f7e56076bL, 0x7df3f12f124a5e4L, 0x7df3f12f124a629L, "value");
+    /*package*/ static final SProperty value$GCey = MetaAdapterFactory.getProperty(0x3f028972a2904cf2L, 0xa87e9b8f7e56076bL, 0x7df3f12f124a5e4L, 0x7df3f12f124a629L, "value");
   }
 
   private static final class CONCEPTS {

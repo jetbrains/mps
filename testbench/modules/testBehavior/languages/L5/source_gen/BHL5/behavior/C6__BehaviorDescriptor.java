@@ -29,11 +29,11 @@ public final class C6__BehaviorDescriptor extends BaseBHDescriptor {
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(foo_id2eC$PxWCr8m, bar_id2k7p7sTvyr6);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.a$5ih$, "C6");
+    SPropertyOperations.assign(__thisNode__, PROPS.a$zQws, "C6");
   }
 
   /*package*/ static void foo_id2eC$PxWCr8m(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.a$5ih$, "c6");
+    SPropertyOperations.assign(__thisNode__, PROPS.a$zQws, "c6");
   }
   /*package*/ static void bar_id2k7p7sTvyr6(@NotNull SNode __thisNode__) {
   }
@@ -89,6 +89,6 @@ public final class C6__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty a$5ih$ = MetaAdapterFactory.getProperty(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x355d469f0ba114cbL, 0x355d469f0ba114e9L, "a");
+    /*package*/ static final SProperty a$zQws = MetaAdapterFactory.getProperty(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x355d469f0ba114cbL, 0x355d469f0ba114e9L, "a");
   }
 }

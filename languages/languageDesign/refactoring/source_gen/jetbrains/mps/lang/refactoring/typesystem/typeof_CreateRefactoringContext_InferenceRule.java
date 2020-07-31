@@ -30,34 +30,34 @@ public class typeof_CreateRefactoringContext_InferenceRule extends AbstractInfer
   public typeof_CreateRefactoringContext_InferenceRule() {
   }
   public void applyRule(final SNode createContextNode, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode target = SLinkOperations.getTarget(SLinkOperations.getTarget(createContextNode, LINKS.refactoring$3ZlC), LINKS.target$oyxZ);
-    if (SPropertyOperations.getBoolean(target, PROPS.allowMultiple$Y2GU) == false) {
+    SNode target = SLinkOperations.getTarget(SLinkOperations.getTarget(createContextNode, LINKS.refactoring$VFuo), LINKS.target$SItx);
+    if (SPropertyOperations.getBoolean(target, PROPS.allowMultiple$3jK6) == false) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(createContextNode, LINKS.target$nBP1);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(createContextNode, LINKS.target$siFv);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "5697951647051825960", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "5697951647051825962", true), (SNode) typeCheckingContext.typeOf(target, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "5697951647051825967", true), false, true, _info_12389875345);
       }
     } else {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(createContextNode, LINKS.target$nBP1);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(createContextNode, LINKS.target$siFv);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "1817812116820118145", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "1817812116820118147", true), (SNode) _quotation_createNode_q0qn4n_a1a0c0a0a1a1(typeCheckingContext.typeOf(target, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "5697951647051807603", true)), false, true, _info_12389875345);
       }
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(createContextNode, LINKS.project$9wWV);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(createContextNode, LINKS.project$AXw_);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "7340098493333217437", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "7340098493333217422", true), (SNode) _quotation_createNode_q0qn4n_a1a0c0c0b(), false, true, _info_12389875345);
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(createContextNode, LINKS.parameters$s_lD)).count() != ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(createContextNode, LINKS.refactoring$3ZlC), LINKS.parameter$dQA8)).count()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(createContextNode, LINKS.parameters$Q5uR)).count() != ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(createContextNode, LINKS.refactoring$VFuo), LINKS.parameter$HstS)).count()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(createContextNode, "wrong number of parameters", "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "1817812116819949498", null, errorTarget);
       }
     }
     {
-      Iterator<SNode> inputParameter_it = ListSequence.fromList(SLinkOperations.getChildren(createContextNode, LINKS.parameters$s_lD)).iterator();
-      Iterator<SNode> declaredParameter_it = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(createContextNode, LINKS.refactoring$3ZlC), LINKS.parameter$dQA8)).iterator();
+      Iterator<SNode> inputParameter_it = ListSequence.fromList(SLinkOperations.getChildren(createContextNode, LINKS.parameters$Q5uR)).iterator();
+      Iterator<SNode> declaredParameter_it = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(createContextNode, LINKS.refactoring$VFuo), LINKS.parameter$HstS)).iterator();
       SNode inputParameter_var;
       SNode declaredParameter_var;
       while (inputParameter_it.hasNext() && declaredParameter_it.hasNext()) {
@@ -111,16 +111,16 @@ public class typeof_CreateRefactoringContext_InferenceRule extends AbstractInfer
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink refactoring$3ZlC = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x335c206b02bc2de5L, 0x335c206b02bd34aaL, "refactoring");
-    /*package*/ static final SContainmentLink target$oyxZ = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a77a0656L, "target");
-    /*package*/ static final SContainmentLink target$nBP1 = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x335c206b02bc2de5L, 0x335c206b02bde745L, "target");
-    /*package*/ static final SContainmentLink project$9wWV = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x335c206b02bc2de5L, 0x65dd44b0af81a086L, "project");
-    /*package*/ static final SContainmentLink parameter$dQA8 = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a778e2d8L, "parameter");
-    /*package*/ static final SContainmentLink parameters$s_lD = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x335c206b02bc2de5L, 0x335c206b02bed2aaL, "parameters");
+    /*package*/ static final SReferenceLink refactoring$VFuo = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x335c206b02bc2de5L, 0x335c206b02bd34aaL, "refactoring");
+    /*package*/ static final SContainmentLink target$SItx = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a77a0656L, "target");
+    /*package*/ static final SContainmentLink target$siFv = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x335c206b02bc2de5L, 0x335c206b02bde745L, "target");
+    /*package*/ static final SContainmentLink project$AXw_ = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x335c206b02bc2de5L, 0x65dd44b0af81a086L, "project");
+    /*package*/ static final SContainmentLink parameter$HstS = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a778e2d8L, "parameter");
+    /*package*/ static final SContainmentLink parameters$Q5uR = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x335c206b02bc2de5L, 0x335c206b02bed2aaL, "parameters");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty allowMultiple$Y2GU = MetaAdapterFactory.getProperty(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a0569L, 0x5fb04b74a77a0657L, "allowMultiple");
+    /*package*/ static final SProperty allowMultiple$3jK6 = MetaAdapterFactory.getProperty(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a0569L, 0x5fb04b74a77a0657L, "allowMultiple");
   }
 
   private static final class CONCEPTS {

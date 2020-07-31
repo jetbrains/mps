@@ -31,7 +31,7 @@ public final class InequationReplacementRule__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static SNode getSecondNodeCondition_id3SW4jvYrbIS(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.supertypeNode$b3lK);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.supertypeNode$mByg);
   }
 
   /*package*/ InequationReplacementRule__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class InequationReplacementRule__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink supertypeNode$b3lK = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x117c5668bf2L, 0x117c567f086L, "supertypeNode");
+    /*package*/ static final SContainmentLink supertypeNode$mByg = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x117c5668bf2L, 0x117c567f086L, "supertypeNode");
   }
 }

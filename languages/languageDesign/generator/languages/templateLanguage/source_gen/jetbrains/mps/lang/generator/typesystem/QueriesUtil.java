@@ -38,7 +38,7 @@ public class QueriesUtil {
       if (SNodeOperations.isInstanceOf(enclosingMacro, CONCEPTS.MapSrcNodeMacro$Hp)) {
         // inside mapper func or post-mapper function? 
         if ((SNodeOperations.getNodeAncestorWhereConceptInList(contextNode, new SAbstractConcept[]{CONCEPTS.MapSrcMacro_MapperFunction$$8, CONCEPTS.MapSrcMacro_PostMapperFunction$iH}, true, false) != null)) {
-          SNode query = SLinkOperations.getTarget(SNodeOperations.cast(enclosingMacro, CONCEPTS.MapSrcNodeMacro$Hp), LINKS.sourceNodeQuery$mDr3);
+          SNode query = SLinkOperations.getTarget(SNodeOperations.cast(enclosingMacro, CONCEPTS.MapSrcNodeMacro$Hp), LINKS.sourceNodeQuery$Y46t);
           if (query != null) {
             QueriesUtil.equate_outputNodeType_fromSourceQuery(typeCheckingContext, query, InputNodeType);
             return;
@@ -48,7 +48,7 @@ public class QueriesUtil {
       if (SNodeOperations.isInstanceOf(enclosingMacro, CONCEPTS.MapSrcListMacro$vC)) {
         // inside mapper func or post-mapper function? 
         if ((SNodeOperations.getNodeAncestorWhereConceptInList(contextNode, new SAbstractConcept[]{CONCEPTS.MapSrcMacro_MapperFunction$$8, CONCEPTS.MapSrcMacro_PostMapperFunction$iH}, true, false) != null)) {
-          SNode query = SLinkOperations.getTarget(SNodeOperations.cast(enclosingMacro, CONCEPTS.MapSrcListMacro$vC), LINKS.sourceNodesQuery$K2SG);
+          SNode query = SLinkOperations.getTarget(SNodeOperations.cast(enclosingMacro, CONCEPTS.MapSrcListMacro$vC), LINKS.sourceNodesQuery$hptk);
           if (query != null) {
             QueriesUtil.equate_outputNodeType_fromSourceQuery(typeCheckingContext, query, InputNodeType);
             return;
@@ -82,7 +82,7 @@ public class QueriesUtil {
         return null;
       }
       SNode ifMacro = SNodeOperations.cast(parent, CONCEPTS.IfMacro$hQ);
-      if (SLinkOperations.getTarget(ifMacro, LINKS.alternativeConsequence$yuVJ) == node) {
+      if (SLinkOperations.getTarget(ifMacro, LINKS.alternativeConsequence$GYVL) == node) {
         //  if we inside a macro under ELSE, start looking for enclosing macro from IF 
         currMacroNode = ifMacro;
         node = SNodeOperations.getParent(ifMacro);
@@ -97,10 +97,10 @@ public class QueriesUtil {
           return false;
         }
         // macros can change source, skip those that do not change it due to missing optional query 
-        if (SNodeOperations.isInstanceOf(it, CONCEPTS.MapSrcNodeMacro$Hp) && (SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.MapSrcNodeMacro$Hp), LINKS.sourceNodeQuery$mDr3) == null)) {
+        if (SNodeOperations.isInstanceOf(it, CONCEPTS.MapSrcNodeMacro$Hp) && (SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.MapSrcNodeMacro$Hp), LINKS.sourceNodeQuery$Y46t) == null)) {
           return false;
         }
-        if (SNodeOperations.isInstanceOf(it, CONCEPTS.TemplateSwitchMacro$o0) && (SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TemplateSwitchMacro$o0), LINKS.sourceNodeQuery$kkf1) == null)) {
+        if (SNodeOperations.isInstanceOf(it, CONCEPTS.TemplateSwitchMacro$o0) && (SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TemplateSwitchMacro$o0), LINKS.sourceNodeQuery$PNhv) == null)) {
           return false;
         }
         return true;
@@ -200,7 +200,7 @@ __switch__:
     }
     SNode OutputType = TypecheckingFacade.getFromContext().getTypeOf(query);
     if (SNodeOperations.isInstanceOf(OutputType, CONCEPTS.SNodeListType$OI)) {
-      return _quotation_createNode_w9106s_a0a2a5(SLinkOperations.getTarget(SNodeOperations.cast(OutputType, CONCEPTS.SNodeListType$OI), LINKS.elementConcept$AB72));
+      return _quotation_createNode_w9106s_a0a2a5(SLinkOperations.getTarget(SNodeOperations.cast(OutputType, CONCEPTS.SNodeListType$OI), LINKS.elementConcept$GWpY));
     } else {
       SNode outputSNodeType = TypecheckingFacade.getFromContext().coerceType(OutputType, CONCEPTS.SNodeType$gn);
       if (outputSNodeType != null) {
@@ -208,7 +208,7 @@ __switch__:
       } else {
         SNode outputSequenceType = TypecheckingFacade.getFromContext().coerceType(OutputType, CONCEPTS.SequenceType$n9);
         if (outputSequenceType != null) {
-          SNode elementType = SLinkOperations.getTarget(outputSequenceType, LINKS.elementType$2gFy);
+          SNode elementType = SLinkOperations.getTarget(outputSequenceType, LINKS.elementType$655u);
           SNode outputSNodeType2 = TypecheckingFacade.getFromContext().coerceType(elementType, CONCEPTS.SNodeType$gn);
           if (outputSNodeType2 != null) {
             return outputSNodeType2;
@@ -295,11 +295,11 @@ __switch__:
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink sourceNodeQuery$mDr3 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10759372d78L, 0x11003064fa9L, "sourceNodeQuery");
-    /*package*/ static final SContainmentLink sourceNodesQuery$K2SG = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x107ce4fbf98L, 0x11003977640L, "sourceNodesQuery");
-    /*package*/ static final SContainmentLink alternativeConsequence$yuVJ = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047c1472deL, 0x1163aea5803L, "alternativeConsequence");
-    /*package*/ static final SContainmentLink sourceNodeQuery$kkf1 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e51747593L, 0xda3dc6e5174759eL, "sourceNodeQuery");
-    /*package*/ static final SReferenceLink elementConcept$AB72 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aae26be32L, 0x10aae27c421L, "elementConcept");
-    /*package*/ static final SContainmentLink elementType$2gFy = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
+    /*package*/ static final SContainmentLink sourceNodeQuery$Y46t = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10759372d78L, 0x11003064fa9L, "sourceNodeQuery");
+    /*package*/ static final SContainmentLink sourceNodesQuery$hptk = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x107ce4fbf98L, 0x11003977640L, "sourceNodesQuery");
+    /*package*/ static final SContainmentLink alternativeConsequence$GYVL = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047c1472deL, 0x1163aea5803L, "alternativeConsequence");
+    /*package*/ static final SContainmentLink sourceNodeQuery$PNhv = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e51747593L, 0xda3dc6e5174759eL, "sourceNodeQuery");
+    /*package*/ static final SReferenceLink elementConcept$GWpY = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aae26be32L, 0x10aae27c421L, "elementConcept");
+    /*package*/ static final SContainmentLink elementType$655u = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
   }
 }

@@ -22,9 +22,9 @@ public class typeof_SEnum_MemberForValueOperation_Old_checkArg_InferenceRule ext
   public void applyRule(final SNode operation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.valueExpression$CIew);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.valueExpression$Ip1w);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1240931057511", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(operation, LINKS.valueExpression$CIew), "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1240931057513", true), (SNode) RulesUtil.datatypeBLType(SLinkOperations.getTarget(SEnumOperation_Old__BehaviorDescriptor.getEnum_idi3HhkyV.invoke(operation), LINKS.memberDataType$IU7B)), true, false, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(operation, LINKS.valueExpression$Ip1w), "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1240931057513", true), (SNode) RulesUtil.datatypeBLType(SLinkOperations.getTarget(SEnumOperation_Old__BehaviorDescriptor.getEnum_idi3HhkyV.invoke(operation), LINKS.memberDataType$I9FT)), true, false, _info_12389875345);
       }
     }
   }
@@ -39,8 +39,8 @@ public class typeof_SEnum_MemberForValueOperation_Old_checkArg_InferenceRule ext
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink valueExpression$CIew = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e64eL, 0x120ed37e64fL, "valueExpression");
-    /*package*/ static final SReferenceLink memberDataType$IU7B = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3210ef05L, "memberDataType");
+    /*package*/ static final SContainmentLink valueExpression$Ip1w = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e64eL, 0x120ed37e64fL, "valueExpression");
+    /*package*/ static final SReferenceLink memberDataType$I9FT = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3210ef05L, "memberDataType");
   }
 
   private static final class CONCEPTS {

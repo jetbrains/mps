@@ -92,9 +92,9 @@ public class TestSubstituteWrapper_SubstituteMenu extends SubstituteMenuBase {
           SNode nodeToWrap = super.createNode(pattern);
           myCreatedNode = nodeToWrap;
           SNode wrapper = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteWrapper"));
-          SLinkOperations.setTarget(wrapper, LINKS.child$K30t, nodeToWrap);
-          SPropertyOperations.assign(wrapper, PROPS.wrappedMatchingText$F7GJ, wrappedItem.getMatchingText(pattern));
-          SPropertyOperations.assign(wrapper, PROPS.wrappedDescriptionText$F7HH, wrappedItem.getDescriptionText(pattern));
+          SLinkOperations.setTarget(wrapper, LINKS.child$hte3, nodeToWrap);
+          SPropertyOperations.assign(wrapper, PROPS.wrappedMatchingText$SIEL, wrappedItem.getMatchingText(pattern));
+          SPropertyOperations.assign(wrapper, PROPS.wrappedDescriptionText$SJ8N, wrappedItem.getDescriptionText(pattern));
           return wrapper;
         }
         @Override
@@ -181,8 +181,8 @@ public class TestSubstituteWrapper_SubstituteMenu extends SubstituteMenuBase {
           SNode nodeToWrap = super.createNode(pattern);
           myCreatedNode = nodeToWrap;
           SNode wrapper = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteWrapper"));
-          SLinkOperations.setTarget(wrapper, LINKS.child$K30t, nodeToWrap);
-          SPropertyOperations.assign(wrapper, PROPS.wrappedConceptAlias$F7Ja, SConceptOperations.conceptAlias(wrappedItem.getOutputConcept()));
+          SLinkOperations.setTarget(wrapper, LINKS.child$hte3, nodeToWrap);
+          SPropertyOperations.assign(wrapper, PROPS.wrappedConceptAlias$SJPQ, SConceptOperations.conceptAlias(wrappedItem.getOutputConcept()));
           return wrapper;
         }
         @Override
@@ -245,12 +245,12 @@ public class TestSubstituteWrapper_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink child$K30t = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x401156263ff3470fL, "child");
+    /*package*/ static final SContainmentLink child$hte3 = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x401156263ff3470fL, "child");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty wrappedMatchingText$F7GJ = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x52ae9daefcc45c00L, "wrappedMatchingText");
-    /*package*/ static final SProperty wrappedDescriptionText$F7HH = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x52ae9daefcc45c02L, "wrappedDescriptionText");
-    /*package*/ static final SProperty wrappedConceptAlias$F7Ja = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x52ae9daefcc45c05L, "wrappedConceptAlias");
+    /*package*/ static final SProperty wrappedMatchingText$SIEL = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x52ae9daefcc45c00L, "wrappedMatchingText");
+    /*package*/ static final SProperty wrappedDescriptionText$SJ8N = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x52ae9daefcc45c02L, "wrappedDescriptionText");
+    /*package*/ static final SProperty wrappedConceptAlias$SJPQ = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x52ae9daefcc45c05L, "wrappedConceptAlias");
   }
 }

@@ -29,13 +29,13 @@ public class check_ExceptionWasNotCaught_NonTypesystemRule extends AbstractNonTy
   public void applyRule(final SNode iTryCatchStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> caughtExceptions = new ArrayList<SNode>();
     for (SNode catchClause : ITryCatchStatement__BehaviorDescriptor.getCatchClauses_id3eptmOG0XgA.invoke(iTryCatchStatement)) {
-      SNode catchType = SLinkOperations.getTarget(SLinkOperations.getTarget(catchClause, LINKS.throwable$5XW_), LINKS.type$pLrO);
+      SNode catchType = SLinkOperations.getTarget(SLinkOperations.getTarget(catchClause, LINKS.throwable$T0lV), LINKS.type$uWuc);
       if (TypecheckingFacade.getFromContext().isSubtype(catchType, _quotation_createNode_6gl2l4_b0a1a1a1())) {
         for (SNode caughtType : caughtExceptions) {
           if (TypecheckingFacade.getFromContext().isSubtype(catchType, caughtType)) {
             {
               final MessageTarget errorTarget = new NodeMessageTarget();
-              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(catchClause, LINKS.throwable$5XW_), "\"" + SLinkOperations.getTarget(SLinkOperations.getTarget(catchClause, LINKS.throwable$5XW_), LINKS.type$pLrO) + "\" has already been caught", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2248407684786323918", null, errorTarget);
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(catchClause, LINKS.throwable$T0lV), "\"" + SLinkOperations.getTarget(SLinkOperations.getTarget(catchClause, LINKS.throwable$T0lV), LINKS.type$uWuc) + "\" has already been caught", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2248407684786323918", null, errorTarget);
             }
           }
         }
@@ -61,8 +61,8 @@ public class check_ExceptionWasNotCaught_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink throwable$5XW_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink throwable$T0lV = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class CONCEPTS {

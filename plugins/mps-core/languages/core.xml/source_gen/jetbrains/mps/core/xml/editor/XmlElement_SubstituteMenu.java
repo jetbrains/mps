@@ -90,7 +90,7 @@ public class XmlElement_SubstituteMenu extends SubstituteMenuBase {
         Matcher _matcher_xunnx5_a1a6c5;
         SNode element = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.XmlElement$Pm, null);
         if ((_matcher_xunnx5_a1a6c5 = REGEXP_xunnx5_a0a0a2a6c5.matcher(pattern)).find()) {
-          SPropertyOperations.assign(element, PROPS.tagName$U00C, _matcher_xunnx5_a1a6c5.group(1));
+          SPropertyOperations.assign(element, PROPS.tagName$60jo, _matcher_xunnx5_a1a6c5.group(1));
         }
         return element;
       }
@@ -118,6 +118,6 @@ public class XmlElement_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty tagName$U00C = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName");
+    /*package*/ static final SProperty tagName$60jo = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName");
   }
 }

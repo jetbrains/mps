@@ -36,8 +36,8 @@ public final class ThisClassifierExpression__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static SNode getClassifier_idhEwJeDN(@NotNull SNode __thisNode__) {
-    if (SLinkOperations.getTarget(__thisNode__, LINKS.classifier$Xpfr) != null) {
-      return SLinkOperations.getTarget(__thisNode__, LINKS.classifier$Xpfr);
+    if (SLinkOperations.getTarget(__thisNode__, LINKS.classifier$Jeu5) != null) {
+      return SLinkOperations.getTarget(__thisNode__, LINKS.classifier$Jeu5);
     }
     return IClassifier__BehaviorDescriptor.getContextClassifier_idhEwJim4.invoke(SNodeOperations.asSConcept(CONCEPTS.IClassifier$Cb), __thisNode__);
   }
@@ -98,7 +98,7 @@ public final class ThisClassifierExpression__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$Xpfr = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, 0x11bc25d4bc3L, "classifier");
+    /*package*/ static final SReferenceLink classifier$Jeu5 = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, 0x11bc25d4bc3L, "classifier");
   }
 
   private static final class CONCEPTS {

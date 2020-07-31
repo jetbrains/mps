@@ -31,7 +31,7 @@ public final class SubstituteMenu_Contribution__BehaviorDescriptor extends BaseB
   }
 
   /*package*/ static SNode getMenuReference_id1quYWAD2_PI(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.menuReference$N38f);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.menuReference$IwZh);
   }
 
   /*package*/ SubstituteMenu_Contribution__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class SubstituteMenu_Contribution__BehaviorDescriptor extends BaseB
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink menuReference$N38f = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5cb53L, 0x638d10740d3d77d4L, "menuReference");
+    /*package*/ static final SContainmentLink menuReference$IwZh = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5cb53L, 0x638d10740d3d77d4L, "menuReference");
   }
 }

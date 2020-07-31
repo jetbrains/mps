@@ -45,9 +45,9 @@ public class StyleAttributeInheritanceTest_Test extends BaseTransformationTest {
       getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
         public void run() {
           SNode root = SNodeOperations.cast(getEditorComponent().getEditedNode(), CONCEPTS.NodeContainer$3D);
-          SNode leaf = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$_a4Q)).getElement(0);
-          SNode inner = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$_a4Q)).getElement(1);
-          SNode innerLeaf = ListSequence.fromList(SLinkOperations.getChildren(inner, LINKS.node$_a4Q)).getElement(0);
+          SNode leaf = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$ZSma)).getElement(0);
+          SNode inner = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$ZSma)).getElement(1);
+          SNode innerLeaf = ListSequence.fromList(SLinkOperations.getChildren(inner, LINKS.node$ZSma)).getElement(0);
           Assert.assertEquals(getEditorComponent().findNodeCell(root).getStyle().get(StyleAttributes.getInstance().<String>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-inherited-attribute")), "top");
           Assert.assertEquals(getEditorComponent().findNodeCell(leaf).getStyle().get(StyleAttributes.getInstance().<String>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-inherited-attribute")), "top");
           Assert.assertEquals(getEditorComponent().findNodeCell(inner).getStyle().get(StyleAttributes.getInstance().<String>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-inherited-attribute")), "inner");
@@ -62,6 +62,6 @@ public class StyleAttributeInheritanceTest_Test extends BaseTransformationTest {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink node$_a4Q = MetaAdapterFactory.getContainmentLink(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL, 0x74e28664f05605aeL, "node");
+    /*package*/ static final SContainmentLink node$ZSma = MetaAdapterFactory.getContainmentLink(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL, 0x74e28664f05605aeL, "node");
   }
 }

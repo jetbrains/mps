@@ -80,7 +80,7 @@
       <node id="7205391946760614073" at="18,22,19,18" concept="1" />
       <node id="8076384811111991328" at="19,18,20,17" concept="1" />
       <node id="8076384811111991476" at="20,17,21,31" concept="1" />
-      <node id="7205391946760606066" at="25,0,26,0" concept="6" trace="text$u_B5" />
+      <node id="7205391946760606066" at="25,0,26,0" concept="6" trace="text$OdVr" />
       <node id="7205391946760606066" at="13,0,23,0" concept="3" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
       <scope id="7205391946760606066" at="14,54,21,31">
         <var name="tgs" id="7205391946760606066" />
@@ -104,7 +104,7 @@
       <node id="8081432364527463174" at="17,86,18,18" concept="1" />
       <node id="8081432364527463146" at="18,18,19,17" concept="1" />
       <node id="8081432364527463204" at="19,17,20,31" concept="1" />
-      <node id="8081432364527463082" at="24,0,25,0" concept="6" trace="text$bRHt" />
+      <node id="8081432364527463082" at="24,0,25,0" concept="6" trace="text$JZ13" />
       <node id="8081432364527463082" at="13,0,22,0" concept="3" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
       <scope id="8081432364527463082" at="14,54,20,31">
         <var name="tgs" id="8081432364527463082" />

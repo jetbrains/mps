@@ -40,8 +40,8 @@
       <node id="681855071694482336" at="62,0,63,0" concept="7" trace="BaseToolDeclaration$fH" />
       <node id="681855071694482336" at="63,0,64,0" concept="7" trace="PreferencesComponentDeclaration$6j" />
       <node id="681855071694482336" at="64,0,65,0" concept="7" trace="ProjectPluginDeclaration$4P" />
-      <node id="681855071694482336" at="68,0,69,0" concept="7" trace="needInitConfig$z0Fk" />
-      <node id="681855071694482336" at="69,0,70,0" concept="7" trace="compileInMPS$8r6V" />
+      <node id="681855071694482336" at="68,0,69,0" concept="7" trace="needInitConfig$XkYG" />
+      <node id="681855071694482336" at="69,0,70,0" concept="7" trace="compileInMPS$58m_" />
       <node id="681855071694482338" at="18,0,20,0" concept="0" trace="PluginUtils#()V" />
       <node id="681855071694482342" at="20,0,23,0" concept="8" trace="needAppPlugin#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
       <node id="681855071694482362" at="23,0,26,0" concept="8" trace="needProjectPlugin#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />

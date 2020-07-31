@@ -148,13 +148,13 @@ public class Expression_to_type_Cast extends TransformationMenuBase {
           SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CastExpression$7m, null);
           SNode targetExpression = _context.getNode();
           SNodeOperations.replaceWithAnother(targetExpression, result);
-          SLinkOperations.setTarget(result, LINKS.expression$8QPv, targetExpression);
+          SLinkOperations.setTarget(result, LINKS.expression$izU1, targetExpression);
           PrecedenceUtil.parenthesiseIfNecessary(targetExpression);
 
           if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(result), CONCEPTS.Expression$TP) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(result), CONCEPTS.ParenthesizedExpression$vE))) {
             SNode parens = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"));
             SNodeOperations.replaceWithAnother(result, parens);
-            SLinkOperations.setTarget(parens, LINKS.expression$4_F0, result);
+            SLinkOperations.setTarget(parens, LINKS.expression$efP0, result);
           }
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), result, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
@@ -228,13 +228,13 @@ public class Expression_to_type_Cast extends TransformationMenuBase {
           SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CastExpression$7m, null);
           SNode targetExpression = PrecedenceUtil.getTargetForLeftTransform(_context.getNode(), result);
           SNodeOperations.replaceWithAnother(targetExpression, result);
-          SLinkOperations.setTarget(result, LINKS.expression$8QPv, targetExpression);
+          SLinkOperations.setTarget(result, LINKS.expression$izU1, targetExpression);
           PrecedenceUtil.parenthesiseIfNecessary(targetExpression);
 
           if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(result), CONCEPTS.Expression$TP) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(result), CONCEPTS.ParenthesizedExpression$vE))) {
             SNode parens = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"));
             SNodeOperations.replaceWithAnother(result, parens);
-            SLinkOperations.setTarget(parens, LINKS.expression$4_F0, result);
+            SLinkOperations.setTarget(parens, LINKS.expression$efP0, result);
           }
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), result, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
@@ -278,7 +278,7 @@ public class Expression_to_type_Cast extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$8QPv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
-    /*package*/ static final SContainmentLink expression$4_F0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink expression$izU1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
+    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
   }
 }

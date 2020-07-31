@@ -44,10 +44,10 @@ public final class ConvertToList_Intention extends AbstractIntentionDescriptor i
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.items$pENx)).isNotEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.items$rIWZ)).isNotEmpty();
   }
   private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
-    return Objects.equals(SNodeOperations.getContainingLink(childNode), LINKS.items$pENx);
+    return Objects.equals(SNodeOperations.getContainingLink(childNode), LINKS.items$rIWZ);
   }
   @Override
   public boolean isSurroundWith() {
@@ -68,13 +68,13 @@ public final class ConvertToList_Intention extends AbstractIntentionDescriptor i
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      List<SNode> items = SLinkOperations.getChildren(node, LINKS.items$pENx);
+      List<SNode> items = SLinkOperations.getChildren(node, LINKS.items$rIWZ);
       ListSequence.fromList(items).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.deleteNode(it);
         }
       });
-      SLinkOperations.setTarget(node, LINKS.list$5wSZ, _quotation_createNode_mz75hy_a0a2a0(items));
+      SLinkOperations.setTarget(node, LINKS.list$EVAx, _quotation_createNode_mz75hy_a0a2a0(items));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -99,7 +99,7 @@ public final class ConvertToList_Intention extends AbstractIntentionDescriptor i
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink items$pENx = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x5f50ed14026999c9L, 0x1e16a75f45341377L, "items");
-    /*package*/ static final SContainmentLink list$5wSZ = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x5f50ed14026999c9L, 0x5f50ed14026999cbL, "list");
+    /*package*/ static final SContainmentLink items$rIWZ = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x5f50ed14026999c9L, 0x1e16a75f45341377L, "items");
+    /*package*/ static final SContainmentLink list$EVAx = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x5f50ed14026999c9L, 0x5f50ed14026999cbL, "list");
   }
 }

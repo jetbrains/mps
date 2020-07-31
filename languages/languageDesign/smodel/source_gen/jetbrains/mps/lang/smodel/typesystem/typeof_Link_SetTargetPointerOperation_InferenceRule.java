@@ -27,7 +27,7 @@ public class typeof_Link_SetTargetPointerOperation_InferenceRule extends Abstrac
     }
 
     // checking 
-    SNode parameter = SLinkOperations.getTarget(op, LINKS.linkTarget$ezbw);
+    SNode parameter = SLinkOperations.getTarget(op, LINKS.linkTarget$32$w);
     if ((parameter != null)) {
       final SNode ExpectedType_typevar_942336824646366871 = typeCheckingContext.createNewRuntimeTypesVariable();
       RulesUtil.equate_inputNodePtrType(typeCheckingContext, op, typeCheckingContext.getRepresentative(ExpectedType_typevar_942336824646366871));
@@ -56,7 +56,7 @@ public class typeof_Link_SetTargetPointerOperation_InferenceRule extends Abstrac
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink linkTarget$ezbw = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0xd13da596bcfef4eL, 0xd13da596bcfef4fL, "linkTarget");
+    /*package*/ static final SContainmentLink linkTarget$32$w = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0xd13da596bcfef4eL, 0xd13da596bcfef4fL, "linkTarget");
   }
 
   private static final class CONCEPTS {

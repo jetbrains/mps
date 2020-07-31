@@ -51,7 +51,7 @@ public class MoveCheckToContainedNode extends IntentionsFactory {
 
 
   private boolean isApplicableHelper(SNode node, EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.TestNode$kc) && AttributeOperations.getAttribute(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.TestNode$kc), new IAttributeDescriptor.NodeAttribute(CONCEPTS.AbstractTestNodeAnnotation$5M)) == node && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodeOperations$HdFm)).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodeOperations$HdFm)).first(), CONCEPTS.CheckNodeForErrorMessagesOperation$c0) && SPropertyOperations.getBoolean(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodeOperations$HdFm)).first(), CONCEPTS.CheckNodeForErrorMessagesOperation$c0), PROPS.includeSelf$1l1v) == false;
+    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.TestNode$kc) && AttributeOperations.getAttribute(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.TestNode$kc), new IAttributeDescriptor.NodeAttribute(CONCEPTS.AbstractTestNodeAnnotation$5M)) == node && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodeOperations$TBZE)).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodeOperations$TBZE)).first(), CONCEPTS.CheckNodeForErrorMessagesOperation$c0) && SPropertyOperations.getBoolean(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodeOperations$TBZE)).first(), CONCEPTS.CheckNodeForErrorMessagesOperation$c0), PROPS.includeSelf$DbI1) == false;
   }
 
 
@@ -69,11 +69,11 @@ public class MoveCheckToContainedNode extends IntentionsFactory {
 
 
   public void execute(SNode node, EditorContext editorContext) {
-    SPropertyOperations.assign(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodeOperations$HdFm)).first(), CONCEPTS.CheckNodeForErrorMessagesOperation$c0), PROPS.includeSelf$1l1v, true);
-    if ((AttributeOperations.getAttribute(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.TestNode$kc), LINKS.nodeToCheck$Pz43), new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$UO)) == null)) {
-      AttributeOperations.setAttribute(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.TestNode$kc), LINKS.nodeToCheck$Pz43), new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$UO), node);
+    SPropertyOperations.assign(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodeOperations$TBZE)).first(), CONCEPTS.CheckNodeForErrorMessagesOperation$c0), PROPS.includeSelf$DbI1, true);
+    if ((AttributeOperations.getAttribute(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.TestNode$kc), LINKS.nodeToCheck$VYXt), new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$UO)) == null)) {
+      AttributeOperations.setAttribute(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.TestNode$kc), LINKS.nodeToCheck$VYXt), new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$UO), node);
     } else {
-      ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.TestNode$kc), LINKS.nodeToCheck$Pz43), new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$UO)), LINKS.nodeOperations$HdFm)).insertElement(0, ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodeOperations$HdFm)).first());
+      ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.TestNode$kc), LINKS.nodeToCheck$VYXt), new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$UO)), LINKS.nodeOperations$TBZE)).insertElement(0, ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodeOperations$TBZE)).first());
       SNodeOperations.deleteNode(node);
     }
   }
@@ -102,11 +102,11 @@ public class MoveCheckToContainedNode extends IntentionsFactory {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink nodeOperations$HdFm = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, 0x11b07abae7cL, "nodeOperations");
-    /*package*/ static final SContainmentLink nodeToCheck$Pz43 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, 0x11b5a397b92L, "nodeToCheck");
+    /*package*/ static final SContainmentLink nodeOperations$TBZE = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, 0x11b07abae7cL, "nodeOperations");
+    /*package*/ static final SContainmentLink nodeToCheck$VYXt = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, 0x11b5a397b92L, "nodeToCheck");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty includeSelf$1l1v = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07d3d54aL, 0x33f30f661f8cdca2L, "includeSelf");
+    /*package*/ static final SProperty includeSelf$DbI1 = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07d3d54aL, 0x33f30f661f8cdca2L, "includeSelf");
   }
 }

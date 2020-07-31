@@ -25,7 +25,7 @@ public class check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemR
   public void applyRule(final SNode constructorInvocation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode constructor = SNodeOperations.getNodeAncestor(constructorInvocation, CONCEPTS.ConstructorDeclaration$5U, false, false);
     if (constructor != null) {
-      SNode statementList = SLinkOperations.getTarget(constructor, LINKS.body$WIlu);
+      SNode statementList = SLinkOperations.getTarget(constructor, LINKS.body$qspy);
       SNode firstStatement = StatementList__BehaviorDescriptor.getFirstStatement_id4GU1DgEHJ2u.invoke(statementList);
       if (firstStatement != constructorInvocation) {
         {
@@ -51,6 +51,6 @@ public class check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
   }
 }

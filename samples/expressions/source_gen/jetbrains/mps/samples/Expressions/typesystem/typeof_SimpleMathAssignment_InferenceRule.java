@@ -20,7 +20,7 @@ public class typeof_SimpleMathAssignment_InferenceRule extends AbstractInference
   public void applyRule(final SNode assignment, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final SNode T_typevar_930174696942622783 = typeCheckingContext.createNewRuntimeTypesVariable();
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(assignment, LINKS.expression$VcQ0);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(assignment, LINKS.expression$Fea0);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "930174696942623507", 0, null);
       typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.getRepresentative(T_typevar_930174696942622783), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "930174696942623592", true), false, true, _info_12389875345);
     }
@@ -30,7 +30,7 @@ public class typeof_SimpleMathAssignment_InferenceRule extends AbstractInference
       typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "930174696942551897", true), (SNode) typeCheckingContext.getRepresentative(T_typevar_930174696942622783), false, true, _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(assignment, LINKS.variable$VcP2);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(assignment, LINKS.variable$FdFY);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "930174696942632551", 0, null);
       typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "930174696942622544", true), (SNode) typeCheckingContext.getRepresentative(T_typevar_930174696942622783), false, true, _info_12389875345);
     }
@@ -46,8 +46,8 @@ public class typeof_SimpleMathAssignment_InferenceRule extends AbstractInference
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$VcQ0 = MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0xce8a4f56651064cL, 0xce8a4f566511a32L, "expression");
-    /*package*/ static final SContainmentLink variable$VcP2 = MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0xce8a4f56651064cL, 0xce8a4f566511a30L, "variable");
+    /*package*/ static final SContainmentLink expression$Fea0 = MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0xce8a4f56651064cL, 0xce8a4f566511a32L, "expression");
+    /*package*/ static final SContainmentLink variable$FdFY = MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0xce8a4f56651064cL, 0xce8a4f566511a30L, "variable");
   }
 
   private static final class CONCEPTS {

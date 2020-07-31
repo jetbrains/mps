@@ -45,7 +45,7 @@ public class ImplementedInterfaces_Finder extends GeneratedFinder {
       monitor.start("", 2);
       List<SNode> result = new ArrayList<SNode>();
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.AnonymousClass$aF)) {
-        SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.AnonymousClass$aF), LINKS.classifier$1y5e);
+        SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.AnonymousClass$aF), LINKS.classifier$JwxM);
         if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.Interface$Kp)) {
           ListSequence.fromList(result).addElement(SNodeOperations.cast(classifier, CONCEPTS.Interface$Kp));
           ListSequence.fromList(result).addSequence(ListSequence.fromList((List<SNode>) FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.InterfaceAncestors_Finder", SNodeOperations.cast(classifier, CONCEPTS.Interface$Kp), scope, new EmptyProgressMonitor())));
@@ -54,8 +54,8 @@ public class ImplementedInterfaces_Finder extends GeneratedFinder {
         List<SNode> classNodes = FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.ClassAncestors_Finder", node, scope, monitor.subTask(1));
         ListSequence.fromList(classNodes).addElement(node);
         for (SNode classNode : ListSequence.fromList(classNodes)) {
-          for (SNode implementedInterface : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classNode, CONCEPTS.ClassConcept$IY), LINKS.implementedInterface$mdc6))) {
-            SNode interfaceNode = (SNode) SLinkOperations.getTarget(implementedInterface, LINKS.classifier$pQ_R);
+          for (SNode implementedInterface : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classNode, CONCEPTS.ClassConcept$IY), LINKS.implementedInterface$KoQU))) {
+            SNode interfaceNode = (SNode) SLinkOperations.getTarget(implementedInterface, LINKS.classifier$xslD);
             if ((interfaceNode != null)) {
               ListSequence.fromList(result).addElement(interfaceNode);
               ListSequence.fromList(result).addSequence(ListSequence.fromList((List<SNode>) FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.InterfaceAncestors_Finder", interfaceNode, scope, new EmptyProgressMonitor())));
@@ -90,8 +90,8 @@ public class ImplementedInterfaces_Finder extends GeneratedFinder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$1y5e = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink implementedInterface$mdc6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
   }
 }

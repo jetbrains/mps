@@ -50,7 +50,7 @@ public class FinderReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_1x2yrt_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.FinderReference$Qq, LINKS.finder$rHsq);
+      super((SAbstractConcept) CONCEPTS.FinderReference$Qq, LINKS.finder$r0KA);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class FinderReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink finder$rHsq = MetaAdapterFactory.getReferenceLink(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x1bd5a514384e195fL, 0x643a39f7c0869a50L, "finder");
+    /*package*/ static final SReferenceLink finder$r0KA = MetaAdapterFactory.getReferenceLink(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x1bd5a514384e195fL, 0x643a39f7c0869a50L, "finder");
   }
 }

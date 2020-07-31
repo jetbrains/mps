@@ -25,19 +25,19 @@ public final class copyPasteExtendingWithDefaultModifier_CopyPreProcessor_0 impl
     SNode methodParent = SNodeOperations.getParent(original);
     if (SNodeOperations.isInstanceOf(methodParent, CONCEPTS.Classifier$hJ)) {
       if (SNodeOperations.isInstanceOf(methodParent, CONCEPTS.Interface$Kp)) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(copy, LINKS.modifiers$akE0)).all(new IWhereFilter<SNode>() {
+        if (ListSequence.fromList(SLinkOperations.getChildren(copy, LINKS.modifiers$m0)).all(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return !(SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$Z2));
           }
         })) {
-          SPropertyOperations.assign(copy, PROPS.isAbstract$cU_H, true);
+          SPropertyOperations.assign(copy, PROPS.isAbstract$gogN, true);
         } else {
-          ListSequence.fromList(SLinkOperations.getChildren(copy, LINKS.modifiers$akE0)).removeWhere(new IWhereFilter<SNode>() {
+          ListSequence.fromList(SLinkOperations.getChildren(copy, LINKS.modifiers$m0)).removeWhere(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
               return SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$Z2);
             }
           });
-          SPropertyOperations.assign(copy, PROPS.isAbstract$cU_H, false);
+          SPropertyOperations.assign(copy, PROPS.isAbstract$gogN, false);
         }
       }
     }
@@ -51,10 +51,10 @@ public final class copyPasteExtendingWithDefaultModifier_CopyPreProcessor_0 impl
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isAbstract$cU_H = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
+    /*package*/ static final SProperty isAbstract$gogN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifiers$akE0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
   }
 }

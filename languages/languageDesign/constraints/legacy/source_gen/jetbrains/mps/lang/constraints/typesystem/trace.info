@@ -55,7 +55,7 @@
       <node id="1178176661263" at="75,0,76,0" concept="9" trace="ConstraintFunction_CanBeAnAncestor$qV" />
       <node id="1178176661263" at="76,0,77,0" concept="9" trace="NodePropertyConstraint$pW" />
       <node id="1178176661263" at="77,0,78,0" concept="9" trace="ConstraintsFunctionParameter_node$TM" />
-      <node id="1178176661263" at="81,0,82,0" concept="9" trace="concept$rRWx" />
+      <node id="1178176661263" at="81,0,82,0" concept="9" trace="concept$w6jZ" />
       <node id="1178176661263" at="23,0,25,0" concept="1" trace="typeof_ConstraintsFunctionParameter_node_InferenceRule#()V" />
       <node id="1382946559831657851" at="29,10,31,5" concept="0" />
       <node id="1178176661263" at="46,0,49,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -137,8 +137,8 @@
       <node id="1178176661317" at="40,30,41,17" concept="7" />
       <node id="1178176661317" at="45,0,46,0" concept="9" trace="NodePropertyConstraint$pW" />
       <node id="1178176661317" at="46,0,47,0" concept="9" trace="ConstraintsFunctionParameter_propertyValue$Vd" />
-      <node id="1178176661317" at="50,0,51,0" concept="9" trace="applicableProperty$j$lM" />
-      <node id="1178176661317" at="51,0,52,0" concept="9" trace="dataType$fLUl" />
+      <node id="1178176661317" at="50,0,51,0" concept="9" trace="applicableProperty$uAze" />
+      <node id="1178176661317" at="51,0,52,0" concept="9" trace="dataType$Dbgb" />
       <node id="1178176661317" at="20,0,22,0" concept="1" trace="typeof_ConstraintsFunctionParameter_propertyValue_InferenceRule#()V" />
       <node id="1178176661317" at="34,0,37,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1178176661317" at="37,0,40,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -297,8 +297,8 @@
       <node id="1197888168822" at="59,196,60,24" concept="7" />
       <node id="1178176661351" at="64,0,65,0" concept="9" trace="NodeReferentConstraint$JH" />
       <node id="1178176661351" at="65,0,66,0" concept="9" trace="ConstraintFunctionParameter_oldReferentNode$S5" />
-      <node id="1178176661351" at="69,0,70,0" concept="9" trace="applicableLink$Hkrz" />
-      <node id="1178176661351" at="70,0,71,0" concept="9" trace="target$egp8" />
+      <node id="1178176661351" at="69,0,70,0" concept="9" trace="applicableLink$WTlX" />
+      <node id="1178176661351" at="70,0,71,0" concept="9" trace="target$TWaS" />
       <node id="1178176661351" at="22,0,24,0" concept="1" trace="typeof_ConstraintFunctionParameter_oldReferentNode_InferenceRule#()V" />
       <node id="1178176661351" at="40,0,43,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1178176661351" at="43,0,46,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -386,8 +386,8 @@
       <node id="1197888168830" at="59,196,60,24" concept="7" />
       <node id="1178176661380" at="64,0,65,0" concept="9" trace="NodeReferentConstraint$JH" />
       <node id="1178176661380" at="65,0,66,0" concept="9" trace="ConstraintFunctionParameter_newReferentNode$Zc" />
-      <node id="1178176661380" at="69,0,70,0" concept="9" trace="applicableLink$Hkrz" />
-      <node id="1178176661380" at="70,0,71,0" concept="9" trace="target$egp8" />
+      <node id="1178176661380" at="69,0,70,0" concept="9" trace="applicableLink$WTlX" />
+      <node id="1178176661380" at="70,0,71,0" concept="9" trace="target$TWaS" />
       <node id="1178176661380" at="22,0,24,0" concept="1" trace="typeof_ConstraintFunctionParameter_newReferentNode_InferenceRule#()V" />
       <node id="1178176661380" at="40,0,43,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1178176661380" at="43,0,46,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -485,8 +485,8 @@
       <node id="2990203945683059376" at="79,0,80,0" concept="9" trace="NodeReferentConstraint$JH" />
       <node id="2990203945683059376" at="80,0,81,0" concept="9" trace="NodeDefaultSearchScope$Vj" />
       <node id="2990203945683059376" at="81,0,82,0" concept="9" trace="ConstraintFunctionParameter_checkedNode$SM" />
-      <node id="2990203945683059376" at="85,0,86,0" concept="9" trace="applicableLink$Hkrz" />
-      <node id="2990203945683059376" at="86,0,87,0" concept="9" trace="target$egp8" />
+      <node id="2990203945683059376" at="85,0,86,0" concept="9" trace="applicableLink$WTlX" />
+      <node id="2990203945683059376" at="86,0,87,0" concept="9" trace="target$TWaS" />
       <node id="2990203945683059376" at="23,0,25,0" concept="1" trace="typeof_ConstraintFunctionParameter_checkedNode_InferenceRule#()V" />
       <node id="2990203945683059376" at="48,0,51,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2990203945683059376" at="51,0,54,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -600,8 +600,8 @@
       <node id="3906442776579556508" at="79,0,80,0" concept="9" trace="NodeReferentConstraint$JH" />
       <node id="3906442776579556508" at="80,0,81,0" concept="9" trace="NodeDefaultSearchScope$Vj" />
       <node id="3906442776579556508" at="81,0,82,0" concept="9" trace="ConstraintFunctionParameter_parameterNode$xu" />
-      <node id="3906442776579556508" at="85,0,86,0" concept="9" trace="applicableLink$Hkrz" />
-      <node id="3906442776579556508" at="86,0,87,0" concept="9" trace="target$egp8" />
+      <node id="3906442776579556508" at="85,0,86,0" concept="9" trace="applicableLink$WTlX" />
+      <node id="3906442776579556508" at="86,0,87,0" concept="9" trace="target$TWaS" />
       <node id="3906442776579556508" at="23,0,25,0" concept="1" trace="typeof_ConstraintFunctionParameter_parameterNode_InferenceRule#()V" />
       <node id="3906442776579556508" at="48,0,51,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="3906442776579556508" at="51,0,54,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -700,9 +700,9 @@
       <node id="5003464986508736863" at="53,0,54,0" concept="9" trace="NodeReferentConstraint$JH" />
       <node id="5003464986508736863" at="54,0,55,0" concept="9" trace="ConceptConstraints$St" />
       <node id="5003464986508736863" at="55,0,56,0" concept="9" trace="ConstraintFunctionParameter_linkTargetNode$_O" />
-      <node id="5003464986508736863" at="59,0,60,0" concept="9" trace="applicableLink$Hkrz" />
-      <node id="5003464986508736863" at="60,0,61,0" concept="9" trace="target$egp8" />
-      <node id="5003464986508736863" at="61,0,62,0" concept="9" trace="concept$rRWx" />
+      <node id="5003464986508736863" at="59,0,60,0" concept="9" trace="applicableLink$WTlX" />
+      <node id="5003464986508736863" at="60,0,61,0" concept="9" trace="target$TWaS" />
+      <node id="5003464986508736863" at="61,0,62,0" concept="9" trace="concept$w6jZ" />
       <node id="5003464986508736863" at="22,0,24,0" concept="1" trace="typeof_ConstraintFunctionParameter_linkTargetNode_InferenceRule#()V" />
       <node id="7432497532426440883" at="25,207,28,5" concept="4" />
       <node id="5003464986508736863" at="35,0,38,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -777,8 +777,8 @@
       <node id="5564765827938201778" at="59,216,60,24" concept="7" />
       <node id="5564765827938191844" at="64,0,65,0" concept="9" trace="NodeReferentConstraint$JH" />
       <node id="5564765827938191844" at="65,0,66,0" concept="9" trace="ConstraintFunctionParameter_linkTarget$nq" />
-      <node id="5564765827938191844" at="69,0,70,0" concept="9" trace="applicableLink$Hkrz" />
-      <node id="5564765827938191844" at="70,0,71,0" concept="9" trace="target$egp8" />
+      <node id="5564765827938191844" at="69,0,70,0" concept="9" trace="applicableLink$WTlX" />
+      <node id="5564765827938191844" at="70,0,71,0" concept="9" trace="target$TWaS" />
       <node id="5564765827938191844" at="22,0,24,0" concept="1" trace="typeof_ConstraintFunctionParameter_linkTarget_InferenceRule#()V" />
       <node id="5564765827938191844" at="40,0,43,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="5564765827938191844" at="43,0,46,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -850,7 +850,7 @@
       <node id="8401916545537388999" at="34,50,35,39" concept="7" />
       <node id="8401916545537388999" at="37,68,38,102" concept="7" />
       <node id="8401916545537388999" at="40,30,41,17" concept="7" />
-      <node id="8401916545537388999" at="45,0,46,0" concept="9" trace="body$pTP2" />
+      <node id="8401916545537388999" at="45,0,46,0" concept="9" trace="body$z0FY" />
       <node id="8401916545537388999" at="49,0,50,0" concept="9" trace="ConceptFunctionParameter_operationContext$Gv" />
       <node id="8401916545537388999" at="50,0,51,0" concept="9" trace="ConceptConstraints$St" />
       <node id="8401916545537388999" at="51,0,52,0" concept="9" trace="ConceptFunction$Tt" />
@@ -911,9 +911,9 @@
       <node id="876880569411210655" at="47,30,48,17" concept="7" />
       <node id="876880569411210655" at="52,0,53,0" concept="9" trace="ConceptConstraints$St" />
       <node id="876880569411210655" at="53,0,54,0" concept="9" trace="NodeReferentConstraint$JH" />
-      <node id="876880569411210655" at="57,0,58,0" concept="9" trace="referent$4reg" />
-      <node id="876880569411210655" at="58,0,59,0" concept="9" trace="applicableLink$Hkrz" />
-      <node id="876880569411210655" at="62,0,63,0" concept="9" trace="name$tAp1" />
+      <node id="876880569411210655" at="57,0,58,0" concept="9" trace="referent$9bTK" />
+      <node id="876880569411210655" at="58,0,59,0" concept="9" trace="applicableLink$WTlX" />
+      <node id="876880569411210655" at="62,0,63,0" concept="9" trace="name$lA7v" />
       <node id="876880569411210655" at="27,0,29,0" concept="1" trace="check_NodeReferentConstraint_noDuplications_NonTypesystemRule#()V" />
       <node id="876880569411210655" at="41,0,44,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="876880569411210655" at="44,0,47,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -974,9 +974,9 @@
       <node id="876880569411413658" at="47,30,48,17" concept="7" />
       <node id="876880569411413658" at="52,0,53,0" concept="9" trace="ConceptConstraints$St" />
       <node id="876880569411413658" at="53,0,54,0" concept="9" trace="NodePropertyConstraint$pW" />
-      <node id="876880569411413658" at="57,0,58,0" concept="9" trace="property$ChIN" />
-      <node id="876880569411413658" at="58,0,59,0" concept="9" trace="applicableProperty$j$lM" />
-      <node id="876880569411413658" at="62,0,63,0" concept="9" trace="name$tAp1" />
+      <node id="876880569411413658" at="57,0,58,0" concept="9" trace="property$w_EH" />
+      <node id="876880569411413658" at="58,0,59,0" concept="9" trace="applicableProperty$uAze" />
+      <node id="876880569411413658" at="62,0,63,0" concept="9" trace="name$lA7v" />
       <node id="876880569411413658" at="27,0,29,0" concept="1" trace="check_NodePropertyConstraint_noDuplications_NonTypesystemRule#()V" />
       <node id="876880569411413658" at="41,0,44,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="876880569411413658" at="44,0,47,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />

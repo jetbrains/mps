@@ -40,10 +40,10 @@ public final class ModuleReferenceExpression__BehaviorDescriptor extends BaseBHD
 
   @Nullable
   /*package*/ static SModule getModule_id3wj3sjzQUV1(@NotNull SNode __thisNode__) {
-    if (SPropertyOperations.getString(__thisNode__, PROPS.moduleId$IIeZ) == null || SNodeOperations.getModel(__thisNode__) == null || SNodeOperations.getModel(__thisNode__).getRepository() == null) {
+    if (SPropertyOperations.getString(__thisNode__, PROPS.moduleId$Cpgx) == null || SNodeOperations.getModel(__thisNode__) == null || SNodeOperations.getModel(__thisNode__).getRepository() == null) {
       return null;
     }
-    SModuleId mid = PersistenceFacade.getInstance().createModuleId(SPropertyOperations.getString(__thisNode__, PROPS.moduleId$IIeZ));
+    SModuleId mid = PersistenceFacade.getInstance().createModuleId(SPropertyOperations.getString(__thisNode__, PROPS.moduleId$Cpgx));
     return SNodeOperations.getModel(__thisNode__).getRepository().getModule(mid);
   }
   @NotNull
@@ -104,6 +104,6 @@ public final class ModuleReferenceExpression__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty moduleId$IIeZ = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af3L, "moduleId");
+    /*package*/ static final SProperty moduleId$Cpgx = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af3L, "moduleId");
   }
 }

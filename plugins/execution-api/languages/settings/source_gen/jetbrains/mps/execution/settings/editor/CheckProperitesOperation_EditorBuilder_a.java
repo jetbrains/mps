@@ -70,7 +70,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
             return member;
           }
         }
-        return SLinkOperations.getTarget(coercedNode_ti2jjv_a0a0a0, LINKS.persistentConfiguration$28v0);
+        return SLinkOperations.getTarget(coercedNode_ti2jjv_a0a0a0, LINKS.persistentConfiguration$2710);
       } else {
         return null;
       }
@@ -83,6 +83,6 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink persistentConfiguration$28v0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
+    /*package*/ static final SReferenceLink persistentConfiguration$2710 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
   }
 }

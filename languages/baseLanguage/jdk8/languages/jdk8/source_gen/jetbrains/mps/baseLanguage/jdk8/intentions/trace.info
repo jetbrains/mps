@@ -36,15 +36,15 @@
       <node id="4838165336397437980" at="77,43,78,81" concept="7" />
       <node id="4838165336397485686" at="81,39,82,43" concept="2" />
       <node id="1076865108598603664" at="85,104,86,141" concept="2" />
-      <node id="4838165336397326276" at="88,14,89,93" concept="2" />
+      <node id="4838165336397326276" at="88,14,89,91" concept="2" />
       <node id="47041348238616302" at="90,7,91,47" concept="2" />
       <node id="4838165336397280137" at="94,48,95,48" concept="7" />
       <node id="4838165336397280137" at="100,0,101,0" concept="8" trace="Interface$Kp" />
       <node id="4838165336397280137" at="101,0,102,0" concept="8" trace="DefaultModifier$Z2" />
-      <node id="4838165336397280137" at="105,0,106,0" concept="8" trace="name$tAp1" />
-      <node id="4838165336397280137" at="109,0,110,0" concept="8" trace="modifiers$akE0" />
-      <node id="4838165336397280137" at="110,0,111,0" concept="8" trace="body$WIlu" />
-      <node id="4838165336397280137" at="111,0,112,0" concept="8" trace="statement$WHn8" />
+      <node id="4838165336397280137" at="105,0,106,0" concept="8" trace="name$lA7v" />
+      <node id="4838165336397280137" at="109,0,110,0" concept="8" trace="modifiers$m0" />
+      <node id="4838165336397280137" at="110,0,111,0" concept="8" trace="body$qspy" />
+      <node id="4838165336397280137" at="111,0,112,0" concept="8" trace="statement$pYcS" />
       <node id="4838165336397280137" at="58,0,60,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="2000038898466510605" at="88,12,90,7" concept="0" />
       <node id="4838165336397280137" at="30,0,33,0" concept="1" trace="ToggleMethodDefault_Intention#()V" />
@@ -78,7 +78,7 @@
       <scope id="4838165336397437394" at="77,43,78,81" />
       <scope id="4838165336397484609" at="81,39,82,43" />
       <scope id="1076865108598538165" at="85,104,86,141" />
-      <scope id="2000038898466510606" at="88,14,89,93" />
+      <scope id="2000038898466510606" at="88,14,89,91" />
       <scope id="4838165336397280137" at="94,48,95,48" />
       <scope id="4838165336397280137" at="58,0,60,0" />
       <scope id="4838165336397280137" at="30,0,33,0" />
@@ -125,9 +125,9 @@
         <var name="node" id="4838165336397280137" />
       </scope>
       <unit id="4838165336397280137" at="104,0,107,0" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$PROPS" />
-      <unit id="2000038898466475416" at="63,101,67,7" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$IntentionImplementation$1" />
-      <unit id="2000038898466504455" at="71,97,75,7" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$IntentionImplementation$4" />
-      <unit id="4838165336397437393" at="76,97,80,9" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$IntentionImplementation$2" />
+      <unit id="2000038898466475416" at="63,99,67,7" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$IntentionImplementation$1" />
+      <unit id="2000038898466504455" at="71,95,75,7" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$IntentionImplementation$4" />
+      <unit id="4838165336397437393" at="76,95,80,9" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$IntentionImplementation$2" />
       <unit id="4838165336397484608" at="80,24,84,9" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$IntentionImplementation$3" />
       <unit id="4838165336397280137" at="99,0,103,0" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$CONCEPTS" />
       <unit id="4838165336397280137" at="108,0,113,0" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$LINKS" />

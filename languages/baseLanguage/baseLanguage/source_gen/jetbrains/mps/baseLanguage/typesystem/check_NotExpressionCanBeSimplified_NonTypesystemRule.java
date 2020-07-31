@@ -24,9 +24,9 @@ public class check_NotExpressionCanBeSimplified_NonTypesystemRule extends Abstra
   public check_NotExpressionCanBeSimplified_NonTypesystemRule() {
   }
   public void applyRule(final SNode notExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode currentExpression = SLinkOperations.getTarget(notExpression, LINKS.expression$bUD_);
+    SNode currentExpression = SLinkOperations.getTarget(notExpression, LINKS.expression$Lq8V);
     while (SNodeOperations.isInstanceOf(currentExpression, CONCEPTS.ParenthesizedExpression$vE)) {
-      currentExpression = SLinkOperations.getTarget(SNodeOperations.cast(currentExpression, CONCEPTS.ParenthesizedExpression$vE), LINKS.expression$4_F0);
+      currentExpression = SLinkOperations.getTarget(SNodeOperations.cast(currentExpression, CONCEPTS.ParenthesizedExpression$vE), LINKS.expression$efP0);
     }
     if ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(currentExpression)) {
       SModule module = SNodeOperations.getModel(notExpression).getModule();
@@ -55,8 +55,8 @@ public class check_NotExpressionCanBeSimplified_NonTypesystemRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$bUD_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
-    /*package*/ static final SContainmentLink expression$4_F0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink expression$Lq8V = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
+    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
   }
 
   private static final class CONCEPTS {

@@ -59,14 +59,14 @@ public class _SplitConctantCellIntoWordsKeyMap extends KeyMapImpl {
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       SNode collection = SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(node), CONCEPTS.CellModel_Collection$CD, null);
-      SNodeFactoryOperations.setNewChild(collection, LINKS.cellLayout$usNp, CONCEPTS.CellLayout_Flow$Ss);
+      SNodeFactoryOperations.setNewChild(collection, LINKS.cellLayout$JWT7, CONCEPTS.CellLayout_Flow$Ss);
       SNodeOperations.replaceWithAnother(node, collection);
-      String text = SPropertyOperations.getString(node, PROPS.text$ZxWw);
+      String text = SPropertyOperations.getString(node, PROPS.text$Lsjw);
       String[] strings = text.split(" ");
       for (String word : strings) {
         SNode constantCell = SNodeOperations.copyNode(node);
-        SPropertyOperations.set(constantCell, PROPS.text$ZxWw, word);
-        ListSequence.fromList(SLinkOperations.getChildren(collection, LINKS.childCellModel$3prw)).addElement(constantCell);
+        SPropertyOperations.set(constantCell, PROPS.text$Lsjw, word);
+        ListSequence.fromList(SLinkOperations.getChildren(collection, LINKS.childCellModel$Dkkw)).addElement(constantCell);
       }
     }
     public String getKeyStroke() {
@@ -81,11 +81,11 @@ public class _SplitConctantCellIntoWordsKeyMap extends KeyMapImpl {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cellLayout$usNp = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
-    /*package*/ static final SContainmentLink childCellModel$3prw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel");
+    /*package*/ static final SContainmentLink cellLayout$JWT7 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
+    /*package*/ static final SContainmentLink childCellModel$Dkkw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$ZxWw = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, 0xf9eb01232fL, "text");
+    /*package*/ static final SProperty text$Lsjw = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, 0xf9eb01232fL, "text");
   }
 }

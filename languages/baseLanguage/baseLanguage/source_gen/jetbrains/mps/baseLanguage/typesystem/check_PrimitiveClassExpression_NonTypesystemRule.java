@@ -22,7 +22,7 @@ public class check_PrimitiveClassExpression_NonTypesystemRule extends AbstractNo
   public check_PrimitiveClassExpression_NonTypesystemRule() {
   }
   public void applyRule(final SNode primitiveClassExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(primitiveClassExpression, LINKS.primitiveType$e71w), CONCEPTS.PrimitiveType$5))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(primitiveClassExpression, LINKS.primitiveType$PpIw), CONCEPTS.PrimitiveType$5))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(primitiveClassExpression, "Primitive type expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1587149463190641827", null, errorTarget);
@@ -44,7 +44,7 @@ public class check_PrimitiveClassExpression_NonTypesystemRule extends AbstractNo
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink primitiveType$e71w = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3f57ea36bd70a4e1L, 0x3f57ea36bd70a4e2L, "primitiveType");
+    /*package*/ static final SContainmentLink primitiveType$PpIw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3f57ea36bd70a4e1L, 0x3f57ea36bd70a4e2L, "primitiveType");
   }
 
   private static final class CONCEPTS {

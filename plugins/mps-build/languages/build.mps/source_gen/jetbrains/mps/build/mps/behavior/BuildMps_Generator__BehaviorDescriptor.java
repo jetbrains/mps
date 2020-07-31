@@ -33,7 +33,7 @@ public final class BuildMps_Generator__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static SNode getSourceLanguage_id7YI57w6ZMdZ(@NotNull SNode __thisNode__) {
-    return (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildMps_Language$re) ? SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildMps_Language$re) : SLinkOperations.getTarget(__thisNode__, LINKS.sourceLanguage$vc9u));
+    return (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildMps_Language$re) ? SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildMps_Language$re) : SLinkOperations.getTarget(__thisNode__, LINKS.sourceLanguage$6S_y));
   }
 
   /*package*/ BuildMps_Generator__BehaviorDescriptor() {
@@ -87,6 +87,6 @@ public final class BuildMps_Generator__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink sourceLanguage$vc9u = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, 0xc0f2d501dbb734cL, "sourceLanguage");
+    /*package*/ static final SReferenceLink sourceLanguage$6S_y = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, 0xc0f2d501dbb734cL, "sourceLanguage");
   }
 }

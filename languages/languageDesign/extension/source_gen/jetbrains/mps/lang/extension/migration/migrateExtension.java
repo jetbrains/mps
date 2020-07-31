@@ -77,7 +77,7 @@ public class migrateExtension extends MigrationScriptBase {
         }
       }).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode field) {
-          return SNodeOperations.hasRole(field, LINKS.fieldDeclaration$s4qN);
+          return SNodeOperations.hasRole(field, LINKS.fieldDeclaration$A8YH);
         }
       }).sort(new ISelector<SNode, Integer>() {
         public Integer select(SNode it) {
@@ -98,7 +98,7 @@ public class migrateExtension extends MigrationScriptBase {
             }
           }, new _FunctionTypes._void_P2_E0<SNode, SNode>() {
             public void invoke(SNode oldNode, SNode newNode) {
-              ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$K8bJ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(oldNode, LINKS.smodelAttribute$K8bJ)));
+              ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$jXFL)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(oldNode, LINKS.smodelAttribute$jXFL)));
             }
           });
         }
@@ -141,14 +141,14 @@ public class migrateExtension extends MigrationScriptBase {
             }
           }, new _FunctionTypes._void_P2_E0<SNode, SNode>() {
             public void invoke(SNode oldNode, SNode newNode) {
-              ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$K8bJ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(oldNode, LINKS.smodelAttribute$K8bJ)));
-              Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$K8bJ), CONCEPTS.LinkAttribute$7j)).where(new IWhereFilter<SNode>() {
+              ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$jXFL)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(oldNode, LINKS.smodelAttribute$jXFL)));
+              Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$jXFL), CONCEPTS.LinkAttribute$7j)).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
-                  return Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), LINKS.declaration$YMbw);
+                  return Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), LINKS.declaration$qj$w);
                 }
               }).visitAll(new IVisitor<SNode>() {
                 public void visit(SNode it) {
-                  LinkAttribute__BehaviorDescriptor.setLink_id6Gg5KlvuxxF.invoke(it, LINKS.variableDeclaration$2ky6);
+                  LinkAttribute__BehaviorDescriptor.setLink_id6Gg5KlvuxxF.invoke(it, LINKS.variableDeclaration$7WwU);
                 }
               });
             }
@@ -173,7 +173,7 @@ public class migrateExtension extends MigrationScriptBase {
         }
       }).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode n) {
-          return SNodeOperations.hasRole(n, LINKS.activator$6CMr) || SNodeOperations.hasRole(n, LINKS.deactivator$6D0u);
+          return SNodeOperations.hasRole(n, LINKS.activator$dKr5) || SNodeOperations.hasRole(n, LINKS.deactivator$dRey);
         }
       }).sort(new ISelector<SNode, Integer>() {
         public Integer select(SNode it) {
@@ -192,10 +192,10 @@ public class migrateExtension extends MigrationScriptBase {
             public SNode compute() {
               return new _FunctionTypes._return_P1_E0<SNode, SNode>() {
                 public SNode invoke(SNode node) {
-                  if (SNodeOperations.hasRole(node, LINKS.activator$6CMr)) {
+                  if (SNodeOperations.hasRole(node, LINKS.activator$dKr5)) {
                     return _quotation_createNode_2kk9yi_a0a0a0h0c(pattern.getMatchedList("statements"));
                   }
-                  if (SNodeOperations.hasRole(node, LINKS.deactivator$6D0u)) {
+                  if (SNodeOperations.hasRole(node, LINKS.deactivator$dRey)) {
                     return _quotation_createNode_2kk9yi_a0a1a0h0c(pattern.getMatchedList("statements"));
                   }
                   throw new IllegalStateException();
@@ -204,14 +204,14 @@ public class migrateExtension extends MigrationScriptBase {
             }
           }, new _FunctionTypes._void_P2_E0<SNode, SNode>() {
             public void invoke(SNode oldNode, SNode newNode) {
-              ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$K8bJ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(oldNode, LINKS.smodelAttribute$K8bJ)));
-              Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$K8bJ), CONCEPTS.ChildAttribute$XQ)).where(new IWhereFilter<SNode>() {
+              ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$jXFL)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(oldNode, LINKS.smodelAttribute$jXFL)));
+              Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$jXFL), CONCEPTS.ChildAttribute$XQ)).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
-                  return Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(it), LINKS.body$pTP2);
+                  return Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(it), LINKS.body$z0FY);
                 }
               }).visitAll(new IVisitor<SNode>() {
                 public void visit(SNode it) {
-                  ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(it, LINKS.body$WIlu);
+                  ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(it, LINKS.body$qspy);
                 }
               });
             }
@@ -260,43 +260,43 @@ public class migrateExtension extends MigrationScriptBase {
             }
           }, new _FunctionTypes._void_P2_E0<SNode, SNode>() {
             public void invoke(SNode oldNode, SNode newNode) {
-              ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$K8bJ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(oldNode, LINKS.smodelAttribute$K8bJ)));
-              Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$K8bJ), CONCEPTS.ChildAttribute$XQ)).where(new IWhereFilter<SNode>() {
+              ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$jXFL)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(oldNode, LINKS.smodelAttribute$jXFL)));
+              Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$jXFL), CONCEPTS.ChildAttribute$XQ)).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
-                  return Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(it), LINKS.fieldDeclaration$s4qN);
+                  return Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(it), LINKS.fieldDeclaration$A8YH);
                 }
               }).visitAll(new IVisitor<SNode>() {
                 public void visit(SNode it) {
-                  ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(it, LINKS.member$oYX5);
+                  ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(it, LINKS.member$6v_r);
                 }
               });
-              Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$K8bJ), CONCEPTS.ChildAttribute$XQ)).where(new IWhereFilter<SNode>() {
+              Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$jXFL), CONCEPTS.ChildAttribute$XQ)).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
-                  return Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(it), LINKS.activator$6CMr);
+                  return Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(it), LINKS.activator$dKr5);
                 }
               }).visitAll(new IVisitor<SNode>() {
                 public void visit(SNode it) {
-                  ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(it, LINKS.member$oYX5);
+                  ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(it, LINKS.member$6v_r);
                 }
               });
-              Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$K8bJ), CONCEPTS.ChildAttribute$XQ)).where(new IWhereFilter<SNode>() {
+              Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$jXFL), CONCEPTS.ChildAttribute$XQ)).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
-                  return Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(it), LINKS.deactivator$6D0u);
+                  return Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(it), LINKS.deactivator$dRey);
                 }
               }).visitAll(new IVisitor<SNode>() {
                 public void visit(SNode it) {
-                  ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(it, LINKS.member$oYX5);
+                  ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(it, LINKS.member$6v_r);
                 }
               });
 
-              ListSequence.fromList(SLinkOperations.getChildren(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:421d64ed-8024-497f-aeab-8bddeb389dd2(jetbrains.mps.lang.extension.methods)", "4103205777865557979"), newNode)).first(), LINKS.smodelAttribute$K8bJ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(oldNode, LINKS.objectGetter$NJKg), LINKS.smodelAttribute$K8bJ)));
-              Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:421d64ed-8024-497f-aeab-8bddeb389dd2(jetbrains.mps.lang.extension.methods)", "4103205777865557979"), newNode)).first(), LINKS.smodelAttribute$K8bJ), CONCEPTS.ChildAttribute$XQ)).where(new IWhereFilter<SNode>() {
+              ListSequence.fromList(SLinkOperations.getChildren(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:421d64ed-8024-497f-aeab-8bddeb389dd2(jetbrains.mps.lang.extension.methods)", "4103205777865557979"), newNode)).first(), LINKS.smodelAttribute$jXFL)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(oldNode, LINKS.objectGetter$48nK), LINKS.smodelAttribute$jXFL)));
+              Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:421d64ed-8024-497f-aeab-8bddeb389dd2(jetbrains.mps.lang.extension.methods)", "4103205777865557979"), newNode)).first(), LINKS.smodelAttribute$jXFL), CONCEPTS.ChildAttribute$XQ)).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
-                  return Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(it), LINKS.body$pTP2);
+                  return Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(it), LINKS.body$z0FY);
                 }
               }).visitAll(new IVisitor<SNode>() {
                 public void visit(SNode it) {
-                  ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(it, LINKS.body$WIlu);
+                  ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(it, LINKS.body$qspy);
                 }
               });
             }
@@ -566,16 +566,16 @@ public class migrateExtension extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink fieldDeclaration$s4qN = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d4L, 0x61a62b43e1534edcL, "fieldDeclaration");
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
-    /*package*/ static final SReferenceLink declaration$YMbw = MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x61a62b43e1534e9eL, 0x61a62b43e1534e9fL, "declaration");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink activator$6CMr = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d4L, 0x61a62b43e15253eeL, "activator");
-    /*package*/ static final SContainmentLink deactivator$6D0u = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d4L, 0x61a62b43e15253f6L, "deactivator");
-    /*package*/ static final SContainmentLink body$pTP2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-    /*package*/ static final SContainmentLink objectGetter$NJKg = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d4L, 0x6f6f7f3b7a17bd13L, "objectGetter");
+    /*package*/ static final SContainmentLink fieldDeclaration$A8YH = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d4L, 0x61a62b43e1534edcL, "fieldDeclaration");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SReferenceLink declaration$qj$w = MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x61a62b43e1534e9eL, 0x61a62b43e1534e9fL, "declaration");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink activator$dKr5 = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d4L, 0x61a62b43e15253eeL, "activator");
+    /*package*/ static final SContainmentLink deactivator$dRey = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d4L, 0x61a62b43e15253f6L, "deactivator");
+    /*package*/ static final SContainmentLink body$z0FY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink objectGetter$48nK = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d4L, 0x6f6f7f3b7a17bd13L, "objectGetter");
   }
 
   private static final class CONCEPTS {

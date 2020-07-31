@@ -35,7 +35,7 @@ public class check_DataTypeDeclaration_Ids_NonTypesystemRule extends AbstractNon
       return;
     }
 
-    if (isEmptyString(SPropertyOperations.getString(dtd, PROPS.datatypeId$Bvg3))) {
+    if (isEmptyString(SPropertyOperations.getString(dtd, PROPS.datatypeId$88Lt))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(dtd, "Absent member id.\n" + "Please invoke the \"Correct ID\" intention on it", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "7791109065627029302", null, errorTarget);
@@ -47,7 +47,7 @@ public class check_DataTypeDeclaration_Ids_NonTypesystemRule extends AbstractNon
       }
     } else if (ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(dtd), CONCEPTS.EnumerationDeclaration$rG)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != dtd && Objects.equals(SPropertyOperations.getString(it, PROPS.datatypeId$Bvg3), SPropertyOperations.getString(dtd, PROPS.datatypeId$Bvg3));
+        return it != dtd && Objects.equals(SPropertyOperations.getString(it, PROPS.datatypeId$88Lt), SPropertyOperations.getString(dtd, PROPS.datatypeId$88Lt));
       }
     })) {
       {
@@ -81,6 +81,6 @@ public class check_DataTypeDeclaration_Ids_NonTypesystemRule extends AbstractNon
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty datatypeId$Bvg3 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044403L, "datatypeId");
+    /*package*/ static final SProperty datatypeId$88Lt = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044403L, "datatypeId");
   }
 }

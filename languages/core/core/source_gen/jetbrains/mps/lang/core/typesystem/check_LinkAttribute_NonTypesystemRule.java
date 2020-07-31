@@ -29,10 +29,10 @@ public class check_LinkAttribute_NonTypesystemRule extends AbstractNonTypesystem
   }
   public void applyRule(final SNode linkAttribute, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // todo: why we allow using attributes outside smodelAttribute role? It doesn't look quite sound such usage in quotations and generator templates 
-    if ((SNodeOperations.getParent(linkAttribute) == null) || !(SNodeOperations.hasRole(linkAttribute, LINKS.smodelAttribute$K8bJ))) {
+    if ((SNodeOperations.getParent(linkAttribute) == null) || !(SNodeOperations.hasRole(linkAttribute, LINKS.smodelAttribute$jXFL))) {
       return;
     }
-    if (SPropertyOperations.getString(linkAttribute, PROPS.linkId$nvK6) == null) {
+    if (SPropertyOperations.getString(linkAttribute, PROPS.linkId$ooiU) == null) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(linkAttribute, "Link attribute should have link id", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "6063712545515033463", null, errorTarget);
@@ -52,7 +52,7 @@ public class check_LinkAttribute_NonTypesystemRule extends AbstractNonTypesystem
       if (existingLink == null) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(linkAttribute, "Reference Attribute is attached to not existing reference link: " + SPropertyOperations.getString(linkAttribute, PROPS.linkId$nvK6) + "(" + reportName + ")", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "5394253938404265823", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(linkAttribute, "Reference Attribute is attached to not existing reference link: " + SPropertyOperations.getString(linkAttribute, PROPS.linkId$ooiU) + "(" + reportName + ")", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "5394253938404265823", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.RemoveUndeclaredLinkAttribute_QuickFix", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
@@ -81,11 +81,11 @@ public class check_LinkAttribute_NonTypesystemRule extends AbstractNonTypesystem
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty linkId$nvK6 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, 0x129f3f612792fc5cL, "linkId");
+    /*package*/ static final SProperty linkId$ooiU = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, 0x129f3f612792fc5cL, "linkId");
   }
 
   private static final class CONCEPTS {

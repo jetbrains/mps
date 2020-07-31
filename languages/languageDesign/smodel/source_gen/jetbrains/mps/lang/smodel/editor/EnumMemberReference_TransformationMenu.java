@@ -104,7 +104,7 @@ public class EnumMemberReference_TransformationMenu extends TransformationMenuBa
     }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (enumSwitchExpression != null) && (SNodeOperations.getNextSibling(enumSwitchCase) == null) && ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).isEmpty() && (SLinkOperations.getTarget(enumSwitchExpression, LINKS.otherwiseBody$i6_e) == null);
+      return (enumSwitchExpression != null) && (SNodeOperations.getNextSibling(enumSwitchCase) == null) && ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).isEmpty() && (SLinkOperations.getTarget(enumSwitchExpression, LINKS.otherwiseBody$Lc1M) == null);
     }
 
     @NotNull
@@ -161,7 +161,7 @@ public class EnumMemberReference_TransformationMenu extends TransformationMenuBa
         @Override
         public void execute(@NotNull String pattern) {
           SNodeOperations.deleteNode(enumSwitchCase);
-          SLinkOperations.setTarget(enumSwitchExpression, LINKS.otherwiseBody$i6_e, SLinkOperations.getTarget(enumSwitchCase, LINKS.body$UK79));
+          SLinkOperations.setTarget(enumSwitchExpression, LINKS.otherwiseBody$Lc1M, SLinkOperations.getTarget(enumSwitchCase, LINKS.body$tjtn));
         }
 
 
@@ -192,7 +192,7 @@ public class EnumMemberReference_TransformationMenu extends TransformationMenuBa
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink otherwiseBody$i6_e = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf8d9b4eL, "otherwiseBody");
-    /*package*/ static final SContainmentLink body$UK79 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, 0x220ad6aedf1fdc5aL, "body");
+    /*package*/ static final SContainmentLink otherwiseBody$Lc1M = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf8d9b4eL, "otherwiseBody");
+    /*package*/ static final SContainmentLink body$tjtn = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, 0x220ad6aedf1fdc5aL, "body");
   }
 }

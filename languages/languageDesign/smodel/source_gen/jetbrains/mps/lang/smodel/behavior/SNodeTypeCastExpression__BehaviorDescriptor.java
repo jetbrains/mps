@@ -39,16 +39,16 @@ public final class SNodeTypeCastExpression__BehaviorDescriptor extends BaseBHDes
 
   @Deprecated
   /*package*/ static boolean isSNodeCast_idi1Btg5H(@NotNull SNode __thisNode__) {
-    SNode leftType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.leftExpression$NqCX));
+    SNode leftType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.leftExpression$TTPz));
     return !(TypecheckingFacade.getFromContext().isStrongSubtype(leftType, _quotation_createNode_cjhknp_b0a0b0a()));
   }
   @Deprecated
   /*package*/ static boolean hasValidType_id3$jHpAYjQYh(@NotNull SNode __thisNode__) {
-    SNode leftType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.leftExpression$NqCX));
+    SNode leftType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.leftExpression$TTPz));
     return TypecheckingFacade.getFromContext().isSubtype(leftType, _quotation_createNode_cjhknp_b0a1a1());
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return (SPropertyOperations.getBoolean(__thisNode__, PROPS.asCast$W3Qz) ? "as" : ":");
+    return (SPropertyOperations.getBoolean(__thisNode__, PROPS.asCast$5RqX) ? "as" : ":");
   }
 
   /*package*/ SNodeTypeCastExpression__BehaviorDescriptor() {
@@ -114,10 +114,10 @@ public final class SNodeTypeCastExpression__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$NqCX = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67cd19L, "leftExpression");
+    /*package*/ static final SContainmentLink leftExpression$TTPz = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67cd19L, "leftExpression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty asCast$W3Qz = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10975850da7L, 0x12067573bc7L, "asCast");
+    /*package*/ static final SProperty asCast$5RqX = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10975850da7L, 0x12067573bc7L, "asCast");
   }
 }

@@ -21,15 +21,15 @@ public class InternalClassExpression_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    SNode type = SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.type$nPkF);
+    SNode type = SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.type$yP0P);
     if (SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$IZ)) {
       if (SNodeOperations.isInstanceOf(type, CONCEPTS.InternalClassifierType$bm)) {
         SNode icf = SNodeOperations.cast(type, CONCEPTS.InternalClassifierType$bm);
-        String pack = NameUtil.namespaceFromLongName(SPropertyOperations.getString(icf, PROPS.fqClassName$X7$5));
-        String name = NameUtil.shortNameFromLongName(SPropertyOperations.getString(icf, PROPS.fqClassName$X7$5));
+        String pack = NameUtil.namespaceFromLongName(SPropertyOperations.getString(icf, PROPS.fqClassName$AEur));
+        String name = NameUtil.shortNameFromLongName(SPropertyOperations.getString(icf, PROPS.fqClassName$AEur));
         BaseLanguageTextGen.internalClassName(pack, name, ctx.getPrimaryInput(), ctx);
       } else {
-        BaseLanguageTextGen.internalClassifierName(SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R), ctx.getPrimaryInput(), ctx);
+        BaseLanguageTextGen.internalClassifierName(SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD), ctx.getPrimaryInput(), ctx);
       }
     } else {
       tgs.appendNode(type);
@@ -38,8 +38,8 @@ public class InternalClassExpression_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$nPkF = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1117461827dL, 0x11174623062L, "type");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink type$yP0P = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1117461827dL, 0x11174623062L, "type");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {
@@ -48,6 +48,6 @@ public class InternalClassExpression_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty fqClassName$X7$5 = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1118e558c6dL, 0x1118e56212bL, "fqClassName");
+    /*package*/ static final SProperty fqClassName$AEur = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1118e558c6dL, 0x1118e56212bL, "fqClassName");
   }
 }

@@ -37,7 +37,7 @@
       <node id="1141736782992984502" at="83,48,84,22" concept="7" />
       <node id="1141736782992984502" at="89,40,90,19" concept="7" />
       <node id="1141736782992984502" at="94,0,95,0" concept="8" trace="OverloadedOperatorContainer$s0" />
-      <node id="1141736782992984502" at="98,0,99,0" concept="8" trace="customOperators$hoGy" />
+      <node id="1141736782992984502" at="98,0,99,0" concept="8" trace="customOperators$qX$u" />
       <node id="1141736782992984502" at="35,0,37,0" concept="9" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1141736782992984502" at="47,0,49,0" concept="1" trace="CustomOperatorUsage__BehaviorDescriptor#()V" />
       <node id="1141736782992986380" at="40,117,43,5" concept="3" />
@@ -133,16 +133,16 @@
       <node id="6677452554239147646" at="96,14,97,58" concept="11" />
       <node id="6677452554239147646" at="103,48,104,22" concept="7" />
       <node id="6677452554239147646" at="109,40,110,19" concept="7" />
-      <node id="6677452554239147646" at="114,0,115,0" concept="8" trace="returnType$5fOs" />
-      <node id="6677452554239147646" at="115,0,116,0" concept="8" trace="operator$xSLv" />
-      <node id="6677452554239147646" at="116,0,117,0" concept="8" trace="binaryOperation$3bcw" />
-      <node id="6677452554239147646" at="117,0,118,0" concept="8" trace="leftType$wfni" />
-      <node id="6677452554239147646" at="118,0,119,0" concept="8" trace="rightType$wfnL" />
+      <node id="6677452554239147646" at="114,0,115,0" concept="8" trace="returnType$yEp$" />
+      <node id="6677452554239147646" at="115,0,116,0" concept="8" trace="operator$qvY1" />
+      <node id="6677452554239147646" at="116,0,117,0" concept="8" trace="binaryOperation$yr3w" />
+      <node id="6677452554239147646" at="117,0,118,0" concept="8" trace="leftType$BshI" />
+      <node id="6677452554239147646" at="118,0,119,0" concept="8" trace="rightType$BswJ" />
       <node id="6677452554239147646" at="122,0,123,0" concept="8" trace="BinaryOperationReference$Q7" />
       <node id="6677452554239147646" at="123,0,124,0" concept="8" trace="ConceptFunction$Tt" />
       <node id="6677452554239147646" at="124,0,125,0" concept="8" trace="LeftOperand$Y1" />
       <node id="6677452554239147646" at="125,0,126,0" concept="8" trace="RightOperand$yc" />
-      <node id="6677452554239147646" at="129,0,130,0" concept="8" trace="name$tAp1" />
+      <node id="6677452554239147646" at="129,0,130,0" concept="8" trace="name$lA7v" />
       <node id="6677452554239147646" at="41,0,43,0" concept="9" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1569627462441168559" at="51,10,53,5" concept="0" />
       <node id="6677452554239147646" at="63,0,65,0" concept="1" trace="OverloadedBinaryOperator__BehaviorDescriptor#()V" />
@@ -238,8 +238,8 @@
       <node id="7363434029342255602" at="68,14,69,58" concept="11" />
       <node id="7363434029342255602" at="75,48,76,22" concept="7" />
       <node id="7363434029342255602" at="81,40,82,19" concept="7" />
-      <node id="7363434029342255602" at="86,0,87,0" concept="8" trace="container$4nGy" />
-      <node id="7363434029342255602" at="90,0,91,0" concept="8" trace="name$tAp1" />
+      <node id="7363434029342255602" at="86,0,87,0" concept="8" trace="container$7u$u" />
+      <node id="7363434029342255602" at="90,0,91,0" concept="8" trace="name$lA7v" />
       <node id="7363434029342255602" at="32,0,34,0" concept="9" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="7363434029342255602" at="39,0,41,0" concept="1" trace="ContainerImport__BehaviorDescriptor#()V" />
       <node id="7363434029342255602" at="35,0,38,0" concept="9" trace="getPresentation_idhEwIMiw#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />

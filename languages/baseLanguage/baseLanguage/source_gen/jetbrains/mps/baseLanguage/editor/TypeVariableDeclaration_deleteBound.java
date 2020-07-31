@@ -23,8 +23,8 @@ public class TypeVariableDeclaration_deleteBound {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.auxBounds$jS6R)).clear();
-        SLinkOperations.setTarget(node, LINKS.bound$dqDF, null);
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.auxBounds$CbkD)).clear();
+        SLinkOperations.setTarget(node, LINKS.bound$vUbP, null);
       }
 
     };
@@ -72,7 +72,7 @@ public class TypeVariableDeclaration_deleteBound {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink auxBounds$jS6R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae913a476L, "auxBounds");
-    /*package*/ static final SContainmentLink bound$dqDF = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound");
+    /*package*/ static final SContainmentLink auxBounds$CbkD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae913a476L, "auxBounds");
+    /*package*/ static final SContainmentLink bound$vUbP = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound");
   }
 }

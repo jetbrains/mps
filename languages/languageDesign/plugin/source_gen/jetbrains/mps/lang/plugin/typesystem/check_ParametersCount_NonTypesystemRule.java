@@ -22,7 +22,7 @@ public class check_ParametersCount_NonTypesystemRule extends AbstractNonTypesyst
   public check_ParametersCount_NonTypesystemRule() {
   }
   public void applyRule(final SNode instance, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(instance, LINKS.actualParameter$KFu_)).count() != ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(instance, LINKS.action$BEI2), LINKS.constructionParameter$ikfq)).count()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(instance, LINKS.actualParameter$_3NV)).count() != ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(instance, LINKS.action$dGiY), LINKS.constructionParameter$RNtA)).count()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(instance, "number of parameters doesn't match", "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "1227032366953", null, errorTarget);
@@ -40,9 +40,9 @@ public class check_ParametersCount_NonTypesystemRule extends AbstractNonTypesyst
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualParameter$KFu_ = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da2ba57L, 0x11daf965303L, "actualParameter");
-    /*package*/ static final SReferenceLink action$BEI2 = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da2ba57L, 0x1181da2f27fL, "action");
-    /*package*/ static final SContainmentLink constructionParameter$ikfq = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11daf6ca9baL, "constructionParameter");
+    /*package*/ static final SContainmentLink actualParameter$_3NV = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da2ba57L, 0x11daf965303L, "actualParameter");
+    /*package*/ static final SReferenceLink action$dGiY = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da2ba57L, 0x1181da2f27fL, "action");
+    /*package*/ static final SContainmentLink constructionParameter$RNtA = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11daf6ca9baL, "constructionParameter");
   }
 
   private static final class CONCEPTS {

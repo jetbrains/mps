@@ -23,7 +23,7 @@ public class CommandBuilderExpression_Constraints extends BaseConstraintsDescrip
 
   public static class ShortDescription_Property extends BasePropertyConstraintsDescriptor {
     public ShortDescription_Property(ConstraintsDescriptor container) {
-      super(PROPS.shortDescription$w2Xj, container);
+      super(PROPS.shortDescription$xrGd, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -31,13 +31,13 @@ public class CommandBuilderExpression_Constraints extends BaseConstraintsDescrip
     }
     @Override
     public Object getValue(SNode node) {
-      return SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.commandPart$vwzX), PROPS.shortDescription$w2Xj);
+      return SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.commandPart$gLqz), PROPS.shortDescription$xrGd);
     }
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.shortDescription$w2Xj, new ShortDescription_Property(this));
+    properties.put(PROPS.shortDescription$xrGd, new ShortDescription_Property(this));
     return properties;
   }
 
@@ -46,10 +46,10 @@ public class CommandBuilderExpression_Constraints extends BaseConstraintsDescrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty shortDescription$w2Xj = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
+    /*package*/ static final SProperty shortDescription$xrGd = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink commandPart$vwzX = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bf4L, 0x550ea9458ea1ac11L, "commandPart");
+    /*package*/ static final SReferenceLink commandPart$gLqz = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bf4L, 0x550ea9458ea1ac11L, "commandPart");
   }
 }

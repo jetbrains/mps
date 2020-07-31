@@ -43,10 +43,10 @@ public final class ParameterizedShortcutChange__BehaviorDescriptor extends BaseB
     return ((boolean) ParameterizedShortcutChange__BehaviorDescriptor.hasRemove_idyhFWcL2RGa.invoke(__thisNode__)) || ((boolean) ParameterizedShortcutChange__BehaviorDescriptor.hasReplaceAll_idyhFWcL2RGl.invoke(__thisNode__));
   }
   /*package*/ static boolean hasRemove_idyhFWcL2RGa(@NotNull SNode __thisNode__) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.change$9SAz), 0x5e2b603c8f03666aL);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.change$MqEX), 0x5e2b603c8f03666aL);
   }
   /*package*/ static boolean hasReplaceAll_idyhFWcL2RGl(@NotNull SNode __thisNode__) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.change$9SAz), 0x5e2b603c8f036669L);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.change$MqEX), 0x5e2b603c8f036669L);
   }
 
   /*package*/ ParameterizedShortcutChange__BehaviorDescriptor() {
@@ -108,6 +108,6 @@ public final class ParameterizedShortcutChange__BehaviorDescriptor extends BaseB
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty change$9SAz = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x55f30a5d1e096c3aL, 0x891afc3310a2b8aL, "change");
+    /*package*/ static final SProperty change$MqEX = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x55f30a5d1e096c3aL, 0x891afc3310a2b8aL, "change");
   }
 }

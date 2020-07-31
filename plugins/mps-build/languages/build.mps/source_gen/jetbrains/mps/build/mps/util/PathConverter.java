@@ -43,7 +43,7 @@ public class PathConverter {
 
     final List<Tuples._2<String, SNode>> result = ListSequence.fromList(new ArrayList<Tuples._2<String, SNode>>());
     final List<SNode> withoutPath = ListSequence.fromList(new ArrayList<SNode>());
-    Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.macros$tpFt), CONCEPTS.BuildFolderMacro$Ok)).visitAll(new IVisitor<SNode>() {
+    Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.macros$fs33), CONCEPTS.BuildFolderMacro$Ok)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         String path = normalizePath(BuildFolderMacro__BehaviorDescriptor.evaluate_id4jjtc7WZOzA.invoke(it, ctx), true);
         if (path != null && path.length() > 1) {
@@ -76,7 +76,7 @@ public class PathConverter {
     List<SNode> result = new ArrayList<SNode>();
     final boolean startsWithMacroPrefix = path.startsWith("$");
     for (Tuples._2<String, SNode> m : Sequence.fromIterable(macros)) {
-      String mdir = (startsWithMacroPrefix ? "${" + SPropertyOperations.getString(m._1(), PROPS.name$tAp1) + "}/" : m._0());
+      String mdir = (startsWithMacroPrefix ? "${" + SPropertyOperations.getString(m._1(), PROPS.name$lA7v) + "}/" : m._0());
       // XXX what's the check path.length < mdir.length supposed to do? If the path is shorter 
       // than macro path, it would never match? 
       String currPath = (path.length() < mdir.length() ? withSlash : path);
@@ -95,7 +95,7 @@ public class PathConverter {
     }
     if (startsWithMacroPrefix) {
       for (SNode m : Sequence.fromIterable(macrosWithoutPath)) {
-        String mdir = "${" + SPropertyOperations.getString(m, PROPS.name$tAp1) + "}/";
+        String mdir = "${" + SPropertyOperations.getString(m, PROPS.name$lA7v) + "}/";
         String currPath = (path.length() < mdir.length() ? withSlash : path);
         if (currPath.startsWith(mdir)) {
           currPath = currPath.substring(mdir.length());
@@ -136,7 +136,7 @@ public class PathConverter {
 
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink macros$tpFt = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros");
+    /*package*/ static final SContainmentLink macros$fs33 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros");
   }
 
   private static final class CONCEPTS {
@@ -144,6 +144,6 @@ public class PathConverter {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

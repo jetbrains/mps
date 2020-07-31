@@ -126,7 +126,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new imagePathProviderSingleRoleHandler_yczb8_b0d0(myNode, LINKS.imagePathProvider$Zad0, getEditorContext());
+    SingleRoleCellProvider provider = new imagePathProviderSingleRoleHandler_yczb8_b0d0(myNode, LINKS.imagePathProvider$_Wj0, getEditorContext());
     return provider.createCell();
   }
   private static class imagePathProviderSingleRoleHandler_yczb8_b0d0 extends SingleRoleCellProvider {
@@ -146,8 +146,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.imagePathProvider$Zad0, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.imagePathProvider$Zad0, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.imagePathProvider$_Wj0, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.imagePathProvider$_Wj0, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -159,13 +159,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.imagePathProvider$Zad0);
+        editorCell.setSRole(LINKS.imagePathProvider$_Wj0);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.imagePathProvider$Zad0));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.imagePathProvider$_Wj0));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_imagePathProvider");
@@ -215,7 +215,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.imageFile$K5RB;
+      final SProperty property = PROPS.imageFile$iPVT;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no imageFile>");
@@ -249,7 +249,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private JComponent _QueryFunction_JComponent_yczb8_a1b1d0() {
-    return EditorUtil.createSelectImageButton(myNode, PROPS.imageFile$K5RB, getEditorContext());
+    return EditorUtil.createSelectImageButton(myNode, PROPS.imageFile$iPVT, getEditorContext());
   }
   private EditorCell createCollection_5() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
@@ -274,7 +274,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.descent$1vAf;
+      final SProperty property = PROPS.descent$Ijxh;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no descent>");
@@ -301,12 +301,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink imagePathProvider$Zad0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1095e12de6fL, 0x11204b37791L, "imagePathProvider");
+    /*package*/ static final SContainmentLink imagePathProvider$_Wj0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1095e12de6fL, 0x11204b37791L, "imagePathProvider");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty imageFile$K5RB = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1095e12de6fL, 0x1095e2f7e63L, "imageFile");
-    /*package*/ static final SProperty descent$1vAf = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1095e12de6fL, 0x10964d9200bL, "descent");
+    /*package*/ static final SProperty imageFile$iPVT = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1095e12de6fL, 0x1095e2f7e63L, "imageFile");
+    /*package*/ static final SProperty descent$Ijxh = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1095e12de6fL, 0x10964d9200bL, "descent");
   }
 
   private static final class CONCEPTS {

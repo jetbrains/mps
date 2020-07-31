@@ -49,7 +49,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   @NotNull
   /*package*/ List<EditorMessage> calcMessages() {
     List<EditorMessage> result = ListSequence.fromList(new ArrayList<EditorMessage>());
-    for (SNode method : ListSequence.fromList(SLinkOperations.getChildren(myBehavior, LINKS.method$vbvQ))) {
+    for (SNode method : ListSequence.fromList(SLinkOperations.getChildren(myBehavior, LINKS.method$6$ra))) {
       if (((boolean) (Boolean) BHReflection.invoke0(method, CONCEPTS.ConceptMethodDeclaration$VN, SMethodTrimmedId.create("isVirtual", CONCEPTS.ConceptMethodDeclaration$VN, "6WSEafdhbZX"))) || ((boolean) (Boolean) BHReflection.invoke0(method, CONCEPTS.BaseMethodDeclaration$RR, SMethodTrimmedId.create("isAnAbstractMethod", null, "28P2dHxCoRl")))) {
         EditorMessage msgForMethod = calcMessage(method);
         if (msgForMethod != null) {
@@ -108,6 +108,6 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink method$vbvQ = MetaAdapterFactory.getContainmentLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b25L, "method");
+    /*package*/ static final SContainmentLink method$6$ra = MetaAdapterFactory.getContainmentLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b25L, "method");
   }
 }

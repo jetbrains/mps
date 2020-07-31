@@ -24,7 +24,7 @@ public class check_BuildSource_JavaLibrary_NonTypesystemRule extends AbstractNon
   }
   public void applyRule(final SNode jl, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode project = SNodeOperations.as(SNodeOperations.getParent(jl), CONCEPTS.BuildProject$BF);
-    if (project != null && !(ListSequence.fromList(SLinkOperations.getChildren(project, LINKS.plugins$97JG)).any(new IWhereFilter<SNode>() {
+    if (project != null && !(ListSequence.fromList(SLinkOperations.getChildren(project, LINKS.plugins$qK6k)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildJavaPlugin$IO);
       }
@@ -52,6 +52,6 @@ public class check_BuildSource_JavaLibrary_NonTypesystemRule extends AbstractNon
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink plugins$97JG = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x5c3f3e2c1ce9ac70L, "plugins");
+    /*package*/ static final SContainmentLink plugins$qK6k = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x5c3f3e2c1ce9ac70L, "plugins");
   }
 }

@@ -136,12 +136,12 @@ public class DrawCommand_TransformationMenu extends TransformationMenuBase {
         @Override
         public void execute(@NotNull String pattern) {
           SNode style = (Objects.equals(myParameterObject, "solid") ? SNodeFactoryOperations.createNewNode(CONCEPTS.SolidLine$75, null) : SNodeFactoryOperations.createNewNode(CONCEPTS.DottedLine$FX, null));
-          SLinkOperations.setTarget(_context.getNode(), LINKS.lineStyle$R$Bp, style);
+          SLinkOperations.setTarget(_context.getNode(), LINKS.lineStyle$UJ57, style);
         }
 
         @Override
         public boolean canExecute(@NotNull String pattern) {
-          return (SLinkOperations.getTarget(_context.getNode(), LINKS.lineStyle$R$Bp) == null);
+          return (SLinkOperations.getTarget(_context.getNode(), LINKS.lineStyle$UJ57) == null);
         }
 
 
@@ -170,6 +170,6 @@ public class DrawCommand_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lineStyle$R$Bp = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265d1022L, 0x313e78bb26670129L, "lineStyle");
+    /*package*/ static final SContainmentLink lineStyle$UJ57 = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265d1022L, 0x313e78bb26670129L, "lineStyle");
   }
 }

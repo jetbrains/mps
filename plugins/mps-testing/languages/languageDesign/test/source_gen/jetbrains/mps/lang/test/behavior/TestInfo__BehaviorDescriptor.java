@@ -41,7 +41,7 @@ public final class TestInfo__BehaviorDescriptor extends BaseBHDescriptor {
       return false;
     }
     SNode testInfo = ListSequence.fromList(infos).first();
-    return SPropertyOperations.getBoolean(testInfo, PROPS.reOpenProject$HK9_);
+    return SPropertyOperations.getBoolean(testInfo, PROPS.reOpenProject$akCV);
   }
   /*package*/ static String getProjectPath_id4qWC2JVrBcn(@NotNull SAbstractConcept __thisConcept__, SModel model) {
     List<SNode> infos = SModelOperations.roots(model, CONCEPTS.TestInfo$TV);
@@ -49,7 +49,7 @@ public final class TestInfo__BehaviorDescriptor extends BaseBHDescriptor {
       return null;
     }
     SNode testInfo = ListSequence.fromList(infos).first();
-    return SPropertyOperations.getString(testInfo, PROPS.projectPath$_ciw);
+    return SPropertyOperations.getString(testInfo, PROPS.projectPath$WXw);
   }
 
   /*package*/ TestInfo__BehaviorDescriptor() {
@@ -105,7 +105,7 @@ public final class TestInfo__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty reOpenProject$HK9_ = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, 0xe51f392b64685d9L, "reOpenProject");
-    /*package*/ static final SProperty projectPath$_ciw = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, 0x46bca02bfb6e730bL, "projectPath");
+    /*package*/ static final SProperty reOpenProject$akCV = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, 0xe51f392b64685d9L, "reOpenProject");
+    /*package*/ static final SProperty projectPath$WXw = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, 0x46bca02bfb6e730bL, "projectPath");
   }
 }

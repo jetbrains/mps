@@ -46,8 +46,8 @@ public final class MigrationFromMapsToCollections_MigrationScript extends BaseMi
       @Override
       public void doUpdateInstanceNode(SNode node) {
         SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, "jetbrains.mps.baseLanguage.collections.structure.MapType"));
-        SLinkOperations.setTarget(result, LINKS.keyType$lJzv, SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$dQne)).first()));
-        SLinkOperations.setTarget(result, LINKS.valueType$ZdlW, SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$dQne)).last()));
+        SLinkOperations.setTarget(result, LINKS.keyType$y2c1, SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$HlfM)).first()));
+        SLinkOperations.setTarget(result, LINKS.valueType$BtC4, SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$HlfM)).last()));
         SNodeOperations.replaceWithAnother(node, result);
       }
       @Override
@@ -75,8 +75,8 @@ public final class MigrationFromMapsToCollections_MigrationScript extends BaseMi
       @Override
       public void doUpdateInstanceNode(SNode node) {
         SNode operation = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, "jetbrains.mps.baseLanguage.collections.structure.MapElement"));
-        SLinkOperations.setTarget(operation, LINKS.key$aE$d, SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$$A7L)).first()));
-        SLinkOperations.setTarget(operation, LINKS.map$KWLJ, SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr));
+        SLinkOperations.setTarget(operation, LINKS.key$aByj, SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$ItKJ)).first()));
+        SLinkOperations.setTarget(operation, LINKS.map$Hs5L, SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5));
         SNodeOperations.replaceWithAnother(SNodeOperations.getParent(node), operation);
       }
       @Override
@@ -105,10 +105,10 @@ public final class MigrationFromMapsToCollections_MigrationScript extends BaseMi
       public void doUpdateInstanceNode(SNode node) {
         SNode assignment = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression"));
         SNode operation = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, "jetbrains.mps.baseLanguage.collections.structure.MapElement"));
-        SLinkOperations.setTarget(operation, LINKS.key$aE$d, SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$$A7L)).first()));
-        SLinkOperations.setTarget(operation, LINKS.map$KWLJ, SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr));
-        SLinkOperations.setTarget(assignment, LINKS.lValue$J0D4, operation);
-        SLinkOperations.setTarget(assignment, LINKS.rValue$J0E2, SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$$A7L)).last()));
+        SLinkOperations.setTarget(operation, LINKS.key$aByj, SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$ItKJ)).first()));
+        SLinkOperations.setTarget(operation, LINKS.map$Hs5L, SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5));
+        SLinkOperations.setTarget(assignment, LINKS.lValue$LjSW, operation);
+        SLinkOperations.setTarget(assignment, LINKS.rValue$LkmY, SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$ItKJ)).last()));
         SNodeOperations.replaceWithAnother(SNodeOperations.getParent(node), assignment);
       }
       @Override
@@ -212,13 +212,13 @@ public final class MigrationFromMapsToCollections_MigrationScript extends BaseMi
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$$A7i)), CONCEPTS.INamedConcept$nV), PROPS.name$tAp1), "HashMap") && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$swNi)).count() == 2 && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$$A7L)).isEmpty();
+        return Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI)), CONCEPTS.INamedConcept$nV), PROPS.name$lA7v), "HashMap") && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$NSPI)).count() == 2 && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$ItKJ)).isEmpty();
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
         SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, "jetbrains.mps.baseLanguage.collections.structure.HashMapCreator"));
-        SLinkOperations.setTarget(result, LINKS.keyType$j6a1, ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$swNi)).first());
-        SLinkOperations.setTarget(result, LINKS.valueType$WE1r, ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$swNi)).last());
+        SLinkOperations.setTarget(result, LINKS.keyType$fYQv, ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$NSPI)).first());
+        SLinkOperations.setTarget(result, LINKS.valueType$omG5, ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$NSPI)).last());
         SNodeOperations.replaceWithAnother(node, result);
       }
       @Override
@@ -243,22 +243,22 @@ public final class MigrationFromMapsToCollections_MigrationScript extends BaseMi
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink keyType$lJzv = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f62a8L, "keyType");
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
-    /*package*/ static final SContainmentLink valueType$ZdlW = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f8516L, "valueType");
-    /*package*/ static final SContainmentLink key$aE$d = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, 0x116ea57b648L, "key");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink map$KWLJ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, 0x116ea576ac7L, "map");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink lValue$J0D4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SContainmentLink rValue$J0E2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink typeParameter$swNi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
-    /*package*/ static final SContainmentLink keyType$j6a1 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5b4d0L, "keyType");
-    /*package*/ static final SContainmentLink valueType$WE1r = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5d76dL, "valueType");
+    /*package*/ static final SContainmentLink keyType$y2c1 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f62a8L, "keyType");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SContainmentLink valueType$BtC4 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f8516L, "valueType");
+    /*package*/ static final SContainmentLink key$aByj = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, 0x116ea57b648L, "key");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink map$Hs5L = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, 0x116ea576ac7L, "map");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink typeParameter$NSPI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
+    /*package*/ static final SContainmentLink keyType$fYQv = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5b4d0L, "keyType");
+    /*package*/ static final SContainmentLink valueType$omG5 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5d76dL, "valueType");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

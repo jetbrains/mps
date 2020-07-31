@@ -20,33 +20,33 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AnonymousClassCreator_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.cls$xt3G) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.cls$d4Mk) == null)) {
       return;
     }
     List<SNode> methods = SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.BaseMethodDeclaration$RR, false, new SAbstractConcept[]{});
     Set<SNode> vars = SetSequence.fromSet(new HashSet<SNode>());
     for (SNode method : methods) {
-      SetSequence.fromSet(vars).addSequence(SetSequence.fromSet(StatementList__BehaviorDescriptor.getExternalVariablesDeclarations_idhF5UhAC.invoke(SLinkOperations.getTarget(method, LINKS.body$WIlu))));
+      SetSequence.fromSet(vars).addSequence(SetSequence.fromSet(StatementList__BehaviorDescriptor.getExternalVariablesDeclarations_idhF5UhAC.invoke(SLinkOperations.getTarget(method, LINKS.body$qspy))));
     }
     for (SNode var : vars) {
       _context.getBuilder().emitRead(var, "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1214502357422");
     }
-    for (SNode expr : SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.cls$xt3G), LINKS.parameter$1MCX)) {
+    for (SNode expr : SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.cls$d4Mk), LINKS.parameter$RxPz)) {
       _context.getBuilder().build((SNode) expr);
     }
-    for (SNode expr : SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.cls$xt3G), LINKS.actualArgument$$A7L)) {
+    for (SNode expr : SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.cls$d4Mk), LINKS.actualArgument$ItKJ)) {
       _context.getBuilder().build((SNode) expr);
     }
-    for (SNode fieldDeclaration : ClassConcept__BehaviorDescriptor.fields_id4_LVZ3pC27C.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.cls$xt3G))) {
+    for (SNode fieldDeclaration : ClassConcept__BehaviorDescriptor.fields_id4_LVZ3pC27C.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.cls$d4Mk))) {
       _context.getBuilder().build((SNode) fieldDeclaration);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cls$xt3G = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls");
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink parameter$1MCX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e104a89L, "parameter");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink cls$d4Mk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink parameter$RxPz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e104a89L, "parameter");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 
   private static final class CONCEPTS {

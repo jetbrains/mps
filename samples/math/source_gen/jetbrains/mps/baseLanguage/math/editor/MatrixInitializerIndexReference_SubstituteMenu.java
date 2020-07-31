@@ -50,7 +50,7 @@ public class MatrixInitializerIndexReference_SubstituteMenu extends SubstituteMe
 
     public SMP_ReferenceScope_2x2usv_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.MatrixInitializerIndexReference$Oz, LINKS.index$MECO);
+      super((SAbstractConcept) CONCEPTS.MatrixInitializerIndexReference$Oz, LINKS.index$yDLc);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class MatrixInitializerIndexReference_SubstituteMenu extends SubstituteMe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink index$MECO = MetaAdapterFactory.getReferenceLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240f252L, 0x5650ac0d4240f275L, "index");
+    /*package*/ static final SReferenceLink index$yDLc = MetaAdapterFactory.getReferenceLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240f252L, 0x5650ac0d4240f275L, "index");
   }
 }

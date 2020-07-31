@@ -22,7 +22,7 @@ public class check_MultiForEachStatement_NonTypesystemRule extends AbstractNonTy
   public check_MultiForEachStatement_NonTypesystemRule() {
   }
   public void applyRule(final SNode multiForEachStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(multiForEachStatement, LINKS.forEach$_P5u)).count() == 1) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(multiForEachStatement, LINKS.forEach$kHDy)).count() == 1) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(multiForEachStatement, "Multiple foreah with single variable", "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "8656797459615262139", null, errorTarget);
@@ -44,7 +44,7 @@ public class check_MultiForEachStatement_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink forEach$_P5u = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fe9f2L, 0x7d7db8f4181fea16L, "forEach");
+    /*package*/ static final SContainmentLink forEach$kHDy = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fe9f2L, 0x7d7db8f4181fea16L, "forEach");
   }
 
   private static final class CONCEPTS {

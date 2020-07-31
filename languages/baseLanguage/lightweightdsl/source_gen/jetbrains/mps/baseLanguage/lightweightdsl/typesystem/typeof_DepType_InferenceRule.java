@@ -23,7 +23,7 @@ public class typeof_DepType_InferenceRule extends AbstractInferenceRule_Runtime 
   public void applyRule(final SNode depType, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(depType, LINKS.getter$HURw);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(depType, LINKS.getter$fwSw);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:e04b7053-8c89-4f87-b296-94779c625d9d(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.typesystem)", "9097849371504921551", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:e04b7053-8c89-4f87-b296-94779c625d9d(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.typesystem)", "9097849371504921557", true), (SNode) _quotation_createNode_nexsxk_a1a0c0a0a0b(), true, true, _info_12389875345);
       }
@@ -53,7 +53,7 @@ public class typeof_DepType_InferenceRule extends AbstractInferenceRule_Runtime 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink getter$HURw = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d15cL, 0x340eb2bd2e03d15dL, "getter");
+    /*package*/ static final SContainmentLink getter$fwSw = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d15cL, 0x340eb2bd2e03d15dL, "getter");
   }
 
   private static final class CONCEPTS {

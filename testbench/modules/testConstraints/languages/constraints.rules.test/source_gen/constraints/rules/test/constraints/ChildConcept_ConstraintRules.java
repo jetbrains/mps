@@ -43,7 +43,7 @@ public final class ChildConcept_ConstraintRules extends BaseRulesConstraintsDesc
 
     @Override
     public boolean check(@NotNull ContainmentContext context) {
-      return SPropertyOperations.getInteger(context.getChildNode(), PROPS.tolerance$FKON) < 100;
+      return SPropertyOperations.getInteger(context.getChildNode(), PROPS.tolerance$cD$H) < 100;
     }
 
     @Override
@@ -62,7 +62,7 @@ public final class ChildConcept_ConstraintRules extends BaseRulesConstraintsDesc
 
     @Override
     public boolean check(@NotNull ContainmentContext context) {
-      return SPropertyOperations.getInteger(context.getChildNode(), PROPS.tolerance$FKON) > 1;
+      return SPropertyOperations.getInteger(context.getChildNode(), PROPS.tolerance$cD$H) > 1;
     }
 
     @Override
@@ -76,6 +76,6 @@ public final class ChildConcept_ConstraintRules extends BaseRulesConstraintsDesc
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty tolerance$FKON = MetaAdapterFactory.getProperty(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x74b496bab051d961L, 0x74b496bab051e02eL, "tolerance");
+    /*package*/ static final SProperty tolerance$cD$H = MetaAdapterFactory.getProperty(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x74b496bab051d961L, 0x74b496bab051e02eL, "tolerance");
   }
 }

@@ -30,13 +30,13 @@ public class check_EnumerationDataTypeDeclaration_NonTypesystemRule extends Abst
   public check_EnumerationDataTypeDeclaration_NonTypesystemRule() {
   }
   public void applyRule(final SNode enumerationDataTypeDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    final boolean deriveFromExternal = Objects.equals(SPropertyOperations.getEnum(enumerationDataTypeDeclaration, PROPS.memberIdentifierPolicy$DUls), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x116d5fab105L, "jetbrains.mps.lang.structure.structure.EnumerationMemberIdentifierPolicy"), 0x116d5fab106L, "derive_from_presentation"));
-    final boolean deriveFromInternal = Objects.equals(SPropertyOperations.getEnum(enumerationDataTypeDeclaration, PROPS.memberIdentifierPolicy$DUls), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x116d5fab105L, "jetbrains.mps.lang.structure.structure.EnumerationMemberIdentifierPolicy"), 0x116d5fd31b6L, "derive_from_internal_value"));
+    final boolean deriveFromExternal = Objects.equals(SPropertyOperations.getEnum(enumerationDataTypeDeclaration, PROPS.memberIdentifierPolicy$jgo$), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x116d5fab105L, "jetbrains.mps.lang.structure.structure.EnumerationMemberIdentifierPolicy"), 0x116d5fab106L, "derive_from_presentation"));
+    final boolean deriveFromInternal = Objects.equals(SPropertyOperations.getEnum(enumerationDataTypeDeclaration, PROPS.memberIdentifierPolicy$jgo$), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x116d5fab105L, "jetbrains.mps.lang.structure.structure.EnumerationMemberIdentifierPolicy"), 0x116d5fd31b6L, "derive_from_internal_value"));
 
     // Suggest using internal values, if they are present in all members 
-    if (deriveFromExternal && ListSequence.fromList(SLinkOperations.getChildren(enumerationDataTypeDeclaration, LINKS.member$_cRv)).all(new IWhereFilter<SNode>() {
+    if (deriveFromExternal && ListSequence.fromList(SLinkOperations.getChildren(enumerationDataTypeDeclaration, LINKS.member$1eS1)).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.internalValue$bx$m) != null;
+        return SPropertyOperations.getString(it, PROPS.internalValue$_gAE) != null;
       }
     })) {
       {
@@ -49,12 +49,12 @@ public class check_EnumerationDataTypeDeclaration_NonTypesystemRule extends Abst
       }
     }
 
-    ListSequence.fromList(SLinkOperations.getChildren(enumerationDataTypeDeclaration, LINKS.member$_cRv)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(enumerationDataTypeDeclaration, LINKS.member$1eS1)).visitAll(new IVisitor<SNode>() {
       public void visit(final SNode member) {
         // Warn about duplication in presentation 
         if (!(deriveFromExternal) && ListSequence.fromList(SNodeOperations.getAllSiblings(member, false)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.EnumerationMemberDeclaration_Old$vn), PROPS.externalValue$bx$P), SPropertyOperations.getString(member, PROPS.externalValue$bx$P));
+            return Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.EnumerationMemberDeclaration_Old$vn), PROPS.externalValue$_gPF), SPropertyOperations.getString(member, PROPS.externalValue$_gPF));
           }
         }).isNotEmpty()) {
           {
@@ -64,9 +64,9 @@ public class check_EnumerationDataTypeDeclaration_NonTypesystemRule extends Abst
         }
 
         // Report duplicate values 
-        if (!(deriveFromInternal) && SPropertyOperations.getString(member, PROPS.internalValue$bx$m) != null && ListSequence.fromList(SNodeOperations.getAllSiblings(member, false)).where(new IWhereFilter<SNode>() {
+        if (!(deriveFromInternal) && SPropertyOperations.getString(member, PROPS.internalValue$_gAE) != null && ListSequence.fromList(SNodeOperations.getAllSiblings(member, false)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.EnumerationMemberDeclaration_Old$vn), PROPS.internalValue$bx$m), SPropertyOperations.getString(member, PROPS.internalValue$bx$m));
+            return Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.EnumerationMemberDeclaration_Old$vn), PROPS.internalValue$_gAE), SPropertyOperations.getString(member, PROPS.internalValue$_gAE));
           }
         }).isNotEmpty()) {
           {
@@ -109,13 +109,13 @@ public class check_EnumerationDataTypeDeclaration_NonTypesystemRule extends Abst
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty memberIdentifierPolicy$DUls = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x116d5fed0c2L, "memberIdentifierPolicy");
-    /*package*/ static final SProperty internalValue$bx$m = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06663L, "internalValue");
-    /*package*/ static final SProperty externalValue$bx$P = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06664L, "externalValue");
+    /*package*/ static final SProperty memberIdentifierPolicy$jgo$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x116d5fed0c2L, "memberIdentifierPolicy");
+    /*package*/ static final SProperty internalValue$_gAE = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06663L, "internalValue");
+    /*package*/ static final SProperty externalValue$_gPF = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06664L, "externalValue");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$_cRv = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc32151efeL, "member");
+    /*package*/ static final SContainmentLink member$1eS1 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc32151efeL, "member");
   }
 
   private static final class CONCEPTS {

@@ -21,16 +21,16 @@ public class check_CellKeyMapItem_NonTypesystemRule extends AbstractNonTypesyste
   public check_CellKeyMapItem_NonTypesystemRule() {
   }
   public void applyRule(final SNode cellKeyMapKeystroke, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.keycode$1cjA) != null && SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.keycode$1cjA).length() > 1 && !(AWTKeymapHandler.getValidKeyCodes().contains(SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.keycode$1cjA)))) {
+    if (SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.keycode$$Xvq) != null && SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.keycode$$Xvq).length() > 1 && !(AWTKeymapHandler.getValidKeyCodes().contains(SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.keycode$$Xvq)))) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.keycode$1cjA);
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cellKeyMapKeystroke, "Invalid keymap keycode: " + SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.keycode$1cjA), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1324308523799901888", null, errorTarget);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.keycode$$Xvq);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cellKeyMapKeystroke, "Invalid keymap keycode: " + SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.keycode$$Xvq), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1324308523799901888", null, errorTarget);
       }
     }
-    if (SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.modifiers$1cj7) != null && !(AWTKeymapHandler.getValidModifiers().contains(SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.modifiers$1cj7)))) {
+    if (SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.modifiers$$Xgp) != null && !(AWTKeymapHandler.getValidModifiers().contains(SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.modifiers$$Xgp)))) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.modifiers$1cj7);
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cellKeyMapKeystroke, "Invalide keymap modifiers: " + SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.modifiers$1cj7), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1324308523799924995", null, errorTarget);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.modifiers$$Xgp);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cellKeyMapKeystroke, "Invalide keymap modifiers: " + SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.modifiers$$Xgp), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1324308523799924995", null, errorTarget);
       }
     }
 
@@ -46,8 +46,8 @@ public class check_CellKeyMapItem_NonTypesystemRule extends AbstractNonTypesyste
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty keycode$1cjA = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x108b5885461L, 0x108b5f30ab0L, "keycode");
-    /*package*/ static final SProperty modifiers$1cj7 = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x108b5885461L, 0x108b5f30aafL, "modifiers");
+    /*package*/ static final SProperty keycode$$Xvq = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x108b5885461L, 0x108b5f30ab0L, "keycode");
+    /*package*/ static final SProperty modifiers$$Xgp = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x108b5885461L, 0x108b5f30aafL, "modifiers");
   }
 
   private static final class CONCEPTS {

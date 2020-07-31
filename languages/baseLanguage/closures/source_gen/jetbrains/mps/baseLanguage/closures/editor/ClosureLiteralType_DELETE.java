@@ -30,7 +30,7 @@ public class ClosureLiteralType_DELETE {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode clt = node;
-        SNodeOperations.replaceWithAnother(node, _quotation_createNode_4pw826_a0a1a0a(SLinkOperations.getChildren(clt, LINKS.parameterType$odu6), SLinkOperations.getTarget(clt, LINKS.resultType$ln42), SLinkOperations.getChildren(clt, LINKS.throwsType$Faa1)));
+        SNodeOperations.replaceWithAnother(node, _quotation_createNode_4pw826_a0a1a0a(SLinkOperations.getChildren(clt, LINKS.parameterType$Ix$U), SLinkOperations.getTarget(clt, LINKS.resultType$maWY), SLinkOperations.getChildren(clt, LINKS.throwsType$TUQv)));
       }
 
     };
@@ -103,8 +103,8 @@ public class ClosureLiteralType_DELETE {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameterType$odu6 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4e013cL, "parameterType");
-    /*package*/ static final SContainmentLink resultType$ln42 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType");
-    /*package*/ static final SContainmentLink throwsType$Faa1 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x11ad99d9c36L, "throwsType");
+    /*package*/ static final SContainmentLink parameterType$Ix$U = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4e013cL, "parameterType");
+    /*package*/ static final SContainmentLink resultType$maWY = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType");
+    /*package*/ static final SContainmentLink throwsType$TUQv = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x11ad99d9c36L, "throwsType");
   }
 }

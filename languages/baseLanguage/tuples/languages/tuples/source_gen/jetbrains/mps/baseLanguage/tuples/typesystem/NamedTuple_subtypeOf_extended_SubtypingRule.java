@@ -24,8 +24,8 @@ public class NamedTuple_subtypeOf_extended_SubtypingRule extends SubtypingRule_R
   public NamedTuple_subtypeOf_extended_SubtypingRule() {
   }
   public List<SNode> getSubOrSuperTypes(SNode ntt, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ntt, LINKS.classifier$pQ_R), LINKS.extended$ojjy), LINKS.classifier$pQ_R) != null)) {
-      return ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_xrnhlx_a0a0a0a1(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ntt, LINKS.classifier$pQ_R), LINKS.extended$ojjy), LINKS.classifier$pQ_R)));
+    if ((SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ntt, LINKS.classifier$xslD), LINKS.extended$Lmtu), LINKS.classifier$xslD) != null)) {
+      return ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_xrnhlx_a0a0a0a1(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ntt, LINKS.classifier$xslD), LINKS.extended$Lmtu), LINKS.classifier$xslD)));
     }
     return null;
   }
@@ -50,8 +50,8 @@ public class NamedTuple_subtypeOf_extended_SubtypingRule extends SubtypingRule_R
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink extended$ojjy = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x479eb1f896fa444L, "extended");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink extended$Lmtu = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x479eb1f896fa444L, "extended");
   }
 
   private static final class CONCEPTS {

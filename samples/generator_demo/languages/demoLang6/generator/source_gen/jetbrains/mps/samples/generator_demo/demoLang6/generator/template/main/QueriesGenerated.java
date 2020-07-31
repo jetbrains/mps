@@ -22,10 +22,10 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static Object propertyMacro_GetValue_0_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.text$MFMZ);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.text$zdGx);
   }
   public static Object propertyMacro_GetValue_0_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.text$QN3y);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.text$yIHu);
   }
   private final Map<String, PropertyValueQuery> pvqMethods = new HashMap<String, PropertyValueQuery>();
   {
@@ -62,7 +62,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$MFMZ = MetaAdapterFactory.getProperty(0x82fb751df7fb4b58L, 0xa16e303356f8e0afL, 0x37350ebbae8d1283L, 0x37350ebbae8d12f3L, "text");
-    /*package*/ static final SProperty text$QN3y = MetaAdapterFactory.getProperty(0x82fb751df7fb4b58L, 0xa16e303356f8e0afL, 0x37350ebbae8d186cL, 0x37350ebbae8d1876L, "text");
+    /*package*/ static final SProperty text$zdGx = MetaAdapterFactory.getProperty(0x82fb751df7fb4b58L, 0xa16e303356f8e0afL, 0x37350ebbae8d1283L, 0x37350ebbae8d12f3L, "text");
+    /*package*/ static final SProperty text$yIHu = MetaAdapterFactory.getProperty(0x82fb751df7fb4b58L, 0xa16e303356f8e0afL, 0x37350ebbae8d186cL, 0x37350ebbae8d1876L, "text");
   }
 }

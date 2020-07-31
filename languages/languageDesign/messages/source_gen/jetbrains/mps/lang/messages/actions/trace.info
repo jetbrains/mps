@@ -13,7 +13,7 @@
     <file name="Default.java">
       <node id="2716118816014332390" at="17,89,18,204" concept="0" />
       <node id="5258059200644005942" at="24,0,25,0" concept="3" trace="MacroMessageExpression$LH" />
-      <node id="5258059200644005942" at="28,0,29,0" concept="3" trace="defRef$iNqL" />
+      <node id="5258059200644005942" at="28,0,29,0" concept="3" trace="defRef$6TXJ" />
       <node id="5258059200644005956" at="16,91,19,7" concept="1" />
       <node id="5258059200644005943" at="16,0,21,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <scope id="5258059200644005958" at="17,89,18,204" />

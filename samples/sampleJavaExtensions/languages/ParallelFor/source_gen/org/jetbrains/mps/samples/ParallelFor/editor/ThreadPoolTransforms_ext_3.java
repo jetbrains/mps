@@ -76,7 +76,7 @@ public class ThreadPoolTransforms_ext_3 extends TransformationMenuBase {
   public class TMP_Group_z56g1d_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SLinkOperations.getTarget(_context.getNode(), LINKS.threadPool$1iZ4) == null;
+      return SLinkOperations.getTarget(_context.getNode(), LINKS.threadPool$CcyW) == null;
     }
 
     @NotNull
@@ -134,12 +134,12 @@ public class ThreadPoolTransforms_ext_3 extends TransformationMenuBase {
         public void execute(@NotNull String pattern) {
           SNode candidate = ParallelFor__BehaviorDescriptor.findPoolDeclaration_id6FH9fp$mItT.invoke(_context.getNode());
           if (candidate == null) {
-            SLinkOperations.setTarget(_context.getNode(), LINKS.threadPool$1iZ4, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
+            SLinkOperations.setTarget(_context.getNode(), LINKS.threadPool$CcyW, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
           } else {
-            SLinkOperations.setTarget(_context.getNode(), LINKS.threadPool$1iZ4, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference")));
-            SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.threadPool$1iZ4), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6, candidate);
+            SLinkOperations.setTarget(_context.getNode(), LINKS.threadPool$CcyW, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference")));
+            SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.threadPool$CcyW), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU, candidate);
           }
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(_context.getNode(), LINKS.threadPool$1iZ4), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(_context.getNode(), LINKS.threadPool$CcyW), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
@@ -164,8 +164,8 @@ public class ThreadPoolTransforms_ext_3 extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink threadPool$1iZ4 = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x40a8d217b6d881feL, "threadPool");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink threadPool$CcyW = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x40a8d217b6d881feL, "threadPool");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class CONCEPTS {

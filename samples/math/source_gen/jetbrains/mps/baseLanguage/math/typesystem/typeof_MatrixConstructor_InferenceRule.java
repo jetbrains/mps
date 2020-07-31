@@ -20,7 +20,7 @@ public class typeof_MatrixConstructor_InferenceRule extends AbstractInferenceRul
   public typeof_MatrixConstructor_InferenceRule() {
   }
   public void applyRule(final SNode mc, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    DimensionUtil.checkDim(typeCheckingContext, SLinkOperations.getChildren(mc, LINKS.components$A7_4), 0, new ArrayList<SNode>(), !(SPropertyOperations.getBoolean(mc, PROPS.column$5PEh)), mc);
+    DimensionUtil.checkDim(typeCheckingContext, SLinkOperations.getChildren(mc, LINKS.components$tEWW), 0, new ArrayList<SNode>(), !(SPropertyOperations.getBoolean(mc, PROPS.column$OZuf)), mc);
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.MatrixConstructor$8L;
@@ -33,11 +33,11 @@ public class typeof_MatrixConstructor_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink components$A7_4 = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, 0x42d5783a626b0a8dL, "components");
+    /*package*/ static final SContainmentLink components$tEWW = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, 0x42d5783a626b0a8dL, "components");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty column$5PEh = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, 0x308cb55abc73bd40L, "column");
+    /*package*/ static final SProperty column$OZuf = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, 0x308cb55abc73bd40L, "column");
   }
 
   private static final class CONCEPTS {

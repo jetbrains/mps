@@ -23,7 +23,7 @@ public class CommentedStatement_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.statement$HstR));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.statement$MtD));
       }
 
     };
@@ -71,6 +71,6 @@ public class CommentedStatement_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$HstR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11ef4675fccL, 0x11ef467946eL, "statement");
+    /*package*/ static final SContainmentLink statement$MtD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11ef4675fccL, 0x11ef467946eL, "statement");
   }
 }

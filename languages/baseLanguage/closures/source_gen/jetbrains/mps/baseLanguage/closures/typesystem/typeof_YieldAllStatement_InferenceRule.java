@@ -23,7 +23,7 @@ public class typeof_YieldAllStatement_InferenceRule extends AbstractInferenceRul
   public void applyRule(final SNode statement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final SNode elementType_typevar_1228998160752 = typeCheckingContext.createNewRuntimeTypesVariable();
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(statement, LINKS.expression$fxu5);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(statement, LINKS.expression$xd$r);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "5050026341848553735", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "5050026341848553737", true), (SNode) _quotation_createNode_oliywx_a1a0c0b0b(typeCheckingContext.getRepresentative(elementType_typevar_1228998160752), typeCheckingContext.getRepresentative(elementType_typevar_1228998160752)), false, true, _info_12389875345);
     }
@@ -61,7 +61,7 @@ public class typeof_YieldAllStatement_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$fxu5 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x11e25fc6c63L, 0x11e25fc9ed1L, "expression");
+    /*package*/ static final SContainmentLink expression$xd$r = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x11e25fc6c63L, 0x11e25fc9ed1L, "expression");
   }
 
   private static final class CONCEPTS {

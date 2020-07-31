@@ -26,7 +26,7 @@ public class SemanticDowncastExpression_Symbol_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.leftExpression$flIo));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.leftExpression$rxtC));
       }
 
     };
@@ -74,6 +74,6 @@ public class SemanticDowncastExpression_Symbol_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$flIo = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aaf6d7435L, 0x10aaf6f6e81L, "leftExpression");
+    /*package*/ static final SContainmentLink leftExpression$rxtC = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aaf6d7435L, 0x10aaf6f6e81L, "leftExpression");
   }
 }

@@ -132,7 +132,7 @@ public class MethodCallsFixer extends BaseEditorChecker {
               for (SNode methodCall : methodCallsToUpdate.keySet()) {
                 SNode referent = methodCallsToUpdate.get(methodCall);
                 if (referent != null && SNodeUtil.isAccessible(referent, repository)) {
-                  SLinkOperations.setTarget(methodCall, LINKS.baseMethodDeclaration$$A7i, referent);
+                  SLinkOperations.setTarget(methodCall, LINKS.baseMethodDeclaration$ItxI, referent);
                 }
               }
             }
@@ -147,6 +147,6 @@ public class MethodCallsFixer extends BaseEditorChecker {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

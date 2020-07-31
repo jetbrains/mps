@@ -25,13 +25,13 @@ public class check_TupleComponentIsInScope_NonTypesystemRule extends AbstractNon
   public check_TupleComponentIsInScope_NonTypesystemRule() {
   }
   public void applyRule(final SNode namedTupleLiteral, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    List<SNode> tupleComponents = ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(namedTupleLiteral, LINKS.tupleDeclaration$GwJE))).reversedList().translate(new ITranslator2<SNode, SNode>() {
+    List<SNode> tupleComponents = ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(namedTupleLiteral, LINKS.tupleDeclaration$zR5m))).reversedList().translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode ntd) {
-        return SLinkOperations.getChildren(ntd, LINKS.component$eWwg);
+        return SLinkOperations.getChildren(ntd, LINKS.component$fjBK);
       }
     }).toListSequence();
-    for (SNode ref : SLinkOperations.getChildren(namedTupleLiteral, LINKS.componentRef$49s5)) {
-      SNode tupleComponent = SLinkOperations.getTarget(ref, LINKS.componentDeclaration$iLy0);
+    for (SNode ref : SLinkOperations.getChildren(namedTupleLiteral, LINKS.componentRef$$Ar)) {
+      SNode tupleComponent = SLinkOperations.getTarget(ref, LINKS.componentDeclaration$5Zu0);
       if (!(ListSequence.fromList(tupleComponents).contains(tupleComponent))) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ref, "tuple component is out of scope", "r:e119dbbd-3529-4067-8bad-6b9edd79d0b6(jetbrains.mps.baseLanguage.tuples.typesystem)", "8197465398807016917", null, errorTarget);
@@ -49,10 +49,10 @@ public class check_TupleComponentIsInScope_NonTypesystemRule extends AbstractNon
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink tupleDeclaration$GwJE = MetaAdapterFactory.getReferenceLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL, 0x1209b88b156L, "tupleDeclaration");
-    /*package*/ static final SContainmentLink component$eWwg = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x12099b7fca9L, "component");
-    /*package*/ static final SContainmentLink componentRef$49s5 = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL, 0x1209b9676f1L, "componentRef");
-    /*package*/ static final SReferenceLink componentDeclaration$iLy0 = MetaAdapterFactory.getReferenceLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L, 0x1209b91a766L, "componentDeclaration");
+    /*package*/ static final SReferenceLink tupleDeclaration$zR5m = MetaAdapterFactory.getReferenceLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL, 0x1209b88b156L, "tupleDeclaration");
+    /*package*/ static final SContainmentLink component$fjBK = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x12099b7fca9L, "component");
+    /*package*/ static final SContainmentLink componentRef$$Ar = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL, 0x1209b9676f1L, "componentRef");
+    /*package*/ static final SReferenceLink componentDeclaration$5Zu0 = MetaAdapterFactory.getReferenceLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L, 0x1209b91a766L, "componentDeclaration");
   }
 
   private static final class CONCEPTS {

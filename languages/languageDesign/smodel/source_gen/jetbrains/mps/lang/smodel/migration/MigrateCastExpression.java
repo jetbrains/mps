@@ -57,21 +57,21 @@ public class MigrateCastExpression extends MigrationScriptBase {
         public void visit(SNode it) {
           // left_expression_old was completely removed 
           // concept_old was completely removed 
-          if ((SLinkOperations.getTarget(it, LINKS.conceptArgument$N8Tv) == null)) {
-            SReference conceptRef = SNodeOperations.getReference(it, LINKS.concept$NIQI);
-            SLinkOperations.setTarget(it, LINKS.conceptArgument$N8Tv, _quotation_createNode_r15y35_a0b0c0a0a0a0a6((SNode) SLinkOperations.getTargetNode(conceptRef)));
-            moveLinkAttributes(it, conceptRef.getLink(), SLinkOperations.getTarget(it, LINKS.conceptArgument$N8Tv), LINKS.conceptDeclaration$GmCT);
+          if ((SLinkOperations.getTarget(it, LINKS.conceptArgument$LjQ1) == null)) {
+            SReference conceptRef = SNodeOperations.getReference(it, LINKS.concept$3Gwi);
+            SLinkOperations.setTarget(it, LINKS.conceptArgument$LjQ1, _quotation_createNode_r15y35_a0b0c0a0a0a0a6((SNode) SLinkOperations.getTargetNode(conceptRef)));
+            moveLinkAttributes(it, conceptRef.getLink(), SLinkOperations.getTarget(it, LINKS.conceptArgument$LjQ1), LINKS.conceptDeclaration$uXNB);
           }
-          SLinkOperations.setTarget(it, LINKS.concept$NIQI, null);
+          SLinkOperations.setTarget(it, LINKS.concept$3Gwi, null);
         }
       });
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SConceptTypeCastExpression$3w, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          if ((SLinkOperations.getTarget(it, LINKS.conceptArgument$N8Tv) == null)) {
-            SLinkOperations.setTarget(it, LINKS.conceptArgument$N8Tv, _quotation_createNode_r15y35_a0a0a0a0a1a0a6(SLinkOperations.getTarget(it, LINKS.concept$NIQI)));
-            moveLinkAttributes(it, LINKS.concept$NIQI, SLinkOperations.getTarget(it, LINKS.conceptArgument$N8Tv), LINKS.conceptDeclaration$GmCT);
+          if ((SLinkOperations.getTarget(it, LINKS.conceptArgument$LjQ1) == null)) {
+            SLinkOperations.setTarget(it, LINKS.conceptArgument$LjQ1, _quotation_createNode_r15y35_a0a0a0a0a1a0a6(SLinkOperations.getTarget(it, LINKS.concept$3Gwi)));
+            moveLinkAttributes(it, LINKS.concept$3Gwi, SLinkOperations.getTarget(it, LINKS.conceptArgument$LjQ1), LINKS.conceptDeclaration$uXNB);
           }
-          SLinkOperations.setTarget(it, LINKS.concept$NIQI, null);
+          SLinkOperations.setTarget(it, LINKS.concept$3Gwi, null);
         }
       });
     }
@@ -88,12 +88,12 @@ public class MigrateCastExpression extends MigrationScriptBase {
       };
       Iterable<SNode> conceptTypeCasts = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SConceptTypeCastExpression$3w, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.concept$NIQI) != null);
+          return (SLinkOperations.getTarget(it, LINKS.concept$3Gwi) != null);
         }
       });
       Iterable<SNode> nodeTypeCasts = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SNodeTypeCastExpression$Sg, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.concept$NIQI) != null);
+          return (SLinkOperations.getTarget(it, LINKS.concept$3Gwi) != null);
         }
       });
       return Sequence.fromIterable(nodeTypeCasts).concat(Sequence.fromIterable(conceptTypeCasts)).select(new ISelector<SNode, NotMigratedNode>() {
@@ -114,7 +114,7 @@ public class MigrateCastExpression extends MigrationScriptBase {
 
 
   private void moveLinkAttributes(SNode sourceNode, final SReferenceLink sourceLink, final SNode targetNode, final SReferenceLink targetLink) {
-    Iterable<SNode> attributes = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(sourceNode, LINKS.smodelAttribute$K8bJ), CONCEPTS.LinkAttribute$7j)).where(new IWhereFilter<SNode>() {
+    Iterable<SNode> attributes = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(sourceNode, LINKS.smodelAttribute$jXFL), CONCEPTS.LinkAttribute$7j)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), sourceLink);
       }
@@ -123,7 +123,7 @@ public class MigrateCastExpression extends MigrationScriptBase {
       public void visit(SNode it) {
         SNodeOperations.deleteNode(it);
         LinkAttribute__BehaviorDescriptor.setLink_id6Gg5KlvuxxF.invoke(it, targetLink);
-        ListSequence.fromList(SLinkOperations.getChildren(targetNode, LINKS.smodelAttribute$K8bJ)).addElement(it);
+        ListSequence.fromList(SLinkOperations.getChildren(targetNode, LINKS.smodelAttribute$jXFL)).addElement(it);
       }
     });
   }
@@ -149,9 +149,9 @@ public class MigrateCastExpression extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$NIQI = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67ce04L, "concept");
-    /*package*/ static final SContainmentLink conceptArgument$N8Tv = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x3636a984eed504f9L, "conceptArgument");
-    /*package*/ static final SReferenceLink conceptDeclaration$GmCT = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, 0x1120c45d024L, "conceptDeclaration");
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SReferenceLink concept$3Gwi = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67ce04L, "concept");
+    /*package*/ static final SContainmentLink conceptArgument$LjQ1 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x3636a984eed504f9L, "conceptArgument");
+    /*package*/ static final SReferenceLink conceptDeclaration$uXNB = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, 0x1120c45d024L, "conceptDeclaration");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 }

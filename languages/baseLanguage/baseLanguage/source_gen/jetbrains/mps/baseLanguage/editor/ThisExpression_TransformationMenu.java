@@ -96,7 +96,7 @@ public class ThisExpression_TransformationMenu extends TransformationMenuBase {
   public class TMP_Group_xqoe4o_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.classConcept$Hbij) == null);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.classConcept$StRd) == null);
     }
 
     @NotNull
@@ -176,13 +176,13 @@ public class ThisExpression_TransformationMenu extends TransformationMenuBase {
           @Nullable
           @Override
           public String getLabelText(String pattern) {
-            return SPropertyOperations.getString(myParameterObject, PROPS.name$tAp1) + ".";
+            return SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v) + ".";
           }
 
           @Override
           public void execute(@NotNull String pattern) {
             SNode expr = SNodeFactoryOperations.createNewNode(CONCEPTS.ThisExpression$7A, null);
-            SLinkOperations.setTarget(expr, LINKS.classConcept$Hbij, myParameterObject);
+            SLinkOperations.setTarget(expr, LINKS.classConcept$StRd, myParameterObject);
             SNodeOperations.replaceWithAnother(_context.getNode(), expr);
             SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), expr, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
           }
@@ -214,10 +214,10 @@ public class ThisExpression_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classConcept$Hbij = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
+    /*package*/ static final SReferenceLink classConcept$StRd = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -207,11 +207,11 @@
       <node id="4394877045817292719" at="333,60,334,40" concept="1" />
       <node id="4394877045817292719" at="334,40,335,34" concept="1" />
       <node id="4394877045817292719" at="335,34,336,22" concept="6" />
-      <node id="4394877045817292529" at="340,0,341,0" concept="7" trace="name$tAp1" />
+      <node id="4394877045817292529" at="340,0,341,0" concept="7" trace="name$lA7v" />
       <node id="4394877045817292529" at="344,0,345,0" concept="7" trace="PropertyAttribute$jT" />
       <node id="4394877045817292529" at="345,0,346,0" concept="7" trace="MetaPort$5d" />
-      <node id="4394877045817292529" at="349,0,350,0" concept="7" trace="inMetaPorts$R6WG" />
-      <node id="4394877045817292529" at="350,0,351,0" concept="7" trace="outMetaPorts$GN3P" />
+      <node id="4394877045817292529" at="349,0,350,0" concept="7" trace="inMetaPorts$Gnpk" />
+      <node id="4394877045817292529" at="350,0,351,0" concept="7" trace="outMetaPorts$GIQF" />
       <node id="4394877045817292529" at="44,0,46,0" concept="2" trace="myNode" />
       <node id="4394877045817292529" at="159,0,161,0" concept="2" trace="myNode" />
       <node id="4394877045817292529" at="263,0,265,0" concept="2" trace="myNode" />
@@ -462,7 +462,7 @@
       <node id="2336278055263065672" at="81,89,82,145" concept="6" />
       <node id="2336278055263065672" at="83,12,84,24" concept="6" />
       <node id="2336278055263065672" at="85,15,86,40" concept="1" />
-      <node id="4394877045817292529" at="91,0,92,0" concept="7" trace="path$xm$K" />
+      <node id="4394877045817292529" at="91,0,92,0" concept="7" trace="path$9VNg" />
       <node id="4394877045817292529" at="95,0,96,0" concept="7" trace="PropertyAttribute$jT" />
       <node id="4394877045817292529" at="31,0,33,0" concept="2" trace="myNode" />
       <node id="4394877045817292529" at="45,0,48,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />

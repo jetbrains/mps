@@ -40,7 +40,7 @@ public final class ConvertCastToSConceptType_Intention extends AbstractIntention
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (!((boolean) SNodeTypeCastExpression__BehaviorDescriptor.isSNodeCast_idi1Btg5H.invoke(node)) || !((boolean) SNodeTypeCastExpression__BehaviorDescriptor.hasValidType_id3$jHpAYjQYh.invoke(node))) && !(SPropertyOperations.getBoolean(node, PROPS.asCast$W3Qz));
+    return (!((boolean) SNodeTypeCastExpression__BehaviorDescriptor.isSNodeCast_idi1Btg5H.invoke(node)) || !((boolean) SNodeTypeCastExpression__BehaviorDescriptor.hasValidType_id3$jHpAYjQYh.invoke(node))) && !(SPropertyOperations.getBoolean(node, PROPS.asCast$5RqX));
   }
   @Override
   public boolean isSurroundWith() {
@@ -62,8 +62,8 @@ public final class ConvertCastToSConceptType_Intention extends AbstractIntention
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode repl = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1871b2e3b0ef0078L, "jetbrains.mps.lang.smodel.structure.SConceptTypeCastExpression"));
-      SLinkOperations.setTarget(repl, LINKS.concept$NIQI, SLinkOperations.getTarget(node, LINKS.concept$NIQI));
-      SLinkOperations.setTarget(repl, LINKS.leftExpression$NqCX, SLinkOperations.getTarget(node, LINKS.leftExpression$NqCX));
+      SLinkOperations.setTarget(repl, LINKS.concept$3Gwi, SLinkOperations.getTarget(node, LINKS.concept$3Gwi));
+      SLinkOperations.setTarget(repl, LINKS.leftExpression$TTPz, SLinkOperations.getTarget(node, LINKS.leftExpression$TTPz));
       SNodeOperations.replaceWithAnother(node, repl);
     }
     @Override
@@ -73,11 +73,11 @@ public final class ConvertCastToSConceptType_Intention extends AbstractIntention
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty asCast$W3Qz = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10975850da7L, 0x12067573bc7L, "asCast");
+    /*package*/ static final SProperty asCast$5RqX = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10975850da7L, 0x12067573bc7L, "asCast");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$NIQI = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67ce04L, "concept");
-    /*package*/ static final SContainmentLink leftExpression$NqCX = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67cd19L, "leftExpression");
+    /*package*/ static final SReferenceLink concept$3Gwi = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67ce04L, "concept");
+    /*package*/ static final SContainmentLink leftExpression$TTPz = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67cd19L, "leftExpression");
   }
 }

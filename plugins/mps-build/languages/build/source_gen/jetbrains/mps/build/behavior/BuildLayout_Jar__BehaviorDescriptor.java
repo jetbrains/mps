@@ -54,11 +54,11 @@ public final class BuildLayout_Jar__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ static void unpack_id6IqTD4bJTWZ(@NotNull SNode __thisNode__, UnpackHelper helper) {
     SNode parent = helper.parent(__thisNode__);
     String parentLocation = helper.getContentLocation(parent);
-    String zipLocation = parentLocation + "/" + BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.containerName$Mzv5), helper.getMacroHelper());
+    String zipLocation = parentLocation + "/" + BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.containerName$vc3r), helper.getMacroHelper());
     helper.putLocation(__thisNode__, zipLocation);
 
     if (helper.isContentRequired(__thisNode__)) {
-      String tempPath = helper.getPathProvider().createTempPath(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1), "deps", SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BuildProject$BF, false, false), PROPS.name$tAp1));
+      String tempPath = helper.getPathProvider().createTempPath(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v), "deps", SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BuildProject$BF, false, false), PROPS.name$lA7v));
       helper.emit(_quotation_createNode_20awhq_a0a1a5a0(tempPath));
       helper.emit(_quotation_createNode_20awhq_a0a2a5a0(zipLocation, tempPath));
       helper.putContentLocation(__thisNode__, tempPath);
@@ -71,15 +71,15 @@ public final class BuildLayout_Jar__BehaviorDescriptor extends BaseBHDescriptor 
     if (object instanceof SNode) {
       final SNode node = (SNode) object;
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildSource_JavaModule$h5)) {
-        List<SNode> children = SLinkOperations.getChildren(__thisNode__, LINKS.children$aiMf);
+        List<SNode> children = SLinkOperations.getChildren(__thisNode__, LINKS.children$Z6lh);
         // XXX BL_ImportContent is the one I need at the moment, though likely need to respect BL_Import, too. 
-        Iterable<SNode> importedContent = SLinkOperations.collectMany(SLinkOperations.collect(SNodeOperations.ofConcept(children, CONCEPTS.BuildLayout_ImportContent$Y5), LINKS.target$pRHZ), LINKS.children$aiMf);
+        Iterable<SNode> importedContent = SLinkOperations.collectMany(SLinkOperations.collect(SNodeOperations.ofConcept(children, CONCEPTS.BuildLayout_ImportContent$Y5), LINKS.target$xZhx), LINKS.children$Z6lh);
         // FIXME Does anybody have an idea why BuildSource_JavaModule is processed here independently from the logic in scanInJarNodes(), below? 
         // i.e. what if I put _CompileOutputOf under a folder or a 'transparent' container? Why not _CompileOutputOf is not _InJarNode (there's even constraint that  
         // forbids creating _CompileOutputOf under anything but _Jar!) 
         return Sequence.fromIterable(SNodeOperations.ofConcept(ListSequence.fromList(children).union(Sequence.fromIterable(importedContent)), CONCEPTS.BuildLayout_CompileOutputOf$v7)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.module$4AGZ) == node;
+            return SLinkOperations.getTarget(it, LINKS.module$eJMx) == node;
           }
         });
       } else {
@@ -89,21 +89,21 @@ public final class BuildLayout_Jar__BehaviorDescriptor extends BaseBHDescriptor 
     return false;
   }
   /*package*/ static boolean scanInJarNodes_id5bqm540K$Gi(@NotNull final SNode __thisNode__, SNode container, final Object object) {
-    if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(container, LINKS.children$aiMf), CONCEPTS.BuildLayout_InJarNode$MC)).any(new IWhereFilter<SNode>() {
+    if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(container, LINKS.children$Z6lh), CONCEPTS.BuildLayout_InJarNode$MC)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (boolean) BuildLayout_InJarNode__BehaviorDescriptor.reexportsFromJar_id5bqm540K$Gb.invoke(it, object);
       }
     })) {
       return true;
     }
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(container, LINKS.children$aiMf), CONCEPTS.BuildLayout_Folder$4a)).any(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(container, LINKS.children$Z6lh), CONCEPTS.BuildLayout_Folder$4a)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return ((boolean) BuildLayout_Jar__BehaviorDescriptor.scanInJarNodes_id5bqm540K$Gi.invoke(__thisNode__, it, object));
       }
     });
   }
   /*package*/ static String getApproximateName_id4RsV8qJDnFm(@NotNull SNode __thisNode__) {
-    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.containerName$Mzv5), null);
+    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.containerName$vc3r), null);
   }
   /*package*/ static String getFileSetExtension_id5zIo$W4pFTK(@NotNull SNode __thisNode__) {
     return "zipfileset";
@@ -228,14 +228,14 @@ public final class BuildLayout_Jar__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink containerName$Mzv5 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName");
-    /*package*/ static final SContainmentLink children$aiMf = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
-    /*package*/ static final SReferenceLink target$pRHZ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86af9fdb53L, 0x4ddcec86af9fdb55L, "target");
-    /*package*/ static final SReferenceLink module$4AGZ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x23f6fd361bdcfd24L, 0x23f6fd361bdcfd26L, "module");
+    /*package*/ static final SContainmentLink containerName$vc3r = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName");
+    /*package*/ static final SContainmentLink children$Z6lh = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
+    /*package*/ static final SReferenceLink target$xZhx = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86af9fdb53L, 0x4ddcec86af9fdb55L, "target");
+    /*package*/ static final SReferenceLink module$eJMx = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x23f6fd361bdcfd24L, 0x23f6fd361bdcfd26L, "module");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

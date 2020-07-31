@@ -80,7 +80,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
               if (descendantMapper == null) {
                 return null;
               }
-              Set<Mapper<? super SNode, ?>> mappers = descendantMapper.getMappingContext().getMappers(descendantMapper, SLinkOperations.getTarget(SLinkOperations.getTarget(getSNode(), LINKS.source$CgLa), LINKS.metaPort$JUWK));
+              Set<Mapper<? super SNode, ?>> mappers = descendantMapper.getMappingContext().getMappers(descendantMapper, SLinkOperations.getTarget(SLinkOperations.getTarget(getSNode(), LINKS.source$w7NQ), LINKS.metaPort$dzrg));
               if (mappers.size() > 0) {
                 return (View) mappers.iterator().next().getTarget();
               }
@@ -100,7 +100,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
               if (descendantMapper == null) {
                 return null;
               }
-              Set<Mapper<? super SNode, ?>> mappers = descendantMapper.getMappingContext().getMappers(descendantMapper, SLinkOperations.getTarget(SLinkOperations.getTarget(getSNode(), LINKS.target$ClT$), LINKS.metaPort$JUWK));
+              Set<Mapper<? super SNode, ?>> mappers = descendantMapper.getMappingContext().getMappers(descendantMapper, SLinkOperations.getTarget(SLinkOperations.getTarget(getSNode(), LINKS.target$yASs), LINKS.metaPort$dzrg));
               if (mappers.size() > 0) {
                 return (View) mappers.iterator().next().getTarget();
               }
@@ -182,8 +182,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 
     public void synchronize() {
-      myInputPort.set(MultiTuple.<SNode,SNode>from(SLinkOperations.getTarget(SLinkOperations.getTarget(getSNode(), LINKS.source$CgLa), LINKS.block$JUWh), SLinkOperations.getTarget(SLinkOperations.getTarget(getSNode(), LINKS.source$CgLa), LINKS.metaPort$JUWK)));
-      myOutputPort.set(MultiTuple.<SNode,SNode>from(SLinkOperations.getTarget(SLinkOperations.getTarget(getSNode(), LINKS.target$ClT$), LINKS.block$JUWh), SLinkOperations.getTarget(SLinkOperations.getTarget(getSNode(), LINKS.target$ClT$), LINKS.metaPort$JUWK)));
+      myInputPort.set(MultiTuple.<SNode,SNode>from(SLinkOperations.getTarget(SLinkOperations.getTarget(getSNode(), LINKS.source$w7NQ), LINKS.block$dzcf), SLinkOperations.getTarget(SLinkOperations.getTarget(getSNode(), LINKS.source$w7NQ), LINKS.metaPort$dzrg)));
+      myOutputPort.set(MultiTuple.<SNode,SNode>from(SLinkOperations.getTarget(SLinkOperations.getTarget(getSNode(), LINKS.target$yASs), LINKS.block$dzcf), SLinkOperations.getTarget(SLinkOperations.getTarget(getSNode(), LINKS.target$yASs), LINKS.metaPort$dzrg)));
     }
     private PolyLineConnection createConnection() {
       PolyLineConnection connection = new PolyLineConnection();
@@ -200,9 +200,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink source$CgLa = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c0L, "source");
-    /*package*/ static final SReferenceLink metaPort$JUWK = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, 0x49664459198225bdL, "metaPort");
-    /*package*/ static final SContainmentLink target$ClT$ = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c6L, "target");
-    /*package*/ static final SReferenceLink block$JUWh = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, 0x49664459198225bcL, "block");
+    /*package*/ static final SContainmentLink source$w7NQ = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c0L, "source");
+    /*package*/ static final SReferenceLink metaPort$dzrg = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, 0x49664459198225bdL, "metaPort");
+    /*package*/ static final SContainmentLink target$yASs = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c6L, "target");
+    /*package*/ static final SReferenceLink block$dzcf = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, 0x49664459198225bcL, "block");
   }
 }

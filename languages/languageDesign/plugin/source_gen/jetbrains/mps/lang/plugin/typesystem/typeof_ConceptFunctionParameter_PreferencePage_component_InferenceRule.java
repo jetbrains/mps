@@ -22,7 +22,7 @@ public class typeof_ConceptFunctionParameter_PreferencePage_component_InferenceR
     {
       SNode _nodeToCheck_1029348928467 = component;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "1210690956261", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "1210690935802", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(component, CONCEPTS.PreferencePage$Fj, false, false), LINKS.component$YVW3), "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "1210690958118", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "1210690935802", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(component, CONCEPTS.PreferencePage$Fj, false, false), LINKS.component$v25t), "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "1210690958118", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -41,6 +41,6 @@ public class typeof_ConceptFunctionParameter_PreferencePage_component_InferenceR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink component$YVW3 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119e269a79fL, 0x119e28f326fL, "component");
+    /*package*/ static final SContainmentLink component$v25t = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119e269a79fL, 0x119e28f326fL, "component");
   }
 }

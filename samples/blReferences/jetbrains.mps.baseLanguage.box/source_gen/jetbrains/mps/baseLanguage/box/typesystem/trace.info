@@ -40,8 +40,8 @@
       <node id="5371100132593307341" at="48,236,49,39" concept="2" />
       <node id="5371100132593307341" at="50,31,51,206" concept="2" />
       <node id="5371100132593307341" at="52,5,53,24" concept="6" />
-      <node id="8995237445478423795" at="57,0,58,0" concept="7" trace="type$R5MN" />
-      <node id="8995237445478423795" at="58,0,59,0" concept="7" trace="value$BOax" />
+      <node id="8995237445478423795" at="57,0,58,0" concept="7" trace="type$FNAH" />
+      <node id="8995237445478423795" at="58,0,59,0" concept="7" trace="value$ih5Z" />
       <node id="8995237445478423795" at="62,0,63,0" concept="7" trace="BoxCreator$Ye" />
       <node id="8995237445478423795" at="21,0,23,0" concept="1" trace="typeof_BoxCreator_InferenceRule#()V" />
       <node id="8995237445478423795" at="35,0,38,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

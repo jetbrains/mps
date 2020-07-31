@@ -11,7 +11,7 @@
   <root nodeRef="r:14d9938d-f7ef-4995-a5b9-c40ae14726a7(jetbrains.mps.make.facet.actions)/127305800529615843">
     <file name="ParametersDeclaration_add_empty_var.java">
       <node id="127305800529615847" at="14,91,15,78" concept="0" />
-      <node id="127305800529615843" at="20,0,21,0" concept="2" trace="component$eWwg" />
+      <node id="127305800529615843" at="20,0,21,0" concept="2" trace="component$fjBK" />
       <node id="127305800529615844" at="14,0,17,0" concept="1" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <scope id="127305800529615844" at="14,91,15,78" />
       <scope id="127305800529615844" at="14,0,17,0">
@@ -28,7 +28,7 @@
   <root nodeRef="r:14d9938d-f7ef-4995-a5b9-c40ae14726a7(jetbrains.mps.make.facet.actions)/7320828025189345688">
     <file name="Parameters_name.java">
       <node id="7320828025189345692" at="14,91,15,73" concept="0" />
-      <node id="7320828025189345688" at="20,0,21,0" concept="2" trace="name$tAp1" />
+      <node id="7320828025189345688" at="20,0,21,0" concept="2" trace="name$lA7v" />
       <node id="7320828025189345689" at="14,0,17,0" concept="1" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <scope id="7320828025189345689" at="14,91,15,73" />
       <scope id="7320828025189345689" at="14,0,17,0">

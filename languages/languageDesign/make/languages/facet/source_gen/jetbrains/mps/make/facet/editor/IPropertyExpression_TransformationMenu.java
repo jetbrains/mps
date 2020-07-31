@@ -92,7 +92,7 @@ public class IPropertyExpression_TransformationMenu extends TransformationMenuBa
   public class TMP_Group_j2qvk8_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.resource$z8Am) == null);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.resource$1a$E) == null);
     }
 
     @NotNull
@@ -148,7 +148,7 @@ public class IPropertyExpression_TransformationMenu extends TransformationMenuBa
 
         @Override
         public void execute(@NotNull String pattern) {
-          SLinkOperations.setNewChild(_context.getNode(), LINKS.resource$z8Am, null);
+          SLinkOperations.setNewChild(_context.getNode(), LINKS.resource$1a$E, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -188,6 +188,6 @@ public class IPropertyExpression_TransformationMenu extends TransformationMenuBa
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink resource$z8Am = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1e69fdb2a034c3f8L, 0x716499a90689fe76L, "resource");
+    /*package*/ static final SContainmentLink resource$1a$E = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1e69fdb2a034c3f8L, 0x716499a90689fe76L, "resource");
   }
 }

@@ -16,7 +16,7 @@
       <node id="6252282388794542811" at="54,47,55,202" concept="4" />
       <node id="6252282388794542811" at="58,51,59,56" concept="4" />
       <node id="6252282388794542811" at="64,0,65,0" concept="5" trace="TestNode$kc" />
-      <node id="6252282388794542811" at="68,0,69,0" concept="5" trace="nodeToCheck$Pz43" />
+      <node id="6252282388794542811" at="68,0,69,0" concept="5" trace="nodeToCheck$VYXt" />
       <node id="6252282388794542811" at="28,0,30,0" concept="5" trace="ourParamCache" />
       <node id="6252282388794542811" at="31,0,33,0" concept="2" trace="myWithCommandRule" />
       <node id="6252282388794542811" at="34,0,37,0" concept="0" trace="MigrateScopes2#()V" />

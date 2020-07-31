@@ -52,7 +52,7 @@ public class ImplicitAnnotationInstanceValue_Constraints extends BaseConstraints
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.key$y5Ln, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.key$wMU9, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -80,8 +80,8 @@ public class ImplicitAnnotationInstanceValue_Constraints extends BaseConstraints
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.AnnotationInstance$5z)) {
       SNode annotationInstance = SNodeOperations.cast(parentNode, CONCEPTS.AnnotationInstance$5z);
-      if (ListSequence.fromList(SLinkOperations.getChildren(annotationInstance, LINKS.value$EXfF)).count() <= 1) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(annotationInstance, LINKS.annotation$zNxu), LINKS.method$oAl2)).count() == 1) {
+      if (ListSequence.fromList(SLinkOperations.getChildren(annotationInstance, LINKS.value$NE_P)).count() <= 1) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(annotationInstance, LINKS.annotation$lXdy), LINKS.method$U$bY)).count() == 1) {
           return true;
         }
       }
@@ -98,9 +98,9 @@ public class ImplicitAnnotationInstanceValue_Constraints extends BaseConstraints
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink key$y5Ln = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71b44e3L, "key");
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SContainmentLink method$oAl2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL, "method");
-    /*package*/ static final SContainmentLink value$EXfF = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a71c697fL, "value");
+    /*package*/ static final SReferenceLink key$wMU9 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71b44e3L, "key");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink method$U$bY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL, "method");
+    /*package*/ static final SContainmentLink value$NE_P = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a71c697fL, "value");
   }
 }

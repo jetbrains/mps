@@ -126,7 +126,7 @@ public class FacetReferenceExpression_TransformationMenu extends TransformationM
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(TransformationMenuContext _context) {
-        return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.reference$bVBv), LINKS.facet$M0dw), LINKS.targetDeclaration$DCGr);
+        return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.reference$LS81), LINKS.facet$e6yw), LINKS.targetDeclaration$aHx5);
       }
       @NotNull
       @Override
@@ -177,14 +177,14 @@ public class FacetReferenceExpression_TransformationMenu extends TransformationM
           @Nullable
           @Override
           public String getLabelText(String pattern) {
-            return ":" + SPropertyOperations.getString(myParameterObject, PROPS.name$tAp1);
+            return ":" + SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v);
           }
 
           @Override
           public void execute(@NotNull String pattern) {
             SNode tre = SNodeOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.TargetReferenceExpression$Fc);
-            SLinkOperations.setTarget(tre, LINKS.facetRef$BzES, _context.getNode());
-            SLinkOperations.setTarget(tre, LINKS.target$BzVP, myParameterObject);
+            SLinkOperations.setTarget(tre, LINKS.facetRef$ahL8, _context.getNode());
+            SLinkOperations.setTarget(tre, LINKS.target$apYF, myParameterObject);
             SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), tre, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
           }
 
@@ -221,14 +221,14 @@ public class FacetReferenceExpression_TransformationMenu extends TransformationM
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink reference$bVBv = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x639ef64ff4850bb0L, 0x639ef64ff4850bb2L, "reference");
-    /*package*/ static final SReferenceLink facet$M0dw = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5979ed6d2b21b2f2L, 0x5979ed6d2b21b2f3L, "facet");
-    /*package*/ static final SContainmentLink targetDeclaration$DCGr = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, 0x5912a2ab1cd4153eL, "targetDeclaration");
-    /*package*/ static final SContainmentLink facetRef$BzES = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x78c916bd7aecaff7L, 0x78c916bd7aecc3aeL, "facetRef");
-    /*package*/ static final SReferenceLink target$BzVP = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x78c916bd7aecaff7L, 0x78c916bd7aecc3bcL, "target");
+    /*package*/ static final SContainmentLink reference$LS81 = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x639ef64ff4850bb0L, 0x639ef64ff4850bb2L, "reference");
+    /*package*/ static final SReferenceLink facet$e6yw = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5979ed6d2b21b2f2L, 0x5979ed6d2b21b2f3L, "facet");
+    /*package*/ static final SContainmentLink targetDeclaration$aHx5 = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, 0x5912a2ab1cd4153eL, "targetDeclaration");
+    /*package*/ static final SContainmentLink facetRef$ahL8 = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x78c916bd7aecaff7L, 0x78c916bd7aecc3aeL, "facetRef");
+    /*package*/ static final SReferenceLink target$apYF = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x78c916bd7aecaff7L, 0x78c916bd7aecc3bcL, "target");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

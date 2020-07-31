@@ -31,24 +31,24 @@ public class check_BuildMpsLayout_ModuleXml_CustomJarLocation_NonTypesystemRule 
   }
   public void applyRule(final SNode jarLoc, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // if a CustomJarLocation points maps a file module has no dependency to, report a warning. Such a mapping would get ignored when generating module.xml 
-    SNode module = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(jarLoc), CONCEPTS.BuildMpsLayout_ModuleJars$mB), LINKS.module$5MWZ);
+    SNode module = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(jarLoc), CONCEPTS.BuildMpsLayout_ModuleJars$mB), LINKS.module$NFyx);
     if (module == null) {
-      module = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(jarLoc), CONCEPTS.BuildMpsLayout_ModuleXml$8Q), LINKS.module$Fu50);
+      module = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(jarLoc), CONCEPTS.BuildMpsLayout_ModuleXml$8Q), LINKS.module$3$r0);
     }
     if (!(SNodeOperations.isInstanceOf(module, CONCEPTS.BuildMps_Module$j$))) {
       return;
     }
-    final String expectedPath = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(jarLoc, LINKS.path$TJ8w));
+    final String expectedPath = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(jarLoc, LINKS.path$XP7w));
     // This logic is from BuildMpsLayout_ModuleXml template in main MC to create <library> elements 
     Iterable<SNode> moduleDeps = BuildMps_Module__BehaviorDescriptor.getDependenciesUnwrapped_id3QtfwKhgryb.invoke(SNodeOperations.as(module, CONCEPTS.BuildMps_Module$j$));
-    if (Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(moduleDeps, CONCEPTS.BuildMps_ModuleDependencyJar$qY), LINKS.path$PN10)).any(new IWhereFilter<SNode>() {
+    if (Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(moduleDeps, CONCEPTS.BuildMps_ModuleDependencyJar$qY), LINKS.path$3Hv0)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(it), expectedPath);
       }
     })) {
       return;
     }
-    if (Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(moduleDeps, CONCEPTS.BuildMps_ModuleDependencyOnJavaModule$mo), LINKS.javaLibLocation$VgPH)).where(new NotNullWhereFilter<SNode>()).any(new IWhereFilter<SNode>() {
+    if (Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(moduleDeps, CONCEPTS.BuildMps_ModuleDependencyOnJavaModule$mo), LINKS.javaLibLocation$Ha0N)).where(new NotNullWhereFilter<SNode>()).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(it), expectedPath);
       }
@@ -57,7 +57,7 @@ public class check_BuildMpsLayout_ModuleXml_CustomJarLocation_NonTypesystemRule 
     }
     {
       final MessageTarget errorTarget = new NodeMessageTarget();
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(jarLoc, String.format("Module %s doesn't depend on %s, mapping doesn't make sense.", SPropertyOperations.getString(module, PROPS.name$tAp1), expectedPath), "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "1241280061047101276", null, errorTarget);
+      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(jarLoc, String.format("Module %s doesn't depend on %s, mapping doesn't make sense.", SPropertyOperations.getString(module, PROPS.name$lA7v), expectedPath), "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "1241280061047101276", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -80,14 +80,14 @@ public class check_BuildMpsLayout_ModuleXml_CustomJarLocation_NonTypesystemRule 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink module$5MWZ = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x11918e0f209b83e9L, "module");
-    /*package*/ static final SReferenceLink module$Fu50 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, 0x6a3e160a3efe6275L, "module");
-    /*package*/ static final SContainmentLink path$TJ8w = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3c765492deb1a384L, 0x3c765492deb1a385L, "path");
-    /*package*/ static final SContainmentLink path$PN10 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x3b60c4a45c197e1aL, "path");
-    /*package*/ static final SContainmentLink javaLibLocation$VgPH = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, 0x65b9b06022080842L, "javaLibLocation");
+    /*package*/ static final SReferenceLink module$NFyx = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x11918e0f209b83e9L, "module");
+    /*package*/ static final SReferenceLink module$3$r0 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, 0x6a3e160a3efe6275L, "module");
+    /*package*/ static final SContainmentLink path$XP7w = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3c765492deb1a384L, 0x3c765492deb1a385L, "path");
+    /*package*/ static final SContainmentLink path$3Hv0 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x3b60c4a45c197e1aL, "path");
+    /*package*/ static final SContainmentLink javaLibLocation$Ha0N = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, 0x65b9b06022080842L, "javaLibLocation");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

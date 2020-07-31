@@ -40,7 +40,7 @@ public final class AnnotationInstance__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    Iterable<SNode> methods = SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.annotation$zNxu), LINKS.method$oAl2);
+    Iterable<SNode> methods = SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.annotation$lXdy), LINKS.method$U$bY);
 
     SAbstractConcept cncpt = kind;
     boolean noneMatched = true;
@@ -103,8 +103,8 @@ public final class AnnotationInstance__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SContainmentLink method$oAl2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL, "method");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink method$U$bY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL, "method");
   }
 
   private static final class CONCEPTS {

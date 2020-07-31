@@ -39,7 +39,7 @@ public final class SmartCompletionParent__BehaviorDescriptor extends BaseBHDescr
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.SmartCompletionChildToRef$aO)) {
-      return ListScope.forNamedElements(SLinkOperations.getChildren(__thisNode__, LINKS.childrenToRef$dd$u));
+      return ListScope.forNamedElements(SLinkOperations.getChildren(__thisNode__, LINKS.childrenToRef$p$Ey));
     }
     return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$M8, kind, child));
   }
@@ -91,7 +91,7 @@ public final class SmartCompletionParent__BehaviorDescriptor extends BaseBHDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink childrenToRef$dd$u = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L, 0x61249b1bf0876c89L, "childrenToRef");
+    /*package*/ static final SContainmentLink childrenToRef$p$Ey = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L, 0x61249b1bf0876c89L, "childrenToRef");
   }
 
   private static final class CONCEPTS {

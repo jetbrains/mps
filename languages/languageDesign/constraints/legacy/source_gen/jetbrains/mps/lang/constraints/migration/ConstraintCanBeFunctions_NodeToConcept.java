@@ -50,9 +50,9 @@ public class ConstraintCanBeFunctions_NodeToConcept extends MigrationScriptBase 
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptConstraints$St, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode node) {
-          ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(node, LINKS.canBeChild$cGzA), problems);
-          ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(node, LINKS.canBeParent$8r6w), problems);
-          ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(node, LINKS.canBeAncestor$8rz$), problems);
+          ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(node, LINKS.canBeChild$9_fq), problems);
+          ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(node, LINKS.canBeParent$589w), problems);
+          ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(node, LINKS.canBeAncestor$5mes), problems);
         }
       });
     }
@@ -67,8 +67,8 @@ public class ConstraintCanBeFunctions_NodeToConcept extends MigrationScriptBase 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink canBeChild$cGzA = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254eb05daL, "canBeChild");
-    /*package*/ static final SContainmentLink canBeParent$8r6w = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254e7e6a8L, "canBeParent");
-    /*package*/ static final SContainmentLink canBeAncestor$8rz$ = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254e7e6baL, "canBeAncestor");
+    /*package*/ static final SContainmentLink canBeChild$9_fq = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254eb05daL, "canBeChild");
+    /*package*/ static final SContainmentLink canBeParent$589w = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254e7e6a8L, "canBeParent");
+    /*package*/ static final SContainmentLink canBeAncestor$5mes = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254e7e6baL, "canBeAncestor");
   }
 }

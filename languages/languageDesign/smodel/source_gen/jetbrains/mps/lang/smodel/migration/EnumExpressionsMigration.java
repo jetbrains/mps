@@ -80,8 +80,8 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
       // value( x ) . is[Not]Empty  --> x . is[Not]Null 
       {
         SNode dotExpr = SNodeOperations.as(SNodeOperations.getParent(expr), CONCEPTS.DotExpression$6a);
-        SNode operand = SLinkOperations.getTarget(dotExpr, LINKS.operand$Lcrr);
-        SNode operation = SLinkOperations.getTarget(dotExpr, LINKS.operation$X4R8);
+        SNode operand = SLinkOperations.getTarget(dotExpr, LINKS.operand$P1i5);
+        SNode operation = SLinkOperations.getTarget(dotExpr, LINKS.operation$_mGS);
         if (SNodeOperations.isInstanceOf(operation, CONCEPTS.IsEmptyOperation$sR) || SNodeOperations.isInstanceOf(operation, CONCEPTS.IsNotEmptyOperation$R6)) {
           Tuples._2<SNode, SNode> valuOpMatched = matchValueOperation(operand);
           if (valuOpMatched != null) {
@@ -111,27 +111,27 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
       // value( x ) :comparison: value( y )   --> x :comparison: y 
       {
         SNode binop = SNodeOperations.as(SNodeOperations.getParent(expr), CONCEPTS.BinaryOperation$vf);
-        if (ListSequence.fromList(SLinkOperations.getChildren(binop, LINKS.smodelAttribute$K8bJ)).isEmpty() && optimizationApplicableForBinOp(SNodeOperations.getConcept(binop))) {
-          Tuples._2<SNode, SNode> valueOpMatchedL = matchValueOperation(SLinkOperations.getTarget(binop, LINKS.leftExpression$rxLZ));
-          Tuples._2<SNode, SNode> valueOpMatchedR = matchValueOperation(SLinkOperations.getTarget(binop, LINKS.rightExpression$rxBl));
+        if (ListSequence.fromList(SLinkOperations.getChildren(binop, LINKS.smodelAttribute$jXFL)).isEmpty() && optimizationApplicableForBinOp(SNodeOperations.getConcept(binop))) {
+          Tuples._2<SNode, SNode> valueOpMatchedL = matchValueOperation(SLinkOperations.getTarget(binop, LINKS.leftExpression$lndx));
+          Tuples._2<SNode, SNode> valueOpMatchedR = matchValueOperation(SLinkOperations.getTarget(binop, LINKS.rightExpression$li3b));
           if (valueOpMatchedL != null && valueOpMatchedR != null && valueOpMatchedL._1() == valueOpMatchedR._1()) {
-            SLinkOperations.setTarget(binop, LINKS.leftExpression$rxLZ, valueOpMatchedL._0());
-            SLinkOperations.setTarget(binop, LINKS.rightExpression$rxBl, valueOpMatchedR._0());
+            SLinkOperations.setTarget(binop, LINKS.leftExpression$lndx, valueOpMatchedL._0());
+            SLinkOperations.setTarget(binop, LINKS.rightExpression$li3b, valueOpMatchedR._0());
             continue;
           }
           if (valueOpMatchedL != null) {
-            SNode member = matchConstant(SLinkOperations.getTarget(binop, LINKS.rightExpression$rxBl), valueOpMatchedL._1());
+            SNode member = matchConstant(SLinkOperations.getTarget(binop, LINKS.rightExpression$li3b), valueOpMatchedL._1());
             if (member != null) {
-              SLinkOperations.setTarget(binop, LINKS.leftExpression$rxLZ, valueOpMatchedL._0());
-              SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(binop, LINKS.rightExpression$rxBl), _quotation_createNode_dd9n22_a0a1a1a3a1a6a0a01(valueOpMatchedL._1(), member));
+              SLinkOperations.setTarget(binop, LINKS.leftExpression$lndx, valueOpMatchedL._0());
+              SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(binop, LINKS.rightExpression$li3b), _quotation_createNode_dd9n22_a0a1a1a3a1a6a0a01(valueOpMatchedL._1(), member));
               continue;
             }
           }
           if (valueOpMatchedR != null) {
-            SNode member = matchConstant(SLinkOperations.getTarget(binop, LINKS.leftExpression$rxLZ), valueOpMatchedR._1());
+            SNode member = matchConstant(SLinkOperations.getTarget(binop, LINKS.leftExpression$lndx), valueOpMatchedR._1());
             if (member != null) {
-              SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(binop, LINKS.leftExpression$rxLZ), _quotation_createNode_dd9n22_a0a0a1a4a1a6a0a01(valueOpMatchedR._1(), member));
-              SLinkOperations.setTarget(binop, LINKS.rightExpression$rxBl, valueOpMatchedR._0());
+              SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(binop, LINKS.leftExpression$lndx), _quotation_createNode_dd9n22_a0a0a1a4a1a6a0a01(valueOpMatchedR._1(), member));
+              SLinkOperations.setTarget(binop, LINKS.rightExpression$li3b, valueOpMatchedR._0());
               continue;
             }
           }
@@ -140,23 +140,23 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
         {
           SNode imco = SNodeOperations.as(SNodeOperations.getParent(expr), CONCEPTS.InstanceMethodCallOperation$1G);
           if (imco == null) {
-            imco = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(expr), CONCEPTS.DotExpression$6a), LINKS.operation$X4R8), CONCEPTS.InstanceMethodCallOperation$1G);
+            imco = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(expr), CONCEPTS.DotExpression$6a), LINKS.operation$_mGS), CONCEPTS.InstanceMethodCallOperation$1G);
           }
-          if (ListSequence.fromList(SLinkOperations.getChildren(imco, LINKS.smodelAttribute$K8bJ)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(IOperation__BehaviorDescriptor.getDotExpression_idhO_4GYO.invoke(imco), LINKS.smodelAttribute$K8bJ)).isEmpty() && SLinkOperations.hasPointer(imco, LINKS.baseMethodDeclaration$$A7i, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String.equals(java.lang.Object)")) && ListSequence.fromList(SLinkOperations.getChildren(imco, LINKS.actualArgument$$A7L)).count() == 1) {
+          if (ListSequence.fromList(SLinkOperations.getChildren(imco, LINKS.smodelAttribute$jXFL)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(IOperation__BehaviorDescriptor.getDotExpression_idhO_4GYO.invoke(imco), LINKS.smodelAttribute$jXFL)).isEmpty() && SLinkOperations.hasPointer(imco, LINKS.baseMethodDeclaration$ItxI, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String.equals(java.lang.Object)")) && ListSequence.fromList(SLinkOperations.getChildren(imco, LINKS.actualArgument$ItKJ)).count() == 1) {
             Tuples._2<SNode, SNode> valueOpMatchedL = matchValueOperation(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(imco));
-            Tuples._2<SNode, SNode> valueOpMatchedR = matchValueOperation(ListSequence.fromList(SLinkOperations.getChildren(imco, LINKS.actualArgument$$A7L)).getElement(0));
+            Tuples._2<SNode, SNode> valueOpMatchedR = matchValueOperation(ListSequence.fromList(SLinkOperations.getChildren(imco, LINKS.actualArgument$ItKJ)).getElement(0));
             if (valueOpMatchedR != null && valueOpMatchedL != null && valueOpMatchedR._1() == valueOpMatchedL._1()) {
               SNode replacement = getReplacementForEqualsMethodCall(imco);
-              SLinkOperations.setTarget(replacement, LINKS.leftExpression$rxLZ, valueOpMatchedL._0());
-              SLinkOperations.setTarget(replacement, LINKS.rightExpression$rxBl, valueOpMatchedR._0());
+              SLinkOperations.setTarget(replacement, LINKS.leftExpression$lndx, valueOpMatchedL._0());
+              SLinkOperations.setTarget(replacement, LINKS.rightExpression$li3b, valueOpMatchedR._0());
               continue;
             }
             if (valueOpMatchedL != null) {
-              SNode member = matchConstant(ListSequence.fromList(SLinkOperations.getChildren(imco, LINKS.actualArgument$$A7L)).getElement(0), valueOpMatchedL._1());
+              SNode member = matchConstant(ListSequence.fromList(SLinkOperations.getChildren(imco, LINKS.actualArgument$ItKJ)).getElement(0), valueOpMatchedL._1());
               if (member != null) {
                 SNode replacement = getReplacementForEqualsMethodCall(imco);
-                SLinkOperations.setTarget(replacement, LINKS.leftExpression$rxLZ, valueOpMatchedL._0());
-                SLinkOperations.setTarget(replacement, LINKS.rightExpression$rxBl, _quotation_createNode_dd9n22_a0c0b0d0c0d0g0a0k(valueOpMatchedL._1(), member));
+                SLinkOperations.setTarget(replacement, LINKS.leftExpression$lndx, valueOpMatchedL._0());
+                SLinkOperations.setTarget(replacement, LINKS.rightExpression$li3b, _quotation_createNode_dd9n22_a0c0b0d0c0d0g0a0k(valueOpMatchedL._1(), member));
                 continue;
               }
             }
@@ -164,8 +164,8 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
               SNode member = matchConstant(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(imco), valueOpMatchedR._1());
               if (member != null) {
                 SNode replacement = getReplacementForEqualsMethodCall(imco);
-                SLinkOperations.setTarget(replacement, LINKS.leftExpression$rxLZ, _quotation_createNode_dd9n22_a0b0b0e0c0d0g0a0k(valueOpMatchedR._1(), member));
-                SLinkOperations.setTarget(replacement, LINKS.rightExpression$rxBl, valueOpMatchedR._0());
+                SLinkOperations.setTarget(replacement, LINKS.leftExpression$lndx, _quotation_createNode_dd9n22_a0b0b0e0c0d0g0a0k(valueOpMatchedR._1(), member));
+                SLinkOperations.setTarget(replacement, LINKS.rightExpression$li3b, valueOpMatchedR._0());
                 continue;
               }
             }
@@ -206,28 +206,28 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
   }
 
   public SNode insertMemberNameOp(SNode enumm, SNode position, SNode receiver) {
-    SEnumerationLiteral nameOpMigration = SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.nameOpMigration$4Nqv);
+    SEnumerationLiteral nameOpMigration = SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.nameOpMigration$kTP1);
 
     switch (enumSwitchIndex_dd9n22_a0c0o.indexNullable(nameOpMigration)) {
       case 0:
         {
           SNode replacement = _quotation_createNode_dd9n22_a0a0a0a2a41();
           SNodeOperations.replaceWithAnother(position, replacement);
-          SLinkOperations.setTarget(replacement, LINKS.operand$Lcrr, receiver);
+          SLinkOperations.setTarget(replacement, LINKS.operand$P1i5, receiver);
           return replacement;
         }
       case 1:
         {
           SNode replacement = _quotation_createNode_dd9n22_a0a0a1a2a41();
           SNodeOperations.replaceWithAnother(position, replacement);
-          SLinkOperations.setTarget(replacement, LINKS.operand$Lcrr, receiver);
+          SLinkOperations.setTarget(replacement, LINKS.operand$P1i5, receiver);
           return replacement;
         }
       case 2:
         {
           SNode smc = createReplacementMethodCall(enumm, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e935L, "jetbrains.mps.lang.structure.structure.EnumCustomMethodReplacementKind"), 0x2e9237b686f1e93aL, "memberToName"), SNodeOperations.getModel(position));
           SNodeOperations.replaceWithAnother(position, smc);
-          ListSequence.fromList(SLinkOperations.getChildren(smc, LINKS.actualArgument$$A7L)).addElement(receiver);
+          ListSequence.fromList(SLinkOperations.getChildren(smc, LINKS.actualArgument$ItKJ)).addElement(receiver);
           return smc;
         }
       default:
@@ -236,14 +236,14 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
   }
 
   public SNode insertMemberValueOp(SNode enumm, SNode position, SNode receiver) {
-    SEnumerationLiteral valueOpMigration = SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$SI5x);
+    SEnumerationLiteral valueOpMigration = SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$ukEZ);
 
     switch (enumSwitchIndex_dd9n22_a0c0q.indexNullable(valueOpMigration)) {
       case 0:
         {
           SNode replacement = _quotation_createNode_dd9n22_a0a0a0a2a61();
           SNodeOperations.replaceWithAnother(position, replacement);
-          SLinkOperations.setTarget(replacement, LINKS.operand$Lcrr, receiver);
+          SLinkOperations.setTarget(replacement, LINKS.operand$P1i5, receiver);
           ListSequence.fromList(myToValueExpressionsToOptimize).addElement(replacement);
           return replacement;
         }
@@ -251,7 +251,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
         {
           SNode replacement = _quotation_createNode_dd9n22_a0a0a1a2a61();
           SNodeOperations.replaceWithAnother(position, replacement);
-          SLinkOperations.setTarget(replacement, LINKS.operand$Lcrr, receiver);
+          SLinkOperations.setTarget(replacement, LINKS.operand$P1i5, receiver);
           ListSequence.fromList(myToValueExpressionsToOptimize).addElement(replacement);
           return replacement;
         }
@@ -259,7 +259,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
         {
           SNode replacement = _quotation_createNode_dd9n22_a0a0a2a2a61(findBooleanTrueMember(enumm));
           SNodeOperations.replaceWithAnother(position, replacement);
-          SLinkOperations.setTarget(replacement, LINKS.operand$Lcrr, receiver);
+          SLinkOperations.setTarget(replacement, LINKS.operand$P1i5, receiver);
           ListSequence.fromList(myToValueExpressionsToOptimize).addElement(replacement);
           return replacement;
         }
@@ -267,7 +267,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
         {
           SNode replacement = _quotation_createNode_dd9n22_a0a0a3a2a61(enumm);
           SNodeOperations.replaceWithAnother(position, replacement);
-          SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(replacement, LINKS.operation$X4R8), CONCEPTS.GetIndexOfOperation$EI), LINKS.argument$I6hw, receiver);
+          SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(replacement, LINKS.operation$_mGS), CONCEPTS.GetIndexOfOperation$EI), LINKS.argument$l2uw, receiver);
           ListSequence.fromList(myToValueExpressionsToOptimize).addElement(replacement);
           return replacement;
         }
@@ -275,7 +275,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
         {
           SNode replacement = _quotation_createNode_dd9n22_a0a0a4a2a61(enumm);
           SNodeOperations.replaceWithAnother(position, replacement);
-          SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(replacement, LINKS.expression$4_F0), CONCEPTS.PlusExpression$Re), LINKS.leftExpression$rxLZ), CONCEPTS.DotExpression$6a), LINKS.operation$X4R8), CONCEPTS.GetIndexOfOperation$EI), LINKS.argument$I6hw, receiver);
+          SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(replacement, LINKS.expression$efP0), CONCEPTS.PlusExpression$Re), LINKS.leftExpression$lndx), CONCEPTS.DotExpression$6a), LINKS.operation$_mGS), CONCEPTS.GetIndexOfOperation$EI), LINKS.argument$l2uw, receiver);
           ListSequence.fromList(myToValueExpressionsToOptimize).addElement(replacement);
           return replacement;
         }
@@ -283,7 +283,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
         {
           SNode smc = createReplacementMethodCall(enumm, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e935L, "jetbrains.mps.lang.structure.structure.EnumCustomMethodReplacementKind"), 0x2e9237b686f1e936L, "memberToValue"), SNodeOperations.getModel(position));
           SNodeOperations.replaceWithAnother(position, smc);
-          ListSequence.fromList(SLinkOperations.getChildren(smc, LINKS.actualArgument$$A7L)).addElement(receiver);
+          ListSequence.fromList(SLinkOperations.getChildren(smc, LINKS.actualArgument$ItKJ)).addElement(receiver);
           ListSequence.fromList(myToValueExpressionsToOptimize).addElement(smc);
           return smc;
         }
@@ -293,42 +293,42 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
   }
 
   public void insertMemberForNameOp(SNode enumm, SNode position, SNode argument) {
-    SEnumerationLiteral nameOpMigration = SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.nameOpMigration$4Nqv);
+    SEnumerationLiteral nameOpMigration = SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.nameOpMigration$kTP1);
 
     switch (enumSwitchIndex_dd9n22_a0c0s.indexNullable(nameOpMigration)) {
       case 0:
         {
           SNode replacement = _quotation_createNode_dd9n22_a0a0a0a2a81(enumm);
           SNodeOperations.replaceWithAnother(position, replacement);
-          SLinkOperations.setTarget(SNodeOperations.as(SLinkOperations.getTarget(replacement, LINKS.operation$X4R8), CONCEPTS.Enum_FromNameOperation$uc), LINKS.nameExpression$x0s3, argument);
+          SLinkOperations.setTarget(SNodeOperations.as(SLinkOperations.getTarget(replacement, LINKS.operation$_mGS), CONCEPTS.Enum_FromNameOperation$uc), LINKS.nameExpression$Zd_t, argument);
           break;
         }
       case 1:
         {
           SNode replacement = _quotation_createNode_dd9n22_a0a0a1a2a81(enumm);
           SNodeOperations.replaceWithAnother(position, replacement);
-          SLinkOperations.setTarget(SNodeOperations.as(SLinkOperations.getTarget(replacement, LINKS.operation$X4R8), CONCEPTS.Enum_FromPresentationOperation$x$), LINKS.presentationExpression$8Lyp, argument);
+          SLinkOperations.setTarget(SNodeOperations.as(SLinkOperations.getTarget(replacement, LINKS.operation$_mGS), CONCEPTS.Enum_FromPresentationOperation$x$), LINKS.presentationExpression$fZE7, argument);
           break;
         }
       case 2:
         {
           SNode smc = createReplacementMethodCall(enumm, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e935L, "jetbrains.mps.lang.structure.structure.EnumCustomMethodReplacementKind"), 0x2e9237b686f1e93eL, "nameToMember"), SNodeOperations.getModel(position));
           SNodeOperations.replaceWithAnother(position, smc);
-          ListSequence.fromList(SLinkOperations.getChildren(smc, LINKS.actualArgument$$A7L)).addElement(argument);
+          ListSequence.fromList(SLinkOperations.getChildren(smc, LINKS.actualArgument$ItKJ)).addElement(argument);
           break;
         }
     }
   }
 
   public void insertMemberForValueOp(SNode enumm, SNode position, SNode argument) {
-    SEnumerationLiteral valueOpMigration = SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$SI5x);
+    SEnumerationLiteral valueOpMigration = SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$ukEZ);
 
     switch (enumSwitchIndex_dd9n22_a0c0u.indexNullable(valueOpMigration)) {
       case 0:
         {
           SNode replacement = _quotation_createNode_dd9n22_a0a0a0a2a02(enumm, findBooleanTrueMember(enumm), enumm, findBooleanFalseMember(enumm));
           SNodeOperations.replaceWithAnother(position, replacement);
-          SLinkOperations.setTarget(SNodeOperations.as(SLinkOperations.getTarget(replacement, LINKS.expression$4_F0), CONCEPTS.TernaryOperatorExpression$HC), LINKS.condition$CEb4, argument);
+          SLinkOperations.setTarget(SNodeOperations.as(SLinkOperations.getTarget(replacement, LINKS.expression$efP0), CONCEPTS.TernaryOperatorExpression$HC), LINKS.condition$GrmW, argument);
           ListSequence.fromList(myFromValueExpressionsToOptimize).addElement(replacement);
           break;
         }
@@ -336,7 +336,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
         {
           SNode replacement = _quotation_createNode_dd9n22_a0a0a1a2a02(enumm);
           SNodeOperations.replaceWithAnother(position, replacement);
-          SLinkOperations.setTarget(replacement, LINKS.index$huNY, argument);
+          SLinkOperations.setTarget(replacement, LINKS.index$tVb2, argument);
           ListSequence.fromList(myFromValueExpressionsToOptimize).addElement(replacement);
           break;
         }
@@ -344,7 +344,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
         {
           SNode replacement = _quotation_createNode_dd9n22_a0a0a2a2a02(enumm);
           SNodeOperations.replaceWithAnother(position, replacement);
-          SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(replacement, LINKS.index$huNY), CONCEPTS.MinusExpression$E9), LINKS.leftExpression$rxLZ, argument);
+          SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(replacement, LINKS.index$tVb2), CONCEPTS.MinusExpression$E9), LINKS.leftExpression$lndx, argument);
           ListSequence.fromList(myFromValueExpressionsToOptimize).addElement(replacement);
           break;
         }
@@ -352,7 +352,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
         {
           SNode replacement = _quotation_createNode_dd9n22_a0a0a3a2a02(enumm);
           SNodeOperations.replaceWithAnother(position, replacement);
-          SLinkOperations.setTarget(SNodeOperations.as(SLinkOperations.getTarget(replacement, LINKS.operation$X4R8), CONCEPTS.Enum_FromNameOperation$uc), LINKS.nameExpression$x0s3, argument);
+          SLinkOperations.setTarget(SNodeOperations.as(SLinkOperations.getTarget(replacement, LINKS.operation$_mGS), CONCEPTS.Enum_FromNameOperation$uc), LINKS.nameExpression$Zd_t, argument);
           ListSequence.fromList(myFromValueExpressionsToOptimize).addElement(replacement);
           break;
         }
@@ -360,7 +360,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
         {
           SNode replacement = _quotation_createNode_dd9n22_a0a0a4a2a02(enumm);
           SNodeOperations.replaceWithAnother(position, replacement);
-          SLinkOperations.setTarget(SNodeOperations.as(SLinkOperations.getTarget(replacement, LINKS.operation$X4R8), CONCEPTS.Enum_FromPresentationOperation$x$), LINKS.presentationExpression$8Lyp, argument);
+          SLinkOperations.setTarget(SNodeOperations.as(SLinkOperations.getTarget(replacement, LINKS.operation$_mGS), CONCEPTS.Enum_FromPresentationOperation$x$), LINKS.presentationExpression$fZE7, argument);
           ListSequence.fromList(myFromValueExpressionsToOptimize).addElement(replacement);
           break;
         }
@@ -368,7 +368,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
         {
           SNode smc = createReplacementMethodCall(enumm, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e935L, "jetbrains.mps.lang.structure.structure.EnumCustomMethodReplacementKind"), 0x2e9237b686f1e937L, "valueToMember"), SNodeOperations.getModel(position));
           SNodeOperations.replaceWithAnother(position, smc);
-          ListSequence.fromList(SLinkOperations.getChildren(smc, LINKS.actualArgument$$A7L)).addElement(argument);
+          ListSequence.fromList(SLinkOperations.getChildren(smc, LINKS.actualArgument$ItKJ)).addElement(argument);
           ListSequence.fromList(myFromValueExpressionsToOptimize).addElement(smc);
           break;
         }
@@ -386,7 +386,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
         GeneratedMatchingPattern matchingPattern_dd9n22_a1a22 = new Pattern_dd9n22_a0b0b0b0w(_quotation_createNode_dd9n22_a0a0b0b0b0w());
         matches_dd9n22_a1a22 = matchingPattern_dd9n22_a1a22.match(matchedNode_dd9n22_b0w);
         if (matches_dd9n22_a1a22) {
-          if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(matchingPattern_dd9n22_a1a22.getMatchedNode("enum"), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$SI5x), 0x5a14f103596433c6L)) {
+          if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(matchingPattern_dd9n22_a1a22.getMatchedNode("enum"), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$ukEZ), 0x5a14f103596433c6L)) {
             if (matchingPattern_dd9n22_a1a22.getMatchedNode("enum") == matchingPattern_dd9n22_a1a22.getMatchedNode("enum0") && matchingPattern_dd9n22_a1a22.getMatchedNode("trueMember") == findBooleanTrueMember(matchingPattern_dd9n22_a1a22.getMatchedNode("enum")) && matchingPattern_dd9n22_a1a22.getMatchedNode("falseMember") == findBooleanFalseMember(matchingPattern_dd9n22_a1a22.getMatchedNode("enum"))) {
               return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_a1a22.getMatchedNode("res"), matchingPattern_dd9n22_a1a22.getMatchedNode("enum"));
             }
@@ -396,7 +396,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
           GeneratedMatchingPattern matchingPattern_dd9n22_b1a22 = new Pattern_dd9n22_a0b0a3a1a1a22(_quotation_createNode_dd9n22_a0a0b0a3a1a1a22());
           matches_dd9n22_b1a22 = matchingPattern_dd9n22_b1a22.match(matchedNode_dd9n22_b0w);
           if (matches_dd9n22_b1a22) {
-            if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(matchingPattern_dd9n22_b1a22.getMatchedNode("enum"), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$SI5x), 0x5a14f103596433cbL)) {
+            if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(matchingPattern_dd9n22_b1a22.getMatchedNode("enum"), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$ukEZ), 0x5a14f103596433cbL)) {
               return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_b1a22.getMatchedNode("res"), matchingPattern_dd9n22_b1a22.getMatchedNode("enum"));
             }
           } else {
@@ -404,7 +404,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
             GeneratedMatchingPattern matchingPattern_dd9n22_c1a22 = new Pattern_dd9n22_a0b0a3a0d0b0b0w(_quotation_createNode_dd9n22_a0a0b0a3a0d0b0b0w());
             matches_dd9n22_c1a22 = matchingPattern_dd9n22_c1a22.match(matchedNode_dd9n22_b0w);
             if (matches_dd9n22_c1a22) {
-              if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(matchingPattern_dd9n22_c1a22.getMatchedNode("enum"), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$SI5x), 0x5a14f103596433d1L)) {
+              if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(matchingPattern_dd9n22_c1a22.getMatchedNode("enum"), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$ukEZ), 0x5a14f103596433d1L)) {
                 return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_c1a22.getMatchedNode("res"), matchingPattern_dd9n22_c1a22.getMatchedNode("enum"));
               }
             } else {
@@ -412,7 +412,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
               GeneratedMatchingPattern matchingPattern_dd9n22_d1a22 = new Pattern_dd9n22_a0b0a3a0d0a3a1a1a22(_quotation_createNode_dd9n22_a0a0b0a3a0d0a3a1a1a22());
               matches_dd9n22_d1a22 = matchingPattern_dd9n22_d1a22.match(matchedNode_dd9n22_b0w);
               if (matches_dd9n22_d1a22) {
-                if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(matchingPattern_dd9n22_d1a22.getMatchedNode("enum"), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$SI5x), 0x5a14f103596433beL)) {
+                if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(matchingPattern_dd9n22_d1a22.getMatchedNode("enum"), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$ukEZ), 0x5a14f103596433beL)) {
                   return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_d1a22.getMatchedNode("res"), matchingPattern_dd9n22_d1a22.getMatchedNode("enum"));
                 }
               } else {
@@ -420,7 +420,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
                 GeneratedMatchingPattern matchingPattern_dd9n22_e1a22 = new Pattern_dd9n22_a0b0a3a0d0a3a0d0b0b0w(_quotation_createNode_dd9n22_a0a0b0a3a0d0a3a0d0b0b0w());
                 matches_dd9n22_e1a22 = matchingPattern_dd9n22_e1a22.match(matchedNode_dd9n22_b0w);
                 if (matches_dd9n22_e1a22) {
-                  if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(matchingPattern_dd9n22_e1a22.getMatchedNode("enum"), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$SI5x), 0x5a14f103596433bfL)) {
+                  if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(matchingPattern_dd9n22_e1a22.getMatchedNode("enum"), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$ukEZ), 0x5a14f103596433bfL)) {
                     return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_e1a22.getMatchedNode("res"), matchingPattern_dd9n22_e1a22.getMatchedNode("enum"));
                   }
                 } else {
@@ -430,8 +430,8 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
                   if (matches_dd9n22_f1a22) {
                     {
                       SNode replacement = AttributeOperations.getAttribute(matchingPattern_dd9n22_f1a22.getMatchedNode("method"), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumCustomMethodReplacementInfo$IH));
-                      if (SEnumOperations.isMember(SPropertyOperations.getEnum(replacement, PROPS.kind$Pl$D), 0x2e9237b686f1e937L)) {
-                        return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_f1a22.getMatchedNode("res"), SLinkOperations.getTarget(replacement, LINKS.enum$Pl_B));
+                      if (SEnumOperations.isMember(SPropertyOperations.getEnum(replacement, PROPS.kind$PsJR), 0x2e9237b686f1e937L)) {
+                        return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_f1a22.getMatchedNode("res"), SLinkOperations.getTarget(replacement, LINKS.enum$PtdT));
                       }
                     }
                   }
@@ -446,34 +446,34 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
   }
 
   public static SNode matchConstant(SNode expr, SNode enumDeclaration) {
-    SNode oldEnum = SLinkOperations.getTarget(AttributeOperations.getAttribute(enumDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), LINKS.oldEnum$$YcT);
-    SNode memberDataType = SLinkOperations.getTarget(oldEnum, LINKS.memberDataType$IU7B);
-    if (ListSequence.fromList(SLinkOperations.getChildren(expr, LINKS.smodelAttribute$K8bJ)).isNotEmpty()) {
+    SNode oldEnum = SLinkOperations.getTarget(AttributeOperations.getAttribute(enumDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), LINKS.oldEnum$U8fB);
+    SNode memberDataType = SLinkOperations.getTarget(oldEnum, LINKS.memberDataType$I9FT);
+    if (ListSequence.fromList(SLinkOperations.getChildren(expr, LINKS.smodelAttribute$jXFL)).isNotEmpty()) {
       return null;
     }
     if (SNodeOperations.is(memberDataType, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1082983041843")) && SNodeOperations.isInstanceOf(expr, CONCEPTS.StringLiteral$4G)) {
-      final String value = SPropertyOperations.getString(SNodeOperations.cast(expr, CONCEPTS.StringLiteral$4G), PROPS.value$kiE0);
-      SNode oldEnumMember = ListSequence.fromList(SLinkOperations.getChildren(oldEnum, LINKS.member$_cRv)).findFirst(new IWhereFilter<SNode>() {
+      final String value = SPropertyOperations.getString(SNodeOperations.cast(expr, CONCEPTS.StringLiteral$4G), PROPS.value$P2m0);
+      SNode oldEnumMember = ListSequence.fromList(SLinkOperations.getChildren(oldEnum, LINKS.member$1eS1)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.internalValue$bx$m), value);
+          return Objects.equals(SPropertyOperations.getString(it, PROPS.internalValue$_gAE), value);
         }
       });
       return ((oldEnumMember != null) ? EnumerationMemberDeclaration_Old__BehaviorDescriptor.findReplacement_id54m$yuDZW0l.invoke(oldEnumMember) : null);
     }
     if (SNodeOperations.is(memberDataType, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1082983657062")) && SNodeOperations.isInstanceOf(expr, CONCEPTS.IntegerConstant$mo)) {
-      final String value = String.valueOf(SPropertyOperations.getInteger(SNodeOperations.cast(expr, CONCEPTS.IntegerConstant$mo), PROPS.value$ZeO0));
-      SNode oldEnumMember = ListSequence.fromList(SLinkOperations.getChildren(oldEnum, LINKS.member$_cRv)).findFirst(new IWhereFilter<SNode>() {
+      final String value = String.valueOf(SPropertyOperations.getInteger(SNodeOperations.cast(expr, CONCEPTS.IntegerConstant$mo), PROPS.value$Cbc0));
+      SNode oldEnumMember = ListSequence.fromList(SLinkOperations.getChildren(oldEnum, LINKS.member$1eS1)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.internalValue$bx$m), value);
+          return Objects.equals(SPropertyOperations.getString(it, PROPS.internalValue$_gAE), value);
         }
       });
       return ((oldEnumMember != null) ? EnumerationMemberDeclaration_Old__BehaviorDescriptor.findReplacement_id54m$yuDZW0l.invoke(oldEnumMember) : null);
     }
     if (SNodeOperations.is(memberDataType, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1082983657063")) && SNodeOperations.isInstanceOf(expr, CONCEPTS.BooleanConstant$Ui)) {
-      final String value = String.valueOf(SPropertyOperations.getBoolean(SNodeOperations.cast(expr, CONCEPTS.BooleanConstant$Ui), PROPS.value$WIn0));
-      SNode oldEnumMember = ListSequence.fromList(SLinkOperations.getChildren(oldEnum, LINKS.member$_cRv)).findFirst(new IWhereFilter<SNode>() {
+      final String value = String.valueOf(SPropertyOperations.getBoolean(SNodeOperations.cast(expr, CONCEPTS.BooleanConstant$Ui), PROPS.value$qt90));
+      SNode oldEnumMember = ListSequence.fromList(SLinkOperations.getChildren(oldEnum, LINKS.member$1eS1)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.internalValue$bx$m), value);
+          return Objects.equals(SPropertyOperations.getString(it, PROPS.internalValue$_gAE), value);
         }
       });
       return ((oldEnumMember != null) ? EnumerationMemberDeclaration_Old__BehaviorDescriptor.findReplacement_id54m$yuDZW0l.invoke(oldEnumMember) : null);
@@ -494,7 +494,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
         if (matches_dd9n22_a1a62) {
           {
             SNode enumm = enumMemberType(matchingPattern_dd9n22_a1a62.getMatchedNode("res"));
-            if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$SI5x), 0x5a14f103596433c6L) && matchingPattern_dd9n22_a1a62.getMatchedNode("enumMember") == findBooleanTrueMember(enumm)) {
+            if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$ukEZ), 0x5a14f103596433c6L) && matchingPattern_dd9n22_a1a62.getMatchedNode("enumMember") == findBooleanTrueMember(enumm)) {
               return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_a1a62.getMatchedNode("res"), enumm);
             }
           }
@@ -505,7 +505,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
           if (matches_dd9n22_b1a62) {
             {
               SNode enumm = enumMemberType(matchingPattern_dd9n22_b1a62.getMatchedNode("res"));
-              if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$SI5x), 0x5a14f103596433cbL) && matchingPattern_dd9n22_b1a62.getMatchedNode("enum") == enumm) {
+              if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$ukEZ), 0x5a14f103596433cbL) && matchingPattern_dd9n22_b1a62.getMatchedNode("enum") == enumm) {
                 return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_b1a62.getMatchedNode("res"), enumm);
               }
             }
@@ -516,7 +516,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
             if (matches_dd9n22_c1a62) {
               {
                 SNode enumm = enumMemberType(matchingPattern_dd9n22_c1a62.getMatchedNode("res"));
-                if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$SI5x), 0x5a14f103596433d1L) && matchingPattern_dd9n22_c1a62.getMatchedNode("enum") == enumm) {
+                if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$ukEZ), 0x5a14f103596433d1L) && matchingPattern_dd9n22_c1a62.getMatchedNode("enum") == enumm) {
                   return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_c1a62.getMatchedNode("res"), enumm);
                 }
               }
@@ -527,7 +527,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
               if (matches_dd9n22_d1a62) {
                 {
                   SNode enumm = enumMemberType(matchingPattern_dd9n22_d1a62.getMatchedNode("res"));
-                  if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$SI5x), 0x5a14f103596433beL)) {
+                  if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$ukEZ), 0x5a14f103596433beL)) {
                     return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_d1a62.getMatchedNode("res"), enumm);
                   }
                 }
@@ -538,7 +538,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
                 if (matches_dd9n22_e1a62) {
                   {
                     SNode enumm = enumMemberType(matchingPattern_dd9n22_e1a62.getMatchedNode("res"));
-                    if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$SI5x), 0x5a14f103596433bfL)) {
+                    if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)), PROPS.valueOpMigration$ukEZ), 0x5a14f103596433bfL)) {
                       return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_e1a62.getMatchedNode("res"), enumm);
                     }
                   }
@@ -549,8 +549,8 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
                   if (matches_dd9n22_f1a62) {
                     {
                       SNode replacement = AttributeOperations.getAttribute(matchingPattern_dd9n22_f1a62.getMatchedNode("method"), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumCustomMethodReplacementInfo$IH));
-                      if (SEnumOperations.isMember(SPropertyOperations.getEnum(replacement, PROPS.kind$Pl$D), 0x2e9237b686f1e936L)) {
-                        return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_f1a62.getMatchedNode("res"), SLinkOperations.getTarget(replacement, LINKS.enum$Pl_B));
+                      if (SEnumOperations.isMember(SPropertyOperations.getEnum(replacement, PROPS.kind$PsJR), 0x2e9237b686f1e936L)) {
+                        return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_f1a62.getMatchedNode("res"), SLinkOperations.getTarget(replacement, LINKS.enum$PtdT));
                       }
                     }
                   }
@@ -565,7 +565,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
   }
 
   private static SNode enumMemberType(SNode enu) {
-    return SNodeOperations.as(SLinkOperations.getTarget(TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(enu), CONCEPTS.SEnumerationMemberType$rH), LINKS.enum$WChI), CONCEPTS.EnumerationDeclaration$rG);
+    return SNodeOperations.as(SLinkOperations.getTarget(TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(enu), CONCEPTS.SEnumerationMemberType$rH), LINKS.enum$nw_i), CONCEPTS.EnumerationDeclaration$rG);
   }
 
   private static SNode createReplacementMethodCall(final SNode enumm, final SEnumerationLiteral kind, SModel m) {
@@ -582,7 +582,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
 
     SNode replacementMethod = SNodeOperations.as(SNodeOperations.getParent(ListSequence.fromList(SModelOperations.nodes(enumMigrationHelpersModel, CONCEPTS.EnumCustomMethodReplacementInfo$IH)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.enum$Pl_B) == enumm && Objects.equals(SPropertyOperations.getEnum(it, PROPS.kind$Pl$D), kind);
+        return SLinkOperations.getTarget(it, LINKS.enum$PtdT) == enumm && Objects.equals(SPropertyOperations.getEnum(it, PROPS.kind$PsJR), kind);
       }
     })), CONCEPTS.StaticMethodDeclaration$eX);
 
@@ -594,17 +594,17 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
   }
 
   private static SNode findBooleanTrueMember(SNode enumm) {
-    return ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.members$qYq2)).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.members$4eAY)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.oldMember$bvEy), PROPS.internalValue$bx$m), "true");
+        return Objects.equals(SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.oldMember$$lAu), PROPS.internalValue$_gAE), "true");
       }
     });
   }
 
   private static SNode findBooleanFalseMember(SNode enumm) {
-    return ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.members$qYq2)).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.members$4eAY)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(Objects.equals(SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.oldMember$bvEy), PROPS.internalValue$bx$m), "true"));
+        return !(Objects.equals(SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.oldMember$$lAu), PROPS.internalValue$_gAE), "true"));
       }
     });
   }
@@ -613,12 +613,12 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
     Set<SNode> returnExpressions = SetSequence.fromSet(new LinkedHashSet<SNode>());
     SetSequence.fromSet(returnExpressions).addSequence(Sequence.fromIterable(RulesFunctions_BaseLanguage.collectReturnStatements(IMethodLike__BehaviorDescriptor.getBody_idi2fhZ_m.invoke(query))).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.expression$EsbK);
+        return SLinkOperations.getTarget(it, LINKS.expression$zDGg);
       }
     }));
     SNode lastStatementReturn = SNodeOperations.as(IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(query), CONCEPTS.ExpressionStatement$nm);
     if (lastStatementReturn != null) {
-      SetSequence.fromSet(returnExpressions).addElement(SLinkOperations.getTarget(lastStatementReturn, LINKS.expression$WIP0));
+      SetSequence.fromSet(returnExpressions).addElement(SLinkOperations.getTarget(lastStatementReturn, LINKS.expression$qFF0));
     }
     return returnExpressions;
   }
@@ -1212,37 +1212,37 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink argument$I6hw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7818f71827244b5L, 0x7818f71827244b6L, "argument");
-    /*package*/ static final SContainmentLink expression$4_F0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
-    /*package*/ static final SContainmentLink nameExpression$x0s3 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1b4bba1ba0012d67L, 0x1b4bba1ba00143c8L, "nameExpression");
-    /*package*/ static final SContainmentLink presentationExpression$8Lyp = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802da23a6eL, 0x6563631ab590888cL, "presentationExpression");
-    /*package*/ static final SContainmentLink condition$CEb4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
-    /*package*/ static final SContainmentLink index$huNY = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d6213c318L, 0x11d621484e5L, "index");
-    /*package*/ static final SReferenceLink enum$Pl_B = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e943L, 0x2e9237b686f1e948L, "enum");
-    /*package*/ static final SContainmentLink oldEnum$$YcT = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035942799cL, "oldEnum");
-    /*package*/ static final SReferenceLink memberDataType$IU7B = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3210ef05L, "memberDataType");
-    /*package*/ static final SContainmentLink member$_cRv = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc32151efeL, "member");
-    /*package*/ static final SReferenceLink enum$WChI = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120bfe51421L, 0x120bff1303bL, "enum");
-    /*package*/ static final SContainmentLink members$qYq2 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
-    /*package*/ static final SReferenceLink oldMember$bvEy = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0xc7a22b1ac1ed15fL, "oldMember");
-    /*package*/ static final SContainmentLink expression$EsbK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
-    /*package*/ static final SContainmentLink expression$WIP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink argument$l2uw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7818f71827244b5L, 0x7818f71827244b6L, "argument");
+    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink nameExpression$Zd_t = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1b4bba1ba0012d67L, 0x1b4bba1ba00143c8L, "nameExpression");
+    /*package*/ static final SContainmentLink presentationExpression$fZE7 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802da23a6eL, 0x6563631ab590888cL, "presentationExpression");
+    /*package*/ static final SContainmentLink condition$GrmW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
+    /*package*/ static final SContainmentLink index$tVb2 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d6213c318L, 0x11d621484e5L, "index");
+    /*package*/ static final SReferenceLink enum$PtdT = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e943L, 0x2e9237b686f1e948L, "enum");
+    /*package*/ static final SContainmentLink oldEnum$U8fB = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035942799cL, "oldEnum");
+    /*package*/ static final SReferenceLink memberDataType$I9FT = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3210ef05L, "memberDataType");
+    /*package*/ static final SContainmentLink member$1eS1 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc32151efeL, "member");
+    /*package*/ static final SReferenceLink enum$nw_i = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120bfe51421L, 0x120bff1303bL, "enum");
+    /*package*/ static final SContainmentLink members$4eAY = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
+    /*package*/ static final SReferenceLink oldMember$$lAu = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0xc7a22b1ac1ed15fL, "oldMember");
+    /*package*/ static final SContainmentLink expression$zDGg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
+    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nameOpMigration$4Nqv = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration");
-    /*package*/ static final SProperty valueOpMigration$SI5x = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration");
-    /*package*/ static final SProperty kind$Pl$D = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e943L, 0x2e9237b686f1e946L, "kind");
-    /*package*/ static final SProperty value$kiE0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
-    /*package*/ static final SProperty internalValue$bx$m = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06663L, "internalValue");
-    /*package*/ static final SProperty value$ZeO0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
-    /*package*/ static final SProperty value$WIn0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty nameOpMigration$kTP1 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration");
+    /*package*/ static final SProperty valueOpMigration$ukEZ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration");
+    /*package*/ static final SProperty kind$PsJR = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e943L, 0x2e9237b686f1e946L, "kind");
+    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty internalValue$_gAE = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06663L, "internalValue");
+    /*package*/ static final SProperty value$Cbc0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
+    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }

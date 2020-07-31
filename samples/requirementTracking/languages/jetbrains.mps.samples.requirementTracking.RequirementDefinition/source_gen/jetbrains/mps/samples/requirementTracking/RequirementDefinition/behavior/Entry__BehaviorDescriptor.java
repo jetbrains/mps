@@ -31,7 +31,7 @@ public final class Entry__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return ((isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.id$rkxX)) ? "" + SPropertyOperations.getString(__thisNode__, PROPS.id$rkxX) + ": " : "")) + SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1);
+    return ((isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.id$eWsz)) ? "" + SPropertyOperations.getString(__thisNode__, PROPS.id$eWsz) + ": " : "")) + SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v);
   }
 
   /*package*/ Entry__BehaviorDescriptor() {
@@ -84,7 +84,7 @@ public final class Entry__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty id$rkxX = MetaAdapterFactory.getProperty(0x6144ad334164d7eL, 0xbbaf076e158e80cfL, 0x39ed36a1ccc9c4ebL, 0x39ed36a1ccc9c4efL, "id");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty id$eWsz = MetaAdapterFactory.getProperty(0x6144ad334164d7eL, 0xbbaf076e158e80cfL, 0x39ed36a1ccc9c4ebL, 0x39ed36a1ccc9c4efL, "id");
   }
 }

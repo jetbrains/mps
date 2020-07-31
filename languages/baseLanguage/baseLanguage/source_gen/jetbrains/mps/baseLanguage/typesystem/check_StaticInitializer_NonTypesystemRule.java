@@ -17,7 +17,7 @@ public class check_StaticInitializer_NonTypesystemRule extends AbstractNonTypesy
   public check_StaticInitializer_NonTypesystemRule() {
   }
   public void applyRule(final SNode staticInitializer, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(staticInitializer, LINKS.statementList$glTw));
+    DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(staticInitializer, LINKS.statementList$UAQw));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.StaticInitializer$dH;
@@ -30,7 +30,7 @@ public class check_StaticInitializer_NonTypesystemRule extends AbstractNonTypesy
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statementList$glTw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, 0x11c7538039eL, "statementList");
+    /*package*/ static final SContainmentLink statementList$UAQw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, 0x11c7538039eL, "statementList");
   }
 
   private static final class CONCEPTS {

@@ -36,7 +36,7 @@
       <node id="1645404595816833416" at="57,0,58,0" concept="10" trace="Drop$X4" />
       <node id="1645404595816833416" at="58,0,59,0" concept="10" trace="Pick$4v" />
       <node id="1645404595816833416" at="59,0,60,0" concept="10" trace="AbstractCommand$3T" />
-      <node id="1645404595816833416" at="63,0,64,0" concept="10" trace="definition$Hbcn" />
+      <node id="1645404595816833416" at="63,0,64,0" concept="10" trace="definition$SqZ9" />
       <node id="1645404595816833416" at="23,0,25,0" concept="1" trace="RepetitionCheck_NonTypesystemRule#()V" />
       <node id="1645404595816956324" at="25,120,28,5" concept="5" />
       <node id="1645404595817065948" at="29,131,32,7" concept="5" />
@@ -97,9 +97,9 @@
       <node id="1645404595817243488" at="29,60,30,71" concept="3" />
       <node id="1645404595817127967" at="34,0,35,0" concept="10" trace="Repeat$qn" />
       <node id="1645404595817127967" at="35,0,36,0" concept="10" trace="AbstractCommand$3T" />
-      <node id="1645404595817127967" at="39,0,40,0" concept="10" trace="body$yP5u" />
-      <node id="1645404595817127967" at="40,0,41,0" concept="10" trace="commands$o94w" />
-      <node id="1645404595817127967" at="44,0,45,0" concept="10" trace="count$yP4Z" />
+      <node id="1645404595817127967" at="39,0,40,0" concept="10" trace="body$RHDy" />
+      <node id="1645404595817127967" at="40,0,41,0" concept="10" trace="commands$Gpbw" />
+      <node id="1645404595817127967" at="44,0,45,0" concept="10" trace="count$RHqx" />
       <node id="1645404595817127967" at="19,0,22,0" concept="1" trace="RemoveRepetition_QuickFix#()V" />
       <node id="1645404595817127967" at="22,0,25,0" concept="6" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="1645404595817127967" at="25,0,32,0" concept="6" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -133,11 +133,11 @@
       <node id="1904811872814114087" at="54,50,55,41" concept="8" />
       <node id="1904811872814114087" at="57,68,58,102" concept="8" />
       <node id="1904811872814114087" at="60,30,61,17" concept="8" />
-      <node id="1904811872814114087" at="65,0,66,0" concept="10" trace="name$tAp1" />
+      <node id="1904811872814114087" at="65,0,66,0" concept="10" trace="name$lA7v" />
       <node id="1904811872814114087" at="69,0,70,0" concept="10" trace="Script$1X" />
       <node id="1904811872814114087" at="70,0,71,0" concept="10" trace="RoutineDefinition$2l" />
       <node id="1904811872814114087" at="71,0,72,0" concept="10" trace="Library$IO" />
-      <node id="1904811872814114087" at="75,0,76,0" concept="10" trace="definitions$krA0" />
+      <node id="1904811872814114087" at="75,0,76,0" concept="10" trace="definitions$Tnq0" />
       <node id="1904811872814114087" at="26,0,28,0" concept="1" trace="RoutineUniqueness_NonTypesystemRule#()V" />
       <node id="3210697320273759358" at="28,130,31,5" concept="5" />
       <node id="4394627182935027336" at="36,0,39,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -218,7 +218,7 @@
       <node id="1904811872814167850" at="61,30,62,17" concept="8" />
       <node id="1904811872814167850" at="66,0,67,0" concept="10" trace="Script$1X" />
       <node id="1904811872814167850" at="67,0,68,0" concept="10" trace="Library$IO" />
-      <node id="1904811872814167850" at="71,0,72,0" concept="10" trace="name$tAp1" />
+      <node id="1904811872814167850" at="71,0,72,0" concept="10" trace="name$lA7v" />
       <node id="1904811872814167850" at="28,0,30,0" concept="1" trace="ScriptNameUniqueness_NonTypesystemRule#()V" />
       <node id="1904811872814167985" at="32,0,35,0" concept="6" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="1904811872814168005" at="37,0,40,0" concept="6" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -298,7 +298,7 @@
       <node id="1904811872814168197" at="60,30,61,17" concept="8" />
       <node id="1904811872814168197" at="65,0,66,0" concept="10" trace="Script$1X" />
       <node id="1904811872814168197" at="66,0,67,0" concept="10" trace="Library$IO" />
-      <node id="1904811872814168197" at="70,0,71,0" concept="10" trace="name$tAp1" />
+      <node id="1904811872814168197" at="70,0,71,0" concept="10" trace="name$lA7v" />
       <node id="1904811872814168197" at="28,0,30,0" concept="1" trace="LibraryNameUniqueness_NonTypesystemRule#()V" />
       <node id="1904811872814168213" at="32,0,35,0" concept="6" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="1904811872814168232" at="37,0,40,0" concept="6" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />

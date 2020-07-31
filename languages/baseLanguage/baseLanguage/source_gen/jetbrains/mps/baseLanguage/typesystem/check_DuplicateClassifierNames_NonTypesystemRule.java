@@ -29,7 +29,7 @@ public class check_DuplicateClassifierNames_NonTypesystemRule extends AbstractNo
   public check_DuplicateClassifierNames_NonTypesystemRule() {
   }
   public void applyRule(final SNode classifier, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    final String name = SPropertyOperations.getString(classifier, PROPS.name$tAp1);
+    final String name = SPropertyOperations.getString(classifier, PROPS.name$lA7v);
     if ((name == null || name.length() == 0) || SNodeOperations.isInstanceOf(classifier, CONCEPTS.AnonymousClass$aF)) {
       return;
     }
@@ -38,10 +38,10 @@ public class check_DuplicateClassifierNames_NonTypesystemRule extends AbstractNo
     if ((parentClassifier == null)) {
       siblingClassifiers = SModelOperations.roots(SNodeOperations.getModel(classifier), CONCEPTS.Classifier$hJ);
     } else {
-      if (Objects.equals(SPropertyOperations.getString(parentClassifier, PROPS.name$tAp1), SPropertyOperations.getString(classifier, PROPS.name$tAp1))) {
+      if (Objects.equals(SPropertyOperations.getString(parentClassifier, PROPS.name$lA7v), SPropertyOperations.getString(classifier, PROPS.name$lA7v))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classifier, "The nested type '" + SPropertyOperations.getString(classifier, PROPS.name$tAp1) + "' cannot hide an enclosing type", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2654404125184154445", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classifier, "The nested type '" + SPropertyOperations.getString(classifier, PROPS.name$lA7v) + "' cannot hide an enclosing type", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2654404125184154445", null, errorTarget);
         }
       }
       siblingClassifiers = ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(parentClassifier)).where(new IWhereFilter<SNode>() {
@@ -56,33 +56,33 @@ public class check_DuplicateClassifierNames_NonTypesystemRule extends AbstractNo
     }
     if (Sequence.fromIterable(siblingClassifiers).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != classifier && SPropertyOperations.hasValue(it, PROPS.name$tAp1, name);
+        return it != classifier && SPropertyOperations.hasValue(it, PROPS.name$lA7v, name);
       }
     })) {
       if ((parentClassifier == null)) {
         {
-          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
+          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classifier, "Duplicated name of classifier '" + name + "' in model", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7469468981580406086", null, errorTarget);
         }
       } else {
         {
-          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
+          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classifier, "Duplicated name of nested classifier '" + name, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2654404125185755179", null, errorTarget);
         }
       }
     } else if (Sequence.fromIterable(siblingClassifiers).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != classifier && name.equalsIgnoreCase(SPropertyOperations.getString(it, PROPS.name$tAp1));
+        return it != classifier && name.equalsIgnoreCase(SPropertyOperations.getString(it, PROPS.name$lA7v));
       }
     })) {
       if ((parentClassifier == null)) {
         {
-          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
+          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(classifier, "Duplicated case-insensitive name of classifier '" + name + "' in model", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1005490780644144570", null, errorTarget);
         }
       } else {
         {
-          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
+          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(classifier, "Duplicated case-insensitive name of nested classifier '" + name, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1005490780655218249", null, errorTarget);
         }
       }
@@ -99,7 +99,7 @@ public class check_DuplicateClassifierNames_NonTypesystemRule extends AbstractNo
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

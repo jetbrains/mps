@@ -50,7 +50,7 @@ public class BwfTaskLibraryDependency_SubstituteMenu extends SubstituteMenuBase 
 
     public SMP_ReferenceScope_p8lc04_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.BwfTaskLibraryDependency$Kt, LINKS.target$LSxw);
+      super((SAbstractConcept) CONCEPTS.BwfTaskLibraryDependency$Kt, LINKS.target$aoew);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class BwfTaskLibraryDependency_SubstituteMenu extends SubstituteMenuBase 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$LSxw = MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da1147260537L, 0x6565da1147260538L, "target");
+    /*package*/ static final SReferenceLink target$aoew = MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da1147260537L, 0x6565da1147260538L, "target");
   }
 }

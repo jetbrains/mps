@@ -23,7 +23,7 @@ public class any_type_supertypeof_wildcard_type_InequationReplacementRule extend
   public any_type_supertypeof_wildcard_type_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    return !((SNodeOperations.isInstanceOf(supertype, CONCEPTS.PrimitiveType$5) || TypecheckingFacade.getFromContext().isStrongSubtype(supertype, SLinkOperations.getTarget(_quotation_createNode_fu2yto_a1a0a0a0a1(), LINKS.descriptor$ZkDR))));
+    return !((SNodeOperations.isInstanceOf(supertype, CONCEPTS.PrimitiveType$5) || TypecheckingFacade.getFromContext().isStrongSubtype(supertype, SLinkOperations.getTarget(_quotation_createNode_fu2yto_a1a0a0a0a1(), LINKS.descriptor$F0hD))));
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
   }
@@ -56,7 +56,7 @@ public class any_type_supertypeof_wildcard_type_InequationReplacementRule extend
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink descriptor$ZkDR = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
+    /*package*/ static final SReferenceLink descriptor$F0hD = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
   }
 
   private static final class CONCEPTS {

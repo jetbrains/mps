@@ -54,8 +54,8 @@
       <node id="8634171685214339052" at="102,171,103,24" concept="4" />
       <node id="2304492758936015027" at="107,0,108,0" concept="7" trace="ClassConcept$IY" />
       <node id="2304492758936015027" at="108,0,109,0" concept="7" trace="FieldDeclaration$Ps" />
-      <node id="2304492758936015027" at="112,0,113,0" concept="7" trace="name$tAp1" />
-      <node id="2304492758936015027" at="116,0,117,0" concept="7" trace="member$oYX5" />
+      <node id="2304492758936015027" at="112,0,113,0" concept="7" trace="name$lA7v" />
+      <node id="2304492758936015027" at="116,0,117,0" concept="7" trace="member$6v_r" />
       <node id="5307890348301110208" at="44,0,47,0" concept="2" trace="compute#()Ljetbrains/mps/internal/collections/runtime/IListSequence;" />
       <node id="1891402444881801230" at="52,0,55,0" concept="2" trace="accept#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
       <node id="8634171685214378755" at="63,0,66,0" concept="2" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

@@ -11,18 +11,18 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MatrixInitializer_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.expression$l$Xq));
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.rowsCount$Psh1));
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.colsCount$Pshw));
-    _context.getBuilder().emitWrite(SLinkOperations.getTarget(_context.getNode(), LINKS.colIndex$FvUv), "r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/5359814223490146680");
-    _context.getBuilder().emitWrite(SLinkOperations.getTarget(_context.getNode(), LINKS.rowIndex$FqOw), "r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/5359814223490146689");
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.expression$sTJA));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.rowsCount$SGfv));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.colsCount$SGuw));
+    _context.getBuilder().emitWrite(SLinkOperations.getTarget(_context.getNode(), LINKS.colIndex$4tl1), "r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/5359814223490146680");
+    _context.getBuilder().emitWrite(SLinkOperations.getTarget(_context.getNode(), LINKS.rowIndex$1Zrw), "r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/5359814223490146689");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$l$Xq = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4240d857L, "expression");
-    /*package*/ static final SContainmentLink rowsCount$Psh1 = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d42453499L, "rowsCount");
-    /*package*/ static final SContainmentLink colsCount$Pshw = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4245349aL, "colsCount");
-    /*package*/ static final SContainmentLink colIndex$FvUv = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4240f25cL, "colIndex");
-    /*package*/ static final SContainmentLink rowIndex$FqOw = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4240f25bL, "rowIndex");
+    /*package*/ static final SContainmentLink expression$sTJA = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4240d857L, "expression");
+    /*package*/ static final SContainmentLink rowsCount$SGfv = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d42453499L, "rowsCount");
+    /*package*/ static final SContainmentLink colsCount$SGuw = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4245349aL, "colsCount");
+    /*package*/ static final SContainmentLink colIndex$4tl1 = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4240f25cL, "colIndex");
+    /*package*/ static final SContainmentLink rowIndex$1Zrw = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4240f25bL, "rowIndex");
   }
 }

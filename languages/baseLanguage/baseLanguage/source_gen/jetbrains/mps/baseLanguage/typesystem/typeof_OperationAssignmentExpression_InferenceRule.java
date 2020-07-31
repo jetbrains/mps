@@ -23,11 +23,11 @@ public class typeof_OperationAssignmentExpression_InferenceRule extends Abstract
   }
   public void applyRule(final SNode operation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      final SNode leftType = typeCheckingContext.typeOf(SLinkOperations.getTarget(operation, LINKS.lValue$J0D4), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4957392803029437247", true);
+      final SNode leftType = typeCheckingContext.typeOf(SLinkOperations.getTarget(operation, LINKS.lValue$LjSW), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4957392803029437247", true);
       typeCheckingContext.whenConcrete(leftType, new Runnable() {
         public void run() {
           {
-            final SNode rightType = typeCheckingContext.typeOf(SLinkOperations.getTarget(operation, LINKS.rValue$J0E2), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4957392803029437241", true);
+            final SNode rightType = typeCheckingContext.typeOf(SLinkOperations.getTarget(operation, LINKS.rValue$LkmY), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4957392803029437241", true);
             typeCheckingContext.whenConcrete(rightType, new Runnable() {
               public void run() {
                 SNode opType = typeCheckingContext.getOverloadedOperationType(operation, typeCheckingContext.getExpandedNode(leftType), typeCheckingContext.getExpandedNode(rightType), new IRuleConflictWarningProducer() {
@@ -66,8 +66,8 @@ public class typeof_OperationAssignmentExpression_InferenceRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lValue$J0D4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SContainmentLink rValue$J0E2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
   }
 
   private static final class CONCEPTS {

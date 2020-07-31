@@ -22,11 +22,11 @@ public class resource_subtypeOf_resource_InequationReplacementRule extends Abstr
   public resource_subtypeOf_resource_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    SNode leftCT = SLinkOperations.getTarget(subtype, LINKS.classifierType$Fi0v);
+    SNode leftCT = SLinkOperations.getTarget(subtype, LINKS.classifierType$XIf1);
     if (leftCT == null) {
       leftCT = _quotation_createNode_em7qpx_a0a0b0b();
     }
-    SNode rightCT = SLinkOperations.getTarget(supertype, LINKS.classifierType$Fi0v);
+    SNode rightCT = SLinkOperations.getTarget(supertype, LINKS.classifierType$XIf1);
     if (rightCT == null) {
       rightCT = _quotation_createNode_em7qpx_a0a0d0b();
     }
@@ -70,7 +70,7 @@ public class resource_subtypeOf_resource_InequationReplacementRule extends Abstr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink classifierType$Fi0v = MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a947282L, 0x2dead7037d3bef52L, "classifierType");
+    /*package*/ static final SContainmentLink classifierType$XIf1 = MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a947282L, 0x2dead7037d3bef52L, "classifierType");
   }
 
   private static final class CONCEPTS {

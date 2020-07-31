@@ -25,7 +25,7 @@ public class RawPropertyValueMigration {
   public static void downgradeExpressionType(SNode dataType, SNode expr) {
 
     if (SNodeOperations.isInstanceOf(dataType, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll)) {
-      dataType = SLinkOperations.getTarget(SNodeOperations.cast(dataType, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll), LINKS.memberDataType$IU7B);
+      dataType = SLinkOperations.getTarget(SNodeOperations.cast(dataType, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll), LINKS.memberDataType$I9FT);
     }
 
     if (SNodeOperations.is(dataType, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1082983041843")) || SNodeOperations.isInstanceOf(dataType, CONCEPTS.ConstrainedDataTypeDeclaration$Mu)) {
@@ -74,12 +74,12 @@ public class RawPropertyValueMigration {
 
     SNode replacement = _quotation_createNode_pswq59_a0l0b();
     SNodeOperations.replaceWithAnother(expr, replacement);
-    SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(replacement, LINKS.expression$4_F0), CONCEPTS.PlusExpression$Re), LINKS.rightExpression$rxBl, expr);
+    SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(replacement, LINKS.expression$efP0), CONCEPTS.PlusExpression$Re), LINKS.rightExpression$li3b, expr);
   }
 
   public static boolean upgradeExpressionType(SNode datatype, SNode expr) {
     if (SNodeOperations.isInstanceOf(datatype, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll)) {
-      datatype = SLinkOperations.getTarget(SNodeOperations.cast(datatype, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll), LINKS.memberDataType$IU7B);
+      datatype = SLinkOperations.getTarget(SNodeOperations.cast(datatype, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll), LINKS.memberDataType$I9FT);
     }
 
     if (SNodeOperations.is(datatype, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1082983041843")) || SNodeOperations.isInstanceOf(datatype, CONCEPTS.ConstrainedDataTypeDeclaration$Mu)) {
@@ -102,9 +102,9 @@ public class RawPropertyValueMigration {
             }
           }
           if (matches_pswq59_a0a6a3) {
-            if (isNotEmptyString(SPropertyOperations.getString(matchedNode_pswq59_a0g0d, PROPS.value$kiE0))) {
+            if (isNotEmptyString(SPropertyOperations.getString(matchedNode_pswq59_a0g0d, PROPS.value$P2m0))) {
               try {
-                int value = Integer.parseInt(SPropertyOperations.getString(matchedNode_pswq59_a0g0d, PROPS.value$kiE0));
+                int value = Integer.parseInt(SPropertyOperations.getString(matchedNode_pswq59_a0g0d, PROPS.value$P2m0));
                 SNodeOperations.replaceWithAnother(expr, _quotation_createNode_pswq59_a0a1a0a0a0a2a1a0a6a3(value));
                 return true;
               } catch (NumberFormatException e) {
@@ -165,7 +165,7 @@ public class RawPropertyValueMigration {
       }
       SNode replacement = _quotation_createNode_pswq59_a0b0g0d();
       SNodeOperations.replaceWithAnother(expr, replacement);
-      ListSequence.fromList(SLinkOperations.getChildren(replacement, LINKS.actualArgument$$A7L)).addElement(expr);
+      ListSequence.fromList(SLinkOperations.getChildren(replacement, LINKS.actualArgument$ItKJ)).addElement(expr);
       return true;
     }
 
@@ -181,9 +181,9 @@ public class RawPropertyValueMigration {
             }
           }
           if (matches_pswq59_a0a8a3) {
-            if (isNotEmptyString(SPropertyOperations.getString(matchedNode_pswq59_a0i0d, PROPS.value$kiE0))) {
+            if (isNotEmptyString(SPropertyOperations.getString(matchedNode_pswq59_a0i0d, PROPS.value$P2m0))) {
               try {
-                boolean value = Boolean.parseBoolean(SPropertyOperations.getString(matchedNode_pswq59_a0i0d, PROPS.value$kiE0));
+                boolean value = Boolean.parseBoolean(SPropertyOperations.getString(matchedNode_pswq59_a0i0d, PROPS.value$P2m0));
                 SNodeOperations.replaceWithAnother(expr, _quotation_createNode_pswq59_a0a1a0a0a0a2a1a0a8a3(value));
                 return true;
               } catch (NumberFormatException e) {
@@ -244,7 +244,7 @@ public class RawPropertyValueMigration {
       }
       SNode replacement = _quotation_createNode_pswq59_a0b0i0d();
       SNodeOperations.replaceWithAnother(expr, replacement);
-      ListSequence.fromList(SLinkOperations.getChildren(replacement, LINKS.actualArgument$$A7L)).addElement(expr);
+      ListSequence.fromList(SLinkOperations.getChildren(replacement, LINKS.actualArgument$ItKJ)).addElement(expr);
       return true;
     }
     return false;
@@ -556,13 +556,13 @@ public class RawPropertyValueMigration {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink memberDataType$IU7B = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3210ef05L, "memberDataType");
-    /*package*/ static final SContainmentLink expression$4_F0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink memberDataType$I9FT = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3210ef05L, "memberDataType");
+    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$kiE0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 }

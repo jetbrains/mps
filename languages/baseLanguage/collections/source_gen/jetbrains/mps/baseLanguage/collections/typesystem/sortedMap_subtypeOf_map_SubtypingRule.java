@@ -20,7 +20,7 @@ public class sortedMap_subtypeOf_map_SubtypingRule extends SubtypingRule_Runtime
   public sortedMap_subtypeOf_map_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode sortedMapType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return _quotation_createNode_nvaqgh_a0a1(SLinkOperations.getTarget(sortedMapType, LINKS.keyType$lJzv), SLinkOperations.getTarget(sortedMapType, LINKS.valueType$ZdlW));
+    return _quotation_createNode_nvaqgh_a0a1(SLinkOperations.getTarget(sortedMapType, LINKS.keyType$y2c1), SLinkOperations.getTarget(sortedMapType, LINKS.valueType$BtC4));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.SortedMapType$oG;
@@ -49,8 +49,8 @@ public class sortedMap_subtypeOf_map_SubtypingRule extends SubtypingRule_Runtime
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink keyType$lJzv = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f62a8L, "keyType");
-    /*package*/ static final SContainmentLink valueType$ZdlW = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f8516L, "valueType");
+    /*package*/ static final SContainmentLink keyType$y2c1 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f62a8L, "keyType");
+    /*package*/ static final SContainmentLink valueType$BtC4 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f8516L, "valueType");
   }
 
   private static final class CONCEPTS {

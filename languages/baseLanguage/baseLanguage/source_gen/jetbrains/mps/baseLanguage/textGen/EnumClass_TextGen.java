@@ -28,16 +28,16 @@ public class EnumClass_TextGen extends TextGenDescriptorBase {
     BaseLanguageTextGen.fileHeader(ctx.getPrimaryInput(), ctx);
     BaseLanguageTextGen.annotations(ctx.getPrimaryInput(), ctx);
     if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(ctx.getPrimaryInput()), CONCEPTS.Interface$Kp))) {
-      BaseLanguageTextGen.visibilityWithIndent(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.visibility$2GiC), ctx);
+      BaseLanguageTextGen.visibilityWithIndent(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.visibility$jt1o), ctx);
     } else {
       tgs.indent();
     }
     tgs.append("enum ");
-    tgs.append(JavaNameUtil.shortName(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$tAp1)));
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.implementedInterface$mdc6)).isNotEmpty()) {
+    tgs.append(JavaNameUtil.shortName(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$lA7v)));
+    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.implementedInterface$KoQU)).isNotEmpty()) {
       tgs.append(" implements ");
       {
-        Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.implementedInterface$mdc6);
+        Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.implementedInterface$KoQU);
         final SNode lastItem = Sequence.fromIterable(collection).last();
         for (SNode item : collection) {
           tgs.appendNode(item);
@@ -50,7 +50,7 @@ public class EnumClass_TextGen extends TextGenDescriptorBase {
     tgs.append(" {");
     ctx.getBuffer().area().increaseIndent();
     {
-      Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.enumConstant$urAQ);
+      Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.enumConstant$JnOa);
       final SNode lastItem = Sequence.fromIterable(collection).last();
       for (SNode item : collection) {
         tgs.appendNode(item);
@@ -59,7 +59,7 @@ public class EnumClass_TextGen extends TextGenDescriptorBase {
         }
       }
     }
-    if (ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(ctx.getPrimaryInput())).count() > ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.enumConstant$urAQ)).count()) {
+    if (ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(ctx.getPrimaryInput())).count() > ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.enumConstant$JnOa)).count()) {
       tgs.append(";");
       tgs.newLine();
       tgs.newLine();
@@ -77,9 +77,9 @@ public class EnumClass_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink implementedInterface$mdc6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
-    /*package*/ static final SContainmentLink enumConstant$urAQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink enumConstant$JnOa = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
   }
 
   private static final class CONCEPTS {
@@ -88,6 +88,6 @@ public class EnumClass_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

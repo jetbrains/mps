@@ -30,7 +30,7 @@ public class GenerationContextOp_GenParameterRef_Constraints extends BaseConstra
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.importClause$5Ggw, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.importClause$KrZw, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -45,7 +45,7 @@ public class GenerationContextOp_GenParameterRef_Constraints extends BaseConstra
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(SLinkOperations.collectMany(SModelOperations.roots(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.MappingConfiguration$rB), LINKS.generationParameters$j6TT));
+            return ListScope.forResolvableElements(SLinkOperations.collectMany(SModelOperations.roots(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.MappingConfiguration$rB), LINKS.generationParameters$gm2B));
           }
         };
       }
@@ -62,7 +62,7 @@ public class GenerationContextOp_GenParameterRef_Constraints extends BaseConstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink importClause$5Ggw = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x22cdba820a9a0583L, 0x22cdba820a9a0584L, "importClause");
-    /*package*/ static final SContainmentLink generationParameters$j6TT = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x2215c240569d3bc2L, "generationParameters");
+    /*package*/ static final SReferenceLink importClause$KrZw = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x22cdba820a9a0583L, 0x22cdba820a9a0584L, "importClause");
+    /*package*/ static final SContainmentLink generationParameters$gm2B = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x2215c240569d3bc2L, "generationParameters");
   }
 }

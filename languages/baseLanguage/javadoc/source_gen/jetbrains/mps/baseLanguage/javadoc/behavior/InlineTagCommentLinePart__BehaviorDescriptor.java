@@ -41,13 +41,13 @@ public final class InlineTagCommentLinePart__BehaviorDescriptor extends BaseBHDe
     SNodeOperations.deleteNode(__thisNode__);
     NodeCaretPair pair = CommentLine__BehaviorDescriptor.tryMergeToRight_idooaTF_3fF3.invoke(line, ((int) (index - 1)));
     if (pair == null) {
-      return new NodeCaretPair(ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.part$fv9R)).getElement(index), 0);
+      return new NodeCaretPair(ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.part$w5LD)).getElement(index), 0);
     } else {
       return pair;
     }
   }
   /*package*/ static String buildCommentText_id7Qt73fl2F3N(@NotNull SNode __thisNode__) {
-    return BaseInlineDocTag__BehaviorDescriptor.buildCommentText_id7Qt73fl50wX.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.tag$Zjcy));
+    return BaseInlineDocTag__BehaviorDescriptor.buildCommentText_id7Qt73fl50wX.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.tag$Ej4u));
   }
 
   /*package*/ InlineTagCommentLinePart__BehaviorDescriptor() {
@@ -103,7 +103,7 @@ public final class InlineTagCommentLinePart__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink part$fv9R = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
-    /*package*/ static final SContainmentLink tag$Zjcy = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990289L, 0x60a0f9237ac5e9c8L, "tag");
+    /*package*/ static final SContainmentLink part$w5LD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
+    /*package*/ static final SContainmentLink tag$Ej4u = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990289L, 0x60a0f9237ac5e9c8L, "tag");
   }
 }

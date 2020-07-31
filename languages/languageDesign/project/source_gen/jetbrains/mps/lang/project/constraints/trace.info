@@ -33,8 +33,8 @@
       <node id="6370754048397730468" at="37,119,38,61" concept="1" />
       <node id="6370754048397725622" at="38,61,39,22" concept="4" />
       <node id="6370754048397725622" at="43,0,44,0" concept="5" trace="Module$j2" />
-      <node id="6370754048397725622" at="47,0,48,0" concept="5" trace="name$tAp1" />
-      <node id="6370754048397725622" at="48,0,49,0" concept="5" trace="namespace$8m0W" />
+      <node id="6370754048397725622" at="47,0,48,0" concept="5" trace="name$lA7v" />
+      <node id="6370754048397725622" at="48,0,49,0" concept="5" trace="namespace$2Et4" />
       <node id="6370754048397725622" at="18,0,21,0" concept="0" trace="Module_Constraints#()V" />
       <node id="6370754048397730468" at="23,0,26,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="6370754048397730468" at="26,0,30,0" concept="2" trace="hasOwnGetter#()Z" />

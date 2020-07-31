@@ -48,8 +48,8 @@
       <node id="2343170551888498984" at="120,86,121,33" concept="7" />
       <node id="2343170551888498019" at="126,0,127,0" concept="8" trace="ShowMessage$3M" />
       <node id="2343170551888498019" at="127,0,128,0" concept="8" trace="Problem$3A" />
-      <node id="2343170551888498019" at="131,0,132,0" concept="8" trace="problem$7FCD" />
-      <node id="2343170551888498019" at="132,0,133,0" concept="8" trace="message$mGgm" />
+      <node id="2343170551888498019" at="131,0,132,0" concept="8" trace="problem$I8FR" />
+      <node id="2343170551888498019" at="132,0,133,0" concept="8" trace="message$ZrUE" />
       <node id="2343170551888498984" at="102,312,105,11" concept="3" />
       <node id="2343170551888498984" at="120,0,123,0" concept="5" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2343170551888592572" at="107,0,111,0" concept="5" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)V" />
@@ -216,8 +216,8 @@
       <node id="7291380803381892719" at="179,35,180,26" concept="7" />
       <node id="7291380803381892719" at="181,17,182,42" concept="1" />
       <node id="7291380803381892719" at="185,40,186,28" concept="7" />
-      <node id="7291380803381892719" at="191,0,192,0" concept="8" trace="problem$7FCD" />
-      <node id="7291380803381892719" at="192,0,193,0" concept="8" trace="message$mGgm" />
+      <node id="7291380803381892719" at="191,0,192,0" concept="8" trace="problem$I8FR" />
+      <node id="7291380803381892719" at="192,0,193,0" concept="8" trace="message$ZrUE" />
       <node id="7291380803381892719" at="31,0,33,0" concept="2" trace="myNode" />
       <node id="7291380803381892719" at="65,0,67,0" concept="2" trace="myNode" />
       <node id="7291380803381892719" at="139,0,141,0" concept="2" trace="myNode" />

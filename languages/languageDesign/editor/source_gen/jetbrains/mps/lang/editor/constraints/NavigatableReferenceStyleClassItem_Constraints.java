@@ -30,7 +30,7 @@ public class NavigatableReferenceStyleClassItem_Constraints extends BaseConstrai
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.link$NFBb, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.link$27Yl, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -64,6 +64,6 @@ public class NavigatableReferenceStyleClassItem_Constraints extends BaseConstrai
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink link$NFBb = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11de23fdb1fL, 0x11de240f492L, "link");
+    /*package*/ static final SReferenceLink link$27Yl = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11de23fdb1fL, 0x11de240f492L, "link");
   }
 }

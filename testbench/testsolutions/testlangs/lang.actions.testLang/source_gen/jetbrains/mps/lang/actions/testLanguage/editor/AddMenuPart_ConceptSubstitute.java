@@ -49,7 +49,7 @@ public class AddMenuPart_ConceptSubstitute extends SubstituteMenuBase {
   public class SMP_Group_1nroa3_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return Objects.equals(_context.getLink(), LINKS.addMenu_conceptSubstitute$b5_n);
+      return Objects.equals(_context.getLink(), LINKS.addMenu_conceptSubstitute$nH69);
     }
     @NotNull
     @Override
@@ -110,7 +110,7 @@ public class AddMenuPart_ConceptSubstitute extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink addMenu_conceptSubstitute$b5_n = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x2c99ba4dd7187621L, "addMenu_conceptSubstitute");
+    /*package*/ static final SContainmentLink addMenu_conceptSubstitute$nH69 = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x2c99ba4dd7187621L, "addMenu_conceptSubstitute");
   }
 
   private static final class CONCEPTS {

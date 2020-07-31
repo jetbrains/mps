@@ -17,7 +17,7 @@ public class check_NoFinalOverrides_NonTypesystemRule extends AbstractNonTypesys
   public check_NoFinalOverrides_NonTypesystemRule() {
   }
   public void applyRule(final SNode method, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode overriddenMethod = SLinkOperations.getTarget(method, LINKS.overriddenMethod$6dmw);
+    SNode overriddenMethod = SLinkOperations.getTarget(method, LINKS.overriddenMethod$tTw);
     if (overriddenMethod != null) {
       // todo 
     }
@@ -33,7 +33,7 @@ public class check_NoFinalOverrides_NonTypesystemRule extends AbstractNonTypesys
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink overriddenMethod$6dmw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
+    /*package*/ static final SReferenceLink overriddenMethod$tTw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
   }
 
   private static final class CONCEPTS {

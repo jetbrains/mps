@@ -48,7 +48,7 @@ public class ConceptEditorContextHints_hintKeymap extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNodeFactoryOperations.addNewChild(node, LINKS.hints$rpI4, null);
+      SNodeFactoryOperations.addNewChild(node, LINKS.hints$htjW, null);
     }
     public String getKeyStroke() {
       return " letter or digit";
@@ -60,6 +60,6 @@ public class ConceptEditorContextHints_hintKeymap extends KeyMapImpl {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink hints$rpI4 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef4e35767L, 0x527faacef4e379fbL, "hints");
+    /*package*/ static final SContainmentLink hints$htjW = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef4e35767L, 0x527faacef4e379fbL, "hints");
   }
 }

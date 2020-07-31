@@ -20,7 +20,7 @@ public class InternalClassifierType_subtypeOf_ClassifierType_SubtypingRule exten
   public InternalClassifierType_subtypeOf_ClassifierType_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode ict, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return _quotation_createNode_za0vnm_a0a1(SLinkOperations.getTarget(ict, LINKS.classifier$pQ_R));
+    return _quotation_createNode_za0vnm_a0a1(SLinkOperations.getTarget(ict, LINKS.classifier$xslD));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.InternalClassifierType$bm;
@@ -40,7 +40,7 @@ public class InternalClassifierType_subtypeOf_ClassifierType_SubtypingRule exten
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

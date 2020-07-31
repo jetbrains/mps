@@ -78,9 +78,9 @@ public class ContextClassifiersInRoot {
         if (SNodeOperations.isInstanceOf(current, CONCEPTS.AnonymousClass$aF) || SNodeOperations.isInstanceOf(current, CONCEPTS.EnumClass$uy)) {
           processNestedClassifiers = true;
         } else if (SNodeOperations.isInstanceOf(current, CONCEPTS.Interface$Kp)) {
-          processNestedClassifiers = !(LINKS.extendedInterface$rbvY.equals(sourceChildRole));
+          processNestedClassifiers = !(LINKS.extendedInterface$a$v2.equals(sourceChildRole));
         } else if (SNodeOperations.isInstanceOf(current, CONCEPTS.ClassConcept$IY)) {
-          processNestedClassifiers = !((LINKS.superclass$_pqe.equals(sourceChildRole) || LINKS.implementedInterface$mdc6.equals(sourceChildRole)));
+          processNestedClassifiers = !((LINKS.superclass$7jGM.equals(sourceChildRole) || LINKS.implementedInterface$KoQU.equals(sourceChildRole)));
         } else {
           if (LOG.isEnabledFor(Level.WARN)) {
             LOG.warn("Illegal classifier node in bl textgen: " + current);
@@ -122,7 +122,7 @@ public class ContextClassifiersInRoot {
   }
 
   private static void addClassifierToBindingMap(Map<String, String> bindings, SNode classifier) {
-    String simpleName = SPropertyOperations.getString(classifier, PROPS.name$tAp1);
+    String simpleName = SPropertyOperations.getString(classifier, PROPS.name$lA7v);
     String fqName = INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(classifier);
 
     if (!(bindings.containsKey(simpleName))) {
@@ -140,12 +140,12 @@ public class ContextClassifiersInRoot {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extendedInterface$rbvY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
-    /*package*/ static final SContainmentLink implementedInterface$mdc6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SContainmentLink extendedInterface$a$v2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
+    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

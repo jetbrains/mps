@@ -70,17 +70,17 @@ public final class UnwrapIfThenBlock_Intention extends AbstractIntentionDescript
     public void execute(final SNode node, final EditorContext editorContext) {
       if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.StatementList$TN)) {
         final SNode statementList = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.StatementList$TN);
-        final Wrappers._int index = new Wrappers._int(ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$WHn8)).indexOf(node));
-        ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$WHn8)).removeElementAt(index.value);
-        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.ifTrue$WJ1E), LINKS.statement$WHn8)).visitAll(new IVisitor<SNode>() {
+        final Wrappers._int index = new Wrappers._int(ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$pYcS)).indexOf(node));
+        ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$pYcS)).removeElementAt(index.value);
+        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.ifTrue$qLNm), LINKS.statement$pYcS)).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
-            ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$WHn8)).insertElement(index.value, it);
+            ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$pYcS)).insertElement(index.value, it);
             index.value += 1;
           }
         });
       } else {
         SNode statement = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.BlockStatement$1i);
-        SLinkOperations.setTarget(statement, LINKS.statements$uqR0, SLinkOperations.getTarget(node, LINKS.ifTrue$WJ1E));
+        SLinkOperations.setTarget(statement, LINKS.statements$J0D0, SLinkOperations.getTarget(node, LINKS.ifTrue$qLNm));
       }
       SNodeOperations.deleteNode(node);
     }
@@ -97,8 +97,8 @@ public final class UnwrapIfThenBlock_Intention extends AbstractIntentionDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink ifTrue$WJ1E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
-    /*package*/ static final SContainmentLink statements$uqR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink ifTrue$qLNm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
+    /*package*/ static final SContainmentLink statements$J0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
   }
 }

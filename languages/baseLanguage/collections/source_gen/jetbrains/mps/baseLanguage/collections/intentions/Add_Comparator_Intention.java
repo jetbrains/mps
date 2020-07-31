@@ -37,7 +37,7 @@ public final class Add_Comparator_Intention extends AbstractIntentionDescriptor 
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SLinkOperations.getTarget(node, LINKS.copyFrom$oKp$) == null) && (SLinkOperations.getTarget(node, LINKS.initSize$vxGw) == null) && (SLinkOperations.getTarget(node, LINKS.comparator$Seq8) == null);
+    return (SLinkOperations.getTarget(node, LINKS.copyFrom$Zsos) == null) && (SLinkOperations.getTarget(node, LINKS.initSize$hkzw) == null) && (SLinkOperations.getTarget(node, LINKS.comparator$eYDS) == null);
   }
   @Override
   public boolean isSurroundWith() {
@@ -58,7 +58,7 @@ public final class Add_Comparator_Intention extends AbstractIntentionDescriptor 
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SLinkOperations.setTarget(node, LINKS.comparator$Seq8, _quotation_createNode_1k32yi_a0a0a0(SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.elementType$K4zo)), SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.elementType$K4zo))));
+      SLinkOperations.setTarget(node, LINKS.comparator$eYDS, _quotation_createNode_1k32yi_a0a0a0(SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.elementType$id8C)), SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.elementType$id8C))));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -94,9 +94,9 @@ public final class Add_Comparator_Intention extends AbstractIntentionDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink comparator$Seq8 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4838d33L, 0x1f622b3701eae8beL, "comparator");
-    /*package*/ static final SContainmentLink copyFrom$oKp$ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202e9082e6L, "copyFrom");
-    /*package*/ static final SContainmentLink initSize$vxGw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x15ae66cec05cb2eaL, "initSize");
-    /*package*/ static final SContainmentLink elementType$K4zo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
+    /*package*/ static final SContainmentLink comparator$eYDS = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4838d33L, 0x1f622b3701eae8beL, "comparator");
+    /*package*/ static final SContainmentLink copyFrom$Zsos = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202e9082e6L, "copyFrom");
+    /*package*/ static final SContainmentLink initSize$hkzw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x15ae66cec05cb2eaL, "initSize");
+    /*package*/ static final SContainmentLink elementType$id8C = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
   }
 }

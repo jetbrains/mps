@@ -29,7 +29,7 @@ public class check_UnusedPrivateMethods_NonTypesystemRule extends AbstractNonTyp
   public check_UnusedPrivateMethods_NonTypesystemRule() {
   }
   public void applyRule(final SNode classifierMember, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classifierMember, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classifierMember, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se)) {
       {
         final SNode matchedNode_sl9v9q_a0a0 = classifierMember;
         {
@@ -42,7 +42,7 @@ public class check_UnusedPrivateMethods_NonTypesystemRule extends AbstractNonTyp
           }
           if (matches_sl9v9q_a0a0a) {
             {
-              if (SNodeOperations.isInstanceOf(matchedNode_sl9v9q_a0a0, CONCEPTS.ConstructorDeclaration$5U) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(matchedNode_sl9v9q_a0a0, CONCEPTS.ConstructorDeclaration$5U), LINKS.parameter$WIkZ)).isEmpty() && Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.as(SNodeOperations.getParent(matchedNode_sl9v9q_a0a0), CONCEPTS.ClassConcept$IY))).count() == 1) {
+              if (SNodeOperations.isInstanceOf(matchedNode_sl9v9q_a0a0, CONCEPTS.ConstructorDeclaration$5U) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(matchedNode_sl9v9q_a0a0, CONCEPTS.ConstructorDeclaration$5U), LINKS.parameter$qsax)).isEmpty() && Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.as(SNodeOperations.getParent(matchedNode_sl9v9q_a0a0), CONCEPTS.ClassConcept$IY))).count() == 1) {
                 // an idiom - uninstantiable class 
                 return;
               }
@@ -53,11 +53,11 @@ public class check_UnusedPrivateMethods_NonTypesystemRule extends AbstractNonTyp
                 }
                 if (!(ListSequence.fromList(SNodeOperations.getNodeDescendants(topClassifier, CONCEPTS.IMethodCall$ln, false, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
                   public boolean accept(SNode call) {
-                    return SLinkOperations.getTarget(call, LINKS.baseMethodDeclaration$$A7i) == matchedNode_sl9v9q_a0a0 && !(ListSequence.fromList(SNodeOperations.getNodeAncestors(call, null, false)).contains(matchedNode_sl9v9q_a0a0));
+                    return SLinkOperations.getTarget(call, LINKS.baseMethodDeclaration$ItxI) == matchedNode_sl9v9q_a0a0 && !(ListSequence.fromList(SNodeOperations.getNodeAncestors(call, null, false)).contains(matchedNode_sl9v9q_a0a0));
                   }
                 }))) {
                   {
-                    final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
+                    final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
                     IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(matchedNode_sl9v9q_a0a0, "Private method " + matchedNode_sl9v9q_a0a0 + " is never used", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8101436443850399677", null, errorTarget);
                     {
                       BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedMethod_QuickFix", false);
@@ -83,9 +83,9 @@ public class check_UnusedPrivateMethods_NonTypesystemRule extends AbstractNonTyp
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 
   private static final class CONCEPTS {
@@ -99,6 +99,6 @@ public class check_UnusedPrivateMethods_NonTypesystemRule extends AbstractNonTyp
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

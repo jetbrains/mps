@@ -67,7 +67,7 @@ public class ExtractMethodRefactoringParameters extends MethodModel {
     if (classifier != null) {
       Iterable<SNode> methods = Sequence.fromIterable(SNodeOperations.ofConcept(((Iterable<SNode>) BHReflection.invoke0(((SNode) BHReflection.invoke0(classifier, CONCEPTS.Classifier$hJ, SMethodTrimmedId.create("getThisType", null, "2RtWPFZ12w7"))), CONCEPTS.IClassifierType$af, SMethodTrimmedId.create("getMembers", CONCEPTS.IClassifierType$af, "6r77ob2V1Fr"))), CONCEPTS.InstanceMethodDeclaration$An)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), name) && ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.ClassifierMember$9F, SMethodTrimmedId.create("isVisible", null, "70J2WaK_oVl"), classifier, classifier));
+          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), name) && ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.ClassifierMember$9F, SMethodTrimmedId.create("isVisible", null, "70J2WaK_oVl"), classifier, classifier));
         }
       });
       for (SNode method : methods) {
@@ -83,14 +83,14 @@ public class ExtractMethodRefactoringParameters extends MethodModel {
     return this.myAnalyzer;
   }
   private boolean isParametersMatch(SNode method) {
-    Iterator<SNode> parameters = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).iterator();
+    Iterator<SNode> parameters = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).iterator();
     for (MethodParameter p1 : this.myParameters) {
       if (p1.isSelected()) {
         if (!(parameters.hasNext())) {
           return false;
         }
         SNode p2 = parameters.next();
-        if (!(MatchingUtil.matchNodes(p1.getType(), SLinkOperations.getTarget(p2, LINKS.type$pLrO)))) {
+        if (!(MatchingUtil.matchNodes(p1.getType(), SLinkOperations.getTarget(p2, LINKS.type$uWuc)))) {
           return false;
         }
       }
@@ -122,11 +122,11 @@ public class ExtractMethodRefactoringParameters extends MethodModel {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 }

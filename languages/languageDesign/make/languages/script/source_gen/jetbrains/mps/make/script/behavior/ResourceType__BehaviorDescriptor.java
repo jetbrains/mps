@@ -34,7 +34,7 @@ public final class ResourceType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    String param = ((SLinkOperations.getTarget(__thisNode__, LINKS.classifierType$Fi0v) != null) ? BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.classifierType$Fi0v)) : "");
+    String param = ((SLinkOperations.getTarget(__thisNode__, LINKS.classifierType$XIf1) != null) ? BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.classifierType$XIf1)) : "");
     return SConceptOperations.conceptAlias(SNodeOperations.getConcept(__thisNode__)) + "<" + param + ">";
   }
 
@@ -85,6 +85,6 @@ public final class ResourceType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink classifierType$Fi0v = MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a947282L, 0x2dead7037d3bef52L, "classifierType");
+    /*package*/ static final SContainmentLink classifierType$XIf1 = MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a947282L, 0x2dead7037d3bef52L, "classifierType");
   }
 }

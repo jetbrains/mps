@@ -19,7 +19,7 @@ public class IconHelper {
   public static String createId(SModel m) {
     Set<String> used = SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(SModelOperations.nodes(m, CONCEPTS.TextIcon$le)).select(new ISelector<SNode, String>() {
       public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.iconId$Nwly);
+        return SPropertyOperations.getString(it, PROPS.iconId$WEru);
       }
     }));
     int id = 1;
@@ -34,6 +34,6 @@ public class IconHelper {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty iconId$Nwly = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x12dbb53bb6b60039L, "iconId");
+    /*package*/ static final SProperty iconId$WEru = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x12dbb53bb6b60039L, "iconId");
   }
 }

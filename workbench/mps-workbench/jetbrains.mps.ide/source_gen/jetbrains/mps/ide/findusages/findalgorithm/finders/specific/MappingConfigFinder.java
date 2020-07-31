@@ -53,7 +53,7 @@ public class MappingConfigFinder implements IFinder {
         nodesToCheck.add(rule);
         collectChildrenThatMayHaveReferenceOnTemplate(rule, nodesToCheck);
       }
-      nodesToCheck.addAll(SLinkOperations.getChildren(mappingConfig, LINKS.createRootRule$gnQA));
+      nodesToCheck.addAll(SLinkOperations.getChildren(mappingConfig, LINKS.createRootRule$Vzsq));
     }
     for (SNode node : nodesToCheck) {
       for (SReference reference : node.getReferences()) {
@@ -84,6 +84,6 @@ public class MappingConfigFinder implements IFinder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink createRootRule$gnQA = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x10fbbe00519L, "createRootRule");
+    /*package*/ static final SContainmentLink createRootRule$Vzsq = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x10fbbe00519L, "createRootRule");
   }
 }

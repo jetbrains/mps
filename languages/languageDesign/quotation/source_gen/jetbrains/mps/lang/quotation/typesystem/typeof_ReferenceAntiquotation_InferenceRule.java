@@ -26,13 +26,13 @@ public class typeof_ReferenceAntiquotation_InferenceRule extends AbstractInferen
     if (LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(nodeToCheck) != null) {
       SAbstractConcept targetConcept = LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(nodeToCheck).getTargetConcept();
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(nodeToCheck, LINKS.expression$kIm0);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(nodeToCheck, LINKS.expression$2sE0);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "4649457259827193981", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "4649457259827193990", true), (SNode) _quotation_createNode_htbc4h_a1a0c0b0a0b(SNodeOperations.asNode(targetConcept)), false, true, _info_12389875345);
       }
     } else {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(nodeToCheck, LINKS.expression$kIm0);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(nodeToCheck, LINKS.expression$2sE0);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "1196864105033", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "1196864100630", true), (SNode) _quotation_createNode_htbc4h_a1a0c0a0a0a1(), false, true, _info_12389875345);
       }
@@ -62,7 +62,7 @@ public class typeof_ReferenceAntiquotation_InferenceRule extends AbstractInferen
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$kIm0 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L, 0x1168c104657L, "expression");
+    /*package*/ static final SContainmentLink expression$2sE0 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L, 0x1168c104657L, "expression");
   }
 
   private static final class CONCEPTS {

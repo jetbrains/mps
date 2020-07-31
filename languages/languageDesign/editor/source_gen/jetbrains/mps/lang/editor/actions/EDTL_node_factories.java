@@ -20,7 +20,7 @@ public class EDTL_node_factories {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       SNode parentRefCell = SNodeOperations.getNodeAncestor(enclosingNode, CONCEPTS.CellModel_RefCell$VD, true, false);
       if (parentRefCell != null) {
-        SPropertyOperations.set(newNode, PROPS.readOnly$pDcw, true);
+        SPropertyOperations.set(newNode, PROPS.readOnly$qX3w, true);
       }
     }
   }
@@ -28,13 +28,13 @@ public class EDTL_node_factories {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.CellModel_Collection$CD)) {
         EditorCellModel__BehaviorDescriptor.setSelectable_idi4bRWUe.invoke(newNode, ((boolean) false));
-        if (SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.CellModel_Collection$CD), LINKS.cellLayout$usNp) != null) {
-          SLinkOperations.setTarget(newNode, LINKS.cellLayout$usNp, SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.CellModel_Collection$CD), LINKS.cellLayout$usNp)));
+        if (SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.CellModel_Collection$CD), LINKS.cellLayout$JWT7) != null) {
+          SLinkOperations.setTarget(newNode, LINKS.cellLayout$JWT7, SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.CellModel_Collection$CD), LINKS.cellLayout$JWT7)));
         }
       }
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.EditorCellModel$5c)) {
         SNode innerNode = SNodeOperations.copyNode(SNodeOperations.cast(sampleNode, CONCEPTS.EditorCellModel$5c));
-        ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.childCellModel$3prw)).addElement(innerNode);
+        ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.childCellModel$Dkkw)).addElement(innerNode);
         if (SNodeOperations.isInstanceOf(innerNode, CONCEPTS.CellModel_Collection$CD) && (boolean) EditorCellModel__BehaviorDescriptor.isSelectable_idhJF6SX1.invoke(innerNode)) {
           EditorCellModel__BehaviorDescriptor.setSelectable_idi4bRWUe.invoke(innerNode, ((boolean) false));
         }
@@ -43,17 +43,17 @@ public class EDTL_node_factories {
   }
   public static class NodeFactory_1165441265075 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SPropertyOperations.set(newNode, PROPS.vertical$a5xa, true);
+      SPropertyOperations.set(newNode, PROPS.vertical$SF3Q, true);
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.EditorCellModel$5c)) {
-        SLinkOperations.setTarget(newNode, LINKS.ifTrueCellModel$C2k5, SNodeOperations.copyNode(SNodeOperations.cast(sampleNode, CONCEPTS.EditorCellModel$5c)));
+        SLinkOperations.setTarget(newNode, LINKS.ifTrueCellModel$p7Ir, SNodeOperations.copyNode(SNodeOperations.cast(sampleNode, CONCEPTS.EditorCellModel$5c)));
       }
     }
   }
   public static class NodeFactory_1239813377368 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.CellModel_Collection$CD)) {
-        if (SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.CellModel_Collection$CD), LINKS.cellLayout$usNp) != null) {
-          SLinkOperations.setTarget(newNode, LINKS.cellLayout$63td, SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.CellModel_Collection$CD), LINKS.cellLayout$usNp)));
+        if (SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.CellModel_Collection$CD), LINKS.cellLayout$JWT7) != null) {
+          SLinkOperations.setTarget(newNode, LINKS.cellLayout$VF9j, SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.CellModel_Collection$CD), LINKS.cellLayout$JWT7)));
         }
       }
     }
@@ -71,14 +71,14 @@ public class EDTL_node_factories {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty readOnly$pDcw = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x1096e5dd9abL, "readOnly");
-    /*package*/ static final SProperty vertical$a5xa = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd766383e4L, 0xfd76656383L, "vertical");
+    /*package*/ static final SProperty readOnly$qX3w = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x1096e5dd9abL, "readOnly");
+    /*package*/ static final SProperty vertical$SF3Q = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd766383e4L, 0xfd76656383L, "vertical");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cellLayout$usNp = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
-    /*package*/ static final SContainmentLink childCellModel$3prw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel");
-    /*package*/ static final SContainmentLink ifTrueCellModel$C2k5 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd766383e4L, 0xfd76638039L, "ifTrueCellModel");
-    /*package*/ static final SContainmentLink cellLayout$63td = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout");
+    /*package*/ static final SContainmentLink cellLayout$JWT7 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
+    /*package*/ static final SContainmentLink childCellModel$Dkkw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel");
+    /*package*/ static final SContainmentLink ifTrueCellModel$p7Ir = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd766383e4L, 0xfd76638039L, "ifTrueCellModel");
+    /*package*/ static final SContainmentLink cellLayout$VF9j = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout");
   }
 }

@@ -91,10 +91,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private boolean nodeCondition_o92gz8_a1b0() {
-    return SPropertyOperations.getBoolean(myNode, PROPS.canRun$P4_O);
+    return SPropertyOperations.getBoolean(myNode, PROPS.canRun$Hekc);
   }
   private boolean nodeCondition_o92gz8_a2b0() {
-    return !(SPropertyOperations.getBoolean(myNode, PROPS.canRun$P4_O));
+    return !(SPropertyOperations.getBoolean(myNode, PROPS.canRun$Hekc));
   }
   private EditorCell createIndentCell_0() {
     EditorCell_Indent editorCell = new EditorCell_Indent(getEditorContext(), myNode);
@@ -132,7 +132,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
 
     public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.set(node, PROPS.canRun$P4_O, false);
+      SPropertyOperations.set(node, PROPS.canRun$Hekc, false);
     }
     public String getMatchingText() {
       return "can't run";
@@ -170,7 +170,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
 
     public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.set(node, PROPS.canRun$P4_O, true);
+      SPropertyOperations.set(node, PROPS.canRun$Hekc, true);
     }
     public String getMatchingText() {
       return "run";
@@ -197,10 +197,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private boolean nodeCondition_o92gz8_a0d0() {
-    return SPropertyOperations.getBoolean(myNode, PROPS.canDebug$yms8);
+    return SPropertyOperations.getBoolean(myNode, PROPS.canDebug$CRBS);
   }
   private boolean nodeCondition_o92gz8_a1d0() {
-    return !(SPropertyOperations.getBoolean(myNode, PROPS.canDebug$yms8));
+    return !(SPropertyOperations.getBoolean(myNode, PROPS.canDebug$CRBS));
   }
   private EditorCell createConstant_4() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "debug");
@@ -234,7 +234,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
 
     public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.set(node, PROPS.canDebug$yms8, false);
+      SPropertyOperations.set(node, PROPS.canDebug$CRBS, false);
     }
     public String getMatchingText() {
       return "can't debug";
@@ -272,7 +272,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
 
     public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.set(node, PROPS.canDebug$yms8, true);
+      SPropertyOperations.set(node, PROPS.canDebug$CRBS, true);
     }
     public String getMatchingText() {
       return "debug";
@@ -280,7 +280,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty canRun$P4_O = MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, 0x523a1a6c9706408bL, "canRun");
-    /*package*/ static final SProperty canDebug$yms8 = MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, 0x566a06529af9d7ddL, "canDebug");
+    /*package*/ static final SProperty canRun$Hekc = MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, 0x523a1a6c9706408bL, "canRun");
+    /*package*/ static final SProperty canDebug$CRBS = MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, 0x566a06529af9d7ddL, "canDebug");
   }
 }

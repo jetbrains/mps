@@ -47,11 +47,11 @@ public class UtilityMethodDeclaration_Constraints extends BaseConstraintsDescrip
             SNode textGen = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.LanguageTextGenDeclaration$8b, false, false);
             if (textGen != null) {
               while (true) {
-                ListSequence.fromList(methods).addSequence(ListSequence.fromList(SLinkOperations.getChildren(textGen, LINKS.function$T2Zy)));
-                if ((SLinkOperations.getTarget(textGen, LINKS.baseTextGen$5oDC) == null)) {
+                ListSequence.fromList(methods).addSequence(ListSequence.fromList(SLinkOperations.getChildren(textGen, LINKS.function$CsLu)));
+                if ((SLinkOperations.getTarget(textGen, LINKS.baseTextGen$AWao) == null)) {
                   break;
                 }
-                textGen = SLinkOperations.getTarget(textGen, LINKS.baseTextGen$5oDC);
+                textGen = SLinkOperations.getTarget(textGen, LINKS.baseTextGen$AWao);
               }
             }
             return ListScope.forResolvableElements(methods);
@@ -68,7 +68,7 @@ public class UtilityMethodDeclaration_Constraints extends BaseConstraintsDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink function$T2Zy = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x11f6f8860bdL, "function");
-    /*package*/ static final SReferenceLink baseTextGen$5oDC = MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x11f7eb142ecL, "baseTextGen");
+    /*package*/ static final SContainmentLink function$CsLu = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x11f6f8860bdL, "function");
+    /*package*/ static final SReferenceLink baseTextGen$AWao = MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x11f7eb142ecL, "baseTextGen");
   }
 }

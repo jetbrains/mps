@@ -80,9 +80,9 @@ public class ChooseBreakpoint_Contribution extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends IBreakpointKind> getParameters(SubstituteMenuContext _context) {
-      SNode debuggerType = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr)), CONCEPTS.DebuggerType$gI);
-      if (debuggerType != null && isNotEmptyString(SPropertyOperations.getString(debuggerType, PROPS.name$d3D9))) {
-        IBreakpointsProvider provider = Debuggers.getInstance().getDebuggerByName(SPropertyOperations.getString(debuggerType, PROPS.name$d3D9)).getBreakpointsProvider();
+      SNode debuggerType = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5)), CONCEPTS.DebuggerType$gI);
+      if (debuggerType != null && isNotEmptyString(SPropertyOperations.getString(debuggerType, PROPS.name$kKVn))) {
+        IBreakpointsProvider provider = Debuggers.getInstance().getDebuggerByName(SPropertyOperations.getString(debuggerType, PROPS.name$kKVn)).getBreakpointsProvider();
         if (provider != null) {
           return (List<IBreakpointKind>) provider.getAllKinds();
         }
@@ -134,8 +134,8 @@ public class ChooseBreakpoint_Contribution extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode createBreakpointOperation = SNodeFactoryOperations.createNewNode(CONCEPTS.CreateBreakpointOperation$q$, null);
-          SPropertyOperations.set(createBreakpointOperation, PROPS.kindName$f9Iv, myParameterObject.getName());
-          SPropertyOperations.set(createBreakpointOperation, PROPS.kindPresentation$f9IY, myParameterObject.getPresentation());
+          SPropertyOperations.set(createBreakpointOperation, PROPS.kindName$lHx1, myParameterObject.getName());
+          SPropertyOperations.set(createBreakpointOperation, PROPS.kindPresentation$lHK2, myParameterObject.getPresentation());
           return createBreakpointOperation;
         }
 
@@ -177,12 +177,12 @@ public class ChooseBreakpoint_Contribution extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$d3D9 = MetaAdapterFactory.getProperty(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912bd83L, 0x23a852e9c43c456dL, "name");
-    /*package*/ static final SProperty kindName$f9Iv = MetaAdapterFactory.getProperty(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x23a852e9c43bcae9L, 0x23a852e9c43bcaebL, "kindName");
-    /*package*/ static final SProperty kindPresentation$f9IY = MetaAdapterFactory.getProperty(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x23a852e9c43bcae9L, 0x23a852e9c43bcaecL, "kindPresentation");
+    /*package*/ static final SProperty name$kKVn = MetaAdapterFactory.getProperty(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912bd83L, 0x23a852e9c43c456dL, "name");
+    /*package*/ static final SProperty kindName$lHx1 = MetaAdapterFactory.getProperty(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x23a852e9c43bcae9L, 0x23a852e9c43bcaebL, "kindName");
+    /*package*/ static final SProperty kindPresentation$lHK2 = MetaAdapterFactory.getProperty(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x23a852e9c43bcae9L, 0x23a852e9c43bcaecL, "kindPresentation");
   }
 }

@@ -33,7 +33,7 @@ public class MatchVariableReferenceReplacement_Constraints extends BaseConstrain
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.match$FhOt, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.match$XCq3, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -51,7 +51,7 @@ public class MatchVariableReferenceReplacement_Constraints extends BaseConstrain
             List<SNode> matches = new ArrayList<SNode>();
             SNode top = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ReplaceRegexpOperation$ia, true, false);
             if ((top != null)) {
-              Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(top, LINKS.search$esb6), matches);
+              Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(top, LINKS.search$ZDnU), matches);
             }
             return ListScope.forResolvableElements(matches);
           }
@@ -70,7 +70,7 @@ public class MatchVariableReferenceReplacement_Constraints extends BaseConstrain
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink match$FhOt = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94eL, 0x34ae970c192abbc5L, "match");
-    /*package*/ static final SContainmentLink search$esb6 = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee3bL, "search");
+    /*package*/ static final SReferenceLink match$XCq3 = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94eL, 0x34ae970c192abbc5L, "match");
+    /*package*/ static final SContainmentLink search$ZDnU = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee3bL, "search");
   }
 }

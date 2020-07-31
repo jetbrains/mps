@@ -29,13 +29,13 @@ public class CheckedDotExpression_Actions_DeleteOperation {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.operation$X4R8))), SNodeOperations.asSConcept(CONCEPTS.AbstractOperation$Nk))) {
-          SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.operand$Lcrr));
+        if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.operation$_mGS))), SNodeOperations.asSConcept(CONCEPTS.AbstractOperation$Nk))) {
+          SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.operand$P1i5));
         } else {
-          if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.operation$X4R8))) {
+          if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.operation$_mGS))) {
             return;
           }
-          SLinkOperations.setTarget(node, LINKS.operation$X4R8, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1196792d150L, "jetbrains.mps.baseLanguage.structure.AbstractOperation")));
+          SLinkOperations.setTarget(node, LINKS.operation$_mGS, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1196792d150L, "jetbrains.mps.baseLanguage.structure.AbstractOperation")));
         }
       }
 
@@ -50,13 +50,13 @@ public class CheckedDotExpression_Actions_DeleteOperation {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.operation$X4R8))), SNodeOperations.asSConcept(CONCEPTS.AbstractOperation$Nk))) {
-          SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.operand$Lcrr));
+        if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.operation$_mGS))), SNodeOperations.asSConcept(CONCEPTS.AbstractOperation$Nk))) {
+          SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.operand$P1i5));
         } else {
-          if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.operation$X4R8))) {
+          if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.operation$_mGS))) {
             return;
           }
-          SLinkOperations.setTarget(node, LINKS.operation$X4R8, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1196792d150L, "jetbrains.mps.baseLanguage.structure.AbstractOperation")));
+          SLinkOperations.setTarget(node, LINKS.operation$_mGS, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1196792d150L, "jetbrains.mps.baseLanguage.structure.AbstractOperation")));
         }
       }
 
@@ -109,8 +109,8 @@ public class CheckedDotExpression_Actions_DeleteOperation {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 
   private static final class CONCEPTS {

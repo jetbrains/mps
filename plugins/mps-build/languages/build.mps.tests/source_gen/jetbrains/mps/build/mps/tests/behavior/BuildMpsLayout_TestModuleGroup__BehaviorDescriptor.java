@@ -34,10 +34,10 @@ public final class BuildMpsLayout_TestModuleGroup__BehaviorDescriptor extends Ba
   }
 
   /*package*/ static boolean contains_id3X9rC2XzJi8(@NotNull SNode __thisNode__, SNode module) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.group$mNtw), LINKS.modules$4DA0)).contains(module);
+    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.group$2Viw), LINKS.modules$g9q0)).contains(module);
   }
   /*package*/ static Iterable<SNode> getModules_id3X9rC2XzJij(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.group$mNtw), LINKS.modules$4DA0);
+    return SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.group$2Viw), LINKS.modules$g9q0);
   }
 
   /*package*/ BuildMpsLayout_TestModuleGroup__BehaviorDescriptor() {
@@ -89,7 +89,7 @@ public final class BuildMpsLayout_TestModuleGroup__BehaviorDescriptor extends Ba
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink group$mNtw = MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL, 0x3f496e80bd8ef36cL, "group");
-    /*package*/ static final SContainmentLink modules$4DA0 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, 0x14d3fb6fb843ebdeL, "modules");
+    /*package*/ static final SReferenceLink group$2Viw = MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL, 0x3f496e80bd8ef36cL, "group");
+    /*package*/ static final SContainmentLink modules$g9q0 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, 0x14d3fb6fb843ebdeL, "modules");
   }
 }

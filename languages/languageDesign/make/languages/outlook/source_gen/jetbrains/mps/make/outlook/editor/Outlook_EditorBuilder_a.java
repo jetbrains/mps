@@ -90,7 +90,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$tAp1;
+      final SProperty property = PROPS.name$lA7v;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -153,7 +153,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.facet$in8R;
+      return LINKS.facet$TdiD;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.FacetReference$d5;
@@ -166,7 +166,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(facetListHandler_qlzo2n_b1a.this.getNode(), LINKS.facet$in8R));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(facetListHandler_qlzo2n_b1a.this.getNode(), LINKS.facet$TdiD));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_2();
@@ -214,7 +214,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
@@ -223,6 +223,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink facet$in8R = MetaAdapterFactory.getContainmentLink(0xdc54e1b286b349d2L, 0x9014a76af17af22aL, 0x4dd42fcf00ba54d2L, 0x4dd42fcf00ba59a1L, "facet");
+    /*package*/ static final SContainmentLink facet$TdiD = MetaAdapterFactory.getContainmentLink(0xdc54e1b286b349d2L, 0x9014a76af17af22aL, 0x4dd42fcf00ba54d2L, 0x4dd42fcf00ba59a1L, "facet");
   }
 }

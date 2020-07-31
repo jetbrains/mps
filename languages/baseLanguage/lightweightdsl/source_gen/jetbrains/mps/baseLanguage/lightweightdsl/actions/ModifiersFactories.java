@@ -17,7 +17,7 @@ public class ModifiersFactories {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       SNode propertyDescriptor = SNodeOperations.getNodeAncestor(enclosingNode, CONCEPTS.PropertyDescriptor$hh, true, false);
       if ((propertyDescriptor != null)) {
-        SLinkOperations.setTarget(newNode, LINKS.value$HrKt, SNodeOperations.cast(DSLClassMember__BehaviorDescriptor.create_id7ay_HjIOVVe.invoke(propertyDescriptor, model), CONCEPTS.PropertyInstance$LJ));
+        SLinkOperations.setTarget(newNode, LINKS.value$su3, SNodeOperations.cast(DSLClassMember__BehaviorDescriptor.create_id7ay_HjIOVVe.invoke(propertyDescriptor, model), CONCEPTS.PropertyInstance$LJ));
       }
     }
   }
@@ -28,6 +28,6 @@ public class ModifiersFactories {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink value$HrKt = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x7a7325178c68eba9L, 0x7a7325178c68f138L, "value");
+    /*package*/ static final SContainmentLink value$su3 = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x7a7325178c68eba9L, 0x7a7325178c68f138L, "value");
   }
 }

@@ -174,11 +174,11 @@ public class SubstituteMembersInsideOfClassifier_Contribution extends Substitute
           @Override
           public SNode createNode(@NotNull String pattern) {
             SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.DotExpression$6a, null);
-            SNodeFactoryOperations.setNewChild(result, LINKS.operand$Lcrr, CONCEPTS.ThisClassifierExpression$xN);
+            SNodeFactoryOperations.setNewChild(result, LINKS.operand$P1i5, CONCEPTS.ThisClassifierExpression$xN);
             if (multipleClassifiers) {
-              SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(result, LINKS.operand$Lcrr), CONCEPTS.ThisClassifierExpression$xN), LINKS.classifier$Xpfr, contextClassifier);
+              SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(result, LINKS.operand$P1i5), CONCEPTS.ThisClassifierExpression$xN), LINKS.classifier$Jeu5, contextClassifier);
             }
-            SLinkOperations.setTarget(result, LINKS.operation$X4R8, IMember__BehaviorDescriptor.createOperation_idhEwIBCC.invoke(myParameterObject));
+            SLinkOperations.setTarget(result, LINKS.operation$_mGS, IMember__BehaviorDescriptor.createOperation_idhEwIBCC.invoke(myParameterObject));
             return result;
           }
 
@@ -229,8 +229,8 @@ public class SubstituteMembersInsideOfClassifier_Contribution extends Substitute
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SReferenceLink classifier$Xpfr = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, 0x11bc25d4bc3L, "classifier");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SReferenceLink classifier$Jeu5 = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, 0x11bc25d4bc3L, "classifier");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 }

@@ -22,8 +22,8 @@
       <node id="3245637733309668518" at="37,119,38,61" concept="1" />
       <node id="3245637733309668517" at="38,61,39,22" concept="4" />
       <node id="3245637733309668517" at="43,0,44,0" concept="5" trace="ImageGenerator$pF" />
-      <node id="3245637733309668517" at="47,0,48,0" concept="5" trace="name$tAp1" />
-      <node id="3245637733309668517" at="48,0,49,0" concept="5" trace="fileName$j3xX" />
+      <node id="3245637733309668517" at="47,0,48,0" concept="5" trace="name$lA7v" />
+      <node id="3245637733309668517" at="48,0,49,0" concept="5" trace="fileName$eHsz" />
       <node id="3245637733309668517" at="18,0,21,0" concept="0" trace="ImageGenerator_Constraints#()V" />
       <node id="3245637733309668518" at="23,0,26,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="3245637733309668518" at="26,0,30,0" concept="2" trace="hasOwnGetter#()Z" />

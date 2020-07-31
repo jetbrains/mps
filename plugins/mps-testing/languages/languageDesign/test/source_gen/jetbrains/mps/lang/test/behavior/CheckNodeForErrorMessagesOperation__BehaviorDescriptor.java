@@ -41,11 +41,11 @@ public final class CheckNodeForErrorMessagesOperation__BehaviorDescriptor extend
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(perform_id1kgh5YabdhC, getDefaultName_id7scb9XJdmH2, getPresentation_idhEwIMiw, expectsErrorsInside_id77$odk0vlBj);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.includeSelf$1l1v, true);
+    SPropertyOperations.assign(__thisNode__, PROPS.includeSelf$DbI1, true);
   }
 
   /*package*/ static void perform_id1kgh5YabdhC(@NotNull SNode __thisNode__, final SNode node, @Nullable final ComponentHost host) {
-    new CheckErrorMessagesRunnable(node, SPropertyOperations.getBoolean(__thisNode__, PROPS.allowWarnings$vTwT), SPropertyOperations.getBoolean(__thisNode__, PROPS.allowErrors$vTwq), host).includeSelf(SPropertyOperations.getBoolean(__thisNode__, PROPS.includeSelf$1l1v)).exclude(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.AbstractNodeRuleCheckOperation$Z8, false, new SAbstractConcept[]{})).select(new ISelector<SNode, CheckExpectedMessageRunnable>() {
+    new CheckErrorMessagesRunnable(node, SPropertyOperations.getBoolean(__thisNode__, PROPS.allowWarnings$sQVB), SPropertyOperations.getBoolean(__thisNode__, PROPS.allowErrors$sQGA), host).includeSelf(SPropertyOperations.getBoolean(__thisNode__, PROPS.includeSelf$DbI1)).exclude(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.AbstractNodeRuleCheckOperation$Z8, false, new SAbstractConcept[]{})).select(new ISelector<SNode, CheckExpectedMessageRunnable>() {
       public CheckExpectedMessageRunnable select(final SNode excludeAnnotation) {
         return (CheckExpectedMessageRunnable) AbstractNodeRuleCheckOperation__BehaviorDescriptor.checkAction_id7jfLc8W17Cr.invoke(excludeAnnotation, SNodeOperations.getModel(node).getRepository(), host);
       }
@@ -58,7 +58,7 @@ public final class CheckNodeForErrorMessagesOperation__BehaviorDescriptor extend
     return ((String) ITestMethod__BehaviorDescriptor.getTestName_idhGBohAB.invoke(__thisNode__));
   }
   /*package*/ static boolean expectsErrorsInside_id77$odk0vlBj(@NotNull SNode __thisNode__, NodeReportItem reportItem, SRepository ruleRepository, @Nullable ComponentHost host) {
-    CheckErrorMessagesRunnable checkErrorsAction = new CheckErrorMessagesRunnable(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__), SPropertyOperations.getBoolean(__thisNode__, PROPS.allowWarnings$vTwT), SPropertyOperations.getBoolean(__thisNode__, PROPS.allowErrors$vTwq), host).includeSelf(SPropertyOperations.getBoolean(__thisNode__, PROPS.includeSelf$1l1v));
+    CheckErrorMessagesRunnable checkErrorsAction = new CheckErrorMessagesRunnable(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__), SPropertyOperations.getBoolean(__thisNode__, PROPS.allowWarnings$sQVB), SPropertyOperations.getBoolean(__thisNode__, PROPS.allowErrors$sQGA), host).includeSelf(SPropertyOperations.getBoolean(__thisNode__, PROPS.includeSelf$DbI1));
     return checkErrorsAction.isReportItemAllowed(reportItem);
   }
 
@@ -116,9 +116,9 @@ public final class CheckNodeForErrorMessagesOperation__BehaviorDescriptor extend
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty includeSelf$1l1v = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07d3d54aL, 0x33f30f661f8cdca2L, "includeSelf");
-    /*package*/ static final SProperty allowWarnings$vTwT = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07d3d54aL, 0xbd376db27cdbaaeL, "allowWarnings");
-    /*package*/ static final SProperty allowErrors$vTwq = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07d3d54aL, 0xbd376db27cdbaadL, "allowErrors");
+    /*package*/ static final SProperty includeSelf$DbI1 = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07d3d54aL, 0x33f30f661f8cdca2L, "includeSelf");
+    /*package*/ static final SProperty allowWarnings$sQVB = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07d3d54aL, 0xbd376db27cdbaaeL, "allowWarnings");
+    /*package*/ static final SProperty allowErrors$sQGA = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07d3d54aL, 0xbd376db27cdbaadL, "allowErrors");
   }
 
   private static final class CONCEPTS {

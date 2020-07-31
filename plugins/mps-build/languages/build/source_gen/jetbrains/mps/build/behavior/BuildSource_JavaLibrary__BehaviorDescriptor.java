@@ -35,13 +35,13 @@ public final class BuildSource_JavaLibrary__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static boolean canExportByParts_id4RsV8qJGJnM(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$cwi3)).all(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$3CJt)).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         SNode jlCP = SNodeOperations.as(it, CONCEPTS.BuildSource_JavaLibraryCP$VQ);
         if (jlCP == null) {
           return false;
         }
-        SNode classpath = SLinkOperations.getTarget(jlCP, LINKS.classpath$Tk_v);
+        SNode classpath = SLinkOperations.getTarget(jlCP, LINKS.classpath$KYa1);
         return SNodeOperations.isInstanceOf(classpath, CONCEPTS.BuildSource_JavaJar$OF) || SNodeOperations.isInstanceOf(classpath, CONCEPTS.BuildSource_JavaLibraryExternalJar$I0) || SNodeOperations.isInstanceOf(classpath, CONCEPTS.BuildSource_JavaLibraryExternalJarFolder$3u);
       }
     });
@@ -94,8 +94,8 @@ public final class BuildSource_JavaLibrary__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$cwi3 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x540febaa6144b873L, 0x540febaa6144e311L, "elements");
-    /*package*/ static final SContainmentLink classpath$Tk_v = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b61d4cbbL, 0x3395e884b61d4cbdL, "classpath");
+    /*package*/ static final SContainmentLink elements$3CJt = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x540febaa6144b873L, 0x540febaa6144e311L, "elements");
+    /*package*/ static final SContainmentLink classpath$KYa1 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b61d4cbbL, 0x3395e884b61d4cbdL, "classpath");
   }
 
   private static final class CONCEPTS {

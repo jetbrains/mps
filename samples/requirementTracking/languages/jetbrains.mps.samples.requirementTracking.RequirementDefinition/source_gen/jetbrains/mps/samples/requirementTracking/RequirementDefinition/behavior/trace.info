@@ -32,8 +32,8 @@
       <node id="4174052498196307125" at="73,48,74,22" concept="5" />
       <node id="4174052498196307125" at="79,40,80,19" concept="5" />
       <node id="4174052498196338905" at="82,55,83,43" concept="5" />
-      <node id="4174052498196307125" at="87,0,88,0" concept="6" trace="name$tAp1" />
-      <node id="4174052498196307125" at="88,0,89,0" concept="6" trace="id$rkxX" />
+      <node id="4174052498196307125" at="87,0,88,0" concept="6" trace="name$lA7v" />
+      <node id="4174052498196307125" at="88,0,89,0" concept="6" trace="id$eWsz" />
       <node id="4174052498196307125" at="30,0,32,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4174052498196307125" at="37,0,39,0" concept="0" trace="Entry__BehaviorDescriptor#()V" />
       <node id="4174052498196307125" at="33,0,36,0" concept="7" trace="getPresentation_idhEwIMiw#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />

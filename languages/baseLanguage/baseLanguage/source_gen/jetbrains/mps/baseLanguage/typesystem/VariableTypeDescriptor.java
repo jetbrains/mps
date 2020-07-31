@@ -27,15 +27,15 @@ public class VariableTypeDescriptor {
 
   public SNode getVariableInterfaceType() {
     SNode type = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
-    SLinkOperations.setPointer(type, LINKS.classifier$pQ_R, myVariableInterface);
-    ListSequence.fromList(SLinkOperations.getChildren(type, LINKS.parameter$dQne)).addElement(myTypeParameter);
+    SLinkOperations.setPointer(type, LINKS.classifier$xslD, myVariableInterface);
+    ListSequence.fromList(SLinkOperations.getChildren(type, LINKS.parameter$HlfM)).addElement(myTypeParameter);
     return type;
   }
 
   public SNode getLocalVariableClassType() {
     SNode type = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
-    SLinkOperations.setPointer(type, LINKS.classifier$pQ_R, myLocalVariableClass);
-    ListSequence.fromList(SLinkOperations.getChildren(type, LINKS.parameter$dQne)).addElement(myTypeParameter);
+    SLinkOperations.setPointer(type, LINKS.classifier$xslD, myLocalVariableClass);
+    ListSequence.fromList(SLinkOperations.getChildren(type, LINKS.parameter$HlfM)).addElement(myTypeParameter);
     return type;
   }
 
@@ -57,7 +57,7 @@ public class VariableTypeDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
   }
 }

@@ -145,7 +145,7 @@ public class DebuggerReference_SubstituteMenu extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode debuggerReference = SNodeFactoryOperations.createNewNode(CONCEPTS.DebuggerReference$bf, null);
-          SPropertyOperations.set(debuggerReference, PROPS.debuggerName$AeDX, myParameterObject);
+          SPropertyOperations.set(debuggerReference, PROPS.debuggerName$x6kz, myParameterObject);
           return debuggerReference;
         }
 
@@ -203,6 +203,6 @@ public class DebuggerReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty debuggerName$AeDX = MetaAdapterFactory.getProperty(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, 0xf528808f912d155L, "debuggerName");
+    /*package*/ static final SProperty debuggerName$x6kz = MetaAdapterFactory.getProperty(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, 0xf528808f912d155L, "debuggerName");
   }
 }

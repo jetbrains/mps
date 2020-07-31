@@ -23,12 +23,12 @@ public class ConvertCastToSModelCast_QuickFix extends QuickFix_Runtime {
   public void execute(SNode node) {
     SNode snode = node;
     SNode blCast = SNodeOperations.cast(snode, CONCEPTS.CastExpression$7m);
-    SNode expr = SLinkOperations.getTarget(blCast, LINKS.expression$8QPv);
-    SNodeOperations.deleteNode(SLinkOperations.getTarget(blCast, LINKS.expression$8QPv));
+    SNode expr = SLinkOperations.getTarget(blCast, LINKS.expression$izU1);
+    SNodeOperations.deleteNode(SLinkOperations.getTarget(blCast, LINKS.expression$izU1));
     SNode cast = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10975850da7L, "jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression"));
-    SLinkOperations.setTarget(cast, LINKS.concept$NIQI, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(blCast, LINKS.type$8QP0), CONCEPTS.SNodeType$gn), LINKS.concept$HWFQ));
+    SLinkOperations.setTarget(cast, LINKS.concept$3Gwi, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(blCast, LINKS.type$izF0), CONCEPTS.SNodeType$gn), LINKS.concept$gpfa));
     SNodeOperations.replaceWithAnother(snode, cast);
-    SLinkOperations.setTarget(cast, LINKS.leftExpression$NqCX, expr);
+    SLinkOperations.setTarget(cast, LINKS.leftExpression$TTPz, expr);
   }
 
   private static final class CONCEPTS {
@@ -37,10 +37,10 @@ public class ConvertCastToSModelCast_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$8QPv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
-    /*package*/ static final SReferenceLink concept$NIQI = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67ce04L, "concept");
-    /*package*/ static final SContainmentLink type$8QP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type");
-    /*package*/ static final SReferenceLink concept$HWFQ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
-    /*package*/ static final SContainmentLink leftExpression$NqCX = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67cd19L, "leftExpression");
+    /*package*/ static final SContainmentLink expression$izU1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
+    /*package*/ static final SReferenceLink concept$3Gwi = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67ce04L, "concept");
+    /*package*/ static final SContainmentLink type$izF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type");
+    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SContainmentLink leftExpression$TTPz = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67cd19L, "leftExpression");
   }
 }

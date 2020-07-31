@@ -83,7 +83,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$tAp1;
+      final SProperty property = PROPS.name$lA7v;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -114,38 +114,38 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
         return new AbstractTableModel() {
           @Override
           public SNode getValueAt(int row, int column) {
-            return ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.rows$jkCZ)).getElement(row), LINKS.cells$jpVw)).getElement(column);
+            return ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.rows$mZQx)).getElement(row), LINKS.cells$pzOw)).getElement(column);
           }
           @Override
           public int getRowCount() {
-            return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.rows$jkCZ)).count();
+            return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.rows$mZQx)).count();
           }
           @Override
           public int getColumnCount() {
-            return ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.rows$jkCZ)).first(), LINKS.cells$jpVw)).count();
+            return ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.rows$mZQx)).first(), LINKS.cells$pzOw)).count();
           }
           @Override
           public void deleteRow(int rowNumber) {
-            ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.rows$jkCZ)).removeElementAt(rowNumber);
+            ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.rows$mZQx)).removeElementAt(rowNumber);
           }
           @Override
           public void insertRow(int rowNumber) {
             SNode rowNode = SNodeFactoryOperations.createNewNode(CONCEPTS.Row$7D, null);
-            for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.rows$jkCZ)).first(), LINKS.cells$jpVw)).count(); i++) {
-              ListSequence.fromList(SLinkOperations.getChildren(rowNode, LINKS.cells$jpVw)).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.DataCell$6F, null));
+            for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.rows$mZQx)).first(), LINKS.cells$pzOw)).count(); i++) {
+              ListSequence.fromList(SLinkOperations.getChildren(rowNode, LINKS.cells$pzOw)).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.DataCell$6F, null));
             }
-            ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.rows$jkCZ)).insertElement(rowNumber, rowNode);
+            ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.rows$mZQx)).insertElement(rowNumber, rowNode);
           }
           @Override
           public void deleteColumn(int columnNumber) {
-            for (SNode row : ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.rows$jkCZ))) {
-              ListSequence.fromList(SLinkOperations.getChildren(row, LINKS.cells$jpVw)).removeElementAt(columnNumber);
+            for (SNode row : ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.rows$mZQx))) {
+              ListSequence.fromList(SLinkOperations.getChildren(row, LINKS.cells$pzOw)).removeElementAt(columnNumber);
             }
           }
           @Override
           public void insertColumn(int columnNumber) {
-            for (SNode row : ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.rows$jkCZ))) {
-              ListSequence.fromList(SLinkOperations.getChildren(row, LINKS.cells$jpVw)).insertElement(columnNumber, SNodeFactoryOperations.createNewNode(CONCEPTS.DataCell$6F, null));
+            for (SNode row : ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.rows$mZQx))) {
+              ListSequence.fromList(SLinkOperations.getChildren(row, LINKS.cells$pzOw)).insertElement(columnNumber, SNodeFactoryOperations.createNewNode(CONCEPTS.DataCell$6F, null));
             }
           }
         };
@@ -160,7 +160,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
@@ -170,7 +170,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rows$jkCZ = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x28004d411fa3bea0L, 0x28004d411fa3bea2L, "rows");
-    /*package*/ static final SContainmentLink cells$jpVw = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x28004d411fa3bea6L, 0x28004d411fa3bea7L, "cells");
+    /*package*/ static final SContainmentLink rows$mZQx = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x28004d411fa3bea0L, 0x28004d411fa3bea2L, "rows");
+    /*package*/ static final SContainmentLink cells$pzOw = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x28004d411fa3bea6L, 0x28004d411fa3bea7L, "cells");
   }
 }

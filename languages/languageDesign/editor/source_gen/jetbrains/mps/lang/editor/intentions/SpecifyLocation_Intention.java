@@ -36,7 +36,7 @@ public final class SpecifyLocation_Intention extends AbstractIntentionDescriptor
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SLinkOperations.getTarget(node, LINKS.location$JP32) == null);
+    return (SLinkOperations.getTarget(node, LINKS.location$aGtY) == null);
   }
   @Override
   public boolean isSurroundWith() {
@@ -57,8 +57,8 @@ public final class SpecifyLocation_Intention extends AbstractIntentionDescriptor
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SLinkOperations.setTarget(node, LINKS.location$JP32, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa6L, "jetbrains.mps.lang.editor.structure.TransformationLocation")));
-      SelectionUtil.selectNode(editorContext, SLinkOperations.getTarget(node, LINKS.location$JP32));
+      SLinkOperations.setTarget(node, LINKS.location$aGtY, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa6L, "jetbrains.mps.lang.editor.structure.TransformationLocation")));
+      SelectionUtil.selectNode(editorContext, SLinkOperations.getTarget(node, LINKS.location$aGtY));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -67,6 +67,6 @@ public final class SpecifyLocation_Intention extends AbstractIntentionDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink location$JP32 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xae2d2fe1c9d6be2L, 0x1a0027b1197f7335L, "location");
+    /*package*/ static final SContainmentLink location$aGtY = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xae2d2fe1c9d6be2L, 0x1a0027b1197f7335L, "location");
   }
 }

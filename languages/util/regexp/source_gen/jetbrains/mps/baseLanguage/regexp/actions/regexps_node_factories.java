@@ -17,60 +17,60 @@ public class regexps_node_factories {
   public static class NodeFactory_6799940379546646404 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.UnaryRegexp$aG)) {
-        SLinkOperations.setTarget(newNode, LINKS.regexp$sryo, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.UnaryRegexp$aG), LINKS.regexp$sryo));
+        SLinkOperations.setTarget(newNode, LINKS.regexp$LlDC, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.UnaryRegexp$aG), LINKS.regexp$LlDC));
       }
     }
   }
   public static class NodeFactory_8786899561263173301 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.LookRegexp$zp)) {
-        SLinkOperations.setTarget(newNode, LINKS.regexp$hfFF, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.LookRegexp$zp), LINKS.regexp$hfFF));
+        SLinkOperations.setTarget(newNode, LINKS.regexp$mA9P, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.LookRegexp$zp), LINKS.regexp$mA9P));
       } else if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.ParensRegexp$7O)) {
-        SLinkOperations.setTarget(newNode, LINKS.regexp$hfFF, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ParensRegexp$7O), LINKS.expr$ebmO));
+        SLinkOperations.setTarget(newNode, LINKS.regexp$mA9P, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ParensRegexp$7O), LINKS.expr$Rw3c));
       } else if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.MatchParensRegexp$1m)) {
-        SLinkOperations.setTarget(newNode, LINKS.regexp$hfFF, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.MatchParensRegexp$1m), LINKS.regexp$1OX8));
+        SLinkOperations.setTarget(newNode, LINKS.regexp$mA9P, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.MatchParensRegexp$1m), LINKS.regexp$SDAS));
       }
     }
   }
   public static class NodeFactory_6799940379547316574 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.LookRegexp$zp)) {
-        SLinkOperations.setTarget(newNode, LINKS.expr$ebmO, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.LookRegexp$zp), LINKS.regexp$hfFF));
+        SLinkOperations.setTarget(newNode, LINKS.expr$Rw3c, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.LookRegexp$zp), LINKS.regexp$mA9P));
       } else if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.MatchParensRegexp$1m)) {
-        SLinkOperations.setTarget(newNode, LINKS.expr$ebmO, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.MatchParensRegexp$1m), LINKS.regexp$1OX8));
+        SLinkOperations.setTarget(newNode, LINKS.expr$Rw3c, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.MatchParensRegexp$1m), LINKS.regexp$SDAS));
       } else if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Regexp$xM)) {
-        SLinkOperations.setTarget(newNode, LINKS.expr$ebmO, SNodeOperations.cast(sampleNode, CONCEPTS.Regexp$xM));
+        SLinkOperations.setTarget(newNode, LINKS.expr$Rw3c, SNodeOperations.cast(sampleNode, CONCEPTS.Regexp$xM));
       }
     }
   }
   public static class NodeFactory_3050481019131578337 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.LookRegexp$zp)) {
-        SLinkOperations.setTarget(newNode, LINKS.regexp$1OX8, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.LookRegexp$zp), LINKS.regexp$hfFF));
+        SLinkOperations.setTarget(newNode, LINKS.regexp$SDAS, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.LookRegexp$zp), LINKS.regexp$mA9P));
       } else if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.ParensRegexp$7O)) {
-        SLinkOperations.setTarget(newNode, LINKS.regexp$1OX8, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ParensRegexp$7O), LINKS.expr$ebmO));
+        SLinkOperations.setTarget(newNode, LINKS.regexp$SDAS, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ParensRegexp$7O), LINKS.expr$Rw3c));
       } else if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Regexp$xM)) {
-        SLinkOperations.setTarget(newNode, LINKS.regexp$1OX8, SNodeOperations.cast(sampleNode, CONCEPTS.Regexp$xM));
+        SLinkOperations.setTarget(newNode, LINKS.regexp$SDAS, SNodeOperations.cast(sampleNode, CONCEPTS.Regexp$xM));
       }
     }
   }
   public static class NodeFactory_1353467374625228627 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Regexp$xM)) {
-        SLinkOperations.setTarget(newNode, LINKS.left$j7nn, SNodeOperations.cast(sampleNode, CONCEPTS.Regexp$xM));
+        SLinkOperations.setTarget(newNode, LINKS.left$g$k9, SNodeOperations.cast(sampleNode, CONCEPTS.Regexp$xM));
       }
     }
   }
   public static class NodeFactory_4759120547780396753 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.SymbolClassRegexp$5M)) {
-        ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.part$spXq)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.SymbolClassRegexp$5M), LINKS.part$spXq)));
+        ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.part$K$JA)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.SymbolClassRegexp$5M), LINKS.part$K$JA)));
       }
     }
   }
   public static class NodeFactory_7048923897762413188 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SLinkOperations.setTarget(newNode, LINKS.regexp$jYU_, SNodeFactoryOperations.createNewNode(CONCEPTS.InlineRegexpExpression$Xy, null));
+      SLinkOperations.setTarget(newNode, LINKS.regexp$FunV, SNodeFactoryOperations.createNewNode(CONCEPTS.InlineRegexpExpression$Xy, null));
     }
   }
 
@@ -85,12 +85,12 @@ public class regexps_node_factories {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink regexp$sryo = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c678adL, 0x11174c6961aL, "regexp");
-    /*package*/ static final SContainmentLink regexp$hfFF = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118de32185L, 0x1118de377b8L, "regexp");
-    /*package*/ static final SContainmentLink expr$ebmO = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, 0x1117521177bL, "expr");
-    /*package*/ static final SContainmentLink regexp$1OX8 = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111797946c7L, 0x111797ac579L, "regexp");
-    /*package*/ static final SContainmentLink left$j7nn = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c59241L, "left");
-    /*package*/ static final SContainmentLink part$spXq = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e2916aL, 0x11179171739L, "part");
-    /*package*/ static final SContainmentLink regexp$jYU_ = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ecbc07aL, 0x1117ecc427cL, "regexp");
+    /*package*/ static final SContainmentLink regexp$LlDC = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c678adL, 0x11174c6961aL, "regexp");
+    /*package*/ static final SContainmentLink regexp$mA9P = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118de32185L, 0x1118de377b8L, "regexp");
+    /*package*/ static final SContainmentLink expr$Rw3c = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, 0x1117521177bL, "expr");
+    /*package*/ static final SContainmentLink regexp$SDAS = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111797946c7L, 0x111797ac579L, "regexp");
+    /*package*/ static final SContainmentLink left$g$k9 = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c59241L, "left");
+    /*package*/ static final SContainmentLink part$K$JA = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e2916aL, 0x11179171739L, "part");
+    /*package*/ static final SContainmentLink regexp$FunV = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ecbc07aL, 0x1117ecc427cL, "regexp");
   }
 }

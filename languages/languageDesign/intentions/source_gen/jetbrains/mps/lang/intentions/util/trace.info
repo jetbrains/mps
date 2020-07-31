@@ -75,8 +75,8 @@
       <node id="75717156636598842" at="41,196,42,24" concept="2" />
       <node id="75717156636598736" at="46,0,47,0" concept="3" trace="Intention$MV" />
       <node id="75717156636598736" at="47,0,48,0" concept="3" trace="Parameter$6h" />
-      <node id="75717156636598736" at="51,0,52,0" concept="3" trace="forConcept$G_IT" />
-      <node id="75717156636598736" at="52,0,53,0" concept="3" trace="parameterType$kN40" />
+      <node id="75717156636598736" at="51,0,52,0" concept="3" trace="forConcept$AhHB" />
+      <node id="75717156636598736" at="52,0,53,0" concept="3" trace="parameterType$4IW0" />
       <node id="1039482266318303593" at="24,0,27,0" concept="4" trace="parameterType#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1039482266318317049" at="28,0,31,0" concept="4" trace="isParametrized#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="75717156636598776" at="19,0,23,0" concept="4" trace="calculateType#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />

@@ -70,7 +70,7 @@ public class add_moduleLocationAndFlags_BuildMps_Module_ext_4 extends Transforma
   public class TMP_Group_j2ah5k_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.doNotCompile$13Sd));
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.doNotCompile$wSej));
     }
 
     @NotNull
@@ -126,7 +126,7 @@ public class add_moduleLocationAndFlags_BuildMps_Module_ext_4 extends Transforma
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.doNotCompile$13Sd, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.doNotCompile$wSej, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -152,6 +152,6 @@ public class add_moduleLocationAndFlags_BuildMps_Module_ext_4 extends Transforma
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty doNotCompile$13Sd = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x14d3fb6fb84ac614L, "doNotCompile");
+    /*package*/ static final SProperty doNotCompile$wSej = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x14d3fb6fb84ac614L, "doNotCompile");
   }
 }

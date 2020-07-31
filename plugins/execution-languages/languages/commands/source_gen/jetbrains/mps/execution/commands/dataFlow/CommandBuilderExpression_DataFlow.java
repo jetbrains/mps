@@ -12,13 +12,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CommandBuilderExpression_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.argument$npCw))) {
-      _context.getBuilder().build((SNode) SLinkOperations.getTarget(arg, LINKS.value$npbZ));
+    for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.argument$lqBw))) {
+      _context.getBuilder().build((SNode) SLinkOperations.getTarget(arg, LINKS.value$lcNx));
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink value$npbZ = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be4L, 0xbe3a0d5ba1a2be6L, "value");
-    /*package*/ static final SContainmentLink argument$npCw = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bf4L, 0xbe3a0d5ba1a2bf5L, "argument");
+    /*package*/ static final SContainmentLink value$lcNx = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be4L, 0xbe3a0d5ba1a2be6L, "value");
+    /*package*/ static final SContainmentLink argument$lqBw = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bf4L, 0xbe3a0d5ba1a2bf5L, "argument");
   }
 }

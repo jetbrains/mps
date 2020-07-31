@@ -12,13 +12,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NamedTupleLiteral_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    for (SNode cref : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.componentRef$49s5))) {
-      _context.getBuilder().build((SNode) SLinkOperations.getTarget(cref, LINKS.value$RFXy));
+    for (SNode cref : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.componentRef$$Ar))) {
+      _context.getBuilder().build((SNode) SLinkOperations.getTarget(cref, LINKS.value$YiNu));
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink value$RFXy = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L, 0x1209b955a61L, "value");
-    /*package*/ static final SContainmentLink componentRef$49s5 = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL, 0x1209b9676f1L, "componentRef");
+    /*package*/ static final SContainmentLink value$YiNu = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L, 0x1209b955a61L, "value");
+    /*package*/ static final SContainmentLink componentRef$$Ar = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL, 0x1209b9676f1L, "componentRef");
   }
 }

@@ -55,7 +55,7 @@ public class MigratePropertyPatternVariables extends MigrationScriptBase {
       List<Problem> res = ListSequence.fromList(new ArrayList<Problem>());
       ListSequence.fromList(res).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyPatternVariableDeclaration$Xj, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return !(SPropertyOperations.getBoolean(it, PROPS.stringValueMigrated$gFe8));
+          return !(SPropertyOperations.getBoolean(it, PROPS.stringValueMigrated$4VPS));
         }
       }).select(new ISelector<SNode, NotMigratedNode>() {
         public NotMigratedNode select(SNode it) {
@@ -90,6 +90,6 @@ public class MigratePropertyPatternVariables extends MigrationScriptBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty stringValueMigrated$gFe8 = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, 0x1e2950a3c41b89ecL, "stringValueMigrated");
+    /*package*/ static final SProperty stringValueMigrated$4VPS = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, 0x1e2950a3c41b89ecL, "stringValueMigrated");
   }
 }

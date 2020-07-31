@@ -34,7 +34,7 @@ public final class LetExpression__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static List<SNode> getVariables_id7M_MU5__$7C(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
-    ListSequence.fromList(result).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.variable$FPtP));
+    ListSequence.fromList(result).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.variable$eTsF));
     return result;
   }
 
@@ -85,6 +85,6 @@ public final class LetExpression__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink variable$FPtP = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x448ba254edbfc79fL, 0x74076973acb5af30L, "variable");
+    /*package*/ static final SContainmentLink variable$eTsF = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x448ba254edbfc79fL, 0x74076973acb5af30L, "variable");
   }
 }

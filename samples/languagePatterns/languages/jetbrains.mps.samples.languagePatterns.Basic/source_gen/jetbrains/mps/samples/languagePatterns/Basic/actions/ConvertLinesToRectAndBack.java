@@ -19,25 +19,25 @@ public class ConvertLinesToRectAndBack {
       {
         final SNode rect = sampleNode;
         if (SNodeOperations.isInstanceOf(rect, CONCEPTS.DrawRect$hD)) {
-          SPropertyOperations.assign(newNode, PROPS.x1$cDW0, SPropertyOperations.getInteger(rect, PROPS.upperLeftX$TsE3));
-          SPropertyOperations.assign(newNode, PROPS.y1$cDWY, SPropertyOperations.getInteger(rect, PROPS.upperLeftY$TsF1));
-          SPropertyOperations.assign(newNode, PROPS.x2$cE8A, SPropertyOperations.getInteger(rect, PROPS.lowerRightX$TsQD));
-          SPropertyOperations.assign(newNode, PROPS.y2$cEay, SPropertyOperations.getInteger(rect, PROPS.lowerRightY$TsS_));
+          SPropertyOperations.assign(newNode, PROPS.x1$8k40, SPropertyOperations.getInteger(rect, PROPS.upperLeftX$OSnt));
+          SPropertyOperations.assign(newNode, PROPS.y1$8ky2, SPropertyOperations.getInteger(rect, PROPS.upperLeftY$OSPv));
+          SPropertyOperations.assign(newNode, PROPS.x2$8qaq, SPropertyOperations.getInteger(rect, PROPS.lowerRightX$OYtR));
+          SPropertyOperations.assign(newNode, PROPS.y2$8r6u, SPropertyOperations.getInteger(rect, PROPS.lowerRightY$OZpV));
         }
       }
       {
         final SNode line = sampleNode;
         if (SNodeOperations.isInstanceOf(line, CONCEPTS.DrawLine$C8)) {
-          SPropertyOperations.assign(newNode, PROPS.x1$cDW0, SPropertyOperations.getInteger(line, PROPS.x1$cDW0));
-          SPropertyOperations.assign(newNode, PROPS.y1$cDWY, SPropertyOperations.getInteger(line, PROPS.y1$cDWY));
-          SPropertyOperations.assign(newNode, PROPS.x2$cE8A, SPropertyOperations.getInteger(line, PROPS.x2$cE8A));
-          SPropertyOperations.assign(newNode, PROPS.y2$cEay, SPropertyOperations.getInteger(line, PROPS.y2$cEay));
+          SPropertyOperations.assign(newNode, PROPS.x1$8k40, SPropertyOperations.getInteger(line, PROPS.x1$8k40));
+          SPropertyOperations.assign(newNode, PROPS.y1$8ky2, SPropertyOperations.getInteger(line, PROPS.y1$8ky2));
+          SPropertyOperations.assign(newNode, PROPS.x2$8qaq, SPropertyOperations.getInteger(line, PROPS.x2$8qaq));
+          SPropertyOperations.assign(newNode, PROPS.y2$8r6u, SPropertyOperations.getInteger(line, PROPS.y2$8r6u));
         }
       }
       {
         final SNode command = sampleNode;
         if (SNodeOperations.isInstanceOf(command, CONCEPTS.DrawCommand$x9)) {
-          SLinkOperations.setTarget(newNode, LINKS.lineStyle$R$Bp, SLinkOperations.getTarget(command, LINKS.lineStyle$R$Bp));
+          SLinkOperations.setTarget(newNode, LINKS.lineStyle$UJ57, SLinkOperations.getTarget(command, LINKS.lineStyle$UJ57));
         }
       }
     }
@@ -47,25 +47,25 @@ public class ConvertLinesToRectAndBack {
       {
         final SNode rect = sampleNode;
         if (SNodeOperations.isInstanceOf(rect, CONCEPTS.DrawRect$hD)) {
-          SPropertyOperations.assign(newNode, PROPS.upperLeftX$TsE3, SPropertyOperations.getInteger(rect, PROPS.upperLeftX$TsE3));
-          SPropertyOperations.assign(newNode, PROPS.upperLeftY$TsF1, SPropertyOperations.getInteger(rect, PROPS.upperLeftY$TsF1));
-          SPropertyOperations.assign(newNode, PROPS.lowerRightX$TsQD, SPropertyOperations.getInteger(rect, PROPS.lowerRightX$TsQD));
-          SPropertyOperations.assign(newNode, PROPS.lowerRightY$TsS_, SPropertyOperations.getInteger(rect, PROPS.lowerRightY$TsS_));
+          SPropertyOperations.assign(newNode, PROPS.upperLeftX$OSnt, SPropertyOperations.getInteger(rect, PROPS.upperLeftX$OSnt));
+          SPropertyOperations.assign(newNode, PROPS.upperLeftY$OSPv, SPropertyOperations.getInteger(rect, PROPS.upperLeftY$OSPv));
+          SPropertyOperations.assign(newNode, PROPS.lowerRightX$OYtR, SPropertyOperations.getInteger(rect, PROPS.lowerRightX$OYtR));
+          SPropertyOperations.assign(newNode, PROPS.lowerRightY$OZpV, SPropertyOperations.getInteger(rect, PROPS.lowerRightY$OZpV));
         }
       }
       {
         final SNode line = sampleNode;
         if (SNodeOperations.isInstanceOf(line, CONCEPTS.DrawLine$C8)) {
-          SPropertyOperations.assign(newNode, PROPS.upperLeftX$TsE3, SPropertyOperations.getInteger(line, PROPS.x1$cDW0));
-          SPropertyOperations.assign(newNode, PROPS.upperLeftY$TsF1, SPropertyOperations.getInteger(line, PROPS.y1$cDWY));
-          SPropertyOperations.assign(newNode, PROPS.lowerRightX$TsQD, SPropertyOperations.getInteger(line, PROPS.x2$cE8A));
-          SPropertyOperations.assign(newNode, PROPS.lowerRightY$TsS_, SPropertyOperations.getInteger(line, PROPS.y2$cEay));
+          SPropertyOperations.assign(newNode, PROPS.upperLeftX$OSnt, SPropertyOperations.getInteger(line, PROPS.x1$8k40));
+          SPropertyOperations.assign(newNode, PROPS.upperLeftY$OSPv, SPropertyOperations.getInteger(line, PROPS.y1$8ky2));
+          SPropertyOperations.assign(newNode, PROPS.lowerRightX$OYtR, SPropertyOperations.getInteger(line, PROPS.x2$8qaq));
+          SPropertyOperations.assign(newNode, PROPS.lowerRightY$OZpV, SPropertyOperations.getInteger(line, PROPS.y2$8r6u));
         }
       }
       {
         final SNode command = sampleNode;
         if (SNodeOperations.isInstanceOf(command, CONCEPTS.DrawCommand$x9)) {
-          SLinkOperations.setTarget(newNode, LINKS.lineStyle$R$Bp, SLinkOperations.getTarget(command, LINKS.lineStyle$R$Bp));
+          SLinkOperations.setTarget(newNode, LINKS.lineStyle$UJ57, SLinkOperations.getTarget(command, LINKS.lineStyle$UJ57));
         }
       }
     }
@@ -78,17 +78,17 @@ public class ConvertLinesToRectAndBack {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty x1$cDW0 = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, 0x313e78bb265dade1L, "x1");
-    /*package*/ static final SProperty upperLeftX$TsE3 = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, 0x313e78bb26647507L, "upperLeftX");
-    /*package*/ static final SProperty y1$cDWY = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, 0x313e78bb265dade3L, "y1");
-    /*package*/ static final SProperty upperLeftY$TsF1 = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, 0x313e78bb26647509L, "upperLeftY");
-    /*package*/ static final SProperty x2$cE8A = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, 0x313e78bb265dade6L, "x2");
-    /*package*/ static final SProperty lowerRightX$TsQD = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, 0x313e78bb2664750cL, "lowerRightX");
-    /*package*/ static final SProperty y2$cEay = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, 0x313e78bb265dadeaL, "y2");
-    /*package*/ static final SProperty lowerRightY$TsS_ = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, 0x313e78bb26647510L, "lowerRightY");
+    /*package*/ static final SProperty x1$8k40 = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, 0x313e78bb265dade1L, "x1");
+    /*package*/ static final SProperty upperLeftX$OSnt = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, 0x313e78bb26647507L, "upperLeftX");
+    /*package*/ static final SProperty y1$8ky2 = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, 0x313e78bb265dade3L, "y1");
+    /*package*/ static final SProperty upperLeftY$OSPv = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, 0x313e78bb26647509L, "upperLeftY");
+    /*package*/ static final SProperty x2$8qaq = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, 0x313e78bb265dade6L, "x2");
+    /*package*/ static final SProperty lowerRightX$OYtR = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, 0x313e78bb2664750cL, "lowerRightX");
+    /*package*/ static final SProperty y2$8r6u = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265dade0L, 0x313e78bb265dadeaL, "y2");
+    /*package*/ static final SProperty lowerRightY$OZpV = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb26647490L, 0x313e78bb26647510L, "lowerRightY");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lineStyle$R$Bp = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265d1022L, 0x313e78bb26670129L, "lineStyle");
+    /*package*/ static final SContainmentLink lineStyle$UJ57 = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265d1022L, 0x313e78bb26670129L, "lineStyle");
   }
 }

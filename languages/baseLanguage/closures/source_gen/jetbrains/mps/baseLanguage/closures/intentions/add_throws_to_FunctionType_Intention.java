@@ -37,7 +37,7 @@ public final class add_throws_to_FunctionType_Intention extends AbstractIntentio
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.throwsType$Faa1)).isEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.throwsType$TUQv)).isEmpty();
   }
   @Override
   public boolean isSurroundWith() {
@@ -58,7 +58,7 @@ public final class add_throws_to_FunctionType_Intention extends AbstractIntentio
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNodeFactoryOperations.addNewChild(node, LINKS.throwsType$Faa1, CONCEPTS.ClassifierType$IZ);
+      SNodeFactoryOperations.addNewChild(node, LINKS.throwsType$TUQv, CONCEPTS.ClassifierType$IZ);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -67,7 +67,7 @@ public final class add_throws_to_FunctionType_Intention extends AbstractIntentio
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink throwsType$Faa1 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x11ad99d9c36L, "throwsType");
+    /*package*/ static final SContainmentLink throwsType$TUQv = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x11ad99d9c36L, "throwsType");
   }
 
   private static final class CONCEPTS {

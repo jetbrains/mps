@@ -46,8 +46,8 @@ public final class FieldReferenceOperation__BehaviorDescriptor extends BaseBHDes
 
   /*package*/ static String getVariableExpectedName_idhEwIP$B(@NotNull SNode __thisNode__) {
     String expectedName = null;
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.fieldDeclaration$mLBy) != null)) {
-      expectedName = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.fieldDeclaration$mLBy), PROPS.name$tAp1);
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.fieldDeclaration$229u) != null)) {
+      expectedName = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.fieldDeclaration$229u), PROPS.name$lA7v);
     }
     return expectedName;
   }
@@ -68,16 +68,16 @@ public final class FieldReferenceOperation__BehaviorDescriptor extends BaseBHDes
       vars.addAll(Sequence.fromIterable(paramsScope.getAvailableElements(null)).toListSequence());
     }
 
-    SNode field = SLinkOperations.getTarget(__thisNode__, LINKS.fieldDeclaration$mLBy);
+    SNode field = SLinkOperations.getTarget(__thisNode__, LINKS.fieldDeclaration$229u);
     if (field == null) {
       return false;
     }
     for (SNode var : vars) {
-      if (var != null && SNodeOperations.isInstanceOf(var, CONCEPTS.INamedConcept$nV) && SPropertyOperations.getString(SNodeOperations.cast(var, CONCEPTS.INamedConcept$nV), PROPS.name$tAp1).equals(SPropertyOperations.getString(field, PROPS.name$tAp1)) && ListSequence.fromList(SNodeOperations.getNodeAncestors(SNodeOperations.getNodeAncestor(field, CONCEPTS.Classifier$hJ, false, false), CONCEPTS.Classifier$hJ, true)).contains(SNodeOperations.getNodeAncestor(var, CONCEPTS.Classifier$hJ, false, false))) {
+      if (var != null && SNodeOperations.isInstanceOf(var, CONCEPTS.INamedConcept$nV) && SPropertyOperations.getString(SNodeOperations.cast(var, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v).equals(SPropertyOperations.getString(field, PROPS.name$lA7v)) && ListSequence.fromList(SNodeOperations.getNodeAncestors(SNodeOperations.getNodeAncestor(field, CONCEPTS.Classifier$hJ, false, false), CONCEPTS.Classifier$hJ, true)).contains(SNodeOperations.getNodeAncestor(var, CONCEPTS.Classifier$hJ, false, false))) {
         return false;
       }
     }
-    if (SLinkOperations.getTarget(SNodeOperations.cast(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(__thisNode__), CONCEPTS.ThisExpression$7A), LINKS.classConcept$Hbij) == null) {
+    if (SLinkOperations.getTarget(SNodeOperations.cast(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(__thisNode__), CONCEPTS.ThisExpression$7A), LINKS.classConcept$StRd) == null) {
       return true;
     }
     SNode classifier = ClassConcept__BehaviorDescriptor.getContextClass_id6WzWPTX2$6q.invoke(SNodeOperations.asSConcept(CONCEPTS.ClassConcept$IY), __thisNode__);
@@ -87,7 +87,7 @@ public final class FieldReferenceOperation__BehaviorDescriptor extends BaseBHDes
     }
     while (classifier != declarationClassifier) {
       for (SNode fieldDeclaration : Members.visibleInstanceFields(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(classifier), __thisNode__)) {
-        if (SPropertyOperations.getString(fieldDeclaration, PROPS.name$tAp1) != null && SPropertyOperations.getString(fieldDeclaration, PROPS.name$tAp1).equals(SPropertyOperations.getString(field, PROPS.name$tAp1))) {
+        if (SPropertyOperations.getString(fieldDeclaration, PROPS.name$lA7v) != null && SPropertyOperations.getString(fieldDeclaration, PROPS.name$lA7v).equals(SPropertyOperations.getString(field, PROPS.name$lA7v))) {
           return false;
         }
       }
@@ -97,7 +97,7 @@ public final class FieldReferenceOperation__BehaviorDescriptor extends BaseBHDes
   }
   /*package*/ static void convertToLocal_id4APqwMfCtHb(@NotNull SNode __thisNode__) {
     SNode fieldReference = SNodeOperations.replaceWithNewChild(SNodeOperations.getParent(__thisNode__), CONCEPTS.VariableReference$sQ);
-    SLinkOperations.setTarget(fieldReference, LINKS.variableDeclaration$2ky6, SLinkOperations.getTarget(__thisNode__, LINKS.fieldDeclaration$mLBy));
+    SLinkOperations.setTarget(fieldReference, LINKS.variableDeclaration$7WwU, SLinkOperations.getTarget(__thisNode__, LINKS.fieldDeclaration$229u));
   }
   /*package*/ static boolean lvalue_id1653mnvAgvW(@NotNull SAbstractConcept __thisConcept__) {
     return true;
@@ -159,13 +159,13 @@ public final class FieldReferenceOperation__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink fieldDeclaration$mLBy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
-    /*package*/ static final SReferenceLink classConcept$Hbij = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SReferenceLink classConcept$StRd = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

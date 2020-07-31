@@ -29,7 +29,7 @@ public class check_IMemberOperation_NonTypesystemRule extends AbstractNonTypesys
     {
       SNode coercedNode_hm5x7h_b0 = TypecheckingFacade.getFromContext().coerceType(operandType, CONCEPTS.BaseClassifierType$Sj);
       if (coercedNode_hm5x7h_b0 != null) {
-        if (!(ListSequence.fromList(BaseClassifierType__BehaviorDescriptor.getMembers_idhEwINC$.invoke(coercedNode_hm5x7h_b0, nodeToCheck)).contains(SLinkOperations.getTarget(nodeToCheck, LINKS.member$hrpI)))) {
+        if (!(ListSequence.fromList(BaseClassifierType__BehaviorDescriptor.getMembers_idhEwINC$.invoke(coercedNode_hm5x7h_b0, nodeToCheck)).contains(SLinkOperations.getTarget(nodeToCheck, LINKS.member$shti)))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(nodeToCheck, "Declaration is out of scope", "r:00000000-0000-4000-0000-011c89590371(jetbrains.mps.baseLanguage.classifiers.typesystem)", "1205921883388", null, errorTarget);
@@ -55,6 +55,6 @@ public class check_IMemberOperation_NonTypesystemRule extends AbstractNonTypesys
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink member$hrpI = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
+    /*package*/ static final SReferenceLink member$shti = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
   }
 }

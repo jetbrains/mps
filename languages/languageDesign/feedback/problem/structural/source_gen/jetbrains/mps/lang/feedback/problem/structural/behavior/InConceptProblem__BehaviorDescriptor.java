@@ -33,7 +33,7 @@ public final class InConceptProblem__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static SNode getConcept_idZ2mFAeayoS(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.FeedbackPerConceptRoot$oJ, false, false), LINKS.concept$KXj8);
+    return SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.FeedbackPerConceptRoot$oJ, false, false), LINKS.concept$HGgS);
   }
 
   /*package*/ InConceptProblem__BehaviorDescriptor() {
@@ -87,6 +87,6 @@ public final class InConceptProblem__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$KXj8 = MetaAdapterFactory.getReferenceLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x63c2f3669ce56d5dL, "concept");
+    /*package*/ static final SReferenceLink concept$HGgS = MetaAdapterFactory.getReferenceLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x63c2f3669ce56d5dL, "concept");
   }
 }

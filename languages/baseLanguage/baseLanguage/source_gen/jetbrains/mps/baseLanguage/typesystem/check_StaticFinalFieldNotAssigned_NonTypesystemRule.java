@@ -24,18 +24,18 @@ public class check_StaticFinalFieldNotAssigned_NonTypesystemRule extends Abstrac
   public check_StaticFinalFieldNotAssigned_NonTypesystemRule() {
   }
   public void applyRule(final SNode variableReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$2ky6), CONCEPTS.StaticFieldDeclaration$R5))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$7WwU), CONCEPTS.StaticFieldDeclaration$R5))) {
       return;
     }
-    SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$2ky6), CONCEPTS.StaticFieldDeclaration$R5);
-    if (!(SPropertyOperations.getBoolean(declaration, PROPS.isFinal$hIht))) {
+    SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$7WwU), CONCEPTS.StaticFieldDeclaration$R5);
+    if (!(SPropertyOperations.getBoolean(declaration, PROPS.isFinal$_qt3))) {
       return;
     }
 
-    if (CheckingUtil.isAssigned(variableReference) && (SNodeOperations.getNodeAncestor(variableReference, CONCEPTS.StaticInitializer$dH, false, false) == null || (SLinkOperations.getTarget(declaration, LINKS.initializer$KgD) != null))) {
+    if (CheckingUtil.isAssigned(variableReference) && (SNodeOperations.getNodeAncestor(variableReference, CONCEPTS.StaticInitializer$dH, false, false) == null || (SLinkOperations.getTarget(declaration, LINKS.initializer$no3R) != null))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(variableReference, "Cannot assign a value to a final variable '" + SPropertyOperations.getString(declaration, PROPS.name$tAp1) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "775398157036223996", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(variableReference, "Cannot assign a value to a final variable '" + SPropertyOperations.getString(declaration, PROPS.name$lA7v) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "775398157036223996", null, errorTarget);
       }
     }
   }
@@ -50,8 +50,8 @@ public class check_StaticFinalFieldNotAssigned_NonTypesystemRule extends Abstrac
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 
   private static final class CONCEPTS {
@@ -61,7 +61,7 @@ public class check_StaticFinalFieldNotAssigned_NonTypesystemRule extends Abstrac
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

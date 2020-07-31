@@ -28,7 +28,7 @@ public class _Interface_Extends_Delete {
         if (DeletionApproverUtil.approve(editorContext, node, "extendsCollection")) {
           return;
         }
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.extendedInterface$rbvY)).clear();
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.extendedInterface$a$v2)).clear();
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, "OpenBraceInterfaceCell", 0);
       }
 
@@ -77,6 +77,6 @@ public class _Interface_Extends_Delete {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extendedInterface$rbvY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
+    /*package*/ static final SContainmentLink extendedInterface$a$v2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
   }
 }

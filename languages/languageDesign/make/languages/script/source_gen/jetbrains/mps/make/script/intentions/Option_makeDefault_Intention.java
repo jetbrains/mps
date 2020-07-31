@@ -47,12 +47,12 @@ public final class Option_makeDefault_Intention extends AbstractIntentionDescrip
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (SNodeOperations.getIndexInParent(node) != SPropertyOperations.getInteger(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.ExpectedOption$Ga), PROPS.defaultOption$57Ad) ? "Make default" : "Make not default");
+      return (SNodeOperations.getIndexInParent(node) != SPropertyOperations.getInteger(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.ExpectedOption$Ga), PROPS.defaultOption$uFwj) ? "Make default" : "Make not default");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      boolean makeDefault = SNodeOperations.getIndexInParent(node) != SPropertyOperations.getInteger(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.ExpectedOption$Ga), PROPS.defaultOption$57Ad);
-      SPropertyOperations.assign(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.ExpectedOption$Ga), PROPS.defaultOption$57Ad, (makeDefault ? SNodeOperations.getIndexInParent(node) : -1));
+      boolean makeDefault = SNodeOperations.getIndexInParent(node) != SPropertyOperations.getInteger(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.ExpectedOption$Ga), PROPS.defaultOption$uFwj);
+      SPropertyOperations.assign(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.ExpectedOption$Ga), PROPS.defaultOption$uFwj, (makeDefault ? SNodeOperations.getIndexInParent(node) : -1));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -65,6 +65,6 @@ public final class Option_makeDefault_Intention extends AbstractIntentionDescrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty defaultOption$57Ad = MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7bbL, 0x3318e2a89ff0296cL, "defaultOption");
+    /*package*/ static final SProperty defaultOption$uFwj = MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7bbL, 0x3318e2a89ff0296cL, "defaultOption");
   }
 }

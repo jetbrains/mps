@@ -32,7 +32,7 @@
       <node id="4664028035455171029" at="65,21,66,18" concept="8" />
       <node id="4664028035455178626" at="67,5,68,138" concept="7" />
       <node id="4664028035455187504" at="68,138,69,98" concept="8" />
-      <node id="2819311507031225990" at="73,0,74,0" concept="9" trace="name$tAp1" />
+      <node id="2819311507031225990" at="73,0,74,0" concept="9" trace="name$lA7v" />
       <node id="2819311507031225992" at="26,0,29,0" concept="1" trace="TestUtil#(Ljetbrains/mps/project/Project;)V" />
       <node id="4664028035455150347" at="64,166,67,5" concept="5" />
       <node id="4664028035455030906" at="34,35,39,9" concept="0" />
@@ -123,10 +123,10 @@
       <node id="4664028035455053217" at="84,62,85,359" concept="2" />
       <node id="4664028035455057970" at="87,62,88,363" concept="2" />
       <node id="4664028035455073704" at="90,66,91,367" concept="2" />
-      <node id="6186432342008539165" at="98,0,99,0" concept="9" trace="weave$Q9Gx" />
-      <node id="6186432342008539165" at="99,0,100,0" concept="9" trace="weaveEach$Q9H0" />
-      <node id="6186432342008539165" at="100,0,101,0" concept="9" trace="weaveMany$1_jY" />
-      <node id="6186432342008539165" at="101,0,102,0" concept="9" trace="weaveEachMany$1_kt" />
+      <node id="6186432342008539165" at="98,0,99,0" concept="9" trace="weave$eGzZ" />
+      <node id="6186432342008539165" at="99,0,100,0" concept="9" trace="weaveEach$eGN0" />
+      <node id="6186432342008539165" at="100,0,101,0" concept="9" trace="weaveMany$L4F2" />
+      <node id="6186432342008539165" at="101,0,102,0" concept="9" trace="weaveEachMany$L4U3" />
       <node id="6186432342008539165" at="21,0,23,0" concept="9" trace="ourParamCache" />
       <node id="6186432342008539165" at="23,0,25,0" concept="3" trace="myWithCommandRule" />
       <node id="6186432342008539165" at="26,0,29,0" concept="1" trace="TestWeaving_Test#()V" />

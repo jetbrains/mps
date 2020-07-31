@@ -152,7 +152,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.richChildren$UQSI;
+      return LINKS.richChildren$w_ui;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.MultipleEditorsTestChild$_d;
@@ -165,7 +165,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(richChildrenListHandler_or70v3_c2a.this.getNode(), LINKS.richChildren$UQSI));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(richChildrenListHandler_or70v3_c2a.this.getNode(), LINKS.richChildren$w_ui));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -286,7 +286,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.compactChildren$UQTd;
+      return LINKS.compactChildren$w_Hj;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.MultipleEditorsTestChild$_d;
@@ -299,7 +299,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(compactChildrenListHandler_or70v3_c4c0.this.getNode(), LINKS.compactChildren$UQTd));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(compactChildrenListHandler_or70v3_c4c0.this.getNode(), LINKS.compactChildren$w_Hj));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -369,7 +369,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.projectionType$SlSo;
+      final SProperty property = PROPS.projectionType$iAjC;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no projectionType>");
@@ -426,7 +426,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.conditionallyProjectedChildren$5f9O;
+      return LINKS.conditionallyProjectedChildren$ylKc;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.MultipleEditorsTestChild$_d;
@@ -439,7 +439,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(conditionallyProjectedChildrenListHandler_or70v3_j2a.this.getNode(), LINKS.conditionallyProjectedChildren$5f9O));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(conditionallyProjectedChildrenListHandler_or70v3_j2a.this.getNode(), LINKS.conditionallyProjectedChildren$ylKc));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -491,9 +491,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
     }
     private Iterable<String> getEditorHints0() {
-      if (SEnumOperations.isMember(SPropertyOperations.getEnum(myNode, PROPS.projectionType$SlSo), 0x6aae07ffdad120e1L)) {
+      if (SEnumOperations.isMember(SPropertyOperations.getEnum(myNode, PROPS.projectionType$iAjC), 0x6aae07ffdad120e1L)) {
         return Collections.singletonList("jetbrains.mps.lang.editor.multiple.testLanguage.editor.MultipleEditorTestHints.rich");
-      } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(myNode, PROPS.projectionType$SlSo), 0x6aae07ffdad120deL)) {
+      } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(myNode, PROPS.projectionType$iAjC), 0x6aae07ffdad120deL)) {
         return Collections.singletonList("jetbrains.mps.lang.editor.multiple.testLanguage.editor.MultipleEditorTestHints.compact");
       }
       return Collections.emptyList();
@@ -546,7 +546,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.projectAsCompact$owrQ;
+      final SProperty property = PROPS.projectAsCompact$RHva;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no projectAsCompact>");
@@ -603,7 +603,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.conditionallyRichOrCompactChildren$9a8B;
+      return LINKS.conditionallyRichOrCompactChildren$rUaT;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.MultipleEditorsTestChild$_d;
@@ -616,7 +616,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(conditionallyRichOrCompactChildrenListHandler_or70v3_d21c0.this.getNode(), LINKS.conditionallyRichOrCompactChildren$9a8B));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(conditionallyRichOrCompactChildrenListHandler_or70v3_d21c0.this.getNode(), LINKS.conditionallyRichOrCompactChildren$rUaT));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -668,10 +668,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
     }
     private Iterable<String> getEditorHints1() {
-      return (SPropertyOperations.getBoolean(myNode, PROPS.projectAsCompact$owrQ) ? Collections.singletonList("jetbrains.mps.lang.editor.multiple.testLanguage.editor.MultipleEditorTestHints.compact") : Collections.<String>emptyList());
+      return (SPropertyOperations.getBoolean(myNode, PROPS.projectAsCompact$RHva) ? Collections.singletonList("jetbrains.mps.lang.editor.multiple.testLanguage.editor.MultipleEditorTestHints.compact") : Collections.<String>emptyList());
     }
     private Iterable<String> getEditorHints2() {
-      return (SPropertyOperations.getBoolean(myNode, PROPS.projectAsCompact$owrQ) ? Collections.singletonList("jetbrains.mps.lang.editor.multiple.testLanguage.editor.MultipleEditorTestHints.rich") : Collections.<String>emptyList());
+      return (SPropertyOperations.getBoolean(myNode, PROPS.projectAsCompact$RHva) ? Collections.singletonList("jetbrains.mps.lang.editor.multiple.testLanguage.editor.MultipleEditorTestHints.rich") : Collections.<String>emptyList());
     }
   }
   private EditorCell createConstant_14() {
@@ -694,10 +694,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink richChildren$UQSI = MetaAdapterFactory.getContainmentLink(0x7a80051c66e94bfcL, 0x9698b12adfed3d9fL, 0x650641cc62465f6cL, 0x650641cc6246fa1aL, "richChildren");
-    /*package*/ static final SContainmentLink compactChildren$UQTd = MetaAdapterFactory.getContainmentLink(0x7a80051c66e94bfcL, 0x9698b12adfed3d9fL, 0x650641cc62465f6cL, 0x650641cc6246fa1bL, "compactChildren");
-    /*package*/ static final SContainmentLink conditionallyProjectedChildren$5f9O = MetaAdapterFactory.getContainmentLink(0x7a80051c66e94bfcL, 0x9698b12adfed3d9fL, 0x650641cc62465f6cL, 0x4de57101fd1b7a08L, "conditionallyProjectedChildren");
-    /*package*/ static final SContainmentLink conditionallyRichOrCompactChildren$9a8B = MetaAdapterFactory.getContainmentLink(0x7a80051c66e94bfcL, 0x9698b12adfed3d9fL, 0x650641cc62465f6cL, 0x7b24bcecbf5b228L, "conditionallyRichOrCompactChildren");
+    /*package*/ static final SContainmentLink richChildren$w_ui = MetaAdapterFactory.getContainmentLink(0x7a80051c66e94bfcL, 0x9698b12adfed3d9fL, 0x650641cc62465f6cL, 0x650641cc6246fa1aL, "richChildren");
+    /*package*/ static final SContainmentLink compactChildren$w_Hj = MetaAdapterFactory.getContainmentLink(0x7a80051c66e94bfcL, 0x9698b12adfed3d9fL, 0x650641cc62465f6cL, 0x650641cc6246fa1bL, "compactChildren");
+    /*package*/ static final SContainmentLink conditionallyProjectedChildren$ylKc = MetaAdapterFactory.getContainmentLink(0x7a80051c66e94bfcL, 0x9698b12adfed3d9fL, 0x650641cc62465f6cL, 0x4de57101fd1b7a08L, "conditionallyProjectedChildren");
+    /*package*/ static final SContainmentLink conditionallyRichOrCompactChildren$rUaT = MetaAdapterFactory.getContainmentLink(0x7a80051c66e94bfcL, 0x9698b12adfed3d9fL, 0x650641cc62465f6cL, 0x7b24bcecbf5b228L, "conditionallyRichOrCompactChildren");
   }
 
   private static final class CONCEPTS {
@@ -706,7 +706,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty projectionType$SlSo = MetaAdapterFactory.getProperty(0x7a80051c66e94bfcL, 0x9698b12adfed3d9fL, 0x650641cc62465f6cL, 0x4de57101fd1b39a6L, "projectionType");
-    /*package*/ static final SProperty projectAsCompact$owrQ = MetaAdapterFactory.getProperty(0x7a80051c66e94bfcL, 0x9698b12adfed3d9fL, 0x650641cc62465f6cL, 0x7b24bcecbf6315eL, "projectAsCompact");
+    /*package*/ static final SProperty projectionType$iAjC = MetaAdapterFactory.getProperty(0x7a80051c66e94bfcL, 0x9698b12adfed3d9fL, 0x650641cc62465f6cL, 0x4de57101fd1b39a6L, "projectionType");
+    /*package*/ static final SProperty projectAsCompact$RHva = MetaAdapterFactory.getProperty(0x7a80051c66e94bfcL, 0x9698b12adfed3d9fL, 0x650641cc62465f6cL, 0x7b24bcecbf6315eL, "projectAsCompact");
   }
 }

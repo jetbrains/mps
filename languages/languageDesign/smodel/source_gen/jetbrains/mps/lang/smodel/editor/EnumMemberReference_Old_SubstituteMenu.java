@@ -54,7 +54,7 @@ public class EnumMemberReference_Old_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_jz4s40_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.EnumMemberReference_Old$Z_, LINKS.enumMember$dPz5);
+      super((SAbstractConcept) CONCEPTS.EnumMemberReference_Old$Z_, LINKS.enumMember$GVZr);
     }
     @NotNull
     @Override
@@ -126,6 +126,6 @@ public class EnumMemberReference_Old_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink enumMember$dPz5 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1091e6212fdL, 0x1091e625b13L, "enumMember");
+    /*package*/ static final SReferenceLink enumMember$GVZr = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1091e6212fdL, 0x1091e625b13L, "enumMember");
   }
 }

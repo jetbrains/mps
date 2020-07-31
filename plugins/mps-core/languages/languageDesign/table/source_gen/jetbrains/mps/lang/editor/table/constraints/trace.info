@@ -35,10 +35,10 @@
       <node id="6216065619544939788" at="118,0,119,0" concept="6" trace="breakingNode_6tiwsq_a0a0a0a0a1a0a0b0c" />
       <node id="6216065619544939788" at="119,0,120,0" concept="6" trace="breakingNode_6tiwsq_a0a0a0a0a1a0a0c0c" />
       <node id="6216065619544939788" at="122,0,123,0" concept="6" trace="CellModel_HierarchycalTable$Ax" />
-      <node id="6216065619544939788" at="126,0,127,0" concept="6" trace="headerRowLinkDeclaration$_gzE" />
-      <node id="6216065619544939788" at="127,0,128,0" concept="6" trace="rowsLinkDeclaration$_g$9" />
-      <node id="6216065619544939788" at="128,0,129,0" concept="6" trace="cellsInRowLinkDeclaration$_g$C" />
-      <node id="6216065619544939788" at="129,0,130,0" concept="6" trace="target$egp8" />
+      <node id="6216065619544939788" at="126,0,127,0" concept="6" trace="headerRowLinkDeclaration$31hm" />
+      <node id="6216065619544939788" at="127,0,128,0" concept="6" trace="rowsLinkDeclaration$31wn" />
+      <node id="6216065619544939788" at="128,0,129,0" concept="6" trace="cellsInRowLinkDeclaration$31Jo" />
+      <node id="6216065619544939788" at="129,0,130,0" concept="6" trace="target$TWaS" />
       <node id="6216065619544939788" at="30,0,33,0" concept="0" trace="CellModel_HierarchycalTable_Constraints#()V" />
       <node id="6836281137582842118" at="52,0,55,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6836281137582842397" at="76,0,79,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

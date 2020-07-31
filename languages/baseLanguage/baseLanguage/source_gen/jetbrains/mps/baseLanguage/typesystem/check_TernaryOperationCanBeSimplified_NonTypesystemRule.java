@@ -24,9 +24,9 @@ public class check_TernaryOperationCanBeSimplified_NonTypesystemRule extends Abs
   public check_TernaryOperationCanBeSimplified_NonTypesystemRule() {
   }
   public void applyRule(final SNode ternaryOperatorExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode left = SLinkOperations.getTarget(ternaryOperatorExpression, LINKS.ifTrue$eU9r);
-    SNode right = SLinkOperations.getTarget(ternaryOperatorExpression, LINKS.ifFalse$2BqC);
-    SNode condition = SLinkOperations.getTarget(ternaryOperatorExpression, LINKS.condition$CEb4);
+    SNode left = SLinkOperations.getTarget(ternaryOperatorExpression, LINKS.ifTrue$ea$5);
+    SNode right = SLinkOperations.getTarget(ternaryOperatorExpression, LINKS.ifFalse$h5To);
+    SNode condition = SLinkOperations.getTarget(ternaryOperatorExpression, LINKS.condition$GrmW);
     SNode remainingNode;
     Boolean value;
     SModule module = SNodeOperations.getModel(ternaryOperatorExpression).getModule();
@@ -37,7 +37,7 @@ public class check_TernaryOperationCanBeSimplified_NonTypesystemRule extends Abs
         remainingNode = (value ? left : right);
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(ternaryOperatorExpression, LINKS.condition$CEb4), "The ternary operator condition is always " + value, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2857825852308875366", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(ternaryOperatorExpression, LINKS.condition$GrmW), "The ternary operator condition is always " + value, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2857825852308875366", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SimplifyBinaryLogicalExpressionWithBooleanConstant_QuickFix", false);
             intentionProvider.putArgument("remainingNode", remainingNode);
@@ -59,9 +59,9 @@ public class check_TernaryOperationCanBeSimplified_NonTypesystemRule extends Abs
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ifTrue$eU9r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012a1c0L, "ifTrue");
-    /*package*/ static final SContainmentLink ifFalse$2BqC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse");
-    /*package*/ static final SContainmentLink condition$CEb4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
+    /*package*/ static final SContainmentLink ifTrue$ea$5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012a1c0L, "ifTrue");
+    /*package*/ static final SContainmentLink ifFalse$h5To = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse");
+    /*package*/ static final SContainmentLink condition$GrmW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
   }
 
   private static final class CONCEPTS {

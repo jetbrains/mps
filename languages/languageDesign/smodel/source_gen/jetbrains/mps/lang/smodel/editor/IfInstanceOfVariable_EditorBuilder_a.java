@@ -84,7 +84,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$tAp1;
+      final SProperty property = PROPS.name$lA7v;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -131,10 +131,10 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     }
 
     public List<String> getPostfixes(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-      SNode nodeConcept = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.IfInstanceOfStatement$qc), LINKS.nodeConcept$CK5C);
+      SNode nodeConcept = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.IfInstanceOfStatement$qc), LINKS.nodeConcept$JiIo);
       List<String> variableSuffixes = ListSequence.fromListAndArray(new ArrayList<String>(), "node");
       if (nodeConcept != null) {
-        String name = NameUtil.decapitalize(SPropertyOperations.getString(nodeConcept, PROPS.name$tAp1));
+        String name = NameUtil.decapitalize(SPropertyOperations.getString(nodeConcept, PROPS.name$lA7v));
         ListSequence.fromList(variableSuffixes).addSequence(ListSequence.fromList(NameUtil.splitByCamels(name)));
       }
       return variableSuffixes;
@@ -142,7 +142,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
@@ -151,6 +151,6 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink nodeConcept$CK5C = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1a228da1357e4a44L, 0x1a228da1357e4a48L, "nodeConcept");
+    /*package*/ static final SReferenceLink nodeConcept$JiIo = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1a228da1357e4a44L, 0x1a228da1357e4a48L, "nodeConcept");
   }
 }

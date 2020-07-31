@@ -143,8 +143,8 @@ public class transform_CompositePath_BuildSourcePath extends TransformationMenuB
         public void execute(@NotNull String pattern) {
           SNode archiveRelativePath = SNodeFactoryOperations.createNewNode(CONCEPTS.BuildSourceArchiveRelativePath$7e, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), archiveRelativePath);
-          SLinkOperations.setTarget(archiveRelativePath, LINKS.archivePath$2hza, _context.getNode());
-          SNodeFactoryOperations.setNewChild(archiveRelativePath, LINKS.compositePart$gwj7, null);
+          SLinkOperations.setTarget(archiveRelativePath, LINKS.archivePath$6w1Q, _context.getNode());
+          SNodeFactoryOperations.setNewChild(archiveRelativePath, LINKS.compositePart$ZDgp, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), archiveRelativePath, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -179,7 +179,7 @@ public class transform_CompositePath_BuildSourcePath extends TransformationMenuB
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink archivePath$2hza = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x233d92f9e348d768L, 0x233d92f9e34a784cL, "archivePath");
-    /*package*/ static final SContainmentLink compositePart$gwj7 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
+    /*package*/ static final SContainmentLink archivePath$6w1Q = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x233d92f9e348d768L, 0x233d92f9e34a784cL, "archivePath");
+    /*package*/ static final SContainmentLink compositePart$ZDgp = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
   }
 }

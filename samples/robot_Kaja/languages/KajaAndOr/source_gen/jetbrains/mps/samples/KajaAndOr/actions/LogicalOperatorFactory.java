@@ -16,8 +16,8 @@ public class LogicalOperatorFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.LogicalOperator$29)) {
         SNode oldNode = SNodeOperations.cast(sampleNode, CONCEPTS.LogicalOperator$29);
-        SLinkOperations.setTarget(newNode, LINKS.left$sA5C, SLinkOperations.getTarget(oldNode, LINKS.left$sA5C));
-        SLinkOperations.setTarget(newNode, LINKS.right$sA67, SLinkOperations.getTarget(oldNode, LINKS.right$sA67));
+        SLinkOperations.setTarget(newNode, LINKS.left$QsIo, SLinkOperations.getTarget(oldNode, LINKS.left$QsIo));
+        SLinkOperations.setTarget(newNode, LINKS.right$QsXp, SLinkOperations.getTarget(oldNode, LINKS.right$QsXp));
       }
     }
   }
@@ -27,7 +27,7 @@ public class LogicalOperatorFactory {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink left$sA5C = MetaAdapterFactory.getContainmentLink(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, 0x1a6f404e630a460cL, "left");
-    /*package*/ static final SContainmentLink right$sA67 = MetaAdapterFactory.getContainmentLink(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, 0x1a6f404e630a460dL, "right");
+    /*package*/ static final SContainmentLink left$QsIo = MetaAdapterFactory.getContainmentLink(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, 0x1a6f404e630a460cL, "left");
+    /*package*/ static final SContainmentLink right$QsXp = MetaAdapterFactory.getContainmentLink(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, 0x1a6f404e630a460dL, "right");
   }
 }

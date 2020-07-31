@@ -30,7 +30,7 @@ public class MethodsScope extends Scope {
   public MethodsScope(Iterable<SNode> methods, Map<SNode, SNode> typeByTypeVariable) {
     nameToMethods = MapSequence.fromMap(new HashMap<String, List<SNode>>());
     for (SNode method : Sequence.fromIterable(methods)) {
-      String name = SPropertyOperations.getString(method, PROPS.name$tAp1);
+      String name = SPropertyOperations.getString(method, PROPS.name$lA7v);
       if (name != null) {
         if (MapSequence.fromMap(nameToMethods).containsKey(name)) {
           ListSequence.fromList(MapSequence.fromMap(nameToMethods).get(name)).addElement(method);
@@ -61,14 +61,14 @@ public class MethodsScope extends Scope {
   @Nullable
   @Override
   public String getReferenceText(SNode contextNode, @NotNull SNode node) {
-    return SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.BaseMethodDeclaration$RR), PROPS.name$tAp1);
+    return SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.BaseMethodDeclaration$RR), PROPS.name$lA7v);
   }
   @Override
   public boolean contains(SNode node) {
     if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$RR))) {
       return false;
     }
-    String name = SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.BaseMethodDeclaration$RR), PROPS.name$tAp1);
+    String name = SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.BaseMethodDeclaration$RR), PROPS.name$lA7v);
     return MapSequence.fromMap(nameToMethods).containsKey(name) && ListSequence.fromList(MapSequence.fromMap(nameToMethods).get(name)).contains(SNodeOperations.cast(node, CONCEPTS.BaseMethodDeclaration$RR));
   }
   @Nullable
@@ -84,7 +84,7 @@ public class MethodsScope extends Scope {
     if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.IMethodCall$ln))) {
       return null;
     }
-    List<SNode> actualArguments = SLinkOperations.getChildren((SNodeOperations.cast(contextNode, CONCEPTS.IMethodCall$ln)), LINKS.actualArgument$$A7L);
+    List<SNode> actualArguments = SLinkOperations.getChildren((SNodeOperations.cast(contextNode, CONCEPTS.IMethodCall$ln)), LINKS.actualArgument$ItKJ);
 
     methods = MethodResolveUtil.selectByParmCount(methods, actualArguments);
     if (methods.size() == 1) {
@@ -105,7 +105,7 @@ public class MethodsScope extends Scope {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
@@ -115,6 +115,6 @@ public class MethodsScope extends Scope {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 }

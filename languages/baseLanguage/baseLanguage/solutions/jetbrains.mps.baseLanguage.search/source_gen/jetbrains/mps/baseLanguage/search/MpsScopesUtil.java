@@ -25,15 +25,15 @@ public class MpsScopesUtil {
   public static String getSignature(SNode classifierMember, SNode classifier) {
     String classifierPrefix = ((String) BHReflection.invoke0(SNodeOperations.cast(SNodeOperations.getParent(classifierMember), CONCEPTS.Classifier$hJ), CONCEPTS.INamedConcept$nV, SMethodTrimmedId.create("getFqName", null, "hEwIO9y"))) + ":";
     if (SNodeOperations.isInstanceOf(classifierMember, CONCEPTS.EnumConstantDeclaration$ma)) {
-      return classifierPrefix + SPropertyOperations.getString(SNodeOperations.cast(classifierMember, CONCEPTS.EnumConstantDeclaration$ma), PROPS.name$tAp1);
+      return classifierPrefix + SPropertyOperations.getString(SNodeOperations.cast(classifierMember, CONCEPTS.EnumConstantDeclaration$ma), PROPS.name$lA7v);
     }
 
     if (SNodeOperations.isInstanceOf(classifierMember, CONCEPTS.VariableDeclaration$xe)) {
-      return classifierPrefix + SPropertyOperations.getString(SNodeOperations.cast(classifierMember, CONCEPTS.VariableDeclaration$xe), PROPS.name$tAp1);
+      return classifierPrefix + SPropertyOperations.getString(SNodeOperations.cast(classifierMember, CONCEPTS.VariableDeclaration$xe), PROPS.name$lA7v);
     }
     if (SNodeOperations.isInstanceOf(classifierMember, CONCEPTS.BaseMethodDeclaration$RR)) {
       SNode method = SNodeOperations.cast(classifierMember, CONCEPTS.BaseMethodDeclaration$RR);
-      return classifierPrefix + SPropertyOperations.getString(method, PROPS.name$tAp1) + "<" + ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.typeVariableDeclaration$ziZT)).count() + ">" + "(" + ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).count() + ")";
+      return classifierPrefix + SPropertyOperations.getString(method, PROPS.name$lA7v) + "<" + ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.typeVariableDeclaration$6cWB)).count() + ">" + "(" + ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).count() + ")";
     }
     return "No signature for " + classifierMember;
   }
@@ -61,11 +61,11 @@ public class MpsScopesUtil {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 }

@@ -11,16 +11,16 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AssertMatch_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    for (SNode before : SLinkOperations.getChildren(_context.getNode(), LINKS.before$Msn5)) {
+    for (SNode before : SLinkOperations.getChildren(_context.getNode(), LINKS.before$rJbr)) {
       _context.getBuilder().build((SNode) before);
     }
-    for (SNode after : SLinkOperations.getChildren(_context.getNode(), LINKS.after$2jv4)) {
+    for (SNode after : SLinkOperations.getChildren(_context.getNode(), LINKS.after$7s2W)) {
       _context.getBuilder().build((SNode) after);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink before$Msn5 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11a2f985130L, 0x11a2f989195L, "before");
-    /*package*/ static final SContainmentLink after$2jv4 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11a2f985130L, 0x11a2f98d40fL, "after");
+    /*package*/ static final SContainmentLink before$rJbr = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11a2f985130L, 0x11a2f989195L, "before");
+    /*package*/ static final SContainmentLink after$7s2W = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11a2f985130L, 0x11a2f98d40fL, "after");
   }
 }

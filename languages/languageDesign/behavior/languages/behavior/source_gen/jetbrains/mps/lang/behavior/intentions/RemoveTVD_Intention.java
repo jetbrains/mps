@@ -35,7 +35,7 @@ public final class RemoveTVD_Intention extends AbstractIntentionDescriptor imple
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeVariableDeclaration$ziZT)).isNotEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeVariableDeclaration$6cWB)).isNotEmpty();
   }
   @Override
   public boolean isSurroundWith() {
@@ -56,7 +56,7 @@ public final class RemoveTVD_Intention extends AbstractIntentionDescriptor imple
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeVariableDeclaration$ziZT)).clear();
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeVariableDeclaration$6cWB)).clear();
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -65,6 +65,6 @@ public final class RemoveTVD_Intention extends AbstractIntentionDescriptor imple
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
   }
 }

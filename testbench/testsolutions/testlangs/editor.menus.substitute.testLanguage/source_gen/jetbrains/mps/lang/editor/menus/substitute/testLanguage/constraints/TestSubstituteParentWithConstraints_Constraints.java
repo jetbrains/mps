@@ -53,10 +53,10 @@ public class TestSubstituteParentWithConstraints_Constraints extends BaseConstra
     };
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if (Objects.equals(link, LINKS.childCanBeParent$12a)) {
+    if (Objects.equals(link, LINKS.childCanBeParent$w2Q)) {
       return Objects.equals(childConcept, CONCEPTS.TestSubstituteChildWithConstraints1$gI);
     }
-    if (Objects.equals(link, LINKS.childWrapperCanBeParent$f63X)) {
+    if (Objects.equals(link, LINKS.childWrapperCanBeParent$jVUz)) {
       return Objects.equals(childConcept, CONCEPTS.TestSubstituteChildWithConstraintsWrapper1$Ef);
     }
     return true;
@@ -77,7 +77,7 @@ public class TestSubstituteParentWithConstraints_Constraints extends BaseConstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink childCanBeParent$12a = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2cc6e9cL, "childCanBeParent");
-    /*package*/ static final SContainmentLink childWrapperCanBeParent$f63X = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2d23240L, "childWrapperCanBeParent");
+    /*package*/ static final SContainmentLink childCanBeParent$w2Q = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2cc6e9cL, "childCanBeParent");
+    /*package*/ static final SContainmentLink childWrapperCanBeParent$jVUz = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2d23240L, "childWrapperCanBeParent");
   }
 }

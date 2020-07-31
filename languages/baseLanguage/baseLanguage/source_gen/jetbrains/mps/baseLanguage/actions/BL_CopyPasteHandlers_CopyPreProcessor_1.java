@@ -21,7 +21,7 @@ public final class BL_CopyPasteHandlers_CopyPreProcessor_1 implements CopyPrePro
     SNode methodParent = SNodeOperations.getParent(original);
     if (SNodeOperations.isInstanceOf(methodParent, CONCEPTS.Classifier$hJ)) {
       if (SNodeOperations.isInstanceOf(methodParent, CONCEPTS.Interface$Kp)) {
-        SPropertyOperations.assign(copy, PROPS.isAbstract$cU_H, true);
+        SPropertyOperations.assign(copy, PROPS.isAbstract$gogN, true);
       }
     }
   }
@@ -33,6 +33,6 @@ public final class BL_CopyPasteHandlers_CopyPreProcessor_1 implements CopyPrePro
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isAbstract$cU_H = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
+    /*package*/ static final SProperty isAbstract$gogN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
   }
 }

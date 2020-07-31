@@ -25,10 +25,10 @@ public final class copyPasteExtendingWithDefaultModifier_PastePostProcessor_0 im
     SNode methodParent = SNodeOperations.getParent(pastedNode);
     if (SNodeOperations.isInstanceOf(methodParent, CONCEPTS.Classifier$hJ)) {
       if (SNodeOperations.isInstanceOf(methodParent, CONCEPTS.Interface$Kp)) {
-        if (!(SPropertyOperations.getBoolean(pastedNode, PROPS.isAbstract$cU_H))) {
-          SNodeFactoryOperations.addNewChild(pastedNode, LINKS.modifiers$akE0, CONCEPTS.DefaultModifier$Z2);
+        if (!(SPropertyOperations.getBoolean(pastedNode, PROPS.isAbstract$gogN))) {
+          SNodeFactoryOperations.addNewChild(pastedNode, LINKS.modifiers$m0, CONCEPTS.DefaultModifier$Z2);
         }
-        SPropertyOperations.assign(pastedNode, PROPS.isAbstract$cU_H, false);
+        SPropertyOperations.assign(pastedNode, PROPS.isAbstract$gogN, false);
         // i have always non-abstract methods in interfaces 
       }
     }
@@ -42,10 +42,10 @@ public final class copyPasteExtendingWithDefaultModifier_PastePostProcessor_0 im
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifiers$akE0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isAbstract$cU_H = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
+    /*package*/ static final SProperty isAbstract$gogN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
   }
 }

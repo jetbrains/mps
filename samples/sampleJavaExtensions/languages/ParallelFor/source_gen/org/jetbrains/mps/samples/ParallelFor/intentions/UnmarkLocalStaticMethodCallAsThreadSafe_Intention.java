@@ -41,7 +41,7 @@ public final class UnmarkLocalStaticMethodCallAsThreadSafe_Intention extends Abs
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$$A7i), CONCEPTS.StaticMethodDeclaration$eX))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI), CONCEPTS.StaticMethodDeclaration$eX))) {
       return false;
     }
     return AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$T7)) != null;
@@ -77,7 +77,7 @@ public final class UnmarkLocalStaticMethodCallAsThreadSafe_Intention extends Abs
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 
   private static final class CONCEPTS {

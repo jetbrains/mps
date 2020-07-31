@@ -23,7 +23,7 @@ public class check_IOperationContextUsages_NonTypesystemRule extends AbstractNon
   }
   public void applyRule(final SNode conceptFunction, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(conceptFunction), CONCEPTS.ConceptConstraints$St)) {
-      for (SNode param : ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(conceptFunction, LINKS.body$pTP2), CONCEPTS.ConceptFunctionParameter_operationContext$Gv, false, new SAbstractConcept[]{}))) {
+      for (SNode param : ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(conceptFunction, LINKS.body$z0FY), CONCEPTS.ConceptFunctionParameter_operationContext$Gv, false, new SAbstractConcept[]{}))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(param, "operationContext is deprecated", "r:00000000-0000-4000-0000-011c89590309(jetbrains.mps.lang.constraints.typesystem)", "8401916545537389027", null, errorTarget);
@@ -42,7 +42,7 @@ public class check_IOperationContextUsages_NonTypesystemRule extends AbstractNon
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$pTP2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SContainmentLink body$z0FY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
   }
 
   private static final class CONCEPTS {

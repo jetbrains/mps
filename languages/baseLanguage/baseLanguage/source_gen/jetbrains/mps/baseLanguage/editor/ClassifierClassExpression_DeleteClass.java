@@ -26,9 +26,9 @@ public class ClassifierClassExpression_DeleteClass {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode classifier = SLinkOperations.getTarget(node, LINKS.classifier$V09);
+        SNode classifier = SLinkOperations.getTarget(node, LINKS.classifier$s_4n);
         SNode ref = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.AbstractClassifierReference$vv);
-        SLinkOperations.setTarget(ref, LINKS.classifier$sgLW, classifier);
+        SLinkOperations.setTarget(ref, LINKS.classifier$G8c4, classifier);
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, ref, SelectionManager.LAST_CELL, -1);
       }
 
@@ -77,8 +77,8 @@ public class ClassifierClassExpression_DeleteClass {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$V09 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, 0x103fb73a43eL, "classifier");
-    /*package*/ static final SReferenceLink classifier$sgLW = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, 0x6c6c91efa5ecbbb2L, "classifier");
+    /*package*/ static final SReferenceLink classifier$s_4n = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, 0x103fb73a43eL, "classifier");
+    /*package*/ static final SReferenceLink classifier$G8c4 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, 0x6c6c91efa5ecbbb2L, "classifier");
   }
 
   private static final class CONCEPTS {

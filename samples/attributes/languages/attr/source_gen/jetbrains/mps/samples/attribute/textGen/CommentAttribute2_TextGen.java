@@ -14,13 +14,13 @@ public class CommentAttribute2_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.append("// ");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$bRHt));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$JZ13));
     tgs.newLine();
     tgs.indent();
     tgs.appendAttributedNode();
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$bRHt = MetaAdapterFactory.getProperty(0xe8e38af60cf34cc1L, 0xbaa3ba261722e8f3L, 0x702703eb14011dd3L, 0x702703eb14012b34L, "text");
+    /*package*/ static final SProperty text$JZ13 = MetaAdapterFactory.getProperty(0xe8e38af60cf34cc1L, 0xbaa3ba261722e8f3L, 0x702703eb14011dd3L, 0x702703eb14012b34L, "text");
   }
 }

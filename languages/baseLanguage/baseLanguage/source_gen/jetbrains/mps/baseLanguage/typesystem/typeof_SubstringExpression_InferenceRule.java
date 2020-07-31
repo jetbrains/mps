@@ -25,16 +25,16 @@ public class typeof_SubstringExpression_InferenceRule extends AbstractInferenceR
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1225276872515", 0, null);
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1225276872517", true), (SNode) _quotation_createNode_o6tm3s_a1a0c0a0b(), _info_12389875345);
     }
-    if (SLinkOperations.getTarget(expression, LINKS.startIndex$TrUv) != null) {
+    if (SLinkOperations.getTarget(expression, LINKS.startIndex$Oxl1) != null) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(expression, LINKS.startIndex$TrUv);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(expression, LINKS.startIndex$Oxl1);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1225276872529", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1225276872534", true), (SNode) _quotation_createNode_o6tm3s_a1a0c0a0b0b(), false, true, _info_12389875345);
       }
     }
-    if (SLinkOperations.getTarget(expression, LINKS.endIndex$TrUY) != null) {
+    if (SLinkOperations.getTarget(expression, LINKS.endIndex$Ox$2) != null) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(expression, LINKS.endIndex$TrUY);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(expression, LINKS.endIndex$Ox$2);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1225276872545", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1225276872550", true), (SNode) _quotation_createNode_o6tm3s_a1a0c0a0c0b(), false, true, _info_12389875345);
       }
@@ -69,8 +69,8 @@ public class typeof_SubstringExpression_InferenceRule extends AbstractInferenceR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink startIndex$TrUv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47df21f3L, 0x11d47df21f5L, "startIndex");
-    /*package*/ static final SContainmentLink endIndex$TrUY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47df21f3L, 0x11d47df21f6L, "endIndex");
+    /*package*/ static final SContainmentLink startIndex$Oxl1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47df21f3L, 0x11d47df21f5L, "startIndex");
+    /*package*/ static final SContainmentLink endIndex$Ox$2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47df21f3L, 0x11d47df21f6L, "endIndex");
   }
 
   private static final class CONCEPTS {

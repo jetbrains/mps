@@ -99,7 +99,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.year$GImq;
+      final SProperty property = PROPS.year$P2w4;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no year>");
@@ -149,7 +149,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.model$GIls;
+      final SProperty property = PROPS.model$P222;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no model>");
@@ -173,8 +173,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty year$GImq = MetaAdapterFactory.getProperty(0x99aa3e0fa1624dc1L, 0xbcff2def4d654205L, 0x346ead2c08d7a618L, 0x346ead2c08d7a61fL, "year");
-    /*package*/ static final SProperty model$GIls = MetaAdapterFactory.getProperty(0x99aa3e0fa1624dc1L, 0xbcff2def4d654205L, 0x346ead2c08d7a618L, 0x346ead2c08d7a61dL, "model");
+    /*package*/ static final SProperty year$P2w4 = MetaAdapterFactory.getProperty(0x99aa3e0fa1624dc1L, 0xbcff2def4d654205L, 0x346ead2c08d7a618L, 0x346ead2c08d7a61fL, "year");
+    /*package*/ static final SProperty model$P222 = MetaAdapterFactory.getProperty(0x99aa3e0fa1624dc1L, 0xbcff2def4d654205L, 0x346ead2c08d7a618L, 0x346ead2c08d7a61dL, "model");
   }
 
   private static final class CONCEPTS {

@@ -61,11 +61,11 @@ public class TextCommentLinePart_ActionMap {
             //  This is the beginning of line 
             SNode curLine = SNodeOperations.cast(SNodeOperations.getParent(currentNode), CONCEPTS.CommentLine$vy);
             SNode prevLine = SNodeOperations.cast(SNodeOperations.getPrevSibling(curLine), CONCEPTS.CommentLine$vy);
-            nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(prevLine, LINKS.part$fv9R)).last();
-            int index = ListSequence.fromList(SLinkOperations.getChildren(prevLine, LINKS.part$fv9R)).count() - 1;
-            ListSequence.fromList(SLinkOperations.getChildren(prevLine, LINKS.part$fv9R)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(curLine, LINKS.part$fv9R)));
-            if (SNodeOperations.isInstanceOf(nodeToSelect, CONCEPTS.TextCommentLinePart$RY) && isNotEmptyString(SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0))) {
-              caret = SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0).length();
+            nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(prevLine, LINKS.part$w5LD)).last();
+            int index = ListSequence.fromList(SLinkOperations.getChildren(prevLine, LINKS.part$w5LD)).count() - 1;
+            ListSequence.fromList(SLinkOperations.getChildren(prevLine, LINKS.part$w5LD)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(curLine, LINKS.part$w5LD)));
+            if (SNodeOperations.isInstanceOf(nodeToSelect, CONCEPTS.TextCommentLinePart$RY) && isNotEmptyString(SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0))) {
+              caret = SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0).length();
             } else {
               caret = 0;
             }
@@ -81,11 +81,11 @@ public class TextCommentLinePart_ActionMap {
           if (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(currentNode), CONCEPTS.TextCommentLinePart$RY)) {
             nodeToSelect = SNodeOperations.getPrevSibling(currentNode);
             SNode linePart = SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY);
-            if (isEmptyString(SPropertyOperations.getString(linePart, PROPS.text$5Ox0))) {
+            if (isEmptyString(SPropertyOperations.getString(linePart, PROPS.text$OrZ0))) {
               SNodeOperations.deleteNode(nodeToSelect);
               nodeToSelect = currentNode;
             } else {
-              SPropertyOperations.assign(linePart, PROPS.text$5Ox0, SPropertyOperations.getString(linePart, PROPS.text$5Ox0).substring(0, SPropertyOperations.getString(linePart, PROPS.text$5Ox0).length() - 1));
+              SPropertyOperations.assign(linePart, PROPS.text$OrZ0, SPropertyOperations.getString(linePart, PROPS.text$OrZ0).substring(0, SPropertyOperations.getString(linePart, PROPS.text$OrZ0).length() - 1));
             }
             editorContext.selectWRTFocusPolicy(nodeToSelect);
           } else if (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(currentNode), CONCEPTS.InlineTagCommentLinePart$SW) || SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(currentNode), CONCEPTS.HTMLElement$6s)) {
@@ -117,11 +117,11 @@ public class TextCommentLinePart_ActionMap {
             if (SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(currentNode), CONCEPTS.TextCommentLinePart$RY)) {
               nodeToSelect = SNodeOperations.getNextSibling(currentNode);
               SNode linePart = SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY);
-              if (isEmptyString(SPropertyOperations.getString(linePart, PROPS.text$5Ox0))) {
+              if (isEmptyString(SPropertyOperations.getString(linePart, PROPS.text$OrZ0))) {
                 SNodeOperations.deleteNode(nodeToSelect);
                 nodeToSelect = currentNode;
               } else {
-                SPropertyOperations.assign(linePart, PROPS.text$5Ox0, SPropertyOperations.getString(linePart, PROPS.text$5Ox0).substring(0, SPropertyOperations.getString(linePart, PROPS.text$5Ox0).length()));
+                SPropertyOperations.assign(linePart, PROPS.text$OrZ0, SPropertyOperations.getString(linePart, PROPS.text$OrZ0).substring(0, SPropertyOperations.getString(linePart, PROPS.text$OrZ0).length()));
               }
               editorContext.selectWRTFocusPolicy(nodeToSelect);
               SelectionUtil.selectLabelCellAnSetCaret(editorContext, SNodeOperations.getNextSibling(currentNode), SelectionManager.FIRST_CELL, 0);
@@ -139,14 +139,14 @@ public class TextCommentLinePart_ActionMap {
             SNode curLine = SNodeOperations.cast(SNodeOperations.getParent(currentNode), CONCEPTS.CommentLine$vy);
             SNode nextLine = SNodeOperations.cast(SNodeOperations.getNextSibling(curLine), CONCEPTS.CommentLine$vy);
             if ((SNodeOperations.getPrevSibling(node) != null)) {
-              int index = ListSequence.fromList(SLinkOperations.getChildren(curLine, LINKS.part$fv9R)).count() - 1;
+              int index = ListSequence.fromList(SLinkOperations.getChildren(curLine, LINKS.part$w5LD)).count() - 1;
               SNodeOperations.deleteNode(nextLine);
-              ListSequence.fromList(SLinkOperations.getChildren(curLine, LINKS.part$fv9R)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.part$fv9R)));
+              ListSequence.fromList(SLinkOperations.getChildren(curLine, LINKS.part$w5LD)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.part$w5LD)));
               CommentLine__BehaviorDescriptor.tryMergeToRight_idooaTF_3fF3.invoke(curLine, ((int) index));
             } else {
               SNodeOperations.deleteNode(curLine);
               if ((nextLine != null)) {
-                nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.part$fv9R)).first();
+                nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.part$w5LD)).first();
                 editorContext.selectWRTFocusPolicy(nodeToSelect);
                 ((EditorCell_Label) editorContext.getSelectedCell()).setCaretPosition(0);
               } else {
@@ -199,11 +199,11 @@ public class TextCommentLinePart_ActionMap {
                 //  This is the end of line 
                 SNode curLine = SNodeOperations.cast(SNodeOperations.getParent(currentNode), CONCEPTS.CommentLine$vy);
                 SNode nextLine = SNodeOperations.cast(SNodeOperations.getNextSibling(curLine), CONCEPTS.CommentLine$vy);
-                nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(curLine, LINKS.part$fv9R)).last();
+                nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(curLine, LINKS.part$w5LD)).last();
                 int index = SNodeOperations.getIndexInParent(currentNode);
-                ListSequence.fromList(SLinkOperations.getChildren(curLine, LINKS.part$fv9R)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.part$fv9R)));
-                if (SNodeOperations.isInstanceOf(nodeToSelect, CONCEPTS.TextCommentLinePart$RY) && isNotEmptyString(SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0))) {
-                  caret = SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0).length();
+                ListSequence.fromList(SLinkOperations.getChildren(curLine, LINKS.part$w5LD)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.part$w5LD)));
+                if (SNodeOperations.isInstanceOf(nodeToSelect, CONCEPTS.TextCommentLinePart$RY) && isNotEmptyString(SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0))) {
+                  caret = SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0).length();
                 } else {
                   caret = 0;
                 }
@@ -218,11 +218,11 @@ public class TextCommentLinePart_ActionMap {
               //  Caret is at the end of text part inside comment line 
               if (SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(currentNode), CONCEPTS.TextCommentLinePart$RY)) {
                 nodeToSelect = SNodeOperations.getNextSibling(currentNode);
-                if (isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0))) {
+                if (isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0))) {
                   SNodeOperations.deleteNode(nodeToSelect);
                   nodeToSelect = node;
                 } else {
-                  SPropertyOperations.assign(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0, SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0).substring(1));
+                  SPropertyOperations.assign(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0, SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0).substring(1));
                 }
                 editorContext.selectWRTFocusPolicy(nodeToSelect);
                 ((EditorCell_Label) editorContext.getSelectedCell()).setCaretPosition(caret);
@@ -234,7 +234,7 @@ public class TextCommentLinePart_ActionMap {
               return;
             }
           } else {
-            SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0, SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0).substring(0, selectedCell.getCaretPosition()) + SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0).substring(selectedCell.getCaretPosition() + 1));
+            SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0, SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0).substring(0, selectedCell.getCaretPosition()) + SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0).substring(selectedCell.getCaretPosition() + 1));
             return;
           }
 
@@ -305,10 +305,10 @@ public class TextCommentLinePart_ActionMap {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink part$fv9R = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
+    /*package*/ static final SContainmentLink part$w5LD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$5Ox0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
+    /*package*/ static final SProperty text$OrZ0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
   }
 }

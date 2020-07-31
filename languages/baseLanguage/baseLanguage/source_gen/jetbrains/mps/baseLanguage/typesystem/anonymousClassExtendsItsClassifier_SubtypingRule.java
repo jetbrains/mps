@@ -27,17 +27,17 @@ public class anonymousClassExtendsItsClassifier_SubtypingRule extends SubtypingR
   public List<SNode> getSubOrSuperTypes(SNode classifierType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> result = new ArrayList<SNode>();
     {
-      SNode matchedNode_q6q799_b0 = SLinkOperations.getTarget(classifierType, LINKS.classifier$pQ_R);
+      SNode matchedNode_q6q799_b0 = SLinkOperations.getTarget(classifierType, LINKS.classifier$xslD);
       {
         boolean matches_q6q799_a1a = false;
         {
-          SNode matchingNode_q6q799_a1a = SLinkOperations.getTarget(classifierType, LINKS.classifier$pQ_R);
+          SNode matchingNode_q6q799_a1a = SLinkOperations.getTarget(classifierType, LINKS.classifier$xslD);
           if (matchingNode_q6q799_a1a != null) {
             matches_q6q799_a1a = matchingNode_q6q799_a1a.getConcept().isSubConceptOf(CONCEPTS.AnonymousClass$aF);
           }
         }
         if (matches_q6q799_a1a) {
-          ListSequence.fromList(result).addElement(_quotation_createNode_r0kks7_a0a0a0a2a1a1a1(SLinkOperations.getTarget(matchedNode_q6q799_b0, LINKS.classifier$1y5e), SLinkOperations.getChildren(matchedNode_q6q799_b0, LINKS.typeParameter$uY4E)));
+          ListSequence.fromList(result).addElement(_quotation_createNode_r0kks7_a0a0a0a2a1a1a1(SLinkOperations.getTarget(matchedNode_q6q799_b0, LINKS.classifier$JwxM), SLinkOperations.getChildren(matchedNode_q6q799_b0, LINKS.typeParameter$4gm)));
         }
       }
     }
@@ -68,9 +68,9 @@ public class anonymousClassExtendsItsClassifier_SubtypingRule extends SubtypingR
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SReferenceLink classifier$1y5e = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
-    /*package*/ static final SContainmentLink typeParameter$uY4E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SContainmentLink typeParameter$4gm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
   }
 
   private static final class CONCEPTS {

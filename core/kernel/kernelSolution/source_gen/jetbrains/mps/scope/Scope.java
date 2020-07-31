@@ -111,7 +111,7 @@ public abstract class Scope {
       }
       return SNodeOperations.getParent(n);
     }
-    SNode lastAttr = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.cast(n, CONCEPTS.BaseConcept$Sz), LINKS.smodelAttribute$K8bJ), CONCEPTS.NodeAttribute$8K)).last();
+    SNode lastAttr = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.cast(n, CONCEPTS.BaseConcept$Sz), LINKS.smodelAttribute$jXFL), CONCEPTS.NodeAttribute$8K)).last();
     if ((lastAttr != null)) {
       return lastAttr;
     }
@@ -126,6 +126,6 @@ public abstract class Scope {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 }

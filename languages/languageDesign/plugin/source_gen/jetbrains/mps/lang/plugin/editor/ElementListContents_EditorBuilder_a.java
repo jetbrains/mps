@@ -102,7 +102,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.reference$mcPJ;
+      return LINKS.reference$Ke1L;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.ActionGroupMember$ly;
@@ -115,7 +115,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(referenceListHandler_xnbcto_b1a.this.getNode(), LINKS.reference$mcPJ));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(referenceListHandler_xnbcto_b1a.this.getNode(), LINKS.reference$Ke1L));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -157,7 +157,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink reference$mcPJ = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1190f756bc5L, 0x1190f75fe95L, "reference");
+    /*package*/ static final SContainmentLink reference$Ke1L = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1190f756bc5L, 0x1190f75fe95L, "reference");
   }
 
   private static final class CONCEPTS {

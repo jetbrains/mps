@@ -27,32 +27,32 @@ public class DiagramNodeParameters implements ParametersInformation<SNode> {
   public DiagramNodeParameters() {
   }
   public Iterable<SNode> getMethods(SNode node, EditorContext editorContext) {
-    return Collections.singletonList(SLinkOperations.getTarget(node, LINKS.figure$dCMb));
+    return Collections.singletonList(SLinkOperations.getTarget(node, LINKS.figure$AKjl));
   }
   public void getStyledMethodPresentation(SNode node, EditorContext editorContext, SNode parameterObject, StyledTextPrinter styledText) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.figure$dCMb))), CONCEPTS.AbstractFigureReference$TJ)) {
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.figure$AKjl))), CONCEPTS.AbstractFigureReference$TJ)) {
       styledText.append("null()");
       return;
     }
-    styledText.append(SLinkOperations.getTarget(node, LINKS.figure$dCMb).getPresentation());
+    styledText.append(SLinkOperations.getTarget(node, LINKS.figure$AKjl).getPresentation());
     styledText.append("(");
     SNode selectedNode = editorContext.getSelectedNode();
 
     List<String> definedParameters = ListSequence.fromListWithValues(new LinkedList<String>(), AbstractFigureReference__BehaviorDescriptor.getFigureParameterNames_id1iN4mn3lWCq.invoke(parameterObject));
     Set<String> specifiedParameters = SetSequence.fromSet(new HashSet<String>());
 
-    for (SNode nextSpecifiedParameter : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameters$qdiu))) {
-      if (ListSequence.fromList(definedParameters).contains(SPropertyOperations.getString(nextSpecifiedParameter, PROPS.name$tAp1))) {
-        SetSequence.fromSet(specifiedParameters).addElement(SPropertyOperations.getString(nextSpecifiedParameter, PROPS.name$tAp1));
-        ListSequence.fromList(definedParameters).removeElement(SPropertyOperations.getString(nextSpecifiedParameter, PROPS.name$tAp1));
+    for (SNode nextSpecifiedParameter : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameters$GrWy))) {
+      if (ListSequence.fromList(definedParameters).contains(SPropertyOperations.getString(nextSpecifiedParameter, PROPS.name$lA7v))) {
+        SetSequence.fromSet(specifiedParameters).addElement(SPropertyOperations.getString(nextSpecifiedParameter, PROPS.name$lA7v));
+        ListSequence.fromList(definedParameters).removeElement(SPropertyOperations.getString(nextSpecifiedParameter, PROPS.name$lA7v));
       }
     }
 
     boolean isEmpty = true;
-    for (SNode nextSpecifiedParameter : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameters$qdiu))) {
-      if (SetSequence.fromSet(specifiedParameters).contains(SPropertyOperations.getString(nextSpecifiedParameter, PROPS.name$tAp1))) {
-        SetSequence.fromSet(specifiedParameters).removeElement(SPropertyOperations.getString(nextSpecifiedParameter, PROPS.name$tAp1));
-        this.appendParameter(SPropertyOperations.getString(nextSpecifiedParameter, PROPS.name$tAp1), styledText, isEmpty, nextSpecifiedParameter == selectedNode);
+    for (SNode nextSpecifiedParameter : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameters$GrWy))) {
+      if (SetSequence.fromSet(specifiedParameters).contains(SPropertyOperations.getString(nextSpecifiedParameter, PROPS.name$lA7v))) {
+        SetSequence.fromSet(specifiedParameters).removeElement(SPropertyOperations.getString(nextSpecifiedParameter, PROPS.name$lA7v));
+        this.appendParameter(SPropertyOperations.getString(nextSpecifiedParameter, PROPS.name$lA7v), styledText, isEmpty, nextSpecifiedParameter == selectedNode);
         isEmpty = false;
       } else if (ListSequence.fromList(definedParameters).isNotEmpty()) {
         this.appendParameter(ListSequence.fromList(definedParameters).removeElementAt(0), styledText, isEmpty, nextSpecifiedParameter == selectedNode);
@@ -67,7 +67,7 @@ public class DiagramNodeParameters implements ParametersInformation<SNode> {
     styledText.append(")");
   }
   public boolean isMethodCurrent(SNode node, EditorContext editorContext, SNode parameterObject) {
-    return SLinkOperations.getTarget(node, LINKS.figure$dCMb) == parameterObject;
+    return SLinkOperations.getTarget(node, LINKS.figure$AKjl) == parameterObject;
   }
   private void appendParameter(String parameterName, StyledTextPrinter styledText, boolean isEmpty, boolean isBold) {
     if (!(isEmpty)) {
@@ -79,8 +79,8 @@ public class DiagramNodeParameters implements ParametersInformation<SNode> {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink figure$dCMb = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, 0xf301bf106a329d9L, "figure");
-    /*package*/ static final SContainmentLink parameters$qdiu = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, 0xf301bf106a7d7b2L, "parameters");
+    /*package*/ static final SContainmentLink figure$AKjl = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, 0xf301bf106a329d9L, "figure");
+    /*package*/ static final SContainmentLink parameters$GrWy = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, 0xf301bf106a7d7b2L, "parameters");
   }
 
   private static final class CONCEPTS {
@@ -88,6 +88,6 @@ public class DiagramNodeParameters implements ParametersInformation<SNode> {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

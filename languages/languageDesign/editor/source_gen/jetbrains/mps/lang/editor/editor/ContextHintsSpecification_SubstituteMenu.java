@@ -148,8 +148,8 @@ public class ContextHintsSpecification_SubstituteMenu extends SubstituteMenuBase
         public SNode createNode(@NotNull String pattern) {
           SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3ae0865e9a712712L, "jetbrains.mps.lang.editor.structure.ExplicitHintsSpecification"));
           SNode hintReference = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5eadaecad41188dcL, "jetbrains.mps.lang.editor.structure.ConceptEditorHintDeclarationReference"));
-          SLinkOperations.setTarget(hintReference, LINKS.hint$7sDk, myParameterObject);
-          ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.hints$M21Z)).addElement(hintReference);
+          SLinkOperations.setTarget(hintReference, LINKS.hint$AS0G, myParameterObject);
+          ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.hints$eYXx)).addElement(hintReference);
           return result;
         }
 
@@ -197,7 +197,7 @@ public class ContextHintsSpecification_SubstituteMenu extends SubstituteMenuBase
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink hint$7sDk = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5eadaecad41188dcL, 0x527faacef66db74dL, "hint");
-    /*package*/ static final SContainmentLink hints$M21Z = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3ae0865e9a712712L, 0x3ae0865e9a71295bL, "hints");
+    /*package*/ static final SReferenceLink hint$AS0G = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5eadaecad41188dcL, 0x527faacef66db74dL, "hint");
+    /*package*/ static final SContainmentLink hints$eYXx = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3ae0865e9a712712L, 0x3ae0865e9a71295bL, "hints");
   }
 }

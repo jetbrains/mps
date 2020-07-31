@@ -21,7 +21,7 @@ public class typeof_Node_ReplaceWithAnotherOperation_InferenceRule extends Abstr
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.replacementNode$ppEQ);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.replacementNode$jrKa);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1206488011466", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1206488003353", true), (SNode) _quotation_createNode_wjy3ci_a1a0c0a0b(), false, true, _info_12389875345);
     }
@@ -29,7 +29,7 @@ public class typeof_Node_ReplaceWithAnotherOperation_InferenceRule extends Abstr
     {
       SNode _nodeToCheck_1029348928467 = op;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1225408872682", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1225408872689", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(op, LINKS.replacementNode$ppEQ), "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1225408872684", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1225408872689", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(op, LINKS.replacementNode$jrKa), "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1225408872684", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -49,7 +49,7 @@ public class typeof_Node_ReplaceWithAnotherOperation_InferenceRule extends Abstr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink replacementNode$ppEQ = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10975273750L, 0x10975279575L, "replacementNode");
+    /*package*/ static final SContainmentLink replacementNode$jrKa = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10975273750L, 0x10975279575L, "replacementNode");
   }
 
   private static final class CONCEPTS {

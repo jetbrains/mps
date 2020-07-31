@@ -23,10 +23,10 @@ public class check_TransformationMenuPart_PropertyMenu_NonTypesystemRule extends
   public check_TransformationMenuPart_PropertyMenu_NonTypesystemRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((boolean) PropertyDeclaration__BehaviorDescriptor.isPrimitiveInteger_idhT23WS5.invoke(SLinkOperations.getTarget(node, LINKS.property$gmE0)) || (boolean) PropertyDeclaration__BehaviorDescriptor.isPrimitiveString_idhT22swA.invoke(SLinkOperations.getTarget(node, LINKS.property$gmE0))) {
+    if ((boolean) PropertyDeclaration__BehaviorDescriptor.isPrimitiveInteger_idhT23WS5.invoke(SLinkOperations.getTarget(node, LINKS.property$UYm0)) || (boolean) PropertyDeclaration__BehaviorDescriptor.isPrimitiveString_idhT22swA.invoke(SLinkOperations.getTarget(node, LINKS.property$UYm0))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(node, "default menu for the " + SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.property$gmE0), LINKS.dataType$fLUl), PROPS.name$tAp1) + " property is empty", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "7183412641840408655", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(node, "default menu for the " + SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.property$UYm0), LINKS.dataType$Dbgb), PROPS.name$lA7v) + " property is empty", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "7183412641840408655", null, errorTarget);
       }
     }
   }
@@ -41,12 +41,12 @@ public class check_TransformationMenuPart_PropertyMenu_NonTypesystemRule extends
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink property$gmE0 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2717714f9c03978cL, 0x2717714f9c03978dL, "property");
-    /*package*/ static final SReferenceLink dataType$fLUl = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SReferenceLink property$UYm0 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2717714f9c03978cL, 0x2717714f9c03978dL, "property");
+    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

@@ -86,7 +86,7 @@ public class Numeric_Substitute extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.NumericConstant$so, null);
-        SPropertyOperations.assign(result, PROPS.value$bFYb, Integer.parseInt(pattern));
+        SPropertyOperations.assign(result, PROPS.value$Ej7l, Integer.parseInt(pattern));
         return result;
       }
 
@@ -110,6 +110,6 @@ public class Numeric_Substitute extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$bFYb = MetaAdapterFactory.getProperty(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dd5L, 0x37d11ba7d7ee2dd6L, "value");
+    /*package*/ static final SProperty value$Ej7l = MetaAdapterFactory.getProperty(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dd5L, 0x37d11ba7d7ee2dd6L, "value");
   }
 }

@@ -30,24 +30,24 @@ public class check_Root_MappingRule_NonTypesystemRule extends AbstractNonTypesys
   public check_Root_MappingRule_NonTypesystemRule() {
   }
   public void applyRule(final SNode rule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode template = SLinkOperations.getTarget(rule, LINKS.template$FjUa);
+    SNode template = SLinkOperations.getTarget(rule, LINKS.template$YDaQ);
     if ((template != null)) {
       SNode attrib = AttributeOperations.getAttribute(template, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$u8));
       if ((attrib != null)) {
-        SNode templateApplicableConcept = SLinkOperations.getTarget(SNodeOperations.cast(attrib, CONCEPTS.RootTemplateAnnotation$u8), LINKS.applicableConcept$jo4f);
-        SNode ruleApplicableConcept = SLinkOperations.getTarget(rule, LINKS.applicableConcept$ljwo);
+        SNode templateApplicableConcept = SLinkOperations.getTarget(SNodeOperations.cast(attrib, CONCEPTS.RootTemplateAnnotation$u8), LINKS.applicableConcept$oE3h);
+        SNode ruleApplicableConcept = SLinkOperations.getTarget(rule, LINKS.applicableConcept$ksFC);
         if ((ruleApplicableConcept != null) && (templateApplicableConcept != null)) {
           if (!((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(ruleApplicableConcept, templateApplicableConcept))) {
             {
               final MessageTarget errorTarget = new NodeMessageTarget();
-              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(rule, "template is not applicable to the rule concept '" + SPropertyOperations.getString(ruleApplicableConcept, PROPS.name$tAp1) + "'", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "7260186302264332407", null, errorTarget);
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(rule, "template is not applicable to the rule concept '" + SPropertyOperations.getString(ruleApplicableConcept, PROPS.name$lA7v) + "'", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "7260186302264332407", null, errorTarget);
             }
           }
         }
       } else {
         {
-          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.template$FjUa);
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(rule, String.format("Root template %s misses annotation", (SNodeOperations.isInstanceOf(template, CONCEPTS.INamedConcept$nV) ? SPropertyOperations.getString(SNodeOperations.cast(template, CONCEPTS.INamedConcept$nV), PROPS.name$tAp1) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(template))), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "7312097483936371789", null, errorTarget);
+          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.template$YDaQ);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(rule, String.format("Root template %s misses annotation", (SNodeOperations.isInstanceOf(template, CONCEPTS.INamedConcept$nV) ? SPropertyOperations.getString(SNodeOperations.cast(template, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(template))), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "7312097483936371789", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.FixRootTemplateAnnotation_QuickFix", false);
             intentionProvider.putArgument("rule", rule);
@@ -56,9 +56,9 @@ public class check_Root_MappingRule_NonTypesystemRule extends AbstractNonTypesys
         }
       }
     }
-    if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(rule, LINKS.applicableConcept$ljwo), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591161"))) {
+    if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(rule, LINKS.applicableConcept$ksFC), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591161"))) {
       {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.applicableConcept$ljwo);
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.applicableConcept$ksFC);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(rule, "Attributes are unlikely to be roots of a model", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "2826485732397633059", null, errorTarget);
       }
     }
@@ -74,9 +74,9 @@ public class check_Root_MappingRule_NonTypesystemRule extends AbstractNonTypesys
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink template$FjUa = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fd54746dbL, 0x10fd54746ddL, "template");
-    /*package*/ static final SReferenceLink applicableConcept$jo4f = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept");
-    /*package*/ static final SReferenceLink applicableConcept$ljwo = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
+    /*package*/ static final SReferenceLink template$YDaQ = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fd54746dbL, 0x10fd54746ddL, "template");
+    /*package*/ static final SReferenceLink applicableConcept$oE3h = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$ksFC = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
   }
 
   private static final class CONCEPTS {
@@ -86,6 +86,6 @@ public class check_Root_MappingRule_NonTypesystemRule extends AbstractNonTypesys
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -20,7 +20,7 @@ public class VarType_TextGen extends TextGenDescriptorBase {
     SNode type = null;
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(ctx.getPrimaryInput()), CONCEPTS.VariableDeclaration$xe)) {
       SNode parent = SNodeOperations.cast(SNodeOperations.getParent(ctx.getPrimaryInput()), CONCEPTS.VariableDeclaration$xe);
-      type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(parent, LINKS.initializer$KgD));
+      type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(parent, LINKS.initializer$no3R));
     }
     if ((type == null)) {
       tgs.append("???");
@@ -34,6 +34,6 @@ public class VarType_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 }

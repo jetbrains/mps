@@ -116,7 +116,7 @@ public class MoneyMethods_Contribution extends TransformationMenuBase {
         if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), CONCEPTS.MoneyType$Dd)) {
           SNode mgcmc = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.MoneyGetCurrencyMethodCall$eI, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), mgcmc);
-          SLinkOperations.setTarget(mgcmc, LINKS.instance$VRCO, _context.getNode());
+          SLinkOperations.setTarget(mgcmc, LINKS.instance$ZWLc, _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), mgcmc, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
           return;
         }
@@ -187,7 +187,7 @@ public class MoneyMethods_Contribution extends TransformationMenuBase {
         if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), CONCEPTS.MoneyType$Dd)) {
           SNode mgcmc = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.MoneyIsZeroMethodCall$2V, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), mgcmc);
-          SLinkOperations.setTarget(mgcmc, LINKS.instance$VRCO, _context.getNode());
+          SLinkOperations.setTarget(mgcmc, LINKS.instance$ZWLc, _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), mgcmc, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
           return;
         }
@@ -258,7 +258,7 @@ public class MoneyMethods_Contribution extends TransformationMenuBase {
         if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), CONCEPTS.MoneyType$Dd)) {
           SNode mgcmc = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.MoneyGetAmountMethodCall$$J, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), mgcmc);
-          SLinkOperations.setTarget(mgcmc, LINKS.instance$VRCO, _context.getNode());
+          SLinkOperations.setTarget(mgcmc, LINKS.instance$ZWLc, _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), mgcmc, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
           return;
         }
@@ -297,6 +297,6 @@ public class MoneyMethods_Contribution extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink instance$VRCO = MetaAdapterFactory.getContainmentLink(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740b1673L, 0x114740fc5e3L, "instance");
+    /*package*/ static final SContainmentLink instance$ZWLc = MetaAdapterFactory.getContainmentLink(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740b1673L, 0x114740fc5e3L, "instance");
   }
 }

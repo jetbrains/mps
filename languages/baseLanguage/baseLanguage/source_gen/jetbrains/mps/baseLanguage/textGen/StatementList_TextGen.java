@@ -19,7 +19,7 @@ public class StatementList_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.createScopeInfo();
-    for (SNode stmt : ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.statement$WHn8))) {
+    for (SNode stmt : ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.statement$pYcS))) {
       tgs.appendNode(stmt);
     }
     if (tgs.needPositions()) {
@@ -28,7 +28,7 @@ public class StatementList_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 
   private static final class CONCEPTS {

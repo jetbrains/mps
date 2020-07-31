@@ -32,7 +32,7 @@ public final class DefaultParameterConverter__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static SNode getParameterType_id4rKp80ZJrgq(@NotNull SNode __thisNode__) {
-    return SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.parameterType$lCCX));
+    return SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.parameterType$uFPz));
   }
 
   /*package*/ DefaultParameterConverter__BehaviorDescriptor() {
@@ -82,6 +82,6 @@ public final class DefaultParameterConverter__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameterType$lCCX = MetaAdapterFactory.getContainmentLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x46f064803fbdcb2eL, 0x46f064803fbdcb48L, "parameterType");
+    /*package*/ static final SContainmentLink parameterType$uFPz = MetaAdapterFactory.getContainmentLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x46f064803fbdcb2eL, 0x46f064803fbdcb48L, "parameterType");
   }
 }

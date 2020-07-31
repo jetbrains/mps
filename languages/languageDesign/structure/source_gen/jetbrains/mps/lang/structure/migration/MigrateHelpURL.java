@@ -50,12 +50,12 @@ public class MigrateHelpURL extends MigrationScriptBase {
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AbstractConceptDeclaration$UN, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return isNotEmptyString(SPropertyOperations.getString(it, PROPS.oldHelpURL$mV4u));
+          return isNotEmptyString(SPropertyOperations.getString(it, PROPS.oldHelpURL$6Bay));
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SLinkOperations.setTarget(it, LINKS.helpURL$Xrma, _quotation_createNode_glsjld_a0a0a0a0a0a6(SPropertyOperations.getString(it, PROPS.oldHelpURL$mV4u)));
-          SPropertyOperations.assign(it, PROPS.oldHelpURL$mV4u, null);
+          SLinkOperations.setTarget(it, LINKS.helpURL$KfIQ, _quotation_createNode_glsjld_a0a0a0a0a0a6(SPropertyOperations.getString(it, PROPS.oldHelpURL$6Bay)));
+          SPropertyOperations.assign(it, PROPS.oldHelpURL$6Bay, null);
         }
       });
     }
@@ -72,7 +72,7 @@ public class MigrateHelpURL extends MigrationScriptBase {
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AbstractConceptDeclaration$UN, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return isNotEmptyString(SPropertyOperations.getString(it, PROPS.oldHelpURL$mV4u));
+          return isNotEmptyString(SPropertyOperations.getString(it, PROPS.oldHelpURL$6Bay));
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
@@ -101,10 +101,10 @@ public class MigrateHelpURL extends MigrationScriptBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty oldHelpURL$mV4u = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x2237c3bc85b3755cL, "oldHelpURL");
+    /*package*/ static final SProperty oldHelpURL$6Bay = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x2237c3bc85b3755cL, "oldHelpURL");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink helpURL$Xrma = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x18b475a713ca55fbL, "helpURL");
+    /*package*/ static final SContainmentLink helpURL$KfIQ = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x18b475a713ca55fbL, "helpURL");
   }
 }

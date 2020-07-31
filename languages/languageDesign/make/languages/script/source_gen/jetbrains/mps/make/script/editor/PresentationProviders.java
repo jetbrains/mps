@@ -14,18 +14,18 @@ public class PresentationProviders {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return SPropertyOperations.getString(targetNode, PROPS.workName$ILmr);
+      return SPropertyOperations.getString(targetNode, PROPS.workName$DTR5);
     }
   };
   public static final IReferentPresentationProvider PRESENTATION_c3e6b4_a0a1a = new IReferentPresentationProvider() {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return SPropertyOperations.getString(targetNode, PROPS.workName$ILmr);
+      return SPropertyOperations.getString(targetNode, PROPS.workName$DTR5);
     }
   };
 
   private static final class PROPS {
-    /*package*/ static final SProperty workName$ILmr = MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6982L, 0x97a1ce11865e911L, "workName");
+    /*package*/ static final SProperty workName$DTR5 = MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6982L, 0x97a1ce11865e911L, "workName");
   }
 }

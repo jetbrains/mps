@@ -12,13 +12,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class replace_sequence_type {
   public static class NodeFactory_7246115176735615123 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SNodeFactoryOperations.setNewChild(newNode, LINKS.elementType$2gFy, null);
+      SNodeFactoryOperations.setNewChild(newNode, LINKS.elementType$655u, null);
       CollectionTypeCreationUtil.extractSequenceElementType(newNode, sampleNode);
     }
   }
   public static class NodeFactory_7886927014685056895 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SNodeFactoryOperations.setNewChild(newNode, LINKS.elementType$B4nw, null);
+      SNodeFactoryOperations.setNewChild(newNode, LINKS.elementType$V7ow, null);
       CollectionTypeCreationUtil.extractAbstractContainerElementType(newNode, sampleNode);
     }
   }
@@ -34,7 +34,7 @@ public class replace_sequence_type {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$2gFy = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
-    /*package*/ static final SContainmentLink elementType$B4nw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf8c39bL, 0x4eec26fcbaf8c39cL, "elementType");
+    /*package*/ static final SContainmentLink elementType$655u = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
+    /*package*/ static final SContainmentLink elementType$V7ow = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf8c39bL, 0x4eec26fcbaf8c39cL, "elementType");
   }
 }

@@ -23,24 +23,24 @@ public class check_EditorComponentDeclaration_concept_NonTypesystemRule extends 
   public check_EditorComponentDeclaration_concept_NonTypesystemRule() {
   }
   public void applyRule(final SNode editorComponentDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SLinkOperations.getTarget(editorComponentDeclaration, LINKS.conceptDeclaration$sbgS) == null) {
-      if (!(SLinkOperations.getTarget(editorComponentDeclaration, LINKS.overridenEditorComponent$GNSC) != null)) {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.conceptDeclaration$sbgS);
+    if (SLinkOperations.getTarget(editorComponentDeclaration, LINKS.conceptDeclaration$Dtb8) == null) {
+      if (!(SLinkOperations.getTarget(editorComponentDeclaration, LINKS.overridenEditorComponent$H8ro) != null)) {
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.conceptDeclaration$Dtb8);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(editorComponentDeclaration, "Concept declaration should be specified", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "147073787666675127", null, errorTarget);
       }
-      if (SLinkOperations.getTarget(editorComponentDeclaration, LINKS.overridenEditorComponent$GNSC) != null) {
-        if (!(ListSequence.fromList(SLinkOperations.getChildren(editorComponentDeclaration, LINKS.contextHints$gwQx)).isNotEmpty())) {
-          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.contextHints$gwQx);
+      if (SLinkOperations.getTarget(editorComponentDeclaration, LINKS.overridenEditorComponent$H8ro) != null) {
+        if (!(ListSequence.fromList(SLinkOperations.getChildren(editorComponentDeclaration, LINKS.contextHints$ZUpZ)).isNotEmpty())) {
+          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.contextHints$ZUpZ);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(editorComponentDeclaration, "Either additional \"applicable in context\" condition or more specific \" applicable concept\" should be specified in overriding editor component", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "147073787667024251", null, errorTarget);
         }
       }
       return;
     }
 
-    SNode overridenEditorConceptDeclaration = SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(editorComponentDeclaration, LINKS.overridenEditorComponent$GNSC), LINKS.editorComponent$okXt), LINKS.conceptDeclaration$sbgS);
+    SNode overridenEditorConceptDeclaration = SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(editorComponentDeclaration, LINKS.overridenEditorComponent$H8ro), LINKS.editorComponent$M9L3), LINKS.conceptDeclaration$Dtb8);
     if (overridenEditorConceptDeclaration != null) {
-      if (!((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(editorComponentDeclaration, LINKS.conceptDeclaration$sbgS), overridenEditorConceptDeclaration))) {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.conceptDeclaration$sbgS);
+      if (!((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(editorComponentDeclaration, LINKS.conceptDeclaration$Dtb8), overridenEditorConceptDeclaration))) {
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.conceptDeclaration$Dtb8);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(editorComponentDeclaration, "Specified applicable concept is not subconcept of applicable concept specified in overriden editor", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "294197224123710838", null, errorTarget);
       }
     }
@@ -56,10 +56,10 @@ public class check_EditorComponentDeclaration_concept_NonTypesystemRule extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$sbgS = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
-    /*package*/ static final SContainmentLink overridenEditorComponent$GNSC = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, 0x619d955714550434L, "overridenEditorComponent");
-    /*package*/ static final SContainmentLink contextHints$gwQx = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, 0x65fc2f4f98189976L, "contextHints");
-    /*package*/ static final SReferenceLink editorComponent$okXt = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x619d95571435dfe8L, 0x619d95571435e249L, "editorComponent");
+    /*package*/ static final SReferenceLink conceptDeclaration$Dtb8 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
+    /*package*/ static final SContainmentLink overridenEditorComponent$H8ro = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, 0x619d955714550434L, "overridenEditorComponent");
+    /*package*/ static final SContainmentLink contextHints$ZUpZ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, 0x65fc2f4f98189976L, "contextHints");
+    /*package*/ static final SReferenceLink editorComponent$M9L3 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x619d95571435dfe8L, 0x619d95571435e249L, "editorComponent");
   }
 
   private static final class CONCEPTS {

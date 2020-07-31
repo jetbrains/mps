@@ -39,7 +39,7 @@ public final class FigureParameterMapping__BehaviorDescriptor extends BaseBHDesc
     return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.CellModel_DiagramNode$Ry);
   }
   /*package*/ static SNode getParameterDeclaration_id3$rM_t_1zAw(@NotNull SNode __thisNode__) {
-    return (SNode) AbstractFigureReference__BehaviorDescriptor.getFigureParameter_id1iN4mn3oxt8.invoke(SLinkOperations.getTarget(FigureParameterMapping__BehaviorDescriptor.getDiagramNodeCell_id1iN4mn3k5m3.invoke(__thisNode__), LINKS.figure$dCMb), SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1));
+    return (SNode) AbstractFigureReference__BehaviorDescriptor.getFigureParameter_id1iN4mn3oxt8.invoke(SLinkOperations.getTarget(FigureParameterMapping__BehaviorDescriptor.getDiagramNodeCell_id1iN4mn3k5m3.invoke(__thisNode__), LINKS.figure$AKjl), SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v));
   }
 
   /*package*/ FigureParameterMapping__BehaviorDescriptor() {
@@ -95,10 +95,10 @@ public final class FigureParameterMapping__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink figure$dCMb = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, 0xf301bf106a329d9L, "figure");
+    /*package*/ static final SContainmentLink figure$AKjl = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, 0xf301bf106a329d9L, "figure");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

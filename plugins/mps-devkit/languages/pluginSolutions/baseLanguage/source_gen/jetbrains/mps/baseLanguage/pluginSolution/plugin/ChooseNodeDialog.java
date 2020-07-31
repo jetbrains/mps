@@ -116,7 +116,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         })))) {
           ModelTreeNode modelRootTreeNode = ModelTreeBuilder.createSNodeTreeNode(nextRoot);
           modelRootTreeNode.setLeafPosition(true);
-          ModelTreeBuilder.insertChildSNodeTreeNode(node, modelRootTreeNode, SPropertyOperations.getString(nextRoot, PROPS.virtualPackage$j19t));
+          ModelTreeBuilder.insertChildSNodeTreeNode(node, modelRootTreeNode, SPropertyOperations.getString(nextRoot, PROPS.virtualPackage$dz_3));
         }
 
         notifyNodeStructureChanged(node);
@@ -151,7 +151,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty virtualPackage$j19t = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 
   private static final class CONCEPTS {

@@ -50,7 +50,7 @@ public final class MigrateEnumPropertyAttributes_MigrationScript extends BaseMig
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SPropertyOperations.assign(node, PROPS.enumUsageMigrated$lY$m, true);
+        SPropertyOperations.assign(node, PROPS.enumUsageMigrated$DjAE, true);
       }
       @Override
       public boolean isShowAsIntention() {
@@ -71,6 +71,6 @@ public final class MigrateEnumPropertyAttributes_MigrationScript extends BaseMig
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty enumUsageMigrated$lY$m = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x1081af3d7e9d6a2fL, "enumUsageMigrated");
+    /*package*/ static final SProperty enumUsageMigrated$DjAE = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x1081af3d7e9d6a2fL, "enumUsageMigrated");
   }
 }

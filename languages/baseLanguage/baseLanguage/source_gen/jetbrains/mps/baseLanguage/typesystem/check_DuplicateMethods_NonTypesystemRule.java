@@ -37,7 +37,7 @@ public class check_DuplicateMethods_NonTypesystemRule extends AbstractNonTypesys
     for (final SNode ownMethod : ownMethods) {
       Iterable<SNode> ownDuplicates = ListSequence.fromList(Classifier__BehaviorDescriptor.getOwnMethods_id1DPgsAlM_WC.invoke(classifier)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), SPropertyOperations.getString(ownMethod, PROPS.name$tAp1));
+          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), SPropertyOperations.getString(ownMethod, PROPS.name$lA7v));
         }
       });
       if (Sequence.fromIterable(ownDuplicates).count() > 1) {
@@ -46,7 +46,7 @@ public class check_DuplicateMethods_NonTypesystemRule extends AbstractNonTypesys
 
       Iterable<SNode> namesakes = Sequence.fromIterable(methods).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), SPropertyOperations.getString(ownMethod, PROPS.name$tAp1));
+          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), SPropertyOperations.getString(ownMethod, PROPS.name$lA7v));
         }
       });
       if (Sequence.fromIterable(namesakes).count() < 2) {
@@ -73,6 +73,6 @@ public class check_DuplicateMethods_NonTypesystemRule extends AbstractNonTypesys
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

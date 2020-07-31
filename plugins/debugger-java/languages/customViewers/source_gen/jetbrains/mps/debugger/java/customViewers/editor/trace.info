@@ -267,11 +267,11 @@
       <node id="43370322128311462" at="224,94,225,47" concept="2" />
       <node id="43370322128311462" at="225,47,226,34" concept="2" />
       <node id="43370322128311462" at="226,34,227,22" concept="7" />
-      <node id="43370322128311453" at="231,0,232,0" concept="9" trace="watchable$tXZ8" />
-      <node id="43370322128311453" at="232,0,233,0" concept="9" trace="value$wHvM" />
+      <node id="43370322128311453" at="231,0,232,0" concept="9" trace="watchable$x1$S" />
+      <node id="43370322128311453" at="232,0,233,0" concept="9" trace="value$Q2pe" />
       <node id="43370322128311453" at="236,0,237,0" concept="9" trace="LinkAttribute$7j" />
       <node id="43370322128311453" at="237,0,238,0" concept="9" trace="PropertyAttribute$jT" />
-      <node id="43370322128311453" at="241,0,242,0" concept="9" trace="name$tAp1" />
+      <node id="43370322128311453" at="241,0,242,0" concept="9" trace="name$lA7v" />
       <node id="43370322128311453" at="45,0,47,0" concept="3" trace="myNode" />
       <node id="43370322128311458" at="116,0,118,0" concept="3" trace="myNode" />
       <node id="43370322128311453" at="173,0,175,0" concept="3" trace="myNode" />
@@ -637,13 +637,13 @@
       <node id="43370322128323844" at="428,35,429,26" concept="7" />
       <node id="43370322128323844" at="430,17,431,42" concept="2" />
       <node id="43370322128323844" at="434,40,435,34" concept="7" />
-      <node id="43370322128323844" at="440,0,441,0" concept="9" trace="name$tAp1" />
-      <node id="43370322128323844" at="441,0,442,0" concept="9" trace="caption$Ac1C" />
+      <node id="43370322128323844" at="440,0,441,0" concept="9" trace="name$lA7v" />
+      <node id="43370322128323844" at="441,0,442,0" concept="9" trace="caption$vOMo" />
       <node id="43370322128323844" at="445,0,446,0" concept="9" trace="PropertyAttribute$jT" />
-      <node id="43370322128323844" at="449,0,450,0" concept="9" trace="valueType$Xd$1" />
-      <node id="43370322128323844" at="450,0,451,0" concept="9" trace="canWrap$M1sO" />
-      <node id="43370322128323844" at="451,0,452,0" concept="9" trace="getPresentation$M8rT" />
-      <node id="43370322128323844" at="452,0,453,0" concept="9" trace="getWatchables$M8so" />
+      <node id="43370322128323844" at="449,0,450,0" concept="9" trace="valueType$D$sv" />
+      <node id="43370322128323844" at="450,0,451,0" concept="9" trace="canWrap$eGXc" />
+      <node id="43370322128323844" at="451,0,452,0" concept="9" trace="getPresentation$i5wB" />
+      <node id="43370322128323844" at="452,0,453,0" concept="9" trace="getWatchables$i5JC" />
       <node id="43370322128323844" at="43,0,45,0" concept="3" trace="myNode" />
       <node id="43370322128323844" at="187,0,189,0" concept="3" trace="myNode" />
       <node id="43370322128323844" at="254,0,256,0" concept="3" trace="myNode" />
@@ -1077,8 +1077,8 @@
       <node id="1304546202458966386" at="209,111,210,48" concept="2" />
       <node id="1304546202458966386" at="210,48,211,34" concept="2" />
       <node id="1304546202458966386" at="211,34,212,22" concept="7" />
-      <node id="5117350825036235733" at="216,0,217,0" concept="9" trace="name$tAp1" />
-      <node id="5117350825036235733" at="217,0,218,0" concept="9" trace="iconPath$FJlV" />
+      <node id="5117350825036235733" at="216,0,217,0" concept="9" trace="name$lA7v" />
+      <node id="5117350825036235733" at="217,0,218,0" concept="9" trace="iconPath$bVB_" />
       <node id="5117350825036235733" at="221,0,222,0" concept="9" trace="PropertyAttribute$jT" />
       <node id="5117350825036235733" at="43,0,45,0" concept="3" trace="myNode" />
       <node id="5117350825036235733" at="137,10,139,5" concept="0" />
@@ -1303,10 +1303,10 @@
       <node id="5117350825036256319" at="182,34,183,69" concept="2" />
       <node id="5117350825036256319" at="183,69,184,146" concept="2" />
       <node id="5117350825036256319" at="188,34,189,91" concept="2" />
-      <node id="5117350825036256319" at="196,0,197,0" concept="9" trace="name$tAp1" />
+      <node id="5117350825036256319" at="196,0,197,0" concept="9" trace="name$lA7v" />
       <node id="5117350825036256319" at="200,0,201,0" concept="9" trace="PropertyAttribute$jT" />
       <node id="5117350825036256319" at="201,0,202,0" concept="9" trace="CustomWatchable$t1" />
-      <node id="5117350825036256319" at="205,0,206,0" concept="9" trace="watchable$gv$w" />
+      <node id="5117350825036256319" at="205,0,206,0" concept="9" trace="watchable$ZiFw" />
       <node id="5117350825036256319" at="45,0,47,0" concept="3" trace="myNode" />
       <node id="5117350825036256319" at="128,0,130,0" concept="3" trace="myNode" />
       <node id="5117350825036256319" at="59,0,62,0" concept="5" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />

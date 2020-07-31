@@ -55,7 +55,7 @@ public final class ConvertToMethodFQNameSpecification_Intention extends Abstract
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode methodSpecification = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.FQNameMethodSpecification$xL);
-      SPropertyOperations.assign(methodSpecification, PROPS.snodeId$bdg2, SLinkOperations.getTarget(node, LINKS.methodDeclaration$4Hf0).getNodeId().toString());
+      SPropertyOperations.assign(methodSpecification, PROPS.snodeId$rqKY, SLinkOperations.getTarget(node, LINKS.methodDeclaration$hUh0).getNodeId().toString());
       SNodeOperations.deleteNode(node);
     }
     @Override
@@ -69,10 +69,10 @@ public final class ConvertToMethodFQNameSpecification_Intention extends Abstract
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty snodeId$bdg2 = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4243146ba1b412e3L, 0x1fcdfeb518d2fe29L, "snodeId");
+    /*package*/ static final SProperty snodeId$rqKY = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4243146ba1b412e3L, 0x1fcdfeb518d2fe29L, "snodeId");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink methodDeclaration$4Hf0 = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x1fcdfeb518c43583L, 0x1fcdfeb518c43c59L, "methodDeclaration");
+    /*package*/ static final SReferenceLink methodDeclaration$hUh0 = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x1fcdfeb518c43583L, 0x1fcdfeb518c43c59L, "methodDeclaration");
   }
 }

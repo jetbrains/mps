@@ -111,7 +111,7 @@ public class SideTransformApplication extends TransformationMenuBase {
       public void execute(@NotNull String pattern) {
         SNode application = SNodeFactoryOperations.createNewNode(CONCEPTS.LambdaApplication$Er, null);
         SNodeOperations.replaceWithAnother(_context.getNode(), application);
-        SLinkOperations.setTarget(application, LINKS.function$bGdD, _context.getNode());
+        SLinkOperations.setTarget(application, LINKS.function$EqAR, _context.getNode());
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), application, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
@@ -145,6 +145,6 @@ public class SideTransformApplication extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink function$bGdD = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dddL, 0x37d11ba7d7ee2de0L, "function");
+    /*package*/ static final SContainmentLink function$EqAR = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dddL, 0x37d11ba7d7ee2de0L, "function");
   }
 }

@@ -18,7 +18,7 @@ public class typeof_SPropertyAccess_InferenceRule extends AbstractInferenceRule_
   public typeof_SPropertyAccess_InferenceRule() {
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode dataType = SLinkOperations.getTarget(SLinkOperations.getTarget(op, LINKS.property$He2), LINKS.dataType$fLUl);
+    SNode dataType = SLinkOperations.getTarget(SLinkOperations.getTarget(op, LINKS.property$lTMY), LINKS.dataType$Dbgb);
     if (dataType != null) {
       {
         SNode _nodeToCheck_1029348928467 = op;
@@ -38,8 +38,8 @@ public class typeof_SPropertyAccess_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink property$He2 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
-    /*package*/ static final SReferenceLink dataType$fLUl = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SReferenceLink property$lTMY = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
+    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
   }
 
   private static final class CONCEPTS {

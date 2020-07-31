@@ -43,7 +43,7 @@ public final class ReplaceBlockWithItsContent_Intention extends AbstractIntentio
     boolean applicable = false;
     SContainmentLink containmentLink = node.getContainmentLink();
     if (containmentLink != null && SConceptOperations.isSuperConceptOf(SNodeOperations.asSConcept(CONCEPTS.Statement$ok), SNodeOperations.asSConcept((SAbstractConcept) containmentLink.getTargetConcept()))) {
-      int statementsCount = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.statements$uqR0), LINKS.statement$WHn8)).count();
+      int statementsCount = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.statements$J0D0), LINKS.statement$pYcS)).count();
       switch (statementsCount) {
         case 0:
           applicable = containmentLink.isOptional();
@@ -77,7 +77,7 @@ public final class ReplaceBlockWithItsContent_Intention extends AbstractIntentio
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      List<SNode> statements = SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.statements$uqR0), LINKS.statement$WHn8);
+      List<SNode> statements = SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.statements$J0D0), LINKS.statement$pYcS);
       for (SNode statement : ListSequence.fromList(statements)) {
         SNodeOperations.insertPrevSiblingChild(node, statement);
       }
@@ -90,8 +90,8 @@ public final class ReplaceBlockWithItsContent_Intention extends AbstractIntentio
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statements$uqR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statements$J0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 
   private static final class CONCEPTS {

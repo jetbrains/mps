@@ -38,7 +38,7 @@ public final class BuildMpsLayout_FolderWithSources__BehaviorDescriptor extends 
   }
 
   /*package*/ static boolean reexportsFromJar_id5bqm540K$Gb(@NotNull SNode __thisNode__, Object o) {
-    return o == SLinkOperations.getTarget(__thisNode__, LINKS.module$POCw);
+    return o == SLinkOperations.getTarget(__thisNode__, LINKS.module$4vBw);
   }
   /*package*/ static String getChildrenOutputDir_WithMacro_id450ejGzh8bb(@NotNull SNode __thisNode__, Context context) {
     return (String) BuildLayout_Container__BehaviorDescriptor.getChildrenOutputDir_WithMacro_id450ejGzh8bb.invoke(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildLayout_Container$WW), context);
@@ -103,7 +103,7 @@ public final class BuildMpsLayout_FolderWithSources__BehaviorDescriptor extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink module$POCw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x177c2feaf3463710L, 0x177c2feaf3463711L, "module");
+    /*package*/ static final SReferenceLink module$4vBw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x177c2feaf3463710L, 0x177c2feaf3463711L, "module");
   }
 
   private static final class CONCEPTS {

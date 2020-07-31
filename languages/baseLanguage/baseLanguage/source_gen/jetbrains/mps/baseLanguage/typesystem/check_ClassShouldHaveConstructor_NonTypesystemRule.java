@@ -28,8 +28,8 @@ public class check_ClassShouldHaveConstructor_NonTypesystemRule extends Abstract
   public void applyRule(final SNode classConcept, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!((SNodeOperations.isInstanceOf(classConcept, CONCEPTS.IAnonymousClass$hQ) || SNodeOperations.isInstanceOf(classConcept, CONCEPTS.EnumClass$uy)))) {
       if (!(!(DefaultConstructorUtils.missesDefaultConstructor(classConcept)))) {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classConcept, "There is no default constructor available in super class " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(classConcept, LINKS.superclass$_pqe), LINKS.classifier$pQ_R)), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8974945326827961340", null, errorTarget);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classConcept, "There is no default constructor available in super class " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(classConcept, LINKS.superclass$7jGM), LINKS.classifier$xslD)), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8974945326827961340", null, errorTarget);
       }
     }
   }
@@ -44,12 +44,12 @@ public class check_ClassShouldHaveConstructor_NonTypesystemRule extends Abstract
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

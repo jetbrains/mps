@@ -34,7 +34,7 @@ public class RulesBlock_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.kind$ipQZ, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.kind$UxCx, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -51,11 +51,11 @@ public class RulesBlock_Constraints extends BaseConstraintsDescriptor {
           public Scope createScope(final ReferenceConstraintsContext _context) {
             ModelPlusImportedScope scope = new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, CONCEPTS.RuleKind$RI);
             final SNode myBlock = _context.getContextNode();
-            final Iterable<SNode> excludeThem = SLinkOperations.collect(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.RulesConstraintsRoot$xz, true, false), LINKS.block$aYuw), CONCEPTS.RulesBlock$2N)).where(new IWhereFilter<SNode>() {
+            final Iterable<SNode> excludeThem = SLinkOperations.collect(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.RulesConstraintsRoot$xz, true, false), LINKS.block$kgLw), CONCEPTS.RulesBlock$2N)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
                 return !(Objects.equals(it, myBlock));
               }
-            }), LINKS.kind$ipQZ);
+            }), LINKS.kind$UxCx);
             return new FilteringScope(scope) {
               @Override
               public boolean isExcluded(SNode node) {
@@ -79,7 +79,7 @@ public class RulesBlock_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink kind$ipQZ = MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, 0x19eb8590edb5174cL, "kind");
-    /*package*/ static final SContainmentLink block$aYuw = MetaAdapterFactory.getContainmentLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, 0x19eb8590edaff8dbL, "block");
+    /*package*/ static final SReferenceLink kind$UxCx = MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, 0x19eb8590edb5174cL, "kind");
+    /*package*/ static final SContainmentLink block$kgLw = MetaAdapterFactory.getContainmentLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, 0x19eb8590edaff8dbL, "block");
   }
 }

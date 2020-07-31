@@ -21,7 +21,7 @@ public class typeof_OverloadedOpTypeRule_OneTypeSpecified_InferenceRule extends 
   }
   public void applyRule(final SNode rule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(rule, LINKS.operandType$KzK0);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(rule, LINKS.operandType$xkg0);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "8124453027370845370", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "8124453027370845375", true), (SNode) _quotation_createNode_qwtsrn_a1a0c0a0b(), false, true, _info_12389875345);
     }
@@ -43,7 +43,7 @@ public class typeof_OverloadedOpTypeRule_OneTypeSpecified_InferenceRule extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operandType$KzK0 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x70bfdafbb2c80edcL, 0x70bfdafbb2c944b6L, "operandType");
+    /*package*/ static final SContainmentLink operandType$xkg0 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x70bfdafbb2c80edcL, 0x70bfdafbb2c944b6L, "operandType");
   }
 
   private static final class CONCEPTS {

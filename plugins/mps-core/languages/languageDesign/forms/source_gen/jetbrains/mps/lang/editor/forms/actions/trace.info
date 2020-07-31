@@ -13,10 +13,10 @@
       <node id="5347446703373799119" at="18,91,19,129" concept="0" />
       <node id="5347446703373814562" at="23,91,24,71" concept="0" />
       <node id="5347446703373815100" at="24,71,25,70" concept="0" />
-      <node id="5347446703373799064" at="30,0,31,0" concept="2" trace="ui$tMUH" />
+      <node id="5347446703373799064" at="30,0,31,0" concept="2" trace="ui$rErN" />
       <node id="5347446703373799064" at="34,0,35,0" concept="2" trace="CheckboxUI_Text$p8" />
-      <node id="5347446703373799064" at="38,0,39,0" concept="2" trace="falseText$RxC7" />
-      <node id="5347446703373799064" at="39,0,40,0" concept="2" trace="trueText$RxsY" />
+      <node id="5347446703373799064" at="38,0,39,0" concept="2" trace="falseText$Tirp" />
+      <node id="5347446703373799064" at="39,0,40,0" concept="2" trace="trueText$Td22" />
       <node id="5347446703373799065" at="18,0,21,0" concept="1" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <node id="5347446703373814501" at="23,0,27,0" concept="1" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <scope id="5347446703373799065" at="18,91,19,129" />

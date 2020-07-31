@@ -17,11 +17,11 @@ public class RemoveAbstractFromTheMethod_QuickFix extends QuickFix_Runtime {
     return "Remove the 'abstract' modifier";
   }
   public void execute(SNode node) {
-    assert SPropertyOperations.getBoolean(((SNode) RemoveAbstractFromTheMethod_QuickFix.this.getField("conceptMethod")[0]), PROPS.isAbstract$6dnX);
-    SPropertyOperations.assign(((SNode) RemoveAbstractFromTheMethod_QuickFix.this.getField("conceptMethod")[0]), PROPS.isAbstract$6dnX, false);
+    assert SPropertyOperations.getBoolean(((SNode) RemoveAbstractFromTheMethod_QuickFix.this.getField("conceptMethod")[0]), PROPS.isAbstract$uAz);
+    SPropertyOperations.assign(((SNode) RemoveAbstractFromTheMethod_QuickFix.this.getField("conceptMethod")[0]), PROPS.isAbstract$uAz, false);
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isAbstract$6dnX = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480582L, "isAbstract");
+    /*package*/ static final SProperty isAbstract$uAz = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480582L, "isAbstract");
   }
 }

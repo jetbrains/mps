@@ -20,15 +20,15 @@ public class FixRootTemplateAnnotation_QuickFix extends QuickFix_Runtime {
     return "Fix root template annotation";
   }
   public void execute(SNode node) {
-    SNode template = SLinkOperations.getTarget(((SNode) FixRootTemplateAnnotation_QuickFix.this.getField("rule")[0]), LINKS.template$FjUa);
+    SNode template = SLinkOperations.getTarget(((SNode) FixRootTemplateAnnotation_QuickFix.this.getField("rule")[0]), LINKS.template$YDaQ);
     AttributeOperations.createAndSetAttrbiute(template, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$u8), CONCEPTS.RootTemplateAnnotation$u8);
-    SLinkOperations.setTarget(AttributeOperations.getAttribute(template, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$u8)), LINKS.applicableConcept$jo4f, SLinkOperations.getTarget(((SNode) FixRootTemplateAnnotation_QuickFix.this.getField("rule")[0]), LINKS.applicableConcept$ljwo));
+    SLinkOperations.setTarget(AttributeOperations.getAttribute(template, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$u8)), LINKS.applicableConcept$oE3h, SLinkOperations.getTarget(((SNode) FixRootTemplateAnnotation_QuickFix.this.getField("rule")[0]), LINKS.applicableConcept$ksFC));
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink template$FjUa = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fd54746dbL, 0x10fd54746ddL, "template");
-    /*package*/ static final SReferenceLink applicableConcept$jo4f = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept");
-    /*package*/ static final SReferenceLink applicableConcept$ljwo = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
+    /*package*/ static final SReferenceLink template$YDaQ = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fd54746dbL, 0x10fd54746ddL, "template");
+    /*package*/ static final SReferenceLink applicableConcept$oE3h = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$ksFC = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
   }
 
   private static final class CONCEPTS {

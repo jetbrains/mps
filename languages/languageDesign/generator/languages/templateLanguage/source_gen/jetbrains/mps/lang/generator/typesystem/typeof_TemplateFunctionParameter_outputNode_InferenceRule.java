@@ -34,9 +34,9 @@ public class typeof_TemplateFunctionParameter_outputNode_InferenceRule extends A
     }
     SNode mapperFunc;
     if (SNodeOperations.isInstanceOf(parentMacro, CONCEPTS.MapSrcNodeMacro$Hp)) {
-      mapperFunc = SLinkOperations.getTarget(SNodeOperations.cast(parentMacro, CONCEPTS.MapSrcNodeMacro$Hp), LINKS.mapperFunction$Y9oI);
+      mapperFunc = SLinkOperations.getTarget(SNodeOperations.cast(parentMacro, CONCEPTS.MapSrcNodeMacro$Hp), LINKS.mapperFunction$6yYi);
     } else {
-      mapperFunc = SLinkOperations.getTarget(SNodeOperations.cast(parentMacro, CONCEPTS.MapSrcListMacro$vC), LINKS.mapperFunction$11NP);
+      mapperFunc = SLinkOperations.getTarget(SNodeOperations.cast(parentMacro, CONCEPTS.MapSrcListMacro$vC), LINKS.mapperFunction$vS6F);
     }
     //  ---- 
     if (mapperFunc != null) {
@@ -85,7 +85,7 @@ public class typeof_TemplateFunctionParameter_outputNode_InferenceRule extends A
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink mapperFunction$Y9oI = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10759372d78L, 0x11094b2b653L, "mapperFunction");
-    /*package*/ static final SContainmentLink mapperFunction$11NP = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x107ce4fbf98L, 0x1109d5f7af9L, "mapperFunction");
+    /*package*/ static final SContainmentLink mapperFunction$6yYi = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10759372d78L, 0x11094b2b653L, "mapperFunction");
+    /*package*/ static final SContainmentLink mapperFunction$vS6F = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x107ce4fbf98L, 0x1109d5f7af9L, "mapperFunction");
   }
 }

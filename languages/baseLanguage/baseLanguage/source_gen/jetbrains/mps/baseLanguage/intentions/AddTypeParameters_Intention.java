@@ -38,7 +38,7 @@ public final class AddTypeParameters_Intention extends AbstractIntentionDescript
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeArgument$GDtv)).isEmpty() && !((SNodeOperations.isInstanceOf(node, CONCEPTS.LocalMethodCall$77)));
+    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeArgument$C5i1)).isEmpty() && !((SNodeOperations.isInstanceOf(node, CONCEPTS.LocalMethodCall$77)));
   }
   @Override
   public boolean isSurroundWith() {
@@ -59,7 +59,7 @@ public final class AddTypeParameters_Intention extends AbstractIntentionDescript
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNodeFactoryOperations.addNewChild(node, LINKS.typeArgument$GDtv, null);
+      SNodeFactoryOperations.addNewChild(node, LINKS.typeArgument$C5i1, null);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -72,6 +72,6 @@ public final class AddTypeParameters_Intention extends AbstractIntentionDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeArgument$GDtv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
+    /*package*/ static final SContainmentLink typeArgument$C5i1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
   }
 }

@@ -37,14 +37,14 @@ public final class BaseDocComment__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static boolean isTagSectionEmpty_id7lVCwDcz6WN(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.author$VPpR)).isEmpty() && (SLinkOperations.getTarget(__thisNode__, LINKS.deprecated$UGSR) == null) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.since$UGOw)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.version$UGOZ)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.see$fbTt)).isEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.author$YRxD)).isEmpty() && (SLinkOperations.getTarget(__thisNode__, LINKS.deprecated$rJyD) == null) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.since$rHrw)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.version$rHEx)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.see$mKP3)).isEmpty();
   }
   /*package*/ static boolean hasTags_id4iGwz$GSfd_(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.tags$LJD$)).isNotEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.tags$658s)).isNotEmpty();
   }
   /*package*/ static String getMessage_idhP43_8K(@NotNull SNode __thisNode__) {
-    SNode tag = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.tags$LJD$), CONCEPTS.DeprecatedBlockDocTag$ma)).first();
-    SNode line = SLinkOperations.getTarget(tag, LINKS.text$e7yL);
+    SNode tag = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.tags$658s), CONCEPTS.DeprecatedBlockDocTag$ma)).first();
+    SNode line = SLinkOperations.getTarget(tag, LINKS.text$PDPJ);
     return CommentLine__BehaviorDescriptor.buildCommentText_id7Qt73fl2z8k.invoke(line);
   }
 
@@ -99,13 +99,13 @@ public final class BaseDocComment__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink see$fbTt = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x1ec532ec252df7ddL, "see");
-    /*package*/ static final SContainmentLink author$VPpR = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4a3c146b7faeeb32L, "author");
-    /*package*/ static final SContainmentLink deprecated$UGSR = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96bL, "deprecated");
-    /*package*/ static final SContainmentLink since$UGOw = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f962L, "since");
-    /*package*/ static final SContainmentLink version$UGOZ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f963L, "version");
-    /*package*/ static final SContainmentLink tags$LJD$ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
-    /*package*/ static final SContainmentLink text$e7yL = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, 0x250631c6c859e113L, "text");
+    /*package*/ static final SContainmentLink see$mKP3 = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x1ec532ec252df7ddL, "see");
+    /*package*/ static final SContainmentLink author$YRxD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4a3c146b7faeeb32L, "author");
+    /*package*/ static final SContainmentLink deprecated$rJyD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96bL, "deprecated");
+    /*package*/ static final SContainmentLink since$rHrw = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f962L, "since");
+    /*package*/ static final SContainmentLink version$rHEx = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f963L, "version");
+    /*package*/ static final SContainmentLink tags$658s = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
+    /*package*/ static final SContainmentLink text$PDPJ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, 0x250631c6c859e113L, "text");
   }
 
   private static final class CONCEPTS {

@@ -14,14 +14,14 @@ public class PropertiesDeclaration_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.append(PropEscapeUtil.escapeKey(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$tAp1)));
+    tgs.append(PropEscapeUtil.escapeKey(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$lA7v)));
     tgs.append("=");
-    tgs.append(PropEscapeUtil.escapeValue(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$17Zv)));
+    tgs.append(PropEscapeUtil.escapeValue(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$yRK1)));
     tgs.newLine();
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty value$17Zv = MetaAdapterFactory.getProperty(0x58f98fef90ad4b72L, 0xa390fad66ec7005aL, 0x36fb0dc9fd3a3ac1L, 0x36fb0dc9fd3a3ae4L, "value");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty value$yRK1 = MetaAdapterFactory.getProperty(0x58f98fef90ad4b72L, 0xa390fad66ec7005aL, 0x36fb0dc9fd3a3ac1L, 0x36fb0dc9fd3a3ae4L, "value");
   }
 }

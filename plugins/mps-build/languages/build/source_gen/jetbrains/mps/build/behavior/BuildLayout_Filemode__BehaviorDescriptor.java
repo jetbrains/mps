@@ -39,18 +39,18 @@ public final class BuildLayout_Filemode__BehaviorDescriptor extends BaseBHDescri
     SNode parent = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BuildLayout_ContainerAcceptingFileSet$ej, false, false);
     String name;
     if (SNodeOperations.isInstanceOf(parent, CONCEPTS.INamedConcept$nV)) {
-      name = SPropertyOperations.getString(SNodeOperations.cast(parent, CONCEPTS.INamedConcept$nV), PROPS.name$tAp1);
+      name = SPropertyOperations.getString(SNodeOperations.cast(parent, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v);
     } else {
       SNode ancestor = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.INamedConcept$nV, false, false);
-      name = SPropertyOperations.getString(ancestor, PROPS.name$tAp1);
+      name = SPropertyOperations.getString(ancestor, PROPS.name$lA7v);
     }
-    if (isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.filemode$HNGC))) {
-      name = name + "_f" + SPropertyOperations.getString(__thisNode__, PROPS.filemode$HNGC);
+    if (isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.filemode$c2Bo))) {
+      name = name + "_f" + SPropertyOperations.getString(__thisNode__, PROPS.filemode$c2Bo);
     }
-    if (isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.dirmode$HNH7))) {
-      name = name + "_d" + SPropertyOperations.getString(__thisNode__, PROPS.dirmode$HNH7);
+    if (isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.dirmode$c2Qp))) {
+      name = name + "_d" + SPropertyOperations.getString(__thisNode__, PROPS.dirmode$c2Qp);
     }
-    return context.getTempPath(__thisNode__, name, ((nlayout != null) ? SPropertyOperations.getString(nlayout, PROPS.name$tAp1) : "default"));
+    return context.getTempPath(__thisNode__, name, ((nlayout != null) ? SPropertyOperations.getString(nlayout, PROPS.name$lA7v) : "default"));
   }
 
   /*package*/ BuildLayout_Filemode__BehaviorDescriptor() {
@@ -109,8 +109,8 @@ public final class BuildLayout_Filemode__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty filemode$HNGC = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6c4335df4e838e40L, 0x6c4335df4e838e44L, "filemode");
-    /*package*/ static final SProperty dirmode$HNH7 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6c4335df4e838e40L, 0x6c4335df4e838e45L, "dirmode");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty filemode$c2Bo = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6c4335df4e838e40L, 0x6c4335df4e838e44L, "filemode");
+    /*package*/ static final SProperty dirmode$c2Qp = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6c4335df4e838e40L, 0x6c4335df4e838e45L, "dirmode");
   }
 }

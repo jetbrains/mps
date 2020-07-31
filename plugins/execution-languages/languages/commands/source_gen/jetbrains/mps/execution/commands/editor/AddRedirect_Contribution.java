@@ -139,7 +139,7 @@ public class AddRedirect_Contribution extends TransformationMenuBase {
         public void execute(@NotNull String pattern) {
           SNode redirect = SNodeFactoryOperations.createNewNode(CONCEPTS.RedirectOutputExpression$u_, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), redirect);
-          SLinkOperations.setTarget(redirect, LINKS.processHandler$nvtw, _context.getNode());
+          SLinkOperations.setTarget(redirect, LINKS.processHandler$ofiw, _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), redirect, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -179,6 +179,6 @@ public class AddRedirect_Contribution extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink processHandler$nvtw = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c14L, 0xbe3a0d5ba1a2c15L, "processHandler");
+    /*package*/ static final SContainmentLink processHandler$ofiw = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c14L, 0xbe3a0d5ba1a2c15L, "processHandler");
   }
 }

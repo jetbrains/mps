@@ -60,10 +60,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createModelAccess_0() {
     ModelAccessor modelAccessor = new ModelAccessor() {
       public String getText() {
-        return SPropertyOperations.getString(myNode, PROPS.text$5Ox0);
+        return SPropertyOperations.getString(myNode, PROPS.text$OrZ0);
       }
       public void setText(String text) {
-        SPropertyOperations.assign(myNode, PROPS.text$5Ox0, text);
+        SPropertyOperations.assign(myNode, PROPS.text$OrZ0, text);
         TextCommentPartUtil.processCellText(getEditorContext(), myNode, text);
       }
       public boolean isValidText(String text) {
@@ -82,7 +82,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$5Ox0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
+    /*package*/ static final SProperty text$OrZ0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
   }
 
   private static final class CONCEPTS {

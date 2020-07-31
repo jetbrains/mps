@@ -20,7 +20,7 @@ public abstract class AbstractOverrideEditorMessage extends AbstractLeftEditorHi
 
   public AbstractOverrideEditorMessage(SNode node, EditorMessageOwner owner, String tooltip) {
     super(node, owner, tooltip);
-    final SNode returnTypeNode = SLinkOperations.getTarget(node, LINKS.returnType$WIkw);
+    final SNode returnTypeNode = SLinkOperations.getTarget(node, LINKS.returnType$qrVw);
     this.myReturnTypeCellCondition = new Condition<EditorCell>() {
       @Override
       public boolean met(EditorCell cell) {
@@ -37,6 +37,6 @@ public abstract class AbstractOverrideEditorMessage extends AbstractLeftEditorHi
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 }

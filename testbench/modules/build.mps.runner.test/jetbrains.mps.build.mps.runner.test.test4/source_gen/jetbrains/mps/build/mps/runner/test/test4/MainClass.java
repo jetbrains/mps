@@ -61,7 +61,7 @@ public class MainClass {
       public SNode compute() {
         return ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ClassConcept$IY)).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return MODEL_CLASSNAME.equals(SPropertyOperations.getString(it, PROPS.name$tAp1));
+            return MODEL_CLASSNAME.equals(SPropertyOperations.getString(it, PROPS.name$lA7v));
           }
         });
       }
@@ -74,10 +74,10 @@ public class MainClass {
       public void run() {
         project.getModelAccess().executeCommand(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
           public SNode invoke() {
-            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$oYX5)).addElement(_quotation_createNode_ea23db_a0a0a0a0a0a0p0e());
-            return result.value = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.member$oYX5), CONCEPTS.FieldDeclaration$Ps)).findFirst(new IWhereFilter<SNode>() {
+            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$6v_r)).addElement(_quotation_createNode_ea23db_a0a0a0a0a0a0p0e());
+            return result.value = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.member$6v_r), CONCEPTS.FieldDeclaration$Ps)).findFirst(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return "n".equals(SPropertyOperations.getString(it, PROPS.name$tAp1));
+                return "n".equals(SPropertyOperations.getString(it, PROPS.name$lA7v));
               }
             });
           }
@@ -109,10 +109,10 @@ public class MainClass {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 }

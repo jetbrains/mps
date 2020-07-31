@@ -25,10 +25,10 @@ public class Custom_Placeholder_Action {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.customPlaceholder$gMsh)).isNotEmpty()) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.customPlaceholder$8rGf)).isNotEmpty()) {
           SNodeOperations.insertNextSiblingChild(((SNode) editorContext.getSelectedNode()), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x611ca85be0637678L, "jetbrains.mps.lang.editor.editorTest.structure.CustomPlaceholder")));
         } else {
-          SLinkOperations.addNewChild(node, LINKS.customPlaceholder$gMsh, null);
+          SLinkOperations.addNewChild(node, LINKS.customPlaceholder$8rGf, null);
         }
       }
 
@@ -77,6 +77,6 @@ public class Custom_Placeholder_Action {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink customPlaceholder$gMsh = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x5f4994bb9f207828L, 0x611ca85be0637679L, "customPlaceholder");
+    /*package*/ static final SContainmentLink customPlaceholder$8rGf = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x5f4994bb9f207828L, 0x611ca85be0637679L, "customPlaceholder");
   }
 }

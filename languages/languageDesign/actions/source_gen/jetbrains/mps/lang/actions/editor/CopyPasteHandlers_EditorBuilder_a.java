@@ -92,7 +92,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$tAp1;
+      final SProperty property = PROPS.name$lA7v;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -156,7 +156,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.postProcessor$PoV9;
+      return LINKS.postProcessor$R4Dn;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.PastePostProcessor$ej;
@@ -169,7 +169,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(postProcessorListHandler_ffwobm_a2a.this.getNode(), LINKS.postProcessor$PoV9));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(postProcessorListHandler_ffwobm_a2a.this.getNode(), LINKS.postProcessor$R4Dn));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_2();
@@ -270,7 +270,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.preProcessor$PoVC;
+      return LINKS.preProcessor$R4So;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.CopyPreProcessor$Yc;
@@ -283,7 +283,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(preProcessorListHandler_ffwobm_a4a.this.getNode(), LINKS.preProcessor$PoVC));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(preProcessorListHandler_ffwobm_a4a.this.getNode(), LINKS.preProcessor$R4So));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_4();
@@ -344,7 +344,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
@@ -354,7 +354,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink postProcessor$PoV9 = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x528ba37dd3383e1eL, 0x528ba37dd3383f1eL, "postProcessor");
-    /*package*/ static final SContainmentLink preProcessor$PoVC = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x528ba37dd3383e1eL, 0x528ba37dd3383f1fL, "preProcessor");
+    /*package*/ static final SContainmentLink postProcessor$R4Dn = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x528ba37dd3383e1eL, 0x528ba37dd3383f1eL, "postProcessor");
+    /*package*/ static final SContainmentLink preProcessor$R4So = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x528ba37dd3383e1eL, 0x528ba37dd3383f1fL, "preProcessor");
   }
 }

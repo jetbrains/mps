@@ -20,7 +20,7 @@ public class ReferenceConversionHelper {
 
   public static String getRefOrConceptFunctionParamName(SNode node) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.IVariableReference$zQ)) {
-      return SPropertyOperations.getString(IVariableReference__BehaviorDescriptor.getVariable_idSORzhOpB6t.invoke(SNodeOperations.cast(node, CONCEPTS.IVariableReference$zQ)), PROPS.name$tAp1);
+      return SPropertyOperations.getString(IVariableReference__BehaviorDescriptor.getVariable_idSORzhOpB6t.invoke(SNodeOperations.cast(node, CONCEPTS.IVariableReference$zQ)), PROPS.name$lA7v);
     } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptFunctionParameter$sy)) {
       return IParameter__BehaviorDescriptor.getParameterName_idhP8qAbK.invoke(SNodeOperations.cast(node, CONCEPTS.ConceptFunctionParameter$sy));
     } else {
@@ -71,6 +71,6 @@ public class ReferenceConversionHelper {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

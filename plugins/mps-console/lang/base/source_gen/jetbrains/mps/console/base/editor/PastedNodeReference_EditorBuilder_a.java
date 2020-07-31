@@ -76,13 +76,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
     style.set(StyleAttributes.UNDERLINED, true);
     style.set(StyleAttributes.NAVIGATABLE_NODE, _StyleParameter_QueryFunction_7k9x8q_a2a0());
-    style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.target$9y$J);
+    style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.target$BJML);
     style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     return editorCell;
   }
   private SNode _StyleParameter_QueryFunction_7k9x8q_a2a0() {
-    return SLinkOperations.getTarget(getNode(), LINKS.target$9y$J);
+    return SLinkOperations.getTarget(getNode(), LINKS.target$BJML);
   }
   private EditorCell createReadOnlyModelAccessor_1() {
     EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
@@ -101,6 +101,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$9y$J = MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x36ac6f29ae8c1fb5L, 0x4904fd89e74fc6fL, "target");
+    /*package*/ static final SReferenceLink target$BJML = MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x36ac6f29ae8c1fb5L, 0x4904fd89e74fc6fL, "target");
   }
 }

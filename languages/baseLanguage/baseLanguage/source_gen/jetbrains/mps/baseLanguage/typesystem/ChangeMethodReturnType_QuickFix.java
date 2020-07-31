@@ -22,7 +22,7 @@ public class ChangeMethodReturnType_QuickFix extends QuickFix_Runtime {
   }
   public void execute(SNode node) {
     if (SNodeOperations.isInstanceOf(((SNode) ChangeMethodReturnType_QuickFix.this.getField("expression")[0]), CONCEPTS.BaseMethodDeclaration$RR)) {
-      SLinkOperations.setTarget(SNodeOperations.cast(((SNode) ChangeMethodReturnType_QuickFix.this.getField("expression")[0]), CONCEPTS.BaseMethodDeclaration$RR), LINKS.returnType$WIkw, TypecheckingFacade.getFromContext().getTypeOf(((SNode) ChangeMethodReturnType_QuickFix.this.getField("desiredType")[0])));
+      SLinkOperations.setTarget(SNodeOperations.cast(((SNode) ChangeMethodReturnType_QuickFix.this.getField("expression")[0]), CONCEPTS.BaseMethodDeclaration$RR), LINKS.returnType$qrVw, TypecheckingFacade.getFromContext().getTypeOf(((SNode) ChangeMethodReturnType_QuickFix.this.getField("desiredType")[0])));
     }
   }
 
@@ -31,6 +31,6 @@ public class ChangeMethodReturnType_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 }

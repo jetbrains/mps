@@ -29,7 +29,7 @@ public class check_IHasUniqueId_NonTypesystemRule extends AbstractNonTypesystemR
       if (root != node) {
         if (!(!(Objects.equals(IRootWithUniqueName__BehaviorDescriptor.getId_id3vRuGRRXlj.invoke(root), IRootWithUniqueName__BehaviorDescriptor.getId_id3vRuGRRXlj.invoke(node))))) {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, "Duplicated name: " + SPropertyOperations.getString(node, PROPS.name$tAp1), "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "195736285282743922", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, "Duplicated name: " + SPropertyOperations.getString(node, PROPS.name$lA7v), "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "195736285282743922", null, errorTarget);
         }
       }
     }
@@ -45,7 +45,7 @@ public class check_IHasUniqueId_NonTypesystemRule extends AbstractNonTypesystemR
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

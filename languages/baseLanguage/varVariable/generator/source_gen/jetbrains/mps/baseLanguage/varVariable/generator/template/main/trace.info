@@ -16,7 +16,7 @@
     <file name="QueriesGenerated.java">
       <node id="8425555512443868045" at="31,88,32,78" concept="1" />
       <node id="8425555512443935449" at="34,92,35,77" concept="1" />
-      <node id="8425555512443868055" at="37,92,38,80" concept="1" />
+      <node id="8425555512443868055" at="37,92,38,81" concept="1" />
       <node id="8425555512443868021" at="42,14,43,56" concept="0" />
       <node id="8425555512443868053" at="43,56,44,56" concept="0" />
       <node id="8425555512443868021" at="63,15,64,59" concept="1" />
@@ -28,7 +28,7 @@
       <node id="8425555512443868053" at="37,0,40,0" concept="2" trace="sourceNodeQuery_0_1#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="8425555512443868044" at="31,88,32,78" />
       <scope id="8425555512443868022" at="34,92,35,77" />
-      <scope id="8425555512443868054" at="37,92,38,80" />
+      <scope id="8425555512443868054" at="37,92,38,81" />
       <scope id="8425555512443868021" at="63,15,64,59" />
       <scope id="8425555512443868053" at="65,15,66,59" />
       <scope id="8425555512443868040" at="95,15,96,66" />

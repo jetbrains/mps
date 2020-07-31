@@ -12,7 +12,7 @@
   <root nodeRef="r:3c37e475-2b6e-4b42-91a5-f337630c4302(jetbrains.mps.lang.editor.editorTest.actions)/7789927720474697826">
     <file name="NF_Container.java">
       <node id="7789927720474700977" at="18,76,19,235" concept="0" />
-      <node id="7789927720474697826" at="25,0,26,0" concept="3" trace="containers$X6FX" />
+      <node id="7789927720474697826" at="25,0,26,0" concept="3" trace="containers$Afiz" />
       <node id="7789927720474697826" at="29,0,30,0" concept="3" trace="Container$tb" />
       <node id="7789927720474697840" at="17,91,20,7" concept="1" />
       <node id="7789927720474697827" at="17,0,22,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />

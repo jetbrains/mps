@@ -14,13 +14,13 @@ public class XmlProlog_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.elements$6UDg)) {
+    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.elements$mpYK)) {
       tgs.appendNode(item);
     }
     tgs.newLine();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$6UDg = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494871L, 0x6988ccb84e3bd0e6L, "elements");
+    /*package*/ static final SContainmentLink elements$mpYK = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494871L, 0x6988ccb84e3bd0e6L, "elements");
   }
 }

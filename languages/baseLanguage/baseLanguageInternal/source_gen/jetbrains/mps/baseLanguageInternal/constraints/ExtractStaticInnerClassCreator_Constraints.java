@@ -35,7 +35,7 @@ public class ExtractStaticInnerClassCreator_Constraints extends BaseConstraintsD
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$$A7i, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$ItxI, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -53,8 +53,8 @@ public class ExtractStaticInnerClassCreator_Constraints extends BaseConstraintsD
             List<SNode> res = new ArrayList<SNode>();
             SNode context = _context.getContextNode();
             for (SNode n : SNodeOperations.getNodeAncestors(context, CONCEPTS.ExtractStaticInnerClassExpression$2p, false)) {
-              if ((SLinkOperations.getTarget(n, LINKS.innerClass$vKzw) != null)) {
-                ListSequence.fromList(res).addSequence(Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SLinkOperations.getTarget(n, LINKS.innerClass$vKzw))));
+              if ((SLinkOperations.getTarget(n, LINKS.innerClass$oxcw) != null)) {
+                ListSequence.fromList(res).addSequence(Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SLinkOperations.getTarget(n, LINKS.innerClass$oxcw))));
               }
             }
             return ListScope.forResolvableElements(res);
@@ -74,7 +74,7 @@ public class ExtractStaticInnerClassCreator_Constraints extends BaseConstraintsD
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink innerClass$vKzw = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x6b63d4344723dac8L, 0x6b63d4344723dac9L, "innerClass");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink innerClass$oxcw = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x6b63d4344723dac8L, 0x6b63d4344723dac9L, "innerClass");
   }
 }

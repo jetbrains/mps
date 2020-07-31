@@ -41,7 +41,7 @@ public class RemoveLanguageIdVersionProperty extends MigrationScriptBase {
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LanguageId$Tn, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SPropertyOperations.remove(it, PROPS.version$OX7X);
+          SPropertyOperations.remove(it, PROPS.version$DAQz);
         }
       });
     }
@@ -55,6 +55,6 @@ public class RemoveLanguageIdVersionProperty extends MigrationScriptBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty version$OX7X = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, 0x312abca18ab8ccd9L, "version");
+    /*package*/ static final SProperty version$DAQz = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, 0x312abca18ab8ccd9L, "version");
   }
 }

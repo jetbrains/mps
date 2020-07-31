@@ -49,7 +49,7 @@ public final class convert_test_case_to_unittest_case_Intention extends Abstract
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.ClassConcept$IY) && TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(node, LINKS.superclass$_pqe), _quotation_createNode_g240td_b0a0a0a());
+    return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.ClassConcept$IY) && TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(node, LINKS.superclass$7jGM), _quotation_createNode_g240td_b0a0a0a());
   }
   @Override
   public boolean isSurroundWith() {
@@ -71,20 +71,20 @@ public final class convert_test_case_to_unittest_case_Intention extends Abstract
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode testCase = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.BTestCase$o9);
-      SPropertyOperations.assign(testCase, PROPS.name$tAp1, SPropertyOperations.getString(node, PROPS.name$tAp1));
-      SPropertyOperations.assign(testCase, PROPS.testCaseName$9DFZ, SPropertyOperations.getString(node, PROPS.name$tAp1));
-      if ((SLinkOperations.getTarget(node, LINKS.superclass$_pqe) != null) && !(SLinkOperations.hasPointer(SLinkOperations.getTarget(node, LINKS.superclass$_pqe), LINKS.classifier$pQ_R, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:junit.framework(JUnit/)", "~TestCase")))) {
-        SLinkOperations.setTarget(SLinkOperations.getTarget(testCase, LINKS.superclass$_pqe), LINKS.classifier$pQ_R, SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.superclass$_pqe), LINKS.classifier$pQ_R));
+      SPropertyOperations.assign(testCase, PROPS.name$lA7v, SPropertyOperations.getString(node, PROPS.name$lA7v));
+      SPropertyOperations.assign(testCase, PROPS.testCaseName$Fcjx, SPropertyOperations.getString(node, PROPS.name$lA7v));
+      if ((SLinkOperations.getTarget(node, LINKS.superclass$7jGM) != null) && !(SLinkOperations.hasPointer(SLinkOperations.getTarget(node, LINKS.superclass$7jGM), LINKS.classifier$xslD, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:junit.framework(JUnit/)", "~TestCase")))) {
+        SLinkOperations.setTarget(SLinkOperations.getTarget(testCase, LINKS.superclass$7jGM), LINKS.classifier$xslD, SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.superclass$7jGM), LINKS.classifier$xslD));
       }
       for (SNode m : Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(node))) {
-        if (SPropertyOperations.getString(m, PROPS.name$tAp1).startsWith("test")) {
-          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(testCase, LINKS.testMethodList$9DFw), LINKS.testMethod$z_o0)).addElement(_quotation_createNode_g240td_a0a0a0a4a0(SNodeOperations.deleteNode(SLinkOperations.getTarget(m, LINKS.body$WIlu)), SPropertyOperations.getString(m, PROPS.name$tAp1).substring("test".length())));
+        if (SPropertyOperations.getString(m, PROPS.name$lA7v).startsWith("test")) {
+          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(testCase, LINKS.testMethodList$Fc4w), LINKS.testMethod$f6C0)).addElement(_quotation_createNode_g240td_a0a0a0a4a0(SNodeOperations.deleteNode(SLinkOperations.getTarget(m, LINKS.body$qspy)), SPropertyOperations.getString(m, PROPS.name$lA7v).substring("test".length())));
         } else {
-          ListSequence.fromList(SLinkOperations.getChildren(testCase, LINKS.member$oYX5)).addElement(SNodeOperations.deleteNode(m));
+          ListSequence.fromList(SLinkOperations.getChildren(testCase, LINKS.member$6v_r)).addElement(SNodeOperations.deleteNode(m));
         }
       }
       for (SNode f : Sequence.fromIterable(Classifier__BehaviorDescriptor.staticFields_id4_LVZ3pBr7M.invoke(node))) {
-        ListSequence.fromList(SLinkOperations.getChildren(testCase, LINKS.member$oYX5)).addElement(SNodeOperations.deleteNode(f));
+        ListSequence.fromList(SLinkOperations.getChildren(testCase, LINKS.member$6v_r)).addElement(SNodeOperations.deleteNode(f));
       }
     }
     @Override
@@ -121,16 +121,16 @@ public final class convert_test_case_to_unittest_case_Intention extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink testMethodList$9DFw = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc94e923L, 0x110dc94e924L, "testMethodList");
-    /*package*/ static final SContainmentLink testMethod$z_o0 = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc95061dL, 0x110dc95061eL, "testMethod");
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink testMethodList$Fc4w = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc94e923L, 0x110dc94e924L, "testMethodList");
+    /*package*/ static final SContainmentLink testMethod$f6C0 = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc95061dL, 0x110dc95061eL, "testMethod");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty testCaseName$9DFZ = MetaAdapterFactory.getProperty(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc94e923L, 0x110dc94e925L, "testCaseName");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty testCaseName$Fcjx = MetaAdapterFactory.getProperty(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc94e923L, 0x110dc94e925L, "testCaseName");
   }
 }

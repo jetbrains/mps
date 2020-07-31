@@ -23,7 +23,7 @@ public class check_AnonymousClassHasArgumentsInGoodRole_NonTypesystemRule extend
   public check_AnonymousClassHasArgumentsInGoodRole_NonTypesystemRule() {
   }
   public void applyRule(final SNode anonymousClass, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(anonymousClass, LINKS.parameter$1MCX)).isNotEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(anonymousClass, LINKS.parameter$RxPz)).isNotEmpty()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SNodeOperations.getParent(anonymousClass), "parameters in deprecated role", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2925336694746295123", null, errorTarget);
@@ -46,7 +46,7 @@ public class check_AnonymousClassHasArgumentsInGoodRole_NonTypesystemRule extend
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$1MCX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e104a89L, "parameter");
+    /*package*/ static final SContainmentLink parameter$RxPz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e104a89L, "parameter");
   }
 
   private static final class CONCEPTS {

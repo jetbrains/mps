@@ -33,7 +33,7 @@ public class ApplicableNodeReference_Constraints extends BaseConstraintsDescript
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.applicableNode$MdAw, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.applicableNode$k_Dw, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -50,8 +50,8 @@ public class ApplicableNodeReference_Constraints extends BaseConstraintsDescript
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> result = new ArrayList<SNode>();
             SNode rule = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Rule$Wr, true, false);
-            if (rule != null && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(rule, LINKS.condition$2aME), CONCEPTS.ConceptCondition$v1)) {
-              ListSequence.fromList(result).addElement(SNodeOperations.cast(SLinkOperations.getTarget(rule, LINKS.condition$2aME), CONCEPTS.ConceptCondition$v1));
+            if (rule != null && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(rule, LINKS.condition$3eym), CONCEPTS.ConceptCondition$v1)) {
+              ListSequence.fromList(result).addElement(SNodeOperations.cast(SLinkOperations.getTarget(rule, LINKS.condition$3eym), CONCEPTS.ConceptCondition$v1));
             }
             return ListScope.forResolvableElements(result);
           }
@@ -71,7 +71,7 @@ public class ApplicableNodeReference_Constraints extends BaseConstraintsDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableNode$MdAw = MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x449938e788f30110L, 0x449938e788f30111L, "applicableNode");
-    /*package*/ static final SContainmentLink condition$2aME = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5faaa6bbd57b6c8L, 0x2e25b6b7919dd956L, "condition");
+    /*package*/ static final SReferenceLink applicableNode$k_Dw = MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x449938e788f30110L, 0x449938e788f30111L, "applicableNode");
+    /*package*/ static final SContainmentLink condition$3eym = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5faaa6bbd57b6c8L, 0x2e25b6b7919dd956L, "condition");
   }
 }

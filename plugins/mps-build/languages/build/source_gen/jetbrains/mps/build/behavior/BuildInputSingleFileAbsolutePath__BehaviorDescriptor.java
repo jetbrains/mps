@@ -35,10 +35,10 @@ public final class BuildInputSingleFileAbsolutePath__BehaviorDescriptor extends 
     return true;
   }
   /*package*/ static String getApproximateName_id4RsV8qJDnFm(@NotNull SNode __thisNode__) {
-    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.path$Dhv0)) || SPropertyOperations.getString(__thisNode__, PROPS.path$Dhv0).lastIndexOf("/") == -1) {
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.path$Zu10)) || SPropertyOperations.getString(__thisNode__, PROPS.path$Zu10).lastIndexOf("/") == -1) {
       return "";
     }
-    return SPropertyOperations.getString(__thisNode__, PROPS.path$Dhv0).substring(SPropertyOperations.getString(__thisNode__, PROPS.path$Dhv0).lastIndexOf("/") + 1);
+    return SPropertyOperations.getString(__thisNode__, PROPS.path$Zu10).substring(SPropertyOperations.getString(__thisNode__, PROPS.path$Zu10).lastIndexOf("/") + 1);
   }
 
   /*package*/ BuildInputSingleFileAbsolutePath__BehaviorDescriptor() {
@@ -93,6 +93,6 @@ public final class BuildInputSingleFileAbsolutePath__BehaviorDescriptor extends 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty path$Dhv0 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x72b7d8e699d63212L, 0x72b7d8e699d63213L, "path");
+    /*package*/ static final SProperty path$Zu10 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x72b7d8e699d63212L, 0x72b7d8e699d63213L, "path");
   }
 }

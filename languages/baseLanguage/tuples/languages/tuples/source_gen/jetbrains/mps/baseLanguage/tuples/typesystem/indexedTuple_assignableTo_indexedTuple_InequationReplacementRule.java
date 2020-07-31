@@ -25,14 +25,14 @@ public class indexedTuple_assignableTo_indexedTuple_InequationReplacementRule ex
   public indexedTuple_assignableTo_indexedTuple_InequationReplacementRule() {
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
-    if (!(ListSequence.fromList(SLinkOperations.getChildren(subtype, LINKS.componentType$62ij)).count() == ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.componentType$62ij)).count())) {
+    if (!(ListSequence.fromList(SLinkOperations.getChildren(subtype, LINKS.componentType$V6Rd)).count() == ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.componentType$V6Rd)).count())) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(equationInfo.getNodeWithError(), "Member types count don't match", "r:e119dbbd-3529-4067-8bad-6b9edd79d0b6(jetbrains.mps.baseLanguage.tuples.typesystem)", "1238854492399", null, errorTarget);
       HUtil.addAdditionalRuleIdsFromInfo(_reporter_2309309498, equationInfo);
     }
     {
-      Iterator<SNode> lmt_it = ListSequence.fromList(SLinkOperations.getChildren(subtype, LINKS.componentType$62ij)).iterator();
-      Iterator<SNode> rmt_it = ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.componentType$62ij)).iterator();
+      Iterator<SNode> lmt_it = ListSequence.fromList(SLinkOperations.getChildren(subtype, LINKS.componentType$V6Rd)).iterator();
+      Iterator<SNode> rmt_it = ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.componentType$V6Rd)).iterator();
       SNode lmt_var;
       SNode rmt_var;
       while (lmt_it.hasNext() && rmt_it.hasNext()) {
@@ -49,12 +49,12 @@ public class indexedTuple_assignableTo_indexedTuple_InequationReplacementRule ex
   }
   public boolean checkInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     boolean result_14532009 = true;
-    if (!(ListSequence.fromList(SLinkOperations.getChildren(subtype, LINKS.componentType$62ij)).count() == ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.componentType$62ij)).count())) {
+    if (!(ListSequence.fromList(SLinkOperations.getChildren(subtype, LINKS.componentType$V6Rd)).count() == ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.componentType$V6Rd)).count())) {
       result_14532009 = false;
     }
     {
-      Iterator<SNode> lmt_it = ListSequence.fromList(SLinkOperations.getChildren(subtype, LINKS.componentType$62ij)).iterator();
-      Iterator<SNode> rmt_it = ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.componentType$62ij)).iterator();
+      Iterator<SNode> lmt_it = ListSequence.fromList(SLinkOperations.getChildren(subtype, LINKS.componentType$V6Rd)).iterator();
+      Iterator<SNode> rmt_it = ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.componentType$V6Rd)).iterator();
       SNode lmt_var;
       SNode rmt_var;
       while (lmt_it.hasNext() && rmt_it.hasNext()) {
@@ -83,7 +83,7 @@ public class indexedTuple_assignableTo_indexedTuple_InequationReplacementRule ex
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$62ij = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType");
+    /*package*/ static final SContainmentLink componentType$V6Rd = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType");
   }
 
   private static final class CONCEPTS {

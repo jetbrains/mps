@@ -45,7 +45,7 @@ public final class PatternTest__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getPatternTestName_idlS$o0er$H8(@NotNull SNode __thisNode__) {
-    return NameUtil.toValidCamelIdentifier("Pattern" + SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1) + "_Test");
+    return NameUtil.toValidCamelIdentifier("Pattern" + SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v) + "_Test");
   }
   /*package*/ static List<SNode> getTestSet_idhGB2z8L(@NotNull SNode __thisNode__) {
     List<SNode> methods = new ArrayList<SNode>();
@@ -71,7 +71,7 @@ public final class PatternTest__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static boolean suppress_id2WmWrdnSpX7(@NotNull SNode __thisNode__, SNode child) {
     // any child under nodeToMatch is of no interest for us 
-    return (SLinkOperations.getTarget(__thisNode__, LINKS.nodeToMatch$a6l0) != null) && ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).contains(SLinkOperations.getTarget(__thisNode__, LINKS.nodeToMatch$a6l0));
+    return (SLinkOperations.getTarget(__thisNode__, LINKS.nodeToMatch$T4b0) != null) && ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).contains(SLinkOperations.getTarget(__thisNode__, LINKS.nodeToMatch$T4b0));
   }
 
   /*package*/ PatternTest__BehaviorDescriptor() {
@@ -135,10 +135,10 @@ public final class PatternTest__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink nodeToMatch$a6l0 = MetaAdapterFactory.getContainmentLink(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x78d6da5e3799eb08L, 0x78d6da5e3799eb09L, "nodeToMatch");
+    /*package*/ static final SContainmentLink nodeToMatch$T4b0 = MetaAdapterFactory.getContainmentLink(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x78d6da5e3799eb08L, 0x78d6da5e3799eb09L, "nodeToMatch");
   }
 }

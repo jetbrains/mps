@@ -20,19 +20,19 @@ public class wrapped_customType_InequationReplacementRule extends AbstractInequa
   public wrapped_customType_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(subtype, LINKS.wrapped$moMx), CONCEPTS.CustomType$9k) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(supertype, LINKS.wrapped$moMx), CONCEPTS.CustomType$9k);
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(subtype, LINKS.wrapped$Q0tZ), CONCEPTS.CustomType$9k) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(supertype, LINKS.wrapped$Q0tZ), CONCEPTS.CustomType$9k);
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     {
       SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:d612c92b-af4c-4eb4-bc13-d283361ae3f9(testSubtypingB.typesystem)", "2078093584693398869", 0, null);
       _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
-      typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(SNodeOperations.cast(subtype, CONCEPTS.WrapperType$Vj), LINKS.wrapped$moMx), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(supertype, CONCEPTS.WrapperType$Vj), LINKS.wrapped$moMx), false, true, _info_12389875345);
+      typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(SNodeOperations.cast(subtype, CONCEPTS.WrapperType$Vj), LINKS.wrapped$Q0tZ), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(supertype, CONCEPTS.WrapperType$Vj), LINKS.wrapped$Q0tZ), false, true, _info_12389875345);
     }
   }
   public boolean checkInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     boolean result_14532009 = true;
-    result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) SLinkOperations.getTarget(SNodeOperations.cast(subtype, CONCEPTS.WrapperType$Vj), LINKS.wrapped$moMx), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(supertype, CONCEPTS.WrapperType$Vj), LINKS.wrapped$moMx));
+    result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) SLinkOperations.getTarget(SNodeOperations.cast(subtype, CONCEPTS.WrapperType$Vj), LINKS.wrapped$Q0tZ), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(supertype, CONCEPTS.WrapperType$Vj), LINKS.wrapped$Q0tZ));
     return result_14532009;
   }
   public boolean isWeak() {
@@ -53,7 +53,7 @@ public class wrapped_customType_InequationReplacementRule extends AbstractInequa
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink wrapped$moMx = MetaAdapterFactory.getContainmentLink(0x36a4d1c56ec1426fL, 0x81921875a7cc48deL, 0x1cd6df1ae5a17c9cL, 0x1cd6df1ae5a1e20fL, "wrapped");
+    /*package*/ static final SContainmentLink wrapped$Q0tZ = MetaAdapterFactory.getContainmentLink(0x36a4d1c56ec1426fL, 0x81921875a7cc48deL, 0x1cd6df1ae5a17c9cL, 0x1cd6df1ae5a1e20fL, "wrapped");
   }
 
   private static final class CONCEPTS {

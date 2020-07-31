@@ -67,7 +67,7 @@ public class MoveConceptMemberUp extends AbstractLanguageMove implements MoveNod
     final Wrappers._boolean notDeployed = new Wrappers._boolean();
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        sourceConcept.value = SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(feature), CONCEPTS.AbstractConceptDeclaration$UN), PROPS.name$tAp1);
+        sourceConcept.value = SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(feature), CONCEPTS.AbstractConceptDeclaration$UN), PROPS.name$lA7v);
         notDeployed.value = !(checkDeployed(project, SNodeOperations.as(SNodeOperations.getParent(feature), CONCEPTS.AbstractConceptDeclaration$UN), true));
       }
     });
@@ -109,13 +109,13 @@ public class MoveConceptMemberUp extends AbstractLanguageMove implements MoveNod
     public MoveNodesAction get() {
       return new MoveConceptMemberUp("Move Property Up", "property", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
         public Boolean invoke(SNode conceptFeature) {
-          return SNodeOperations.hasRole(conceptFeature, LINKS.propertyDeclaration$lL73);
+          return SNodeOperations.hasRole(conceptFeature, LINKS.propertyDeclaration$yMqt);
         }
       }, new _FunctionTypes._return_P2_E0<SNode, SNode, SNode>() {
         public SNode invoke(final SNode node, SNode concept) {
-          return ListSequence.fromList(SLinkOperations.getChildren(concept, LINKS.propertyDeclaration$lL73)).where(new IWhereFilter<SNode>() {
+          return ListSequence.fromList(SLinkOperations.getChildren(concept, LINKS.propertyDeclaration$yMqt)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.PropertyDeclaration$c5), PROPS.name$tAp1));
+              return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.PropertyDeclaration$c5), PROPS.name$lA7v));
             }
           }).first();
         }
@@ -129,13 +129,13 @@ public class MoveConceptMemberUp extends AbstractLanguageMove implements MoveNod
     public MoveNodesAction get() {
       return new MoveConceptMemberUp("Move Link Up", "link", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
         public Boolean invoke(SNode conceptFeature) {
-          return SNodeOperations.hasRole(conceptFeature, LINKS.linkDeclaration$lL6$) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(conceptFeature, CONCEPTS.LinkDeclaration$bA), PROPS.metaClass$tHD7), 0xfc6f4e95b9L);
+          return SNodeOperations.hasRole(conceptFeature, LINKS.linkDeclaration$yMbs) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(conceptFeature, CONCEPTS.LinkDeclaration$bA), PROPS.metaClass$p6Up), 0xfc6f4e95b9L);
         }
       }, new _FunctionTypes._return_P2_E0<SNode, SNode, SNode>() {
         public SNode invoke(final SNode node, SNode concept) {
-          return ListSequence.fromList(SLinkOperations.getChildren(concept, LINKS.linkDeclaration$lL6$)).where(new IWhereFilter<SNode>() {
+          return ListSequence.fromList(SLinkOperations.getChildren(concept, LINKS.linkDeclaration$yMbs)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$tHD7), 0xfc6f4e95b9L) && Objects.equals(SPropertyOperations.getString(it, PROPS.role$r_O$), SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.LinkDeclaration$bA), PROPS.role$r_O$));
+              return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$p6Up), 0xfc6f4e95b9L) && Objects.equals(SPropertyOperations.getString(it, PROPS.role$nkts), SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.LinkDeclaration$bA), PROPS.role$nkts));
             }
           }).first();
         }
@@ -149,13 +149,13 @@ public class MoveConceptMemberUp extends AbstractLanguageMove implements MoveNod
     public MoveNodesAction get() {
       return new MoveConceptMemberUp("Move Link Up", "link", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
         public Boolean invoke(SNode conceptFeature) {
-          return SNodeOperations.hasRole(conceptFeature, LINKS.linkDeclaration$lL6$) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(conceptFeature, CONCEPTS.LinkDeclaration$bA), PROPS.metaClass$tHD7), 0xfc6f4e95b8L);
+          return SNodeOperations.hasRole(conceptFeature, LINKS.linkDeclaration$yMbs) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(conceptFeature, CONCEPTS.LinkDeclaration$bA), PROPS.metaClass$p6Up), 0xfc6f4e95b8L);
         }
       }, new _FunctionTypes._return_P2_E0<SNode, SNode, SNode>() {
         public SNode invoke(final SNode node, SNode concept) {
-          return ListSequence.fromList(SLinkOperations.getChildren(concept, LINKS.linkDeclaration$lL6$)).where(new IWhereFilter<SNode>() {
+          return ListSequence.fromList(SLinkOperations.getChildren(concept, LINKS.linkDeclaration$yMbs)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$tHD7), 0xfc6f4e95b8L) && Objects.equals(SPropertyOperations.getString(it, PROPS.role$r_O$), SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.LinkDeclaration$bA), PROPS.role$r_O$));
+              return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$p6Up), 0xfc6f4e95b8L) && Objects.equals(SPropertyOperations.getString(it, PROPS.role$nkts), SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.LinkDeclaration$bA), PROPS.role$nkts));
             }
           }).first();
         }
@@ -171,13 +171,13 @@ public class MoveConceptMemberUp extends AbstractLanguageMove implements MoveNod
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty metaClass$tHD7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
-    /*package*/ static final SProperty role$r_O$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink propertyDeclaration$lL73 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
-    /*package*/ static final SContainmentLink linkDeclaration$lL6$ = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
+    /*package*/ static final SContainmentLink propertyDeclaration$yMqt = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
+    /*package*/ static final SContainmentLink linkDeclaration$yMbs = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
   }
 }

@@ -31,7 +31,7 @@ public final class ConceptReference__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static SNode getApplicableConcept_idhEwIszL(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.concept$Q1Nr);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.concept$aRU5);
   }
 
   /*package*/ ConceptReference__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class ConceptReference__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$Q1Nr = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, 0x1117e2ab6c9L, "concept");
+    /*package*/ static final SReferenceLink concept$aRU5 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, 0x1117e2ab6c9L, "concept");
   }
 }

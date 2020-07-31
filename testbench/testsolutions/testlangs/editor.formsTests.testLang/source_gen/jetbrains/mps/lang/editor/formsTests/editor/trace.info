@@ -181,7 +181,7 @@
       <node id="5347446703374102186" at="22,30,23,124" concept="2" />
       <node id="5347446703374102186" at="26,70,27,61" concept="6" />
       <node id="5347446703374102186" at="27,61,28,111" concept="7" />
-      <node id="5347446703374102186" at="32,0,33,0" concept="10" trace="property$Ho30" />
+      <node id="5347446703374102186" at="32,0,33,0" concept="10" trace="property$YDt0" />
       <node id="5347446703374102186" at="18,0,21,0" concept="1" trace="ToggleCheckboxAction_c4zoug_a#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="5347446703374102186" at="22,0,25,0" concept="5" trace="doExecute#()V" />
       <node id="5347446703374102186" at="26,0,30,0" concept="5" trace="createCellSelector#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Ljetbrains/mps/nodeEditor/selectionRestoring/CellSelector;" />
@@ -238,7 +238,7 @@
       <node id="5347446703374102184" at="67,94,68,50" concept="2" />
       <node id="5347446703374102184" at="68,50,69,34" concept="2" />
       <node id="5347446703374102184" at="69,34,70,22" concept="7" />
-      <node id="5347446703374102184" at="74,0,75,0" concept="10" trace="property$Ho30" />
+      <node id="5347446703374102184" at="74,0,75,0" concept="10" trace="property$YDt0" />
       <node id="5347446703374102184" at="18,0,20,0" concept="3" trace="myNode" />
       <node id="5347446703374102184" at="52,10,54,5" concept="0" />
       <node id="5347446703374102184" at="32,0,35,0" concept="5" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -446,7 +446,7 @@
       <node id="7013563450911355564" at="17,52,18,18" concept="2" />
       <node id="7013563450911355564" at="21,30,22,124" concept="2" />
       <node id="7013563450911355564" at="25,70,26,35" concept="7" />
-      <node id="7013563450911355564" at="30,0,31,0" concept="10" trace="property$MjIw" />
+      <node id="7013563450911355564" at="30,0,31,0" concept="10" trace="property$nzxw" />
       <node id="7013563450911355564" at="17,0,20,0" concept="1" trace="ToggleCheckboxAction_7xa7wl_a#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="7013563450911355564" at="21,0,24,0" concept="5" trace="doExecute#()V" />
       <node id="7013563450911355564" at="25,0,28,0" concept="5" trace="createCellSelector#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Ljetbrains/mps/nodeEditor/selectionRestoring/CellSelector;" />
@@ -510,7 +510,7 @@
       <node id="7013563450911355569" at="85,102,86,47" concept="2" />
       <node id="7013563450911355569" at="86,47,87,34" concept="2" />
       <node id="7013563450911355569" at="87,34,88,22" concept="7" />
-      <node id="7013563450911355563" at="92,0,93,0" concept="10" trace="property$MjIw" />
+      <node id="7013563450911355563" at="92,0,93,0" concept="10" trace="property$nzxw" />
       <node id="7013563450911355563" at="21,0,23,0" concept="3" trace="myNode" />
       <node id="7013563450911355563" at="56,10,58,5" concept="0" />
       <node id="7013563450911355563" at="35,0,38,0" concept="5" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -1202,7 +1202,7 @@
       <node id="1340057216891299905" at="22,30,23,140" concept="2" />
       <node id="1340057216891299905" at="26,70,27,61" concept="6" />
       <node id="1340057216891299905" at="27,61,28,111" concept="7" />
-      <node id="1340057216891299905" at="32,0,33,0" concept="10" trace="booleanProperty1$tXXw" />
+      <node id="1340057216891299905" at="32,0,33,0" concept="10" trace="booleanProperty1$x0Mw" />
       <node id="1340057216891299905" at="18,0,21,0" concept="1" trace="ToggleCheckboxAction_3jyf1k_b0#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1340057216891299905" at="22,0,25,0" concept="5" trace="doExecute#()V" />
       <node id="1340057216891299905" at="26,0,30,0" concept="5" trace="createCellSelector#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Ljetbrains/mps/nodeEditor/selectionRestoring/CellSelector;" />
@@ -1227,7 +1227,7 @@
       <node id="8215612579904293709" at="22,30,23,140" concept="2" />
       <node id="8215612579904293709" at="26,70,27,61" concept="6" />
       <node id="8215612579904293709" at="27,61,28,111" concept="7" />
-      <node id="8215612579904293709" at="32,0,33,0" concept="10" trace="booleanProperty1$tXXw" />
+      <node id="8215612579904293709" at="32,0,33,0" concept="10" trace="booleanProperty1$x0Mw" />
       <node id="8215612579904293709" at="18,0,21,0" concept="1" trace="ToggleCheckboxAction_3jyf1k_c0#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8215612579904293709" at="22,0,25,0" concept="5" trace="doExecute#()V" />
       <node id="8215612579904293709" at="26,0,30,0" concept="5" trace="createCellSelector#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Ljetbrains/mps/nodeEditor/selectionRestoring/CellSelector;" />
@@ -1252,7 +1252,7 @@
       <node id="4319657350470029330" at="22,30,23,140" concept="2" />
       <node id="4319657350470029330" at="26,70,27,61" concept="6" />
       <node id="4319657350470029330" at="27,61,28,111" concept="7" />
-      <node id="4319657350470029330" at="32,0,33,0" concept="10" trace="booleanProperty2$_LET" />
+      <node id="4319657350470029330" at="32,0,33,0" concept="10" trace="booleanProperty2$j3LB" />
       <node id="4319657350470029330" at="18,0,21,0" concept="1" trace="ToggleCheckboxAction_3jyf1k_f0#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4319657350470029330" at="22,0,25,0" concept="5" trace="doExecute#()V" />
       <node id="4319657350470029330" at="26,0,30,0" concept="5" trace="createCellSelector#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Ljetbrains/mps/nodeEditor/selectionRestoring/CellSelector;" />
@@ -1276,7 +1276,7 @@
       <node id="806145720380898405" at="17,53,18,18" concept="2" />
       <node id="806145720380898405" at="21,30,22,140" concept="2" />
       <node id="806145720380898405" at="25,70,26,35" concept="7" />
-      <node id="806145720380898405" at="30,0,31,0" concept="10" trace="booleanProperty2$_LET" />
+      <node id="806145720380898405" at="30,0,31,0" concept="10" trace="booleanProperty2$j3LB" />
       <node id="806145720380898405" at="17,0,20,0" concept="1" trace="ToggleCheckboxAction_3jyf1k_g0#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="806145720380898405" at="21,0,24,0" concept="5" trace="doExecute#()V" />
       <node id="806145720380898405" at="25,0,28,0" concept="5" trace="createCellSelector#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Ljetbrains/mps/nodeEditor/selectionRestoring/CellSelector;" />
@@ -1452,8 +1452,8 @@
       <node id="806145720380916081" at="261,110,262,48" concept="2" />
       <node id="806145720380916081" at="262,48,263,34" concept="2" />
       <node id="806145720380916081" at="263,34,264,22" concept="7" />
-      <node id="7569401714696388567" at="268,0,269,0" concept="10" trace="booleanProperty1$tXXw" />
-      <node id="7569401714696388567" at="269,0,270,0" concept="10" trace="booleanProperty2$_LET" />
+      <node id="7569401714696388567" at="268,0,269,0" concept="10" trace="booleanProperty1$x0Mw" />
+      <node id="7569401714696388567" at="269,0,270,0" concept="10" trace="booleanProperty2$j3LB" />
       <node id="7569401714696388567" at="32,0,34,0" concept="3" trace="myNode" />
       <node id="7569401714696388567" at="85,10,87,5" concept="0" />
       <node id="7569401714696388567" at="134,10,136,5" concept="0" />

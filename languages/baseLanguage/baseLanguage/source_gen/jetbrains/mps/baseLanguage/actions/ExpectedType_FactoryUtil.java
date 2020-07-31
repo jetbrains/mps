@@ -46,7 +46,7 @@ public class ExpectedType_FactoryUtil {
     }
     if (SNodeOperations.isInstanceOf(outer, CONCEPTS.Statement$ok) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(outer), CONCEPTS.StatementList$TN)) {
       SNode list = SNodeOperations.cast(SNodeOperations.getParent(outer), CONCEPTS.StatementList$TN);
-      if (ListSequence.fromList(SLinkOperations.getChildren(list, LINKS.statement$WHn8)).first() == outer) {
+      if (ListSequence.fromList(SLinkOperations.getChildren(list, LINKS.statement$pYcS)).first() == outer) {
         outer = list;
       } else {
         outer = null;
@@ -55,9 +55,9 @@ public class ExpectedType_FactoryUtil {
     if (SNodeOperations.isInstanceOf(outer, CONCEPTS.StatementList$TN)) {
       SNode condition = null;
       if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(outer), CONCEPTS.ElsifClause$in)) {
-        condition = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(outer), CONCEPTS.ElsifClause$in), LINKS.condition$3oC9);
+        condition = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(outer), CONCEPTS.ElsifClause$in), LINKS.condition$CVsn);
       } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(outer), CONCEPTS.IfStatement$pi)) {
-        condition = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(outer), CONCEPTS.IfStatement$pi), LINKS.condition$WJ1b);
+        condition = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(outer), CONCEPTS.IfStatement$pi), LINKS.condition$qL$l);
       }
       if (SNodeOperations.isInstanceOf(condition, CONCEPTS.InstanceOfExpression$JG)) {
         return SNodeOperations.cast(condition, CONCEPTS.InstanceOfExpression$JG);
@@ -78,8 +78,8 @@ public class ExpectedType_FactoryUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink condition$WJ1b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
-    /*package*/ static final SContainmentLink condition$3oC9 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0983eL, "condition");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink condition$CVsn = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0983eL, "condition");
   }
 }

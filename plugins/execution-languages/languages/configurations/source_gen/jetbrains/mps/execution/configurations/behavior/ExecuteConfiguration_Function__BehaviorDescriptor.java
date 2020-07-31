@@ -42,10 +42,10 @@ public final class ExecuteConfiguration_Function__BehaviorDescriptor extends Bas
   }
 
   /*package*/ static List<SNode> getLocalVariableElements_idi1I$XiP(@NotNull SNode __thisNode__) {
-    return (List<SNode>) ILocalVariableElementList__BehaviorDescriptor.getLocalVariableElements_idi1I$XiP.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$pTP2));
+    return (List<SNode>) ILocalVariableElementList__BehaviorDescriptor.getLocalVariableElements_idi1I$XiP.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$z0FY));
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(__thisNode__), CONCEPTS.RunConfigurationExecutor$pj) && (SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getContainingRoot(__thisNode__), CONCEPTS.RunConfigurationExecutor$pj), LINKS.debuggerConfiguration$VJZD) != null)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(__thisNode__), CONCEPTS.RunConfigurationExecutor$pj) && (SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getContainingRoot(__thisNode__), CONCEPTS.RunConfigurationExecutor$pj), LINKS.debuggerConfiguration$WfOR) != null)) {
       return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.Project_Parameter$vD, CONCEPTS.DebuggerSettings_Parameter$q2, CONCEPTS.Executor_Parameter$1h);
     }
     return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.Project_Parameter$vD);
@@ -123,8 +123,8 @@ public final class ExecuteConfiguration_Function__BehaviorDescriptor extends Bas
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$pTP2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
-    /*package*/ static final SContainmentLink debuggerConfiguration$VJZD = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, 0x5d457621242d8208L, "debuggerConfiguration");
+    /*package*/ static final SContainmentLink body$z0FY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SContainmentLink debuggerConfiguration$WfOR = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, 0x5d457621242d8208L, "debuggerConfiguration");
   }
 
   private static final class CONCEPTS {

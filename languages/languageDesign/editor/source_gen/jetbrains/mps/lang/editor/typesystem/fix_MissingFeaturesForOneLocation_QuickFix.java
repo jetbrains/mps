@@ -27,7 +27,7 @@ public class fix_MissingFeaturesForOneLocation_QuickFix extends QuickFix_Runtime
     SNode part = SNodeOperations.cast(node, CONCEPTS.IExtensibleTransformationMenuPart$sZ);
 
     for (SConcept c : Sequence.fromIterable(IExtensibleTransformationMenuPart__BehaviorDescriptor.getMissingFeatures_id6kJcyCQjeiA.invoke(part))) {
-      ListSequence.fromList(SLinkOperations.getChildren(part, LINKS.features$645q)).addElement(SNodeFactoryOperations.createNewNode(c, null));
+      ListSequence.fromList(SLinkOperations.getChildren(part, LINKS.features$VYBA)).addElement(SNodeFactoryOperations.createNewNode(c, null));
     }
   }
 
@@ -36,6 +36,6 @@ public class fix_MissingFeaturesForOneLocation_QuickFix extends QuickFix_Runtime
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink features$645q = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, 0x7c45559defbb3517L, "features");
+    /*package*/ static final SContainmentLink features$VYBA = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, 0x7c45559defbb3517L, "features");
   }
 }

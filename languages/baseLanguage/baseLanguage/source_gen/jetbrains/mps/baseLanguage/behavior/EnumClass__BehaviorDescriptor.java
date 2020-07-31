@@ -50,8 +50,8 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode findConstantByName_idhEwIiGU(@NotNull SNode __thisNode__, String name) {
-    for (SNode constant : SLinkOperations.getChildren(__thisNode__, LINKS.enumConstant$urAQ)) {
-      if (name.equalsIgnoreCase(SPropertyOperations.getString(constant, PROPS.name$tAp1))) {
+    for (SNode constant : SLinkOperations.getChildren(__thisNode__, LINKS.enumConstant$JnOa)) {
+      if (name.equalsIgnoreCase(SPropertyOperations.getString(constant, PROPS.name$lA7v))) {
         return constant;
       }
     }
@@ -70,13 +70,13 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static SNode getExtendedEnumJavaType_id6O4rE5gbZ0q(@NotNull SNode __thisNode__) {
     // enum A {} <=> A has as a super 'java.lang.Enum<A>' 
     SNode concreteEnumType = Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Enum"));
-    ListSequence.fromList(SLinkOperations.getChildren(concreteEnumType, LINKS.parameter$dQne)).clear();
-    ListSequence.fromList(SLinkOperations.getChildren(concreteEnumType, LINKS.parameter$dQne)).addElement(Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(__thisNode__));
+    ListSequence.fromList(SLinkOperations.getChildren(concreteEnumType, LINKS.parameter$HlfM)).clear();
+    ListSequence.fromList(SLinkOperations.getChildren(concreteEnumType, LINKS.parameter$HlfM)).addElement(Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(__thisNode__));
     return concreteEnumType;
   }
   /*package*/ static List<SNode> getMembers_idhEwJjl2(@NotNull SNode __thisNode__) {
     List<SNode> members = IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invokeSuper(__thisNode__, CONCEPTS.EnumClass$uy);
-    ListSequence.fromList(members).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.enumConstant$urAQ)));
+    ListSequence.fromList(members).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.enumConstant$JnOa)));
     return members;
   }
   /*package*/ static boolean hasStaticMemebers_idhFq8xqE(@NotNull SNode __thisNode__) {
@@ -105,8 +105,8 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
       }
     }).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        SNode v = SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.IVisible$6G), LINKS.visibility$2GiC);
-        return (v != null) && !(SNodeOperations.isInstanceOf(v, CONCEPTS.PrivateVisibility$Se)) && !(SPropertyOperations.getBoolean(SNodeOperations.as(it, CONCEPTS.InstanceMethodDeclaration$An), PROPS.isFinal$I$Qu));
+        SNode v = SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.IVisible$6G), LINKS.visibility$jt1o);
+        return (v != null) && !(SNodeOperations.isInstanceOf(v, CONCEPTS.PrivateVisibility$Se)) && !(SPropertyOperations.getBoolean(SNodeOperations.as(it, CONCEPTS.InstanceMethodDeclaration$An), PROPS.isFinal$zQoy));
       }
     });
     Iterable<SNode> allToBeAdded = Sequence.fromIterable(ownMethods).where(new IWhereFilter<SNode>() {
@@ -189,14 +189,14 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink enumConstant$urAQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink enumConstant$JnOa = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isFinal$I$Qu = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$zQoy = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
   }
 
   private static final class CONCEPTS {

@@ -45,8 +45,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
   private EditorCell createReadOnlyModelAccessor_0() {
     EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
       public String getText() {
-        String cpName = SPropertyOperations.getString(SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(myNode, LINKS.checkpoint$LUHD), LINKS.cpSpec$s3ye), CONCEPTS.InPlaceCheckpointSpec$q7), PROPS.name$tAp1);
-        String planName = SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(SLinkOperations.getTarget(myNode, LINKS.checkpoint$LUHD)), CONCEPTS.Plan$Xm), PROPS.name$tAp1);
+        String cpName = SPropertyOperations.getString(SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(myNode, LINKS.checkpoint$bs6R), LINKS.cpSpec$_H$M), CONCEPTS.InPlaceCheckpointSpec$q7), PROPS.name$lA7v);
+        String planName = SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(SLinkOperations.getTarget(myNode, LINKS.checkpoint$bs6R)), CONCEPTS.Plan$Xm), PROPS.name$lA7v);
         return String.format("%s (of %s)", cpName, planName);
       }
     }, myNode);
@@ -62,8 +62,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink checkpoint$LUHD = MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, 0x340cd07aed7cb32fL, "checkpoint");
-    /*package*/ static final SContainmentLink cpSpec$s3ye = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec");
+    /*package*/ static final SReferenceLink checkpoint$bs6R = MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, 0x340cd07aed7cb32fL, "checkpoint");
+    /*package*/ static final SContainmentLink cpSpec$_H$M = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec");
   }
 
   private static final class CONCEPTS {
@@ -72,6 +72,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -52,7 +52,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private boolean nodeCondition_uc5iyq_a0a() {
-    return SPropertyOperations.getBoolean(myNode, PROPS.isDeprecated$K_Sf) && (boolean) IBLDeprecatable__BehaviorDescriptor.shouldDeprecatedDocBeVisible_id7gdCoemJ2WL.invoke(myNode);
+    return SPropertyOperations.getBoolean(myNode, PROPS.isDeprecated$ymfh) && (boolean) IBLDeprecatable__BehaviorDescriptor.shouldDeprecatedDocBeVisible_id7gdCoemJ2WL.invoke(myNode);
   }
   private EditorCell createCollection_1() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
@@ -170,6 +170,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isDeprecated$K_Sf = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L, 0x11d2ea948a4L, "isDeprecated");
+    /*package*/ static final SProperty isDeprecated$ymfh = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L, 0x11d2ea948a4L, "isDeprecated");
   }
 }

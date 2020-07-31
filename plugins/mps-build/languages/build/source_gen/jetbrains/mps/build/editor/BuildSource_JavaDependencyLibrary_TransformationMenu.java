@@ -89,7 +89,7 @@ public class BuildSource_JavaDependencyLibrary_TransformationMenu extends Transf
   public class TMP_Group_d1076f_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.reexport$qwse));
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.reexport$PHEM));
     }
 
     @NotNull
@@ -145,7 +145,7 @@ public class BuildSource_JavaDependencyLibrary_TransformationMenu extends Transf
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.reexport$qwse, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.reexport$PHEM, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -175,6 +175,6 @@ public class BuildSource_JavaDependencyLibrary_TransformationMenu extends Transf
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty reexport$qwse = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, 0x52fab202d8f26228L, "reexport");
+    /*package*/ static final SProperty reexport$PHEM = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, 0x52fab202d8f26228L, "reexport");
   }
 }

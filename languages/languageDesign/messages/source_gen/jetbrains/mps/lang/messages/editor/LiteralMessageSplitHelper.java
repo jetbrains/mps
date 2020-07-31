@@ -36,8 +36,8 @@ public final class LiteralMessageSplitHelper {
   public void insertMacro(SNode target) {
     SNode macro = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, "jetbrains.mps.lang.messages.structure.MacroMessageExpression"));
     if ((target != null)) {
-      SLinkOperations.setTarget(macro, LINKS.defRef$iNqL, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, "jetbrains.mps.lang.context.defs.structure.TypedDefReference")));
-      SLinkOperations.setTarget(SLinkOperations.getTarget(macro, LINKS.defRef$iNqL), LINKS.declaration$LqCB, target);
+      SLinkOperations.setTarget(macro, LINKS.defRef$6TXJ, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, "jetbrains.mps.lang.context.defs.structure.TypedDefReference")));
+      SLinkOperations.setTarget(SLinkOperations.getTarget(macro, LINKS.defRef$6TXJ), LINKS.declaration$VTET, target);
     }
     insertMessageExpr(macro);
   }
@@ -48,7 +48,7 @@ public final class LiteralMessageSplitHelper {
       EditorCell selectedCell = ((SingularSelection) selection).getEditorCell();
       if (selectedCell instanceof EditorCell_Label) {
         int splitPosition = ((EditorCell_Label) selectedCell).getCaretPosition();
-        String messageToSplit = SPropertyOperations.getString(myMessage, PROPS.message$vnr0);
+        String messageToSplit = SPropertyOperations.getString(myMessage, PROPS.message$cm50);
         List<SNode> messages = ListSequence.fromList(new ArrayList<SNode>());
         if (splitPosition > 0) {
           ListSequence.fromList(messages).addElement(createLiteralMessageExpression_fsei94_a0a0a3a1a1a7(messageToSplit.substring(0, splitPosition)));
@@ -59,8 +59,8 @@ public final class LiteralMessageSplitHelper {
         if (messageToSplit != null && splitPosition < messageToSplit.length()) {
           ListSequence.fromList(messages).addElement(createLiteralMessageExpression_fsei94_a0a0a5a1a1a7(messageToSplit.substring(splitPosition)));
         }
-        if (SNodeOperations.hasRole(myMessage, LINKS.part$x7tZ)) {
-          SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(myMessage), CONCEPTS.CombinedMessageExpression$e_), LINKS.part$x7tZ).addAll(SNodeOperations.getIndexInParent(myMessage), messages);
+        if (SNodeOperations.hasRole(myMessage, LINKS.part$2Bxx)) {
+          SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(myMessage), CONCEPTS.CombinedMessageExpression$e_), LINKS.part$2Bxx).addAll(SNodeOperations.getIndexInParent(myMessage), messages);
           SNodeOperations.deleteNode(myMessage);
         } else {
           SNodeOperations.replaceWithAnother(myMessage, createCombinedMessageExpression_fsei94_a0a0a0g0b0b0h(messages));
@@ -73,28 +73,28 @@ public final class LiteralMessageSplitHelper {
   }
   private static SNode createLiteralMessageExpression_fsei94_a0a0a3a1a1a7(Object p0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
-    rootBuilder1.setProperty(PROPS.message$vnr0, PROPS.message$vnr0.getType().toString(p0));
+    rootBuilder1.setProperty(PROPS.message$cm50, PROPS.message$cm50.getType().toString(p0));
     return rootBuilder1.getResult();
   }
   private static SNode createLiteralMessageExpression_fsei94_a0a0a5a1a1a7(Object p0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
-    rootBuilder1.setProperty(PROPS.message$vnr0, PROPS.message$vnr0.getType().toString(p0));
+    rootBuilder1.setProperty(PROPS.message$cm50, PROPS.message$cm50.getType().toString(p0));
     return rootBuilder1.getResult();
   }
   private static SNode createCombinedMessageExpression_fsei94_a0a0a0g0b0b0h(Iterable<? extends SNode> seq0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CombinedMessageExpression$e_);
-    rootBuilder1.forChild(LINKS.part$x7tZ).initNodeList(seq0, CONCEPTS.MessageExpression$FF);
+    rootBuilder1.forChild(LINKS.part$2Bxx).initNodeList(seq0, CONCEPTS.MessageExpression$FF);
     return rootBuilder1.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink defRef$iNqL = MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, 0x25b197ac2c49e208L, "defRef");
-    /*package*/ static final SReferenceLink declaration$LqCB = MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration");
-    /*package*/ static final SContainmentLink part$x7tZ = MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, 0x48f860fc0e404561L, "part");
+    /*package*/ static final SContainmentLink defRef$6TXJ = MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, 0x25b197ac2c49e208L, "defRef");
+    /*package*/ static final SReferenceLink declaration$VTET = MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration");
+    /*package*/ static final SContainmentLink part$2Bxx = MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, 0x48f860fc0e404561L, "part");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty message$vnr0 = MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message");
+    /*package*/ static final SProperty message$cm50 = MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message");
   }
 
   private static final class CONCEPTS {

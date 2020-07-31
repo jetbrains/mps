@@ -33,7 +33,7 @@ public class typeof_ConceptFunctionParameter_sourceNode_InferenceRule extends Ab
       link = CellMenuPart_Abstract__BehaviorDescriptor.getEditedLink_idhJEvotS.invoke((SNodeOperations.as(functionParent, CONCEPTS.CellMenuPart_Abstract$vE)));
     } else {
       // we are in 'ref. presentation' cell 
-      link = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(functionParent, CONCEPTS.CellModel_RefCell$VD, false, false), LINKS.relationDeclaration$wbRV);
+      link = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(functionParent, CONCEPTS.CellModel_RefCell$VD, false, false), LINKS.relationDeclaration$_K5_);
     }
     {
       SNode _nodeToCheck_1029348928467 = parameter;
@@ -65,6 +65,6 @@ public class typeof_ConceptFunctionParameter_sourceNode_InferenceRule extends Ab
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink relationDeclaration$wbRV = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SReferenceLink relationDeclaration$_K5_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
   }
 }

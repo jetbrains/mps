@@ -202,7 +202,7 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
     }
     private static SNode createBooleanConstant_3vdjo8_a0c0d61(Object p0) {
       SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BooleanConstant$Ui);
-      rootBuilder1.setProperty(PROPS.value$WIn0, PROPS.value$WIn0.getType().toString(p0));
+      rootBuilder1.setProperty(PROPS.value$qt90, PROPS.value$qt90.getType().toString(p0));
       return rootBuilder1.getResult();
     }
     private static SNode _quotation_createNode_3vdjo8_a0b0e61(Object parameter_1) {
@@ -214,7 +214,7 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
     }
     private static SNode createStringLiteral_3vdjo8_a0c0e61(Object p0) {
       SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.StringLiteral$4G);
-      rootBuilder1.setProperty(PROPS.value$kiE0, PROPS.value$kiE0.getType().toString(p0));
+      rootBuilder1.setProperty(PROPS.value$P2m0, PROPS.value$P2m0.getType().toString(p0));
       return rootBuilder1.getResult();
     }
     private static SNode _quotation_createNode_3vdjo8_a0b0f61(Object parameter_1) {
@@ -230,7 +230,7 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
     }
     private static SNode createReturnStatement_3vdjo8_a0c0f61(SNode node0) {
       SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ReturnStatement$SF);
-      rootBuilder1.forChild(LINKS.expression$EsbK).initNode(node0, CONCEPTS.Expression$TP, true);
+      rootBuilder1.forChild(LINKS.expression$zDGg).initNode(node0, CONCEPTS.Expression$TP, true);
       return rootBuilder1.getResult();
     }
     private static SNode _quotation_createNode_3vdjo8_a0b0g61(Object parameter_1) {
@@ -246,7 +246,7 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
     }
     private static SNode createReturnStatement_3vdjo8_a0c0g61(SNode node0) {
       SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ReturnStatement$SF);
-      rootBuilder1.forChild(LINKS.expression$EsbK).initNode(node0, CONCEPTS.Expression$TP, true);
+      rootBuilder1.forChild(LINKS.expression$zDGg).initNode(node0, CONCEPTS.Expression$TP, true);
       return rootBuilder1.getResult();
     }
     private static SNode _quotation_createNode_3vdjo8_a0b0h61(Object parameter_1) {
@@ -263,7 +263,7 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
     private static SNode createStatementList_3vdjo8_a0c0h61(SNode node0) {
       SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.StatementList$TN);
       {
-        SNodeBuilder n2 = rootBuilder1.forChild(LINKS.statement$WHn8).initNode(node0, CONCEPTS.Statement$ok, false);
+        SNodeBuilder n2 = rootBuilder1.forChild(LINKS.statement$pYcS).initNode(node0, CONCEPTS.Statement$ok, false);
       }
       return rootBuilder1.getResult();
     }
@@ -281,7 +281,7 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
     private static SNode createStatementList_3vdjo8_a0a2a8q(SNode node0) {
       SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.StatementList$TN);
       {
-        SNodeBuilder n2 = rootBuilder1.forChild(LINKS.statement$WHn8).initNode(node0, CONCEPTS.Statement$ok, false);
+        SNodeBuilder n2 = rootBuilder1.forChild(LINKS.statement$pYcS).initNode(node0, CONCEPTS.Statement$ok, false);
       }
       return rootBuilder1.getResult();
     }
@@ -300,7 +300,7 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
     }
     private static SNode createStatementList_3vdjo8_a0c0j61(Iterable<? extends SNode> seq0) {
       SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.StatementList$TN);
-      rootBuilder1.forChild(LINKS.statement$WHn8).initNodeList(seq0, CONCEPTS.Statement$ok);
+      rootBuilder1.forChild(LINKS.statement$pYcS).initNodeList(seq0, CONCEPTS.Statement$ok);
       return rootBuilder1.getResult();
     }
     private static SNode _quotation_createNode_3vdjo8_a0a1a01q(Object parameter_1) {
@@ -318,7 +318,7 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
     }
     private static SNode createStatementList_3vdjo8_a0a2a01q(Iterable<? extends SNode> seq0) {
       SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.StatementList$TN);
-      rootBuilder1.forChild(LINKS.statement$WHn8).initNodeList(seq0, CONCEPTS.Statement$ok);
+      rootBuilder1.forChild(LINKS.statement$pYcS).initNodeList(seq0, CONCEPTS.Statement$ok);
       return rootBuilder1.getResult();
     }
     private static SNode _quotation_createNode_3vdjo8_a0b0l61(Object parameter_1) {
@@ -330,7 +330,7 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
     }
     private static SNode createClassifierType_3vdjo8_a0c0l61(SNode node0) {
       SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ClassifierType$IZ);
-      rootBuilder1.setReferenceTarget(LINKS.classifier$pQ_R, node0);
+      rootBuilder1.setReferenceTarget(LINKS.classifier$xslD, node0);
       return rootBuilder1.getResult();
     }
     private static SNode _quotation_createNode_3vdjo8_a0b0m61(Object parameter_1) {
@@ -342,7 +342,7 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
     }
     private static SNode createClassifierType_3vdjo8_a0c0m61(SNode node0) {
       SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ClassifierType$IZ);
-      rootBuilder1.setReferenceTarget(LINKS.classifier$pQ_R, node0);
+      rootBuilder1.setReferenceTarget(LINKS.classifier$xslD, node0);
       return rootBuilder1.getResult();
     }
   }
@@ -358,13 +358,13 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$WIn0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
-    /*package*/ static final SProperty value$kiE0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$EsbK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink expression$zDGg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

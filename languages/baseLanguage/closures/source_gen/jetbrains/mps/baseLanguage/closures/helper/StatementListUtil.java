@@ -14,15 +14,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class StatementListUtil {
   public static List<SNode> selectStatementsUntilControlStatement(SNode slist) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(slist, LINKS.statement$WHn8)).isNotEmpty()) {
-      return selectStatementsUntilControlStatement(slist, ListSequence.fromList(((List<SNode>) SLinkOperations.getChildren(slist, LINKS.statement$WHn8))).getElement(0));
+    if (ListSequence.fromList(SLinkOperations.getChildren(slist, LINKS.statement$pYcS)).isNotEmpty()) {
+      return selectStatementsUntilControlStatement(slist, ListSequence.fromList(((List<SNode>) SLinkOperations.getChildren(slist, LINKS.statement$pYcS))).getElement(0));
     }
     return ListSequence.fromList(new ArrayList<SNode>());
   }
   public static List<SNode> selectStatementsUntilControlStatement(SNode slist, SNode start) {
     List<SNode> res = ListSequence.fromList(new ArrayList<SNode>());
     boolean foundStart = false;
-    for (SNode stmt : ((List<SNode>) SLinkOperations.getChildren(slist, LINKS.statement$WHn8))) {
+    for (SNode stmt : ((List<SNode>) SLinkOperations.getChildren(slist, LINKS.statement$pYcS))) {
       if (stmt == start) {
         foundStart = true;
       }
@@ -76,7 +76,7 @@ public class StatementListUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 
   private static final class CONCEPTS {

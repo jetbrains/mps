@@ -28,12 +28,12 @@ public class RuleMethodCall implements DataFlowConstructor {
   public void performActions(Program o, SNode node) {
     SNode m = node;
     SNode targetNode = node;
-    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(targetNode), CONCEPTS.DotExpression$6a) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(targetNode), CONCEPTS.DotExpression$6a), LINKS.operation$X4R8) == targetNode) {
+    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(targetNode), CONCEPTS.DotExpression$6a) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(targetNode), CONCEPTS.DotExpression$6a), LINKS.operation$_mGS) == targetNode) {
       targetNode = SNodeOperations.getParent(targetNode);
     }
-    if (SLinkOperations.getChildren(SLinkOperations.getTarget(m, LINKS.baseMethodDeclaration$$A7i), LINKS.annotation$oVP4) != null) {
-      for (SNode annotation : SLinkOperations.getChildren(SLinkOperations.getTarget(m, LINKS.baseMethodDeclaration$$A7i), LINKS.annotation$oVP4)) {
-        if (SLinkOperations.hasPointer(annotation, LINKS.annotation$zNxu, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~Nullable"))) {
+    if (SLinkOperations.getChildren(SLinkOperations.getTarget(m, LINKS.baseMethodDeclaration$ItxI), LINKS.annotation$4YGW) != null) {
+      for (SNode annotation : SLinkOperations.getChildren(SLinkOperations.getTarget(m, LINKS.baseMethodDeclaration$ItxI), LINKS.annotation$4YGW)) {
+        if (SLinkOperations.hasPointer(annotation, LINKS.annotation$lXdy, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~Nullable"))) {
           {
             Object object = node;
             if (((Program) o).contains(object)) {
@@ -46,7 +46,7 @@ public class RuleMethodCall implements DataFlowConstructor {
             }
           }
         }
-        if (SLinkOperations.hasPointer(annotation, LINKS.annotation$zNxu, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull"))) {
+        if (SLinkOperations.hasPointer(annotation, LINKS.annotation$lXdy, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull"))) {
           {
             Object object = node;
             if (((Program) o).contains(object)) {
@@ -69,9 +69,9 @@ public class RuleMethodCall implements DataFlowConstructor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
   }
 }

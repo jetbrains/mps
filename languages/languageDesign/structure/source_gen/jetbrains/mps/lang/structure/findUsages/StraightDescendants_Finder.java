@@ -58,7 +58,7 @@ public class StraightDescendants_Finder extends GeneratedFinder {
                 return;
               }
               if (SNodeOperations.isInstanceOf(nodeUsage, CONCEPTS.ConceptDeclaration$qU)) {
-                if (SLinkOperations.getTarget(SNodeOperations.cast(nodeUsage, CONCEPTS.ConceptDeclaration$qU), LINKS.extends$LQV3) == node) {
+                if (SLinkOperations.getTarget(SNodeOperations.cast(nodeUsage, CONCEPTS.ConceptDeclaration$qU), LINKS.extends$9AAt) == node) {
                   callback.onUsageFound(createSingleResult(nodeUsage));
                 }
               }
@@ -84,6 +84,6 @@ public class StraightDescendants_Finder extends GeneratedFinder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$LQV3 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
   }
 }

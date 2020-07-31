@@ -13,10 +13,10 @@ public class TextNotePart_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$vZPw));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$vUUw));
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$vZPw = MetaAdapterFactory.getProperty(0x4b0f115a88684d72L, 0x8d6197071eaaa5f1L, 0x7ba12f0b163df404L, 0x7ba12f0b163df405L, "text");
+    /*package*/ static final SProperty text$vUUw = MetaAdapterFactory.getProperty(0x4b0f115a88684d72L, 0x8d6197071eaaa5f1L, 0x7ba12f0b163df404L, 0x7ba12f0b163df405L, "text");
   }
 }

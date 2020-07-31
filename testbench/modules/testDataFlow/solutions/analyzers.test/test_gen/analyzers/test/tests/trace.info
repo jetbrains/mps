@@ -70,7 +70,7 @@
       <node id="2955426575106005456" at="73,41,74,161" concept="4" />
       <node id="2955426575106005468" at="74,161,75,287" concept="4" />
       <node id="2955426575106005475" at="75,287,76,133" concept="1" />
-      <node id="2955426575105884966" at="83,0,84,0" concept="5" trace="child$I6Hv" />
+      <node id="2955426575105884966" at="83,0,84,0" concept="5" trace="child$lg21" />
       <node id="2955426575105884966" at="32,0,34,0" concept="5" trace="ourParamCache" />
       <node id="2955426575105884966" at="34,0,36,0" concept="2" trace="myWithCommandRule" />
       <node id="2955426575105884966" at="37,0,40,0" concept="0" trace="TestProgramWithModeSpecified_Test#()V" />
@@ -171,8 +171,8 @@
       <node id="7078910619969235710" at="62,41,63,339" concept="4" />
       <node id="7078910619969235724" at="63,339,64,292" concept="4" />
       <node id="7078910619969235731" at="64,292,65,758" concept="1" />
-      <node id="7078910619969039925" at="72,0,73,0" concept="5" trace="child$Nivu" />
-      <node id="7078910619969039925" at="73,0,74,0" concept="5" trace="child$NoPp" />
+      <node id="7078910619969039925" at="72,0,73,0" concept="5" trace="child$PXfy" />
+      <node id="7078910619969039925" at="73,0,74,0" concept="5" trace="child$T1R7" />
       <node id="7078910619969039925" at="31,0,33,0" concept="5" trace="ourParamCache" />
       <node id="7078910619969039925" at="33,0,35,0" concept="2" trace="myWithCommandRule" />
       <node id="7078910619969039925" at="36,0,39,0" concept="0" trace="TestProgramWithMoreSpecificMode_Test#()V" />

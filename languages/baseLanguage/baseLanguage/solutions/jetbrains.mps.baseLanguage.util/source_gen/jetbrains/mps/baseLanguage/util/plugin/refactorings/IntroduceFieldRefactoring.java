@@ -34,7 +34,7 @@ public class IntroduceFieldRefactoring extends AbstractIntroduceFieldRefactoring
       newDeclaration = _quotation_createNode_baxqxe_a0a0a2a1(myVisibilityLevel.getNode(), SNodeOperations.copyNode(this.getExpressionType()), this.getName());
     }
     if (myIsFinal) {
-      SPropertyOperations.assign(newDeclaration, PROPS.isFinal$hIht, true);
+      SPropertyOperations.assign(newDeclaration, PROPS.isFinal$_qt3, true);
     }
     SNode classConcept = SNodeOperations.getNodeAncestor(this.getExpression(), CONCEPTS.ClassConcept$IY, false, false);
     MemberInsertingUtils.insertClassifierMemberInBestPlace(classConcept, newDeclaration);
@@ -45,7 +45,7 @@ public class IntroduceFieldRefactoring extends AbstractIntroduceFieldRefactoring
     if (this.myFieldInitialization == FieldInitializationPlace.CONSTRUCTOR) {
       SNode declaration = SNodeOperations.getNodeAncestor(this.getExpression(), CONCEPTS.ClassConcept$IY, false, false);
       for (SNode constructor : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(declaration, CONCEPTS.ClassConcept$IY, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$IY, "4_LVZ3pCvsd"))))) {
-        List<SNode> statement = SLinkOperations.getChildren(SLinkOperations.getTarget(constructor, LINKS.body$WIlu), LINKS.statement$WHn8);
+        List<SNode> statement = SLinkOperations.getChildren(SLinkOperations.getTarget(constructor, LINKS.body$qspy), LINKS.statement$pYcS);
         if (ListSequence.fromList(statement).isNotEmpty()) {
           SNodeOperations.insertPrevSiblingChild(ListSequence.fromList(statement).first(), SNodeOperations.copyNode(assignStatement));
         } else {
@@ -143,7 +143,7 @@ public class IntroduceFieldRefactoring extends AbstractIntroduceFieldRefactoring
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 
   private static final class CONCEPTS {
@@ -152,7 +152,7 @@ public class IntroduceFieldRefactoring extends AbstractIntroduceFieldRefactoring
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

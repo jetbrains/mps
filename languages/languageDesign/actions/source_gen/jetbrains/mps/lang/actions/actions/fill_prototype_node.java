@@ -15,48 +15,48 @@ public class fill_prototype_node {
   public static class NodeFactory_3757480014665236945 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.SNodeCreatorAndInitializer$jt)) {
-        SLinkOperations.setTarget(newNode, LINKS.prototype$wnKQ, ((SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.SNodeCreatorAndInitializer$jt), LINKS.prototypeNode$_hnx) != null) ? SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.SNodeCreatorAndInitializer$jt), LINKS.prototypeNode$_hnx) : SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.SNodeCreatorAndInitializer$jt), LINKS.prototype$wnKQ)));
+        SLinkOperations.setTarget(newNode, LINKS.prototype$FwEa, ((SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.SNodeCreatorAndInitializer$jt), LINKS.prototypeNode$3qoZ) != null) ? SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.SNodeCreatorAndInitializer$jt), LINKS.prototypeNode$3qoZ) : SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.SNodeCreatorAndInitializer$jt), LINKS.prototype$FwEa)));
       } else if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.SNodeCreator$co)) {
-        SLinkOperations.setTarget(newNode, LINKS.prototype$wnKQ, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.SNodeCreator$co), LINKS.prototypeNode$_hnx));
+        SLinkOperations.setTarget(newNode, LINKS.prototype$FwEa, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.SNodeCreator$co), LINKS.prototypeNode$3qoZ));
       }
     }
   }
   public static class NodeFactory_3757480014665236933 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.NF_Concept_NewInstance$DL)) {
-        SLinkOperations.setTarget(newNode, LINKS.prototype$2o1z, ((SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Concept_NewInstance$DL), LINKS.prototypeNode$cHjW) != null) ? SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Concept_NewInstance$DL), LINKS.prototypeNode$cHjW) : SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Concept_NewInstance$DL), LINKS.prototype$2o1z)));
+        SLinkOperations.setTarget(newNode, LINKS.prototype$9CJX, ((SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Concept_NewInstance$DL), LINKS.prototypeNode$9WE4) != null) ? SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Concept_NewInstance$DL), LINKS.prototypeNode$9WE4) : SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Concept_NewInstance$DL), LINKS.prototype$9CJX)));
       } else if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Concept_NewInstance$R5)) {
-        SLinkOperations.setTarget(newNode, LINKS.prototype$2o1z, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.Concept_NewInstance$R5), LINKS.prototypeNode$cHjW));
+        SLinkOperations.setTarget(newNode, LINKS.prototype$9CJX, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.Concept_NewInstance$R5), LINKS.prototypeNode$9WE4));
       }
     }
   }
   public static class NodeFactory_3757480014665236936 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.NF_Model_CreateNewNodeOperation$Sn)) {
-        SLinkOperations.setTarget(newNode, LINKS.prototype$wffX, ((SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Model_CreateNewNodeOperation$Sn), LINKS.prototypeNode$oJA6) != null) ? SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Model_CreateNewNodeOperation$Sn), LINKS.prototypeNode$oJA6) : SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Model_CreateNewNodeOperation$Sn), LINKS.prototype$wffX)));
+        SLinkOperations.setTarget(newNode, LINKS.prototype$BoIz, ((SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Model_CreateNewNodeOperation$Sn), LINKS.prototypeNode$Z3sU) != null) ? SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Model_CreateNewNodeOperation$Sn), LINKS.prototypeNode$Z3sU) : SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Model_CreateNewNodeOperation$Sn), LINKS.prototype$BoIz)));
       } else if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Model_CreateNewNodeOperation$r4)) {
-        SLinkOperations.setTarget(newNode, LINKS.prototype$wffX, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.Model_CreateNewNodeOperation$r4), LINKS.prototypeNode$oJA6));
+        SLinkOperations.setTarget(newNode, LINKS.prototype$BoIz, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.Model_CreateNewNodeOperation$r4), LINKS.prototypeNode$Z3sU));
       }
     }
   }
   public static class NodeFactory_3757480014665236942 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.NF_Model_CreateNewRootNodeOperation$JB)) {
-        SLinkOperations.setTarget(newNode, LINKS.prototype$zdJJ, ((SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Model_CreateNewRootNodeOperation$JB), LINKS.prototypeNode$oJA6) != null) ? SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Model_CreateNewRootNodeOperation$JB), LINKS.prototypeNode$oJA6) : SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Model_CreateNewRootNodeOperation$JB), LINKS.prototype$zdJJ)));
+        SLinkOperations.setTarget(newNode, LINKS.prototype$3E7L, ((SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Model_CreateNewRootNodeOperation$JB), LINKS.prototypeNode$Z3sU) != null) ? SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Model_CreateNewRootNodeOperation$JB), LINKS.prototypeNode$Z3sU) : SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.NF_Model_CreateNewRootNodeOperation$JB), LINKS.prototype$3E7L)));
       } else if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Model_CreateNewRootNodeOperation$tA)) {
-        SLinkOperations.setTarget(newNode, LINKS.prototype$zdJJ, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.Model_CreateNewRootNodeOperation$tA), LINKS.prototypeNode$oJA6));
+        SLinkOperations.setTarget(newNode, LINKS.prototype$3E7L, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.Model_CreateNewRootNodeOperation$tA), LINKS.prototypeNode$Z3sU));
       }
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink prototype$wnKQ = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x52fd3043dd42f3a9L, 0x3425402a54bf815eL, "prototype");
-    /*package*/ static final SContainmentLink prototypeNode$_hnx = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x112e36f7135L, 0x11330f61e37L, "prototypeNode");
-    /*package*/ static final SContainmentLink prototype$2o1z = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x6bea674d717de5f4L, 0x3425402a54bf5f34L, "prototype");
-    /*package*/ static final SContainmentLink prototypeNode$cHjW = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11331ad1f2aL, 0x11331af096aL, "prototypeNode");
-    /*package*/ static final SContainmentLink prototype$wffX = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x4c0fd74709e9e128L, 0x3425402a54bf52eaL, "prototype");
-    /*package*/ static final SContainmentLink prototypeNode$oJA6 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a2e210544L, 0x112346e3962L, "prototypeNode");
-    /*package*/ static final SContainmentLink prototype$zdJJ = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x4c0fd74709e9f70cL, 0x3425402a54bf52e8L, "prototype");
+    /*package*/ static final SContainmentLink prototype$FwEa = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x52fd3043dd42f3a9L, 0x3425402a54bf815eL, "prototype");
+    /*package*/ static final SContainmentLink prototypeNode$3qoZ = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x112e36f7135L, 0x11330f61e37L, "prototypeNode");
+    /*package*/ static final SContainmentLink prototype$9CJX = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x6bea674d717de5f4L, 0x3425402a54bf5f34L, "prototype");
+    /*package*/ static final SContainmentLink prototypeNode$9WE4 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11331ad1f2aL, 0x11331af096aL, "prototypeNode");
+    /*package*/ static final SContainmentLink prototype$BoIz = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x4c0fd74709e9e128L, 0x3425402a54bf52eaL, "prototype");
+    /*package*/ static final SContainmentLink prototypeNode$Z3sU = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a2e210544L, 0x112346e3962L, "prototypeNode");
+    /*package*/ static final SContainmentLink prototype$3E7L = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x4c0fd74709e9f70cL, 0x3425402a54bf52e8L, "prototype");
   }
 
   private static final class CONCEPTS {

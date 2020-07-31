@@ -184,7 +184,7 @@ public class MigrateStaticBehaviorThisAndSuper extends MigrationScriptBase {
       });
       Sequence.fromIterable(getApplicableNodes(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SuperNodeExpression$A_, false))).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SLinkOperations.setTarget(SNodeOperations.replaceWithNewChild(it, CONCEPTS.SuperConceptExpression$HR), LINKS.superConcept$nNkw, SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.SuperNodeExpression$A_), LINKS.superConcept$i1FO));
+          SLinkOperations.setTarget(SNodeOperations.replaceWithNewChild(it, CONCEPTS.SuperConceptExpression$HR), LINKS.superConcept$xQVw, SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.SuperNodeExpression$A_), LINKS.superConcept$IOec));
         }
       });
     }
@@ -245,7 +245,7 @@ public class MigrateStaticBehaviorThisAndSuper extends MigrationScriptBase {
         if (pd == null) {
           return false;
         }
-        SNode mc = SNodeOperations.as(SLinkOperations.getTarget(pd, LINKS.operation$X4R8), CONCEPTS.SNodeOperation$o6);
+        SNode mc = SNodeOperations.as(SLinkOperations.getTarget(pd, LINKS.operation$_mGS), CONCEPTS.SNodeOperation$o6);
         if (mc == null) {
           return false;
         }
@@ -341,8 +341,8 @@ public class MigrateStaticBehaviorThisAndSuper extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink superConcept$nNkw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, 0x69a9d7dcb057a7a8L, "superConcept");
-    /*package*/ static final SReferenceLink superConcept$i1FO = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434a6558L, 0x498a2c3387127040L, "superConcept");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SReferenceLink superConcept$xQVw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, 0x69a9d7dcb057a7a8L, "superConcept");
+    /*package*/ static final SReferenceLink superConcept$IOec = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434a6558L, 0x498a2c3387127040L, "superConcept");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 }

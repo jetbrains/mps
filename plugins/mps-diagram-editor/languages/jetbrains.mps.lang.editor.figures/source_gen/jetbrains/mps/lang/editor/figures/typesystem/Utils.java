@@ -13,17 +13,17 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class Utils {
   /*package*/ static SNode getFirstGenericParameterType(SNode classifierType) {
-    if (classifierType != null && SLinkOperations.getTarget(classifierType, LINKS.classifier$pQ_R) != null && ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$dQne)).count() > 0) {
-      return ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$dQne)).first();
+    if (classifierType != null && SLinkOperations.getTarget(classifierType, LINKS.classifier$xslD) != null && ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$HlfM)).count() > 0) {
+      return ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$HlfM)).first();
     }
     return null;
   }
   /*package*/ static boolean isSupportedParameterType(SNode classifierType, SNode superClassifier) {
-    return classifierType != null && SLinkOperations.getTarget(classifierType, LINKS.classifier$pQ_R) != null && SetSequence.fromSet(Classifier__BehaviorDescriptor.getAllExtendedClassifiers_id2xreLMO8jma.invoke(SLinkOperations.getTarget(classifierType, LINKS.classifier$pQ_R))).contains(superClassifier);
+    return classifierType != null && SLinkOperations.getTarget(classifierType, LINKS.classifier$xslD) != null && SetSequence.fromSet(Classifier__BehaviorDescriptor.getAllExtendedClassifiers_id2xreLMO8jma.invoke(SLinkOperations.getTarget(classifierType, LINKS.classifier$xslD))).contains(superClassifier);
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

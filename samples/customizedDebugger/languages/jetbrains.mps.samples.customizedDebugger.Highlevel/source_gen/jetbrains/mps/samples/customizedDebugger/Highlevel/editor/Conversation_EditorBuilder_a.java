@@ -82,7 +82,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$tAp1;
+      final SProperty property = PROPS.name$lA7v;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -134,7 +134,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.participants$95IW;
+      return LINKS.participants$pLJ4;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.Participant$jo;
@@ -147,7 +147,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(participantsListHandler_h5gehg_d0.this.getNode(), LINKS.participants$95IW));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(participantsListHandler_h5gehg_d0.this.getNode(), LINKS.participants$pLJ4));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -229,7 +229,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.smallTalk$95JU;
+      return LINKS.smallTalk$pMd6;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.Message$uG;
@@ -242,7 +242,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(smallTalkListHandler_h5gehg_f0.this.getNode(), LINKS.smallTalk$95JU));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(smallTalkListHandler_h5gehg_f0.this.getNode(), LINKS.smallTalk$pMd6));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -284,7 +284,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
@@ -294,7 +294,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink participants$95IW = MetaAdapterFactory.getContainmentLink(0xbdab7456dc1d4dc5L, 0xb5bfab059630252dL, 0x71d6f475fc93f6fbL, 0x71d6f475fc93f721L, "participants");
-    /*package*/ static final SContainmentLink smallTalk$95JU = MetaAdapterFactory.getContainmentLink(0xbdab7456dc1d4dc5L, 0xb5bfab059630252dL, 0x71d6f475fc93f6fbL, 0x71d6f475fc93f723L, "smallTalk");
+    /*package*/ static final SContainmentLink participants$pLJ4 = MetaAdapterFactory.getContainmentLink(0xbdab7456dc1d4dc5L, 0xb5bfab059630252dL, 0x71d6f475fc93f6fbL, 0x71d6f475fc93f721L, "participants");
+    /*package*/ static final SContainmentLink smallTalk$pMd6 = MetaAdapterFactory.getContainmentLink(0xbdab7456dc1d4dc5L, 0xb5bfab059630252dL, 0x71d6f475fc93f6fbL, 0x71d6f475fc93f723L, "smallTalk");
   }
 }

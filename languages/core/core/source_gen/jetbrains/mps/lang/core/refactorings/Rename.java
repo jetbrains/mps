@@ -28,7 +28,7 @@ public class Rename extends BaseRefactoring {
     return true;
   }
   public void refactor(final RefactoringContext refactoringContext) {
-    SPropertyOperations.assign(refactoringContext.getSelectedNode(), PROPS.name$tAp1, ((String) refactoringContext.getParameter("newName")));
+    SPropertyOperations.assign(refactoringContext.getSelectedNode(), PROPS.name$lA7v, ((String) refactoringContext.getParameter("newName")));
   }
   public List<SModel> getModelsToGenerate(final RefactoringContext refactoringContext) {
     return (List<SModel>) refactoringContext.getModelsFromUsages(refactoringContext.getSelectedModel());
@@ -38,6 +38,6 @@ public class Rename extends BaseRefactoring {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -40,10 +40,10 @@ public final class IMigrationUnit__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getVersionedName_id5T5Tgcp0u0A(@NotNull SNode __thisNode__) {
-    return String.format("%03d", ((int) IMigrationUnit__BehaviorDescriptor.fromVersion_id4uVwhQyFcnl.invoke(__thisNode__))) + "_" + SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1);
+    return String.format("%03d", ((int) IMigrationUnit__BehaviorDescriptor.fromVersion_id4uVwhQyFcnl.invoke(__thisNode__))) + "_" + SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v);
   }
   /*package*/ static String getClassName_id5Fumpqe4XH$(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1);
+    return SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v);
   }
 
   /*package*/ IMigrationUnit__BehaviorDescriptor() {
@@ -95,6 +95,6 @@ public final class IMigrationUnit__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

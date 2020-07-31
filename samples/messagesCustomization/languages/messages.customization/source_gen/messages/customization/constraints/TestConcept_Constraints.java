@@ -38,7 +38,7 @@ public class TestConcept_Constraints extends BaseConstraintsDescriptor {
 
   public static class Prop_Property extends BasePropertyConstraintsDescriptor {
     public Prop_Property(ConstraintsDescriptor container) {
-      super(PROPS.prop$PGpb, container);
+      super(PROPS.prop$wcl, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -60,12 +60,12 @@ public class TestConcept_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.prop$PGpb, new Prop_Property(this));
+    properties.put(PROPS.prop$wcl, new Prop_Property(this));
     return properties;
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.link$1Bcs, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.link$LZ1$, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -98,10 +98,10 @@ public class TestConcept_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty prop$PGpb = MetaAdapterFactory.getProperty(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x50310db2af989958L, "prop");
+    /*package*/ static final SProperty prop$wcl = MetaAdapterFactory.getProperty(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x50310db2af989958L, "prop");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink link$1Bcs = MetaAdapterFactory.getReferenceLink(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x161a25d497067a9eL, "link");
+    /*package*/ static final SReferenceLink link$LZ1$ = MetaAdapterFactory.getReferenceLink(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x161a25d497067a9eL, "link");
   }
 }

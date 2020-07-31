@@ -31,7 +31,7 @@ public final class ConsoleScript__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Iterable<SNode> getCommands_id1whNchEKZry(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getChildren(__thisNode__, LINKS.command$CMt0);
+    return SLinkOperations.getChildren(__thisNode__, LINKS.command$Ks30);
   }
 
   /*package*/ ConsoleScript__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class ConsoleScript__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink command$CMt0 = MetaAdapterFactory.getContainmentLink(0xf26691d20def4c06L, 0xaec62cb90c4af0a4L, 0x1811ccc46ac3f6deL, 0x1811ccc46ac3f6dfL, "command");
+    /*package*/ static final SContainmentLink command$Ks30 = MetaAdapterFactory.getContainmentLink(0xf26691d20def4c06L, 0xaec62cb90c4af0a4L, 0x1811ccc46ac3f6deL, 0x1811ccc46ac3f6dfL, "command");
   }
 }

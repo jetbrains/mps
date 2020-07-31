@@ -23,7 +23,7 @@ public class typeOf_Link_SetNewChildOperation_InferenceRule extends AbstractInfe
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final SNode Concept_typevar_1206099875685 = typeCheckingContext.createNewRuntimeTypesVariable();
     RulesUtil.equate_inputNodeConcept(typeCheckingContext, op, typeCheckingContext.getRepresentative(Concept_typevar_1206099875685));
-    SNode parameterConcept = SLinkOperations.getTarget(op, LINKS.concept$LWEK);
+    SNode parameterConcept = SLinkOperations.getTarget(op, LINKS.concept$coHg);
     if (parameterConcept == null) {
       {
         SNode _nodeToCheck_1029348928467 = op;
@@ -77,7 +77,7 @@ public class typeOf_Link_SetNewChildOperation_InferenceRule extends AbstractInfe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$LWEK = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x109233dbca1L, 0x109662671bcL, "concept");
+    /*package*/ static final SReferenceLink concept$coHg = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x109233dbca1L, 0x109662671bcL, "concept");
   }
 
   private static final class CONCEPTS {

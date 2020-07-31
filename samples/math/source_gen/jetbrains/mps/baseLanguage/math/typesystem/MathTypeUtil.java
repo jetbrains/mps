@@ -92,8 +92,8 @@ public class MathTypeUtil {
     }
   }
   public static int binaryOperationRequiresWidening(SNode binOp, SNode expr) {
-    boolean left = SNodeOperations.hasRole(expr, LINKS.leftExpression$rxLZ);
-    boolean right = SNodeOperations.hasRole(expr, LINKS.rightExpression$rxBl);
+    boolean left = SNodeOperations.hasRole(expr, LINKS.leftExpression$lndx);
+    boolean right = SNodeOperations.hasRole(expr, LINKS.rightExpression$li3b);
     if (!(SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(binOp), CONCEPTS.Type$IG)) || !(SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(expr), CONCEPTS.Type$IG))) {
       return 0;
     }
@@ -101,10 +101,10 @@ public class MathTypeUtil {
     SNode exprType = SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(expr), CONCEPTS.Type$IG);
     SNode oppositeOp = null;
     if (left) {
-      oppositeOp = SLinkOperations.getTarget(binOp, LINKS.rightExpression$rxBl);
+      oppositeOp = SLinkOperations.getTarget(binOp, LINKS.rightExpression$li3b);
     }
     if (right) {
-      oppositeOp = SLinkOperations.getTarget(binOp, LINKS.leftExpression$rxLZ);
+      oppositeOp = SLinkOperations.getTarget(binOp, LINKS.leftExpression$lndx);
     }
     SNode oppExprType = SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(oppositeOp), CONCEPTS.Type$IG);
     if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(binOp), CONCEPTS.MatrixType$qA) && (SNodeOperations.isInstanceOf(binOp, CONCEPTS.MulExpression$8_) || SNodeOperations.isInstanceOf(binOp, CONCEPTS.PlusExpression$Re) || SNodeOperations.isInstanceOf(binOp, CONCEPTS.MinusExpression$E9))) {
@@ -138,7 +138,7 @@ public class MathTypeUtil {
           }
         }
         if (matches_i9t80i_a0a32) {
-          return SLinkOperations.getTarget(matchedNode_i9t80i_a0x, LINKS.elementType$Gy$X);
+          return SLinkOperations.getTarget(matchedNode_i9t80i_a0x, LINKS.elementType$$JTz);
         } else {
           boolean matches_i9t80i_b0a32 = false;
           {
@@ -148,7 +148,7 @@ public class MathTypeUtil {
             }
           }
           if (matches_i9t80i_b0a32) {
-            return SLinkOperations.getTarget(matchedNode_i9t80i_a0x, LINKS.elementType$Gzh1);
+            return SLinkOperations.getTarget(matchedNode_i9t80i_a0x, LINKS.elementType$_5fv);
           } else
           return null;
         }
@@ -225,7 +225,7 @@ public class MathTypeUtil {
           parent = SNodeOperations.getParent(blockStatement);
           if (SNodeOperations.isInstanceOf(parent, CONCEPTS.StatementList$TN)) {
             SNode bsStatementList = SNodeOperations.cast(parent, CONCEPTS.StatementList$TN);
-            List<SNode> statements = SLinkOperations.getChildren(bsStatementList, LINKS.statement$WHn8);
+            List<SNode> statements = SLinkOperations.getChildren(bsStatementList, LINKS.statement$pYcS);
             if (ListSequence.fromList(statements).last() == blockStatement) {
               parent = SNodeOperations.getParent(bsStatementList);
             }
@@ -233,7 +233,7 @@ public class MathTypeUtil {
         }
         if (!(SNodeOperations.isInstanceOf(parent, CONCEPTS.Statement$ok)) && !(SNodeOperations.isInstanceOf(parent, CONCEPTS.ConstructorDeclaration$5U)) && !(SNodeOperations.isInstanceOf(parent, CONCEPTS.CatchClause$hu)) && !(SNodeOperations.isInstanceOf(parent, CONCEPTS.SwitchCase$EA))) {
           if (SNodeOperations.isInstanceOf(parent, CONCEPTS.BaseMethodDeclaration$RR)) {
-            returnType = SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.BaseMethodDeclaration$RR), LINKS.returnType$WIkw);
+            returnType = SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.BaseMethodDeclaration$RR), LINKS.returnType$qrVw);
           } else if (SNodeOperations.isInstanceOf(parent, CONCEPTS.ConceptFunction$Tt)) {
             returnType = SNodeOperations.cast(ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(SNodeOperations.cast(parent, CONCEPTS.ConceptFunction$Tt)), CONCEPTS.Type$IG);
           }
@@ -260,9 +260,9 @@ public class MathTypeUtil {
         if (matches_i9t80i_a2a62) {
           {
             SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, "jetbrains.mps.baseLanguage.math.structure.MatrixType"));
-            SPropertyOperations.assign(result, PROPS.rows$rd2R, SPropertyOperations.getInteger(matchedNode_i9t80i_c0ab, PROPS.rows$rd2R));
-            SPropertyOperations.assign(result, PROPS.columns$rd3m, SPropertyOperations.getInteger(matchedNode_i9t80i_c0ab, PROPS.columns$rd3m));
-            SLinkOperations.setTarget(result, LINKS.elementType$Gy$X, e);
+            SPropertyOperations.assign(result, PROPS.rows$bkoD, SPropertyOperations.getInteger(matchedNode_i9t80i_c0ab, PROPS.rows$bkoD));
+            SPropertyOperations.assign(result, PROPS.columns$bkBE, SPropertyOperations.getInteger(matchedNode_i9t80i_c0ab, PROPS.columns$bkBE));
+            SLinkOperations.setTarget(result, LINKS.elementType$$JTz, e);
             return result;
           }
         } else {
@@ -276,8 +276,8 @@ public class MathTypeUtil {
           if (matches_i9t80i_b2a62) {
             {
               SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f775L, "jetbrains.mps.baseLanguage.math.structure.VectorType"));
-              SPropertyOperations.assign(result, PROPS.height$Gzgy, SPropertyOperations.getInteger(matchedNode_i9t80i_c0ab, PROPS.height$Gzgy));
-              SLinkOperations.setTarget(result, LINKS.elementType$Gzh1, e);
+              SPropertyOperations.assign(result, PROPS.height$_50u, SPropertyOperations.getInteger(matchedNode_i9t80i_c0ab, PROPS.height$_50u));
+              SLinkOperations.setTarget(result, LINKS.elementType$_5fv, e);
               return result;
             }
           } else
@@ -287,8 +287,8 @@ public class MathTypeUtil {
     }
   }
   public static boolean checkAdditiveOperationDimensions(SNode binOp) {
-    SNode lEt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binOp, LINKS.leftExpression$rxLZ));
-    SNode rEt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binOp, LINKS.rightExpression$rxBl));
+    SNode lEt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binOp, LINKS.leftExpression$lndx));
+    SNode rEt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binOp, LINKS.rightExpression$li3b));
     if (SNodeOperations.isInstanceOf(lEt, CONCEPTS.MatrixOrVectorType$Xr) && SNodeOperations.isInstanceOf(rEt, CONCEPTS.MatrixOrVectorType$Xr)) {
       int lr = DimensionUtil.dimr(lEt);
       int lc = DimensionUtil.dimc(lEt);
@@ -531,17 +531,17 @@ public class MathTypeUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink elementType$Gy$X = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62684653L, "elementType");
-    /*package*/ static final SContainmentLink elementType$Gzh1 = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f775L, 0x42d5783a6268466fL, "elementType");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink elementType$$JTz = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62684653L, "elementType");
+    /*package*/ static final SContainmentLink elementType$_5fv = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f775L, 0x42d5783a6268466fL, "elementType");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty rows$rd2R = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dacL, "rows");
-    /*package*/ static final SProperty columns$rd3m = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dadL, "columns");
-    /*package*/ static final SProperty height$Gzgy = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f775L, 0x42d5783a6268466eL, "height");
+    /*package*/ static final SProperty rows$bkoD = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dacL, "rows");
+    /*package*/ static final SProperty columns$bkBE = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dadL, "columns");
+    /*package*/ static final SProperty height$_50u = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f775L, 0x42d5783a6268466eL, "height");
   }
 }

@@ -23,14 +23,14 @@ public final class LightWeightDecisionTable__BehaviorDescriptor extends BaseBHDe
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SLinkOperations.addNewChild(__thisNode__, LINKS.column$lJmi, null);
-    SLinkOperations.addNewChild(__thisNode__, LINKS.column$lJmi, null);
-    SLinkOperations.addNewChild(__thisNode__, LINKS.row$lP23, null);
-    SLinkOperations.addNewChild(__thisNode__, LINKS.row$lP23, null);
-    SLinkOperations.addNewChild(__thisNode__, LINKS.body$lP2y, null);
-    SLinkOperations.addNewChild(__thisNode__, LINKS.body$lP2y, null);
-    SLinkOperations.addNewChild(__thisNode__, LINKS.body$lP2y, null);
-    SLinkOperations.addNewChild(__thisNode__, LINKS.body$lP2y, null);
+    SLinkOperations.addNewChild(__thisNode__, LINKS.column$xVMI, null);
+    SLinkOperations.addNewChild(__thisNode__, LINKS.column$xVMI, null);
+    SLinkOperations.addNewChild(__thisNode__, LINKS.row$$FZt, null);
+    SLinkOperations.addNewChild(__thisNode__, LINKS.row$$FZt, null);
+    SLinkOperations.addNewChild(__thisNode__, LINKS.body$$Geu, null);
+    SLinkOperations.addNewChild(__thisNode__, LINKS.body$$Geu, null);
+    SLinkOperations.addNewChild(__thisNode__, LINKS.body$$Geu, null);
+    SLinkOperations.addNewChild(__thisNode__, LINKS.body$$Geu, null);
   }
 
 
@@ -79,8 +79,8 @@ public final class LightWeightDecisionTable__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink column$lJmi = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x6a2febf37d11d3dfL, 0x6a2febf37d121001L, "column");
-    /*package*/ static final SContainmentLink row$lP23 = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x6a2febf37d11d3dfL, 0x6a2febf37d121026L, "row");
-    /*package*/ static final SContainmentLink body$lP2y = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x6a2febf37d11d3dfL, 0x6a2febf37d121027L, "body");
+    /*package*/ static final SContainmentLink column$xVMI = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x6a2febf37d11d3dfL, 0x6a2febf37d121001L, "column");
+    /*package*/ static final SContainmentLink row$$FZt = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x6a2febf37d11d3dfL, 0x6a2febf37d121026L, "row");
+    /*package*/ static final SContainmentLink body$$Geu = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x6a2febf37d11d3dfL, 0x6a2febf37d121027L, "body");
   }
 }

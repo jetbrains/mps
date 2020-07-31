@@ -27,14 +27,14 @@ public class check_Type_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
       SNode wrapper = SNodeOperations.getNodeAncestor(type, CONCEPTS.Classifier$hJ, false, false);
       if ((wrapper != null)) {
         if (SNodeOperations.isInstanceOf(wrapper, CONCEPTS.ClassConcept$IY)) {
-          if (SNodeOperations.hasRole(SNodeOperations.getParent(type), LINKS.implementedInterface$mdc6) || SNodeOperations.hasRole(SNodeOperations.getParent(type), LINKS.superclass$_pqe)) {
+          if (SNodeOperations.hasRole(SNodeOperations.getParent(type), LINKS.implementedInterface$KoQU) || SNodeOperations.hasRole(SNodeOperations.getParent(type), LINKS.superclass$7jGM)) {
             {
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(type, "A supertype may not specify any wildcard", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8187342170689317931", null, errorTarget);
             }
           }
         } else if (SNodeOperations.isInstanceOf(wrapper, CONCEPTS.Interface$Kp)) {
-          if (SNodeOperations.hasRole(SNodeOperations.getParent(type), LINKS.extendedInterface$rbvY)) {
+          if (SNodeOperations.hasRole(SNodeOperations.getParent(type), LINKS.extendedInterface$a$v2)) {
             {
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(type, "A supertype may not specify any wildcard", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8187342170689338001", null, errorTarget);
@@ -66,8 +66,8 @@ public class check_Type_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SContainmentLink implementedInterface$mdc6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
-    /*package*/ static final SContainmentLink extendedInterface$rbvY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink extendedInterface$a$v2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
   }
 }

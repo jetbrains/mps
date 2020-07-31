@@ -22,9 +22,9 @@ public class typeof_ConstraintFunctionParameter_linkTargetNode_InferenceRule ext
   public typeof_ConstraintFunctionParameter_linkTargetNode_InferenceRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode target = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.NodeReferentConstraint$JH, false, false), LINKS.applicableLink$Hkrz), LINKS.target$egp8);
+    SNode target = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.NodeReferentConstraint$JH, false, false), LINKS.applicableLink$WTlX), LINKS.target$TWaS);
     if ((target == null)) {
-      target = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.ConceptConstraints$St, false, false), LINKS.concept$rRWx);
+      target = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.ConceptConstraints$St, false, false), LINKS.concept$w6jZ);
     }
     {
       SNode _nodeToCheck_1029348928467 = node;
@@ -56,8 +56,8 @@ public class typeof_ConstraintFunctionParameter_linkTargetNode_InferenceRule ext
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableLink$Hkrz = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7317b98aL, "applicableLink");
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
-    /*package*/ static final SReferenceLink concept$rRWx = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept");
+    /*package*/ static final SReferenceLink applicableLink$WTlX = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7317b98aL, "applicableLink");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink concept$w6jZ = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept");
   }
 }

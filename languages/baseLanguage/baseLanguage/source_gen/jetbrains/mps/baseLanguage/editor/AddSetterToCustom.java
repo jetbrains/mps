@@ -24,8 +24,8 @@ public class AddSetterToCustom {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if ((SLinkOperations.getTarget(node, LINKS.setAccessor$cVSe) == null)) {
-          SLinkOperations.setTarget(node, LINKS.setAccessor$cVSe, SNodeFactoryOperations.createNewNode(CONCEPTS.SetAccessor$QT, null));
+        if ((SLinkOperations.getTarget(node, LINKS.setAccessor$h0eM) == null)) {
+          SLinkOperations.setTarget(node, LINKS.setAccessor$h0eM, SNodeFactoryOperations.createNewNode(CONCEPTS.SetAccessor$QT, null));
         }
       }
 
@@ -38,7 +38,7 @@ public class AddSetterToCustom {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode replacingNode = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.CustomSetterPropertyImplementation$E1);
-        SLinkOperations.setTarget(replacingNode, LINKS.setAccessor$VUMX, SLinkOperations.getTarget(node, LINKS.setAccessor$cVSe));
+        SLinkOperations.setTarget(replacingNode, LINKS.setAccessor$1uFz, SLinkOperations.getTarget(node, LINKS.setAccessor$h0eM));
       }
 
     };
@@ -90,8 +90,8 @@ public class AddSetterToCustom {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink setAccessor$cVSe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b8f1b18eL, 0x117bd9b26faL, "setAccessor");
-    /*package*/ static final SContainmentLink setAccessor$VUMX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, 0x3b7a2005a14d0185L, "setAccessor");
+    /*package*/ static final SContainmentLink setAccessor$h0eM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b8f1b18eL, 0x117bd9b26faL, "setAccessor");
+    /*package*/ static final SContainmentLink setAccessor$1uFz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, 0x3b7a2005a14d0185L, "setAccessor");
   }
 
   private static final class CONCEPTS {

@@ -39,7 +39,7 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
 
   public static class EnumPropertyWithIsValidConstraints_Property extends BasePropertyConstraintsDescriptor {
     public EnumPropertyWithIsValidConstraints_Property(ConstraintsDescriptor container) {
-      super(PROPS.enumPropertyWithIsValidConstraints$WJNX, container);
+      super(PROPS.enumPropertyWithIsValidConstraints$raaz, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -60,7 +60,7 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
   }
   public static class EnumPropertyWithGetter_Property extends BasePropertyConstraintsDescriptor {
     public EnumPropertyWithGetter_Property(ConstraintsDescriptor container) {
-      super(PROPS.enumPropertyWithGetter$RvVy, container);
+      super(PROPS.enumPropertyWithGetter$StPu, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -73,7 +73,7 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
   }
   public static class EnumPropertyWithSetter_Property extends BasePropertyConstraintsDescriptor {
     public EnumPropertyWithSetter_Property(ConstraintsDescriptor container) {
-      super(PROPS.enumPropertyWithSetter$K6HZ, container);
+      super(PROPS.enumPropertyWithSetter$jghx, container);
     }
     @Override
     public boolean hasOwnSetter() {
@@ -84,20 +84,20 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
       staticSetPropertyValue(node, SPropertyOperations.castEnummember(propertyValue));
     }
     private static void staticSetPropertyValue(SNode node, SEnumerationLiteral propertyValue) {
-      SPropertyOperations.assign(node, PROPS.name$tAp1, "custom property setter executed");
+      SPropertyOperations.assign(node, PROPS.name$lA7v, "custom property setter executed");
     }
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.enumPropertyWithIsValidConstraints$WJNX, new EnumPropertyWithIsValidConstraints_Property(this));
-    properties.put(PROPS.enumPropertyWithGetter$RvVy, new EnumPropertyWithGetter_Property(this));
-    properties.put(PROPS.enumPropertyWithSetter$K6HZ, new EnumPropertyWithSetter_Property(this));
+    properties.put(PROPS.enumPropertyWithIsValidConstraints$raaz, new EnumPropertyWithIsValidConstraints_Property(this));
+    properties.put(PROPS.enumPropertyWithGetter$StPu, new EnumPropertyWithGetter_Property(this));
+    properties.put(PROPS.enumPropertyWithSetter$jghx, new EnumPropertyWithSetter_Property(this));
     return properties;
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.referenceWithScope$7a4D, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.referenceWithScope$tSfR, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -122,7 +122,7 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
         };
       }
     };
-    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.referenceWithSetHandler$7fXv, this) {
+    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.referenceWithSetHandler$wIM1, this) {
       @Override
       public boolean hasOwnOnReferenceSetHandler() {
         return true;
@@ -133,7 +133,7 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
       }
       @Override
       public void onReferenceSet(final SNode referenceNode, final SNode oldReferentNode, final SNode newReferentNode) {
-        SPropertyOperations.assign(referenceNode, PROPS.name$tAp1, "custom reference set handler executed");
+        SPropertyOperations.assign(referenceNode, PROPS.name$lA7v, "custom reference set handler executed");
       }
     };
     Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
@@ -149,14 +149,14 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty enumPropertyWithIsValidConstraints$WJNX = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f165eaafL, "enumPropertyWithIsValidConstraints");
-    /*package*/ static final SProperty enumPropertyWithGetter$RvVy = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f16901efL, "enumPropertyWithGetter");
-    /*package*/ static final SProperty enumPropertyWithSetter$K6HZ = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f168f8e1L, "enumPropertyWithSetter");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty enumPropertyWithIsValidConstraints$raaz = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f165eaafL, "enumPropertyWithIsValidConstraints");
+    /*package*/ static final SProperty enumPropertyWithGetter$StPu = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f16901efL, "enumPropertyWithGetter");
+    /*package*/ static final SProperty enumPropertyWithSetter$jghx = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f168f8e1L, "enumPropertyWithSetter");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink referenceWithScope$7a4D = MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f16acffeL, "referenceWithScope");
-    /*package*/ static final SReferenceLink referenceWithSetHandler$7fXv = MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f16ad029L, "referenceWithSetHandler");
+    /*package*/ static final SReferenceLink referenceWithScope$tSfR = MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f16acffeL, "referenceWithScope");
+    /*package*/ static final SReferenceLink referenceWithSetHandler$wIM1 = MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x1609dca8f16ad029L, "referenceWithSetHandler");
   }
 }

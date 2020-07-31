@@ -55,7 +55,7 @@ public final class ClosureLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     StringBuilder sb = new StringBuilder("{");
     String sep = " ";
-    for (SNode pd : SLinkOperations.getChildren(__thisNode__, LINKS.parameter$WRt7)) {
+    for (SNode pd : SLinkOperations.getChildren(__thisNode__, LINKS.parameter$uR6p)) {
       sb.append(sep).append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(pd));
       sep = ", ";
     }
@@ -68,10 +68,10 @@ public final class ClosureLiteral__BehaviorDescriptor extends BaseBHDescriptor {
     return _quotation_createNode_l77foe_a0a2(paramTypes, resultType, throwsTypes);
   }
   /*package*/ static boolean isStatementListCompactable_idi0zvp2S(@NotNull SNode __thisNode__) {
-    return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.forceMultiLine$sHyN));
+    return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.forceMultiLine$U3QH));
   }
   /*package*/ static SNode getBody_idi2fhZ_m(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.body$DJEC);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.body$e5Do);
   }
   /*package*/ static SNode getExpectedRetType_idi2fhBNC(@NotNull SNode __thisNode__) {
     // everything which is not void and null is good, 
@@ -89,8 +89,8 @@ public final class ClosureLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.VariableDeclaration$xe)) {
-      if (ScopeUtils.comeFrom(LINKS.body$DJEC, __thisNode__, child)) {
-        return Scopes.forVariables(kind, SLinkOperations.getChildren(__thisNode__, LINKS.parameter$WRt7), ScopeUtils.lazyParentScope(__thisNode__, kind));
+      if (ScopeUtils.comeFrom(LINKS.body$e5Do, __thisNode__, child)) {
+        return Scopes.forVariables(kind, SLinkOperations.getChildren(__thisNode__, LINKS.parameter$uR6p), ScopeUtils.lazyParentScope(__thisNode__, kind));
       }
     }
     return null;
@@ -193,12 +193,12 @@ public final class ClosureLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$WRt7 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
-    /*package*/ static final SContainmentLink body$DJEC = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
+    /*package*/ static final SContainmentLink parameter$uR6p = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
+    /*package*/ static final SContainmentLink body$e5Do = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty forceMultiLine$sHyN = MetaAdapterFactory.getProperty(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0xc5cbfc0eeac457bL, "forceMultiLine");
+    /*package*/ static final SProperty forceMultiLine$U3QH = MetaAdapterFactory.getProperty(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0xc5cbfc0eeac457bL, "forceMultiLine");
   }
 
   private static final class CONCEPTS {

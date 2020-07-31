@@ -27,8 +27,8 @@ public class typeof_BaseMappingRule_InferenceRule extends AbstractInferenceRule_
   public typeof_BaseMappingRule_InferenceRule() {
   }
   public void applyRule(final SNode nodeToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SLinkOperations.getTarget(SLinkOperations.getTarget(nodeToCheck, LINKS.labelDeclaration$5xNM), LINKS.sourceConcept$T1Uo) != null) {
-      if (!((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(nodeToCheck, LINKS.applicableConcept$ljwo), SLinkOperations.getTarget(SLinkOperations.getTarget(nodeToCheck, LINKS.labelDeclaration$5xNM), LINKS.sourceConcept$T1Uo)))) {
+    if (SLinkOperations.getTarget(SLinkOperations.getTarget(nodeToCheck, LINKS.labelDeclaration$Fo5e), LINKS.sourceConcept$BVhC) != null) {
+      if (!((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(nodeToCheck, LINKS.applicableConcept$ksFC), SLinkOperations.getTarget(SLinkOperations.getTarget(nodeToCheck, LINKS.labelDeclaration$Fo5e), LINKS.sourceConcept$BVhC)))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(nodeToCheck, "Label has incorrect type", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1203556587912", null, errorTarget);
@@ -37,7 +37,7 @@ public class typeof_BaseMappingRule_InferenceRule extends AbstractInferenceRule_
       {
         SNode _nodeToCheck_1029348928467 = nodeToCheck;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1200922039515", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) _quotation_createNode_dxi99s_a0a0c0b0a0b(RulesUtil.closestConceptNode(BaseMappingRule__BehaviorDescriptor.getTemplateType_idhEwJbaf.invoke(nodeToCheck))), (SNode) _quotation_createNode_dxi99s_a1a0c0b0a0b(SLinkOperations.getTarget(SLinkOperations.getTarget(nodeToCheck, LINKS.labelDeclaration$5xNM), LINKS.targetConcept$f8gl)), false, false, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) _quotation_createNode_dxi99s_a0a0c0b0a0b(RulesUtil.closestConceptNode(BaseMappingRule__BehaviorDescriptor.getTemplateType_idhEwJbaf.invoke(nodeToCheck))), (SNode) _quotation_createNode_dxi99s_a1a0c0b0a0b(SLinkOperations.getTarget(SLinkOperations.getTarget(nodeToCheck, LINKS.labelDeclaration$Fo5e), LINKS.targetConcept$kZUb)), false, false, _info_12389875345);
       }
     }
   }
@@ -66,10 +66,10 @@ public class typeof_BaseMappingRule_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink labelDeclaration$5xNM = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x1179c430cc8L, "labelDeclaration");
-    /*package*/ static final SReferenceLink sourceConcept$T1Uo = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179be4dc5eL, "sourceConcept");
-    /*package*/ static final SReferenceLink applicableConcept$ljwo = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
-    /*package*/ static final SReferenceLink targetConcept$f8gl = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179bfe3866L, "targetConcept");
+    /*package*/ static final SReferenceLink labelDeclaration$Fo5e = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x1179c430cc8L, "labelDeclaration");
+    /*package*/ static final SReferenceLink sourceConcept$BVhC = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179be4dc5eL, "sourceConcept");
+    /*package*/ static final SReferenceLink applicableConcept$ksFC = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
+    /*package*/ static final SReferenceLink targetConcept$kZUb = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179bfe3866L, "targetConcept");
   }
 
   private static final class CONCEPTS {

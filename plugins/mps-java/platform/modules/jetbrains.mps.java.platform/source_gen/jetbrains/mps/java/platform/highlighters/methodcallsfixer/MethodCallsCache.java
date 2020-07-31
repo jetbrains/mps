@@ -91,7 +91,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
   /*package*/ boolean isMethodCallUpToDate(SNode methodCall) {
     SNodeReference methodCallPointer = SNodeOperations.getPointer(methodCall);
-    return myCheckedMethodCalls.contains(methodCallPointer) && SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$$A7i) == myMethodCallsToSetDecls.get(methodCallPointer).resolve(myRepository);
+    return myCheckedMethodCalls.contains(methodCallPointer) && SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$ItxI) == myMethodCallsToSetDecls.get(methodCallPointer).resolve(myRepository);
   }
 
   private static final class CONCEPTS {
@@ -99,6 +99,6 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

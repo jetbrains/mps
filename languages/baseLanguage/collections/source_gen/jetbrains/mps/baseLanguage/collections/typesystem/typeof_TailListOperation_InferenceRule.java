@@ -30,7 +30,7 @@ public class typeof_TailListOperation_InferenceRule extends AbstractInferenceRul
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.fromIndex$99v);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.fromIndex$4rA1);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "5232196642625575134", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "5232196642625575139", true), (SNode) _quotation_createNode_mm46f4_a1a0c0a0c0b(), true, true, _info_12389875345);
       }
@@ -80,7 +80,7 @@ public class typeof_TailListOperation_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink fromIndex$99v = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x489c7f2006b0588eL, 0x489c7f2006b05890L, "fromIndex");
+    /*package*/ static final SContainmentLink fromIndex$4rA1 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x489c7f2006b0588eL, 0x489c7f2006b05890L, "fromIndex");
   }
 
   private static final class CONCEPTS {

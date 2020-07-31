@@ -51,19 +51,19 @@ public class ConceptDeclarationScanner {
   public ConceptDeclarationScanner scan(SModel m) {
     List<SNode> roots = SModelOperations.roots(m, null);
     for (SNode cd : SNodeOperations.ofConcept(roots, CONCEPTS.ConceptDeclaration$qU)) {
-      SNode ex = SLinkOperations.getTarget(cd, LINKS.extends$LQV3);
+      SNode ex = SLinkOperations.getTarget(cd, LINKS.extends$9AAt);
       // ex could be null if no explicit BaseConcept in super 
       if (ex != null && SNodeOperations.getModel(ex) != m) {
         myExternalConcepts.add(ex);
       }
-      for (SNode icd : SLinkOperations.collect(SLinkOperations.getChildren(cd, LINKS.implements$oQDh), LINKS.intfc$fO5)) {
+      for (SNode icd : SLinkOperations.collect(SLinkOperations.getChildren(cd, LINKS.implements$2tZf), LINKS.intfc$7Eer)) {
         if (SNodeOperations.getModel(icd) != m) {
           myExternalIfaces.add(icd);
         }
       }
     }
     for (SNode icd : SNodeOperations.ofConcept(roots, CONCEPTS.InterfaceConceptDeclaration$MT)) {
-      for (SNode iface : SLinkOperations.collect(SLinkOperations.getChildren(icd, LINKS.extends$3Y1p), LINKS.intfc$fO5)) {
+      for (SNode iface : SLinkOperations.collect(SLinkOperations.getChildren(icd, LINKS.extends$V2F7), LINKS.intfc$7Eer)) {
         if (SNodeOperations.getModel(iface) != m) {
           myExternalIfaces.add(iface);
         }
@@ -111,10 +111,10 @@ public class ConceptDeclarationScanner {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$LQV3 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
-    /*package*/ static final SContainmentLink implements$oQDh = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
-    /*package*/ static final SReferenceLink intfc$fO5 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
-    /*package*/ static final SContainmentLink extends$3Y1p = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
+    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SContainmentLink implements$2tZf = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
+    /*package*/ static final SReferenceLink intfc$7Eer = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
+    /*package*/ static final SContainmentLink extends$V2F7 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
   }
 
   private static final class CONCEPTS {

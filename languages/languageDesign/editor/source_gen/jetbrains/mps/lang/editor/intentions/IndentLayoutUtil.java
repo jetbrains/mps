@@ -26,16 +26,16 @@ public class IndentLayoutUtil {
     List<SNode> result = new ArrayList<SNode>();
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.CellModel_Collection$CD)) {
       SNode collection = SNodeOperations.cast(node, CONCEPTS.CellModel_Collection$CD);
-      if (SLinkOperations.getTarget(collection, LINKS.renderingCondition$P9Ly) != null || (boolean) EditorCellModel__BehaviorDescriptor.isIndented_idi0pN94$.invoke(node) || (boolean) CellModel_Collection__BehaviorDescriptor.isVertical_idi0pAV23.invoke(collection) || SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(collection, LINKS.childCellModel$3prw)).last(), LINKS.renderingCondition$P9Ly) != null) {
+      if (SLinkOperations.getTarget(collection, LINKS.renderingCondition$JIZu) != null || (boolean) EditorCellModel__BehaviorDescriptor.isIndented_idi0pN94$.invoke(node) || (boolean) CellModel_Collection__BehaviorDescriptor.isVertical_idi0pAV23.invoke(collection) || SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(collection, LINKS.childCellModel$Dkkw)).last(), LINKS.renderingCondition$JIZu) != null) {
         moveToIndentLayout(SNodeOperations.cast(node, CONCEPTS.CellModel_Collection$CD));
         if (isLast) {
           SNode classItem = SNodeFactoryOperations.createNewNode(CONCEPTS.IndentLayoutNewLineStyleClassItem$OG, null);
-          SPropertyOperations.assign(classItem, PROPS.flag$7rl, true);
-          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.styleItem$$mEY)).addElement(classItem);
+          SPropertyOperations.assign(classItem, PROPS.flag$3Afb, true);
+          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.styleItem$AYO2)).addElement(classItem);
         }
         ListSequence.fromList(result).addElement(node);
       } else {
-        List<SNode> children = SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.CellModel_Collection$CD), LINKS.childCellModel$3prw);
+        List<SNode> children = SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.CellModel_Collection$CD), LINKS.childCellModel$Dkkw);
         for (int i = 0; i < ListSequence.fromList(children).count(); i++) {
           ListSequence.fromList(result).addSequence(ListSequence.fromList(moveToIndentLayoutChildren(ListSequence.fromList(children).getElement(i), isLast && (i == ListSequence.fromList(children).count() - 1))));
         }
@@ -45,42 +45,42 @@ public class IndentLayoutUtil {
     } else {
       ListSequence.fromList(result).addElement(node);
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.CellModel_RefNodeList$IL)) {
-        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.CellModel_RefNodeList$IL), LINKS.cellLayout$63td), CONCEPTS.CellLayout_Vertical$vP)) {
+        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.CellModel_RefNodeList$IL), LINKS.cellLayout$VF9j), CONCEPTS.CellLayout_Vertical$vP)) {
           SNode classItem = SNodeFactoryOperations.createNewNode(CONCEPTS.IndentLayoutNewLineChildrenStyleClassItem$SG, null);
-          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.styleItem$$mEY)).addElement(classItem);
+          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.styleItem$AYO2)).addElement(classItem);
         }
-        SLinkOperations.setTarget(SNodeOperations.cast(node, CONCEPTS.CellModel_RefNodeList$IL), LINKS.cellLayout$63td, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Indent$tI, null));
+        SLinkOperations.setTarget(SNodeOperations.cast(node, CONCEPTS.CellModel_RefNodeList$IL), LINKS.cellLayout$VF9j, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Indent$tI, null));
       }
       if (isLast) {
         SNode classItem = SNodeFactoryOperations.createNewNode(CONCEPTS.IndentLayoutNewLineStyleClassItem$OG, null);
-        SPropertyOperations.assign(classItem, PROPS.flag$7rl, true);
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.styleItem$$mEY)).addElement(classItem);
+        SPropertyOperations.assign(classItem, PROPS.flag$3Afb, true);
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.styleItem$AYO2)).addElement(classItem);
       }
     }
     return result;
   }
   public static void moveToIndentLayout(SNode node) {
-    if (SLinkOperations.getTarget(node, LINKS.cellLayout$usNp) == null || !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$usNp), CONCEPTS.CellLayout_Indent$tI))) {
+    if (SLinkOperations.getTarget(node, LINKS.cellLayout$JWT7) == null || !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$JWT7), CONCEPTS.CellLayout_Indent$tI))) {
       List<SNode> children = new ArrayList<SNode>();
-      for (SNode cellModel : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.childCellModel$3prw))) {
+      for (SNode cellModel : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.childCellModel$Dkkw))) {
         ListSequence.fromList(children).addSequence(ListSequence.fromList(moveToIndentLayoutChildren(cellModel, (boolean) CellModel_Collection__BehaviorDescriptor.isVertical_idi0pAV23.invoke(node))));
       }
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.childCellModel$3prw)).clear();
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.childCellModel$3prw)).addSequence(ListSequence.fromList(children));
-      SLinkOperations.setTarget(node, LINKS.cellLayout$usNp, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Indent$tI, null));
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.childCellModel$Dkkw)).clear();
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.childCellModel$Dkkw)).addSequence(ListSequence.fromList(children));
+      SLinkOperations.setTarget(node, LINKS.cellLayout$JWT7, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Indent$tI, null));
     }
   }
   private static void makeIndent(SNode cellModel) {
     SNode classItem = SNodeFactoryOperations.createNewNode(CONCEPTS.IndentLayoutIndentStyleClassItem$_S, null);
-    SPropertyOperations.assign(classItem, PROPS.flag$7rl, true);
-    ListSequence.fromList(SLinkOperations.getChildren(cellModel, LINKS.styleItem$$mEY)).addElement(classItem);
+    SPropertyOperations.assign(classItem, PROPS.flag$3Afb, true);
+    ListSequence.fromList(SLinkOperations.getChildren(cellModel, LINKS.styleItem$AYO2)).addElement(classItem);
   }
   public static boolean isExtendsBaseLanguage(SNode node) {
     SNode editor = SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseEditorComponent$Sy, false, false);
     if (editor == null) {
       return false;
     }
-    if (SNodeOperations.getModel(SLinkOperations.getTarget(((SNode) AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(editor)), LINKS.extends$LQV3)) != SNodeOperations.getModel(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)", "1068580123132"))) {
+    if (SNodeOperations.getModel(SLinkOperations.getTarget(((SNode) AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(editor)), LINKS.extends$9AAt)) != SNodeOperations.getModel(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)", "1068580123132"))) {
       return false;
     }
     return true;
@@ -100,15 +100,15 @@ public class IndentLayoutUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cellLayout$63td = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout");
-    /*package*/ static final SContainmentLink styleItem$$mEY = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
-    /*package*/ static final SContainmentLink childCellModel$3prw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel");
-    /*package*/ static final SContainmentLink renderingCondition$P9Ly = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x10a19696199L, "renderingCondition");
-    /*package*/ static final SContainmentLink cellLayout$usNp = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
-    /*package*/ static final SReferenceLink extends$LQV3 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SContainmentLink cellLayout$VF9j = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout");
+    /*package*/ static final SContainmentLink styleItem$AYO2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
+    /*package*/ static final SContainmentLink childCellModel$Dkkw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel");
+    /*package*/ static final SContainmentLink renderingCondition$JIZu = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x10a19696199L, "renderingCondition");
+    /*package*/ static final SContainmentLink cellLayout$JWT7 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
+    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty flag$7rl = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x1143bd161dbL, "flag");
+    /*package*/ static final SProperty flag$3Afb = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x1143bd161dbL, "flag");
   }
 }

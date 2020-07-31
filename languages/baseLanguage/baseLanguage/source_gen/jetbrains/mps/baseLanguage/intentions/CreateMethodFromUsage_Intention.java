@@ -52,7 +52,7 @@ public final class CreateMethodFromUsage_Intention extends AbstractIntentionDesc
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       CreateMethodFromUsageHelper helper = new CreateMethodFromUsageHelper(node, editorContext);
-      return "Create Method " + helper.getMethodName() + " in " + SPropertyOperations.getString(helper.getMethodClassifier(), PROPS.name$tAp1);
+      return "Create Method " + helper.getMethodName() + " in " + SPropertyOperations.getString(helper.getMethodClassifier(), PROPS.name$lA7v);
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
@@ -65,6 +65,6 @@ public final class CreateMethodFromUsage_Intention extends AbstractIntentionDesc
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -37,7 +37,7 @@ public final class BuildMps_Tips__BehaviorDescriptor extends BaseBHDescriptor {
     return "${build.tmp}/out/mps-tips/";
   }
   /*package*/ static String getPath_id4Y6KxqQL3ag(@NotNull SNode __thisNode__) {
-    return BuildMps_Tips__BehaviorDescriptor.getOutPath_id1tkeUOkqjtp.invoke(__thisNode__) + SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1);
+    return BuildMps_Tips__BehaviorDescriptor.getOutPath_id1tkeUOkqjtp.invoke(__thisNode__) + SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v);
   }
   /*package*/ static String getMpsTipsPath_id8yBQgWtrz8(@NotNull SNode __thisNode__) {
     return "${mps_home}/lib/mps-tips.jar";
@@ -102,6 +102,6 @@ public final class BuildMps_Tips__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

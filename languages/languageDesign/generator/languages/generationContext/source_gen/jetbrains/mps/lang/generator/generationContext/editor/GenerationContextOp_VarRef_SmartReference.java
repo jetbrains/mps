@@ -49,7 +49,7 @@ public class GenerationContextOp_VarRef_SmartReference extends SubstituteMenuBas
 
     public SMP_ReferenceScope_e12rtz_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.GenerationContextOp_VarRef$c3, LINKS.varmacro$expa);
+      super((SAbstractConcept) CONCEPTS.GenerationContextOp_VarRef$c3, LINKS.varmacro$2bbQ);
     }
     @NotNull
     @Override
@@ -81,7 +81,7 @@ public class GenerationContextOp_VarRef_SmartReference extends SubstituteMenuBas
       }
       @Override
       public String getMatchingText(String pattern) {
-        return SPropertyOperations.getString(referencedNode, PROPS.name$tAp1);
+        return SPropertyOperations.getString(referencedNode, PROPS.name$lA7v);
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
@@ -100,10 +100,10 @@ public class GenerationContextOp_VarRef_SmartReference extends SubstituteMenuBas
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink varmacro$expa = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x25c655ce6e80fdd8L, 0x25c655ce6e80fddaL, "varmacro");
+    /*package*/ static final SReferenceLink varmacro$2bbQ = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x25c655ce6e80fdd8L, 0x25c655ce6e80fddaL, "varmacro");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

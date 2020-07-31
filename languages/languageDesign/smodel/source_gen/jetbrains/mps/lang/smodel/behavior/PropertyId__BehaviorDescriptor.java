@@ -42,8 +42,8 @@ public final class PropertyId__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SProperty getProperty_id5ZE7FBYYOoO(@NotNull SNode __thisNode__) {
-    SAbstractConcept pc = ConceptIdentity__BehaviorDescriptor.getConcept_id5ZE7FBYYOpv.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.conceptIdentity$C55$));
-    String pn = SPropertyOperations.getString(__thisNode__, PROPS.propertyName$C4SY);
+    SAbstractConcept pc = ConceptIdentity__BehaviorDescriptor.getConcept_id5ZE7FBYYOpv.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.conceptIdentity$qtGs));
+    String pn = SPropertyOperations.getString(__thisNode__, PROPS.propertyName$qnA2);
     if (pc == null || pn == null) {
       return null;
     }
@@ -54,20 +54,20 @@ public final class PropertyId__BehaviorDescriptor extends BaseBHDescriptor {
     SPropertyId pid = MetaIdByDeclaration.getPropId(property);
     SNode cid = SModelOperations.createNewNode(SNodeOperations.getModel(__thisNode__), null, CONCEPTS.ConceptId$5a);
     ConceptId__BehaviorDescriptor.setConcept_id5e7X3XCIPOJ.invoke(cid, SNodeOperations.cast(SNodeOperations.getParent(property), CONCEPTS.AbstractConceptDeclaration$UN));
-    SLinkOperations.setTarget(__thisNode__, LINKS.conceptIdentity$C55$, cid);
-    SPropertyOperations.assign(__thisNode__, PROPS.propertyName$C4SY, SPropertyOperations.getString(property, PROPS.name$tAp1));
-    SPropertyOperations.assign(__thisNode__, PROPS.propertyId$C4TW, Long.toString(pid.getIdValue(), Character.MAX_RADIX));
+    SLinkOperations.setTarget(__thisNode__, LINKS.conceptIdentity$qtGs, cid);
+    SPropertyOperations.assign(__thisNode__, PROPS.propertyName$qnA2, SPropertyOperations.getString(property, PROPS.name$lA7v));
+    SPropertyOperations.assign(__thisNode__, PROPS.propertyId$qo44, Long.toString(pid.getIdValue(), Character.MAX_RADIX));
   }
   /*package*/ static void setProperty_id5ZE7FBYZ2jW(@NotNull SNode __thisNode__, @NotNull SProperty property) {
     SPropertyId pid = MetaIdHelper.getProperty(property);
     SNode cid = SModelOperations.createNewNode(SNodeOperations.getModel(__thisNode__), null, CONCEPTS.ConceptId$5a);
     ConceptId__BehaviorDescriptor.setConcept_id5ZE7FBYYR6j.invoke(cid, property.getOwner());
-    SLinkOperations.setTarget(__thisNode__, LINKS.conceptIdentity$C55$, cid);
-    SPropertyOperations.assign(__thisNode__, PROPS.propertyName$C4SY, property.getName());
-    SPropertyOperations.assign(__thisNode__, PROPS.propertyId$C4TW, Long.toString(pid.getIdValue(), Character.MAX_RADIX));
+    SLinkOperations.setTarget(__thisNode__, LINKS.conceptIdentity$qtGs, cid);
+    SPropertyOperations.assign(__thisNode__, PROPS.propertyName$qnA2, property.getName());
+    SPropertyOperations.assign(__thisNode__, PROPS.propertyId$qo44, Long.toString(pid.getIdValue(), Character.MAX_RADIX));
   }
   /*package*/ static long getIdValue_id5ZE7FBZ0xVG(@NotNull SNode __thisNode__) {
-    return Long.parseLong(SPropertyOperations.getString(__thisNode__, PROPS.propertyId$C4TW), Character.MAX_RADIX);
+    return Long.parseLong(SPropertyOperations.getString(__thisNode__, PROPS.propertyId$qo44), Character.MAX_RADIX);
   }
 
   /*package*/ PropertyId__BehaviorDescriptor() {
@@ -125,13 +125,13 @@ public final class PropertyId__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink conceptIdentity$C55$ = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefc235cL, 0x5fea1eb9fefc2364L, "conceptIdentity");
+    /*package*/ static final SContainmentLink conceptIdentity$qtGs = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefc235cL, 0x5fea1eb9fefc2364L, "conceptIdentity");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty propertyName$C4SY = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefc235cL, 0x5fea1eb9fefc235fL, "propertyName");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty propertyId$C4TW = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefc235cL, 0x5fea1eb9fefc2361L, "propertyId");
+    /*package*/ static final SProperty propertyName$qnA2 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefc235cL, 0x5fea1eb9fefc235fL, "propertyName");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty propertyId$qo44 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefc235cL, 0x5fea1eb9fefc2361L, "propertyId");
   }
 
   private static final class CONCEPTS {

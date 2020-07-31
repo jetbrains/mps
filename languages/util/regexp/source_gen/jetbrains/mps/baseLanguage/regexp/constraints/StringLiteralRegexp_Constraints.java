@@ -23,7 +23,7 @@ public class StringLiteralRegexp_Constraints extends BaseConstraintsDescriptor {
 
   public static class Text_Property extends BasePropertyConstraintsDescriptor {
     public Text_Property(ConstraintsDescriptor container) {
-      super(PROPS.text$zn$r, container);
+      super(PROPS.text$8qD5, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,7 +45,7 @@ public class StringLiteralRegexp_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.text$zn$r, new Text_Property(this));
+    properties.put(PROPS.text$8qD5, new Text_Property(this));
     return properties;
   }
 
@@ -54,6 +54,6 @@ public class StringLiteralRegexp_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$zn$r = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a0992dL, 0x11174a0b84fL, "text");
+    /*package*/ static final SProperty text$8qD5 = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a0992dL, 0x11174a0b84fL, "text");
   }
 }

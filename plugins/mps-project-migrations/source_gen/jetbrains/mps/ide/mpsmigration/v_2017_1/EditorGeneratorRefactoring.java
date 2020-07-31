@@ -63,7 +63,7 @@ public class EditorGeneratorRefactoring extends BaseProjectMigration {
         for (SModel generatorModel : ListSequence.fromList(generator.getModels())) {
           ListSequence.fromList(SModelOperations.nodes(((SModel) generatorModel), CONCEPTS.TemplateFragment$yI)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SLinkOperations.getTarget(it, LINKS.labelDeclaration$SD8p) == cellFactoryMappingLabel && SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.InstanceMethodDeclaration$An);
+              return SLinkOperations.getTarget(it, LINKS.labelDeclaration$rV47) == cellFactoryMappingLabel && SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.InstanceMethodDeclaration$An);
             }
           }).visitAll(new IVisitor<SNode>() {
             public void visit(SNode it) {
@@ -84,7 +84,7 @@ public class EditorGeneratorRefactoring extends BaseProjectMigration {
       public boolean accept(SNode templateMethod) {
         return SNodeOperations.isInstanceOf(templateMethod, CONCEPTS.InstanceMethodDeclaration$An) && AttributeOperations.getAttribute(templateMethod, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$yI)) != null && ListSequence.fromList(AttributeOperations.getAttributeList(templateMethod, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$Je))).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode nodeMacro) {
-            return SLinkOperations.getTarget(SNodeOperations.as(nodeMacro, CONCEPTS.TemplateCallMacro$Iu), LINKS.template$yiTA) == myCellFactoryCompatibilityTemplate;
+            return SLinkOperations.getTarget(SNodeOperations.as(nodeMacro, CONCEPTS.TemplateCallMacro$Iu), LINKS.template$B9Tq) == myCellFactoryCompatibilityTemplate;
           }
         });
       }
@@ -96,9 +96,9 @@ public class EditorGeneratorRefactoring extends BaseProjectMigration {
   }
 
   private SNode getCellFactoryMappingLabel(SRepository repo) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(new SNodePointer("r:00000000-0000-4000-0000-011c8959029f(jetbrains.mps.lang.editor.generator.baseLanguage.template.main@generator)", "1096629760203").resolve(repo), CONCEPTS.MappingConfiguration$rB), LINKS.mappingLabel$9pST)).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(new SNodePointer("r:00000000-0000-4000-0000-011c8959029f(jetbrains.mps.lang.editor.generator.baseLanguage.template.main@generator)", "1096629760203").resolve(repo), CONCEPTS.MappingConfiguration$rB), LINKS.mappingLabel$zyzB)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return "cellFactoryMethod".equals(SPropertyOperations.getString(it, PROPS.name$tAp1));
+        return "cellFactoryMethod".equals(SPropertyOperations.getString(it, PROPS.name$lA7v));
       }
     }).first();
   }
@@ -153,12 +153,12 @@ public class EditorGeneratorRefactoring extends BaseProjectMigration {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink labelDeclaration$SD8p = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, 0x1179c366b2fL, "labelDeclaration");
-    /*package*/ static final SReferenceLink template$yiTA = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
-    /*package*/ static final SContainmentLink mappingLabel$9pST = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x1179be725f9L, "mappingLabel");
+    /*package*/ static final SReferenceLink labelDeclaration$rV47 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, 0x1179c366b2fL, "labelDeclaration");
+    /*package*/ static final SReferenceLink template$B9Tq = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
+    /*package*/ static final SContainmentLink mappingLabel$zyzB = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x1179be725f9L, "mappingLabel");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

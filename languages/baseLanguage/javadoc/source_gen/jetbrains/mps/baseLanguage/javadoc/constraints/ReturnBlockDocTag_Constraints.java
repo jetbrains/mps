@@ -45,12 +45,12 @@ public class ReturnBlockDocTag_Constraints extends BaseConstraintsDescriptor {
       return false;
     }
 
-    if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(parentNode, CONCEPTS.BaseDocComment$pH), LINKS.tags$LJD$)).all(new IWhereFilter<SNode>() {
+    if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(parentNode, CONCEPTS.BaseDocComment$pH), LINKS.tags$658s)).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return !(SNodeOperations.isInstanceOf(it, CONCEPTS.ReturnBlockDocTag$Ys)) || Objects.equals(it, node);
       }
     })) {
-      SNode returnType = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.BaseMethodDeclaration$RR, false, false), LINKS.returnType$WIkw);
+      SNode returnType = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.BaseMethodDeclaration$RR, false, false), LINKS.returnType$qrVw);
       return !(((returnType != null) && SNodeOperations.isInstanceOf(returnType, CONCEPTS.VoidType$aT)));
     }
     return false;
@@ -66,7 +66,7 @@ public class ReturnBlockDocTag_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SContainmentLink tags$LJD$ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink tags$658s = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
   }
 }

@@ -18,21 +18,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class tupleLiteral_init {
   public static class NodeFactory_1239567483800 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      for (SNode cd : ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(newNode, LINKS.tupleDeclaration$GwJE))).reversedList().translate(new ITranslator2<SNode, SNode>() {
+      for (SNode cd : ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(newNode, LINKS.tupleDeclaration$zR5m))).reversedList().translate(new ITranslator2<SNode, SNode>() {
         public Iterable<SNode> translate(SNode ntd) {
-          return SLinkOperations.getChildren(ntd, LINKS.component$eWwg);
+          return SLinkOperations.getChildren(ntd, LINKS.component$fjBK);
         }
       })) {
-        SLinkOperations.setTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.componentRef$49s5)).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.NamedTupleComponentReference$8m, null)), LINKS.componentDeclaration$iLy0, cd);
+        SLinkOperations.setTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.componentRef$$Ar)).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.NamedTupleComponentReference$8m, null)), LINKS.componentDeclaration$5Zu0, cd);
       }
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink tupleDeclaration$GwJE = MetaAdapterFactory.getReferenceLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL, 0x1209b88b156L, "tupleDeclaration");
-    /*package*/ static final SContainmentLink component$eWwg = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x12099b7fca9L, "component");
-    /*package*/ static final SContainmentLink componentRef$49s5 = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL, 0x1209b9676f1L, "componentRef");
-    /*package*/ static final SReferenceLink componentDeclaration$iLy0 = MetaAdapterFactory.getReferenceLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L, 0x1209b91a766L, "componentDeclaration");
+    /*package*/ static final SReferenceLink tupleDeclaration$zR5m = MetaAdapterFactory.getReferenceLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL, 0x1209b88b156L, "tupleDeclaration");
+    /*package*/ static final SContainmentLink component$fjBK = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x12099b7fca9L, "component");
+    /*package*/ static final SContainmentLink componentRef$$Ar = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL, 0x1209b9676f1L, "componentRef");
+    /*package*/ static final SReferenceLink componentDeclaration$5Zu0 = MetaAdapterFactory.getReferenceLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L, 0x1209b91a766L, "componentDeclaration");
   }
 
   private static final class CONCEPTS {

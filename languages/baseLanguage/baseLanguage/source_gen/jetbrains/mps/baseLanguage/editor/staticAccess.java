@@ -138,7 +138,7 @@ public class staticAccess extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.StaticFieldReference$K8, null);
-          SLinkOperations.setTarget(result, LINKS.classifier$ZTjE, myParameterObject);
+          SLinkOperations.setTarget(result, LINKS.classifier$WKxm, myParameterObject);
           return result;
         }
 
@@ -180,6 +180,6 @@ public class staticAccess extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$ZTjE = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
+    /*package*/ static final SReferenceLink classifier$WKxm = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
   }
 }

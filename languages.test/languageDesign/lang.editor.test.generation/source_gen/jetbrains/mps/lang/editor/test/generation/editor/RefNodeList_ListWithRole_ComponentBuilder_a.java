@@ -157,7 +157,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.children$$pRw;
+      return LINKS.children$CxSw;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.RefNodeList$iN;
@@ -176,7 +176,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_a0.this.getNode(), LINKS.children$$pRw));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_a0.this.getNode(), LINKS.children$CxSw));
       try {
         EditorCell emptyCell = null;
         emptyCell = createCollection_1();
@@ -308,7 +308,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.MAX_WIDTH, 10);
       style.set(StyleAttributes.MAX_WIDTH, _StyleParameter_QueryFunction_i8r80j_a97a0a(prevNode, nextNode));
       style.set(StyleAttributes.NAVIGATABLE_NODE, _StyleParameter_QueryFunction_i8r80j_a08a0a(prevNode, nextNode));
-      style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$buwj);
+      style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$zLDd);
       style.set(StyleAttributes.PARAMETERS_INFORMATION, new TestTargetParametersInformation());
       style.set(StyleAttributes.POSITION_CHILDREN, "next-line");
       style.set(StyleAttributes.POSITION, "indented");
@@ -668,7 +668,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.MAX_WIDTH, 10);
       style.set(StyleAttributes.MAX_WIDTH, _StyleParameter_QueryFunction_i8r80j_a97e1a0a());
       style.set(StyleAttributes.NAVIGATABLE_NODE, _StyleParameter_QueryFunction_i8r80j_a08e1a0a());
-      style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$buwj);
+      style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$zLDd);
       style.set(StyleAttributes.PARAMETERS_INFORMATION, new TestTargetParametersInformation());
       style.set(StyleAttributes.POSITION_CHILDREN, "next-line");
       style.set(StyleAttributes.POSITION, "indented");
@@ -1149,7 +1149,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.MAX_WIDTH, 10);
       style.set(StyleAttributes.MAX_WIDTH, _StyleParameter_QueryFunction_i8r80j_a97e4a0a());
       style.set(StyleAttributes.NAVIGATABLE_NODE, _StyleParameter_QueryFunction_i8r80j_a08e4a0a());
-      style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$buwj);
+      style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$zLDd);
       style.set(StyleAttributes.PARAMETERS_INFORMATION, new TestTargetParametersInformation());
       style.set(StyleAttributes.POSITION_CHILDREN, "next-line");
       style.set(StyleAttributes.POSITION, "indented");
@@ -1705,7 +1705,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.MAX_WIDTH, 10);
       style.set(StyleAttributes.MAX_WIDTH, _StyleParameter_QueryFunction_i8r80j_a97e7a0a());
       style.set(StyleAttributes.NAVIGATABLE_NODE, _StyleParameter_QueryFunction_i8r80j_a08e7a0a());
-      style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$buwj);
+      style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$zLDd);
       style.set(StyleAttributes.PARAMETERS_INFORMATION, new TestTargetParametersInformation());
       style.set(StyleAttributes.POSITION_CHILDREN, "next-line");
       style.set(StyleAttributes.POSITION, "indented");
@@ -2212,7 +2212,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.MAX_WIDTH, 10);
       style.set(StyleAttributes.MAX_WIDTH, _StyleParameter_QueryFunction_i8r80j_a97d01a0a());
       style.set(StyleAttributes.NAVIGATABLE_NODE, _StyleParameter_QueryFunction_i8r80j_a08d01a0a());
-      style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$buwj);
+      style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$zLDd);
       style.set(StyleAttributes.PARAMETERS_INFORMATION, new TestTargetParametersInformation());
       style.set(StyleAttributes.POSITION_CHILDREN, "next-line");
       style.set(StyleAttributes.POSITION, "indented");
@@ -2408,7 +2408,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     private EditorCell createTransactionalProperty_0() {
       getCellFactory().pushCellContext();
       try {
-        SProperty property = PROPS.theProperty$h_2H;
+        SProperty property = PROPS.theProperty$wWjN;
         getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
         PropertyCellProvider provider = new PropertyCellProvider(myNode, property, getEditorContext());
         EditorCell_Property editorCell = null;
@@ -2440,7 +2440,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     private EditorCell createTransactionalProperty_1() {
       getCellFactory().pushCellContext();
       try {
-        SProperty property = PROPS.theProperty$h_2H;
+        SProperty property = PROPS.theProperty$wWjN;
         getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
         PropertyCellProvider provider = new PropertyCellProvider(myNode, property, getEditorContext());
         EditorCell_Property editorCell = null;
@@ -2476,7 +2476,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     private EditorCell createProperty_0() {
       getCellFactory().pushCellContext();
       try {
-        final SProperty property = PROPS.theProperty$h_2H;
+        final SProperty property = PROPS.theProperty$wWjN;
         getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
         EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
         editorCell.setDefaultText("<no theProperty>");
@@ -2729,7 +2729,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     private EditorCell createTransactionalProperty_2() {
       getCellFactory().pushCellContext();
       try {
-        SProperty property = PROPS.theProperty$h_2H;
+        SProperty property = PROPS.theProperty$wWjN;
         getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
         PropertyCellProvider provider = new PropertyCellProvider(myNode, property, getEditorContext());
         EditorCell_Property editorCell = null;
@@ -2764,7 +2764,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     private EditorCell createTransactionalProperty_3() {
       getCellFactory().pushCellContext();
       try {
-        SProperty property = PROPS.theProperty$h_2H;
+        SProperty property = PROPS.theProperty$wWjN;
         getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
         PropertyCellProvider provider = new PropertyCellProvider(myNode, property, getEditorContext());
         EditorCell_Property editorCell = null;
@@ -2864,7 +2864,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
           style.set(StyleAttributes.MAX_WIDTH, 10);
           style.set(StyleAttributes.MAX_WIDTH, _StyleParameter_QueryFunction_i8r80j_a97e31a0a());
           style.set(StyleAttributes.NAVIGATABLE_NODE, _StyleParameter_QueryFunction_i8r80j_a08e31a0a());
-          style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$buwj);
+          style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$zLDd);
           style.set(StyleAttributes.PARAMETERS_INFORMATION, new TestTargetParametersInformation());
           style.set(StyleAttributes.POSITION_CHILDREN, "next-line");
           style.set(StyleAttributes.POSITION, "indented");
@@ -3085,7 +3085,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         return myNode;
       }
       public SContainmentLink getSLink() {
-        return LINKS.children$$pRw;
+        return LINKS.children$CxSw;
       }
       public SAbstractConcept getChildSConcept() {
         return CONCEPTS.RefNodeList$iN;
@@ -3098,7 +3098,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       public EditorCell createEmptyCell() {
         getCellFactory().pushCellContext();
-        getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_a61a0a.this.getNode(), LINKS.children$$pRw));
+        getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_a61a0a.this.getNode(), LINKS.children$CxSw));
         try {
           EditorCell emptyCell = null;
           emptyCell = super.createEmptyCell();
@@ -3161,7 +3161,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         return myNode;
       }
       public SContainmentLink getSLink() {
-        return LINKS.children$$pRw;
+        return LINKS.children$CxSw;
       }
       public SAbstractConcept getChildSConcept() {
         return CONCEPTS.RefNodeList$iN;
@@ -3174,7 +3174,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       public EditorCell createEmptyCell() {
         getCellFactory().pushCellContext();
-        getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_b61a0a.this.getNode(), LINKS.children$$pRw));
+        getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_b61a0a.this.getNode(), LINKS.children$CxSw));
         try {
           EditorCell emptyCell = null;
           emptyCell = super.createEmptyCell();
@@ -3530,7 +3530,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         return myNode;
       }
       public SContainmentLink getSLink() {
-        return LINKS.children$$pRw;
+        return LINKS.children$CxSw;
       }
       public SAbstractConcept getChildSConcept() {
         return CONCEPTS.RefNodeList$iN;
@@ -3543,7 +3543,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       public EditorCell createEmptyCell() {
         getCellFactory().pushCellContext();
-        getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_c61a0a.this.getNode(), LINKS.children$$pRw));
+        getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_c61a0a.this.getNode(), LINKS.children$CxSw));
         try {
           EditorCell emptyCell = null;
           emptyCell = super.createEmptyCell();
@@ -3684,7 +3684,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.MAX_WIDTH, 10);
       style.set(StyleAttributes.MAX_WIDTH, _StyleParameter_QueryFunction_i8r80j_a97a3q0a0());
       style.set(StyleAttributes.NAVIGATABLE_NODE, _StyleParameter_QueryFunction_i8r80j_a08a3q0a0());
-      style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$buwj);
+      style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$zLDd);
       style.set(StyleAttributes.PARAMETERS_INFORMATION, new TestTargetParametersInformation());
       style.set(StyleAttributes.POSITION_CHILDREN, "next-line");
       style.set(StyleAttributes.POSITION, "indented");
@@ -3712,7 +3712,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         return myNode;
       }
       public SContainmentLink getSLink() {
-        return LINKS.children$$pRw;
+        return LINKS.children$CxSw;
       }
       public SAbstractConcept getChildSConcept() {
         return CONCEPTS.RefNodeList$iN;
@@ -3725,7 +3725,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       public EditorCell createEmptyCell() {
         getCellFactory().pushCellContext();
-        getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_a3q0a0.this.getNode(), LINKS.children$$pRw));
+        getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_a3q0a0.this.getNode(), LINKS.children$CxSw));
         try {
           EditorCell emptyCell = null;
           emptyCell = super.createEmptyCell();
@@ -3945,7 +3945,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         return myNode;
       }
       public SContainmentLink getSLink() {
-        return LINKS.children$$pRw;
+        return LINKS.children$CxSw;
       }
       public SAbstractConcept getChildSConcept() {
         return CONCEPTS.RefNodeList$iN;
@@ -3958,7 +3958,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       public EditorCell createEmptyCell() {
         getCellFactory().pushCellContext();
-        getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_b3q0a0.this.getNode(), LINKS.children$$pRw));
+        getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_b3q0a0.this.getNode(), LINKS.children$CxSw));
         try {
           EditorCell emptyCell = null;
           emptyCell = super.createEmptyCell();
@@ -4042,7 +4042,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         return myNode;
       }
       public SContainmentLink getSLink() {
-        return LINKS.children$$pRw;
+        return LINKS.children$CxSw;
       }
       public SAbstractConcept getChildSConcept() {
         return CONCEPTS.RefNodeList$iN;
@@ -4055,7 +4055,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       public EditorCell createEmptyCell() {
         getCellFactory().pushCellContext();
-        getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_a2d61a0a.this.getNode(), LINKS.children$$pRw));
+        getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_a2d61a0a.this.getNode(), LINKS.children$CxSw));
         try {
           EditorCell emptyCell = null;
           emptyCell = super.createEmptyCell();
@@ -4299,7 +4299,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.children$$pRw;
+      return LINKS.children$CxSw;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.RefNodeList$iN;
@@ -4315,7 +4315,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_b0.this.getNode(), LINKS.children$$pRw));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_b0.this.getNode(), LINKS.children$CxSw));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -4391,7 +4391,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.children$$pRw;
+      return LINKS.children$CxSw;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.RefNodeList$iN;
@@ -4404,7 +4404,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_c0.this.getNode(), LINKS.children$$pRw));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_c0.this.getNode(), LINKS.children$CxSw));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -4465,7 +4465,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.children$$pRw;
+      return LINKS.children$CxSw;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.RefNodeList$iN;
@@ -4478,7 +4478,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_d0.this.getNode(), LINKS.children$$pRw));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_d0.this.getNode(), LINKS.children$CxSw));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -4539,7 +4539,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.children$$pRw;
+      return LINKS.children$CxSw;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.RefNodeList$iN;
@@ -4552,7 +4552,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_e0.this.getNode(), LINKS.children$$pRw));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_e0.this.getNode(), LINKS.children$CxSw));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -4613,7 +4613,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.children$$pRw;
+      return LINKS.children$CxSw;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.RefNodeList$iN;
@@ -4626,7 +4626,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_f0.this.getNode(), LINKS.children$$pRw));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_f0.this.getNode(), LINKS.children$CxSw));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -4688,7 +4688,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.children$$pRw;
+      return LINKS.children$CxSw;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.RefNodeList$iN;
@@ -4701,7 +4701,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_g0.this.getNode(), LINKS.children$$pRw));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_i8r80j_g0.this.getNode(), LINKS.children$CxSw));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -4743,8 +4743,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink children$$pRw = MetaAdapterFactory.getContainmentLink(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531adc76dL, 0xbde89531adcb99L, "children");
-    /*package*/ static final SReferenceLink navigable$buwj = MetaAdapterFactory.getReferenceLink(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a681a1L, 0xbde895319b644cL, "navigable");
+    /*package*/ static final SContainmentLink children$CxSw = MetaAdapterFactory.getContainmentLink(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531adc76dL, 0xbde89531adcb99L, "children");
+    /*package*/ static final SReferenceLink navigable$zLDd = MetaAdapterFactory.getReferenceLink(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a681a1L, 0xbde895319b644cL, "navigable");
   }
 
   private static final class CONCEPTS {
@@ -4757,6 +4757,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty theProperty$h_2H = MetaAdapterFactory.getProperty(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531adc76dL, 0x7c6821e104561b9fL, "theProperty");
+    /*package*/ static final SProperty theProperty$wWjN = MetaAdapterFactory.getProperty(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531adc76dL, 0x7c6821e104561b9fL, "theProperty");
   }
 }

@@ -275,15 +275,15 @@
       <node id="2925222852789993400" at="510,0,511,0" concept="9" trace="SubstituteMenu_Named$J" />
       <node id="2925222852789993400" at="511,0,512,0" concept="9" trace="GeneratedSubstituteMenuAttribute$Mz" />
       <node id="2925222852789993400" at="512,0,513,0" concept="9" trace="SubstituteMenu_Default$hk" />
-      <node id="2925222852789993400" at="516,0,517,0" concept="9" trace="parts$MxT3" />
-      <node id="2925222852789993400" at="517,0,518,0" concept="9" trace="matchingTextFunction$QMMb" />
-      <node id="2925222852789993400" at="518,0,519,0" concept="9" trace="visibleMatchingTextFunction$Q3Xy" />
-      <node id="2925222852789993400" at="519,0,520,0" concept="9" trace="menuDescriptor$6S7z" />
-      <node id="2925222852789993400" at="520,0,521,0" concept="9" trace="cellMenuPart$eVUY" />
-      <node id="2925222852789993400" at="521,0,522,0" concept="9" trace="matchingText$KPlJ" />
-      <node id="2925222852789993400" at="522,0,523,0" concept="9" trace="visibleMatchingText$_Wck" />
-      <node id="2925222852789993400" at="523,0,524,0" concept="9" trace="referentPresentation$z_4O" />
-      <node id="2925222852789993400" at="524,0,525,0" concept="9" trace="conceptDeclaration$acmt" />
+      <node id="2925222852789993400" at="516,0,517,0" concept="9" trace="parts$uqCt" />
+      <node id="2925222852789993400" at="517,0,518,0" concept="9" trace="matchingTextFunction$yAjl" />
+      <node id="2925222852789993400" at="518,0,519,0" concept="9" trace="visibleMatchingTextFunction$bUNu" />
+      <node id="2925222852789993400" at="519,0,520,0" concept="9" trace="menuDescriptor$lbDX" />
+      <node id="2925222852789993400" at="520,0,521,0" concept="9" trace="cellMenuPart$f1$2" />
+      <node id="2925222852789993400" at="521,0,522,0" concept="9" trace="matchingText$DPxL" />
+      <node id="2925222852789993400" at="522,0,523,0" concept="9" trace="visibleMatchingText$o9XG" />
+      <node id="2925222852789993400" at="523,0,524,0" concept="9" trace="referentPresentation$eXlc" />
+      <node id="2925222852789993400" at="524,0,525,0" concept="9" trace="conceptDeclaration$VYS3" />
       <node id="7273969254452768777" at="342,0,345,0" concept="10" trace="ref#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="3787933655125051785" at="346,0,349,0" concept="10" trace="modelref#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SModelReference;" />
       <node id="7273969254452883829" at="351,0,354,0" concept="4" trace="resolveCD#(Lorg/jetbrains/mps/openapi/model/SNodeReference;)Lorg/jetbrains/mps/openapi/model/SNode;" />

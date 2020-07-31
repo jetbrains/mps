@@ -131,7 +131,7 @@ public class AddStaticFieldModifiersOnTypes extends TransformationMenuBase {
         @Override
         public void execute(@NotNull String pattern) {
           SNode field = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.StaticFieldDeclaration$R5);
-          SPropertyOperations.set(field, PROPS.isTransient$HFZV, true);
+          SPropertyOperations.set(field, PROPS.isTransient$8jX_, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.StaticFieldDeclaration$R5), "transientModifier", -1);
         }
 
@@ -198,7 +198,7 @@ public class AddStaticFieldModifiersOnTypes extends TransformationMenuBase {
         @Override
         public void execute(@NotNull String pattern) {
           SNode field = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.StaticFieldDeclaration$R5);
-          SPropertyOperations.set(field, PROPS.isVolatile$KYFu, true);
+          SPropertyOperations.set(field, PROPS.isVolatile$In3y, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.StaticFieldDeclaration$R5), "volatileModifier", -1);
         }
 
@@ -233,7 +233,7 @@ public class AddStaticFieldModifiersOnTypes extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isTransient$HFZV = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, 0x59c57f2ed491ae1aL, "isTransient");
-    /*package*/ static final SProperty isVolatile$KYFu = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, 0x59c57f2ed491b12fL, "isVolatile");
+    /*package*/ static final SProperty isTransient$8jX_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, 0x59c57f2ed491ae1aL, "isTransient");
+    /*package*/ static final SProperty isVolatile$In3y = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, 0x59c57f2ed491b12fL, "isVolatile");
   }
 }

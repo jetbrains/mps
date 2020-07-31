@@ -49,7 +49,7 @@ public class DailyPlanReference_SmartReference extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_5a277g_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.DailyPlanReference$dO, LINKS.target$bW60);
+      super((SAbstractConcept) CONCEPTS.DailyPlanReference$dO, LINKS.target$M6U0);
     }
     @NotNull
     @Override
@@ -81,7 +81,7 @@ public class DailyPlanReference_SmartReference extends SubstituteMenuBase {
       }
       @Override
       public String getMatchingText(String pattern) {
-        return SPropertyOperations.getString(referencedNode, PROPS.displayName$P8hc);
+        return SPropertyOperations.getString(referencedNode, PROPS.displayName$J0kO);
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
@@ -100,10 +100,10 @@ public class DailyPlanReference_SmartReference extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$bW60 = MetaAdapterFactory.getReferenceLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0xcfa085c9af5e830L, 0xcfa085c9af5e831L, "target");
+    /*package*/ static final SReferenceLink target$M6U0 = MetaAdapterFactory.getReferenceLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0xcfa085c9af5e830L, 0xcfa085c9af5e831L, "target");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty displayName$P8hc = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0x1dfff86fbfd92c74L, "displayName");
+    /*package*/ static final SProperty displayName$J0kO = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0x1dfff86fbfd92c74L, "displayName");
   }
 }

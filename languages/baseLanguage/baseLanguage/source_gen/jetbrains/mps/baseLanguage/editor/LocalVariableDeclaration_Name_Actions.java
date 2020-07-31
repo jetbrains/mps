@@ -30,11 +30,11 @@ public class LocalVariableDeclaration_Name_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SLinkOperations.getTarget(node, LINKS.initializer$KgD) != null) {
-          if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.initializer$KgD))) {
+        if (SLinkOperations.getTarget(node, LINKS.initializer$no3R) != null) {
+          if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.initializer$no3R))) {
             return;
           }
-          SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.initializer$KgD));
+          SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.initializer$no3R));
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, SelectionManager.LAST_CELL, -1);
         } else {
           if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Statement$ok)) {
@@ -62,12 +62,12 @@ public class LocalVariableDeclaration_Name_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.type$pLrO), CONCEPTS.ArrayType$Yv)) {
-          SNode componentType = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.type$pLrO), CONCEPTS.ArrayType$Yv), LINKS.componentType$10w);
-          SLinkOperations.setTarget(node, LINKS.type$pLrO, componentType);
+        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.type$uWuc), CONCEPTS.ArrayType$Yv)) {
+          SNode componentType = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.type$uWuc), CONCEPTS.ArrayType$Yv), LINKS.componentType$vfw);
+          SLinkOperations.setTarget(node, LINKS.type$uWuc, componentType);
         } else {
-          if (SLinkOperations.getTarget(node, LINKS.type$pLrO) != null) {
-            SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(node, LINKS.type$pLrO), SelectionManager.LAST_EDITABLE_CELL, -1);
+          if (SLinkOperations.getTarget(node, LINKS.type$uWuc) != null) {
+            SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(node, LINKS.type$uWuc), SelectionManager.LAST_EDITABLE_CELL, -1);
           } else {
             SelectionUtil.selectCell(editorContext, node, SelectionManager.FIRST_EDITABLE_CELL);
           }
@@ -123,9 +123,9 @@ public class LocalVariableDeclaration_Name_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink componentType$10w = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
   }
 
   private static final class CONCEPTS {

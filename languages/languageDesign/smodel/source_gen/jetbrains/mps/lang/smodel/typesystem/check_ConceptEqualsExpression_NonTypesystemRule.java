@@ -30,8 +30,8 @@ public class check_ConceptEqualsExpression_NonTypesystemRule extends AbstractNon
       return;
     }
 
-    SNode left = SLinkOperations.getTarget(equalsExpression, LINKS.leftExpression$rxLZ);
-    SNode right = SLinkOperations.getTarget(equalsExpression, LINKS.rightExpression$rxBl);
+    SNode left = SLinkOperations.getTarget(equalsExpression, LINKS.leftExpression$lndx);
+    SNode right = SLinkOperations.getTarget(equalsExpression, LINKS.rightExpression$li3b);
 
     if (!(SNodeOperations.isInstanceOf(right, CONCEPTS.NullLiteral$q4)) && !(SNodeOperations.isInstanceOf(left, CONCEPTS.NullLiteral$q4)) && (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(left), _quotation_createNode_7d5ybh_b0a0a0f0b()) || TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(right), _quotation_createNode_7d5ybh_b0a0a0f0b_0()))) {
       {
@@ -123,7 +123,7 @@ public class check_ConceptEqualsExpression_NonTypesystemRule extends AbstractNon
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
   }
 }

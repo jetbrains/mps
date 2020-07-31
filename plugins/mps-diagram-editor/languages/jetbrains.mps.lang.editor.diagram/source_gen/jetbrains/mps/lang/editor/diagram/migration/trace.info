@@ -43,10 +43,10 @@
       <node id="8335510736432777906" at="111,55,112,43" concept="5" />
       <node id="5091239957908801103" at="116,0,117,0" concept="7" trace="CreationActionReference$34" />
       <node id="5091239957908801103" at="117,0,118,0" concept="7" trace="FileIcon$ne" />
-      <node id="5091239957908801103" at="121,0,122,0" concept="7" trace="iconPath$qm1k" />
-      <node id="5091239957908801103" at="122,0,123,0" concept="7" trace="file$xmj_" />
-      <node id="5091239957908801103" at="123,0,124,0" concept="7" trace="iconPath$YYV1" />
-      <node id="5091239957908801103" at="127,0,128,0" concept="7" trace="icon$$akM" />
+      <node id="5091239957908801103" at="121,0,122,0" concept="7" trace="iconPath$KECG" />
+      <node id="5091239957908801103" at="122,0,123,0" concept="7" trace="file$9NuV" />
+      <node id="5091239957908801103" at="123,0,124,0" concept="7" trace="iconPath$wu_v" />
+      <node id="5091239957908801103" at="127,0,128,0" concept="7" trace="icon$x04e" />
       <node id="5091239957908801103" at="36,0,39,0" concept="3" trace="getCaption#()Ljava/lang/String;" />
       <node id="5091239957908849294" at="52,0,55,0" concept="3" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
       <node id="8335510736432777899" at="57,0,60,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

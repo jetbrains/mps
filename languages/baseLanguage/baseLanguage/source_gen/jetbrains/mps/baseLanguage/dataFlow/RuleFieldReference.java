@@ -27,12 +27,12 @@ public class RuleFieldReference implements DataFlowConstructor {
     return CONCEPTS.VariableReference$sQ;
   }
   public void performActions(Program o, SNode node) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.variableDeclaration$2ky6), CONCEPTS.FieldDeclaration$Ps)) {
-      SNode field = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.variableDeclaration$2ky6), CONCEPTS.FieldDeclaration$Ps);
-      if (SLinkOperations.getChildren(field, LINKS.annotation$oVP4) != null) {
-        for (SNode annotation : SLinkOperations.getChildren(field, LINKS.annotation$oVP4)) {
-          String name = SPropertyOperations.getString(SLinkOperations.getTarget(annotation, LINKS.annotation$zNxu), PROPS.name$tAp1);
-          if (SLinkOperations.hasPointer(annotation, LINKS.annotation$zNxu, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull"))) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.variableDeclaration$7WwU), CONCEPTS.FieldDeclaration$Ps)) {
+      SNode field = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.variableDeclaration$7WwU), CONCEPTS.FieldDeclaration$Ps);
+      if (SLinkOperations.getChildren(field, LINKS.annotation$4YGW) != null) {
+        for (SNode annotation : SLinkOperations.getChildren(field, LINKS.annotation$4YGW)) {
+          String name = SPropertyOperations.getString(SLinkOperations.getTarget(annotation, LINKS.annotation$lXdy), PROPS.name$lA7v);
+          if (SLinkOperations.hasPointer(annotation, LINKS.annotation$lXdy, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull"))) {
             {
               Object object = node;
               if (((Program) o).contains(object)) {
@@ -56,12 +56,12 @@ public class RuleFieldReference implements DataFlowConstructor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

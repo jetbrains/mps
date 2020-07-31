@@ -36,7 +36,7 @@ public final class MigrateToIndentLayout_Intention extends AbstractIntentionDesc
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$usNp), CONCEPTS.CellLayout_Indent$tI));
+    return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$JWT7), CONCEPTS.CellLayout_Indent$tI));
   }
   @Override
   public boolean isSurroundWith() {
@@ -66,7 +66,7 @@ public final class MigrateToIndentLayout_Intention extends AbstractIntentionDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cellLayout$usNp = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
+    /*package*/ static final SContainmentLink cellLayout$JWT7 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
   }
 
   private static final class CONCEPTS {

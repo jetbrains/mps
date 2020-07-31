@@ -30,7 +30,7 @@ public class CompletionCustomization_LinkFeature_Constraints extends BaseConstra
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.link$oN7, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.link$c0Kp, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -45,7 +45,7 @@ public class CompletionCustomization_LinkFeature_Constraints extends BaseConstra
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode concept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.CompletionCustomizationConceptModifyingSpecificator$jz, true, false), LINKS.conceptDeclaration$UwJH);
+            SNode concept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.CompletionCustomizationConceptModifyingSpecificator$jz, true, false), LINKS.conceptDeclaration$lR6N);
             return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(concept));
           }
         };
@@ -63,7 +63,7 @@ public class CompletionCustomization_LinkFeature_Constraints extends BaseConstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink link$oN7 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570dedb336aL, 0xab9d570dedb336fL, "link");
-    /*package*/ static final SReferenceLink conceptDeclaration$UwJH = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x64a01fa8546d02faL, 0x7e806541c93930a5L, "conceptDeclaration");
+    /*package*/ static final SReferenceLink link$c0Kp = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570dedb336aL, 0xab9d570dedb336fL, "link");
+    /*package*/ static final SReferenceLink conceptDeclaration$lR6N = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x64a01fa8546d02faL, 0x7e806541c93930a5L, "conceptDeclaration");
   }
 }

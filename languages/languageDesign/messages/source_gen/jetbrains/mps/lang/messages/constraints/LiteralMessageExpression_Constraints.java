@@ -23,7 +23,7 @@ public class LiteralMessageExpression_Constraints extends BaseConstraintsDescrip
 
   public static class Message_Property extends BasePropertyConstraintsDescriptor {
     public Message_Property(ConstraintsDescriptor container) {
-      super(PROPS.message$vnr0, container);
+      super(PROPS.message$cm50, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,7 +45,7 @@ public class LiteralMessageExpression_Constraints extends BaseConstraintsDescrip
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.message$vnr0, new Message_Property(this));
+    properties.put(PROPS.message$cm50, new Message_Property(this));
     return properties;
   }
 
@@ -54,6 +54,6 @@ public class LiteralMessageExpression_Constraints extends BaseConstraintsDescrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty message$vnr0 = MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message");
+    /*package*/ static final SProperty message$cm50 = MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message");
   }
 }

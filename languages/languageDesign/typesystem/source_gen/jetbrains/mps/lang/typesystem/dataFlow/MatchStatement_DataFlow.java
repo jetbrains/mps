@@ -11,18 +11,18 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MatchStatement_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.expression$8_90));
-    for (SNode item : SLinkOperations.getChildren(_context.getNode(), LINKS.item$AXJR)) {
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.expression$9Zn0));
+    for (SNode item : SLinkOperations.getChildren(_context.getNode(), LINKS.item$RUbD)) {
       _context.getBuilder().build((SNode) item);
     }
-    if (SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$vGWt) != null) {
-      _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$vGWt));
+    if (SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$mLi3) != null) {
+      _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$mLi3));
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$8_90 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1122952fb1dL, 0x1122953623eL, "expression");
-    /*package*/ static final SContainmentLink item$AXJR = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1122952fb1dL, 0x11229530b91L, "item");
-    /*package*/ static final SContainmentLink ifFalseStatement$vGWt = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1122952fb1dL, 0x11229530314L, "ifFalseStatement");
+    /*package*/ static final SContainmentLink expression$9Zn0 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1122952fb1dL, 0x1122953623eL, "expression");
+    /*package*/ static final SContainmentLink item$RUbD = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1122952fb1dL, 0x11229530b91L, "item");
+    /*package*/ static final SContainmentLink ifFalseStatement$mLi3 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1122952fb1dL, 0x11229530314L, "ifFalseStatement");
   }
 }

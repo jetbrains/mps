@@ -118,7 +118,7 @@ public class BuildSource_JavaContentFolder_SubstituteMenu extends SubstituteMenu
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.BuildSource_JavaContentFolder$aT, null);
-          SPropertyOperations.setEnum(node, PROPS.kind$Ai6n, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92974f7L, "jetbrains.mps.build.structure.BuildSource_JavaContentFolderKind"), myParameterObject));
+          SPropertyOperations.setEnum(node, PROPS.kind$yL59, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92974f7L, "jetbrains.mps.build.structure.BuildSource_JavaContentFolderKind"), myParameterObject));
           return node;
         }
 
@@ -155,6 +155,6 @@ public class BuildSource_JavaContentFolder_SubstituteMenu extends SubstituteMenu
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty kind$Ai6n = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319546c6L, 0x48d5d03db92974fbL, "kind");
+    /*package*/ static final SProperty kind$yL59 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319546c6L, 0x48d5d03db92974fbL, "kind");
   }
 }

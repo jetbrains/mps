@@ -26,7 +26,7 @@
       <node id="2367072595511577317" at="49,37,50,41" concept="1" />
       <node id="2367072595511272482" at="55,51,56,156" concept="5" />
       <node id="2367072595511272482" at="60,0,61,0" concept="6" trace="BTestCase$o9" />
-      <node id="2367072595511272482" at="64,0,65,0" concept="6" trace="constructor$8I7u" />
+      <node id="2367072595511272482" at="64,0,65,0" concept="6" trace="constructor$elBy" />
       <node id="2367072595511272482" at="24,0,27,0" concept="3" trace="getCaption#()Ljava/lang/String;" />
       <node id="2367072595511274223" at="40,0,43,0" concept="3" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
       <node id="2367072595511712761" at="45,0,48,0" concept="3" trace="translate#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />

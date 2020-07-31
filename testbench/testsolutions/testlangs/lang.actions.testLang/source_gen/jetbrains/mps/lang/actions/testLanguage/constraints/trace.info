@@ -76,8 +76,8 @@
       <node id="4942308145798610557" at="53,0,54,0" concept="7" trace="ActionTestSidetransformTestContainer$YM" />
       <node id="4942308145798610557" at="54,0,55,0" concept="7" trace="ActionTestSidetransformChild1$Zx" />
       <node id="4942308145798610557" at="55,0,56,0" concept="7" trace="ActionTestSidetransformAnotherChildCommonSuperConcept$hw" />
-      <node id="4942308145798610557" at="59,0,60,0" concept="7" trace="abstractChildConstrained$IYIi" />
-      <node id="4942308145798610557" at="60,0,61,0" concept="7" trace="anotherAbstractChildConstrained$eQJW" />
+      <node id="4942308145798610557" at="59,0,60,0" concept="7" trace="abstractChildConstrained$KoqI" />
+      <node id="4942308145798610557" at="60,0,61,0" concept="7" trace="anotherAbstractChildConstrained$cxe4" />
       <node id="4942308145798610557" at="21,0,24,0" concept="0" trace="ActionTestSidetransformTestContainer_Constraints#()V" />
       <node id="4942308145798610557" at="31,0,34,9" concept="2" />
       <node id="1227128029536583772" at="40,128,43,5" concept="2" />

@@ -27,7 +27,7 @@ public class ConceptIdHelper {
     final Wrappers._long result = new Wrappers._long(ConceptIdHelper.getDefaultIdFromNode(c));
     while (ListSequence.fromList(SModelOperations.roots(m, CONCEPTS.AbstractConceptDeclaration$UN)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != c && Objects.equals(SPropertyOperations.getString(it, PROPS.conceptId$TMc5), result.value + "");
+        return it != c && Objects.equals(SPropertyOperations.getString(it, PROPS.conceptId$ZjQr), result.value + "");
       }
     })) {
       result.value = randomLong();
@@ -39,7 +39,7 @@ public class ConceptIdHelper {
     final Wrappers._long result = new Wrappers._long(ConceptIdHelper.getDefaultIdFromNode(c));
     while (ListSequence.fromList(SModelOperations.roots(m, CONCEPTS.DataTypeDeclaration$KQ)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != c && Objects.equals(SPropertyOperations.getString(it, PROPS.datatypeId$Bvg3), result.value + "");
+        return it != c && Objects.equals(SPropertyOperations.getString(it, PROPS.datatypeId$88Lt), result.value + "");
       }
     })) {
       result.value = randomLong();
@@ -49,9 +49,9 @@ public class ConceptIdHelper {
 
   public static long generatePropertyId(@Nullable SNode c, final SNode p) {
     final Wrappers._long result = new Wrappers._long(ConceptIdHelper.getDefaultIdFromNode(p));
-    while (ListSequence.fromList(SLinkOperations.getChildren(c, LINKS.propertyDeclaration$lL73)).any(new IWhereFilter<SNode>() {
+    while (ListSequence.fromList(SLinkOperations.getChildren(c, LINKS.propertyDeclaration$yMqt)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != p && Objects.equals(SPropertyOperations.getString(it, PROPS.propertyId$cckp), result.value + "");
+        return it != p && Objects.equals(SPropertyOperations.getString(it, PROPS.propertyId$TXS7), result.value + "");
       }
     })) {
       result.value = randomLong();
@@ -61,9 +61,9 @@ public class ConceptIdHelper {
 
   public static long generateLinkId(@Nullable SNode c, final SNode l) {
     final Wrappers._long result = new Wrappers._long(ConceptIdHelper.getDefaultIdFromNode(l));
-    while (ListSequence.fromList(SLinkOperations.getChildren(c, LINKS.linkDeclaration$lL6$)).any(new IWhereFilter<SNode>() {
+    while (ListSequence.fromList(SLinkOperations.getChildren(c, LINKS.linkDeclaration$yMbs)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != l && Objects.equals(SPropertyOperations.getString(it, PROPS.linkId$ccI3), result.value + "");
+        return it != l && Objects.equals(SPropertyOperations.getString(it, PROPS.linkId$Uajt), result.value + "");
       }
     })) {
       result.value = randomLong();
@@ -73,9 +73,9 @@ public class ConceptIdHelper {
 
   public static long generateEnumMemberId(@Nullable SNode e, final SNode m) {
     final Wrappers._long result = new Wrappers._long(ConceptIdHelper.getDefaultIdFromNode(m));
-    while (ListSequence.fromList(SLinkOperations.getChildren(e, LINKS.members$qYq2)).any(new IWhereFilter<SNode>() {
+    while (ListSequence.fromList(SLinkOperations.getChildren(e, LINKS.members$4eAY)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != m && Objects.equals(SPropertyOperations.getString(it, PROPS.memberId$d5NS), result.value + "");
+        return it != m && Objects.equals(SPropertyOperations.getString(it, PROPS.memberId$lO88), result.value + "");
       }
     })) {
       result.value = randomLong();
@@ -125,16 +125,16 @@ public class ConceptIdHelper {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty conceptId$TMc5 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
-    /*package*/ static final SProperty datatypeId$Bvg3 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044403L, "datatypeId");
-    /*package*/ static final SProperty propertyId$cckp = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L, "propertyId");
-    /*package*/ static final SProperty linkId$ccI3 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L, "linkId");
-    /*package*/ static final SProperty memberId$d5NS = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x13b8f6fdce540e38L, "memberId");
+    /*package*/ static final SProperty conceptId$ZjQr = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
+    /*package*/ static final SProperty datatypeId$88Lt = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044403L, "datatypeId");
+    /*package*/ static final SProperty propertyId$TXS7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L, "propertyId");
+    /*package*/ static final SProperty linkId$Uajt = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L, "linkId");
+    /*package*/ static final SProperty memberId$lO88 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x13b8f6fdce540e38L, "memberId");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink propertyDeclaration$lL73 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
-    /*package*/ static final SContainmentLink linkDeclaration$lL6$ = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
-    /*package*/ static final SContainmentLink members$qYq2 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
+    /*package*/ static final SContainmentLink propertyDeclaration$yMqt = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
+    /*package*/ static final SContainmentLink linkDeclaration$yMbs = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
+    /*package*/ static final SContainmentLink members$4eAY = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
   }
 }

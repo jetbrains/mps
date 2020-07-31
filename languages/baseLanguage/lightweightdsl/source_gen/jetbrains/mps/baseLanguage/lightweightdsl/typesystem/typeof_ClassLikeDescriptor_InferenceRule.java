@@ -28,23 +28,23 @@ public class typeof_ClassLikeDescriptor_InferenceRule extends AbstractInferenceR
   public typeof_ClassLikeDescriptor_InferenceRule() {
   }
   public void applyRule(final SNode cld, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(cld, LINKS.initializer$7lug) == null)) {
+    if ((SLinkOperations.getTarget(cld, LINKS.initializer$zpDK) == null)) {
       return;
     }
 
-    if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(cld, LINKS.initializer$7lug), LINKS.parameter$WRt7)).count() != 2) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(cld, LINKS.initializer$zpDK), LINKS.parameter$uR6p)).count() != 2) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(cld, LINKS.initializer$7lug), "initializer should have two parameters: " + "node<" + SPropertyOperations.getString(DSLDescriptor__BehaviorDescriptor.getPreferredConcept_id1_lSsE3TA5X.invoke(cld), PROPS.name$tAp1) + ">, model", "c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:e04b7053-8c89-4f87-b296-94779c625d9d(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.typesystem)", "3384419124889947664", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(cld, LINKS.initializer$zpDK), "initializer should have two parameters: " + "node<" + SPropertyOperations.getString(DSLDescriptor__BehaviorDescriptor.getPreferredConcept_id1_lSsE3TA5X.invoke(cld), PROPS.name$lA7v) + ">, model", "c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:e04b7053-8c89-4f87-b296-94779c625d9d(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.typesystem)", "3384419124889947664", null, errorTarget);
       }
     } else {
       {
-        SNode _nodeToCheck_1029348928467 = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(cld, LINKS.initializer$7lug), LINKS.parameter$WRt7)).getElement(0);
+        SNode _nodeToCheck_1029348928467 = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(cld, LINKS.initializer$zpDK), LINKS.parameter$uR6p)).getElement(0);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:e04b7053-8c89-4f87-b296-94779c625d9d(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.typesystem)", "1825613483881518848", 0, null);
         typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:e04b7053-8c89-4f87-b296-94779c625d9d(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.typesystem)", "1825613483881473786", true), (SNode) _quotation_createNode_m9mjmr_a1a0c0a0a2a1(DSLDescriptor__BehaviorDescriptor.getPreferredConcept_id1_lSsE3TA5X.invoke(cld)), _info_12389875345);
       }
       {
-        SNode _nodeToCheck_1029348928467 = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(cld, LINKS.initializer$7lug), LINKS.parameter$WRt7)).getElement(1);
+        SNode _nodeToCheck_1029348928467 = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(cld, LINKS.initializer$zpDK), LINKS.parameter$uR6p)).getElement(1);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:e04b7053-8c89-4f87-b296-94779c625d9d(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.typesystem)", "4194369961464668645", 0, null);
         typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:e04b7053-8c89-4f87-b296-94779c625d9d(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.typesystem)", "4194369961464668654", true), (SNode) _quotation_createNode_m9mjmr_a1a0c0b0a2a1(), _info_12389875345);
       }
@@ -74,12 +74,12 @@ public class typeof_ClassLikeDescriptor_InferenceRule extends AbstractInferenceR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$7lug = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x1955e1ca83eb220eL, "initializer");
-    /*package*/ static final SContainmentLink parameter$WRt7 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
+    /*package*/ static final SContainmentLink initializer$zpDK = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x1955e1ca83eb220eL, "initializer");
+    /*package*/ static final SContainmentLink parameter$uR6p = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

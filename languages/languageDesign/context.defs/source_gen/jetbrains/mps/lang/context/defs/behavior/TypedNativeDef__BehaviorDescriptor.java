@@ -31,7 +31,7 @@ public final class TypedNativeDef__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getErasedType_id4JP_D2W1aPH(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.type$AvB0);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.type$DjT0);
   }
 
   /*package*/ TypedNativeDef__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class TypedNativeDef__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$AvB0 = MetaAdapterFactory.getContainmentLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc00f6b1L, 0x4bf59690bc00f6b2L, "type");
+    /*package*/ static final SContainmentLink type$DjT0 = MetaAdapterFactory.getContainmentLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc00f6b1L, 0x4bf59690bc00f6b2L, "type");
   }
 }

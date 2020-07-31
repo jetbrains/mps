@@ -24,7 +24,7 @@ public class ModulePointer_Constraints extends BaseConstraintsDescriptor {
 
   public static class ModuleId_Property extends BasePropertyConstraintsDescriptor {
     public ModuleId_Property(ConstraintsDescriptor container) {
-      super(PROPS.moduleId$goi, container);
+      super(PROPS.moduleId$7VKI, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -53,7 +53,7 @@ public class ModulePointer_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.moduleId$goi, new ModuleId_Property(this));
+    properties.put(PROPS.moduleId$7VKI, new ModuleId_Property(this));
     return properties;
   }
 
@@ -62,6 +62,6 @@ public class ModulePointer_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty moduleId$goi = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645c7f5cL, "moduleId");
+    /*package*/ static final SProperty moduleId$7VKI = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645c7f5cL, "moduleId");
   }
 }

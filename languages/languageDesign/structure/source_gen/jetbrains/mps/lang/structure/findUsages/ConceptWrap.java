@@ -26,13 +26,13 @@ public final class ConceptWrap extends AbstractConceptWrap implements AbstractCo
 
   @Override
   public boolean isAbstract() {
-    return SPropertyOperations.getBoolean(myPeer, PROPS.abstract$moSU);
+    return SPropertyOperations.getBoolean(myPeer, PROPS.abstract$Q3$6);
   }
 
   @Nullable
   @Override
   public AbstractConceptLike.ConceptLike getSuperConcept() {
-    SNode superConcept = SLinkOperations.getTarget(myPeer, LINKS.extends$LQV3);
+    SNode superConcept = SLinkOperations.getTarget(myPeer, LINKS.extends$9AAt);
     if (superConcept == null) {
       return null;
     }
@@ -43,22 +43,22 @@ public final class ConceptWrap extends AbstractConceptWrap implements AbstractCo
   @Override
   public List<AbstractConceptLike.InterfaceConceptLike> getSuperInterfaces() {
     List<AbstractConceptLike.InterfaceConceptLike> result = new ArrayList<AbstractConceptLike.InterfaceConceptLike>();
-    List<SNode> superInterfaces = SLinkOperations.getChildren(myPeer, LINKS.implements$oQDh);
+    List<SNode> superInterfaces = SLinkOperations.getChildren(myPeer, LINKS.implements$2tZf);
     for (SNode superInterfaceRef : ListSequence.fromList(superInterfaces)) {
-      if ((SLinkOperations.getTarget(superInterfaceRef, LINKS.intfc$fO5) != null)) {
-        result.add(new InterfaceConceptWrap(SLinkOperations.getTarget(superInterfaceRef, LINKS.intfc$fO5)));
+      if ((SLinkOperations.getTarget(superInterfaceRef, LINKS.intfc$7Eer) != null)) {
+        result.add(new InterfaceConceptWrap(SLinkOperations.getTarget(superInterfaceRef, LINKS.intfc$7Eer)));
       }
     }
     return result;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstract$moSU = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
+    /*package*/ static final SProperty abstract$Q3$6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$LQV3 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
-    /*package*/ static final SContainmentLink implements$oQDh = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
-    /*package*/ static final SReferenceLink intfc$fO5 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
+    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SContainmentLink implements$2tZf = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
+    /*package*/ static final SReferenceLink intfc$7Eer = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
   }
 }

@@ -35,7 +35,7 @@ public class ModifiersInsertHandler {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode newModifier = SNodeFactoryOperations.addNewChild(node, LINKS.modifiers$akE0, null);
+        SNode newModifier = SNodeFactoryOperations.addNewChild(node, LINKS.modifiers$m0, null);
         SelectionUtil.selectNode(editorContext, newModifier);
       }
       @Override
@@ -45,7 +45,7 @@ public class ModifiersInsertHandler {
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
         EditorCell contextCell = editorContext.getSelectedCell();
         SNode contextNode = contextCell.getSNode();
-        if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Modifier$Ra) && Objects.equals(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$akE0)).first(), contextNode)) {
+        if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Modifier$Ra) && Objects.equals(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$m0)).first(), contextNode)) {
           return false;
         }
         return true;
@@ -62,7 +62,7 @@ public class ModifiersInsertHandler {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode newModifier = SNodeFactoryOperations.addNewChild(node, LINKS.modifiers$akE0, null);
+        SNode newModifier = SNodeFactoryOperations.addNewChild(node, LINKS.modifiers$m0, null);
         SelectionUtil.selectNode(editorContext, newModifier);
       }
       @Override
@@ -73,11 +73,11 @@ public class ModifiersInsertHandler {
         EditorCell contextCell = editorContext.getSelectedCell();
         SNode contextNode = contextCell.getSNode();
         if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Modifier$Ra)) {
-          if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$akE0)).count() <= 1) {
+          if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$m0)).count() <= 1) {
             // here I calculate whether there are some modifier concepts to insert at all. 
             // if yes then we allow to add a child into node.modifiers collection 
             SModel model = SNodeOperations.getModel(node);
-            List<SNode> modifiers = SLinkOperations.getChildren(node, LINKS.modifiers$akE0);
+            List<SNode> modifiers = SLinkOperations.getChildren(node, LINKS.modifiers$m0);
             return !(ListSequence.fromList(modifiers).select(new ISelector<SNode, SConcept>() {
               public SConcept select(SNode it) {
                 return SNodeOperations.getConcept(it);
@@ -87,7 +87,7 @@ public class ModifiersInsertHandler {
                 return !(it.isAbstract());
               }
             })));
-          } else if (Objects.equals(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$akE0)).last(), contextNode)) {
+          } else if (Objects.equals(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$m0)).last(), contextNode)) {
             return false;
           }
         }
@@ -143,7 +143,7 @@ public class ModifiersInsertHandler {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifiers$akE0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
   }
 
   private static final class CONCEPTS {

@@ -38,7 +38,7 @@ public class ClassifierScopeUtils {
   }
 
   public static Iterable<SNode> getVisibleNestedClassConceptsIncludingInherited(@Nullable SNode type, final SNode contextNode) {
-    Iterable<SNode> visibleInheritedNestedClassifiers = SNodeOperations.ofConcept(SetSequence.fromSet(ClassifierScopeUtils.getExtendedClassifiers(SLinkOperations.getTarget(type, LINKS.classifier$pQ_R))).translate(new ITranslator2<SNode, SNode>() {
+    Iterable<SNode> visibleInheritedNestedClassifiers = SNodeOperations.ofConcept(SetSequence.fromSet(ClassifierScopeUtils.getExtendedClassifiers(SLinkOperations.getTarget(type, LINKS.classifier$xslD))).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
         return (Iterable<SNode>) Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(it);
       }
@@ -94,7 +94,7 @@ public class ClassifierScopeUtils {
       SetSequence.fromSet(subClassifiers).addElement(classifier);
 
       if (ListSequence.fromList(typeParms).isNotEmpty()) {
-        Iterator<SNode> typeVars = ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$ziZT)).iterator();
+        Iterator<SNode> typeVars = ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$6cWB)).iterator();
         for (SNode typeParm : typeParms) {
           if (!(typeVars.hasNext())) {
             break;
@@ -105,7 +105,7 @@ public class ClassifierScopeUtils {
       }
 
       for (SNode superType : Classifier__BehaviorDescriptor.getExtendedClassifierTypes_id1UeCwxlWKny.invoke(classifier)) {
-        if (collectImplementedAndExtended(SLinkOperations.getTarget(superType, LINKS.classifier$pQ_R), subClassifiers, SLinkOperations.getChildren(superType, LINKS.parameter$dQne))) {
+        if (collectImplementedAndExtended(SLinkOperations.getTarget(superType, LINKS.classifier$xslD), subClassifiers, SLinkOperations.getChildren(superType, LINKS.parameter$HlfM))) {
           return true;
         }
       }
@@ -116,9 +116,9 @@ public class ClassifierScopeUtils {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
   }
 
   private static final class CONCEPTS {

@@ -16,58 +16,58 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class DocTagHelper {
   public static void organizeTags(final SNode comment) {
-    Iterable<SNode> author = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$LJD$)).where(new IWhereFilter<SNode>() {
+    Iterable<SNode> author = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.AuthorBlockDocTag$xE);
       }
     });
-    Iterable<SNode> since = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$LJD$)).where(new IWhereFilter<SNode>() {
+    Iterable<SNode> since = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.SinceBlockDocTag$YE);
       }
     });
-    Iterable<SNode> version = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$LJD$)).where(new IWhereFilter<SNode>() {
+    Iterable<SNode> version = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.VersionBlockDocTag$Ic);
       }
     });
-    Iterable<SNode> see = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$LJD$)).where(new IWhereFilter<SNode>() {
+    Iterable<SNode> see = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.SeeBlockDocTag$tx);
       }
     });
-    Iterable<SNode> param = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$LJD$)).where(new IWhereFilter<SNode>() {
+    Iterable<SNode> param = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.ParameterBlockDocTag$w1);
       }
     });
-    Iterable<SNode> thr = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$LJD$)).where(new IWhereFilter<SNode>() {
+    Iterable<SNode> thr = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.ThrowsBlockDocTag$ph);
       }
     });
-    Iterable<SNode> deprecated = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$LJD$)).where(new IWhereFilter<SNode>() {
+    Iterable<SNode> deprecated = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$ma);
       }
     });
-    Iterable<SNode> returns = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$LJD$)).where(new IWhereFilter<SNode>() {
+    Iterable<SNode> returns = ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.ReturnBlockDocTag$Ys);
       }
     });
     // converting sequence toList to "calculate" the sequence and prevent it from being modified by the next tags.clean operation 
     List<SNode> sortedTags = Sequence.fromIterable(author).concat(Sequence.fromIterable(since)).concat(Sequence.fromIterable(version)).concat(Sequence.fromIterable(see)).concat(Sequence.fromIterable(param)).concat(Sequence.fromIterable(thr)).concat(Sequence.fromIterable(deprecated)).concat(Sequence.fromIterable(returns)).toListSequence();
-    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$LJD$)).clear();
+    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).clear();
     ListSequence.fromList(sortedTags).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
-        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$LJD$)).addElement(it);
+        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).addElement(it);
       }
     });
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tags$LJD$ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
+    /*package*/ static final SContainmentLink tags$658s = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
   }
 
   private static final class CONCEPTS {

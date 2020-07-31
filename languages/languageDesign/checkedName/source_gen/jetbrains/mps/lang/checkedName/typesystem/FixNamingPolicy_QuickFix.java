@@ -21,7 +21,7 @@ public class FixNamingPolicy_QuickFix extends QuickFix_Runtime {
   }
   public void execute(SNode node) {
     for (SNode s : ICheckedNamePolicy__BehaviorDescriptor.getDescendantsToCheck_id4cWf37B8oXl.invoke(((SNode) FixNamingPolicy_QuickFix.this.getField("nodeToFix")[0]))) {
-      SPropertyOperations.set(s, PROPS.value$kiE0, NameUtil.captionPartWithNamingPolicy(SPropertyOperations.getString(s, PROPS.value$kiE0)));
+      SPropertyOperations.set(s, PROPS.value$P2m0, NameUtil.captionPartWithNamingPolicy(SPropertyOperations.getString(s, PROPS.value$P2m0)));
     }
     for (PropertyReference p : ICheckedNamePolicy__BehaviorDescriptor.getPropertiesToCheck_id4cWf37B8oXP.invoke(((SNode) FixNamingPolicy_QuickFix.this.getField("nodeToFix")[0]))) {
       SPropertyOperations.assign(p.getNode(), p.getProperty(), NameUtil.captionWithNamingPolicy(SPropertyOperations.getString(p.getNode(), p.getProperty())));
@@ -29,6 +29,6 @@ public class FixNamingPolicy_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$kiE0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 }

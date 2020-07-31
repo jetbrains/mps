@@ -51,10 +51,10 @@ public class NonTypesystemRule_PatternOverrides_check extends MigrationScriptBas
       };
       List<Problem> result = ListSequence.fromList(new ArrayList<Problem>());
       for (SNode rule : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NonTypesystemRule$cw, false))) {
-        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(rule, LINKS.applicableNode$lCke), CONCEPTS.PatternCondition$hM)) {
+        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(rule, LINKS.applicableNode$uxMM), CONCEPTS.PatternCondition$hM)) {
           ListSequence.fromList(result).addElement(new MigrateManually("Checking rule with pattern condition. Use intention to move pattern inside the rule body.", rule));
         }
-        if (SPropertyOperations.getBoolean(rule, PROPS.overrides$fn$d)) {
+        if (SPropertyOperations.getBoolean(rule, PROPS.overrides$sqyj)) {
           ListSequence.fromList(result).addElement(new MigrateManually("Rule with 'overrides' flag without explicitly enumerating rules to override", rule));
         }
       }
@@ -66,7 +66,7 @@ public class NonTypesystemRule_PatternOverrides_check extends MigrationScriptBas
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink applicableNode$lCke = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
+    /*package*/ static final SContainmentLink applicableNode$uxMM = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
   }
 
   private static final class CONCEPTS {
@@ -75,6 +75,6 @@ public class NonTypesystemRule_PatternOverrides_check extends MigrationScriptBas
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty overrides$fn$d = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x116484991d1L, "overrides");
+    /*package*/ static final SProperty overrides$sqyj = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x116484991d1L, "overrides");
   }
 }

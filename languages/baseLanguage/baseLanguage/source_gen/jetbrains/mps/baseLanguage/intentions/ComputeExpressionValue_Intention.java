@@ -73,23 +73,23 @@ public final class ComputeExpressionValue_Intention extends AbstractIntentionDes
       Object value = Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SNodeOperations.cast(node, CONCEPTS.Expression$TP), SNodeOperations.getModel(SNodeOperations.cast(node, CONCEPTS.Expression$TP)).getModule());
       if (value instanceof Boolean) {
         SNode v = SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.cast(node, CONCEPTS.Expression$TP), CONCEPTS.BooleanConstant$Ui);
-        SPropertyOperations.assign(v, PROPS.value$WIn0, ((Boolean) value).booleanValue());
+        SPropertyOperations.assign(v, PROPS.value$qt90, ((Boolean) value).booleanValue());
       }
       if (value instanceof String) {
         SNode v = SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.cast(node, CONCEPTS.Expression$TP), CONCEPTS.StringLiteral$4G);
-        SPropertyOperations.assign(v, PROPS.value$kiE0, ((String) value));
+        SPropertyOperations.assign(v, PROPS.value$P2m0, ((String) value));
       }
       if (value instanceof Integer || value instanceof Short || value instanceof Byte) {
         SNode v = SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.cast(node, CONCEPTS.Expression$TP), CONCEPTS.IntegerConstant$mo);
-        SPropertyOperations.assign(v, PROPS.value$ZeO0, ((Number) value).intValue());
+        SPropertyOperations.assign(v, PROPS.value$Cbc0, ((Number) value).intValue());
       }
       if (value instanceof Float) {
         SNode v = SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.cast(node, CONCEPTS.Expression$TP), CONCEPTS.FloatingPointFloatConstant$pv);
-        SPropertyOperations.assign(v, PROPS.value$CzwZ, "" + ((Number) value).floatValue());
+        SPropertyOperations.assign(v, PROPS.value$DcYx, "" + ((Number) value).floatValue());
       }
       if (value instanceof Double) {
         SNode v = SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.cast(node, CONCEPTS.Expression$TP), CONCEPTS.FloatingPointConstant$AA);
-        SPropertyOperations.assign(v, PROPS.value$oKYE, "" + ((Number) value).doubleValue());
+        SPropertyOperations.assign(v, PROPS.value$ZImm, "" + ((Number) value).doubleValue());
       }
     }
     @Override
@@ -108,10 +108,10 @@ public final class ComputeExpressionValue_Intention extends AbstractIntentionDes
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$WIn0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
-    /*package*/ static final SProperty value$kiE0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
-    /*package*/ static final SProperty value$ZeO0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
-    /*package*/ static final SProperty value$CzwZ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, 0x494547eeedc219bbL, "value");
-    /*package*/ static final SProperty value$oKYE = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, 0x103245d193fL, "value");
+    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty value$Cbc0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
+    /*package*/ static final SProperty value$DcYx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, 0x494547eeedc219bbL, "value");
+    /*package*/ static final SProperty value$ZImm = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, 0x103245d193fL, "value");
   }
 }

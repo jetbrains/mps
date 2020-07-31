@@ -34,11 +34,11 @@ public final class BuildSource_JavaExternalJarFolderRef__BehaviorDescriptor exte
   }
 
   /*package*/ static SNode getDependencyTarget_id4RsV8qJH_ED(@NotNull SNode __thisNode__, VisibleArtifacts artifacts) {
-    if (SNodeOperations.getContainingRoot(__thisNode__) == SNodeOperations.getContainingRoot(SLinkOperations.getTarget(__thisNode__, LINKS.folder$mC20))) {
+    if (SNodeOperations.getContainingRoot(__thisNode__) == SNodeOperations.getContainingRoot(SLinkOperations.getTarget(__thisNode__, LINKS.folder$XoY0))) {
       return null;
     }
 
-    return JavaExportUtil.requireJarFolder(artifacts, SLinkOperations.getTarget(__thisNode__, LINKS.folder$mC20));
+    return JavaExportUtil.requireJarFolder(artifacts, SLinkOperations.getTarget(__thisNode__, LINKS.folder$XoY0));
   }
 
   /*package*/ BuildSource_JavaExternalJarFolderRef__BehaviorDescriptor() {
@@ -88,6 +88,6 @@ public final class BuildSource_JavaExternalJarFolderRef__BehaviorDescriptor exte
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink folder$mC20 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb65a3fL, 0x4ddcec86afb65a40L, "folder");
+    /*package*/ static final SReferenceLink folder$XoY0 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb65a3fL, 0x4ddcec86afb65a40L, "folder");
   }
 }

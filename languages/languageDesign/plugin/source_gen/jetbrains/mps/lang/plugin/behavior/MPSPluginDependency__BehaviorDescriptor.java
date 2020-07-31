@@ -33,7 +33,7 @@ public final class MPSPluginDependency__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static String getPluginId_id55z4ZnCkRVV(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$xiKw), PROPS.id$GcmZ);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$85vw), PROPS.id$pZ8x);
   }
 
   /*package*/ MPSPluginDependency__BehaviorDescriptor() {
@@ -83,10 +83,10 @@ public final class MPSPluginDependency__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink plugin$xiKw = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2d2ad2584076330L, 0x2d2ad2584076331L, "plugin");
+    /*package*/ static final SReferenceLink plugin$85vw = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2d2ad2584076330L, 0x2d2ad2584076331L, "plugin");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty id$GcmZ = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x45b64b294c2b3514L, 0x45b64b294c2b3516L, "id");
+    /*package*/ static final SProperty id$pZ8x = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x45b64b294c2b3514L, 0x45b64b294c2b3516L, "id");
   }
 }

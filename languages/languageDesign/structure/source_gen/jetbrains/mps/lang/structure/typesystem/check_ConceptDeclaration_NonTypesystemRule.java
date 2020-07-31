@@ -67,10 +67,10 @@ public class check_ConceptDeclaration_NonTypesystemRule extends AbstractNonTypes
         return SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "6999738288738427190"));
       }
     })) {
-      final String stubName = "Stub" + SPropertyOperations.getString(conceptDeclaration, PROPS.name$tAp1);
+      final String stubName = "Stub" + SPropertyOperations.getString(conceptDeclaration, PROPS.name$lA7v);
       boolean stubExists = ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(conceptDeclaration), CONCEPTS.ConceptDeclaration$qU)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), stubName) && Objects.equals(SPropertyOperations.getString(it, PROPS.virtualPackage$j19t), SPropertyOperations.getString(conceptDeclaration, PROPS.virtualPackage$j19t));
+          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), stubName) && Objects.equals(SPropertyOperations.getString(it, PROPS.virtualPackage$dz_3), SPropertyOperations.getString(conceptDeclaration, PROPS.virtualPackage$dz_3));
         }
       }).isNotEmpty();
       if (!(stubExists)) {
@@ -96,8 +96,8 @@ public class check_ConceptDeclaration_NonTypesystemRule extends AbstractNonTypes
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty virtualPackage$j19t = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 
   private static final class CONCEPTS {

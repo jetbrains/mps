@@ -55,11 +55,11 @@ public class SampleDeclMigration_Test extends BaseTransformationTest {
 
     @Override
     public Collection<SNode> getInputNodes() {
-      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(SNodeOperations.cast(getRealNodeById("6109541130559844919"), CONCEPTS.TestNode$kc), LINKS.nodeToCheck$Pz43), SLinkOperations.getTarget(SNodeOperations.cast(getRealNodeById("6109541130559844928"), CONCEPTS.TestNode$kc), LINKS.nodeToCheck$Pz43));
+      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(SNodeOperations.cast(getRealNodeById("6109541130559844919"), CONCEPTS.TestNode$kc), LINKS.nodeToCheck$VYXt), SLinkOperations.getTarget(SNodeOperations.cast(getRealNodeById("6109541130559844928"), CONCEPTS.TestNode$kc), LINKS.nodeToCheck$VYXt));
     }
     @Override
     public Collection<SNode> getOutputNodes() {
-      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(SNodeOperations.cast(getRealNodeById("6109541130559846225"), CONCEPTS.TestNode$kc), LINKS.nodeToCheck$Pz43), SLinkOperations.getTarget(SNodeOperations.cast(getRealNodeById("6109541130559846226"), CONCEPTS.TestNode$kc), LINKS.nodeToCheck$Pz43));
+      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(SNodeOperations.cast(getRealNodeById("6109541130559846225"), CONCEPTS.TestNode$kc), LINKS.nodeToCheck$VYXt), SLinkOperations.getTarget(SNodeOperations.cast(getRealNodeById("6109541130559846226"), CONCEPTS.TestNode$kc), LINKS.nodeToCheck$VYXt));
     }
     @Override
     public MigrationScript[] getMigrationScript() {
@@ -70,7 +70,7 @@ public class SampleDeclMigration_Test extends BaseTransformationTest {
       List<MigrationScriptReference> allScripts = ListSequence.fromListAndArray(new ArrayList<MigrationScriptReference>(), new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, "decl"), 1));
       for (SNode root : CollectionSequence.fromCollection(output)) {
         for (SNode data : ListSequence.fromList(SNodeOperations.getNodeDescendants(root, CONCEPTS.MigrationDataAnnotation$gb, false, new SAbstractConcept[]{}))) {
-          if (ListSequence.fromList(allScripts).contains(MigrationScriptReference.deserialize(SPropertyOperations.getString(data, PROPS.createdByScript$1_lw)))) {
+          if (ListSequence.fromList(allScripts).contains(MigrationScriptReference.deserialize(SPropertyOperations.getString(data, PROPS.createdByScript$L5qw)))) {
             SNodeOperations.deleteNode(data);
           }
         }
@@ -84,10 +84,10 @@ public class SampleDeclMigration_Test extends BaseTransformationTest {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink nodeToCheck$Pz43 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, 0x11b5a397b92L, "nodeToCheck");
+    /*package*/ static final SContainmentLink nodeToCheck$VYXt = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, 0x11b5a397b92L, "nodeToCheck");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty createdByScript$1_lw = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, 0x78c7e79625a38e14L, "createdByScript");
+    /*package*/ static final SProperty createdByScript$L5qw = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, 0x78c7e79625a38e14L, "createdByScript");
   }
 }

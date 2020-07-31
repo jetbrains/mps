@@ -51,8 +51,8 @@ public final class InlineConstant_Intention extends AbstractIntentionDescriptor 
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode original = SLinkOperations.getTarget(node, LINKS.original$mmvb);
-      SNodeOperations.replaceWithAnother(node, SNodeOperations.copyNode(SLinkOperations.getTarget(original, LINKS.initializer$o06Y)));
+      SNode original = SLinkOperations.getTarget(node, LINKS.original$OT6l);
+      SNodeOperations.replaceWithAnother(node, SNodeOperations.copyNode(SLinkOperations.getTarget(original, LINKS.initializer$C3o2)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -61,7 +61,7 @@ public final class InlineConstant_Intention extends AbstractIntentionDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink original$mmvb = MetaAdapterFactory.getReferenceLink(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x37600150f5294665L, 0x37600150f5294666L, "original");
-    /*package*/ static final SContainmentLink initializer$o06Y = MetaAdapterFactory.getContainmentLink(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x14be6cdec1861419L, 0x1bc7b724b7dec5e1L, "initializer");
+    /*package*/ static final SReferenceLink original$OT6l = MetaAdapterFactory.getReferenceLink(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x37600150f5294665L, 0x37600150f5294666L, "original");
+    /*package*/ static final SContainmentLink initializer$C3o2 = MetaAdapterFactory.getContainmentLink(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x14be6cdec1861419L, 0x1bc7b724b7dec5e1L, "initializer");
   }
 }

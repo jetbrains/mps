@@ -27,7 +27,7 @@ public class DataFlowTryCatchUtil {
     SNode statement = SNodeOperations.getNodeAncestor(source, CONCEPTS.Statement$ok, false, false);
     Set<SNode> uncaughtThrowables = Statement__BehaviorDescriptor.uncaughtThrowables_id4Gt7ANIVAVT.invoke(statement, ((boolean) false));
     for (SNode catchClause : catchClauses) {
-      SNode caughtType = SLinkOperations.getTarget(SLinkOperations.getTarget(catchClause, LINKS.throwable$5XW_), LINKS.type$pLrO);
+      SNode caughtType = SLinkOperations.getTarget(SLinkOperations.getTarget(catchClause, LINKS.throwable$T0lV), LINKS.type$uWuc);
       if (TypecheckingFacade.getFromContext().isSubtype(caughtType, _quotation_createNode_l1x7gt_b0a0a1a3a1()) || TypecheckingFacade.getFromContext().isSubtype(caughtType, _quotation_createNode_l1x7gt_b0a0a1a3a1_0()) || TypecheckingFacade.getFromContext().isSubtype(_quotation_createNode_l1x7gt_a0a0b0d0b(), caughtType)) {
         ListSequence.fromList(result).addElement(catchClause);
       } else {
@@ -74,7 +74,7 @@ public class DataFlowTryCatchUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink throwable$5XW_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink throwable$T0lV = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 }

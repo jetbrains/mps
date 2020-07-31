@@ -45,7 +45,7 @@ public final class ClickableGenerator__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static Runnable execute_id7oNS25df64x(@NotNull SNode __thisNode__, MPSProject project) {
-    final SModule module = project.getRepository().getModule(PersistenceFacade.getInstance().createModuleId(SPropertyOperations.getString(__thisNode__, PROPS.moduleId$3xxZ)));
+    final SModule module = project.getRepository().getModule(PersistenceFacade.getInstance().createModuleId(SPropertyOperations.getString(__thisNode__, PROPS.moduleId$Hftx)));
 
     final MPSPropertiesConfigurable configurable = new ModulePropertiesConfigurable(module, project);
     Iterable<Tab> tabs = Sequence.fromClosure(new ISequenceClosure<Tab>() {
@@ -115,7 +115,7 @@ __switch__:
     };
   }
   /*package*/ static boolean canExecute_id2QdC0h7dh1h(@NotNull SNode __thisNode__) {
-    return isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.moduleId$3xxZ));
+    return isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.moduleId$Hftx));
   }
 
   /*package*/ ClickableGenerator__BehaviorDescriptor() {
@@ -170,6 +170,6 @@ __switch__:
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty moduleId$3xxZ = MetaAdapterFactory.getProperty(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x360b134fc0467d73L, 0x360b134fc0525d7fL, "moduleId");
+    /*package*/ static final SProperty moduleId$Hftx = MetaAdapterFactory.getProperty(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x360b134fc0467d73L, 0x360b134fc0525d7fL, "moduleId");
   }
 }

@@ -21,9 +21,9 @@ public class QueriesUtil {
   public static List<SNode> getNodeOperation_ConceptList_concepts(SNode operation) {
     SNode parm_ConceptList = SNodeOperations.cast(SModelLanguageUtil.findNodeOperationParameter(operation, CONCEPTS.OperationParm_ConceptList$lK), CONCEPTS.OperationParm_ConceptList$lK);
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode cRef : ListSequence.fromList(SLinkOperations.getChildren(parm_ConceptList, LINKS.concept$Bp8v))) {
-      if (SLinkOperations.getTarget(cRef, LINKS.concept$6YSY) != null) {
-        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(cRef, LINKS.concept$6YSY));
+    for (SNode cRef : ListSequence.fromList(SLinkOperations.getChildren(parm_ConceptList, LINKS.concept$5b71))) {
+      if (SLinkOperations.getTarget(cRef, LINKS.concept$otA2) != null) {
+        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(cRef, LINKS.concept$otA2));
       }
     }
     return result;
@@ -34,9 +34,9 @@ public class QueriesUtil {
     if ((parm_StopList == null)) {
       return result;
     }
-    for (SNode cRef : ListSequence.fromList(SLinkOperations.getChildren(parm_StopList, LINKS.concept$PuCw))) {
-      if (SLinkOperations.getTarget(cRef, LINKS.concept$6YSY) != null) {
-        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(cRef, LINKS.concept$6YSY));
+    for (SNode cRef : ListSequence.fromList(SLinkOperations.getChildren(parm_StopList, LINKS.concept$TPBw))) {
+      if (SLinkOperations.getTarget(cRef, LINKS.concept$otA2) != null) {
+        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(cRef, LINKS.concept$otA2));
       }
     }
     return result;
@@ -51,7 +51,7 @@ public class QueriesUtil {
     return SModelLanguageUtil.findNodeOperationParameter(inputNode, CONCEPTS.OperationParm_Root$wK) != null;
   }
   public static String get_SPropertyAccess_enum_defaultValue(SNode operation) {
-    return SPropertyOperations.getString(DataTypeUtil.getDefaultMember(SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(operation, LINKS.property$He2), LINKS.dataType$fLUl), CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll)), PROPS.internalValue$bx$m);
+    return SPropertyOperations.getString(DataTypeUtil.getDefaultMember(SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(operation, LINKS.property$lTMY), LINKS.dataType$Dbgb), CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll)), PROPS.internalValue$_gAE);
   }
   public static boolean nodeOp_noParm_conceptList(SNode op) {
     SNode parm = SModelLanguageUtil.findNodeOperationParameter(op, CONCEPTS.OperationParm_Concept$Vf);
@@ -64,12 +64,12 @@ public class QueriesUtil {
   public static boolean isProperty_hasValueEnum_notNullDefaultValue(SNode op) {
     SNode dataTypeDeclaration = jetbrains.mps.lang.smodel.behavior.SModelLanguageUtil.getDatatypeFromLeft_SPropertyAccess(op);
     SNode defMember = EnumerationDataTypeDeclaration_Old__BehaviorDescriptor.getDefaultMember_idhEwIM$p.invoke(SNodeOperations.cast(dataTypeDeclaration, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll));
-    return SPropertyOperations.getString(defMember, PROPS.internalValue$bx$m) != null;
+    return SPropertyOperations.getString(defMember, PROPS.internalValue$_gAE) != null;
   }
   public static boolean isProperty_hasValueEnum_nullDefaultValue(SNode op) {
     SNode datatype = jetbrains.mps.lang.smodel.behavior.SModelLanguageUtil.getDatatypeFromLeft_SPropertyAccess(op);
     SNode defMemberNode = EnumerationDataTypeDeclaration_Old__BehaviorDescriptor.getDefaultMember_idhEwIM$p.invoke(SNodeOperations.cast(datatype, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll));
-    return SPropertyOperations.getString(defMemberNode, PROPS.internalValue$bx$m) == null;
+    return SPropertyOperations.getString(defMemberNode, PROPS.internalValue$_gAE) == null;
   }
   public static String getConceptFqName(SNode concept) {
     return NameUtil.nodeFQName(concept);
@@ -86,14 +86,14 @@ public class QueriesUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$6YSY = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05c601dL, 0x10cd05d18efL, "concept");
-    /*package*/ static final SContainmentLink concept$Bp8v = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05bec71L, 0x10cd05bec73L, "concept");
-    /*package*/ static final SContainmentLink concept$PuCw = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x190735f308e2250bL, 0x190735f308e2250cL, "concept");
-    /*package*/ static final SReferenceLink property$He2 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
-    /*package*/ static final SReferenceLink dataType$fLUl = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SReferenceLink concept$otA2 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05c601dL, 0x10cd05d18efL, "concept");
+    /*package*/ static final SContainmentLink concept$5b71 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05bec71L, 0x10cd05bec73L, "concept");
+    /*package*/ static final SContainmentLink concept$TPBw = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x190735f308e2250bL, 0x190735f308e2250cL, "concept");
+    /*package*/ static final SReferenceLink property$lTMY = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
+    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty internalValue$bx$m = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06663L, "internalValue");
+    /*package*/ static final SProperty internalValue$_gAE = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06663L, "internalValue");
   }
 }

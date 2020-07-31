@@ -23,8 +23,8 @@ public class ApproveDeleteOperation_EditorContext_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SLinkOperations.getTarget(node, LINKS.cellSelector$Ow7n) == null) {
-          SLinkOperations.setTarget(node, LINKS.cellSelector$Ow7n, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector")));
+        if (SLinkOperations.getTarget(node, LINKS.cellSelector$rz$9) == null) {
+          SLinkOperations.setTarget(node, LINKS.cellSelector$rz$9, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector")));
         }
       }
 
@@ -73,6 +73,6 @@ public class ApproveDeleteOperation_EditorContext_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cellSelector$Ow7n = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x73977fa5d21f1f37L, 0x7c9cb4f2b6826b88L, "cellSelector");
+    /*package*/ static final SContainmentLink cellSelector$rz$9 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x73977fa5d21f1f37L, 0x7c9cb4f2b6826b88L, "cellSelector");
   }
 }

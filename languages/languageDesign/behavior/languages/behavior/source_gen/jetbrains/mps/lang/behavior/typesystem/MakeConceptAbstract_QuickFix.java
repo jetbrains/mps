@@ -20,15 +20,15 @@ public class MakeConceptAbstract_QuickFix extends QuickFix_Runtime {
     return "Make concept '" + SNodeOperations.getConcept(node).getName() + "' abstract";
   }
   public void execute(SNode node) {
-    assert !(SPropertyOperations.getBoolean(SLinkOperations.getTarget(((SNode) MakeConceptAbstract_QuickFix.this.getField("conceptBehavior")[0]), LINKS.concept$v6ns), PROPS.abstract$moSU));
-    SPropertyOperations.set(SLinkOperations.getTarget(((SNode) MakeConceptAbstract_QuickFix.this.getField("conceptBehavior")[0]), LINKS.concept$v6ns), PROPS.abstract$moSU, true);
+    assert !(SPropertyOperations.getBoolean(SLinkOperations.getTarget(((SNode) MakeConceptAbstract_QuickFix.this.getField("conceptBehavior")[0]), LINKS.concept$45m$), PROPS.abstract$Q3$6));
+    SPropertyOperations.set(SLinkOperations.getTarget(((SNode) MakeConceptAbstract_QuickFix.this.getField("conceptBehavior")[0]), LINKS.concept$45m$), PROPS.abstract$Q3$6, true);
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$v6ns = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
+    /*package*/ static final SReferenceLink concept$45m$ = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstract$moSU = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
+    /*package*/ static final SProperty abstract$Q3$6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
   }
 }

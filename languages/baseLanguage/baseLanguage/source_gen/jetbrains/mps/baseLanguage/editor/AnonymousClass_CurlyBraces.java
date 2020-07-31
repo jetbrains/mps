@@ -36,26 +36,26 @@ public class AnonymousClass_CurlyBraces {
             return;
           }
           SNode parent = SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.AnonymousClassCreator$N6);
-          if ((SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$$A7i) != null) && ListSequence.fromList(SNodeOperations.getNodeAncestors(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$$A7i), CONCEPTS.Classifier$hJ, false)).contains(SLinkOperations.getTarget(node, LINKS.classifier$1y5e))) {
+          if ((SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI) != null) && ListSequence.fromList(SNodeOperations.getNodeAncestors(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI), CONCEPTS.Classifier$hJ, false)).contains(SLinkOperations.getTarget(node, LINKS.classifier$JwxM))) {
             final SNode classCreator = SNodeFactoryOperations.replaceWithNewChild(parent, CONCEPTS.ClassCreator$yU);
-            SLinkOperations.setTarget(classCreator, LINKS.baseMethodDeclaration$$A7i, SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$$A7i));
-            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$uY4E)).visitAll(new IVisitor<SNode>() {
+            SLinkOperations.setTarget(classCreator, LINKS.baseMethodDeclaration$ItxI, SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI));
+            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$4gm)).visitAll(new IVisitor<SNode>() {
               public void visit(SNode it) {
-                ListSequence.fromList(SLinkOperations.getChildren(classCreator, LINKS.typeParameter$swNi)).addElement(it);
+                ListSequence.fromList(SLinkOperations.getChildren(classCreator, LINKS.typeParameter$NSPI)).addElement(it);
               }
             });
-            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$$A7L)).visitAll(new IVisitor<SNode>() {
+            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$ItKJ)).visitAll(new IVisitor<SNode>() {
               public void visit(SNode it) {
-                ListSequence.fromList(SLinkOperations.getChildren(classCreator, LINKS.actualArgument$$A7L)).addElement(it);
+                ListSequence.fromList(SLinkOperations.getChildren(classCreator, LINKS.actualArgument$ItKJ)).addElement(it);
               }
             });
             SelectionUtil.selectCell(editorContext, classCreator, SelectionManager.LAST_CELL);
           } else {
             final SNode defaultClassCreator = SNodeFactoryOperations.replaceWithNewChild(parent, CONCEPTS.DefaultClassCreator$sQ);
-            SLinkOperations.setTarget(defaultClassCreator, LINKS.classifier$bk50, SLinkOperations.getTarget(node, LINKS.classifier$1y5e));
-            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$uY4E)).visitAll(new IVisitor<SNode>() {
+            SLinkOperations.setTarget(defaultClassCreator, LINKS.classifier$uIr0, SLinkOperations.getTarget(node, LINKS.classifier$JwxM));
+            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$4gm)).visitAll(new IVisitor<SNode>() {
               public void visit(SNode it) {
-                ListSequence.fromList(SLinkOperations.getChildren(defaultClassCreator, LINKS.typeParameter$PRff)).addElement(it);
+                ListSequence.fromList(SLinkOperations.getChildren(defaultClassCreator, LINKS.typeParameter$5Koh)).addElement(it);
               }
             });
             SelectionUtil.selectCell(editorContext, defaultClassCreator, SelectionManager.LAST_CELL);
@@ -125,12 +125,12 @@ public class AnonymousClass_CurlyBraces {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink typeParameter$uY4E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
-    /*package*/ static final SContainmentLink typeParameter$swNi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SReferenceLink classifier$1y5e = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
-    /*package*/ static final SReferenceLink classifier$bk50 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
-    /*package*/ static final SContainmentLink typeParameter$PRff = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0accfdb3L, "typeParameter");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink typeParameter$4gm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
+    /*package*/ static final SContainmentLink typeParameter$NSPI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SReferenceLink classifier$uIr0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
+    /*package*/ static final SContainmentLink typeParameter$5Koh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0accfdb3L, "typeParameter");
   }
 }

@@ -34,7 +34,7 @@ public class PatternVariableReference_Constraints extends BaseConstraintsDescrip
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.patternVarDecl$zQmv, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.patternVarDecl$nkT1, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -51,32 +51,32 @@ public class PatternVariableReference_Constraints extends BaseConstraintsDescrip
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> result = new ArrayList<SNode>();
             SNode rule = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.AbstractRule$6j, false, false);
-            if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(rule, LINKS.applicableNode$lCke), CONCEPTS.PatternCondition$hM)) {
-              ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(rule, LINKS.applicableNode$lCke), CONCEPTS.PatternCondition$hM), LINKS.pattern$ag0O), CONCEPTS.PatternVariableDeclaration$Ma, false, new SAbstractConcept[]{})));
+            if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(rule, LINKS.applicableNode$uxMM), CONCEPTS.PatternCondition$hM)) {
+              ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(rule, LINKS.applicableNode$uxMM), CONCEPTS.PatternCondition$hM), LINKS.pattern$XKpc), CONCEPTS.PatternVariableDeclaration$Ma, false, new SAbstractConcept[]{})));
             }
             if (SNodeOperations.isInstanceOf(rule, CONCEPTS.InequationReplacementRule$4d)) {
-              SNode supertypeNode = SLinkOperations.getTarget(SNodeOperations.cast(rule, CONCEPTS.InequationReplacementRule$4d), LINKS.supertypeNode$b3lK);
+              SNode supertypeNode = SLinkOperations.getTarget(SNodeOperations.cast(rule, CONCEPTS.InequationReplacementRule$4d), LINKS.supertypeNode$mByg);
               if (SNodeOperations.isInstanceOf(supertypeNode, CONCEPTS.PatternCondition$hM)) {
-                ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.cast(supertypeNode, CONCEPTS.PatternCondition$hM), LINKS.pattern$ag0O), CONCEPTS.PatternVariableDeclaration$Ma, false, new SAbstractConcept[]{})));
+                ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.cast(supertypeNode, CONCEPTS.PatternCondition$hM), LINKS.pattern$XKpc), CONCEPTS.PatternVariableDeclaration$Ma, false, new SAbstractConcept[]{})));
               }
             }
             if (SNodeOperations.isInstanceOf(rule, CONCEPTS.ComparisonRule$b9)) {
-              SNode anotherNode = SLinkOperations.getTarget(SNodeOperations.cast(rule, CONCEPTS.ComparisonRule$b9), LINKS.anotherNode$7HZ2);
+              SNode anotherNode = SLinkOperations.getTarget(SNodeOperations.cast(rule, CONCEPTS.ComparisonRule$b9), LINKS.anotherNode$JhxY);
               if (SNodeOperations.isInstanceOf(anotherNode, CONCEPTS.PatternCondition$hM)) {
-                ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.cast(anotherNode, CONCEPTS.PatternCondition$hM), LINKS.pattern$ag0O), CONCEPTS.PatternVariableDeclaration$Ma, false, new SAbstractConcept[]{})));
+                ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.cast(anotherNode, CONCEPTS.PatternCondition$hM), LINKS.pattern$XKpc), CONCEPTS.PatternVariableDeclaration$Ma, false, new SAbstractConcept[]{})));
               }
             }
             SNode coerceStatement = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.CoerceStatement$b1, false, false);
             while (coerceStatement != null) {
-              if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(coerceStatement, LINKS.pattern$Gn5H), CONCEPTS.PatternCondition$hM)) {
-                ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(coerceStatement, LINKS.pattern$Gn5H), CONCEPTS.PatternCondition$hM), LINKS.pattern$ag0O), CONCEPTS.PatternVariableDeclaration$Ma, false, new SAbstractConcept[]{})));
+              if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(coerceStatement, LINKS.pattern$vbKN), CONCEPTS.PatternCondition$hM)) {
+                ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(coerceStatement, LINKS.pattern$vbKN), CONCEPTS.PatternCondition$hM), LINKS.pattern$XKpc), CONCEPTS.PatternVariableDeclaration$Ma, false, new SAbstractConcept[]{})));
               }
               coerceStatement = SNodeOperations.getNodeAncestor(coerceStatement, CONCEPTS.CoerceStatement$b1, false, false);
             }
             SNode matchStatementItem = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.MatchStatementItem$EH, false, false);
             while (matchStatementItem != null) {
-              if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(matchStatementItem, LINKS.condition$JZ3Z), CONCEPTS.PatternCondition$hM)) {
-                ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(matchStatementItem, LINKS.condition$JZ3Z), CONCEPTS.PatternCondition$hM), LINKS.pattern$ag0O), CONCEPTS.PatternVariableDeclaration$Ma, false, new SAbstractConcept[]{})));
+              if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(matchStatementItem, LINKS.condition$fyVx), CONCEPTS.PatternCondition$hM)) {
+                ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(matchStatementItem, LINKS.condition$fyVx), CONCEPTS.PatternCondition$hM), LINKS.pattern$XKpc), CONCEPTS.PatternVariableDeclaration$Ma, false, new SAbstractConcept[]{})));
               }
               matchStatementItem = SNodeOperations.getNodeAncestor(matchStatementItem, CONCEPTS.MatchStatementItem$EH, false, false);
             }
@@ -103,12 +103,12 @@ public class PatternVariableReference_Constraints extends BaseConstraintsDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink patternVarDecl$zQmv = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11192d10036L, 0x11192d17e60L, "patternVarDecl");
-    /*package*/ static final SContainmentLink applicableNode$lCke = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
-    /*package*/ static final SContainmentLink pattern$ag0O = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2c3e68L, 0x1117e2ccbe9L, "pattern");
-    /*package*/ static final SContainmentLink supertypeNode$b3lK = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x117c5668bf2L, 0x117c567f086L, "supertypeNode");
-    /*package*/ static final SContainmentLink anotherNode$7HZ2 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114caade477L, 0x114cb3d0f37L, "anotherNode");
-    /*package*/ static final SContainmentLink pattern$Gn5H = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111f05e2451L, 0x111f05fb92aL, "pattern");
-    /*package*/ static final SContainmentLink condition$JZ3Z = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x112295a8fecL, 0x112295ab642L, "condition");
+    /*package*/ static final SReferenceLink patternVarDecl$nkT1 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11192d10036L, 0x11192d17e60L, "patternVarDecl");
+    /*package*/ static final SContainmentLink applicableNode$uxMM = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
+    /*package*/ static final SContainmentLink pattern$XKpc = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2c3e68L, 0x1117e2ccbe9L, "pattern");
+    /*package*/ static final SContainmentLink supertypeNode$mByg = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x117c5668bf2L, 0x117c567f086L, "supertypeNode");
+    /*package*/ static final SContainmentLink anotherNode$JhxY = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114caade477L, 0x114cb3d0f37L, "anotherNode");
+    /*package*/ static final SContainmentLink pattern$vbKN = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111f05e2451L, 0x111f05fb92aL, "pattern");
+    /*package*/ static final SContainmentLink condition$fyVx = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x112295a8fecL, 0x112295ab642L, "condition");
   }
 }

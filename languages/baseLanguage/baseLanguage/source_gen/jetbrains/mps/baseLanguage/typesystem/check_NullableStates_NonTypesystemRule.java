@@ -53,7 +53,7 @@ public class check_NullableStates_NonTypesystemRule extends AbstractNonTypesyste
       SNode source = (SNode) instruction.getSource();
       SNode variable = source;
       if (SNodeOperations.isInstanceOf(source, CONCEPTS.VariableReference$sQ)) {
-        variable = SLinkOperations.getTarget(SNodeOperations.cast(source, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6);
+        variable = SLinkOperations.getTarget(SNodeOperations.cast(source, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU);
       }
       NullableState varState = result.get(instruction).get(variable);
       SNode parent = SNodeOperations.getParent(source);
@@ -116,17 +116,17 @@ public class check_NullableStates_NonTypesystemRule extends AbstractNonTypesyste
     // Find Nullable returns of NotNull methods 
     if (SNodeOperations.isInstanceOf(iMethodLike, CONCEPTS.BaseMethodDeclaration$RR)) {
       SNode method = SNodeOperations.cast(iMethodLike, CONCEPTS.BaseMethodDeclaration$RR);
-      if (Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(method, LINKS.annotation$oVP4), LINKS.annotation$zNxu)).any(new IWhereFilter<SNode>() {
+      if (Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(method, LINKS.annotation$4YGW), LINKS.annotation$lXdy)).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SNodeOperations.is(it, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull"));
         }
       })) {
-        for (SNode returnStatement : RulesFunctions_BaseLanguage.collectReturnStatements(SLinkOperations.getTarget(method, LINKS.body$WIlu))) {
-          RulesFunctions_BaseLanguage.checkReturningExpression(typeCheckingContext, SLinkOperations.getTarget(returnStatement, LINKS.expression$EsbK), returnStatement, program, result);
+        for (SNode returnStatement : RulesFunctions_BaseLanguage.collectReturnStatements(SLinkOperations.getTarget(method, LINKS.body$qspy))) {
+          RulesFunctions_BaseLanguage.checkReturningExpression(typeCheckingContext, SLinkOperations.getTarget(returnStatement, LINKS.expression$zDGg), returnStatement, program, result);
         }
         SNode last = IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(method);
         if (SNodeOperations.isInstanceOf(last, CONCEPTS.ExpressionStatement$nm)) {
-          RulesFunctions_BaseLanguage.checkReturningExpression(typeCheckingContext, SLinkOperations.getTarget(SNodeOperations.cast(last, CONCEPTS.ExpressionStatement$nm), LINKS.expression$WIP0), last, program, result);
+          RulesFunctions_BaseLanguage.checkReturningExpression(typeCheckingContext, SLinkOperations.getTarget(SNodeOperations.cast(last, CONCEPTS.ExpressionStatement$nm), LINKS.expression$qFF0), last, program, result);
         }
       }
     }
@@ -149,11 +149,11 @@ public class check_NullableStates_NonTypesystemRule extends AbstractNonTypesyste
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink expression$EsbK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink expression$WIP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink expression$zDGg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
   }
 }

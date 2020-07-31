@@ -33,10 +33,10 @@ public final class BuildMpsLayout_TestModule__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static boolean contains_id3X9rC2XzJi8(@NotNull SNode __thisNode__, SNode module) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.module$mNFw) == module;
+    return SLinkOperations.getTarget(__thisNode__, LINKS.module$324w) == module;
   }
   /*package*/ static Iterable<SNode> getModules_id3X9rC2XzJij(@NotNull SNode __thisNode__) {
-    return Sequence.<SNode>singleton(SLinkOperations.getTarget(__thisNode__, LINKS.module$mNFw));
+    return Sequence.<SNode>singleton(SLinkOperations.getTarget(__thisNode__, LINKS.module$324w));
   }
 
   /*package*/ BuildMpsLayout_TestModule__BehaviorDescriptor() {
@@ -88,6 +88,6 @@ public final class BuildMpsLayout_TestModule__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink module$mNFw = MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef372L, 0x3f496e80bd8ef373L, "module");
+    /*package*/ static final SReferenceLink module$324w = MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef372L, 0x3f496e80bd8ef373L, "module");
   }
 }

@@ -29,8 +29,8 @@ public class check_ClassifierOverrideAnnotations_NonTypesystemRule extends Abstr
     OverridingMethodsCalculator finder = new OverridingMethodsCalculator(classifier);
     Set<SNode> overridingMethods = finder.getOverridingMethods();
     for (SNode method : Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(classifier)) {
-      for (SNode annotationInstance : SLinkOperations.getChildren(method, LINKS.annotation$oVP4)) {
-        if (SLinkOperations.hasPointer(annotationInstance, LINKS.annotation$zNxu, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Override")) && !(SetSequence.fromSet(overridingMethods).contains(method))) {
+      for (SNode annotationInstance : SLinkOperations.getChildren(method, LINKS.annotation$4YGW)) {
+        if (SLinkOperations.hasPointer(annotationInstance, LINKS.annotation$lXdy, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Override")) && !(SetSequence.fromSet(overridingMethods).contains(method))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(annotationInstance, "Method does not override method from its superclass", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4540477783368646804", null, errorTarget);
@@ -51,8 +51,8 @@ public class check_ClassifierOverrideAnnotations_NonTypesystemRule extends Abstr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
   }
 
   private static final class CONCEPTS {

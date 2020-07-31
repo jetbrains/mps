@@ -53,7 +53,7 @@ public class ExtensionPoint_name extends MigrationScriptBase {
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode node) {
-          RefactoringRuntime.changePropertyInstance(node, PROPS.extensionName$dcP2, PROPS.name$tAp1);
+          RefactoringRuntime.changePropertyInstance(node, PROPS.extensionName$pdFY, PROPS.name$lA7v);
         }
       });
     }
@@ -76,11 +76,11 @@ public class ExtensionPoint_name extends MigrationScriptBase {
             }
           }).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return it.hasProperty(PROPS.extensionName$dcP2);
+              return it.hasProperty(PROPS.extensionName$pdFY);
             }
           }).select(new ISelector<SNode, Problem>() {
             public Problem select(SNode it) {
-              return DeprecatedConceptMemberNotMigratedProblem.deprecatedProperty(it, PROPS.extensionName$dcP2);
+              return DeprecatedConceptMemberNotMigratedProblem.deprecatedProperty(it, PROPS.extensionName$pdFY);
             }
           });
         }
@@ -100,7 +100,7 @@ public class ExtensionPoint_name extends MigrationScriptBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty extensionName$dcP2 = MetaAdapterFactory.getProperty(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x520ae19dd2771b96L, "extensionName");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty extensionName$pdFY = MetaAdapterFactory.getProperty(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x520ae19dd2771b96L, "extensionName");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

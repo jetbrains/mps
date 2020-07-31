@@ -37,7 +37,7 @@ public class TestSubstituteChildWithConstraints1_Constraints extends BaseConstra
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return !(Objects.equals(link, LINKS.childCanBeChild$6bh2));
+    return !(Objects.equals(link, LINKS.childCanBeChild$ZtfY));
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:0cba60fc-aa17-42ba-b3ca-69b0d1a86fe9(jetbrains.mps.lang.editor.menus.substitute.testLanguage.constraints)", "1227128029536583199");
 
@@ -46,6 +46,6 @@ public class TestSubstituteChildWithConstraints1_Constraints extends BaseConstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink childCanBeChild$6bh2 = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2d0d666L, "childCanBeChild");
+    /*package*/ static final SContainmentLink childCanBeChild$ZtfY = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2d0d666L, "childCanBeChild");
   }
 }

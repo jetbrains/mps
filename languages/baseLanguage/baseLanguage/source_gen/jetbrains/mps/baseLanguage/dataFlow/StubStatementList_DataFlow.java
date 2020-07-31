@@ -17,7 +17,7 @@ public class StubStatementList_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BaseMethodDeclaration$RR)) {
       SNode bmd = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BaseMethodDeclaration$RR);
-      for (SNode param : ListSequence.fromList(SLinkOperations.getChildren(bmd, LINKS.parameter$WIkZ))) {
+      for (SNode param : ListSequence.fromList(SLinkOperations.getChildren(bmd, LINKS.parameter$qsax))) {
         _context.getBuilder().build((SNode) param);
       }
     }
@@ -33,6 +33,6 @@ public class StubStatementList_DataFlow extends DataFlowBuilder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 }

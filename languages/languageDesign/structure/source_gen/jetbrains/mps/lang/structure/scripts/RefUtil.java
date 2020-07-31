@@ -14,7 +14,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public class RefUtil {
   public static SNode findLinkToMerge(SNode concept, SNode linkNode) {
     for (SNode linkDecl : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(concept))) {
-      if (SPropertyOperations.getEnum(linkDecl, PROPS.metaClass$tHD7) == SPropertyOperations.getEnum(linkNode, PROPS.metaClass$tHD7) && SPropertyOperations.getString(linkDecl, PROPS.role$r_O$).equals(SPropertyOperations.getString(linkNode, PROPS.role$r_O$)) && (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(linkNode, LINKS.target$egp8), SLinkOperations.getTarget(linkDecl, LINKS.target$egp8))) {
+      if (SPropertyOperations.getEnum(linkDecl, PROPS.metaClass$p6Up) == SPropertyOperations.getEnum(linkNode, PROPS.metaClass$p6Up) && SPropertyOperations.getString(linkDecl, PROPS.role$nkts).equals(SPropertyOperations.getString(linkNode, PROPS.role$nkts)) && (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(linkNode, LINKS.target$TWaS), SLinkOperations.getTarget(linkDecl, LINKS.target$TWaS))) {
         return linkDecl;
       }
     }
@@ -22,7 +22,7 @@ public class RefUtil {
   }
   public static SNode findPropertyToMerge(SNode concept, SNode propNode) {
     for (SNode propDecl : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(concept))) {
-      if (SPropertyOperations.getString(propDecl, PROPS.name$tAp1).equals(SPropertyOperations.getString(propNode, PROPS.name$tAp1))) {
+      if (SPropertyOperations.getString(propDecl, PROPS.name$lA7v).equals(SPropertyOperations.getString(propNode, PROPS.name$lA7v))) {
         return propDecl;
       }
     }
@@ -30,12 +30,12 @@ public class RefUtil {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty role$r_O$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
-    /*package*/ static final SProperty metaClass$tHD7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 }

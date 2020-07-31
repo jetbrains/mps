@@ -20,9 +20,9 @@ public class check_FinalAndAbstractMethod_NonTypesystemRule extends AbstractNonT
   public check_FinalAndAbstractMethod_NonTypesystemRule() {
   }
   public void applyRule(final SNode instanceMethodDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SPropertyOperations.getBoolean(instanceMethodDeclaration, PROPS.isAbstract$cU_H) && SPropertyOperations.getBoolean(instanceMethodDeclaration, PROPS.isFinal$I$Qu)) {
+    if (SPropertyOperations.getBoolean(instanceMethodDeclaration, PROPS.isAbstract$gogN) && SPropertyOperations.getBoolean(instanceMethodDeclaration, PROPS.isFinal$zQoy)) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(instanceMethodDeclaration, "Illegal combination of modifiers 'abstract' and 'final'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7868761255934417558", null, errorTarget);
       }
     }
@@ -38,9 +38,9 @@ public class check_FinalAndAbstractMethod_NonTypesystemRule extends AbstractNonT
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isAbstract$cU_H = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
-    /*package*/ static final SProperty isFinal$I$Qu = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isAbstract$gogN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
+    /*package*/ static final SProperty isFinal$zQoy = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

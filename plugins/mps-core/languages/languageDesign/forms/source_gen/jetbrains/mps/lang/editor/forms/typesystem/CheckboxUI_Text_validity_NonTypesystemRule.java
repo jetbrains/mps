@@ -22,19 +22,19 @@ public class CheckboxUI_Text_validity_NonTypesystemRule extends AbstractNonTypes
   public CheckboxUI_Text_validity_NonTypesystemRule() {
   }
   public void applyRule(final SNode ui, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SPropertyOperations.getString(ui, PROPS.falseText$RxC7) == null) {
+    if (SPropertyOperations.getString(ui, PROPS.falseText$Tirp) == null) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.falseText$RxC7);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.falseText$Tirp);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ui, "falseText is not set", "r:dcdc35e4-9e23-4315-b822-9c8981abf5fa(jetbrains.mps.lang.editor.forms.typesystem)", "5347446703374071167", null, errorTarget);
       }
     }
-    if (SPropertyOperations.getString(ui, PROPS.trueText$RxsY) == null) {
+    if (SPropertyOperations.getString(ui, PROPS.trueText$Td22) == null) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.trueText$RxsY);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.trueText$Td22);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ui, "trueText is not set", "r:dcdc35e4-9e23-4315-b822-9c8981abf5fa(jetbrains.mps.lang.editor.forms.typesystem)", "5347446703374072706", null, errorTarget);
       }
     }
-    if (SPropertyOperations.getString(ui, PROPS.falseText$RxC7) != null && Objects.equals(SPropertyOperations.getString(ui, PROPS.falseText$RxC7), SPropertyOperations.getString(ui, PROPS.trueText$RxsY))) {
+    if (SPropertyOperations.getString(ui, PROPS.falseText$Tirp) != null && Objects.equals(SPropertyOperations.getString(ui, PROPS.falseText$Tirp), SPropertyOperations.getString(ui, PROPS.trueText$Td22))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(ui, "trueText and falseText are the same", "r:dcdc35e4-9e23-4315-b822-9c8981abf5fa(jetbrains.mps.lang.editor.forms.typesystem)", "5347446703374074910", null, errorTarget);
@@ -52,8 +52,8 @@ public class CheckboxUI_Text_validity_NonTypesystemRule extends AbstractNonTypes
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty falseText$RxC7 = MetaAdapterFactory.getProperty(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x1298d6f05780e83bL, 0x1298d6f05780e840L, "falseText");
-    /*package*/ static final SProperty trueText$RxsY = MetaAdapterFactory.getProperty(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x1298d6f05780e83bL, 0x1298d6f05780e83eL, "trueText");
+    /*package*/ static final SProperty falseText$Tirp = MetaAdapterFactory.getProperty(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x1298d6f05780e83bL, 0x1298d6f05780e840L, "falseText");
+    /*package*/ static final SProperty trueText$Td22 = MetaAdapterFactory.getProperty(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x1298d6f05780e83bL, 0x1298d6f05780e83eL, "trueText");
   }
 
   private static final class CONCEPTS {

@@ -126,11 +126,11 @@
       <node id="2897519568668513435" at="214,89,215,145" concept="6" />
       <node id="2897519568668513435" at="216,12,217,24" concept="6" />
       <node id="2897519568668513435" at="218,15,219,40" concept="1" />
-      <node id="2897519568668511754" at="224,0,225,0" concept="8" trace="cncpt$rQ7y" />
+      <node id="2897519568668511754" at="224,0,225,0" concept="8" trace="cncpt$vdDu" />
       <node id="2897519568668511754" at="228,0,229,0" concept="8" trace="LinkAttribute$7j" />
       <node id="2897519568668511754" at="229,0,230,0" concept="8" trace="PropertyAttribute$jT" />
-      <node id="2897519568668511754" at="233,0,234,0" concept="8" trace="name$tAp1" />
-      <node id="2897519568668511754" at="234,0,235,0" concept="8" trace="text$lg4n" />
+      <node id="2897519568668511754" at="233,0,234,0" concept="8" trace="name$lA7v" />
+      <node id="2897519568668511754" at="234,0,235,0" concept="8" trace="text$iM79" />
       <node id="2897519568668511754" at="46,0,48,0" concept="2" trace="myNode" />
       <node id="2897519568668513371" at="133,0,135,0" concept="2" trace="myNode" />
       <node id="2897519568668511754" at="60,0,63,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />

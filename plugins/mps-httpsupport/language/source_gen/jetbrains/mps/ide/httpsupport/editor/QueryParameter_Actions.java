@@ -28,7 +28,7 @@ public class QueryParameter_Actions {
         if (DeletionApproverUtil.approve(editorContext, node, "requiredKeyword")) {
           return;
         }
-        SPropertyOperations.assign(node, PROPS.required$JbR8, false);
+        SPropertyOperations.assign(node, PROPS.required$QJGS, false);
         SelectionUtil.selectCell(editorContext, node, "*" + CellIdManager.createPropertyId("name"));
       }
       @Override
@@ -36,7 +36,7 @@ public class QueryParameter_Actions {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return SPropertyOperations.getBoolean(node, PROPS.required$JbR8);
+        return SPropertyOperations.getBoolean(node, PROPS.required$QJGS);
       }
 
     };
@@ -84,6 +84,6 @@ public class QueryParameter_Actions {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty required$JbR8 = MetaAdapterFactory.getProperty(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c585b439L, 0x205f4376c585b43dL, "required");
+    /*package*/ static final SProperty required$QJGS = MetaAdapterFactory.getProperty(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c585b439L, 0x205f4376c585b43dL, "required");
   }
 }

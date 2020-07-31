@@ -48,7 +48,7 @@ public final class BuildMpsLayout_PluginDescriptor__BehaviorDescriptor extends B
       // todo (in 3.0+) plugin should be exported by folder, not by xml 
       // weeeeell? 
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_IdeaPlugin$X0)) {
-        return SLinkOperations.getTarget(__thisNode__, LINKS.plugin$5agw) == node;
+        return SLinkOperations.getTarget(__thisNode__, LINKS.plugin$vXZw) == node;
       }
     }
     return ((boolean) BuildLayout_Node__BehaviorDescriptor.exports_id5FtnUVJQES1.invokeSuper(__thisNode__, CONCEPTS.BuildMpsLayout_PluginDescriptor$VZ, artifactId));
@@ -57,7 +57,7 @@ public final class BuildMpsLayout_PluginDescriptor__BehaviorDescriptor extends B
     // XXX We imply here parent node is BuildLayout_Jar as it's the only place to use InJarNode.reexportsFromJar 
     //     For folder with BML_PD, #exports shall work, and I don't care yet to remove that as (a) for folder, no unneccesary unzip (in dependants) happens 
     //     (b) no idea how to let BL_Folder know about BML_PD without introducing something like BL_InFolderNode similar to BL_InJarNode 
-    return o == SLinkOperations.getTarget(__thisNode__, LINKS.plugin$5agw);
+    return o == SLinkOperations.getTarget(__thisNode__, LINKS.plugin$vXZw);
   }
   /*package*/ static String location_id6b4RkXS8sT2(@NotNull SNode __thisNode__, DependenciesHelper helper, Object artifactId) {
     if (artifactId instanceof jetbrains.mps.smodel.SNode) {
@@ -141,7 +141,7 @@ public final class BuildMpsLayout_PluginDescriptor__BehaviorDescriptor extends B
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink plugin$5agw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4dee437cL, 0x5b7be37b4dee437dL, "plugin");
+    /*package*/ static final SReferenceLink plugin$vXZw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4dee437cL, 0x5b7be37b4dee437dL, "plugin");
   }
 
   private static final class CONCEPTS {

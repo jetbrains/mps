@@ -30,12 +30,12 @@ public class check_TypeVariableDeclarationDuplicateName_NonTypesystemRule extend
       }
     }).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.TypeVariableDeclaration$Cc), PROPS.name$tAp1), SPropertyOperations.getString(typeVariableDeclaration, PROPS.name$tAp1));
+        return Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.TypeVariableDeclaration$Cc), PROPS.name$lA7v), SPropertyOperations.getString(typeVariableDeclaration, PROPS.name$lA7v));
       }
     });
 
     if (duplicateName) {
-      String msg = "Duplicate type parameter " + SPropertyOperations.getString(typeVariableDeclaration, PROPS.name$tAp1);
+      String msg = "Duplicate type parameter " + SPropertyOperations.getString(typeVariableDeclaration, PROPS.name$lA7v);
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(typeVariableDeclaration, msg, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2970924421776837790", null, errorTarget);
@@ -57,6 +57,6 @@ public class check_TypeVariableDeclarationDuplicateName_NonTypesystemRule extend
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

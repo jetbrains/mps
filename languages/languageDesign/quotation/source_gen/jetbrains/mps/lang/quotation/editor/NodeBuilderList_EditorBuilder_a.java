@@ -72,7 +72,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean _StyleParameter_QueryFunction_yzuegq_a0a0() {
-    return ListSequence.fromList(SLinkOperations.getChildren(getNode(), LINKS.nodes$$MVw)).count() > 1 || ListSequence.fromList(SNodeOperations.getNodeDescendantsWhereConceptInList(getNode(), new SAbstractConcept[]{CONCEPTS.NodeBuilderNode$RN, CONCEPTS.NodeBuilderExpression$Ub}, false, new SAbstractConcept[]{})).count() > 1;
+    return ListSequence.fromList(SLinkOperations.getChildren(getNode(), LINKS.nodes$OEOw)).count() > 1 || ListSequence.fromList(SNodeOperations.getNodeDescendantsWhereConceptInList(getNode(), new SAbstractConcept[]{CONCEPTS.NodeBuilderNode$RN, CONCEPTS.NodeBuilderExpression$Ub}, false, new SAbstractConcept[]{})).count() > 1;
   }
   private EditorCell createRefNodeList_0() {
     AbstractCellListHandler handler = new nodesListHandler_yzuegq_b0(myNode, getEditorContext());
@@ -99,7 +99,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.nodes$$MVw;
+      return LINKS.nodes$OEOw;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.NodeBuilderInitLinkValue$_6;
@@ -112,7 +112,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(nodesListHandler_yzuegq_b0.this.getNode(), LINKS.nodes$$MVw));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(nodesListHandler_yzuegq_b0.this.getNode(), LINKS.nodes$OEOw));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_1();
@@ -176,7 +176,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
   }
   private boolean _StyleParameter_QueryFunction_yzuegq_a1b0() {
-    return ListSequence.fromList(SLinkOperations.getChildren(getNode(), LINKS.nodes$$MVw)).count() > 1 || ListSequence.fromList(SNodeOperations.getNodeDescendantsWhereConceptInList(getNode(), new SAbstractConcept[]{CONCEPTS.NodeBuilderNode$RN, CONCEPTS.NodeBuilderExpression$Ub}, false, new SAbstractConcept[]{})).count() > 1;
+    return ListSequence.fromList(SLinkOperations.getChildren(getNode(), LINKS.nodes$OEOw)).count() > 1 || ListSequence.fromList(SNodeOperations.getNodeDescendantsWhereConceptInList(getNode(), new SAbstractConcept[]{CONCEPTS.NodeBuilderNode$RN, CONCEPTS.NodeBuilderExpression$Ub}, false, new SAbstractConcept[]{})).count() > 1;
   }
   private EditorCell createConstant_2() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "]");
@@ -189,7 +189,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink nodes$$MVw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, 0x718e3f4cb7a2df33L, "nodes");
+    /*package*/ static final SContainmentLink nodes$OEOw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, 0x718e3f4cb7a2df33L, "nodes");
   }
 
   private static final class CONCEPTS {

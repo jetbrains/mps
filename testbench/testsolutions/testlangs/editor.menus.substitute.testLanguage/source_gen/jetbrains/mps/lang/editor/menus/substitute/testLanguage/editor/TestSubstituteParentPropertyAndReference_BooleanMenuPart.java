@@ -69,11 +69,11 @@ public class TestSubstituteParentPropertyAndReference_BooleanMenuPart extends Tr
 
     @Override
     protected SProperty getProperty(TransformationMenuContext context) {
-      return PROPS.booleanPropertyWithPropertyMenuPart$wym9;
+      return PROPS.booleanPropertyWithPropertyMenuPart$KCIn;
     }
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty booleanPropertyWithPropertyMenuPart$wym9 = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x69b757bd7f907fcL, "booleanPropertyWithPropertyMenuPart");
+    /*package*/ static final SProperty booleanPropertyWithPropertyMenuPart$KCIn = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x69b757bd7f907fcL, "booleanPropertyWithPropertyMenuPart");
   }
 }

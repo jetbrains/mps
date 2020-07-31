@@ -71,7 +71,7 @@ public class add_moduleLocationAndFlags_BuildMps_AbstractModule_ext_3 extends Tr
   public class TMP_Group_rsg86w_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.path$g7Oh) == null);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.path$NMkf) == null);
     }
 
     @NotNull
@@ -127,7 +127,7 @@ public class add_moduleLocationAndFlags_BuildMps_AbstractModule_ext_3 extends Tr
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.path$g7Oh, null);
+          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.path$NMkf, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -153,6 +153,6 @@ public class add_moduleLocationAndFlags_BuildMps_AbstractModule_ext_3 extends Tr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink path$g7Oh = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d47f25L, "path");
+    /*package*/ static final SContainmentLink path$NMkf = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d47f25L, "path");
   }
 }

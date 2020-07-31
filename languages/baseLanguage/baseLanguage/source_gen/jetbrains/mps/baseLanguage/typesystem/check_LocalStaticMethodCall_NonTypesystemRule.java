@@ -26,7 +26,7 @@ public class check_LocalStaticMethodCall_NonTypesystemRule extends AbstractNonTy
   public check_LocalStaticMethodCall_NonTypesystemRule() {
   }
   public void applyRule(final SNode localMethodCall, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(localMethodCall, LINKS.baseMethodDeclaration$$A7i), CONCEPTS.StaticMethodDeclaration$eX))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(localMethodCall, LINKS.baseMethodDeclaration$ItxI), CONCEPTS.StaticMethodDeclaration$eX))) {
       return;
     }
     List<SNode> containers = SNodeOperations.getNodeAncestors(localMethodCall, CONCEPTS.Classifier$hJ, false);
@@ -38,7 +38,7 @@ public class check_LocalStaticMethodCall_NonTypesystemRule extends AbstractNonTy
         SetSequence.fromSet(containersAndParentClasses).addElement(classifier);
       }
     }
-    if (!(SetSequence.fromSet(containersAndParentClasses).contains(SNodeOperations.getParent(SLinkOperations.getTarget(localMethodCall, LINKS.baseMethodDeclaration$$A7i))))) {
+    if (!(SetSequence.fromSet(containersAndParentClasses).contains(SNodeOperations.getParent(SLinkOperations.getTarget(localMethodCall, LINKS.baseMethodDeclaration$ItxI))))) {
       // todo: should be disabled? 
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -57,7 +57,7 @@ public class check_LocalStaticMethodCall_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 
   private static final class CONCEPTS {

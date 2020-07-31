@@ -24,13 +24,13 @@ public class FileSetUtil {
   public FileSetUtil() {
   }
   public static Iterable<SNode> getImplicitFilesets(SNode container) {
-    Iterable<SNode> result = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(container, LINKS.children$aiMf), CONCEPTS.BuildLayout_FileSet$z8)).where(new IWhereFilter<SNode>() {
+    Iterable<SNode> result = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(container, LINKS.children$Z6lh), CONCEPTS.BuildLayout_FileSet$z8)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (boolean) BuildLayout_FileSet__BehaviorDescriptor.isImplicit_id19QsrPuCW11.invoke(it);
       }
     });
 
-    for (SNode folder : ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.children$aiMf)).where(new IWhereFilter<SNode>() {
+    for (SNode folder : ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.children$Z6lh)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Folder$4a) || SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Filemode$TY);
       }
@@ -40,9 +40,9 @@ public class FileSetUtil {
     return result;
   }
   public static Iterable<SNode> getExplicitFilemodeRoots(SNode container) {
-    Iterable<SNode> result = SNodeOperations.ofConcept(SLinkOperations.getChildren(container, LINKS.children$aiMf), CONCEPTS.BuildLayout_Filemode$TY);
+    Iterable<SNode> result = SNodeOperations.ofConcept(SLinkOperations.getChildren(container, LINKS.children$Z6lh), CONCEPTS.BuildLayout_Filemode$TY);
 
-    for (SNode folder : ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.children$aiMf)).where(new IWhereFilter<SNode>() {
+    for (SNode folder : ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.children$Z6lh)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Folder$4a) || SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Filemode$TY);
       }
@@ -56,7 +56,7 @@ public class FileSetUtil {
     });
   }
   public static boolean hasExplicitFilesets(SNode container) {
-    return ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.children$aiMf)).any(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.children$Z6lh)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return !((SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_FileSet$z8) && (boolean) BuildLayout_FileSet__BehaviorDescriptor.isImplicit_id19QsrPuCW11.invoke(SNodeOperations.cast(it, CONCEPTS.BuildLayout_FileSet$z8)))) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Filemode$TY)) && (!(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Folder$4a)) || hasExplicitFilesets(SNodeOperations.cast(it, CONCEPTS.BuildLayout_Container$WW)));
       }
@@ -82,7 +82,7 @@ public class FileSetUtil {
     Stack<String> stack = new Stack<String>();
     while (SNodeOperations.isInstanceOf(container, CONCEPTS.BuildLayout_Folder$4a) || SNodeOperations.isInstanceOf(container, CONCEPTS.BuildLayout_Filemode$TY)) {
       if (SNodeOperations.isInstanceOf(container, CONCEPTS.BuildLayout_Folder$4a)) {
-        stack.push(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SNodeOperations.cast(container, CONCEPTS.BuildLayout_Folder$4a), LINKS.containerName$Mzv5), helper));
+        stack.push(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SNodeOperations.cast(container, CONCEPTS.BuildLayout_Folder$4a), LINKS.containerName$vc3r), helper));
       }
       container = SNodeOperations.getParent(container);
     }
@@ -105,11 +105,11 @@ public class FileSetUtil {
     String dirmode = null;
     while (SNodeOperations.isInstanceOf(parent, CONCEPTS.BuildLayout_Folder$4a) || SNodeOperations.isInstanceOf(parent, CONCEPTS.BuildLayout_Filemode$TY)) {
       if (SNodeOperations.isInstanceOf(parent, CONCEPTS.BuildLayout_Filemode$TY)) {
-        if (filemode == null && isNotEmptyString(SPropertyOperations.getString(SNodeOperations.cast(parent, CONCEPTS.BuildLayout_Filemode$TY), PROPS.filemode$HNGC))) {
-          filemode = SPropertyOperations.getString(SNodeOperations.cast(parent, CONCEPTS.BuildLayout_Filemode$TY), PROPS.filemode$HNGC);
+        if (filemode == null && isNotEmptyString(SPropertyOperations.getString(SNodeOperations.cast(parent, CONCEPTS.BuildLayout_Filemode$TY), PROPS.filemode$c2Bo))) {
+          filemode = SPropertyOperations.getString(SNodeOperations.cast(parent, CONCEPTS.BuildLayout_Filemode$TY), PROPS.filemode$c2Bo);
         }
-        if (dirmode == null && isNotEmptyString(SPropertyOperations.getString(SNodeOperations.cast(parent, CONCEPTS.BuildLayout_Filemode$TY), PROPS.dirmode$HNH7))) {
-          dirmode = SPropertyOperations.getString(SNodeOperations.cast(parent, CONCEPTS.BuildLayout_Filemode$TY), PROPS.dirmode$HNH7);
+        if (dirmode == null && isNotEmptyString(SPropertyOperations.getString(SNodeOperations.cast(parent, CONCEPTS.BuildLayout_Filemode$TY), PROPS.dirmode$c2Qp))) {
+          dirmode = SPropertyOperations.getString(SNodeOperations.cast(parent, CONCEPTS.BuildLayout_Filemode$TY), PROPS.dirmode$c2Qp);
         }
       }
       parent = SNodeOperations.getParent(parent);
@@ -127,8 +127,8 @@ public class FileSetUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink children$aiMf = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
-    /*package*/ static final SContainmentLink containerName$Mzv5 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName");
+    /*package*/ static final SContainmentLink children$Z6lh = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
+    /*package*/ static final SContainmentLink containerName$vc3r = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName");
   }
 
   private static final class CONCEPTS {
@@ -141,7 +141,7 @@ public class FileSetUtil {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty filemode$HNGC = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6c4335df4e838e40L, 0x6c4335df4e838e44L, "filemode");
-    /*package*/ static final SProperty dirmode$HNH7 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6c4335df4e838e40L, 0x6c4335df4e838e45L, "dirmode");
+    /*package*/ static final SProperty filemode$c2Bo = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6c4335df4e838e40L, 0x6c4335df4e838e44L, "filemode");
+    /*package*/ static final SProperty dirmode$c2Qp = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6c4335df4e838e40L, 0x6c4335df4e838e45L, "dirmode");
   }
 }

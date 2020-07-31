@@ -75,14 +75,14 @@ public class GoToEditorDeclarationHelper {
   public static SNode findEditorDeclaration(SModel editorModel, final SNode conceptDeclaration) {
     return ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.ConceptEditorDeclaration$s6)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.conceptDeclaration$sbgS) == conceptDeclaration;
+        return SLinkOperations.getTarget(it, LINKS.conceptDeclaration$Dtb8) == conceptDeclaration;
       }
     });
   }
   public static SNode createEditorDeclaration(SNode conceptDeclaration, SModel editorModelDescriptor) {
     SModel editorModel = editorModelDescriptor;
     SNode result = SNodeFactoryOperations.createNewNode(editorModel, CONCEPTS.ConceptEditorDeclaration$s6, null);
-    SLinkOperations.setTarget(result, LINKS.conceptDeclaration$sbgS, conceptDeclaration);
+    SLinkOperations.setTarget(result, LINKS.conceptDeclaration$Dtb8, conceptDeclaration);
     SModelOperations.addRootNode(editorModel, result);
     return result;
   }
@@ -92,6 +92,6 @@ public class GoToEditorDeclarationHelper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$sbgS = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
+    /*package*/ static final SReferenceLink conceptDeclaration$Dtb8 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
   }
 }

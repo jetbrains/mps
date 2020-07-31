@@ -20,17 +20,17 @@ public class NodeReference_factories {
   public static class NodeFactory_2864063292004380727 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.DirectNodeReference$W$)) {
-        SPropertyOperations.assign(newNode, PROPS.nodeId$ND71, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.DirectNodeReference$W$), LINKS.target$A3Ex).getNodeId().toString());
-        SPropertyOperations.assign(newNode, PROPS.modelRef$NCR2, PersistenceFacade.getInstance().asString(SModelOperations.getPointer(SNodeOperations.getModel(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.DirectNodeReference$W$), LINKS.target$A3Ex)))));
-        SPropertyOperations.assign(newNode, PROPS.nodeName$KMmO, BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.DirectNodeReference$W$), LINKS.target$A3Ex)));
+        SPropertyOperations.assign(newNode, PROPS.nodeId$Upv, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.DirectNodeReference$W$), LINKS.target$rL_Z).getNodeId().toString());
+        SPropertyOperations.assign(newNode, PROPS.modelRef$MDY, PersistenceFacade.getInstance().asString(SModelOperations.getPointer(SNodeOperations.getModel(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.DirectNodeReference$W$), LINKS.target$rL_Z)))));
+        SPropertyOperations.assign(newNode, PROPS.nodeName$Cp3c, BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.DirectNodeReference$W$), LINKS.target$rL_Z)));
       }
     }
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nodeId$ND71 = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f44fL, "nodeId");
-    /*package*/ static final SProperty modelRef$NCR2 = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f443L, "modelRef");
-    /*package*/ static final SProperty nodeName$KMmO = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f299L, "nodeName");
+    /*package*/ static final SProperty nodeId$Upv = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f44fL, "nodeId");
+    /*package*/ static final SProperty modelRef$MDY = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f443L, "modelRef");
+    /*package*/ static final SProperty nodeName$Cp3c = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f299L, "nodeName");
   }
 
   private static final class CONCEPTS {
@@ -38,6 +38,6 @@ public class NodeReference_factories {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$A3Ex = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a58303771L, 0x67236d4a58303a10L, "target");
+    /*package*/ static final SReferenceLink target$rL_Z = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a58303771L, 0x67236d4a58303a10L, "target");
   }
 }

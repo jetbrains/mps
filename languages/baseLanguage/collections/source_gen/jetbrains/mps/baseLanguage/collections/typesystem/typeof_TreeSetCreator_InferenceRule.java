@@ -21,7 +21,7 @@ public class typeof_TreeSetCreator_InferenceRule extends AbstractInferenceRule_R
   public typeof_TreeSetCreator_InferenceRule() {
   }
   public void applyRule(final SNode treeSetCreator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(treeSetCreator, LINKS.comparator$Seq8) != null)) {
+    if ((SLinkOperations.getTarget(treeSetCreator, LINKS.comparator$eYDS) != null)) {
       final SNode ELEMENT_typevar_2261417478149018313 = typeCheckingContext.createNewRuntimeTypesVariable();
       {
         SNode _nodeToCheck_1029348928467 = treeSetCreator;
@@ -30,7 +30,7 @@ public class typeof_TreeSetCreator_InferenceRule extends AbstractInferenceRule_R
       }
       if (!(typeCheckingContext.isSingleTypeComputation())) {
         {
-          SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(treeSetCreator, LINKS.comparator$Seq8);
+          SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(treeSetCreator, LINKS.comparator$eYDS);
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2261417478149018298", 0, null);
           typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2261417478149018290", true), (SNode) _quotation_createNode_3g5uu_a1a0c0a0c0a0b(typeCheckingContext.getRepresentative(ELEMENT_typevar_2261417478149018313), typeCheckingContext.getRepresentative(ELEMENT_typevar_2261417478149018313)), true, true, _info_12389875345);
         }
@@ -78,7 +78,7 @@ public class typeof_TreeSetCreator_InferenceRule extends AbstractInferenceRule_R
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink comparator$Seq8 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4838d33L, 0x1f622b3701eae8beL, "comparator");
+    /*package*/ static final SContainmentLink comparator$eYDS = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4838d33L, 0x1f622b3701eae8beL, "comparator");
   }
 
   private static final class CONCEPTS {

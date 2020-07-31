@@ -37,7 +37,7 @@ public class check_ThisExpression_ClassConceptSpecified_InGenerator_NonTypesyste
       return;
     }
 
-    if ((SLinkOperations.getTarget(expression, LINKS.classConcept$Hbij) != null)) {
+    if ((SLinkOperations.getTarget(expression, LINKS.classConcept$StRd) != null)) {
       return;
     }
 
@@ -46,11 +46,11 @@ public class check_ThisExpression_ClassConceptSpecified_InGenerator_NonTypesyste
         return AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$yI)) != null;
       }
     }).isNotEmpty() || (SNodeOperations.getNodeAncestor(expression, CONCEPTS.InlineTemplate_RuleConsequence$Mt, false, false) != null);
-    boolean classifierInTemplate = ListSequence.fromList(SNodeOperations.getNodeAncestors(SLinkOperations.getTarget(expression, LINKS.classConcept$Hbij), null, true)).where(new IWhereFilter<SNode>() {
+    boolean classifierInTemplate = ListSequence.fromList(SNodeOperations.getNodeAncestors(SLinkOperations.getTarget(expression, LINKS.classConcept$StRd), null, true)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$yI)) != null;
       }
-    }).isNotEmpty() || (SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(expression, LINKS.classConcept$Hbij), CONCEPTS.InlineTemplate_RuleConsequence$Mt, false, false) != null);
+    }).isNotEmpty() || (SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(expression, LINKS.classConcept$StRd), CONCEPTS.InlineTemplate_RuleConsequence$Mt, false, false) != null);
     if (expressionInTemplate && !(classifierInTemplate)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -69,7 +69,7 @@ public class check_ThisExpression_ClassConceptSpecified_InGenerator_NonTypesyste
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classConcept$Hbij = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
+    /*package*/ static final SReferenceLink classConcept$StRd = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
   }
 
   private static final class CONCEPTS {

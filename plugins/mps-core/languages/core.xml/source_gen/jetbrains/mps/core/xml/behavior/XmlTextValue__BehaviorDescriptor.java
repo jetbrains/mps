@@ -45,12 +45,12 @@ public final class XmlTextValue__BehaviorDescriptor extends BaseBHDescriptor {
     SNode left = SNodeOperations.getPrevSibling(__thisNode__);
     if (SNodeOperations.isInstanceOf(left, CONCEPTS.XmlValuePart$Ad)) {
       SNode leftContent = SNodeOperations.cast(left, CONCEPTS.XmlValuePart$Ad);
-      return SNodeOperations.isInstanceOf(leftContent, CONCEPTS.XmlTextValue$BE) || isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.text$$xPb)) && (SNodeOperations.getNextSibling(__thisNode__) == null);
+      return SNodeOperations.isInstanceOf(leftContent, CONCEPTS.XmlTextValue$BE) || isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.text$GoKl)) && (SNodeOperations.getNextSibling(__thisNode__) == null);
     }
     return false;
   }
   /*package*/ static boolean hasNewLineAfter_id2EZ251g0bSd(@NotNull SNode __thisNode__) {
-    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.text$$xPb)) && (SNodeOperations.getNextSibling(__thisNode__) != null)) {
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.text$GoKl)) && (SNodeOperations.getNextSibling(__thisNode__) != null)) {
       return !(((boolean) XmlValuePart__BehaviorDescriptor.onNewLine_id2EZ251g0bS6.invoke(__thisNode__)));
     }
     return false;
@@ -117,6 +117,6 @@ public final class XmlTextValue__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$$xPb = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text");
+    /*package*/ static final SProperty text$GoKl = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text");
   }
 }

@@ -131,7 +131,7 @@ public class ClassConceptModifiersExtendsAndImplements_ext_5 extends Transformat
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.set(_context.getNode(), PROPS.isStatic$6ZHJ, true);
+          SPropertyOperations.set(_context.getNode(), PROPS.isStatic$oR9L, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), "classKeyword", 0);
         }
 
@@ -158,7 +158,7 @@ public class ClassConceptModifiersExtendsAndImplements_ext_5 extends Transformat
   public class TMP_Group_52qbsp_b1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isFinal$dzaH));
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isFinal$$2bN));
     }
 
     @NotNull
@@ -214,7 +214,7 @@ public class ClassConceptModifiersExtendsAndImplements_ext_5 extends Transformat
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.set(_context.getNode(), PROPS.isFinal$dzaH, true);
+          SPropertyOperations.set(_context.getNode(), PROPS.isFinal$$2bN, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), "classKeyword", 0);
         }
 
@@ -241,7 +241,7 @@ public class ClassConceptModifiersExtendsAndImplements_ext_5 extends Transformat
   public class TMP_Group_52qbsp_c1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstractClass$gY5l));
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstractClass$e4_b));
     }
 
     @NotNull
@@ -297,7 +297,7 @@ public class ClassConceptModifiersExtendsAndImplements_ext_5 extends Transformat
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.set(_context.getNode(), PROPS.abstractClass$gY5l, true);
+          SPropertyOperations.set(_context.getNode(), PROPS.abstractClass$e4_b, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), "classKeyword", 0);
         }
 
@@ -323,8 +323,8 @@ public class ClassConceptModifiersExtendsAndImplements_ext_5 extends Transformat
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isStatic$6ZHJ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x451f9e9f920b7f7dL, "isStatic");
-    /*package*/ static final SProperty isFinal$dzaH = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
-    /*package*/ static final SProperty abstractClass$gY5l = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
+    /*package*/ static final SProperty isStatic$oR9L = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x451f9e9f920b7f7dL, "isStatic");
+    /*package*/ static final SProperty isFinal$$2bN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
+    /*package*/ static final SProperty abstractClass$e4_b = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
   }
 }

@@ -25,7 +25,7 @@ public class check_TypeofExpression_NonTypesystemRule extends AbstractNonTypesys
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(typeOfExpression, "TYPEOF should be used only within inference rules", "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1195217231011", null, errorTarget);
     }
-    if (!(!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(typeOfExpression, LINKS.term$zCci), CONCEPTS.TypeVarReference$Zu)))) {
+    if (!(!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(typeOfExpression, LINKS.term$gtWI), CONCEPTS.TypeVarReference$Zu)))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(typeOfExpression, "type of a type has little sense", "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1204815653385", null, errorTarget);
     }
@@ -41,7 +41,7 @@ public class check_TypeofExpression_NonTypesystemRule extends AbstractNonTypesys
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink term$zCci = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f0ad10aL, 0x1117f0b26bdL, "term");
+    /*package*/ static final SContainmentLink term$gtWI = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f0ad10aL, 0x1117f0b26bdL, "term");
   }
 
   private static final class CONCEPTS {

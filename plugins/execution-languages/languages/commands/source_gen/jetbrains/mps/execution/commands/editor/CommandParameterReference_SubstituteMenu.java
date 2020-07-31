@@ -50,7 +50,7 @@ public class CommandParameterReference_SubstituteMenu extends SubstituteMenuBase
 
     public SMP_ReferenceScope_3rikl_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.CommandParameterReference$b6, LINKS.parameter$noXv);
+      super((SAbstractConcept) CONCEPTS.CommandParameterReference$b6, LINKS.parameter$l5M1);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class CommandParameterReference_SubstituteMenu extends SubstituteMenuBase
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink parameter$noXv = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bdcL, 0xbe3a0d5ba1a2bdeL, "parameter");
+    /*package*/ static final SReferenceLink parameter$l5M1 = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bdcL, 0xbe3a0d5ba1a2bdeL, "parameter");
   }
 }

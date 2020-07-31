@@ -54,10 +54,10 @@ public class CellUtil {
    * TODO: think of moving jetbrains.mps.lang.editor.generator.internal into MPS
    */
   public static SNode getLinkDeclarationTarget(SNode linkDeclaration) {
-    return SLinkOperations.getTarget(linkDeclaration, LINKS.target$egp8);
+    return SLinkOperations.getTarget(linkDeclaration, LINKS.target$TWaS);
   }
   public static String getLinkDeclarationRole(SNode linkDeclaration) {
-    return SPropertyOperations.getString(linkDeclaration, PROPS.role$r_O$);
+    return SPropertyOperations.getString(linkDeclaration, PROPS.role$nkts);
   }
 
   private static final class CONCEPTS {
@@ -66,10 +66,10 @@ public class CellUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty role$r_O$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
   }
 }

@@ -50,7 +50,7 @@ public class ConceptEditorDeclaration_Constraints extends BaseConstraintsDescrip
   }
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$tAp1, container);
+      super(PROPS.name$lA7v, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -58,9 +58,9 @@ public class ConceptEditorDeclaration_Constraints extends BaseConstraintsDescrip
     }
     @Override
     public Object getValue(SNode node) {
-      String editorName = SPropertyOperations.getString(AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(node), PROPS.name$tAp1);
-      for (SNode contextHint : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.contextHints$QcT4))) {
-        editorName += "_" + SPropertyOperations.getString(SLinkOperations.getTarget(contextHint, LINKS.hint$7sDk), PROPS.name$tAp1);
+      String editorName = SPropertyOperations.getString(AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(node), PROPS.name$lA7v);
+      for (SNode contextHint : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.contextHints$gfCW))) {
+        editorName += "_" + SPropertyOperations.getString(SLinkOperations.getTarget(contextHint, LINKS.hint$AS0G), PROPS.name$lA7v);
       }
       return editorName + "_Editor";
     }
@@ -68,7 +68,7 @@ public class ConceptEditorDeclaration_Constraints extends BaseConstraintsDescrip
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$tAp1, new Name_Property(this));
+    properties.put(PROPS.name$lA7v, new Name_Property(this));
     return properties;
   }
   private static boolean staticCanBeARoot(SModel model) {
@@ -81,11 +81,11 @@ public class ConceptEditorDeclaration_Constraints extends BaseConstraintsDescrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink hint$7sDk = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5eadaecad41188dcL, 0x527faacef66db74dL, "hint");
-    /*package*/ static final SContainmentLink contextHints$QcT4 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, 0x240ba2de0c6c0b6eL, "contextHints");
+    /*package*/ static final SReferenceLink hint$AS0G = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5eadaecad41188dcL, 0x527faacef66db74dL, "hint");
+    /*package*/ static final SContainmentLink contextHints$gfCW = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, 0x240ba2de0c6c0b6eL, "contextHints");
   }
 }

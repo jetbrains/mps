@@ -39,7 +39,7 @@ public final class DelTestChildReferenceContainer__BehaviorDescriptor extends Ba
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.DelTestNodeToReference$k4)) {
-      return new NamedElementsScope(SLinkOperations.getTarget(__thisNode__, LINKS.childToReference$IyiZ));
+      return new NamedElementsScope(SLinkOperations.getTarget(__thisNode__, LINKS.childToReference$yBcx));
     }
     return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$M8, kind, child);
   }
@@ -96,6 +96,6 @@ public final class DelTestChildReferenceContainer__BehaviorDescriptor extends Ba
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink childToReference$IyiZ = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69da7L, 0x5a98420815d28284L, "childToReference");
+    /*package*/ static final SContainmentLink childToReference$yBcx = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69da7L, 0x5a98420815d28284L, "childToReference");
   }
 }

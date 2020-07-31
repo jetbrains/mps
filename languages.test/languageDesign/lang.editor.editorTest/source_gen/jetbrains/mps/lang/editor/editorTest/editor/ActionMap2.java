@@ -22,7 +22,7 @@ public class ActionMap2 {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SPropertyOperations.set(node, PROPS.result$8sbw, "2");
+        SPropertyOperations.set(node, PROPS.result$5D$w, "2");
       }
 
     };
@@ -72,6 +72,6 @@ public class ActionMap2 {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty result$8sbw = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x3a5c07622668cc83L, 0x3a5c07622668cc84L, "result");
+    /*package*/ static final SProperty result$5D$w = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x3a5c07622668cc83L, 0x3a5c07622668cc84L, "result");
   }
 }

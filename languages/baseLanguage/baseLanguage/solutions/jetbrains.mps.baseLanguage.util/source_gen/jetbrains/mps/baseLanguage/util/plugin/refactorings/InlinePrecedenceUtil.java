@@ -18,12 +18,12 @@ public class InlinePrecedenceUtil {
     if (SNodeOperations.isInstanceOf(expr, CONCEPTS.IBinaryLike$M8) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(expr), CONCEPTS.IBinaryLike$M8) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(expr), CONCEPTS.BaseAssignmentExpression$oO)) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(expr), CONCEPTS.ArrayAccessExpression$dG))) {
       SNode parens = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"));
       SNodeOperations.replaceWithAnother(expr, parens);
-      SLinkOperations.setTarget(parens, LINKS.expression$4_F0, expr);
+      SLinkOperations.setTarget(parens, LINKS.expression$efP0, expr);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$4_F0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
   }
 
   private static final class CONCEPTS {

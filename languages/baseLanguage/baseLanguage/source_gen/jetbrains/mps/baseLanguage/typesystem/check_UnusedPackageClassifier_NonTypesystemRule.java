@@ -28,7 +28,7 @@ public class check_UnusedPackageClassifier_NonTypesystemRule extends AbstractNon
   public check_UnusedPackageClassifier_NonTypesystemRule() {
   }
   public void applyRule(final SNode classifier, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(classifier, LINKS.visibility$2GiC) == null) && !(SNodeOperations.isInstanceOf(classifier, CONCEPTS.AnonymousClass$aF))) {
+    if ((SLinkOperations.getTarget(classifier, LINKS.visibility$jt1o) == null) && !(SNodeOperations.isInstanceOf(classifier, CONCEPTS.AnonymousClass$aF))) {
       if (!(ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(classifier), null)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return ListSequence.fromList(SNodeOperations.getNodeAncestors(it, CONCEPTS.SingleLineComment$jI, false)).isEmpty();
@@ -90,6 +90,6 @@ public class check_UnusedPackageClassifier_NonTypesystemRule extends AbstractNon
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 }

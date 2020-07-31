@@ -63,8 +63,8 @@ public class ModuleLoaderUtils {
 
         String macroName = path.substring(2, index);
         SNode found = null;
-        for (SNode macro : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(myProject, LINKS.macros$tpFt), CONCEPTS.BuildFolderMacro$Ok))) {
-          if (Objects.equals(SPropertyOperations.getString(macro, PROPS.name$tAp1), macroName)) {
+        for (SNode macro : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(myProject, LINKS.macros$fs33), CONCEPTS.BuildFolderMacro$Ok))) {
+          if (Objects.equals(SPropertyOperations.getString(macro, PROPS.name$lA7v), macroName)) {
             found = macro;
             break;
           }
@@ -95,11 +95,11 @@ public class ModuleLoaderUtils {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink macros$tpFt = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros");
+    /*package*/ static final SContainmentLink macros$fs33 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros");
   }
 
   private static final class CONCEPTS {

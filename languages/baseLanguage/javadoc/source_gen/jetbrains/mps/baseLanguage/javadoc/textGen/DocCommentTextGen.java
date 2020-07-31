@@ -27,10 +27,10 @@ public abstract class DocCommentTextGen {
     tgs.indent();
     tgs.append("/**");
 
-    if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.body$ULZO)).isNotEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.body$udUc)).isNotEmpty()) {
       tgs.newLine();
       DocCommentTextGen.javadocIndent(ctx);
-      for (SNode item : SLinkOperations.getChildren(node, LINKS.body$ULZO)) {
+      for (SNode item : SLinkOperations.getChildren(node, LINKS.body$udUc)) {
         tgs.appendNode(item);
       }
     }
@@ -41,47 +41,47 @@ public abstract class DocCommentTextGen {
       DocCommentTextGen.javadocIndent(ctx);
     }
 
-    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$LJD$)).where(new IWhereFilter<SNode>() {
+    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$658s)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.AuthorBlockDocTag$xE);
       }
     })) {
       tgs.appendNode(item);
     }
-    for (SNode item : SLinkOperations.getChildren(node, LINKS.author$VPpR)) {
+    for (SNode item : SLinkOperations.getChildren(node, LINKS.author$YRxD)) {
       tgs.appendNode(item);
     }
-    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$LJD$)).where(new IWhereFilter<SNode>() {
+    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$658s)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.SinceBlockDocTag$YE);
       }
     })) {
       tgs.appendNode(item);
     }
-    for (SNode item : SLinkOperations.getChildren(node, LINKS.since$UGOw)) {
+    for (SNode item : SLinkOperations.getChildren(node, LINKS.since$rHrw)) {
       tgs.appendNode(item);
     }
-    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$LJD$)).where(new IWhereFilter<SNode>() {
+    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$658s)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.VersionBlockDocTag$Ic);
       }
     })) {
       tgs.appendNode(item);
     }
-    for (SNode item : SLinkOperations.getChildren(node, LINKS.version$UGOZ)) {
+    for (SNode item : SLinkOperations.getChildren(node, LINKS.version$rHEx)) {
       tgs.appendNode(item);
     }
-    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$LJD$)).where(new IWhereFilter<SNode>() {
+    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$658s)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.SeeBlockDocTag$tx);
       }
     })) {
       tgs.appendNode(item);
     }
-    for (SNode item : SLinkOperations.getChildren(node, LINKS.see$fbTt)) {
+    for (SNode item : SLinkOperations.getChildren(node, LINKS.see$mKP3)) {
       tgs.appendNode(item);
     }
-    SNode deprecationTag = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$LJD$)).where(new IWhereFilter<SNode>() {
+    SNode deprecationTag = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$658s)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$ma);
       }
@@ -89,8 +89,8 @@ public abstract class DocCommentTextGen {
     if ((deprecationTag != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IBLDeprecatable$Hv) && (boolean) IDeprecatable__BehaviorDescriptor.isDeprecated_idhOwoPtR.invoke(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.IBLDeprecatable$Hv))) {
       tgs.appendNode(deprecationTag);
     } else {
-      if ((SLinkOperations.getTarget(node, LINKS.deprecated$UGSR) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IBLDeprecatable$Hv) && (boolean) IDeprecatable__BehaviorDescriptor.isDeprecated_idhOwoPtR.invoke(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.IBLDeprecatable$Hv))) {
-        tgs.appendNode(SLinkOperations.getTarget(node, LINKS.deprecated$UGSR));
+      if ((SLinkOperations.getTarget(node, LINKS.deprecated$rJyD) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IBLDeprecatable$Hv) && (boolean) IDeprecatable__BehaviorDescriptor.isDeprecated_idhOwoPtR.invoke(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.IBLDeprecatable$Hv))) {
+        tgs.appendNode(SLinkOperations.getTarget(node, LINKS.deprecated$rJyD));
       }
     }
   }
@@ -103,13 +103,13 @@ public abstract class DocCommentTextGen {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$ULZO = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
-    /*package*/ static final SContainmentLink tags$LJD$ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
-    /*package*/ static final SContainmentLink author$VPpR = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4a3c146b7faeeb32L, "author");
-    /*package*/ static final SContainmentLink since$UGOw = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f962L, "since");
-    /*package*/ static final SContainmentLink version$UGOZ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f963L, "version");
-    /*package*/ static final SContainmentLink see$fbTt = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x1ec532ec252df7ddL, "see");
-    /*package*/ static final SContainmentLink deprecated$UGSR = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96bL, "deprecated");
+    /*package*/ static final SContainmentLink body$udUc = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
+    /*package*/ static final SContainmentLink tags$658s = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
+    /*package*/ static final SContainmentLink author$YRxD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4a3c146b7faeeb32L, "author");
+    /*package*/ static final SContainmentLink since$rHrw = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f962L, "since");
+    /*package*/ static final SContainmentLink version$rHEx = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f963L, "version");
+    /*package*/ static final SContainmentLink see$mKP3 = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x1ec532ec252df7ddL, "see");
+    /*package*/ static final SContainmentLink deprecated$rJyD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96bL, "deprecated");
   }
 
   private static final class CONCEPTS {

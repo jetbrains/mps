@@ -30,7 +30,7 @@ public class EnumConstantReference_Constraints extends BaseConstraintsDescriptor
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.enumConstantDeclaration$fB6v, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.enumConstantDeclaration$zW91, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -45,8 +45,8 @@ public class EnumConstantReference_Constraints extends BaseConstraintsDescriptor
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            if (SNodeOperations.isInstanceOf(_context.getContextNode(), CONCEPTS.EnumConstantReference$RO) && (SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), CONCEPTS.EnumConstantReference$RO), LINKS.enumClass$9jPZ) != null)) {
-              return new NamedElementsScope(Members.visibleEnumConstants(SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), CONCEPTS.EnumConstantReference$RO), LINKS.enumClass$9jPZ)));
+            if (SNodeOperations.isInstanceOf(_context.getContextNode(), CONCEPTS.EnumConstantReference$RO) && (SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), CONCEPTS.EnumConstantReference$RO), LINKS.enumClass$wB9x) != null)) {
+              return new NamedElementsScope(Members.visibleEnumConstants(SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), CONCEPTS.EnumConstantReference$RO), LINKS.enumClass$wB9x)));
             } else {
               return new EmptyScope();
             }
@@ -65,7 +65,7 @@ public class EnumConstantReference_Constraints extends BaseConstraintsDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink enumConstantDeclaration$fB6v = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
-    /*package*/ static final SReferenceLink enumClass$9jPZ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
+    /*package*/ static final SReferenceLink enumConstantDeclaration$zW91 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
+    /*package*/ static final SReferenceLink enumClass$wB9x = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
   }
 }

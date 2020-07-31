@@ -23,7 +23,7 @@ public class check_ParenthesisedExpressionSurroundedWithParentheses_NonTypesyste
   public check_ParenthesisedExpressionSurroundedWithParentheses_NonTypesystemRule() {
   }
   public void applyRule(final SNode parenthesizedExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((boolean) Expression__BehaviorDescriptor.singleValue_id1o8Ht9sES3u.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(parenthesizedExpression, LINKS.expression$4_F0)))) || (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(parenthesizedExpression, LINKS.expression$4_F0), CONCEPTS.ParenthesizedExpression$vE)) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(parenthesizedExpression), CONCEPTS.ParenthesizedExpression$vE))) {
+    if ((boolean) Expression__BehaviorDescriptor.singleValue_id1o8Ht9sES3u.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(parenthesizedExpression, LINKS.expression$efP0)))) || (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(parenthesizedExpression, LINKS.expression$efP0), CONCEPTS.ParenthesizedExpression$vE)) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(parenthesizedExpression), CONCEPTS.ParenthesizedExpression$vE))) {
       SNode currentParent = parenthesizedExpression;
       while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(currentParent), CONCEPTS.ParenthesizedExpression$vE)) {
         currentParent = SNodeOperations.cast(SNodeOperations.getParent(currentParent), CONCEPTS.ParenthesizedExpression$vE);
@@ -54,6 +54,6 @@ public class check_ParenthesisedExpressionSurroundedWithParentheses_NonTypesyste
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$4_F0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
   }
 }

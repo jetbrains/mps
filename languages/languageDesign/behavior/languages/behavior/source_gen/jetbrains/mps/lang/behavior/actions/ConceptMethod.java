@@ -20,10 +20,10 @@ public class ConceptMethod {
   public static class NodeFactory_1238617792578 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       SNode behaviour = SNodeOperations.cast(SNodeOperations.getContainingRoot(enclosingNode), CONCEPTS.ConceptBehavior$8P);
-      SNodeFactoryOperations.setNewChild(newNode, LINKS.visibility$2GiC, CONCEPTS.PublicVisibility$qe);
-      if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(behaviour, LINKS.concept$v6ns))), CONCEPTS.InterfaceConceptDeclaration$MT)) {
-        SPropertyOperations.set(newNode, PROPS.isAbstract$6dnX, true);
-        SPropertyOperations.set(newNode, PROPS.isVirtual$6dmZ, true);
+      SNodeFactoryOperations.setNewChild(newNode, LINKS.visibility$jt1o, CONCEPTS.PublicVisibility$qe);
+      if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(behaviour, LINKS.concept$45m$))), CONCEPTS.InterfaceConceptDeclaration$MT)) {
+        SPropertyOperations.set(newNode, PROPS.isAbstract$uAz, true);
+        SPropertyOperations.set(newNode, PROPS.isVirtual$u8x, true);
       }
     }
   }
@@ -35,12 +35,12 @@ public class ConceptMethod {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SReferenceLink concept$v6ns = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SReferenceLink concept$45m$ = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isAbstract$6dnX = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480582L, "isAbstract");
-    /*package*/ static final SProperty isVirtual$6dmZ = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480580L, "isVirtual");
+    /*package*/ static final SProperty isAbstract$uAz = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480582L, "isAbstract");
+    /*package*/ static final SProperty isVirtual$u8x = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480580L, "isVirtual");
   }
 }

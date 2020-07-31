@@ -22,10 +22,10 @@ public class check_UnusedStaticFields_NonTypesystemRule extends AbstractNonTypes
   public check_UnusedStaticFields_NonTypesystemRule() {
   }
   public void applyRule(final SNode staticFieldDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(staticFieldDeclaration, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(staticFieldDeclaration, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se)) {
       Iterable<SNode> refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(staticFieldDeclaration), CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.variableDeclaration$2ky6) == staticFieldDeclaration;
+          return SLinkOperations.getTarget(it, LINKS.variableDeclaration$7WwU) == staticFieldDeclaration;
         }
       }).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
@@ -33,10 +33,10 @@ public class check_UnusedStaticFields_NonTypesystemRule extends AbstractNonTypes
         }
       });
       VariableReferenceUtil.checkField(typeCheckingContext, staticFieldDeclaration, refs);
-    } else if ((SLinkOperations.getTarget(staticFieldDeclaration, LINKS.visibility$2GiC) == null)) {
+    } else if ((SLinkOperations.getTarget(staticFieldDeclaration, LINKS.visibility$jt1o) == null)) {
       Iterable<SNode> refs = ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(staticFieldDeclaration), CONCEPTS.VariableReference$sQ)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.variableDeclaration$2ky6) == staticFieldDeclaration;
+          return SLinkOperations.getTarget(it, LINKS.variableDeclaration$7WwU) == staticFieldDeclaration;
         }
       }).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
@@ -57,8 +57,8 @@ public class check_UnusedStaticFields_NonTypesystemRule extends AbstractNonTypes
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class CONCEPTS {

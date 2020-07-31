@@ -42,11 +42,11 @@ public class AddProducer_Action extends BaseAction {
     final SNode nodeFinal = event.getData(MPSCommonDataKeys.NODE);
     boolean exists = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(nodeFinal), CONCEPTS.RunConfigurationProducer$Ul)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.configuration$zpA6), LINKS.persistentConfiguration$28v0) == nodeFinal;
+        return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.configuration$9psU), LINKS.persistentConfiguration$2710) == nodeFinal;
       }
     });
     setEnabledState(event.getPresentation(), !(exists));
-    event.getPresentation().setText("Create Producer for " + SPropertyOperations.getString(nodeFinal, PROPS.name$tAp1));
+    event.getPresentation().setText("Create Producer for " + SPropertyOperations.getString(nodeFinal, PROPS.name$lA7v));
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
@@ -73,8 +73,8 @@ public class AddProducer_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     SNode producer = SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), CONCEPTS.RunConfigurationProducer$Ul, null);
-    SLinkOperations.setTarget(SLinkOperations.setNewChild(producer, LINKS.configuration$zpA6, CONCEPTS.PersistentConfigurationType$e2), LINKS.persistentConfiguration$28v0, event.getData(MPSCommonDataKeys.NODE));
-    SPropertyOperations.set(producer, PROPS.virtualPackage$j19t, SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$j19t));
+    SLinkOperations.setTarget(SLinkOperations.setNewChild(producer, LINKS.configuration$9psU, CONCEPTS.PersistentConfigurationType$e2), LINKS.persistentConfiguration$2710, event.getData(MPSCommonDataKeys.NODE));
+    SPropertyOperations.set(producer, PROPS.virtualPackage$dz_3, SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$dz_3));
     SModelOperations.addRootNode(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), producer);
     NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), producer, true, false);
   }
@@ -86,12 +86,12 @@ public class AddProducer_Action extends BaseAction {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink configuration$zpA6 = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, 0x3c97fcb79c84a8efL, "configuration");
-    /*package*/ static final SReferenceLink persistentConfiguration$28v0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
+    /*package*/ static final SContainmentLink configuration$9psU = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, 0x3c97fcb79c84a8efL, "configuration");
+    /*package*/ static final SReferenceLink persistentConfiguration$2710 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty virtualPackage$j19t = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 }

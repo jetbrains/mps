@@ -21,7 +21,7 @@ public class ClassLikeMemberPlaceholderMenu extends AbstractCellMenuPart_Generic
   public ClassLikeMemberPlaceholderMenu() {
   }
   public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(node, LINKS.decl$l7bu));
+    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(node, LINKS.decl$euzy));
   }
   @Override
   protected String getMatchingText(Object object) {
@@ -35,7 +35,7 @@ public class ClassLikeMemberPlaceholderMenu extends AbstractCellMenuPart_Generic
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink decl$l7bu = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db5L, "decl");
+    /*package*/ static final SReferenceLink decl$euzy = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db5L, "decl");
   }
 
   private static final class CONCEPTS {

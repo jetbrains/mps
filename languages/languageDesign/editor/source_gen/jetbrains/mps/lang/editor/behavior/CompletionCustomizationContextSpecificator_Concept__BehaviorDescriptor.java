@@ -31,7 +31,7 @@ public final class CompletionCustomizationContextSpecificator_Concept__BehaviorD
   }
 
   /*package*/ static SNode getConcept_id7U0pk79eiL7(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$UwJH);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$lR6N);
   }
 
   /*package*/ CompletionCustomizationContextSpecificator_Concept__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class CompletionCustomizationContextSpecificator_Concept__BehaviorD
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$UwJH = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x64a01fa8546d02faL, 0x7e806541c93930a5L, "conceptDeclaration");
+    /*package*/ static final SReferenceLink conceptDeclaration$lR6N = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x64a01fa8546d02faL, 0x7e806541c93930a5L, "conceptDeclaration");
   }
 }

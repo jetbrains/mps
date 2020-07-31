@@ -24,7 +24,7 @@ public final class PreviewFactory {
         super.paintComponent(graphics);
         SNodeOperations.getModel(thisCanvas).getRepository().getModelAccess().runReadAction(new Runnable() {
           public void run() {
-            ListSequence.fromList(SLinkOperations.getChildren(thisCanvas, LINKS.shapes$NwZ7)).visitAll(new IVisitor<SNode>() {
+            ListSequence.fromList(SLinkOperations.getChildren(thisCanvas, LINKS.shapes$WY$p)).visitAll(new IVisitor<SNode>() {
               public void visit(SNode it) {
                 Shape__BehaviorDescriptor.drawShape_idW6XMzE_hbz.invoke(it, graphics);
               }
@@ -46,6 +46,6 @@ public final class PreviewFactory {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink shapes$NwZ7 = MetaAdapterFactory.getContainmentLink(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fa71dL, 0x51dcaa29974ffa47L, "shapes");
+    /*package*/ static final SContainmentLink shapes$WY$p = MetaAdapterFactory.getContainmentLink(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fa71dL, 0x51dcaa29974ffa47L, "shapes");
   }
 }

@@ -26,7 +26,7 @@ public class check_CompositeWithParentScopeExpression_NonTypesystemRule extends 
   }
   public void applyRule(final SNode expr, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // todo: do right stuff! =( 
-    if (!(SPropertyOperations.getString(SNodeOperations.getNodeAncestor(expr, CONCEPTS.ConceptMethodDeclaration$VN, false, false), PROPS.name$tAp1).equals("getScope"))) {
+    if (!(SPropertyOperations.getString(SNodeOperations.getNodeAncestor(expr, CONCEPTS.ConceptMethodDeclaration$VN, false, false), PROPS.name$lA7v).equals("getScope"))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(expr, "Should be in getScope method", "r:c2d05fc3-fe25-4093-95ce-8e3356e61084(jetbrains.mps.lang.scopes.typesystem)", "8077936094962969214", null, errorTarget);
@@ -78,6 +78,6 @@ public class check_CompositeWithParentScopeExpression_NonTypesystemRule extends 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

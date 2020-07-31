@@ -120,7 +120,7 @@ public class BuildCompositePath_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SPropertyOperations.set(_context.getCurrentTargetNode(), PROPS.head$vKDv, myParameterObject);
+          SPropertyOperations.set(_context.getCurrentTargetNode(), PROPS.head$o$61, myParameterObject);
           return SNodeOperations.copyNode(_context.getCurrentTargetNode());
         }
 
@@ -162,6 +162,6 @@ public class BuildCompositePath_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty head$vKDv = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f3L, "head");
+    /*package*/ static final SProperty head$o$61 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f3L, "head");
   }
 }

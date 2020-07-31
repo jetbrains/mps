@@ -16,7 +16,7 @@ public class SetDefaultEnumConstructurToEnumConstant_QuickFix extends QuickFix_R
     super(new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1962660292843434705"));
   }
   public void execute(SNode node) {
-    SLinkOperations.setPointer(SNodeOperations.cast(node, CONCEPTS.EnumConstantDeclaration$ma), LINKS.baseMethodDeclaration$$A7i, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object.<init>()"));
+    SLinkOperations.setPointer(SNodeOperations.cast(node, CONCEPTS.EnumConstantDeclaration$ma), LINKS.baseMethodDeclaration$ItxI, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object.<init>()"));
   }
 
   private static final class CONCEPTS {
@@ -24,6 +24,6 @@ public class SetDefaultEnumConstructurToEnumConstant_QuickFix extends QuickFix_R
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

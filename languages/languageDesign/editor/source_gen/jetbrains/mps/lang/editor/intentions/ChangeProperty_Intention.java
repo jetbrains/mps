@@ -59,8 +59,8 @@ public final class ChangeProperty_Intention extends AbstractIntentionDescriptor 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode transactional = SNodeFactoryOperations.createNewNode(CONCEPTS.CellModel_TransactionalProperty$oo, node);
-      SLinkOperations.setTarget(transactional, LINKS.property$p2l_, SLinkOperations.getTarget(node, LINKS.relationDeclaration$wbRV));
-      SLinkOperations.setTarget(node, LINKS.relationDeclaration$wbRV, null);
+      SLinkOperations.setTarget(transactional, LINKS.property$88sV, SLinkOperations.getTarget(node, LINKS.relationDeclaration$_K5_));
+      SLinkOperations.setTarget(node, LINKS.relationDeclaration$_K5_, null);
       for (SNode child : ListSequence.fromList(SNodeOperations.getChildren(node))) {
         String role = child.getRoleInParent();
         node.removeChild(child);
@@ -85,7 +85,7 @@ public final class ChangeProperty_Intention extends AbstractIntentionDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink property$p2l_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f87187L, "property");
-    /*package*/ static final SReferenceLink relationDeclaration$wbRV = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SReferenceLink property$88sV = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f87187L, "property");
+    /*package*/ static final SReferenceLink relationDeclaration$_K5_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
   }
 }

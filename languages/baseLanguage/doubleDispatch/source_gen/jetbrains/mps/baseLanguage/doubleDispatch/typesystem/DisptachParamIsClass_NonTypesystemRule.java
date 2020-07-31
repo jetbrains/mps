@@ -24,7 +24,7 @@ public class DisptachParamIsClass_NonTypesystemRule extends AbstractNonTypesyste
   public DisptachParamIsClass_NonTypesystemRule() {
   }
   public void applyRule(final SNode method, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.modifiers$akE0)).where(new IWhereFilter<SNode>() {
+    if (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.modifiers$m0)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.DispatchModifier$W7);
       }
@@ -32,10 +32,10 @@ public class DisptachParamIsClass_NonTypesystemRule extends AbstractNonTypesyste
       return;
     }
     // type not specified yet 
-    if ((SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).first(), LINKS.type$pLrO) == null)) {
+    if ((SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).first(), LINKS.type$uWuc) == null)) {
       return;
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).isEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).isEmpty()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(method, "Dispatch method must have at least one parameter", "r:7a94bb66-9653-4830-af67-903eb2cfbd29(jetbrains.mps.baseLanguage.doubleDispatch.typesystem)", "2323553266854878723", null, errorTarget);
@@ -43,11 +43,11 @@ public class DisptachParamIsClass_NonTypesystemRule extends AbstractNonTypesyste
       return;
     }
 
-    SNode paramType = SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).first(), LINKS.type$pLrO);
+    SNode paramType = SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).first(), LINKS.type$uWuc);
 
     // turned it off, because unentered yet type is shown as error which is bad 
 
-    if (!(SNodeOperations.isInstanceOf(paramType, CONCEPTS.ClassifierType$IZ)) || !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(paramType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY))) {
+    if (!(SNodeOperations.isInstanceOf(paramType, CONCEPTS.ClassifierType$IZ)) || !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(paramType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(paramType, "Dispatch parameter must have class type", "r:7a94bb66-9653-4830-af67-903eb2cfbd29(jetbrains.mps.baseLanguage.doubleDispatch.typesystem)", "2323553266855237975", null, errorTarget);
@@ -66,10 +66,10 @@ public class DisptachParamIsClass_NonTypesystemRule extends AbstractNonTypesyste
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifiers$akE0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

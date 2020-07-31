@@ -22,7 +22,7 @@ public class typeof_VarVariableDeclaration_InferenceRule extends AbstractInferen
   public void applyRule(final SNode varVariableDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final SNode initializerType_typevar_8425555512443936489 = typeCheckingContext.createNewRuntimeTypesVariable();
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(varVariableDeclaration, LINKS.initializer$KgD);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(varVariableDeclaration, LINKS.initializer$no3R);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:376aaabb-efff-403a-9afa-fc63fa67c6b3(jetbrains.mps.baseLanguage.varVariable.typesystem)", "1236696586241", 0, null);
       typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(initializerType_typevar_8425555512443936489), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:376aaabb-efff-403a-9afa-fc63fa67c6b3(jetbrains.mps.baseLanguage.varVariable.typesystem)", "1236696598890", true), _info_12389875345);
     }
@@ -52,7 +52,7 @@ public class typeof_VarVariableDeclaration_InferenceRule extends AbstractInferen
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 
   private static final class CONCEPTS {

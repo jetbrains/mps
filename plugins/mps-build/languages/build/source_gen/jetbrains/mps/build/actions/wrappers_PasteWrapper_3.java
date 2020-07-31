@@ -24,7 +24,7 @@ public final class wrappers_PasteWrapper_3 implements PasteWrapper {
   @Override
   public SNode wrap(SNode sourceNode) {
     SNode nn = SModelOperations.createNewNode(SNodeOperations.getModel(sourceNode), null, CONCEPTS.BuildSource_JavaLibraryCP$VQ);
-    SLinkOperations.setTarget(nn, LINKS.classpath$Tk_v, sourceNode);
+    SLinkOperations.setTarget(nn, LINKS.classpath$KYa1, sourceNode);
     return nn;
   }
 
@@ -34,6 +34,6 @@ public final class wrappers_PasteWrapper_3 implements PasteWrapper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink classpath$Tk_v = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b61d4cbbL, 0x3395e884b61d4cbdL, "classpath");
+    /*package*/ static final SContainmentLink classpath$KYa1 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b61d4cbbL, 0x3395e884b61d4cbdL, "classpath");
   }
 }

@@ -27,7 +27,7 @@ public class RepetitionCheck_NonTypesystemRule extends AbstractNonTypesystemRule
       return;
     }
     if (Objects.equals(SNodeOperations.getConcept(command), SNodeOperations.getConcept(SNodeOperations.getNextSibling(command)))) {
-      if (SNodeOperations.isInstanceOf(command, CONCEPTS.RoutineCall$GX) && SLinkOperations.getTarget(SNodeOperations.cast(command, CONCEPTS.RoutineCall$GX), LINKS.definition$Hbcn) != SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getNextSibling(command), CONCEPTS.RoutineCall$GX), LINKS.definition$Hbcn)) {
+      if (SNodeOperations.isInstanceOf(command, CONCEPTS.RoutineCall$GX) && SLinkOperations.getTarget(SNodeOperations.cast(command, CONCEPTS.RoutineCall$GX), LINKS.definition$SqZ9) != SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getNextSibling(command), CONCEPTS.RoutineCall$GX), LINKS.definition$SqZ9)) {
         return;
       }
       {
@@ -60,6 +60,6 @@ public class RepetitionCheck_NonTypesystemRule extends AbstractNonTypesystemRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink definition$Hbcn = MetaAdapterFactory.getReferenceLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f92L, 0x2de971c785ede3ccL, "definition");
+    /*package*/ static final SReferenceLink definition$SqZ9 = MetaAdapterFactory.getReferenceLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f92L, 0x2de971c785ede3ccL, "definition");
   }
 }

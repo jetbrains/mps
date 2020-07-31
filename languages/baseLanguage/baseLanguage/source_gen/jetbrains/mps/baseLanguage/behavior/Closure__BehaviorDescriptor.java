@@ -44,9 +44,9 @@ public final class Closure__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static List<SNode> getVariablesReferencedInClosure_idhNVujlz(@NotNull SNode __thisNode__) {
     List<SNode> referencedInClosures = new ArrayList<SNode>();
     for (SNode varRef : SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})) {
-      SNode closure = SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$2ky6), CONCEPTS.Closure$5Q, false, false);
+      SNode closure = SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$7WwU), CONCEPTS.Closure$5Q, false, false);
       if ((closure == null) || closure != SNodeOperations.getParent(__thisNode__)) {
-        ListSequence.fromList(referencedInClosures).addElement(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$2ky6));
+        ListSequence.fromList(referencedInClosures).addElement(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$7WwU));
       }
     }
     return referencedInClosures;
@@ -119,7 +119,7 @@ public final class Closure__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class CONCEPTS {

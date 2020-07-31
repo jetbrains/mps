@@ -53,8 +53,8 @@ public final class SwitchToNullUnsafe_Intention extends AbstractIntentionDescrip
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.NullUnsafeDotExpression$Uj, null);
-      SLinkOperations.setTarget(result, LINKS.operand$Lcrr, SLinkOperations.getTarget(node, LINKS.operand$Lcrr));
-      SLinkOperations.setTarget(result, LINKS.operation$X4R8, SLinkOperations.getTarget(node, LINKS.operation$X4R8));
+      SLinkOperations.setTarget(result, LINKS.operand$P1i5, SLinkOperations.getTarget(node, LINKS.operand$P1i5));
+      SLinkOperations.setTarget(result, LINKS.operation$_mGS, SLinkOperations.getTarget(node, LINKS.operation$_mGS));
       SNodeOperations.replaceWithAnother(node, result);
     }
     @Override
@@ -68,7 +68,7 @@ public final class SwitchToNullUnsafe_Intention extends AbstractIntentionDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 }

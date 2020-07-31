@@ -124,7 +124,7 @@ public class JUnit3TestCaseRef_SubstituteMenu extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode tref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb9L, "jetbrains.mps.testbench.suite.structure.JUnit3TestCaseRef"));
-          SLinkOperations.setTarget(tref, LINKS.klass$Q7$q, myParameterObject);
+          SLinkOperations.setTarget(tref, LINKS.klass$dECA, myParameterObject);
           ((AbstractModule) _context.getModel().getModule()).addDependency(SNodeOperations.getModel(myParameterObject).getModule().getModuleReference(), false);
           ((SModelInternal) _context.getModel()).addModelImport(SModelOperations.getPointer(SNodeOperations.getModel(myParameterObject)));
           return tref;
@@ -170,6 +170,6 @@ public class JUnit3TestCaseRef_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink klass$Q7$q = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb9L, 0x11c3fc56a6d10bbfL, "klass");
+    /*package*/ static final SReferenceLink klass$dECA = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb9L, 0x11c3fc56a6d10bbfL, "klass");
   }
 }

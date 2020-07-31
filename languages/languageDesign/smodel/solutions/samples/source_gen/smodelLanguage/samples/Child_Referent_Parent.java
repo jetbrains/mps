@@ -17,38 +17,38 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class Child_Referent_Parent {
   public void accessToChildNode_1(SNode ifStatement) {
-    SNode condition = SLinkOperations.getTarget(ifStatement, LINKS.condition$WJ1b);
+    SNode condition = SLinkOperations.getTarget(ifStatement, LINKS.condition$qL$l);
     SNodeOperations.deleteNode(condition);
-    SNodeOperations.deleteNode(SLinkOperations.getTarget(ifStatement, LINKS.condition$WJ1b));
+    SNodeOperations.deleteNode(SLinkOperations.getTarget(ifStatement, LINKS.condition$qL$l));
   }
   public void accessToChildNode_2(SNode ifStatement, SNode newCondition) {
-    SLinkOperations.setTarget(ifStatement, LINKS.condition$WJ1b, newCondition);
-    SNode condition = SLinkOperations.getTarget(ifStatement, LINKS.condition$WJ1b);
+    SLinkOperations.setTarget(ifStatement, LINKS.condition$qL$l, newCondition);
+    SNode condition = SLinkOperations.getTarget(ifStatement, LINKS.condition$qL$l);
     SNodeOperations.replaceWithAnother(condition, newCondition);
   }
   public void accessToChildNode_3(SNode ifStatement1, SNode ifStatement2) {
-    SLinkOperations.setTarget(ifStatement1, LINKS.condition$WJ1b, SNodeOperations.copyNode(SLinkOperations.getTarget(ifStatement2, LINKS.condition$WJ1b)));
-    SNode condition = SLinkOperations.getTarget(ifStatement1, LINKS.condition$WJ1b);
-    SNodeOperations.replaceWithAnother(condition, SNodeOperations.copyNode(SLinkOperations.getTarget(ifStatement2, LINKS.condition$WJ1b)));
+    SLinkOperations.setTarget(ifStatement1, LINKS.condition$qL$l, SNodeOperations.copyNode(SLinkOperations.getTarget(ifStatement2, LINKS.condition$qL$l)));
+    SNode condition = SLinkOperations.getTarget(ifStatement1, LINKS.condition$qL$l);
+    SNodeOperations.replaceWithAnother(condition, SNodeOperations.copyNode(SLinkOperations.getTarget(ifStatement2, LINKS.condition$qL$l)));
   }
   public void accessToChildNode_4(SNode ifStatement) {
-    SNode newCondition1 = SLinkOperations.setNewChild(ifStatement, LINKS.condition$WJ1b, null);
-    SNode newCondition2 = SLinkOperations.setNewChild(ifStatement, LINKS.condition$WJ1b, CONCEPTS.EqualsExpression$lT);
+    SNode newCondition1 = SLinkOperations.setNewChild(ifStatement, LINKS.condition$qL$l, null);
+    SNode newCondition2 = SLinkOperations.setNewChild(ifStatement, LINKS.condition$qL$l, CONCEPTS.EqualsExpression$lT);
     SNode newCondition3 = SNodeOperations.replaceWithNewChild(newCondition1, CONCEPTS.NotExpression$oq);
   }
   public void accessToChildNode_5(SNode ifStatement) {
-    SLinkOperations.setTarget(ifStatement, LINKS.condition$WJ1b, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
-    SNode detachedExpression = SNodeOperations.deleteNode(SLinkOperations.getTarget(ifStatement, LINKS.condition$WJ1b));
+    SLinkOperations.setTarget(ifStatement, LINKS.condition$qL$l, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
+    SNode detachedExpression = SNodeOperations.deleteNode(SLinkOperations.getTarget(ifStatement, LINKS.condition$qL$l));
     SNodeOperations.deleteNode(ifStatement);
   }
   public void accessToReferentNode_1(SNode methodCall, SNode method) {
-    SNode oldMethod = SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$$A7i);
-    String oldMethopdName = SPropertyOperations.getString(oldMethod, PROPS.name$tAp1);
-    oldMethopdName = SPropertyOperations.getString(SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$$A7i), PROPS.name$tAp1);
-    SLinkOperations.setTarget(methodCall, LINKS.baseMethodDeclaration$$A7i, method);
+    SNode oldMethod = SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$ItxI);
+    String oldMethopdName = SPropertyOperations.getString(oldMethod, PROPS.name$lA7v);
+    oldMethopdName = SPropertyOperations.getString(SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$ItxI), PROPS.name$lA7v);
+    SLinkOperations.setTarget(methodCall, LINKS.baseMethodDeclaration$ItxI, method);
   }
   public void accessToReferentNode_2(SNode methodCall, SNode method) {
-    SLinkOperations.setTarget(methodCall, LINKS.baseMethodDeclaration$$A7i, method);
+    SLinkOperations.setTarget(methodCall, LINKS.baseMethodDeclaration$ItxI, method);
   }
   public void accessToParentNode_1(SNode expression) {
     SNode parent_IfStatement = null;
@@ -62,7 +62,7 @@ public class Child_Referent_Parent {
     }
   }
   public void accessToParentNode_2(SNode methodCall) {
-    SNode declaringClass = SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$$A7i)), CONCEPTS.ClassConcept$IY);
+    SNode declaringClass = SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$ItxI)), CONCEPTS.ClassConcept$IY);
   }
   public void accessToParentNode_3(SNode node) {
     SNode root = SNodeOperations.getContainingRoot(node);
@@ -81,8 +81,8 @@ public class Child_Referent_Parent {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$WJ1b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 
   private static final class CONCEPTS {
@@ -95,6 +95,6 @@ public class Child_Referent_Parent {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

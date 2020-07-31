@@ -55,9 +55,9 @@ public class TestEditorMenuTraceSubstituteMenuWrapMenu_Test extends BaseTransfor
 
           EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
 
-          SNodeReference substituteAction = SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143982464"), LINKS.parts$MxT3), CONCEPTS.SubstituteMenuPart_Action$Gn)).first());
+          SNodeReference substituteAction = SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143982464"), LINKS.parts$uqCt), CONCEPTS.SubstituteMenuPart_Action$Gn)).first());
 
-          SNodeReference wrapper = SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143897423"), LINKS.parts$MxT3), CONCEPTS.SubstituteMenuPart_Wrapper$Dn)).first());
+          SNodeReference wrapper = SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143897423"), LINKS.parts$uqCt), CONCEPTS.SubstituteMenuPart_Wrapper$Dn)).first());
 
           EditorMenuTraceTestUtil.checkTraceInfoPath(editorMenuTraceInfo, substituteAction, new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143982464"), wrapper, new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143897423"));
 
@@ -68,7 +68,7 @@ public class TestEditorMenuTraceSubstituteMenuWrapMenu_Test extends BaseTransfor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parts$MxT3 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts");
+    /*package*/ static final SContainmentLink parts$uqCt = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts");
   }
 
   private static final class CONCEPTS {

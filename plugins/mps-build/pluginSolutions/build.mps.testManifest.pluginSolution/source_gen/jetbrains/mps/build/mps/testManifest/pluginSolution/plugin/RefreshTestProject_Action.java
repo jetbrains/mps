@@ -61,7 +61,7 @@ public class RefreshTestProject_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return (SLinkOperations.getTarget(event.getData(MPSCommonDataKeys.NODE), LINKS.target$fhcU) != null) && ListSequence.fromList(SLinkOperations.getChildren(event.getData(MPSCommonDataKeys.NODE), LINKS.manifest$fiTR)).isNotEmpty();
+    return (SLinkOperations.getTarget(event.getData(MPSCommonDataKeys.NODE), LINKS.target$plg6) != null) && ListSequence.fromList(SLinkOperations.getChildren(event.getData(MPSCommonDataKeys.NODE), LINKS.manifest$qa1D)).isNotEmpty();
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -126,7 +126,7 @@ public class RefreshTestProject_Action extends BaseAction {
 
     final SModel target = new ModelAccessHelper(repo).runReadAction(new Computable<SModel>() {
       public SModel compute() {
-        return ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(event.getData(MPSCommonDataKeys.NODE), LINKS.target$fhcU)).resolve(repo);
+        return ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(event.getData(MPSCommonDataKeys.NODE), LINKS.target$plg6)).resolve(repo);
       }
     });
     if (target == null) {
@@ -139,19 +139,19 @@ public class RefreshTestProject_Action extends BaseAction {
         repo.getModelAccess().executeCommand(new Runnable() {
           public void run() {
             List<SNode> manifests = new ArrayList<SNode>();
-            for (SNode mref : SLinkOperations.getChildren(event.getData(MPSCommonDataKeys.NODE), LINKS.manifest$fiTR)) {
-              SNode manifest = SLinkOperations.getTarget(mref, LINKS.manifest$oWFw);
+            for (SNode mref : SLinkOperations.getChildren(event.getData(MPSCommonDataKeys.NODE), LINKS.manifest$qa1D)) {
+              SNode manifest = SLinkOperations.getTarget(mref, LINKS.manifest$5p4w);
 
               ListSequence.fromList(manifests).addElement(manifest);
             }
             TestModuleBuildProjectTemplate template = new TestModuleBuildProjectTemplate(event.getData(MPSCommonDataKeys.MPS_PROJECT), target);
 
             final SNode bproj = template.createBuildProject(event.getData(MPSCommonDataKeys.NODE), manifests);
-            SPropertyOperations.set(bproj, PROPS.virtualPackage$j19t, "generated");
+            SPropertyOperations.set(bproj, PROPS.virtualPackage$dz_3, "generated");
 
             SNode existing = ListSequence.fromList(SModelOperations.roots(target, CONCEPTS.BuildProject$BF)).findFirst(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), SPropertyOperations.getString(bproj, PROPS.name$tAp1));
+                return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), SPropertyOperations.getString(bproj, PROPS.name$lA7v));
               }
             });
             if ((existing != null)) {
@@ -176,9 +176,9 @@ public class RefreshTestProject_Action extends BaseAction {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink manifest$fiTR = MetaAdapterFactory.getContainmentLink(0x9f846aef4e4a4a84L, 0x828e7e83fe2697f2L, 0x2dc6844997876885L, 0x2dc684499788dbc4L, "manifest");
-    /*package*/ static final SContainmentLink target$fhcU = MetaAdapterFactory.getContainmentLink(0x9f846aef4e4a4a84L, 0x828e7e83fe2697f2L, 0x2dc6844997876885L, 0x6a7c966ca6903a21L, "target");
-    /*package*/ static final SReferenceLink manifest$oWFw = MetaAdapterFactory.getReferenceLink(0x9f846aef4e4a4a84L, 0x828e7e83fe2697f2L, 0x2dc684499788c1c4L, 0x2dc684499788c1c5L, "manifest");
+    /*package*/ static final SContainmentLink manifest$qa1D = MetaAdapterFactory.getContainmentLink(0x9f846aef4e4a4a84L, 0x828e7e83fe2697f2L, 0x2dc6844997876885L, 0x2dc684499788dbc4L, "manifest");
+    /*package*/ static final SContainmentLink target$plg6 = MetaAdapterFactory.getContainmentLink(0x9f846aef4e4a4a84L, 0x828e7e83fe2697f2L, 0x2dc6844997876885L, 0x6a7c966ca6903a21L, "target");
+    /*package*/ static final SReferenceLink manifest$5p4w = MetaAdapterFactory.getReferenceLink(0x9f846aef4e4a4a84L, 0x828e7e83fe2697f2L, 0x2dc684499788c1c4L, 0x2dc684499788c1c5L, "manifest");
   }
 
   private static final class CONCEPTS {
@@ -187,7 +187,7 @@ public class RefreshTestProject_Action extends BaseAction {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty virtualPackage$j19t = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

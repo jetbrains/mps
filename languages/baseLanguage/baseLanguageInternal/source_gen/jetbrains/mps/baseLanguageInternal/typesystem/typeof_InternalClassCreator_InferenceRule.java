@@ -27,15 +27,15 @@ public class typeof_InternalClassCreator_InferenceRule extends AbstractInference
   }
   public void applyRule(final SNode internalClassCreator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode type;
-    if ((SLinkOperations.getTarget(internalClassCreator, LINKS.type$Y1cW) != null)) {
-      type = SLinkOperations.getTarget(internalClassCreator, LINKS.type$Y1cW);
+    if ((SLinkOperations.getTarget(internalClassCreator, LINKS.type$2_h4) != null)) {
+      type = SLinkOperations.getTarget(internalClassCreator, LINKS.type$2_h4);
     } else {
       type = _quotation_createNode_dg32ga_a0a0a1a1();
     }
     {
       SNode _nodeToCheck_1029348928467 = internalClassCreator;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895903ab(jetbrains.mps.baseLanguageInternal.typesystem)", "1100832983841501789", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895903ab(jetbrains.mps.baseLanguageInternal.typesystem)", "1100832983841501791", true), (SNode) _quotation_createNode_dg32ga_a1a0c0c0b(SPropertyOperations.getString(internalClassCreator, PROPS.fqClassName$Y1bv), SLinkOperations.getTarget(SNodeOperations.as(type, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895903ab(jetbrains.mps.baseLanguageInternal.typesystem)", "1100832983841501791", true), (SNode) _quotation_createNode_dg32ga_a1a0c0c0b(SPropertyOperations.getString(internalClassCreator, PROPS.fqClassName$2$$1), SLinkOperations.getTarget(SNodeOperations.as(type, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -64,12 +64,12 @@ public class typeof_InternalClassCreator_InferenceRule extends AbstractInference
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$Y1cW = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0xf46f1c42ee50930L, 0xf46f1c42ee50935L, "type");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink type$2_h4 = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0xf46f1c42ee50930L, 0xf46f1c42ee50935L, "type");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty fqClassName$Y1bv = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0xf46f1c42ee50930L, 0xf46f1c42ee50932L, "fqClassName");
+    /*package*/ static final SProperty fqClassName$2$$1 = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0xf46f1c42ee50930L, 0xf46f1c42ee50932L, "fqClassName");
   }
 
   private static final class CONCEPTS {

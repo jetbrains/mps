@@ -90,7 +90,7 @@
       <node id="6266395626234295845" at="39,63,40,30" concept="4" />
       <node id="6266395626234295845" at="40,30,41,230" concept="2" />
       <node id="6266395626234295845" at="41,230,42,24" concept="5" />
-      <node id="6266395626234257711" at="46,0,47,0" concept="6" trace="inner$S6YY" />
+      <node id="6266395626234257711" at="46,0,47,0" concept="6" trace="inner$bow2" />
       <node id="6266395626234257711" at="50,0,51,0" concept="6" trace="CustomStatement$K4" />
       <node id="6266395626234257711" at="20,0,22,0" concept="1" trace="typeof_CustomStatement_InferenceRule#()V" />
       <node id="6266395626234257711" at="29,0,32,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

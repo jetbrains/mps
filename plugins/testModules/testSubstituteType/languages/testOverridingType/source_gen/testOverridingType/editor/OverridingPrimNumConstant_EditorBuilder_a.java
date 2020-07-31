@@ -81,7 +81,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.value$5e0D;
+      final SProperty property = PROPS.value$xMjR;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no value>");
@@ -128,7 +128,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.isFloat$zwK0;
+      final SProperty property = PROPS.isFloat$cRg0;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no isFloat>");
@@ -175,7 +175,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_2() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.isOverriding$Gg6u;
+      final SProperty property = PROPS.isOverriding$rN8y;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no isOverriding>");
@@ -224,9 +224,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$5e0D = MetaAdapterFactory.getProperty(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x1469c391a09a5eefL, 0x1469c391a09bd6aaL, "value");
-    /*package*/ static final SProperty isFloat$zwK0 = MetaAdapterFactory.getProperty(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x1469c391a09a5eefL, 0x1469c391a09a5ef0L, "isFloat");
-    /*package*/ static final SProperty isOverriding$Gg6u = MetaAdapterFactory.getProperty(0x394e385732564e8bL, 0x96015abe7ad354d9L, 0x5b362c13a4988795L, 0x5b362c13a498895bL, "isOverriding");
+    /*package*/ static final SProperty value$xMjR = MetaAdapterFactory.getProperty(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x1469c391a09a5eefL, 0x1469c391a09bd6aaL, "value");
+    /*package*/ static final SProperty isFloat$cRg0 = MetaAdapterFactory.getProperty(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x1469c391a09a5eefL, 0x1469c391a09a5ef0L, "isFloat");
+    /*package*/ static final SProperty isOverriding$rN8y = MetaAdapterFactory.getProperty(0x394e385732564e8bL, 0x96015abe7ad354d9L, 0x5b362c13a4988795L, 0x5b362c13a498895bL, "isOverriding");
   }
 
   private static final class CONCEPTS {

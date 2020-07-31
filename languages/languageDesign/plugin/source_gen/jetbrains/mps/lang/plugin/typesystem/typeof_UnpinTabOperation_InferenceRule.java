@@ -27,7 +27,7 @@ public class typeof_UnpinTabOperation_InferenceRule extends AbstractInferenceRul
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "5386424596292358229", true), (SNode) _quotation_createNode_i0j7kb_a1a0c0a0b(), _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(unpinTabOp, LINKS.componentExpression$fMVu);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(unpinTabOp, LINKS.componentExpression$DENy);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "5386424596292358231", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "5386424596292358236", true), (SNode) _quotation_createNode_i0j7kb_a1a0c0b0b(), false, true, _info_12389875345);
     }
@@ -56,7 +56,7 @@ public class typeof_UnpinTabOperation_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentExpression$fMVu = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x4ac06ca1bf6e6788L, 0x4ac06ca1bf6e678bL, "componentExpression");
+    /*package*/ static final SContainmentLink componentExpression$DENy = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x4ac06ca1bf6e6788L, 0x4ac06ca1bf6e678bL, "componentExpression");
   }
 
   private static final class CONCEPTS {

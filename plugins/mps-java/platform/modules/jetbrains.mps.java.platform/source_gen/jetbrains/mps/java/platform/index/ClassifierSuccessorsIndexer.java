@@ -131,19 +131,19 @@ public class ClassifierSuccessorsIndexer extends FileBasedIndexExtension<SNodeEn
         for (final SNode nextNode : SNodeUtil.getDescendants(modelData.getRootNodes())) {
           if (SNodeOperations.isInstanceOf(nextNode, CONCEPTS.ClassConcept$IY)) {
             SNode classNode = SNodeOperations.as(nextNode, CONCEPTS.ClassConcept$IY);
-            SNode superclass = SLinkOperations.getTarget(classNode, LINKS.superclass$_pqe);
+            SNode superclass = SLinkOperations.getTarget(classNode, LINKS.superclass$7jGM);
             if (superclass != null) {
               safeMap(result, superclass, modelReference, classNode);
             }
-            for (SNode implementedInterface : ListSequence.fromList(SLinkOperations.getChildren(classNode, LINKS.implementedInterface$mdc6))) {
+            for (SNode implementedInterface : ListSequence.fromList(SLinkOperations.getChildren(classNode, LINKS.implementedInterface$KoQU))) {
               safeMap(result, implementedInterface, modelReference, classNode);
             }
             if (SNodeOperations.isInstanceOf(classNode, CONCEPTS.AnonymousClass$aF)) {
-              safeMap(result, SNodeOperations.getReference(SNodeOperations.as(classNode, CONCEPTS.AnonymousClass$aF), LINKS.classifier$1y5e), modelReference, classNode);
+              safeMap(result, SNodeOperations.getReference(SNodeOperations.as(classNode, CONCEPTS.AnonymousClass$aF), LINKS.classifier$JwxM), modelReference, classNode);
             }
           } else if (SNodeOperations.isInstanceOf(nextNode, CONCEPTS.Interface$Kp)) {
             SNode interfaceNode = SNodeOperations.as(nextNode, CONCEPTS.Interface$Kp);
-            for (SNode extendedInterface : ListSequence.fromList(SLinkOperations.getChildren(interfaceNode, LINKS.extendedInterface$rbvY))) {
+            for (SNode extendedInterface : ListSequence.fromList(SLinkOperations.getChildren(interfaceNode, LINKS.extendedInterface$a$v2))) {
               safeMap(result, extendedInterface, modelReference, interfaceNode);
             }
           }
@@ -156,7 +156,7 @@ public class ClassifierSuccessorsIndexer extends FileBasedIndexExtension<SNodeEn
     }
 
     private void safeMap(Map<SNodeEntry, List<SNodeEntry>> result, SNode classifierType, SModelReference modelReference, SNode node) {
-      safeMap(result, SNodeOperations.getReference(classifierType, LINKS.classifier$pQ_R), modelReference, node);
+      safeMap(result, SNodeOperations.getReference(classifierType, LINKS.classifier$xslD), modelReference, node);
     }
 
     private void safeMap(Map<SNodeEntry, List<SNodeEntry>> result, SReference reference, SModelReference modelReference, SNode node) {
@@ -182,10 +182,10 @@ public class ClassifierSuccessorsIndexer extends FileBasedIndexExtension<SNodeEn
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SContainmentLink implementedInterface$mdc6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
-    /*package*/ static final SReferenceLink classifier$1y5e = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
-    /*package*/ static final SContainmentLink extendedInterface$rbvY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SContainmentLink extendedInterface$a$v2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

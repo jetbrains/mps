@@ -27,13 +27,13 @@ public class check_ClassLikeProperty_NonTypesystemRule extends AbstractNonTypesy
   public check_ClassLikeProperty_NonTypesystemRule() {
   }
   public void applyRule(final SNode property, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(Objects.equals(SPropertyOperations.getString(property, PROPS.name$tAp1), SPropertyOperations.getString(SLinkOperations.getTarget(property, LINKS.decl$Ails), PROPS.name$tAp1)))) {
-      SPropertyOperations.assign(property, PROPS.name$tAp1, SPropertyOperations.getString(SLinkOperations.getTarget(property, LINKS.decl$Ails), PROPS.name$tAp1));
+    if (!(Objects.equals(SPropertyOperations.getString(property, PROPS.name$lA7v), SPropertyOperations.getString(SLinkOperations.getTarget(property, LINKS.decl$ySo$), PROPS.name$lA7v)))) {
+      SPropertyOperations.assign(property, PROPS.name$lA7v, SPropertyOperations.getString(SLinkOperations.getTarget(property, LINKS.decl$ySo$), PROPS.name$lA7v));
     }
 
-    if (!((MatchingUtil.matchNodes(SLinkOperations.getTarget(property, LINKS.type$pLrO), RulesUtil.datatypeBLType(SLinkOperations.getTarget(SLinkOperations.getTarget(property, LINKS.decl$Ails), LINKS.type$4FJP)))))) {
+    if (!((MatchingUtil.matchNodes(SLinkOperations.getTarget(property, LINKS.type$uWuc), RulesUtil.datatypeBLType(SLinkOperations.getTarget(SLinkOperations.getTarget(property, LINKS.decl$ySo$), LINKS.type$hcaF)))))) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(property, "Property type is not the same as in descriptor", "c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:e04b7053-8c89-4f87-b296-94779c625d9d(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.typesystem)", "3855110916780273812", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.lightweightdsl.typesystem.fix_SignatureMismatch_QuickFix", false);
@@ -53,13 +53,13 @@ public class check_ClassLikeProperty_NonTypesystemRule extends AbstractNonTypesy
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink decl$Ails = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9151L, 0x772497abf2e77969L, "decl");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SReferenceLink type$4FJP = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fbb31L, 0x478b68dcf4b1763fL, "type");
+    /*package*/ static final SReferenceLink decl$ySo$ = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9151L, 0x772497abf2e77969L, "decl");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SReferenceLink type$hcaF = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fbb31L, 0x478b68dcf4b1763fL, "type");
   }
 
   private static final class CONCEPTS {

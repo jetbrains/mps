@@ -86,7 +86,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$tAp1;
+      final SProperty property = PROPS.name$lA7v;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -145,7 +145,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.nested$uPAf;
+      return LINKS.nested$VXxh;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.SubConceptToTransformNested$4z;
@@ -158,7 +158,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(nestedListHandler_vnevkh_a1a.this.getNode(), LINKS.nested$uPAf));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(nestedListHandler_vnevkh_a1a.this.getNode(), LINKS.nested$VXxh));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -200,7 +200,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
@@ -209,6 +209,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink nested$uPAf = MetaAdapterFactory.getContainmentLink(0xe8e38af60cf34cc1L, 0xbaa3ba261722e8f3L, 0x702703eb1401f557L, 0x702703eb14027bc7L, "nested");
+    /*package*/ static final SContainmentLink nested$VXxh = MetaAdapterFactory.getContainmentLink(0xe8e38af60cf34cc1L, 0xbaa3ba261722e8f3L, 0x702703eb1401f557L, 0x702703eb14027bc7L, "nested");
   }
 }

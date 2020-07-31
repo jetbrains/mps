@@ -42,9 +42,9 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectUncaughtMethodThrowables_id4Gt7ANIVH8f, getScope_id52_Geb4QDV$, getCommentedNodes_id3$Sh7m_tmZE, parseAndAddWords_id45vN3dBFprj, isTODOComment_idRbAU21$c$g);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SNode line = SNodeFactoryOperations.addNewChild(__thisNode__, LINKS.text$BOhB, null);
-    ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.elements$eRew)).removeElementAt(0);
-    SNodeFactoryOperations.addNewChild(line, LINKS.elements$eRew, CONCEPTS.Word$AM);
+    SNode line = SNodeFactoryOperations.addNewChild(__thisNode__, LINKS.text$ikxT, null);
+    ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.elements$cK1w)).removeElementAt(0);
+    SNodeFactoryOperations.addNewChild(line, LINKS.elements$cK1w, CONCEPTS.Word$AM);
   }
 
   /*package*/ static void collectUncaughtMethodThrowables_id4Gt7ANIVH8f(@NotNull SNode __thisNode__, Set<SNode> throwables, boolean ignoreMayBeThrowables) {
@@ -64,8 +64,8 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
   }
   @Deprecated
   /*package*/ static Iterable<SNode> getCommentedNodes_id3$Sh7m_tmZE(@NotNull SNode __thisNode__) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.commentPart$_gGy)).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.commentPart$_gGy)).first(), CONCEPTS.StatementCommentPart$7K)) {
-      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.commentPart$_gGy)).first(), CONCEPTS.StatementCommentPart$7K), LINKS.commentedStatement$Y080));
+    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.commentPart$35$u)).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.commentPart$35$u)).first(), CONCEPTS.StatementCommentPart$7K)) {
+      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.commentPart$35$u)).first(), CONCEPTS.StatementCommentPart$7K), LINKS.commentedStatement$23S0));
     }
     return ListSequence.fromList(new ArrayList<SNode>());
   }
@@ -73,26 +73,26 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
     if ((text != null && text.length() > 0)) {
       String[] words = text.split(" ");
       SNode l;
-      if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.text$BOhB)).isNotEmpty()) {
-        l = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.text$BOhB)).last();
+      if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.text$ikxT)).isNotEmpty()) {
+        l = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.text$ikxT)).last();
       } else {
-        l = SLinkOperations.addNewChild(__thisNode__, LINKS.text$BOhB, CONCEPTS.Line$w3);
+        l = SLinkOperations.addNewChild(__thisNode__, LINKS.text$ikxT, CONCEPTS.Line$w3);
       }
-      if (isEmptyString(SPropertyOperations.getString(SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$eRew)).last(), CONCEPTS.Word$AM), PROPS.value$cK70))) {
-        ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$eRew)).removeLastElement();
+      if (isEmptyString(SPropertyOperations.getString(SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$cK1w)).last(), CONCEPTS.Word$AM), PROPS.value$bjp0))) {
+        ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$cK1w)).removeLastElement();
       }
       for (String w : words) {
-        SNode word = SNodeFactoryOperations.addNewChild(l, LINKS.elements$eRew, CONCEPTS.Word$AM);
-        SPropertyOperations.assign(word, PROPS.value$cK70, w);
+        SNode word = SNodeFactoryOperations.addNewChild(l, LINKS.elements$cK1w, CONCEPTS.Word$AM);
+        SPropertyOperations.assign(word, PROPS.value$bjp0, w);
       }
     }
   }
   /*package*/ static boolean isTODOComment_idRbAU21$c$g(@NotNull SNode __thisNode__) {
-    SNode firstLine = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.text$BOhB)).first();
-    if ((firstLine != null) && ListSequence.fromList(SLinkOperations.getChildren(firstLine, LINKS.elements$eRew)).isNotEmpty()) {
-      SNode firstElement = ListSequence.fromList(SLinkOperations.getChildren(firstLine, LINKS.elements$eRew)).first();
+    SNode firstLine = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.text$ikxT)).first();
+    if ((firstLine != null) && ListSequence.fromList(SLinkOperations.getChildren(firstLine, LINKS.elements$cK1w)).isNotEmpty()) {
+      SNode firstElement = ListSequence.fromList(SLinkOperations.getChildren(firstLine, LINKS.elements$cK1w)).first();
       if (SNodeOperations.isInstanceOf(firstElement, CONCEPTS.Word$AM)) {
-        String text = SPropertyOperations.getString(SNodeOperations.cast(firstElement, CONCEPTS.Word$AM), PROPS.value$cK70);
+        String text = SPropertyOperations.getString(SNodeOperations.cast(firstElement, CONCEPTS.Word$AM), PROPS.value$bjp0);
         if (text != null) {
           text = text.trim().toLowerCase();
           return text.startsWith("todo") || text.startsWith("fix");
@@ -162,10 +162,10 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink text$BOhB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text");
-    /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
-    /*package*/ static final SContainmentLink commentPart$_gGy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart");
-    /*package*/ static final SContainmentLink commentedStatement$Y080 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af16ff67L, 0x57d533a7af16ff68L, "commentedStatement");
+    /*package*/ static final SContainmentLink text$ikxT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text");
+    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink commentPart$35$u = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart");
+    /*package*/ static final SContainmentLink commentedStatement$23S0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af16ff67L, 0x57d533a7af16ff68L, "commentedStatement");
   }
 
   private static final class CONCEPTS {
@@ -177,6 +177,6 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$cK70 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty value$bjp0 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
   }
 }

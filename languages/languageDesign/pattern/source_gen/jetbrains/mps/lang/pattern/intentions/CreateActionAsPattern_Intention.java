@@ -62,7 +62,7 @@ public final class CreateActionAsPattern_Intention extends AbstractIntentionDesc
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode currentNode = editorContext.getSelectedNode();
       SNodeFactoryOperations.setNewAttribute(currentNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AsPattern$Jg), CONCEPTS.ActionAsPattern$TP);
-      SPropertyOperations.assign(AttributeOperations.getAttribute(currentNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AsPattern$Jg)), PROPS.varName$DO_b, "action_var_" + currentNode.getNodeId().toString());
+      SPropertyOperations.assign(AttributeOperations.getAttribute(currentNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AsPattern$Jg)), PROPS.varName$gu0l, "action_var_" + currentNode.getNodeId().toString());
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -76,6 +76,6 @@ public final class CreateActionAsPattern_Intention extends AbstractIntentionDesc
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty varName$DO_b = MetaAdapterFactory.getProperty(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4793L, 0x108a9cb4794L, "varName");
+    /*package*/ static final SProperty varName$gu0l = MetaAdapterFactory.getProperty(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4793L, 0x108a9cb4794L, "varName");
   }
 }

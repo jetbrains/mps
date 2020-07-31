@@ -50,15 +50,15 @@ public class LinkInstances_Finder extends GeneratedFinder {
       Set<String> roles = SetSequence.fromSet(new HashSet<String>());
       SNode curNode = node;
       do {
-        SetSequence.fromSet(roles).addElement(SPropertyOperations.getString(curNode, PROPS.role$r_O$));
-        curNode = SLinkOperations.getTarget(curNode, LINKS.specializedLink$3uH0);
+        SetSequence.fromSet(roles).addElement(SPropertyOperations.getString(curNode, PROPS.role$nkts));
+        curNode = SLinkOperations.getTarget(curNode, LINKS.specializedLink$FRN0);
       } while (curNode != null);
       // find concept 
       SNode conceptDeclaration = SNodeOperations.getNodeAncestor(node, CONCEPTS.AbstractConceptDeclaration$UN, false, false);
       if ((conceptDeclaration == null)) {
         return;
       }
-      boolean isChild = SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.metaClass$tHD7), 0xfc6f4e95b9L);
+      boolean isChild = SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.metaClass$p6Up), 0xfc6f4e95b9L);
       // find instances and link examples 
       for (SNode instance : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder", conceptDeclaration, scope, monitor))) {
         if (isChild) {
@@ -97,11 +97,11 @@ public class LinkInstances_Finder extends GeneratedFinder {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty role$r_O$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
-    /*package*/ static final SProperty metaClass$tHD7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink specializedLink$3uH0 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98051c244L, "specializedLink");
+    /*package*/ static final SReferenceLink specializedLink$FRN0 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98051c244L, "specializedLink");
   }
 }

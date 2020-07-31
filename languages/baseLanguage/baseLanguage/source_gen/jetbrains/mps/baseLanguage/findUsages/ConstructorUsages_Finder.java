@@ -62,11 +62,11 @@ public class ConstructorUsages_Finder extends GeneratedFinder {
           })) {
             boolean thisConstructor = true;
             SNode invocationNode = SNodeOperations.cast(invocation, CONCEPTS.SuperConstructorInvocation$48);
-            if (ListSequence.fromList(SLinkOperations.getChildren(invocationNode, LINKS.actualArgument$$A7L)).count() == ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$WIkZ)).count()) {
-              for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(invocationNode, LINKS.actualArgument$$A7L)).count(); i++) {
-                SNode actualArgument = ListSequence.fromList(SLinkOperations.getChildren(invocationNode, LINKS.actualArgument$$A7L)).getElement(i);
-                SNode formalArgument = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$WIkZ)).getElement(i);
-                if (!(TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(actualArgument), SLinkOperations.getTarget(formalArgument, LINKS.type$pLrO)))) {
+            if (ListSequence.fromList(SLinkOperations.getChildren(invocationNode, LINKS.actualArgument$ItKJ)).count() == ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$qsax)).count()) {
+              for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(invocationNode, LINKS.actualArgument$ItKJ)).count(); i++) {
+                SNode actualArgument = ListSequence.fromList(SLinkOperations.getChildren(invocationNode, LINKS.actualArgument$ItKJ)).getElement(i);
+                SNode formalArgument = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$qsax)).getElement(i);
+                if (!(TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(actualArgument), SLinkOperations.getTarget(formalArgument, LINKS.type$uWuc)))) {
                   thisConstructor = false;
                 }
               }
@@ -80,13 +80,13 @@ public class ConstructorUsages_Finder extends GeneratedFinder {
       // search for enum constants creation 
       SNode enumNode = SNodeOperations.cast(SNodeOperations.getNodeAncestor(node, CONCEPTS.EnumClass$uy, false, false), CONCEPTS.EnumClass$uy);
       if (enumNode != null) {
-        for (SNode enumConstant : ListSequence.fromList(SLinkOperations.getChildren(enumNode, LINKS.enumConstant$urAQ))) {
+        for (SNode enumConstant : ListSequence.fromList(SLinkOperations.getChildren(enumNode, LINKS.enumConstant$JnOa))) {
           boolean thisConstructor = true;
-          if (ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.actualArgument$$A7L)).count() == ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$WIkZ)).count()) {
-            for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.actualArgument$$A7L)).count(); i++) {
-              SNode actualArgument = ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.actualArgument$$A7L)).getElement(i);
-              SNode formalArgument = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$WIkZ)).getElement(i);
-              if (!(TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(actualArgument), SLinkOperations.getTarget(formalArgument, LINKS.type$pLrO)))) {
+          if (ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.actualArgument$ItKJ)).count() == ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$qsax)).count()) {
+            for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.actualArgument$ItKJ)).count(); i++) {
+              SNode actualArgument = ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.actualArgument$ItKJ)).getElement(i);
+              SNode formalArgument = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$qsax)).getElement(i);
+              if (!(TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(actualArgument), SLinkOperations.getTarget(formalArgument, LINKS.type$uWuc)))) {
                 thisConstructor = false;
               }
             }
@@ -120,9 +120,9 @@ public class ConstructorUsages_Finder extends GeneratedFinder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink enumConstant$urAQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink enumConstant$JnOa = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
   }
 }

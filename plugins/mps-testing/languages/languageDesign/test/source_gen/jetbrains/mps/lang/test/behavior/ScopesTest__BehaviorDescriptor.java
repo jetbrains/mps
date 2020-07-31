@@ -52,11 +52,11 @@ public final class ScopesTest__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static SReference getCheckingReference_id4IvydoGvimX(@NotNull SNode __thisNode__) {
     SNode nodeToCheck = INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__);
-    if (SLinkOperations.getTarget(__thisNode__, LINKS.checkingReference$ZKEm) == null) {
+    if (SLinkOperations.getTarget(__thisNode__, LINKS.checkingReference$S$wE) == null) {
       return nodeToCheck.getReferences().iterator().next();
     }
     for (SReference reference : Sequence.fromIterable(nodeToCheck.getReferences())) {
-      if (reference.getTargetNode() == SLinkOperations.getTarget(__thisNode__, LINKS.checkingReference$ZKEm)) {
+      if (reference.getTargetNode() == SLinkOperations.getTarget(__thisNode__, LINKS.checkingReference$S$wE)) {
         return reference;
       }
     }
@@ -87,9 +87,9 @@ public final class ScopesTest__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static void perform_id1kgh5YabdhC(@NotNull SNode __thisNode__, SNode node, @Nullable ComponentHost host) {
     SReference checkingReference = ScopesTest__BehaviorDescriptor.getCheckingReference_id4IvydoGvimX.invoke(__thisNode__);
-    new CheckScopesAction(checkingReference.getSourceNode(), checkingReference.getLink(), ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodes$B16t)).select(new ISelector<SNode, SNodeReference>() {
+    new CheckScopesAction(checkingReference.getSourceNode(), checkingReference.getLink(), ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodes$Ty83)).select(new ISelector<SNode, SNodeReference>() {
       public SNodeReference select(SNode it) {
-        return SLinkOperations.getPointer(it, LINKS.ref$mFxT);
+        return SLinkOperations.getPointer(it, LINKS.ref$Z5qB);
       }
     }).toListSequence()).check();
   }
@@ -156,9 +156,9 @@ public final class ScopesTest__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink checkingReference$ZKEm = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, 0x4b9f88d62c795596L, "checkingReference");
-    /*package*/ static final SContainmentLink nodes$B16t = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, 0x32ba5b0ec25fea03L, "nodes");
-    /*package*/ static final SReferenceLink ref$mFxT = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x32ba5b0ec25fe9f3L, 0x383e5e55de89bc1fL, "ref");
+    /*package*/ static final SReferenceLink checkingReference$S$wE = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, 0x4b9f88d62c795596L, "checkingReference");
+    /*package*/ static final SContainmentLink nodes$Ty83 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, 0x32ba5b0ec25fea03L, "nodes");
+    /*package*/ static final SReferenceLink ref$Z5qB = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x32ba5b0ec25fe9f3L, 0x383e5e55de89bc1fL, "ref");
   }
 
   private static final class CONCEPTS {

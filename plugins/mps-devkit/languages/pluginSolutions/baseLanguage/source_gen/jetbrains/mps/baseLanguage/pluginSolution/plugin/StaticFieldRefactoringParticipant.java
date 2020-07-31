@@ -44,12 +44,12 @@ public class StaticFieldRefactoringParticipant extends StaticMemberRefactoringPa
       if (tryToResolveNewTarget != null && SNodeOperations.getNodeAncestor(containingNode, CONCEPTS.Classifier$hJ, false, false) == SNodeOperations.getNodeAncestor(tryToResolveNewTarget, CONCEPTS.Classifier$hJ, false, false)) {
         SNode replacement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"));
         SNodeOperations.replaceWithAnother(containingNode, replacement);
-        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.variableDeclaration$2ky6, newTarget, resolveInfo);
+        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.variableDeclaration$7WwU, newTarget, resolveInfo);
       } else {
         SNode replacement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference"));
         SNodeOperations.replaceWithAnother(containingNode, replacement);
-        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.variableDeclaration$2ky6, newTarget, resolveInfo);
-        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.classifier$ZTjE, new NodeData<UpdateReferencesParticipantBase.NamedNodeReference>(newTarget.other(), ((UpdateReferencesParticipantBase.NamedNodeReference) null)), newTarget.other().name());
+        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.variableDeclaration$7WwU, newTarget, resolveInfo);
+        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.classifier$WKxm, new NodeData<UpdateReferencesParticipantBase.NamedNodeReference>(newTarget.other(), ((UpdateReferencesParticipantBase.NamedNodeReference) null)), newTarget.other().name());
       }
     }
   }
@@ -62,7 +62,7 @@ public class StaticFieldRefactoringParticipant extends StaticMemberRefactoringPa
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SReferenceLink classifier$ZTjE = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink classifier$WKxm = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
   }
 }

@@ -48,17 +48,17 @@ public final class AttributeAccess__BehaviorDescriptor extends BaseBHDescriptor 
     return true;
   }
   /*package*/ static boolean isSingularCardinality_id3vpu_siOTrf(@NotNull SNode __thisNode__) {
-    return !((AttributeDesignTimeOperations.isMultipleAttribute(AttributeQualifier__BehaviorDescriptor.getTargetConcept_id5zEkxuKhyRq.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.qualifier$ypza))) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.qualifier$ypza), CONCEPTS.AllAttributeQualifier$jE)));
+    return !((AttributeDesignTimeOperations.isMultipleAttribute(AttributeQualifier__BehaviorDescriptor.getTargetConcept_id5zEkxuKhyRq.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.qualifier$Eo1Q))) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.qualifier$Eo1Q), CONCEPTS.AllAttributeQualifier$jE)));
   }
   /*package*/ static boolean isAggregation_id3vpu_siOTrm(@NotNull SNode __thisNode__) {
     return true;
   }
   /*package*/ static SNode getTargetConcept_id3vpu_siOTrr(@NotNull SNode __thisNode__) {
-    return (SNode) AttributeQualifier__BehaviorDescriptor.getTargetConcept_id5zEkxuKhyRq.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.qualifier$ypza));
+    return (SNode) AttributeQualifier__BehaviorDescriptor.getTargetConcept_id5zEkxuKhyRq.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.qualifier$Eo1Q));
   }
   /*package*/ static SNode getAttributeContainerType_id62qhzb6UOqI(@NotNull SNode __thisNode__) {
     SNode result = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperation__BehaviorDescriptor.getLeftExpression_idhEwJdGu.invoke(__thisNode__)), CONCEPTS.SNodeType$gn);
-    return ((result != null) && (SLinkOperations.getTarget(result, LINKS.concept$HWFQ) == null) ? _quotation_createNode_q663c8_a0b0e() : result);
+    return ((result != null) && (SLinkOperations.getTarget(result, LINKS.concept$gpfa) == null) ? _quotation_createNode_q663c8_a0b0e() : result);
   }
   /*package*/ static boolean applicableToNode_id1653mnvAgrs(@NotNull SAbstractConcept __thisConcept__) {
     return true;
@@ -133,8 +133,8 @@ public final class AttributeAccess__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink qualifier$ypza = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045a3b2L, 0x58ea5217b045b9b4L, "qualifier");
-    /*package*/ static final SReferenceLink concept$HWFQ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SContainmentLink qualifier$Eo1Q = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045a3b2L, 0x58ea5217b045b9b4L, "qualifier");
+    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
   }
 
   private static final class CONCEPTS {

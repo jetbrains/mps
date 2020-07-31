@@ -30,7 +30,7 @@
       <node id="332515575062128737" at="50,0,51,0" concept="7" trace="CheckboxUI_Text$p8" />
       <node id="332515575062128737" at="51,0,52,0" concept="7" trace="CellLayout_Horizontal$Ss" />
       <node id="332515575062128737" at="52,0,53,0" concept="7" trace="CellModel_Constant$SB" />
-      <node id="332515575062128737" at="56,0,57,0" concept="7" trace="styleItem$$mEY" />
+      <node id="332515575062128737" at="56,0,57,0" concept="7" trace="styleItem$AYO2" />
       <node id="332515575062128737" at="21,0,24,0" concept="0" trace="CheckboxUI_Text_Constraints#()V" />
       <node id="332515575062128737" at="31,0,34,9" concept="2" />
       <node id="332515575062130601" at="40,128,44,5" concept="2" />
@@ -80,8 +80,8 @@
       <node id="7569401714696478829" at="67,0,68,0" concept="7" trace="breakingNode_glszdl_a0a0a0a0a1a0a0a0c" />
       <node id="7569401714696478829" at="70,0,71,0" concept="7" trace="CellModel_Checkbox$h5" />
       <node id="7569401714696478829" at="71,0,72,0" concept="7" trace="BaseEditorComponent$Sy" />
-      <node id="7569401714696478829" at="75,0,76,0" concept="7" trace="propertyDeclaration$LPBV" />
-      <node id="7569401714696478829" at="76,0,77,0" concept="7" trace="dataType$fLUl" />
+      <node id="7569401714696478829" at="75,0,76,0" concept="7" trace="propertyDeclaration$8Yl_" />
+      <node id="7569401714696478829" at="76,0,77,0" concept="7" trace="dataType$Dbgb" />
       <node id="7569401714696478829" at="31,0,34,0" concept="0" trace="CellModel_Checkbox_Constraints#()V" />
       <node id="6836281137582841511" at="55,0,58,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="7569401714696478830" at="38,0,42,0" concept="3" trace="hasOwnScopeProvider#()Z" />

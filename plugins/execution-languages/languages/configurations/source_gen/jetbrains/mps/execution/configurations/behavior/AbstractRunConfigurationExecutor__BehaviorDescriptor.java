@@ -34,8 +34,8 @@ public final class AbstractRunConfigurationExecutor__BehaviorDescriptor extends 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCanExecuteMethodName_id6LlKjXrMerG, getSuffix_idO$iR4JBsSb, getGeneratedClassName_idO$iR4JBsSg);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.canRun$P4_O, true);
-    SPropertyOperations.assign(__thisNode__, PROPS.configurationName$vU1z, "myRunConfiguration");
+    SPropertyOperations.assign(__thisNode__, PROPS.canRun$Hekc, true);
+    SPropertyOperations.assign(__thisNode__, PROPS.configurationName$t6JX, "myRunConfiguration");
   }
 
   /*package*/ static String getCanExecuteMethodName_id6LlKjXrMerG(@NotNull SNode __thisNode__) {
@@ -43,10 +43,10 @@ public final class AbstractRunConfigurationExecutor__BehaviorDescriptor extends 
   }
   @NonNls
   /*package*/ static String getSuffix_idO$iR4JBsSb(@NotNull SNode __thisNode__) {
-    return IGeneratedToClass__BehaviorDescriptor.getSuffix_idO$iR4JBsSb.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.configuration$RmX0)) + "_RunProfileState";
+    return IGeneratedToClass__BehaviorDescriptor.getSuffix_idO$iR4JBsSb.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.configuration$O7z0)) + "_RunProfileState";
   }
   /*package*/ static String getGeneratedClassName_idO$iR4JBsSg(@NotNull SNode __thisNode__) {
-    return ((String) IGeneratedToClass__BehaviorDescriptor.getGeneratedClassName_idO$iR4JBsSG.invoke(__thisNode__, SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.configuration$RmX0), PROPS.name$tAp1)));
+    return ((String) IGeneratedToClass__BehaviorDescriptor.getGeneratedClassName_idO$iR4JBsSG.invoke(__thisNode__, SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.configuration$O7z0), PROPS.name$lA7v)));
   }
 
   /*package*/ AbstractRunConfigurationExecutor__BehaviorDescriptor() {
@@ -100,12 +100,12 @@ public final class AbstractRunConfigurationExecutor__BehaviorDescriptor extends 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty canRun$P4_O = MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, 0x523a1a6c9706408bL, "canRun");
-    /*package*/ static final SProperty configurationName$vU1z = MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, 0x1acdeec3ca0ad49cL, "configurationName");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty canRun$Hekc = MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, 0x523a1a6c9706408bL, "canRun");
+    /*package*/ static final SProperty configurationName$t6JX = MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, 0x1acdeec3ca0ad49cL, "configurationName");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink configuration$RmX0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9dce91L, 0xd244b712f9dce92L, "configuration");
+    /*package*/ static final SReferenceLink configuration$O7z0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9dce91L, 0xd244b712f9dce92L, "configuration");
   }
 }

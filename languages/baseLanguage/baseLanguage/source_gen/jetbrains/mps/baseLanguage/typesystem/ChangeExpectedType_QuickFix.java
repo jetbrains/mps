@@ -24,9 +24,9 @@ public class ChangeExpectedType_QuickFix extends QuickFix_Runtime {
   public void execute(SNode node) {
     SNode actualType = (SNodeOperations.isInstanceOf(((SNode) ChangeExpectedType_QuickFix.this.getField("desiredType")[0]), CONCEPTS.Type$IG) ? ((SNode) ChangeExpectedType_QuickFix.this.getField("desiredType")[0]) : TypecheckingFacade.getFromContext().getTypeOf(((SNode) ChangeExpectedType_QuickFix.this.getField("desiredType")[0])));
     if (SNodeOperations.isInstanceOf(((SNode) ChangeExpectedType_QuickFix.this.getField("expression")[0]), CONCEPTS.VariableDeclaration$xe)) {
-      SLinkOperations.setTarget(SNodeOperations.cast(((SNode) ChangeExpectedType_QuickFix.this.getField("expression")[0]), CONCEPTS.VariableDeclaration$xe), LINKS.type$pLrO, actualType);
+      SLinkOperations.setTarget(SNodeOperations.cast(((SNode) ChangeExpectedType_QuickFix.this.getField("expression")[0]), CONCEPTS.VariableDeclaration$xe), LINKS.type$uWuc, actualType);
     } else if (SNodeOperations.isInstanceOf(((SNode) ChangeExpectedType_QuickFix.this.getField("expression")[0]), CONCEPTS.VariableReference$sQ)) {
-      SLinkOperations.setTarget(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) ChangeExpectedType_QuickFix.this.getField("expression")[0]), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), LINKS.type$pLrO, actualType);
+      SLinkOperations.setTarget(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) ChangeExpectedType_QuickFix.this.getField("expression")[0]), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), LINKS.type$uWuc, actualType);
     }
   }
 
@@ -37,7 +37,7 @@ public class ChangeExpectedType_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 }

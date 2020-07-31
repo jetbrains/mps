@@ -36,7 +36,7 @@ public final class BuildLayout_ExportAsJavaLibrary__BehaviorDescriptor extends B
     if (object instanceof SNode) {
       SNode node = (SNode) object;
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildSource_JavaLibrary$zR)) {
-        return node == SLinkOperations.getTarget(__thisNode__, LINKS.library$dGCu);
+        return node == SLinkOperations.getTarget(__thisNode__, LINKS.library$CBAy);
       }
     }
     return false;
@@ -89,7 +89,7 @@ public final class BuildLayout_ExportAsJavaLibrary__BehaviorDescriptor extends B
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink library$dGCu = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x286d67dde534f69bL, 0x286d67dde534f69eL, "library");
+    /*package*/ static final SReferenceLink library$CBAy = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x286d67dde534f69bL, 0x286d67dde534f69eL, "library");
   }
 
   private static final class CONCEPTS {

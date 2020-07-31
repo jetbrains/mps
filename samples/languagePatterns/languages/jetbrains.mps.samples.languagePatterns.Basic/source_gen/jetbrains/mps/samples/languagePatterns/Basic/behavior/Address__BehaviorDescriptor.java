@@ -31,7 +31,7 @@ public final class Address__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.kind$Tmwt);
+    return SPropertyOperations.getString(__thisNode__, PROPS.kind$LTI3);
   }
 
   /*package*/ Address__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class Address__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty kind$Tmwt = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x48a6ab8c26b3f40bL, 0x48a6ab8c26b4f474L, "kind");
+    /*package*/ static final SProperty kind$LTI3 = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x48a6ab8c26b3f40bL, 0x48a6ab8c26b4f474L, "kind");
   }
 }

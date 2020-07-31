@@ -39,7 +39,7 @@ public final class QueryFunction_ParametersList__BehaviorDescriptor extends Base
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
     SNode ancestor = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ParametersInformationQuery$_B, false, false);
-    SNode expectedType = SLinkOperations.getTarget(ancestor, LINKS.type$bAu$);
+    SNode expectedType = SLinkOperations.getTarget(ancestor, LINKS.type$BCNs);
     if (expectedType == null) {
       return _quotation_createNode_1gao1h_a0a2a0();
     }
@@ -128,6 +128,6 @@ public final class QueryFunction_ParametersList__BehaviorDescriptor extends Base
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$bAu$ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a67a319ce06acceL, 0x717f1070bf01cfc9L, "type");
+    /*package*/ static final SContainmentLink type$BCNs = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a67a319ce06acceL, 0x717f1070bf01cfc9L, "type");
   }
 }

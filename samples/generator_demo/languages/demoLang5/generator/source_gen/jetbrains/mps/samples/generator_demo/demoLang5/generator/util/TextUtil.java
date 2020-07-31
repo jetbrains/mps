@@ -23,12 +23,12 @@ public class TextUtil {
     // get all MPS strings 
     Iterable<SNode> mpses = ListSequence.fromList(strings).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.value$kiE0).startsWith("MPS");
+        return SPropertyOperations.getString(it, PROPS.value$P2m0).startsWith("MPS");
       }
     });
     for (SNode mps : Sequence.fromIterable(mpses)) {
       // convert "MPS" --> "JetBrains MPS" 
-      SPropertyOperations.assign(mps, PROPS.value$kiE0, "JetBrains " + SPropertyOperations.getString(mps, PROPS.value$kiE0));
+      SPropertyOperations.assign(mps, PROPS.value$P2m0, "JetBrains " + SPropertyOperations.getString(mps, PROPS.value$P2m0));
     }
   }
 
@@ -37,6 +37,6 @@ public class TextUtil {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$kiE0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 }

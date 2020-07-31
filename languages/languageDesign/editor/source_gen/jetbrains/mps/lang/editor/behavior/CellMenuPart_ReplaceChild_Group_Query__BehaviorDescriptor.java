@@ -39,7 +39,7 @@ public final class CellMenuPart_ReplaceChild_Group_Query__BehaviorDescriptor ext
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
     SNode hostMenuPart = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.CellMenuPart_ReplaceChild_Group$Wm);
-    SNode parameterObjectType = SLinkOperations.getTarget(hostMenuPart, LINKS.parameterObjectType$tUfN);
+    SNode parameterObjectType = SLinkOperations.getTarget(hostMenuPart, LINKS.parameterObjectType$vdDH);
     if (parameterObjectType == null) {
       return _quotation_createNode_ygqhl6_a0a2a0();
     }
@@ -134,6 +134,6 @@ public final class CellMenuPart_ReplaceChild_Group_Query__BehaviorDescriptor ext
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameterObjectType$tUfN = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f4e874cf6L, 0x10f4e8b51a5L, "parameterObjectType");
+    /*package*/ static final SContainmentLink parameterObjectType$vdDH = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f4e874cf6L, 0x10f4e8b51a5L, "parameterObjectType");
   }
 }

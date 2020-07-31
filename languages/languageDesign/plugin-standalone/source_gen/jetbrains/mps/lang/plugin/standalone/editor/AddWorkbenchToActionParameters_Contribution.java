@@ -127,7 +127,7 @@ public class AddWorkbenchToActionParameters_Contribution extends SubstituteMenuB
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ActionDataParameterDeclaration$Wd, null);
-          SLinkOperations.setTarget(result, LINKS.key$brTh, myParameterObject);
+          SLinkOperations.setTarget(result, LINKS.key$ywJf, myParameterObject);
           return result;
         }
 
@@ -178,6 +178,6 @@ public class AddWorkbenchToActionParameters_Contribution extends SubstituteMenuB
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink key$brTh = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, 0x11b69e95df5L, "key");
+    /*package*/ static final SReferenceLink key$ywJf = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, 0x11b69e95df5L, "key");
   }
 }

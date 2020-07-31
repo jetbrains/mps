@@ -92,7 +92,7 @@ public class SNodeOperation_TransformationMenu extends TransformationMenuBase {
   public class TMP_Group_umtya2_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      boolean alreadyHasParms = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameter$3FGp)).isNotEmpty();
+      boolean alreadyHasParms = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameter$Maw7)).isNotEmpty();
       if (alreadyHasParms) {
         return false;
       }
@@ -152,7 +152,7 @@ public class SNodeOperation_TransformationMenu extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.parameter$3FGp, null);
+          SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.parameter$Maw7, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -186,6 +186,6 @@ public class SNodeOperation_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$3FGp = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, 0x10a61ef5a56L, "parameter");
+    /*package*/ static final SContainmentLink parameter$Maw7 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, 0x10a61ef5a56L, "parameter");
   }
 }

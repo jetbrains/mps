@@ -26,19 +26,19 @@ public class CheckNoDuplicatedPropertyHints_NonTypesystemRule extends AbstractNo
   public CheckNoDuplicatedPropertyHints_NonTypesystemRule() {
   }
   public void applyRule(final SNode pd, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(pd, LINKS.prop$DMff) == null)) {
+    if ((SLinkOperations.getTarget(pd, LINKS.prop$floh) == null)) {
       return;
     }
 
-    Iterable<SNode> sameFeatureHints = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(pd, CONCEPTS.ConceptVCSDescriptor$QW, false, false), LINKS.features$mDEQ), CONCEPTS.PropertyVCSDescriptor$S8)).where(new IWhereFilter<SNode>() {
+    Iterable<SNode> sameFeatureHints = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(pd, CONCEPTS.ConceptVCSDescriptor$QW, false, false), LINKS.features$YbKa), CONCEPTS.PropertyVCSDescriptor$S8)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.prop$DMff) == SLinkOperations.getTarget(pd, LINKS.prop$DMff);
+        return SLinkOperations.getTarget(it, LINKS.prop$floh) == SLinkOperations.getTarget(pd, LINKS.prop$floh);
       }
     });
     if (Sequence.fromIterable(sameFeatureHints).count() != 1) {
       {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.prop$DMff);
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(pd, "Multiple hints are defined for property " + SPropertyOperations.getString(SLinkOperations.getTarget(pd, LINKS.prop$DMff), PROPS.name$tAp1), "r:09da38a1-d679-467f-8975-eacacbd1c0a3(jetbrains.mps.vcs.mergehints.typesystem)", "6556262262332943883", null, errorTarget);
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.prop$floh);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(pd, "Multiple hints are defined for property " + SPropertyOperations.getString(SLinkOperations.getTarget(pd, LINKS.prop$floh), PROPS.name$lA7v), "r:09da38a1-d679-467f-8975-eacacbd1c0a3(jetbrains.mps.vcs.mergehints.typesystem)", "6556262262332943883", null, errorTarget);
       }
     }
   }
@@ -53,8 +53,8 @@ public class CheckNoDuplicatedPropertyHints_NonTypesystemRule extends AbstractNo
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink prop$DMff = MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x4f2cc0d970a4f9d0L, 0x4f2cc0d970a4f877L, "prop");
-    /*package*/ static final SContainmentLink features$mDEQ = MetaAdapterFactory.getContainmentLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648fcL, 0x4f2cc0d970a4f8c9L, "features");
+    /*package*/ static final SReferenceLink prop$floh = MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x4f2cc0d970a4f9d0L, 0x4f2cc0d970a4f877L, "prop");
+    /*package*/ static final SContainmentLink features$YbKa = MetaAdapterFactory.getContainmentLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648fcL, 0x4f2cc0d970a4f8c9L, "features");
   }
 
   private static final class CONCEPTS {
@@ -63,6 +63,6 @@ public class CheckNoDuplicatedPropertyHints_NonTypesystemRule extends AbstractNo
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

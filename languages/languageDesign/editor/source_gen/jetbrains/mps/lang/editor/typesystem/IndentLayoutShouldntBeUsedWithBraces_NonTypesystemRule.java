@@ -26,7 +26,7 @@ public class IndentLayoutShouldntBeUsedWithBraces_NonTypesystemRule extends Abst
   public void applyRule(final SNode editorCellModel, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SNodeOperations.isInstanceOf(editorCellModel, CONCEPTS.CellModel_Collection$CD)) {
       SNode collection = SNodeOperations.cast(editorCellModel, CONCEPTS.CellModel_Collection$CD);
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(collection, LINKS.cellLayout$usNp), CONCEPTS.CellLayout_Indent$tI) && SPropertyOperations.getBoolean(collection, PROPS.usesBraces$fGbf)) {
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(collection, LINKS.cellLayout$JWT7), CONCEPTS.CellLayout_Indent$tI) && SPropertyOperations.getBoolean(collection, PROPS.usesBraces$Apsh)) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(editorCellModel, "Braces shouldn't be used with indent layout.", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "4575971948964608918", null, errorTarget);
@@ -40,7 +40,7 @@ public class IndentLayoutShouldntBeUsedWithBraces_NonTypesystemRule extends Abst
     }
     if (SNodeOperations.isInstanceOf(editorCellModel, CONCEPTS.CellModel_ListWithRole$Pv)) {
       SNode collection = SNodeOperations.cast(editorCellModel, CONCEPTS.CellModel_ListWithRole$Pv);
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(collection, LINKS.cellLayout$63td), CONCEPTS.CellLayout_Indent$tI) && SPropertyOperations.getBoolean(collection, PROPS.usesBraces$aYpx)) {
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(collection, LINKS.cellLayout$VF9j), CONCEPTS.CellLayout_Indent$tI) && SPropertyOperations.getBoolean(collection, PROPS.usesBraces$kemZ)) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(editorCellModel, "Braces shouldn't be used with indent layout.", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "4575971948964608943", null, errorTarget);
@@ -66,12 +66,12 @@ public class IndentLayoutShouldntBeUsedWithBraces_NonTypesystemRule extends Abst
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty usesBraces$fGbf = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x1094a893c4dL, "usesBraces");
-    /*package*/ static final SProperty usesBraces$aYpx = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e02fcL, "usesBraces");
+    /*package*/ static final SProperty usesBraces$Apsh = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x1094a893c4dL, "usesBraces");
+    /*package*/ static final SProperty usesBraces$kemZ = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e02fcL, "usesBraces");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cellLayout$usNp = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
-    /*package*/ static final SContainmentLink cellLayout$63td = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout");
+    /*package*/ static final SContainmentLink cellLayout$JWT7 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
+    /*package*/ static final SContainmentLink cellLayout$VF9j = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout");
   }
 }

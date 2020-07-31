@@ -44,7 +44,7 @@
       <node id="1402683484349316474" at="94,14,95,58" concept="10" />
       <node id="1402683484349316474" at="101,48,102,22" concept="5" />
       <node id="1402683484349316474" at="107,40,108,19" concept="5" />
-      <node id="1402683484349316474" at="112,0,113,0" concept="7" trace="file$s3gA" />
+      <node id="1402683484349316474" at="112,0,113,0" concept="7" trace="file$__2q" />
       <node id="1402683484349316474" at="38,0,40,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1402683484349316474" at="65,0,67,0" concept="0" trace="MPSTipsAndTricks_Image__BehaviorDescriptor#()V" />
       <node id="831924260440079426" at="42,72,45,5" concept="2" />
@@ -221,9 +221,9 @@
       <node id="6239128895328141990" at="64,14,65,58" concept="10" />
       <node id="6239128895328141990" at="71,48,72,22" concept="5" />
       <node id="6239128895328141990" at="77,40,78,19" concept="5" />
-      <node id="6239128895328141990" at="82,0,83,0" concept="7" trace="tagName$U00C" />
-      <node id="6239128895328141990" at="83,0,84,0" concept="7" trace="language$5AFb" />
-      <node id="6239128895328141990" at="87,0,88,0" concept="7" trace="element$bOEE" />
+      <node id="6239128895328141990" at="82,0,83,0" concept="7" trace="tagName$60jo" />
+      <node id="6239128895328141990" at="83,0,84,0" concept="7" trace="language$HIUl" />
+      <node id="6239128895328141990" at="87,0,88,0" concept="7" trace="element$IwEm" />
       <node id="6239128895328141990" at="37,0,39,0" concept="0" trace="MPSTipsAndTricks_Text__BehaviorDescriptor#()V" />
       <node id="6239128895328141990" at="47,49,50,5" concept="2" />
       <node id="6239128895328141990" at="59,49,62,5" concept="2" />
@@ -294,8 +294,8 @@
       <node id="6239128895328150381" at="63,14,64,58" concept="10" />
       <node id="6239128895328150381" at="70,48,71,22" concept="5" />
       <node id="6239128895328150381" at="76,40,77,19" concept="5" />
-      <node id="6239128895328150381" at="81,0,82,0" concept="7" trace="language$5AFb" />
-      <node id="6239128895328150381" at="85,0,86,0" concept="7" trace="text$SKy8" />
+      <node id="6239128895328150381" at="81,0,82,0" concept="7" trace="language$HIUl" />
+      <node id="6239128895328150381" at="85,0,86,0" concept="7" trace="text$vwxS" />
       <node id="6239128895328150381" at="36,0,38,0" concept="0" trace="MPSTipsAndTricks_Tip__BehaviorDescriptor#()V" />
       <node id="6239128895328150381" at="46,49,49,5" concept="2" />
       <node id="6239128895328150381" at="58,49,61,5" concept="2" />

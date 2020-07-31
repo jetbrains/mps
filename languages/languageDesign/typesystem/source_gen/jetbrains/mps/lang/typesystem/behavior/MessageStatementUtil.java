@@ -30,7 +30,7 @@ public class MessageStatementUtil {
     }
     return convertToCamelCaseNameString(ListSequence.fromList(descendants).foldLeft("", new ILeftCombinator<SNode, String>() {
       public String combine(String s, SNode it) {
-        String value = SPropertyOperations.getString(it, PROPS.value$kiE0);
+        String value = SPropertyOperations.getString(it, PROPS.value$P2m0);
         return s + " " + ((value == null ? "" : StringUtil.unescapeJavaString(value)));
       }
     }));
@@ -78,7 +78,7 @@ public class MessageStatementUtil {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$kiE0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 
   private static final class CONCEPTS {

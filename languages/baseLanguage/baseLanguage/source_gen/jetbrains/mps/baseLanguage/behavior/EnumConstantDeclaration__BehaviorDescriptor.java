@@ -84,17 +84,17 @@ public final class EnumConstantDeclaration__BehaviorDescriptor extends BaseBHDes
     return (containingEnum != null ? EnumConstantDeclaration__BehaviorDescriptor.getEnumConstantDeclarationPresentation_id7AEI0n132aJ.invoke(__thisNode__) + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingEnum) : INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.cast(__thisNode__, CONCEPTS.INamedConcept$nV)));
   }
   /*package*/ static String getEnumConstantDeclarationPresentation_id7AEI0n132aJ(@NotNull SNode __thisNode__) {
-    return "Enum constant '" + SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1) + "' in ";
+    return "Enum constant '" + SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v) + "' in ";
   }
   /*package*/ static void populateMember_id6r77ob2UW9O(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifier) {
-    if (SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1) == null) {
+    if (SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v) == null) {
       return;
     }
-    context.exposeMember(__thisNode__, new FieldSignature(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1)));
-    context.hideMembersForAncestors(new FieldSignature(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1)));
+    context.exposeMember(__thisNode__, new FieldSignature(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v)));
+    context.hideMembersForAncestors(new FieldSignature(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v)));
   }
   /*package*/ static List<SNode> getMembers_idhEwJjl2(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getChildren(__thisNode__, LINKS.method$3$mN);
+    return SLinkOperations.getChildren(__thisNode__, LINKS.method$IB2H);
   }
   /*package*/ static List<SNode> getMethodsToImplement_id4GM03FJm5q2(@NotNull final SNode __thisNode__) {
     if ((SNodeOperations.getParent(__thisNode__) == null) || !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$uy))) {
@@ -110,7 +110,7 @@ public final class EnumConstantDeclaration__BehaviorDescriptor extends BaseBHDes
     }));
     ListSequence.fromList(methods).addSequence(ListSequence.fromList(methodsToImplement).where(new IWhereFilter<SNode>() {
       public boolean accept(final SNode method) {
-        return !(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.method$3$mN)).any(new IWhereFilter<SNode>() {
+        return !(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.method$IB2H)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode constantBelongingMethod) {
             return (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(constantBelongingMethod, method);
           }
@@ -128,12 +128,12 @@ public final class EnumConstantDeclaration__BehaviorDescriptor extends BaseBHDes
     List<SNode> methodsToOverride = IMemberContainer__BehaviorDescriptor.getMethodsToOverride_id4GM03FJm3zL.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$uy));
     ListSequence.fromList(methodsToOverride).addSequence(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$uy))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it)) && !(SPropertyOperations.getBoolean(it, PROPS.isFinal$I$Qu)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se));
+        return !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it)) && !(SPropertyOperations.getBoolean(it, PROPS.isFinal$zQoy)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se));
       }
     }));
     ListSequence.fromList(methods).addSequence(ListSequence.fromList(methodsToOverride).where(new IWhereFilter<SNode>() {
       public boolean accept(final SNode method) {
-        return !(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.method$3$mN)).any(new IWhereFilter<SNode>() {
+        return !(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.method$IB2H)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode constantBelongingMethod) {
             return (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(constantBelongingMethod, method);
           }
@@ -147,7 +147,7 @@ public final class EnumConstantDeclaration__BehaviorDescriptor extends BaseBHDes
       Scope visibleMembers = Classifier__BehaviorDescriptor.getVisibleMembers_id70J2WaK$Uj3.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$uy), child, kind);
       Iterable<SNode> methods = Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$uy))).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se));
+          return !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se));
         }
       });
       Scope visibleEumMembers = ListScope.forNamedElements(methods);
@@ -235,12 +235,12 @@ public final class EnumConstantDeclaration__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isFinal$I$Qu = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$zQoy = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink method$3$mN = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, 0x6d60019ab157734L, "method");
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink method$IB2H = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, 0x6d60019ab157734L, "method");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 }

@@ -465,7 +465,7 @@ public class SNodeOperations {
   private static void copyAllAttributes(SNode oldChild, SNode newChild) {
     final SConcept attrProperty = CONCEPTS.PropertyAttribute$jT;
     final SConcept attrLink = CONCEPTS.LinkAttribute$7j;
-    final SContainmentLink smodelAttr = LINKS.smodelAttribute$K8bJ;
+    final SContainmentLink smodelAttr = LINKS.smodelAttribute$jXFL;
     for (SNode attribute : AttributeOperations.getAllAttributes(oldChild)) {
       if (SNodeOperations.isInstanceOf(attribute, SNodeOperations.asSConcept(attrProperty))) {
         SProperty property = ((SProperty) BHReflection.invoke0(SNodeOperations.cast(attribute, SNodeOperations.asSConcept(attrProperty)), CONCEPTS.PropertyAttribute$jT, SMethodTrimmedId.create("getProperty", CONCEPTS.PropertyAttribute$jT, "1avfQ4BBzOo")));
@@ -704,6 +704,6 @@ public class SNodeOperations {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 }

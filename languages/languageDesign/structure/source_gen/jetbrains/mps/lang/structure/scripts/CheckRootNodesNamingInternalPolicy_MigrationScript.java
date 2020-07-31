@@ -33,20 +33,20 @@ public final class CheckRootNodesNamingInternalPolicy_MigrationScript extends Ba
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        if (SPropertyOperations.getBoolean(node, PROPS.abstract$moSU)) {
+        if (SPropertyOperations.getBoolean(node, PROPS.abstract$Q3$6)) {
           return false;
         }
-        if (!(SPropertyOperations.getBoolean(node, PROPS.rootable$vg$g))) {
+        if (!(SPropertyOperations.getBoolean(node, PROPS.rootable$91zK))) {
           return false;
         }
-        if (isEmptyString(SPropertyOperations.getString(node, PROPS.conceptAlias$YIL2))) {
+        if (isEmptyString(SPropertyOperations.getString(node, PROPS.conceptAlias$oDJY))) {
           return false;
         }
-        return !(SPropertyOperations.getString(node, PROPS.conceptAlias$YIL2).equals(NameUtil.multiWordDecapitalize(SPropertyOperations.getString(node, PROPS.conceptAlias$YIL2))));
+        return !(SPropertyOperations.getString(node, PROPS.conceptAlias$oDJY).equals(NameUtil.multiWordDecapitalize(SPropertyOperations.getString(node, PROPS.conceptAlias$oDJY))));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SPropertyOperations.assign(node, PROPS.conceptAlias$YIL2, NameUtil.multiWordDecapitalize(SPropertyOperations.getString(node, PROPS.conceptAlias$YIL2)));
+        SPropertyOperations.assign(node, PROPS.conceptAlias$oDJY, NameUtil.multiWordDecapitalize(SPropertyOperations.getString(node, PROPS.conceptAlias$oDJY)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -68,21 +68,21 @@ public final class CheckRootNodesNamingInternalPolicy_MigrationScript extends Ba
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        if (SPropertyOperations.getBoolean(node, PROPS.abstract$moSU)) {
+        if (SPropertyOperations.getBoolean(node, PROPS.abstract$Q3$6)) {
           return false;
         }
-        if (!(SPropertyOperations.getBoolean(node, PROPS.rootable$vg$g))) {
+        if (!(SPropertyOperations.getBoolean(node, PROPS.rootable$91zK))) {
           return false;
         }
-        return isEmptyString(SPropertyOperations.getString(node, PROPS.conceptAlias$YIL2));
+        return isEmptyString(SPropertyOperations.getString(node, PROPS.conceptAlias$oDJY));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
         StringBuilder sb = new StringBuilder();
-        for (String word : NameUtil.splitByCamels(SPropertyOperations.getString(node, PROPS.name$tAp1))) {
+        for (String word : NameUtil.splitByCamels(SPropertyOperations.getString(node, PROPS.name$lA7v))) {
           sb.append(NameUtil.decapitalize(word)).append(" ");
         }
-        SPropertyOperations.assign(node, PROPS.conceptAlias$YIL2, sb.toString().trim());
+        SPropertyOperations.assign(node, PROPS.conceptAlias$oDJY, sb.toString().trim());
       }
       @Override
       public boolean isShowAsIntention() {
@@ -105,9 +105,9 @@ public final class CheckRootNodesNamingInternalPolicy_MigrationScript extends Ba
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstract$moSU = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
-    /*package*/ static final SProperty rootable$vg$g = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
-    /*package*/ static final SProperty conceptAlias$YIL2 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x46ab0ad5826c74caL, "conceptAlias");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty abstract$Q3$6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
+    /*package*/ static final SProperty rootable$91zK = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
+    /*package*/ static final SProperty conceptAlias$oDJY = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x46ab0ad5826c74caL, "conceptAlias");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

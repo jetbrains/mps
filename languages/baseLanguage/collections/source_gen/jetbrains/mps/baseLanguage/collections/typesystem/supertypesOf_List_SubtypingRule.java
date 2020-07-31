@@ -24,9 +24,9 @@ public class supertypesOf_List_SubtypingRule extends SubtypingRule_Runtime imple
   }
   public List<SNode> getSubOrSuperTypes(SNode type, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> result = new ArrayList<SNode>();
-    SNode elemType = SLinkOperations.getTarget(type, LINKS.elementType$xJJW);
-    ListSequence.fromList(result).addElement(_quotation_createNode_w26thq_a0a2a1(SLinkOperations.getTarget(type, LINKS.elementType$xJJW)));
-    ListSequence.fromList(result).addElement(_quotation_createNode_w26thq_a0a3a1(SLinkOperations.getTarget(type, LINKS.elementType$xJJW)));
+    SNode elemType = SLinkOperations.getTarget(type, LINKS.elementType$m8e4);
+    ListSequence.fromList(result).addElement(_quotation_createNode_w26thq_a0a2a1(SLinkOperations.getTarget(type, LINKS.elementType$m8e4)));
+    ListSequence.fromList(result).addElement(_quotation_createNode_w26thq_a0a3a1(SLinkOperations.getTarget(type, LINKS.elementType$m8e4)));
     ListSequence.fromList(result).addElement(_quotation_createNode_w26thq_a0a4a1());
     return result;
   }
@@ -72,7 +72,7 @@ public class supertypesOf_List_SubtypingRule extends SubtypingRule_Runtime imple
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$xJJW = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType");
+    /*package*/ static final SContainmentLink elementType$m8e4 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType");
   }
 
   private static final class CONCEPTS {

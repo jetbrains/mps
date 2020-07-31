@@ -23,12 +23,12 @@ public class typeof_IfInstanceOfStatement_InferenceRule extends AbstractInferenc
   }
   public void applyRule(final SNode instanceOfStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(instanceOfStatement, LINKS.variable$CK59);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(instanceOfStatement, LINKS.variable$Jivn);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1883223317721107003", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1883223317721106995", true), (SNode) _quotation_createNode_pi3z1z_a1a0c0a0b(SLinkOperations.getTarget(instanceOfStatement, LINKS.nodeConcept$CK5C)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1883223317721106995", true), (SNode) _quotation_createNode_pi3z1z_a1a0c0a0b(SLinkOperations.getTarget(instanceOfStatement, LINKS.nodeConcept$JiIo)), _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(instanceOfStatement, LINKS.nodeExpression$CK4E);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(instanceOfStatement, LINKS.nodeExpression$Jigm);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1883223317721107029", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1883223317721107021", true), (SNode) _quotation_createNode_pi3z1z_a1a0c0b0b(), false, true, _info_12389875345);
     }
@@ -57,9 +57,9 @@ public class typeof_IfInstanceOfStatement_InferenceRule extends AbstractInferenc
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink variable$CK59 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1a228da1357e4a44L, 0x1a228da1357e4a47L, "variable");
-    /*package*/ static final SReferenceLink nodeConcept$CK5C = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1a228da1357e4a44L, 0x1a228da1357e4a48L, "nodeConcept");
-    /*package*/ static final SContainmentLink nodeExpression$CK4E = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1a228da1357e4a44L, 0x1a228da1357e4a46L, "nodeExpression");
+    /*package*/ static final SContainmentLink variable$Jivn = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1a228da1357e4a44L, 0x1a228da1357e4a47L, "variable");
+    /*package*/ static final SReferenceLink nodeConcept$JiIo = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1a228da1357e4a44L, 0x1a228da1357e4a48L, "nodeConcept");
+    /*package*/ static final SContainmentLink nodeExpression$Jigm = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1a228da1357e4a44L, 0x1a228da1357e4a46L, "nodeExpression");
   }
 
   private static final class CONCEPTS {

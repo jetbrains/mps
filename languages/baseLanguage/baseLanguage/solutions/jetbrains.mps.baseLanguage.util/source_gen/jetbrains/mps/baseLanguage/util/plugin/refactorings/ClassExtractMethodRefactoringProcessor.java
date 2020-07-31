@@ -25,14 +25,14 @@ public class ClassExtractMethodRefactoringProcessor extends AbstractExtractMetho
   public SNode createMethodCall(SNode declaration, List<SNode> parameters) {
     if (SNodeOperations.isInstanceOf(declaration, CONCEPTS.InstanceMethodDeclaration$An)) {
       SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall"));
-      SLinkOperations.setTarget(result, LINKS.baseMethodDeclaration$$A7i, SNodeOperations.cast(declaration, CONCEPTS.InstanceMethodDeclaration$An));
-      ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.actualArgument$$A7L)).addSequence(ListSequence.fromList(parameters));
+      SLinkOperations.setTarget(result, LINKS.baseMethodDeclaration$ItxI, SNodeOperations.cast(declaration, CONCEPTS.InstanceMethodDeclaration$An));
+      ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.actualArgument$ItKJ)).addSequence(ListSequence.fromList(parameters));
       return result;
     } else {
       SNode call = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall"));
-      SLinkOperations.setTarget(call, LINKS.classConcept$BsUa, SNodeOperations.cast(SNodeOperations.getParent(declaration), CONCEPTS.Classifier$hJ));
-      SLinkOperations.setTarget(call, LINKS.baseMethodDeclaration$$A7i, SNodeOperations.cast(declaration, CONCEPTS.StaticMethodDeclaration$eX));
-      ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.actualArgument$$A7L)).addSequence(ListSequence.fromList(parameters));
+      SLinkOperations.setTarget(call, LINKS.classConcept$70aQ, SNodeOperations.cast(SNodeOperations.getParent(declaration), CONCEPTS.Classifier$hJ));
+      SLinkOperations.setTarget(call, LINKS.baseMethodDeclaration$ItxI, SNodeOperations.cast(declaration, CONCEPTS.StaticMethodDeclaration$eX));
+      ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.actualArgument$ItKJ)).addSequence(ListSequence.fromList(parameters));
       return call;
     }
   }
@@ -61,8 +61,8 @@ public class ClassExtractMethodRefactoringProcessor extends AbstractExtractMetho
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SReferenceLink classConcept$BsUa = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink classConcept$70aQ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
   }
 }

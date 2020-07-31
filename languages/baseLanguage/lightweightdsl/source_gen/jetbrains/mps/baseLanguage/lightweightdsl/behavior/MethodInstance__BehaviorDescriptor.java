@@ -37,8 +37,8 @@ public final class MethodInstance__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getExpectedRetType_idi2fhBNC(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.returnType$WIkw), CONCEPTS.DependentTypeInstance$to)) {
-      SNode dti = SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.returnType$WIkw), CONCEPTS.DependentTypeInstance$to);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.returnType$qrVw), CONCEPTS.DependentTypeInstance$to)) {
+      SNode dti = SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.returnType$qrVw), CONCEPTS.DependentTypeInstance$to);
       SNode myType = DependentTypeInstance__BehaviorDescriptor.getMyType_id7T23sO8yx5P.invoke(dti);
       if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(myType)), CONCEPTS.VoidType$aT)) {
         return null;
@@ -48,7 +48,7 @@ public final class MethodInstance__BehaviorDescriptor extends BaseBHDescriptor {
     return IMethodLike__BehaviorDescriptor.getExpectedRetType_idi2fhBNC.invokeSuper(__thisNode__, CONCEPTS.MethodInstance$XT);
   }
   /*package*/ static SNode getDeclaration_id7T23sO8vZuR(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.decl$UAdi);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.decl$owrI);
   }
 
   /*package*/ MethodInstance__BehaviorDescriptor() {
@@ -100,8 +100,8 @@ public final class MethodInstance__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SReferenceLink decl$UAdi = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d154L, 0x443e89bb321537L, "decl");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SReferenceLink decl$owrI = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d154L, 0x443e89bb321537L, "decl");
   }
 
   private static final class CONCEPTS {

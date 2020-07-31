@@ -22,7 +22,7 @@ public class check_BuildMpsLayout_TestModuleHasTestSources_NonTypesystemRule ext
   public check_BuildMpsLayout_TestModuleHasTestSources_NonTypesystemRule() {
   }
   public void applyRule(final SNode testmodule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode solution = SLinkOperations.getTarget(testmodule, LINKS.module$mNFw);
+    SNode solution = SLinkOperations.getTarget(testmodule, LINKS.module$324w);
     if (!((boolean) BuildMps_Solution__BehaviorDescriptor.hasTestsSources_id6ogfLD6evrW.invoke(solution))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -46,7 +46,7 @@ public class check_BuildMpsLayout_TestModuleHasTestSources_NonTypesystemRule ext
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink module$mNFw = MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef372L, 0x3f496e80bd8ef373L, "module");
+    /*package*/ static final SReferenceLink module$324w = MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef372L, 0x3f496e80bd8ef373L, "module");
   }
 
   private static final class CONCEPTS {

@@ -16,18 +16,18 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class CellModel_Checkbox_NodeFactories {
   public static class NodeFactory_5347446703373799065 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SLinkOperations.setTarget(newNode, LINKS.ui$tMUH, SNodeFactoryOperations.createNewNode(CONCEPTS.CheckboxUI_Text$p8, null));
+      SLinkOperations.setTarget(newNode, LINKS.ui$rErN, SNodeFactoryOperations.createNewNode(CONCEPTS.CheckboxUI_Text$p8, null));
     }
   }
   public static class NodeFactory_5347446703373814501 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SPropertyOperations.assign(newNode, PROPS.falseText$RxC7, "[ ]");
-      SPropertyOperations.assign(newNode, PROPS.trueText$RxsY, "[x]");
+      SPropertyOperations.assign(newNode, PROPS.falseText$Tirp, "[ ]");
+      SPropertyOperations.assign(newNode, PROPS.trueText$Td22, "[x]");
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ui$tMUH = MetaAdapterFactory.getContainmentLink(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x455f8dda63d6378L, 0x1298d6f05780ea9aL, "ui");
+    /*package*/ static final SContainmentLink ui$rErN = MetaAdapterFactory.getContainmentLink(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x455f8dda63d6378L, 0x1298d6f05780ea9aL, "ui");
   }
 
   private static final class CONCEPTS {
@@ -35,7 +35,7 @@ public class CellModel_Checkbox_NodeFactories {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty falseText$RxC7 = MetaAdapterFactory.getProperty(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x1298d6f05780e83bL, 0x1298d6f05780e840L, "falseText");
-    /*package*/ static final SProperty trueText$RxsY = MetaAdapterFactory.getProperty(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x1298d6f05780e83bL, 0x1298d6f05780e83eL, "trueText");
+    /*package*/ static final SProperty falseText$Tirp = MetaAdapterFactory.getProperty(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x1298d6f05780e83bL, 0x1298d6f05780e840L, "falseText");
+    /*package*/ static final SProperty trueText$Td22 = MetaAdapterFactory.getProperty(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x1298d6f05780e83bL, 0x1298d6f05780e83eL, "trueText");
   }
 }

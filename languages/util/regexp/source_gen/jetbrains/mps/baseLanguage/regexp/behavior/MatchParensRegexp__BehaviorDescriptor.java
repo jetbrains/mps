@@ -36,7 +36,7 @@ public final class MatchParensRegexp__BehaviorDescriptor extends BaseBHDescripto
 
   /*package*/ static String getString_idhMuDF1A(@NotNull SNode __thisNode__, List<SNode> vars) {
     ListSequence.fromList(vars).addElement(__thisNode__);
-    return "(" + Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.regexp$1OX8), vars) + ")";
+    return "(" + Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.regexp$SDAS), vars) + ")";
   }
   /*package*/ static int getIndex_idhNm3Btp(@NotNull SNode __thisNode__) {
     SNode parens = __thisNode__;
@@ -99,6 +99,6 @@ public final class MatchParensRegexp__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink regexp$1OX8 = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111797946c7L, 0x111797ac579L, "regexp");
+    /*package*/ static final SContainmentLink regexp$SDAS = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111797946c7L, 0x111797ac579L, "regexp");
   }
 }

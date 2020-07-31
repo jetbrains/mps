@@ -48,11 +48,11 @@ public class CheckNodeForErrors_MigrationTest extends BaseTransformationTest {
 
     @Override
     public Collection<SNode> getInputNodes() {
-      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(SNodeOperations.cast(getRealNodeById("7763823021511009761"), CONCEPTS.TestNode$kc), LINKS.nodeToCheck$Pz43));
+      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(SNodeOperations.cast(getRealNodeById("7763823021511009761"), CONCEPTS.TestNode$kc), LINKS.nodeToCheck$VYXt));
     }
     @Override
     public Collection<SNode> getOutputNodes() {
-      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(SNodeOperations.cast(getRealNodeById("7763823021512724823"), CONCEPTS.TestNode$kc), LINKS.nodeToCheck$Pz43));
+      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(SNodeOperations.cast(getRealNodeById("7763823021512724823"), CONCEPTS.TestNode$kc), LINKS.nodeToCheck$VYXt));
     }
     @Override
     public MigrationScript[] getMigrationScript() {
@@ -65,6 +65,6 @@ public class CheckNodeForErrors_MigrationTest extends BaseTransformationTest {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink nodeToCheck$Pz43 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, 0x11b5a397b92L, "nodeToCheck");
+    /*package*/ static final SContainmentLink nodeToCheck$VYXt = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, 0x11b5a397b92L, "nodeToCheck");
   }
 }

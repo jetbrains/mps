@@ -23,18 +23,18 @@ public class ConceptAncestorsProvider implements IDescendantsProvider {
     Set<SNode> result = new HashSet<SNode>();
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptDeclaration$qU)) {
       SNode conceptDeclaration = SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$qU);
-      SNode parent = SLinkOperations.getTarget(conceptDeclaration, LINKS.extends$LQV3);
+      SNode parent = SLinkOperations.getTarget(conceptDeclaration, LINKS.extends$9AAt);
       if ((parent != null)) {
         result.add(parent);
       }
-      for (SNode interfaceConceptReference : SLinkOperations.getChildren(conceptDeclaration, LINKS.implements$oQDh)) {
-        result.add(SLinkOperations.getTarget(interfaceConceptReference, LINKS.intfc$fO5));
+      for (SNode interfaceConceptReference : SLinkOperations.getChildren(conceptDeclaration, LINKS.implements$2tZf)) {
+        result.add(SLinkOperations.getTarget(interfaceConceptReference, LINKS.intfc$7Eer));
       }
     }
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.InterfaceConceptDeclaration$MT)) {
       SNode interfaceConceptDeclaration = SNodeOperations.cast(node, CONCEPTS.InterfaceConceptDeclaration$MT);
-      for (SNode interfaceConceptReference : SLinkOperations.getChildren(interfaceConceptDeclaration, LINKS.extends$3Y1p)) {
-        result.add(SLinkOperations.getTarget(interfaceConceptReference, LINKS.intfc$fO5));
+      for (SNode interfaceConceptReference : SLinkOperations.getChildren(interfaceConceptDeclaration, LINKS.extends$V2F7)) {
+        result.add(SLinkOperations.getTarget(interfaceConceptReference, LINKS.intfc$7Eer));
       }
     }
     return result;
@@ -46,9 +46,9 @@ public class ConceptAncestorsProvider implements IDescendantsProvider {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$LQV3 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
-    /*package*/ static final SContainmentLink implements$oQDh = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
-    /*package*/ static final SReferenceLink intfc$fO5 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
-    /*package*/ static final SContainmentLink extends$3Y1p = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
+    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SContainmentLink implements$2tZf = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
+    /*package*/ static final SReferenceLink intfc$7Eer = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
+    /*package*/ static final SContainmentLink extends$V2F7 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
   }
 }

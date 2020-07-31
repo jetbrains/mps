@@ -22,12 +22,12 @@ public class check_Finals_NonTypesystemRule extends AbstractNonTypesystemRule_Ru
   public check_Finals_NonTypesystemRule() {
   }
   public void applyRule(final SNode c, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(c, LINKS.extends$LQV3) == null)) {
+    if ((SLinkOperations.getTarget(c, LINKS.extends$9AAt) == null)) {
       return;
     }
-    if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(c, LINKS.extends$LQV3), PROPS.final$moVl)) {
+    if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(c, LINKS.extends$9AAt), PROPS.final$Q4Jb)) {
       {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.extends$LQV3);
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.extends$9AAt);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(c, "Can't extend a final concept", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1090488322149297633", null, errorTarget);
       }
     }
@@ -43,11 +43,11 @@ public class check_Finals_NonTypesystemRule extends AbstractNonTypesystemRule_Ru
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$LQV3 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty final$moVl = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec7L, "final");
+    /*package*/ static final SProperty final$Q4Jb = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec7L, "final");
   }
 
   private static final class CONCEPTS {

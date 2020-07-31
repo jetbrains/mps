@@ -42,17 +42,17 @@ public final class TransformStatement__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static SNode getPatternConcept_id4SSaNAQl5wN(@NotNull SNode __thisNode__) {
-    return (SNode) SNodeOperations.asNode(PatternExpression__BehaviorDescriptor.getQuotedNodeConcept_id4vXWNHn1_L$.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$O6Rt)));
+    return (SNode) SNodeOperations.asNode(PatternExpression__BehaviorDescriptor.getQuotedNodeConcept_id4vXWNHn1_L$.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$fkR3)));
   }
   /*package*/ static SNode getQuotationConcept_id4SSaNAQlbzK(@NotNull SNode __thisNode__) {
-    if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.consequence$O6Sr), CONCEPTS.QuotationConsequence$w)))) {
+    if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.consequence$fll5), CONCEPTS.QuotationConsequence$w)))) {
       return null;
     }
-    return SNodeOperations.asNode(SNodeOperations.getConcept(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.consequence$O6Sr), CONCEPTS.QuotationConsequence$w), LINKS.quotation$liv1), LINKS.quotedNode$kInw)));
+    return SNodeOperations.asNode(SNodeOperations.getConcept(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.consequence$fll5), CONCEPTS.QuotationConsequence$w), LINKS.quotation$jX1v), LINKS.quotedNode$2tow)));
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, final SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.PropertyPatternVariableDeclaration$Xj) || SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.LinkPatternVariableDeclaration$UB) || SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.PatternVariableDeclaration$Ma) || SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.ListPattern$O4)) {
-      return new NamedElementsScope(SNodeOperations.ofConcept(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$O6Rt), SNodeOperations.asSConcept((SAbstractConcept) kind), false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+      return new NamedElementsScope(SNodeOperations.ofConcept(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$fkR3), SNodeOperations.asSConcept((SAbstractConcept) kind), false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), SNodeOperations.asSConcept(kind));
         }
@@ -113,10 +113,10 @@ public final class TransformStatement__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink pattern$O6Rt = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, 0x4e382b39b6529eeeL, "pattern");
-    /*package*/ static final SContainmentLink consequence$O6Sr = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, 0x4e382b39b6529ef0L, "consequence");
-    /*package*/ static final SContainmentLink quotation$liv1 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6532d41L, 0x550f7de0eda6517eL, "quotation");
-    /*package*/ static final SContainmentLink quotedNode$kInw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465aL, "quotedNode");
+    /*package*/ static final SContainmentLink pattern$fkR3 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, 0x4e382b39b6529eeeL, "pattern");
+    /*package*/ static final SContainmentLink consequence$fll5 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, 0x4e382b39b6529ef0L, "consequence");
+    /*package*/ static final SContainmentLink quotation$jX1v = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6532d41L, 0x550f7de0eda6517eL, "quotation");
+    /*package*/ static final SContainmentLink quotedNode$2tow = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465aL, "quotedNode");
   }
 
   private static final class CONCEPTS {

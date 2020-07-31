@@ -40,7 +40,7 @@ public final class SpecifyClass_Intention extends AbstractIntentionDescriptor im
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$$A7i), CONCEPTS.StaticMethodDeclaration$eX);
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI), CONCEPTS.StaticMethodDeclaration$eX);
   }
   @Override
   public boolean isSurroundWith() {
@@ -61,21 +61,21 @@ public final class SpecifyClass_Intention extends AbstractIntentionDescriptor im
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode method = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$$A7i), CONCEPTS.StaticMethodDeclaration$eX);
+      SNode method = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI), CONCEPTS.StaticMethodDeclaration$eX);
       SNode classConcept = SNodeOperations.as(SNodeOperations.getParent(method), CONCEPTS.Classifier$hJ);
       if ((classConcept == null)) {
         return;
       }
       SNode smc = SNodeOperations.replaceWithAnother(node, SNodeFactoryOperations.createNewNode(CONCEPTS.StaticMethodCall$eu, null));
-      SLinkOperations.setTarget(smc, LINKS.classConcept$BsUa, classConcept);
-      SLinkOperations.setTarget(smc, LINKS.baseMethodDeclaration$$A7i, method);
-      List<SNode> args = SLinkOperations.getChildren(node, LINKS.actualArgument$$A7L);
+      SLinkOperations.setTarget(smc, LINKS.classConcept$70aQ, classConcept);
+      SLinkOperations.setTarget(smc, LINKS.baseMethodDeclaration$ItxI, method);
+      List<SNode> args = SLinkOperations.getChildren(node, LINKS.actualArgument$ItKJ);
       for (SNode arg : args) {
-        ListSequence.fromList(SLinkOperations.getChildren(smc, LINKS.actualArgument$$A7L)).addElement(SNodeOperations.deleteNode(arg));
+        ListSequence.fromList(SLinkOperations.getChildren(smc, LINKS.actualArgument$ItKJ)).addElement(SNodeOperations.deleteNode(arg));
       }
-      List<SNode> typeArgs = SLinkOperations.getChildren(node, LINKS.typeArgument$GDtv);
+      List<SNode> typeArgs = SLinkOperations.getChildren(node, LINKS.typeArgument$C5i1);
       for (SNode arg : typeArgs) {
-        ListSequence.fromList(SLinkOperations.getChildren(smc, LINKS.typeArgument$GDtv)).addElement(SNodeOperations.deleteNode(arg));
+        ListSequence.fromList(SLinkOperations.getChildren(smc, LINKS.typeArgument$C5i1)).addElement(SNodeOperations.deleteNode(arg));
       }
       editorContext.selectWRTFocusPolicy(smc);
     }
@@ -86,10 +86,10 @@ public final class SpecifyClass_Intention extends AbstractIntentionDescriptor im
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink classConcept$BsUa = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink typeArgument$GDtv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink classConcept$70aQ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink typeArgument$C5i1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
   }
 
   private static final class CONCEPTS {

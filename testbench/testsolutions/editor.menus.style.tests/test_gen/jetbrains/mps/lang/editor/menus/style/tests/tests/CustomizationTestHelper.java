@@ -36,7 +36,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
         for (String text : matchingTexts) {
           list.add(createAction(editorComponent, text, new _FunctionTypes._return_P4_E0<SNode, EditorContext, String, String, SNode>() {
             public SNode invoke(EditorContext context, String pattern, String text, SNode parent) {
-              SPropertyOperations.assign(parent, PROPS.stringProperty$V_nS, text);
+              SPropertyOperations.assign(parent, PROPS.stringProperty$R6$8, text);
               return parent;
             }
           }));
@@ -54,7 +54,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
         for (final SEnumerationLiteral member : ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b71ff4L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_Enum")))) {
           list.add(createAction(editorComponent, member.getPresentation(), new _FunctionTypes._return_P4_E0<SNode, EditorContext, String, String, SNode>() {
             public SNode invoke(EditorContext context, String pattern, String text, SNode parent) {
-              SPropertyOperations.assignEnum(parent, PROPS.customActionEnumProperty$7pF, member);
+              SPropertyOperations.assignEnum(parent, PROPS.customActionEnumProperty$3_rP, member);
               return parent;
             }
           }));
@@ -68,10 +68,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     return new AbstractNodeSubstituteInfo(editorComponent.getEditorContext()) {
       protected List<SubstituteAction> createActions() {
         ArrayList<SubstituteAction> list = new ArrayList<SubstituteAction>();
-        for (final SNode child : (Iterable<SNode>) ModelConstraints.getReferenceDescriptor(currentNode, LINKS.customActionReference$2WJM).getScope().getAvailableElements("")) {
-          list.add(new NodeSubstituteActionWrapper(createAction(editorComponent, SPropertyOperations.getString(child, PROPS.name$tAp1), new _FunctionTypes._return_P4_E0<SNode, EditorContext, String, String, SNode>() {
+        for (final SNode child : (Iterable<SNode>) ModelConstraints.getReferenceDescriptor(currentNode, LINKS.customActionReference$rr9e).getScope().getAvailableElements("")) {
+          list.add(new NodeSubstituteActionWrapper(createAction(editorComponent, SPropertyOperations.getString(child, PROPS.name$lA7v), new _FunctionTypes._return_P4_E0<SNode, EditorContext, String, String, SNode>() {
             public SNode invoke(EditorContext context, String pattern, String text, SNode parent) {
-              SLinkOperations.setTarget(parent, LINKS.customActionReference$2WJM, child);
+              SLinkOperations.setTarget(parent, LINKS.customActionReference$rr9e, child);
               return parent;
             }
           })) {
@@ -96,7 +96,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
             public SNode invoke(EditorContext context, String pattern, String text, SNode parent) {
               SNode newInstance = SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(concept));
               if (currentChild == null) {
-                ListSequence.fromList(SLinkOperations.getChildren(parent, LINKS.customActionChildInMatchingLink$33n8)).addElement(newInstance);
+                ListSequence.fromList(SLinkOperations.getChildren(parent, LINKS.customActionChildInMatchingLink$uCcS)).addElement(newInstance);
               } else {
                 SNodeOperations.replaceWithAnother(currentChild, newInstance);
               }
@@ -172,14 +172,14 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty stringProperty$V_nS = MetaAdapterFactory.getProperty(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x406156e80eef1d16L, "stringProperty");
-    /*package*/ static final SProperty customActionEnumProperty$7pF = MetaAdapterFactory.getProperty(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x34d3e9eb931270eaL, "customActionEnumProperty");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty stringProperty$R6$8 = MetaAdapterFactory.getProperty(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x406156e80eef1d16L, "stringProperty");
+    /*package*/ static final SProperty customActionEnumProperty$3_rP = MetaAdapterFactory.getProperty(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x34d3e9eb931270eaL, "customActionEnumProperty");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink customActionReference$2WJM = MetaAdapterFactory.getReferenceLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x34d3e9eb93127264L, "customActionReference");
-    /*package*/ static final SContainmentLink customActionChildInMatchingLink$33n8 = MetaAdapterFactory.getContainmentLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x34d3e9eb931272b0L, "customActionChildInMatchingLink");
+    /*package*/ static final SReferenceLink customActionReference$rr9e = MetaAdapterFactory.getReferenceLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x34d3e9eb93127264L, "customActionReference");
+    /*package*/ static final SContainmentLink customActionChildInMatchingLink$uCcS = MetaAdapterFactory.getContainmentLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x34d3e9eb931272b0L, "customActionChildInMatchingLink");
   }
 
   private static final class CONCEPTS {

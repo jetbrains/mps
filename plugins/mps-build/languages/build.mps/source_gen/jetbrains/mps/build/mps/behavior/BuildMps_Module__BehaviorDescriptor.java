@@ -52,12 +52,12 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static boolean isCompilable_id6tOCIA6_7jg(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getBoolean(__thisNode__, PROPS.doNotCompile$13Sd) == false;
+    return SPropertyOperations.getBoolean(__thisNode__, PROPS.doNotCompile$wSej) == false;
   }
   /*package*/ static Iterable<SNode> getDependenciesUnwrapped_id3QtfwKhgryb(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$Pit_)).select(new ISelector<SNode, SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$NWkV)).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return (SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_ExtractedModuleDependency$LK) ? SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.BuildMps_ExtractedModuleDependency$LK), LINKS.dependency$6b80) : it);
+        return (SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_ExtractedModuleDependency$LK) ? SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.BuildMps_ExtractedModuleDependency$LK), LINKS.dependency$ZoS0) : it);
       }
     });
   }
@@ -80,10 +80,10 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
         builder.add(artifact);
       }
       if (SNodeOperations.isInstanceOf(artifact, CONCEPTS.BuildLayout_AbstractCopy$lT)) {
-        SNode file = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.cast(artifact, CONCEPTS.BuildLayout_AbstractCopy$lT), LINKS.fileset$K4_c), CONCEPTS.BuildInputSingleFile$yn);
+        SNode file = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.cast(artifact, CONCEPTS.BuildLayout_AbstractCopy$lT), LINKS.fileset$ie0O), CONCEPTS.BuildInputSingleFile$yn);
         if ((file != null)) {
           // again, register real path here to enable "import jar ...." construction 
-          artifacts.findArtifact(SLinkOperations.getTarget(file, LINKS.path$6h5X));
+          artifacts.findArtifact(SLinkOperations.getTarget(file, LINKS.path$2hSz));
         }
       }
       return true;
@@ -91,9 +91,9 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
     return false;
   }
   /*package*/ static Iterable<SNode> getJarDeps_id3WZD5LHqufx(@NotNull SAbstractConcept __thisConcept__, SNode module) {
-    return SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.dependencies$Pit_)).select(new ISelector<SNode, SNode>() {
+    return SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.dependencies$NWkV)).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return (SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_ExtractedModuleDependency$LK) ? SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.BuildMps_ExtractedModuleDependency$LK), LINKS.dependency$6b80) : it);
+        return (SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_ExtractedModuleDependency$LK) ? SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.BuildMps_ExtractedModuleDependency$LK), LINKS.dependency$ZoS0) : it);
       }
     }), CONCEPTS.BuildMps_ModuleDependencyJar$qY);
   }
@@ -138,14 +138,14 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
     }
 
     for (SNode dep : Sequence.fromIterable(BuildMps_Module__BehaviorDescriptor.getJarDeps_id3WZD5LHqufx.invoke(__thisNode__.getConcept(), dependency))) {
-      if ((SLinkOperations.getTarget(dep, LINKS.customLocation$KZIG) != null)) {
+      if ((SLinkOperations.getTarget(dep, LINKS.customLocation$IRBk) != null)) {
         // XXX here used to be dep.customLocation.getDependencyTarget() that didn't work in scenario, when there's module A with 'jar' dependency using external location 
         //     within the same project, and module B that depends on A. B.fetchDependencies() discovered A's jar, but getDependencyTarget() == null as both A and its external jar 
         //     live under the same root. Here, however, I need to decide whether I shall fetch anything for either A or its jar, so I don't care about them being in the same root 
         //     Here it's important to me that the external jar is foreign to the dependant module, so I can not use BuildSource_JavaExternalJarRef.getDependencyTarget, 
         //     and stick to JavaExportUtil directly 
         // Truth is I have no idea why there's 'same root' check is in getDependencyTarget(), what's good about it, but am afraid to change it. 
-        Tuples._2<SNode, Boolean> dependencyTarget = JavaExportUtil.requireJar(artifacts, SLinkOperations.getTarget(SLinkOperations.getTarget(dep, LINKS.customLocation$KZIG), LINKS.jar$jJDw), __thisNode__);
+        Tuples._2<SNode, Boolean> dependencyTarget = JavaExportUtil.requireJar(artifacts, SLinkOperations.getTarget(SLinkOperations.getTarget(dep, LINKS.customLocation$IRBk), LINKS.jar$$56w), __thisNode__);
         if (dependencyTarget != null) {
           if ((boolean) dependencyTarget._1()) {
             builder.addWithContent(dependencyTarget._0());
@@ -158,7 +158,7 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
         if (dependencyComesFromAnotherRoot) {
           // guess, dependencyComesFromAnotherRoot condition here is sort of assumption that jars referenced from a same-root dependency don't need to get fetched 
           // and are universally available, yet I don't know if it's true. Why not to check containment root of the jar, rather than that of module dependency? 
-          needsFetch |= ((boolean) BuildMps_Module__BehaviorDescriptor.addJarPath_id3WZD5LHqnU8.invoke(__thisNode__.getConcept(), SLinkOperations.getTarget(dep, LINKS.path$PN10), artifacts, builder));
+          needsFetch |= ((boolean) BuildMps_Module__BehaviorDescriptor.addJarPath_id3WZD5LHqnU8.invoke(__thisNode__.getConcept(), SLinkOperations.getTarget(dep, LINKS.path$3Hv0), artifacts, builder));
         }
       }
     }
@@ -232,17 +232,17 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty doNotCompile$13Sd = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x14d3fb6fb84ac614L, "doNotCompile");
+    /*package*/ static final SProperty doNotCompile$wSej = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x14d3fb6fb84ac614L, "doNotCompile");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink dependencies$Pit_ = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341cb8L, "dependencies");
-    /*package*/ static final SContainmentLink dependency$6b80 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x64bd442e1cf7aaeeL, 0x64bd442e1cf7aaefL, "dependency");
-    /*package*/ static final SContainmentLink fileset$K4_c = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
-    /*package*/ static final SContainmentLink path$6h5X = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path");
-    /*package*/ static final SContainmentLink customLocation$KZIG = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x26d578f4b6e3757fL, "customLocation");
-    /*package*/ static final SReferenceLink jar$jJDw = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb2f64cL, 0x4ddcec86afb2f64dL, "jar");
-    /*package*/ static final SContainmentLink path$PN10 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x3b60c4a45c197e1aL, "path");
+    /*package*/ static final SContainmentLink dependencies$NWkV = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341cb8L, "dependencies");
+    /*package*/ static final SContainmentLink dependency$ZoS0 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x64bd442e1cf7aaeeL, 0x64bd442e1cf7aaefL, "dependency");
+    /*package*/ static final SContainmentLink fileset$ie0O = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
+    /*package*/ static final SContainmentLink path$2hSz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path");
+    /*package*/ static final SContainmentLink customLocation$IRBk = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x26d578f4b6e3757fL, "customLocation");
+    /*package*/ static final SReferenceLink jar$$56w = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb2f64cL, 0x4ddcec86afb2f64dL, "jar");
+    /*package*/ static final SContainmentLink path$3Hv0 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x3b60c4a45c197e1aL, "path");
   }
 
   private static final class CONCEPTS {

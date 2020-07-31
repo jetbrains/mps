@@ -53,7 +53,7 @@ public final class LoopMacro__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static SNode getInputNodeTypeInsideOfMacro_idhEwIosJ(@NotNull SNode __thisNode__) {
     {
       GeneratedMatchingPattern pattern_cdqxf8_a0a = new Pattern_cdqxf8_a0a0a0a(_quotation_createNode_cdqxf8_a0a0a0a0a());
-      SNode coercedNode_cdqxf8_a0a = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.sourceNodesQuery$5jjY)), pattern_cdqxf8_a0a);
+      SNode coercedNode_cdqxf8_a0a = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.sourceNodesQuery$$mF2)), pattern_cdqxf8_a0a);
       if (coercedNode_cdqxf8_a0a != null) {
         return pattern_cdqxf8_a0a.getMatchedNode("concept");
       } else {
@@ -63,16 +63,16 @@ public final class LoopMacro__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static String getCounterVarName_id5KmckUrI7Lz(@NotNull SNode __thisNode__) {
     // name of counter as available in TemplateContext, similar to VarMacro.getName() 
-    return "cv:" + SPropertyOperations.getString(__thisNode__, PROPS.counterVarName$wc8P);
+    return "cv:" + SPropertyOperations.getString(__thisNode__, PROPS.counterVarName$_ShF);
   }
   /*package*/ static List<SNode> contextVariables_id6suuiWX_oN7(@NotNull SNode __thisNode__) {
     List<SNode> rv = new ArrayList<SNode>();
-    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.counterVarName$wc8P))) {
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.counterVarName$_ShF))) {
       return rv;
     }
     SNode counterVar = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x671e792f3d94989fL, "jetbrains.mps.lang.generator.structure.ContextVariableDeclaration"));
-    SPropertyOperations.assign(counterVar, PROPS.name$tAp1, SPropertyOperations.getString(__thisNode__, PROPS.counterVarName$wc8P));
-    SLinkOperations.setTarget(counterVar, LINKS.type$gQrm, createIntegerType_cdqxf8_a0e0c());
+    SPropertyOperations.assign(counterVar, PROPS.name$lA7v, SPropertyOperations.getString(__thisNode__, PROPS.counterVarName$_ShF));
+    SLinkOperations.setTarget(counterVar, LINKS.type$anfE, createIntegerType_cdqxf8_a0e0c());
     ListSequence.fromList(rv).addElement(counterVar);
     return rv;
   }
@@ -154,13 +154,13 @@ public final class LoopMacro__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink sourceNodesQuery$5jjY = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047ce009c3L, 0x10fef5e42d7L, "sourceNodesQuery");
-    /*package*/ static final SContainmentLink type$gQrm = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x671e792f3d94989fL, 0x671e792f3d9580f4L, "type");
+    /*package*/ static final SContainmentLink sourceNodesQuery$$mF2 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047ce009c3L, 0x10fef5e42d7L, "sourceNodesQuery");
+    /*package*/ static final SContainmentLink type$anfE = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x671e792f3d94989fL, 0x671e792f3d9580f4L, "type");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty counterVarName$wc8P = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047ce009c3L, 0x671e792f3d97a344L, "counterVarName");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty counterVarName$_ShF = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047ce009c3L, 0x671e792f3d97a344L, "counterVarName");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

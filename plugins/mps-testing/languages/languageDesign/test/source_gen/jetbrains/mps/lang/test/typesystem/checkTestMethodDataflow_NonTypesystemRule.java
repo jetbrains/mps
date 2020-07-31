@@ -18,7 +18,7 @@ public class checkTestMethodDataflow_NonTypesystemRule extends AbstractNonTypesy
   public checkTestMethodDataflow_NonTypesystemRule() {
   }
   public void applyRule(final SNode nodesTestMethod, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(nodesTestMethod, LINKS.body$WIlu));
+    DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(nodesTestMethod, LINKS.body$qspy));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.NodesTestMethod$WL;
@@ -31,7 +31,7 @@ public class checkTestMethodDataflow_NonTypesystemRule extends AbstractNonTypesy
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
   }
 
   private static final class CONCEPTS {

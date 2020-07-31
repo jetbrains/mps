@@ -37,7 +37,7 @@ public class EnumProperty_Customization implements EditorMenuItemCustomizer {
           return doMatchesContext_(getContextNode(context_), getContainmentLink(context_), getReference(context_), getProperty(context_)) && getCompletionItemInformation(context_) != null;
         }
         protected boolean doMatchesContext_(SNode contextNode, SContainmentLink containmentLink, SReferenceLink referenceLink, SProperty property) {
-          return Objects.equals(property, PROPS.enumProperty$bBQ1);
+          return Objects.equals(property, PROPS.enumProperty$Cjav);
         }
       }.matchesContext(context);
     }
@@ -74,7 +74,7 @@ public class EnumProperty_Customization implements EditorMenuItemCustomizer {
 
 
   private static final class PROPS {
-    /*package*/ static final SProperty enumProperty$bBQ1 = MetaAdapterFactory.getProperty(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x49b1109510b71ff1L, "enumProperty");
+    /*package*/ static final SProperty enumProperty$Cjav = MetaAdapterFactory.getProperty(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x49b1109510b71ff1L, "enumProperty");
   }
 
   private static final class CONCEPTS {

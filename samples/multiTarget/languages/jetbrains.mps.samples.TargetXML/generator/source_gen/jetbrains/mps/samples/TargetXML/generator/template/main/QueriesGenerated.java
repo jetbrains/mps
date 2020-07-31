@@ -34,19 +34,19 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.createUniqueName("member", SNodeOperations.getParent(_context.getNode()));
   }
   public static Object propertyMacro_GetValue_0_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.value$4Yi0);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.value$qaI0);
   }
   public static Object propertyMacro_GetValue_0_2(final PropertyMacroContext _context) {
     return _context.createUniqueName("member", SNodeOperations.getParent(_context.getNode()));
   }
   public static Object propertyMacro_GetValue_0_3(final PropertyMacroContext _context) {
-    return "" + SPropertyOperations.getInteger(_context.getNode(), PROPS.value$4Ztw);
+    return "" + SPropertyOperations.getInteger(_context.getNode(), PROPS.value$qJiw);
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v);
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.getChildren(_context.getNode(), LINKS.members$4RHX);
+    return SLinkOperations.getChildren(_context.getNode(), LINKS.members$mZgz);
   }
   private final Map<String, SourceNodesQuery> snsqMethods = new HashMap<String, SourceNodesQuery>();
   {
@@ -121,12 +121,12 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$4Yi0 = MetaAdapterFactory.getProperty(0x42cb30372cd244e7L, 0x8fe7254f0c50f311L, 0xbd2fe10cbfadf5fL, 0xbd2fe10cbfadf60L, "value");
-    /*package*/ static final SProperty value$4Ztw = MetaAdapterFactory.getProperty(0x42cb30372cd244e7L, 0x8fe7254f0c50f311L, 0xbd2fe10cbfadf8dL, 0xbd2fe10cbfadf8eL, "value");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty value$qaI0 = MetaAdapterFactory.getProperty(0x42cb30372cd244e7L, 0x8fe7254f0c50f311L, 0xbd2fe10cbfadf5fL, 0xbd2fe10cbfadf60L, "value");
+    /*package*/ static final SProperty value$qJiw = MetaAdapterFactory.getProperty(0x42cb30372cd244e7L, 0x8fe7254f0c50f311L, 0xbd2fe10cbfadf8dL, 0xbd2fe10cbfadf8eL, "value");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink members$4RHX = MetaAdapterFactory.getContainmentLink(0x42cb30372cd244e7L, 0x8fe7254f0c50f311L, 0xbd2fe10cbfadf1dL, 0xbd2fe10cbfadf21L, "members");
+    /*package*/ static final SContainmentLink members$mZgz = MetaAdapterFactory.getContainmentLink(0x42cb30372cd244e7L, 0x8fe7254f0c50f311L, 0xbd2fe10cbfadf1dL, 0xbd2fe10cbfadf21L, "members");
   }
 }

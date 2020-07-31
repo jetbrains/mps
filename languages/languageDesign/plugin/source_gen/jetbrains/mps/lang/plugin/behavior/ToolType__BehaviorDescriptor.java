@@ -33,7 +33,7 @@ public final class ToolType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static List<SNode> getMembers_idhEwINC$(@NotNull SNode __thisNode__, SNode contextNode) {
-    return (List<SNode>) IClassifier__BehaviorDescriptor.getMembers_idhEwJioW.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.tool$iYl0));
+    return (List<SNode>) IClassifier__BehaviorDescriptor.getMembers_idhEwJioW.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.tool$ccb0));
   }
   /*package*/ static SNode getClassExpression_idhEwIzOd(@NotNull SNode __thisNode__) {
     return null;
@@ -88,6 +88,6 @@ public final class ToolType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink tool$iYl0 = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11961ebbf24L, 0x11961f94babL, "tool");
+    /*package*/ static final SReferenceLink tool$ccb0 = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11961ebbf24L, 0x11961f94babL, "tool");
   }
 }

@@ -23,7 +23,7 @@ public class check_CommandClosureLiteral_NonTypesystemRule extends AbstractNonTy
   }
   public void applyRule(final SNode commandClosureLiteral, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     for (SNode rs : SNodeOperations.getNodeDescendants(commandClosureLiteral, CONCEPTS.ReturnStatement$SF, false, new SAbstractConcept[]{CONCEPTS.IMethodLike$kl})) {
-      if ((SLinkOperations.getTarget(rs, LINKS.expression$EsbK) != null)) {
+      if ((SLinkOperations.getTarget(rs, LINKS.expression$zDGg) != null)) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(rs, "return statement not allowed here", "r:aad06b20-0a6a-42d7-81b8-671529c6126a(jetbrains.mps.lang.access.typesystem)", "5842059399448775938", null, errorTarget);
@@ -42,7 +42,7 @@ public class check_CommandClosureLiteral_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$EsbK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
+    /*package*/ static final SContainmentLink expression$zDGg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
   }
 
   private static final class CONCEPTS {

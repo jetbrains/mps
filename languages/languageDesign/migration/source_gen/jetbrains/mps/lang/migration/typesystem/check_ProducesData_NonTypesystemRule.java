@@ -24,9 +24,9 @@ public class check_ProducesData_NonTypesystemRule extends AbstractNonTypesystemR
   public check_ProducesData_NonTypesystemRule() {
   }
   public void applyRule(final SNode migrationScript, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Iterable<SNode> putDataDeclaration = SNodeOperations.ofConcept(SLinkOperations.getChildren(migrationScript, LINKS.member$oYX5), CONCEPTS.ProducedAnnotationDataDeclaration$_N);
+    Iterable<SNode> putDataDeclaration = SNodeOperations.ofConcept(SLinkOperations.getChildren(migrationScript, LINKS.member$6v_r), CONCEPTS.ProducedAnnotationDataDeclaration$_N);
     if (Sequence.fromIterable(putDataDeclaration).isNotEmpty()) {
-      if (!(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(MigrationScript__BehaviorDescriptor.getMethod_id6d7r2Fq2j7f.invoke(migrationScript, SNodeOperations.getNode("90746344-04fd-4286-97d5-b46ae6a81709/r:52a3d974-bd4f-4651-ba6e-a2de5e336d95(jetbrains.mps.lang.migration/jetbrains.mps.lang.migration.methods)", "5155329496662709030")), LINKS.body$WIlu), CONCEPTS.PutDataExpression$g7, false, new SAbstractConcept[]{CONCEPTS.BaseCommentAttribute$Zd})).isNotEmpty())) {
+      if (!(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(MigrationScript__BehaviorDescriptor.getMethod_id6d7r2Fq2j7f.invoke(migrationScript, SNodeOperations.getNode("90746344-04fd-4286-97d5-b46ae6a81709/r:52a3d974-bd4f-4651-ba6e-a2de5e336d95(jetbrains.mps.lang.migration/jetbrains.mps.lang.migration.methods)", "5155329496662709030")), LINKS.body$qspy), CONCEPTS.PutDataExpression$g7, false, new SAbstractConcept[]{CONCEPTS.BaseCommentAttribute$Zd})).isNotEmpty())) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(Sequence.fromIterable(putDataDeclaration).first(), "Migration script is declared to produce data but never uses putData()", "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "5310388462668349111", null, errorTarget);
       }
@@ -44,8 +44,8 @@ public class check_ProducesData_NonTypesystemRule extends AbstractNonTypesystemR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
   }
 
   private static final class CONCEPTS {

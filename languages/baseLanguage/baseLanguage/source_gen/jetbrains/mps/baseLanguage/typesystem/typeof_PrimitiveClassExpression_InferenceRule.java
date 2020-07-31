@@ -25,12 +25,12 @@ public class typeof_PrimitiveClassExpression_InferenceRule extends AbstractInfer
   public typeof_PrimitiveClassExpression_InferenceRule() {
   }
   public void applyRule(final SNode primitiveClassExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode unboxedType = Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(SLinkOperations.getTarget(primitiveClassExpression, LINKS.primitiveType$e71w));
+    SNode unboxedType = Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(SLinkOperations.getTarget(primitiveClassExpression, LINKS.primitiveType$PpIw));
     if (SNodeOperations.isInstanceOf(unboxedType, CONCEPTS.ClassifierType$IZ)) {
       {
         SNode _nodeToCheck_1029348928467 = primitiveClassExpression;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4564374268190697521", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4564374268190697523", true), (SNode) _quotation_createNode_im3uqe_a1a0c0a0b0b(SLinkOperations.getTarget(SNodeOperations.cast(unboxedType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R)), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4564374268190697523", true), (SNode) _quotation_createNode_im3uqe_a1a0c0a0b0b(SLinkOperations.getTarget(SNodeOperations.cast(unboxedType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD)), _info_12389875345);
       }
     }
   }
@@ -56,8 +56,8 @@ public class typeof_PrimitiveClassExpression_InferenceRule extends AbstractInfer
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink primitiveType$e71w = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3f57ea36bd70a4e1L, 0x3f57ea36bd70a4e2L, "primitiveType");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink primitiveType$PpIw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3f57ea36bd70a4e1L, 0x3f57ea36bd70a4e2L, "primitiveType");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

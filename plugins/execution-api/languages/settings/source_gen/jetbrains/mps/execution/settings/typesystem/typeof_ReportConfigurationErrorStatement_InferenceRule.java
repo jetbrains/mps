@@ -21,7 +21,7 @@ public class typeof_ReportConfigurationErrorStatement_InferenceRule extends Abst
   }
   public void applyRule(final SNode reportConfigurationErrorStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(reportConfigurationErrorStatement, LINKS.expression$2ofv);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(reportConfigurationErrorStatement, LINKS.expression$9Jw1);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:e115237b-80f4-4ca3-87d6-2ac891492994(jetbrains.mps.execution.settings.typesystem)", "6981317760235477741", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:e115237b-80f4-4ca3-87d6-2ac891492994(jetbrains.mps.execution.settings.typesystem)", "6981317760235477744", true), (SNode) _quotation_createNode_ml4iko_a1a0c0a0b(), false, true, _info_12389875345);
     }
@@ -43,7 +43,7 @@ public class typeof_ReportConfigurationErrorStatement_InferenceRule extends Abst
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$2ofv = MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910103L, 0xd244b712f910105L, "expression");
+    /*package*/ static final SContainmentLink expression$9Jw1 = MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910103L, 0xd244b712f910105L, "expression");
   }
 
   private static final class CONCEPTS {

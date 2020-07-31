@@ -25,7 +25,7 @@ public class _TryCatchStatement_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeFactoryOperations.addNewChild(node, LINKS.catchClause$jGNt, null);
+        SNodeFactoryOperations.addNewChild(node, LINKS.catchClause$yGV3, null);
       }
 
     };
@@ -73,6 +73,6 @@ public class _TryCatchStatement_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink catchClause$jGNt = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause");
+    /*package*/ static final SContainmentLink catchClause$yGV3 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause");
   }
 }

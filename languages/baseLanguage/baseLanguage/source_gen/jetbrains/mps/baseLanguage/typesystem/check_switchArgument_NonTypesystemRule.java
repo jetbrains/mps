@@ -27,7 +27,7 @@ public class check_switchArgument_NonTypesystemRule extends AbstractNonTypesyste
   public check_switchArgument_NonTypesystemRule() {
   }
   public void applyRule(final SNode switchStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode arg = SLinkOperations.getTarget(switchStatement, LINKS.expression$z0sO);
+    SNode arg = SLinkOperations.getTarget(switchStatement, LINKS.expression$XdXc);
     if (arg == null) {
       return;
     }
@@ -42,7 +42,7 @@ public class check_switchArgument_NonTypesystemRule extends AbstractNonTypesyste
       return;
     }
     if (SNodeOperations.isInstanceOf(argType, CONCEPTS.ClassifierType$IZ)) {
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R), CONCEPTS.EnumClass$uy) || Objects.equals(SLinkOperations.getPointer(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R), new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String"))) {
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD), CONCEPTS.EnumClass$uy) || Objects.equals(SLinkOperations.getPointer(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD), new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String"))) {
         return;
       }
     }
@@ -71,8 +71,8 @@ public class check_switchArgument_NonTypesystemRule extends AbstractNonTypesyste
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$z0sO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink expression$XdXc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

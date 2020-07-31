@@ -33,7 +33,7 @@ public final class NamedTupleComponentAccessOperation__BehaviorDescriptor extend
   }
 
   /*package*/ static boolean isLValue_idhEwIP$w(@NotNull SNode __thisNode__) {
-    return !(SPropertyOperations.getBoolean(SLinkOperations.getTarget(__thisNode__, LINKS.component$34c4), PROPS.final$pCJq));
+    return !(SPropertyOperations.getBoolean(SLinkOperations.getTarget(__thisNode__, LINKS.component$v1PW), PROPS.final$qIXA));
   }
 
   /*package*/ NamedTupleComponentAccessOperation__BehaviorDescriptor() {
@@ -83,10 +83,10 @@ public final class NamedTupleComponentAccessOperation__BehaviorDescriptor extend
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink component$34c4 = MetaAdapterFactory.getReferenceLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209c84a4eaL, 0x1209c84fd08L, "component");
+    /*package*/ static final SReferenceLink component$v1PW = MetaAdapterFactory.getReferenceLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209c84a4eaL, 0x1209c84fd08L, "component");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty final$pCJq = MetaAdapterFactory.getProperty(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, 0x120cda6c3beL, "final");
+    /*package*/ static final SProperty final$qIXA = MetaAdapterFactory.getProperty(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, 0x120cda6c3beL, "final");
   }
 }

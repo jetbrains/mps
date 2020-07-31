@@ -95,7 +95,7 @@
       <node id="1734392475491235576" at="66,14,67,58" concept="9" />
       <node id="1734392475491235576" at="73,48,74,22" concept="5" />
       <node id="1734392475491235576" at="79,40,80,19" concept="5" />
-      <node id="1734392475491235576" at="84,0,85,0" concept="6" trace="command$CMt0" />
+      <node id="1734392475491235576" at="84,0,85,0" concept="6" trace="command$Ks30" />
       <node id="1734392475491235576" at="30,0,32,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1734392475491235576" at="37,0,39,0" concept="0" trace="ConsoleScript__BehaviorDescriptor#()V" />
       <node id="1734392475491235576" at="33,0,36,0" concept="7" trace="getCommands_id1whNchEKZry#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />

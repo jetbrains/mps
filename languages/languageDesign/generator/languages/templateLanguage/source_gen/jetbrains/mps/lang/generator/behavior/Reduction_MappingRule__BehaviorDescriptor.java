@@ -31,7 +31,7 @@ public final class Reduction_MappingRule__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static SAbstractConcept getTemplateType_idhEwJbaf(@NotNull SNode __thisNode__) {
-    return (SAbstractConcept) RuleConsequence__BehaviorDescriptor.getTemplateType_id6SoPMa83EEL.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.ruleConsequence$y7a4));
+    return (SAbstractConcept) RuleConsequence__BehaviorDescriptor.getTemplateType_id6SoPMa83EEL.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.ruleConsequence$xtRW));
   }
 
   /*package*/ Reduction_MappingRule__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class Reduction_MappingRule__BehaviorDescriptor extends BaseBHDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ruleConsequence$y7a4 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fca296532L, 0x11055ee07edL, "ruleConsequence");
+    /*package*/ static final SContainmentLink ruleConsequence$xtRW = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fca296532L, 0x11055ee07edL, "ruleConsequence");
   }
 }

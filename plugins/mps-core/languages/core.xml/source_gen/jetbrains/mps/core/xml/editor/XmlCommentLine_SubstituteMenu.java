@@ -109,7 +109,7 @@ public class XmlCommentLine_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode val = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.XmlCommentLine$tE, null);
-        SPropertyOperations.assign(val, PROPS.text$U6F0, pattern);
+        SPropertyOperations.assign(val, PROPS.text$9eP0, pattern);
         return val;
       }
 
@@ -157,6 +157,6 @@ public class XmlCommentLine_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$U6F0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9bec5eL, 0x16838b3fce9bec5fL, "text");
+    /*package*/ static final SProperty text$9eP0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9bec5eL, 0x16838b3fce9bec5fL, "text");
   }
 }

@@ -235,7 +235,7 @@ public class NewModuleUtil {
       SModel templateModel = SModuleOperations.createModelWithAdjustments(new SModelName(null, "main", SModelStereotype.GENERATOR).getValue(), newGenerator.getModelRoots().iterator().next());
       SNode mappingConfiguration = SModelOperations.createNewNode(templateModel, null, CONCEPTS.MappingConfiguration$rB);
       // both model and MC named 'main' is a bit confusing 
-      SPropertyOperations.assign(mappingConfiguration, PROPS.name$tAp1, "main");
+      SPropertyOperations.assign(mappingConfiguration, PROPS.name$lA7v, "main");
       SModelOperations.addRootNode(templateModel, mappingConfiguration);
       ((EditableSModel) templateModel).save();
     }
@@ -346,6 +346,6 @@ public class NewModuleUtil {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -87,7 +87,7 @@ public class XmlText_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode val = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.XmlText$ZE, null);
-        SPropertyOperations.assign(val, PROPS.value$Wjv0, pattern);
+        SPropertyOperations.assign(val, PROPS.value$ds10, pattern);
         return val;
       }
 
@@ -114,6 +114,6 @@ public class XmlText_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$Wjv0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, 0x16838b3fce9aaa68L, "value");
+    /*package*/ static final SProperty value$ds10 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, 0x16838b3fce9aaa68L, "value");
   }
 }

@@ -28,9 +28,9 @@
       <node id="8077936094962945057" at="71,0,72,0" concept="6" trace="ComeFromExpression$3V" />
       <node id="8077936094962945057" at="72,0,73,0" concept="6" trace="ConceptBehavior$8P" />
       <node id="8077936094962945057" at="73,0,74,0" concept="6" trace="LinkDeclaration$bA" />
-      <node id="8077936094962945057" at="77,0,78,0" concept="6" trace="link$IvPV" />
-      <node id="8077936094962945057" at="78,0,79,0" concept="6" trace="concept$v6ns" />
-      <node id="8077936094962945057" at="82,0,83,0" concept="6" trace="role$r_O$" />
+      <node id="8077936094962945057" at="77,0,78,0" concept="6" trace="link$xr7_" />
+      <node id="8077936094962945057" at="78,0,79,0" concept="6" trace="concept$45m$" />
+      <node id="8077936094962945057" at="82,0,83,0" concept="6" trace="role$nkts" />
       <node id="8077936094962945057" at="30,0,33,0" concept="0" trace="ComeFromExpression_Constraints#()V" />
       <node id="8077936094962945823" at="37,0,41,0" concept="2" trace="hasOwnScopeProvider#()Z" />
       <node id="8077936094962945823" at="45,0,49,0" concept="2" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />

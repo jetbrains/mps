@@ -93,7 +93,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.finder$N620;
+      return LINKS.finder$JUY0;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.FinderReference$Qq;
@@ -106,7 +106,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(finderListHandler_7d63hk_c0.this.getNode(), LINKS.finder$N620));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(finderListHandler_7d63hk_c0.this.getNode(), LINKS.finder$JUY0));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -170,7 +170,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink finder$N620 = MetaAdapterFactory.getContainmentLink(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x585a05e7f40a28d1L, 0x585a05e7f40a28d2L, "finder");
+    /*package*/ static final SContainmentLink finder$JUY0 = MetaAdapterFactory.getContainmentLink(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x585a05e7f40a28d1L, 0x585a05e7f40a28d2L, "finder");
   }
 
   private static final class CONCEPTS {

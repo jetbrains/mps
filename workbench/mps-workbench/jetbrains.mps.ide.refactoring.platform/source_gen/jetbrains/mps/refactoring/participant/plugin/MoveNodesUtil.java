@@ -220,7 +220,7 @@ public class MoveNodesUtil {
       for (SNode oldNode : ListSequence.fromList(nodeRoots)) {
         SNode newNode = MapSequence.fromMap(copyMap.getCopyMap()).get(oldNode);
         if (myNodeLocation.isRoot()) {
-          SPropertyOperations.assign(newNode, PROPS.virtualPackage$j19t, SPropertyOperations.getString(SNodeOperations.getContainingRoot(oldNode), PROPS.virtualPackage$j19t));
+          SPropertyOperations.assign(newNode, PROPS.virtualPackage$dz_3, SPropertyOperations.getString(SNodeOperations.getContainingRoot(oldNode), PROPS.virtualPackage$dz_3));
         }
         if (MapSequence.fromMap(ifKeepOldNodes).get(oldNode) == RefactoringParticipant.KeepOldNodes.REMOVE) {
           SNodeOperations.deleteNode(oldNode);
@@ -266,6 +266,6 @@ public class MoveNodesUtil {
 
 
   private static final class PROPS {
-    /*package*/ static final SProperty virtualPackage$j19t = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 }

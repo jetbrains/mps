@@ -109,12 +109,12 @@ public final class CreateMatchingConstructor_Intention extends AbstractIntention
               Sequence.fromIterable(selectedSuperConstructorsFinal).visitAll(new IVisitor<SNode>() {
                 public void visit(SNode superConstructor) {
                   SNode currentSuperConstructorCopy = SNodeOperations.copyNode(superConstructor);
-                  ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(currentSuperConstructorCopy, LINKS.body$WIlu), LINKS.statement$WHn8)).clear();
-                  SNode superCall = SLinkOperations.addNewChild(SLinkOperations.getTarget(currentSuperConstructorCopy, LINKS.body$WIlu), LINKS.statement$WHn8, CONCEPTS.SuperConstructorInvocation$48);
-                  SLinkOperations.setTarget(superCall, LINKS.baseMethodDeclaration$$A7i, superConstructor);
-                  for (SNode param : SLinkOperations.getChildren(currentSuperConstructorCopy, LINKS.parameter$WIkZ)) {
-                    SNode arg = SLinkOperations.addNewChild(superCall, LINKS.actualArgument$$A7L, CONCEPTS.VariableReference$sQ);
-                    SLinkOperations.setTarget(arg, LINKS.variableDeclaration$2ky6, param);
+                  ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(currentSuperConstructorCopy, LINKS.body$qspy), LINKS.statement$pYcS)).clear();
+                  SNode superCall = SLinkOperations.addNewChild(SLinkOperations.getTarget(currentSuperConstructorCopy, LINKS.body$qspy), LINKS.statement$pYcS, CONCEPTS.SuperConstructorInvocation$48);
+                  SLinkOperations.setTarget(superCall, LINKS.baseMethodDeclaration$ItxI, superConstructor);
+                  for (SNode param : SLinkOperations.getChildren(currentSuperConstructorCopy, LINKS.parameter$qsax)) {
+                    SNode arg = SLinkOperations.addNewChild(superCall, LINKS.actualArgument$ItKJ, CONCEPTS.VariableReference$sQ);
+                    SLinkOperations.setTarget(arg, LINKS.variableDeclaration$7WwU, param);
                   }
                   ClassConcept__BehaviorDescriptor.addConstructor_id32Td0Ia9Mgr.invoke(thisClass, currentSuperConstructorCopy);
                 }
@@ -140,11 +140,11 @@ public final class CreateMatchingConstructor_Intention extends AbstractIntention
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 }

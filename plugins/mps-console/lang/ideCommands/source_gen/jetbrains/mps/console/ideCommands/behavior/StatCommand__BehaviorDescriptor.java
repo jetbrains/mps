@@ -34,7 +34,7 @@ public final class StatCommand__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static void doExecute_id2SpVAIqougW(@NotNull SNode __thisNode__, ConsoleContext context, ConsoleStream console) {
-    OutputUtils.printStat(console, IStatisticsTarget__BehaviorDescriptor.getStat_id6vMIJHUBlVT.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$lm$B), context));
+    OutputUtils.printStat(console, IStatisticsTarget__BehaviorDescriptor.getStat_id6vMIJHUBlVT.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$lVIT), context));
   }
 
   /*package*/ StatCommand__BehaviorDescriptor() {
@@ -85,6 +85,6 @@ public final class StatCommand__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink target$lm$B = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x67f2bafb7a558c98L, 0x67f2bafb7a579cb3L, "target");
+    /*package*/ static final SContainmentLink target$lVIT = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x67f2bafb7a558c98L, 0x67f2bafb7a579cb3L, "target");
   }
 }

@@ -34,7 +34,7 @@ public final class QueryDefinition__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static String classifierName_id3ZSHU3pg$b_(@NotNull SNode __thisNode__) {
-    return NameUtil.toValidCamelIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1)) + "_" + SConceptOperations.conceptAlias(SNodeOperations.getConcept(__thisNode__));
+    return NameUtil.toValidCamelIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v)) + "_" + SConceptOperations.conceptAlias(SNodeOperations.getConcept(__thisNode__));
   }
 
   /*package*/ QueryDefinition__BehaviorDescriptor() {
@@ -84,6 +84,6 @@ public final class QueryDefinition__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

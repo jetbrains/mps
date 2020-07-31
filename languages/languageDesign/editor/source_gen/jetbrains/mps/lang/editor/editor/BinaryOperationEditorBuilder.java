@@ -51,11 +51,11 @@ public class BinaryOperationEditorBuilder {
   }
 
   private SNode getTargetConcept() {
-    return SLinkOperations.getTarget(myLeft, LINKS.target$egp8);
+    return SLinkOperations.getTarget(myLeft, LINKS.target$TWaS);
   }
 
   private SNode createAliasActionMap(BuilderResult result) {
-    SNode aliasActionMap = _quotation_createNode_d1zfxg_a0a0n(SLinkOperations.getTarget(myLeft, LINKS.target$egp8), createLinkAccess(myLeft), SLinkOperations.getTarget(myRight, LINKS.target$egp8), createLinkAccess(myRight), SPropertyOperations.getString(getConcept(), PROPS.name$tAp1) + "_AliasCell_Actions", getConcept());
+    SNode aliasActionMap = _quotation_createNode_d1zfxg_a0a0n(SLinkOperations.getTarget(myLeft, LINKS.target$TWaS), createLinkAccess(myLeft), SLinkOperations.getTarget(myRight, LINKS.target$TWaS), createLinkAccess(myRight), SPropertyOperations.getString(getConcept(), PROPS.name$lA7v) + "_AliasCell_Actions", getConcept());
     ListSequence.fromList(result.myActionMaps).addElement(aliasActionMap);
     return aliasActionMap;
   }
@@ -63,7 +63,7 @@ public class BinaryOperationEditorBuilder {
   private SNode createArgumentActionMap(BuilderResult result, boolean isLeft) {
     SNode current = getCurrent(isLeft);
     SNode opposite = getOpposite(isLeft);
-    SNode argumentActionMap = _quotation_createNode_d1zfxg_a0c0p(SLinkOperations.getTarget(current, LINKS.target$egp8), createLinkAccess(current), createLinkAccess(current), SLinkOperations.getTarget(current, LINKS.target$egp8), SLinkOperations.getTarget(current, LINKS.target$egp8), createLinkAccess(opposite), Integer.parseInt((isLeft ? "0" : "-1")), getCellSelection(isLeft), "replace " + SPropertyOperations.getString(getConcept(), PROPS.name$tAp1) + " with " + SPropertyOperations.getString(opposite, PROPS.role$r_O$) + " argument", SPropertyOperations.getString(getConcept(), PROPS.name$tAp1) + "_" + SPropertyOperations.getString(current, PROPS.role$r_O$) + "_ArgumentActions", getConcept());
+    SNode argumentActionMap = _quotation_createNode_d1zfxg_a0c0p(SLinkOperations.getTarget(current, LINKS.target$TWaS), createLinkAccess(current), createLinkAccess(current), SLinkOperations.getTarget(current, LINKS.target$TWaS), SLinkOperations.getTarget(current, LINKS.target$TWaS), createLinkAccess(opposite), Integer.parseInt((isLeft ? "0" : "-1")), getCellSelection(isLeft), "replace " + SPropertyOperations.getString(getConcept(), PROPS.name$lA7v) + " with " + SPropertyOperations.getString(opposite, PROPS.role$nkts) + " argument", SPropertyOperations.getString(getConcept(), PROPS.name$lA7v) + "_" + SPropertyOperations.getString(current, PROPS.role$nkts) + "_ArgumentActions", getConcept());
     ListSequence.fromList(result.myActionMaps).addElement(argumentActionMap);
     return argumentActionMap;
   }
@@ -85,7 +85,7 @@ public class BinaryOperationEditorBuilder {
   }
 
   private SNode createNodeFactory(BuilderResult result) {
-    SNode nodeFactories = _quotation_createNode_d1zfxg_a0a0z(SPropertyOperations.getString(getConcept(), PROPS.name$tAp1) + "_Factories", getConcept(), createLinkAccess(myLeft), getConcept(), createLinkAccess(myLeft), createLinkAccess(myRight), getConcept(), createLinkAccess(myRight), getConcept());
+    SNode nodeFactories = _quotation_createNode_d1zfxg_a0a0z(SPropertyOperations.getString(getConcept(), PROPS.name$lA7v) + "_Factories", getConcept(), createLinkAccess(myLeft), getConcept(), createLinkAccess(myLeft), createLinkAccess(myRight), getConcept(), createLinkAccess(myRight), getConcept());
     result.myNodeFactories = nodeFactories;
     return nodeFactories;
   }
@@ -649,11 +649,11 @@ public class BinaryOperationEditorBuilder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty role$r_O$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
   }
 }

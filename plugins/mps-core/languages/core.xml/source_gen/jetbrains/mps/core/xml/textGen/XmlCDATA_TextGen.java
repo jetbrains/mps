@@ -23,7 +23,7 @@ public class XmlCDATA_TextGen extends TextGenDescriptorBase {
       tgs.indent();
     }
     tgs.append("<![CDATA[");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.content$ENhU));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.content$IPF6));
     tgs.append("]]>");
   }
 
@@ -32,6 +32,6 @@ public class XmlCDATA_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty content$ENhU = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549487aL, 0x16838b3fce9b2633L, "content");
+    /*package*/ static final SProperty content$IPF6 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549487aL, 0x16838b3fce9b2633L, "content");
   }
 }

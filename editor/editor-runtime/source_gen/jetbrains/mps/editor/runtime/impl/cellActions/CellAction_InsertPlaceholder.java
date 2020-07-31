@@ -55,7 +55,7 @@ public class CellAction_InsertPlaceholder extends AbstractCellAction {
           parentNode = nodeLocation.getParent();
           childNode = nodeLocation.getContextNode();
           containmentLink = nodeLocation.getContainmentLink();
-          if (Objects.equals(containmentLink, LINKS.smodelAttribute$K8bJ)) {
+          if (Objects.equals(containmentLink, LINKS.smodelAttribute$jXFL)) {
             if (SNodeOperations.isInstanceOf(((SNode) childNode), CONCEPTS.ChildAttribute$XQ)) {
               containmentLink = ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(childNode, CONCEPTS.ChildAttribute$XQ), CONCEPTS.ChildAttribute$XQ, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$XQ, "BpxLfMirzf")));
             } else if (SNodeOperations.isInstanceOf(((SNode) childNode), CONCEPTS.NodeAttribute$8K)) {
@@ -64,7 +64,7 @@ public class CellAction_InsertPlaceholder extends AbstractCellAction {
               containmentLink = check_d2uk49_a0c0a0a3a1a2a7a5(childNode);
             }
           }
-          if (containmentLink != null && containmentLink.isMultiple() && !(Objects.equals(containmentLink, LINKS.smodelAttribute$K8bJ)) && parentNode != null) {
+          if (containmentLink != null && containmentLink.isMultiple() && !(Objects.equals(containmentLink, LINKS.smodelAttribute$jXFL)) && parentNode != null) {
             return new PlaceToInsert(parentNode, childNode, containmentLink);
           }
         }
@@ -93,9 +93,9 @@ public class CellAction_InsertPlaceholder extends AbstractCellAction {
       SNode placeholder = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x339681b4da4ef1a7L, "jetbrains.mps.lang.core.structure.BasePlaceholder"));
       BHReflection.invoke0(placeholder, CONCEPTS.ChildAttribute$XQ, SMethodTrimmedId.create("setLink", CONCEPTS.ChildAttribute$XQ, "BpxLfMirzM"), myContainmentLink);
       if (myIsAfter) {
-        myParentNode.insertChildAfter(LINKS.smodelAttribute$K8bJ, placeholder, myChildNode);
+        myParentNode.insertChildAfter(LINKS.smodelAttribute$jXFL, placeholder, myChildNode);
       } else {
-        myParentNode.insertChildBefore(LINKS.smodelAttribute$K8bJ, placeholder, myChildNode);
+        myParentNode.insertChildBefore(LINKS.smodelAttribute$jXFL, placeholder, myChildNode);
       }
     }
 
@@ -136,6 +136,6 @@ public class CellAction_InsertPlaceholder extends AbstractCellAction {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 }

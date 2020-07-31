@@ -154,7 +154,7 @@ public class EasyInferAndCheckingEntry_Contribution extends SubstituteMenuBase {
           public SNode createNode(@NotNull String pattern) {
             SNode rule = SNodeFactoryOperations.createNewNode(CONCEPTS.CreateLessThanInequationStatement$$A, null);
             if (myParameterObject.equals("check typeof")) {
-              SPropertyOperations.assign(rule, PROPS.checkOnly$scgV, true);
+              SPropertyOperations.assign(rule, PROPS.checkOnly$DWc_, true);
             }
             return rule;
           }
@@ -195,6 +195,6 @@ public class EasyInferAndCheckingEntry_Contribution extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty checkOnly$scgV = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x118e0a511a0L, "checkOnly");
+    /*package*/ static final SProperty checkOnly$DWc_ = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x118e0a511a0L, "checkOnly");
   }
 }

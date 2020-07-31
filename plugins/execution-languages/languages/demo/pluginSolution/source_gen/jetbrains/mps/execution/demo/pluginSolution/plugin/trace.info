@@ -42,8 +42,8 @@
       <node id="529406319400385971" at="59,46,60,27" concept="9" />
       <node id="3642991921658090895" at="65,58,66,67" concept="9" />
       <node id="3642991921658090717" at="71,0,72,0" concept="11" trace="SomeConcept$39" />
-      <node id="3642991921658090717" at="75,0,76,0" concept="11" trace="valid$$Z1J" />
-      <node id="3642991921658090717" at="76,0,77,0" concept="11" trace="name$tAp1" />
+      <node id="3642991921658090717" at="75,0,76,0" concept="11" trace="valid$UxPL" />
+      <node id="3642991921658090717" at="76,0,77,0" concept="11" trace="name$lA7v" />
       <node id="3642991921658090717" at="33,5,36,5" concept="6" />
       <node id="3642991921658090895" at="43,0,46,0" concept="2" trace="ProducerPart_NodeSomeConcept_rh22bz_a#(Lcom/intellij/execution/configurations/ConfigurationFactory;)V" />
       <node id="226334238991820151" at="54,73,57,7" concept="6" />
@@ -253,7 +253,7 @@
       <node id="8750596094204760417" at="123,57,124,26" concept="9" />
       <node id="8750596094204760417" at="129,48,130,80" concept="9" />
       <node id="8750596094204760417" at="142,0,143,0" concept="11" trace="SomeConcept$39" />
-      <node id="8750596094204760417" at="146,0,147,0" concept="11" trace="valid$$Z1J" />
+      <node id="8750596094204760417" at="146,0,147,0" concept="11" trace="valid$UxPL" />
       <node id="1448685625140440250" at="46,0,49,0" concept="7" trace="invoke#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Boolean;" />
       <node id="8750596094204760417" at="65,73,68,5" concept="6" />
       <node id="7902226081039505530" at="73,14,76,9" concept="6" />

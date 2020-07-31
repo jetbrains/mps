@@ -41,7 +41,7 @@ public final class TemplateCallMacro__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ static SNode getInputNodeTypeInsideOfMacro_idhEwIosJ(@NotNull SNode __thisNode__) {
     {
       GeneratedMatchingPattern pattern_4ckpni_a0a = new Pattern_4ckpni_a0a0a0a(_quotation_createNode_4ckpni_a0a0a0a0a());
-      SNode coercedNode_4ckpni_a0a = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.sourceNodeQuery$v2vo)), pattern_4ckpni_a0a);
+      SNode coercedNode_4ckpni_a0a = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.sourceNodeQuery$2dcC)), pattern_4ckpni_a0a);
       if (coercedNode_4ckpni_a0a != null) {
         return pattern_4ckpni_a0a.getMatchedNode("concept");
       } else {
@@ -50,7 +50,7 @@ public final class TemplateCallMacro__BehaviorDescriptor extends BaseBHDescripto
     return NodeMacro__BehaviorDescriptor.getInputNodeTypeInsideOfMacro_idhEwIosJ.invokeSuper(__thisNode__, CONCEPTS.TemplateCallMacro$Iu);
   }
   /*package*/ static SNode getTemplate_idQzR6ThtTpS(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.template$yiTA), CONCEPTS.TemplateDeclaration$q0);
+    return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.template$B9Tq), CONCEPTS.TemplateDeclaration$q0);
   }
 
   /*package*/ TemplateCallMacro__BehaviorDescriptor() {
@@ -108,8 +108,8 @@ public final class TemplateCallMacro__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink sourceNodeQuery$v2vo = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x14f7f8a311b8f14fL, 0x14f7f8a311b93f35L, "sourceNodeQuery");
-    /*package*/ static final SReferenceLink template$yiTA = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
+    /*package*/ static final SContainmentLink sourceNodeQuery$2dcC = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x14f7f8a311b8f14fL, 0x14f7f8a311b93f35L, "sourceNodeQuery");
+    /*package*/ static final SReferenceLink template$B9Tq = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
   }
 
   private static final class CONCEPTS {

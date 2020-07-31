@@ -34,7 +34,7 @@ public class LowLevelVariableReference_Constraints extends BaseConstraintsDescri
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseVariableDeclaration$$Ls0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseVariableDeclaration$NW$0, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -50,12 +50,12 @@ public class LowLevelVariableReference_Constraints extends BaseConstraintsDescri
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode evaluator = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.EvaluatorConcept$g2, false, false);
-            if (SPropertyOperations.getBoolean(evaluator, PROPS.isShowContext$IspU)) {
-              return ListScope.forResolvableElements(SLinkOperations.getChildren(evaluator, LINKS.variables$IsnY));
+            if (SPropertyOperations.getBoolean(evaluator, PROPS.isShowContext$vKz6)) {
+              return ListScope.forResolvableElements(SLinkOperations.getChildren(evaluator, LINKS.variables$vJB2));
             }
-            return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(evaluator, LINKS.variables$IsnY)).where(new IWhereFilter<SNode>() {
+            return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(evaluator, LINKS.variables$vJB2)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return !(SPropertyOperations.getBoolean(it, PROPS.isOutOfScope$Tu$n));
+                return !(SPropertyOperations.getBoolean(it, PROPS.isOutOfScope$PNB9));
               }
             }));
           }
@@ -74,12 +74,12 @@ public class LowLevelVariableReference_Constraints extends BaseConstraintsDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseVariableDeclaration$$Ls0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4c4b92003e49a704L, 0x4c4b92003e49a705L, "baseVariableDeclaration");
-    /*package*/ static final SContainmentLink variables$IsnY = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x53c5060c6b19c797L, "variables");
+    /*package*/ static final SReferenceLink baseVariableDeclaration$NW$0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4c4b92003e49a704L, 0x4c4b92003e49a705L, "baseVariableDeclaration");
+    /*package*/ static final SContainmentLink variables$vJB2 = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x53c5060c6b19c797L, "variables");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isShowContext$IspU = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x53c5060c6b19c79bL, "isShowContext");
-    /*package*/ static final SProperty isOutOfScope$Tu$n = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d926L, 0x554b4e03d5950431L, "isOutOfScope");
+    /*package*/ static final SProperty isShowContext$vKz6 = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x53c5060c6b19c79bL, "isShowContext");
+    /*package*/ static final SProperty isOutOfScope$PNB9 = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d926L, 0x554b4e03d5950431L, "isOutOfScope");
   }
 }

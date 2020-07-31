@@ -33,7 +33,7 @@
       <node id="2025969025281911694" at="64,60,65,223" concept="6" />
       <node id="2025969025281911694" at="67,51,68,167" concept="6" />
       <node id="2025969025281911694" at="72,0,73,0" concept="9" trace="GenerationContextOp_PropertyPatternRef$X8" />
-      <node id="2025969025281911694" at="76,0,77,0" concept="9" trace="propertyPatternVar$HJtt" />
+      <node id="2025969025281911694" at="76,0,77,0" concept="9" trace="propertyPatternVar$9Zh3" />
       <node id="2025969025281911694" at="24,0,27,0" concept="4" trace="getCaption#()Ljava/lang/String;" />
       <node id="2025969025281917534" at="40,0,43,0" concept="4" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
       <node id="2025969025281911694" at="64,0,67,0" concept="4" trace="executeAfter#()Ljava/lang/Iterable;" />
@@ -130,18 +130,18 @@
       <node id="7868692505795389023" at="103,0,104,0" concept="9" trace="VarMacro2$J_" />
       <node id="7868692505795389023" at="104,0,105,0" concept="9" trace="TemplateArgumentVarRefExpression2$mg" />
       <node id="7868692505795389023" at="105,0,106,0" concept="9" trace="GenerationContextOp_VarRef2$D1" />
-      <node id="7868692505795389023" at="109,0,110,0" concept="9" trace="varmacro$CKSt" />
-      <node id="7868692505795389023" at="110,0,111,0" concept="9" trace="varmacro$expa" />
-      <node id="7868692505795389023" at="111,0,112,0" concept="9" trace="type$4Giu" />
-      <node id="7868692505795389023" at="112,0,113,0" concept="9" trace="type$46HZ" />
-      <node id="7868692505795389023" at="113,0,114,0" concept="9" trace="value$4Gt8" />
-      <node id="7868692505795389023" at="114,0,115,0" concept="9" trace="value$40R5" />
-      <node id="7868692505795389023" at="115,0,116,0" concept="9" trace="mappingLabel$yUiS" />
-      <node id="7868692505795389023" at="116,0,117,0" concept="9" trace="variables$4GjX" />
-      <node id="7868692505795389023" at="117,0,118,0" concept="9" trace="vardecl$pgS0" />
-      <node id="7868692505795389023" at="118,0,119,0" concept="9" trace="vardecl$Sjfw" />
-      <node id="7868692505795389023" at="122,0,123,0" concept="9" trace="name$tAp1" />
-      <node id="7868692505795389023" at="123,0,124,0" concept="9" trace="comment$Mo0J" />
+      <node id="7868692505795389023" at="109,0,110,0" concept="9" trace="varmacro$JFm3" />
+      <node id="7868692505795389023" at="110,0,111,0" concept="9" trace="varmacro$2bbQ" />
+      <node id="7868692505795389023" at="111,0,112,0" concept="9" trace="type$hsWy" />
+      <node id="7868692505795389023" at="112,0,113,0" concept="9" trace="type$Zghx" />
+      <node id="7868692505795389023" at="113,0,114,0" concept="9" trace="value$hy6S" />
+      <node id="7868692505795389023" at="114,0,115,0" concept="9" trace="value$WqFr" />
+      <node id="7868692505795389023" at="115,0,116,0" concept="9" trace="mappingLabel$Uf98" />
+      <node id="7868692505795389023" at="116,0,117,0" concept="9" trace="variables$htEz" />
+      <node id="7868692505795389023" at="117,0,118,0" concept="9" trace="vardecl$fb80" />
+      <node id="7868692505795389023" at="118,0,119,0" concept="9" trace="vardecl$hkww" />
+      <node id="7868692505795389023" at="122,0,123,0" concept="9" trace="name$lA7v" />
+      <node id="7868692505795389023" at="123,0,124,0" concept="9" trace="comment$pCmL" />
       <node id="7868692505795389023" at="31,0,34,0" concept="4" trace="getCaption#()Ljava/lang/String;" />
       <node id="7868692505795533274" at="44,0,47,0" concept="4" trace="test#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
       <node id="7868692505795695731" at="50,0,53,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

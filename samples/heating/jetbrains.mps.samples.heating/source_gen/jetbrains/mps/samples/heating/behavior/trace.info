@@ -105,7 +105,7 @@
       <node id="2161719505004728208" at="67,14,68,58" concept="10" />
       <node id="2161719505004728208" at="74,48,75,22" concept="5" />
       <node id="2161719505004728208" at="80,40,81,19" concept="5" />
-      <node id="2161719505004728208" at="85,0,86,0" concept="7" trace="day$f3Rw" />
+      <node id="2161719505004728208" at="85,0,86,0" concept="7" trace="day$iRSw" />
       <node id="2161719505004728208" at="31,0,33,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2161719505004728208" at="38,0,40,0" concept="0" trace="SpecificDay__BehaviorDescriptor#()V" />
       <node id="2161719505004728208" at="34,0,37,0" concept="8" trace="getPresentation_idhEwIMiw#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -242,8 +242,8 @@
       <node id="3409470686615450423" at="74,14,75,58" concept="10" />
       <node id="3409470686615450423" at="81,48,82,22" concept="5" />
       <node id="3409470686615450423" at="87,40,88,19" concept="5" />
-      <node id="3409470686615450423" at="92,0,93,0" concept="7" trace="items$MJQp" />
-      <node id="3409470686615450423" at="96,0,97,0" concept="7" trace="start$fZpo" />
+      <node id="3409470686615450423" at="92,0,93,0" concept="7" trace="items$_bm7" />
+      <node id="3409470686615450423" at="96,0,97,0" concept="7" trace="start$JHiC" />
       <node id="3409470686615450423" at="34,0,36,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3409470686615450423" at="45,0,47,0" concept="0" trace="DailyPlan__BehaviorDescriptor#()V" />
       <node id="3409470686615466954" at="39,0,42,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -326,8 +326,8 @@
       <node id="4664795093170895833" at="67,14,68,58" concept="10" />
       <node id="4664795093170895833" at="74,48,75,22" concept="5" />
       <node id="4664795093170895833" at="80,40,81,19" concept="5" />
-      <node id="4664795093170895833" at="85,0,86,0" concept="7" trace="end$$dYH" />
-      <node id="4664795093170895833" at="86,0,87,0" concept="7" trace="start$$dXJ" />
+      <node id="4664795093170895833" at="85,0,86,0" concept="7" trace="end$yLnN" />
+      <node id="4664795093170895833" at="86,0,87,0" concept="7" trace="start$yKTL" />
       <node id="4664795093170895833" at="31,0,33,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4664795093170895833" at="38,0,40,0" concept="0" trace="DayRange__BehaviorDescriptor#()V" />
       <node id="4664795093170895833" at="34,0,37,0" concept="8" trace="getPresentation_idhEwIMiw#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -486,10 +486,10 @@
       <node id="935069066463578464" at="106,48,107,22" concept="5" />
       <node id="935069066463578464" at="112,40,113,19" concept="5" />
       <node id="935069066463578464" at="117,0,118,0" concept="7" trace="DailyPlan$jq" />
-      <node id="935069066463578464" at="121,0,122,0" concept="7" trace="customizes$a6Ia" />
-      <node id="935069066463578464" at="122,0,123,0" concept="7" trace="target$bW60" />
-      <node id="935069066463578464" at="123,0,124,0" concept="7" trace="items$MJQp" />
-      <node id="935069066463578464" at="127,0,128,0" concept="7" trace="start$fZpo" />
+      <node id="935069066463578464" at="121,0,122,0" concept="7" trace="customizes$TgmQ" />
+      <node id="935069066463578464" at="122,0,123,0" concept="7" trace="target$M6U0" />
+      <node id="935069066463578464" at="123,0,124,0" concept="7" trace="items$_bm7" />
+      <node id="935069066463578464" at="127,0,128,0" concept="7" trace="start$JHiC" />
       <node id="935069066463578464" at="39,0,41,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="935069066463578464" at="68,0,70,0" concept="0" trace="Slot__BehaviorDescriptor#()V" />
       <node id="875204272654070308" at="43,105,46,5" concept="2" />

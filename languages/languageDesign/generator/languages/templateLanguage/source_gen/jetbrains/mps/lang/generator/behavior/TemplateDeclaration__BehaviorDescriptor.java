@@ -34,11 +34,11 @@ public final class TemplateDeclaration__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static SNode getBaseConcept_id2hxg_BDjKM8(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.applicableConcept$r_1F);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.applicableConcept$mVNP);
   }
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.applicableConcept$r_1F, baseConcept);
-    SPropertyOperations.set(__thisNode__, PROPS.name$tAp1, "reduce_" + SPropertyOperations.getString(baseConcept, PROPS.name$tAp1));
+    SLinkOperations.setTarget(__thisNode__, LINKS.applicableConcept$mVNP, baseConcept);
+    SPropertyOperations.set(__thisNode__, PROPS.name$lA7v, "reduce_" + SPropertyOperations.getString(baseConcept, PROPS.name$lA7v));
   }
 
   /*package*/ TemplateDeclaration__BehaviorDescriptor() {
@@ -91,10 +91,10 @@ public final class TemplateDeclaration__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$r_1F = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0x1100343ad9eL, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$mVNP = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0x1100343ad9eL, "applicableConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

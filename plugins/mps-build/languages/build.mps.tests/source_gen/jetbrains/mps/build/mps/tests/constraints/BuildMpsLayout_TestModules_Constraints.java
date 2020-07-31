@@ -47,7 +47,7 @@ public class BuildMpsLayout_TestModules_Constraints extends BaseConstraintsDescr
     SNode buildProject = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.BuildProject$BF, true, false);
     if ((buildProject != null)) {
       // limit use of this concept in a project with MPS plugin 
-      return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(buildProject, LINKS.plugins$97JG), CONCEPTS.BuildModuleTestsPlugin$27)).isNotEmpty();
+      return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(buildProject, LINKS.plugins$qK6k), CONCEPTS.BuildModuleTestsPlugin$27)).isNotEmpty();
     }
     // XXX here used to be a check project.getVisibleProjects(false).findFirst(name == "mps"), but I see no justification to keep that 
     return false;
@@ -61,6 +61,6 @@ public class BuildMpsLayout_TestModules_Constraints extends BaseConstraintsDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink plugins$97JG = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x5c3f3e2c1ce9ac70L, "plugins");
+    /*package*/ static final SContainmentLink plugins$qK6k = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x5c3f3e2c1ce9ac70L, "plugins");
   }
 }

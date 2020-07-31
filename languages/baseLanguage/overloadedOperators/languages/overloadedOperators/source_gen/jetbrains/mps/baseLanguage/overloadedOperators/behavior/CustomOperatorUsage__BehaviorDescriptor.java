@@ -39,7 +39,7 @@ public final class CustomOperatorUsage__BehaviorDescriptor extends BaseBHDescrip
     List<SNode> result = new ArrayList<SNode>();
     List<SNode> containers = SModelOperations.rootsIncludingImported(model, CONCEPTS.OverloadedOperatorContainer$s0);
     for (SNode container : containers) {
-      ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.customOperators$hoGy)));
+      ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.customOperators$qX$u)));
     }
     return result;
   }
@@ -95,6 +95,6 @@ public final class CustomOperatorUsage__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink customOperators$hoGy = MetaAdapterFactory.getContainmentLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c413011207L, 0x2764eda929cc329cL, "customOperators");
+    /*package*/ static final SContainmentLink customOperators$qX$u = MetaAdapterFactory.getContainmentLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c413011207L, 0x2764eda929cc329cL, "customOperators");
   }
 }

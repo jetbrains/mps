@@ -34,7 +34,7 @@ public class TestRefConstraints_SubReference_ScopingSuperScoping_Constraints ext
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$rEaS, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$prh8, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -49,9 +49,9 @@ public class TestRefConstraints_SubReference_ScopingSuperScoping_Constraints ext
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forNamedElements(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.TestRefConstraints_Container$Ur, true, false), LINKS.targets$r$3X)).where(new IWhereFilter<SNode>() {
+            return ListScope.forNamedElements(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.TestRefConstraints_Container$Ur, true, false), LINKS.targets$mtUz)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return SPropertyOperations.getBoolean(it, PROPS.inScope$rszw) && SPropertyOperations.getBoolean(it, PROPS.inScopeAdvanced$dYuu);
+                return SPropertyOperations.getBoolean(it, PROPS.inScope$iPcw) && SPropertyOperations.getBoolean(it, PROPS.inScopeAdvanced$LgKy);
               }
             }));
           }
@@ -70,12 +70,12 @@ public class TestRefConstraints_SubReference_ScopingSuperScoping_Constraints ext
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$rEaS = MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c73L, 0x244a306605641d21L, "target");
-    /*package*/ static final SContainmentLink targets$r$3X = MetaAdapterFactory.getContainmentLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641cdfL, 0x244a306605641ce3L, "targets");
+    /*package*/ static final SReferenceLink target$prh8 = MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c73L, 0x244a306605641d21L, "target");
+    /*package*/ static final SContainmentLink targets$mtUz = MetaAdapterFactory.getContainmentLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641cdfL, 0x244a306605641ce3L, "targets");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty inScopeAdvanced$dYuu = MetaAdapterFactory.getProperty(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c74L, 0x244a30660589f055L, "inScopeAdvanced");
-    /*package*/ static final SProperty inScope$rszw = MetaAdapterFactory.getProperty(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c74L, 0x244a306605641c80L, "inScope");
+    /*package*/ static final SProperty inScopeAdvanced$LgKy = MetaAdapterFactory.getProperty(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c74L, 0x244a30660589f055L, "inScopeAdvanced");
+    /*package*/ static final SProperty inScope$iPcw = MetaAdapterFactory.getProperty(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c74L, 0x244a306605641c80L, "inScope");
   }
 }

@@ -66,11 +66,11 @@ public final class IterateOverSequence_Intention extends AbstractIntentionDescri
       SNode outerStatement = SNodeOperations.getNodeAncestor(node, CONCEPTS.Statement$ok, false, false);
       boolean deleteStatement = SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.ExpressionStatement$nm);
       SNodeOperations.insertNextSiblingChild(outerStatement, forStatement);
-      SLinkOperations.setTarget(forStatement, LINKS.inputSequence$vBnC, node);
+      SLinkOperations.setTarget(forStatement, LINKS.inputSequence$k4so, node);
       if (deleteStatement) {
         SNodeOperations.deleteNode(outerStatement);
       }
-      editorContext.select(SLinkOperations.getTarget(forStatement, LINKS.variable$QE64));
+      editorContext.select(SLinkOperations.getTarget(forStatement, LINKS.variable$uoVW));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -97,7 +97,7 @@ public final class IterateOverSequence_Intention extends AbstractIntentionDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink inputSequence$vBnC = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac72911aL, "inputSequence");
-    /*package*/ static final SContainmentLink variable$QE64 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac7231f1L, "variable");
+    /*package*/ static final SContainmentLink inputSequence$k4so = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac72911aL, "inputSequence");
+    /*package*/ static final SContainmentLink variable$uoVW = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac7231f1L, "variable");
   }
 }

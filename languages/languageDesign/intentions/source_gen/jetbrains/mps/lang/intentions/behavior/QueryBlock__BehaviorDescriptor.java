@@ -48,7 +48,7 @@ public final class QueryBlock__BehaviorDescriptor extends BaseBHDescriptor {
     return result;
   }
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_wmmpg6_a0a2(SLinkOperations.getTarget(__thisNode__, LINKS.paramType$tho0));
+    return _quotation_createNode_wmmpg6_a0a2(SLinkOperations.getTarget(__thisNode__, LINKS.paramType$bqC0));
   }
 
   /*package*/ QueryBlock__BehaviorDescriptor() {
@@ -119,6 +119,6 @@ public final class QueryBlock__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink paramType$tho0 = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x120c89cc719L, 0x120cd3676eeL, "paramType");
+    /*package*/ static final SContainmentLink paramType$bqC0 = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x120c89cc719L, 0x120cd3676eeL, "paramType");
   }
 }

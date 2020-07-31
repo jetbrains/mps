@@ -49,7 +49,7 @@ public final class VariableDeclaration__BehaviorDescriptor extends BaseBHDescrip
 
   /*package*/ static List<IconResource> getIconMarks_id6TtJ6IUkhQJ(@NotNull SNode __thisNode__) {
     List<IconResource> markIcons = new ArrayList<IconResource>(BaseConcept__BehaviorDescriptor.getIconMarks_id6TtJ6IUkhQJ.invokeSuper(__thisNode__, CONCEPTS.VariableDeclaration$xe));
-    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isFinal$hIht)) {
+    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isFinal$_qt3)) {
       markIcons.add(BLIconMarks.FINAL);
     }
     return markIcons;
@@ -62,13 +62,13 @@ public final class VariableDeclaration__BehaviorDescriptor extends BaseBHDescrip
   }
   /*package*/ static List<SNode> getChildrenToDisplayIntention_id3vsDNFqJVhw(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
-    ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, LINKS.type$pLrO), null, true, new SAbstractConcept[]{})));
+    ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, LINKS.type$uWuc), null, true, new SAbstractConcept[]{})));
     return result;
   }
   /*package*/ static SNode deriveType_idhEwIVPz(@NotNull SNode __thisNode__, SNode expression) {
     SNode type = null;
-    if (SNodeOperations.getParent(expression) == __thisNode__ && SNodeOperations.hasRole(expression, LINKS.initializer$KgD)) {
-      type = SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.type$pLrO));
+    if (SNodeOperations.getParent(expression) == __thisNode__ && SNodeOperations.hasRole(expression, LINKS.initializer$no3R)) {
+      type = SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.type$uWuc));
     }
     return type;
   }
@@ -79,7 +79,7 @@ public final class VariableDeclaration__BehaviorDescriptor extends BaseBHDescrip
     return "";
   }
   /*package*/ static SNode getTypeAnnotation_idhXbqSv6(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.type$pLrO);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.type$uWuc);
   }
   /*package*/ static SNode getQualifiedReference_id3Zg$dTLuqo9(@NotNull SNode __thisNode__) {
     return null;
@@ -152,11 +152,11 @@ public final class VariableDeclaration__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 }

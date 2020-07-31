@@ -32,49 +32,49 @@ public class TextCommentPartUtil {
       SNode tag = null;
       try {
         if (newText.startsWith("@author ")) {
-          tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$LJD$, CONCEPTS.AuthorBlockDocTag$xE);
+          tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$658s, CONCEPTS.AuthorBlockDocTag$xE);
           return;
         }
         if (newText.startsWith("@since ")) {
-          tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$LJD$, CONCEPTS.SinceBlockDocTag$YE);
+          tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$658s, CONCEPTS.SinceBlockDocTag$YE);
           return;
         }
         if (newText.startsWith("@version ")) {
-          tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$LJD$, CONCEPTS.VersionBlockDocTag$Ic);
+          tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$658s, CONCEPTS.VersionBlockDocTag$Ic);
           return;
         }
         if (newText.startsWith("@see ")) {
-          tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$LJD$, CONCEPTS.SeeBlockDocTag$tx);
+          tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$658s, CONCEPTS.SeeBlockDocTag$tx);
           return;
         }
         if (newText.startsWith("@param ") && isClassifier) {
-          tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassifierDocComment$$4, false, false), LINKS.tags$LJD$, CONCEPTS.ParameterBlockDocTag$w1);
+          tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassifierDocComment$$4, false, false), LINKS.tags$658s, CONCEPTS.ParameterBlockDocTag$w1);
           return;
         }
         if (newText.startsWith("@param ") && isMethod) {
-          tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(node, CONCEPTS.MethodDocComment$Vx, false, false), LINKS.tags$LJD$, CONCEPTS.ParameterBlockDocTag$w1);
+          tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(node, CONCEPTS.MethodDocComment$Vx, false, false), LINKS.tags$658s, CONCEPTS.ParameterBlockDocTag$w1);
           return;
         }
         if (newText.startsWith("@throws ") && isMethod) {
-          tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(node, CONCEPTS.MethodDocComment$Vx, false, false), LINKS.tags$LJD$, CONCEPTS.ThrowsBlockDocTag$ph);
+          tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(node, CONCEPTS.MethodDocComment$Vx, false, false), LINKS.tags$658s, CONCEPTS.ThrowsBlockDocTag$ph);
           return;
         }
         if (newText.startsWith("@return ") && isMethod) {
-          tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(node, CONCEPTS.MethodDocComment$Vx, false, false), LINKS.tags$LJD$, CONCEPTS.ReturnBlockDocTag$Ys);
+          tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(node, CONCEPTS.MethodDocComment$Vx, false, false), LINKS.tags$658s, CONCEPTS.ReturnBlockDocTag$Ys);
           return;
         }
 
       } finally {
         if ((tag != null)) {
-          SPropertyOperations.assign(node, PROPS.text$5Ox0, "");
+          SPropertyOperations.assign(node, PROPS.text$OrZ0, "");
           DocTagHelper.organizeTags(comment);
           SelectionUtil.selectCell(editorContext, tag, SelectionManager.FIRST_EDITABLE_CELL);
         }
       }
       if (newText.startsWith("@deprecated ")) {
         IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.IBLDeprecatable$Hv, false, false));
-        SNode deprecatedTag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$LJD$, CONCEPTS.DeprecatedBlockDocTag$ma);
-        SPropertyOperations.assign(node, PROPS.text$5Ox0, "");
+        SNode deprecatedTag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$658s, CONCEPTS.DeprecatedBlockDocTag$ma);
+        SPropertyOperations.assign(node, PROPS.text$OrZ0, "");
         DocTagHelper.organizeTags(comment);
         editorContext.selectWRTFocusPolicy(deprecatedTag);
         return;
@@ -119,10 +119,10 @@ public class TextCommentPartUtil {
     String leftPart = text.substring(0, index1);
     String rightPart = text.substring(index2);
 
-    SPropertyOperations.set(node, PROPS.text$5Ox0, leftPart);
+    SPropertyOperations.set(node, PROPS.text$OrZ0, leftPart);
 
     SNode newTextPart = SNodeFactoryOperations.createNewNode(CONCEPTS.TextCommentLinePart$RY, null);
-    SPropertyOperations.set(newTextPart, PROPS.text$5Ox0, rightPart);
+    SPropertyOperations.set(newTextPart, PROPS.text$OrZ0, rightPart);
     SNodeOperations.insertNextSiblingChild(node, newTextPart);
   }
   public static SNode divideLineBetweenCaretAndInsertNewLine(SNode node, int index1, int index2, String text) {
@@ -131,17 +131,17 @@ public class TextCommentPartUtil {
 
     SNode thisLine = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.CommentLine$vy);
     SNode nextLine = SNodeFactoryOperations.createNewNode(CONCEPTS.CommentLine$vy, null);
-    SNodeFactoryOperations.addNewChild(nextLine, LINKS.part$fv9R, CONCEPTS.TextCommentLinePart$RY);
-    SPropertyOperations.assign(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.part$fv9R)).getElement(0), CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0, rightPart);
+    SNodeFactoryOperations.addNewChild(nextLine, LINKS.part$w5LD, CONCEPTS.TextCommentLinePart$RY);
+    SPropertyOperations.assign(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.part$w5LD)).getElement(0), CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0, rightPart);
     SNodeOperations.insertNextSiblingChild(thisLine, nextLine);
 
     int indexInParent = SNodeOperations.getIndexInParent(node);
-    SPropertyOperations.assign(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(thisLine, LINKS.part$fv9R)).getElement(indexInParent), CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0, leftPart);
+    SPropertyOperations.assign(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(thisLine, LINKS.part$w5LD)).getElement(indexInParent), CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0, leftPart);
 
-    while (ListSequence.fromList(SLinkOperations.getChildren(thisLine, LINKS.part$fv9R)).count() > indexInParent + 1) {
-      SNode linePart = ListSequence.fromList(SLinkOperations.getChildren(thisLine, LINKS.part$fv9R)).getElement(indexInParent + 1);
+    while (ListSequence.fromList(SLinkOperations.getChildren(thisLine, LINKS.part$w5LD)).count() > indexInParent + 1) {
+      SNode linePart = ListSequence.fromList(SLinkOperations.getChildren(thisLine, LINKS.part$w5LD)).getElement(indexInParent + 1);
       SNodeOperations.deleteNode(linePart);
-      ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.part$fv9R)).addElement(linePart);
+      ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.part$w5LD)).addElement(linePart);
     }
 
     return nextLine;
@@ -168,11 +168,11 @@ public class TextCommentPartUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tags$LJD$ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
-    /*package*/ static final SContainmentLink part$fv9R = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
+    /*package*/ static final SContainmentLink tags$658s = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
+    /*package*/ static final SContainmentLink part$w5LD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$5Ox0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
+    /*package*/ static final SProperty text$OrZ0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
   }
 }

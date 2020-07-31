@@ -38,11 +38,11 @@ public final class BuildVarRefStringPart__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static String getText_id3NagsOfTq4Y(@NotNull SNode __thisNode__, MacroHelper helper) {
-    String macroName = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.macro$lql0), PROPS.name$tAp1);
+    String macroName = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.macro$nKb0), PROPS.name$lA7v);
     if (helper != null) {
-      macroName = helper.getName(SLinkOperations.getTarget(__thisNode__, LINKS.macro$lql0));
+      macroName = helper.getName(SLinkOperations.getTarget(__thisNode__, LINKS.macro$nKb0));
       if (macroName == null) {
-        helper.report("macro " + SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.macro$lql0), PROPS.name$tAp1) + " is not available in " + helper.getProjectName() + ", make it exportable", __thisNode__);
+        helper.report("macro " + SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.macro$nKb0), PROPS.name$lA7v) + " is not available in " + helper.getProjectName() + ", make it exportable", __thisNode__);
         macroName = "???";
       }
     }
@@ -106,11 +106,11 @@ public final class BuildVarRefStringPart__BehaviorDescriptor extends BaseBHDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink macro$lql0 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d01L, 0x440d7ea3b68b7d02L, "macro");
+    /*package*/ static final SReferenceLink macro$nKb0 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d01L, 0x440d7ea3b68b7d02L, "macro");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

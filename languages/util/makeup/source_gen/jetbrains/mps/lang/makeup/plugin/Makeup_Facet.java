@@ -115,7 +115,7 @@ public class Makeup_Facet extends IFacet.Stub {
                         continue;
                       }
                       // TODO process macro/property values in the location, but assume it's absolute path for now 
-                      String destination = SPropertyOperations.getString(annotationCopy, PROPS.location$cB_0);
+                      String destination = SPropertyOperations.getString(annotationCopy, PROPS.location$7aV0);
                       if ((destination == null || destination.length() == 0)) {
                         continue;
                       }
@@ -220,6 +220,6 @@ public class Makeup_Facet extends IFacet.Stub {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty location$cB_0 = MetaAdapterFactory.getProperty(0xedf22a442bc4e5dL, 0x954f06aaaf51df00L, 0x10f9f9812b8fca93L, 0x10f9f9812b8fca94L, "location");
+    /*package*/ static final SProperty location$7aV0 = MetaAdapterFactory.getProperty(0xedf22a442bc4e5dL, 0x954f06aaaf51df00L, 0x10f9f9812b8fca93L, 0x10f9f9812b8fca94L, "location");
   }
 }

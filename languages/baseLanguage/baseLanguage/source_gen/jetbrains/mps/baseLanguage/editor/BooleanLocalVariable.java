@@ -42,7 +42,7 @@ public class BooleanLocalVariable implements EditorMenuItemCustomizer {
           return doMatchesContext_(getContextNode(context_), getContainmentLink(context_), getReference(context_), getProperty(context_)) && getCompletionItemInformation(context_) != null;
         }
         protected boolean doMatchesContext_(SNode contextNode, SContainmentLink containmentLink, SReferenceLink referenceLink, SProperty property) {
-          return Objects.equals(containmentLink, LINKS.initializer$KgD);
+          return Objects.equals(containmentLink, LINKS.initializer$no3R);
         }
       }.matchesContext(context);
     }
@@ -76,17 +76,17 @@ public class BooleanLocalVariable implements EditorMenuItemCustomizer {
       }
     }
     private boolean isBooleanVariable(SNode node) {
-      SNode type = SLinkOperations.getTarget(node, LINKS.type$pLrO);
-      return SNodeOperations.isInstanceOf(type, CONCEPTS.BooleanType$8G) || SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$IZ) && Objects.equals(SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R), SPointerOperations.resolveNode(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Boolean"), SNodeOperations.getModel(node).getRepository()));
+      SNode type = SLinkOperations.getTarget(node, LINKS.type$uWuc);
+      return SNodeOperations.isInstanceOf(type, CONCEPTS.BooleanType$8G) || SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$IZ) && Objects.equals(SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD), SPointerOperations.resolveNode(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Boolean"), SNodeOperations.getModel(node).getRepository()));
     }
 
   }
 
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

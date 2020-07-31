@@ -138,7 +138,7 @@ public class ExtractMethodDialog extends RefactoringDialog {
       if ((overrides == SNodeOperations.getNodeAncestor(this.myParameters.getContainerMethod(), CONCEPTS.Classifier$hJ, false, false))) {
         buff.append("Such method already exists.\n");
       } else {
-        buff.append("Method overrides method from class ").append(SPropertyOperations.getString(overrides, PROPS.name$tAp1)).append("\n");
+        buff.append("Method overrides method from class ").append(SPropertyOperations.getString(overrides, PROPS.name$lA7v)).append("\n");
       }
       this.myCanRefactor = false;
     }
@@ -441,7 +441,7 @@ public class ExtractMethodDialog extends RefactoringDialog {
                   myChooseContainerButton.setIcon(IconResourceBundle_ExtractMethodIcons.getInstance().getResource("INTERFACE"));
                 }
                 if (SNodeOperations.isInstanceOf(ExtractMethodDialog.this.myStaticTarget, CONCEPTS.INamedConcept$nV)) {
-                  myChooseContainerButton.setText(SPropertyOperations.getString((SNodeOperations.cast(ExtractMethodDialog.this.myStaticTarget, CONCEPTS.INamedConcept$nV)), PROPS.name$tAp1));
+                  myChooseContainerButton.setText(SPropertyOperations.getString((SNodeOperations.cast(ExtractMethodDialog.this.myStaticTarget, CONCEPTS.INamedConcept$nV)), PROPS.name$lA7v));
                 }
 
               }
@@ -476,6 +476,6 @@ public class ExtractMethodDialog extends RefactoringDialog {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

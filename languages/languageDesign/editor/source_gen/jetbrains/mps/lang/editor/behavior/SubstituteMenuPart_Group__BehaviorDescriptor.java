@@ -43,7 +43,7 @@ public final class SubstituteMenuPart_Group__BehaviorDescriptor extends BaseBHDe
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.SubstituteMenuVariableDeclaration$vw)) {
       // For simplicity this does not take into account the position of the child, so variables declared earlier may 
       // (incorrectly) reference variables declared later. 
-      return new HidingByNameScope(CONCEPTS.SubstituteMenuVariableDeclaration$vw, kind, new NamedElementsScope(SLinkOperations.getChildren(__thisNode__, LINKS.variables$GkSh)), ScopeUtils.lazyParentScope(__thisNode__, kind));
+      return new HidingByNameScope(CONCEPTS.SubstituteMenuVariableDeclaration$vw, kind, new NamedElementsScope(SLinkOperations.getChildren(__thisNode__, LINKS.variables$u7gf)), ScopeUtils.lazyParentScope(__thisNode__, kind));
     }
     return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$M8, kind, child);
   }
@@ -100,6 +100,6 @@ public final class SubstituteMenuPart_Group__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink variables$GkSh = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab4546bL, 0x780e672842433a1L, "variables");
+    /*package*/ static final SContainmentLink variables$u7gf = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab4546bL, 0x780e672842433a1L, "variables");
   }
 }

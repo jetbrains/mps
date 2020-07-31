@@ -23,7 +23,7 @@ public class vector_subtype_of_matrix_SubtypingRule extends SubtypingRule_Runtim
   public vector_subtype_of_matrix_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode vectorType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return _quotation_createNode_exb2lq_a0a1(SLinkOperations.getTarget(vectorType, LINKS.elementType$Gzh1), SPropertyOperations.getInteger(vectorType, PROPS.height$Gzgy));
+    return _quotation_createNode_exb2lq_a0a1(SLinkOperations.getTarget(vectorType, LINKS.elementType$_5fv), SPropertyOperations.getInteger(vectorType, PROPS.height$_50u));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.VectorType$q7;
@@ -49,11 +49,11 @@ public class vector_subtype_of_matrix_SubtypingRule extends SubtypingRule_Runtim
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$Gzh1 = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f775L, 0x42d5783a6268466fL, "elementType");
+    /*package*/ static final SContainmentLink elementType$_5fv = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f775L, 0x42d5783a6268466fL, "elementType");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty height$Gzgy = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f775L, 0x42d5783a6268466eL, "height");
+    /*package*/ static final SProperty height$_50u = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f775L, 0x42d5783a6268466eL, "height");
   }
 
   private static final class CONCEPTS {

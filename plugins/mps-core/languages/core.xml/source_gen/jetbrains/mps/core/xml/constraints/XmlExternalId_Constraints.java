@@ -23,7 +23,7 @@ public class XmlExternalId_Constraints extends BaseConstraintsDescriptor {
 
   public static class PublicId_Property extends BasePropertyConstraintsDescriptor {
     public PublicId_Property(ConstraintsDescriptor container) {
-      super(PROPS.publicId$k9H8, container);
+      super(PROPS.publicId$KGQS, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -44,7 +44,7 @@ public class XmlExternalId_Constraints extends BaseConstraintsDescriptor {
   }
   public static class SystemId_Property extends BasePropertyConstraintsDescriptor {
     public SystemId_Property(ConstraintsDescriptor container) {
-      super(PROPS.systemId$k9HB, container);
+      super(PROPS.systemId$KH5T, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -66,8 +66,8 @@ public class XmlExternalId_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.publicId$k9H8, new PublicId_Property(this));
-    properties.put(PROPS.systemId$k9HB, new SystemId_Property(this));
+    properties.put(PROPS.publicId$KGQS, new PublicId_Property(this));
+    properties.put(PROPS.systemId$KH5T, new SystemId_Property(this));
     return properties;
   }
 
@@ -76,7 +76,7 @@ public class XmlExternalId_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty publicId$k9H8 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60343L, "publicId");
-    /*package*/ static final SProperty systemId$k9HB = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60344L, "systemId");
+    /*package*/ static final SProperty publicId$KGQS = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60343L, "publicId");
+    /*package*/ static final SProperty systemId$KH5T = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60344L, "systemId");
   }
 }

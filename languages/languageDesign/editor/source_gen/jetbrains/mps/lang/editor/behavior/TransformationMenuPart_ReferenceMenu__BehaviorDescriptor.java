@@ -38,7 +38,7 @@ public final class TransformationMenuPart_ReferenceMenu__BehaviorDescriptor exte
     return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.ConceptFunctionParameter_targetNode$XK);
   }
   /*package*/ static SNode getReferenceDeclaration_id1o9RazL_axx(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.referenceLink$XROw);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.referenceLink$Y2rw);
   }
 
   /*package*/ TransformationMenuPart_ReferenceMenu__BehaviorDescriptor() {
@@ -94,6 +94,6 @@ public final class TransformationMenuPart_ReferenceMenu__BehaviorDescriptor exte
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink referenceLink$XROw = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5ddc2e3f050ded4L, 0x5ddc2e3f050ded5L, "referenceLink");
+    /*package*/ static final SReferenceLink referenceLink$Y2rw = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5ddc2e3f050ded4L, 0x5ddc2e3f050ded5L, "referenceLink");
   }
 }

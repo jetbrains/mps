@@ -25,7 +25,7 @@ public class typeof_ConstraintsFunctionParameter_node_InferenceRule extends Abst
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode applicableConcept;
     if ((SNodeOperations.getNodeAncestor(node, CONCEPTS.ConstraintFunction_GetAlternativeIcon$7s, false, false) != null) || (SNodeOperations.getNodeAncestor(node, CONCEPTS.ConstraintFunction_GetInstanceIcon$a, false, false) != null) || (SNodeOperations.getNodeAncestor(node, CONCEPTS.ConstraintFunction_CanBeAChild$Mr, false, false) != null) || (SNodeOperations.getNodeAncestor(node, CONCEPTS.ConstraintFunction_CanBeAParent$qY, false, false) != null) || (SNodeOperations.getNodeAncestor(node, CONCEPTS.ConstraintFunction_CanBeAnAncestor$qV, false, false) != null)) {
-      applicableConcept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.ConceptConstraints$St, false, false), LINKS.concept$rRWx);
+      applicableConcept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.ConceptConstraints$St, false, false), LINKS.concept$w6jZ);
     } else {
       applicableConcept = NodePropertyConstraint__BehaviorDescriptor.getApplicableConcept_idhEwIoOT.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.NodePropertyConstraint$pW, false, false));
     }
@@ -78,6 +78,6 @@ public class typeof_ConstraintsFunctionParameter_node_InferenceRule extends Abst
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$rRWx = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept");
+    /*package*/ static final SReferenceLink concept$w6jZ = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept");
   }
 }

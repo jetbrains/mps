@@ -108,7 +108,7 @@ public class BuilderCreator_SubstituteMenu extends SubstituteMenuBase {
           SNode nodeToWrap = super.createNode(pattern);
           myCreatedNode = nodeToWrap;
           SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.BuilderCreator$E1, null);
-          SLinkOperations.setTarget(result, LINKS.builder$zDVT, nodeToWrap);
+          SLinkOperations.setTarget(result, LINKS.builder$hk0B, nodeToWrap);
           return result;
         }
         @Override
@@ -166,6 +166,6 @@ public class BuilderCreator_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink builder$zDVT = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6c473c8a081aa9e4L, 0x429426276e2ee2f8L, "builder");
+    /*package*/ static final SContainmentLink builder$hk0B = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6c473c8a081aa9e4L, 0x429426276e2ee2f8L, "builder");
   }
 }

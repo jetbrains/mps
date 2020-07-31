@@ -24,7 +24,7 @@ public class typeof_PrimNumConstant_InferenceRule extends AbstractInferenceRule_
     {
       SNode _nodeToCheck_1029348928467 = primitiveConstant;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:d9c7d7eb-2b42-4829-a0ae-81b54923bc48(testAnnotatedType.typesystem)", "1470921783545367408", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:d9c7d7eb-2b42-4829-a0ae-81b54923bc48(testAnnotatedType.typesystem)", "1470921783545367273", true), (SNode) _quotation_createNode_wml952_a1a0c0a0b(SPropertyOperations.getString(primitiveConstant, PROPS.isFloat$zwK0)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:d9c7d7eb-2b42-4829-a0ae-81b54923bc48(testAnnotatedType.typesystem)", "1470921783545367273", true), (SNode) _quotation_createNode_wml952_a1a0c0a0b(SPropertyOperations.getString(primitiveConstant, PROPS.isFloat$cRg0)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -54,7 +54,7 @@ public class typeof_PrimNumConstant_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFloat$zwK0 = MetaAdapterFactory.getProperty(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x1469c391a09a5eefL, 0x1469c391a09a5ef0L, "isFloat");
+    /*package*/ static final SProperty isFloat$cRg0 = MetaAdapterFactory.getProperty(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x1469c391a09a5eefL, 0x1469c391a09a5ef0L, "isFloat");
   }
 
   private static final class CONCEPTS {

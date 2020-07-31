@@ -29,7 +29,7 @@
       <node id="4151313971380041139" at="27,50,28,48" concept="5" />
       <node id="4151313971380041139" at="30,68,31,102" concept="5" />
       <node id="4151313971380041139" at="33,30,34,17" concept="5" />
-      <node id="4151313971380041139" at="38,0,39,0" concept="6" trace="reference$kc70" />
+      <node id="4151313971380041139" at="38,0,39,0" concept="6" trace="reference$LRp0" />
       <node id="4151313971380041139" at="42,0,43,0" concept="6" trace="SmartCompletionSimpleRef$IM" />
       <node id="4151313971380041139" at="18,0,20,0" concept="1" trace="typeof_SmartCompletionSimpleRef_InferenceRule#()V" />
       <node id="4151313971380041139" at="27,0,30,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -78,7 +78,7 @@
       <node id="6999890265143264806" at="27,50,28,49" concept="5" />
       <node id="6999890265143264806" at="30,68,31,102" concept="5" />
       <node id="6999890265143264806" at="33,30,34,17" concept="5" />
-      <node id="6999890265143264806" at="38,0,39,0" concept="6" trace="type$dkov" />
+      <node id="6999890265143264806" at="38,0,39,0" concept="6" trace="type$sRR1" />
       <node id="6999890265143264806" at="42,0,43,0" concept="6" trace="SmartCompletionChildToRef$aO" />
       <node id="6999890265143264806" at="18,0,20,0" concept="1" trace="typeof_SmartCompletionChildToRef_InferenceRule#()V" />
       <node id="6999890265143264806" at="27,0,30,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -241,8 +241,8 @@
       <node id="6999890265143289592" at="26,5,27,101" concept="4" />
       <node id="6999890265143289592" at="27,101,28,213" concept="4" />
       <node id="6999890265143289592" at="28,213,29,427" concept="2" />
-      <node id="4151313971380039939" at="31,5,32,99" concept="4" />
-      <node id="4151313971380039939" at="32,99,33,213" concept="4" />
+      <node id="4151313971380039939" at="31,5,32,100" concept="4" />
+      <node id="4151313971380039939" at="32,100,33,213" concept="4" />
       <node id="4151313971380039939" at="33,213,34,429" concept="2" />
       <node id="6999890265143308471" at="36,5,37,99" concept="4" />
       <node id="6999890265143308471" at="37,99,38,213" concept="4" />
@@ -250,10 +250,10 @@
       <node id="6999890265143289585" at="42,50,43,45" concept="5" />
       <node id="6999890265143289585" at="45,68,46,102" concept="5" />
       <node id="6999890265143289585" at="48,30,49,17" concept="5" />
-      <node id="6999890265143289585" at="53,0,54,0" concept="6" trace="type$ddOt" />
-      <node id="6999890265143289585" at="54,0,55,0" concept="6" trace="childToComplete$de0$" />
-      <node id="6999890265143289585" at="55,0,56,0" concept="6" trace="childSimpleRef$4um" />
-      <node id="6999890265143289585" at="56,0,57,0" concept="6" trace="childSmartRef$dqVS" />
+      <node id="6999890265143289585" at="53,0,54,0" concept="6" trace="type$pGq3" />
+      <node id="6999890265143289585" at="54,0,55,0" concept="6" trace="childToComplete$pMhs" />
+      <node id="6999890265143289585" at="55,0,56,0" concept="6" trace="childSimpleRef$2aGE" />
+      <node id="6999890265143289585" at="56,0,57,0" concept="6" trace="childSmartRef$w308" />
       <node id="6999890265143289585" at="60,0,61,0" concept="6" trace="SmartCompletionParent$8p" />
       <node id="6999890265143289585" at="18,0,20,0" concept="1" trace="typeof_SmartCompletionParent_InferenceRule#()V" />
       <node id="6999890265143289585" at="42,0,45,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -317,7 +317,7 @@
       <node id="6999890265143308714" at="27,50,28,47" concept="5" />
       <node id="6999890265143308714" at="30,68,31,102" concept="5" />
       <node id="6999890265143308714" at="33,30,34,17" concept="5" />
-      <node id="6999890265143308714" at="38,0,39,0" concept="6" trace="reference$dlju" />
+      <node id="6999890265143308714" at="38,0,39,0" concept="6" trace="reference$tkry" />
       <node id="6999890265143308714" at="42,0,43,0" concept="6" trace="SmartCompletionSmartRef$BV" />
       <node id="6999890265143308714" at="18,0,20,0" concept="1" trace="typeof_SmartCompletionSmartRef_InferenceRule#()V" />
       <node id="6999890265143308714" at="27,0,30,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

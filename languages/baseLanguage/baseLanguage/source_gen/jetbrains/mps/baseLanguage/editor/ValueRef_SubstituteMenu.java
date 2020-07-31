@@ -48,7 +48,7 @@ public class ValueRef_SubstituteMenu extends SubstituteMenuBase {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       if (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.GenericLValueExpression$FD)) {
-        return Objects.equals(_context.getLink(), LINKS.assignValueExression$_LdN);
+        return Objects.equals(_context.getLink(), LINKS.assignValueExression$iPFH);
       }
       SNode contextNode = _context.getParentNode();
       while (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(contextNode), CONCEPTS.GenericLValueExpression$FD))) {
@@ -58,7 +58,7 @@ public class ValueRef_SubstituteMenu extends SubstituteMenuBase {
         }
         contextNode = parent;
       }
-      return Objects.equals(SNodeOperations.getContainingLink(contextNode), LINKS.assignValueExression$_LdN);
+      return Objects.equals(SNodeOperations.getContainingLink(contextNode), LINKS.assignValueExression$iPFH);
     }
     @NotNull
     @Override
@@ -97,6 +97,6 @@ public class ValueRef_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink assignValueExression$_LdN = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x7e4df7e6620fe175L, "assignValueExression");
+    /*package*/ static final SContainmentLink assignValueExression$iPFH = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x7e4df7e6620fe175L, "assignValueExression");
   }
 }

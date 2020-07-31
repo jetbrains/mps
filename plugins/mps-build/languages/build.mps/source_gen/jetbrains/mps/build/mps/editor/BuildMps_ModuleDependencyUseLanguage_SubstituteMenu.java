@@ -54,7 +54,7 @@ public class BuildMps_ModuleDependencyUseLanguage_SubstituteMenu extends Substit
 
     public SMP_ReferenceScope_lfbsba_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.BuildMps_ModuleDependencyUseLanguage$2l, LINKS.language$TL_w);
+      super((SAbstractConcept) CONCEPTS.BuildMps_ModuleDependencyUseLanguage$2l, LINKS.language$Z1aw);
     }
     @NotNull
     @Override
@@ -126,6 +126,6 @@ public class BuildMps_ModuleDependencyUseLanguage_SubstituteMenu extends Substit
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink language$TL_w = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643d2d2L, 0x2c4467914643d2d3L, "language");
+    /*package*/ static final SReferenceLink language$Z1aw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643d2d2L, 0x2c4467914643d2d3L, "language");
   }
 }

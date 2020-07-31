@@ -23,7 +23,7 @@ public class PropertyDeclaration_Constraints extends BaseConstraintsDescriptor {
 
   public static class PropertyId_Property extends BasePropertyConstraintsDescriptor {
     public PropertyId_Property(ConstraintsDescriptor container) {
-      super(PROPS.propertyId$cckp, container);
+      super(PROPS.propertyId$TXS7, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -53,7 +53,7 @@ public class PropertyDeclaration_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.propertyId$cckp, new PropertyId_Property(this));
+    properties.put(PROPS.propertyId$TXS7, new PropertyId_Property(this));
     return properties;
   }
 
@@ -62,6 +62,6 @@ public class PropertyDeclaration_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty propertyId$cckp = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L, "propertyId");
+    /*package*/ static final SProperty propertyId$TXS7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L, "propertyId");
   }
 }

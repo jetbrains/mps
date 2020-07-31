@@ -37,7 +37,7 @@ public class SimpleBuilder_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$oxEw, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$Sj_w, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -63,7 +63,7 @@ public class SimpleBuilder_Constraints extends BaseConstraintsDescriptor {
 
               List<SNode> result = new ArrayList<SNode>();
 
-              for (SNode dcl : SLinkOperations.collectMany(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.SimpleBuilders$hl), LINKS.builder$_U5Z)) {
+              for (SNode dcl : SLinkOperations.collectMany(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.SimpleBuilders$hl), LINKS.builder$n8Tx)) {
                 if (SNodeOperations.isInstanceOf(dcl, CONCEPTS.SimpleBuilderDeclaration$fS) && (boolean) SimpleBuilderDeclaration__BehaviorDescriptor.isRoot_id7LSrDTXbxm6.invoke(SNodeOperations.cast(dcl, CONCEPTS.SimpleBuilderDeclaration$fS))) {
                   ListSequence.fromList(result).addElement(SNodeOperations.cast(dcl, CONCEPTS.SimpleBuilderDeclaration$fS));
                 }
@@ -96,7 +96,7 @@ public class SimpleBuilder_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$oxEw = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e24c0baL, 0x6524536b2e24c0bbL, "declaration");
-    /*package*/ static final SContainmentLink builder$_U5Z = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e3bL, 0x6524536b2e1a1e3dL, "builder");
+    /*package*/ static final SReferenceLink declaration$Sj_w = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e24c0baL, 0x6524536b2e24c0bbL, "declaration");
+    /*package*/ static final SContainmentLink builder$n8Tx = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e3bL, 0x6524536b2e1a1e3dL, "builder");
   }
 }

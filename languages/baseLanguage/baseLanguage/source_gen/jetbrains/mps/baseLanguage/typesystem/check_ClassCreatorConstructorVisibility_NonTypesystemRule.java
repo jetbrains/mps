@@ -23,10 +23,10 @@ public class check_ClassCreatorConstructorVisibility_NonTypesystemRule extends A
   public check_ClassCreatorConstructorVisibility_NonTypesystemRule() {
   }
   public void applyRule(final SNode classCreator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(classCreator, LINKS.baseMethodDeclaration$$A7i) == null)) {
+    if ((SLinkOperations.getTarget(classCreator, LINKS.baseMethodDeclaration$ItxI) == null)) {
       return;
     }
-    SNode visibility = SLinkOperations.getTarget(SLinkOperations.getTarget(classCreator, LINKS.baseMethodDeclaration$$A7i), LINKS.visibility$2GiC);
+    SNode visibility = SLinkOperations.getTarget(SLinkOperations.getTarget(classCreator, LINKS.baseMethodDeclaration$ItxI), LINKS.visibility$jt1o);
     String visibilityName = "public";
     if (visibility == null) {
       visibilityName = "package-local";
@@ -36,7 +36,7 @@ public class check_ClassCreatorConstructorVisibility_NonTypesystemRule extends A
       visibilityName = "protected";
     }
 
-    if (!(VisibilityUtil.isVisible(SNodeOperations.getParent(classCreator), SLinkOperations.getTarget(classCreator, LINKS.baseMethodDeclaration$$A7i)))) {
+    if (!(VisibilityUtil.isVisible(SNodeOperations.getParent(classCreator), SLinkOperations.getTarget(classCreator, LINKS.baseMethodDeclaration$ItxI)))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classCreator, "The constructor has " + visibilityName + " access", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6880273274245694012", null, errorTarget);
     }
@@ -52,8 +52,8 @@ public class check_ClassCreatorConstructorVisibility_NonTypesystemRule extends A
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 
   private static final class CONCEPTS {

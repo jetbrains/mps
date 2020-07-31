@@ -40,7 +40,7 @@ public class Reference_Customization implements EditorMenuItemCustomizer {
           return doMatchesContext_(getContextNode(context_), getContainmentLink(context_), getReference(context_), getProperty(context_)) && getCompletionItemInformation(context_) != null;
         }
         protected boolean doMatchesContext_(SNode contextNode, SContainmentLink containmentLink, SReferenceLink referenceLink, SProperty property) {
-          return Objects.equals(referenceLink, LINKS.reference$yVX7);
+          return Objects.equals(referenceLink, LINKS.reference$V2Ap);
         }
       }.matchesContext(context);
     }
@@ -68,7 +68,7 @@ public class Reference_Customization implements EditorMenuItemCustomizer {
     }
     private void customize_(SNode contextNode, EditorMenuItemStyle style, CompletionItemInformation itemInformation) {
       Object parameterObject = itemInformation.getParameterObject();
-      if (parameterObject instanceof SNode && SNodeOperations.isInstanceOf(((SNode) parameterObject), CONCEPTS.INamedConcept$nV) && Objects.equals(SPropertyOperations.getString(((SNode) parameterObject), PROPS.name$tAp1), "b")) {
+      if (parameterObject instanceof SNode && SNodeOperations.isInstanceOf(((SNode) parameterObject), CONCEPTS.INamedConcept$nV) && Objects.equals(SPropertyOperations.getString(((SNode) parameterObject), PROPS.name$lA7v), "b")) {
         style.setPriority(1.0);
         style.setBold();
       }
@@ -78,7 +78,7 @@ public class Reference_Customization implements EditorMenuItemCustomizer {
 
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink reference$yVX7 = MetaAdapterFactory.getReferenceLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x406156e80eebb455L, "reference");
+    /*package*/ static final SReferenceLink reference$V2Ap = MetaAdapterFactory.getReferenceLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x406156e80eebb455L, "reference");
   }
 
   private static final class CONCEPTS {
@@ -87,6 +87,6 @@ public class Reference_Customization implements EditorMenuItemCustomizer {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

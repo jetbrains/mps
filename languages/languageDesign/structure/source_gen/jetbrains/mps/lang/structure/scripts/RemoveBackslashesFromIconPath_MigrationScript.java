@@ -32,12 +32,12 @@ public final class RemoveBackslashesFromIconPath_MigrationScript extends BaseMig
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        String iconPath = SPropertyOperations.getString(node, PROPS.iconPath$YYV1);
+        String iconPath = SPropertyOperations.getString(node, PROPS.iconPath$wu_v);
         return iconPath != null && iconPath.startsWith("${") && iconPath.indexOf('\\') != -1;
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SPropertyOperations.assign(node, PROPS.iconPath$YYV1, SPropertyOperations.getString(node, PROPS.iconPath$YYV1).replace('\\', '/'));
+        SPropertyOperations.assign(node, PROPS.iconPath$wu_v, SPropertyOperations.getString(node, PROPS.iconPath$wu_v).replace('\\', '/'));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -57,6 +57,6 @@ public final class RemoveBackslashesFromIconPath_MigrationScript extends BaseMig
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty iconPath$YYV1 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x10e328118ddL, "iconPath");
+    /*package*/ static final SProperty iconPath$wu_v = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x10e328118ddL, "iconPath");
   }
 }

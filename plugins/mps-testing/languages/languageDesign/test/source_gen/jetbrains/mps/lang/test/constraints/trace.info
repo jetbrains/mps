@@ -41,7 +41,7 @@
       <node id="1213104844716" at="74,0,75,0" concept="8" trace="NodesTestCase$7I" />
       <node id="1213104844716" at="75,0,76,0" concept="8" trace="EditorTestCase$qk" />
       <node id="1213104844716" at="76,0,77,0" concept="8" trace="TestNodeAnnotation$MC" />
-      <node id="1213104844716" at="80,0,81,0" concept="8" trace="declaration$Gb10" />
+      <node id="1213104844716" at="80,0,81,0" concept="8" trace="declaration$plv0" />
       <node id="1213104844716" at="29,0,32,0" concept="0" trace="TestNodeReference_Constraints#()V" />
       <node id="6836281137582846020" at="49,80,52,13" concept="3" />
       <node id="6836281137582846054" at="55,31,58,15" concept="2" />
@@ -157,7 +157,7 @@
       <node id="3798371591902558756" at="76,0,77,0" concept="8" trace="breakingNode_1jj8js_a0a0a0a0a1a0a0a0c" />
       <node id="3798371591902558756" at="79,0,80,0" concept="8" trace="ScopesExpectedNode$8Q" />
       <node id="3798371591902558756" at="80,0,81,0" concept="8" trace="ScopesTest$Ea" />
-      <node id="3798371591902558756" at="84,0,85,0" concept="8" trace="ref$mFxT" />
+      <node id="3798371591902558756" at="84,0,85,0" concept="8" trace="ref$Z5qB" />
       <node id="3798371591902558756" at="28,0,31,0" concept="0" trace="ScopesExpectedNode_Constraints#()V" />
       <node id="6836281137582846235" at="49,167,52,13" concept="3" />
       <node id="4091667478583475432" at="64,103,67,5" concept="3" />
@@ -226,7 +226,7 @@
       <node id="5449224527592362452" at="77,42,78,22" concept="6" />
       <node id="5449224527592362452" at="80,0,81,0" concept="8" trace="breakingNode_jzm89w_a0a0a0a0a1a0a0a0c" />
       <node id="5449224527592362452" at="83,0,84,0" concept="8" trace="ScopesTest$Ea" />
-      <node id="5449224527592362452" at="87,0,88,0" concept="8" trace="checkingReference$ZKEm" />
+      <node id="5449224527592362452" at="87,0,88,0" concept="8" trace="checkingReference$S$wE" />
       <node id="5449224527592362452" at="30,0,33,0" concept="0" trace="ScopesTest_Constraints#()V" />
       <node id="6836281137582846186" at="54,59,57,17" concept="2" />
       <node id="5449224527592362453" at="37,0,41,0" concept="4" trace="hasOwnScopeProvider#()Z" />
@@ -299,7 +299,7 @@
       <node id="5476670926298730448" at="47,119,48,89" concept="1" />
       <node id="5476670926298711517" at="48,89,49,22" concept="6" />
       <node id="5476670926298711517" at="53,0,54,0" concept="8" trace="MigrationTestCase$Sn" />
-      <node id="5476670926298711517" at="57,0,58,0" concept="8" trace="canNotRunInProcess$QfFh" />
+      <node id="5476670926298711517" at="57,0,58,0" concept="8" trace="canNotRunInProcess$h_Xf" />
       <node id="5476670926298711517" at="20,0,23,0" concept="0" trace="MigrationTestCase_Constraints#()V" />
       <node id="5476670926298730448" at="25,0,28,0" concept="0" trace="CanNotRunInProcess_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="5476670926298730448" at="35,100,38,7" concept="3" />
@@ -351,7 +351,7 @@
       <node id="6109541130560494669" at="43,0,44,0" concept="8" trace="canBeChildBreakingPoint" />
       <node id="6109541130560494669" at="46,0,47,0" concept="8" trace="IgnoreMigrationDataOption$oc" />
       <node id="6109541130560494669" at="47,0,48,0" concept="8" trace="MigrationTestCase$Sn" />
-      <node id="6109541130560494669" at="51,0,52,0" concept="8" trace="option$gm$w" />
+      <node id="6109541130560494669" at="51,0,52,0" concept="8" trace="option$UVFw" />
       <node id="6109541130560494669" at="21,0,24,0" concept="0" trace="IgnoreMigrationDataOption_Constraints#()V" />
       <node id="6109541130560494669" at="31,0,34,9" concept="3" />
       <node id="6109541130560494669" at="40,0,43,0" concept="9" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -394,9 +394,9 @@
       <node id="6626913010124378670" at="45,42,46,22" concept="6" />
       <node id="6626913010124378670" at="50,0,51,0" concept="8" trace="MigrationReference$BB" />
       <node id="6626913010124378670" at="51,0,52,0" concept="8" trace="MigrationTestCase$Sn" />
-      <node id="6626913010124378670" at="55,0,56,0" concept="8" trace="migration$RUsw" />
-      <node id="6626913010124378670" at="56,0,57,0" concept="8" trace="migration$wvkx" />
-      <node id="6626913010124378670" at="60,0,61,0" concept="8" trace="name$tAp1" />
+      <node id="6626913010124378670" at="55,0,56,0" concept="8" trace="migration$5jNw" />
+      <node id="6626913010124378670" at="56,0,57,0" concept="8" trace="migration$JaVZ" />
+      <node id="6626913010124378670" at="60,0,61,0" concept="8" trace="name$lA7v" />
       <node id="6626913010124378670" at="22,0,25,0" concept="0" trace="MigrationReference_Constraints#()V" />
       <node id="6626913010124378808" at="38,119,41,9" concept="3" />
       <node id="6626913010124378671" at="29,0,33,0" concept="4" trace="hasOwnOnReferenceSetHandler#()Z" />

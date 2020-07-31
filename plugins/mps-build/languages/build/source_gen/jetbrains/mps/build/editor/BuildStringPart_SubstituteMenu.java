@@ -149,7 +149,7 @@ public class BuildStringPart_SubstituteMenu extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode res = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.BuildVarRefStringPart$wm, null);
-          SLinkOperations.setTarget(res, LINKS.macro$lql0, myParameterObject);
+          SLinkOperations.setTarget(res, LINKS.macro$nKb0, myParameterObject);
           return res;
         }
 
@@ -180,7 +180,7 @@ public class BuildStringPart_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return "$" + SPropertyOperations.getString(myParameterObject, PROPS.name$tAp1);
+          return "$" + SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v);
         }
       }
     }
@@ -226,7 +226,7 @@ public class BuildStringPart_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode buildText = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.BuildTextStringPart$xk, null);
-        SPropertyOperations.set(buildText, PROPS.text$2p89, pattern);
+        SPropertyOperations.set(buildText, PROPS.text$aaWn, pattern);
         return buildText;
       }
 
@@ -293,11 +293,11 @@ public class BuildStringPart_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink macro$lql0 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d01L, 0x440d7ea3b68b7d02L, "macro");
+    /*package*/ static final SReferenceLink macro$nKb0 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d01L, 0x440d7ea3b68b7d02L, "macro");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty text$2p89 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty text$aaWn = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
   }
 }

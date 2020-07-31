@@ -22,10 +22,10 @@ public class check_Weaving_MappingRule_InferenceRule extends AbstractInferenceRu
   public check_Weaving_MappingRule_InferenceRule() {
   }
   public void applyRule(final SNode rule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(rule, LINKS.ruleConsequence$pweR), CONCEPTS.TemplateDeclarationReference$bd)) {
-      SNode template = TemplateDeclarationReference__BehaviorDescriptor.getTemplate_idQzR6ThtRo7.invoke(SNodeOperations.cast(SLinkOperations.getTarget(rule, LINKS.ruleConsequence$pweR), CONCEPTS.TemplateDeclarationReference$bd));
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(rule, LINKS.ruleConsequence$mBcD), CONCEPTS.TemplateDeclarationReference$bd)) {
+      SNode template = TemplateDeclarationReference__BehaviorDescriptor.getTemplate_idQzR6ThtRo7.invoke(SNodeOperations.cast(SLinkOperations.getTarget(rule, LINKS.ruleConsequence$mBcD), CONCEPTS.TemplateDeclarationReference$bd));
       boolean useRootTemplateFragment = false;
-      for (SNode child : SNodeOperations.getChildren(SLinkOperations.getTarget(template, LINKS.contentNode$UkrJ))) {
+      for (SNode child : SNodeOperations.getChildren(SLinkOperations.getTarget(template, LINKS.contentNode$fTrL))) {
         if (SNodeOperations.isInstanceOf(child, CONCEPTS.TemplateFragment$yI)) {
           useRootTemplateFragment = true;
         }
@@ -33,7 +33,7 @@ public class check_Weaving_MappingRule_InferenceRule extends AbstractInferenceRu
       if (useRootTemplateFragment) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(rule, LINKS.ruleConsequence$pweR), "Weaving Template can't include Template Fragment as root", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1241017586622", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(rule, LINKS.ruleConsequence$mBcD), "Weaving Template can't include Template Fragment as root", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1241017586622", null, errorTarget);
         }
       }
     }
@@ -49,8 +49,8 @@ public class check_Weaving_MappingRule_InferenceRule extends AbstractInferenceRu
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ruleConsequence$pweR = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0d8c573L, 0x1104fd38a1cL, "ruleConsequence");
-    /*package*/ static final SContainmentLink contentNode$UkrJ = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
+    /*package*/ static final SContainmentLink ruleConsequence$mBcD = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0d8c573L, 0x1104fd38a1cL, "ruleConsequence");
+    /*package*/ static final SContainmentLink contentNode$fTrL = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
   }
 
   private static final class CONCEPTS {

@@ -18,24 +18,24 @@ public class QueriesUtil {
   }
   public static boolean isMoney(SNode node) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.Operation$Lv)) {
-      return isMoney(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.Operation$Lv), LINKS.leftOperand$18cm));
+      return isMoney(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.Operation$Lv), LINKS.leftOperand$yXYE));
     }
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.EventVariableReference$yc)) {
-      SNode eventVariable = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.EventVariableReference$yc), LINKS.eventVariable$RqpJ);
-      return SEnumOperations.isMember(SPropertyOperations.getEnum(eventVariable, PROPS.type$4e6B), 0x102dc055e26L);
+      SNode eventVariable = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.EventVariableReference$yc), LINKS.eventVariable$PMtL);
+      return SEnumOperations.isMember(SPropertyOperations.getEnum(eventVariable, PROPS.type$2PcT), 0x102dc055e26L);
     }
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.Quantity$5I)) {
-      return SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(node, CONCEPTS.Quantity$5I), PROPS.unit$IEHe), 0x102dc0b6d03L);
+      return SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(node, CONCEPTS.Quantity$5I), PROPS.unit$AFTM), 0x102dc0b6d03L);
     }
     return false;
   }
   public static boolean isQuantity(SNode node) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.Operation$Lv)) {
-      return isQuantity(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.Operation$Lv), LINKS.leftOperand$18cm));
+      return isQuantity(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.Operation$Lv), LINKS.leftOperand$yXYE));
     }
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.EventVariableReference$yc)) {
-      SNode eventVariable = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.EventVariableReference$yc), LINKS.eventVariable$RqpJ);
-      return SEnumOperations.isMember(SPropertyOperations.getEnum(eventVariable, PROPS.type$4e6B), 0x102dc04f5a7L);
+      SNode eventVariable = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.EventVariableReference$yc), LINKS.eventVariable$PMtL);
+      return SEnumOperations.isMember(SPropertyOperations.getEnum(eventVariable, PROPS.type$2PcT), 0x102dc04f5a7L);
     }
     return SNodeOperations.isInstanceOf(node, CONCEPTS.Quantity$5I);
   }
@@ -47,12 +47,12 @@ public class QueriesUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftOperand$18cm = MetaAdapterFactory.getContainmentLink(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, 0x102db86e5b3L, "leftOperand");
-    /*package*/ static final SReferenceLink eventVariable$RqpJ = MetaAdapterFactory.getReferenceLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102ea8a3c37L, 0x102ea8aa283L, "eventVariable");
+    /*package*/ static final SContainmentLink leftOperand$yXYE = MetaAdapterFactory.getContainmentLink(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, 0x102db86e5b3L, "leftOperand");
+    /*package*/ static final SReferenceLink eventVariable$PMtL = MetaAdapterFactory.getReferenceLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102ea8a3c37L, 0x102ea8aa283L, "eventVariable");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty type$4e6B = MetaAdapterFactory.getProperty(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dc12643eL, 0x102dc1330d6L, "type");
-    /*package*/ static final SProperty unit$IEHe = MetaAdapterFactory.getProperty(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c5503L, "unit");
+    /*package*/ static final SProperty type$2PcT = MetaAdapterFactory.getProperty(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dc12643eL, 0x102dc1330d6L, "type");
+    /*package*/ static final SProperty unit$AFTM = MetaAdapterFactory.getProperty(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c5503L, "unit");
   }
 }

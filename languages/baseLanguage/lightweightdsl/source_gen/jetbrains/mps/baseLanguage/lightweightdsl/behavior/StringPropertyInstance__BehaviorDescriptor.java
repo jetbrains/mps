@@ -34,7 +34,7 @@ public final class StringPropertyInstance__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static SNode getValueExpression_id3m06Jgserfw(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_2ank17_a0a0(SPropertyOperations.getString(__thisNode__, PROPS.value$9w0w));
+    return _quotation_createNode_2ank17_a0a0(SPropertyOperations.getString(__thisNode__, PROPS.value$Awfw));
   }
 
   /*package*/ StringPropertyInstance__BehaviorDescriptor() {
@@ -91,6 +91,6 @@ public final class StringPropertyInstance__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$9w0w = MetaAdapterFactory.getProperty(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e84100d04L, 0x59e9926e84100d05L, "value");
+    /*package*/ static final SProperty value$Awfw = MetaAdapterFactory.getProperty(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e84100d04L, 0x59e9926e84100d05L, "value");
   }
 }

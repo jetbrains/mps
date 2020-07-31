@@ -50,7 +50,7 @@ public class BuildMps_IdeaPluginGroup_SmartReference extends SubstituteMenuBase 
 
     public SMP_ReferenceScope_v60gxw_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.BuildMps_IdeaPluginGroup$9v, LINKS.group$abww);
+      super((SAbstractConcept) CONCEPTS.BuildMps_IdeaPluginGroup$9v, LINKS.group$V$Jw);
     }
     @NotNull
     @Override
@@ -85,10 +85,10 @@ public class BuildMps_IdeaPluginGroup_SmartReference extends SubstituteMenuBase 
         if (SNodeOperations.getContainingRoot(referencedNode) != SNodeOperations.getContainingRoot(_context.getParentNode())) {
           SNode proj = SNodeOperations.as(SNodeOperations.getContainingRoot(referencedNode), CONCEPTS.BuildProject$BF);
           if (proj != null) {
-            return SPropertyOperations.getString(proj, PROPS.name$tAp1) + "/" + SPropertyOperations.getString(referencedNode, PROPS.name$tAp1);
+            return SPropertyOperations.getString(proj, PROPS.name$lA7v) + "/" + SPropertyOperations.getString(referencedNode, PROPS.name$lA7v);
           }
         }
-        return SPropertyOperations.getString(referencedNode, PROPS.name$tAp1);
+        return SPropertyOperations.getString(referencedNode, PROPS.name$lA7v);
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
@@ -108,10 +108,10 @@ public class BuildMps_IdeaPluginGroup_SmartReference extends SubstituteMenuBase 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink group$abww = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group");
+    /*package*/ static final SReferenceLink group$V$Jw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

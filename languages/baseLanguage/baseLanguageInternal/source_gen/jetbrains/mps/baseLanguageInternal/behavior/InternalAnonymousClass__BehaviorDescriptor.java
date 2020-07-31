@@ -43,7 +43,7 @@ public final class InternalAnonymousClass__BehaviorDescriptor extends BaseBHDesc
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getUnitName_id4pl5GY7LKmR, getJavaName_id2XVui9ut6Ed, getIndexInContainingClass_id2XVui9ut6EM, getSuperclass_idi3H_lLu, getNestedName_id7q4lzBFjvIX, getFqName_idhEwIO9y, getAnonymousClassPresentation_id2XVui9ut6Db);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.nonStatic$pNlE, true);
+    SPropertyOperations.assign(__thisNode__, PROPS.nonStatic$vRvm, true);
   }
 
   /*package*/ static String getUnitName_id4pl5GY7LKmR(@NotNull SNode __thisNode__) {
@@ -80,7 +80,7 @@ public final class InternalAnonymousClass__BehaviorDescriptor extends BaseBHDesc
     String result = "Anonymous in ";
     SNode containingMethod = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BaseMethodDeclaration$RR, false, false);
     if (containingMethod != null && SNodeOperations.getParent(containingMethod) == containingClassifier) {
-      result += SPropertyOperations.getString(containingMethod, PROPS.name$tAp1) + "() in ";
+      result += SPropertyOperations.getString(containingMethod, PROPS.name$lA7v) + "() in ";
     }
     return result;
   }
@@ -151,8 +151,8 @@ public final class InternalAnonymousClass__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nonStatic$pNlE = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty nonStatic$vRvm = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

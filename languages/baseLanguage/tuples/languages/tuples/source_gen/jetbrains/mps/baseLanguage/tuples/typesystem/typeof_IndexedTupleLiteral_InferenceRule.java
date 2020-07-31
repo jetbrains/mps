@@ -25,7 +25,7 @@ public class typeof_IndexedTupleLiteral_InferenceRule extends AbstractInferenceR
   }
   public void applyRule(final SNode tuple, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> memberTypes = ListSequence.fromList(new ArrayList<SNode>());
-    for (SNode mbr : SLinkOperations.getChildren(tuple, LINKS.component$zxvz)) {
+    for (SNode mbr : SLinkOperations.getChildren(tuple, LINKS.component$dehX)) {
       ListSequence.fromList(memberTypes).addElement(typeCheckingContext.typeOf(mbr, "r:e119dbbd-3529-4067-8bad-6b9edd79d0b6(jetbrains.mps.baseLanguage.tuples.typesystem)", "974579920306587589", true));
     }
     {
@@ -58,7 +58,7 @@ public class typeof_IndexedTupleLiteral_InferenceRule extends AbstractInferenceR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink component$zxvz = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071708c13L, 0x1207171832eL, "component");
+    /*package*/ static final SContainmentLink component$dehX = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071708c13L, 0x1207171832eL, "component");
   }
 
   private static final class CONCEPTS {

@@ -41,7 +41,7 @@ public final class LoggingGenerationUtil {
 
       if (Sequence.fromIterable(scope.getAvailableElements(baseName)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.VariableDeclaration$xe)) || baseName.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.VariableDeclaration$xe), PROPS.name$tAp1));
+          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.VariableDeclaration$xe)) || baseName.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.VariableDeclaration$xe), PROPS.name$lA7v));
         }
       }).isNotEmpty()) {
         return baseName + "_" + Integer.toString(Math.abs(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(contextNode).hashCode()));
@@ -73,6 +73,6 @@ public final class LoggingGenerationUtil {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

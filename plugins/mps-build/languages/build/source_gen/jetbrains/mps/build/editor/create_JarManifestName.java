@@ -49,10 +49,10 @@ public class create_JarManifestName extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      return (SLinkOperations.getTarget(node, LINKS.name$X9sf) == null);
+      return (SLinkOperations.getTarget(node, LINKS.name$B$Fh) == null);
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNodeFactoryOperations.setNewChild(node, LINKS.name$X9sf, null);
+      SNodeFactoryOperations.setNewChild(node, LINKS.name$B$Fh, null);
     }
     public String getKeyStroke() {
       return " letter";
@@ -64,6 +64,6 @@ public class create_JarManifestName extends KeyMapImpl {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink name$X9sf = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f2eL, 0x67af4eb97391dfc1L, "name");
+    /*package*/ static final SContainmentLink name$B$Fh = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f2eL, 0x67af4eb97391dfc1L, "name");
   }
 }

@@ -28,8 +28,8 @@ public class typeof_PatternReduction_MappingRule_InferenceRule extends AbstractI
   }
   public void applyRule(final SNode rule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SAbstractConcept applicableConcept = PatternReduction_MappingRule__BehaviorDescriptor.getConcept_id1$dcvTE6OGV.invoke(rule);
-    if (SLinkOperations.getTarget(SLinkOperations.getTarget(rule, LINKS.labelDeclaration$7IJV), LINKS.sourceConcept$T1Uo) != null && applicableConcept != null) {
-      if (!(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(applicableConcept), SNodeOperations.asSConcept(SNodeOperations.asSConcept(SLinkOperations.getTarget(SLinkOperations.getTarget(rule, LINKS.labelDeclaration$7IJV), LINKS.sourceConcept$T1Uo)))))) {
+    if (SLinkOperations.getTarget(SLinkOperations.getTarget(rule, LINKS.labelDeclaration$JDd_), LINKS.sourceConcept$BVhC) != null && applicableConcept != null) {
+      if (!(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(applicableConcept), SNodeOperations.asSConcept(SNodeOperations.asSConcept(SLinkOperations.getTarget(SLinkOperations.getTarget(rule, LINKS.labelDeclaration$JDd_), LINKS.sourceConcept$BVhC)))))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(rule, "Label has incorrect type", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1805153994417064793", null, errorTarget);
@@ -38,7 +38,7 @@ public class typeof_PatternReduction_MappingRule_InferenceRule extends AbstractI
       {
         SNode _nodeToCheck_1029348928467 = rule;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1805153994417064796", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) _quotation_createNode_xjg16h_a0a0c0b0b0b(PatternReduction_MappingRule__BehaviorDescriptor.getTemplateType_id1$dcvTE731L.invoke(rule)), (SNode) _quotation_createNode_xjg16h_a1a0c0b0b0b(SLinkOperations.getTarget(SLinkOperations.getTarget(rule, LINKS.labelDeclaration$7IJV), LINKS.targetConcept$f8gl)), false, false, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) _quotation_createNode_xjg16h_a0a0c0b0b0b(PatternReduction_MappingRule__BehaviorDescriptor.getTemplateType_id1$dcvTE731L.invoke(rule)), (SNode) _quotation_createNode_xjg16h_a1a0c0b0b0b(SLinkOperations.getTarget(SLinkOperations.getTarget(rule, LINKS.labelDeclaration$JDd_), LINKS.targetConcept$kZUb)), false, false, _info_12389875345);
       }
     }
   }
@@ -67,9 +67,9 @@ public class typeof_PatternReduction_MappingRule_InferenceRule extends AbstractI
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink labelDeclaration$7IJV = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a12ebb4L, 0x190d31fe6a12ebbaL, "labelDeclaration");
-    /*package*/ static final SReferenceLink sourceConcept$T1Uo = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179be4dc5eL, "sourceConcept");
-    /*package*/ static final SReferenceLink targetConcept$f8gl = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179bfe3866L, "targetConcept");
+    /*package*/ static final SReferenceLink labelDeclaration$JDd_ = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a12ebb4L, 0x190d31fe6a12ebbaL, "labelDeclaration");
+    /*package*/ static final SReferenceLink sourceConcept$BVhC = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179be4dc5eL, "sourceConcept");
+    /*package*/ static final SReferenceLink targetConcept$kZUb = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179bfe3866L, "targetConcept");
   }
 
   private static final class CONCEPTS {

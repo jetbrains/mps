@@ -35,7 +35,7 @@ public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
     super(CONCEPTS.ConceptDeclaration$qU);
   }
   public IconResource getInstanceIcon(SNode node) {
-    return (SPropertyOperations.getBoolean(node, PROPS.rootable$vg$g) ? IconContainer.RESOURCE_a0a0a : IconContainer.RESOURCE_a0a0a_0);
+    return (SPropertyOperations.getBoolean(node, PROPS.rootable$91zK) ? IconContainer.RESOURCE_a0a0a : IconContainer.RESOURCE_a0a0a_0);
   }
 
   @Override
@@ -73,7 +73,7 @@ public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.extends$LQV3, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.extends$9AAt, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -110,10 +110,10 @@ public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty rootable$vg$g = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
+    /*package*/ static final SProperty rootable$91zK = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$LQV3 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
   }
 }

@@ -29,8 +29,8 @@ public class BuildCompositePath_Actions {
         if (DeletionApproverUtil.approve(editorContext, node, "*" + CellIdManager.createPropertyId("head"))) {
           return;
         }
-        SNode n = SLinkOperations.getTarget(node, LINKS.tail$vKD0);
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.tail$vKD0));
+        SNode n = SLinkOperations.getTarget(node, LINKS.tail$ozR0);
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.tail$ozR0));
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, n, "*" + CellIdManager.createPropertyId("head"), 0);
       }
 
@@ -79,6 +79,6 @@ public class BuildCompositePath_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tail$vKD0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail");
+    /*package*/ static final SContainmentLink tail$ozR0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail");
   }
 }

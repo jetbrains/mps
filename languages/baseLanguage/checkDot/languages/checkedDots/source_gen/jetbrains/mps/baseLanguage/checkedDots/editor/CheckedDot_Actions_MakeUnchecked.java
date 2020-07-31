@@ -29,8 +29,8 @@ public class CheckedDot_Actions_MakeUnchecked {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode dotExpression = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.DotExpression$6a);
-        SLinkOperations.setTarget(dotExpression, LINKS.operand$Lcrr, SLinkOperations.getTarget(node, LINKS.operand$Lcrr));
-        SLinkOperations.setTarget(dotExpression, LINKS.operation$X4R8, SLinkOperations.getTarget(node, LINKS.operation$X4R8));
+        SLinkOperations.setTarget(dotExpression, LINKS.operand$P1i5, SLinkOperations.getTarget(node, LINKS.operand$P1i5));
+        SLinkOperations.setTarget(dotExpression, LINKS.operation$_mGS, SLinkOperations.getTarget(node, LINKS.operation$_mGS));
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, dotExpression, "dot", -1);
       }
 
@@ -83,7 +83,7 @@ public class CheckedDot_Actions_MakeUnchecked {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 }

@@ -51,7 +51,7 @@ public class NoMessageKeymap extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SLinkOperations.setTarget(node, LINKS.messagesExpr$ec2t, SNodeFactoryOperations.createNewNode(CONCEPTS.CombinedMessageExpression$e_, null));
+      SLinkOperations.setTarget(node, LINKS.messagesExpr$RPc3, SNodeFactoryOperations.createNewNode(CONCEPTS.CombinedMessageExpression$e_, null));
     }
     public String getKeyStroke() {
       return "  ";
@@ -64,6 +64,6 @@ public class NoMessageKeymap extends KeyMapImpl {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink messagesExpr$ec2t = MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce81L, 0x48f860fc0e362dc8L, "messagesExpr");
+    /*package*/ static final SContainmentLink messagesExpr$RPc3 = MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce81L, 0x48f860fc0e362dc8L, "messagesExpr");
   }
 }

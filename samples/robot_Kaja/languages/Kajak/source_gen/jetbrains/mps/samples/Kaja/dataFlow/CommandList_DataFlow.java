@@ -13,7 +13,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CommandList_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.commands$o94w)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.commands$Gpbw)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         _context.getBuilder().build((SNode) it);
       }
@@ -21,6 +21,6 @@ public class CommandList_DataFlow extends DataFlowBuilder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink commands$o94w = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, 0x2de971c785f06a40L, "commands");
+    /*package*/ static final SContainmentLink commands$Gpbw = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, 0x2de971c785f06a40L, "commands");
   }
 }

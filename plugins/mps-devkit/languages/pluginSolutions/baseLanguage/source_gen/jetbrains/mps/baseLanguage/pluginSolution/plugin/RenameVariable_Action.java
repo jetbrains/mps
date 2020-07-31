@@ -92,7 +92,7 @@ public class RenameVariable_Action extends BaseAction {
     ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
     final Tuples._2<SNode, String> result = new ModelAccessHelper(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getEditorContext().getRepository()).runReadAction(new Computable<Tuples._2<SNode, String>>() {
       public Tuples._2<SNode, String> compute() {
-        return MultiTuple.<SNode,String>from(SLinkOperations.getTarget(((SNode) MapSequence.fromMap(_params).get("node")), LINKS.variableDeclaration$2ky6), SPropertyOperations.getString(SLinkOperations.getTarget(((SNode) MapSequence.fromMap(_params).get("node")), LINKS.variableDeclaration$2ky6), PROPS.name$tAp1));
+        return MultiTuple.<SNode,String>from(SLinkOperations.getTarget(((SNode) MapSequence.fromMap(_params).get("node")), LINKS.variableDeclaration$7WwU), SPropertyOperations.getString(SLinkOperations.getTarget(((SNode) MapSequence.fromMap(_params).get("node")), LINKS.variableDeclaration$7WwU), PROPS.name$lA7v));
       }
     });
     final String newName = RenameDialog.getNewName(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject(), result._1(), "Variable");
@@ -101,7 +101,7 @@ public class RenameVariable_Action extends BaseAction {
     }
     modelAccess.executeCommand(new EditorCommand(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getEditorContext()) {
       protected void doExecute() {
-        SPropertyOperations.assign(result._0(), PROPS.name$tAp1, newName);
+        SPropertyOperations.assign(result._0(), PROPS.name$lA7v, newName);
       }
     });
   }
@@ -111,10 +111,10 @@ public class RenameVariable_Action extends BaseAction {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

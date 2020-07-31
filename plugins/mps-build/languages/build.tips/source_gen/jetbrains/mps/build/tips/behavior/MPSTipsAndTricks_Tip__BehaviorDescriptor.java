@@ -28,8 +28,8 @@ public final class MPSTipsAndTricks_Tip__BehaviorDescriptor extends BaseBHDescri
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SNode tmp = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf32687cL, "jetbrains.mps.build.tips.structure.MPSTipsAndTricks_Text"));
-    SPropertyOperations.assign(tmp, PROPS.language$5AFb, "en");
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.text$SKy8)).addElement(tmp);
+    SPropertyOperations.assign(tmp, PROPS.language$HIUl, "en");
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.text$vwxS)).addElement(tmp);
   }
 
 
@@ -78,10 +78,10 @@ public final class MPSTipsAndTricks_Tip__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty language$5AFb = MetaAdapterFactory.getProperty(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf32687cL, 0x5ea1926fdf40725aL, "language");
+    /*package*/ static final SProperty language$HIUl = MetaAdapterFactory.getProperty(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf32687cL, 0x5ea1926fdf40725aL, "language");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink text$SKy8 = MetaAdapterFactory.getContainmentLink(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf2fb910L, 0x5ea1926fdf32687eL, "text");
+    /*package*/ static final SContainmentLink text$vwxS = MetaAdapterFactory.getContainmentLink(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf2fb910L, 0x5ea1926fdf32687eL, "text");
   }
 }

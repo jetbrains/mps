@@ -30,7 +30,7 @@ public class HandleCommentParts {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         if (SNodeOperations.isInstanceOf(node, CONCEPTS.TextCommentLinePart$RY) && SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(node), CONCEPTS.TextCommentLinePart$RY)) {
-          SPropertyOperations.assign(SNodeOperations.cast(SNodeOperations.getPrevSibling(node), CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0, SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getPrevSibling(node), CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0) + SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0));
+          SPropertyOperations.assign(SNodeOperations.cast(SNodeOperations.getPrevSibling(node), CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0, SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getPrevSibling(node), CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0) + SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0));
           SNodeOperations.deleteNode(node);
         } else {
           if (DeletionApproverUtil.approve(editorContext, node)) {
@@ -53,7 +53,7 @@ public class HandleCommentParts {
       public void execute_internal(EditorContext editorContext, SNode node) {
         if (SNodeOperations.isInstanceOf(node, CONCEPTS.TextCommentLinePart$RY) && SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(node), CONCEPTS.TextCommentLinePart$RY)) {
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, SelectionManager.LAST_CELL, -1);
-          SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0, SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0) + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getNextSibling(node), CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0));
+          SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0, SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0) + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getNextSibling(node), CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0));
           SNodeOperations.deleteNode(SNodeOperations.getNextSibling(node));
         } else {
           if (DeletionApproverUtil.approve(editorContext, node)) {
@@ -118,6 +118,6 @@ public class HandleCommentParts {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$5Ox0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
+    /*package*/ static final SProperty text$OrZ0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
   }
 }

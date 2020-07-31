@@ -26,7 +26,7 @@ public class DeleteNativeInIncompleteMember {
         if (DeletionApproverUtil.approve(editorContext, node, "nativeKeyword")) {
           return;
         }
-        SPropertyOperations.set(node, PROPS.native$HhhY, false);
+        SPropertyOperations.set(node, PROPS.native$VnH2, false);
         editorContext.selectWRTFocusPolicy(node);
       }
 
@@ -75,6 +75,6 @@ public class DeleteNativeInIncompleteMember {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty native$HhhY = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x73f30e3dfbaac721L, "native");
+    /*package*/ static final SProperty native$VnH2 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x73f30e3dfbaac721L, "native");
   }
 }

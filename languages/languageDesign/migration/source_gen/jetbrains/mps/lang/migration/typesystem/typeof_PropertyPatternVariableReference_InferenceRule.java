@@ -21,7 +21,7 @@ public class typeof_PropertyPatternVariableReference_InferenceRule extends Abstr
     {
       SNode _nodeToCheck_1029348928467 = propertyPatternVariableReference;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "3220955710218147765", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "3220955710218147429", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(propertyPatternVariableReference, LINKS.declaration$Swc3), "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "3220955710218363470", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "3220955710218147429", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(propertyPatternVariableReference, LINKS.declaration$n_Pt), "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "3220955710218363470", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -35,7 +35,7 @@ public class typeof_PropertyPatternVariableReference_InferenceRule extends Abstr
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$Swc3 = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2cb3222730cfcbccL, 0x2cb3222730cfe469L, "declaration");
+    /*package*/ static final SReferenceLink declaration$n_Pt = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2cb3222730cfcbccL, 0x2cb3222730cfe469L, "declaration");
   }
 
   private static final class CONCEPTS {

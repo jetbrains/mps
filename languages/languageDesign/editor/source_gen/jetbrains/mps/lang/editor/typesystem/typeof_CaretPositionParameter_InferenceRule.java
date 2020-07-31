@@ -21,7 +21,7 @@ public class typeof_CaretPositionParameter_InferenceRule extends AbstractInferen
   }
   public void applyRule(final SNode nodeToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(nodeToCheck, LINKS.position$WxRk);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(nodeToCheck, LINKS.position$kpMG);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1201271589564", 0, null);
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1201271583415", true), (SNode) _quotation_createNode_fbhgy8_a1a0c0a0b(), _info_12389875345);
     }
@@ -43,7 +43,7 @@ public class typeof_CaretPositionParameter_InferenceRule extends AbstractInferen
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink position$WxRk = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x117b152bc1fL, 0x117b1536374L, "position");
+    /*package*/ static final SContainmentLink position$kpMG = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x117b152bc1fL, 0x117b1536374L, "position");
   }
 
   private static final class CONCEPTS {

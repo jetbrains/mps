@@ -83,7 +83,7 @@ public final class AddPropertyMacroParam_property_Intention extends AbstractInte
     List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
     final SNode propertyDeclaration = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SNodeOperations.asNode(SNodeOperations.getConcept(node)))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), p);
+        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), p);
       }
     }).first();
     if (propertyDeclaration == null) {
@@ -92,7 +92,7 @@ public final class AddPropertyMacroParam_property_Intention extends AbstractInte
 
     return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(sourceNodeConcept)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.dataType$fLUl) == SLinkOperations.getTarget(propertyDeclaration, LINKS.dataType$fLUl);
+        return SLinkOperations.getTarget(it, LINKS.dataType$Dbgb) == SLinkOperations.getTarget(propertyDeclaration, LINKS.dataType$Dbgb);
       }
     }).toListSequence();
   }
@@ -111,13 +111,13 @@ public final class AddPropertyMacroParam_property_Intention extends AbstractInte
       SNode propertyValue = SNodeFactoryOperations.createNewNode(CONCEPTS.PropertyMacro_GetPropertyValue$Nm, null);
       SNode dotExpression = SNodeFactoryOperations.createNewNode(CONCEPTS.DotExpression$6a, null);
       SNode propertyAccess = SNodeFactoryOperations.createNewNode(CONCEPTS.SPropertyAccess$bD, null);
-      SLinkOperations.setTarget(propertyAccess, LINKS.property$He2, myParameter);
-      SLinkOperations.setTarget(dotExpression, LINKS.operation$X4R8, propertyAccess);
-      SLinkOperations.setTarget(dotExpression, LINKS.operand$Lcrr, SNodeFactoryOperations.createNewNode(CONCEPTS.TemplateFunctionParameter_sourceNode$A8, null));
+      SLinkOperations.setTarget(propertyAccess, LINKS.property$lTMY, myParameter);
+      SLinkOperations.setTarget(dotExpression, LINKS.operation$_mGS, propertyAccess);
+      SLinkOperations.setTarget(dotExpression, LINKS.operand$P1i5, SNodeFactoryOperations.createNewNode(CONCEPTS.TemplateFunctionParameter_sourceNode$A8, null));
       SNode expressionStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.ExpressionStatement$nm, null);
-      SLinkOperations.setTarget(expressionStatement, LINKS.expression$WIP0, dotExpression);
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(propertyValue, LINKS.body$pTP2), LINKS.statement$WHn8)).addElement(expressionStatement);
-      SLinkOperations.setTarget(propertyMacro, LINKS.propertyValueFunction$AFdB, propertyValue);
+      SLinkOperations.setTarget(expressionStatement, LINKS.expression$qFF0, dotExpression);
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(propertyValue, LINKS.body$z0FY), LINKS.statement$pYcS)).addElement(expressionStatement);
+      SLinkOperations.setTarget(propertyMacro, LINKS.propertyValueFunction$IV_T, propertyValue);
       // set caret 
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, propertyMacro, SelectionManager.FIRST_CELL, 0);
     }
@@ -131,18 +131,18 @@ public final class AddPropertyMacroParam_property_Intention extends AbstractInte
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink dataType$fLUl = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
-    /*package*/ static final SReferenceLink property$He2 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink expression$WIP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
-    /*package*/ static final SContainmentLink body$pTP2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink propertyValueFunction$AFdB = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47e9f6f0L, 0x10fe3b4023fL, "propertyValueFunction");
+    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SReferenceLink property$lTMY = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink body$z0FY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink propertyValueFunction$IV_T = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47e9f6f0L, 0x10fe3b4023fL, "propertyValueFunction");
   }
 
   private static final class CONCEPTS {

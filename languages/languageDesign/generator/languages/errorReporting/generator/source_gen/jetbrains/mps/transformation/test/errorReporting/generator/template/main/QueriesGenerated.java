@@ -27,7 +27,7 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.intval$bX0z) == 42;
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.intval$MzgX) == 42;
   }
   public static SNode weavingRule_ContextQuery_0_0(final WeavingMappingRuleContext _context) {
     return null;
@@ -111,6 +111,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty intval$bX0z = MetaAdapterFactory.getProperty(0x99a58581851840c8L, 0x81f1e364306f5ffcL, 0x6521db51e82a7653L, 0x6521db51e82a9208L, "intval");
+    /*package*/ static final SProperty intval$MzgX = MetaAdapterFactory.getProperty(0x99a58581851840c8L, 0x81f1e364306f5ffcL, 0x6521db51e82a7653L, 0x6521db51e82a9208L, "intval");
   }
 }

@@ -68,7 +68,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_57lpr_a6a() {
-    return SPropertyOperations.getBoolean(myNode, PROPS.secondAssistant$HKJv);
+    return SPropertyOperations.getBoolean(myNode, PROPS.secondAssistant$aB01);
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "parent");
@@ -88,7 +88,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.initiallyCollapsed$aQL0;
+      final SProperty property = PROPS.initiallyCollapsed$gxJ0;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no initiallyCollapsed>");
@@ -122,7 +122,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.secondAssistant$HKJv;
+      final SProperty property = PROPS.secondAssistant$aB01;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no secondAssistant>");
@@ -158,7 +158,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_57lpr_a5a() {
-    return SPropertyOperations.getBoolean(myNode, PROPS.initiallyCollapsed$aQL0);
+    return SPropertyOperations.getBoolean(myNode, PROPS.initiallyCollapsed$gxJ0);
   }
   private EditorCell createConstant_3() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "{");
@@ -228,8 +228,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty secondAssistant$HKJv = MetaAdapterFactory.getProperty(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x5428f7c9b49f682L, 0x5428f7c9b4b9f22L, "secondAssistant");
-    /*package*/ static final SProperty initiallyCollapsed$aQL0 = MetaAdapterFactory.getProperty(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x5428f7c9b49f682L, 0x5428f7c9b49f683L, "initiallyCollapsed");
+    /*package*/ static final SProperty secondAssistant$aB01 = MetaAdapterFactory.getProperty(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x5428f7c9b49f682L, 0x5428f7c9b4b9f22L, "secondAssistant");
+    /*package*/ static final SProperty initiallyCollapsed$gxJ0 = MetaAdapterFactory.getProperty(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x5428f7c9b49f682L, 0x5428f7c9b49f683L, "initiallyCollapsed");
   }
 
   private static final class CONCEPTS {

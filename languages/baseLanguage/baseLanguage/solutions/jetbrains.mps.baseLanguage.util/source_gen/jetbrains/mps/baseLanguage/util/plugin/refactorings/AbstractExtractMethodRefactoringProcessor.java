@@ -55,7 +55,7 @@ public class AbstractExtractMethodRefactoringProcessor implements IExtractMethod
   public SNode getContainerReturnType() {
     SNode containerMethod = this.getContainerMethod();
     if (SNodeOperations.isInstanceOf(containerMethod, CONCEPTS.BaseMethodDeclaration$RR)) {
-      return SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(containerMethod, CONCEPTS.BaseMethodDeclaration$RR), LINKS.returnType$WIkw));
+      return SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(containerMethod, CONCEPTS.BaseMethodDeclaration$RR), LINKS.returnType$qrVw));
     }
     if (SNodeOperations.isInstanceOf(containerMethod, CONCEPTS.ConceptFunction$Tt)) {
       return TypecheckingFacade.getFromContext().coerceType(((SNode) BHReflection.invoke0(SNodeOperations.cast(containerMethod, CONCEPTS.ConceptFunction$Tt), CONCEPTS.ConceptFunction$Tt, SMethodTrimmedId.create("getExpectedReturnType", null, "hEwIGRD"))), CONCEPTS.Type$IG);
@@ -76,6 +76,6 @@ public class AbstractExtractMethodRefactoringProcessor implements IExtractMethod
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 }

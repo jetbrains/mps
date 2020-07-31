@@ -12,12 +12,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class IdGenerationUtil {
   public static long getConceptId(TemplateQueryContext genContext, SNode concept) {
     long id;
-    if (isEmptyString(SPropertyOperations.getString(concept, PROPS.conceptId$TMc5))) {
+    if (isEmptyString(SPropertyOperations.getString(concept, PROPS.conceptId$ZjQr))) {
       genContext.showWarningMessage(concept, "Concept id not set (j.m.lang.structure->Set Ids migration not run?)");
       id = ((SNodeId.Regular) concept.getNodeId()).getId();
     } else {
       try {
-        id = Long.parseLong(SPropertyOperations.getString(concept, PROPS.conceptId$TMc5));
+        id = Long.parseLong(SPropertyOperations.getString(concept, PROPS.conceptId$ZjQr));
       } catch (NumberFormatException e) {
         genContext.showErrorMessage(concept, "Concept id can't be converted to long");
         id = ((SNodeId.Regular) concept.getNodeId()).getId();
@@ -28,12 +28,12 @@ public class IdGenerationUtil {
 
   public static long getPropertyId(TemplateQueryContext genContext, SNode prop) {
     long id;
-    if (isEmptyString(SPropertyOperations.getString(prop, PROPS.propertyId$cckp))) {
+    if (isEmptyString(SPropertyOperations.getString(prop, PROPS.propertyId$TXS7))) {
       genContext.showWarningMessage(prop, "Property id not set (j.m.lang.structure->Set Ids migration not run?)");
       id = ((SNodeId.Regular) prop.getNodeId()).getId();
     } else {
       try {
-        id = Long.parseLong(SPropertyOperations.getString(prop, PROPS.propertyId$cckp));
+        id = Long.parseLong(SPropertyOperations.getString(prop, PROPS.propertyId$TXS7));
       } catch (NumberFormatException e) {
         genContext.showErrorMessage(prop, "Property id can't be converted to long");
         id = ((SNodeId.Regular) prop.getNodeId()).getId();
@@ -44,12 +44,12 @@ public class IdGenerationUtil {
 
   public static long getLinkId(TemplateQueryContext genContext, SNode link) {
     long id;
-    if (isEmptyString(SPropertyOperations.getString(link, PROPS.linkId$ccI3))) {
+    if (isEmptyString(SPropertyOperations.getString(link, PROPS.linkId$Uajt))) {
       genContext.showWarningMessage(link, "Link id not set (j.m.lang.structure->Set Ids migration not run?)");
       id = ((SNodeId.Regular) link.getNodeId()).getId();
     } else {
       try {
-        id = Long.parseLong(SPropertyOperations.getString(link, PROPS.linkId$ccI3));
+        id = Long.parseLong(SPropertyOperations.getString(link, PROPS.linkId$Uajt));
       } catch (NumberFormatException e) {
         genContext.showErrorMessage(link, "Link id can't be converted to long");
         id = ((SNodeId.Regular) link.getNodeId()).getId();
@@ -62,8 +62,8 @@ public class IdGenerationUtil {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty conceptId$TMc5 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
-    /*package*/ static final SProperty propertyId$cckp = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L, "propertyId");
-    /*package*/ static final SProperty linkId$ccI3 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L, "linkId");
+    /*package*/ static final SProperty conceptId$ZjQr = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
+    /*package*/ static final SProperty propertyId$TXS7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L, "propertyId");
+    /*package*/ static final SProperty linkId$Uajt = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L, "linkId");
   }
 }

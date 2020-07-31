@@ -68,9 +68,9 @@ public class SuppressErrorsPerformanceTest_Test extends BaseTransformationTest {
 
     public Duration measureSuppressPerformance(int modelSize) {
       SNode var5968606277576107105 = getNodeById("5968606277576107085");
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(getNodeById("5968606277576107085"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, "jetbrains.mps.console.base"), 0x4e3b035171a5ba02L, "Response"))), LINKS.item$zh_g)).clear();
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(getNodeById("5968606277576107085"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, "jetbrains.mps.console.base"), 0x4e3b035171a5ba02L, "Response"))), LINKS.item$5x2K)).clear();
       for (int i = 0; i < modelSize; i++) {
-        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(getNodeById("5968606277576107085"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, "jetbrains.mps.console.base"), 0x4e3b035171a5ba02L, "Response"))), LINKS.item$zh_g)).addElement(createNodeResponseItem_wxn1w7_a0a0a2a6h());
+        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(getNodeById("5968606277576107085"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, "jetbrains.mps.console.base"), 0x4e3b035171a5ba02L, "Response"))), LINKS.item$5x2K)).addElement(createNodeResponseItem_wxn1w7_a0a0a2a6h());
       }
       SModel modelToCheck = SNodeOperations.getModel(SNodeOperations.cast(getNodeById("5968606277576107085"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, "jetbrains.mps.console.base"), 0x4e3b035171a5ba02L, "Response"))));
       IChecker<SNode, NodeReportItem> structureChecker = new StructureChecker();
@@ -87,7 +87,7 @@ public class SuppressErrorsPerformanceTest_Test extends BaseTransformationTest {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink item$zh_g = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171a5ba02L, 0x4e3b035171b356edL, "item");
+    /*package*/ static final SContainmentLink item$5x2K = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171a5ba02L, 0x4e3b035171b356edL, "item");
   }
 
   private static final class CONCEPTS {

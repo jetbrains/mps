@@ -71,7 +71,7 @@ public final class ProblemPointsToKindRoot__BehaviorDescriptor extends BaseBHDes
       }
       return new ModelsScope(Sequence.<SModel>singleton(feedbackModel), true, kind);
     }
-    return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.kind$Wl20), LINKS.context$sc53), kind, child);
+    return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.kind$ebY0), LINKS.context$DQst), kind, child);
   }
 
   /*package*/ ProblemPointsToKindRoot__BehaviorDescriptor() {
@@ -125,7 +125,7 @@ public final class ProblemPointsToKindRoot__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink kind$Wl20 = MetaAdapterFactory.getReferenceLink(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL, 0x6b178cfa773dc73bL, "kind");
-    /*package*/ static final SContainmentLink context$sc53 = MetaAdapterFactory.getContainmentLink(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x56aefe6c1afdffL, 0x56aefe6c1b000dL, "context");
+    /*package*/ static final SReferenceLink kind$ebY0 = MetaAdapterFactory.getReferenceLink(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL, 0x6b178cfa773dc73bL, "kind");
+    /*package*/ static final SContainmentLink context$DQst = MetaAdapterFactory.getContainmentLink(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x56aefe6c1afdffL, 0x56aefe6c1b000dL, "context");
   }
 }

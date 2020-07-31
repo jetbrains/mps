@@ -58,8 +58,8 @@
       <node id="394224946578869061" at="120,14,121,58" concept="10" />
       <node id="394224946578869061" at="127,48,128,22" concept="5" />
       <node id="394224946578869061" at="133,40,134,19" concept="5" />
-      <node id="394224946578869061" at="138,0,139,0" concept="7" trace="name$tAp1" />
-      <node id="394224946578869061" at="142,0,143,0" concept="7" trace="nodeToMatch$a6l0" />
+      <node id="394224946578869061" at="138,0,139,0" concept="7" trace="name$lA7v" />
+      <node id="394224946578869061" at="142,0,143,0" concept="7" trace="nodeToMatch$T4b0" />
       <node id="394224946578869061" at="44,0,46,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="394224946578869061" at="77,0,79,0" concept="0" trace="PatternTest__BehaviorDescriptor#()V" />
       <node id="394224946578869061" at="47,0,50,0" concept="8" trace="getPatternTestName_idlS$o0er$H8#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />

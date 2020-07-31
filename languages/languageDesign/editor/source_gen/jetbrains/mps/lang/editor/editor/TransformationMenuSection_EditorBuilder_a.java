@@ -109,7 +109,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.locations$aTw0;
+      return LINKS.locations$hQw0;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.TransformationLocation$2W;
@@ -122,7 +122,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(locationsListHandler_ymfzuf_c0.this.getNode(), LINKS.locations$aTw0));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(locationsListHandler_ymfzuf_c0.this.getNode(), LINKS.locations$hQw0));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -220,7 +220,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.parts$aTwY;
+      return LINKS.parts$hQY2;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.TransformationMenuPart$BX;
@@ -239,7 +239,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(partsListHandler_ymfzuf_f0.this.getNode(), LINKS.parts$aTwY));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(partsListHandler_ymfzuf_f0.this.getNode(), LINKS.parts$hQY2));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -302,8 +302,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink locations$aTw0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations");
-    /*package*/ static final SContainmentLink parts$aTwY = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbfL, "parts");
+    /*package*/ static final SContainmentLink locations$hQw0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations");
+    /*package*/ static final SContainmentLink parts$hQY2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbfL, "parts");
   }
 
   private static final class CONCEPTS {

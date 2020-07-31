@@ -23,14 +23,14 @@ public class RuleTernaryOperation implements DataFlowConstructor {
     return CONCEPTS.TernaryOperatorExpression$HC;
   }
   public void performActions(Program o, SNode node) {
-    SNode condition = SLinkOperations.getTarget(node, LINKS.condition$CEb4);
+    SNode condition = SLinkOperations.getTarget(node, LINKS.condition$GrmW);
     if (SNodeOperations.isInstanceOf(condition, CONCEPTS.EqualsExpression$lT) || SNodeOperations.isInstanceOf(condition, CONCEPTS.NotEqualsExpression$Ib)) {
       SNode other = NullableUtil.getOtherThanNull(SNodeOperations.cast(condition, CONCEPTS.BinaryOperation$vf));
       if (other == null) {
         return;
       }
       {
-        Object object = SLinkOperations.getTarget(node, LINKS.ifFalse$2BqC);
+        Object object = SLinkOperations.getTarget(node, LINKS.ifFalse$h5To);
         if (((Program) o).contains(object)) {
           boolean before = false;
           int position = ((Program) (o)).getEnd(object);
@@ -42,10 +42,10 @@ public class RuleTernaryOperation implements DataFlowConstructor {
       }
       if (SNodeOperations.isInstanceOf(condition, CONCEPTS.EqualsExpression$lT)) {
         {
-          Object object = SLinkOperations.getTarget(node, LINKS.ifTrue$eU9r);
+          Object object = SLinkOperations.getTarget(node, LINKS.ifTrue$ea$5);
           if (((Program) o).contains(object)) {
             boolean before = true;
-            int position = ((Program) (o)).getStart(SLinkOperations.getTarget(node, LINKS.ifTrue$eU9r));
+            int position = ((Program) (o)).getStart(SLinkOperations.getTarget(node, LINKS.ifTrue$ea$5));
             Instruction instruction = new nullInstruction(other);
             instruction.setRuleReference("r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/3383816410303360124");
             instruction.setSource(node);
@@ -53,10 +53,10 @@ public class RuleTernaryOperation implements DataFlowConstructor {
           }
         }
         {
-          Object object = SLinkOperations.getTarget(node, LINKS.ifFalse$2BqC);
+          Object object = SLinkOperations.getTarget(node, LINKS.ifFalse$h5To);
           if (((Program) o).contains(object)) {
             boolean before = true;
-            int position = ((Program) (o)).getStart(SLinkOperations.getTarget(node, LINKS.ifFalse$2BqC));
+            int position = ((Program) (o)).getStart(SLinkOperations.getTarget(node, LINKS.ifFalse$h5To));
             Instruction instruction = new notNullInstruction(other);
             instruction.setRuleReference("r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/3383816410303360110");
             instruction.setSource(node);
@@ -65,10 +65,10 @@ public class RuleTernaryOperation implements DataFlowConstructor {
         }
       } else {
         {
-          Object object = SLinkOperations.getTarget(node, LINKS.ifTrue$eU9r);
+          Object object = SLinkOperations.getTarget(node, LINKS.ifTrue$ea$5);
           if (((Program) o).contains(object)) {
             boolean before = true;
-            int position = ((Program) (o)).getStart(SLinkOperations.getTarget(node, LINKS.ifTrue$eU9r));
+            int position = ((Program) (o)).getStart(SLinkOperations.getTarget(node, LINKS.ifTrue$ea$5));
             Instruction instruction = new notNullInstruction(other);
             instruction.setRuleReference("r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/3383816410303360132");
             instruction.setSource(node);
@@ -76,10 +76,10 @@ public class RuleTernaryOperation implements DataFlowConstructor {
           }
         }
         {
-          Object object = SLinkOperations.getTarget(node, LINKS.ifFalse$2BqC);
+          Object object = SLinkOperations.getTarget(node, LINKS.ifFalse$h5To);
           if (((Program) o).contains(object)) {
             boolean before = true;
-            int position = ((Program) (o)).getStart(SLinkOperations.getTarget(node, LINKS.ifFalse$2BqC));
+            int position = ((Program) (o)).getStart(SLinkOperations.getTarget(node, LINKS.ifFalse$h5To));
             Instruction instruction = new nullInstruction(other);
             instruction.setRuleReference("r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/3383816410303360139");
             instruction.setSource(node);
@@ -99,8 +99,8 @@ public class RuleTernaryOperation implements DataFlowConstructor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$CEb4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
-    /*package*/ static final SContainmentLink ifFalse$2BqC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse");
-    /*package*/ static final SContainmentLink ifTrue$eU9r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012a1c0L, "ifTrue");
+    /*package*/ static final SContainmentLink condition$GrmW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
+    /*package*/ static final SContainmentLink ifFalse$h5To = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse");
+    /*package*/ static final SContainmentLink ifTrue$ea$5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012a1c0L, "ifTrue");
   }
 }

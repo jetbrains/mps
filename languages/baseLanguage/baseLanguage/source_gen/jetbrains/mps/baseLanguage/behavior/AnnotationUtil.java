@@ -21,33 +21,33 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AnnotationUtil {
   public static void attachAnnotation(SNode target, final SNode targetAnnotation) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(target, LINKS.annotation$oVP4)).all(new IWhereFilter<SNode>() {
+    if (ListSequence.fromList(SLinkOperations.getChildren(target, LINKS.annotation$4YGW)).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(Objects.equals(SLinkOperations.getTarget(it, LINKS.annotation$zNxu), targetAnnotation));
+        return !(Objects.equals(SLinkOperations.getTarget(it, LINKS.annotation$lXdy), targetAnnotation));
       }
     })) {
-      SNode annotation = SNodeFactoryOperations.addNewChild(target, LINKS.annotation$oVP4, null);
-      SLinkOperations.setTarget(annotation, LINKS.annotation$zNxu, targetAnnotation);
+      SNode annotation = SNodeFactoryOperations.addNewChild(target, LINKS.annotation$4YGW, null);
+      SLinkOperations.setTarget(annotation, LINKS.annotation$lXdy, targetAnnotation);
     }
   }
 
   public static void attachUniqueAnnotation(SNode target, final SNodeReference targetAnnotation) {
     // unique: if there's such annotation already, do nothing 
-    if (ListSequence.fromList(SLinkOperations.getChildren(target, LINKS.annotation$oVP4)).any(new IWhereFilter<SNode>() {
+    if (ListSequence.fromList(SLinkOperations.getChildren(target, LINKS.annotation$4YGW)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getPointer(it, LINKS.annotation$zNxu), targetAnnotation);
+        return Objects.equals(SLinkOperations.getPointer(it, LINKS.annotation$lXdy), targetAnnotation);
       }
     })) {
       return;
     }
-    SNode annotation = SNodeFactoryOperations.addNewChild(target, LINKS.annotation$oVP4, null);
-    SLinkOperations.setPointer(annotation, LINKS.annotation$zNxu, targetAnnotation);
+    SNode annotation = SNodeFactoryOperations.addNewChild(target, LINKS.annotation$4YGW, null);
+    SLinkOperations.setPointer(annotation, LINKS.annotation$lXdy, targetAnnotation);
   }
 
   public static void detachAnnotation(SNode target, final SNode targetAnnotation) {
-    SNode foundAnnotation = ListSequence.fromList(SLinkOperations.getChildren(target, LINKS.annotation$oVP4)).findFirst(new IWhereFilter<SNode>() {
+    SNode foundAnnotation = ListSequence.fromList(SLinkOperations.getChildren(target, LINKS.annotation$4YGW)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.annotation$zNxu), targetAnnotation);
+        return Objects.equals(SLinkOperations.getTarget(it, LINKS.annotation$lXdy), targetAnnotation);
       }
     });
     if ((foundAnnotation != null)) {
@@ -56,9 +56,9 @@ public class AnnotationUtil {
   }
 
   public static void detachUniqueAnnotation(SNode target, final SNodeReference targetAnnotation) {
-    SNodeOperations.deleteNode(ListSequence.fromList(SLinkOperations.getChildren(target, LINKS.annotation$oVP4)).findFirst(new IWhereFilter<SNode>() {
+    SNodeOperations.deleteNode(ListSequence.fromList(SLinkOperations.getChildren(target, LINKS.annotation$4YGW)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getPointer(it, LINKS.annotation$zNxu), targetAnnotation);
+        return Objects.equals(SLinkOperations.getPointer(it, LINKS.annotation$lXdy), targetAnnotation);
       }
     }));
   }
@@ -69,7 +69,7 @@ public class AnnotationUtil {
   @NotNull
   public static boolean accept(SNode targetKinds, SNode hasAnnotation) {
     if (SNodeOperations.isInstanceOf(targetKinds, CONCEPTS.ArrayLiteral$dK)) {
-      for (SNode expr : SLinkOperations.getChildren(SNodeOperations.cast(targetKinds, CONCEPTS.ArrayLiteral$dK), LINKS.item$zjRO)) {
+      for (SNode expr : SLinkOperations.getChildren(SNodeOperations.cast(targetKinds, CONCEPTS.ArrayLiteral$dK), LINKS.item$6C2c)) {
         if (SNodeOperations.isInstanceOf(expr, CONCEPTS.EnumConstantReference$RO) && acceptKind(SNodeOperations.cast(expr, CONCEPTS.EnumConstantReference$RO), hasAnnotation)) {
           return true;
         }
@@ -84,7 +84,7 @@ public class AnnotationUtil {
   }
 
   public static boolean acceptKind(SNode targetKind, SNode hasAnnotation) {
-    SNode enumConst = SLinkOperations.getTarget(targetKind, LINKS.enumConstantDeclaration$fB6v);
+    SNode enumConst = SLinkOperations.getTarget(targetKind, LINKS.enumConstantDeclaration$zW91);
     BLElementType blElementType = get(enumConst);
     return blElementType != null && blElementType.accept(hasAnnotation);
   }
@@ -112,7 +112,7 @@ public class AnnotationUtil {
   }
 
   private static SNodeReference getDeclarationFromReference(@NotNull SNode ref) {
-    return SLinkOperations.getTarget(ref, LINKS.enumConstantDeclaration$fB6v).getReference();
+    return SLinkOperations.getTarget(ref, LINKS.enumConstantDeclaration$zW91).getReference();
   }
 
   private static SNode _quotation_createNode_3nvpiw_a0a1a41() {
@@ -181,10 +181,10 @@ public class AnnotationUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SContainmentLink item$zjRO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a770dc0dL, 0x114a770fdbfL, "item");
-    /*package*/ static final SReferenceLink enumConstantDeclaration$fB6v = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink item$6C2c = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a770dc0dL, 0x114a770fdbfL, "item");
+    /*package*/ static final SReferenceLink enumConstantDeclaration$zW91 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
   }
 
   private static final class CONCEPTS {

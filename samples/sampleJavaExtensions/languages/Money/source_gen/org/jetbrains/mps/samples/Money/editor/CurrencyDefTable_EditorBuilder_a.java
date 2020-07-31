@@ -78,7 +78,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.units$LHqr;
+      return LINKS.units$4ZN5;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.CurrencyUnit$XJ;
@@ -91,7 +91,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(unitsListHandler_6q11gp_b0.this.getNode(), LINKS.units$LHqr));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(unitsListHandler_6q11gp_b0.this.getNode(), LINKS.units$4ZN5));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -133,7 +133,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink units$LHqr = MetaAdapterFactory.getContainmentLink(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x3210b276d1443596L, 0x3210b276d144359cL, "units");
+    /*package*/ static final SContainmentLink units$4ZN5 = MetaAdapterFactory.getContainmentLink(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x3210b276d1443596L, 0x3210b276d144359cL, "units");
   }
 
   private static final class CONCEPTS {

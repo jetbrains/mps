@@ -37,7 +37,7 @@
       <node id="1860120738943484867" at="42,50,43,32" concept="8" />
       <node id="1860120738943484867" at="45,68,46,102" concept="8" />
       <node id="1860120738943484867" at="48,30,49,17" concept="8" />
-      <node id="1860120738943484867" at="53,0,54,0" concept="10" trace="iconId$Nwly" />
+      <node id="1860120738943484867" at="53,0,54,0" concept="10" trace="iconId$WEru" />
       <node id="1860120738943484867" at="57,0,58,0" concept="10" trace="TextIcon$le" />
       <node id="1860120738943484867" at="26,0,28,0" concept="2" trace="check_TextIcon_NonTypesystemRule#()V" />
       <node id="1860120738943484867" at="42,0,45,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -103,7 +103,7 @@
       <node id="3569916352002253222" at="46,234,47,435" concept="3" />
       <node id="3569916352002253222" at="47,435,48,167" concept="3" />
       <node id="3569916352002253222" at="48,167,49,24" concept="8" />
-      <node id="3569916352002218904" at="53,0,54,0" concept="10" trace="calculator$Ccc0" />
+      <node id="3569916352002218904" at="53,0,54,0" concept="10" trace="calculator$tTO0" />
       <node id="3569916352002218904" at="57,0,58,0" concept="10" trace="BaseURLFunction$NC" />
       <node id="3569916352002218904" at="21,0,23,0" concept="2" trace="typeof_BaseURLFunction_InferenceRule#()V" />
       <node id="3569916352002218904" at="32,0,35,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -198,7 +198,7 @@
       <node id="4726480899534397116" at="28,68,29,102" concept="8" />
       <node id="4726480899534397116" at="31,30,32,17" concept="8" />
       <node id="4726480899534397133" at="34,52,35,44" concept="8" />
-      <node id="4726480899534397116" at="39,0,40,0" concept="10" trace="url$QExt" />
+      <node id="4726480899534397116" at="39,0,40,0" concept="10" trace="url$uAd3" />
       <node id="4726480899534397116" at="43,0,44,0" concept="10" trace="BaseURLLiteral$ZV" />
       <node id="4726480899534397116" at="17,0,19,0" concept="2" trace="check_URLLiteral_NonTypesystemRule#()V" />
       <node id="4726480899534397126" at="19,116,22,5" concept="5" />
@@ -253,7 +253,7 @@
       <node id="4786190798786384191" at="41,63,42,30" concept="7" />
       <node id="4786190798786384191" at="42,30,43,228" concept="3" />
       <node id="4786190798786384191" at="43,228,44,24" concept="8" />
-      <node id="4786190798786381671" at="48,0,49,0" concept="10" trace="node$P$av" />
+      <node id="4786190798786381671" at="48,0,49,0" concept="10" trace="node$Wx51" />
       <node id="4786190798786381671" at="52,0,53,0" concept="10" trace="NodeIconResourceExpression$1G" />
       <node id="4786190798786381671" at="20,0,22,0" concept="2" trace="typeof_NodeIconResourceExpression_InferenceRule#()V" />
       <node id="4786190798786381671" at="31,0,34,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -322,7 +322,7 @@
       <node id="4786190798786384206" at="54,63,55,30" concept="7" />
       <node id="4786190798786384206" at="55,30,56,236" concept="3" />
       <node id="4786190798786384206" at="56,236,57,24" concept="8" />
-      <node id="4786190798786384202" at="61,0,62,0" concept="10" trace="concept$wFmW" />
+      <node id="4786190798786384202" at="61,0,62,0" concept="10" trace="concept$P074" />
       <node id="4786190798786384202" at="65,0,66,0" concept="10" trace="ConceptIconResourceExpression$3v" />
       <node id="4786190798786384202" at="21,0,23,0" concept="2" trace="typeof_ConceptIconResourceExpression_InferenceRule#()V" />
       <node id="4786190798786384202" at="37,0,40,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -392,8 +392,8 @@
       <node id="5177162104569118321" at="34,68,35,102" concept="8" />
       <node id="5177162104569118321" at="37,30,38,17" concept="8" />
       <node id="8903462855151283614" at="40,52,41,44" concept="8" />
-      <node id="5177162104569118321" at="45,0,46,0" concept="10" trace="baseURL$oVbU" />
-      <node id="5177162104569118321" at="49,0,50,0" concept="10" trace="url$W1e0" />
+      <node id="5177162104569118321" at="45,0,46,0" concept="10" trace="baseURL$4EL6" />
+      <node id="5177162104569118321" at="49,0,50,0" concept="10" trace="url$4_M0" />
       <node id="5177162104569118321" at="53,0,54,0" concept="10" trace="HelpURL$gf" />
       <node id="5177162104569118321" at="19,0,21,0" concept="2" trace="check_HelpURL_NonTypesystemRule#()V" />
       <node id="4726480899534326683" at="21,116,24,5" concept="5" />
@@ -568,7 +568,7 @@
       <node id="8974276187400030207" at="43,30,44,234" concept="3" />
       <node id="8974276187400030207" at="44,234,45,435" concept="3" />
       <node id="8974276187400030207" at="45,435,46,24" concept="8" />
-      <node id="8974276187400030203" at="50,0,51,0" concept="10" trace="iconExpression$ggVw" />
+      <node id="8974276187400030203" at="50,0,51,0" concept="10" trace="iconExpression$ScOw" />
       <node id="8974276187400030203" at="54,0,55,0" concept="10" trace="OldIconDeclaration$pD" />
       <node id="8974276187400030203" at="21,0,23,0" concept="2" trace="typeof_IconResourceDeclaration_InferenceRule#()V" />
       <node id="8974276187400030203" at="32,0,35,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

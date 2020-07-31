@@ -34,7 +34,7 @@
       <node id="1611756961204470243" at="74,0,75,0" concept="7" trace="breakingNode_mx0wvm_a0a0a0a0a1a0a0a0c" />
       <node id="1611756961204470243" at="77,0,78,0" concept="7" trace="ConceptVCSDescriptor$QW" />
       <node id="1611756961204470243" at="78,0,79,0" concept="7" trace="AbstractConceptDeclaration$UN" />
-      <node id="1611756961204470243" at="82,0,83,0" concept="7" trace="cncpt$4YHz" />
+      <node id="1611756961204470243" at="82,0,83,0" concept="7" trace="cncpt$qo3X" />
       <node id="1611756961204470243" at="29,0,32,0" concept="0" trace="ConceptVCSDescriptor_Constraints#()V" />
       <node id="6836281137582781548" at="49,80,52,13" concept="2" />
       <node id="6836281137582781566" at="54,155,57,13" concept="2" />
@@ -93,9 +93,9 @@
       <node id="4382682660187986727" at="65,0,66,0" concept="7" trace="breakingNode_gg5s6j_a0a0a0a0a1a0a0a0c" />
       <node id="4382682660187986727" at="68,0,69,0" concept="7" trace="PropertyVCSDescriptor$S8" />
       <node id="4382682660187986727" at="69,0,70,0" concept="7" trace="ConceptVCSDescriptor$QW" />
-      <node id="4382682660187986727" at="73,0,74,0" concept="7" trace="prop$DMff" />
-      <node id="4382682660187986727" at="74,0,75,0" concept="7" trace="cncpt$4YHz" />
-      <node id="4382682660187986727" at="75,0,76,0" concept="7" trace="propertyDeclaration$lL73" />
+      <node id="4382682660187986727" at="73,0,74,0" concept="7" trace="prop$floh" />
+      <node id="4382682660187986727" at="74,0,75,0" concept="7" trace="cncpt$qo3X" />
+      <node id="4382682660187986727" at="75,0,76,0" concept="7" trace="propertyDeclaration$yMqt" />
       <node id="4382682660187986727" at="29,0,32,0" concept="0" trace="PropertyVCSDescriptor_Constraints#()V" />
       <node id="4382682660187986731" at="36,0,40,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="4382682660187986731" at="44,0,48,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -150,9 +150,9 @@
       <node id="4382682660188133838" at="65,0,66,0" concept="7" trace="breakingNode_6jzkq1_a0a0a0a0a1a0a0a0c" />
       <node id="4382682660188133838" at="68,0,69,0" concept="7" trace="LinkVCSDescriptor$GZ" />
       <node id="4382682660188133838" at="69,0,70,0" concept="7" trace="ConceptVCSDescriptor$QW" />
-      <node id="4382682660188133838" at="73,0,74,0" concept="7" trace="lnk$DMeS" />
-      <node id="4382682660188133838" at="74,0,75,0" concept="7" trace="cncpt$4YHz" />
-      <node id="4382682660188133838" at="75,0,76,0" concept="7" trace="linkDeclaration$lL6$" />
+      <node id="4382682660188133838" at="73,0,74,0" concept="7" trace="lnk$fld8" />
+      <node id="4382682660188133838" at="74,0,75,0" concept="7" trace="cncpt$qo3X" />
+      <node id="4382682660188133838" at="75,0,76,0" concept="7" trace="linkDeclaration$yMbs" />
       <node id="4382682660188133838" at="29,0,32,0" concept="0" trace="LinkVCSDescriptor_Constraints#()V" />
       <node id="4382682660188133842" at="36,0,40,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="4382682660188133842" at="44,0,48,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />

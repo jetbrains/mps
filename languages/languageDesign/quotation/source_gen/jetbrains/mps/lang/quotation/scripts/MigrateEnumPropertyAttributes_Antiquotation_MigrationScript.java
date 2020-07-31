@@ -35,15 +35,15 @@ public final class MigrateEnumPropertyAttributes_Antiquotation_MigrationScript e
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return !(SPropertyOperations.getBoolean(node, PROPS.stringValueMigrated$gFe8)) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(SNodeOperations.as(node, CONCEPTS.PropertyAttribute$jT))), CONCEPTS.EnumPropertyMigrationInfo$Yg);
+        return !(SPropertyOperations.getBoolean(node, PROPS.stringValueMigrated$4VPS)) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(SNodeOperations.as(node, CONCEPTS.PropertyAttribute$jT))), CONCEPTS.EnumPropertyMigrationInfo$Yg);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SPropertyOperations.assign(node, PROPS.stringValueMigrated$gFe8, true);
+        SPropertyOperations.assign(node, PROPS.stringValueMigrated$4VPS, true);
 
         SNode propAttribute = SNodeOperations.as(node, CONCEPTS.PropertyAttribute$jT);
         if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(propAttribute)), CONCEPTS.EnumPropertyMigrationInfo$Yg)) {
-          SPropertyOperations.assign(propAttribute, PROPS.enumUsageMigrated$lY$m, true);
+          SPropertyOperations.assign(propAttribute, PROPS.enumUsageMigrated$DjAE, true);
         }
       }
       @Override
@@ -66,7 +66,7 @@ public final class MigrateEnumPropertyAttributes_Antiquotation_MigrationScript e
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty stringValueMigrated$gFe8 = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, 0x1e2950a3c41b89ecL, "stringValueMigrated");
-    /*package*/ static final SProperty enumUsageMigrated$lY$m = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x1081af3d7e9d6a2fL, "enumUsageMigrated");
+    /*package*/ static final SProperty stringValueMigrated$4VPS = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, 0x1e2950a3c41b89ecL, "stringValueMigrated");
+    /*package*/ static final SProperty enumUsageMigrated$DjAE = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x1081af3d7e9d6a2fL, "enumUsageMigrated");
   }
 }

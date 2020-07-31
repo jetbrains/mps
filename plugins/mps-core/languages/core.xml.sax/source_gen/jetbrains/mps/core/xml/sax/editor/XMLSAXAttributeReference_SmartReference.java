@@ -50,7 +50,7 @@ public class XMLSAXAttributeReference_SmartReference extends SubstituteMenuBase 
 
     public SMP_ReferenceScope_k75wpb_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.XMLSAXAttributeReference$J3, LINKS.attribute$YvIw);
+      super((SAbstractConcept) CONCEPTS.XMLSAXAttributeReference$J3, LINKS.attribute$hnxw);
     }
     @NotNull
     @Override
@@ -84,9 +84,9 @@ public class XMLSAXAttributeReference_SmartReference extends SubstituteMenuBase 
       public String getMatchingText(String pattern) {
         if (SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.XMLSAXNodeRule$AV, true, false) != SNodeOperations.getParent(referencedNode)) {
           SNode nodeRule = SNodeOperations.as(SNodeOperations.getParent(referencedNode), CONCEPTS.XMLSAXNodeRule$AV);
-          return ((nodeRule == null ? "<unknown>" : SPropertyOperations.getString(nodeRule, PROPS.name$tAp1))) + "." + SPropertyOperations.getString(referencedNode, PROPS.name$tAp1);
+          return ((nodeRule == null ? "<unknown>" : SPropertyOperations.getString(nodeRule, PROPS.name$lA7v))) + "." + SPropertyOperations.getString(referencedNode, PROPS.name$lA7v);
         }
-        return SPropertyOperations.getString(referencedNode, PROPS.name$tAp1);
+        return SPropertyOperations.getString(referencedNode, PROPS.name$lA7v);
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
@@ -106,10 +106,10 @@ public class XMLSAXAttributeReference_SmartReference extends SubstituteMenuBase 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink attribute$YvIw = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2c9L, 0x1f6c736337b5e2caL, "attribute");
+    /*package*/ static final SReferenceLink attribute$hnxw = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2c9L, 0x1f6c736337b5e2caL, "attribute");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

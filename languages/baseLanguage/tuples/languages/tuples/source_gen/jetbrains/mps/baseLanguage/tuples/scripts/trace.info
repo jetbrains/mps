@@ -166,8 +166,8 @@
       <node id="5684843424313392849" at="265,5,266,165" concept="2" />
       <node id="5684843424313392849" at="266,165,267,24" concept="8" />
       <node id="5684843424312914767" at="271,0,272,0" concept="11" trace="ClassConcept$IY" />
-      <node id="5684843424312914767" at="275,0,276,0" concept="11" trace="name$tAp1" />
-      <node id="5684843424312914767" at="279,0,280,0" concept="11" trace="member$oYX5" />
+      <node id="5684843424312914767" at="275,0,276,0" concept="11" trace="name$lA7v" />
+      <node id="5684843424312914767" at="279,0,280,0" concept="11" trace="member$6v_r" />
       <node id="5684843424313036257" at="49,0,52,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="5684843424313048810" at="58,57,61,11" concept="3" />
       <node id="5684843424313177160" at="63,56,66,11" concept="3" />

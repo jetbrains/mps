@@ -50,7 +50,7 @@ public class WhenConcreteVariableReference_SubstituteMenu extends SubstituteMenu
 
     public SMP_ReferenceScope_a7xbxw_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.WhenConcreteVariableReference$4s, LINKS.whenConcreteVar$7HuF);
+      super((SAbstractConcept) CONCEPTS.WhenConcreteVariableReference$4s, LINKS.whenConcreteVar$J1QP);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class WhenConcreteVariableReference_SubstituteMenu extends SubstituteMenu
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink whenConcreteVar$7HuF = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x118bd0e07f1L, 0x118bd0e7418L, "whenConcreteVar");
+    /*package*/ static final SReferenceLink whenConcreteVar$J1QP = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x118bd0e07f1L, 0x118bd0e7418L, "whenConcreteVar");
   }
 }

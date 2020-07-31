@@ -89,7 +89,7 @@ public class TestSubstituteChildWithConstraintsWrapper3_SubstituteMenu extends S
           SNode nodeToWrap = super.createNode(pattern);
           myCreatedNode = nodeToWrap;
           SNode newNode = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.TestSubstituteChildWithConstraintsWrapper3$XV);
-          SLinkOperations.setTarget(newNode, LINKS.childToWrap$iaiw, nodeToWrap);
+          SLinkOperations.setTarget(newNode, LINKS.childToWrap$MYXw, nodeToWrap);
           return newNode;
         }
         @Override
@@ -126,6 +126,6 @@ public class TestSubstituteChildWithConstraintsWrapper3_SubstituteMenu extends S
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink childToWrap$iaiw = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2d41c8eL, 0x9c8de75f2d41c8fL, "childToWrap");
+    /*package*/ static final SContainmentLink childToWrap$MYXw = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2d41c8eL, 0x9c8de75f2d41c8fL, "childToWrap");
   }
 }

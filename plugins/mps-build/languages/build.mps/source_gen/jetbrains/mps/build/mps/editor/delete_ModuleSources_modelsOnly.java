@@ -26,7 +26,7 @@ public class delete_ModuleSources_modelsOnly {
         if (DeletionApproverUtil.approve(editorContext, node, "modelsOnly")) {
           return;
         }
-        SPropertyOperations.assign(node, PROPS.modelsOnly$NfRh, false);
+        SPropertyOperations.assign(node, PROPS.modelsOnly$OFLf, false);
       }
 
     };
@@ -74,6 +74,6 @@ public class delete_ModuleSources_modelsOnly {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty modelsOnly$NfRh = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x177c2feaf3463710L, 0x407004b11f167886L, "modelsOnly");
+    /*package*/ static final SProperty modelsOnly$OFLf = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x177c2feaf3463710L, 0x407004b11f167886L, "modelsOnly");
   }
 }

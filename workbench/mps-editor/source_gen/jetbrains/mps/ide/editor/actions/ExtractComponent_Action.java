@@ -108,13 +108,13 @@ public class ExtractComponent_Action extends BaseAction {
       protected void doExecute() {
         SModel model = SNodeOperations.getModel(ecm);
         SNode component = SModelOperations.createNewRootNode(model, MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration"));
-        SPropertyOperations.set(component, PROPS.name$tAp1, componentName);
+        SPropertyOperations.set(component, PROPS.name$lA7v, componentName);
         SNode container = SNodeOperations.getNodeAncestor(ecm, CONCEPTS.BaseEditorComponent$Sy, false, false);
-        SPropertyOperations.assign(component, PROPS.virtualPackage$j19t, SPropertyOperations.getString(container, PROPS.virtualPackage$j19t));
-        SLinkOperations.setTarget(component, LINKS.conceptDeclaration$sbgS, ((SNode) BHReflection.invoke0(container, CONCEPTS.AbstractComponent$Ng, SMethodTrimmedId.create("getConceptDeclaration", null, "67EYkym$wx3"))));
-        SLinkOperations.setTarget(component, LINKS.cellModel$3wIV, SNodeOperations.copyNode(ecm));
+        SPropertyOperations.assign(component, PROPS.virtualPackage$dz_3, SPropertyOperations.getString(container, PROPS.virtualPackage$dz_3));
+        SLinkOperations.setTarget(component, LINKS.conceptDeclaration$Dtb8, ((SNode) BHReflection.invoke0(container, CONCEPTS.AbstractComponent$Ng, SMethodTrimmedId.create("getConceptDeclaration", null, "67EYkym$wx3"))));
+        SLinkOperations.setTarget(component, LINKS.cellModel$GQI_, SNodeOperations.copyNode(ecm));
         SNode toReplace = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, "jetbrains.mps.lang.editor.structure.CellModel_Component"));
-        SLinkOperations.setTarget(toReplace, LINKS.editorComponent$AnLw, component);
+        SLinkOperations.setTarget(toReplace, LINKS.editorComponent$_wYw, component);
         SNodeOperations.replaceWithAnother(ecm, toReplace);
       }
     });
@@ -127,13 +127,13 @@ public class ExtractComponent_Action extends BaseAction {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty virtualPackage$j19t = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$sbgS = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
-    /*package*/ static final SContainmentLink cellModel$3wIV = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
-    /*package*/ static final SReferenceLink editorComponent$AnLw = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, 0xfb35c96897L, "editorComponent");
+    /*package*/ static final SReferenceLink conceptDeclaration$Dtb8 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
+    /*package*/ static final SContainmentLink cellModel$GQI_ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
+    /*package*/ static final SReferenceLink editorComponent$_wYw = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, 0xfb35c96897L, "editorComponent");
   }
 }

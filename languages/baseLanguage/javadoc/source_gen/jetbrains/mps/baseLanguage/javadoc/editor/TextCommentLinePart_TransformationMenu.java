@@ -173,40 +173,40 @@ public class TextCommentLinePart_TransformationMenu extends TransformationMenuBa
 
           SNode tag = null;
           if (Objects.equals(myParameterObject, "@author")) {
-            tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$LJD$, CONCEPTS.AuthorBlockDocTag$xE);
+            tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$658s, CONCEPTS.AuthorBlockDocTag$xE);
           }
           if (Objects.equals(myParameterObject, "@since")) {
-            tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$LJD$, CONCEPTS.SinceBlockDocTag$YE);
+            tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$658s, CONCEPTS.SinceBlockDocTag$YE);
           }
 
           if (Objects.equals(myParameterObject, "@version")) {
-            tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$LJD$, CONCEPTS.VersionBlockDocTag$Ic);
+            tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$658s, CONCEPTS.VersionBlockDocTag$Ic);
           }
           if (Objects.equals(myParameterObject, "@deprecated")) {
             IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.IBLDeprecatable$Hv, false, false));
-            _context.getEditorContext().selectWRTFocusPolicy(ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$LJD$)).where(new IWhereFilter<SNode>() {
+            _context.getEditorContext().selectWRTFocusPolicy(ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
                 return SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$ma);
               }
             }).first());
           }
           if (Objects.equals(myParameterObject, "@see")) {
-            tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$LJD$, CONCEPTS.SeeBlockDocTag$tx);
+            tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$658s, CONCEPTS.SeeBlockDocTag$tx);
           }
           if (Objects.equals(myParameterObject, "@param") && isClassifier) {
-            tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ClassifierDocComment$$4, false, false), LINKS.tags$LJD$, CONCEPTS.ParameterBlockDocTag$w1);
+            tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ClassifierDocComment$$4, false, false), LINKS.tags$658s, CONCEPTS.ParameterBlockDocTag$w1);
           }
           if (Objects.equals(myParameterObject, "@param") && isMethod) {
-            tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MethodDocComment$Vx, false, false), LINKS.tags$LJD$, CONCEPTS.ParameterBlockDocTag$w1);
+            tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MethodDocComment$Vx, false, false), LINKS.tags$658s, CONCEPTS.ParameterBlockDocTag$w1);
           }
           if (Objects.equals(myParameterObject, "@throws") && isMethod) {
-            tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MethodDocComment$Vx, false, false), LINKS.tags$LJD$, CONCEPTS.ThrowsBlockDocTag$ph);
+            tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MethodDocComment$Vx, false, false), LINKS.tags$658s, CONCEPTS.ThrowsBlockDocTag$ph);
           }
           if (Objects.equals(myParameterObject, "@return") && isMethod) {
-            tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MethodDocComment$Vx, false, false), LINKS.tags$LJD$, CONCEPTS.ReturnBlockDocTag$Ys);
+            tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MethodDocComment$Vx, false, false), LINKS.tags$658s, CONCEPTS.ReturnBlockDocTag$Ys);
           }
 
-          SPropertyOperations.assign(_context.getNode(), PROPS.text$5Ox0, "");
+          SPropertyOperations.assign(_context.getNode(), PROPS.text$OrZ0, "");
           DocTagHelper.organizeTags(comment);
           if (tag != null) {
             _context.getEditorContext().selectWRTFocusPolicy(tag);
@@ -251,10 +251,10 @@ public class TextCommentLinePart_TransformationMenu extends TransformationMenuBa
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tags$LJD$ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
+    /*package*/ static final SContainmentLink tags$658s = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$5Ox0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
+    /*package*/ static final SProperty text$OrZ0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
   }
 }

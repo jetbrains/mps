@@ -90,7 +90,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.className$qoJZ;
+      final SProperty property = PROPS.className$LZfx;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no className>");
@@ -134,7 +134,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public void handleAction_impl(SNode parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
       SNode choosen = parameterObject;
-      SPropertyOperations.assign(node, PROPS.className$qoJZ, Classifier__BehaviorDescriptor.getNestedName_id7q4lzBFjvIX.invoke(choosen));
+      SPropertyOperations.assign(node, PROPS.className$LZfx, Classifier__BehaviorDescriptor.getNestedName_id7q4lzBFjvIX.invoke(choosen));
     }
     public boolean isReferentPresentation() {
       return false;
@@ -151,7 +151,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty className$qoJZ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2dda7700ec3ae154L, 0x2dda7700ec3bb537L, "className");
+    /*package*/ static final SProperty className$LZfx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2dda7700ec3ae154L, 0x2dda7700ec3bb537L, "className");
   }
 
   private static final class CONCEPTS {

@@ -23,7 +23,7 @@ public class deleteUpperIndex {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.expr$XA0Z));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.expr$Pqux));
       }
 
     };
@@ -71,6 +71,6 @@ public class deleteUpperIndex {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expr$XA0Z = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e6443a20L, 0x64b1e972e6443a22L, "expr");
+    /*package*/ static final SContainmentLink expr$Pqux = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e6443a20L, 0x64b1e972e6443a22L, "expr");
   }
 }

@@ -47,9 +47,9 @@ public final class BL_CopyPasteHandlers_PastePostProcessor_1 implements PastePos
 
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(pastedNode), CONCEPTS.DotExpression$6a)) {
       SNode parentDotExpression = (SNode) SNodeOperations.getParent(pastedNode);
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(parentDotExpression, LINKS.operation$X4R8), CONCEPTS.FieldReferenceOperation$N8)) {
-        SNode fieldReferenceOperation = (SNode) SLinkOperations.getTarget(parentDotExpression, LINKS.operation$X4R8);
-        SReference fieldDeclarationReference = SNodeOperations.getReference(fieldReferenceOperation, LINKS.fieldDeclaration$mLBy);
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(parentDotExpression, LINKS.operation$_mGS), CONCEPTS.FieldReferenceOperation$N8)) {
+        SNode fieldReferenceOperation = (SNode) SLinkOperations.getTarget(parentDotExpression, LINKS.operation$_mGS);
+        SReference fieldDeclarationReference = SNodeOperations.getReference(fieldReferenceOperation, LINKS.fieldDeclaration$229u);
 
         // External reference 
         final String resolveInfo = SLinkOperations.getResolveInfo(fieldDeclarationReference);
@@ -63,13 +63,13 @@ public final class BL_CopyPasteHandlers_PastePostProcessor_1 implements PastePos
         for (SNode nextClassConcept : ListSequence.fromList(possibleClassConcepts)) {
           if (Sequence.fromIterable(Members.visibleInstanceFields(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(nextClassConcept), pastedNode)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SPropertyOperations.getString(it, PROPS.name$tAp1).equals(resolveInfo);
+              return SPropertyOperations.getString(it, PROPS.name$lA7v).equals(resolveInfo);
             }
           }).isNotEmpty()) {
             if (nextClassConcept != containingClass) {
-              SLinkOperations.setTarget(pastedNode, LINKS.classConcept$Hbij, nextClassConcept);
-            } else if (SNodeOperations.getReference(pastedNode, LINKS.classConcept$Hbij) != null) {
-              SLinkOperations.setTarget(pastedNode, LINKS.classConcept$Hbij, null);
+              SLinkOperations.setTarget(pastedNode, LINKS.classConcept$StRd, nextClassConcept);
+            } else if (SNodeOperations.getReference(pastedNode, LINKS.classConcept$StRd) != null) {
+              SLinkOperations.setTarget(pastedNode, LINKS.classConcept$StRd, null);
             }
             break;
           }
@@ -87,12 +87,12 @@ public final class BL_CopyPasteHandlers_PastePostProcessor_1 implements PastePos
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SReferenceLink fieldDeclaration$mLBy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
-    /*package*/ static final SReferenceLink classConcept$Hbij = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SReferenceLink classConcept$StRd = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

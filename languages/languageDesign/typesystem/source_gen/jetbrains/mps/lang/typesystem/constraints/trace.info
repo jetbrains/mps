@@ -36,8 +36,8 @@
       <node id="1213104837475" at="68,0,69,0" concept="11" trace="breakingNode_acirdv_a0a0a0a0a1a0a0a0c" />
       <node id="1213104837475" at="71,0,72,0" concept="11" trace="WhenConcreteVariableReference$4s" />
       <node id="1213104837475" at="72,0,73,0" concept="11" trace="WhenConcreteStatement$JZ" />
-      <node id="1213104837475" at="76,0,77,0" concept="11" trace="whenConcreteVar$7HuF" />
-      <node id="1213104837475" at="77,0,78,0" concept="11" trace="argumentRepresentator$kQNj" />
+      <node id="1213104837475" at="76,0,77,0" concept="11" trace="whenConcreteVar$J1QP" />
+      <node id="1213104837475" at="77,0,78,0" concept="11" trace="argumentRepresentator$6yQd" />
       <node id="1213104837475" at="30,0,33,0" concept="2" trace="WhenConcreteVariableReference_Constraints#()V" />
       <node id="6836281137582806313" at="54,125,57,15" concept="6" />
       <node id="1213104837476" at="37,0,41,0" concept="7" trace="hasOwnScopeProvider#()Z" />
@@ -107,11 +107,11 @@
       <node id="1213104844579" at="86,0,87,0" concept="11" trace="PropertyPatternVariableDeclaration$Xj" />
       <node id="1213104844579" at="87,0,88,0" concept="11" trace="CoerceStatement$b1" />
       <node id="1213104844579" at="88,0,89,0" concept="11" trace="MatchStatementItem$EH" />
-      <node id="1213104844579" at="92,0,93,0" concept="11" trace="patternVarDecl$7KKb" />
-      <node id="1213104844579" at="93,0,94,0" concept="11" trace="applicableNode$lCke" />
-      <node id="1213104844579" at="94,0,95,0" concept="11" trace="pattern$ag0O" />
-      <node id="1213104844579" at="95,0,96,0" concept="11" trace="pattern$Gn5H" />
-      <node id="1213104844579" at="96,0,97,0" concept="11" trace="condition$JZ3Z" />
+      <node id="1213104844579" at="92,0,93,0" concept="11" trace="patternVarDecl$KBll" />
+      <node id="1213104844579" at="93,0,94,0" concept="11" trace="applicableNode$uxMM" />
+      <node id="1213104844579" at="94,0,95,0" concept="11" trace="pattern$XKpc" />
+      <node id="1213104844579" at="95,0,96,0" concept="11" trace="pattern$vbKN" />
+      <node id="1213104844579" at="96,0,97,0" concept="11" trace="condition$fyVx" />
       <node id="1213104844579" at="31,0,34,0" concept="2" trace="PropertyPatternVariableReference_Constraints#()V" />
       <node id="6836281137582806789" at="53,124,56,13" concept="6" />
       <node id="6836281137582806825" at="58,45,61,15" concept="6" />
@@ -184,11 +184,11 @@
       <node id="1213104844757" at="86,0,87,0" concept="11" trace="LinkPatternVariableDeclaration$UB" />
       <node id="1213104844757" at="87,0,88,0" concept="11" trace="CoerceStatement$b1" />
       <node id="1213104844757" at="88,0,89,0" concept="11" trace="MatchStatementItem$EH" />
-      <node id="1213104844757" at="92,0,93,0" concept="11" trace="patternVarDecl$oq_1" />
-      <node id="1213104844757" at="93,0,94,0" concept="11" trace="applicableNode$lCke" />
-      <node id="1213104844757" at="94,0,95,0" concept="11" trace="pattern$ag0O" />
-      <node id="1213104844757" at="95,0,96,0" concept="11" trace="pattern$Gn5H" />
-      <node id="1213104844757" at="96,0,97,0" concept="11" trace="condition$JZ3Z" />
+      <node id="1213104844757" at="92,0,93,0" concept="11" trace="patternVarDecl$ORVv" />
+      <node id="1213104844757" at="93,0,94,0" concept="11" trace="applicableNode$uxMM" />
+      <node id="1213104844757" at="94,0,95,0" concept="11" trace="pattern$XKpc" />
+      <node id="1213104844757" at="95,0,96,0" concept="11" trace="pattern$vbKN" />
+      <node id="1213104844757" at="96,0,97,0" concept="11" trace="condition$fyVx" />
       <node id="1213104844757" at="31,0,34,0" concept="2" trace="LinkPatternVariableReference_Constraints#()V" />
       <node id="6836281137582807010" at="53,124,56,13" concept="6" />
       <node id="6836281137582807046" at="58,45,61,15" concept="6" />
@@ -267,13 +267,13 @@
       <node id="1213104846662" at="100,0,101,0" concept="11" trace="ComparisonRule$b9" />
       <node id="1213104846662" at="101,0,102,0" concept="11" trace="CoerceStatement$b1" />
       <node id="1213104846662" at="102,0,103,0" concept="11" trace="MatchStatementItem$EH" />
-      <node id="1213104846662" at="106,0,107,0" concept="11" trace="patternVarDecl$zQmv" />
-      <node id="1213104846662" at="107,0,108,0" concept="11" trace="applicableNode$lCke" />
-      <node id="1213104846662" at="108,0,109,0" concept="11" trace="pattern$ag0O" />
-      <node id="1213104846662" at="109,0,110,0" concept="11" trace="supertypeNode$b3lK" />
-      <node id="1213104846662" at="110,0,111,0" concept="11" trace="anotherNode$7HZ2" />
-      <node id="1213104846662" at="111,0,112,0" concept="11" trace="pattern$Gn5H" />
-      <node id="1213104846662" at="112,0,113,0" concept="11" trace="condition$JZ3Z" />
+      <node id="1213104846662" at="106,0,107,0" concept="11" trace="patternVarDecl$nkT1" />
+      <node id="1213104846662" at="107,0,108,0" concept="11" trace="applicableNode$uxMM" />
+      <node id="1213104846662" at="108,0,109,0" concept="11" trace="pattern$XKpc" />
+      <node id="1213104846662" at="109,0,110,0" concept="11" trace="supertypeNode$mByg" />
+      <node id="1213104846662" at="110,0,111,0" concept="11" trace="anotherNode$JhxY" />
+      <node id="1213104846662" at="111,0,112,0" concept="11" trace="pattern$vbKN" />
+      <node id="1213104846662" at="112,0,113,0" concept="11" trace="condition$fyVx" />
       <node id="1213104846662" at="31,0,34,0" concept="2" trace="PatternVariableReference_Constraints#()V" />
       <node id="6836281137582806024" at="53,124,56,13" concept="6" />
       <node id="6836281137582806057" at="58,155,61,15" concept="6" />
@@ -344,7 +344,7 @@
       <node id="1213104847200" at="50,42,51,22" concept="9" />
       <node id="1213104847200" at="53,0,54,0" concept="11" trace="breakingNode_hzrg7u_a0a0a0a0a1a0a0a0c" />
       <node id="1213104847200" at="56,0,57,0" concept="11" trace="TypeVarReference$Zu" />
-      <node id="1213104847200" at="60,0,61,0" concept="11" trace="typeVarDeclaration$upk6" />
+      <node id="1213104847200" at="60,0,61,0" concept="11" trace="typeVarDeclaration$IgIU" />
       <node id="1213104847200" at="23,0,26,0" concept="2" trace="TypeVarReference_Constraints#()V" />
       <node id="1213104847201" at="30,0,34,0" concept="7" trace="hasOwnScopeProvider#()Z" />
       <node id="1213104847201" at="38,0,42,0" concept="7" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -394,8 +394,8 @@
       <node id="1213104856925" at="78,0,79,0" concept="11" trace="ConceptReference$Je" />
       <node id="1213104856925" at="79,0,80,0" concept="11" trace="InferenceRule$Ad" />
       <node id="1213104856925" at="80,0,81,0" concept="11" trace="AbstractConceptDeclaration$UN" />
-      <node id="1213104856925" at="84,0,85,0" concept="11" trace="concept$Q1Nr" />
-      <node id="1213104856925" at="88,0,89,0" concept="11" trace="name$tAp1" />
+      <node id="1213104856925" at="84,0,85,0" concept="11" trace="concept$aRU5" />
+      <node id="1213104856925" at="88,0,89,0" concept="11" trace="name$lA7v" />
       <node id="1213104856925" at="28,0,31,0" concept="2" trace="ConceptReference_Constraints#()V" />
       <node id="1213104856941" at="46,154,49,11" concept="6" />
       <node id="1213104856926" at="35,0,39,0" concept="7" trace="hasOwnOnReferenceSetHandler#()Z" />
@@ -480,12 +480,12 @@
       <node id="1213104858863" at="100,0,101,0" concept="11" trace="InequationReplacementRule$4d" />
       <node id="1213104858863" at="101,0,102,0" concept="11" trace="CoerceStatement$b1" />
       <node id="1213104858863" at="102,0,103,0" concept="11" trace="MatchStatementItem$EH" />
-      <node id="1213104858863" at="106,0,107,0" concept="11" trace="applicableNode$z$o5" />
-      <node id="1213104858863" at="107,0,108,0" concept="11" trace="applicableNode$lCke" />
-      <node id="1213104858863" at="108,0,109,0" concept="11" trace="anotherNode$7HZ2" />
-      <node id="1213104858863" at="109,0,110,0" concept="11" trace="supertypeNode$b3lK" />
-      <node id="1213104858863" at="110,0,111,0" concept="11" trace="pattern$Gn5H" />
-      <node id="1213104858863" at="111,0,112,0" concept="11" trace="condition$JZ3Z" />
+      <node id="1213104858863" at="106,0,107,0" concept="11" trace="applicableNode$eBEr" />
+      <node id="1213104858863" at="107,0,108,0" concept="11" trace="applicableNode$uxMM" />
+      <node id="1213104858863" at="108,0,109,0" concept="11" trace="anotherNode$JhxY" />
+      <node id="1213104858863" at="109,0,110,0" concept="11" trace="supertypeNode$mByg" />
+      <node id="1213104858863" at="110,0,111,0" concept="11" trace="pattern$vbKN" />
+      <node id="1213104858863" at="111,0,112,0" concept="11" trace="condition$fyVx" />
       <node id="1213104858863" at="30,0,33,0" concept="2" trace="ApplicableNodeReference_Constraints#()V" />
       <node id="6836281137582806549" at="54,89,57,15" concept="6" />
       <node id="6836281137582806569" at="59,139,62,17" concept="6" />
@@ -564,9 +564,9 @@
       <node id="1213104860682" at="65,0,66,0" concept="11" trace="breakingNode_8vu3gr_a0a0a0a0a1a0a0a0c" />
       <node id="1213104860682" at="68,0,69,0" concept="11" trace="TypesystemIntentionArgument$Eb" />
       <node id="1213104860682" at="69,0,70,0" concept="11" trace="TypesystemIntention$aE" />
-      <node id="1213104860682" at="73,0,74,0" concept="11" trace="quickFixArgument$pwQi" />
-      <node id="1213104860682" at="74,0,75,0" concept="11" trace="quickFix$FQGK" />
-      <node id="1213104860682" at="75,0,76,0" concept="11" trace="quickFixArgument$XwdH" />
+      <node id="1213104860682" at="73,0,74,0" concept="11" trace="quickFixArgument$mUiI" />
+      <node id="1213104860682" at="74,0,75,0" concept="11" trace="quickFix$fvFg" />
+      <node id="1213104860682" at="75,0,76,0" concept="11" trace="quickFixArgument$MACN" />
       <node id="1213104860682" at="30,0,33,0" concept="2" trace="TypesystemIntentionArgument_Constraints#()V" />
       <node id="6836281137582807628" at="52,142,55,13" concept="6" />
       <node id="1216387787517" at="37,0,41,0" concept="7" trace="hasOwnScopeProvider#()Z" />
@@ -619,8 +619,8 @@
       <node id="1216390479216" at="65,0,66,0" concept="11" trace="breakingNode_tpj9r2_a0a0a0a0a1a0a0a0c" />
       <node id="1216390479216" at="68,0,69,0" concept="11" trace="QuickFixArgumentReference$zj" />
       <node id="1216390479216" at="69,0,70,0" concept="11" trace="TypesystemQuickFix$ii" />
-      <node id="1216390479216" at="73,0,74,0" concept="11" trace="quickFixArgument$8xKF" />
-      <node id="1216390479216" at="74,0,75,0" concept="11" trace="quickFixArgument$XwdH" />
+      <node id="1216390479216" at="73,0,74,0" concept="11" trace="quickFixArgument$8m$P" />
+      <node id="1216390479216" at="74,0,75,0" concept="11" trace="quickFixArgument$MACN" />
       <node id="1216390479216" at="30,0,33,0" concept="2" trace="QuickFixArgumentReference_Constraints#()V" />
       <node id="6836281137582806425" at="52,134,55,13" concept="6" />
       <node id="1216390505376" at="37,0,41,0" concept="7" trace="hasOwnScopeProvider#()Z" />
@@ -904,9 +904,9 @@
       <node id="1227098342559" at="76,0,77,0" concept="11" trace="PropertyMessageTarget$LX" />
       <node id="1227098342559" at="77,0,78,0" concept="11" trace="AbstractReportStatement$Qn" />
       <node id="1227098342559" at="78,0,79,0" concept="11" trace="SNodeType$gn" />
-      <node id="1227098342559" at="82,0,83,0" concept="11" trace="propertyDeclaration$T4As" />
-      <node id="1227098342559" at="83,0,84,0" concept="11" trace="nodeToReport$r7g8" />
-      <node id="1227098342559" at="84,0,85,0" concept="11" trace="concept$HWFQ" />
+      <node id="1227098342559" at="82,0,83,0" concept="11" trace="propertyDeclaration$DeB$" />
+      <node id="1227098342559" at="83,0,84,0" concept="11" trace="nodeToReport$8wNS" />
+      <node id="1227098342559" at="84,0,85,0" concept="11" trace="concept$gpfa" />
       <node id="6836281137582807899" at="61,20,63,15" concept="0" />
       <node id="1227098342559" at="31,0,34,0" concept="2" trace="PropertyMessageTarget_Constraints#()V" />
       <node id="6836281137582807882" at="52,146,55,13" concept="6" />
@@ -970,10 +970,10 @@
       <node id="1227101197786" at="76,0,77,0" concept="11" trace="ReferenceMessageTarget$Q_" />
       <node id="1227101197786" at="77,0,78,0" concept="11" trace="AbstractReportStatement$Qn" />
       <node id="1227101197786" at="78,0,79,0" concept="11" trace="SNodeType$gn" />
-      <node id="1227101197786" at="82,0,83,0" concept="11" trace="linkDeclaration$s0AQ" />
-      <node id="1227101197786" at="83,0,84,0" concept="11" trace="nodeToReport_old$f1Ii" />
-      <node id="1227101197786" at="84,0,85,0" concept="11" trace="nodeToReport$r7g8" />
-      <node id="1227101197786" at="85,0,86,0" concept="11" trace="concept$HWFQ" />
+      <node id="1227101197786" at="82,0,83,0" concept="11" trace="linkDeclaration$$iOa" />
+      <node id="1227101197786" at="83,0,84,0" concept="11" trace="nodeToReport_old$hPqI" />
+      <node id="1227101197786" at="84,0,85,0" concept="11" trace="nodeToReport$8wNS" />
+      <node id="1227101197786" at="85,0,86,0" concept="11" trace="concept$gpfa" />
       <node id="6836281137582807687" at="61,20,63,15" concept="0" />
       <node id="1227101197786" at="31,0,34,0" concept="2" trace="ReferenceMessageTarget_Constraints#()V" />
       <node id="6836281137582807670" at="52,146,55,13" concept="6" />
@@ -1052,7 +1052,7 @@
       <node id="1229172087075579624" at="105,0,106,0" concept="11" trace="StatementList$TN" />
       <node id="1229172087075579624" at="106,0,107,0" concept="11" trace="Statement$ok" />
       <node id="1229172087075579624" at="107,0,108,0" concept="11" trace="TypeVarDeclaration$kX" />
-      <node id="1229172087075579624" at="111,0,112,0" concept="11" trace="statement$WHn8" />
+      <node id="1229172087075579624" at="111,0,112,0" concept="11" trace="statement$pYcS" />
       <node id="2799691424948175217" at="62,10,64,5" concept="0" />
       <node id="1998873705041899635" at="69,12,71,7" concept="0" />
       <node id="1229172087075602154" at="21,0,24,0" concept="2" trace="TypeVarScope#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -1162,7 +1162,7 @@
       <node id="2329696648449887824" at="54,0,55,0" concept="11" trace="breakingNode_tnh7bq_a0a0a0a0a1a0a0a0c" />
       <node id="2329696648449887824" at="57,0,58,0" concept="11" trace="CheckingRuleReference$lK" />
       <node id="2329696648449887824" at="58,0,59,0" concept="11" trace="NonTypesystemRule$cw" />
-      <node id="2329696648449887824" at="62,0,63,0" concept="11" trace="declaration$jp80" />
+      <node id="2329696648449887824" at="62,0,63,0" concept="11" trace="declaration$paS0" />
       <node id="2329696648449887824" at="23,0,26,0" concept="2" trace="CheckingRuleReference_Constraints#()V" />
       <node id="2329696648449887825" at="30,0,34,0" concept="7" trace="hasOwnScopeProvider#()Z" />
       <node id="2329696648449887825" at="38,0,42,0" concept="7" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -1284,7 +1284,7 @@
       <node id="7857223919215948960" at="22,131,23,42" concept="3" />
       <node id="7857223919215948959" at="23,42,24,22" concept="9" />
       <node id="7857223919215948959" at="28,0,29,0" concept="11" trace="InequationReference$XM" />
-      <node id="7857223919215948959" at="32,0,33,0" concept="11" trace="inequation$LOB0" />
+      <node id="7857223919215948959" at="32,0,33,0" concept="11" trace="inequation$8uT0" />
       <node id="7857223919215948959" at="15,0,18,0" concept="2" trace="InequationReference_Constraints#()V" />
       <node id="7857223919215948959" at="19,0,26,0" concept="7" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="7857223919215948959" at="15,44,16,43" />
@@ -1315,8 +1315,8 @@
       <node id="8090891477833132962" at="65,0,66,0" concept="11" trace="breakingNode_rgybaw_a0a0a0a0a1a0a0a0c" />
       <node id="8090891477833132962" at="68,0,69,0" concept="11" trace="QuickFixFieldReference$OK" />
       <node id="8090891477833132962" at="69,0,70,0" concept="11" trace="TypesystemQuickFix$ii" />
-      <node id="8090891477833132962" at="73,0,74,0" concept="11" trace="quickFixField$QTC0" />
-      <node id="8090891477833132962" at="74,0,75,0" concept="11" trace="quickFixField$SOUb" />
+      <node id="8090891477833132962" at="73,0,74,0" concept="11" trace="quickFixField$_Uo0" />
+      <node id="8090891477833132962" at="74,0,75,0" concept="11" trace="quickFixField$xCbl" />
       <node id="8090891477833132962" at="30,0,33,0" concept="2" trace="QuickFixFieldReference_Constraints#()V" />
       <node id="6836281137582805911" at="52,134,55,13" concept="6" />
       <node id="8090891477833132963" at="37,0,41,0" concept="7" trace="hasOwnScopeProvider#()Z" />

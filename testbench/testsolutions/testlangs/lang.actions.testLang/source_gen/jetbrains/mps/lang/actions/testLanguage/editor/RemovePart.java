@@ -51,7 +51,7 @@ public class RemovePart extends SubstituteMenuBase {
   public class SMP_Group_pkf68r_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return Objects.equals(_context.getLink(), LINKS.removePart$6NFL);
+      return Objects.equals(_context.getLink(), LINKS.removePart$j2cJ);
     }
     @NotNull
     @Override
@@ -100,7 +100,7 @@ public class RemovePart extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink removePart$6NFL = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x73dfe0fc25762f5fL, "removePart");
+    /*package*/ static final SContainmentLink removePart$j2cJ = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x73dfe0fc25762f5fL, "removePart");
   }
 
   private static final class CONCEPTS {

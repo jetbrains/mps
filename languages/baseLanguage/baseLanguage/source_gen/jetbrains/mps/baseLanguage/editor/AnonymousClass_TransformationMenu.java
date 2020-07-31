@@ -73,7 +73,7 @@ public class AnonymousClass_TransformationMenu extends TransformationMenuBase {
   public class TMP_Group_kuf7xa_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeParameter$uY4E)).isEmpty();
+      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeParameter$4gm)).isEmpty();
     }
 
     @NotNull
@@ -130,7 +130,7 @@ public class AnonymousClass_TransformationMenu extends TransformationMenuBase {
         @Override
         public void execute(@NotNull String pattern) {
           SNode type = SNodeFactoryOperations.createNewNode(CONCEPTS.Type$IG, null);
-          ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeParameter$uY4E)).addElement(type);
+          ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeParameter$4gm)).addElement(type);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), type, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -156,7 +156,7 @@ public class AnonymousClass_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeParameter$uY4E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
+    /*package*/ static final SContainmentLink typeParameter$4gm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
   }
 
   private static final class CONCEPTS {

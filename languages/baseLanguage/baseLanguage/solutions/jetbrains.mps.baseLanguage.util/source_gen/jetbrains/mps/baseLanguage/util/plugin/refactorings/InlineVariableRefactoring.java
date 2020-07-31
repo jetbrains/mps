@@ -41,7 +41,7 @@ public abstract class InlineVariableRefactoring {
       if (instruction instanceof WriteInstruction) {
         WriteInstruction write = (WriteInstruction) instruction;
         if (write.getSource() != variable && write.getVariable() == variable) {
-          SNodeOperations.deleteNode(SLinkOperations.getTarget(variable, LINKS.initializer$KgD));
+          SNodeOperations.deleteNode(SLinkOperations.getTarget(variable, LINKS.initializer$no3R));
           return;
         }
       }
@@ -50,7 +50,7 @@ public abstract class InlineVariableRefactoring {
   }
   public void optimizeAssignment(SNode assignment, SNode variable) {
     SNode method = SNodeOperations.getNodeAncestor(assignment, CONCEPTS.BaseMethodDeclaration$RR, false, false);
-    Program program = new MPSProgramBuilder().buildProgram(SLinkOperations.getTarget(method, LINKS.body$WIlu));
+    Program program = new MPSProgramBuilder().buildProgram(SLinkOperations.getTarget(method, LINKS.body$qspy));
     AnalysisResult<Set<ReadInstruction>> reachingReads = program.analyze(new ReachingReadsAnalyzer());
     for (Instruction instruction : ListSequence.fromList(program.getInstructionsFor(assignment))) {
       for (Instruction next : SetSequence.fromSet(instruction.succ())) {
@@ -84,8 +84,8 @@ public abstract class InlineVariableRefactoring {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
   }
 
   private static final class CONCEPTS {

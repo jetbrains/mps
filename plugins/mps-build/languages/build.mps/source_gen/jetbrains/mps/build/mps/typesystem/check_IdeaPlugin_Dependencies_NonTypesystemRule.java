@@ -30,24 +30,24 @@ public class check_IdeaPlugin_Dependencies_NonTypesystemRule extends AbstractNon
     }
 
     IdeaPluginDependenciesHelper helper = new IdeaPluginDependenciesHelper(plugin);
-    for (SNode module : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$uhXf), CONCEPTS.BuildMps_IdeaPluginModule$ZA))) {
+    for (SNode module : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$EGEh), CONCEPTS.BuildMps_IdeaPluginModule$ZA))) {
       StringBuilder sb = new StringBuilder();
-      helper.printUnsatisfiedDependencies(sb, SLinkOperations.getTarget(module, LINKS.target$umH0), false);
+      helper.printUnsatisfiedDependencies(sb, SLinkOperations.getTarget(module, LINKS.target$GZN0), false);
       if (sb.length() > 0) {
         {
-          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.target$umH0);
+          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.target$GZN0);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(module, sb.toString(), "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "1392391688313365267", null, errorTarget);
         }
       }
     }
-    for (SNode group : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$uhXf), CONCEPTS.BuildMps_IdeaPluginGroup$9v))) {
+    for (SNode group : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$EGEh), CONCEPTS.BuildMps_IdeaPluginGroup$9v))) {
       StringBuilder sb = new StringBuilder();
-      for (SNode module : SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(group, CONCEPTS.BuildMps_IdeaPluginGroup$9v), LINKS.group$abww), LINKS.modules$4DA0)) {
+      for (SNode module : SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(group, CONCEPTS.BuildMps_IdeaPluginGroup$9v), LINKS.group$V$Jw), LINKS.modules$g9q0)) {
         helper.printUnsatisfiedDependencies(sb, module, true);
       }
       if (sb.length() > 0) {
         {
-          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.group$abww);
+          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.group$V$Jw);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SNodeOperations.cast(group, CONCEPTS.BuildMps_IdeaPluginGroup$9v), sb.toString(), "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "1392391688313365157", null, errorTarget);
         }
       }
@@ -64,10 +64,10 @@ public class check_IdeaPlugin_Dependencies_NonTypesystemRule extends AbstractNon
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$umH0 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, 0x5b7be37b4de9bbddL, "target");
-    /*package*/ static final SContainmentLink content$uhXf = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbeaL, "content");
-    /*package*/ static final SReferenceLink group$abww = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group");
-    /*package*/ static final SContainmentLink modules$4DA0 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, 0x14d3fb6fb843ebdeL, "modules");
+    /*package*/ static final SReferenceLink target$GZN0 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, 0x5b7be37b4de9bbddL, "target");
+    /*package*/ static final SContainmentLink content$EGEh = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbeaL, "content");
+    /*package*/ static final SReferenceLink group$V$Jw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group");
+    /*package*/ static final SContainmentLink modules$g9q0 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, 0x14d3fb6fb843ebdeL, "modules");
   }
 
   private static final class CONCEPTS {

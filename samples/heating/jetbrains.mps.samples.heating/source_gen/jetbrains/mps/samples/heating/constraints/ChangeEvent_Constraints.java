@@ -23,7 +23,7 @@ public class ChangeEvent_Constraints extends BaseConstraintsDescriptor {
 
   public static class Temperature_Property extends BasePropertyConstraintsDescriptor {
     public Temperature_Property(ConstraintsDescriptor container) {
-      super(PROPS.temperature$MPBu, container);
+      super(PROPS.temperature$BY7y, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,7 +45,7 @@ public class ChangeEvent_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.temperature$MPBu, new Temperature_Property(this));
+    properties.put(PROPS.temperature$BY7y, new Temperature_Property(this));
     return properties;
   }
 
@@ -54,6 +54,6 @@ public class ChangeEvent_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty temperature$MPBu = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec62L, 0x4644aa4ce08aec70L, "temperature");
+    /*package*/ static final SProperty temperature$BY7y = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec62L, 0x4644aa4ce08aec70L, "temperature");
   }
 }

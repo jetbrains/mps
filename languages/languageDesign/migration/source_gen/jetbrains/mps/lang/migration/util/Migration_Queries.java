@@ -28,7 +28,7 @@ public class Migration_Queries {
     if (SModuleOperations.isAspect(futureModel, "migration")) {
       Language lang = (Language) module;
       int currentVersion = lang.getLanguageVersion();
-      SPropertyOperations.assign(c, PROPS.fromVersion$gjq1, currentVersion);
+      SPropertyOperations.assign(c, PROPS.fromVersion$TpAv, currentVersion);
 
       lang.setLanguageVersion(currentVersion + 1);
     }
@@ -37,7 +37,7 @@ public class Migration_Queries {
     // Migration classes get generated with extends to MigrationScriptBase (which has own getReference() method, unrelated to one in HasMigrationScriptReference) 
     // Therefore, it's ok to keep this class in accessory model with no code generated for it. 
     //  OTOH, no idea why not honest MigrationScriptBase as superclass here 
-    SLinkOperations.setPointer(SLinkOperations.setNewChild(c, LINKS.superclass$_pqe, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R, new SNodePointer("90746344-04fd-4286-97d5-b46ae6a81709/r:52a3d974-bd4f-4651-ba6e-a2de5e336d95(jetbrains.mps.lang.migration/jetbrains.mps.lang.migration.methods)", "6807933448469658100"));
+    SLinkOperations.setPointer(SLinkOperations.setNewChild(c, LINKS.superclass$7jGM, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD, new SNodePointer("90746344-04fd-4286-97d5-b46ae6a81709/r:52a3d974-bd4f-4651-ba6e-a2de5e336d95(jetbrains.mps.lang.migration/jetbrains.mps.lang.migration.methods)", "6807933448469658100"));
 
     ModelImports m = new ModelImports(futureModel);
     AbstractModule mod = (AbstractModule) module;
@@ -57,18 +57,18 @@ public class Migration_Queries {
       return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType"));
     }
     SNode rv = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType"));
-    SLinkOperations.setTarget(rv, LINKS.concept$HWFQ, typeNode);
+    SLinkOperations.setTarget(rv, LINKS.concept$gpfa, typeNode);
     return rv;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty fromVersion$gjq1 = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x73e8a2c68b62c6a3L, 0x50c63f9f4a0dac17L, "fromVersion");
+    /*package*/ static final SProperty fromVersion$TpAv = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x73e8a2c68b62c6a3L, 0x50c63f9f4a0dac17L, "fromVersion");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SReferenceLink concept$HWFQ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
   }
 
   private static final class CONCEPTS {

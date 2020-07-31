@@ -46,7 +46,7 @@ public class ModuleXml_classpathEntry extends MigrationScriptBase {
       };
       Sequence.fromIterable(findWithNoEntry(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BuildMpsLayout_ModuleXml$8Q, false))).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SPropertyOperations.assign(SLinkOperations.addNewChild(it, LINKS.classpathEntries$4ReF, null), PROPS.path$LlSY, ".");
+          SPropertyOperations.assign(SLinkOperations.addNewChild(it, LINKS.classpathEntries$mK6P, null), PROPS.path$TAA2, ".");
         }
       });
     }
@@ -59,7 +59,7 @@ public class ModuleXml_classpathEntry extends MigrationScriptBase {
   private Iterable<SNode> findWithNoEntry(Iterable<SNode> scope) {
     return Sequence.fromIterable(scope).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.classpathEntries$4ReF)).isEmpty() && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.as(SNodeOperations.getParent(it), CONCEPTS.BuildLayout_Folder$4a)), CONCEPTS.BuildLayout_Jar$CE), LINKS.children$aiMf), CONCEPTS.BuildLayout_CompileOutputOf$v7)).isNotEmpty();
+        return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.classpathEntries$mK6P)).isEmpty() && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.as(SNodeOperations.getParent(it), CONCEPTS.BuildLayout_Folder$4a)), CONCEPTS.BuildLayout_Jar$CE), LINKS.children$Z6lh), CONCEPTS.BuildLayout_CompileOutputOf$v7)).isNotEmpty();
       }
     });
   }
@@ -72,11 +72,11 @@ public class ModuleXml_classpathEntry extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink classpathEntries$4ReF = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, 0x75cd89729fd8ef2bL, "classpathEntries");
-    /*package*/ static final SContainmentLink children$aiMf = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
+    /*package*/ static final SContainmentLink classpathEntries$mK6P = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, 0x75cd89729fd8ef2bL, "classpathEntries");
+    /*package*/ static final SContainmentLink children$Z6lh = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty path$LlSY = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xd94b027412f0824L, 0xd94b027412f0827L, "path");
+    /*package*/ static final SProperty path$TAA2 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xd94b027412f0824L, 0xd94b027412f0827L, "path");
   }
 }

@@ -35,10 +35,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
       return;
     }
 
-    visible.addAll(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$uhXf), CONCEPTS.BuildMps_IdeaPluginModule$ZA), LINKS.target$umH0)).toListSequence());
-    visible.addAll(Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$uhXf), CONCEPTS.BuildMps_IdeaPluginGroup$9v), LINKS.group$abww), LINKS.modules$4DA0)).toListSequence());
-    for (SNode dep : ListSequence.fromList(SLinkOperations.getChildren(plugin, LINKS.dependencies$uhk4))) {
-      collectVisible(SLinkOperations.getTarget(dep, LINKS.target$unp6), seen);
+    visible.addAll(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$EGEh), CONCEPTS.BuildMps_IdeaPluginModule$ZA), LINKS.target$GZN0)).toListSequence());
+    visible.addAll(Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$EGEh), CONCEPTS.BuildMps_IdeaPluginGroup$9v), LINKS.group$V$Jw), LINKS.modules$g9q0)).toListSequence());
+    for (SNode dep : ListSequence.fromList(SLinkOperations.getChildren(plugin, LINKS.dependencies$EoHW))) {
+      collectVisible(SLinkOperations.getTarget(dep, LINKS.target$Hl9U), seen);
     }
   }
   public Iterable<SNode> getUnsatisfiedDependencies(SNode module) {
@@ -59,21 +59,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
   public void printUnsatisfiedDependencies(StringBuilder sb, SNode module, boolean includeModuleName) {
     for (SNode uns : getUnsatisfiedDependencies(module)) {
       if (includeModuleName) {
-        sb.append("unsatisfied dependency: module " + SPropertyOperations.getString(module, PROPS.name$tAp1) + " requires " + SPropertyOperations.getString(uns, PROPS.name$tAp1));
+        sb.append("unsatisfied dependency: module " + SPropertyOperations.getString(module, PROPS.name$lA7v) + " requires " + SPropertyOperations.getString(uns, PROPS.name$lA7v));
       } else {
-        sb.append("unsatisfied dependency on " + SPropertyOperations.getString(uns, PROPS.name$tAp1));
+        sb.append("unsatisfied dependency on " + SPropertyOperations.getString(uns, PROPS.name$lA7v));
       }
       sb.append('\n');
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink content$uhXf = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbeaL, "content");
-    /*package*/ static final SReferenceLink target$umH0 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, 0x5b7be37b4de9bbddL, "target");
-    /*package*/ static final SReferenceLink group$abww = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group");
-    /*package*/ static final SContainmentLink modules$4DA0 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, 0x14d3fb6fb843ebdeL, "modules");
-    /*package*/ static final SReferenceLink target$unp6 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbd3L, 0x5b7be37b4de9bbfaL, "target");
-    /*package*/ static final SContainmentLink dependencies$uhk4 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbd4L, "dependencies");
+    /*package*/ static final SContainmentLink content$EGEh = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbeaL, "content");
+    /*package*/ static final SReferenceLink target$GZN0 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, 0x5b7be37b4de9bbddL, "target");
+    /*package*/ static final SReferenceLink group$V$Jw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group");
+    /*package*/ static final SContainmentLink modules$g9q0 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, 0x14d3fb6fb843ebdeL, "modules");
+    /*package*/ static final SReferenceLink target$Hl9U = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbd3L, 0x5b7be37b4de9bbfaL, "target");
+    /*package*/ static final SContainmentLink dependencies$EoHW = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbd4L, "dependencies");
   }
 
   private static final class CONCEPTS {
@@ -83,6 +83,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -20,7 +20,7 @@ public class Boolean_extends_primitive_SubtypingRule extends SubtypingRule_Runti
   public Boolean_extends_primitive_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode boolType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return SLinkOperations.getTarget(_quotation_createNode_w2562n_a0a0b(), LINKS.descriptor$ZkDR);
+    return SLinkOperations.getTarget(_quotation_createNode_w2562n_a0a0b(), LINKS.descriptor$F0hD);
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.BooleanType$8G;
@@ -40,7 +40,7 @@ public class Boolean_extends_primitive_SubtypingRule extends SubtypingRule_Runti
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink descriptor$ZkDR = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
+    /*package*/ static final SReferenceLink descriptor$F0hD = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
   }
 
   private static final class CONCEPTS {

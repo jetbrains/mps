@@ -34,12 +34,12 @@ public final class ITemplateCall__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode deriveType_idhEwIVPz(@NotNull SNode __thisNode__, SNode expression) {
-    if (SNodeOperations.getParent(expression) == __thisNode__ && SNodeOperations.hasRole(expression, LINKS.actualArgument$yh2s)) {
-      SNode template = SLinkOperations.getTarget(__thisNode__, LINKS.template$yiTA);
+    if (SNodeOperations.getParent(expression) == __thisNode__ && SNodeOperations.hasRole(expression, LINKS.actualArgument$Agb$)) {
+      SNode template = SLinkOperations.getTarget(__thisNode__, LINKS.template$B9Tq);
       int i = SNodeOperations.getIndexInParent(expression);
-      if (i < ListSequence.fromList(SLinkOperations.getChildren(template, LINKS.parameter$AB01)).count()) {
-        SNode parameterDeclaration = ListSequence.fromList(SLinkOperations.getChildren(template, LINKS.parameter$AB01)).getElement(i);
-        SNode rawType = SNodeOperations.copyNode(SLinkOperations.getTarget(parameterDeclaration, LINKS.type$54u0));
+      if (i < ListSequence.fromList(SLinkOperations.getChildren(template, LINKS.parameter$GT0v)).count()) {
+        SNode parameterDeclaration = ListSequence.fromList(SLinkOperations.getChildren(template, LINKS.parameter$GT0v)).getElement(i);
+        SNode rawType = SNodeOperations.copyNode(SLinkOperations.getTarget(parameterDeclaration, LINKS.type$tay0));
         return rawType;
       }
     }
@@ -93,9 +93,9 @@ public final class ITemplateCall__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink template$yiTA = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
-    /*package*/ static final SContainmentLink parameter$AB01 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter");
-    /*package*/ static final SContainmentLink type$54u0 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, 0x190d31fe6a096acfL, "type");
-    /*package*/ static final SContainmentLink actualArgument$yh2s = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3125L, "actualArgument");
+    /*package*/ static final SReferenceLink template$B9Tq = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
+    /*package*/ static final SContainmentLink parameter$GT0v = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter");
+    /*package*/ static final SContainmentLink type$tay0 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, 0x190d31fe6a096acfL, "type");
+    /*package*/ static final SContainmentLink actualArgument$Agb$ = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3125L, "actualArgument");
   }
 }

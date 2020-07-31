@@ -43,7 +43,7 @@ public final class NewTemplateInInlineSwitchDefault_Intention extends AbstractIn
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SLinkOperations.getTarget(node, LINKS.defaultConsequence$kqRz) == null;
+    return SLinkOperations.getTarget(node, LINKS.defaultConsequence$T0TX) == null;
   }
   @Override
   public boolean isSurroundWith() {
@@ -69,16 +69,16 @@ public final class NewTemplateInInlineSwitchDefault_Intention extends AbstractIn
         name = "default_";
         SNode applicableConcept = MacroIntentionsUtil.getContextNodeConcept(node);
         if (applicableConcept != null) {
-          name += SPropertyOperations.getString(applicableConcept, PROPS.name$tAp1);
+          name += SPropertyOperations.getString(applicableConcept, PROPS.name$lA7v);
         }
       }
       SNode t = SNodeFactoryOperations.createNewRootNode(SNodeOperations.getModel(node), CONCEPTS.TemplateDeclaration$q0, null);
-      SPropertyOperations.set(t, PROPS.name$tAp1, name);
+      SPropertyOperations.set(t, PROPS.name$lA7v, name);
       MacroIntentionsUtil.copyVirtualPackage(t, node);
       // make reference 
       SNode tr = SNodeFactoryOperations.createNewNode(CONCEPTS.TemplateDeclarationReference$bd, null);
-      SLinkOperations.setTarget(tr, LINKS.template$yiTA, t);
-      SLinkOperations.setTarget(node, LINKS.defaultConsequence$kqRz, tr);
+      SLinkOperations.setTarget(tr, LINKS.template$B9Tq, t);
+      SLinkOperations.setTarget(node, LINKS.defaultConsequence$T0TX, tr);
       SelectionUtil.selectCell(editorContext, tr, SelectionManager.FIRST_EDITABLE_CELL);
     }
     @Override
@@ -88,12 +88,12 @@ public final class NewTemplateInInlineSwitchDefault_Intention extends AbstractIn
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink defaultConsequence$kqRz = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11644fa2edeL, 0x11644fb7f64L, "defaultConsequence");
-    /*package*/ static final SReferenceLink template$yiTA = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
+    /*package*/ static final SContainmentLink defaultConsequence$T0TX = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11644fa2edeL, 0x11644fb7f64L, "defaultConsequence");
+    /*package*/ static final SReferenceLink template$B9Tq = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

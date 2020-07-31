@@ -42,7 +42,7 @@ public class typeof_GetExtensionObjectsOperation_InferenceRule extends AbstractI
           {
             SNode coercedNode_gzb1x_b0d0 = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(operandType), CONCEPTS.ExtensionPointType$TB);
             if (coercedNode_gzb1x_b0d0 != null) {
-              objectType = SLinkOperations.getTarget(SLinkOperations.getTarget(coercedNode_gzb1x_b0d0, LINKS.extensionPoint$Ohsw), LINKS.objectType$NJyf);
+              objectType = SLinkOperations.getTarget(SLinkOperations.getTarget(coercedNode_gzb1x_b0d0, LINKS.extensionPoint$ksNw), LINKS.objectType$41_h);
             } else {
             }
           }
@@ -89,7 +89,7 @@ public class typeof_GetExtensionObjectsOperation_InferenceRule extends AbstractI
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extensionPoint$Ohsw = MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142eb538L, 0x2c10fa62142eb539L, "extensionPoint");
-    /*package*/ static final SContainmentLink objectType$NJyf = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x6f6f7f3b7a17bd0bL, "objectType");
+    /*package*/ static final SReferenceLink extensionPoint$ksNw = MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142eb538L, 0x2c10fa62142eb539L, "extensionPoint");
+    /*package*/ static final SContainmentLink objectType$41_h = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x6f6f7f3b7a17bd0bL, "objectType");
   }
 }

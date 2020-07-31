@@ -50,7 +50,7 @@ public class RequiredPlugin_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_cpu6qr_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.RequiredPlugin$6a, LINKS.plugin$MEr0);
+      super((SAbstractConcept) CONCEPTS.RequiredPlugin$6a, LINKS.plugin$yz50);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class RequiredPlugin_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink plugin$MEr0 = MetaAdapterFactory.getReferenceLink(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x5b81705cdf7bc318L, 0x5b81705cdf7bc319L, "plugin");
+    /*package*/ static final SReferenceLink plugin$yz50 = MetaAdapterFactory.getReferenceLink(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x5b81705cdf7bc318L, 0x5b81705cdf7bc319L, "plugin");
   }
 }

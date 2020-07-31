@@ -22,46 +22,46 @@ public class Test_QuotationDetachNodes_Test extends TestCase {
   public void test_smodelDetaches() throws Exception {
     SNode sourceContainer = _quotation_createNode_yc3t95_a0a0a0();
     SNode targetContainer = _quotation_createNode_yc3t95_a0b0a0();
-    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(targetContainer, LINKS.statements$uqR0), LINKS.statement$WHn8)).addElement(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$uqR0), LINKS.statement$WHn8)).first());
-    Assert.assertNotNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(targetContainer, LINKS.statements$uqR0), LINKS.statement$WHn8)).first());
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(targetContainer, LINKS.statements$J0D0), LINKS.statement$pYcS)).addElement(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$J0D0), LINKS.statement$pYcS)).first());
+    Assert.assertNotNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(targetContainer, LINKS.statements$J0D0), LINKS.statement$pYcS)).first());
 
-    Assert.assertNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$uqR0), LINKS.statement$WHn8)).first());
+    Assert.assertNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$J0D0), LINKS.statement$pYcS)).first());
   }
   public void test_smodelDetachesList() throws Exception {
     SNode sourceContainer = _quotation_createNode_yc3t95_a0a0b0();
     SNode targetContainer = _quotation_createNode_yc3t95_a0b0b0();
-    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(targetContainer, LINKS.statements$uqR0), LINKS.statement$WHn8)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$uqR0), LINKS.statement$WHn8)));
-    Assert.assertNotNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(targetContainer, LINKS.statements$uqR0), LINKS.statement$WHn8)).first());
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(targetContainer, LINKS.statements$J0D0), LINKS.statement$pYcS)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$J0D0), LINKS.statement$pYcS)));
+    Assert.assertNotNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(targetContainer, LINKS.statements$J0D0), LINKS.statement$pYcS)).first());
 
-    Assert.assertNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$uqR0), LINKS.statement$WHn8)).first());
+    Assert.assertNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$J0D0), LINKS.statement$pYcS)).first());
   }
   public void test_quotationCopies() throws Exception {
     SNode sourceContainer = _quotation_createNode_yc3t95_a0a0c0();
-    SNode targetContainer = _quotation_createNode_yc3t95_a0b0c0(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$uqR0), LINKS.statement$WHn8)).first());
-    Assert.assertNotNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(targetContainer, LINKS.statements$uqR0), LINKS.statement$WHn8)).first());
+    SNode targetContainer = _quotation_createNode_yc3t95_a0b0c0(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$J0D0), LINKS.statement$pYcS)).first());
+    Assert.assertNotNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(targetContainer, LINKS.statements$J0D0), LINKS.statement$pYcS)).first());
 
-    Assert.assertNotNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$uqR0), LINKS.statement$WHn8)).first());
+    Assert.assertNotNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$J0D0), LINKS.statement$pYcS)).first());
   }
   public void test_quotationCopiesList() throws Exception {
     SNode sourceContainer = _quotation_createNode_yc3t95_a0a0d0();
-    SNode targetContainer = _quotation_createNode_yc3t95_a0b0d0(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$uqR0), LINKS.statement$WHn8));
-    Assert.assertNotNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(targetContainer, LINKS.statements$uqR0), LINKS.statement$WHn8)).first());
+    SNode targetContainer = _quotation_createNode_yc3t95_a0b0d0(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$J0D0), LINKS.statement$pYcS));
+    Assert.assertNotNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(targetContainer, LINKS.statements$J0D0), LINKS.statement$pYcS)).first());
 
-    Assert.assertNotNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$uqR0), LINKS.statement$WHn8)).first());
+    Assert.assertNotNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$J0D0), LINKS.statement$pYcS)).first());
   }
   public void test_lightQuotationCopies() throws Exception {
     SNode sourceContainer = _quotation_createNode_yc3t95_a0a0e0();
-    SNode targetContainer = createBlockStatement_yc3t95_a0b0e0(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$uqR0), LINKS.statement$WHn8)).first());
-    Assert.assertNotNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(targetContainer, LINKS.statements$uqR0), LINKS.statement$WHn8)).first());
+    SNode targetContainer = createBlockStatement_yc3t95_a0b0e0(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$J0D0), LINKS.statement$pYcS)).first());
+    Assert.assertNotNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(targetContainer, LINKS.statements$J0D0), LINKS.statement$pYcS)).first());
 
-    Assert.assertNotNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$uqR0), LINKS.statement$WHn8)).first());
+    Assert.assertNotNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$J0D0), LINKS.statement$pYcS)).first());
   }
   public void test_lightQuotationExceptionList() throws Exception {
     SNode sourceContainer = _quotation_createNode_yc3t95_a0a0f0();
-    SNode targetContainer = createBlockStatement_yc3t95_a0b0f0(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$uqR0), LINKS.statement$WHn8));
-    Assert.assertNotNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(targetContainer, LINKS.statements$uqR0), LINKS.statement$WHn8)).first());
+    SNode targetContainer = createBlockStatement_yc3t95_a0b0f0(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$J0D0), LINKS.statement$pYcS));
+    Assert.assertNotNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(targetContainer, LINKS.statements$J0D0), LINKS.statement$pYcS)).first());
 
-    Assert.assertNotNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$uqR0), LINKS.statement$WHn8)).first());
+    Assert.assertNotNull(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceContainer, LINKS.statements$J0D0), LINKS.statement$pYcS)).first());
   }
   private static SNode _quotation_createNode_yc3t95_a0a0a0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -174,9 +174,9 @@ public class Test_QuotationDetachNodes_Test extends TestCase {
   private static SNode createBlockStatement_yc3t95_a0b0e0(SNode node0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BlockStatement$1i);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.statements$uqR0).init(CONCEPTS.StatementList$TN);
+      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.statements$J0D0).init(CONCEPTS.StatementList$TN);
       {
-        SNodeBuilder n3 = n2.forChild(LINKS.statement$WHn8).initNode(node0, CONCEPTS.Statement$ok, false);
+        SNodeBuilder n3 = n2.forChild(LINKS.statement$pYcS).initNode(node0, CONCEPTS.Statement$ok, false);
       }
     }
     return rootBuilder1.getResult();
@@ -196,15 +196,15 @@ public class Test_QuotationDetachNodes_Test extends TestCase {
   private static SNode createBlockStatement_yc3t95_a0b0f0(Iterable<? extends SNode> seq0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BlockStatement$1i);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.statements$uqR0).init(CONCEPTS.StatementList$TN);
-      n2.forChild(LINKS.statement$WHn8).initNodeList(seq0, CONCEPTS.Statement$ok);
+      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.statements$J0D0).init(CONCEPTS.StatementList$TN);
+      n2.forChild(LINKS.statement$pYcS).initNodeList(seq0, CONCEPTS.Statement$ok);
     }
     return rootBuilder1.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statements$uqR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statements$J0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 
   private static final class CONCEPTS {

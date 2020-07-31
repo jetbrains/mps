@@ -31,7 +31,7 @@ public final class BootstrapActionReference__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static String getActionId_idX8Ly3typOa(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.actionId$qAQw);
+    return SPropertyOperations.getString(__thisNode__, PROPS.actionId$SOpw);
   }
 
   /*package*/ BootstrapActionReference__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class BootstrapActionReference__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty actionId$qAQw = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0xf48c620dd899d06L, 0xf48c620dd89b12eL, "actionId");
+    /*package*/ static final SProperty actionId$SOpw = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0xf48c620dd899d06L, 0xf48c620dd89b12eL, "actionId");
   }
 }

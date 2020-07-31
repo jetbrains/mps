@@ -22,7 +22,7 @@ public class typeof_ExtensionFieldReference_InferenceRule extends AbstractInfere
     {
       SNode _nodeToCheck_1029348928467 = efr;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "7036359038356115138", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "7036359038356115126", true), (SNode) SLinkOperations.getTarget(SLinkOperations.getTarget(efr, LINKS.declaration$YMbw), LINKS.fieldType$YLZX), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "7036359038356115126", true), (SNode) SLinkOperations.getTarget(SLinkOperations.getTarget(efr, LINKS.declaration$qj$w), LINKS.fieldType$qdYz), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -36,8 +36,8 @@ public class typeof_ExtensionFieldReference_InferenceRule extends AbstractInfere
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$YMbw = MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x61a62b43e1534e9eL, 0x61a62b43e1534e9fL, "declaration");
-    /*package*/ static final SContainmentLink fieldType$YLZX = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x61a62b43e1534e99L, 0x61a62b43e1534e9dL, "fieldType");
+    /*package*/ static final SReferenceLink declaration$qj$w = MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x61a62b43e1534e9eL, 0x61a62b43e1534e9fL, "declaration");
+    /*package*/ static final SContainmentLink fieldType$qdYz = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x61a62b43e1534e99L, 0x61a62b43e1534e9dL, "fieldType");
   }
 
   private static final class CONCEPTS {

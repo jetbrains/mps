@@ -41,8 +41,8 @@ public class RemoveCellModelCollectionDeprecatedProps extends MigrationScriptBas
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CellModel_Collection$CD, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SPropertyOperations.remove(it, PROPS.vertical$3prZ);
-          SPropertyOperations.remove(it, PROPS.gridLayout$3psu);
+          SPropertyOperations.remove(it, PROPS.vertical$Dkzx);
+          SPropertyOperations.remove(it, PROPS.gridLayout$DkMy);
         }
       });
     }
@@ -56,7 +56,7 @@ public class RemoveCellModelCollectionDeprecatedProps extends MigrationScriptBas
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty vertical$3prZ = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2519L, "vertical");
-    /*package*/ static final SProperty gridLayout$3psu = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff251aL, "gridLayout");
+    /*package*/ static final SProperty vertical$Dkzx = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2519L, "vertical");
+    /*package*/ static final SProperty gridLayout$DkMy = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff251aL, "gridLayout");
   }
 }

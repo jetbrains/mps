@@ -50,7 +50,7 @@ public class PredefinedSymbolClassRegexp_SubstituteMenu extends SubstituteMenuBa
 
     public SMP_ReferenceScope_lmi5ai_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.PredefinedSymbolClassRegexp$P6, LINKS.symbolClass$v5fr);
+      super((SAbstractConcept) CONCEPTS.PredefinedSymbolClassRegexp$P6, LINKS.symbolClass$3yu5);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class PredefinedSymbolClassRegexp_SubstituteMenu extends SubstituteMenuBa
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink symbolClass$v5fr = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178fa2a18L, 0x11178fbdc7dL, "symbolClass");
+    /*package*/ static final SReferenceLink symbolClass$3yu5 = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178fa2a18L, 0x11178fbdc7dL, "symbolClass");
   }
 }

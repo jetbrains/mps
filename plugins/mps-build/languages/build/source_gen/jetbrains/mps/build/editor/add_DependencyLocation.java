@@ -71,7 +71,7 @@ public class add_DependencyLocation extends TransformationMenuBase {
   public class TMP_Group_3znryn_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.artifacts$Ez_T) == null);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.artifacts$BfmB) == null);
     }
 
     @NotNull
@@ -127,7 +127,7 @@ public class add_DependencyLocation extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.artifacts$Ez_T, null);
+          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.artifacts$BfmB, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -157,6 +157,6 @@ public class add_DependencyLocation extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink artifacts$Ez_T = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x395055ca96617d32L, "artifacts");
+    /*package*/ static final SContainmentLink artifacts$BfmB = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x395055ca96617d32L, "artifacts");
   }
 }

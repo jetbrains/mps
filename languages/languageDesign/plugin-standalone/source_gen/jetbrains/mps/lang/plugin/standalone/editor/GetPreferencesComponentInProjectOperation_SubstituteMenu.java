@@ -54,7 +54,7 @@ public class GetPreferencesComponentInProjectOperation_SubstituteMenu extends Su
 
     public SMP_ReferenceScope_r7b91_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.GetPreferencesComponentInProjectOperation$jS, LINKS.componentDeclaration$ho40);
+      super((SAbstractConcept) CONCEPTS.GetPreferencesComponentInProjectOperation$jS, LINKS.componentDeclaration$qDW0);
     }
     @NotNull
     @Override
@@ -126,6 +126,6 @@ public class GetPreferencesComponentInProjectOperation_SubstituteMenu extends Su
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink componentDeclaration$ho40 = MetaAdapterFactory.getReferenceLink(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x9766f9338aa2118L, 0x9766f9338aa2119L, "componentDeclaration");
+    /*package*/ static final SReferenceLink componentDeclaration$qDW0 = MetaAdapterFactory.getReferenceLink(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x9766f9338aa2118L, 0x9766f9338aa2119L, "componentDeclaration");
   }
 }

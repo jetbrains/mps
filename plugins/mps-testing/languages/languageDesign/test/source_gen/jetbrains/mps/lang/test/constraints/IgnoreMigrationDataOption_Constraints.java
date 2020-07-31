@@ -38,7 +38,7 @@ public class IgnoreMigrationDataOption_Constraints extends BaseConstraintsDescri
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.MigrationTestCase$Sn) && Objects.equals(link, LINKS.option$gm$w);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.MigrationTestCase$Sn) && Objects.equals(link, LINKS.option$UVFw);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590382(jetbrains.mps.lang.test.constraints)", "6109541130560494670");
 
@@ -48,6 +48,6 @@ public class IgnoreMigrationDataOption_Constraints extends BaseConstraintsDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink option$gm$w = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, 0x54c97349dbb26f7fL, "option");
+    /*package*/ static final SContainmentLink option$UVFw = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, 0x54c97349dbb26f7fL, "option");
   }
 }

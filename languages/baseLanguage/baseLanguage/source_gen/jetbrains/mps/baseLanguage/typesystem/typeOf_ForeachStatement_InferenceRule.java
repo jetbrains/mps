@@ -24,15 +24,15 @@ public class typeOf_ForeachStatement_InferenceRule extends AbstractInferenceRule
   public void applyRule(final SNode foreachStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final SNode T_typevar_1176561507041 = typeCheckingContext.createNewRuntimeTypesVariable();
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(foreachStatement, LINKS.iterable$9EB2);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(foreachStatement, LINKS.iterable$FCTY);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2262344491709407306", 0, null);
-      typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_9mvp38_a0a0c0b0b(typeCheckingContext.getRepresentative(T_typevar_1176561507041), typeCheckingContext.getRepresentative(T_typevar_1176561507041)), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(foreachStatement, LINKS.iterable$9EB2), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1207147193776", true), false, true, _info_12389875345);
+      typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_9mvp38_a0a0c0b0b(typeCheckingContext.getRepresentative(T_typevar_1176561507041), typeCheckingContext.getRepresentative(T_typevar_1176561507041)), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(foreachStatement, LINKS.iterable$FCTY), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1207147193776", true), false, true, _info_12389875345);
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(foreachStatement, LINKS.variable$H$_G);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(foreachStatement, LINKS.variable$4Igk);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1183457358399", 0, null);
-        typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(foreachStatement, LINKS.variable$H$_G), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1183457358397", true), (SNode) typeCheckingContext.getRepresentative(T_typevar_1176561507041), true, true, _info_12389875345);
+        typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(foreachStatement, LINKS.variable$4Igk), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1183457358397", true), (SNode) typeCheckingContext.getRepresentative(T_typevar_1176561507041), true, true, _info_12389875345);
       }
     }
   }
@@ -70,8 +70,8 @@ public class typeOf_ForeachStatement_InferenceRule extends AbstractInferenceRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink iterable$9EB2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, 0x10a6934ab66L, "iterable");
-    /*package*/ static final SContainmentLink variable$H$_G = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
+    /*package*/ static final SContainmentLink iterable$FCTY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, 0x10a6934ab66L, "iterable");
+    /*package*/ static final SContainmentLink variable$4Igk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
   }
 
   private static final class CONCEPTS {

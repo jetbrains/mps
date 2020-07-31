@@ -69,7 +69,7 @@ public class DeployScript {
     SNode deployScriptNode = DeployScriptCreator.createDeployScript(myProject, plugins, myModule.getBaseDirectory());
     model.addRootNode(deployScriptNode);
     myDeployScriptPath = new File(myModule.getBaseDirectory(), BuildProject__BehaviorDescriptor.getOutputFileName_id4gSHdTptyu0.invoke(deployScriptNode)).getAbsolutePath();
-    myArtifactsPath = new File(new File(new File(myModule.getBaseDirectory(), "build"), "artifacts"), SPropertyOperations.getString(deployScriptNode, PROPS.name$tAp1)).getAbsolutePath();
+    myArtifactsPath = new File(new File(new File(myModule.getBaseDirectory(), "build"), "artifacts"), SPropertyOperations.getString(deployScriptNode, PROPS.name$lA7v)).getAbsolutePath();
 
     new ModelDependencyUpdate(model).updateUsedLanguages().updateImportedModels(projectRepo).updateModuleDependencies(projectRepo);
   }
@@ -147,6 +147,6 @@ public class DeployScript {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

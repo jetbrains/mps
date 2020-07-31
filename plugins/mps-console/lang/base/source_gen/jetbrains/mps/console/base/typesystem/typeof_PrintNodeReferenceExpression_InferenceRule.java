@@ -22,7 +22,7 @@ public class typeof_PrintNodeReferenceExpression_InferenceRule extends AbstractI
   public void applyRule(final SNode printNodeReferenceExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(printNodeReferenceExpression, LINKS.object$gmkA);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(printNodeReferenceExpression, LINKS.object$UNYq);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:ae7d1f20-2cfe-46ef-a88a-193353a8b62b(jetbrains.mps.console.base.typesystem)", "6852607286009512877", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:ae7d1f20-2cfe-46ef-a88a-193353a8b62b(jetbrains.mps.console.base.typesystem)", "6852607286009511978", true), (SNode) _quotation_createNode_t5gmh8_a1a0c0a0a0b(), true, false, _info_12389875345);
       }
@@ -45,7 +45,7 @@ public class typeof_PrintNodeReferenceExpression_InferenceRule extends AbstractI
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink object$gmkA = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, 0x7417cca3eb1ff761L, "object");
+    /*package*/ static final SContainmentLink object$UNYq = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, 0x7417cca3eb1ff761L, "object");
   }
 
   private static final class CONCEPTS {

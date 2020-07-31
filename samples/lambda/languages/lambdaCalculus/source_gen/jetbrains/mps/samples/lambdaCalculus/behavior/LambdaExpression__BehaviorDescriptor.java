@@ -40,7 +40,7 @@ public final class LambdaExpression__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static SNode getOuterApplication_id18EhrW3IG0h(@NotNull SNode __thisNode__) {
-    if (!((SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.LambdaApplication$Er) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.LambdaApplication$Er), LINKS.function$bGdD) == __thisNode__)) && SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.LambdaApplication$Er)) {
+    if (!((SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.LambdaApplication$Er) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.LambdaApplication$Er), LINKS.function$EqAR) == __thisNode__)) && SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.LambdaApplication$Er)) {
       return SNodeOperations.cast(__thisNode__, CONCEPTS.LambdaApplication$Er);
 
     } else if (SNodeOperations.getParent(__thisNode__) != null && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.LetExpression$c1)) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.Program$_d))) {
@@ -74,8 +74,8 @@ public final class LambdaExpression__BehaviorDescriptor extends BaseBHDescriptor
     List<SNode> allRef = SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.VariableReference$zy, false, new SAbstractConcept[]{});
     List<SNode> result = new ArrayList<SNode>();
     for (SNode ref : allRef) {
-      if (!(ListSequence.fromList(allVar).contains(SLinkOperations.getTarget(ref, LINKS.variable$j9XA))) && !(ListSequence.fromList(result).contains(SLinkOperations.getTarget(ref, LINKS.variable$j9XA)))) {
-        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(ref, LINKS.variable$j9XA));
+      if (!(ListSequence.fromList(allVar).contains(SLinkOperations.getTarget(ref, LINKS.variable$hOPq))) && !(ListSequence.fromList(result).contains(SLinkOperations.getTarget(ref, LINKS.variable$hOPq)))) {
+        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(ref, LINKS.variable$hOPq));
       }
     }
     return result;
@@ -144,7 +144,7 @@ public final class LambdaExpression__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink function$bGdD = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dddL, 0x37d11ba7d7ee2de0L, "function");
-    /*package*/ static final SReferenceLink variable$j9XA = MetaAdapterFactory.getReferenceLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496b08L, 0x48db75d5dc497af4L, "variable");
+    /*package*/ static final SContainmentLink function$EqAR = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dddL, 0x37d11ba7d7ee2de0L, "function");
+    /*package*/ static final SReferenceLink variable$hOPq = MetaAdapterFactory.getReferenceLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496b08L, 0x48db75d5dc497af4L, "variable");
   }
 }

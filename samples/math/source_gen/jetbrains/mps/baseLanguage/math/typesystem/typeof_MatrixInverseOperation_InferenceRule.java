@@ -25,7 +25,7 @@ public class typeof_MatrixInverseOperation_InferenceRule extends AbstractInferen
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      final SNode t = typeCheckingContext.typeOf(SLinkOperations.getTarget(op, LINKS.expr$XA0Z), "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "7388416617632229396", true);
+      final SNode t = typeCheckingContext.typeOf(SLinkOperations.getTarget(op, LINKS.expr$Pqux), "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "7388416617632229396", true);
       typeCheckingContext.whenConcrete(t, new Runnable() {
         public void run() {
           if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(t), CONCEPTS.MatrixType$qA)) {
@@ -37,10 +37,10 @@ public class typeof_MatrixInverseOperation_InferenceRule extends AbstractInferen
             {
               SNode _nodeToCheck_1029348928467 = op;
               EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "9195559275659749160", 0, null);
-              typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "9195559275659749167", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(op, LINKS.expr$XA0Z), "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "9195559275659749162", true), _info_12389875345);
+              typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "9195559275659749167", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(op, LINKS.expr$Pqux), "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "9195559275659749162", true), _info_12389875345);
             }
             SNode mt = SNodeOperations.cast(typeCheckingContext.getExpandedNode(t), CONCEPTS.MatrixType$qA);
-            if (SPropertyOperations.getInteger(mt, PROPS.rows$rd2R) != 0 && SPropertyOperations.getInteger(mt, PROPS.columns$rd3m) != 0 && SPropertyOperations.getInteger(mt, PROPS.rows$rd2R) != SPropertyOperations.getInteger(mt, PROPS.columns$rd3m)) {
+            if (SPropertyOperations.getInteger(mt, PROPS.rows$bkoD) != 0 && SPropertyOperations.getInteger(mt, PROPS.columns$bkBE) != 0 && SPropertyOperations.getInteger(mt, PROPS.rows$bkoD) != SPropertyOperations.getInteger(mt, PROPS.columns$bkBE)) {
               {
                 final MessageTarget errorTarget = new NodeMessageTarget();
                 IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(op, "Inverse operation is undefined for non-square matrices", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "7388416617632229476", null, errorTarget);
@@ -67,7 +67,7 @@ public class typeof_MatrixInverseOperation_InferenceRule extends AbstractInferen
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expr$XA0Z = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e6443a20L, 0x64b1e972e6443a22L, "expr");
+    /*package*/ static final SContainmentLink expr$Pqux = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e6443a20L, 0x64b1e972e6443a22L, "expr");
   }
 
   private static final class CONCEPTS {
@@ -76,7 +76,7 @@ public class typeof_MatrixInverseOperation_InferenceRule extends AbstractInferen
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty columns$rd3m = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dadL, "columns");
-    /*package*/ static final SProperty rows$rd2R = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dacL, "rows");
+    /*package*/ static final SProperty columns$bkBE = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dadL, "columns");
+    /*package*/ static final SProperty rows$bkoD = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dacL, "rows");
   }
 }

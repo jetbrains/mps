@@ -35,7 +35,7 @@ public class PluginUtils {
 
     SModel model = genContext.getOriginalInputModel();
 
-    if (SPropertyOperations.getBoolean(SModelOperations.getModuleStub(genContext.getOriginalInputModel()), PROPS.compileInMPS$8r6V) && SPropertyOperations.getBoolean(node, PROPS.needInitConfig$z0Fk)) {
+    if (SPropertyOperations.getBoolean(SModelOperations.getModuleStub(genContext.getOriginalInputModel()), PROPS.compileInMPS$58m_) && SPropertyOperations.getBoolean(node, PROPS.needInitConfig$XkYG)) {
       // it's an MPS module that would get loaded with PluginLoaderRegistry and contribute 
       // its app/project component parts through ModulePluginContributor's mechanism, which respects startup.properties file. 
       // Unfortunately, have no other way but resort to originalModel to find out 'compileInMPS' setting - node.model is transient and bears no reasonable value 
@@ -65,7 +65,7 @@ public class PluginUtils {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty needInitConfig$z0Fk = MetaAdapterFactory.getProperty(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x685ef16bc1750e9cL, 0x5f3b7568ba8feb0fL, "needInitConfig");
-    /*package*/ static final SProperty compileInMPS$8r6V = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe24L, "compileInMPS");
+    /*package*/ static final SProperty needInitConfig$XkYG = MetaAdapterFactory.getProperty(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x685ef16bc1750e9cL, 0x5f3b7568ba8feb0fL, "needInitConfig");
+    /*package*/ static final SProperty compileInMPS$58m_ = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe24L, "compileInMPS");
   }
 }

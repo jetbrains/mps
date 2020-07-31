@@ -20,11 +20,11 @@ public class check_VariableAssignedToItself_NonTypesystemRule extends AbstractNo
   public check_VariableAssignedToItself_NonTypesystemRule() {
   }
   public void applyRule(final SNode assignmentExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SLinkOperations.getTarget(assignmentExpression, LINKS.lValue$J0D4) == null || SLinkOperations.getTarget(assignmentExpression, LINKS.rValue$J0E2) == null) {
+    if (SLinkOperations.getTarget(assignmentExpression, LINKS.lValue$LjSW) == null || SLinkOperations.getTarget(assignmentExpression, LINKS.rValue$LkmY) == null) {
       return;
     }
-    SNode lDeclaration = RulesFunctions_BaseLanguage.getVariableDeclaration(SLinkOperations.getTarget(assignmentExpression, LINKS.lValue$J0D4));
-    SNode rDeclaration = RulesFunctions_BaseLanguage.getVariableDeclaration(SLinkOperations.getTarget(assignmentExpression, LINKS.rValue$J0E2));
+    SNode lDeclaration = RulesFunctions_BaseLanguage.getVariableDeclaration(SLinkOperations.getTarget(assignmentExpression, LINKS.lValue$LjSW));
+    SNode rDeclaration = RulesFunctions_BaseLanguage.getVariableDeclaration(SLinkOperations.getTarget(assignmentExpression, LINKS.rValue$LkmY));
     if (lDeclaration != null && lDeclaration == rDeclaration) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -43,8 +43,8 @@ public class check_VariableAssignedToItself_NonTypesystemRule extends AbstractNo
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lValue$J0D4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SContainmentLink rValue$J0E2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
   }
 
   private static final class CONCEPTS {

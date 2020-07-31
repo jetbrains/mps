@@ -182,7 +182,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
       @Override
       public void execute(@NotNull String pattern) {
         EditorAssistantUtilities assistantUtils = new EditorAssistantUtilities(_context.getNode());
-        SNode constant = _quotation_createNode_puymhi_a0b0a1a(SPropertyOperations.getString(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$sbgS), PROPS.name$tAp1));
+        SNode constant = _quotation_createNode_puymhi_a0b0a1a(SPropertyOperations.getString(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$Dtb8), PROPS.name$lA7v));
         SNodeOperations.replaceWithAnother(_context.getNode(), constant);
         SelectionUtil.selectLabelCellWithSelection(_context.getEditorContext(), constant, SelectionManager.FIRST_EDITABLE_CELL, 0, -1);
       }
@@ -190,11 +190,11 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
       @Override
       public boolean canExecute(@NotNull String pattern) {
         EditorAssistantUtilities assistantUtils = new EditorAssistantUtilities(_context.getNode());
-        if (!(assistantUtils.isAbstratCell()) || assistantUtils.getEditorDeclaration() == null || SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$sbgS) == null) {
+        if (!(assistantUtils.isAbstratCell()) || assistantUtils.getEditorDeclaration() == null || SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$Dtb8) == null) {
           return false;
         }
 
-        if (ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.cellModel$3wIV), CONCEPTS.EditorCellModel$5c, true, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
+        if (ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.cellModel$GQI_), CONCEPTS.EditorCellModel$5c, true, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return SNodeOperations.getConcept(it) != CONCEPTS.CellModel_Collection$CD && SNodeOperations.getConcept(it) != CONCEPTS.EditorCellModel$5c;
           }
@@ -227,7 +227,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
     @Override
     protected Iterable<? extends SNode> getParameters(TransformationMenuContext _context) {
       EditorAssistantUtilities assistantUtils = new EditorAssistantUtilities(_context.getNode());
-      if (!(assistantUtils.isAbstratCell()) || assistantUtils.getEditorDeclaration() == null || SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$sbgS) == null) {
+      if (!(assistantUtils.isAbstratCell()) || assistantUtils.getEditorDeclaration() == null || SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$Dtb8) == null) {
         return Collections.<SNode>emptyList();
       }
 
@@ -235,7 +235,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
         return Collections.<SNode>emptyList();
       }
 
-      Iterable<SNode> allConceptProperties = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$sbgS))).where(new IWhereFilter<SNode>() {
+      Iterable<SNode> allConceptProperties = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$Dtb8))).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1156234966388"))) && !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1193676396447")));
         }
@@ -243,7 +243,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
 
       Iterable<SNode> editedProperties = assistantUtils.getAllCellValues(new _FunctionTypes._return_P1_E0<SNode, SNode>() {
         public SNode invoke(SNode cell) {
-          return SLinkOperations.getTarget(SNodeOperations.as(cell, CONCEPTS.CellModel_Property$iE), LINKS.relationDeclaration$wbRV);
+          return SLinkOperations.getTarget(SNodeOperations.as(cell, CONCEPTS.CellModel_Property$iE), LINKS.relationDeclaration$_K5_);
         }
       });
 
@@ -303,7 +303,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
         @Nullable
         @Override
         public String getLabelText(String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.name$tAp1) + " Property";
+          return SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v) + " Property";
         }
 
         @Override
@@ -367,7 +367,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
       @Override
       public boolean canExecute(@NotNull String pattern) {
         EditorAssistantUtilities assistantUtils = new EditorAssistantUtilities(_context.getNode());
-        if (!(assistantUtils.isAbstratCell()) || assistantUtils.getEditorDeclaration() == null || SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$sbgS) == null) {
+        if (!(assistantUtils.isAbstratCell()) || assistantUtils.getEditorDeclaration() == null || SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$Dtb8) == null) {
           return false;
         }
 
@@ -375,13 +375,13 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
           return false;
         }
         // Do not suggest creation of #alias# cell if concept has name property 
-        if (Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$sbgS), ((boolean) true))).contains(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1169194658468"))) {
+        if (Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$Dtb8), ((boolean) true))).contains(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1169194658468"))) {
           return false;
         }
 
         return null == assistantUtils.getFirstCellValue(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
           public Boolean invoke(SNode cell) {
-            return (SLinkOperations.hasPointer(SNodeOperations.as(cell, CONCEPTS.CellModel_Component$1X), LINKS.editorComponent$AnLw, new SNodePointer("r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)", "2900100530630621651")) ? Boolean.FALSE : null);
+            return (SLinkOperations.hasPointer(SNodeOperations.as(cell, CONCEPTS.CellModel_Component$1X), LINKS.editorComponent$_wYw, new SNodePointer("r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)", "2900100530630621651")) ? Boolean.FALSE : null);
           }
         });
       }
@@ -408,7 +408,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
     @Override
     protected Iterable<? extends SNode> getParameters(TransformationMenuContext _context) {
       EditorAssistantUtilities assistantUtils = new EditorAssistantUtilities(_context.getNode());
-      if (!(assistantUtils.isAbstratCell()) || assistantUtils.getEditorDeclaration() == null || SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$sbgS) == null) {
+      if (!(assistantUtils.isAbstratCell()) || assistantUtils.getEditorDeclaration() == null || SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$Dtb8) == null) {
         return Collections.<SNode>emptyList();
       }
 
@@ -416,7 +416,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
         return Collections.<SNode>emptyList();
       }
 
-      Iterable<SNode> allConceptLinks = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$sbgS))).where(new IWhereFilter<SNode>() {
+      Iterable<SNode> allConceptLinks = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$Dtb8))).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591170")));
         }
@@ -426,17 +426,17 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
         public SNode invoke(SNode cell) {
           SNode refNodeListCell = SNodeOperations.as(cell, CONCEPTS.CellModel_RefNodeList$IL);
           if (refNodeListCell != null) {
-            return SLinkOperations.getTarget(refNodeListCell, LINKS.relationDeclaration$wbRV);
+            return SLinkOperations.getTarget(refNodeListCell, LINKS.relationDeclaration$_K5_);
           }
 
           SNode refCell = SNodeOperations.as(cell, CONCEPTS.CellModel_RefCell$VD);
           if (refCell != null) {
-            return SLinkOperations.getTarget(refCell, LINKS.relationDeclaration$wbRV);
+            return SLinkOperations.getTarget(refCell, LINKS.relationDeclaration$_K5_);
           }
 
           SNode refNodeCell = SNodeOperations.as(cell, CONCEPTS.CellModel_RefNode$Ox);
           if (refNodeCell != null) {
-            return SLinkOperations.getTarget(refNodeCell, LINKS.relationDeclaration$wbRV);
+            return SLinkOperations.getTarget(refNodeCell, LINKS.relationDeclaration$_K5_);
           }
           return (SNode) null;
         }
@@ -494,18 +494,18 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
         @Nullable
         @Override
         public String getLabelText(String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.role$r_O$) + " Link";
+          return SPropertyOperations.getString(myParameterObject, PROPS.role$nkts) + " Link";
         }
 
         @Override
         public void execute(@NotNull String pattern) {
-          if (SEnumOperations.isMember(SPropertyOperations.getEnum(myParameterObject, PROPS.metaClass$tHD7), 0xfc6f4e95b9L)) {
+          if (SEnumOperations.isMember(SPropertyOperations.getEnum(myParameterObject, PROPS.metaClass$p6Up), 0xfc6f4e95b9L)) {
             if ((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(myParameterObject)) {
-              SNode label = _quotation_createNode_puymhi_a0a0a0a0a0e0(SPropertyOperations.getString(myParameterObject, PROPS.role$r_O$) + ":");
+              SNode label = _quotation_createNode_puymhi_a0a0a0a0a0e0(SPropertyOperations.getString(myParameterObject, PROPS.role$nkts) + ":");
               SNodeOperations.replaceWithAnother(_context.getNode(), label);
               SNodeOperations.insertNextSiblingChild(label, _quotation_createNode_puymhi_a0a2a0a0a0a4a(myParameterObject));
             } else {
-              SNode label = _quotation_createNode_puymhi_a0a0a0a0a0a4a(SPropertyOperations.getString(myParameterObject, PROPS.role$r_O$) + ":");
+              SNode label = _quotation_createNode_puymhi_a0a0a0a0a0a4a(SPropertyOperations.getString(myParameterObject, PROPS.role$nkts) + ":");
               SNodeOperations.replaceWithAnother(_context.getNode(), label);
               SNodeOperations.insertNextSiblingChild(label, _quotation_createNode_puymhi_a0a2a0a0a0a0e0(myParameterObject));
             }
@@ -513,8 +513,8 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
             SNode refCell = _quotation_createNode_puymhi_a0a0a0a0a4a(myParameterObject);
             SNodeOperations.replaceWithAnother(_context.getNode(), refCell);
             SNode inlineComponent = SNodeFactoryOperations.createNewNode(CONCEPTS.InlineEditorComponent$CM, null);
-            SLinkOperations.setTarget(refCell, LINKS.editorComponent$36e$, inlineComponent);
-            SLinkOperations.setTarget(SLinkOperations.getTarget(refCell, LINKS.editorComponent$36e$), LINKS.cellModel$3wIV, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x8ace515f0191e6eL, "jetbrains.mps.lang.editor.structure.CellModel_ReferencePresentation")));
+            SLinkOperations.setTarget(refCell, LINKS.editorComponent$w13s, inlineComponent);
+            SLinkOperations.setTarget(SLinkOperations.getTarget(refCell, LINKS.editorComponent$w13s), LINKS.cellModel$GQI_, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x8ace515f0191e6eL, "jetbrains.mps.lang.editor.structure.CellModel_ReferencePresentation")));
           }
         }
 
@@ -569,13 +569,13 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
       @Override
       public void execute(@NotNull String pattern) {
         SNode topLevelCollection = ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.CellModel_Collection$CD, true)).last();
-        ListSequence.fromList(SLinkOperations.getChildren(topLevelCollection, LINKS.childCellModel$3prw)).addElement(_quotation_createNode_puymhi_a0a1a0f0());
+        ListSequence.fromList(SLinkOperations.getChildren(topLevelCollection, LINKS.childCellModel$Dkkw)).addElement(_quotation_createNode_puymhi_a0a1a0f0());
       }
 
       @Override
       public boolean canExecute(@NotNull String pattern) {
         EditorAssistantUtilities assistantUtils = new EditorAssistantUtilities(_context.getNode());
-        if (assistantUtils.isAbstratCell() || assistantUtils.getEditorDeclaration() == null || SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$sbgS) == null) {
+        if (assistantUtils.isAbstratCell() || assistantUtils.getEditorDeclaration() == null || SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$Dtb8) == null) {
           return false;
         }
 
@@ -584,7 +584,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
           return false;
         }
 
-        Iterable<SNode> allConceptProperties = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$sbgS))).where(new IWhereFilter<SNode>() {
+        Iterable<SNode> allConceptProperties = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$Dtb8))).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1156234966388"))) && !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1193676396447")));
           }
@@ -594,13 +594,13 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
           public SNode invoke(SNode cell) {
             SNode propertyCell = SNodeOperations.as(cell, CONCEPTS.CellModel_Property$iE);
             if (propertyCell != null) {
-              return SLinkOperations.getTarget(propertyCell, LINKS.relationDeclaration$wbRV);
+              return SLinkOperations.getTarget(propertyCell, LINKS.relationDeclaration$_K5_);
             }
             return (SNode) null;
           }
         });
 
-        Iterable<SNode> allConceptLinks = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$sbgS))).where(new IWhereFilter<SNode>() {
+        Iterable<SNode> allConceptLinks = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$Dtb8))).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return !(SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591170")));
           }
@@ -610,17 +610,17 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
           public SNode invoke(SNode cell) {
             SNode refNodeListCell = SNodeOperations.as(cell, CONCEPTS.CellModel_RefNodeList$IL);
             if (refNodeListCell != null) {
-              return SLinkOperations.getTarget(refNodeListCell, LINKS.relationDeclaration$wbRV);
+              return SLinkOperations.getTarget(refNodeListCell, LINKS.relationDeclaration$_K5_);
             }
 
             SNode refCell = SNodeOperations.as(cell, CONCEPTS.CellModel_RefCell$VD);
             if (refCell != null) {
-              return SLinkOperations.getTarget(refCell, LINKS.relationDeclaration$wbRV);
+              return SLinkOperations.getTarget(refCell, LINKS.relationDeclaration$_K5_);
             }
 
             SNode refNodeCell = SNodeOperations.as(cell, CONCEPTS.CellModel_RefNode$Ox);
             if (refNodeCell != null) {
-              return SLinkOperations.getTarget(refNodeCell, LINKS.relationDeclaration$wbRV);
+              return SLinkOperations.getTarget(refNodeCell, LINKS.relationDeclaration$_K5_);
             }
             return (SNode) null;
           }
@@ -678,24 +678,24 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
       @Override
       public void execute(@NotNull String pattern) {
         EditorAssistantUtilities assistantUtils = new EditorAssistantUtilities(_context.getNode());
-        SNode concept = SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$sbgS);
+        SNode concept = SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$Dtb8);
         _context.getEditorContext().getEditorPanelManager().openEditor(concept);
-        SPropertyOperations.assign(concept, PROPS.conceptAlias$YIL2, "<" + SPropertyOperations.getString(concept, PROPS.name$tAp1) + "_Alias>");
+        SPropertyOperations.assign(concept, PROPS.conceptAlias$oDJY, "<" + SPropertyOperations.getString(concept, PROPS.name$lA7v) + "_Alias>");
         SelectionUtil.selectLabelCellWithSelection(_context.getEditorContext(), concept, "*" + CellIdManager.createPropertyId("conceptAlias"), 0, -1);
       }
 
       @Override
       public boolean canExecute(@NotNull String pattern) {
         EditorAssistantUtilities assistantUtils = new EditorAssistantUtilities(_context.getNode());
-        if (assistantUtils.getEditorDeclaration() == null || SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$sbgS) == null) {
+        if (assistantUtils.getEditorDeclaration() == null || SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$Dtb8) == null) {
           return false;
         }
 
-        if (isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$sbgS), PROPS.conceptAlias$YIL2))) {
+        if (isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$Dtb8), PROPS.conceptAlias$oDJY))) {
           return false;
         }
 
-        return SLinkOperations.hasPointer(SNodeOperations.as(_context.getNode(), CONCEPTS.CellModel_Component$1X), LINKS.editorComponent$AnLw, new SNodePointer("r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)", "2900100530630621651")) && !(SPropertyOperations.getBoolean(AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(assistantUtils.getEditorDeclaration()), PROPS.abstract$moSU)) && _context.getEditorContext().getEditorPanelManager() != null;
+        return SLinkOperations.hasPointer(SNodeOperations.as(_context.getNode(), CONCEPTS.CellModel_Component$1X), LINKS.editorComponent$_wYw, new SNodePointer("r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)", "2900100530630621651")) && !(SPropertyOperations.getBoolean(AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(assistantUtils.getEditorDeclaration()), PROPS.abstract$Q3$6)) && _context.getEditorContext().getEditorPanelManager() != null;
       }
 
 
@@ -775,7 +775,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
           return false;
         }
 
-        if (!(SPropertyOperations.getBoolean(AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(assistantUtils.getEditorDeclaration()), PROPS.abstract$moSU))) {
+        if (!(SPropertyOperations.getBoolean(AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(assistantUtils.getEditorDeclaration()), PROPS.abstract$Q3$6))) {
           return false;
         }
 
@@ -786,7 +786,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
         });
         if (Sequence.fromIterable(allLinks).count() != 2 || Sequence.fromIterable(allLinks).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$tHD7), 0xfc6f4e95b8L);
+            return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$p6Up), 0xfc6f4e95b8L);
           }
         })) {
           return false;
@@ -800,10 +800,10 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
             right = nextLink;
           }
         }
-        if (SLinkOperations.getTarget(left, LINKS.target$egp8) != SLinkOperations.getTarget(right, LINKS.target$egp8)) {
+        if (SLinkOperations.getTarget(left, LINKS.target$TWaS) != SLinkOperations.getTarget(right, LINKS.target$TWaS)) {
           return false;
         }
-        return Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(assistantUtils.getEditorDeclaration()), ((boolean) true))).contains(SLinkOperations.getTarget(left, LINKS.target$egp8));
+        return Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(assistantUtils.getEditorDeclaration()), ((boolean) true))).contains(SLinkOperations.getTarget(left, LINKS.target$TWaS));
         // TODO: add another binary operation action recognizing YouTrack Workflow-like binary operations (with the link to a kind) 
       }
 
@@ -943,21 +943,21 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$sbgS = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
-    /*package*/ static final SContainmentLink cellModel$3wIV = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
-    /*package*/ static final SReferenceLink relationDeclaration$wbRV = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
-    /*package*/ static final SReferenceLink editorComponent$AnLw = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, 0xfb35c96897L, "editorComponent");
-    /*package*/ static final SContainmentLink editorComponent$36e$ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, 0xfd5cf2df2aL, "editorComponent");
-    /*package*/ static final SContainmentLink childCellModel$3prw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel");
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink conceptDeclaration$Dtb8 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
+    /*package*/ static final SContainmentLink cellModel$GQI_ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
+    /*package*/ static final SReferenceLink relationDeclaration$_K5_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SReferenceLink editorComponent$_wYw = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, 0xfb35c96897L, "editorComponent");
+    /*package*/ static final SContainmentLink editorComponent$w13s = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, 0xfd5cf2df2aL, "editorComponent");
+    /*package*/ static final SContainmentLink childCellModel$Dkkw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty role$r_O$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
-    /*package*/ static final SProperty metaClass$tHD7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
-    /*package*/ static final SProperty conceptAlias$YIL2 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x46ab0ad5826c74caL, "conceptAlias");
-    /*package*/ static final SProperty abstract$moSU = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty conceptAlias$oDJY = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x46ab0ad5826c74caL, "conceptAlias");
+    /*package*/ static final SProperty abstract$Q3$6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
   }
 
   private static final class CONCEPTS {

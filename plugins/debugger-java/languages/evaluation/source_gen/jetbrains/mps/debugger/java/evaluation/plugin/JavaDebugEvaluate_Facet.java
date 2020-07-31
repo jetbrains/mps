@@ -132,7 +132,7 @@ public class JavaDebugEvaluate_Facet extends IFacet.Stub {
                           assert SNodeOperations.getModel(evaluator.value) != null;
                           SNode evaluateMethod = ListSequence.fromList(SNodeOperations.getNodeDescendants(evaluator.value, CONCEPTS.InstanceMethodDeclaration$An, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
                             public boolean accept(SNode it) {
-                              return "evaluate".equals(SPropertyOperations.getString(it, PROPS.name$tAp1));
+                              return "evaluate".equals(SPropertyOperations.getString(it, PROPS.name$lA7v));
                             }
                           });
                           TransformatorBuilder.getInstance().build(evaluateMethod, true).transformEvaluator();
@@ -399,6 +399,6 @@ public class JavaDebugEvaluate_Facet extends IFacet.Stub {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

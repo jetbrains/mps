@@ -22,7 +22,7 @@ public class typeof_ForeignParametersExpression_InferenceRule extends AbstractIn
   public typeof_ForeignParametersExpression_InferenceRule() {
   }
   public void applyRule(final SNode fve, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode vars = SLinkOperations.getTarget(SLinkOperations.getTarget(fve, LINKS.target$EXvY), LINKS.parameters$W12k);
+    SNode vars = SLinkOperations.getTarget(SLinkOperations.getTarget(fve, LINKS.target$NMv2), LINKS.parameters$4w7G);
     if (vars != null) {
       {
         SNode _nodeToCheck_1029348928467 = fve;
@@ -49,8 +49,8 @@ public class typeof_ForeignParametersExpression_InferenceRule extends AbstractIn
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$EXvY = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x2e69d2eba535f3b0L, 0x2e69d2eba535f3beL, "target");
-    /*package*/ static final SContainmentLink parameters$W12k = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x6598ce4d2f20bbdfL, "parameters");
+    /*package*/ static final SReferenceLink target$NMv2 = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x2e69d2eba535f3b0L, 0x2e69d2eba535f3beL, "target");
+    /*package*/ static final SContainmentLink parameters$4w7G = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x6598ce4d2f20bbdfL, "parameters");
   }
 
   private static final class CONCEPTS {

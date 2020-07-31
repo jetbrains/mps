@@ -90,7 +90,7 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x57524858938023adL, "jetbrains.mps.lang.editor.editorTest.structure.CompletionChild"));
-        SPropertyOperations.assign(node, PROPS.name$tAp1, "full");
+        SPropertyOperations.assign(node, PROPS.name$lA7v, "full");
         return node;
       }
 
@@ -145,7 +145,7 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x57524858938023adL, "jetbrains.mps.lang.editor.editorTest.structure.CompletionChild"));
-        SPropertyOperations.assign(node, PROPS.name$tAp1, "startEnd");
+        SPropertyOperations.assign(node, PROPS.name$lA7v, "startEnd");
         return node;
       }
 
@@ -200,7 +200,7 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x57524858938023adL, "jetbrains.mps.lang.editor.editorTest.structure.CompletionChild"));
-        SPropertyOperations.assign(node, PROPS.name$tAp1, "startMiddleEnd");
+        SPropertyOperations.assign(node, PROPS.name$lA7v, "startMiddleEnd");
         return node;
       }
 
@@ -255,7 +255,7 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x57524858938023adL, "jetbrains.mps.lang.editor.editorTest.structure.CompletionChild"));
-        SPropertyOperations.assign(node, PROPS.name$tAp1, "start Space");
+        SPropertyOperations.assign(node, PROPS.name$lA7v, "start Space");
         return node;
       }
 
@@ -310,7 +310,7 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x57524858938023adL, "jetbrains.mps.lang.editor.editorTest.structure.CompletionChild"));
-        SPropertyOperations.assign(node, PROPS.name$tAp1, "start.dot");
+        SPropertyOperations.assign(node, PROPS.name$lA7v, "start.dot");
         return node;
       }
 
@@ -331,6 +331,6 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

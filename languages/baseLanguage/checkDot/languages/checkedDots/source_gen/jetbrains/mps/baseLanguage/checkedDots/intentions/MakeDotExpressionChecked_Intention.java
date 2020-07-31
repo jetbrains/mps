@@ -54,13 +54,13 @@ public final class MakeDotExpressionChecked_Intention extends AbstractIntentionD
     public void execute(final SNode node, final EditorContext editorContext) {
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.CheckedDotExpression$nB)) {
         SNode dotExpression = SNodeFactoryOperations.createNewNode(CONCEPTS.DotExpression$6a, null);
-        SLinkOperations.setTarget(dotExpression, LINKS.operand$Lcrr, SLinkOperations.getTarget(node, LINKS.operand$Lcrr));
-        SLinkOperations.setTarget(dotExpression, LINKS.operation$X4R8, SLinkOperations.getTarget(node, LINKS.operation$X4R8));
+        SLinkOperations.setTarget(dotExpression, LINKS.operand$P1i5, SLinkOperations.getTarget(node, LINKS.operand$P1i5));
+        SLinkOperations.setTarget(dotExpression, LINKS.operation$_mGS, SLinkOperations.getTarget(node, LINKS.operation$_mGS));
         SNodeOperations.replaceWithAnother(node, dotExpression);
       } else {
         SNode checkedDot = SNodeFactoryOperations.createNewNode(CONCEPTS.CheckedDotExpression$nB, null);
-        SLinkOperations.setTarget(checkedDot, LINKS.operand$Lcrr, SLinkOperations.getTarget(node, LINKS.operand$Lcrr));
-        SLinkOperations.setTarget(checkedDot, LINKS.operation$X4R8, SLinkOperations.getTarget(node, LINKS.operation$X4R8));
+        SLinkOperations.setTarget(checkedDot, LINKS.operand$P1i5, SLinkOperations.getTarget(node, LINKS.operand$P1i5));
+        SLinkOperations.setTarget(checkedDot, LINKS.operation$_mGS, SLinkOperations.getTarget(node, LINKS.operation$_mGS));
         SNodeOperations.replaceWithAnother(node, checkedDot);
       }
     }
@@ -76,7 +76,7 @@ public final class MakeDotExpressionChecked_Intention extends AbstractIntentionD
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 }

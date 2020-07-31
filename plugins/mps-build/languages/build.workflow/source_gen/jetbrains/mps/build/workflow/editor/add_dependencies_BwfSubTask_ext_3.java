@@ -72,7 +72,7 @@ public class add_dependencies_BwfSubTask_ext_3 extends TransformationMenuBase {
   public class TMP_Group_cfx569_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.before$hqay)).isEmpty();
+      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.before$rF6u)).isEmpty();
     }
 
     @NotNull
@@ -128,7 +128,7 @@ public class add_dependencies_BwfSubTask_ext_3 extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.before$hqay)).addElement(SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.BwfSubTaskDependency$kZ));
+          ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.before$rF6u)).addElement(SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.BwfSubTaskDependency$kZ));
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -154,7 +154,7 @@ public class add_dependencies_BwfSubTask_ext_3 extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink before$hqay = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x36fb0dc9fd36bb1bL, "before");
+    /*package*/ static final SContainmentLink before$rF6u = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x36fb0dc9fd36bb1bL, "before");
   }
 
   private static final class CONCEPTS {

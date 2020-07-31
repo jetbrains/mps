@@ -24,7 +24,7 @@ public class check_UnqualifiedStaticCall_NonTypesystemRule extends AbstractNonTy
   public check_UnqualifiedStaticCall_NonTypesystemRule() {
   }
   public void applyRule(final SNode localCall, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SReference ref = SNodeOperations.getReference(localCall, LINKS.baseMethodDeclaration$$A7i);
+    SReference ref = SNodeOperations.getReference(localCall, LINKS.baseMethodDeclaration$ItxI);
     if (!(ref instanceof StaticReference)) {
       return;
     }
@@ -67,7 +67,7 @@ public class check_UnqualifiedStaticCall_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 
   private static final class CONCEPTS {

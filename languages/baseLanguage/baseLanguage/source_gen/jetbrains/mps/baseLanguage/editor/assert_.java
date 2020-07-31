@@ -76,7 +76,7 @@ public class assert_ extends TransformationMenuBase {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       SNode targetExppression = PrecedenceUtil.getTargetForRightTransform(_context.getNode());
-      return targetExppression != null && SNodeOperations.isInstanceOf(SNodeOperations.getParent(targetExppression), CONCEPTS.AssertStatement$c7) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(targetExppression), CONCEPTS.AssertStatement$c7), LINKS.message$8EX$) == null;
+      return targetExppression != null && SNodeOperations.isInstanceOf(SNodeOperations.getParent(targetExppression), CONCEPTS.AssertStatement$c7) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(targetExppression), CONCEPTS.AssertStatement$c7), LINKS.message$cNOs) == null;
     }
 
     @NotNull
@@ -134,8 +134,8 @@ public class assert_ extends TransformationMenuBase {
         public void execute(@NotNull String pattern) {
           SNode targetExpression = PrecedenceUtil.getTargetForRightTransform(_context.getNode());
           SNode assertion = SNodeOperations.cast(SNodeOperations.getParent(targetExpression), CONCEPTS.AssertStatement$c7);
-          SNodeFactoryOperations.setNewChild(assertion, LINKS.message$8EX$, null);
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(assertion, LINKS.message$8EX$), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SNodeFactoryOperations.setNewChild(assertion, LINKS.message$cNOs, null);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(assertion, LINKS.message$cNOs), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
@@ -164,6 +164,6 @@ public class assert_ extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink message$8EX$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, 0x10e50ed92e0L, "message");
+    /*package*/ static final SContainmentLink message$cNOs = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, 0x10e50ed92e0L, "message");
   }
 }

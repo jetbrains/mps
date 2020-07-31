@@ -128,8 +128,8 @@ public class CreateEnumConstantReferences extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode ref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference"));
-          SLinkOperations.setTarget(ref, LINKS.enumClass$9jPZ, SNodeOperations.cast(SNodeOperations.getParent(myParameterObject), CONCEPTS.EnumClass$uy));
-          SLinkOperations.setTarget(ref, LINKS.enumConstantDeclaration$fB6v, myParameterObject);
+          SLinkOperations.setTarget(ref, LINKS.enumClass$wB9x, SNodeOperations.cast(SNodeOperations.getParent(myParameterObject), CONCEPTS.EnumClass$uy));
+          SLinkOperations.setTarget(ref, LINKS.enumConstantDeclaration$zW91, myParameterObject);
           return ref;
         }
 
@@ -176,7 +176,7 @@ public class CreateEnumConstantReferences extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink enumClass$9jPZ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
-    /*package*/ static final SReferenceLink enumConstantDeclaration$fB6v = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
+    /*package*/ static final SReferenceLink enumClass$wB9x = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
+    /*package*/ static final SReferenceLink enumConstantDeclaration$zW91 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
   }
 }

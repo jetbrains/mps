@@ -14,15 +14,15 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ClassLikeMethodFixer implements ClassLikeMethodProblemVisitor {
   public void visitName(SNode method, String corrected) throws ClassLikeMethodChecker.StopMethodCheckerException {
-    SPropertyOperations.assign(method, PROPS.name$tAp1, corrected);
+    SPropertyOperations.assign(method, PROPS.name$lA7v, corrected);
   }
 
   public void visitReturnType(SNode method, _FunctionTypes._return_P0_E0<? extends SNode> getCorrected) {
-    SLinkOperations.setTarget(method, LINKS.returnType$WIkw, getCorrected.invoke());
+    SLinkOperations.setTarget(method, LINKS.returnType$qrVw, getCorrected.invoke());
   }
 
   public void visitMissingParam(SNode method, int index, _FunctionTypes._return_P0_E0<? extends SNode> getCorrected) {
-    ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).insertElement(index, getCorrected.invoke());
+    ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).insertElement(index, getCorrected.invoke());
   }
 
   public void visitOddParam(SNode param) throws ClassLikeMethodChecker.StopMethodCheckerException {
@@ -34,20 +34,20 @@ public class ClassLikeMethodFixer implements ClassLikeMethodProblemVisitor {
   }
 
   public void visitParamName(SNode param, String corrected) throws ClassLikeMethodChecker.StopMethodCheckerException {
-    SPropertyOperations.assign(param, PROPS.name$tAp1, corrected);
+    SPropertyOperations.assign(param, PROPS.name$lA7v, corrected);
   }
 
   public void visitParamType(SNode param, _FunctionTypes._return_P0_E0<? extends SNode> getCorrected) throws ClassLikeMethodChecker.StopMethodCheckerException {
-    SLinkOperations.setTarget(param, LINKS.type$pLrO, getCorrected.invoke());
+    SLinkOperations.setTarget(param, LINKS.type$uWuc, getCorrected.invoke());
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 }

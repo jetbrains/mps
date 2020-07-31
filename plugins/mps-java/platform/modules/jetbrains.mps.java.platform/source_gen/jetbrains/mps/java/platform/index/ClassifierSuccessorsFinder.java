@@ -141,15 +141,15 @@ public class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, 
       }
       myClassesMapped = true;
       for (SNode aClass : ListSequence.fromList(myModifiedClasses)) {
-        SNode superClass = SLinkOperations.getTarget(aClass, LINKS.superclass$_pqe);
+        SNode superClass = SLinkOperations.getTarget(aClass, LINKS.superclass$7jGM);
         if (superClass != null) {
-          safeMap(SLinkOperations.getTarget(superClass, LINKS.classifier$pQ_R), aClass);
+          safeMap(SLinkOperations.getTarget(superClass, LINKS.classifier$xslD), aClass);
         }
         if (SNodeOperations.isInstanceOf(aClass, CONCEPTS.AnonymousClass$aF)) {
-          safeMap(SLinkOperations.getTarget(SNodeOperations.cast(aClass, CONCEPTS.AnonymousClass$aF), LINKS.classifier$1y5e), aClass);
+          safeMap(SLinkOperations.getTarget(SNodeOperations.cast(aClass, CONCEPTS.AnonymousClass$aF), LINKS.classifier$JwxM), aClass);
         }
-        for (SNode implementedInterface : ListSequence.fromList(SLinkOperations.getChildren(aClass, LINKS.implementedInterface$mdc6))) {
-          safeMap(SLinkOperations.getTarget(implementedInterface, LINKS.classifier$pQ_R), aClass);
+        for (SNode implementedInterface : ListSequence.fromList(SLinkOperations.getChildren(aClass, LINKS.implementedInterface$KoQU))) {
+          safeMap(SLinkOperations.getTarget(implementedInterface, LINKS.classifier$xslD), aClass);
         }
       }
     }
@@ -160,8 +160,8 @@ public class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, 
       }
       myInterfacesMapped = true;
       for (SNode anInterface : ListSequence.fromList(myModifiedInterfaces)) {
-        for (SNode extendedInterface : ListSequence.fromList(SLinkOperations.getChildren(anInterface, LINKS.extendedInterface$rbvY))) {
-          safeMap(SLinkOperations.getTarget(extendedInterface, LINKS.classifier$pQ_R), anInterface);
+        for (SNode extendedInterface : ListSequence.fromList(SLinkOperations.getChildren(anInterface, LINKS.extendedInterface$a$v2))) {
+          safeMap(SLinkOperations.getTarget(extendedInterface, LINKS.classifier$xslD), anInterface);
         }
       }
     }
@@ -246,10 +246,10 @@ public class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SReferenceLink classifier$1y5e = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
-    /*package*/ static final SContainmentLink implementedInterface$mdc6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
-    /*package*/ static final SContainmentLink extendedInterface$rbvY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink extendedInterface$a$v2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
   }
 }

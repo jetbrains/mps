@@ -31,7 +31,7 @@ public class forbid_Insert {
             if (cell.getSNode() != node) {
               break;
             }
-            if (!(Objects.equals(cell.getSRole(), LINKS.parts$aVY3))) {
+            if (!(Objects.equals(cell.getSRole(), LINKS.parts$j33t))) {
               break;
             }
             cell = cell.getParent();
@@ -59,7 +59,7 @@ public class forbid_Insert {
             if (cell.getSNode() != node) {
               break;
             }
-            if (!(Objects.equals(cell.getSRole(), LINKS.parts$aVY3))) {
+            if (!(Objects.equals(cell.getSRole(), LINKS.parts$j33t))) {
               break;
             }
             cell = cell.getParent();
@@ -119,6 +119,6 @@ public class forbid_Insert {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parts$aVY3 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts");
+    /*package*/ static final SContainmentLink parts$j33t = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts");
   }
 }

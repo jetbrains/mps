@@ -170,10 +170,10 @@ public class MigratePopularConceptAndNodeCasts extends MigrationScriptBase {
             public SNode compute() {
               return new _FunctionTypes._return_P1_E0<SNode, SNode>() {
                 public SNode invoke(SNode node) {
-                  if (!((SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.operation$X4R8), CONCEPTS.Node_ConceptMethodCall$l3), LINKS.baseMethodDeclaration$$A7i), PROPS.isStatic$KaRv)))) {
+                  if (!((SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.operation$_mGS), CONCEPTS.Node_ConceptMethodCall$l3), LINKS.baseMethodDeclaration$ItxI), PROPS.isStatic$lgS1)))) {
                     return node;
                   }
-                  SLinkOperations.setTarget(node, LINKS.operand$Lcrr, _quotation_createNode_qvpvui_a0b0a3a6(pattern.getMatchedNode("cncpt")));
+                  SLinkOperations.setTarget(node, LINKS.operand$P1i5, _quotation_createNode_qvpvui_a0b0a3a6(pattern.getMatchedNode("cncpt")));
                   return node;
                 }
               }.invoke(nodeToMigrate);
@@ -378,7 +378,7 @@ public class MigratePopularConceptAndNodeCasts extends MigrationScriptBase {
             public SNode compute() {
               return new _FunctionTypes._return_P1_E0<SNode, SNode>() {
                 public SNode invoke(SNode node) {
-                  return (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.operand$Lcrr)), CONCEPTS.ConceptNodeType$7y) ? SLinkOperations.getTarget(node, LINKS.operand$Lcrr) : node);
+                  return (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.operand$P1i5)), CONCEPTS.ConceptNodeType$7y) ? SLinkOperations.getTarget(node, LINKS.operand$P1i5) : node);
                 }
               }.invoke(nodeToMigrate);
             }
@@ -421,7 +421,7 @@ public class MigratePopularConceptAndNodeCasts extends MigrationScriptBase {
             public SNode compute() {
               return new _FunctionTypes._return_P1_E0<SNode, SNode>() {
                 public SNode invoke(SNode node) {
-                  if (!((SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget((SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.leftExpression$rxLZ), CONCEPTS.DotExpression$6a)), LINKS.operand$Lcrr)), CONCEPTS.SConceptType$nF)))) {
+                  if (!((SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget((SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.leftExpression$lndx), CONCEPTS.DotExpression$6a)), LINKS.operand$P1i5)), CONCEPTS.SConceptType$nF)))) {
                     return node;
                   }
                   return _quotation_createNode_qvpvui_a1a0k0g(pattern.getMatchedNode("expr"), pattern.getMatchedNode("c"));
@@ -468,14 +468,14 @@ public class MigratePopularConceptAndNodeCasts extends MigrationScriptBase {
             public SNode compute() {
               return new _FunctionTypes._return_P1_E0<SNode, SNode>() {
                 public SNode invoke(SNode node) {
-                  SNode oper = SLinkOperations.getTarget(node, LINKS.operation$X4R8);
+                  SNode oper = SLinkOperations.getTarget(node, LINKS.operation$_mGS);
                   if (!((SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(oper)), CONCEPTS.SNodeOperation$o6) && (boolean) SNodeOperation__BehaviorDescriptor.applicableToSConcept_id7E3Sw0HhwkZ.invoke(SNodeOperations.asSConcept(SNodeOperations.castConcept(SNodeOperations.getConcept(oper), CONCEPTS.SNodeOperation$o6)))))) {
                     return node;
                   }
-                  if (SNodeOperations.isInstanceOf(oper, CONCEPTS.Node_ConceptMethodCall$l3) && !(SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(oper, CONCEPTS.Node_ConceptMethodCall$l3), LINKS.baseMethodDeclaration$$A7i), PROPS.isStatic$KaRv))) {
+                  if (SNodeOperations.isInstanceOf(oper, CONCEPTS.Node_ConceptMethodCall$l3) && !(SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(oper, CONCEPTS.Node_ConceptMethodCall$l3), LINKS.baseMethodDeclaration$ItxI), PROPS.isStatic$lgS1))) {
                     return node;
                   }
-                  SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(node, LINKS.operand$Lcrr), pattern.getMatchedNode("c"));
+                  SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(node, LINKS.operand$P1i5), pattern.getMatchedNode("c"));
                   return node;
                 }
               }.invoke(nodeToMigrate);
@@ -519,10 +519,10 @@ public class MigratePopularConceptAndNodeCasts extends MigrationScriptBase {
             public SNode compute() {
               return new _FunctionTypes._return_P1_E0<SNode, SNode>() {
                 public SNode invoke(SNode node) {
-                  if (!((SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.operand$Lcrr)), CONCEPTS.SConceptType$nF)))) {
+                  if (!((SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.operand$P1i5)), CONCEPTS.SConceptType$nF)))) {
                     return node;
                   }
-                  return SLinkOperations.getTarget(node, LINKS.operand$Lcrr);
+                  return SLinkOperations.getTarget(node, LINKS.operand$P1i5);
                 }
               }.invoke(nodeToMigrate);
             }
@@ -724,15 +724,15 @@ public class MigratePopularConceptAndNodeCasts extends MigrationScriptBase {
             public SNode compute() {
               return new _FunctionTypes._return_P1_E0<SNode, SNode>() {
                 public SNode invoke(SNode node) {
-                  SNode oper = SLinkOperations.getTarget(node, LINKS.operation$X4R8);
+                  SNode oper = SLinkOperations.getTarget(node, LINKS.operation$_mGS);
                   if (!((SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(oper)), CONCEPTS.SNodeOperation$o6) && (boolean) SNodeOperation__BehaviorDescriptor.applicableToSConcept_id7E3Sw0HhwkZ.invoke(SNodeOperations.asSConcept(SNodeOperations.castConcept(SNodeOperations.getConcept(oper), CONCEPTS.SNodeOperation$o6)))))) {
                     return node;
                   }
-                  if (SNodeOperations.isInstanceOf(oper, CONCEPTS.Node_ConceptMethodCall$l3) && !(SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(oper, CONCEPTS.Node_ConceptMethodCall$l3), LINKS.baseMethodDeclaration$$A7i), PROPS.isStatic$KaRv))) {
+                  if (SNodeOperations.isInstanceOf(oper, CONCEPTS.Node_ConceptMethodCall$l3) && !(SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(oper, CONCEPTS.Node_ConceptMethodCall$l3), LINKS.baseMethodDeclaration$ItxI), PROPS.isStatic$lgS1))) {
                     return node;
                   }
 
-                  SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.operand$Lcrr), CONCEPTS.DotExpression$6a), LINKS.operation$X4R8, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x6771eac6c5cbe7d2L, "jetbrains.mps.lang.smodel.structure.Node_GetSConceptOperation")));
+                  SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.operand$P1i5), CONCEPTS.DotExpression$6a), LINKS.operation$_mGS, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x6771eac6c5cbe7d2L, "jetbrains.mps.lang.smodel.structure.Node_GetSConceptOperation")));
                   return node;
                 }
               }.invoke(nodeToMigrate);
@@ -1044,7 +1044,7 @@ public class MigratePopularConceptAndNodeCasts extends MigrationScriptBase {
           if (p == null) {
             return false;
           }
-          return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(p, LINKS.operation$X4R8))), CONCEPTS.SNodeOperation$o6) && (boolean) SNodeOperation__BehaviorDescriptor.applicableToSConcept_id7E3Sw0HhwkZ.invoke(SNodeOperations.asSConcept(SNodeOperations.castConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(p, LINKS.operation$X4R8)), CONCEPTS.SNodeOperation$o6)));
+          return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(p, LINKS.operation$_mGS))), CONCEPTS.SNodeOperation$o6) && (boolean) SNodeOperation__BehaviorDescriptor.applicableToSConcept_id7E3Sw0HhwkZ.invoke(SNodeOperations.asSConcept(SNodeOperations.castConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(p, LINKS.operation$_mGS)), CONCEPTS.SNodeOperation$o6)));
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
@@ -1973,13 +1973,13 @@ public class MigratePopularConceptAndNodeCasts extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isStatic$KaRv = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x51613f7fe129b24dL, "isStatic");
+    /*package*/ static final SProperty isStatic$lgS1 = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x51613f7fe129b24dL, "isStatic");
   }
 }

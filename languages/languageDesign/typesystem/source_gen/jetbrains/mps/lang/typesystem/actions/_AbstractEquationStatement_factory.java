@@ -18,28 +18,28 @@ public class _AbstractEquationStatement_factory {
   public static class NodeFactory_1174664649250 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.AbstractEquationStatement$sp)) {
-        SLinkOperations.setTarget(newNode, LINKS.leftExpression$7i2i, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractEquationStatement$sp), LINKS.leftExpression$7i2i));
-        SLinkOperations.setTarget(newNode, LINKS.rightExpression$7i2L, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractEquationStatement$sp), LINKS.rightExpression$7i2L));
-        SLinkOperations.setTarget(newNode, LINKS.nodeToCheck$3Hll, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractEquationStatement$sp), LINKS.nodeToCheck$3Hll));
-        SPropertyOperations.set(newNode, PROPS.checkOnly$scgV, SPropertyOperations.getBoolean(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractEquationStatement$sp), PROPS.checkOnly$scgV));
-        SLinkOperations.setTarget(newNode, LINKS.errorString$uOJc, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractEquationStatement$sp), LINKS.errorString$uOJc));
-        ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.helginsIntention$ksfL)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractEquationStatement$sp), LINKS.helginsIntention$ksfL)));
+        SLinkOperations.setTarget(newNode, LINKS.leftExpression$xJ6I, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractEquationStatement$sp), LINKS.leftExpression$xJ6I));
+        SLinkOperations.setTarget(newNode, LINKS.rightExpression$xJlJ, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractEquationStatement$sp), LINKS.rightExpression$xJlJ));
+        SLinkOperations.setTarget(newNode, LINKS.nodeToCheck$MXlb, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractEquationStatement$sp), LINKS.nodeToCheck$MXlb));
+        SPropertyOperations.set(newNode, PROPS.checkOnly$DWc_, SPropertyOperations.getBoolean(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractEquationStatement$sp), PROPS.checkOnly$DWc_));
+        SLinkOperations.setTarget(newNode, LINKS.errorString$VyQO, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractEquationStatement$sp), LINKS.errorString$VyQO));
+        ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.helginsIntention$TFCJ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractEquationStatement$sp), LINKS.helginsIntention$TFCJ)));
       }
     }
   }
   public static class NodeFactory_1177408248539 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.IsSubtypeExpression$sQ)) {
-        SLinkOperations.setTarget(newNode, LINKS.subtypeExpression$wsbw, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.IsSubtypeExpression$sQ), LINKS.subtypeExpression$wsbw));
-        SLinkOperations.setTarget(newNode, LINKS.supertypeExpression$Wnto, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.IsSubtypeExpression$sQ), LINKS.supertypeExpression$Wnto));
+        SLinkOperations.setTarget(newNode, LINKS.subtypeExpression$HD$w, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.IsSubtypeExpression$sQ), LINKS.subtypeExpression$HD$w));
+        SLinkOperations.setTarget(newNode, LINKS.supertypeExpression$fneC, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.IsSubtypeExpression$sQ), LINKS.supertypeExpression$fneC));
       }
     }
   }
   public static class NodeFactory_1178879020940 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.CoerceExpression$HZ)) {
-        SLinkOperations.setTarget(newNode, LINKS.nodeToCoerce$2Xdf, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.CoerceExpression$HZ), LINKS.nodeToCoerce$2Xdf));
-        SLinkOperations.setTarget(newNode, LINKS.pattern$2XcK, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.CoerceExpression$HZ), LINKS.pattern$2XcK));
+        SLinkOperations.setTarget(newNode, LINKS.nodeToCoerce$rDqh, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.CoerceExpression$HZ), LINKS.nodeToCoerce$rDqh));
+        SLinkOperations.setTarget(newNode, LINKS.pattern$rDbg, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.CoerceExpression$HZ), LINKS.pattern$rDbg));
       }
     }
   }
@@ -47,9 +47,9 @@ public class _AbstractEquationStatement_factory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Expression$TP)) {
         if (!(SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.TypeOfExpression$_5))) {
-          SLinkOperations.setTarget(newNode, LINKS.term$zCci, SNodeOperations.cast(sampleNode, CONCEPTS.Expression$TP));
+          SLinkOperations.setTarget(newNode, LINKS.term$gtWI, SNodeOperations.cast(sampleNode, CONCEPTS.Expression$TP));
         } else {
-          SLinkOperations.setTarget(newNode, LINKS.term$zCci, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.TypeOfExpression$_5), LINKS.term$zCci));
+          SLinkOperations.setTarget(newNode, LINKS.term$gtWI, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.TypeOfExpression$_5), LINKS.term$gtWI));
         }
       }
     }
@@ -64,19 +64,19 @@ public class _AbstractEquationStatement_factory {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$7i2i = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d35L, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$7i2L = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d36L, "rightExpression");
-    /*package*/ static final SContainmentLink nodeToCheck$3Hll = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f58cf99L, "nodeToCheck");
-    /*package*/ static final SContainmentLink errorString$uOJc = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x112d82366d0L, "errorString");
-    /*package*/ static final SContainmentLink helginsIntention$ksfL = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x11b2b6fabb9L, "helginsIntention");
-    /*package*/ static final SContainmentLink subtypeExpression$wsbw = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111ef7b9fb7L, 0x111ef7be155L, "subtypeExpression");
-    /*package*/ static final SContainmentLink supertypeExpression$Wnto = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111ef7b9fb7L, 0x111ef7bf5e7L, "supertypeExpression");
-    /*package*/ static final SContainmentLink nodeToCoerce$2Xdf = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1127a2a14aeL, 0x1127a2e5035L, "nodeToCoerce");
-    /*package*/ static final SContainmentLink pattern$2XcK = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1127a2a14aeL, 0x1127a2e5034L, "pattern");
-    /*package*/ static final SContainmentLink term$zCci = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f0ad10aL, 0x1117f0b26bdL, "term");
+    /*package*/ static final SContainmentLink leftExpression$xJ6I = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d35L, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$xJlJ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d36L, "rightExpression");
+    /*package*/ static final SContainmentLink nodeToCheck$MXlb = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f58cf99L, "nodeToCheck");
+    /*package*/ static final SContainmentLink errorString$VyQO = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x112d82366d0L, "errorString");
+    /*package*/ static final SContainmentLink helginsIntention$TFCJ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x11b2b6fabb9L, "helginsIntention");
+    /*package*/ static final SContainmentLink subtypeExpression$HD$w = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111ef7b9fb7L, 0x111ef7be155L, "subtypeExpression");
+    /*package*/ static final SContainmentLink supertypeExpression$fneC = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111ef7b9fb7L, 0x111ef7bf5e7L, "supertypeExpression");
+    /*package*/ static final SContainmentLink nodeToCoerce$rDqh = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1127a2a14aeL, 0x1127a2e5035L, "nodeToCoerce");
+    /*package*/ static final SContainmentLink pattern$rDbg = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1127a2a14aeL, 0x1127a2e5034L, "pattern");
+    /*package*/ static final SContainmentLink term$gtWI = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f0ad10aL, 0x1117f0b26bdL, "term");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty checkOnly$scgV = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x118e0a511a0L, "checkOnly");
+    /*package*/ static final SProperty checkOnly$DWc_ = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x118e0a511a0L, "checkOnly");
   }
 }

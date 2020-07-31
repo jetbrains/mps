@@ -34,8 +34,8 @@
       <node id="4001135958233292670" at="78,14,79,58" concept="9" />
       <node id="4001135958233292670" at="85,48,86,22" concept="5" />
       <node id="4001135958233292670" at="91,40,92,19" concept="5" />
-      <node id="4001135958233292670" at="96,0,97,0" concept="6" trace="symbol$$8qH" />
-      <node id="4001135958233292670" at="100,0,101,0" concept="6" trace="symbol$3J4D" />
+      <node id="4001135958233292670" at="96,0,97,0" concept="6" trace="symbol$w4VN" />
+      <node id="4001135958233292670" at="100,0,101,0" concept="6" trace="symbol$NNfR" />
       <node id="4001135958233292670" at="35,0,37,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4001135958233292670" at="49,0,51,0" concept="0" trace="CurrentStockPrice__BehaviorDescriptor#()V" />
       <node id="4001135958235475504" at="38,87,41,5" concept="2" />
@@ -351,9 +351,9 @@
       <node id="6451560055131620545" at="98,14,99,58" concept="9" />
       <node id="6451560055131620545" at="105,48,106,22" concept="5" />
       <node id="6451560055131620545" at="111,40,112,19" concept="5" />
-      <node id="6451560055131620545" at="116,0,117,0" concept="6" trace="amount$dIoX" />
-      <node id="6451560055131620545" at="117,0,118,0" concept="6" trace="name$tAp1" />
-      <node id="6451560055131620545" at="121,0,122,0" concept="6" trace="unit$m_D0" />
+      <node id="6451560055131620545" at="116,0,117,0" concept="6" trace="amount$Du5z" />
+      <node id="6451560055131620545" at="117,0,118,0" concept="6" trace="name$lA7v" />
+      <node id="6451560055131620545" at="121,0,122,0" concept="6" trace="unit$WeR0" />
       <node id="6451560055131620545" at="37,0,39,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6451560055131620545" at="67,0,69,0" concept="0" trace="MoneyLiteral__BehaviorDescriptor#()V" />
       <node id="595452003767176296" at="49,16,52,5" concept="2" />

@@ -82,7 +82,7 @@
       <node id="5633688998557707933" at="56,75,57,97" concept="7" />
       <node id="5633688998557707941" at="58,25,59,161" concept="2" />
       <node id="5633688998557707957" at="62,119,63,33" concept="8" />
-      <node id="5633688998557707726" at="69,0,70,0" concept="10" trace="containerDeclaration$zGYv" />
+      <node id="5633688998557707726" at="69,0,70,0" concept="10" trace="containerDeclaration$iMh1" />
       <node id="2674780608612815773" at="27,38,30,5" concept="4" />
       <node id="5633688998557707858" at="45,0,48,0" concept="6" trace="translate#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
       <node id="5633688998557707938" at="57,97,60,5" concept="13" />

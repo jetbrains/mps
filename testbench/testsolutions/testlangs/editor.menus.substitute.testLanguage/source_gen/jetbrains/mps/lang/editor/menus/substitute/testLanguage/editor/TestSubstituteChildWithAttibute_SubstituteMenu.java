@@ -86,7 +86,7 @@ public class TestSubstituteChildWithAttibute_SubstituteMenu extends SubstituteMe
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x446b8c93949517d4L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithAttibute"));
-        SPropertyOperations.assign(result, PROPS.name$tAp1, "after");
+        SPropertyOperations.assign(result, PROPS.name$lA7v, "after");
         return result;
       }
 
@@ -102,6 +102,6 @@ public class TestSubstituteChildWithAttibute_SubstituteMenu extends SubstituteMe
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

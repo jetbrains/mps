@@ -20,7 +20,7 @@ public class MethodArgumentsUtil {
       return null;
     }
     SNode lastAncestor = ListSequence.fromList(ancestors).getElement(ListSequence.fromList(ancestors).indexOf(methodCall) - 1);
-    if (SNodeOperations.hasRole(lastAncestor, LINKS.actualArgument$$A7L)) {
+    if (SNodeOperations.hasRole(lastAncestor, LINKS.actualArgument$ItKJ)) {
       return SNodeOperations.cast(lastAncestor, CONCEPTS.Expression$TP);
     } else {
       return null;
@@ -33,6 +33,6 @@ public class MethodArgumentsUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 }

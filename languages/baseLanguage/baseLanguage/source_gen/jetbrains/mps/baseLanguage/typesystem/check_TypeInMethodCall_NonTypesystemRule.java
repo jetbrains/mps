@@ -22,7 +22,7 @@ public class check_TypeInMethodCall_NonTypesystemRule extends AbstractNonTypesys
   public check_TypeInMethodCall_NonTypesystemRule() {
   }
   public void applyRule(final SNode nodeToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(nodeToCheck), CONCEPTS.IMethodCall$ln) && SNodeOperations.hasRole(nodeToCheck, LINKS.typeArgument$GDtv)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(nodeToCheck), CONCEPTS.IMethodCall$ln) && SNodeOperations.hasRole(nodeToCheck, LINKS.typeArgument$C5i1)) {
       if (!((boolean) Type__BehaviorDescriptor.isValueType_id4ctkEngAqej.invoke(nodeToCheck))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
@@ -42,7 +42,7 @@ public class check_TypeInMethodCall_NonTypesystemRule extends AbstractNonTypesys
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeArgument$GDtv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
+    /*package*/ static final SContainmentLink typeArgument$C5i1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
   }
 
   private static final class CONCEPTS {

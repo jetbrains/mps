@@ -155,7 +155,7 @@ public class MpsTestsSuite extends BaseMpsSuite {
             }
             final String packageStmt = JavaNameUtil.packageName(model);
             for (SNode gt : ListSequence.fromList(SModelOperations.roots(((SModel) model), CONCEPTS.GeneratorTest$vD))) {
-              String testClassName = NameUtil.longNameFromNamespaceAndShortName(packageStmt, SPropertyOperations.getString(gt, PROPS.name$tAp1));
+              String testClassName = NameUtil.longNameFromNamespaceAndShortName(packageStmt, SPropertyOperations.getString(gt, PROPS.name$lA7v));
               try {
                 result.add(builder.safeRunnerForClass(moduleCL.loadClass(testClassName)));
               } catch (ClassNotFoundException ex) {
@@ -177,6 +177,6 @@ public class MpsTestsSuite extends BaseMpsSuite {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

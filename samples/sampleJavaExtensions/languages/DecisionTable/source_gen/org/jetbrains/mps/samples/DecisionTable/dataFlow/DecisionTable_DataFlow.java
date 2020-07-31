@@ -13,18 +13,18 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DecisionTable_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.defaultValue$x6zZ));
-    ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.colHeaders$x6$u)).visitAll(new IVisitor<SNode>() {
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.defaultValue$2brx));
+    ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.colHeaders$2bEy)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         _context.getBuilder().build((SNode) it);
       }
     });
-    ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.rowHeaders$x6$X)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.rowHeaders$2bTz)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         _context.getBuilder().build((SNode) it);
       }
     });
-    ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.resultValues$x6_s)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.resultValues$2c8$)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         _context.getBuilder().build((SNode) it);
       }
@@ -32,9 +32,9 @@ public class DecisionTable_DataFlow extends DataFlowBuilder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink defaultValue$x6zZ = MetaAdapterFactory.getContainmentLink(0x65c13e6709b64695L, 0xaf8852024b7d2027L, 0x1b942309931b1581L, 0x1b942309931b1583L, "defaultValue");
-    /*package*/ static final SContainmentLink colHeaders$x6$u = MetaAdapterFactory.getContainmentLink(0x65c13e6709b64695L, 0xaf8852024b7d2027L, 0x1b942309931b1581L, 0x1b942309931b1584L, "colHeaders");
-    /*package*/ static final SContainmentLink rowHeaders$x6$X = MetaAdapterFactory.getContainmentLink(0x65c13e6709b64695L, 0xaf8852024b7d2027L, 0x1b942309931b1581L, 0x1b942309931b1585L, "rowHeaders");
-    /*package*/ static final SContainmentLink resultValues$x6_s = MetaAdapterFactory.getContainmentLink(0x65c13e6709b64695L, 0xaf8852024b7d2027L, 0x1b942309931b1581L, 0x1b942309931b1586L, "resultValues");
+    /*package*/ static final SContainmentLink defaultValue$2brx = MetaAdapterFactory.getContainmentLink(0x65c13e6709b64695L, 0xaf8852024b7d2027L, 0x1b942309931b1581L, 0x1b942309931b1583L, "defaultValue");
+    /*package*/ static final SContainmentLink colHeaders$2bEy = MetaAdapterFactory.getContainmentLink(0x65c13e6709b64695L, 0xaf8852024b7d2027L, 0x1b942309931b1581L, 0x1b942309931b1584L, "colHeaders");
+    /*package*/ static final SContainmentLink rowHeaders$2bTz = MetaAdapterFactory.getContainmentLink(0x65c13e6709b64695L, 0xaf8852024b7d2027L, 0x1b942309931b1581L, 0x1b942309931b1585L, "rowHeaders");
+    /*package*/ static final SContainmentLink resultValues$2c8$ = MetaAdapterFactory.getContainmentLink(0x65c13e6709b64695L, 0xaf8852024b7d2027L, 0x1b942309931b1581L, 0x1b942309931b1586L, "resultValues");
   }
 }

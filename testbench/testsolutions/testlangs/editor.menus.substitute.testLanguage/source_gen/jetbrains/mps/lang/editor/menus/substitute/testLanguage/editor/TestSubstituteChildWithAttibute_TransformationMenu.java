@@ -101,7 +101,7 @@ public class TestSubstituteChildWithAttibute_TransformationMenu extends Transfor
 
       @Override
       public void execute(@NotNull String pattern) {
-        SPropertyOperations.assign(_context.getNode(), PROPS.name$tAp1, "after");
+        SPropertyOperations.assign(_context.getNode(), PROPS.name$lA7v, "after");
       }
 
 
@@ -125,6 +125,6 @@ public class TestSubstituteChildWithAttibute_TransformationMenu extends Transfor
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

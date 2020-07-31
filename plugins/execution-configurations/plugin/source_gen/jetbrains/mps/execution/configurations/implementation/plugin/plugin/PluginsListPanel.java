@@ -36,7 +36,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class PluginsListPanel extends ListPanel<SNodeReference> {
   private final Function<SNode, String> myPluginNameFunc = new Function<SNode, String>() {
     public String apply(SNode n) {
-      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(n, CONCEPTS.BuildMpsLayout_Plugin$JV), LINKS.plugin$hRNK), PROPS.id$rLiV);
+      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(n, CONCEPTS.BuildMpsLayout_Plugin$JV), LINKS.plugin$E24g), PROPS.id$sSa_);
     }
   };
 
@@ -100,10 +100,10 @@ public class PluginsListPanel extends ListPanel<SNodeReference> {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink plugin$hRNK = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x5b7be37b4dee5919L, "plugin");
+    /*package*/ static final SReferenceLink plugin$E24g = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x5b7be37b4dee5919L, "plugin");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty id$rLiV = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bb6fL, "id");
+    /*package*/ static final SProperty id$sSa_ = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bb6fL, "id");
   }
 }

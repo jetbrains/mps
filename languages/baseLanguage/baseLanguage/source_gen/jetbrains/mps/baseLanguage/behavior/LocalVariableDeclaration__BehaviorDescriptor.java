@@ -59,7 +59,7 @@ public final class LocalVariableDeclaration__BehaviorDescriptor extends BaseBHDe
   }
   /*package*/ static SNode createReference_idhEwJfME(@NotNull SNode __thisNode__) {
     SNode ref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"));
-    SLinkOperations.setTarget(ref, LINKS.variableDeclaration$2ky6, __thisNode__);
+    SLinkOperations.setTarget(ref, LINKS.variableDeclaration$7WwU, __thisNode__);
     return ref;
   }
   /*package*/ static boolean isVariableReferencedInClosures_idhSV9vo4(@NotNull SNode __thisNode__) {
@@ -67,13 +67,13 @@ public final class LocalVariableDeclaration__BehaviorDescriptor extends BaseBHDe
     {
       Iterator<SNode> ref_it = ListSequence.fromList(SNodeOperations.getNodeDescendants(container, CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.LocalVariableDeclaration$Bf);
+          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf);
         }
       }).toListSequence().iterator();
       SNode ref_var;
       while (ref_it.hasNext()) {
         ref_var = ref_it.next();
-        if (SLinkOperations.getTarget(ref_var, LINKS.variableDeclaration$2ky6) == __thisNode__) {
+        if (SLinkOperations.getTarget(ref_var, LINKS.variableDeclaration$7WwU) == __thisNode__) {
           SNode referenceContainer = SNodeOperations.getNodeAncestor(ref_var, CONCEPTS.IStatementListContainer$4L, false, false);
           if (referenceContainer != container && SNodeOperations.isInstanceOf(referenceContainer, CONCEPTS.ClosureLiteral$zJ)) {
             return true;
@@ -102,7 +102,7 @@ public final class LocalVariableDeclaration__BehaviorDescriptor extends BaseBHDe
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.IVariableDeclaration$yA)) {
-      if (ScopeUtils.comeFrom(LINKS.initializer$KgD, __thisNode__, child)) {
+      if (ScopeUtils.comeFrom(LINKS.initializer$no3R, __thisNode__, child)) {
         return Scopes.forVariables(kind, __thisNode__, ScopeUtils.lazyParentScope(__thisNode__, kind));
       } else {
         return ScopeUtils.lazyParentScope(__thisNode__, kind);
@@ -112,7 +112,7 @@ public final class LocalVariableDeclaration__BehaviorDescriptor extends BaseBHDe
   }
   /*package*/ static Scope getScope_id52_Geb4QFgX(@NotNull SNode __thisNode__, SAbstractConcept kind, SContainmentLink role, int index) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.IVariableDeclaration$yA)) {
-      if (Objects.equals(role, LINKS.initializer$KgD)) {
+      if (Objects.equals(role, LINKS.initializer$no3R)) {
         return Scopes.forVariables(kind, __thisNode__, ScopeUtils.lazyParentScope(__thisNode__, kind));
       } else {
         return ScopeUtils.lazyParentScope(__thisNode__, kind);
@@ -194,7 +194,7 @@ public final class LocalVariableDeclaration__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 }

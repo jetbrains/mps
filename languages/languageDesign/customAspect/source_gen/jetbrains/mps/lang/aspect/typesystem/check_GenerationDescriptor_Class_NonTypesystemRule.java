@@ -23,11 +23,11 @@ public class check_GenerationDescriptor_Class_NonTypesystemRule extends Abstract
   public check_GenerationDescriptor_Class_NonTypesystemRule() {
   }
   public void applyRule(final SNode c, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((AttributeOperations.getAttribute(SLinkOperations.getTarget(c, LINKS.implTemplate$HWtm), new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$wt, PROPS.name$tAp1)) == null)) {
+    if ((AttributeOperations.getAttribute(SLinkOperations.getTarget(c, LINKS.implTemplate$gidE), new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$wt, PROPS.name$lA7v)) == null)) {
       return;
     }
     {
-      final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.implTemplate$HWtm);
+      final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.implTemplate$gidE);
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(c, "Template should have no property macro on the 'name' property", "r:2f45a819-e3a6-4cfa-b807-e9f10176b62b(jetbrains.mps.lang.aspect.typesystem)", "6422667311313324286", null, errorTarget);
     }
   }
@@ -42,7 +42,7 @@ public class check_GenerationDescriptor_Class_NonTypesystemRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink implTemplate$HWtm = MetaAdapterFactory.getReferenceLink(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x5c2c36f4ea0d3b2fL, 0x5921e5e41155f7ddL, "implTemplate");
+    /*package*/ static final SReferenceLink implTemplate$gidE = MetaAdapterFactory.getReferenceLink(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x5c2c36f4ea0d3b2fL, 0x5921e5e41155f7ddL, "implTemplate");
   }
 
   private static final class CONCEPTS {
@@ -51,6 +51,6 @@ public class check_GenerationDescriptor_Class_NonTypesystemRule extends Abstract
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -28,8 +28,8 @@ public class ReturnStatement_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SLinkOperations.getTarget(node, LINKS.expression$EsbK) == null) {
-          SNodeFactoryOperations.setNewChild(node, LINKS.expression$EsbK, null);
+        if (SLinkOperations.getTarget(node, LINKS.expression$zDGg) == null) {
+          SNodeFactoryOperations.setNewChild(node, LINKS.expression$zDGg, null);
         }
       }
 
@@ -45,7 +45,7 @@ public class ReturnStatement_Actions {
           return;
         }
         SNode expressionStatement = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.ExpressionStatement$nm);
-        SLinkOperations.setTarget(expressionStatement, LINKS.expression$WIP0, SLinkOperations.getTarget(node, LINKS.expression$EsbK));
+        SLinkOperations.setTarget(expressionStatement, LINKS.expression$qFF0, SLinkOperations.getTarget(node, LINKS.expression$zDGg));
       }
 
     };
@@ -97,8 +97,8 @@ public class ReturnStatement_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$EsbK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
-    /*package*/ static final SContainmentLink expression$WIP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink expression$zDGg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
+    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
   }
 
   private static final class CONCEPTS {

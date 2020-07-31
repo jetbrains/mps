@@ -26,7 +26,7 @@ public class check_QueryDuplicatedParameters_NonTypesystemRule extends AbstractN
   public check_QueryDuplicatedParameters_NonTypesystemRule() {
   }
   public void applyRule(final SNode queryParameterList, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    final Iterable<SNode> parameters = SLinkOperations.getChildren(queryParameterList, LINKS.parameter$o_k7);
+    final Iterable<SNode> parameters = SLinkOperations.getChildren(queryParameterList, LINKS.parameter$U4Jp);
     Iterable<SConcept> parameterConcepts = Sequence.fromIterable(parameters).select(new ISelector<SNode, SConcept>() {
       public SConcept select(SNode it) {
         return SNodeOperations.getConcept(it);
@@ -64,7 +64,7 @@ public class check_QueryDuplicatedParameters_NonTypesystemRule extends AbstractN
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$o_k7 = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc644217616ddf9L, 0x3bc6442176a262a6L, "parameter");
+    /*package*/ static final SContainmentLink parameter$U4Jp = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc644217616ddf9L, 0x3bc6442176a262a6L, "parameter");
   }
 
   private static final class CONCEPTS {

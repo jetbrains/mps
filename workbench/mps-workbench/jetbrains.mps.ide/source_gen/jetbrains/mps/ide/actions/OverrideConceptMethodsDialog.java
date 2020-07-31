@@ -57,7 +57,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   @Override
   protected String getText(SNode node) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptBehavior$8P)) {
-      SNode concept = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.ConceptBehavior$8P), LINKS.concept$v6ns);
+      SNode concept = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.ConceptBehavior$8P), LINKS.concept$45m$);
       if ((concept != null)) {
         return ((String) BHReflection.invoke0(concept, CONCEPTS.INamedConcept$nV, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
       }
@@ -123,6 +123,6 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$v6ns = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
+    /*package*/ static final SReferenceLink concept$45m$ = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
   }
 }

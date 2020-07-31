@@ -24,9 +24,9 @@ public class RemoveRepetition_QuickFix extends QuickFix_Runtime {
   }
   public void execute(SNode node) {
     SNode repeat = SNodeOperations.replaceWithNewChild(node, CONCEPTS.Repeat$qn);
-    SLinkOperations.setTarget(repeat, LINKS.body$yP5u, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, "jetbrains.mps.samples.Kaja.structure.CommandList")));
-    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(repeat, LINKS.body$yP5u), LINKS.commands$o94w)).addElement(SNodeOperations.as(node, CONCEPTS.AbstractCommand$3T));
-    SPropertyOperations.assign(repeat, PROPS.count$yP4Z, 2);
+    SLinkOperations.setTarget(repeat, LINKS.body$RHDy, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, "jetbrains.mps.samples.Kaja.structure.CommandList")));
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(repeat, LINKS.body$RHDy), LINKS.commands$Gpbw)).addElement(SNodeOperations.as(node, CONCEPTS.AbstractCommand$3T));
+    SPropertyOperations.assign(repeat, PROPS.count$RHqx, 2);
     SNodeOperations.deleteNode(SNodeOperations.getPrevSibling(repeat));
   }
 
@@ -36,11 +36,11 @@ public class RemoveRepetition_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$yP5u = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecd14cL, 0x2de971c785ecd14fL, "body");
-    /*package*/ static final SContainmentLink commands$o94w = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, 0x2de971c785f06a40L, "commands");
+    /*package*/ static final SContainmentLink body$RHDy = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecd14cL, 0x2de971c785ecd14fL, "body");
+    /*package*/ static final SContainmentLink commands$Gpbw = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, 0x2de971c785f06a40L, "commands");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty count$yP4Z = MetaAdapterFactory.getProperty(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecd14cL, 0x2de971c785ecd14eL, "count");
+    /*package*/ static final SProperty count$RHqx = MetaAdapterFactory.getProperty(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecd14cL, 0x2de971c785ecd14eL, "count");
   }
 }

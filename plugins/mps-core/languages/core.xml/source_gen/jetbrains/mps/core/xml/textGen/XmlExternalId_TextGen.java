@@ -13,29 +13,29 @@ public class XmlExternalId_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    if (SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.isPublic$k9I6)) {
+    if (SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.isPublic$KHkU)) {
       tgs.append("PUBLIC");
       tgs.append(" ");
-      if (isNotEmptyString(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.publicId$k9H8)) && SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.publicId$k9H8).contains("'")) {
+      if (isNotEmptyString(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.publicId$KGQS)) && SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.publicId$KGQS).contains("'")) {
         tgs.append("\"");
-        tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.publicId$k9H8));
+        tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.publicId$KGQS));
         tgs.append("\"");
       } else {
         tgs.append("'");
-        tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.publicId$k9H8));
+        tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.publicId$KGQS));
         tgs.append("'");
       }
     } else {
       tgs.append("SYSTEM");
     }
     tgs.append(" ");
-    if (isNotEmptyString(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.systemId$k9HB)) && SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.systemId$k9HB).contains("'")) {
+    if (isNotEmptyString(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.systemId$KH5T)) && SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.systemId$KH5T).contains("'")) {
       tgs.append("\"");
-      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.systemId$k9HB));
+      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.systemId$KH5T));
       tgs.append("\"");
     } else {
       tgs.append("'");
-      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.systemId$k9HB));
+      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.systemId$KH5T));
       tgs.append("'");
     }
 
@@ -45,8 +45,8 @@ public class XmlExternalId_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isPublic$k9I6 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60345L, "isPublic");
-    /*package*/ static final SProperty publicId$k9H8 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60343L, "publicId");
-    /*package*/ static final SProperty systemId$k9HB = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60344L, "systemId");
+    /*package*/ static final SProperty isPublic$KHkU = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60345L, "isPublic");
+    /*package*/ static final SProperty publicId$KGQS = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60343L, "publicId");
+    /*package*/ static final SProperty systemId$KH5T = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60344L, "systemId");
   }
 }

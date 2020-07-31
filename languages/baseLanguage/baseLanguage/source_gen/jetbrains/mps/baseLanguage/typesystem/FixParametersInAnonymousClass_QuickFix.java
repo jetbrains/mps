@@ -15,13 +15,13 @@ public class FixParametersInAnonymousClass_QuickFix extends QuickFix_Runtime {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2925336694746295128"));
   }
   public void execute(SNode node) {
-    for (SNode parameter : SLinkOperations.getChildren(((SNode) FixParametersInAnonymousClass_QuickFix.this.getField("anonymousClass")[0]), LINKS.parameter$1MCX)) {
-      ListSequence.fromList(SLinkOperations.getChildren(((SNode) FixParametersInAnonymousClass_QuickFix.this.getField("anonymousClass")[0]), LINKS.actualArgument$$A7L)).addElement(parameter);
+    for (SNode parameter : SLinkOperations.getChildren(((SNode) FixParametersInAnonymousClass_QuickFix.this.getField("anonymousClass")[0]), LINKS.parameter$RxPz)) {
+      ListSequence.fromList(SLinkOperations.getChildren(((SNode) FixParametersInAnonymousClass_QuickFix.this.getField("anonymousClass")[0]), LINKS.actualArgument$ItKJ)).addElement(parameter);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink parameter$1MCX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e104a89L, "parameter");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink parameter$RxPz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e104a89L, "parameter");
   }
 }

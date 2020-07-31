@@ -32,14 +32,14 @@ public class TryStatement_FinallyBlock_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.catchClause$GIrD)).isNotEmpty()) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.catchClause$EvoR)).isNotEmpty()) {
           if (DeletionApproverUtil.approve(editorContext, node, "finally")) {
             return;
           }
           SNode tryCatchStatement = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.TryCatchStatement$x5);
-          SLinkOperations.setTarget(tryCatchStatement, LINKS.body$9KDK, SLinkOperations.getTarget(node, LINKS.body$TQ1f));
-          ListSequence.fromList(SLinkOperations.getChildren(tryCatchStatement, LINKS.catchClause$jGNt)).clear();
-          ListSequence.fromList(SLinkOperations.getChildren(tryCatchStatement, LINKS.catchClause$jGNt)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.catchClause$GIrD)));
+          SLinkOperations.setTarget(tryCatchStatement, LINKS.body$I$eg, SLinkOperations.getTarget(node, LINKS.body$1aAh));
+          ListSequence.fromList(SLinkOperations.getChildren(tryCatchStatement, LINKS.catchClause$yGV3)).clear();
+          ListSequence.fromList(SLinkOperations.getChildren(tryCatchStatement, LINKS.catchClause$yGV3)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.catchClause$EvoR)));
           SNodeOperations.deleteNode(node);
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, tryCatchStatement, SelectionManager.LAST_CELL, -1);
         } else {
@@ -95,10 +95,10 @@ public class TryStatement_FinallyBlock_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink catchClause$GIrD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10f39abd97cL, "catchClause");
-    /*package*/ static final SContainmentLink body$9KDK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f383e83d4L, "body");
-    /*package*/ static final SContainmentLink body$TQ1f = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacec83aeL, "body");
-    /*package*/ static final SContainmentLink catchClause$jGNt = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause");
+    /*package*/ static final SContainmentLink catchClause$EvoR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10f39abd97cL, "catchClause");
+    /*package*/ static final SContainmentLink body$I$eg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f383e83d4L, "body");
+    /*package*/ static final SContainmentLink body$1aAh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacec83aeL, "body");
+    /*package*/ static final SContainmentLink catchClause$yGV3 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause");
   }
 
   private static final class CONCEPTS {

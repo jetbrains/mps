@@ -22,7 +22,7 @@ public class typeOf_EnumMemberReference_InferenceRule extends AbstractInferenceR
     {
       SNode _nodeToCheck_1029348928467 = node;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1203711941824", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1203711941826", true), (SNode) RulesUtil.datatypeBLType(SNodeOperations.as(SNodeOperations.getParent(SLinkOperations.getTarget(node, LINKS.enumMember$dPz5)), CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1203711941826", true), (SNode) RulesUtil.datatypeBLType(SNodeOperations.as(SNodeOperations.getParent(SLinkOperations.getTarget(node, LINKS.enumMember$GVZr)), CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -36,7 +36,7 @@ public class typeOf_EnumMemberReference_InferenceRule extends AbstractInferenceR
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink enumMember$dPz5 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1091e6212fdL, 0x1091e625b13L, "enumMember");
+    /*package*/ static final SReferenceLink enumMember$GVZr = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1091e6212fdL, 0x1091e625b13L, "enumMember");
   }
 
   private static final class CONCEPTS {

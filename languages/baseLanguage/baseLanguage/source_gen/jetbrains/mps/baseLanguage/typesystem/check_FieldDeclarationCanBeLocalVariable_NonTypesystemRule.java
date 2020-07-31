@@ -36,13 +36,13 @@ public class check_FieldDeclarationCanBeLocalVariable_NonTypesystemRule extends 
     if (!(SNodeOperations.isInstanceOf(variableDeclaration, CONCEPTS.FieldDeclaration$Ps)) && !(SNodeOperations.isInstanceOf(variableDeclaration, CONCEPTS.StaticFieldDeclaration$R5))) {
       return;
     }
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(variableDeclaration, CONCEPTS.IVisible$6G), LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(variableDeclaration, CONCEPTS.IVisible$6G), LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se))) {
       return;
     }
 
     Iterable<SNode> refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(variableDeclaration), CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.variableDeclaration$2ky6) == variableDeclaration;
+        return SLinkOperations.getTarget(it, LINKS.variableDeclaration$7WwU) == variableDeclaration;
       }
     }).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
@@ -51,7 +51,7 @@ public class check_FieldDeclarationCanBeLocalVariable_NonTypesystemRule extends 
     });
     Iterable<SNode> ops = (SNodeOperations.isInstanceOf(variableDeclaration, CONCEPTS.FieldDeclaration$Ps) ? ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(variableDeclaration), CONCEPTS.FieldReferenceOperation$N8, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.fieldDeclaration$mLBy), variableDeclaration);
+        return Objects.equals(SLinkOperations.getTarget(it, LINKS.fieldDeclaration$229u), variableDeclaration);
       }
     }).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
@@ -86,7 +86,7 @@ public class check_FieldDeclarationCanBeLocalVariable_NonTypesystemRule extends 
       }
     })) {
       SNode method = Sequence.fromIterable(methods).first();
-      Program program = new MPSProgramBuilder().buildProgram(SLinkOperations.getTarget(method, LINKS.body$WIlu));
+      Program program = new MPSProgramBuilder().buildProgram(SLinkOperations.getTarget(method, LINKS.body$qspy));
 
       // find a read instruction for variableDeclaration not preceded by a write instruction 
       boolean uninitializedRead = ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<ReadInstruction>(), program.getUninitializedReads())).any(new IWhereFilter<ReadInstruction>() {
@@ -134,9 +134,9 @@ public class check_FieldDeclarationCanBeLocalVariable_NonTypesystemRule extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SReferenceLink fieldDeclaration$mLBy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
   }
 }

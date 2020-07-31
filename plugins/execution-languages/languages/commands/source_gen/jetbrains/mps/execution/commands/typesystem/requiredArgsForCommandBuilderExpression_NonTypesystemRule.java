@@ -27,17 +27,17 @@ public class requiredArgsForCommandBuilderExpression_NonTypesystemRule extends A
   public requiredArgsForCommandBuilderExpression_NonTypesystemRule() {
   }
   public void applyRule(final SNode commandBuilderExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    for (final SNode argDeclaration : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(commandBuilderExpression, LINKS.commandPart$vwzX), LINKS.parameterDeclaration$Zllw))) {
+    for (final SNode argDeclaration : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(commandBuilderExpression, LINKS.commandPart$gLqz), LINKS.parameterDeclaration$Flqw))) {
       if ((boolean) CommandParameterDeclaration__BehaviorDescriptor.isRequired_id7c4O8d8q0tV.invoke(argDeclaration)) {
-        List<SNode> argument = SLinkOperations.getChildren(commandBuilderExpression, LINKS.argument$npCw);
+        List<SNode> argument = SLinkOperations.getChildren(commandBuilderExpression, LINKS.argument$lqBw);
         if (!(ListSequence.fromList(argument).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.parameterDeclaration$npbw) == argDeclaration;
+            return SLinkOperations.getTarget(it, LINKS.parameterDeclaration$lc$w) == argDeclaration;
           }
         }))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(commandBuilderExpression, "The required argument '" + SPropertyOperations.getString(argDeclaration, PROPS.name$tAp1) + "' is not set", "r:3eecec87-82a4-4ea1-952b-7d3a8d81c769(jetbrains.mps.execution.commands.typesystem)", "7947003018421368856", null, errorTarget);
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(commandBuilderExpression, "The required argument '" + SPropertyOperations.getString(argDeclaration, PROPS.name$lA7v) + "' is not set", "r:3eecec87-82a4-4ea1-952b-7d3a8d81c769(jetbrains.mps.execution.commands.typesystem)", "7947003018421368856", null, errorTarget);
           }
         }
       }
@@ -54,14 +54,14 @@ public class requiredArgsForCommandBuilderExpression_NonTypesystemRule extends A
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$npCw = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bf4L, 0xbe3a0d5ba1a2bf5L, "argument");
-    /*package*/ static final SReferenceLink parameterDeclaration$npbw = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be4L, 0xbe3a0d5ba1a2be5L, "parameterDeclaration");
-    /*package*/ static final SReferenceLink commandPart$vwzX = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bf4L, 0x550ea9458ea1ac11L, "commandPart");
-    /*package*/ static final SContainmentLink parameterDeclaration$Zllw = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x550ea9458ea107acL, 0x550ea9458ea107adL, "parameterDeclaration");
+    /*package*/ static final SContainmentLink argument$lqBw = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bf4L, 0xbe3a0d5ba1a2bf5L, "argument");
+    /*package*/ static final SReferenceLink parameterDeclaration$lc$w = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be4L, 0xbe3a0d5ba1a2be5L, "parameterDeclaration");
+    /*package*/ static final SReferenceLink commandPart$gLqz = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bf4L, 0x550ea9458ea1ac11L, "commandPart");
+    /*package*/ static final SContainmentLink parameterDeclaration$Flqw = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x550ea9458ea107acL, 0x550ea9458ea107adL, "parameterDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

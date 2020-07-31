@@ -54,7 +54,7 @@ public class HintDefsCustomEditorCell extends AbstractCellProvider {
   }
   private static SNode createEditorListOfDefs_igmisa_a0d0e(Iterable<? extends SNode> seq0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.EditorListOfDefs$7C);
-    rootBuilder1.forChild(LINKS.defs$D2dt).initNodeList(seq0, CONCEPTS.TypedDefReference$7f);
+    rootBuilder1.forChild(LINKS.defs$S4x3).initNodeList(seq0, CONCEPTS.TypedDefReference$7f);
     return rootBuilder1.getResult();
   }
 
@@ -64,6 +64,6 @@ public class HintDefsCustomEditorCell extends AbstractCellProvider {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink defs$D2dt = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6090f0354fe61d2cL, 0x6090f0354fe61d30L, "defs");
+    /*package*/ static final SContainmentLink defs$S4x3 = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6090f0354fe61d2cL, 0x6090f0354fe61d30L, "defs");
   }
 }

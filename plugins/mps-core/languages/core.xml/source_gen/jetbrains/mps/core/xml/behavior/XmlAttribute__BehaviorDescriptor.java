@@ -32,7 +32,7 @@ public final class XmlAttribute__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static boolean isMultiline_id2EZ251fZScc(@NotNull SNode __thisNode__) {
     boolean result = false;
-    for (SNode part : SLinkOperations.getChildren(__thisNode__, LINKS.value$RZKQ)) {
+    for (SNode part : SLinkOperations.getChildren(__thisNode__, LINKS.value$7SEa)) {
       if ((boolean) XmlValuePart__BehaviorDescriptor.onNewLine_id2EZ251g0bS6.invoke(part) || (boolean) XmlValuePart__BehaviorDescriptor.hasNewLineAfter_id2EZ251g0bSd.invoke(part)) {
         result = true;
       }
@@ -87,6 +87,6 @@ public final class XmlAttribute__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink value$RZKQ = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54cfd1eL, "value");
+    /*package*/ static final SContainmentLink value$7SEa = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54cfd1eL, "value");
   }
 }

@@ -34,7 +34,7 @@ public final class QueryFunction_AttributeStyleParameter__BehaviorDescriptor ext
   }
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.AttributeStyleClassItem$u_, false, false), LINKS.attribute$g2fs), LINKS.valueType$A7Sx);
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.AttributeStyleClassItem$u_, false, false), LINKS.attribute$L5u$), LINKS.valueType$tOnZ);
   }
 
   /*package*/ QueryFunction_AttributeStyleParameter__BehaviorDescriptor() {
@@ -88,7 +88,7 @@ public final class QueryFunction_AttributeStyleParameter__BehaviorDescriptor ext
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink attribute$g2fs = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9eae0a402L, 0x3744c0f9eae0b8d3L, "attribute");
-    /*package*/ static final SContainmentLink valueType$A7Sx = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea53826eL, "valueType");
+    /*package*/ static final SReferenceLink attribute$L5u$ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9eae0a402L, 0x3744c0f9eae0b8d3L, "attribute");
+    /*package*/ static final SContainmentLink valueType$tOnZ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea53826eL, "valueType");
   }
 }

@@ -38,10 +38,10 @@ public final class NamedNodeReference__BehaviorDescriptor extends BaseBHDescript
 
   /*package*/ static SNode findTarget_id4nxIQVLmGTU(@NotNull SNode __thisNode__) {
     SNode node = __thisNode__;
-    while ((SLinkOperations.getTarget(node, LINKS.child$I6D2) != null)) {
-      node = SLinkOperations.getTarget(node, LINKS.child$I6D2);
+    while ((SLinkOperations.getTarget(node, LINKS.child$ldRY) != null)) {
+      node = SLinkOperations.getTarget(node, LINKS.child$ldRY);
     }
-    return SLinkOperations.getTarget(node, LINKS.target$I6bY);
+    return SLinkOperations.getTarget(node, LINKS.target$kZN2);
   }
   /*package*/ static SNodeReference toNodeReference_id4nxIQVLmsc4(@NotNull SNode __thisNode__) {
     return SNodeOperations.getPointer(NamedNodeReference__BehaviorDescriptor.findTarget_id4nxIQVLmGTU.invoke(__thisNode__));
@@ -101,7 +101,7 @@ public final class NamedNodeReference__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink child$I6D2 = MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x41af228e7e0d7f3eL, 0x64b394b6ee402fbcL, "child");
-    /*package*/ static final SReferenceLink target$I6bY = MetaAdapterFactory.getReferenceLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x41af228e7e0d7f3eL, 0x64b394b6ee402faaL, "target");
+    /*package*/ static final SContainmentLink child$ldRY = MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x41af228e7e0d7f3eL, 0x64b394b6ee402fbcL, "child");
+    /*package*/ static final SReferenceLink target$kZN2 = MetaAdapterFactory.getReferenceLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x41af228e7e0d7f3eL, 0x64b394b6ee402faaL, "target");
   }
 }

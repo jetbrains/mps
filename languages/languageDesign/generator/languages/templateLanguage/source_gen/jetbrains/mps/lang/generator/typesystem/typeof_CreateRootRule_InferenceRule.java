@@ -26,15 +26,15 @@ public class typeof_CreateRootRule_InferenceRule extends AbstractInferenceRule_R
   public typeof_CreateRootRule_InferenceRule() {
   }
   public void applyRule(final SNode nodeToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SLinkOperations.getTarget(nodeToCheck, LINKS.label$mMNq) != null) {
-      if (!((SLinkOperations.getTarget(SLinkOperations.getTarget(nodeToCheck, LINKS.label$mMNq), LINKS.sourceConcept$T1Uo) == null))) {
+    if (SLinkOperations.getTarget(nodeToCheck, LINKS.label$2ATA) != null) {
+      if (!((SLinkOperations.getTarget(SLinkOperations.getTarget(nodeToCheck, LINKS.label$2ATA), LINKS.sourceConcept$BVhC) == null))) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(nodeToCheck, "Rule has no input, can't use mapping label with typed source", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "6851978633175434157", null, errorTarget);
       }
       {
         SNode _nodeToCheck_1029348928467 = nodeToCheck;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1200923779365", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) _quotation_createNode_nbqazj_a0a0c0b0a0b(RulesUtil.closestConceptNode(SNodeOperations.getConcept(SLinkOperations.getTarget(nodeToCheck, LINKS.templateNode$RXGY)))), (SNode) _quotation_createNode_nbqazj_a1a0c0b0a0b(SLinkOperations.getTarget(SLinkOperations.getTarget(nodeToCheck, LINKS.label$mMNq), LINKS.targetConcept$f8gl)), false, false, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) _quotation_createNode_nbqazj_a0a0c0b0a0b(RulesUtil.closestConceptNode(SNodeOperations.getConcept(SLinkOperations.getTarget(nodeToCheck, LINKS.templateNode$6SM2)))), (SNode) _quotation_createNode_nbqazj_a1a0c0b0a0b(SLinkOperations.getTarget(SLinkOperations.getTarget(nodeToCheck, LINKS.label$2ATA), LINKS.targetConcept$kZUb)), false, false, _info_12389875345);
       }
     }
   }
@@ -63,10 +63,10 @@ public class typeof_CreateRootRule_InferenceRule extends AbstractInferenceRule_R
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink label$mMNq = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fbbd5854aL, 0x1179c9e8cacL, "label");
-    /*package*/ static final SReferenceLink sourceConcept$T1Uo = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179be4dc5eL, "sourceConcept");
-    /*package*/ static final SReferenceLink templateNode$RXGY = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fbbd5854aL, 0x10fbbd5854dL, "templateNode");
-    /*package*/ static final SReferenceLink targetConcept$f8gl = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179bfe3866L, "targetConcept");
+    /*package*/ static final SReferenceLink label$2ATA = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fbbd5854aL, 0x1179c9e8cacL, "label");
+    /*package*/ static final SReferenceLink sourceConcept$BVhC = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179be4dc5eL, "sourceConcept");
+    /*package*/ static final SReferenceLink templateNode$6SM2 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fbbd5854aL, 0x10fbbd5854dL, "templateNode");
+    /*package*/ static final SReferenceLink targetConcept$kZUb = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179bfe3866L, "targetConcept");
   }
 
   private static final class CONCEPTS {

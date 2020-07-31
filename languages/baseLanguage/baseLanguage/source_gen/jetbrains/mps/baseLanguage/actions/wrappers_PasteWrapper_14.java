@@ -32,23 +32,23 @@ public final class wrappers_PasteWrapper_14 implements PasteWrapper {
   @Override
   public SNode wrap(SNode sourceNode) {
     SNode method = SNodeFactoryOperations.createNewNode(CONCEPTS.ConceptMethodDeclaration$VN, null);
-    SPropertyOperations.set(method, PROPS.name$tAp1, SPropertyOperations.getString(sourceNode, PROPS.name$tAp1));
-    SLinkOperations.setTarget(method, LINKS.body$WIlu, SLinkOperations.getTarget(sourceNode, LINKS.body$WIlu));
-    SPropertyOperations.set(method, PROPS.isFinal$I$Qu, SPropertyOperations.getBoolean(sourceNode, PROPS.isFinal$I$Qu));
-    SPropertyOperations.set(method, PROPS.isSynchronized$PMx, SPropertyOperations.getBoolean(sourceNode, PROPS.isSynchronized$PMx));
-    SLinkOperations.setTarget(method, LINKS.returnType$WIkw, SLinkOperations.getTarget(sourceNode, LINKS.returnType$WIkw));
-    ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(sourceNode, LINKS.parameter$WIkZ)));
-    ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.annotation$oVP4)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(sourceNode, LINKS.annotation$oVP4)));
-    ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.throwsItem$gr7e)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(sourceNode, LINKS.throwsItem$gr7e)));
-    ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.typeVariableDeclaration$ziZT)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(sourceNode, LINKS.typeVariableDeclaration$ziZT)));
-    SLinkOperations.setTarget(SNodeOperations.cast(method, CONCEPTS.IVisible$6G), LINKS.visibility$2GiC, (SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.IVisible$6G) ? SLinkOperations.getTarget(SNodeOperations.cast(sourceNode, CONCEPTS.IVisible$6G), LINKS.visibility$2GiC) : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility"))));
+    SPropertyOperations.set(method, PROPS.name$lA7v, SPropertyOperations.getString(sourceNode, PROPS.name$lA7v));
+    SLinkOperations.setTarget(method, LINKS.body$qspy, SLinkOperations.getTarget(sourceNode, LINKS.body$qspy));
+    SPropertyOperations.set(method, PROPS.isFinal$zQoy, SPropertyOperations.getBoolean(sourceNode, PROPS.isFinal$zQoy));
+    SPropertyOperations.set(method, PROPS.isSynchronized$q3tZ, SPropertyOperations.getBoolean(sourceNode, PROPS.isSynchronized$q3tZ));
+    SLinkOperations.setTarget(method, LINKS.returnType$qrVw, SLinkOperations.getTarget(sourceNode, LINKS.returnType$qrVw));
+    ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(sourceNode, LINKS.parameter$qsax)));
+    ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.annotation$4YGW)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(sourceNode, LINKS.annotation$4YGW)));
+    ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.throwsItem$X8vM)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(sourceNode, LINKS.throwsItem$X8vM)));
+    ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.typeVariableDeclaration$6cWB)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(sourceNode, LINKS.typeVariableDeclaration$6cWB)));
+    SLinkOperations.setTarget(SNodeOperations.cast(method, CONCEPTS.IVisible$6G), LINKS.visibility$jt1o, (SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.IVisible$6G) ? SLinkOperations.getTarget(SNodeOperations.cast(sourceNode, CONCEPTS.IVisible$6G), LINKS.visibility$jt1o) : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility"))));
     // since we don't produce static methods here, ThisNodeExpression is used (could be ThisConceptExpression also) 
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$WIlu), CONCEPTS.ThisClassifierExpression$xN, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$qspy), CONCEPTS.ThisClassifierExpression$xN, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         SNodeOperations.replaceWithNewChild(it, CONCEPTS.ThisNodeExpression$BO);
       }
     });
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$WIlu), CONCEPTS.ThisExpression$7A, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$qspy), CONCEPTS.ThisExpression$7A, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         SNodeOperations.replaceWithNewChild(it, CONCEPTS.ThisNodeExpression$BO);
       }
@@ -68,18 +68,18 @@ public final class wrappers_PasteWrapper_14 implements PasteWrapper {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isFinal$I$Qu = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
-    /*package*/ static final SProperty isSynchronized$PMx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$zQoy = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
+    /*package*/ static final SProperty isSynchronized$q3tZ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SContainmentLink throwsItem$gr7e = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SContainmentLink throwsItem$X8vM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 }

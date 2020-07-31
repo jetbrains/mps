@@ -13,12 +13,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class ScopeParameterLiteral_factories_old {
   public static class NodeFactory_3492877759609298945 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SNodeFactoryOperations.setNewChild(newNode, LINKS.scope_old$RvyT, CONCEPTS.GenericNewExpression$ev);
+      SNodeFactoryOperations.setNewChild(newNode, LINKS.scope_old$ShTB, CONCEPTS.GenericNewExpression$ev);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink scope_old$RvyT = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x307931d0f98575c9L, 0x307931d0f985950eL, "scope_old");
+    /*package*/ static final SContainmentLink scope_old$ShTB = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x307931d0f98575c9L, 0x307931d0f985950eL, "scope_old");
   }
 
   private static final class CONCEPTS {

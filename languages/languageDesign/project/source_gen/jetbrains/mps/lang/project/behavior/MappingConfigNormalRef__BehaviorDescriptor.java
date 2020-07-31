@@ -31,10 +31,10 @@ public final class MappingConfigNormalRef__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static boolean isComplete_id2n3WChplftH(@NotNull SNode __thisNode__) {
-    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.modelUID$xn50))) {
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.modelUID$abr0))) {
       return false;
     }
-    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.nodeID$xn5v))) {
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.nodeID$abE1))) {
       return false;
     }
     return true;
@@ -90,7 +90,7 @@ public final class MappingConfigNormalRef__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty modelUID$xn50 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, 0x25c3f28459572778L, "modelUID");
-    /*package*/ static final SProperty nodeID$xn5v = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, 0x25c3f28459572779L, "nodeID");
+    /*package*/ static final SProperty modelUID$abr0 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, 0x25c3f28459572778L, "modelUID");
+    /*package*/ static final SProperty nodeID$abE1 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, 0x25c3f28459572779L, "nodeID");
   }
 }

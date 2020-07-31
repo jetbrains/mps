@@ -110,7 +110,7 @@ public class BLC_substitute extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode direction = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SortDirection$8O, null);
-          SPropertyOperations.set(direction, PROPS.value$WIn0, true);
+          SPropertyOperations.set(direction, PROPS.value$qt90, true);
           return direction;
         }
 
@@ -170,7 +170,7 @@ public class BLC_substitute extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode direction = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SortDirection$8O, null);
-          SPropertyOperations.set(direction, PROPS.value$WIn0, false);
+          SPropertyOperations.set(direction, PROPS.value$qt90, false);
           return direction;
         }
 
@@ -199,6 +199,6 @@ public class BLC_substitute extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$WIn0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }

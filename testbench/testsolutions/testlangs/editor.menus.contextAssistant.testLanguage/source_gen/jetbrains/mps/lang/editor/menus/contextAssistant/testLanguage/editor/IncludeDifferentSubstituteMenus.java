@@ -83,7 +83,7 @@ public class IncludeDifferentSubstituteMenus extends TransformationMenuBase {
     }
     @Override
     protected SContainmentLink getContainmentLink(TransformationMenuContext context) {
-      return LINKS.childIncludeDifferentSubstituteMenus$uQy3;
+      return LINKS.childIncludeDifferentSubstituteMenus$Wqvt;
     }
     @Override
     protected SubstituteMenuLookup getSubstituteMenuLookup(TransformationMenuContext context) {
@@ -120,7 +120,7 @@ public class IncludeDifferentSubstituteMenus extends TransformationMenuBase {
     }
     @Override
     protected SContainmentLink getContainmentLink(TransformationMenuContext context) {
-      return LINKS.childIncludeDifferentSubstituteMenus$uQy3;
+      return LINKS.childIncludeDifferentSubstituteMenus$Wqvt;
     }
     @Override
     protected SubstituteMenuLookup getSubstituteMenuLookup(TransformationMenuContext context) {
@@ -134,7 +134,7 @@ public class IncludeDifferentSubstituteMenus extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink childIncludeDifferentSubstituteMenus$uQy3 = MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x1a41c6fb280bf85eL, "childIncludeDifferentSubstituteMenus");
+    /*package*/ static final SContainmentLink childIncludeDifferentSubstituteMenus$Wqvt = MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x1a41c6fb280bf85eL, "childIncludeDifferentSubstituteMenus");
   }
 
   private static final class CONCEPTS {

@@ -34,14 +34,14 @@ public final class BuildLayout_JarManifest_Attribute__BehaviorDescriptor extends
   }
 
   /*package*/ static boolean isValidPart_id7XQqoCTkVIS(@NotNull SNode __thisNode__, String propertyValue, SContainmentLink role) {
-    if (role.equals(LINKS.name$OJj0)) {
+    if (role.equals(LINKS.name$yUd0)) {
       return propertyValue.matches("[A-Za-z0-9][A-Za-z0-9-_]*");
     }
     return !(propertyValue.contains("$"));
   }
   @Nullable
   /*package*/ static Color getColorForTextPart_id5hFYqIiXWl$(@NotNull SNode __thisNode__, @NonNls SContainmentLink role) {
-    if (role.equals(LINKS.name$OJj0)) {
+    if (role.equals(LINKS.name$yUd0)) {
       return MPSColors.DARK_GRAY.darker();
     }
     return MPSColors.DARK_GREEN.darker();
@@ -96,6 +96,6 @@ public final class BuildLayout_JarManifest_Attribute__BehaviorDescriptor extends
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink name$OJj0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f30L, 0x115d3b22faf20f31L, "name");
+    /*package*/ static final SContainmentLink name$yUd0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f30L, 0x115d3b22faf20f31L, "name");
   }
 }

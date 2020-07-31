@@ -50,7 +50,7 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVaraibles extends Migrat
       };
       EnumUsagesMigration migration = new EnumUsagesMigration();
       for (SNode propMessageTarget : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyMessageTarget$LX, false))) {
-        migration.migratePropertyReference(propMessageTarget, LINKS.propertyDeclaration$T4As);
+        migration.migratePropertyReference(propMessageTarget, LINKS.propertyDeclaration$DeB$);
       }
       new PropertyPatternVariableMigration<SNode>() {
         @Override
@@ -59,7 +59,7 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVaraibles extends Migrat
         }
         @Override
         protected SNode getDeclaration(SNode usage) {
-          return SLinkOperations.getTarget(usage, LINKS.patternVarDecl$7KKb);
+          return SLinkOperations.getTarget(usage, LINKS.patternVarDecl$KBll);
         }
         @Override
         protected void migrateRawValue(SNode usage, SNode datatype) {
@@ -85,11 +85,11 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVaraibles extends Migrat
       List<Problem> problems = ListSequence.fromList(new ArrayList<Problem>());
       ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyMessageTarget$LX, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(it, LINKS.propertyDeclaration$T4As)), CONCEPTS.EnumPropertyMigrationInfo$Yg);
+          return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(it, LINKS.propertyDeclaration$DeB$)), CONCEPTS.EnumPropertyMigrationInfo$Yg);
         }
       }).select(new ISelector<SNode, UsageOfMigrateNodeNotMigratedProblem>() {
         public UsageOfMigrateNodeNotMigratedProblem select(SNode it) {
-          return new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.propertyDeclaration$T4As));
+          return new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.propertyDeclaration$DeB$));
         }
       }));
       return problems;
@@ -103,8 +103,8 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVaraibles extends Migrat
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink propertyDeclaration$T4As = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a6a000L, 0x11db4a6fbeeL, "propertyDeclaration");
-    /*package*/ static final SReferenceLink patternVarDecl$7KKb = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11192d97ff9L, 0x11192d9d83cL, "patternVarDecl");
+    /*package*/ static final SReferenceLink propertyDeclaration$DeB$ = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a6a000L, 0x11db4a6fbeeL, "propertyDeclaration");
+    /*package*/ static final SReferenceLink patternVarDecl$KBll = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11192d97ff9L, 0x11192d9d83cL, "patternVarDecl");
   }
 
   private static final class CONCEPTS {

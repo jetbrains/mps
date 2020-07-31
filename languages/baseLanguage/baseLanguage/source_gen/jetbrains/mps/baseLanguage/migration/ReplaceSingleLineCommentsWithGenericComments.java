@@ -52,7 +52,7 @@ public class ReplaceSingleLineCommentsWithGenericComments extends MigrationScrip
         // Remove meaningless empty text comment parts 
         ListSequence.fromList(SModelOperations.nodes(model, CONCEPTS.TextCommentPart$lb)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.SingleLineComment$jI) && isEmptyString(trim_o7ozeo_a0a0a0a0a0a0a0c0a0a0a0b0e(SPropertyOperations.getString(it, PROPS.text$AaEw))) && ListSequence.fromList(SNodeOperations.getAllSiblings(it, false)).isNotEmpty();
+            return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.SingleLineComment$jI) && isEmptyString(trim_o7ozeo_a0a0a0a0a0a0a0c0a0a0a0b0e(SPropertyOperations.getString(it, PROPS.text$va_w))) && ListSequence.fromList(SNodeOperations.getAllSiblings(it, false)).isNotEmpty();
           }
         }).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
@@ -63,11 +63,11 @@ public class ReplaceSingleLineCommentsWithGenericComments extends MigrationScrip
         final Wrappers._boolean moduleModified = new Wrappers._boolean(false);
         ListSequence.fromList(SModelOperations.nodes(model, CONCEPTS.SingleLineComment$jI)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.commentPart$_gGy)).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.commentPart$_gGy)).first(), CONCEPTS.StatementCommentPart$7K);
+            return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.commentPart$35$u)).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.commentPart$35$u)).first(), CONCEPTS.StatementCommentPart$7K);
           }
         }).visitAll(new IVisitor<SNode>() {
           public void visit(SNode oldComment) {
-            SNode stmt = SNodeOperations.replaceWithAnother(oldComment, SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(oldComment, LINKS.commentPart$_gGy)).first(), CONCEPTS.StatementCommentPart$7K), LINKS.commentedStatement$Y080));
+            SNode stmt = SNodeOperations.replaceWithAnother(oldComment, SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(oldComment, LINKS.commentPart$35$u)).first(), CONCEPTS.StatementCommentPart$7K), LINKS.commentedStatement$23S0));
             CommentUtil.commentOut(stmt);
             moduleModified.value = true;
           }
@@ -113,11 +113,11 @@ public class ReplaceSingleLineCommentsWithGenericComments extends MigrationScrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$AaEw = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
+    /*package*/ static final SProperty text$va_w = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink commentPart$_gGy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart");
-    /*package*/ static final SContainmentLink commentedStatement$Y080 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af16ff67L, 0x57d533a7af16ff68L, "commentedStatement");
+    /*package*/ static final SContainmentLink commentPart$35$u = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart");
+    /*package*/ static final SContainmentLink commentedStatement$23S0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af16ff67L, 0x57d533a7af16ff68L, "commentedStatement");
   }
 }

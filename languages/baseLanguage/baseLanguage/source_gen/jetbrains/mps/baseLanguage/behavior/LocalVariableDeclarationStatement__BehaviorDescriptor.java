@@ -31,7 +31,7 @@ public final class LocalVariableDeclarationStatement__BehaviorDescriptor extends
   }
 
   /*package*/ static SNode getLocalVariableDeclaration_idi1ItFZH(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.localVariableDeclaration$O0D0);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.localVariableDeclaration$cjR0);
   }
 
   /*package*/ LocalVariableDeclarationStatement__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class LocalVariableDeclarationStatement__BehaviorDescriptor extends
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink localVariableDeclaration$O0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
+    /*package*/ static final SContainmentLink localVariableDeclaration$cjR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
   }
 }

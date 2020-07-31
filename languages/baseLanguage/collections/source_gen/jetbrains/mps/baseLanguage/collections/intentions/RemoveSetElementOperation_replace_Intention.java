@@ -52,7 +52,7 @@ public final class RemoveSetElementOperation_replace_Intention extends AbstractI
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNodeOperations.replaceWithAnother(node, _quotation_createNode_y60k3j_a0a0a0(SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.argument$798v))));
+      SNodeOperations.replaceWithAnother(node, _quotation_createNode_y60k3j_a0a0a0(SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.argument$tr71))));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -72,6 +72,6 @@ public final class RemoveSetElementOperation_replace_Intention extends AbstractI
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$798v = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d968cae32L, 0x11d968cfea4L, "argument");
+    /*package*/ static final SContainmentLink argument$tr71 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d968cae32L, 0x11d968cfea4L, "argument");
   }
 }

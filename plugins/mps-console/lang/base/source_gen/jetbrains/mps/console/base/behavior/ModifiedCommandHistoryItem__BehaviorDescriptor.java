@@ -31,7 +31,7 @@ public final class ModifiedCommandHistoryItem__BehaviorDescriptor extends BaseBH
   }
 
   /*package*/ static SNode getCommandToEdit_idApbqR6U7je(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.modifiedCommand$pXxD);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.modifiedCommand$$NiR);
   }
 
   /*package*/ ModifiedCommandHistoryItem__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class ModifiedCommandHistoryItem__BehaviorDescriptor extends BaseBH
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifiedCommand$pXxD = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x9992dadc6de20a7L, 0x9992dadc6de20d6L, "modifiedCommand");
+    /*package*/ static final SContainmentLink modifiedCommand$$NiR = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x9992dadc6de20a7L, 0x9992dadc6de20d6L, "modifiedCommand");
   }
 }

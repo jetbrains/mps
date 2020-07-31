@@ -48,7 +48,7 @@ public final class BaseToolDeclaration__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static String getGeneratedName_id5FstybB4d83(@NotNull SNode __thisNode__) {
-    return NameUtil.toValidIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1)) + "_Tool";
+    return NameUtil.toValidIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v)) + "_Tool";
   }
   /*package*/ static String getGeneratedClassFQName_id5FstybB4d8e(@NotNull SNode __thisNode__) {
     return NameUtil.longNameFromNamespaceAndShortName(SModelOperations.getModelName(SNodeOperations.getModel(__thisNode__)), BaseToolDeclaration__BehaviorDescriptor.getGeneratedName_id5FstybB4d83.invoke(__thisNode__));
@@ -56,7 +56,7 @@ public final class BaseToolDeclaration__BehaviorDescriptor extends BaseBHDescrip
   @Deprecated
   @ToRemove(version = 3.5)
   /*package*/ static boolean hasNumber_id5FstybB4d8v(@NotNull SNode __thisNode__) {
-    return !(isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.number$xWxm)));
+    return !(isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.number$sk9E)));
   }
   /*package*/ static SNode createType_idhEwJimy(@NotNull SNode __thisNode__) {
     return _quotation_createNode_7ol7e8_a0a3(__thisNode__);
@@ -69,10 +69,10 @@ public final class BaseToolDeclaration__BehaviorDescriptor extends BaseBHDescrip
     if (module == null) {
       return null;
     }
-    return MacrosFactory.forModule(module).expandPath(SPropertyOperations.getString(__thisNode__, PROPS.icon$xXXR));
+    return MacrosFactory.forModule(module).expandPath(SPropertyOperations.getString(__thisNode__, PROPS.icon$t0XD));
   }
   /*package*/ static PropertyReference getPropertyToCheck_id4cWf37B8oYh(@NotNull SNode __thisNode__) {
-    return new PropertyReference(__thisNode__, PROPS.caption$xPHq);
+    return new PropertyReference(__thisNode__, PROPS.caption$p0ZA);
   }
 
   /*package*/ BaseToolDeclaration__BehaviorDescriptor() {
@@ -151,9 +151,9 @@ public final class BaseToolDeclaration__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty number$xWxm = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x5adc7622e710cf2dL, "number");
-    /*package*/ static final SProperty icon$xXXR = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x5adc7622e710cf6eL, "icon");
-    /*package*/ static final SProperty caption$xPHq = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x5adc7622e710cedcL, "caption");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty number$sk9E = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x5adc7622e710cf2dL, "number");
+    /*package*/ static final SProperty icon$t0XD = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x5adc7622e710cf6eL, "icon");
+    /*package*/ static final SProperty caption$p0ZA = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x5adc7622e710cedcL, "caption");
   }
 }

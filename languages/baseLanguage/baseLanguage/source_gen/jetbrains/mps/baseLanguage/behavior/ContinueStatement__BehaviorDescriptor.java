@@ -38,18 +38,18 @@ public final class ContinueStatement__BehaviorDescriptor extends BaseBHDescripto
 
   /*package*/ static SNode getLoop_idhEwIA0E(@NotNull SNode __thisNode__) {
     for (SNode loop : SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.AbstractLoopStatement$wH, false)) {
-      if ((SLinkOperations.getTarget(__thisNode__, LINKS.loopLabelReference$m7OF) != null)) {
-        SNode loopLabel = SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.loopLabelReference$m7OF), LINKS.loopLabel$GZ00);
+      if ((SLinkOperations.getTarget(__thisNode__, LINKS.loopLabelReference$HMwP) != null)) {
+        SNode loopLabel = SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.loopLabelReference$HMwP), LINKS.loopLabel$Mx00);
         if ((loopLabel != null)) {
-          if (loopLabel == SLinkOperations.getTarget(loop, LINKS.loopLabel$Vp8n)) {
+          if (loopLabel == SLinkOperations.getTarget(loop, LINKS.loopLabel$Lb39)) {
             return loop;
           }
         }
       } else {
-        if (SPropertyOperations.getString(__thisNode__, PROPS.label$Tq0W) == null) {
+        if (SPropertyOperations.getString(__thisNode__, PROPS.label$NAt4) == null) {
           return loop;
         }
-        if (SPropertyOperations.getString(__thisNode__, PROPS.label$Tq0W).equals(SPropertyOperations.getString(loop, PROPS.label$5$eZ))) {
+        if (SPropertyOperations.getString(__thisNode__, PROPS.label$NAt4).equals(SPropertyOperations.getString(loop, PROPS.label$Gzgx))) {
           return loop;
         }
       }
@@ -113,13 +113,13 @@ public final class ContinueStatement__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink loopLabelReference$m7OF = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, 0x7dae85d6eb43bbbdL, "loopLabelReference");
-    /*package*/ static final SReferenceLink loopLabel$GZ00 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, 0x50c493bf955512aL, "loopLabel");
-    /*package*/ static final SContainmentLink loopLabel$Vp8n = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x50c493bf9555131L, "loopLabel");
+    /*package*/ static final SContainmentLink loopLabelReference$HMwP = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, 0x7dae85d6eb43bbbdL, "loopLabelReference");
+    /*package*/ static final SReferenceLink loopLabel$Mx00 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, 0x50c493bf955512aL, "loopLabel");
+    /*package*/ static final SContainmentLink loopLabel$Lb39 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x50c493bf9555131L, "loopLabel");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty label$Tq0W = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, 0x11745fca58eL, "label");
-    /*package*/ static final SProperty label$5$eZ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x11745b5371dL, "label");
+    /*package*/ static final SProperty label$NAt4 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, 0x11745fca58eL, "label");
+    /*package*/ static final SProperty label$Gzgx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x11745b5371dL, "label");
   }
 }

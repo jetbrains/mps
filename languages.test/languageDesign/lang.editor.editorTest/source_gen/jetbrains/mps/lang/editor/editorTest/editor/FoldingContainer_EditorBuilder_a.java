@@ -121,7 +121,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.collapsed$Y0yR;
+      final SProperty property = PROPS.collapsed$2gSD;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no collapsed>");
@@ -172,7 +172,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new collapsedByDefaultSingleRoleHandler_mc5axy_g2a(myNode, LINKS.collapsedByDefault$ibyw, getEditorContext());
+    SingleRoleCellProvider provider = new collapsedByDefaultSingleRoleHandler_mc5axy_g2a(myNode, LINKS.collapsedByDefault$N_Hw, getEditorContext());
     return provider.createCell();
   }
   private static class collapsedByDefaultSingleRoleHandler_mc5axy_g2a extends SingleRoleCellProvider {
@@ -192,8 +192,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.collapsedByDefault$ibyw, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.collapsedByDefault$ibyw, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.collapsedByDefault$N_Hw, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.collapsedByDefault$N_Hw, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -205,7 +205,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.collapsedByDefault$ibyw);
+        editorCell.setSRole(LINKS.collapsedByDefault$N_Hw);
       }
       Style style = new StyleImpl();
       style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
@@ -215,7 +215,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.collapsedByDefault$ibyw));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.collapsedByDefault$N_Hw));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_collapsedByDefault");
@@ -256,7 +256,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new collapsedConditionallySingleRoleHandler_mc5axy_k2a(myNode, LINKS.collapsedConditionally$grdj, getEditorContext());
+    SingleRoleCellProvider provider = new collapsedConditionallySingleRoleHandler_mc5axy_k2a(myNode, LINKS.collapsedConditionally$Xbsd, getEditorContext());
     return provider.createCell();
   }
   private static class collapsedConditionallySingleRoleHandler_mc5axy_k2a extends SingleRoleCellProvider {
@@ -276,8 +276,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.collapsedConditionally$grdj, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.collapsedConditionally$grdj, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.collapsedConditionally$Xbsd, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.collapsedConditionally$Xbsd, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -289,7 +289,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.collapsedConditionally$grdj);
+        editorCell.setSRole(LINKS.collapsedConditionally$Xbsd);
       }
       Style style = new StyleImpl();
       style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
@@ -299,7 +299,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.collapsedConditionally$grdj));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.collapsedConditionally$Xbsd));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_collapsedConditionally");
@@ -325,7 +325,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty collapsed$Y0yR = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x569b712fbc6572f0L, 0xc06e5dab971f717L, "collapsed");
+    /*package*/ static final SProperty collapsed$2gSD = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x569b712fbc6572f0L, 0xc06e5dab971f717L, "collapsed");
   }
 
   private static final class CONCEPTS {
@@ -333,7 +333,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink collapsedByDefault$ibyw = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x569b712fbc6572f0L, 0x569b712fbc6572f1L, "collapsedByDefault");
-    /*package*/ static final SContainmentLink collapsedConditionally$grdj = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x569b712fbc6572f0L, 0xc06e5dab9716356L, "collapsedConditionally");
+    /*package*/ static final SContainmentLink collapsedByDefault$N_Hw = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x569b712fbc6572f0L, 0x569b712fbc6572f1L, "collapsedByDefault");
+    /*package*/ static final SContainmentLink collapsedConditionally$Xbsd = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x569b712fbc6572f0L, 0xc06e5dab9716356L, "collapsedConditionally");
   }
 }

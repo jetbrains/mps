@@ -90,7 +90,7 @@ public class localVariables extends SubstituteMenuBase {
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
           SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.LocalVariableDeclarationStatement$BI, null);
-          SLinkOperations.setTarget(result, LINKS.localVariableDeclaration$O0D0, nodeToWrap);
+          SLinkOperations.setTarget(result, LINKS.localVariableDeclaration$cjR0, nodeToWrap);
           return result;
         }
 
@@ -127,6 +127,6 @@ public class localVariables extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink localVariableDeclaration$O0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
+    /*package*/ static final SContainmentLink localVariableDeclaration$cjR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
   }
 }

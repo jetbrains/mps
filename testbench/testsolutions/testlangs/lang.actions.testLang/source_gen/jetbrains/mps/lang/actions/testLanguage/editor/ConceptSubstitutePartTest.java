@@ -51,7 +51,7 @@ public class ConceptSubstitutePartTest extends SubstituteMenuBase {
       tmpVar = tmpVar && _context.getEditorContext() != null;
       tmpVar = tmpVar && _context.getModel() != null;
 
-      return _context.getLink() == LINKS.conceptSubstitutePart$TU3w;
+      return _context.getLink() == LINKS.conceptSubstitutePart$37Gw;
     }
     @NotNull
     @Override
@@ -85,7 +85,7 @@ public class ConceptSubstitutePartTest extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink conceptSubstitutePart$TU3w = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x2365c14e167221c6L, "conceptSubstitutePart");
+    /*package*/ static final SContainmentLink conceptSubstitutePart$37Gw = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x2365c14e167221c6L, "conceptSubstitutePart");
   }
 
   private static final class CONCEPTS {

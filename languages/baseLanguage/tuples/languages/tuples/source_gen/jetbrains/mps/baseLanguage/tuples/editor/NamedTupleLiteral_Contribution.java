@@ -142,7 +142,7 @@ public class NamedTupleLiteral_Contribution extends SubstituteMenuBase {
           };
           return _quotation_createNode_4kfnt3_a1a0a0(ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(myParameterObject)).reversedList().translate(new ITranslator2<SNode, SNode>() {
             public Iterable<SNode> translate(SNode ntd) {
-              return SLinkOperations.getChildren(ntd, LINKS.component$eWwg);
+              return SLinkOperations.getChildren(ntd, LINKS.component$fjBK);
             }
           }).select(toRef).toListSequence(), myParameterObject);
         }
@@ -212,6 +212,6 @@ public class NamedTupleLiteral_Contribution extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink component$eWwg = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x12099b7fca9L, "component");
+    /*package*/ static final SContainmentLink component$fjBK = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x12099b7fca9L, "component");
   }
 }

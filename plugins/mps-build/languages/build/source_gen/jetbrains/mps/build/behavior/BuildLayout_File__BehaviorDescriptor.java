@@ -42,7 +42,7 @@ public final class BuildLayout_File__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static String getApproximateName_id4RsV8qJDnFm(@NotNull SNode __thisNode__) {
-    return (String) BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.path$llZF));
+    return (String) BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.path$lDPP));
   }
   /*package*/ static boolean isFile_id1bWeed$oPZ2(@NotNull SNode __thisNode__) {
     return true;
@@ -56,13 +56,13 @@ public final class BuildLayout_File__BehaviorDescriptor extends BaseBHDescriptor
       // legitimately point to a file from an external layout, and the restriction is not clear here. 
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildSourcePath$ua) && SNodeOperations.getContainingRoot(node) == SNodeOperations.getContainingRoot(__thisNode__)) {
         SNode required = SNodeOperations.cast(node, CONCEPTS.BuildSourcePath$ua);
-        return Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(required), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.path$llZF)));
+        return Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(required), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.path$lDPP)));
       }
     }
     if (artifactId instanceof LocalSourcePathArtifact) {
       LocalSourcePathArtifact art = (LocalSourcePathArtifact) artifactId;
       if (!(art.isFolder()) && art.getRoot() == SNodeOperations.getContainingRoot(__thisNode__)) {
-        return Objects.equals(art.getSourcePath(), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.path$llZF)));
+        return Objects.equals(art.getSourcePath(), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.path$lDPP)));
       }
     }
     return false;
@@ -70,7 +70,7 @@ public final class BuildLayout_File__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ static void unpack_id6IqTD4bJTWZ(@NotNull SNode __thisNode__, UnpackHelper helper) {
     SNode parent = helper.parent(__thisNode__);
     String parentLocation = helper.getContentLocation(parent);
-    SNode path = SLinkOperations.getTarget(__thisNode__, LINKS.path$llZF);
+    SNode path = SLinkOperations.getTarget(__thisNode__, LINKS.path$lDPP);
     if (path != null) {
       String lastSegment = BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(path);
       if (lastSegment != null) {
@@ -80,8 +80,8 @@ public final class BuildLayout_File__BehaviorDescriptor extends BaseBHDescriptor
     }
   }
   /*package*/ static void appendName_id1bWeed$ownT(@NotNull SNode __thisNode__, SNode parent, StringBuilder sb) {
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.path$llZF) != null)) {
-      String lastSegment = BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.path$llZF));
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.path$lDPP) != null)) {
+      String lastSegment = BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.path$lDPP));
       if (lastSegment != null) {
         if (SNodeOperations.isInstanceOf(parent, CONCEPTS.BuildLayout_Node$kC)) {
           sb.append("/");
@@ -154,7 +154,7 @@ public final class BuildLayout_File__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink path$llZF = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, 0x7ea63ceef6e8c11aL, "path");
+    /*package*/ static final SContainmentLink path$lDPP = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, 0x7ea63ceef6e8c11aL, "path");
   }
 
   private static final class CONCEPTS {

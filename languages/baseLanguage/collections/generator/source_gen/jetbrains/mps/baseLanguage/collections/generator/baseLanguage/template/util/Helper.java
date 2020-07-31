@@ -16,7 +16,7 @@ public class Helper {
       // of course, there's more than a .size operation that doesn't consistute sequence element access, 
       // but at the moment I cover only most wide-spread case - there seems to be no simple way to tell 
       // true element access operations from other. 
-      return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(dotExpr, LINKS.operation$X4R8), CONCEPTS.SequenceOperation$V5) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(dotExpr, LINKS.operation$X4R8), CONCEPTS.GetSizeOperation$oi));
+      return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(dotExpr, LINKS.operation$_mGS), CONCEPTS.SequenceOperation$V5) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(dotExpr, LINKS.operation$_mGS), CONCEPTS.GetSizeOperation$oi));
     }
     if (SNodeOperations.isInstanceOf(expression, CONCEPTS.MapElement$_s)) {
       return true;
@@ -26,7 +26,7 @@ public class Helper {
     }
     if (SNodeOperations.isInstanceOf(expression, CONCEPTS.OperationAssignmentExpression$Ue)) {
       SNode oae = SNodeOperations.cast(expression, CONCEPTS.OperationAssignmentExpression$Ue);
-      return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(oae, LINKS.lValue$J0D4), CONCEPTS.MapElement$_s) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(oae, LINKS.lValue$J0D4), CONCEPTS.ListElementAccessExpression$d_);
+      return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(oae, LINKS.lValue$LjSW), CONCEPTS.MapElement$_s) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(oae, LINKS.lValue$LjSW), CONCEPTS.ListElementAccessExpression$d_);
     }
     return false;
   }
@@ -41,7 +41,7 @@ public class Helper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SContainmentLink lValue$J0D4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
   }
 }

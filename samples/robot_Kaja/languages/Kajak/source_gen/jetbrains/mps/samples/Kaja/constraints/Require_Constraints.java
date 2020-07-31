@@ -54,7 +54,7 @@ public class Require_Constraints extends BaseConstraintsDescriptor {
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.library$qBLF, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.library$Th3P, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -77,7 +77,7 @@ public class Require_Constraints extends BaseConstraintsDescriptor {
                   }
                 }).select(new ISelector<SNode, SNode>() {
                   public SNode select(SNode it) {
-                    return SLinkOperations.getTarget(it, LINKS.library$qBLF);
+                    return SLinkOperations.getTarget(it, LINKS.library$Th3P);
                   }
                 }).all(new IWhereFilter<SNode>() {
                   public boolean accept(SNode it) {
@@ -109,6 +109,6 @@ public class Require_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink library$qBLF = MetaAdapterFactory.getReferenceLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f1a1049L, 0x3cfcda239f1a104aL, "library");
+    /*package*/ static final SReferenceLink library$Th3P = MetaAdapterFactory.getReferenceLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f1a1049L, 0x3cfcda239f1a104aL, "library");
   }
 }

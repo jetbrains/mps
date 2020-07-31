@@ -50,7 +50,7 @@ public class MultiForEachVariableReference_SubstituteMenu extends SubstituteMenu
 
     public SMP_ReferenceScope_gbjrjx_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.MultiForEachVariableReference$PW, LINKS.variable$ptyX);
+      super((SAbstractConcept) CONCEPTS.MultiForEachVariableReference$PW, LINKS.variable$ljVz);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class MultiForEachVariableReference_SubstituteMenu extends SubstituteMenu
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variable$ptyX = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x731a0dad81895f16L, 0x731a0dad818984f5L, "variable");
+    /*package*/ static final SReferenceLink variable$ljVz = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x731a0dad81895f16L, 0x731a0dad818984f5L, "variable");
   }
 }

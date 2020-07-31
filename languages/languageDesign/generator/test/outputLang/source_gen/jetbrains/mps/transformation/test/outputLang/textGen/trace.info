@@ -24,8 +24,8 @@
       <node id="1237463992350" at="25,121,26,32" concept="2" />
       <node id="1237463992351" at="27,101,28,29" concept="2" />
       <node id="1237463992352" at="29,7,30,22" concept="2" />
-      <node id="1236704181256" at="35,0,36,0" concept="8" trace="text$FHzw" />
-      <node id="1236704181256" at="39,0,40,0" concept="8" trace="outputChild$1z$j" />
+      <node id="1236704181256" at="35,0,36,0" concept="8" trace="text$b4cw" />
+      <node id="1236704181256" at="39,0,40,0" concept="8" trace="outputChild$Ke_d" />
       <node id="1237467882233" at="22,10,24,5" concept="0" />
       <node id="1237463992351" at="26,32,29,7" concept="3" />
       <node id="1237467854990" at="19,55,24,5" concept="4" />
@@ -67,10 +67,10 @@
       <node id="1236704486742" at="29,20,30,46" concept="2" />
       <node id="1237463992699" at="30,46,31,29" concept="2" />
       <node id="1236704486742" at="31,29,32,46" concept="2" />
-      <node id="1236704302588" at="37,0,38,0" concept="8" trace="name$tAp1" />
-      <node id="1236704302588" at="38,0,39,0" concept="8" trace="text$MRrr" />
-      <node id="1236704302588" at="42,0,43,0" concept="8" trace="specialChild$BrY6" />
-      <node id="1236704302588" at="43,0,44,0" concept="8" trace="outputChild$fHEa" />
+      <node id="1236704302588" at="37,0,38,0" concept="8" trace="name$lA7v" />
+      <node id="1236704302588" at="38,0,39,0" concept="8" trace="text$CQi5" />
+      <node id="1236704302588" at="42,0,43,0" concept="8" trace="specialChild$6z4U" />
+      <node id="1236704302588" at="43,0,44,0" concept="8" trace="outputChild$B7qQ" />
       <node id="1236704451853" at="21,182,26,5" concept="4" />
       <node id="1236704486741" at="26,5,33,5" concept="3" />
       <node id="1236704302588" at="16,0,35,0" concept="5" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />

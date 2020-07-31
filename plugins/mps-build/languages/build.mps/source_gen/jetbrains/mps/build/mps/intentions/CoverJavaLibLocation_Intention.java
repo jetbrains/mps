@@ -37,7 +37,7 @@ public final class CoverJavaLibLocation_Intention extends AbstractIntentionDescr
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SLinkOperations.getTarget(node, LINKS.javaLibLocation$VgPH) == null);
+    return (SLinkOperations.getTarget(node, LINKS.javaLibLocation$Ha0N) == null);
   }
   @Override
   public boolean isSurroundWith() {
@@ -58,8 +58,8 @@ public final class CoverJavaLibLocation_Intention extends AbstractIntentionDescr
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SLinkOperations.setNewChild(node, LINKS.javaLibLocation$VgPH, CONCEPTS.BuildSourceProjectRelativePath$VD);
-      SPropertyOperations.set(node, PROPS.reexport$feO0, true);
+      SLinkOperations.setNewChild(node, LINKS.javaLibLocation$Ha0N, CONCEPTS.BuildSourceProjectRelativePath$VD);
+      SPropertyOperations.set(node, PROPS.reexport$obc0, true);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -68,7 +68,7 @@ public final class CoverJavaLibLocation_Intention extends AbstractIntentionDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink javaLibLocation$VgPH = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, 0x65b9b06022080842L, "javaLibLocation");
+    /*package*/ static final SContainmentLink javaLibLocation$Ha0N = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, 0x65b9b06022080842L, "javaLibLocation");
   }
 
   private static final class CONCEPTS {
@@ -76,6 +76,6 @@ public final class CoverJavaLibLocation_Intention extends AbstractIntentionDescr
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty reexport$feO0 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, 0x2c4467914643e8fcL, "reexport");
+    /*package*/ static final SProperty reexport$obc0 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, 0x2c4467914643e8fcL, "reexport");
   }
 }

@@ -100,9 +100,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       public void setText(String text) {
         if (text.equals("true")) {
-          SPropertyOperations.assign(myNode, PROPS.canNotRunInProcess$QfFh, false);
+          SPropertyOperations.assign(myNode, PROPS.canNotRunInProcess$h_Xf, false);
         } else if (text.equals("false")) {
-          SPropertyOperations.assign(myNode, PROPS.canNotRunInProcess$QfFh, true);
+          SPropertyOperations.assign(myNode, PROPS.canNotRunInProcess$h_Xf, true);
         }
       }
       public boolean isValidText(String text) {
@@ -139,7 +139,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
 
     public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.canNotRunInProcess$QfFh, true);
+      SPropertyOperations.assign(node, PROPS.canNotRunInProcess$h_Xf, true);
     }
     public String getMatchingText() {
       return "false";
@@ -167,7 +167,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
 
     public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.canNotRunInProcess$QfFh, false);
+      SPropertyOperations.assign(node, PROPS.canNotRunInProcess$h_Xf, false);
     }
     public String getMatchingText() {
       return "true";
@@ -223,7 +223,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.logEvents$TX29;
+      return LINKS.logEvents$4$2n;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.LogEvent$WS;
@@ -236,7 +236,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(logEventsListHandler_6iwt9a_b2a.this.getNode(), LINKS.logEvents$TX29));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(logEventsListHandler_6iwt9a_b2a.this.getNode(), LINKS.logEvents$4$2n));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -278,11 +278,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty canNotRunInProcess$QfFh = MetaAdapterFactory.getProperty(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, 0x59337dc8dffe0d9dL, "canNotRunInProcess");
+    /*package*/ static final SProperty canNotRunInProcess$h_Xf = MetaAdapterFactory.getProperty(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, 0x59337dc8dffe0d9dL, "canNotRunInProcess");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink logEvents$TX29 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x486f8079df2fd868L, "logEvents");
+    /*package*/ static final SContainmentLink logEvents$4$2n = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x486f8079df2fd868L, "logEvents");
   }
 
   private static final class CONCEPTS {

@@ -46,23 +46,23 @@ public final class ActionGroupDeclaration__BehaviorDescriptor extends BaseBHDesc
     String prefix = "";
     SNode parentGroup = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ActionGroupDeclaration$YL, false, false);
     if (parentGroup != null) {
-      prefix = ActionGroupDeclaration__BehaviorDescriptor.getGroupPrefix_idhEwJa7y.invoke(parentGroup) + SPropertyOperations.getString(parentGroup, PROPS.name$tAp1);
+      prefix = ActionGroupDeclaration__BehaviorDescriptor.getGroupPrefix_idhEwJa7y.invoke(parentGroup) + SPropertyOperations.getString(parentGroup, PROPS.name$lA7v);
     }
     return prefix;
   }
   /*package*/ static String getGeneratedName_idhEwJa82(@NotNull SNode __thisNode__) {
-    return ActionGroupDeclaration__BehaviorDescriptor.getGroupPrefix_idhEwJa7y.invoke(__thisNode__) + NameUtil.toValidIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1)) + "_ActionGroup";
+    return ActionGroupDeclaration__BehaviorDescriptor.getGroupPrefix_idhEwJa7y.invoke(__thisNode__) + NameUtil.toValidIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v)) + "_ActionGroup";
   }
   /*package*/ static String getGeneratedClassFQName_idhEwJa8g(@NotNull SNode __thisNode__) {
     return SModelOperations.getModelName(SNodeOperations.getModel(__thisNode__)) + '.' + ActionGroupDeclaration__BehaviorDescriptor.getGeneratedName_idhEwJa82.invoke(__thisNode__);
   }
   /*package*/ static SNode createType_idhEwJimy(@NotNull SNode __thisNode__) {
     SNode type = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119240f9168L, "jetbrains.mps.lang.plugin.structure.GroupType"));
-    SLinkOperations.setTarget(type, LINKS.actionGroup$zMLv, __thisNode__);
+    SLinkOperations.setTarget(type, LINKS.actionGroup$l_Y1, __thisNode__);
     return type;
   }
   /*package*/ static PropertyReference getPropertyToCheck_id4cWf37B8oYh(@NotNull SNode __thisNode__) {
-    return new PropertyReference(__thisNode__, PROPS.caption$RiqX);
+    return new PropertyReference(__thisNode__, PROPS.caption$LV3z);
   }
 
   /*package*/ ActionGroupDeclaration__BehaviorDescriptor() {
@@ -124,11 +124,11 @@ public final class ActionGroupDeclaration__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty caption$RiqX = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, 0x1188f1dd933L, "caption");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty caption$LV3z = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, 0x1188f1dd933L, "caption");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink actionGroup$zMLv = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119240f9168L, 0x119240f916aL, "actionGroup");
+    /*package*/ static final SReferenceLink actionGroup$l_Y1 = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119240f9168L, 0x119240f916aL, "actionGroup");
   }
 }

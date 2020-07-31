@@ -34,7 +34,7 @@ public final class ValueToSerializeParameter__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static SNode getType_id27DJnJtIQ9C(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(ConceptFunctionParameter__BehaviorDescriptor.findConceptFunction_idhEwJh7Q.invoke(__thisNode__)), CONCEPTS.ParameterConverterDeclaration$QQ), LINKS.parameterType$vj6Q);
+    return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(ConceptFunctionParameter__BehaviorDescriptor.findConceptFunction_idhEwJh7Q.invoke(__thisNode__)), CONCEPTS.ParameterConverterDeclaration$QQ), LINKS.parameterType$agka);
   }
 
   /*package*/ ValueToSerializeParameter__BehaviorDescriptor() {
@@ -88,6 +88,6 @@ public final class ValueToSerializeParameter__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameterType$vj6Q = MetaAdapterFactory.getContainmentLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe8385046L, 0x3d1bb14fe83869abL, "parameterType");
+    /*package*/ static final SContainmentLink parameterType$agka = MetaAdapterFactory.getContainmentLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe8385046L, 0x3d1bb14fe83869abL, "parameterType");
   }
 }

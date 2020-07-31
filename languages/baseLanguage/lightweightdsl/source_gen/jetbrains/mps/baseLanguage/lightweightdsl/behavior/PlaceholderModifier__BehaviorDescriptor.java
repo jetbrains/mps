@@ -37,8 +37,8 @@ public final class PlaceholderModifier__BehaviorDescriptor extends BaseBHDescrip
 
   /*package*/ static SNode create_id7T23sO8tTvX(@NotNull SNode __thisNode__) {
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MemberPlaceholder"));
-    SLinkOperations.setTarget(result, LINKS.decl$l7bu, SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.DSLClassMember$68, false, false));
-    SPropertyOperations.assign(result, PROPS.caption$l7aw, SPropertyOperations.getString(__thisNode__, PROPS.caption$ErTu));
+    SLinkOperations.setTarget(result, LINKS.decl$euzy, SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.DSLClassMember$68, false, false));
+    SPropertyOperations.assign(result, PROPS.caption$eu5w, SPropertyOperations.getString(__thisNode__, PROPS.caption$zwPy));
     return result;
   }
 
@@ -89,7 +89,7 @@ public final class PlaceholderModifier__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink decl$l7bu = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db5L, "decl");
+    /*package*/ static final SReferenceLink decl$euzy = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db5L, "decl");
   }
 
   private static final class CONCEPTS {
@@ -97,7 +97,7 @@ public final class PlaceholderModifier__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty caption$l7aw = MetaAdapterFactory.getProperty(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db3L, "caption");
-    /*package*/ static final SProperty caption$ErTu = MetaAdapterFactory.getProperty(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044804f29L, 0x72b255a044805055L, "caption");
+    /*package*/ static final SProperty caption$eu5w = MetaAdapterFactory.getProperty(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db3L, "caption");
+    /*package*/ static final SProperty caption$zwPy = MetaAdapterFactory.getProperty(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044804f29L, 0x72b255a044805055L, "caption");
   }
 }

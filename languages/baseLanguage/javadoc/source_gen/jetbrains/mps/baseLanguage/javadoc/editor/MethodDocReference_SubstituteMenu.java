@@ -51,7 +51,7 @@ public class MethodDocReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_wsoffm_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.MethodDocReference$qh, LINKS.methodDeclaration$Q6Bw);
+      super((SAbstractConcept) CONCEPTS.MethodDocReference$qh, LINKS.methodDeclaration$dd8w);
     }
     @NotNull
     @Override
@@ -83,7 +83,7 @@ public class MethodDocReference_SubstituteMenu extends SubstituteMenuBase {
       }
       @Override
       public String getMatchingText(String pattern) {
-        return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.as(SNodeOperations.getParent(referencedNode), CONCEPTS.Classifier$hJ)) + "#" + SPropertyOperations.getString(referencedNode, PROPS.name$tAp1) + "()";
+        return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.as(SNodeOperations.getParent(referencedNode), CONCEPTS.Classifier$hJ)) + "#" + SPropertyOperations.getString(referencedNode, PROPS.name$lA7v) + "()";
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
@@ -103,10 +103,10 @@ public class MethodDocReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink methodDeclaration$Q6Bw = MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2d3L, 0x1ec532ec2531d2d4L, "methodDeclaration");
+    /*package*/ static final SReferenceLink methodDeclaration$dd8w = MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2d3L, 0x1ec532ec2531d2d4L, "methodDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

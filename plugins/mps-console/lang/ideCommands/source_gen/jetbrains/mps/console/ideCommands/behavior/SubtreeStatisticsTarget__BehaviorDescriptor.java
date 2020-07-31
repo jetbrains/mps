@@ -40,7 +40,7 @@ public final class SubtreeStatisticsTarget__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static Iterable<Tuples._2<String, Integer>> getStat_id6vMIJHUBlVT(@NotNull SNode __thisNode__, ConsoleContext context) {
-    SNode targetNode = AbstractNodeRefExpression__BehaviorDescriptor.getTargetNode_id36vPRrqnscn.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$ueX0));
+    SNode targetNode = AbstractNodeRefExpression__BehaviorDescriptor.getTargetNode_id36vPRrqnscn.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$Dfz0));
     List<SNode> subNodes = SNodeOperations.getNodeDescendants(targetNode, null, false, new SAbstractConcept[]{});
     int references = 0;
     int properties = 0;
@@ -56,7 +56,7 @@ public final class SubtreeStatisticsTarget__BehaviorDescriptor extends BaseBHDes
     return result;
   }
   /*package*/ static Iterable<SNode> getNodes_id4x3U0fq41hN(@NotNull SNode __thisNode__, ConsoleContext context) {
-    return SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, LINKS.target$ueX0), null, false, new SAbstractConcept[]{});
+    return SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, LINKS.target$Dfz0), null, false, new SAbstractConcept[]{});
   }
 
   /*package*/ SubtreeStatisticsTarget__BehaviorDescriptor() {
@@ -108,6 +108,6 @@ public final class SubtreeStatisticsTarget__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink target$ueX0 = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x1cf75b72b0b3962bL, 0x1cf75b72b0b396c6L, "target");
+    /*package*/ static final SContainmentLink target$Dfz0 = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x1cf75b72b0b3962bL, 0x1cf75b72b0b396c6L, "target");
   }
 }

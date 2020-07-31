@@ -68,7 +68,7 @@ public class DataParameterKeysScope extends Scope {
 
   @Nullable
   private String getReferenceText(@NotNull SNode target) {
-    return SPropertyOperations.getString(SNodeOperations.cast(target, CONCEPTS.StaticFieldDeclaration$R5), PROPS.resolveInfo$eeN8);
+    return SPropertyOperations.getString(SNodeOperations.cast(target, CONCEPTS.StaticFieldDeclaration$R5), PROPS.resolveInfo$TaKS);
   }
 
   @Override
@@ -83,7 +83,7 @@ public class DataParameterKeysScope extends Scope {
     if (!(allIModels.contains(SNodeOperations.getModel(staticField)))) {
       return false;
     }
-    return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SNodeOperations.as(SNodeOperations.getContainingRoot(staticField), CONCEPTS.ClassConcept$IY), SLinkOperations.getTarget(_quotation_createNode_d9tb28_a0a0g0n(), LINKS.classifier$pQ_R));
+    return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SNodeOperations.as(SNodeOperations.getContainingRoot(staticField), CONCEPTS.ClassConcept$IY), SLinkOperations.getTarget(_quotation_createNode_d9tb28_a0a0g0n(), LINKS.classifier$xslD));
   }
   private static SNode _quotation_createNode_d9tb28_a0a0g0n() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -100,10 +100,10 @@ public class DataParameterKeysScope extends Scope {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty resolveInfo$eeN8 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
+    /*package*/ static final SProperty resolveInfo$TaKS = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

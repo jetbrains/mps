@@ -32,12 +32,12 @@ public class check_BuildMpsLayout_TestModules_NonTypesystemRule extends Abstract
     @NotNull SNode project = SNodeOperations.getNodeAncestor(testModules, CONCEPTS.BuildProject$BF, false, false);
     VisibleArtifacts artifacts = new VisibleArtifacts(project);
     artifacts.collect(true);
-    for (SNode testModuleContent : ListSequence.fromList(SLinkOperations.getChildren(testModules, LINKS.modules$mNDD))) {
+    for (SNode testModuleContent : ListSequence.fromList(SLinkOperations.getChildren(testModules, LINKS.modules$31aR))) {
       for (SNode module : Sequence.fromIterable(BuildMpsLayout_TestModules_Content__BehaviorDescriptor.getModules_id3X9rC2XzJij.invoke(testModuleContent))) {
         if ((artifacts.findArtifact(module) == null)) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(testModuleContent, "The module " + SPropertyOperations.getString(module, PROPS.name$tAp1) + " is not contained in the layout of the build script", "r:f8814f89-9801-40d6-822f-e0e0a3a2c53d(jetbrains.mps.build.mps.tests.typesystem)", "2834134232275895007", null, errorTarget);
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(testModuleContent, "The module " + SPropertyOperations.getString(module, PROPS.name$lA7v) + " is not contained in the layout of the build script", "r:f8814f89-9801-40d6-822f-e0e0a3a2c53d(jetbrains.mps.build.mps.tests.typesystem)", "2834134232275895007", null, errorTarget);
             {
               BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.mps.tests.typesystem.includeIntoLayout_QuickFix", false);
               intentionProvider.putArgument("project", project);
@@ -65,10 +65,10 @@ public class check_BuildMpsLayout_TestModules_NonTypesystemRule extends Abstract
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modules$mNDD = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, 0x3f496e80bd8ef370L, "modules");
+    /*package*/ static final SContainmentLink modules$31aR = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, 0x3f496e80bd8ef370L, "modules");
   }
 }

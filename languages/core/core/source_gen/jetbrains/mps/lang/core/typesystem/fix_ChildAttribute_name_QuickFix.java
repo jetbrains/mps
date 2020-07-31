@@ -21,7 +21,7 @@ public class fix_ChildAttribute_name_QuickFix extends QuickFix_Runtime {
   }
   public void execute(SNode node) {
     SNode linkAttribute = SNodeOperations.as(node, CONCEPTS.ChildAttribute$XQ);
-    SPropertyOperations.assign(linkAttribute, PROPS.role_DebugInfo$TmIz, ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(linkAttribute).getName());
+    SPropertyOperations.assign(linkAttribute, PROPS.role_DebugInfo$M0yX, ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(linkAttribute).getName());
   }
 
   private static final class CONCEPTS {
@@ -29,6 +29,6 @@ public class fix_ChildAttribute_name_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty role_DebugInfo$TmIz = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, 0x9d98713f249b585L, "role_DebugInfo");
+    /*package*/ static final SProperty role_DebugInfo$M0yX = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, 0x9d98713f249b585L, "role_DebugInfo");
   }
 }

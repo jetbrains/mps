@@ -14,14 +14,14 @@ public class MakeClassNotFinal_QuickFix extends QuickFix_Runtime {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3950519302595455828"));
   }
   public String getDescription(SNode node) {
-    return "Make '" + SPropertyOperations.getString(((SNode) MakeClassNotFinal_QuickFix.this.getField("finalClass")[0]), PROPS.name$tAp1) + "' not final";
+    return "Make '" + SPropertyOperations.getString(((SNode) MakeClassNotFinal_QuickFix.this.getField("finalClass")[0]), PROPS.name$lA7v) + "' not final";
   }
   public void execute(SNode node) {
-    SPropertyOperations.assign(((SNode) MakeClassNotFinal_QuickFix.this.getField("finalClass")[0]), PROPS.isFinal$dzaH, false);
+    SPropertyOperations.assign(((SNode) MakeClassNotFinal_QuickFix.this.getField("finalClass")[0]), PROPS.isFinal$$2bN, false);
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isFinal$dzaH = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$$2bN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
   }
 }

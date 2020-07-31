@@ -39,7 +39,7 @@ public final class MakeGeneric_Intention extends AbstractIntentionDescriptor imp
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
     // todo: maybe not "everything except" but "just something"? 
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeVariableDeclaration$ziZT)).isEmpty() && !(SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptMethodDeclaration$VN));
+    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeVariableDeclaration$6cWB)).isEmpty() && !(SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptMethodDeclaration$VN));
   }
   @Override
   public boolean isSurroundWith() {
@@ -60,7 +60,7 @@ public final class MakeGeneric_Intention extends AbstractIntentionDescriptor imp
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNodeFactoryOperations.addNewChild(node, LINKS.typeVariableDeclaration$ziZT, CONCEPTS.TypeVariableDeclaration$Cc);
+      SNodeFactoryOperations.addNewChild(node, LINKS.typeVariableDeclaration$6cWB, CONCEPTS.TypeVariableDeclaration$Cc);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -69,7 +69,7 @@ public final class MakeGeneric_Intention extends AbstractIntentionDescriptor imp
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
   }
 
   private static final class CONCEPTS {

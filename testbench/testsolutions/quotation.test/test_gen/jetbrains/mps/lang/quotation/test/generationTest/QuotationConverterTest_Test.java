@@ -53,17 +53,17 @@ public class QuotationConverterTest_Test extends BaseTransformationTest {
     }
 
     public void test_compositeConvertDiffTest() throws Exception {
-      List<SNode> testMethods = SLinkOperations.getChildren(SNodeOperations.getNode("r:1cc42aa8-6d2d-49a0-9b1f-2e5f92988fc5(jetbrains.mps.lang.quotation.test.generationTest@tests)", "3455411064017080199"), LINKS.testMethods$jorf);
+      List<SNode> testMethods = SLinkOperations.getChildren(SNodeOperations.getNode("r:1cc42aa8-6d2d-49a0-9b1f-2e5f92988fc5(jetbrains.mps.lang.quotation.test.generationTest@tests)", "3455411064017080199"), LINKS.testMethods$oPch);
       Assert.assertTrue(ListSequence.fromList(testMethods).isNotEmpty());
       for (SNode method : ListSequence.fromList(testMethods)) {
-        SNode q = Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$WIlu), LINKS.statement$WHn8), CONCEPTS.LocalVariableDeclarationStatement$BI)).select(new ISelector<SNode, SNode>() {
+        SNode q = Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$qspy), LINKS.statement$pYcS), CONCEPTS.LocalVariableDeclarationStatement$BI)).select(new ISelector<SNode, SNode>() {
           public SNode select(SNode it) {
-            return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.localVariableDeclaration$O0D0), LINKS.initializer$KgD);
+            return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.localVariableDeclaration$cjR0), LINKS.initializer$no3R);
           }
         }), CONCEPTS.Quotation$UL)).first();
-        SNode l = Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$WIlu), LINKS.statement$WHn8), CONCEPTS.LocalVariableDeclarationStatement$BI)).select(new ISelector<SNode, SNode>() {
+        SNode l = Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$qspy), LINKS.statement$pYcS), CONCEPTS.LocalVariableDeclarationStatement$BI)).select(new ISelector<SNode, SNode>() {
           public SNode select(SNode it) {
-            return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.localVariableDeclaration$O0D0), LINKS.initializer$KgD);
+            return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.localVariableDeclaration$cjR0), LINKS.initializer$no3R);
           }
         }), CONCEPTS.NodeBuilder$Gb)).first();
         Assert.assertNotNull(q);
@@ -72,7 +72,7 @@ public class QuotationConverterTest_Test extends BaseTransformationTest {
         {
           List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), converted);
           List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), l);
-          Assert.assertTrue("converted quotation does not match light quotation in method " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.cast(SNodeOperations.getContainingRoot(method), CONCEPTS.INamedConcept$nV)) + "." + SPropertyOperations.getString(method, PROPS.name$tAp1), new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+          Assert.assertTrue("converted quotation does not match light quotation in method " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.cast(SNodeOperations.getContainingRoot(method), CONCEPTS.INamedConcept$nV)) + "." + SPropertyOperations.getString(method, PROPS.name$lA7v), new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
       }
     }
@@ -81,11 +81,11 @@ public class QuotationConverterTest_Test extends BaseTransformationTest {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink testMethods$jorf = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, 0x11b78c499b5L, "testMethods");
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink localVariableDeclaration$O0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink testMethods$oPch = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, 0x11b78c499b5L, "testMethods");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink localVariableDeclaration$cjR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 
   private static final class CONCEPTS {
@@ -96,6 +96,6 @@ public class QuotationConverterTest_Test extends BaseTransformationTest {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

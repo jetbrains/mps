@@ -248,7 +248,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
           @Override
           public SNode createNode(@NotNull String pattern) {
             SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x313a48d996236c93L, "jetbrains.mps.lang.editor.structure.PredefinedSelector"));
-            SPropertyOperations.assignEnum(result, PROPS.cellId$zRaJ, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1e02662c4b880a97L, "jetbrains.mps.lang.editor.structure.PredefinedCellID"), SEnumOperations.getMemberName0(myParameterObject)));
+            SPropertyOperations.assignEnum(result, PROPS.cellId$nIcL, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1e02662c4b880a97L, "jetbrains.mps.lang.editor.structure.PredefinedCellID"), SEnumOperations.getMemberName0(myParameterObject)));
             return result;
           }
 
@@ -435,6 +435,6 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cellId$zRaJ = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x313a48d996236c93L, 0x1e02662c4b881e34L, "cellId");
+    /*package*/ static final SProperty cellId$nIcL = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x313a48d996236c93L, 0x1e02662c4b881e34L, "cellId");
   }
 }

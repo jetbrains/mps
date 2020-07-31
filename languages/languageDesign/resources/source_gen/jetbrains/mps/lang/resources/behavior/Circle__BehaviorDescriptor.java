@@ -39,17 +39,17 @@ public final class Circle__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static byte[] getImageForGeneration_id2p1v3tObywX(@NotNull final SNode __thisNode__) {
     return IconCreationUtil.drawIcon(new Consumer<IconCreationUtil.DrawContext>() {
       public void consume(IconCreationUtil.DrawContext dc) {
-        int x = (int) (((float) dc.width) / 2 - Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$z1on)));
-        int y = (int) (((float) dc.height) / 2 - Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$z1on)));
-        int d = Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$z1on)) * 2;
+        int x = (int) (((float) dc.width) / 2 - Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$XEN9)));
+        int y = (int) (((float) dc.height) / 2 - Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$XEN9)));
+        int d = Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$XEN9)) * 2;
 
-        Color fillColor = new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fillColor$izv2)));
-        if ((SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$izEb) == null)) {
+        Color fillColor = new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fillColor$Zc1Y)));
+        if ((SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$Zhrl) == null)) {
           dc.g.setColor(fillColor);
           dc.g.fillOval(x, y, d, d);
         } else {
           // outer 
-          dc.g.setColor(new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$izEb))));
+          dc.g.setColor(new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$Zhrl))));
           dc.g.fillOval(x, y, d, d);
 
           // inner 
@@ -108,11 +108,11 @@ public final class Circle__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty r$z1on = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e60L, 0x26417c37742e28c1L, "r");
+    /*package*/ static final SProperty r$XEN9 = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e60L, 0x26417c37742e28c1L, "r");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink fillColor$izv2 = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c11L, "fillColor");
-    /*package*/ static final SContainmentLink borderColor$izEb = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c13L, "borderColor");
+    /*package*/ static final SContainmentLink fillColor$Zc1Y = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c11L, "fillColor");
+    /*package*/ static final SContainmentLink borderColor$Zhrl = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c13L, "borderColor");
   }
 }

@@ -25,7 +25,7 @@
       <node id="1214253504159" at="57,0,58,0" concept="5" trace="breakingNode_r7tp2g_a0a0a0a0a1a0a0a0c" />
       <node id="1214253504159" at="60,0,61,0" concept="5" trace="ValueReference$nL" />
       <node id="1214253504159" at="61,0,62,0" concept="5" trace="Plan$nk" />
-      <node id="1214253504159" at="65,0,66,0" concept="5" trace="value$$zFh" />
+      <node id="1214253504159" at="65,0,66,0" concept="5" trace="value$HhXf" />
       <node id="1214253504159" at="26,0,29,0" concept="0" trace="ValueReference_Constraints#()V" />
       <node id="1214253527472" at="33,0,37,0" concept="2" trace="hasOwnScopeProvider#()Z" />
       <node id="1214253527472" at="41,0,45,0" concept="2" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -73,8 +73,8 @@
       <node id="1214253593082" at="58,0,59,0" concept="5" trace="breakingNode_lcwlw6_a0a0a0a0a1a0a0a0c" />
       <node id="1214253593082" at="61,0,62,0" concept="5" trace="EventVariableReference$yc" />
       <node id="1214253593082" at="62,0,63,0" concept="5" trace="Event$mK" />
-      <node id="1214253593082" at="66,0,67,0" concept="5" trace="eventVariable$RqpJ" />
-      <node id="1214253593082" at="67,0,68,0" concept="5" trace="type$H9aD" />
+      <node id="1214253593082" at="66,0,67,0" concept="5" trace="eventVariable$PMtL" />
+      <node id="1214253593082" at="67,0,68,0" concept="5" trace="type$Rs9R" />
       <node id="1214253593082" at="27,0,30,0" concept="0" trace="EventVariableReference_Constraints#()V" />
       <node id="1214253599255" at="34,0,38,0" concept="2" trace="hasOwnScopeProvider#()Z" />
       <node id="1214253599255" at="42,0,46,0" concept="2" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />

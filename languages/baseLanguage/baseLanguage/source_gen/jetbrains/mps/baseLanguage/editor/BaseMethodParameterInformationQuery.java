@@ -29,7 +29,7 @@ public class BaseMethodParameterInformationQuery implements ParametersInformatio
     BaseMethodParameterInformationQueryUtil.fillPresentation(parameterObject, this.getSelectedActualArgument(editorContext), styledText);
   }
   public boolean isMethodCurrent(SNode node, EditorContext editorContext, SNode parameterObject) {
-    return SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$$A7i) == parameterObject;
+    return SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI) == parameterObject;
   }
   private SNode getSelectedActualArgument(EditorContext editorContext) {
     SNode selectedNode = editorContext.getSelectedNode();
@@ -38,7 +38,7 @@ public class BaseMethodParameterInformationQuery implements ParametersInformatio
     }
     return ListSequence.fromList(SNodeOperations.getNodeAncestors(selectedNode, CONCEPTS.Expression$TP, true)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.IMethodCall$ln) && Objects.equals(SNodeOperations.getContainingLink(it), LINKS.actualArgument$$A7L);
+        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.IMethodCall$ln) && Objects.equals(SNodeOperations.getContainingLink(it), LINKS.actualArgument$ItKJ);
       }
     });
   }
@@ -49,7 +49,7 @@ public class BaseMethodParameterInformationQuery implements ParametersInformatio
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 }

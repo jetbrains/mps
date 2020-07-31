@@ -48,15 +48,15 @@ public class MigratePropertyPatternVariables extends MigrationScriptBase {
         }
         @Override
         protected SNode getDeclaration(SNode usage) {
-          return SLinkOperations.getTarget(SLinkOperations.getTarget(usage, LINKS.variable$roBw), LINKS.declaration$$36A);
+          return SLinkOperations.getTarget(SLinkOperations.getTarget(usage, LINKS.variable$gV8w), LINKS.declaration$twcq);
         }
         @Override
         protected void migrateRawValue(SNode usage, SNode datatype) {
-          upgradeRawValueType(SLinkOperations.getTarget(usage, LINKS.value$roBZ), datatype);
+          upgradeRawValueType(SLinkOperations.getTarget(usage, LINKS.value$gVnx), datatype);
         }
         @Override
         protected void migrateEnumValue(SNode usage, SNode enumeration) {
-          upgradeEnumType(SLinkOperations.getTarget(usage, LINKS.value$roBZ), enumeration);
+          upgradeEnumType(SLinkOperations.getTarget(usage, LINKS.value$gVnx), enumeration);
         }
       }.migrate();
     }
@@ -73,8 +73,8 @@ public class MigratePropertyPatternVariables extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink variable$roBw = MetaAdapterFactory.getContainmentLink(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x15b423b3f8d042b6L, 0x15b423b3f8d042b7L, "variable");
-    /*package*/ static final SReferenceLink declaration$$36A = MetaAdapterFactory.getReferenceLink(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x15b423b3f8cfebb8L, 0x15b423b3f8cfebbeL, "declaration");
-    /*package*/ static final SContainmentLink value$roBZ = MetaAdapterFactory.getContainmentLink(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x15b423b3f8d042b6L, 0x15b423b3f8d042b8L, "value");
+    /*package*/ static final SContainmentLink variable$gV8w = MetaAdapterFactory.getContainmentLink(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x15b423b3f8d042b6L, 0x15b423b3f8d042b7L, "variable");
+    /*package*/ static final SReferenceLink declaration$twcq = MetaAdapterFactory.getReferenceLink(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x15b423b3f8cfebb8L, 0x15b423b3f8cfebbeL, "declaration");
+    /*package*/ static final SContainmentLink value$gVnx = MetaAdapterFactory.getContainmentLink(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x15b423b3f8d042b6L, 0x15b423b3f8d042b8L, "value");
   }
 }

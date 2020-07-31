@@ -26,7 +26,7 @@ public class DeleteCustomizes {
         if (DeletionApproverUtil.approve(editorContext, node, "customizingCollection")) {
           return;
         }
-        SLinkOperations.setTarget(node, LINKS.customizes$a6Ia, null);
+        SLinkOperations.setTarget(node, LINKS.customizes$TgmQ, null);
       }
 
     };
@@ -74,6 +74,6 @@ public class DeleteCustomizes {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink customizes$a6Ia = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0xcfa085c9af881f8L, "customizes");
+    /*package*/ static final SContainmentLink customizes$TgmQ = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0xcfa085c9af881f8L, "customizes");
   }
 }

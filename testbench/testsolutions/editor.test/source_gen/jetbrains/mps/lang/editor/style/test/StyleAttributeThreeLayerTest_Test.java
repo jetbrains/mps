@@ -45,10 +45,10 @@ public class StyleAttributeThreeLayerTest_Test extends BaseTransformationTest {
       getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
         public void run() {
           SNode root = SNodeOperations.cast(getEditorComponent().getEditedNode(), CONCEPTS.NodeContainer$3D);
-          SNode huge = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$_a4Q)).getElement(0);
-          SNode priority = ListSequence.fromList(SLinkOperations.getChildren(huge, LINKS.node$_a4Q)).getElement(0);
-          SNode unapplyPriority = ListSequence.fromList(SLinkOperations.getChildren(priority, LINKS.node$_a4Q)).getElement(0);
-          SNode leaf = ListSequence.fromList(SLinkOperations.getChildren(unapplyPriority, LINKS.node$_a4Q)).getElement(0);
+          SNode huge = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$ZSma)).getElement(0);
+          SNode priority = ListSequence.fromList(SLinkOperations.getChildren(huge, LINKS.node$ZSma)).getElement(0);
+          SNode unapplyPriority = ListSequence.fromList(SLinkOperations.getChildren(priority, LINKS.node$ZSma)).getElement(0);
+          SNode leaf = ListSequence.fromList(SLinkOperations.getChildren(unapplyPriority, LINKS.node$ZSma)).getElement(0);
 
 
           Assert.assertEquals(getEditorComponent().findNodeCell(root).getStyle().get(StyleAttributes.getInstance().<String>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-inherited-attribute")), "top");
@@ -66,6 +66,6 @@ public class StyleAttributeThreeLayerTest_Test extends BaseTransformationTest {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink node$_a4Q = MetaAdapterFactory.getContainmentLink(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL, 0x74e28664f05605aeL, "node");
+    /*package*/ static final SContainmentLink node$ZSma = MetaAdapterFactory.getContainmentLink(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL, 0x74e28664f05605aeL, "node");
   }
 }

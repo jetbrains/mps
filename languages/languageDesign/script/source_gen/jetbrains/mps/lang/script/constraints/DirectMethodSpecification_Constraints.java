@@ -35,7 +35,7 @@ public class DirectMethodSpecification_Constraints extends BaseConstraintsDescri
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.methodDeclaration$4Hf0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.methodDeclaration$hUh0, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -51,9 +51,9 @@ public class DirectMethodSpecification_Constraints extends BaseConstraintsDescri
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode ancestor = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ExtractInterfaceMigration$at, true, false);
-            SNode classifierSpecification = SNodeOperations.as(SLinkOperations.getTarget(ancestor, LINKS.oldClassifier$h5yg), CONCEPTS.DirectClassifierSpecification$RM);
+            SNode classifierSpecification = SNodeOperations.as(SLinkOperations.getTarget(ancestor, LINKS.oldClassifier$hF_K), CONCEPTS.DirectClassifierSpecification$RM);
             if (classifierSpecification != null) {
-              return new SimpleScope(ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(SLinkOperations.getTarget(classifierSpecification, LINKS.classifier$udFV))).where(new IWhereFilter<SNode>() {
+              return new SimpleScope(ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(SLinkOperations.getTarget(classifierSpecification, LINKS.classifier$CCh_))).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
                   return SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$An);
                 }
@@ -84,8 +84,8 @@ public class DirectMethodSpecification_Constraints extends BaseConstraintsDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink methodDeclaration$4Hf0 = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x1fcdfeb518c43583L, 0x1fcdfeb518c43c59L, "methodDeclaration");
-    /*package*/ static final SContainmentLink oldClassifier$h5yg = MetaAdapterFactory.getContainmentLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x5c5c941438573499L, 0x4b6b6d7b2a62097fL, "oldClassifier");
-    /*package*/ static final SReferenceLink classifier$udFV = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638d23L, 0x4b6b6d7b2a638e5dL, "classifier");
+    /*package*/ static final SReferenceLink methodDeclaration$hUh0 = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x1fcdfeb518c43583L, 0x1fcdfeb518c43c59L, "methodDeclaration");
+    /*package*/ static final SContainmentLink oldClassifier$hF_K = MetaAdapterFactory.getContainmentLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x5c5c941438573499L, 0x4b6b6d7b2a62097fL, "oldClassifier");
+    /*package*/ static final SReferenceLink classifier$CCh_ = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638d23L, 0x4b6b6d7b2a638e5dL, "classifier");
   }
 }

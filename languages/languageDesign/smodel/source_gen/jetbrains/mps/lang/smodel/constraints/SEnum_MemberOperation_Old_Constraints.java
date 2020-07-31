@@ -31,7 +31,7 @@ public class SEnum_MemberOperation_Old_Constraints extends BaseConstraintsDescri
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.member$COZ0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.member$LEx0, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -47,9 +47,9 @@ public class SEnum_MemberOperation_Old_Constraints extends BaseConstraintsDescri
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             final SNode enclosingNode = (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode())));
-            SNode enumNode = (SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.SEnumOperationInvocation$$b) ? SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.SEnumOperationInvocation$$b), LINKS.enumDeclaration$JNaw) : null);
+            SNode enumNode = (SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.SEnumOperationInvocation$$b) ? SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.SEnumOperationInvocation$$b), LINKS.enumDeclaration$9M5w) : null);
             if (enumNode != null) {
-              return ListScope.forResolvableElements(SLinkOperations.getChildren(enumNode, LINKS.member$_cRv));
+              return ListScope.forResolvableElements(SLinkOperations.getChildren(enumNode, LINKS.member$1eS1));
             }
             return ListScope.forResolvableElements(new ArrayList<SNode>());
           }
@@ -68,8 +68,8 @@ public class SEnum_MemberOperation_Old_Constraints extends BaseConstraintsDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink member$COZ0 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e691L, 0x120ed37e692L, "member");
-    /*package*/ static final SReferenceLink enumDeclaration$JNaw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed32e98bL, 0x120ed32e98cL, "enumDeclaration");
-    /*package*/ static final SContainmentLink member$_cRv = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc32151efeL, "member");
+    /*package*/ static final SReferenceLink member$LEx0 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e691L, 0x120ed37e692L, "member");
+    /*package*/ static final SReferenceLink enumDeclaration$9M5w = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed32e98bL, 0x120ed32e98cL, "enumDeclaration");
+    /*package*/ static final SContainmentLink member$1eS1 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc32151efeL, "member");
   }
 }

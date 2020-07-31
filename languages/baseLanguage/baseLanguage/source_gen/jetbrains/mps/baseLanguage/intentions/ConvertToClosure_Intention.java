@@ -48,11 +48,11 @@ public final class ConvertToClosure_Intention extends AbstractIntentionDescripto
     if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(newExpression), CONCEPTS.BaseMethodCall$S9))) {
       return false;
     }
-    if (!(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(newExpression), CONCEPTS.BaseMethodCall$S9), LINKS.actualArgument$$A7L)).contains(newExpression))) {
+    if (!(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(newExpression), CONCEPTS.BaseMethodCall$S9), LINKS.actualArgument$ItKJ)).contains(newExpression))) {
       return false;
     }
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.classifier$1y5e), CONCEPTS.Interface$Kp)) {
-      SNode parentInterface = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.classifier$1y5e), CONCEPTS.Interface$Kp);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.classifier$JwxM), CONCEPTS.Interface$Kp)) {
+      SNode parentInterface = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.classifier$JwxM), CONCEPTS.Interface$Kp);
       return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(parentInterface)).count() == 1;
     }
     return false;
@@ -78,10 +78,10 @@ public final class ConvertToClosure_Intention extends AbstractIntentionDescripto
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode closureLiteral = SNodeFactoryOperations.createNewNode(CONCEPTS.ClosureLiteral$zJ, null);
       if (Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(node)).isNotEmpty()) {
-        SLinkOperations.setTarget(closureLiteral, LINKS.body$DJEC, SLinkOperations.getTarget(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(node)).first(), LINKS.body$WIlu));
+        SLinkOperations.setTarget(closureLiteral, LINKS.body$e5Do, SLinkOperations.getTarget(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(node)).first(), LINKS.body$qspy));
       }
-      SNode method = Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.classifier$1y5e), CONCEPTS.Interface$Kp))).first();
-      ListSequence.fromList(SLinkOperations.getChildren(closureLiteral, LINKS.parameter$WRt7)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)));
+      SNode method = Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.classifier$JwxM), CONCEPTS.Interface$Kp))).first();
+      ListSequence.fromList(SLinkOperations.getChildren(closureLiteral, LINKS.parameter$uR6p)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)));
       SNodeOperations.replaceWithAnother(SNodeOperations.getNodeAncestor(node, CONCEPTS.GenericNewExpression$ev, false, false), closureLiteral);
     }
     @Override
@@ -98,11 +98,11 @@ public final class ConvertToClosure_Intention extends AbstractIntentionDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SReferenceLink classifier$1y5e = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
-    /*package*/ static final SContainmentLink body$DJEC = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink parameter$WRt7 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SContainmentLink body$e5Do = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink parameter$uR6p = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 }

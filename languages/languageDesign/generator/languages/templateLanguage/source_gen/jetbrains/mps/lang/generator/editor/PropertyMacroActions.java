@@ -29,7 +29,7 @@ public class PropertyMacroActions {
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode attributedNode = SNodeOperations.getParent(node);
         SNodeOperations.deleteNode(node);
-        SelectionUtil.selectCell(editorContext, attributedNode, "*" + CellIdManager.createPropertyId(SPropertyOperations.getString(SNodeOperations.as(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(node).getDeclarationNode(), CONCEPTS.PropertyDeclaration$c5), PROPS.name$tAp1)));
+        SelectionUtil.selectCell(editorContext, attributedNode, "*" + CellIdManager.createPropertyId(SPropertyOperations.getString(SNodeOperations.as(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(node).getDeclarationNode(), CONCEPTS.PropertyDeclaration$c5), PROPS.name$lA7v)));
       }
 
     };
@@ -81,6 +81,6 @@ public class PropertyMacroActions {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

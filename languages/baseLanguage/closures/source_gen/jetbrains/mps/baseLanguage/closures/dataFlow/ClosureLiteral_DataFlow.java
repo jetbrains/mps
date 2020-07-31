@@ -12,12 +12,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ClosureLiteral_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    for (SNode var : StatementList__BehaviorDescriptor.getExternalVariablesDeclarations_idhF5UhAC.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.body$DJEC))) {
+    for (SNode var : StatementList__BehaviorDescriptor.getExternalVariablesDeclarations_idhF5UhAC.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.body$e5Do))) {
       _context.getBuilder().emitRead(var, "r:00000000-0000-4000-0000-011c89590335(jetbrains.mps.baseLanguage.closures.dataFlow)/1216727098945");
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$DJEC = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
+    /*package*/ static final SContainmentLink body$e5Do = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
   }
 }

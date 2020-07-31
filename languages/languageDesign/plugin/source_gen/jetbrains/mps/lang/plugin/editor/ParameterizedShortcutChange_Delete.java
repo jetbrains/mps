@@ -24,7 +24,7 @@ public class ParameterizedShortcutChange_Delete {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SPropertyOperations.assignEnum(node, PROPS.change$9SAz, SEnumOperations.getMemberForPresentation(MetaAdapterFactory.getEnumeration(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5e2b603c8f036668L, "jetbrains.mps.lang.plugin.structure.KeyMapChange"), null));
+        SPropertyOperations.assignEnum(node, PROPS.change$MqEX, SEnumOperations.getMemberForPresentation(MetaAdapterFactory.getEnumeration(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5e2b603c8f036668L, "jetbrains.mps.lang.plugin.structure.KeyMapChange"), null));
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, "body", -1);
       }
 
@@ -73,6 +73,6 @@ public class ParameterizedShortcutChange_Delete {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty change$9SAz = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x55f30a5d1e096c3aL, 0x891afc3310a2b8aL, "change");
+    /*package*/ static final SProperty change$MqEX = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x55f30a5d1e096c3aL, 0x891afc3310a2b8aL, "change");
   }
 }

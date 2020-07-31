@@ -74,7 +74,7 @@ public class add_comparator_to_treeset_creator extends TransformationMenuBase {
   public class TMP_Group_mmx2q4_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.initSize$vxGw) == null) && (SLinkOperations.getTarget(_context.getNode(), LINKS.copyFrom$oKp$) == null) && (SLinkOperations.getTarget(_context.getNode(), LINKS.comparator$Seq8) == null);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.initSize$hkzw) == null) && (SLinkOperations.getTarget(_context.getNode(), LINKS.copyFrom$Zsos) == null) && (SLinkOperations.getTarget(_context.getNode(), LINKS.comparator$eYDS) == null);
     }
 
     @NotNull
@@ -130,7 +130,7 @@ public class add_comparator_to_treeset_creator extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.setTarget(_context.getNode(), LINKS.comparator$Seq8, _quotation_createNode_mmx2q4_a0a0a0a0a0(SNodeOperations.copyNode(SLinkOperations.getTarget(_context.getNode(), LINKS.elementType$K4zo)), SNodeOperations.copyNode(SLinkOperations.getTarget(_context.getNode(), LINKS.elementType$K4zo)))), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.setTarget(_context.getNode(), LINKS.comparator$eYDS, _quotation_createNode_mmx2q4_a0a0a0a0a0(SNodeOperations.copyNode(SLinkOperations.getTarget(_context.getNode(), LINKS.elementType$id8C)), SNodeOperations.copyNode(SLinkOperations.getTarget(_context.getNode(), LINKS.elementType$id8C)))), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
@@ -186,9 +186,9 @@ public class add_comparator_to_treeset_creator extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink comparator$Seq8 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4838d33L, 0x1f622b3701eae8beL, "comparator");
-    /*package*/ static final SContainmentLink initSize$vxGw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x15ae66cec05cb2eaL, "initSize");
-    /*package*/ static final SContainmentLink copyFrom$oKp$ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202e9082e6L, "copyFrom");
-    /*package*/ static final SContainmentLink elementType$K4zo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
+    /*package*/ static final SContainmentLink comparator$eYDS = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4838d33L, 0x1f622b3701eae8beL, "comparator");
+    /*package*/ static final SContainmentLink initSize$hkzw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x15ae66cec05cb2eaL, "initSize");
+    /*package*/ static final SContainmentLink copyFrom$Zsos = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202e9082e6L, "copyFrom");
+    /*package*/ static final SContainmentLink elementType$id8C = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
   }
 }

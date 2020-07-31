@@ -27,15 +27,15 @@ public class SubstTestRoot_CustomMultipleInsertAction {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode child = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c352dL, "jetbrains.mps.lang.editor.editorTest.structure.SubstTestBooleanPropertyChild"));
-        SPropertyOperations.assign(child, PROPS.myProperty$b9XD, true);
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.multiChildWithCustomInsert$D7$h)).addElement(child);
+        SPropertyOperations.assign(child, PROPS.myProperty$pOQR, true);
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.multiChildWithCustomInsert$UE$f)).addElement(child);
       }
       @Override
       public boolean canExecute(EditorContext editorContext) {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.multiChildWithCustomInsert$D7$h)).isEmpty();
+        return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.multiChildWithCustomInsert$UE$f)).isEmpty();
       }
 
     };
@@ -83,10 +83,10 @@ public class SubstTestRoot_CustomMultipleInsertAction {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty myProperty$b9XD = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c352dL, 0xd4944c0b03c7179L, "myProperty");
+    /*package*/ static final SProperty myProperty$pOQR = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c352dL, 0xd4944c0b03c7179L, "myProperty");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink multiChildWithCustomInsert$D7$h = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c33b7L, 0x8958eefaab8ad96L, "multiChildWithCustomInsert");
+    /*package*/ static final SContainmentLink multiChildWithCustomInsert$UE$f = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c33b7L, 0x8958eefaab8ad96L, "multiChildWithCustomInsert");
   }
 }

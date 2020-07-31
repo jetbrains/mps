@@ -94,10 +94,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_vgxjtu_a1a() {
-    return !(SPropertyOperations.hasValue(myNode, PROPS.label$Tq0W, null));
+    return !(SPropertyOperations.hasValue(myNode, PROPS.label$NAt4, null));
   }
   private boolean nodeCondition_vgxjtu_a2a() {
-    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(myNode, LINKS.loopLabelReference$m7OF)).isNotEmpty();
+    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(myNode, LINKS.loopLabelReference$HMwP)).isNotEmpty();
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "continue");
@@ -122,7 +122,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.label$Tq0W;
+      final SProperty property = PROPS.label$NAt4;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no label>");
@@ -170,7 +170,7 @@ __switch__:
                         assert false : "Internal error";
                         return false;
                       case 2:
-                        if (!(SPropertyOperations.hasValue(it, PROPS.label$5$eZ, null))) {
+                        if (!(SPropertyOperations.hasValue(it, PROPS.label$Gzgx, null))) {
                           this.__CP__ = 3;
                           break;
                         }
@@ -178,7 +178,7 @@ __switch__:
                         break;
                       case 4:
                         this.__CP__ = 1;
-                        this.yield(SPropertyOperations.getString(it, PROPS.label$5$eZ));
+                        this.yield(SPropertyOperations.getString(it, PROPS.label$Gzgx));
                         return true;
                       case 0:
                         this.__CP__ = 2;
@@ -202,7 +202,7 @@ __switch__:
       this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
     }
     public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.set(node, PROPS.label$Tq0W, parameterObject);
+      SPropertyOperations.set(node, PROPS.label$NAt4, parameterObject);
     }
     public boolean isReferentPresentation() {
       return false;
@@ -223,7 +223,7 @@ __switch__:
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new loopLabelReferenceSingleRoleHandler_vgxjtu_a2a(myNode, LINKS.loopLabelReference$m7OF, getEditorContext());
+    SingleRoleCellProvider provider = new loopLabelReferenceSingleRoleHandler_vgxjtu_a2a(myNode, LINKS.loopLabelReference$HMwP, getEditorContext());
     return provider.createCell();
   }
   private static class loopLabelReferenceSingleRoleHandler_vgxjtu_a2a extends SingleRoleCellProvider {
@@ -243,8 +243,8 @@ __switch__:
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.loopLabelReference$m7OF, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.loopLabelReference$m7OF, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.loopLabelReference$HMwP, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.loopLabelReference$HMwP, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -256,7 +256,7 @@ __switch__:
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.loopLabelReference$m7OF);
+        editorCell.setSRole(LINKS.loopLabelReference$HMwP);
       }
       Style style = new StyleImpl();
       new VariableNameStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
@@ -265,7 +265,7 @@ __switch__:
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.loopLabelReference$m7OF));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.loopLabelReference$HMwP));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_loopLabelReference");
@@ -291,12 +291,12 @@ __switch__:
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty label$Tq0W = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, 0x11745fca58eL, "label");
-    /*package*/ static final SProperty label$5$eZ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x11745b5371dL, "label");
+    /*package*/ static final SProperty label$NAt4 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, 0x11745fca58eL, "label");
+    /*package*/ static final SProperty label$Gzgx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x11745b5371dL, "label");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink loopLabelReference$m7OF = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, 0x7dae85d6eb43bbbdL, "loopLabelReference");
+    /*package*/ static final SContainmentLink loopLabelReference$HMwP = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, 0x7dae85d6eb43bbbdL, "loopLabelReference");
   }
 
   private static final class CONCEPTS {

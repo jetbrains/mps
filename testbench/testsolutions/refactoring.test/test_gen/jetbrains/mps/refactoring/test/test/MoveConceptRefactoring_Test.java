@@ -246,7 +246,7 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
       }
     }, new _FunctionTypes._return_P0_E0<MoveNodesUtil.NodeCreatingProcessor>() {
       public MoveNodesUtil.NodeCreatingProcessor invoke() {
-        return new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationChild(getConcept_PropertySupercontainer(), LINKS.propertyDeclaration$lL73), project);
+        return new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationChild(getConcept_PropertySupercontainer(), LINKS.propertyDeclaration$yMqt), project);
       }
     }, new _FunctionTypes._void_P0_E0() {
       public void invoke() {
@@ -294,7 +294,7 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
       }
     }, new _FunctionTypes._return_P0_E0<MoveNodesUtil.NodeCreatingProcessor>() {
       public MoveNodesUtil.NodeCreatingProcessor invoke() {
-        return new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationChild(getConcept_PropertySupercontainer(), LINKS.propertyDeclaration$lL73), project);
+        return new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationChild(getConcept_PropertySupercontainer(), LINKS.propertyDeclaration$yMqt), project);
       }
     }, new _FunctionTypes._void_P0_E0() {
       public void invoke() {
@@ -581,6 +581,6 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink propertyDeclaration$lL73 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
+    /*package*/ static final SContainmentLink propertyDeclaration$yMqt = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
   }
 }

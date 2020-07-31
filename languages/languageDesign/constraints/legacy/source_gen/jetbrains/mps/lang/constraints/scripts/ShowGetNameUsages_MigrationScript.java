@@ -35,7 +35,7 @@ public final class ShowGetNameUsages_MigrationScript extends BaseMigrationScript
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return Objects.equals(SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.applicableProperty$j$lM), PROPS.name$tAp1), "name");
+        return Objects.equals(SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.applicableProperty$uAze), PROPS.name$lA7v), "name");
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
@@ -58,10 +58,10 @@ public final class ShowGetNameUsages_MigrationScript extends BaseMigrationScript
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableProperty$j$lM = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a5eaa48L, 0x10b2a61697bL, "applicableProperty");
+    /*package*/ static final SReferenceLink applicableProperty$uAze = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a5eaa48L, 0x10b2a61697bL, "applicableProperty");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

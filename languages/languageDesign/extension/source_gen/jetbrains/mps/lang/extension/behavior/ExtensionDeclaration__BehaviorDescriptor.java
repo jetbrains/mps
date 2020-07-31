@@ -34,7 +34,7 @@ public final class ExtensionDeclaration__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static String getJavaName_id4y_vFkED6Yj(@NotNull SNode __thisNode__) {
-    return "Extension_" + NameUtil.toValidIdentifier(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.extensionPoint$Bcyw), PROPS.extensionName$dcP2));
+    return "Extension_" + NameUtil.toValidIdentifier(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.extensionPoint$Z4Hw), PROPS.extensionName$pdFY));
   }
 
   /*package*/ ExtensionDeclaration__BehaviorDescriptor() {
@@ -84,10 +84,10 @@ public final class ExtensionDeclaration__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extensionPoint$Bcyw = MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d4L, 0x33c018482cafa9d5L, "extensionPoint");
+    /*package*/ static final SReferenceLink extensionPoint$Z4Hw = MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d4L, 0x33c018482cafa9d5L, "extensionPoint");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty extensionName$dcP2 = MetaAdapterFactory.getProperty(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x520ae19dd2771b96L, "extensionName");
+    /*package*/ static final SProperty extensionName$pdFY = MetaAdapterFactory.getProperty(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x520ae19dd2771b96L, "extensionName");
   }
 }

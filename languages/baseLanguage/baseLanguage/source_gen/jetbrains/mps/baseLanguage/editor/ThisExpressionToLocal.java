@@ -54,7 +54,7 @@ public class ThisExpressionToLocal extends KeyMapImpl {
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       SNode dot = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a);
-      SNode operation = SLinkOperations.getTarget(dot, LINKS.operation$X4R8);
+      SNode operation = SLinkOperations.getTarget(dot, LINKS.operation$_mGS);
       if (SNodeOperations.isInstanceOf(operation, CONCEPTS.FieldReferenceOperation$N8)) {
         SNode fieldRef = SNodeOperations.cast(operation, CONCEPTS.FieldReferenceOperation$N8);
         if ((boolean) FieldReferenceOperation__BehaviorDescriptor.canBeConvertedToLocal_id4APqwMfC3hI.invoke(fieldRef)) {
@@ -83,6 +83,6 @@ public class ThisExpressionToLocal extends KeyMapImpl {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 }

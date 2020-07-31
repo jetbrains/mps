@@ -22,11 +22,11 @@ public class typeof_SConceptTypeCastExpression_InferenceRule extends AbstractInf
   public typeof_SConceptTypeCastExpression_InferenceRule() {
   }
   public void applyRule(final SNode expr, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(expr, LINKS.concept$NIQI) != null)) {
+    if ((SLinkOperations.getTarget(expr, LINKS.concept$3Gwi) != null)) {
       {
         SNode _nodeToCheck_1029348928467 = expr;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1761385620275547228", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1761385620275547230", true), (SNode) _quotation_createNode_er6fd1_a1a0c0a0a0b(SLinkOperations.getTarget(expr, LINKS.concept$NIQI)), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1761385620275547230", true), (SNode) _quotation_createNode_er6fd1_a1a0c0a0a0b(SLinkOperations.getTarget(expr, LINKS.concept$3Gwi)), _info_12389875345);
       }
     } else {
       final SNode C_typevar_5375498624329446012 = typeCheckingContext.createNewRuntimeTypesVariable();
@@ -36,7 +36,7 @@ public class typeof_SConceptTypeCastExpression_InferenceRule extends AbstractInf
         typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "5375498624329442854", true), (SNode) _quotation_createNode_er6fd1_a1a0c0b0a0a1(typeCheckingContext.getRepresentative(C_typevar_5375498624329446012)), _info_12389875345);
       }
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(expr, LINKS.conceptArgument$N8Tv);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(expr, LINKS.conceptArgument$LjQ1);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "5375498624329449624", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "5375498624329449627", true), (SNode) _quotation_createNode_er6fd1_a1a0c0c0a0a1(typeCheckingContext.getRepresentative(C_typevar_5375498624329446012)), false, true, _info_12389875345);
       }
@@ -44,7 +44,7 @@ public class typeof_SConceptTypeCastExpression_InferenceRule extends AbstractInf
     {
       SNode _nodeToCheck_1029348928467 = expr;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1761385620275547256", 0, null);
-      typeCheckingContext.createComparableEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1761385620275547260", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(expr, LINKS.leftExpression$NqCX), "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1761385620275547218", true), false, _info_12389875345);
+      typeCheckingContext.createComparableEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1761385620275547260", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(expr, LINKS.leftExpression$TTPz), "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1761385620275547218", true), false, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -79,9 +79,9 @@ public class typeof_SConceptTypeCastExpression_InferenceRule extends AbstractInf
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$NIQI = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67ce04L, "concept");
-    /*package*/ static final SContainmentLink conceptArgument$N8Tv = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x3636a984eed504f9L, "conceptArgument");
-    /*package*/ static final SContainmentLink leftExpression$NqCX = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67cd19L, "leftExpression");
+    /*package*/ static final SReferenceLink concept$3Gwi = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67ce04L, "concept");
+    /*package*/ static final SContainmentLink conceptArgument$LjQ1 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x3636a984eed504f9L, "conceptArgument");
+    /*package*/ static final SContainmentLink leftExpression$TTPz = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67cd19L, "leftExpression");
   }
 
   private static final class CONCEPTS {

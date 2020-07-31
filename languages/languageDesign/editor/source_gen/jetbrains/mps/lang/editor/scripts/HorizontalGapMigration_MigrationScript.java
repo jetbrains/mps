@@ -40,7 +40,7 @@ public final class HorizontalGapMigration_MigrationScript extends BaseMigrationS
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return SPropertyOperations.getString(node, PROPS.value$F1Ij).equals("1.0") || SPropertyOperations.getString(node, PROPS.value$F1Ij).equals("1.");
+        return SPropertyOperations.getString(node, PROPS.value$PPrd).equals("1.0") || SPropertyOperations.getString(node, PROPS.value$PPrd).equals("1.");
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
@@ -66,7 +66,7 @@ public final class HorizontalGapMigration_MigrationScript extends BaseMigrationS
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return SPropertyOperations.getString(node, PROPS.value$F1Ij).equals("1.0") || SPropertyOperations.getString(node, PROPS.value$F1Ij).equals("1.");
+        return SPropertyOperations.getString(node, PROPS.value$PPrd).equals("1.0") || SPropertyOperations.getString(node, PROPS.value$PPrd).equals("1.");
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
@@ -92,12 +92,12 @@ public final class HorizontalGapMigration_MigrationScript extends BaseMigrationS
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return SPropertyOperations.getBoolean(node, PROPS.flag$7rl) == false;
+        return SPropertyOperations.getBoolean(node, PROPS.flag$3Afb) == false;
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
         SNode newNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11f41c44bf7L, "jetbrains.mps.lang.editor.structure.PunctuationLeftStyleClassItem"));
-        SPropertyOperations.assign(newNode, PROPS.flag$7rl, true);
+        SPropertyOperations.assign(newNode, PROPS.flag$3Afb, true);
         SNodeOperations.replaceWithAnother(node, newNode);
       }
       @Override
@@ -121,12 +121,12 @@ public final class HorizontalGapMigration_MigrationScript extends BaseMigrationS
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
         List<SNode> paddingRight = IStyleContainer__BehaviorDescriptor.getClassItems_idhJF5KPu.invoke(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.IStyleContainer$fN), CONCEPTS.PaddingRightStyleClassItem$RM);
-        return SPropertyOperations.getBoolean(node, PROPS.flag$7rl) == false && ListSequence.fromList(paddingRight).isNotEmpty();
+        return SPropertyOperations.getBoolean(node, PROPS.flag$3Afb) == false && ListSequence.fromList(paddingRight).isNotEmpty();
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
         SNode newNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11f41c727e1L, "jetbrains.mps.lang.editor.structure.PunctuationRightStyleClassItem"));
-        SPropertyOperations.assign(newNode, PROPS.flag$7rl, true);
+        SPropertyOperations.assign(newNode, PROPS.flag$3Afb, true);
         SNodeOperations.replaceWithAnother(node, newNode);
       }
       @Override
@@ -149,18 +149,18 @@ public final class HorizontalGapMigration_MigrationScript extends BaseMigrationS
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return SPropertyOperations.getBoolean(node, PROPS.flag$7rl) == false;
+        return SPropertyOperations.getBoolean(node, PROPS.flag$3Afb) == false;
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
         List<SNode> paddingRigth = IStyleContainer__BehaviorDescriptor.getClassItems_idhJF5KPu.invoke(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.IStyleContainer$fN), CONCEPTS.PaddingRightStyleClassItem$RM);
         if (ListSequence.fromList(paddingRigth).isNotEmpty()) {
           SNode newNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11f41c727e1L, "jetbrains.mps.lang.editor.structure.PunctuationRightStyleClassItem"));
-          SPropertyOperations.assign(newNode, PROPS.flag$7rl, true);
+          SPropertyOperations.assign(newNode, PROPS.flag$3Afb, true);
           SNodeOperations.insertNextSiblingChild(node, newNode);
         }
         SNode newNode2 = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11f41c44bf7L, "jetbrains.mps.lang.editor.structure.PunctuationLeftStyleClassItem"));
-        SPropertyOperations.assign(newNode2, PROPS.flag$7rl, true);
+        SPropertyOperations.assign(newNode2, PROPS.flag$3Afb, true);
         SNodeOperations.insertNextSiblingChild(node, newNode2);
       }
       @Override
@@ -189,7 +189,7 @@ public final class HorizontalGapMigration_MigrationScript extends BaseMigrationS
             return true;
           }
           if (SNodeOperations.isInstanceOf(prev, CONCEPTS.CellModel_RefCell$VD)) {
-            if (ListSequence.fromList(IStyleContainer__BehaviorDescriptor.getClassItems_idhJF5KPu.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(prev, CONCEPTS.CellModel_RefCell$VD), LINKS.editorComponent$36e$), LINKS.cellModel$3wIV), CONCEPTS.PaddingRightStyleClassItem$RM)).isNotEmpty()) {
+            if (ListSequence.fromList(IStyleContainer__BehaviorDescriptor.getClassItems_idhJF5KPu.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(prev, CONCEPTS.CellModel_RefCell$VD), LINKS.editorComponent$w13s), LINKS.cellModel$GQI_), CONCEPTS.PaddingRightStyleClassItem$RM)).isNotEmpty()) {
               return true;
             }
           }
@@ -199,8 +199,8 @@ public final class HorizontalGapMigration_MigrationScript extends BaseMigrationS
       @Override
       public void doUpdateInstanceNode(SNode node) {
         SNode newNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11f41c44bf7L, "jetbrains.mps.lang.editor.structure.PunctuationLeftStyleClassItem"));
-        SPropertyOperations.assign(newNode, PROPS.flag$7rl, true);
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.styleItem$$mEY)).addElement(newNode);
+        SPropertyOperations.assign(newNode, PROPS.flag$3Afb, true);
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.styleItem$AYO2)).addElement(newNode);
       }
       @Override
       public boolean isShowAsIntention() {
@@ -229,13 +229,13 @@ public final class HorizontalGapMigration_MigrationScript extends BaseMigrationS
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$F1Ij = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41b27e5L, 0x11ae41bc2afL, "value");
-    /*package*/ static final SProperty flag$7rl = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x1143bd161dbL, "flag");
+    /*package*/ static final SProperty value$PPrd = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41b27e5L, 0x11ae41bc2afL, "value");
+    /*package*/ static final SProperty flag$3Afb = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x1143bd161dbL, "flag");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink editorComponent$36e$ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, 0xfd5cf2df2aL, "editorComponent");
-    /*package*/ static final SContainmentLink cellModel$3wIV = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
-    /*package*/ static final SContainmentLink styleItem$$mEY = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
+    /*package*/ static final SContainmentLink editorComponent$w13s = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, 0xfd5cf2df2aL, "editorComponent");
+    /*package*/ static final SContainmentLink cellModel$GQI_ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
+    /*package*/ static final SContainmentLink styleItem$AYO2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
   }
 }

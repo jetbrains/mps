@@ -149,10 +149,10 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
           @Override
           public SNode createNode(@NotNull String pattern) {
             SNode newNode = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ThisConstructorInvocation$XM, null);
-            SLinkOperations.setTarget(newNode, LINKS.baseMethodDeclaration$$A7i, myParameterObject);
+            SLinkOperations.setTarget(newNode, LINKS.baseMethodDeclaration$ItxI, myParameterObject);
             if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.ThisConstructorInvocation$XM)) {
-              for (SNode argument : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(_context.getCurrentTargetNode(), CONCEPTS.ThisConstructorInvocation$XM), LINKS.actualArgument$$A7L))) {
-                ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.actualArgument$$A7L)).addElement(argument);
+              for (SNode argument : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(_context.getCurrentTargetNode(), CONCEPTS.ThisConstructorInvocation$XM), LINKS.actualArgument$ItKJ))) {
+                ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.actualArgument$ItKJ)).addElement(argument);
               }
             }
             return newNode;
@@ -209,9 +209,9 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
       @Override
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
         SNode thisConcept = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ClassConcept$IY, false, false);
-        SNode superClass = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(thisConcept, LINKS.superclass$_pqe), LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY);
+        SNode superClass = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(thisConcept, LINKS.superclass$7jGM), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY);
         if (superClass == null) {
-          superClass = SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_8p1vjw_a0a0a0c0a1a(), LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY);
+          superClass = SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_8p1vjw_a0a0a0c0a1a(), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY);
         }
         return ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(superClass);
       }
@@ -260,10 +260,10 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
           @Override
           public SNode createNode(@NotNull String pattern) {
             SNode newNode = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SuperConstructorInvocation$48, null);
-            SLinkOperations.setTarget(newNode, LINKS.baseMethodDeclaration$$A7i, myParameterObject);
+            SLinkOperations.setTarget(newNode, LINKS.baseMethodDeclaration$ItxI, myParameterObject);
             if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.SuperConstructorInvocation$48)) {
-              for (SNode argument : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(_context.getCurrentTargetNode(), CONCEPTS.SuperConstructorInvocation$48), LINKS.actualArgument$$A7L))) {
-                ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.actualArgument$$A7L)).addElement(argument);
+              for (SNode argument : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(_context.getCurrentTargetNode(), CONCEPTS.SuperConstructorInvocation$48), LINKS.actualArgument$ItKJ))) {
+                ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.actualArgument$ItKJ)).addElement(argument);
               }
             }
             return newNode;
@@ -316,9 +316,9 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

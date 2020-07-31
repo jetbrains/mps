@@ -35,7 +35,7 @@ public final class GenerationContextOp_UserObjectAccessBase__BehaviorDescriptor 
   /*package*/ static boolean isLValueInAssignment_idhIg3nxk(@NotNull SNode __thisNode__) {
     SNode mayBeAssignment = SNodeOperations.getParent(SNodeOperations.getParent(__thisNode__));
     if (SNodeOperations.isInstanceOf(mayBeAssignment, CONCEPTS.AssignmentExpression$rS)) {
-      if (SNodeOperations.getParent(__thisNode__) == SLinkOperations.getTarget(SNodeOperations.cast(mayBeAssignment, CONCEPTS.AssignmentExpression$rS), LINKS.lValue$J0D4)) {
+      if (SNodeOperations.getParent(__thisNode__) == SLinkOperations.getTarget(SNodeOperations.cast(mayBeAssignment, CONCEPTS.AssignmentExpression$rS), LINKS.lValue$LjSW)) {
         return true;
       }
     }
@@ -93,6 +93,6 @@ public final class GenerationContextOp_UserObjectAccessBase__BehaviorDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lValue$J0D4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
   }
 }

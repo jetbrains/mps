@@ -120,7 +120,7 @@ public class SetNodePackage_Action extends BaseAction {
     modelAccess.runReadAction(new Runnable() {
       public void run() {
         packages.value = SetNodePackage_Action.this.fetchExistingPackages(((List<SNode>) MapSequence.fromMap(_params).get("nodes")), _params);
-        oldPackage.value = SPropertyOperations.getString(ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).first(), PROPS.virtualPackage$j19t);
+        oldPackage.value = SPropertyOperations.getString(ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).first(), PROPS.virtualPackage$dz_3);
       }
     });
     final SetNodePackageDialog dialog = new SetNodePackageDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), packages.value);
@@ -131,10 +131,10 @@ public class SetNodePackage_Action extends BaseAction {
     modelAccess.executeCommandInEDT(new Runnable() {
       public void run() {
         for (SNode node : ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes")))) {
-          SPropertyOperations.assign(node, PROPS.virtualPackage$j19t, dialog.getPackage());
+          SPropertyOperations.assign(node, PROPS.virtualPackage$dz_3, dialog.getPackage());
           if (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$UN)) {
             for (SNode aspect : ListSequence.fromList(SetNodePackage_Action.this.findAllAspects(((Project) MapSequence.fromMap(_params).get("ideaProject")), SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$UN), _params))) {
-              SPropertyOperations.assign(aspect, PROPS.virtualPackage$j19t, dialog.getPackage());
+              SPropertyOperations.assign(aspect, PROPS.virtualPackage$dz_3, dialog.getPackage());
             }
           }
         }
@@ -153,7 +153,7 @@ public class SetNodePackage_Action extends BaseAction {
       }
     }).select(new ISelector<SNode, String>() {
       public String select(SNode r) {
-        return SPropertyOperations.getString(r, PROPS.virtualPackage$j19t);
+        return SPropertyOperations.getString(r, PROPS.virtualPackage$dz_3);
       }
     }).where(new IWhereFilter<String>() {
       public boolean accept(String p) {
@@ -195,6 +195,6 @@ public class SetNodePackage_Action extends BaseAction {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty virtualPackage$j19t = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 }

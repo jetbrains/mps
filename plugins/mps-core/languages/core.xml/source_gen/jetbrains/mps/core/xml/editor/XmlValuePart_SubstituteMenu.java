@@ -202,7 +202,7 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode val = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.XmlTextValue$BE, null);
-        SPropertyOperations.assign(val, PROPS.text$$xPb, pattern);
+        SPropertyOperations.assign(val, PROPS.text$GoKl, pattern);
         return val;
       }
 
@@ -253,6 +253,6 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$$xPb = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text");
+    /*package*/ static final SProperty text$GoKl = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text");
   }
 }

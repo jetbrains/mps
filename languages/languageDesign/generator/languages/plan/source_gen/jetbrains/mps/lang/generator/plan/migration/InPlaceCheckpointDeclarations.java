@@ -35,13 +35,13 @@ public class InPlaceCheckpointDeclarations extends MigrationScriptBase {
     for (SModel model : Sequence.fromIterable(m.getModels())) {
       for (SNode cps : ListSequence.fromList(SModelOperations.nodes(((SModel) model), CONCEPTS.Checkpoint$g)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.cpSpec$s3ye) == null);
+          return (SLinkOperations.getTarget(it, LINKS.cpSpec$_H$M) == null);
         }
       })) {
         // since there's property constraint for INamedConcept.name in Checkpoint, can't use cps.name directly 
-        String cpName = cps.getProperty(PROPS.name$tAp1);
-        cps.setProperty(PROPS.name$tAp1, null);
-        SPropertyOperations.assign(SLinkOperations.setNewChild(cps, LINKS.cpSpec$s3ye, CONCEPTS.InPlaceCheckpointSpec$q7), PROPS.name$tAp1, cpName);
+        String cpName = cps.getProperty(PROPS.name$lA7v);
+        cps.setProperty(PROPS.name$lA7v, null);
+        SPropertyOperations.assign(SLinkOperations.setNewChild(cps, LINKS.cpSpec$_H$M, CONCEPTS.InPlaceCheckpointSpec$q7), PROPS.name$lA7v, cpName);
       }
     }
   }
@@ -50,11 +50,11 @@ public class InPlaceCheckpointDeclarations extends MigrationScriptBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cpSpec$s3ye = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec");
+    /*package*/ static final SContainmentLink cpSpec$_H$M = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec");
   }
 
   private static final class CONCEPTS {

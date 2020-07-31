@@ -24,7 +24,7 @@ public final class DefaultSetAccessor__BehaviorDescriptor extends BaseBHDescript
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SLinkOperations.setNewChild(__thisNode__, LINKS.visibility$peCZ, CONCEPTS.PrivateVisibility$Se);
+    SLinkOperations.setNewChild(__thisNode__, LINKS.visibility$e5Qx, CONCEPTS.PrivateVisibility$Se);
   }
 
 
@@ -73,7 +73,7 @@ public final class DefaultSetAccessor__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$peCZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117e16a7273L, 0x117e16abba2L, "visibility");
+    /*package*/ static final SContainmentLink visibility$e5Qx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117e16a7273L, 0x117e16abba2L, "visibility");
   }
 
   private static final class CONCEPTS {

@@ -16,7 +16,7 @@
       <node id="8977123699282978604" at="55,47,56,333" concept="4" />
       <node id="8977123699282978604" at="59,51,60,87" concept="4" />
       <node id="8977123699282978604" at="65,0,66,0" concept="5" trace="TestNode$kc" />
-      <node id="8977123699282978604" at="69,0,70,0" concept="5" trace="nodeToCheck$Pz43" />
+      <node id="8977123699282978604" at="69,0,70,0" concept="5" trace="nodeToCheck$VYXt" />
       <node id="8977123699282978604" at="29,0,31,0" concept="5" trace="ourParamCache" />
       <node id="8977123699282978604" at="32,0,34,0" concept="2" trace="myWithCommandRule" />
       <node id="8977123699282978604" at="35,0,38,0" concept="0" trace="MigrateDeclarationsReferences_Test#()V" />

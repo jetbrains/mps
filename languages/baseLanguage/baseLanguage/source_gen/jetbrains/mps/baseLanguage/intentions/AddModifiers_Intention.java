@@ -50,7 +50,7 @@ public final class AddModifiers_Intention extends AbstractIntentionDescriptor im
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNodeFactoryOperations.addNewChild(node, LINKS.modifiers$akE0, CONCEPTS.Modifier$Ra);
+      SNodeFactoryOperations.addNewChild(node, LINKS.modifiers$m0, CONCEPTS.Modifier$Ra);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -59,7 +59,7 @@ public final class AddModifiers_Intention extends AbstractIntentionDescriptor im
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifiers$akE0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
   }
 
   private static final class CONCEPTS {

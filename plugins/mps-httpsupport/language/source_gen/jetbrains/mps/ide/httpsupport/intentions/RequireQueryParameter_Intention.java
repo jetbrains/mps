@@ -45,11 +45,11 @@ public final class RequireQueryParameter_Intention extends AbstractIntentionDesc
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return "Make Query Parameter " + ((SPropertyOperations.getBoolean(node, PROPS.required$JbR8) ? "Unrequired" : "Required"));
+      return "Make Query Parameter " + ((SPropertyOperations.getBoolean(node, PROPS.required$QJGS) ? "Unrequired" : "Required"));
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.required$JbR8, !(SPropertyOperations.getBoolean(node, PROPS.required$JbR8)));
+      SPropertyOperations.assign(node, PROPS.required$QJGS, !(SPropertyOperations.getBoolean(node, PROPS.required$QJGS)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -58,6 +58,6 @@ public final class RequireQueryParameter_Intention extends AbstractIntentionDesc
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty required$JbR8 = MetaAdapterFactory.getProperty(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c585b439L, 0x205f4376c585b43dL, "required");
+    /*package*/ static final SProperty required$QJGS = MetaAdapterFactory.getProperty(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c585b439L, 0x205f4376c585b43dL, "required");
   }
 }

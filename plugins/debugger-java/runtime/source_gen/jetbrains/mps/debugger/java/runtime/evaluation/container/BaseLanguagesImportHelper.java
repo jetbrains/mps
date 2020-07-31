@@ -47,10 +47,10 @@ public abstract class BaseLanguagesImportHelper {
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.Expression$TP)) {
         SNode clone = _quotation_createNode_5vd2f2_a0a0b0c0d(node);
         transformNode(clone, SNodeOperations.getModel(container));
-        ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.statement$WHn8)).addElement(clone);
+        ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.statement$pYcS)).addElement(clone);
       } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.Statement$ok)) {
         transformNode(node, SNodeOperations.getModel(container));
-        ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.statement$WHn8)).addElement(SNodeOperations.cast(node, CONCEPTS.Statement$ok));
+        ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.statement$pYcS)).addElement(SNodeOperations.cast(node, CONCEPTS.Statement$ok));
       }
     }
   }
@@ -112,7 +112,7 @@ public abstract class BaseLanguagesImportHelper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 
   private static final class CONCEPTS {

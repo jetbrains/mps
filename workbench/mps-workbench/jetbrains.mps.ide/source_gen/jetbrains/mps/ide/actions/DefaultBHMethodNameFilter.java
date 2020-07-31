@@ -41,7 +41,7 @@ public class DefaultBHMethodNameFilter implements Function<SNodeReference, Strin
           if (SNodeOperations.isInstanceOf(containingRoot, CONCEPTS.ConceptBehavior$8P)) {
             SNode behavior = SNodeOperations.cast(containingRoot, CONCEPTS.ConceptBehavior$8P);
             if (behavior != null) {
-              return SPropertyOperations.getString(SLinkOperations.getTarget(behavior, LINKS.concept$v6ns), PROPS.name$tAp1);
+              return SPropertyOperations.getString(SLinkOperations.getTarget(behavior, LINKS.concept$45m$), PROPS.name$lA7v);
             }
           } else {
             return ((String) BHReflection.invoke0(containingRoot, CONCEPTS.BaseConcept$Sz, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
@@ -65,10 +65,10 @@ public class DefaultBHMethodNameFilter implements Function<SNodeReference, Strin
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$v6ns = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
+    /*package*/ static final SReferenceLink concept$45m$ = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

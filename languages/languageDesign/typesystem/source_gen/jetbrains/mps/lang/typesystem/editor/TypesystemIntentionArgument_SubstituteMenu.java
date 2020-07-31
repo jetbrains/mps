@@ -50,7 +50,7 @@ public class TypesystemIntentionArgument_SubstituteMenu extends SubstituteMenuBa
 
     public SMP_ReferenceScope_oskrf0_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.TypesystemIntentionArgument$Eb, LINKS.quickFixArgument$pwQi);
+      super((SAbstractConcept) CONCEPTS.TypesystemIntentionArgument$Eb, LINKS.quickFixArgument$mUiI);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class TypesystemIntentionArgument_SubstituteMenu extends SubstituteMenuBa
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink quickFixArgument$pwQi = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85f8628L, 0x11b3650a4b4L, "quickFixArgument");
+    /*package*/ static final SReferenceLink quickFixArgument$mUiI = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85f8628L, 0x11b3650a4b4L, "quickFixArgument");
   }
 }

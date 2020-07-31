@@ -35,8 +35,8 @@
       <node id="1196515055998" at="43,30,44,228" concept="2" />
       <node id="1196515055998" at="44,228,45,196" concept="2" />
       <node id="1196515055998" at="45,196,46,24" concept="6" />
-      <node id="1196515055991" at="50,0,51,0" concept="7" trace="pattern$fJGl" />
-      <node id="1196515055991" at="51,0,52,0" concept="7" trace="quotedNode$kInw" />
+      <node id="1196515055991" at="50,0,51,0" concept="7" trace="pattern$C6ub" />
+      <node id="1196515055991" at="51,0,52,0" concept="7" trace="quotedNode$2tow" />
       <node id="1196515055991" at="55,0,56,0" concept="7" trace="PatternExpression$Lc" />
       <node id="1196515055991" at="23,0,25,0" concept="1" trace="typeof_PatternExpression_InferenceRule#()V" />
       <node id="1196515055991" at="32,0,35,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -161,8 +161,8 @@
       <node id="1202488176884" at="51,63,52,30" concept="5" />
       <node id="1202488176884" at="52,30,53,230" concept="2" />
       <node id="1202488176884" at="53,230,54,24" concept="6" />
-      <node id="1202488162378" at="58,0,59,0" concept="7" trace="dataType$fLUl" />
-      <node id="1202488162378" at="62,0,63,0" concept="7" trace="stringValueMigrated$gFe8" />
+      <node id="1202488162378" at="58,0,59,0" concept="7" trace="dataType$Dbgb" />
+      <node id="1202488162378" at="62,0,63,0" concept="7" trace="stringValueMigrated$4VPS" />
       <node id="1202488162378" at="66,0,67,0" concept="7" trace="PropertyPatternVariableDeclaration$Xj" />
       <node id="1202488162378" at="24,0,26,0" concept="1" trace="typeof_PropertyPatternVariableDeclaration_InferenceRule#()V" />
       <node id="1202488162378" at="41,0,44,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

@@ -38,7 +38,7 @@ public final class ChangeOrientationList_Intention extends AbstractIntentionDesc
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$63td), CONCEPTS.CellLayout_Horizontal$Ss) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$63td), CONCEPTS.CellLayout_Vertical$vP);
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$VF9j), CONCEPTS.CellLayout_Horizontal$Ss) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$VF9j), CONCEPTS.CellLayout_Vertical$vP);
   }
   @Override
   public boolean isSurroundWith() {
@@ -60,9 +60,9 @@ public final class ChangeOrientationList_Intention extends AbstractIntentionDesc
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((boolean) CellModel_ListWithRole__BehaviorDescriptor.isVertical_idi2IdWzG.invoke(node)) {
-        SLinkOperations.setTarget(node, LINKS.cellLayout$63td, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Horizontal$Ss, null));
+        SLinkOperations.setTarget(node, LINKS.cellLayout$VF9j, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Horizontal$Ss, null));
       } else {
-        SLinkOperations.setTarget(node, LINKS.cellLayout$63td, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Vertical$vP, null));
+        SLinkOperations.setTarget(node, LINKS.cellLayout$VF9j, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Vertical$vP, null));
       }
     }
     @Override
@@ -72,7 +72,7 @@ public final class ChangeOrientationList_Intention extends AbstractIntentionDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cellLayout$63td = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout");
+    /*package*/ static final SContainmentLink cellLayout$VF9j = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout");
   }
 
   private static final class CONCEPTS {

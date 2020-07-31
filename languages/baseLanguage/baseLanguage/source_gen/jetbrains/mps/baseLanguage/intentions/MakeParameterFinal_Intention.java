@@ -39,16 +39,16 @@ public final class MakeParameterFinal_Intention extends AbstractIntentionDescrip
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.variableDeclaration$2ky6), CONCEPTS.ParameterDeclaration$qU))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.variableDeclaration$7WwU), CONCEPTS.ParameterDeclaration$qU))) {
       return false;
     }
-    SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.variableDeclaration$2ky6), CONCEPTS.ParameterDeclaration$qU);
+    SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.variableDeclaration$7WwU), CONCEPTS.ParameterDeclaration$qU);
     SNode methodNode = SNodeOperations.getNodeAncestor(declaration, CONCEPTS.BaseMethodDeclaration$RR, false, false);
     SNode classNode = SNodeOperations.getNodeAncestor(node, CONCEPTS.AnonymousClass$aF, false, false);
     if ((classNode == null)) {
       return false;
     }
-    if (SPropertyOperations.getBoolean(declaration, PROPS.isFinal$hIht)) {
+    if (SPropertyOperations.getBoolean(declaration, PROPS.isFinal$_qt3)) {
       return false;
     }
     return ListSequence.fromList(SNodeOperations.getNodeAncestors(classNode, null, false)).contains(methodNode);
@@ -72,7 +72,7 @@ public final class MakeParameterFinal_Intention extends AbstractIntentionDescrip
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.set(SLinkOperations.getTarget(node, LINKS.variableDeclaration$2ky6), PROPS.isFinal$hIht, true);
+      SPropertyOperations.set(SLinkOperations.getTarget(node, LINKS.variableDeclaration$7WwU), PROPS.isFinal$_qt3, true);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -81,7 +81,7 @@ public final class MakeParameterFinal_Intention extends AbstractIntentionDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class CONCEPTS {
@@ -91,6 +91,6 @@ public final class MakeParameterFinal_Intention extends AbstractIntentionDescrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

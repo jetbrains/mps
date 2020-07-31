@@ -48,11 +48,11 @@ public final class LocalMethodCall__BehaviorDescriptor extends BaseBHDescriptor 
     SNode wrappingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false);
     return Sequence.fromIterable(Members.visibleStaticMethods(wrappingClassifier, __thisNode__)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), methodName);
+        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), methodName);
       }
     }).union(Sequence.fromIterable(Members.visibleInstanceMethods(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(wrappingClassifier), __thisNode__)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), methodName);
+        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), methodName);
       }
     }));
 
@@ -113,6 +113,6 @@ public final class LocalMethodCall__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

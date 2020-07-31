@@ -31,7 +31,7 @@ public final class TextCommentLinePart__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static String buildCommentText_id7Qt73fl2F3N(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.text$5Ox0);
+    return SPropertyOperations.getString(__thisNode__, PROPS.text$OrZ0);
   }
 
   /*package*/ TextCommentLinePart__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class TextCommentLinePart__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$5Ox0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
+    /*package*/ static final SProperty text$OrZ0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
   }
 }

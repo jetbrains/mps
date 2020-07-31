@@ -18,8 +18,8 @@
       <node id="1540166288377365872" at="30,5,31,19" concept="5" />
       <node id="2740527090601650932" at="36,79,37,81" concept="1" />
       <node id="8452785328911042429" at="38,5,39,72" concept="5" />
-      <node id="7082824793308696454" at="43,0,44,0" concept="6" trace="name$tAp1" />
-      <node id="7082824793308696454" at="44,0,45,0" concept="6" trace="ruleId$nApu" />
+      <node id="7082824793308696454" at="43,0,44,0" concept="6" trace="name$lA7v" />
+      <node id="7082824793308696454" at="44,0,45,0" concept="6" trace="ruleId$rAly" />
       <node id="2740527090601645200" at="27,36,30,5" concept="3" />
       <node id="2740527090601650930" at="35,34,38,5" concept="3" />
       <node id="7082824793308708548" at="16,0,20,0" concept="0" trace="NameHelper#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)V" />

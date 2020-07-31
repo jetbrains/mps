@@ -53,22 +53,22 @@ public class MigrateModelReferenceExprWithRepo extends MigrationScriptBase {
       final ModuleRepositoryFacade mrf = new ModuleRepositoryFacade(m.getRepository());
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ModelReferenceExpression$tG, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.repo$s903) != null) && !(mrf.getModelsByName(new SModelName(ModelReferenceExpression__BehaviorDescriptor.getFQName_id7K4mn_BeEzv.invoke(it))).isEmpty());
+          return (SLinkOperations.getTarget(it, LINKS.repo$Cn1t) != null) && !(mrf.getModelsByName(new SModelName(ModelReferenceExpression__BehaviorDescriptor.getFQName_id7K4mn_BeEzv.invoke(it))).isEmpty());
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           final SModel where = SNodeOperations.getModel(it);
           SNode newRef = SModelOperations.createNewNode(where, null, CONCEPTS.ModelPointerExpression$P_);
-          SLinkOperations.setTarget(newRef, LINKS.modelRef$RfYQ, ModelPointer__BehaviorDescriptor.create_id_GDk1qZ2JP.invoke(SNodeOperations.asSConcept(CONCEPTS.ModelPointer$rg), where, mrf.getModelsByName(new SModelName(ModelReferenceExpression__BehaviorDescriptor.getFQName_id7K4mn_BeEzv.invoke(it))).iterator().next()));
+          SLinkOperations.setTarget(newRef, LINKS.modelRef$KJsa, ModelPointer__BehaviorDescriptor.create_id_GDk1qZ2JP.invoke(SNodeOperations.asSConcept(CONCEPTS.ModelPointer$rg), where, mrf.getModelsByName(new SModelName(ModelReferenceExpression__BehaviorDescriptor.getFQName_id7K4mn_BeEzv.invoke(it))).iterator().next()));
 
-          final SNode repoAccessExpr = SLinkOperations.getTarget(it, LINKS.repo$s903);
+          final SNode repoAccessExpr = SLinkOperations.getTarget(it, LINKS.repo$Cn1t);
           SNode imco = SModelOperations.createNewNode(where, null, CONCEPTS.InstanceMethodCallOperation$1G);
           // FIXME node// here awaits when node.reference.set(nodePointer) operation is added to get replaced with the one. 
-          SLinkOperations.setPointer(imco, LINKS.baseMethodDeclaration$$A7i, new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SModelReference.resolve(org.jetbrains.mps.openapi.module.SRepository)"));
+          SLinkOperations.setPointer(imco, LINKS.baseMethodDeclaration$ItxI, new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SModelReference.resolve(org.jetbrains.mps.openapi.module.SRepository)"));
           SNode dotExp = SNodeOperations.replaceWithNewChild(it, CONCEPTS.DotExpression$6a);
-          SLinkOperations.setTarget(dotExp, LINKS.operand$Lcrr, newRef);
-          SLinkOperations.setTarget(dotExp, LINKS.operation$X4R8, imco);
-          ListSequence.fromList(SLinkOperations.getChildren(imco, LINKS.actualArgument$$A7L)).addElement(repoAccessExpr);
+          SLinkOperations.setTarget(dotExp, LINKS.operand$P1i5, newRef);
+          SLinkOperations.setTarget(dotExp, LINKS.operation$_mGS, imco);
+          ListSequence.fromList(SLinkOperations.getChildren(imco, LINKS.actualArgument$ItKJ)).addElement(repoAccessExpr);
         }
       });
     }
@@ -86,11 +86,11 @@ public class MigrateModelReferenceExprWithRepo extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink repo$s903 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x7c3f2da20e92b62L, 0x13bfe1ec0ddbc5f8L, "repo");
-    /*package*/ static final SContainmentLink modelRef$RfYQ = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x19dc9460645cfdd7L, 0x19dc9460645d0827L, "modelRef");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink repo$Cn1t = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x7c3f2da20e92b62L, 0x13bfe1ec0ddbc5f8L, "repo");
+    /*package*/ static final SContainmentLink modelRef$KJsa = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x19dc9460645cfdd7L, 0x19dc9460645d0827L, "modelRef");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 }

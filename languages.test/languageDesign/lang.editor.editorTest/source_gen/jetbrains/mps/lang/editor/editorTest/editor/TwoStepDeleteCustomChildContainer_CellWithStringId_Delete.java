@@ -27,7 +27,7 @@ public class TwoStepDeleteCustomChildContainer_CellWithStringId_Delete {
         if (DeletionApproverUtil.approve(editorContext, node, "stringId")) {
           return;
         }
-        SPropertyOperations.assign(node, PROPS.showCellWithStringId$YE7x, false);
+        SPropertyOperations.assign(node, PROPS.showCellWithStringId$mpCZ, false);
         SelectionUtil.selectCell(editorContext, node, "customId");
       }
 
@@ -76,6 +76,6 @@ public class TwoStepDeleteCustomChildContainer_CellWithStringId_Delete {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty showCellWithStringId$YE7x = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d0251d67L, 0x1139cad76e33da9eL, "showCellWithStringId");
+    /*package*/ static final SProperty showCellWithStringId$mpCZ = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d0251d67L, 0x1139cad76e33da9eL, "showCellWithStringId");
   }
 }

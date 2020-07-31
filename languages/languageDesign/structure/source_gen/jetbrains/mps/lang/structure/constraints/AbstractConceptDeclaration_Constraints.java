@@ -51,7 +51,7 @@ public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescr
   }
   public static class ConceptId_Property extends BasePropertyConstraintsDescriptor {
     public ConceptId_Property(ConstraintsDescriptor container) {
-      super(PROPS.conceptId$TMc5, container);
+      super(PROPS.conceptId$ZjQr, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -80,7 +80,7 @@ public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescr
   }
   public static class LanguageId_Property extends BasePropertyConstraintsDescriptor {
     public LanguageId_Property(ConstraintsDescriptor container) {
-      super(PROPS.languageId$T8k_, container);
+      super(PROPS.languageId$F1XV, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -110,8 +110,8 @@ public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescr
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.conceptId$TMc5, new ConceptId_Property(this));
-    properties.put(PROPS.languageId$T8k_, new LanguageId_Property(this));
+    properties.put(PROPS.conceptId$ZjQr, new ConceptId_Property(this));
+    properties.put(PROPS.languageId$F1XV, new LanguageId_Property(this));
     return properties;
   }
   private static final SNodePointer breakingNode_c1kwet_a0a0a0a0a0a0a0a2 = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "6836281137582805233");
@@ -121,7 +121,7 @@ public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescr
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty conceptId$TMc5 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
-    /*package*/ static final SProperty languageId$T8k_ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x7cf94884f2237423L, "languageId");
+    /*package*/ static final SProperty conceptId$ZjQr = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
+    /*package*/ static final SProperty languageId$F1XV = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x7cf94884f2237423L, "languageId");
   }
 }

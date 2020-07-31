@@ -7,10 +7,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LinkRef {
   public void test1() {
-    LINKS.operation$X4R8.isMultiple();
+    LINKS.operation$_mGS.isMultiple();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 }

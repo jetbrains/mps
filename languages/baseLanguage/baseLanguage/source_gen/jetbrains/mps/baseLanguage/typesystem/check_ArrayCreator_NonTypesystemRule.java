@@ -23,18 +23,18 @@ public class check_ArrayCreator_NonTypesystemRule extends AbstractNonTypesystemR
   public void applyRule(final SNode arrayCreator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     boolean concreteDimensionsSoFarFromLeft = true;
     boolean errorReported = false;
-    for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(arrayCreator, LINKS.dimensionExpression$uV5v)).count(); i++) {
-      boolean notNull = SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(arrayCreator, LINKS.dimensionExpression$uV5v)).getElement(i), LINKS.expression$WGFJ) != null;
+    for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(arrayCreator, LINKS.dimensionExpression$YBE1)).count(); i++) {
+      boolean notNull = SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(arrayCreator, LINKS.dimensionExpression$YBE1)).getElement(i), LINKS.expression$pDbL) != null;
       if (notNull && !(concreteDimensionsSoFarFromLeft)) {
         errorReported = true;
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ListSequence.fromList(SLinkOperations.getChildren(arrayCreator, LINKS.dimensionExpression$uV5v)).getElement(i), "Dimension must not be specified here", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1100850602762306528", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ListSequence.fromList(SLinkOperations.getChildren(arrayCreator, LINKS.dimensionExpression$YBE1)).getElement(i), "Dimension must not be specified here", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1100850602762306528", null, errorTarget);
         }
       }
       concreteDimensionsSoFarFromLeft = concreteDimensionsSoFarFromLeft && notNull;
     }
-    if (!(errorReported) && ListSequence.fromList(SLinkOperations.getChildren(arrayCreator, LINKS.dimensionExpression$uV5v)).count() > 0 && (SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(arrayCreator, LINKS.dimensionExpression$uV5v)).getElement(0), LINKS.expression$WGFJ) == null)) {
+    if (!(errorReported) && ListSequence.fromList(SLinkOperations.getChildren(arrayCreator, LINKS.dimensionExpression$YBE1)).count() > 0 && (SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(arrayCreator, LINKS.dimensionExpression$YBE1)).getElement(0), LINKS.expression$pDbL) == null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(arrayCreator, "Array initializer expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1100850602763676727", null, errorTarget);
@@ -52,8 +52,8 @@ public class check_ArrayCreator_NonTypesystemRule extends AbstractNonTypesystemR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink dimensionExpression$uV5v = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e4b36742L, "dimensionExpression");
-    /*package*/ static final SContainmentLink expression$WGFJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4b2dfdaL, 0x113e4b846d4L, "expression");
+    /*package*/ static final SContainmentLink dimensionExpression$YBE1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e4b36742L, "dimensionExpression");
+    /*package*/ static final SContainmentLink expression$pDbL = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4b2dfdaL, 0x113e4b846d4L, "expression");
   }
 
   private static final class CONCEPTS {

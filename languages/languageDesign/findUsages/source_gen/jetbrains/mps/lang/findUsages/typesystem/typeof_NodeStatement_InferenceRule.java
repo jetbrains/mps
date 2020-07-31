@@ -22,7 +22,7 @@ public class typeof_NodeStatement_InferenceRule extends AbstractInferenceRule_Ru
   }
   public void applyRule(final SNode nodeToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(nodeToCheck, LINKS.foundNode$xYfy);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(nodeToCheck, LINKS.foundNode$t9xu);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959035a(jetbrains.mps.lang.findUsages.typesystem)", "1200308678111", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959035a(jetbrains.mps.lang.findUsages.typesystem)", "1200308678116", true), (SNode) _quotation_createNode_qywaiy_a1a0c0a0b(), false, true, _info_12389875345);
     }
@@ -45,7 +45,7 @@ public class typeof_NodeStatement_InferenceRule extends AbstractInferenceRule_Ru
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink foundNode$xYfy = MetaAdapterFactory.getContainmentLink(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x1177408145aL, 0x11774086327L, "foundNode");
+    /*package*/ static final SContainmentLink foundNode$t9xu = MetaAdapterFactory.getContainmentLink(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x1177408145aL, 0x11774086327L, "foundNode");
   }
 
   private static final class CONCEPTS {

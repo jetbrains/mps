@@ -62,7 +62,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new dominatesStyleClassListSingleRoleHandler_yrqgnt_b0(myNode, LINKS.dominatesStyleClassList$U6hR, getEditorContext());
+    SingleRoleCellProvider provider = new dominatesStyleClassListSingleRoleHandler_yrqgnt_b0(myNode, LINKS.dominatesStyleClassList$92DD, getEditorContext());
     return provider.createCell();
   }
   private static class dominatesStyleClassListSingleRoleHandler_yrqgnt_b0 extends SingleRoleCellProvider {
@@ -82,8 +82,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.dominatesStyleClassList$U6hR, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.dominatesStyleClassList$U6hR, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.dominatesStyleClassList$92DD, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.dominatesStyleClassList$92DD, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -95,13 +95,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.dominatesStyleClassList$U6hR);
+        editorCell.setSRole(LINKS.dominatesStyleClassList$92DD);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.dominatesStyleClassList$U6hR));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.dominatesStyleClassList$92DD));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_dominatesStyleClassList");
@@ -118,6 +118,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink dominatesStyleClassList$U6hR = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x22926e62b7d495a0L, 0x22926e62b7d4c30aL, "dominatesStyleClassList");
+    /*package*/ static final SContainmentLink dominatesStyleClassList$92DD = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x22926e62b7d495a0L, 0x22926e62b7d4c30aL, "dominatesStyleClassList");
   }
 }

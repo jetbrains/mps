@@ -16,7 +16,7 @@
   <root nodeRef="r:5ae04573-5f86-4c8f-8775-3bf4c8be7f2f(jetbrains.mps.generator.test.crossmodel.property.generator.template.main@generator)/4220080364835905493">
     <file name="QueriesGenerated.java">
       <node id="4220080364835923446" at="35,88,36,87" concept="1" />
-      <node id="5176577547833330724" at="56,104,57,84" concept="1" />
+      <node id="5176577547833330724" at="56,104,57,83" concept="1" />
       <node id="4220080364835967621" at="59,104,60,82" concept="1" />
       <node id="5176577547833330034" at="64,14,65,58" concept="0" />
       <node id="4220080364835967614" at="65,58,66,58" concept="0" />
@@ -28,7 +28,7 @@
       <node id="5176577547833330034" at="56,0,59,0" concept="2" trace="sourceNodesQuery_0_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />
       <node id="4220080364835967614" at="59,0,62,0" concept="2" trace="sourceNodesQuery_0_1#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />
       <scope id="4220080364835917955" at="35,88,36,87" />
-      <scope id="5176577547833330036" at="56,104,57,84" />
+      <scope id="5176577547833330036" at="56,104,57,83" />
       <scope id="4220080364835967615" at="59,104,60,82" />
       <scope id="5176577547833330034" at="85,15,86,87" />
       <scope id="4220080364835967614" at="87,15,88,87" />

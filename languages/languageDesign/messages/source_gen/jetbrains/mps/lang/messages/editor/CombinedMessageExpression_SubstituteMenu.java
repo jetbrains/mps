@@ -134,7 +134,7 @@ public class CombinedMessageExpression_SubstituteMenu extends SubstituteMenuBase
   private static SNode createCombinedMessageExpression_6s2f6n_a0a0b(SNode node0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CombinedMessageExpression$e_);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.part$x7tZ).initNode(node0, CONCEPTS.MessageExpression$FF, false);
+      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.part$2Bxx).initNode(node0, CONCEPTS.MessageExpression$FF, false);
     }
     return rootBuilder1.getResult();
   }
@@ -146,6 +146,6 @@ public class CombinedMessageExpression_SubstituteMenu extends SubstituteMenuBase
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink part$x7tZ = MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, 0x48f860fc0e404561L, "part");
+    /*package*/ static final SContainmentLink part$2Bxx = MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, 0x48f860fc0e404561L, "part");
   }
 }

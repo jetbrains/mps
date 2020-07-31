@@ -36,7 +36,7 @@ public class Participant_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.singer$vefw, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.singer$7Tww, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -54,15 +54,15 @@ public class Participant_Constraints extends BaseConstraintsDescriptor {
             final SNode concert = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Concert$6k, false, false);
             final SNode performance = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.CombinedPerformance$4R, true, false);
 
-            final List<SNode> allSingers = SLinkOperations.getChildren(concert, LINKS.performers$JYpX);
+            final List<SNode> allSingers = SLinkOperations.getChildren(concert, LINKS.performers$fe$z);
 
-            final Iterable<SNode> alreadyParticipatingSingersButMe = ListSequence.fromList(SLinkOperations.getChildren(performance, LINKS.participants$gZ1C)).where(new IWhereFilter<SNode>() {
+            final Iterable<SNode> alreadyParticipatingSingersButMe = ListSequence.fromList(SLinkOperations.getChildren(performance, LINKS.participants$exMo)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
                 return !(Objects.equals(it, _context.getReferenceNode()));
               }
             }).select(new ISelector<SNode, SNode>() {
               public SNode select(SNode participant) {
-                return SLinkOperations.getTarget(participant, LINKS.singer$vefw);
+                return SLinkOperations.getTarget(participant, LINKS.singer$7Tww);
               }
             });
 
@@ -94,8 +94,8 @@ public class Participant_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink singer$vefw = MetaAdapterFactory.getReferenceLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae78e59fbL, 0x34c8853ae78e59fcL, "singer");
-    /*package*/ static final SContainmentLink performers$JYpX = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae7895c45L, 0x34c8853ae7895c8bL, "performers");
-    /*package*/ static final SContainmentLink participants$gZ1C = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae78de950L, 0x34c8853ae78de9acL, "participants");
+    /*package*/ static final SReferenceLink singer$7Tww = MetaAdapterFactory.getReferenceLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae78e59fbL, 0x34c8853ae78e59fcL, "singer");
+    /*package*/ static final SContainmentLink performers$fe$z = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae7895c45L, 0x34c8853ae7895c8bL, "performers");
+    /*package*/ static final SContainmentLink participants$exMo = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae78de950L, 0x34c8853ae78de9acL, "participants");
   }
 }

@@ -33,13 +33,13 @@ public final class Module__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getFqName_idhEwIO9y(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.namespace$8m0W);
+    return SPropertyOperations.getString(__thisNode__, PROPS.namespace$2Et4);
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.namespace$8m0W);
+    return SPropertyOperations.getString(__thisNode__, PROPS.namespace$2Et4);
   }
   /*package*/ static String getModuleReference_id7OJukvJ5PmG(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.uuid$8m0t) + "(" + SPropertyOperations.getString(__thisNode__, PROPS.namespace$8m0W) + ")";
+    return SPropertyOperations.getString(__thisNode__, PROPS.uuid$2Ee3) + "(" + SPropertyOperations.getString(__thisNode__, PROPS.namespace$2Et4) + ")";
   }
 
   /*package*/ Module__BehaviorDescriptor() {
@@ -93,7 +93,7 @@ public final class Module__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty namespace$8m0W = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe23L, "namespace");
-    /*package*/ static final SProperty uuid$8m0t = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe22L, "uuid");
+    /*package*/ static final SProperty namespace$2Et4 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe23L, "namespace");
+    /*package*/ static final SProperty uuid$2Ee3 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe22L, "uuid");
   }
 }

@@ -36,7 +36,7 @@ public final class BuildTextStringPart__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static String getText_id3NagsOfTq4Y(@NotNull SNode __thisNode__, MacroHelper helper) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.text$2p89);
+    return SPropertyOperations.getString(__thisNode__, PROPS.text$aaWn);
   }
   @Nullable
   /*package*/ static SNode getContainer_id5hFYqIiYHaE(@NotNull SNode __thisNode__) {
@@ -95,7 +95,7 @@ public final class BuildTextStringPart__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$2p89 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
+    /*package*/ static final SProperty text$aaWn = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
   }
 
   private static final class CONCEPTS {

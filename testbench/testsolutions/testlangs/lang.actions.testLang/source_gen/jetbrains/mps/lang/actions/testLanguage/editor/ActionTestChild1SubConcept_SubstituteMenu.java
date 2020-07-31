@@ -66,7 +66,7 @@ public class ActionTestChild1SubConcept_SubstituteMenu extends SubstituteMenuBas
   public class SMP_Group_6g8ikp_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return Objects.equals(_context.getLink(), LINKS.addMenu_genericQuery$X0kq);
+      return Objects.equals(_context.getLink(), LINKS.addMenu_genericQuery$z9SA);
     }
     @NotNull
     @Override
@@ -112,6 +112,6 @@ public class ActionTestChild1SubConcept_SubstituteMenu extends SubstituteMenuBas
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink addMenu_genericQuery$X0kq = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x2c99ba4dd7323dbbL, "addMenu_genericQuery");
+    /*package*/ static final SContainmentLink addMenu_genericQuery$z9SA = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x2c99ba4dd7323dbbL, "addMenu_genericQuery");
   }
 }

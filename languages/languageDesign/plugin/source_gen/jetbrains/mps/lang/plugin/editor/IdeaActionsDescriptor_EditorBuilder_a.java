@@ -112,7 +112,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.actionGroups$6p3X;
+      return LINKS.actionGroups$68Uz;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.ActionGroupRef$gU;
@@ -125,7 +125,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(actionGroupsListHandler_rofybv_b1a.this.getNode(), LINKS.actionGroups$6p3X));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(actionGroupsListHandler_rofybv_b1a.this.getNode(), LINKS.actionGroups$68Uz));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -209,7 +209,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.keymapsRef$98ME;
+      return LINKS.keymapsRef$rgym;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.KeymapRef$6;
@@ -222,7 +222,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(keymapsRefListHandler_rofybv_e1a.this.getNode(), LINKS.keymapsRef$98ME));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(keymapsRefListHandler_rofybv_e1a.this.getNode(), LINKS.keymapsRef$rgym));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -264,8 +264,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actionGroups$6p3X = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa71eL, 0x498be7ea73fa722L, "actionGroups");
-    /*package*/ static final SContainmentLink keymapsRef$98ME = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa71eL, 0x498be7ea73fa880L, "keymapsRef");
+    /*package*/ static final SContainmentLink actionGroups$68Uz = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa71eL, 0x498be7ea73fa722L, "actionGroups");
+    /*package*/ static final SContainmentLink keymapsRef$rgym = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa71eL, 0x498be7ea73fa880L, "keymapsRef");
   }
 
   private static final class CONCEPTS {

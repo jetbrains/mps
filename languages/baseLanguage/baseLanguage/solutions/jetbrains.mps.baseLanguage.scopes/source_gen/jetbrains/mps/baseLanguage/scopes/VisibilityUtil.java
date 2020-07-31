@@ -31,17 +31,17 @@ public final class VisibilityUtil {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(name), CONCEPTS.Interface$Kp)) {
       return true;
     }
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(name, LINKS.visibility$2GiC), CONCEPTS.PublicVisibility$qe) || SNodeOperations.isInstanceOf(name, CONCEPTS.EnumConstantDeclaration$ma)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(name, LINKS.visibility$jt1o), CONCEPTS.PublicVisibility$qe) || SNodeOperations.isInstanceOf(name, CONCEPTS.EnumConstantDeclaration$ma)) {
       return true;
     }
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(name, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(name, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se)) {
       return topClassifier(context) == topClassifier(name);
     }
     // package or protected access 
     if (packageName(context).equals(packageName(name))) {
       return true;
     }
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(name, LINKS.visibility$2GiC), CONCEPTS.ProtectedVisibility$OD)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(name, LINKS.visibility$jt1o), CONCEPTS.ProtectedVisibility$OD)) {
       //  check special cases of protected access 
       SNode classifier = SNodeOperations.getNodeAncestor(name, CONCEPTS.Classifier$hJ, false, false);
       for (SNode cls : ListSequence.fromList(SNodeOperations.getNodeAncestors(context, CONCEPTS.Classifier$hJ, true))) {
@@ -78,7 +78,7 @@ public final class VisibilityUtil {
     if ((classifier == null)) {
       return true;
     }
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classifier, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classifier, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se)) {
       return topClassifier(context) == topClassifier(classifier);
     }
     SNode parent = SNodeOperations.getNodeAncestor(classifier, CONCEPTS.Classifier$hJ, false, false);
@@ -88,13 +88,13 @@ public final class VisibilityUtil {
     if (!(isClassifierAccessible(context, parent))) {
       return false;
     }
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classifier, LINKS.visibility$2GiC), CONCEPTS.PublicVisibility$qe) || packageName(context).equals(packageName(classifier))) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classifier, LINKS.visibility$jt1o), CONCEPTS.PublicVisibility$qe) || packageName(context).equals(packageName(classifier))) {
       return true;
     }
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classifier, LINKS.visibility$2GiC), CONCEPTS.ProtectedVisibility$OD)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classifier, LINKS.visibility$jt1o), CONCEPTS.ProtectedVisibility$OD)) {
       // parent cannot be null here 
       Iterable<SNode> enclosing = SNodeOperations.getNodeAncestors(context, CONCEPTS.Classifier$hJ, true);
-      if (SNodeOperations.hasRole(context, LINKS.superclass$_pqe) || SNodeOperations.hasRole(context, LINKS.implementedInterface$mdc6) || SNodeOperations.hasRole(context, LINKS.extendedInterface$rbvY)) {
+      if (SNodeOperations.hasRole(context, LINKS.superclass$7jGM) || SNodeOperations.hasRole(context, LINKS.implementedInterface$KoQU) || SNodeOperations.hasRole(context, LINKS.extendedInterface$a$v2)) {
         enclosing = Sequence.fromIterable(enclosing).skip(1);
       }
       for (SNode cls : Sequence.fromIterable(enclosing)) {
@@ -132,9 +132,9 @@ public final class VisibilityUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink extendedInterface$rbvY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SContainmentLink implementedInterface$mdc6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink extendedInterface$a$v2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
   }
 }

@@ -65,7 +65,7 @@ public class namedTupleDeclaration_extends_Contribution extends SubstituteMenuBa
   public class SMP_Group_evf1f9_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.NamedTupleDeclaration$51) && Objects.equals(_context.getLink(), LINKS.extended$ojjy);
+      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.NamedTupleDeclaration$51) && Objects.equals(_context.getLink(), LINKS.extended$Lmtu);
     }
     @NotNull
     @Override
@@ -202,7 +202,7 @@ public class namedTupleDeclaration_extends_Contribution extends SubstituteMenuBa
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extended$ojjy = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x479eb1f896fa444L, "extended");
+    /*package*/ static final SContainmentLink extended$Lmtu = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x479eb1f896fa444L, "extended");
   }
 
   private static final class CONCEPTS {

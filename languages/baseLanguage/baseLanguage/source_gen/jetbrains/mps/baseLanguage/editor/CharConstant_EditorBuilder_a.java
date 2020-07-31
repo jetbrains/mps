@@ -88,12 +88,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_d77dl_a1a() {
-    return SPropertyOperations.hasValue(myNode, PROPS.charConstant$_7Im, null) || !(SPropertyOperations.getString(myNode, PROPS.charConstant$_7Im).startsWith("\\"));
+    return SPropertyOperations.hasValue(myNode, PROPS.charConstant$YJsE, null) || !(SPropertyOperations.getString(myNode, PROPS.charConstant$YJsE).startsWith("\\"));
   }
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.charConstant$_7Im;
+      final SProperty property = PROPS.charConstant$YJsE;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no charConstant>");
@@ -121,7 +121,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.charConstant$_7Im;
+      final SProperty property = PROPS.charConstant$YJsE;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no charConstant>");
@@ -157,7 +157,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty charConstant$_7Im = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1177d44b21bL, 0x1177d44ddefL, "charConstant");
+    /*package*/ static final SProperty charConstant$YJsE = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1177d44b21bL, 0x1177d44ddefL, "charConstant");
   }
 
   private static final class CONCEPTS {

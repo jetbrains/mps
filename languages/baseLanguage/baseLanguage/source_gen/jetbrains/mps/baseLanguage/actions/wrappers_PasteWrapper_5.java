@@ -27,11 +27,11 @@ public final class wrappers_PasteWrapper_5 implements PasteWrapper {
   @Override
   public SNode wrap(SNode sourceNode) {
     SNode variable = SNodeFactoryOperations.createNewNode(CONCEPTS.FieldDeclaration$Ps, null);
-    SPropertyOperations.set(variable, PROPS.name$tAp1, SPropertyOperations.getString(SLinkOperations.getTarget(sourceNode, LINKS.localVariableDeclaration$O0D0), PROPS.name$tAp1));
-    SLinkOperations.setTarget(variable, LINKS.type$pLrO, SLinkOperations.getTarget(SLinkOperations.getTarget(sourceNode, LINKS.localVariableDeclaration$O0D0), LINKS.type$pLrO));
-    ListSequence.fromList(SLinkOperations.getChildren(variable, LINKS.annotation$oVP4)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceNode, LINKS.localVariableDeclaration$O0D0), LINKS.annotation$oVP4)));
-    SPropertyOperations.set(variable, PROPS.isFinal$hIht, SPropertyOperations.getBoolean(SLinkOperations.getTarget(sourceNode, LINKS.localVariableDeclaration$O0D0), PROPS.isFinal$hIht));
-    SLinkOperations.setTarget(variable, LINKS.initializer$KgD, SLinkOperations.getTarget(SLinkOperations.getTarget(sourceNode, LINKS.localVariableDeclaration$O0D0), LINKS.initializer$KgD));
+    SPropertyOperations.set(variable, PROPS.name$lA7v, SPropertyOperations.getString(SLinkOperations.getTarget(sourceNode, LINKS.localVariableDeclaration$cjR0), PROPS.name$lA7v));
+    SLinkOperations.setTarget(variable, LINKS.type$uWuc, SLinkOperations.getTarget(SLinkOperations.getTarget(sourceNode, LINKS.localVariableDeclaration$cjR0), LINKS.type$uWuc));
+    ListSequence.fromList(SLinkOperations.getChildren(variable, LINKS.annotation$4YGW)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceNode, LINKS.localVariableDeclaration$cjR0), LINKS.annotation$4YGW)));
+    SPropertyOperations.set(variable, PROPS.isFinal$_qt3, SPropertyOperations.getBoolean(SLinkOperations.getTarget(sourceNode, LINKS.localVariableDeclaration$cjR0), PROPS.isFinal$_qt3));
+    SLinkOperations.setTarget(variable, LINKS.initializer$no3R, SLinkOperations.getTarget(SLinkOperations.getTarget(sourceNode, LINKS.localVariableDeclaration$cjR0), LINKS.initializer$no3R));
 
     return variable;
   }
@@ -43,14 +43,14 @@ public final class wrappers_PasteWrapper_5 implements PasteWrapper {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink localVariableDeclaration$O0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink localVariableDeclaration$cjR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 }

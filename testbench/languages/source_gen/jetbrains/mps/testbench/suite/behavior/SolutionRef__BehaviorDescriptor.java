@@ -35,10 +35,10 @@ public final class SolutionRef__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SModuleReference moduleReference_id173Z5qAOun8(@NotNull SNode __thisNode__) {
-    return new ModuleReference(SPropertyOperations.getString(__thisNode__, PROPS.moduleFQName$uMtw), ModuleId.fromString(SPropertyOperations.getString(__thisNode__, PROPS.moduleID$uMCa)));
+    return new ModuleReference(SPropertyOperations.getString(__thisNode__, PROPS.moduleFQName$Usiw), ModuleId.fromString(SPropertyOperations.getString(__thisNode__, PROPS.moduleID$UxsQ)));
   }
   /*package*/ static String presentation_id173Z5qAPmZ2(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.moduleFQName$uMtw);
+    return SPropertyOperations.getString(__thisNode__, PROPS.moduleFQName$Usiw);
   }
 
   /*package*/ SolutionRef__BehaviorDescriptor() {
@@ -90,7 +90,7 @@ public final class SolutionRef__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty moduleFQName$uMtw = MetaAdapterFactory.getProperty(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x11c3fc56a6d1cbdcL, 0x11c3fc56a6d1cbddL, "moduleFQName");
-    /*package*/ static final SProperty moduleID$uMCa = MetaAdapterFactory.getProperty(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x11c3fc56a6d1cbdcL, 0x11c3fc56a6d1cbdeL, "moduleID");
+    /*package*/ static final SProperty moduleFQName$Usiw = MetaAdapterFactory.getProperty(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x11c3fc56a6d1cbdcL, 0x11c3fc56a6d1cbddL, "moduleFQName");
+    /*package*/ static final SProperty moduleID$UxsQ = MetaAdapterFactory.getProperty(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x11c3fc56a6d1cbdcL, 0x11c3fc56a6d1cbdeL, "moduleID");
   }
 }

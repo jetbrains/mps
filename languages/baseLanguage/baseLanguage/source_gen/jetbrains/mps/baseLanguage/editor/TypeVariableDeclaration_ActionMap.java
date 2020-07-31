@@ -27,7 +27,7 @@ public class TypeVariableDeclaration_ActionMap {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode parent = SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.GenericDeclaration$IQ);
-        if (ListSequence.fromList(SLinkOperations.getChildren(parent, LINKS.typeVariableDeclaration$ziZT)).isEmpty()) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(parent, LINKS.typeVariableDeclaration$6cWB)).isEmpty()) {
           SelectionUtil.selectCell(editorContext, SNodeOperations.cast(parent, CONCEPTS.GenericDeclaration$IQ), "TYPE_VARIABLES_ANCHOR");
         }
       }
@@ -81,6 +81,6 @@ public class TypeVariableDeclaration_ActionMap {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
   }
 }

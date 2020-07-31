@@ -70,8 +70,8 @@ public class ShowGenerationPlan_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final boolean alternative = ShowGenerationPlan_Action.this.isIgnoreExternalPlan(event, event);
     SNode command = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, "jetbrains.mps.console.ideCommands.structure.ShowGenPlan"));
-    SPropertyOperations.assign(command, PROPS.ignoreExternalPlan$FyLA, alternative);
-    SLinkOperations.setTarget(command, LINKS.targetModel$v7Da, ModelPointer__BehaviorDescriptor.create_id_GDk1qZ2JP.invoke(SNodeOperations.asSConcept(CONCEPTS.ModelPointer$rg), event.getData(MPSCommonDataKeys.MODEL), event.getData(MPSCommonDataKeys.MODEL)));
+    SPropertyOperations.assign(command, PROPS.ignoreExternalPlan$5Q1q, alternative);
+    SLinkOperations.setTarget(command, LINKS.targetModel$4GVQ, ModelPointer__BehaviorDescriptor.create_id_GDk1qZ2JP.invoke(SNodeOperations.asSConcept(CONCEPTS.ModelPointer$rg), event.getData(MPSCommonDataKeys.MODEL), event.getData(MPSCommonDataKeys.MODEL)));
     event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject().getComponent(ConsoleTool.class).executeCommand(command);
   }
   /*package*/ boolean isIgnoreExternalPlan(AnActionEvent evt, final AnActionEvent event) {
@@ -82,11 +82,11 @@ public class ShowGenerationPlan_Action extends BaseAction {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty ignoreExternalPlan$FyLA = MetaAdapterFactory.getProperty(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x2c510b378f8ce5ddL, "ignoreExternalPlan");
+    /*package*/ static final SProperty ignoreExternalPlan$5Q1q = MetaAdapterFactory.getProperty(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x2c510b378f8ce5ddL, "ignoreExternalPlan");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink targetModel$v7Da = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x70ee8fac615b4f33L, "targetModel");
+    /*package*/ static final SContainmentLink targetModel$4GVQ = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x70ee8fac615b4f33L, "targetModel");
   }
 
   private static final class CONCEPTS {

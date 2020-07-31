@@ -22,7 +22,7 @@ public class typeof_TypeAnnotated_InferenceRule extends AbstractInferenceRule_Ru
     {
       SNode _nodeToCheck_1029348928467 = typeAnnotated;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "5259630923505771313", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "5259630923505770757", true), (SNode) SNodeOperations.copyNode(SLinkOperations.getTarget(typeAnnotated, LINKS.annotation$lMr0)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "5259630923505770757", true), (SNode) SNodeOperations.copyNode(SLinkOperations.getTarget(typeAnnotated, LINKS.annotation$zr50)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -36,7 +36,7 @@ public class typeof_TypeAnnotated_InferenceRule extends AbstractInferenceRule_Ru
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink annotation$lMr0 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x48fdf6754d38a0a9L, 0x48fdf6754d38a0aaL, "annotation");
+    /*package*/ static final SContainmentLink annotation$zr50 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x48fdf6754d38a0a9L, 0x48fdf6754d38a0aaL, "annotation");
   }
 
   private static final class CONCEPTS {

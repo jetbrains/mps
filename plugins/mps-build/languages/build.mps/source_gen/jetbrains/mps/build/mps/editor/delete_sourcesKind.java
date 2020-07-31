@@ -22,7 +22,7 @@ public class delete_sourcesKind {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SPropertyOperations.setEnum(node, PROPS.sourcesKind$ZoTF, 0x3be316509db4552L, "sources");
+        SPropertyOperations.setEnum(node, PROPS.sourcesKind$H3VP, 0x3be316509db4552L, "sources");
       }
 
     };
@@ -70,6 +70,6 @@ public class delete_sourcesKind {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty sourcesKind$ZoTF = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind");
+    /*package*/ static final SProperty sourcesKind$H3VP = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind");
   }
 }

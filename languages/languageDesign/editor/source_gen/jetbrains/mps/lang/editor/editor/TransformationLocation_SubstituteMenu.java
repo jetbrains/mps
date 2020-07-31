@@ -60,7 +60,7 @@ public class TransformationLocation_SubstituteMenu extends SubstituteMenuBase {
       super.initialize(_context);
       condition = new Computable<Boolean>() {
         public Boolean compute() {
-          return Objects.equals(_context.getLink(), LINKS.locations$aTw0);
+          return Objects.equals(_context.getLink(), LINKS.locations$hQw0);
         }
       }.compute();
     }
@@ -103,7 +103,7 @@ public class TransformationLocation_SubstituteMenu extends SubstituteMenuBase {
       }
       public class SMP_Concepts_fvfxl9_a0a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
         protected Collection getConcepts(SubstituteMenuContext _context) {
-          Iterable<SConcept> result = Sequence.fromIterable(TransformationMenuActionsUtil.getSubconceptsWithCurrentChildConceptsExcluded(CONCEPTS.TransformationLocation$2W, _context.getParentNode(), LINKS.locations$aTw0, _context.getCurrentTargetNode())).select(new ISelector<SAbstractConcept, SConcept>() {
+          Iterable<SConcept> result = Sequence.fromIterable(TransformationMenuActionsUtil.getSubconceptsWithCurrentChildConceptsExcluded(CONCEPTS.TransformationLocation$2W, _context.getParentNode(), LINKS.locations$hQw0, _context.getCurrentTargetNode())).select(new ISelector<SAbstractConcept, SConcept>() {
             public SConcept select(SAbstractConcept it) {
               return SNodeOperations.castConcept(it, CONCEPTS.TransformationLocation$2W);
             }
@@ -186,7 +186,7 @@ public class TransformationLocation_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink locations$aTw0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations");
+    /*package*/ static final SContainmentLink locations$hQw0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations");
   }
 
   private static final class CONCEPTS {

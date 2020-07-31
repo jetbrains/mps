@@ -41,7 +41,7 @@ public class LanguageRuntimeGeneratorUtils {
     List<SNode> roots = SModelOperations.roots(((SModel) editorModel), CONCEPTS.ClassConcept$IY);
     return ListSequence.fromList(roots).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return "EditorAspectDescriptorImpl".equals(SPropertyOperations.getString(it, PROPS.name$tAp1));
+        return "EditorAspectDescriptorImpl".equals(SPropertyOperations.getString(it, PROPS.name$lA7v));
       }
     });
   }
@@ -50,7 +50,7 @@ public class LanguageRuntimeGeneratorUtils {
     List<SNode> roots = SModelOperations.roots(((SModel) editorModel), CONCEPTS.StyleSheet$GD);
     return ListSequence.fromList(roots).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.styles$FMi4)).any(new IWhereFilter<SNode>() {
+        return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.styles$dmJW)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return SNodeOperations.isInstanceOf(it, CONCEPTS.StyleAttributeDeclaration$8S);
           }
@@ -66,10 +66,10 @@ public class LanguageRuntimeGeneratorUtils {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink styles$FMi4 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b151743L, 0x1143b180146L, "styles");
+    /*package*/ static final SContainmentLink styles$dmJW = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b151743L, 0x1143b180146L, "styles");
   }
 }

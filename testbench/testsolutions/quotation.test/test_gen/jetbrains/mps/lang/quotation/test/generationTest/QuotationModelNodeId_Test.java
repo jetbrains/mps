@@ -70,7 +70,7 @@ public class QuotationModelNodeId_Test extends BaseTransformationTest {
 
     private static SNode createReturnStatement_fw7ydn_a0c0d8(SModel modelToCreate, org.jetbrains.mps.openapi.model.SNodeId nodeId) {
       SNodeBuilder rootBuilder1 = new SNodeBuilder(modelToCreate, nodeId).init(CONCEPTS.ReturnStatement$SF);
-      rootBuilder1.forChild(LINKS.expression$EsbK).init(CONCEPTS.NullLiteral$q4);
+      rootBuilder1.forChild(LINKS.expression$zDGg).init(CONCEPTS.NullLiteral$q4);
       return rootBuilder1.getResult();
     }
     private static SNode _quotation_createNode_fw7ydn_a0c0e8(Object parameter_1, Object parameter_2) {
@@ -90,6 +90,6 @@ public class QuotationModelNodeId_Test extends BaseTransformationTest {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$EsbK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
+    /*package*/ static final SContainmentLink expression$zDGg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
   }
 }

@@ -22,7 +22,7 @@ public class check_ArrayClassExpression_NonTypesystemRule extends AbstractNonTyp
   public check_ArrayClassExpression_NonTypesystemRule() {
   }
   public void applyRule(final SNode arrayClassExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(arrayClassExpression, LINKS.arrayType$DkI0), CONCEPTS.ArrayType$Yv))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(arrayClassExpression, LINKS.arrayType$12i0), CONCEPTS.ArrayType$Yv))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(arrayClassExpression, "Array type expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1587149463194054693", null, errorTarget);
@@ -44,7 +44,7 @@ public class check_ArrayClassExpression_NonTypesystemRule extends AbstractNonTyp
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink arrayType$DkI0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x115f7830a32a65e7L, 0x115f7830a32a65e8L, "arrayType");
+    /*package*/ static final SContainmentLink arrayType$12i0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x115f7830a32a65e7L, 0x115f7830a32a65e8L, "arrayType");
   }
 
   private static final class CONCEPTS {

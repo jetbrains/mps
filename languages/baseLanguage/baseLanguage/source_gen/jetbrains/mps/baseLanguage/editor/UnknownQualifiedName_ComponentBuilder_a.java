@@ -68,7 +68,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.tokens$DqHu;
+      final SProperty property = PROPS.tokens$3W1y;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no tokens>");
@@ -115,7 +115,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       SNode chosen = parameterObject;
       String className = Classifier__BehaviorDescriptor.getNestedName_id7q4lzBFjvIX.invoke(chosen);
 
-      String tokens = SPropertyOperations.getString(node, PROPS.tokens$DqHu);
+      String tokens = SPropertyOperations.getString(node, PROPS.tokens$3W1y);
       int i = tokens.indexOf(".", 0);
 
       while (i >= 0) {
@@ -127,23 +127,23 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
         if (Sequence.fromIterable(Members.visibleStaticFields(chosen, node)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return memberCandidateName.equals(SPropertyOperations.getString(it, PROPS.name$tAp1));
+            return memberCandidateName.equals(SPropertyOperations.getString(it, PROPS.name$lA7v));
           }
         }).isNotEmpty() || Sequence.fromIterable(Members.visibleEnumConstants(chosen)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return memberCandidateName.equals(SPropertyOperations.getString(it, PROPS.name$tAp1));
+            return memberCandidateName.equals(SPropertyOperations.getString(it, PROPS.name$lA7v));
           }
         }).isNotEmpty()) {
 
           // found 
-          SPropertyOperations.assign(node, PROPS.tokens$DqHu, className + "." + remaining);
+          SPropertyOperations.assign(node, PROPS.tokens$3W1y, className + "." + remaining);
           return;
         }
 
         i = nextDot;
       }
 
-      SPropertyOperations.assign(node, PROPS.tokens$DqHu, className);
+      SPropertyOperations.assign(node, PROPS.tokens$3W1y, className);
 
     }
     public boolean isReferentPresentation() {
@@ -157,8 +157,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty tokens$DqHu = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5a98df4004080866L, 0x1996ec29712bdd92L, "tokens");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty tokens$3W1y = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5a98df4004080866L, 0x1996ec29712bdd92L, "tokens");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

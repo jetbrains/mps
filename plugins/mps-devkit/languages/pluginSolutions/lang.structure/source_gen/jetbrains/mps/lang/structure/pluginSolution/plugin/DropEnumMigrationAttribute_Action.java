@@ -68,8 +68,8 @@ public class DropEnumMigrationAttribute_Action extends BaseAction {
     int result = Messages.showOkCancelDialog("<html>Enumeration migration's attribute is required for migration of projects that might depend on containing language or uses it. Consider keeping the attribute until the moment when all dependent projects should be migrated.</html>", "Drop Enumeration Migration's Attribute", "Drop Attribute", "Cancel", null);
 
     if (result == Messages.OK) {
-      for (SNode member : ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.members$qYq2))) {
-        SLinkOperations.setTarget(member, LINKS.oldMember$bvEy, null);
+      for (SNode member : ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.members$4eAY))) {
+        SLinkOperations.setTarget(member, LINKS.oldMember$$lAu, null);
       }
       SNodeOperations.deleteNode(migrationInfoAttribute);
     }
@@ -86,7 +86,7 @@ public class DropEnumMigrationAttribute_Action extends BaseAction {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink oldMember$bvEy = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0xc7a22b1ac1ed15fL, "oldMember");
-    /*package*/ static final SContainmentLink members$qYq2 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
+    /*package*/ static final SReferenceLink oldMember$$lAu = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0xc7a22b1ac1ed15fL, "oldMember");
+    /*package*/ static final SContainmentLink members$4eAY = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
   }
 }

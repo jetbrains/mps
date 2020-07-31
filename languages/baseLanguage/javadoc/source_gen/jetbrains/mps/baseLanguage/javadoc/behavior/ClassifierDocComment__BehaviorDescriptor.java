@@ -33,7 +33,7 @@ public final class ClassifierDocComment__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static boolean isTagSectionEmpty_id7lVCwDcz6WN(@NotNull SNode __thisNode__) {
-    return ((boolean) BaseDocComment__BehaviorDescriptor.isTagSectionEmpty_id7lVCwDcz6WN.invokeSuper(__thisNode__, CONCEPTS.ClassifierDocComment$$4)) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.param$KGYv)).isEmpty();
+    return ((boolean) BaseDocComment__BehaviorDescriptor.isTagSectionEmpty_id7lVCwDcz6WN.invokeSuper(__thisNode__, CONCEPTS.ClassifierDocComment$$4)) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.param$_Mh1)).isEmpty();
   }
 
   /*package*/ ClassifierDocComment__BehaviorDescriptor() {
@@ -87,6 +87,6 @@ public final class ClassifierDocComment__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink param$KGYv = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, 0x1cb65d9fe66a764eL, "param");
+    /*package*/ static final SContainmentLink param$_Mh1 = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, 0x1cb65d9fe66a764eL, "param");
   }
 }

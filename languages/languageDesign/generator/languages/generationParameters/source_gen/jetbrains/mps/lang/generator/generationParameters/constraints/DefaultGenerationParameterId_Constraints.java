@@ -31,7 +31,7 @@ public class DefaultGenerationParameterId_Constraints extends BaseConstraintsDes
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$QycW, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$q$h4, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -47,7 +47,7 @@ public class DefaultGenerationParameterId_Constraints extends BaseConstraintsDes
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             if ((_context.getReferenceNode() != null)) {
-              return ListScope.forResolvableElements(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.container$Qyct), LINKS.parameters$3gt0));
+              return ListScope.forResolvableElements(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.container$q$23), LINKS.parameters$$Y30));
             }
             return ListScope.forResolvableElements(Sequence.fromIterable(Collections.<SNode>emptyList()));
           }
@@ -65,8 +65,8 @@ public class DefaultGenerationParameterId_Constraints extends BaseConstraintsDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink parameter$QycW = MetaAdapterFactory.getReferenceLink(0x289fcc83654341e8L, 0xa5ca768235715ce4L, 0x2a86294b8491c07cL, 0x2a86294b8491c0c3L, "parameter");
-    /*package*/ static final SReferenceLink container$Qyct = MetaAdapterFactory.getReferenceLink(0x289fcc83654341e8L, 0xa5ca768235715ce4L, 0x2a86294b8491c07cL, 0x2a86294b8491c0c2L, "container");
-    /*package*/ static final SContainmentLink parameters$3gt0 = MetaAdapterFactory.getContainmentLink(0x289fcc83654341e8L, 0xa5ca768235715ce4L, 0x75bebc44281efab8L, 0x75bebc44281efab9L, "parameters");
+    /*package*/ static final SReferenceLink parameter$q$h4 = MetaAdapterFactory.getReferenceLink(0x289fcc83654341e8L, 0xa5ca768235715ce4L, 0x2a86294b8491c07cL, 0x2a86294b8491c0c3L, "parameter");
+    /*package*/ static final SReferenceLink container$q$23 = MetaAdapterFactory.getReferenceLink(0x289fcc83654341e8L, 0xa5ca768235715ce4L, 0x2a86294b8491c07cL, 0x2a86294b8491c0c2L, "container");
+    /*package*/ static final SContainmentLink parameters$$Y30 = MetaAdapterFactory.getContainmentLink(0x289fcc83654341e8L, 0xa5ca768235715ce4L, 0x75bebc44281efab8L, 0x75bebc44281efab9L, "parameters");
   }
 }

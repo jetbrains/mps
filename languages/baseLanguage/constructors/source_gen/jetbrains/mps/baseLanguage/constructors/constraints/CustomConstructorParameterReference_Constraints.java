@@ -69,7 +69,7 @@ public class CustomConstructorParameterReference_Constraints extends BaseConstra
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$CYx0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$QhZ0, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -84,13 +84,13 @@ public class CustomConstructorParameterReference_Constraints extends BaseConstra
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode args = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.CustomConstructor$$1, false, false), LINKS.arguments$tz7x);
+            SNode args = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.CustomConstructor$$1, false, false), LINKS.arguments$k0CZ);
             if (SNodeOperations.isInstanceOf(args, CONCEPTS.ListArgumentsClause$21)) {
               List<SNode> result = new ArrayList<SNode>();
-              ListSequence.fromList(result).addElement(SLinkOperations.getTarget(SNodeOperations.cast(args, CONCEPTS.ListArgumentsClause$21), LINKS.list$X02a));
+              ListSequence.fromList(result).addElement(SLinkOperations.getTarget(SNodeOperations.cast(args, CONCEPTS.ListArgumentsClause$21), LINKS.list$z12Q));
               return ListScope.forResolvableElements(result);
             } else if (SNodeOperations.isInstanceOf(args, CONCEPTS.CustomArgumentClause$2w)) {
-              return ListScope.forResolvableElements(SLinkOperations.getChildren(SNodeOperations.cast(args, CONCEPTS.CustomArgumentClause$2w), LINKS.parameter$YMSz));
+              return ListScope.forResolvableElements(SLinkOperations.getChildren(SNodeOperations.cast(args, CONCEPTS.CustomArgumentClause$2w), LINKS.parameter$qDoX));
             } else {
               return null;
             }
@@ -120,9 +120,9 @@ public class CustomConstructorParameterReference_Constraints extends BaseConstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink parameter$CYx0 = MetaAdapterFactory.getReferenceLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b745ce64L, 0x4aa85872b745ce65L, "parameter");
-    /*package*/ static final SContainmentLink arguments$tz7x = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x4aa85872b7431817L, "arguments");
-    /*package*/ static final SContainmentLink list$X02a = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6b9L, 0x41c47a507380d0bcL, "list");
-    /*package*/ static final SContainmentLink parameter$YMSz = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, 0x4aa85872b7431821L, "parameter");
+    /*package*/ static final SReferenceLink parameter$QhZ0 = MetaAdapterFactory.getReferenceLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b745ce64L, 0x4aa85872b745ce65L, "parameter");
+    /*package*/ static final SContainmentLink arguments$k0CZ = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x4aa85872b7431817L, "arguments");
+    /*package*/ static final SContainmentLink list$z12Q = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6b9L, 0x41c47a507380d0bcL, "list");
+    /*package*/ static final SContainmentLink parameter$qDoX = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, 0x4aa85872b7431821L, "parameter");
   }
 }

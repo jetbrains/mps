@@ -27,7 +27,7 @@ public class typeof_ResponseSendOperation_InferenceRule extends AbstractInferenc
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:c79f1d68-0099-426e-a3a4-72db4a9f1693(jetbrains.mps.ide.httpsupport.typesystem)", "6886330673564899424", true), (SNode) _quotation_createNode_o5mbhf_a1a0c0a0b(), _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(responseSendOperation, LINKS.buffer$HB57);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(responseSendOperation, LINKS.buffer$5Vup);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:c79f1d68-0099-426e-a3a4-72db4a9f1693(jetbrains.mps.ide.httpsupport.typesystem)", "2332657309401808491", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:c79f1d68-0099-426e-a3a4-72db4a9f1693(jetbrains.mps.ide.httpsupport.typesystem)", "2332657309401843893", true), (SNode) _quotation_createNode_o5mbhf_a1a0c0b0b(), false, true, _info_12389875345);
     }
@@ -56,7 +56,7 @@ public class typeof_ResponseSendOperation_InferenceRule extends AbstractInferenc
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink buffer$HB57 = MetaAdapterFactory.getContainmentLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x5f91294323b64fc1L, 0x5f91294323b6503fL, "buffer");
+    /*package*/ static final SContainmentLink buffer$5Vup = MetaAdapterFactory.getContainmentLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x5f91294323b64fc1L, 0x5f91294323b6503fL, "buffer");
   }
 
   private static final class CONCEPTS {

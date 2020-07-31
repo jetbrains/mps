@@ -23,15 +23,15 @@ public class typeof_VariableDeclaration_InferenceRule extends AbstractInferenceR
   public typeof_VariableDeclaration_InferenceRule() {
   }
   public void applyRule(final SNode variableDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode initializer = SLinkOperations.getTarget(variableDeclaration, LINKS.initializer$KgD);
+    SNode initializer = SLinkOperations.getTarget(variableDeclaration, LINKS.initializer$no3R);
     SConcept sconcept = SNodeOperations.getConcept(initializer);
     boolean abstractInitializer = sconcept != null && sconcept.isAbstract();
     if ((initializer != null)) {
-      if (abstractInitializer && ((SLinkOperations.getTarget(variableDeclaration, LINKS.type$pLrO) == null) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(variableDeclaration, LINKS.type$pLrO))), CONCEPTS.Type$IG))) {
+      if (abstractInitializer && ((SLinkOperations.getTarget(variableDeclaration, LINKS.type$uWuc) == null) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(variableDeclaration, LINKS.type$uWuc))), CONCEPTS.Type$IG))) {
         // needed for MPS-20925 
         return;
       } else {
-        if (!((CheckingUtil.isValidByteOrShortExpression(SLinkOperations.getTarget(variableDeclaration, LINKS.type$pLrO), initializer)))) {
+        if (!((CheckingUtil.isValidByteOrShortExpression(SLinkOperations.getTarget(variableDeclaration, LINKS.type$uWuc), initializer)))) {
           if (!(typeCheckingContext.isSingleTypeComputation())) {
             {
               SNode _nodeToCheck_1029348928467 = variableDeclaration;
@@ -97,8 +97,8 @@ public class typeof_VariableDeclaration_InferenceRule extends AbstractInferenceR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class CONCEPTS {

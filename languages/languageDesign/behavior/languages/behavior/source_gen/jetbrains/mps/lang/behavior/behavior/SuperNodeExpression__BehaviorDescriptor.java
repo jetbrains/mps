@@ -41,11 +41,11 @@ public final class SuperNodeExpression__BehaviorDescriptor extends BaseBHDescrip
   }
   @Nullable
   /*package*/ static SNode getSpecifiedSuperConcept_id2k7p7sTvKkb(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.superConcept$i1FO);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.superConcept$IOec);
   }
   /*package*/ static boolean isEnclosingMethodStatic_id4xnLoJyFYX5(@NotNull SNode __thisNode__) {
     SNode method = SuperNodeExpression__BehaviorDescriptor.getEnclosingMethod_id4MNYYw$1vF5.invoke(__thisNode__);
-    return method != null && SPropertyOperations.getBoolean(method, PROPS.isStatic$KaRv);
+    return method != null && SPropertyOperations.getBoolean(method, PROPS.isStatic$lgS1);
   }
 
   /*package*/ SuperNodeExpression__BehaviorDescriptor() {
@@ -103,10 +103,10 @@ public final class SuperNodeExpression__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink superConcept$i1FO = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434a6558L, 0x498a2c3387127040L, "superConcept");
+    /*package*/ static final SReferenceLink superConcept$IOec = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434a6558L, 0x498a2c3387127040L, "superConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isStatic$KaRv = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x51613f7fe129b24dL, "isStatic");
+    /*package*/ static final SProperty isStatic$lgS1 = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x51613f7fe129b24dL, "isStatic");
   }
 }

@@ -34,7 +34,7 @@ public class GenerationContextOp_ParameterRef_Constraints extends BaseConstraint
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$jdG7, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$jCnp, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -51,8 +51,8 @@ public class GenerationContextOp_ParameterRef_Constraints extends BaseConstraint
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> result = new ArrayList<SNode>();
             SNode templDeclaration = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.IParameterizedTemplate$qA, false, false);
-            if ((templDeclaration != null) && ListSequence.fromList(SLinkOperations.getChildren(templDeclaration, LINKS.parameter$AB01)).isNotEmpty()) {
-              ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(templDeclaration, LINKS.parameter$AB01)));
+            if ((templDeclaration != null) && ListSequence.fromList(SLinkOperations.getChildren(templDeclaration, LINKS.parameter$GT0v)).isNotEmpty()) {
+              ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(templDeclaration, LINKS.parameter$GT0v)));
             }
             return ListScope.forResolvableElements(result);
           }
@@ -71,7 +71,7 @@ public class GenerationContextOp_ParameterRef_Constraints extends BaseConstraint
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink parameter$jdG7 = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x4806ea5d84d8a2caL, 0x4806ea5d84d8d50aL, "parameter");
-    /*package*/ static final SContainmentLink parameter$AB01 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter");
+    /*package*/ static final SReferenceLink parameter$jCnp = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x4806ea5d84d8a2caL, 0x4806ea5d84d8d50aL, "parameter");
+    /*package*/ static final SContainmentLink parameter$GT0v = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter");
   }
 }

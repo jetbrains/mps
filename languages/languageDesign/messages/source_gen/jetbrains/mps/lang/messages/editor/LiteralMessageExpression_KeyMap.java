@@ -64,7 +64,7 @@ public class LiteralMessageExpression_KeyMap extends KeyMapImpl {
       if (splitPosition == 0) {
         return true;
       }
-      return !(Objects.equals(SPropertyOperations.getString(node, PROPS.message$vnr0).charAt(splitPosition - 1), '\\'));
+      return !(Objects.equals(SPropertyOperations.getString(node, PROPS.message$cm50).charAt(splitPosition - 1), '\\'));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       new LiteralMessageSplitHelper(editorContext, node).insertMacro(null);
@@ -79,6 +79,6 @@ public class LiteralMessageExpression_KeyMap extends KeyMapImpl {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty message$vnr0 = MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message");
+    /*package*/ static final SProperty message$cm50 = MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message");
   }
 }

@@ -40,8 +40,8 @@ public final class RulesBlock__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.TypedDef$hM)) {
-      Scope kindScope = ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.kind$ipQZ), kind, child);
-      Scope localScope = new NamedElementsScope(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.members$ipQw), CONCEPTS.TypedDef$hM));
+      Scope kindScope = ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.kind$UxCx), kind, child);
+      Scope localScope = new NamedElementsScope(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.members$Uxpw), CONCEPTS.TypedDef$hM));
       return new CompositeScope(kindScope, localScope);
     } else {
       return null;
@@ -99,7 +99,7 @@ public final class RulesBlock__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink kind$ipQZ = MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, 0x19eb8590edb5174cL, "kind");
-    /*package*/ static final SContainmentLink members$ipQw = MetaAdapterFactory.getContainmentLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, 0x19eb8590edb5174bL, "members");
+    /*package*/ static final SReferenceLink kind$UxCx = MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, 0x19eb8590edb5174cL, "kind");
+    /*package*/ static final SContainmentLink members$Uxpw = MetaAdapterFactory.getContainmentLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, 0x19eb8590edb5174bL, "members");
   }
 }

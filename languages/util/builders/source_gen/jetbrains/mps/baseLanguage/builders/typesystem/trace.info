@@ -31,10 +31,10 @@
       <node id="2679357232284098429" at="29,50,30,42" concept="7" />
       <node id="2679357232284098429" at="32,68,33,102" concept="7" />
       <node id="2679357232284098429" at="35,30,36,17" concept="7" />
-      <node id="2679357232284098429" at="40,0,41,0" concept="9" trace="value$3IFT" />
-      <node id="2679357232284098429" at="41,0,42,0" concept="9" trace="setter$3Djw" />
-      <node id="2679357232284098429" at="42,0,43,0" concept="9" trace="parameter$WIkZ" />
-      <node id="2679357232284098429" at="43,0,44,0" concept="9" trace="type$pLrO" />
+      <node id="2679357232284098429" at="40,0,41,0" concept="9" trace="value$NBgB" />
+      <node id="2679357232284098429" at="41,0,42,0" concept="9" trace="setter$L0sw" />
+      <node id="2679357232284098429" at="42,0,43,0" concept="9" trace="parameter$qsax" />
+      <node id="2679357232284098429" at="43,0,44,0" concept="9" trace="type$uWuc" />
       <node id="2679357232284098429" at="47,0,48,0" concept="9" trace="BeanPropertyBuilder$T" />
       <node id="2679357232284098429" at="20,0,22,0" concept="1" trace="typeof_BeanPropertyBuilder_InferenceRule#()V" />
       <node id="2679357232284098429" at="29,0,32,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -82,21 +82,21 @@
       <node id="3816167865390950068" at="27,214,28,333" concept="2" />
       <node id="8969040284892462967" at="32,7,33,55" concept="6" />
       <node id="8969040284892462967" at="33,55,34,214" concept="6" />
-      <node id="8969040284892462967" at="34,214,35,262" concept="2" />
+      <node id="8969040284892462967" at="34,214,35,261" concept="2" />
       <node id="3816167865390948030" at="39,50,40,48" concept="7" />
       <node id="3816167865390948030" at="42,68,43,102" concept="7" />
       <node id="3816167865390948030" at="45,30,46,17" concept="7" />
-      <node id="3816167865390948030" at="50,0,51,0" concept="9" trace="isAbstract$2sTh" />
-      <node id="3816167865390948030" at="54,0,55,0" concept="9" trace="creator$LRFB" />
-      <node id="3816167865390948030" at="55,0,56,0" concept="9" trace="type$rcE9" />
-      <node id="3816167865390948030" at="56,0,57,0" concept="9" trace="extends$8gAB" />
+      <node id="3816167865390948030" at="50,0,51,0" concept="9" trace="isAbstract$bZJf" />
+      <node id="3816167865390948030" at="54,0,55,0" concept="9" trace="creator$9Y7T" />
+      <node id="3816167865390948030" at="55,0,56,0" concept="9" trace="type$b8qn" />
+      <node id="3816167865390948030" at="56,0,57,0" concept="9" trace="extends$2GT" />
       <node id="3816167865390948030" at="60,0,61,0" concept="9" trace="SimpleBuilderDeclaration$fS" />
       <node id="3816167865390948030" at="21,0,23,0" concept="1" trace="typeof_SimpleBuilderDeclaration_InferenceRule#()V" />
       <node id="3816167865390948030" at="39,0,42,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="3816167865390948030" at="42,0,45,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="3816167865390948030" at="45,0,48,0" concept="5" trace="overrides#()Z" />
       <node id="3816167865390950068" at="24,80,29,7" concept="0" />
-      <node id="8969040284892462967" at="31,79,36,7" concept="0" />
+      <node id="8969040284892462967" at="31,78,36,7" concept="0" />
       <node id="3816167865390950048" at="23,124,30,5" concept="4" />
       <node id="8969040284892462945" at="30,5,37,5" concept="4" />
       <node id="3816167865390948030" at="23,0,39,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
@@ -109,7 +109,7 @@
         <var name="_info_12389875345" id="3816167865390950068" />
         <var name="_nodeToCheck_1029348928467" id="3816167865390950068" />
       </scope>
-      <scope id="8969040284892462967" at="32,7,35,262">
+      <scope id="8969040284892462967" at="32,7,35,261">
         <var name="_info_12389875345" id="8969040284892462967" />
         <var name="_nodeToCheck_1029348928467" id="8969040284892462967" />
       </scope>
@@ -119,7 +119,7 @@
       </scope>
       <scope id="3816167865390948030" at="45,0,48,0" />
       <scope id="3816167865390950050" at="24,80,29,7" />
-      <scope id="8969040284892462946" at="31,79,36,7" />
+      <scope id="8969040284892462946" at="31,78,36,7" />
       <scope id="3816167865390948031" at="23,124,37,5" />
       <scope id="3816167865390948030" at="23,0,39,0">
         <var name="declaration" id="3816167865390948030" />
@@ -152,10 +152,10 @@
       <node id="4315270135340734341" at="42,50,43,37" concept="7" />
       <node id="4315270135340734341" at="45,68,46,102" concept="7" />
       <node id="4315270135340734341" at="48,30,49,17" concept="7" />
-      <node id="4315270135340734341" at="53,0,54,0" concept="9" trace="declaration$oxEw" />
-      <node id="4315270135340734341" at="54,0,55,0" concept="9" trace="parameter$zrwh" />
-      <node id="4315270135340734341" at="55,0,56,0" concept="9" trace="argument$6P3U" />
-      <node id="4315270135340734341" at="56,0,57,0" concept="9" trace="type$OUXw" />
+      <node id="4315270135340734341" at="53,0,54,0" concept="9" trace="declaration$Sj_w" />
+      <node id="4315270135340734341" at="54,0,55,0" concept="9" trace="parameter$akCf" />
+      <node id="4315270135340734341" at="55,0,56,0" concept="9" trace="argument$jGT6" />
+      <node id="4315270135340734341" at="56,0,57,0" concept="9" trace="type$CzMw" />
       <node id="4315270135340734341" at="60,0,61,0" concept="9" trace="SimpleBuilder$Bb" />
       <node id="4315270135340734341" at="23,0,25,0" concept="1" trace="typeof_SimpleBuilder_InferenceRule#()V" />
       <node id="4315270135340734341" at="42,0,45,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -219,7 +219,7 @@
       <node id="5389689214217248374" at="36,30,37,17" concept="7" />
       <node id="5389689214217248374" at="41,0,42,0" concept="9" trace="BaseSimpleBuilderDeclaration$A" />
       <node id="5389689214217248374" at="42,0,43,0" concept="9" trace="SimpleBuilderPropertyParent$7B" />
-      <node id="5389689214217248374" at="46,0,47,0" concept="9" trace="type$rcE9" />
+      <node id="5389689214217248374" at="46,0,47,0" concept="9" trace="type$b8qn" />
       <node id="5389689214217248374" at="20,0,22,0" concept="1" trace="typeof_SimpleBuilderPropertyParent_InferenceRule#()V" />
       <node id="5389689214217248374" at="30,0,33,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="5389689214217248374" at="33,0,36,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -272,7 +272,7 @@
       <node id="5389689214217248396" at="35,30,36,17" concept="7" />
       <node id="5389689214217248396" at="40,0,41,0" concept="9" trace="SimpleBuilderProperty$zv" />
       <node id="5389689214217248396" at="41,0,42,0" concept="9" trace="SimpleBuilderPropertyValue$MI" />
-      <node id="5389689214217248396" at="45,0,46,0" concept="9" trace="type$OY7H" />
+      <node id="5389689214217248396" at="45,0,46,0" concept="9" trace="type$E5IN" />
       <node id="5389689214217248396" at="19,0,21,0" concept="1" trace="typeof_SimpleBuilderPropertyValue_InferenceRule#()V" />
       <node id="5389689214217248396" at="29,0,32,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="5389689214217248396" at="32,0,35,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -323,8 +323,8 @@
       <node id="5613258673505634348" at="41,50,42,48" concept="7" />
       <node id="5613258673505634348" at="44,68,45,102" concept="7" />
       <node id="5613258673505634348" at="47,30,48,17" concept="7" />
-      <node id="5613258673505634348" at="52,0,53,0" concept="9" trace="isAbstract$2sTh" />
-      <node id="5613258673505634348" at="56,0,57,0" concept="9" trace="creator$LRFB" />
+      <node id="5613258673505634348" at="52,0,53,0" concept="9" trace="isAbstract$bZJf" />
+      <node id="5613258673505634348" at="56,0,57,0" concept="9" trace="creator$9Y7T" />
       <node id="5613258673505634348" at="60,0,61,0" concept="9" trace="SimpleBuilderDeclaration$fS" />
       <node id="5613258673505634348" at="22,0,24,0" concept="1" trace="check_SimpleBuilderDeclaration_NonTypesystemRule#()V" />
       <node id="5613258673505634348" at="41,0,44,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -441,7 +441,7 @@
       <node id="7288041816792802795" at="36,30,37,17" concept="7" />
       <node id="7288041816792802795" at="41,0,42,0" concept="9" trace="BaseSimpleBuilderDeclaration$A" />
       <node id="7288041816792802795" at="42,0,43,0" concept="9" trace="SimpleBuilderParentExpression$Gy" />
-      <node id="7288041816792802795" at="46,0,47,0" concept="9" trace="type$rcE9" />
+      <node id="7288041816792802795" at="46,0,47,0" concept="9" trace="type$b8qn" />
       <node id="7288041816792802795" at="20,0,22,0" concept="1" trace="typeof_SimpleBuilderParentExpression_InferenceRule#()V" />
       <node id="7288041816792802795" at="30,0,33,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="7288041816792802795" at="33,0,36,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -494,8 +494,8 @@
       <node id="7288041816792806076" at="36,30,37,17" concept="7" />
       <node id="7288041816792806076" at="41,0,42,0" concept="9" trace="SimpleBuilderChild$xp" />
       <node id="7288041816792806076" at="42,0,43,0" concept="9" trace="SimpleBuilderChildExpression$Hw" />
-      <node id="7288041816792806076" at="46,0,47,0" concept="9" trace="child$XL3w" />
-      <node id="7288041816792806076" at="47,0,48,0" concept="9" trace="type$rcE9" />
+      <node id="7288041816792806076" at="46,0,47,0" concept="9" trace="child$UKGw" />
+      <node id="7288041816792806076" at="47,0,48,0" concept="9" trace="type$b8qn" />
       <node id="7288041816792806076" at="20,0,22,0" concept="1" trace="typeof_SimpleBuilderChildExpression_InferenceRule#()V" />
       <node id="7288041816792806076" at="30,0,33,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="7288041816792806076" at="33,0,36,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -545,7 +545,7 @@
       <node id="7576379307094721681" at="28,50,29,38" concept="7" />
       <node id="7576379307094721681" at="31,68,32,102" concept="7" />
       <node id="7576379307094721681" at="34,30,35,17" concept="7" />
-      <node id="7576379307094721681" at="39,0,40,0" concept="9" trace="builder$zDVT" />
+      <node id="7576379307094721681" at="39,0,40,0" concept="9" trace="builder$hk0B" />
       <node id="7576379307094721681" at="43,0,44,0" concept="9" trace="BuilderCreator$E1" />
       <node id="7576379307094721681" at="19,0,21,0" concept="1" trace="typeof_BuilderCreator_InferenceRule#()V" />
       <node id="7576379307094721681" at="28,0,31,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -595,8 +595,8 @@
       <node id="7802271442981733175" at="32,50,33,42" concept="7" />
       <node id="7802271442981733175" at="35,68,36,102" concept="7" />
       <node id="7802271442981733175" at="38,30,39,17" concept="7" />
-      <node id="7802271442981733175" at="43,0,44,0" concept="9" trace="builder$zDVT" />
-      <node id="7802271442981733175" at="44,0,45,0" concept="9" trace="expression$qyru" />
+      <node id="7802271442981733175" at="43,0,44,0" concept="9" trace="builder$hk0B" />
+      <node id="7802271442981733175" at="44,0,45,0" concept="9" trace="expression$QFjy" />
       <node id="7802271442981733175" at="48,0,49,0" concept="9" trace="AsBuilderStatement$lF" />
       <node id="7802271442981733175" at="20,0,22,0" concept="1" trace="typeof_AsBuilderStatement_InferenceRule#()V" />
       <node id="8009360033695211212" at="22,122,25,5" concept="4" />
@@ -647,9 +647,9 @@
       <node id="8000882773529084491" at="28,50,29,52" concept="7" />
       <node id="8000882773529084491" at="31,68,32,102" concept="7" />
       <node id="8000882773529084491" at="34,30,35,17" concept="7" />
-      <node id="8000882773529084491" at="39,0,40,0" concept="9" trace="value$$rFw" />
-      <node id="8000882773529084491" at="40,0,41,0" concept="9" trace="declaration$$rFZ" />
-      <node id="8000882773529084491" at="41,0,42,0" concept="9" trace="type$OY7H" />
+      <node id="8000882773529084491" at="39,0,40,0" concept="9" trace="value$Dq4w" />
+      <node id="8000882773529084491" at="40,0,41,0" concept="9" trace="declaration$Dqjx" />
+      <node id="8000882773529084491" at="41,0,42,0" concept="9" trace="type$E5IN" />
       <node id="8000882773529084491" at="45,0,46,0" concept="9" trace="SimpleBuilderPropertyBuilder$O9" />
       <node id="8000882773529084491" at="19,0,21,0" concept="1" trace="typeof_SimpleBuilderPropertyBuilder_InferenceRule#()V" />
       <node id="8000882773529084491" at="28,0,31,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -698,7 +698,7 @@
       <node id="901357770590752896" at="27,50,28,55" concept="7" />
       <node id="901357770590752896" at="30,68,31,102" concept="7" />
       <node id="901357770590752896" at="33,30,34,17" concept="7" />
-      <node id="901357770590752896" at="38,0,39,0" concept="9" trace="parameter$AX10" />
+      <node id="901357770590752896" at="38,0,39,0" concept="9" trace="parameter$Rzv0" />
       <node id="901357770590752896" at="42,0,43,0" concept="9" trace="SimpleBuilderParameterReference$6Y" />
       <node id="901357770590752896" at="18,0,20,0" concept="1" trace="typeof_SimpleBuilderParameterReference_InferenceRule#()V" />
       <node id="901357770590752896" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -747,7 +747,7 @@
       <node id="901357770590755902" at="27,50,28,46" concept="7" />
       <node id="901357770590755902" at="30,68,31,102" concept="7" />
       <node id="901357770590755902" at="33,30,34,17" concept="7" />
-      <node id="901357770590755902" at="38,0,39,0" concept="9" trace="type$OUXw" />
+      <node id="901357770590755902" at="38,0,39,0" concept="9" trace="type$CzMw" />
       <node id="901357770590755902" at="42,0,43,0" concept="9" trace="SimpleBuilderParameter$7_" />
       <node id="901357770590755902" at="18,0,20,0" concept="1" trace="typeof_SimpleBuilderParameter_InferenceRule#()V" />
       <node id="901357770590755902" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

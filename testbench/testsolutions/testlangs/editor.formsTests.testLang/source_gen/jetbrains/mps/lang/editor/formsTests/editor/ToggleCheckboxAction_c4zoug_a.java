@@ -20,7 +20,7 @@ public class ToggleCheckboxAction_c4zoug_a extends AbstractToggleCheckboxAction 
   }
 
   protected void doExecute() {
-    SPropertyOperations.assign(myNode, PROPS.property$Ho30, !(SPropertyOperations.getBoolean(myNode, PROPS.property$Ho30)));
+    SPropertyOperations.assign(myNode, PROPS.property$YDt0, !(SPropertyOperations.getBoolean(myNode, PROPS.property$YDt0)));
   }
 
   protected CellSelector createCellSelector(EditorCell selectedCell) {
@@ -29,6 +29,6 @@ public class ToggleCheckboxAction_c4zoug_a extends AbstractToggleCheckboxAction 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty property$Ho30 = MetaAdapterFactory.getProperty(0xafb9a5fdbc5d4169L, 0xa22542d8823d623aL, 0x4a35f271d9f26e94L, 0x4a35f271d9f26e95L, "property");
+    /*package*/ static final SProperty property$YDt0 = MetaAdapterFactory.getProperty(0xafb9a5fdbc5d4169L, 0xa22542d8823d623aL, 0x4a35f271d9f26e94L, 0x4a35f271d9f26e95L, "property");
   }
 }

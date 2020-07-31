@@ -126,7 +126,7 @@
       <node id="1205842240171" at="96,63,97,30" concept="5" />
       <node id="1205842240171" at="97,30,98,227" concept="2" />
       <node id="1205842240171" at="98,227,99,24" concept="6" />
-      <node id="3267115895196895590" at="103,0,104,0" concept="7" trace="closure$aJtr" />
+      <node id="3267115895196895590" at="103,0,104,0" concept="7" trace="closure$cZg5" />
       <node id="3267115895196895590" at="107,0,108,0" concept="7" trace="RefactorOperation$jt" />
       <node id="3267115895196895590" at="22,0,24,0" concept="1" trace="typeof_RefactorOperation_InferenceRule#()V" />
       <node id="3267115895196895590" at="55,0,58,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

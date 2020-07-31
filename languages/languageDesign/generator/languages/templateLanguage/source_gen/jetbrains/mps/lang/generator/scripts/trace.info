@@ -46,7 +46,7 @@
       <node id="8102310632648167264" at="101,0,102,0" concept="6" trace="Expression$TP" />
       <node id="8102310632648167264" at="102,0,103,0" concept="6" trace="NodePointerExpression$DS" />
       <node id="8102310632648167264" at="103,0,104,0" concept="6" trace="NodeIdentity$tk" />
-      <node id="8102310632648167264" at="107,0,108,0" concept="6" trace="ref$Xkjz" />
+      <node id="8102310632648167264" at="107,0,108,0" concept="6" trace="ref$GPtX" />
       <node id="8102310632648167403" at="24,0,28,0" concept="2" trace="getName#()Ljava/lang/String;" />
       <node id="8102310632648167403" at="28,0,32,0" concept="2" trace="getAdditionalInfo#()Ljava/lang/String;" />
       <node id="8102310632648167403" at="32,0,36,0" concept="2" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

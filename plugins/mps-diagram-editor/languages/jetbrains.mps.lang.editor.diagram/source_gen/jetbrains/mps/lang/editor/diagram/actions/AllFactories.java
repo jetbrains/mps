@@ -15,13 +15,13 @@ public class AllFactories {
   public static class NodeFactory_1497735617372820936 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.INamedConcept$nV)) {
-        SPropertyOperations.assign(newNode, PROPS.name$tAp1, SPropertyOperations.getString(SNodeOperations.cast(sampleNode, CONCEPTS.INamedConcept$nV), PROPS.name$tAp1));
+        SPropertyOperations.assign(newNode, PROPS.name$lA7v, SPropertyOperations.getString(SNodeOperations.cast(sampleNode, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v));
       }
     }
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

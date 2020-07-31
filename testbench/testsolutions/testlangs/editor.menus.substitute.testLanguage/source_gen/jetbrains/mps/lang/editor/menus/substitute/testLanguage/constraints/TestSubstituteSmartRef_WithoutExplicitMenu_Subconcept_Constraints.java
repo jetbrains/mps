@@ -27,7 +27,7 @@ public class TestSubstituteSmartRef_WithoutExplicitMenu_Subconcept_Constraints e
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.childToReference$zyr0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.childToReference$dF50, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -59,6 +59,6 @@ public class TestSubstituteSmartRef_WithoutExplicitMenu_Subconcept_Constraints e
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink childToReference$zyr0 = MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x6723ebbaa490bde6L, 0x6723ebbaa490bde7L, "childToReference");
+    /*package*/ static final SReferenceLink childToReference$dF50 = MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x6723ebbaa490bde6L, 0x6723ebbaa490bde7L, "childToReference");
   }
 }

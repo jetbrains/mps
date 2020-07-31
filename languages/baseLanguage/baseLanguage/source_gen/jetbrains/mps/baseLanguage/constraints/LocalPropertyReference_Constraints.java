@@ -59,7 +59,7 @@ public class LocalPropertyReference_Constraints extends BaseConstraintsDescripto
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.property$KTS0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.property$G280, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -97,7 +97,7 @@ public class LocalPropertyReference_Constraints extends BaseConstraintsDescripto
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     SNode ancestor = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.Property$PY, false, false);
     if (ancestor != null) {
-      if (Objects.equals(SLinkOperations.getTarget(node, LINKS.property$KTS0), ancestor)) {
+      if (Objects.equals(SLinkOperations.getTarget(node, LINKS.property$G280), ancestor)) {
         return false;
       }
     }
@@ -120,6 +120,6 @@ public class LocalPropertyReference_Constraints extends BaseConstraintsDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink property$KTS0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x515d7a8d927e9fb3L, 0x515d7a8d927e9fb4L, "property");
+    /*package*/ static final SReferenceLink property$G280 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x515d7a8d927e9fb3L, 0x515d7a8d927e9fb4L, "property");
   }
 }

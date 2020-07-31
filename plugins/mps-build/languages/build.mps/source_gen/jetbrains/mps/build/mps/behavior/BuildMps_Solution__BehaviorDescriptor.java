@@ -33,10 +33,10 @@ public final class BuildMps_Solution__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static boolean hasTestsSources_id6ogfLD6evrW(@NotNull SNode __thisNode__) {
-    return (SPropertyOperations.getEnum(__thisNode__, PROPS.sourcesKind$ZoTF) != null) && (SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.sourcesKind$ZoTF), 0x3be316509db4553L) || SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.sourcesKind$ZoTF), 0x3be316509db455cL));
+    return (SPropertyOperations.getEnum(__thisNode__, PROPS.sourcesKind$H3VP) != null) && (SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.sourcesKind$H3VP), 0x3be316509db4553L) || SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.sourcesKind$H3VP), 0x3be316509db455cL));
   }
   /*package*/ static boolean hasSources_id6ogfLD6hwDf(@NotNull SNode __thisNode__) {
-    return (SPropertyOperations.getEnum(__thisNode__, PROPS.sourcesKind$ZoTF) == null) || (SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.sourcesKind$ZoTF), 0x3be316509db4553L) || SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.sourcesKind$ZoTF), 0x3be316509db4552L));
+    return (SPropertyOperations.getEnum(__thisNode__, PROPS.sourcesKind$H3VP) == null) || (SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.sourcesKind$H3VP), 0x3be316509db4553L) || SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.sourcesKind$H3VP), 0x3be316509db4552L));
   }
 
   /*package*/ BuildMps_Solution__BehaviorDescriptor() {
@@ -88,6 +88,6 @@ public final class BuildMps_Solution__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty sourcesKind$ZoTF = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind");
+    /*package*/ static final SProperty sourcesKind$H3VP = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind");
   }
 }

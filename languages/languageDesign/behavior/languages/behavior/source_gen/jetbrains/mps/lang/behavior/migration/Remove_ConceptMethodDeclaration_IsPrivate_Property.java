@@ -40,7 +40,7 @@ public class Remove_ConceptMethodDeclaration_IsPrivate_Property extends Migratio
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptMethodDeclaration$VN, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          it.setProperty(PROPS.isPrivate$6dnu, null);
+          it.setProperty(PROPS.isPrivate$uny, null);
         }
       });
     }
@@ -54,6 +54,6 @@ public class Remove_ConceptMethodDeclaration_IsPrivate_Property extends Migratio
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isPrivate$6dnu = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480581L, "isPrivate");
+    /*package*/ static final SProperty isPrivate$uny = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480581L, "isPrivate");
   }
 }

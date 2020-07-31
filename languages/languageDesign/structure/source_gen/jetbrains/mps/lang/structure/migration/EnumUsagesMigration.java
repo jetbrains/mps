@@ -37,8 +37,8 @@ public class EnumUsagesMigration {
 
   public SNode migrateEnumPropertyAttribute(SNode propertyAttribute) {
     SNode targetProperty = PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(propertyAttribute);
-    if (SNodeOperations.hasRole(targetProperty, LINKS.oldProperty$ft71)) {
-      SPropertyOperations.assign(propertyAttribute, PROPS.enumUsageMigrated$lY$m, true);
+    if (SNodeOperations.hasRole(targetProperty, LINKS.oldProperty$v6pv)) {
+      SPropertyOperations.assign(propertyAttribute, PROPS.enumUsageMigrated$DjAE, true);
       return PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(propertyAttribute);
     }
     return null;
@@ -53,10 +53,10 @@ public class EnumUsagesMigration {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty enumUsageMigrated$lY$m = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x1081af3d7e9d6a2fL, "enumUsageMigrated");
+    /*package*/ static final SProperty enumUsageMigrated$DjAE = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x1081af3d7e9d6a2fL, "enumUsageMigrated");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink oldProperty$ft71 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, 0x5a14f1035942a5b6L, "oldProperty");
+    /*package*/ static final SContainmentLink oldProperty$v6pv = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, 0x5a14f1035942a5b6L, "oldProperty");
   }
 }

@@ -31,7 +31,7 @@ public class Performance_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.singer$K5R0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.singer$iPD0, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -49,7 +49,7 @@ public class Performance_Constraints extends BaseConstraintsDescriptor {
 
             SNode surroundingConcert = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Concert$6k, true, false);
 
-            List<SNode> performersAtTheConcert = SLinkOperations.getChildren(surroundingConcert, LINKS.performers$JYpX);
+            List<SNode> performersAtTheConcert = SLinkOperations.getChildren(surroundingConcert, LINKS.performers$fe$z);
 
             return ListScope.forNamedElements(performersAtTheConcert);
           }
@@ -68,7 +68,7 @@ public class Performance_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink singer$K5R0 = MetaAdapterFactory.getReferenceLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae7895ce1L, 0x34c8853ae7895ce2L, "singer");
-    /*package*/ static final SContainmentLink performers$JYpX = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae7895c45L, 0x34c8853ae7895c8bL, "performers");
+    /*package*/ static final SReferenceLink singer$iPD0 = MetaAdapterFactory.getReferenceLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae7895ce1L, 0x34c8853ae7895ce2L, "singer");
+    /*package*/ static final SContainmentLink performers$fe$z = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae7895c45L, 0x34c8853ae7895c8bL, "performers");
   }
 }

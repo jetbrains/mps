@@ -24,7 +24,7 @@ public class typeof_MapElement_InferenceRule extends AbstractInferenceRule_Runti
     final SNode keyType_typevar_1198083488673 = typeCheckingContext.createNewRuntimeTypesVariable();
     final SNode valueType_typevar_1198083495346 = typeCheckingContext.createNewRuntimeTypesVariable();
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(mapElement, LINKS.map$KWLJ);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(mapElement, LINKS.map$Hs5L);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7668447476859120486", 0, null);
       typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_y91lxu_a0a0c0c0b(typeCheckingContext.getRepresentative(keyType_typevar_1198083488673), typeCheckingContext.getRepresentative(valueType_typevar_1198083495346)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1198083507709", true), false, true, _info_12389875345);
     }
@@ -35,7 +35,7 @@ public class typeof_MapElement_InferenceRule extends AbstractInferenceRule_Runti
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(mapElement, LINKS.key$aE$d);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(mapElement, LINKS.key$aByj);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1198084142390", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1198084142392", true), (SNode) typeCheckingContext.getRepresentative(keyType_typevar_1198083488673), true, true, _info_12389875345);
       }
@@ -68,8 +68,8 @@ public class typeof_MapElement_InferenceRule extends AbstractInferenceRule_Runti
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink map$KWLJ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, 0x116ea576ac7L, "map");
-    /*package*/ static final SContainmentLink key$aE$d = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, 0x116ea57b648L, "key");
+    /*package*/ static final SContainmentLink map$Hs5L = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, 0x116ea576ac7L, "map");
+    /*package*/ static final SContainmentLink key$aByj = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, 0x116ea57b648L, "key");
   }
 
   private static final class CONCEPTS {

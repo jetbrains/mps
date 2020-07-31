@@ -51,10 +51,10 @@ public final class AbstractCellIdScopeProviderNodeOperation__BehaviorDescriptor 
         SNode coercedNode_ziie1_a0a0a = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperation__BehaviorDescriptor.getLeftExpression_idhEwJdGu.invoke(__thisNode__)), CONCEPTS.SNodeType$gn);
         if (coercedNode_ziie1_a0a0a != null) {
           if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.PropertyDeclaration$c5)) {
-            return AbstractCellIdScopeProviderNodeOperation__BehaviorDescriptor.getPropertyDeclarationScope_id3K0abI6bsqm.invoke(__thisNode__, SLinkOperations.getTarget(coercedNode_ziie1_a0a0a, LINKS.concept$HWFQ));
+            return AbstractCellIdScopeProviderNodeOperation__BehaviorDescriptor.getPropertyDeclarationScope_id3K0abI6bsqm.invoke(__thisNode__, SLinkOperations.getTarget(coercedNode_ziie1_a0a0a, LINKS.concept$gpfa));
           }
           if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.EditorCellId$LQ)) {
-            return AbstractCellIdScopeProviderNodeOperation__BehaviorDescriptor.getEditorCellIdScope_id3K0abI6bXeJ.invoke(__thisNode__, SLinkOperations.getTarget(coercedNode_ziie1_a0a0a, LINKS.concept$HWFQ));
+            return AbstractCellIdScopeProviderNodeOperation__BehaviorDescriptor.getEditorCellIdScope_id3K0abI6bXeJ.invoke(__thisNode__, SLinkOperations.getTarget(coercedNode_ziie1_a0a0a, LINKS.concept$gpfa));
           }
         } else {
         }
@@ -66,7 +66,7 @@ public final class AbstractCellIdScopeProviderNodeOperation__BehaviorDescriptor 
     return new SimpleScope(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(concept)) {
       @Nullable
       public String getReferenceText(@NotNull SNode target) {
-        return SPropertyOperations.getString(((SNode) target), PROPS.name$tAp1);
+        return SPropertyOperations.getString(((SNode) target), PROPS.name$lA7v);
       }
     };
   }
@@ -137,10 +137,10 @@ public final class AbstractCellIdScopeProviderNodeOperation__BehaviorDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$HWFQ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

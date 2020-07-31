@@ -32,7 +32,7 @@ public final class OutputMessage__BehaviorDescriptor extends BaseBHDescriptor {
 
   @Nullable
   /*package*/ static String getTraceableProperty_id4pl5GY7LKmH(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.value$Zo0u);
+    return SPropertyOperations.getString(__thisNode__, PROPS.value$GCey);
   }
 
   /*package*/ OutputMessage__BehaviorDescriptor() {
@@ -82,6 +82,6 @@ public final class OutputMessage__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$Zo0u = MetaAdapterFactory.getProperty(0x3f028972a2904cf2L, 0xa87e9b8f7e56076bL, 0x7df3f12f124a5e4L, 0x7df3f12f124a629L, "value");
+    /*package*/ static final SProperty value$GCey = MetaAdapterFactory.getProperty(0x3f028972a2904cf2L, 0xa87e9b8f7e56076bL, 0x7df3f12f124a5e4L, 0x7df3f12f124a629L, "value");
   }
 }

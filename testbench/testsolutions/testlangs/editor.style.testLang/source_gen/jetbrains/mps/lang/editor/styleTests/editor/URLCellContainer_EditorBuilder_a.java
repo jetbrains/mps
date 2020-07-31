@@ -77,7 +77,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.customUrl$IY8F;
+      final SProperty property = PROPS.customUrl$K6cP;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no customUrl>");
@@ -124,11 +124,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private String _StyleParameter_QueryFunction_4mbnlq_a0e0() {
-    return SPropertyOperations.getString(getNode(), PROPS.customUrl$IY8F);
+    return SPropertyOperations.getString(getNode(), PROPS.customUrl$K6cP);
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty customUrl$IY8F = MetaAdapterFactory.getProperty(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x692a1b3ce85cd977L, 0x2349ec7bddecf3dbL, "customUrl");
+    /*package*/ static final SProperty customUrl$K6cP = MetaAdapterFactory.getProperty(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x692a1b3ce85cd977L, 0x2349ec7bddecf3dbL, "customUrl");
   }
 
   private static final class CONCEPTS {

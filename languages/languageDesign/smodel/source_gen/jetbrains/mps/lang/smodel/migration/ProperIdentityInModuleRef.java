@@ -47,28 +47,28 @@ public class ProperIdentityInModuleRef extends MigrationScriptBase {
       };
       for (SNode mre : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ModuleRefExpression$Hw, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.moduleId$6hr9), CONCEPTS.ModulePointer$_2);
+          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.moduleId$2s9n), CONCEPTS.ModulePointer$_2);
         }
       })) {
-        SNode mpOld = SNodeOperations.cast(SLinkOperations.getTarget(mre, LINKS.moduleId$6hr9), CONCEPTS.ModulePointer$_2);
+        SNode mpOld = SNodeOperations.cast(SLinkOperations.getTarget(mre, LINKS.moduleId$2s9n), CONCEPTS.ModulePointer$_2);
         SNode mpNew = SModelOperations.createNewNode(SNodeOperations.getModel(mre), null, CONCEPTS.ModulePointer$rJ);
-        SPropertyOperations.assign(mpNew, PROPS.moduleName$ZUIo, SPropertyOperations.getString(mpOld, PROPS.moduleName$jb5q));
-        SPropertyOperations.assign(mpNew, PROPS.moduleId$goi, SPropertyOperations.getString(mpOld, PROPS.moduleId$jb6o));
+        SPropertyOperations.assign(mpNew, PROPS.moduleName$XstC, SPropertyOperations.getString(mpOld, PROPS.moduleName$inBA));
+        SPropertyOperations.assign(mpNew, PROPS.moduleId$7VKI, SPropertyOperations.getString(mpOld, PROPS.moduleId$io5C));
         // unlike 'replace with new(concept), replace with(node) doesn't copy attributes; we are going to process and update attributes manually. 
         SNodeOperations.replaceWithAnother(mpOld, mpNew);
-        SProperty oldModuleIdPropAttr = PROPS.moduleId$jb6o;
-        SProperty oldModuleNamePropAttr = PROPS.moduleName$jb5q;
-        for (SNode attr : SLinkOperations.getChildren(mpOld, LINKS.smodelAttribute$K8bJ)) {
+        SProperty oldModuleIdPropAttr = PROPS.moduleId$io5C;
+        SProperty oldModuleNamePropAttr = PROPS.moduleName$inBA;
+        for (SNode attr : SLinkOperations.getChildren(mpOld, LINKS.smodelAttribute$jXFL)) {
           if (SNodeOperations.isInstanceOf(attr, CONCEPTS.PropertyAttribute$jT)) {
             SNode pa = SNodeOperations.as(attr, CONCEPTS.PropertyAttribute$jT);
             if (oldModuleIdPropAttr.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(pa))) {
-              PropertyAttribute__BehaviorDescriptor.setProperty_id6Gg5Klvu8CV.invoke(pa, PROPS.moduleId$goi);
+              PropertyAttribute__BehaviorDescriptor.setProperty_id6Gg5Klvu8CV.invoke(pa, PROPS.moduleId$7VKI);
             } else if (oldModuleNamePropAttr.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(pa))) {
-              PropertyAttribute__BehaviorDescriptor.setProperty_id6Gg5Klvu8CV.invoke(pa, PROPS.moduleName$ZUIo);
+              PropertyAttribute__BehaviorDescriptor.setProperty_id6Gg5Klvu8CV.invoke(pa, PROPS.moduleName$XstC);
             }
             // fall-through 
           }
-          ListSequence.fromList(SLinkOperations.getChildren(mpNew, LINKS.smodelAttribute$K8bJ)).addElement(attr);
+          ListSequence.fromList(SLinkOperations.getChildren(mpNew, LINKS.smodelAttribute$jXFL)).addElement(attr);
         }
       }
     }
@@ -78,8 +78,8 @@ public class ProperIdentityInModuleRef extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink moduleId$6hr9 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1749acf3d038bbe2L, 0x1749acf3d038bbe5L, "moduleId");
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink moduleId$2s9n = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1749acf3d038bbe2L, 0x1749acf3d038bbe5L, "moduleId");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 
   private static final class CONCEPTS {
@@ -90,9 +90,9 @@ public class ProperIdentityInModuleRef extends MigrationScriptBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty moduleName$ZUIo = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645ae969L, "moduleName");
-    /*package*/ static final SProperty moduleName$jb5q = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, 0x5ef5a1e85338e19L, "moduleName");
-    /*package*/ static final SProperty moduleId$goi = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645c7f5cL, "moduleId");
-    /*package*/ static final SProperty moduleId$jb6o = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, 0x5ef5a1e85338e1bL, "moduleId");
+    /*package*/ static final SProperty moduleName$XstC = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645ae969L, "moduleName");
+    /*package*/ static final SProperty moduleName$inBA = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, 0x5ef5a1e85338e19L, "moduleName");
+    /*package*/ static final SProperty moduleId$7VKI = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645c7f5cL, "moduleId");
+    /*package*/ static final SProperty moduleId$io5C = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, 0x5ef5a1e85338e1bL, "moduleId");
   }
 }

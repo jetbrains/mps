@@ -24,7 +24,7 @@ public class typeof_OperationParm_LinkQualifier_LinkQualifier_InferenceRule exte
   }
   public void applyRule(final SNode operationParam, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operationParam, LINKS.linkQualifier$w7Z0);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operationParam, LINKS.linkQualifier$zRx0);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "8795282871126698957", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "8795282871126698960", true), (SNode) ((SEnumOperations.isMember(OperationParm_LinkQualifier__BehaviorDescriptor.getLinkMetaclass_id2LDtYz_plxI.invoke(operationParam), 0xfc6f4e95b9L) ? _quotation_createNode_hqb9q_a0b0a2a0a1() : _quotation_createNode_hqb9q_a0b0a2a0a1_0())), false, true, _info_12389875345);
     }
@@ -54,7 +54,7 @@ public class typeof_OperationParm_LinkQualifier_LinkQualifier_InferenceRule exte
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink linkQualifier$w7Z0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x47bb2de70d00ff8cL, 0x47bb2de70d00ff8dL, "linkQualifier");
+    /*package*/ static final SContainmentLink linkQualifier$zRx0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x47bb2de70d00ff8cL, 0x47bb2de70d00ff8dL, "linkQualifier");
   }
 
   private static final class CONCEPTS {

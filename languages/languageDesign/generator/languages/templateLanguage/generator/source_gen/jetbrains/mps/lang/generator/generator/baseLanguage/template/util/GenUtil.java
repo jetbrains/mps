@@ -104,7 +104,7 @@ public class GenUtil {
   public static boolean isGeneratable(SModel model) {
     SNode node = SModelOperations.getModuleStub(model);
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.Generator$kv)) {
-      return SPropertyOperations.getBoolean(SNodeOperations.cast(node, CONCEPTS.Generator$kv), PROPS.generateTemplates$AD3s);
+      return SPropertyOperations.getBoolean(SNodeOperations.cast(node, CONCEPTS.Generator$kv), PROPS.generateTemplates$HSE$);
     }
     return false;
   }
@@ -147,6 +147,6 @@ public class GenUtil {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty generateTemplates$AD3s = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x29a5716c5dfed280L, "generateTemplates");
+    /*package*/ static final SProperty generateTemplates$HSE$ = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x29a5716c5dfed280L, "generateTemplates");
   }
 }

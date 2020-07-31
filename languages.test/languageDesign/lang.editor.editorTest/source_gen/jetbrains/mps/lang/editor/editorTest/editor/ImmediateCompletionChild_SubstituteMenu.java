@@ -92,7 +92,7 @@ public class ImmediateCompletionChild_SubstituteMenu extends SubstituteMenuBase 
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x5704ec6c43ce50dL, "jetbrains.mps.lang.editor.editorTest.structure.ImmediateCompletionChild"));
-        SPropertyOperations.assign(node, PROPS.name$tAp1, "camelCaseTextOnly");
+        SPropertyOperations.assign(node, PROPS.name$lA7v, "camelCaseTextOnly");
         return node;
       }
 
@@ -147,7 +147,7 @@ public class ImmediateCompletionChild_SubstituteMenu extends SubstituteMenuBase 
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x5704ec6c43ce50dL, "jetbrains.mps.lang.editor.editorTest.structure.ImmediateCompletionChild"));
-        SPropertyOperations.assign(node, PROPS.name$tAp1, "camelCaseAmbigous");
+        SPropertyOperations.assign(node, PROPS.name$lA7v, "camelCaseAmbigous");
         return node;
       }
 
@@ -202,7 +202,7 @@ public class ImmediateCompletionChild_SubstituteMenu extends SubstituteMenuBase 
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x5704ec6c43ce50dL, "jetbrains.mps.lang.editor.editorTest.structure.ImmediateCompletionChild"));
-        SPropertyOperations.assign(node, PROPS.name$tAp1, "camelCaseExtendedAmbigous");
+        SPropertyOperations.assign(node, PROPS.name$lA7v, "camelCaseExtendedAmbigous");
         return node;
       }
 
@@ -257,7 +257,7 @@ public class ImmediateCompletionChild_SubstituteMenu extends SubstituteMenuBase 
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x5704ec6c43ce50dL, "jetbrains.mps.lang.editor.editorTest.structure.ImmediateCompletionChild"));
-        SPropertyOperations.assign(node, PROPS.name$tAp1, "textsearchonly");
+        SPropertyOperations.assign(node, PROPS.name$lA7v, "textsearchonly");
         return node;
       }
 
@@ -312,7 +312,7 @@ public class ImmediateCompletionChild_SubstituteMenu extends SubstituteMenuBase 
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x5704ec6c43ce50dL, "jetbrains.mps.lang.editor.editorTest.structure.ImmediateCompletionChild"));
-        SPropertyOperations.assign(node, PROPS.name$tAp1, "textsearchambigous");
+        SPropertyOperations.assign(node, PROPS.name$lA7v, "textsearchambigous");
         return node;
       }
 
@@ -367,7 +367,7 @@ public class ImmediateCompletionChild_SubstituteMenu extends SubstituteMenuBase 
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x5704ec6c43ce50dL, "jetbrains.mps.lang.editor.editorTest.structure.ImmediateCompletionChild"));
-        SPropertyOperations.assign(node, PROPS.name$tAp1, "extendedtextsearchambigous");
+        SPropertyOperations.assign(node, PROPS.name$lA7v, "extendedtextsearchambigous");
         return node;
       }
 
@@ -422,7 +422,7 @@ public class ImmediateCompletionChild_SubstituteMenu extends SubstituteMenuBase 
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x5704ec6c43ce50dL, "jetbrains.mps.lang.editor.editorTest.structure.ImmediateCompletionChild"));
-        SPropertyOperations.assign(node, PROPS.name$tAp1, "stringcontainingcCCEA");
+        SPropertyOperations.assign(node, PROPS.name$lA7v, "stringcontainingcCCEA");
         return node;
       }
 
@@ -443,6 +443,6 @@ public class ImmediateCompletionChild_SubstituteMenu extends SubstituteMenuBase 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -15,8 +15,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class TypeCast {
   public void cast_node_to_SNode(SNode ifStatement) {
     SNode nodeObject1 = ifStatement;
-    SNode nodeObject2 = (SNode) SLinkOperations.getTarget(ifStatement, LINKS.condition$WJ1b);
-    SNode nodeObject3 = SLinkOperations.getTarget(ifStatement, LINKS.condition$WJ1b);
+    SNode nodeObject2 = (SNode) SLinkOperations.getTarget(ifStatement, LINKS.condition$qL$l);
+    SNode nodeObject3 = SLinkOperations.getTarget(ifStatement, LINKS.condition$qL$l);
     SNode expression = SNodeOperations.cast(nodeObject3, CONCEPTS.Expression$TP);
   }
   public void cast_SNode_to_node(SNode node) {
@@ -28,25 +28,25 @@ public class TypeCast {
     SNode ifStatement1 = SNodeOperations.cast(snode, CONCEPTS.IfStatement$pi);
   }
   public void cast_children_to_nlist(SNode statementList) {
-    List<SNode> statements = SLinkOperations.getChildren(statementList, LINKS.statement$WHn8);
+    List<SNode> statements = SLinkOperations.getChildren(statementList, LINKS.statement$pYcS);
   }
   public void cast_nlist_to_List(List<SNode> statements) {
     List list1 = statements;
     List<SNode> list2 = statements;
   }
   public void cast_children_to_List(SNode statements) {
-    List list1 = SLinkOperations.getChildren(statements, LINKS.statement$WHn8);
-    List<SNode> list2 = ListSequence.fromList(SLinkOperations.getChildren(statements, LINKS.statement$WHn8)).select(new ISelector<SNode, SNode>() {
+    List list1 = SLinkOperations.getChildren(statements, LINKS.statement$pYcS);
+    List<SNode> list2 = ListSequence.fromList(SLinkOperations.getChildren(statements, LINKS.statement$pYcS)).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
         return it;
       }
     }).toListSequence();
-    List<SNode> list3 = (List<SNode>) SLinkOperations.getChildren(statements, LINKS.statement$WHn8);
+    List<SNode> list3 = (List<SNode>) SLinkOperations.getChildren(statements, LINKS.statement$pYcS);
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$WJ1b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 
   private static final class CONCEPTS {

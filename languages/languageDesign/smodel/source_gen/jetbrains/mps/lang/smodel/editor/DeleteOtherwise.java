@@ -29,7 +29,7 @@ public class DeleteOtherwise {
         if (DeletionApproverUtil.approve(editorContext, node, "OtherwiseClause")) {
           return;
         }
-        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.otherwiseBody$i6_e));
+        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.otherwiseBody$Lc1M));
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, SelectionManager.LAST_EDITABLE_CELL, -1);
       }
 
@@ -78,6 +78,6 @@ public class DeleteOtherwise {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink otherwiseBody$i6_e = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf8d9b4eL, "otherwiseBody");
+    /*package*/ static final SContainmentLink otherwiseBody$Lc1M = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf8d9b4eL, "otherwiseBody");
   }
 }

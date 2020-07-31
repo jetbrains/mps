@@ -12,10 +12,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class Conditions {
   public void checkTypeOfNode(SNode node) {
     boolean b = SNodeOperations.isInstanceOf(node, CONCEPTS.IfStatement$pi);
-    boolean b2 = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.IfStatement$pi), LINKS.condition$WJ1b), CONCEPTS.BooleanConstant$Ui);
+    boolean b2 = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.IfStatement$pi), LINKS.condition$qL$l), CONCEPTS.BooleanConstant$Ui);
   }
   public void checkRoleAndTypeOfDirectParent(SNode node) {
-    boolean b = SNodeOperations.hasRole(node, LINKS.condition$WJ1b);
+    boolean b = SNodeOperations.hasRole(node, LINKS.condition$qL$l);
   }
   public boolean checkIsNull(SNode node) {
     if ((node == null)) {
@@ -31,6 +31,6 @@ public class Conditions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$WJ1b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
   }
 }

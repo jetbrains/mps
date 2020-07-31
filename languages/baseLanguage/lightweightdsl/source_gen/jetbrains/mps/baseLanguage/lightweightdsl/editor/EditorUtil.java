@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class EditorUtil {
   public static void substitutePlaceholder(SNode ph, SModel futureModel) {
-    SNodeOperations.replaceWithAnother(ph, DSLClassMember__BehaviorDescriptor.create_id7ay_HjIOVVe.invoke(SLinkOperations.getTarget(ph, LINKS.decl$l7bu), futureModel));
+    SNodeOperations.replaceWithAnother(ph, DSLClassMember__BehaviorDescriptor.create_id7ay_HjIOVVe.invoke(SLinkOperations.getTarget(ph, LINKS.decl$euzy), futureModel));
   }
   public static void restorePlaceholder(final SNode mi) {
     final Wrappers._T<SNode> decl = new Wrappers._T<SNode>(null);
@@ -36,10 +36,10 @@ public class EditorUtil {
         public boolean accept(SNode it) {
           return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$dI)) != null);
         }
-      }), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$dI)), LINKS.descriptor$Zoot), LINKS.classLikeMember$UT6r), CONCEPTS.CustomMemberDescriptor$MM)).findFirst(new IWhereFilter<SNode>() {
+      }), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$dI)), LINKS.descriptor$GNQ3), LINKS.classLikeMember$xE75), CONCEPTS.CustomMemberDescriptor$MM)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           // viva la interpretation! 
-          return SNodeOperations.getConcept(mi).equals(MetaAdapterByDeclaration.getConcept(SLinkOperations.getTarget(it, LINKS.cncpt$4E7Y)));
+          return SNodeOperations.getConcept(mi).equals(MetaAdapterByDeclaration.getConcept(SLinkOperations.getTarget(it, LINKS.cncpt$gpR2)));
         }
       });
     }
@@ -47,7 +47,7 @@ public class EditorUtil {
       return;
     }
 
-    boolean lastInstance = (boolean) DSLClassMember__BehaviorDescriptor.isRequired_id2WSWNq1VhVM.invoke(decl.value) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(mi, CONCEPTS.ClassConcept$IY, false, false), LINKS.member$oYX5), CONCEPTS.MemberInstance$D8)).where(new IWhereFilter<SNode>() {
+    boolean lastInstance = (boolean) DSLClassMember__BehaviorDescriptor.isRequired_id2WSWNq1VhVM.invoke(decl.value) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(mi, CONCEPTS.ClassConcept$IY, false, false), LINKS.member$6v_r), CONCEPTS.MemberInstance$D8)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return MemberInstance__BehaviorDescriptor.getDeclaration_id7T23sO8vZuR.invoke(it) == decl.value;
       }
@@ -64,11 +64,11 @@ public class EditorUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink decl$l7bu = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db5L, "decl");
-    /*package*/ static final SReferenceLink descriptor$Zoot = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, 0x3190d3f9f1cac277L, "descriptor");
-    /*package*/ static final SContainmentLink classLikeMember$UT6r = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x72b255a0447fe4c8L, "classLikeMember");
-    /*package*/ static final SReferenceLink cncpt$4E7Y = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044805d9cL, 0x72b255a044805d9fL, "cncpt");
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SReferenceLink decl$euzy = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db5L, "decl");
+    /*package*/ static final SReferenceLink descriptor$GNQ3 = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, 0x3190d3f9f1cac277L, "descriptor");
+    /*package*/ static final SContainmentLink classLikeMember$xE75 = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x72b255a0447fe4c8L, "classLikeMember");
+    /*package*/ static final SReferenceLink cncpt$gpR2 = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044805d9cL, 0x72b255a044805d9fL, "cncpt");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 
   private static final class CONCEPTS {

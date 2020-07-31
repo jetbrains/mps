@@ -16,7 +16,7 @@ public class InlineFieldReferenceOperationRefactoring extends InlineFieldRefacto
   private SNode myReference;
 
   public InlineFieldReferenceOperationRefactoring(SNode node) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.fieldDeclaration$mLBy), CONCEPTS.VariableDeclaration$xe))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.fieldDeclaration$229u), CONCEPTS.VariableDeclaration$xe))) {
       throw new IllegalArgumentException();
     }
 
@@ -25,8 +25,8 @@ public class InlineFieldReferenceOperationRefactoring extends InlineFieldRefacto
 
   @Override
   public SNode doRefactoring() {
-    SNode variable = SLinkOperations.getTarget(this.myReference, LINKS.fieldDeclaration$mLBy);
-    SNode nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(variable, LINKS.initializer$KgD));
+    SNode variable = SLinkOperations.getTarget(this.myReference, LINKS.fieldDeclaration$229u);
+    SNode nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(variable, LINKS.initializer$no3R));
     SNodeOperations.replaceWithAnother(SNodeOperations.getNodeAncestor(this.myReference, CONCEPTS.DotExpression$6a, false, false), nodeToSelect);
     InlinePrecedenceUtil.parenthesiseIfNecessary(nodeToSelect);
     this.optimizeDeclaration(variable);
@@ -34,8 +34,8 @@ public class InlineFieldReferenceOperationRefactoring extends InlineFieldRefacto
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink fieldDeclaration$mLBy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 
   private static final class CONCEPTS {

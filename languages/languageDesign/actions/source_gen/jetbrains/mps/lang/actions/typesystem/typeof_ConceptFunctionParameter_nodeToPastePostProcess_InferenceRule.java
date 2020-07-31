@@ -25,7 +25,7 @@ public class typeof_ConceptFunctionParameter_nodeToPastePostProcess_InferenceRul
     {
       SNode _nodeToCheck_1029348928467 = node;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902a6(jetbrains.mps.lang.actions.typesystem)", "6026743057587447957", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902a6(jetbrains.mps.lang.actions.typesystem)", "6026743057587447954", true), (SNode) _quotation_createNode_5jwgr_a1a0c0a0b(SLinkOperations.getTarget(ConceptFunctionParameter_nodeToPastePostProcess__BehaviorDescriptor.getPostProcessor_id5eziI4W3iyy.invoke(node), LINKS.concept$5ARp)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902a6(jetbrains.mps.lang.actions.typesystem)", "6026743057587447954", true), (SNode) _quotation_createNode_5jwgr_a1a0c0a0b(SLinkOperations.getTarget(ConceptFunctionParameter_nodeToPastePostProcess__BehaviorDescriptor.getPostProcessor_id5eziI4W3iyy.invoke(node), LINKS.concept$HOP7)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -46,7 +46,7 @@ public class typeof_ConceptFunctionParameter_nodeToPastePostProcess_InferenceRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$5ARp = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x7d4ebb4f893516cL, 0x53a34ae13c0c947bL, "concept");
+    /*package*/ static final SReferenceLink concept$HOP7 = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x7d4ebb4f893516cL, 0x53a34ae13c0c947bL, "concept");
   }
 
   private static final class CONCEPTS {

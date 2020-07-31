@@ -24,7 +24,7 @@ public class AddFirstMethodCallArgument {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode newArgument = SNodeFactoryOperations.addNewChild(node, LINKS.actualArgument$$A7L, null);
+        SNode newArgument = SNodeFactoryOperations.addNewChild(node, LINKS.actualArgument$ItKJ, null);
         MethodResolveUtil.replaceFromEditor(node);
         SelectionUtil.selectNode(editorContext, newArgument);
       }
@@ -74,6 +74,6 @@ public class AddFirstMethodCallArgument {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 }

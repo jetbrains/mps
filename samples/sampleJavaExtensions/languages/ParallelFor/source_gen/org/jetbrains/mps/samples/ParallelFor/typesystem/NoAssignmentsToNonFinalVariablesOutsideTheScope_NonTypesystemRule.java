@@ -26,12 +26,12 @@ public class NoAssignmentsToNonFinalVariablesOutsideTheScope_NonTypesystemRule e
   }
   public void applyRule(final SNode variableReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode directAncestor = SNodeOperations.getNodeAncestor(variableReference, CONCEPTS.ParallelFor$GE, false, false);
-    if (directAncestor != null && !(SNodeOperations.hasRole(variableReference, LINKS.threadPool$1iZ4))) {
-      SNode variableDeclaration = SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$2ky6);
+    if (directAncestor != null && !(SNodeOperations.hasRole(variableReference, LINKS.threadPool$CcyW))) {
+      SNode variableDeclaration = SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$7WwU);
 
       SNode declarationsAncestor = SNodeOperations.getNodeAncestor(variableDeclaration, CONCEPTS.ParallelFor$GE, false, false);
       if (directAncestor != declarationsAncestor) {
-        if (!(SPropertyOperations.getBoolean(variableDeclaration, PROPS.isFinal$hIht))) {
+        if (!(SPropertyOperations.getBoolean(variableDeclaration, PROPS.isFinal$_qt3))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(variableReference, "Cannot refer non-final variables and parameters from within concurrent code", "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "7793246093816027855", null, errorTarget);
@@ -60,11 +60,11 @@ public class NoAssignmentsToNonFinalVariablesOutsideTheScope_NonTypesystemRule e
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink threadPool$1iZ4 = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x40a8d217b6d881feL, "threadPool");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink threadPool$CcyW = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x40a8d217b6d881feL, "threadPool");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

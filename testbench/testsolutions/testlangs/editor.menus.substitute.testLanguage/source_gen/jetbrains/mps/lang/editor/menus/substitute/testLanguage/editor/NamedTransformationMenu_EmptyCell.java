@@ -81,7 +81,7 @@ public class NamedTransformationMenu_EmptyCell extends TransformationMenuBase {
     }
     @Override
     protected SContainmentLink getContainmentLink(TransformationMenuContext context) {
-      return LINKS.childrenForEmptyCell$15w0;
+      return LINKS.childrenForEmptyCell$xEw0;
     }
     @Override
     protected SubstituteMenuLookup getSubstituteMenuLookup(TransformationMenuContext context) {
@@ -95,7 +95,7 @@ public class NamedTransformationMenu_EmptyCell extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink childrenForEmptyCell$15w0 = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0bdL, 0x7ce1116e3a711255L, "childrenForEmptyCell");
+    /*package*/ static final SContainmentLink childrenForEmptyCell$xEw0 = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0bdL, 0x7ce1116e3a711255L, "childrenForEmptyCell");
   }
 
   private static final class CONCEPTS {

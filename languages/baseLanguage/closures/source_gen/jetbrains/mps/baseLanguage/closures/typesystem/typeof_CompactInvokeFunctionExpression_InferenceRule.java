@@ -25,7 +25,7 @@ public class typeof_CompactInvokeFunctionExpression_InferenceRule extends Abstra
   }
   public void applyRule(final SNode invoke, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final List<SNode> ptypes = ListSequence.fromList(new ArrayList<SNode>());
-    for (SNode p : SLinkOperations.getChildren(invoke, LINKS.parameter$GNIj)) {
+    for (SNode p : SLinkOperations.getChildren(invoke, LINKS.parameter$H3rd)) {
       final SNode T_typevar_668767903263948977 = typeCheckingContext.createNewRuntimeTypesVariable();
       if (!(typeCheckingContext.isSingleTypeComputation())) {
         {
@@ -38,7 +38,7 @@ public class typeof_CompactInvokeFunctionExpression_InferenceRule extends Abstra
     }
     final SNode ret_typevar_668767903263948995 = typeCheckingContext.createNewRuntimeTypesVariable();
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(invoke, LINKS.function$vcpr);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(invoke, LINKS.function$70k5);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "8710643694461127231", 0, null);
       typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_ojnxkp_a0a0c0d0b(ptypes, typeCheckingContext.getRepresentative(ret_typevar_668767903263948995)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "8710643694461127233", true), false, true, _info_12389875345);
     }
@@ -60,7 +60,7 @@ public class typeof_CompactInvokeFunctionExpression_InferenceRule extends Abstra
                 {
                   SNode _nodeToCheck_1029348928467 = invoke;
                   EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "4359876593789720529", 0, null);
-                  typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "4359876593789720538", true), (SNode) ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(typeCheckingContext.getExpandedNode(reifiedRet), CONCEPTS.MeetType$HQ), LINKS.argument$kHNt)).first(), _info_12389875345);
+                  typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "4359876593789720538", true), (SNode) ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(typeCheckingContext.getExpandedNode(reifiedRet), CONCEPTS.MeetType$HQ), LINKS.argument$2bV3)).first(), _info_12389875345);
                 }
               } else {
                 SNode _nodeToCheck_1029348928467 = invoke;
@@ -102,9 +102,9 @@ public class typeof_CompactInvokeFunctionExpression_InferenceRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$GNIj = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x11fb8425aa8L, 0x11fb842da3eL, "parameter");
-    /*package*/ static final SContainmentLink function$vcpr = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x11fb8425aa8L, 0x11fb842c1adL, "function");
-    /*package*/ static final SContainmentLink argument$kHNt = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
+    /*package*/ static final SContainmentLink parameter$H3rd = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x11fb8425aa8L, 0x11fb842da3eL, "parameter");
+    /*package*/ static final SContainmentLink function$70k5 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x11fb8425aa8L, 0x11fb842c1adL, "function");
+    /*package*/ static final SContainmentLink argument$2bV3 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
   }
 
   private static final class CONCEPTS {

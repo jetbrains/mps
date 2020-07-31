@@ -34,7 +34,7 @@ public final class InlineTemplateWithContext_RuleConsequence__BehaviorDescriptor
   }
 
   /*package*/ static SAbstractConcept getTemplateType_id6SoPMa83EEL(@NotNull SNode __thisNode__) {
-    List<SNode> fragments = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, LINKS.contentNode$QBS9), CONCEPTS.TemplateFragment$yI, false, new SAbstractConcept[]{});
+    List<SNode> fragments = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, LINKS.contentNode$tkcn), CONCEPTS.TemplateFragment$yI, false, new SAbstractConcept[]{});
     if ((ListSequence.fromList(fragments).first() != null) && (SNodeOperations.getParent(ListSequence.fromList(fragments).first()) != null)) {
       return SNodeOperations.getConcept(SNodeOperations.getParent(ListSequence.fromList(fragments).first()));
     }
@@ -88,7 +88,7 @@ public final class InlineTemplateWithContext_RuleConsequence__BehaviorDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink contentNode$QBS9 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, 0x7b85dded0be53d6fL, "contentNode");
+    /*package*/ static final SContainmentLink contentNode$tkcn = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, 0x7b85dded0be53d6fL, "contentNode");
   }
 
   private static final class CONCEPTS {

@@ -34,7 +34,7 @@ public class EnumMemberReference_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.decl$Hqa_, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.decl$ZF7V, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -52,7 +52,7 @@ public class EnumMemberReference_Constraints extends BaseConstraintsDescriptor {
             SNode container = (_context.getReferenceNode() != null ? SNodeOperations.getParent(_context.getReferenceNode()) : _context.getContextNode());
             SNode enumDelcaration = null;
             if (SNodeOperations.isInstanceOf(container, CONCEPTS.Property_SetOperation$mX)) {
-              enumDelcaration = SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperation__BehaviorDescriptor.getLeftExpressionOperation_idhEwJdHi.invoke(SNodeOperations.cast(container, CONCEPTS.Property_SetOperation$mX)), CONCEPTS.SPropertyAccess$bD), LINKS.property$He2), LINKS.dataType$fLUl), CONCEPTS.EnumerationDeclaration$rG);
+              enumDelcaration = SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperation__BehaviorDescriptor.getLeftExpressionOperation_idhEwJdHi.invoke(SNodeOperations.cast(container, CONCEPTS.Property_SetOperation$mX)), CONCEPTS.SPropertyAccess$bD), LINKS.property$lTMY), LINKS.dataType$Dbgb), CONCEPTS.EnumerationDeclaration$rG);
             } else if (SNodeOperations.isInstanceOf(container, CONCEPTS.EnumMember_IsOperation$fO)) {
               enumDelcaration = EnumMemberOperation__BehaviorDescriptor.getEnumDecl_id45eRmv04ROr.invoke(SNodeOperations.cast(container, CONCEPTS.EnumMember_IsOperation$fO));
             } else if (SNodeOperations.isInstanceOf(container, CONCEPTS.EnumSwitchCase$37)) {
@@ -62,7 +62,7 @@ public class EnumMemberReference_Constraints extends BaseConstraintsDescriptor {
               enumDelcaration = EnumSwitchExpression__BehaviorDescriptor.getEnumDecl_id28aPEVv7w3k.invoke(SNodeOperations.cast(container, CONCEPTS.EnumSwitchExpression$R0));
             }
             if (enumDelcaration != null) {
-              return ListScope.forNamedElements(SLinkOperations.getChildren(enumDelcaration, LINKS.members$qYq2));
+              return ListScope.forNamedElements(SLinkOperations.getChildren(enumDelcaration, LINKS.members$4eAY));
             }
             return new EmptyScope();
           }
@@ -86,9 +86,9 @@ public class EnumMemberReference_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink decl$Hqa_ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, 0x414edd67c0112b98L, "decl");
-    /*package*/ static final SReferenceLink property$He2 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
-    /*package*/ static final SReferenceLink dataType$fLUl = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
-    /*package*/ static final SContainmentLink members$qYq2 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
+    /*package*/ static final SReferenceLink decl$ZF7V = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, 0x414edd67c0112b98L, "decl");
+    /*package*/ static final SReferenceLink property$lTMY = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
+    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SContainmentLink members$4eAY = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
   }
 }

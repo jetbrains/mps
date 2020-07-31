@@ -35,7 +35,7 @@ public class typeof_PersistentConfigurationTemplate_InferenceRule extends Abstra
   }
   private static SNode createTemplatePersistentConfigurationType_qumkps_a1a0c0a0b(SNode node0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
-    rootBuilder1.setReferenceTarget(LINKS.persistentConfiguration$28v0, node0);
+    rootBuilder1.setReferenceTarget(LINKS.persistentConfiguration$2710, node0);
     return rootBuilder1.getResult();
   }
 
@@ -45,6 +45,6 @@ public class typeof_PersistentConfigurationTemplate_InferenceRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink persistentConfiguration$28v0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
+    /*package*/ static final SReferenceLink persistentConfiguration$2710 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
   }
 }

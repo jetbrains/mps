@@ -33,8 +33,8 @@ public final class AtLeastNTimesRegexp__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static String getString_idhMuDF1A(@NotNull SNode __thisNode__, List<SNode> vars) {
-    String s = Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.regexp$sryo), vars);
-    return ((((boolean) UnaryRegexp__BehaviorDescriptor.inParentheses_id1b8uQvZyDW8.invoke(__thisNode__)) ? Regexp__BehaviorDescriptor.par_idhMuIPHY.invoke(__thisNode__, s) : s)) + "{" + SPropertyOperations.getInteger(__thisNode__, PROPS.n$Rv_R) + ",}";
+    String s = Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.regexp$LlDC), vars);
+    return ((((boolean) UnaryRegexp__BehaviorDescriptor.inParentheses_id1b8uQvZyDW8.invoke(__thisNode__)) ? Regexp__BehaviorDescriptor.par_idhMuIPHY.invoke(__thisNode__, s) : s)) + "{" + SPropertyOperations.getInteger(__thisNode__, PROPS.n$SjlD) + ",}";
   }
 
   /*package*/ AtLeastNTimesRegexp__BehaviorDescriptor() {
@@ -84,10 +84,10 @@ public final class AtLeastNTimesRegexp__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink regexp$sryo = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c678adL, 0x11174c6961aL, "regexp");
+    /*package*/ static final SContainmentLink regexp$LlDC = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c678adL, 0x11174c6961aL, "regexp");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty n$Rv_R = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118dc30ee2L, 0x1118dc39835L, "n");
+    /*package*/ static final SProperty n$SjlD = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118dc30ee2L, 0x1118dc39835L, "n");
   }
 }

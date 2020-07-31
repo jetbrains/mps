@@ -25,7 +25,7 @@ public class ArithmeticSimpleMathExpression_Constraints extends BaseConstraintsD
 
   public static class Operator_Property extends BasePropertyConstraintsDescriptor {
     public Operator_Property(ConstraintsDescriptor container) {
-      super(PROPS.operator$brpL, container);
+      super(PROPS.operator$yhuJ, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -47,7 +47,7 @@ public class ArithmeticSimpleMathExpression_Constraints extends BaseConstraintsD
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.operator$brpL, new Operator_Property(this));
+    properties.put(PROPS.operator$yhuJ, new Operator_Property(this));
     return properties;
   }
 
@@ -56,6 +56,6 @@ public class ArithmeticSimpleMathExpression_Constraints extends BaseConstraintsD
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty operator$brpL = MetaAdapterFactory.getProperty(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b8289497L, 0x1cc69153b82894eaL, "operator");
+    /*package*/ static final SProperty operator$yhuJ = MetaAdapterFactory.getProperty(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b8289497L, 0x1cc69153b82894eaL, "operator");
   }
 }

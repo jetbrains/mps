@@ -14,17 +14,17 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class NodeRef {
   public void node_ref_1() {
-    List<SNode> members = SLinkOperations.getChildren(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)", "4241665505353446055"), LINKS.members$qYq2);
-    String presentation = SPropertyOperations.getString(ListSequence.fromList(members).first(), PROPS.presentation$aFIS);
-    String name = SPropertyOperations.getString(ListSequence.fromList(members).first(), PROPS.name$tAp1);
+    List<SNode> members = SLinkOperations.getChildren(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)", "4241665505353446055"), LINKS.members$4eAY);
+    String presentation = SPropertyOperations.getString(ListSequence.fromList(members).first(), PROPS.presentation$bbH8);
+    String name = SPropertyOperations.getString(ListSequence.fromList(members).first(), PROPS.name$lA7v);
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink members$qYq2 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
+    /*package*/ static final SContainmentLink members$4eAY = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty presentation$aFIS = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x9538e3a78561888L, "presentation");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty presentation$bbH8 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x9538e3a78561888L, "presentation");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

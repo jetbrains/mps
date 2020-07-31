@@ -97,7 +97,7 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode literal = SNodeFactoryOperations.createNewNode(CONCEPTS.UnicodeCharacterRegexp$KI, null);
-        SPropertyOperations.assign(literal, PROPS.code$jCcU, pattern.substring(2));
+        SPropertyOperations.assign(literal, PROPS.code$wug6, pattern.substring(2));
         return literal;
       }
 
@@ -163,7 +163,7 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.MatchParensRegexp$1m, _context.getCurrentTargetNode());
-        SPropertyOperations.assign(node, PROPS.name$tAp1, (pattern.endsWith(":") ? pattern.substring(1, pattern.length() - 1) : ((pattern == null || pattern.length() == 0) ? "" : pattern.substring(1))));
+        SPropertyOperations.assign(node, PROPS.name$lA7v, (pattern.endsWith(":") ? pattern.substring(1, pattern.length() - 1) : ((pattern == null || pattern.length() == 0) ? "" : pattern.substring(1))));
         return node;
       }
 
@@ -225,7 +225,7 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode literal = SNodeFactoryOperations.createNewNode(CONCEPTS.StringLiteralRegexp$g9, null);
-        SPropertyOperations.assign(literal, PROPS.text$zn$r, pattern);
+        SPropertyOperations.assign(literal, PROPS.text$8qD5, pattern);
         return literal;
       }
 
@@ -296,7 +296,7 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode literal = SNodeFactoryOperations.createNewNode(CONCEPTS.StringLiteralRegexp$g9, null);
-        SPropertyOperations.assign(literal, PROPS.text$zn$r, pattern.substring(1));
+        SPropertyOperations.assign(literal, PROPS.text$8qD5, pattern.substring(1));
         return literal;
       }
 
@@ -361,8 +361,8 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty code$jCcU = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11831260718L, 0x1183127443bL, "code");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty text$zn$r = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a0992dL, 0x11174a0b84fL, "text");
+    /*package*/ static final SProperty code$wug6 = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11831260718L, 0x1183127443bL, "code");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty text$8qD5 = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a0992dL, 0x11174a0b84fL, "text");
   }
 }

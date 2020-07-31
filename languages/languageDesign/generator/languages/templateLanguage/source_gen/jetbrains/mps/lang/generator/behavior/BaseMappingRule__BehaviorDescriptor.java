@@ -39,7 +39,7 @@ public final class BaseMappingRule__BehaviorDescriptor extends BaseBHDescriptor 
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     StringBuilder sb = new StringBuilder(SConceptOperations.conceptAlias(SNodeOperations.getConcept(__thisNode__)));
-    sb.append(" ").append(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.applicableConcept$ljwo), PROPS.name$tAp1));
+    sb.append(" ").append(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.applicableConcept$ksFC), PROPS.name$lA7v));
     String mappingLabel = BaseMappingRule__BehaviorDescriptor.getMappingLabelText_idhEwJbak.invoke(__thisNode__);
     if (mappingLabel != null) {
       sb.append(" [").append(mappingLabel).append("]");
@@ -50,7 +50,7 @@ public final class BaseMappingRule__BehaviorDescriptor extends BaseBHDescriptor 
     return null;
   }
   /*package*/ static String getMappingLabelText_idhEwJbak(@NotNull SNode __thisNode__) {
-    String mappingLabel = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.labelDeclaration$5xNM), PROPS.name$tAp1);
+    String mappingLabel = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.labelDeclaration$Fo5e), PROPS.name$lA7v);
     if (mappingLabel != null) {
       return mappingLabel;
     }
@@ -58,7 +58,7 @@ public final class BaseMappingRule__BehaviorDescriptor extends BaseBHDescriptor 
   }
   /*package*/ static boolean hasMappingLabel_id3uqP$qKDAVt(@NotNull SNode __thisNode__) {
     // to avoid coding same code that check non-empty mapping label 
-    return (SLinkOperations.getTarget(__thisNode__, LINKS.labelDeclaration$5xNM) != null) && isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.labelDeclaration$5xNM), PROPS.name$tAp1));
+    return (SLinkOperations.getTarget(__thisNode__, LINKS.labelDeclaration$Fo5e) != null) && isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.labelDeclaration$Fo5e), PROPS.name$lA7v));
   }
 
   /*package*/ BaseMappingRule__BehaviorDescriptor() {
@@ -117,11 +117,11 @@ public final class BaseMappingRule__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$ljwo = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
-    /*package*/ static final SReferenceLink labelDeclaration$5xNM = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x1179c430cc8L, "labelDeclaration");
+    /*package*/ static final SReferenceLink applicableConcept$ksFC = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
+    /*package*/ static final SReferenceLink labelDeclaration$Fo5e = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x1179c430cc8L, "labelDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -42,7 +42,7 @@ public class RemoveDefaultsPart extends SubstituteMenuBase {
   public class SMP_Group_vrn6z8_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return Objects.equals(_context.getLink(), LINKS.removeDefaultsPart$Qlv3);
+      return Objects.equals(_context.getLink(), LINKS.removeDefaultsPart$kq2t);
     }
     @NotNull
     @Override
@@ -63,6 +63,6 @@ public class RemoveDefaultsPart extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink removeDefaultsPart$Qlv3 = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x73dfe0fc257b7aaaL, "removeDefaultsPart");
+    /*package*/ static final SContainmentLink removeDefaultsPart$kq2t = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x73dfe0fc257b7aaaL, "removeDefaultsPart");
   }
 }

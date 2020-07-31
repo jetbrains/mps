@@ -81,7 +81,7 @@ public class expressionToNotExpression extends TransformationMenuBase {
       SNode node = _context.getNode();
       do {
         SNode type = TypecheckingFacade.getFromContext().getTypeOf(node);
-        if (SNodeOperations.isInstanceOf(type, CONCEPTS.BooleanType$8G) || SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$IZ) && SLinkOperations.hasPointer(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Boolean"))) {
+        if (SNodeOperations.isInstanceOf(type, CONCEPTS.BooleanType$8G) || SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$IZ) && SLinkOperations.hasPointer(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Boolean"))) {
           return true;
         }
         node = SNodeOperations.getParent(node);
@@ -145,9 +145,9 @@ public class expressionToNotExpression extends TransformationMenuBase {
           SNode node = _context.getNode();
           do {
             SNode type = TypecheckingFacade.getFromContext().getTypeOf(node);
-            if (SNodeOperations.isInstanceOf(type, CONCEPTS.BooleanType$8G) || SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$IZ) && SLinkOperations.hasPointer(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Boolean"))) {
+            if (SNodeOperations.isInstanceOf(type, CONCEPTS.BooleanType$8G) || SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$IZ) && SLinkOperations.hasPointer(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Boolean"))) {
               SNode not = SNodeFactoryOperations.createNewNode(CONCEPTS.NotExpression$oq, null);
-              SLinkOperations.setTarget(not, LINKS.expression$bUD_, SNodeOperations.cast(SNodeOperations.copyNode(node), CONCEPTS.Expression$TP));
+              SLinkOperations.setTarget(not, LINKS.expression$Lq8V, SNodeOperations.cast(SNodeOperations.copyNode(node), CONCEPTS.Expression$TP));
               SNodeOperations.replaceWithAnother(node, not);
               SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), not, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
               return;
@@ -191,7 +191,7 @@ public class expressionToNotExpression extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink expression$bUD_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink expression$Lq8V = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
   }
 }

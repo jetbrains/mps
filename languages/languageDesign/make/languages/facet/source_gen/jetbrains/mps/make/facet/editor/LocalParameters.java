@@ -100,7 +100,7 @@ public class LocalParameters extends SubstituteMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-        return SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.TargetDeclaration$7n, false, false), LINKS.parameters$W12k), LINKS.component$eWwg);
+        return SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.TargetDeclaration$7n, false, false), LINKS.parameters$4w7G), LINKS.component$fjBK);
       }
       private class SMP_Action_59frgq_a0a extends SingleItemSubstituteMenuPart {
         private final SNode myParameterObject;
@@ -148,8 +148,8 @@ public class LocalParameters extends SubstituteMenuBase {
           public SNode createNode(@NotNull String pattern) {
             SNode lve = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalParametersExpression$rv, null);
             SNode lvce = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalParametersComponentExpression$rY, null);
-            SLinkOperations.setTarget(lvce, LINKS.operand$Lcrr, lve);
-            SLinkOperations.setTarget(lvce, LINKS.operation$X4R8, _quotation_createNode_59frgq_a0d0a0a0(myParameterObject));
+            SLinkOperations.setTarget(lvce, LINKS.operand$P1i5, lve);
+            SLinkOperations.setTarget(lvce, LINKS.operation$_mGS, _quotation_createNode_59frgq_a0d0a0a0(myParameterObject));
             return lvce;
           }
 
@@ -180,7 +180,7 @@ public class LocalParameters extends SubstituteMenuBase {
           @Nullable
           @Override
           public String getMatchingText(@NotNull String pattern) {
-            return SPropertyOperations.getString(myParameterObject, PROPS.name$tAp1);
+            return SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v);
           }
         }
       }
@@ -202,13 +202,13 @@ public class LocalParameters extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameters$W12k = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x6598ce4d2f20bbdfL, "parameters");
-    /*package*/ static final SContainmentLink component$eWwg = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x12099b7fca9L, "component");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink parameters$4w7G = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x6598ce4d2f20bbdfL, "parameters");
+    /*package*/ static final SContainmentLink component$fjBK = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x12099b7fca9L, "component");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

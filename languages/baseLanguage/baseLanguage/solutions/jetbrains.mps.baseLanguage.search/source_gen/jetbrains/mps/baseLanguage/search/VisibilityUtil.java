@@ -32,17 +32,17 @@ public final class VisibilityUtil {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(name), CONCEPTS.Interface$Kp)) {
       return true;
     }
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(name, LINKS.visibility$2GiC), CONCEPTS.PublicVisibility$qe) || SNodeOperations.isInstanceOf(name, CONCEPTS.EnumConstantDeclaration$ma)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(name, LINKS.visibility$jt1o), CONCEPTS.PublicVisibility$qe) || SNodeOperations.isInstanceOf(name, CONCEPTS.EnumConstantDeclaration$ma)) {
       return true;
     }
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(name, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(name, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se)) {
       return topClassifier(context) == topClassifier(name);
     }
     // package or protected access 
     if (packageName(context).equals(packageName(name))) {
       return true;
     }
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(name, LINKS.visibility$2GiC), CONCEPTS.ProtectedVisibility$OD)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(name, LINKS.visibility$jt1o), CONCEPTS.ProtectedVisibility$OD)) {
       //  check special cases of protected access 
       SNode classifier = SNodeOperations.getNodeAncestor(name, CONCEPTS.Classifier$hJ, false, false);
       for (SNode cls : ListSequence.fromList(SNodeOperations.getNodeAncestors(context, CONCEPTS.Classifier$hJ, true))) {
@@ -76,17 +76,17 @@ public final class VisibilityUtil {
     if ((classifier == null)) {
       return true;
     }
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classifier, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classifier, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se)) {
       return topClassifier(context) == topClassifier(classifier);
     }
     SNode parent = SNodeOperations.getNodeAncestor(classifier, CONCEPTS.Classifier$hJ, false, false);
     if (!(isClassifierAccessible(context, parent))) {
       return false;
     }
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classifier, LINKS.visibility$2GiC), CONCEPTS.PublicVisibility$qe) || packageName(context).equals(packageName(classifier))) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classifier, LINKS.visibility$jt1o), CONCEPTS.PublicVisibility$qe) || packageName(context).equals(packageName(classifier))) {
       return true;
     }
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classifier, LINKS.visibility$2GiC), CONCEPTS.ProtectedVisibility$OD)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classifier, LINKS.visibility$jt1o), CONCEPTS.ProtectedVisibility$OD)) {
       // parent cannot be null here 
       for (SNode cls : ListSequence.fromList(SNodeOperations.getNodeAncestors(context, CONCEPTS.Classifier$hJ, true))) {
         if (BaseLanguageUtil.isAssignable(cls, parent) && isClassifierAccessible(context, parent)) {
@@ -123,6 +123,6 @@ public final class VisibilityUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 }

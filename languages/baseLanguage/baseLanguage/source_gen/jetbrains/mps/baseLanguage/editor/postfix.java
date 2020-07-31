@@ -111,7 +111,7 @@ public class postfix extends TransformationMenuBase {
       @Override
       public void execute(@NotNull String pattern) {
         final SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.PostfixIncrementExpression$3_, null);
-        SLinkOperations.setTarget(result, LINKS.expression$7Rjy, SNodeOperations.copyNode(_context.getNode()));
+        SLinkOperations.setTarget(result, LINKS.expression$NMtu, SNodeOperations.copyNode(_context.getNode()));
         SNodeOperations.replaceWithAnother(_context.getNode(), result);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), result, SelectionManager.LAST_CELL, -1);
         return;
@@ -184,7 +184,7 @@ public class postfix extends TransformationMenuBase {
       @Override
       public void execute(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.PostfixDecrementExpression$gc, null);
-        SLinkOperations.setTarget(result, LINKS.expression$7Rjy, SNodeOperations.copyNode(_context.getNode()));
+        SLinkOperations.setTarget(result, LINKS.expression$NMtu, SNodeOperations.copyNode(_context.getNode()));
         SNodeOperations.replaceWithAnother(_context.getNode(), result);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), result, SelectionManager.LAST_CELL, -1);
         return;
@@ -225,6 +225,6 @@ public class postfix extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$7Rjy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
+    /*package*/ static final SContainmentLink expression$NMtu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
   }
 }

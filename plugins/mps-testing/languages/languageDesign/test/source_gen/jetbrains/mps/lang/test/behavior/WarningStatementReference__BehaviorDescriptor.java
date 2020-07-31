@@ -32,7 +32,7 @@ public final class WarningStatementReference__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static String getName_id6EW1JnOFUIS(@NotNull SNode __thisNode__) {
-    return MessageStatement__BehaviorDescriptor.getName_id1oFBbRehoLP.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$tW8o));
+    return MessageStatement__BehaviorDescriptor.getName_id1oFBbRehoLP.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$w83C));
   }
 
   /*package*/ WarningStatementReference__BehaviorDescriptor() {
@@ -82,6 +82,6 @@ public final class WarningStatementReference__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$tW8o = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6abc06f5f4afab9dL, 0x73a7cdcfba51f755L, "declaration");
+    /*package*/ static final SReferenceLink declaration$w83C = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6abc06f5f4afab9dL, 0x73a7cdcfba51f755L, "declaration");
   }
 }

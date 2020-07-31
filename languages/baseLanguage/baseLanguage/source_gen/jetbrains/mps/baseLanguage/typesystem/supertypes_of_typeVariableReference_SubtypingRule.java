@@ -24,12 +24,12 @@ public class supertypes_of_typeVariableReference_SubtypingRule extends Subtyping
   public supertypes_of_typeVariableReference_SubtypingRule() {
   }
   public List<SNode> getSubOrSuperTypes(SNode typeVariableReference, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode typeVariableDeclaration = SLinkOperations.getTarget(typeVariableReference, LINKS.typeVariableDeclaration$U0X4);
+    SNode typeVariableDeclaration = SLinkOperations.getTarget(typeVariableReference, LINKS.typeVariableDeclaration$6t$W);
     List<SNode> supertypes = new ArrayList<SNode>();
-    if ((SLinkOperations.getTarget(typeVariableDeclaration, LINKS.bound$dqDF) != null)) {
-      ListSequence.fromList(supertypes).addElement(SLinkOperations.getTarget(typeVariableDeclaration, LINKS.bound$dqDF));
+    if ((SLinkOperations.getTarget(typeVariableDeclaration, LINKS.bound$vUbP) != null)) {
+      ListSequence.fromList(supertypes).addElement(SLinkOperations.getTarget(typeVariableDeclaration, LINKS.bound$vUbP));
     }
-    for (SNode bound : SLinkOperations.getChildren(typeVariableDeclaration, LINKS.auxBounds$jS6R)) {
+    for (SNode bound : SLinkOperations.getChildren(typeVariableDeclaration, LINKS.auxBounds$CbkD)) {
       ListSequence.fromList(supertypes).addElement(bound);
     }
     if (ListSequence.fromList(supertypes).isEmpty()) {
@@ -55,9 +55,9 @@ public class supertypes_of_typeVariableReference_SubtypingRule extends Subtyping
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink typeVariableDeclaration$U0X4 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink bound$dqDF = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound");
-    /*package*/ static final SContainmentLink auxBounds$jS6R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae913a476L, "auxBounds");
+    /*package*/ static final SReferenceLink typeVariableDeclaration$6t$W = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink bound$vUbP = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound");
+    /*package*/ static final SContainmentLink auxBounds$CbkD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae913a476L, "auxBounds");
   }
 
   private static final class CONCEPTS {

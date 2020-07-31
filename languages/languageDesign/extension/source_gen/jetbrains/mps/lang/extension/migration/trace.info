@@ -41,8 +41,8 @@
       <node id="209204644145733812" at="93,60,94,17" concept="8" />
       <node id="209204644145733812" at="98,0,99,0" concept="10" trace="INamedConcept$nV" />
       <node id="209204644145733812" at="99,0,100,0" concept="10" trace="ExtensionPointDeclaration$ap" />
-      <node id="209204644145733812" at="103,0,104,0" concept="10" trace="extensionName$dcP2" />
-      <node id="209204644145733812" at="104,0,105,0" concept="10" trace="name$tAp1" />
+      <node id="209204644145733812" at="103,0,104,0" concept="10" trace="extensionName$pdFY" />
+      <node id="209204644145733812" at="104,0,105,0" concept="10" trace="name$lA7v" />
       <node id="209204644145733812" at="30,0,33,0" concept="6" trace="getCaption#()Ljava/lang/String;" />
       <node id="209204644145733812" at="46,0,49,0" concept="6" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
       <node id="209204644145733814" at="51,0,54,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -449,16 +449,16 @@
       <node id="4174378934472396118" at="562,167,563,169" concept="2" />
       <node id="4174378934472396118" at="563,169,564,182" concept="2" />
       <node id="4174378934472396118" at="564,182,565,24" concept="8" />
-      <node id="4174378934472392928" at="569,0,570,0" concept="10" trace="fieldDeclaration$s4qN" />
-      <node id="4174378934472392928" at="570,0,571,0" concept="10" trace="smodelAttribute$K8bJ" />
-      <node id="4174378934472392928" at="571,0,572,0" concept="10" trace="declaration$YMbw" />
-      <node id="4174378934472392928" at="572,0,573,0" concept="10" trace="variableDeclaration$2ky6" />
-      <node id="4174378934472392928" at="573,0,574,0" concept="10" trace="activator$6CMr" />
-      <node id="4174378934472392928" at="574,0,575,0" concept="10" trace="deactivator$6D0u" />
-      <node id="4174378934472392928" at="575,0,576,0" concept="10" trace="body$pTP2" />
-      <node id="4174378934472392928" at="576,0,577,0" concept="10" trace="body$WIlu" />
-      <node id="4174378934472392928" at="577,0,578,0" concept="10" trace="member$oYX5" />
-      <node id="4174378934472392928" at="578,0,579,0" concept="10" trace="objectGetter$NJKg" />
+      <node id="4174378934472392928" at="569,0,570,0" concept="10" trace="fieldDeclaration$A8YH" />
+      <node id="4174378934472392928" at="570,0,571,0" concept="10" trace="smodelAttribute$jXFL" />
+      <node id="4174378934472392928" at="571,0,572,0" concept="10" trace="declaration$qj$w" />
+      <node id="4174378934472392928" at="572,0,573,0" concept="10" trace="variableDeclaration$7WwU" />
+      <node id="4174378934472392928" at="573,0,574,0" concept="10" trace="activator$dKr5" />
+      <node id="4174378934472392928" at="574,0,575,0" concept="10" trace="deactivator$dRey" />
+      <node id="4174378934472392928" at="575,0,576,0" concept="10" trace="body$z0FY" />
+      <node id="4174378934472392928" at="576,0,577,0" concept="10" trace="body$qspy" />
+      <node id="4174378934472392928" at="577,0,578,0" concept="10" trace="member$6v_r" />
+      <node id="4174378934472392928" at="578,0,579,0" concept="10" trace="objectGetter$48nK" />
       <node id="4174378934472392928" at="582,0,583,0" concept="10" trace="Attribute$RJ" />
       <node id="4174378934472392928" at="583,0,584,0" concept="10" trace="LinkAttribute$7j" />
       <node id="4174378934472392928" at="584,0,585,0" concept="10" trace="ChildAttribute$XQ" />

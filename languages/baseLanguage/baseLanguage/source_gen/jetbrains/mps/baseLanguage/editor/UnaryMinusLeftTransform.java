@@ -113,8 +113,8 @@ public class UnaryMinusLeftTransform extends TransformationMenuBase {
         SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.UnaryMinus$Uo, null);
         SNode targetExpression = PrecedenceUtil.getTargetForLeftTransform(_context.getNode(), result);
         SNodeOperations.replaceWithAnother(targetExpression, result);
-        SLinkOperations.setTarget(result, LINKS.expression$7Rjy, targetExpression);
-        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(result, LINKS.expression$7Rjy), SelectionManager.FIRST_EDITABLE_CELL, 0);
+        SLinkOperations.setTarget(result, LINKS.expression$NMtu, targetExpression);
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(result, LINKS.expression$NMtu), SelectionManager.FIRST_EDITABLE_CELL, 0);
         return;
       }
 
@@ -152,6 +152,6 @@ public class UnaryMinusLeftTransform extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$7Rjy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
+    /*package*/ static final SContainmentLink expression$NMtu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
   }
 }

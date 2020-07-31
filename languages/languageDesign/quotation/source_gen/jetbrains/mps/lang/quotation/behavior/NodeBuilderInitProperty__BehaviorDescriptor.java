@@ -31,10 +31,10 @@ public final class NodeBuilderInitProperty__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static SNode getInitValue_id1o$2SUuvKUZ(@NotNull SNode __thisNode__) {
-    if (SLinkOperations.getTarget(__thisNode__, LINKS.initValue$nhHN) != null) {
-      return SLinkOperations.getTarget(__thisNode__, LINKS.initValue$nhHN);
+    if (SLinkOperations.getTarget(__thisNode__, LINKS.initValue$h_bH) != null) {
+      return SLinkOperations.getTarget(__thisNode__, LINKS.initValue$h_bH);
     } else {
-      return SLinkOperations.getTarget(__thisNode__, LINKS.expression$NDf$);
+      return SLinkOperations.getTarget(__thisNode__, LINKS.expression$Yys);
     }
   }
 
@@ -85,7 +85,7 @@ public final class NodeBuilderInitProperty__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initValue$nhHN = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x16240b8e9e79d891L, "initValue");
-    /*package*/ static final SContainmentLink expression$NDf$ = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0339L, 0x4bb51009d20b0336L, "expression");
+    /*package*/ static final SContainmentLink initValue$h_bH = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x16240b8e9e79d891L, "initValue");
+    /*package*/ static final SContainmentLink expression$Yys = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0339L, 0x4bb51009d20b0336L, "expression");
   }
 }

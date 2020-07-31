@@ -23,12 +23,12 @@ public class typeof_ModuleTarget_InferenceRule extends AbstractInferenceRule_Run
   public void applyRule(final SNode target, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(target, LINKS.moduleType$XNrX);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(target, LINKS.moduleType$VUyz);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "4413749148913634044", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "4413749148913634036", true), (SNode) _quotation_createNode_rkxyo0_a1a0c0a0a0b(), true, false, _info_12389875345);
       }
     }
-    SNode moduleType = SLinkOperations.getTarget(target, LINKS.moduleType$XNrX);
+    SNode moduleType = SLinkOperations.getTarget(target, LINKS.moduleType$VUyz);
     if ((moduleType != null)) {
       {
         SNode _nodeToCheck_1029348928467 = target;
@@ -69,7 +69,7 @@ public class typeof_ModuleTarget_InferenceRule extends AbstractInferenceRule_Run
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink moduleType$XNrX = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056bL, 0x5fb04b74a77a056fL, "moduleType");
+    /*package*/ static final SContainmentLink moduleType$VUyz = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056bL, 0x5fb04b74a77a056fL, "moduleType");
   }
 
   private static final class CONCEPTS {

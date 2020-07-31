@@ -129,7 +129,7 @@ public class ShowParameters_Action extends BaseAction {
 
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.DefaultClassCreator$sQ)) {
       StyledTextPrinterImpl printer = new StyledTextPrinterImpl();
-      printer.append(SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.DefaultClassCreator$sQ), LINKS.classifier$bk50), PROPS.name$tAp1) + "()");
+      printer.append(SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.DefaultClassCreator$sQ), LINKS.classifier$uIr0), PROPS.name$lA7v) + "()");
       JTextPane textPane = ShowParameters_Action.this.createTextPane(printer, _params);
       panel.add(textPane, ShowParameters_Action.this.createConstraints(0, _params));
     } else {
@@ -173,10 +173,10 @@ public class ShowParameters_Action extends BaseAction {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$bk50 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
+    /*package*/ static final SReferenceLink classifier$uIr0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

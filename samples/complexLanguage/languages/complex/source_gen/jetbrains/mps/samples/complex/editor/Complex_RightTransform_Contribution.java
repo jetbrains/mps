@@ -119,7 +119,7 @@ public class Complex_RightTransform_Contribution extends TransformationMenuBase 
       public void execute(@NotNull String pattern) {
         SNode result = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.ReExpression$oQ);
         SNodeOperations.replaceWithAnother(_context.getNode(), result);
-        SLinkOperations.setTarget(result, LINKS.complexExpression$MUES, _context.getNode());
+        SLinkOperations.setTarget(result, LINKS.complexExpression$EqL8, _context.getNode());
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), result, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
@@ -191,7 +191,7 @@ public class Complex_RightTransform_Contribution extends TransformationMenuBase 
       public void execute(@NotNull String pattern) {
         SNode result = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.ImExpression$4p);
         SNodeOperations.replaceWithAnother(_context.getNode(), result);
-        SLinkOperations.setTarget(result, LINKS.complexExpression$MUES, _context.getNode());
+        SLinkOperations.setTarget(result, LINKS.complexExpression$EqL8, _context.getNode());
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), result, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
@@ -263,7 +263,7 @@ public class Complex_RightTransform_Contribution extends TransformationMenuBase 
       public void execute(@NotNull String pattern) {
         SNode result = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.AbsExpression$Z6);
         SNodeOperations.replaceWithAnother(_context.getNode(), result);
-        SLinkOperations.setTarget(result, LINKS.complexExpression$MUES, _context.getNode());
+        SLinkOperations.setTarget(result, LINKS.complexExpression$EqL8, _context.getNode());
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), result, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
@@ -335,7 +335,7 @@ public class Complex_RightTransform_Contribution extends TransformationMenuBase 
       public void execute(@NotNull String pattern) {
         SNode result = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.ArgExpression$zl);
         SNodeOperations.replaceWithAnother(_context.getNode(), result);
-        SLinkOperations.setTarget(result, LINKS.complexExpression$MUES, _context.getNode());
+        SLinkOperations.setTarget(result, LINKS.complexExpression$EqL8, _context.getNode());
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), result, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
@@ -407,7 +407,7 @@ public class Complex_RightTransform_Contribution extends TransformationMenuBase 
       public void execute(@NotNull String pattern) {
         SNode result = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.ConjugateComplexExpression$Pt);
         SNodeOperations.replaceWithAnother(_context.getNode(), result);
-        SLinkOperations.setTarget(result, LINKS.complexExpression$MUES, _context.getNode());
+        SLinkOperations.setTarget(result, LINKS.complexExpression$EqL8, _context.getNode());
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), result, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
@@ -479,7 +479,7 @@ public class Complex_RightTransform_Contribution extends TransformationMenuBase 
       public void execute(@NotNull String pattern) {
         SNode result = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.DegreeComplexExpression$wH);
         SNodeOperations.replaceWithAnother(_context.getNode(), result);
-        SLinkOperations.setTarget(result, LINKS.complexExpression$MUES, _context.getNode());
+        SLinkOperations.setTarget(result, LINKS.complexExpression$EqL8, _context.getNode());
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), result, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
@@ -522,6 +522,6 @@ public class Complex_RightTransform_Contribution extends TransformationMenuBase 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink complexExpression$MUES = MetaAdapterFactory.getContainmentLink(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686b3b49dL, 0x11686b4a081L, "complexExpression");
+    /*package*/ static final SContainmentLink complexExpression$EqL8 = MetaAdapterFactory.getContainmentLink(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686b3b49dL, 0x11686b4a081L, "complexExpression");
   }
 }

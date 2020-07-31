@@ -45,7 +45,7 @@ public final class ExpandBoolean_Intention extends AbstractIntentionDescriptor i
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.variableDeclaration$2ky6), LINKS.type$pLrO), CONCEPTS.BooleanType$8G))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.variableDeclaration$7WwU), LINKS.type$uWuc), CONCEPTS.BooleanType$8G))) {
       return false;
     }
     if (SNodeOperations.getNodeAncestor(node, CONCEPTS.StatementList$TN, false, false) == null) {
@@ -75,36 +75,36 @@ public final class ExpandBoolean_Intention extends AbstractIntentionDescriptor i
       SNode statementNode = SNodeOperations.cast(SNodeOperations.getNodeAncestor(node, CONCEPTS.Statement$ok, false, false), CONCEPTS.Statement$ok);
       // 
       SNode ifNode = SNodeFactoryOperations.insertNewPrevSiblingChild(statementNode, CONCEPTS.IfStatement$pi);
-      SNode ifTrue = SNodeFactoryOperations.setNewChild(ifNode, LINKS.ifTrue$WJ1E, null);
-      SNode ifFalse = SNodeFactoryOperations.setNewChild(SNodeFactoryOperations.setNewChild(ifNode, LINKS.ifFalseStatement$Xnu2, CONCEPTS.BlockStatement$1i), LINKS.statements$uqR0, null);
+      SNode ifTrue = SNodeFactoryOperations.setNewChild(ifNode, LINKS.ifTrue$qLNm, null);
+      SNode ifFalse = SNodeFactoryOperations.setNewChild(SNodeFactoryOperations.setNewChild(ifNode, LINKS.ifFalseStatement$InyY, CONCEPTS.BlockStatement$1i), LINKS.statements$J0D0, null);
       // 
-      SLinkOperations.setTarget(ifNode, LINKS.condition$WJ1b, SNodeOperations.copyNode(node));
+      SLinkOperations.setTarget(ifNode, LINKS.condition$qL$l, SNodeOperations.copyNode(node));
       // 
-      ListSequence.fromList(SLinkOperations.getChildren(ifTrue, LINKS.statement$WHn8)).insertElement(0, SNodeOperations.copyNode(statementNode));
-      ListSequence.fromList(SLinkOperations.getChildren(ifFalse, LINKS.statement$WHn8)).insertElement(0, SNodeOperations.copyNode(statementNode));
+      ListSequence.fromList(SLinkOperations.getChildren(ifTrue, LINKS.statement$pYcS)).insertElement(0, SNodeOperations.copyNode(statementNode));
+      ListSequence.fromList(SLinkOperations.getChildren(ifFalse, LINKS.statement$pYcS)).insertElement(0, SNodeOperations.copyNode(statementNode));
       // 
       final SNode fake_node = node;
       Iterable<SNode> refs;
-      refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(ListSequence.fromList(SLinkOperations.getChildren(ifTrue, LINKS.statement$WHn8)).first(), null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+      refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(ListSequence.fromList(SLinkOperations.getChildren(ifTrue, LINKS.statement$pYcS)).first(), null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.VariableReference$sQ) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6) == SLinkOperations.getTarget(fake_node, LINKS.variableDeclaration$2ky6);
+          return SNodeOperations.isInstanceOf(it, CONCEPTS.VariableReference$sQ) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU) == SLinkOperations.getTarget(fake_node, LINKS.variableDeclaration$7WwU);
         }
       });
       Sequence.fromIterable(refs).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNode booleanConstant = SNodeFactoryOperations.replaceWithNewChild(it, CONCEPTS.BooleanConstant$Ui);
-          SPropertyOperations.set(booleanConstant, PROPS.value$WIn0, true);
+          SPropertyOperations.set(booleanConstant, PROPS.value$qt90, true);
         }
       });
-      refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(ListSequence.fromList(SLinkOperations.getChildren(ifFalse, LINKS.statement$WHn8)).first(), null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+      refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(ListSequence.fromList(SLinkOperations.getChildren(ifFalse, LINKS.statement$pYcS)).first(), null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.VariableReference$sQ) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6) == SLinkOperations.getTarget(fake_node, LINKS.variableDeclaration$2ky6);
+          return SNodeOperations.isInstanceOf(it, CONCEPTS.VariableReference$sQ) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU) == SLinkOperations.getTarget(fake_node, LINKS.variableDeclaration$7WwU);
         }
       });
       Sequence.fromIterable(refs).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNode booleanConstant = SNodeFactoryOperations.replaceWithNewChild(it, CONCEPTS.BooleanConstant$Ui);
-          SPropertyOperations.set(booleanConstant, PROPS.value$WIn0, false);
+          SPropertyOperations.set(booleanConstant, PROPS.value$qt90, false);
         }
       });
       // 
@@ -117,13 +117,13 @@ public final class ExpandBoolean_Intention extends AbstractIntentionDescriptor i
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink ifTrue$WJ1E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
-    /*package*/ static final SContainmentLink ifFalseStatement$Xnu2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
-    /*package*/ static final SContainmentLink statements$uqR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
-    /*package*/ static final SContainmentLink condition$WJ1b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink ifTrue$qLNm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
+    /*package*/ static final SContainmentLink ifFalseStatement$InyY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
+    /*package*/ static final SContainmentLink statements$J0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
+    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 
   private static final class CONCEPTS {
@@ -137,6 +137,6 @@ public final class ExpandBoolean_Intention extends AbstractIntentionDescriptor i
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$WIn0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }

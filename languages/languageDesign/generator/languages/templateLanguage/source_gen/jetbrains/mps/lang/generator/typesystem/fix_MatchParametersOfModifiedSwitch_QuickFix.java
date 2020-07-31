@@ -26,13 +26,13 @@ public class fix_MatchParametersOfModifiedSwitch_QuickFix extends QuickFix_Runti
   }
   public void execute(SNode node) {
     SNode templateSwitch = SNodeOperations.cast(((SNodeOperations.isInstanceOf(node, CONCEPTS.TemplateParameterDeclaration$ZW) ? SNodeOperations.getParent(SNodeOperations.as(node, CONCEPTS.TemplateParameterDeclaration$ZW)) : node)), CONCEPTS.TemplateSwitch$BT);
-    ListSequence.fromList(SLinkOperations.getChildren(templateSwitch, LINKS.parameter$AB01)).clear();
+    ListSequence.fromList(SLinkOperations.getChildren(templateSwitch, LINKS.parameter$GT0v)).clear();
     SModel m = SNodeOperations.getModel(templateSwitch);
-    for (SNode p : SLinkOperations.getChildren(SLinkOperations.getTarget(templateSwitch, LINKS.modifiedSwitch$$U27), LINKS.parameter$AB01)) {
+    for (SNode p : SLinkOperations.getChildren(SLinkOperations.getTarget(templateSwitch, LINKS.modifiedSwitch$S71p), LINKS.parameter$GT0v)) {
       SNode np = SModelOperations.createNewNode(m, null, CONCEPTS.TemplateParameterDeclaration$ZW);
-      SPropertyOperations.assign(np, PROPS.name$tAp1, SPropertyOperations.getString(p, PROPS.name$tAp1));
-      SLinkOperations.setTarget(np, LINKS.type$54u0, SNodeOperations.copyNode(SLinkOperations.getTarget(p, LINKS.type$54u0)));
-      ListSequence.fromList(SLinkOperations.getChildren(templateSwitch, LINKS.parameter$AB01)).addElement(np);
+      SPropertyOperations.assign(np, PROPS.name$lA7v, SPropertyOperations.getString(p, PROPS.name$lA7v));
+      SLinkOperations.setTarget(np, LINKS.type$tay0, SNodeOperations.copyNode(SLinkOperations.getTarget(p, LINKS.type$tay0)));
+      ListSequence.fromList(SLinkOperations.getChildren(templateSwitch, LINKS.parameter$GT0v)).addElement(np);
     }
   }
 
@@ -42,12 +42,12 @@ public class fix_MatchParametersOfModifiedSwitch_QuickFix extends QuickFix_Runti
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$AB01 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter");
-    /*package*/ static final SContainmentLink type$54u0 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, 0x190d31fe6a096acfL, "type");
-    /*package*/ static final SReferenceLink modifiedSwitch$$U27 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, 0x1031947e414L, "modifiedSwitch");
+    /*package*/ static final SContainmentLink parameter$GT0v = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter");
+    /*package*/ static final SContainmentLink type$tay0 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, 0x190d31fe6a096acfL, "type");
+    /*package*/ static final SReferenceLink modifiedSwitch$S71p = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, 0x1031947e414L, "modifiedSwitch");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

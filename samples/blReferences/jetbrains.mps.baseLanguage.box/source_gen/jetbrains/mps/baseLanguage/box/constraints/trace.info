@@ -28,7 +28,7 @@
       <node id="8995237445478594116" at="47,0,48,0" concept="7" trace="Box_ValueOperation$TC" />
       <node id="8995237445478594116" at="48,0,49,0" concept="7" trace="DotExpression$6a" />
       <node id="8995237445478594116" at="49,0,50,0" concept="7" trace="BoxType$uy" />
-      <node id="8995237445478594116" at="53,0,54,0" concept="7" trace="operand$Lcrr" />
+      <node id="8995237445478594116" at="53,0,54,0" concept="7" trace="operand$P1i5" />
       <node id="8995237445478594116" at="22,0,25,0" concept="0" trace="Box_ValueOperation_Constraints#()V" />
       <node id="8995237445478594116" at="32,0,35,9" concept="2" />
       <node id="8995237445478594116" at="41,0,44,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />

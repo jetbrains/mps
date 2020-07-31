@@ -35,7 +35,7 @@ public class check_LinkDeclaration_NonTypesystemRule extends AbstractNonTypesyst
   }
   public void applyRule(final SNode linkToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // link role shouldn't hide roles in super-concepts 
-    if (SPropertyOperations.getString(linkToCheck, PROPS.role$r_O$) == null) {
+    if (SPropertyOperations.getString(linkToCheck, PROPS.role$nkts) == null) {
       return;
     }
     SNode declaringConcept = SNodeOperations.getNodeAncestor(linkToCheck, CONCEPTS.AbstractConceptDeclaration$UN, false, false);
@@ -70,7 +70,7 @@ __switch__:
                       this.yield(_4_link);
                       return true;
                     case 0:
-                      this._3_links = SLinkOperations.getChildren(concept, LINKS.linkDeclaration$lL6$);
+                      this._3_links = SLinkOperations.getChildren(concept, LINKS.linkDeclaration$yMbs);
                       this.__CP__ = 4;
                       break;
                     case 6:
@@ -91,22 +91,22 @@ __switch__:
       }
     });
     for (SNode link : Sequence.fromIterable(linksInSupers)) {
-      if (linkToCheck != link && SPropertyOperations.getString(linkToCheck, PROPS.role$r_O$).equals(SPropertyOperations.getString(link, PROPS.role$r_O$)) && SLinkOperations.getTarget(linkToCheck, LINKS.specializedLink$3uH0) != link) {
+      if (linkToCheck != link && SPropertyOperations.getString(linkToCheck, PROPS.role$nkts).equals(SPropertyOperations.getString(link, PROPS.role$nkts)) && SLinkOperations.getTarget(linkToCheck, LINKS.specializedLink$FRN0) != link) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(linkToCheck, "link '" + SPropertyOperations.getString(link, PROPS.role$r_O$) + "' is already declared in " + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(link, CONCEPTS.AbstractConceptDeclaration$UN, false, false), PROPS.name$tAp1), "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1212181840083", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(linkToCheck, "link '" + SPropertyOperations.getString(link, PROPS.role$nkts) + "' is already declared in " + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(link, CONCEPTS.AbstractConceptDeclaration$UN, false, false), PROPS.name$lA7v), "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1212181840083", null, errorTarget);
         }
       }
     }
-    if (SPropertyOperations.getBoolean(linkToCheck, PROPS.unordered$A9T6) && (boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(linkToCheck)) {
-      if (SEnumOperations.isMember(SPropertyOperations.getEnum(linkToCheck, PROPS.metaClass$tHD7), 0xfc6f4e95b8L)) {
+    if (SPropertyOperations.getBoolean(linkToCheck, PROPS.unordered$uMDU) && (boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(linkToCheck)) {
+      if (SEnumOperations.isMember(SPropertyOperations.getEnum(linkToCheck, PROPS.metaClass$p6Up), 0xfc6f4e95b8L)) {
         {
-          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.sourceCardinality$$E8z);
+          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.sourceCardinality$Kq8X);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(linkToCheck, "reference cannot be unordered", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "2395585628928851523", null, errorTarget);
         }
       } else {
         {
-          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.sourceCardinality$$E8z);
+          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.sourceCardinality$Kq8X);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(linkToCheck, "unordered link should be multiple", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "2395585628928560440", null, errorTarget);
         }
       }
@@ -123,11 +123,11 @@ __switch__:
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty role$r_O$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty unordered$A9T6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x213ed46fe94fc232L, "unordered");
-    /*package*/ static final SProperty metaClass$tHD7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
-    /*package*/ static final SProperty sourceCardinality$$E8z = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality");
+    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty unordered$uMDU = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x213ed46fe94fc232L, "unordered");
+    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty sourceCardinality$Kq8X = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality");
   }
 
   private static final class CONCEPTS {
@@ -136,7 +136,7 @@ __switch__:
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink linkDeclaration$lL6$ = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
-    /*package*/ static final SReferenceLink specializedLink$3uH0 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98051c244L, "specializedLink");
+    /*package*/ static final SContainmentLink linkDeclaration$yMbs = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
+    /*package*/ static final SReferenceLink specializedLink$FRN0 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98051c244L, "specializedLink");
   }
 }

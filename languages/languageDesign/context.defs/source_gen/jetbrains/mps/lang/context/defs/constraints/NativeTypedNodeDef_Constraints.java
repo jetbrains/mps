@@ -26,7 +26,7 @@ public class NativeTypedNodeDef_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.conceptParameter$R3U8, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.conceptParameter$ET9S, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -58,6 +58,6 @@ public class NativeTypedNodeDef_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptParameter$R3U8 = MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x46263286da99051L, 0x46263286da99433L, "conceptParameter");
+    /*package*/ static final SReferenceLink conceptParameter$ET9S = MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x46263286da99051L, 0x46263286da99433L, "conceptParameter");
   }
 }

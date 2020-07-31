@@ -17,12 +17,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class TypeCalculator {
   public static SNode calculateType(SNode point) {
-    SNode typeNode = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(point, CONCEPTS.Intention$MV, true, false), LINKS.forConcept$G_IT);
+    SNode typeNode = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(point, CONCEPTS.Intention$MV, true, false), LINKS.forConcept$AhHB);
     return (typeNode == null ? _quotation_createNode_5htwxq_a0b0a() : _quotation_createNode_5htwxq_a0b0a_0(typeNode));
   }
 
   public static SNode parameterType(SNode point) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "2697606110805685905"), SNodeOperations.getNodeAncestor(point, CONCEPTS.Intention$MV, true, false))).first(), CONCEPTS.Parameter$6h), LINKS.parameterType$kN40);
+    return SLinkOperations.getTarget(SNodeOperations.cast(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "2697606110805685905"), SNodeOperations.getNodeAncestor(point, CONCEPTS.Intention$MV, true, false))).first(), CONCEPTS.Parameter$6h), LINKS.parameterType$4IW0);
   }
 
   public static boolean isParametrized(SNode point) {
@@ -48,7 +48,7 @@ public class TypeCalculator {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink forConcept$G_IT = MetaAdapterFactory.getReferenceLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x71ffad1474b12a0bL, 0x10d005a50b96761L, "forConcept");
-    /*package*/ static final SContainmentLink parameterType$kN40 = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x6688b42d39674b7aL, 0x6688b42d39674f90L, "parameterType");
+    /*package*/ static final SReferenceLink forConcept$AhHB = MetaAdapterFactory.getReferenceLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x71ffad1474b12a0bL, 0x10d005a50b96761L, "forConcept");
+    /*package*/ static final SContainmentLink parameterType$4IW0 = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x6688b42d39674b7aL, 0x6688b42d39674f90L, "parameterType");
   }
 }

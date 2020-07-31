@@ -113,10 +113,10 @@ public class makeMoneyFromInteger_Contribution extends TransformationMenuBase {
       @Nullable
       @Override
       public String getLabelText(String pattern) {
-        Iterable<SNode> units = SLinkOperations.collectMany(SModelOperations.roots(SNodeOperations.getModel(_context.getNode()), CONCEPTS.CurrencyDefTable$Xg), LINKS.units$LHqr);
+        Iterable<SNode> units = SLinkOperations.collectMany(SModelOperations.roots(SNodeOperations.getModel(_context.getNode()), CONCEPTS.CurrencyDefTable$Xg), LINKS.units$4ZN5);
         for (SNode u : Sequence.fromIterable(units)) {
-          if (SPropertyOperations.getString(u, PROPS.name$tAp1).startsWith(pattern)) {
-            return SPropertyOperations.getString(u, PROPS.name$tAp1);
+          if (SPropertyOperations.getString(u, PROPS.name$lA7v).startsWith(pattern)) {
+            return SPropertyOperations.getString(u, PROPS.name$lA7v);
           }
         }
         return null;
@@ -124,16 +124,16 @@ public class makeMoneyFromInteger_Contribution extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull final String pattern) {
-        Iterable<SNode> units = SLinkOperations.collectMany(SModelOperations.roots(SNodeOperations.getModel(_context.getNode()), CONCEPTS.CurrencyDefTable$Xg), LINKS.units$LHqr);
+        Iterable<SNode> units = SLinkOperations.collectMany(SModelOperations.roots(SNodeOperations.getModel(_context.getNode()), CONCEPTS.CurrencyDefTable$Xg), LINKS.units$4ZN5);
         SNode unit = Sequence.fromIterable(units).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$tAp1).equals(pattern);
+            return SPropertyOperations.getString(it, PROPS.name$lA7v).equals(pattern);
           }
         });
         if (unit != null) {
           SNode ml = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x4b9a2fe559135132L, "org.jetbrains.mps.samples.Money.structure.MoneyLiteral"));
-          SLinkOperations.setTarget(ml, LINKS.unit$m_D0, unit);
-          SPropertyOperations.assign(ml, PROPS.amount$dIoX, SPropertyOperations.getInteger(SNodeOperations.cast(_context.getNode(), CONCEPTS.IntegerConstant$mo), PROPS.value$ZeO0));
+          SLinkOperations.setTarget(ml, LINKS.unit$WeR0, unit);
+          SPropertyOperations.assign(ml, PROPS.amount$Du5z, SPropertyOperations.getInteger(SNodeOperations.cast(_context.getNode(), CONCEPTS.IntegerConstant$mo), PROPS.value$Cbc0));
           SNodeOperations.replaceWithAnother(_context.getNode(), ml);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ml, SelectionManager.LAST_CELL, -1);
           return;
@@ -173,13 +173,13 @@ public class makeMoneyFromInteger_Contribution extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink units$LHqr = MetaAdapterFactory.getContainmentLink(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x3210b276d1443596L, 0x3210b276d144359cL, "units");
-    /*package*/ static final SReferenceLink unit$m_D0 = MetaAdapterFactory.getReferenceLink(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x4b9a2fe559135132L, 0x3210b276d14435a8L, "unit");
+    /*package*/ static final SContainmentLink units$4ZN5 = MetaAdapterFactory.getContainmentLink(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x3210b276d1443596L, 0x3210b276d144359cL, "units");
+    /*package*/ static final SReferenceLink unit$WeR0 = MetaAdapterFactory.getReferenceLink(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x4b9a2fe559135132L, 0x3210b276d14435a8L, "unit");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty amount$dIoX = MetaAdapterFactory.getProperty(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x4b9a2fe559135132L, 0x4b9a2fe559135183L, "amount");
-    /*package*/ static final SProperty value$ZeO0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty amount$Du5z = MetaAdapterFactory.getProperty(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x4b9a2fe559135132L, 0x4b9a2fe559135183L, "amount");
+    /*package*/ static final SProperty value$Cbc0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
   }
 }

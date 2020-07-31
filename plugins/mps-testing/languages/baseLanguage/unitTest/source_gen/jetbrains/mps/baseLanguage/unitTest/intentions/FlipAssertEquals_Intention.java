@@ -50,10 +50,10 @@ public final class FlipAssertEquals_Intention extends AbstractIntentionDescripto
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode expected = SLinkOperations.getTarget(node, LINKS.expected$yNt5);
-      SNode actual = SLinkOperations.getTarget(node, LINKS.actual$yNt$);
-      SLinkOperations.setTarget(node, LINKS.expected$yNt5, SNodeOperations.copyNode(actual));
-      SLinkOperations.setTarget(node, LINKS.actual$yNt$, SNodeOperations.copyNode(expected));
+      SNode expected = SLinkOperations.getTarget(node, LINKS.expected$QV5r);
+      SNode actual = SLinkOperations.getTarget(node, LINKS.actual$QVks);
+      SLinkOperations.setTarget(node, LINKS.expected$QV5r, SNodeOperations.copyNode(actual));
+      SLinkOperations.setTarget(node, LINKS.actual$QVks, SNodeOperations.copyNode(expected));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -62,7 +62,7 @@ public final class FlipAssertEquals_Intention extends AbstractIntentionDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expected$yNt5 = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x74f562a3a993fd3dL, 0x74f562a3a993fd44L, "expected");
-    /*package*/ static final SContainmentLink actual$yNt$ = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x74f562a3a993fd3dL, 0x74f562a3a993fd45L, "actual");
+    /*package*/ static final SContainmentLink expected$QV5r = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x74f562a3a993fd3dL, 0x74f562a3a993fd44L, "expected");
+    /*package*/ static final SContainmentLink actual$QVks = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x74f562a3a993fd3dL, 0x74f562a3a993fd45L, "actual");
   }
 }

@@ -102,10 +102,10 @@ public class BreakStatement_TransformationMenu extends TransformationMenuBase {
   public class TMP_Group_n2nn3v_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      if ((SLinkOperations.getTarget(_context.getNode(), LINKS.loopLabelReference$Hgei) == null)) {
+      if ((SLinkOperations.getTarget(_context.getNode(), LINKS.loopLabelReference$UQUI) == null)) {
         boolean loopsWithLabels = ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.AbstractLoopStatement$wH, false)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return (SLinkOperations.getTarget(it, LINKS.loopLabel$Vp8n) != null);
+            return (SLinkOperations.getTarget(it, LINKS.loopLabel$Lb39) != null);
           }
         }).isNotEmpty();
         if (loopsWithLabels) {
@@ -113,7 +113,7 @@ public class BreakStatement_TransformationMenu extends TransformationMenuBase {
         }
         boolean switchStatementsWithLabels = ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.SwitchStatement$S1, false)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return (SLinkOperations.getTarget(it, LINKS.switchLabel$hXmp) != null);
+            return (SLinkOperations.getTarget(it, LINKS.switchLabel$GHQ7) != null);
           }
         }).isNotEmpty();
         return switchStatementsWithLabels;
@@ -163,7 +163,7 @@ __switch__:
                           assert false : "Internal error";
                           return false;
                         case 2:
-                          if ((SLinkOperations.getTarget(it, LINKS.loopLabel$Vp8n) != null)) {
+                          if ((SLinkOperations.getTarget(it, LINKS.loopLabel$Lb39) != null)) {
                             this.__CP__ = 3;
                             break;
                           }
@@ -171,7 +171,7 @@ __switch__:
                           break;
                         case 4:
                           this.__CP__ = 1;
-                          this.yield(SLinkOperations.getTarget(it, LINKS.loopLabel$Vp8n));
+                          this.yield(SLinkOperations.getTarget(it, LINKS.loopLabel$Lb39));
                           return true;
                         case 0:
                           this.__CP__ = 2;
@@ -205,7 +205,7 @@ __switch__:
                           assert false : "Internal error";
                           return false;
                         case 2:
-                          if ((SLinkOperations.getTarget(it, LINKS.switchLabel$hXmp) != null)) {
+                          if ((SLinkOperations.getTarget(it, LINKS.switchLabel$GHQ7) != null)) {
                             this.__CP__ = 3;
                             break;
                           }
@@ -213,7 +213,7 @@ __switch__:
                           break;
                         case 4:
                           this.__CP__ = 1;
-                          this.yield(SLinkOperations.getTarget(it, LINKS.switchLabel$hXmp));
+                          this.yield(SLinkOperations.getTarget(it, LINKS.switchLabel$GHQ7));
                           return true;
                         case 0:
                           this.__CP__ = 2;
@@ -283,13 +283,13 @@ __switch__:
           @Nullable
           @Override
           public String getLabelText(String pattern) {
-            return SPropertyOperations.getString(myParameterObject, PROPS.name$tAp1);
+            return SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v);
           }
 
           @Override
           public void execute(@NotNull String pattern) {
-            SNode labelReference = SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.loopLabelReference$Hgei, null);
-            SLinkOperations.setTarget(labelReference, LINKS.loopLabel$GZ00, myParameterObject);
+            SNode labelReference = SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.loopLabelReference$UQUI, null);
+            SLinkOperations.setTarget(labelReference, LINKS.loopLabel$Mx00, myParameterObject);
             SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), labelReference, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
           }
 
@@ -332,13 +332,13 @@ __switch__:
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink loopLabel$Vp8n = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x50c493bf9555131L, "loopLabel");
-    /*package*/ static final SContainmentLink switchLabel$hXmp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x4091554b655a230eL, "switchLabel");
-    /*package*/ static final SContainmentLink loopLabelReference$Hgei = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, 0x7dae85d6eb42f8c4L, "loopLabelReference");
-    /*package*/ static final SReferenceLink loopLabel$GZ00 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, 0x50c493bf955512aL, "loopLabel");
+    /*package*/ static final SContainmentLink loopLabel$Lb39 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x50c493bf9555131L, "loopLabel");
+    /*package*/ static final SContainmentLink switchLabel$GHQ7 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x4091554b655a230eL, "switchLabel");
+    /*package*/ static final SContainmentLink loopLabelReference$UQUI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, 0x7dae85d6eb42f8c4L, "loopLabelReference");
+    /*package*/ static final SReferenceLink loopLabel$Mx00 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, 0x50c493bf955512aL, "loopLabel");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

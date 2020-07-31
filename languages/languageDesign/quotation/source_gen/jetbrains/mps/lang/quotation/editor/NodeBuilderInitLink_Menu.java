@@ -143,7 +143,7 @@ public class NodeBuilderInitLink_Menu extends SubstituteMenuBase {
   }
   private static SNode createNodeBuilderExpression_5gak4t_a0a0b(SNode node0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodeBuilderExpression$Ub);
-    rootBuilder1.forChild(LINKS.expression$JCaZ).initNode(node0, CONCEPTS.Expression$TP, true);
+    rootBuilder1.forChild(LINKS.expression$4tkx).initNode(node0, CONCEPTS.Expression$TP, true);
     return rootBuilder1.getResult();
   }
 
@@ -155,6 +155,6 @@ public class NodeBuilderInitLink_Menu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$JCaZ = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a3132eL, 0x718e3f4cb7a31330L, "expression");
+    /*package*/ static final SContainmentLink expression$4tkx = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a3132eL, 0x718e3f4cb7a31330L, "expression");
   }
 }

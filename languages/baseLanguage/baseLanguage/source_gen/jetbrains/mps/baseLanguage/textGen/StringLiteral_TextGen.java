@@ -14,11 +14,11 @@ public class StringLiteral_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.append("\"");
-    StringTextGen.compilableString((SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$kiE0) == null ? "" : SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$kiE0)), ctx);
+    StringTextGen.compilableString((SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$P2m0) == null ? "" : SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$P2m0)), ctx);
     tgs.append("\"");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$kiE0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 }

@@ -21,8 +21,8 @@ public class checkUnnecessaryInstanceof_NonTypesystemRule extends AbstractNonTyp
   public checkUnnecessaryInstanceof_NonTypesystemRule() {
   }
   public void applyRule(final SNode instanceOfExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode classifierType = SLinkOperations.getTarget(instanceOfExpression, LINKS.classType$zxNQ);
-    SNode expressionType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(instanceOfExpression, LINKS.leftExpression$zxNn));
+    SNode classifierType = SLinkOperations.getTarget(instanceOfExpression, LINKS.classType$do7a);
+    SNode expressionType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(instanceOfExpression, LINKS.leftExpression$dnS9));
     if (TypecheckingFacade.getFromContext().isSubtype(expressionType, classifierType)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -41,8 +41,8 @@ public class checkUnnecessaryInstanceof_NonTypesystemRule extends AbstractNonTyp
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink classType$zxNQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06219L, "classType");
-    /*package*/ static final SContainmentLink leftExpression$zxNn = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression");
+    /*package*/ static final SContainmentLink classType$do7a = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06219L, "classType");
+    /*package*/ static final SContainmentLink leftExpression$dnS9 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression");
   }
 
   private static final class CONCEPTS {

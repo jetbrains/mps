@@ -21,7 +21,7 @@ public final class SwitchExpressionPW_PasteWrapper_0 implements PasteWrapper {
   }
   @Override
   public SNode wrap(SNode sourceNode) {
-    return SLinkOperations.getTarget(sourceNode, LINKS.expression$6WR0);
+    return SLinkOperations.getTarget(sourceNode, LINKS.expression$nuD0);
   }
 
   private static final class CONCEPTS {
@@ -30,6 +30,6 @@ public final class SwitchExpressionPW_PasteWrapper_0 implements PasteWrapper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$6WR0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc5L, 0x220ad6aedf1fdcc6L, "expression");
+    /*package*/ static final SContainmentLink expression$nuD0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc5L, 0x220ad6aedf1fdcc6L, "expression");
   }
 }

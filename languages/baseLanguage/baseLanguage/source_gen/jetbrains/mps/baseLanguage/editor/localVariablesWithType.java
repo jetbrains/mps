@@ -92,8 +92,8 @@ public class localVariablesWithType extends SubstituteMenuBase {
           SNode nodeToWrap = super.createNode(pattern);
           SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.LocalVariableDeclarationStatement$BI, null);
           SNode var = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.LocalVariableDeclaration$Bf, null);
-          SLinkOperations.setTarget(var, LINKS.type$pLrO, nodeToWrap);
-          SLinkOperations.setTarget(result, LINKS.localVariableDeclaration$O0D0, var);
+          SLinkOperations.setTarget(var, LINKS.type$uWuc, nodeToWrap);
+          SLinkOperations.setTarget(result, LINKS.localVariableDeclaration$cjR0, var);
           return result;
         }
 
@@ -108,8 +108,8 @@ public class localVariablesWithType extends SubstituteMenuBase {
         }
         @Override
         public void select(@NotNull SNode createdNode, @NotNull String pattern) {
-          if ((boolean) Type__BehaviorDescriptor.selectOnVariableCreation_idhEwIzO8.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(createdNode, LINKS.localVariableDeclaration$O0D0), LINKS.type$pLrO))) {
-            SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(SLinkOperations.getTarget(createdNode, LINKS.localVariableDeclaration$O0D0), LINKS.type$pLrO), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          if ((boolean) Type__BehaviorDescriptor.selectOnVariableCreation_idhEwIzO8.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(createdNode, LINKS.localVariableDeclaration$cjR0), LINKS.type$uWuc))) {
+            SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(SLinkOperations.getTarget(createdNode, LINKS.localVariableDeclaration$cjR0), LINKS.type$uWuc), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
           } else {
             SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
           }
@@ -135,7 +135,7 @@ public class localVariablesWithType extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink localVariableDeclaration$O0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink localVariableDeclaration$cjR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
   }
 }

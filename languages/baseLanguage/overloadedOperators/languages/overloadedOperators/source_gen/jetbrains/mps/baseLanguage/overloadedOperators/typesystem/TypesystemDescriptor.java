@@ -44,7 +44,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myRuleNodeId = "6136676636350205596";
     }
     public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
-      return SLinkOperations.getTarget(new BinaryOperationUtil(SNodeOperations.getModel(operation)).getNearestOverloaded(operation, leftOperandType, rightOperandType), LINKS.returnType$5fOs);
+      return SLinkOperations.getTarget(new BinaryOperationUtil(SNodeOperations.getModel(operation)).getNearestOverloaded(operation, leftOperandType, rightOperandType), LINKS.returnType$yEp$);
     }
     public boolean isApplicable(SubtypingManager subtypingManager, SNode operation, SNode leftOperandType, SNode rightOperandType) {
       return new BinaryOperationUtil(SNodeOperations.getModel(operation)).hasOverloadedOperators(operation, leftOperandType, rightOperandType);
@@ -74,6 +74,6 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$5fOs = MetaAdapterFactory.getContainmentLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c41300f84dL, 0x5cab13b82be03a0dL, "returnType");
+    /*package*/ static final SContainmentLink returnType$yEp$ = MetaAdapterFactory.getContainmentLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c41300f84dL, 0x5cab13b82be03a0dL, "returnType");
   }
 }

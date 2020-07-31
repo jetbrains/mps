@@ -22,7 +22,7 @@ public class typeof_ValueRef_InferenceRule extends AbstractInferenceRule_Runtime
     {
       SNode _nodeToCheck_1029348928467 = valueRef;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3140757037534609379", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3140757037534607582", true), (SNode) SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(valueRef, CONCEPTS.GenericLValueExpression$FD, false, false), LINKS.type$eZ09), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3140757037534607582", true), (SNode) SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(valueRef, CONCEPTS.GenericLValueExpression$FD, false, false), LINKS.type$gx4n), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -41,6 +41,6 @@ public class typeof_ValueRef_InferenceRule extends AbstractInferenceRule_Runtime
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$eZ09 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x723a3e657841dbf2L, "type");
+    /*package*/ static final SContainmentLink type$gx4n = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x723a3e657841dbf2L, "type");
   }
 }

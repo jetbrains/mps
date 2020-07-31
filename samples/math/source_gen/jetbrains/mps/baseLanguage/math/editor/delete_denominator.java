@@ -23,7 +23,7 @@ public class delete_denominator {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.numerator$a$pv));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.numerator$7Cm1));
       }
 
     };
@@ -71,6 +71,6 @@ public class delete_denominator {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink numerator$a$pv = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12008f4e805L, 0x1200914977fL, "numerator");
+    /*package*/ static final SContainmentLink numerator$7Cm1 = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12008f4e805L, 0x1200914977fL, "numerator");
   }
 }

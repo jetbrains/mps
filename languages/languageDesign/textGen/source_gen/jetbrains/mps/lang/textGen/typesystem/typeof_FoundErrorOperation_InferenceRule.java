@@ -21,7 +21,7 @@ public class typeof_FoundErrorOperation_InferenceRule extends AbstractInferenceR
   }
   public void applyRule(final SNode foundError, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(foundError, LINKS.text$w32q);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(foundError, LINKS.text$xuaA);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:f568ac81-f20d-491c-8e81-330fbdff24e6(jetbrains.mps.lang.textGen.typesystem)", "1237483146833", 0, null);
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:f568ac81-f20d-491c-8e81-330fbdff24e6(jetbrains.mps.lang.textGen.typesystem)", "1237483102053", true), (SNode) _quotation_createNode_qfrptg_a1a0c0a0b(), _info_12389875345);
     }
@@ -43,7 +43,7 @@ public class typeof_FoundErrorOperation_InferenceRule extends AbstractInferenceR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink text$w32q = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f7f7ff1bdL, 0x1201f00bb34L, "text");
+    /*package*/ static final SContainmentLink text$xuaA = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f7f7ff1bdL, 0x1201f00bb34L, "text");
   }
 
   private static final class CONCEPTS {

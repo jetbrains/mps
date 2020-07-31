@@ -116,7 +116,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.tab$5dgv;
+      return LINKS.tab$xqZ1;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.EditorTabReference$Rs;
@@ -129,7 +129,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(tabListHandler_yh3zz3_b0a.this.getNode(), LINKS.tab$5dgv));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(tabListHandler_yh3zz3_b0a.this.getNode(), LINKS.tab$xqZ1));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -216,7 +216,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$tAp1;
+      final SProperty property = PROPS.name$lA7v;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -271,7 +271,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.tab$5dgv;
+      return LINKS.tab$xqZ1;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.EditorTabReference$Rs;
@@ -284,7 +284,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(tabListHandler_yh3zz3_d0a.this.getNode(), LINKS.tab$5dgv));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(tabListHandler_yh3zz3_d0a.this.getNode(), LINKS.tab$xqZ1));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -326,7 +326,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tab$5dgv = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd78147L, 0x22035699bdd78149L, "tab");
+    /*package*/ static final SContainmentLink tab$xqZ1 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd78147L, 0x22035699bdd78149L, "tab");
   }
 
   private static final class CONCEPTS {
@@ -335,6 +335,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

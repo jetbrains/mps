@@ -59,8 +59,8 @@ public final class ChangeNonEmptyProperty_Intention extends AbstractIntentionDes
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode property = SNodeFactoryOperations.createNewNode(CONCEPTS.CellModel_Property$iE, null);
-      SLinkOperations.setTarget(property, LINKS.relationDeclaration$wbRV, SLinkOperations.getTarget(node, LINKS.relationDeclaration$wbRV));
-      SLinkOperations.setTarget(node, LINKS.relationDeclaration$wbRV, null);
+      SLinkOperations.setTarget(property, LINKS.relationDeclaration$_K5_, SLinkOperations.getTarget(node, LINKS.relationDeclaration$_K5_));
+      SLinkOperations.setTarget(node, LINKS.relationDeclaration$_K5_, null);
       for (SNode child : ListSequence.fromList(SNodeOperations.getChildren(node))) {
         String role = child.getRoleInParent();
         node.removeChild(child);
@@ -85,6 +85,6 @@ public final class ChangeNonEmptyProperty_Intention extends AbstractIntentionDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink relationDeclaration$wbRV = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SReferenceLink relationDeclaration$_K5_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
   }
 }

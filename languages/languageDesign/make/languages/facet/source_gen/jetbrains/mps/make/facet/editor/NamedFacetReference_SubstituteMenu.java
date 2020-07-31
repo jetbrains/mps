@@ -50,7 +50,7 @@ public class NamedFacetReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_lk3mut_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.NamedFacetReference$qF, LINKS.facet$M0dw);
+      super((SAbstractConcept) CONCEPTS.NamedFacetReference$qF, LINKS.facet$e6yw);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class NamedFacetReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink facet$M0dw = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5979ed6d2b21b2f2L, 0x5979ed6d2b21b2f3L, "facet");
+    /*package*/ static final SReferenceLink facet$e6yw = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5979ed6d2b21b2f2L, 0x5979ed6d2b21b2f3L, "facet");
   }
 }

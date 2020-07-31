@@ -20,7 +20,7 @@ public class typeof_NotSimpleMathExpression_InferenceRule extends AbstractInfere
   }
   public void applyRule(final SNode not, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(not, LINKS.original$lu10);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(not, LINKS.original$pyv0);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "2073504467208515523", 0, null);
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "2073504467208515089", true), (SNode) createSimpleMathBooleanType_7rascm_a1a0c0a0b(), _info_12389875345);
     }
@@ -49,7 +49,7 @@ public class typeof_NotSimpleMathExpression_InferenceRule extends AbstractInfere
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink original$lu10 = MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81d547bL, 0x1cc69153b81d547cL, "original");
+    /*package*/ static final SContainmentLink original$pyv0 = MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81d547bL, 0x1cc69153b81d547cL, "original");
   }
 
   private static final class CONCEPTS {

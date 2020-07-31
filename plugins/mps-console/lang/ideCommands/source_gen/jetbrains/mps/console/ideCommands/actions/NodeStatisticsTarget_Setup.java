@@ -13,12 +13,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class NodeStatisticsTarget_Setup {
   public static class NodeFactory_2087237500476328251 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SNodeFactoryOperations.setNewChild(newNode, LINKS.target$ueX0, CONCEPTS.NodeReference$Q_);
+      SNodeFactoryOperations.setNewChild(newNode, LINKS.target$Dfz0, CONCEPTS.NodeReference$Q_);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink target$ueX0 = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x1cf75b72b0b3962bL, 0x1cf75b72b0b396c6L, "target");
+    /*package*/ static final SContainmentLink target$Dfz0 = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x1cf75b72b0b3962bL, 0x1cf75b72b0b396c6L, "target");
   }
 
   private static final class CONCEPTS {

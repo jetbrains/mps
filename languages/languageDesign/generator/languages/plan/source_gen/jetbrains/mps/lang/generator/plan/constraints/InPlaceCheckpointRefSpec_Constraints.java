@@ -31,7 +31,7 @@ public class InPlaceCheckpointRefSpec_Constraints extends BaseConstraintsDescrip
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.checkpoint$LUHD, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.checkpoint$bs6R, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -52,7 +52,7 @@ public class InPlaceCheckpointRefSpec_Constraints extends BaseConstraintsDescrip
               public boolean isExcluded(SNode node) {
                 // node == contextNode is neccessary to avoid cycle when there's already a cp step with in-place declaration, 
                 // and we ask for replacement - do not suggest itself as possible replacement, wrapped into InPlaceCheckpointRefSpec 
-                return node == _context.getContextNode() || !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.as(node, CONCEPTS.Checkpoint$g), LINKS.cpSpec$s3ye), CONCEPTS.InPlaceCheckpointSpec$q7));
+                return node == _context.getContextNode() || !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.as(node, CONCEPTS.Checkpoint$g), LINKS.cpSpec$_H$M), CONCEPTS.InPlaceCheckpointSpec$q7));
               }
             };
           }
@@ -72,7 +72,7 @@ public class InPlaceCheckpointRefSpec_Constraints extends BaseConstraintsDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink checkpoint$LUHD = MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, 0x340cd07aed7cb32fL, "checkpoint");
-    /*package*/ static final SContainmentLink cpSpec$s3ye = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec");
+    /*package*/ static final SReferenceLink checkpoint$bs6R = MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, 0x340cd07aed7cb32fL, "checkpoint");
+    /*package*/ static final SContainmentLink cpSpec$_H$M = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec");
   }
 }

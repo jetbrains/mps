@@ -79,7 +79,7 @@ public final class AddNodeMacroParam_switch_Intention extends AbstractIntentionD
       SNode nodeMacro = EditingUtil.addNodeMacro(node);
       SNode switchMacro = SNodeFactoryOperations.createNewNode(CONCEPTS.TemplateSwitchMacro$o0, null);
       SNodeOperations.replaceWithAnother(nodeMacro, switchMacro);
-      SLinkOperations.setTarget(switchMacro, LINKS.template$yiTA, myParameter);
+      SLinkOperations.setTarget(switchMacro, LINKS.template$B9Tq, myParameter);
       // set caret 
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, switchMacro, SelectionManager.FIRST_CELL, 1);
     }
@@ -98,6 +98,6 @@ public final class AddNodeMacroParam_switch_Intention extends AbstractIntentionD
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink template$yiTA = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
+    /*package*/ static final SReferenceLink template$B9Tq = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
   }
 }

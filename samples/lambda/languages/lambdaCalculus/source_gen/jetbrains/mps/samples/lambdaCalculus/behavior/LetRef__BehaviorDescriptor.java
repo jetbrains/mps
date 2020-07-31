@@ -41,7 +41,7 @@ public final class LetRef__BehaviorDescriptor extends BaseBHDescriptor {
       node = SNodeOperations.getParent(node);
     }
     for (SNode letRef : SNodeOperations.getNodeDescendants(node, CONCEPTS.LetRef$vJ, false, new SAbstractConcept[]{})) {
-      if (SLinkOperations.getTarget(letRef, LINKS.variable$j9XA) == SLinkOperations.getTarget(__thisNode__, LINKS.variable$j9XA)) {
+      if (SLinkOperations.getTarget(letRef, LINKS.variable$hOPq) == SLinkOperations.getTarget(__thisNode__, LINKS.variable$hOPq)) {
         ListSequence.fromList(result).addElement(letRef);
       }
     }
@@ -100,6 +100,6 @@ public final class LetRef__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variable$j9XA = MetaAdapterFactory.getReferenceLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496b08L, 0x48db75d5dc497af4L, "variable");
+    /*package*/ static final SReferenceLink variable$hOPq = MetaAdapterFactory.getReferenceLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496b08L, 0x48db75d5dc497af4L, "variable");
   }
 }

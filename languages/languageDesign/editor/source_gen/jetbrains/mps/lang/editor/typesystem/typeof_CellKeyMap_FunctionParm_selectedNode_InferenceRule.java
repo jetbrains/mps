@@ -22,7 +22,7 @@ public class typeof_CellKeyMap_FunctionParm_selectedNode_InferenceRule extends A
   public typeof_CellKeyMap_FunctionParm_selectedNode_InferenceRule() {
   }
   public void applyRule(final SNode cellKeyMap_FunctionParm_selectedNode, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode applicableConcept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(cellKeyMap_FunctionParm_selectedNode, CONCEPTS.CellKeyMapDeclaration$T9, false, false), LINKS.applicableConcept$meOh);
+    SNode applicableConcept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(cellKeyMap_FunctionParm_selectedNode, CONCEPTS.CellKeyMapDeclaration$T9, false, false), LINKS.applicableConcept$Lbkf);
     {
       SNode _nodeToCheck_1029348928467 = cellKeyMap_FunctionParm_selectedNode;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1223982086188", 0, null);
@@ -52,6 +52,6 @@ public class typeof_CellKeyMap_FunctionParm_selectedNode_InferenceRule extends A
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$meOh = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, 0x1094c452c15L, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$Lbkf = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, 0x1094c452c15L, "applicableConcept");
   }
 }

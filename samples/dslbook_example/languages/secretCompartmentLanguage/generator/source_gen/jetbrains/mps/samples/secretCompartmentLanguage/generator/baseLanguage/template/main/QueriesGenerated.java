@@ -41,68 +41,68 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.stateMachineName$OEbJ) + "_StateMachineFactory";
+    return SPropertyOperations.getString(_context.getNode(), PROPS.stateMachineName$wrFL) + "_StateMachineFactory";
   }
   public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.eventName$fo50);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.eventName$sEr0);
   }
   public static Object propertyMacro_GetValue_1_2(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.eventName$fo50);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.eventName$sEr0);
   }
   public static Object propertyMacro_GetValue_1_3(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.code$Fynp);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.code$5Dl7);
   }
   public static Object propertyMacro_GetValue_1_4(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.stateName$FxSA);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.stateName$5qqq);
   }
   public static Object propertyMacro_GetValue_1_5(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.stateName$FxSA);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.stateName$5qqq);
   }
   public static Object propertyMacro_GetValue_1_6(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.trigger$PSOQ), PROPS.eventName$fo50);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.trigger$6xAa), PROPS.eventName$sEr0);
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.stateName$FxSA);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.stateName$5qqq);
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
     return StateMachineTest__BehaviorDescriptor.getStateMachineName_idhr1J3q0.invoke(_context.getNode()) + "_StateMachine";
   }
   public static Object propertyMacro_GetValue_4_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.finalState$YINP), PROPS.stateName$FxSA);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.finalState$oF6F), PROPS.stateName$5qqq);
   }
   public static Object propertyMacro_GetValue_4_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.methodName$sohf);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.methodName$JKmh);
   }
   public static Object propertyMacro_GetValue_5_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.event$Fwsr), PROPS.code$Fynp);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.event$4HL5), PROPS.code$5Dl7);
   }
   public static Object referenceMacro_GetReferent_4_0(final ReferenceMacroContext _context) {
-    return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(_context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.StateMachineTest$wd), LINKS.stateMachine$YJgr), "StateMachineFactory"))).first();
+    return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(_context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.StateMachineTest$wd), LINKS.stateMachine$oSX5), "StateMachineFactory"))).first();
   }
   public static SNode sourceNodeQuery_1_0(final SourceSubstituteMacroNodeContext _context) {
     return SNodeOperations.getParent(_context.getNode());
   }
   public static SNode sourceNodeQuery_1_1(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.target$bIep);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.target$FoY7);
   }
   public static SNode sourceNodeQuery_1_2(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.startState$fO9A);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.startState$EgDq);
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.getChildren(_context.getNode(), LINKS.event$iYTc);
+    return SLinkOperations.getChildren(_context.getNode(), LINKS.event$ctGO);
   }
   public static Iterable<SNode> sourceNodesQuery_1_1(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.getChildren(_context.getNode(), LINKS.state$CCFW);
+    return SLinkOperations.getChildren(_context.getNode(), LINKS.state$FHi4);
   }
   public static Iterable<SNode> sourceNodesQuery_1_2(final SourceSubstituteMacroNodesContext _context) {
-    SLinkOperations.getChildren(_context.getNode(), LINKS.state$CCFW);
+    SLinkOperations.getChildren(_context.getNode(), LINKS.state$FHi4);
     return SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.Transition$tP, false, new SAbstractConcept[]{});
   }
   public static Iterable<SNode> sourceNodesQuery_3_0(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.getChildren(_context.getNode(), LINKS.testMethod$LfVC);
+    return SLinkOperations.getChildren(_context.getNode(), LINKS.testMethod$QHSo);
   }
   public static Iterable<SNode> sourceNodesQuery_4_0(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.getChildren(_context.getNode(), LINKS.handleEvent$TbIn);
+    return SLinkOperations.getChildren(_context.getNode(), LINKS.handleEvent$GFt9);
   }
   private final Map<String, SourceNodeQuery> snqMethods = new HashMap<String, SourceNodeQuery>();
   {
@@ -274,24 +274,24 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty stateMachineName$OEbJ = MetaAdapterFactory.getProperty(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116bbacae3cL, 0x116bcaff7e0L, "stateMachineName");
-    /*package*/ static final SProperty eventName$fo50 = MetaAdapterFactory.getProperty(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116bcdac91eL, 0x116bcdb2f2cL, "eventName");
-    /*package*/ static final SProperty code$Fynp = MetaAdapterFactory.getProperty(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116bcdac91eL, 0x116bcdb4499L, "code");
-    /*package*/ static final SProperty stateName$FxSA = MetaAdapterFactory.getProperty(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116bced8217L, 0x116bcee23ceL, "stateName");
-    /*package*/ static final SProperty methodName$sohf = MetaAdapterFactory.getProperty(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c1d2af8aL, 0x116c1d35305L, "methodName");
+    /*package*/ static final SProperty stateMachineName$wrFL = MetaAdapterFactory.getProperty(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116bbacae3cL, 0x116bcaff7e0L, "stateMachineName");
+    /*package*/ static final SProperty eventName$sEr0 = MetaAdapterFactory.getProperty(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116bcdac91eL, 0x116bcdb2f2cL, "eventName");
+    /*package*/ static final SProperty code$5Dl7 = MetaAdapterFactory.getProperty(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116bcdac91eL, 0x116bcdb4499L, "code");
+    /*package*/ static final SProperty stateName$5qqq = MetaAdapterFactory.getProperty(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116bced8217L, 0x116bcee23ceL, "stateName");
+    /*package*/ static final SProperty methodName$JKmh = MetaAdapterFactory.getProperty(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c1d2af8aL, 0x116c1d35305L, "methodName");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink trigger$PSOQ = MetaAdapterFactory.getReferenceLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c112fe2aL, 0x116c113663cL, "trigger");
-    /*package*/ static final SReferenceLink finalState$YINP = MetaAdapterFactory.getReferenceLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c1d2af8aL, 0x116c1f8ec2bL, "finalState");
-    /*package*/ static final SReferenceLink event$Fwsr = MetaAdapterFactory.getReferenceLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c2015933L, 0x116c2017288L, "event");
-    /*package*/ static final SReferenceLink stateMachine$YJgr = MetaAdapterFactory.getReferenceLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c17a1865L, 0x116c1878903L, "stateMachine");
-    /*package*/ static final SReferenceLink target$bIep = MetaAdapterFactory.getReferenceLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c112fe2aL, 0x116c113802dL, "target");
-    /*package*/ static final SReferenceLink startState$fO9A = MetaAdapterFactory.getReferenceLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116bbacae3cL, 0x116c1078061L, "startState");
-    /*package*/ static final SContainmentLink event$iYTc = MetaAdapterFactory.getContainmentLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116bbacae3cL, 0x116bcddb306L, "event");
-    /*package*/ static final SContainmentLink state$CCFW = MetaAdapterFactory.getContainmentLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116bbacae3cL, 0x116c00eaeafL, "state");
-    /*package*/ static final SContainmentLink testMethod$LfVC = MetaAdapterFactory.getContainmentLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c17a1865L, 0x116c1d641ddL, "testMethod");
-    /*package*/ static final SContainmentLink handleEvent$TbIn = MetaAdapterFactory.getContainmentLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c1d2af8aL, 0x116c201fd3fL, "handleEvent");
+    /*package*/ static final SReferenceLink trigger$6xAa = MetaAdapterFactory.getReferenceLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c112fe2aL, 0x116c113663cL, "trigger");
+    /*package*/ static final SReferenceLink finalState$oF6F = MetaAdapterFactory.getReferenceLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c1d2af8aL, 0x116c1f8ec2bL, "finalState");
+    /*package*/ static final SReferenceLink event$4HL5 = MetaAdapterFactory.getReferenceLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c2015933L, 0x116c2017288L, "event");
+    /*package*/ static final SReferenceLink stateMachine$oSX5 = MetaAdapterFactory.getReferenceLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c17a1865L, 0x116c1878903L, "stateMachine");
+    /*package*/ static final SReferenceLink target$FoY7 = MetaAdapterFactory.getReferenceLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c112fe2aL, 0x116c113802dL, "target");
+    /*package*/ static final SReferenceLink startState$EgDq = MetaAdapterFactory.getReferenceLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116bbacae3cL, 0x116c1078061L, "startState");
+    /*package*/ static final SContainmentLink event$ctGO = MetaAdapterFactory.getContainmentLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116bbacae3cL, 0x116bcddb306L, "event");
+    /*package*/ static final SContainmentLink state$FHi4 = MetaAdapterFactory.getContainmentLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116bbacae3cL, 0x116c00eaeafL, "state");
+    /*package*/ static final SContainmentLink testMethod$QHSo = MetaAdapterFactory.getContainmentLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c17a1865L, 0x116c1d641ddL, "testMethod");
+    /*package*/ static final SContainmentLink handleEvent$GFt9 = MetaAdapterFactory.getContainmentLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c1d2af8aL, 0x116c201fd3fL, "handleEvent");
   }
 
   private static final class CONCEPTS {

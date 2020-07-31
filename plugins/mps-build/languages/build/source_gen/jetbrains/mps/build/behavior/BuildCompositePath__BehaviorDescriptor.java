@@ -43,27 +43,27 @@ public final class BuildCompositePath__BehaviorDescriptor extends BaseBHDescript
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPath_id7usrAn05okK, getLastSegment_id1bWeed$oUbg, getPathToHead_id3skBIrUiCOV, getHeadSuggestions_id4jjtc7X04td, getFile_idIG8oXsODon);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.set(__thisNode__, PROPS.head$vKDv, "");
+    SPropertyOperations.set(__thisNode__, PROPS.head$o$61, "");
   }
 
   /*package*/ static String getPath_id7usrAn05okK(@NotNull SNode __thisNode__) {
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.tail$vKD0) != null)) {
-      return SPropertyOperations.getString(__thisNode__, PROPS.head$vKDv) + "/" + BuildCompositePath__BehaviorDescriptor.getPath_id7usrAn05okK.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.tail$vKD0));
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.tail$ozR0) != null)) {
+      return SPropertyOperations.getString(__thisNode__, PROPS.head$o$61) + "/" + BuildCompositePath__BehaviorDescriptor.getPath_id7usrAn05okK.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.tail$ozR0));
     }
-    return SPropertyOperations.getString(__thisNode__, PROPS.head$vKDv);
+    return SPropertyOperations.getString(__thisNode__, PROPS.head$o$61);
   }
   /*package*/ static String getLastSegment_id1bWeed$oUbg(@NotNull SNode __thisNode__) {
     SNode last = __thisNode__;
-    while ((SLinkOperations.getTarget(last, LINKS.tail$vKD0) != null)) {
-      last = SLinkOperations.getTarget(last, LINKS.tail$vKD0);
+    while ((SLinkOperations.getTarget(last, LINKS.tail$ozR0) != null)) {
+      last = SLinkOperations.getTarget(last, LINKS.tail$ozR0);
     }
-    return SPropertyOperations.getString(last, PROPS.head$vKDv);
+    return SPropertyOperations.getString(last, PROPS.head$o$61);
   }
   /*package*/ static String getPathToHead_id3skBIrUiCOV(@NotNull SNode __thisNode__) {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildCompositePath$7I)) {
-      return BuildCompositePath__BehaviorDescriptor.getPathToHead_id3skBIrUiCOV.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildCompositePath$7I)) + "/" + SPropertyOperations.getString(__thisNode__, PROPS.head$vKDv);
+      return BuildCompositePath__BehaviorDescriptor.getPathToHead_id3skBIrUiCOV.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildCompositePath$7I)) + "/" + SPropertyOperations.getString(__thisNode__, PROPS.head$o$61);
     }
-    return SPropertyOperations.getString(__thisNode__, PROPS.head$vKDv);
+    return SPropertyOperations.getString(__thisNode__, PROPS.head$o$61);
   }
   /*package*/ static List<String> getHeadSuggestions_id4jjtc7X04td(@NotNull SNode __thisNode__, String basePath) {
     String relativePath = basePath;
@@ -159,11 +159,11 @@ public final class BuildCompositePath__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty head$vKDv = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f3L, "head");
+    /*package*/ static final SProperty head$o$61 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f3L, "head");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tail$vKD0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail");
+    /*package*/ static final SContainmentLink tail$ozR0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail");
   }
 
   private static final class CONCEPTS {

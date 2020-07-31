@@ -65,20 +65,20 @@
       <node id="1236693543178" at="106,94,107,47" concept="1" />
       <node id="1236693543178" at="107,47,108,34" concept="1" />
       <node id="1236693543178" at="108,34,109,22" concept="6" />
-      <node id="1236693382339" at="111,40,112,132" concept="5" />
-      <node id="1236693382339" at="112,132,113,33" concept="6" />
+      <node id="1236693382339" at="111,40,112,133" concept="5" />
+      <node id="1236693382339" at="112,133,113,33" concept="6" />
       <node id="1236693382339" at="119,125,120,38" concept="8" />
       <node id="1236693382339" at="120,38,121,25" concept="1" />
       <node id="1236693382339" at="126,28,127,20" concept="6" />
       <node id="1236693382339" at="130,55,131,76" concept="5" />
-      <node id="1236693382339" at="131,76,132,119" concept="1" />
-      <node id="1236693382339" at="132,119,133,122" concept="1" />
-      <node id="1236693382339" at="133,122,134,48" concept="1" />
+      <node id="1236693382339" at="131,76,132,120" concept="1" />
+      <node id="1236693382339" at="132,120,133,123" concept="1" />
+      <node id="1236693382339" at="133,123,134,48" concept="1" />
       <node id="1236693382339" at="134,48,135,24" concept="6" />
       <node id="1236693382339" at="141,118,142,137" concept="1" />
-      <node id="1236693382339" at="144,42,145,51" concept="1" />
+      <node id="1236693382339" at="144,42,145,52" concept="1" />
       <node id="1236693382339" at="149,44,150,41" concept="1" />
-      <node id="1236693382339" at="150,41,151,110" concept="1" />
+      <node id="1236693382339" at="150,41,151,111" concept="1" />
       <node id="1236693382339" at="152,11,153,56" concept="5" />
       <node id="1236693382339" at="153,56,154,50" concept="1" />
       <node id="1236693382339" at="154,50,155,48" concept="1" />
@@ -86,9 +86,9 @@
       <node id="1236693382339" at="156,35,157,26" concept="6" />
       <node id="1236693382339" at="158,17,159,42" concept="1" />
       <node id="1236693382339" at="162,40,163,32" concept="6" />
-      <node id="1236693382339" at="168,0,169,0" concept="7" trace="name$tAp1" />
+      <node id="1236693382339" at="168,0,169,0" concept="7" trace="name$lA7v" />
       <node id="1236693382339" at="172,0,173,0" concept="7" trace="PropertyAttribute$jT" />
-      <node id="1236693382339" at="176,0,177,0" concept="7" trace="initializer$KgD" />
+      <node id="1236693382339" at="176,0,177,0" concept="7" trace="initializer$no3R" />
       <node id="1236693382339" at="42,0,44,0" concept="2" trace="myNode" />
       <node id="1236693382339" at="116,0,118,0" concept="2" trace="myNode" />
       <node id="1236693382339" at="56,0,59,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -107,7 +107,7 @@
       <node id="1236693382339" at="130,0,137,0" concept="4" trace="createChildCell#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1236693382339" at="140,0,148,0" concept="4" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
       <node id="1236693506282" at="71,0,80,0" concept="4" trace="createConstant_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="1236693382339" at="151,110,160,7" concept="9" />
+      <node id="1236693382339" at="151,111,160,7" concept="9" />
       <node id="1236693382339" at="60,0,71,0" concept="4" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1236693382339" at="148,0,162,0" concept="4" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1236693525856" at="81,39,103,5" concept="9" />
@@ -118,7 +118,7 @@
       <scope id="1236693525856" at="101,15,102,40" />
       <scope id="1236693382339" at="126,28,127,20" />
       <scope id="1236693382339" at="141,118,142,137" />
-      <scope id="1236693382339" at="144,42,145,51" />
+      <scope id="1236693382339" at="144,42,145,52" />
       <scope id="1236693382339" at="158,17,159,42" />
       <scope id="1236693382339" at="162,40,163,32" />
       <scope id="1236693382339" at="45,102,47,18" />

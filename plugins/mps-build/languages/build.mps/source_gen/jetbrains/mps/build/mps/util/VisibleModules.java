@@ -79,15 +79,15 @@ public final class VisibleModules {
         continue;
       }
       seen.add(projectRef);
-      for (SNode dep : SLinkOperations.getChildren(project, LINKS.dependencies$tpR5)) {
+      for (SNode dep : SLinkOperations.getChildren(project, LINKS.dependencies$fxFr)) {
         SNode projectDependency = SNodeOperations.as(dep, CONCEPTS.BuildProjectDependency$Ug);
         if (projectDependency == null) {
           continue;
         }
 
-        SNode depproj = SLinkOperations.getTarget(projectDependency, LINKS.script$mz1x);
+        SNode depproj = SLinkOperations.getTarget(projectDependency, LINKS.script$UXIZ);
         if ((depproj == null)) {
-          SReference ref = SNodeOperations.getReference(projectDependency, LINKS.script$mz1x);
+          SReference ref = SNodeOperations.getReference(projectDependency, LINKS.script$UXIZ);
           report("Cannot find the build project dependency " + SLinkOperations.getResolveInfo(ref) + " in the model " + check_xuwpka_a0a1a4a4a4a41(ref.getTargetSModelReference()), projectDependency);
         }
         if (depproj != null && !(seen.contains(depproj.getNodeId()))) {
@@ -96,21 +96,21 @@ public final class VisibleModules {
       }
       for (SNode newModule : ListSequence.fromList(SNodeOperations.getNodeDescendants(project, CONCEPTS.BuildMps_AbstractModule$fB, false, new SAbstractConcept[]{}))) {
         // check duplicated id 
-        SNode existing = myId2Module.get(SPropertyOperations.getString(newModule, PROPS.uuid$XKnR));
+        SNode existing = myId2Module.get(SPropertyOperations.getString(newModule, PROPS.uuid$UrzD));
         if (existing != null) {
           String msg = "There are two modules visible from the project [%s] with the id '%s'. The first module is '%s'[%s] from the model %s, the second module is '%s'[%s] from the model %s";
-          report(String.format(msg, SPropertyOperations.getString(myProject, PROPS.name$tAp1), SPropertyOperations.getString(newModule, PROPS.uuid$XKnR), SPropertyOperations.getString(existing, PROPS.name$tAp1), SPropertyOperations.getString(SNodeOperations.getNodeAncestor(existing, CONCEPTS.BuildProject$BF, false, false), PROPS.name$tAp1), SNodeOperations.getModel(existing), SPropertyOperations.getString(newModule, PROPS.name$tAp1), SPropertyOperations.getString(project, PROPS.name$tAp1), SNodeOperations.getModel(newModule)), existing);
+          report(String.format(msg, SPropertyOperations.getString(myProject, PROPS.name$lA7v), SPropertyOperations.getString(newModule, PROPS.uuid$UrzD), SPropertyOperations.getString(existing, PROPS.name$lA7v), SPropertyOperations.getString(SNodeOperations.getNodeAncestor(existing, CONCEPTS.BuildProject$BF, false, false), PROPS.name$lA7v), SNodeOperations.getModel(existing), SPropertyOperations.getString(newModule, PROPS.name$lA7v), SPropertyOperations.getString(project, PROPS.name$lA7v), SNodeOperations.getModel(newModule)), existing);
         } else {
-          myId2Module.put(SPropertyOperations.getString(newModule, PROPS.uuid$XKnR), newModule);
+          myId2Module.put(SPropertyOperations.getString(newModule, PROPS.uuid$UrzD), newModule);
         }
         // check duplicated name 
         // FIXME given we use only UUID of module identity to resolve modules, myName2Module is of no use for us. Besides, it forces unique module names, something we don't really care about. Why not to drop it altogether? 
-        existing = myName2Module.get(SPropertyOperations.getString(newModule, PROPS.name$tAp1));
+        existing = myName2Module.get(SPropertyOperations.getString(newModule, PROPS.name$lA7v));
         if (existing != null) {
           String msg = "There are two modules visible from the project [%s] with the same name '%s'. The first module is from project [%s] from the model %s, the second module is from [%s] from the model %s";
-          report(String.format(msg, SPropertyOperations.getString(myProject, PROPS.name$tAp1), SPropertyOperations.getString(newModule, PROPS.name$tAp1), SPropertyOperations.getString(SNodeOperations.getNodeAncestor(existing, CONCEPTS.BuildProject$BF, false, false), PROPS.name$tAp1), SNodeOperations.getModel(existing), SPropertyOperations.getString(project, PROPS.name$tAp1), SNodeOperations.getModel(newModule)), existing);
+          report(String.format(msg, SPropertyOperations.getString(myProject, PROPS.name$lA7v), SPropertyOperations.getString(newModule, PROPS.name$lA7v), SPropertyOperations.getString(SNodeOperations.getNodeAncestor(existing, CONCEPTS.BuildProject$BF, false, false), PROPS.name$lA7v), SNodeOperations.getModel(existing), SPropertyOperations.getString(project, PROPS.name$lA7v), SNodeOperations.getModel(newModule)), existing);
         } else {
-          myName2Module.put(SPropertyOperations.getString(newModule, PROPS.name$tAp1), newModule);
+          myName2Module.put(SPropertyOperations.getString(newModule, PROPS.name$lA7v), newModule);
         }
       }
     }
@@ -171,8 +171,8 @@ public final class VisibleModules {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink dependencies$tpR5 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies");
-    /*package*/ static final SReferenceLink script$mz1x = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script");
+    /*package*/ static final SContainmentLink dependencies$fxFr = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies");
+    /*package*/ static final SReferenceLink script$UXIZ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script");
   }
 
   private static final class CONCEPTS {
@@ -184,7 +184,7 @@ public final class VisibleModules {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty uuid$XKnR = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty uuid$UrzD = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

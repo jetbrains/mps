@@ -36,15 +36,15 @@ public final class Refactoring__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getBaseConcept_id2hxg_BDjKM8(@NotNull SNode __thisNode__) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.target$oyxZ), CONCEPTS.NodeTarget$Oa))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.target$SItx), CONCEPTS.NodeTarget$Oa))) {
       return null;
     }
-    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.target$oyxZ), CONCEPTS.NodeTarget$Oa), LINKS.concept$XTiS);
+    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.target$SItx), CONCEPTS.NodeTarget$Oa), LINKS.concept$YK98);
   }
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {
     SNode nodeTarget = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056cL, "jetbrains.mps.lang.refactoring.structure.NodeTarget"));
-    SLinkOperations.setTarget(nodeTarget, LINKS.concept$XTiS, baseConcept);
-    SLinkOperations.setTarget(__thisNode__, LINKS.target$oyxZ, nodeTarget);
+    SLinkOperations.setTarget(nodeTarget, LINKS.concept$YK98, baseConcept);
+    SLinkOperations.setTarget(__thisNode__, LINKS.target$SItx, nodeTarget);
   }
 
   /*package*/ Refactoring__BehaviorDescriptor() {
@@ -97,8 +97,8 @@ public final class Refactoring__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink target$oyxZ = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a77a0656L, "target");
-    /*package*/ static final SReferenceLink concept$XTiS = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056cL, 0x5fb04b74a77a0596L, "concept");
+    /*package*/ static final SContainmentLink target$SItx = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a77a0656L, "target");
+    /*package*/ static final SReferenceLink concept$YK98 = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056cL, 0x5fb04b74a77a0596L, "concept");
   }
 
   private static final class CONCEPTS {

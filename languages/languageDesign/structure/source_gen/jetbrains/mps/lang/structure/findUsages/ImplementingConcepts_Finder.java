@@ -53,7 +53,7 @@ public class ImplementingConcepts_Finder extends GeneratedFinder {
                       SNode conceptNode = SNodeOperations.getParent(interfaceNode);
                       if (SNodeOperations.isInstanceOf(conceptNode, CONCEPTS.ConceptDeclaration$qU)) {
                         // concept implements interface case 
-                        if (SNodeOperations.hasRole(interfaceNode, LINKS.implements$oQDh)) {
+                        if (SNodeOperations.hasRole(interfaceNode, LINKS.implements$2tZf)) {
                           callback.onUsageFound(createSingleResult(conceptNode));
                           FindUtils.searchForResults(monitor.subTask(1), new IFinder.FindCallback() {
                             public void onUsageFound(@NotNull SearchResult<?> searchResult) {
@@ -97,6 +97,6 @@ public class ImplementingConcepts_Finder extends GeneratedFinder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink implements$oQDh = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
+    /*package*/ static final SContainmentLink implements$2tZf = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
   }
 }

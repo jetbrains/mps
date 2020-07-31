@@ -38,35 +38,35 @@ public final class BaseLanguageEnhancements_MigrationScript extends BaseMigratio
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.lValue$J0D4), CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.lValue$J0D4), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.LocalVariableDeclaration$Bf)))) {
+        if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.lValue$LjSW), CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.lValue$LjSW), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf)))) {
           return false;
         }
-        SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.lValue$J0D4), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.LocalVariableDeclaration$Bf);
-        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.rValue$J0E2), CONCEPTS.PlusExpression$Re))) {
+        SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.lValue$LjSW), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf);
+        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.rValue$LkmY), CONCEPTS.PlusExpression$Re))) {
           return false;
         }
-        SNode plusExpr = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.rValue$J0E2), CONCEPTS.PlusExpression$Re);
-        if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(plusExpr, LINKS.leftExpression$rxLZ), CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(plusExpr, LINKS.leftExpression$rxLZ), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.LocalVariableDeclaration$Bf)))) {
+        SNode plusExpr = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.rValue$LkmY), CONCEPTS.PlusExpression$Re);
+        if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(plusExpr, LINKS.leftExpression$lndx), CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(plusExpr, LINKS.leftExpression$lndx), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf)))) {
           return false;
         }
-        if (SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(plusExpr, LINKS.leftExpression$rxLZ), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6) != declaration) {
+        if (SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(plusExpr, LINKS.leftExpression$lndx), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU) != declaration) {
           return false;
         }
-        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(plusExpr, LINKS.rightExpression$rxBl), CONCEPTS.IntegerConstant$mo))) {
+        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(plusExpr, LINKS.rightExpression$li3b), CONCEPTS.IntegerConstant$mo))) {
           return false;
         }
-        if (SPropertyOperations.getInteger(SNodeOperations.cast(SLinkOperations.getTarget(plusExpr, LINKS.rightExpression$rxBl), CONCEPTS.IntegerConstant$mo), PROPS.value$ZeO0) != 1) {
+        if (SPropertyOperations.getInteger(SNodeOperations.cast(SLinkOperations.getTarget(plusExpr, LINKS.rightExpression$li3b), CONCEPTS.IntegerConstant$mo), PROPS.value$Cbc0) != 1) {
           return false;
         }
         return true;
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.lValue$J0D4), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.LocalVariableDeclaration$Bf);
+        SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.lValue$LjSW), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf);
         SNode ref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"));
-        SLinkOperations.setTarget(ref, LINKS.variableDeclaration$2ky6, declaration);
+        SLinkOperations.setTarget(ref, LINKS.variableDeclaration$7WwU, declaration);
         SNode inc = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11adecdb4f0L, "jetbrains.mps.baseLanguage.structure.PostfixIncrementExpression"));
-        SLinkOperations.setTarget(inc, LINKS.expression$7Rjy, ref);
+        SLinkOperations.setTarget(inc, LINKS.expression$NMtu, ref);
         SNodeOperations.replaceWithAnother(node, inc);
       }
       @Override
@@ -89,35 +89,35 @@ public final class BaseLanguageEnhancements_MigrationScript extends BaseMigratio
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.lValue$J0D4), CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.lValue$J0D4), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.LocalVariableDeclaration$Bf)))) {
+        if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.lValue$LjSW), CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.lValue$LjSW), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf)))) {
           return false;
         }
-        SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.lValue$J0D4), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.LocalVariableDeclaration$Bf);
-        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.rValue$J0E2), CONCEPTS.MinusExpression$E9))) {
+        SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.lValue$LjSW), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf);
+        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.rValue$LkmY), CONCEPTS.MinusExpression$E9))) {
           return false;
         }
-        SNode minusExpr = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.rValue$J0E2), CONCEPTS.MinusExpression$E9);
-        if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(minusExpr, LINKS.leftExpression$rxLZ), CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(minusExpr, LINKS.leftExpression$rxLZ), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.LocalVariableDeclaration$Bf)))) {
+        SNode minusExpr = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.rValue$LkmY), CONCEPTS.MinusExpression$E9);
+        if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(minusExpr, LINKS.leftExpression$lndx), CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(minusExpr, LINKS.leftExpression$lndx), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf)))) {
           return false;
         }
-        if (SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(minusExpr, LINKS.leftExpression$rxLZ), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6) != declaration) {
+        if (SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(minusExpr, LINKS.leftExpression$lndx), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU) != declaration) {
           return false;
         }
-        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(minusExpr, LINKS.rightExpression$rxBl), CONCEPTS.IntegerConstant$mo))) {
+        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(minusExpr, LINKS.rightExpression$li3b), CONCEPTS.IntegerConstant$mo))) {
           return false;
         }
-        if (SPropertyOperations.getInteger(SNodeOperations.cast(SLinkOperations.getTarget(minusExpr, LINKS.rightExpression$rxBl), CONCEPTS.IntegerConstant$mo), PROPS.value$ZeO0) != 1) {
+        if (SPropertyOperations.getInteger(SNodeOperations.cast(SLinkOperations.getTarget(minusExpr, LINKS.rightExpression$li3b), CONCEPTS.IntegerConstant$mo), PROPS.value$Cbc0) != 1) {
           return false;
         }
         return true;
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.lValue$J0D4), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.LocalVariableDeclaration$Bf);
+        SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.lValue$LjSW), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf);
         SNode ref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"));
-        SLinkOperations.setTarget(ref, LINKS.variableDeclaration$2ky6, declaration);
+        SLinkOperations.setTarget(ref, LINKS.variableDeclaration$7WwU, declaration);
         SNode dec = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11aded05fe6L, "jetbrains.mps.baseLanguage.structure.PostfixDecrementExpression"));
-        SLinkOperations.setTarget(dec, LINKS.expression$7Rjy, ref);
+        SLinkOperations.setTarget(dec, LINKS.expression$NMtu, ref);
         SNodeOperations.replaceWithAnother(node, dec);
       }
       @Override
@@ -140,7 +140,7 @@ public final class BaseLanguageEnhancements_MigrationScript extends BaseMigratio
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return SLinkOperations.hasPointer(node, LINKS.classifier$pQ_R, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String"));
+        return SLinkOperations.hasPointer(node, LINKS.classifier$xslD, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String"));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
@@ -171,16 +171,16 @@ public final class BaseLanguageEnhancements_MigrationScript extends BaseMigratio
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lValue$J0D4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink rValue$J0E2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink expression$7Rjy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink expression$NMtu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$ZeO0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
+    /*package*/ static final SProperty value$Cbc0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
   }
 }

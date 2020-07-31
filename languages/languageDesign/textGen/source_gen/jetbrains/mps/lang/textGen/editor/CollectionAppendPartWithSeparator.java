@@ -109,7 +109,7 @@ public class CollectionAppendPartWithSeparator extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SPropertyOperations.assign(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.CollectionAppendPart$vw), PROPS.withSeparator$ZLcq, true);
+        SPropertyOperations.assign(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.CollectionAppendPart$vw), PROPS.withSeparator$SP0A, true);
         SelectionUtil.selectCell(_context.getEditorContext(), SNodeOperations.getParent(_context.getNode()), SelectionManager.LAST_EDITABLE_CELL);
       }
 
@@ -117,7 +117,7 @@ public class CollectionAppendPartWithSeparator extends TransformationMenuBase {
       public boolean canExecute(@NotNull String pattern) {
         if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.CollectionAppendPart$vw)) {
           SNode part = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.CollectionAppendPart$vw);
-          return !((SPropertyOperations.getBoolean(part, PROPS.withSeparator$ZLcq) || isNotEmptyString(SPropertyOperations.getString(part, PROPS.separator$6WSy))));
+          return !((SPropertyOperations.getBoolean(part, PROPS.withSeparator$SP0A) || isNotEmptyString(SPropertyOperations.getString(part, PROPS.separator$nvou))));
         }
         return false;
       }
@@ -153,7 +153,7 @@ public class CollectionAppendPartWithSeparator extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty withSeparator$ZLcq = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1201527819cL, 0x1203d98429fL, "withSeparator");
-    /*package*/ static final SProperty separator$6WSy = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1201527819cL, 0x120152f5107L, "separator");
+    /*package*/ static final SProperty withSeparator$SP0A = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1201527819cL, 0x1203d98429fL, "withSeparator");
+    /*package*/ static final SProperty separator$nvou = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1201527819cL, 0x120152f5107L, "separator");
   }
 }

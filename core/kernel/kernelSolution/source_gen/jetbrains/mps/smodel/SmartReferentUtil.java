@@ -31,7 +31,7 @@ public final class SmartReferentUtil {
     }
     // IResolveInfo now uses to distinct matchingText and visibleMatchingText 
     if (SNodeOperations.isInstanceOf(referent, CONCEPTS.IResolveInfo$c2)) {
-      return SPropertyOperations.getString((SNodeOperations.cast(referent, CONCEPTS.IResolveInfo$c2)), PROPS.resolveInfo$eeN8);
+      return SPropertyOperations.getString((SNodeOperations.cast(referent, CONCEPTS.IResolveInfo$c2)), PROPS.resolveInfo$TaKS);
     }
     return null;
   }
@@ -56,7 +56,7 @@ public final class SmartReferentUtil {
       return ((String) BHReflection.invoke0((SNodeOperations.cast(referent, CONCEPTS.ISmartReferent$GP)), CONCEPTS.ISmartReferent$GP, SMethodTrimmedId.create("getDescriptionText", null, "69Qfsw3IqwE"), reference));
     }
     // compatiblity with legacy. after 3.5 -> "return null" 
-    return SPropertyOperations.getString(referent, PROPS.shortDescription$w2Xj);
+    return SPropertyOperations.getString(referent, PROPS.shortDescription$xrGd);
   }
 
   private static final class CONCEPTS {
@@ -65,7 +65,7 @@ public final class SmartReferentUtil {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty resolveInfo$eeN8 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
-    /*package*/ static final SProperty shortDescription$w2Xj = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
+    /*package*/ static final SProperty resolveInfo$TaKS = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
+    /*package*/ static final SProperty shortDescription$xrGd = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
   }
 }

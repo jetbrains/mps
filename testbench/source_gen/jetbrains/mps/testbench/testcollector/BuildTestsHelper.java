@@ -38,7 +38,7 @@ public class BuildTestsHelper {
       }
     }).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode buildTest) {
-        return SLinkOperations.getChildren(buildTest, LINKS.modules$mNDD);
+        return SLinkOperations.getChildren(buildTest, LINKS.modules$31aR);
       }
     }).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
@@ -110,6 +110,6 @@ public class BuildTestsHelper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modules$mNDD = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, 0x3f496e80bd8ef370L, "modules");
+    /*package*/ static final SContainmentLink modules$31aR = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, 0x3f496e80bd8ef370L, "modules");
   }
 }

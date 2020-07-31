@@ -20,7 +20,7 @@ public class wrapMisplacedTernaryOperatorInParens_QuickFix extends QuickFix_Runt
   }
   public void execute(SNode node) {
     SNode parens = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.ParenthesizedExpression$vE);
-    SLinkOperations.setTarget(parens, LINKS.expression$4_F0, node);
+    SLinkOperations.setTarget(parens, LINKS.expression$efP0, node);
   }
 
   private static final class CONCEPTS {
@@ -28,6 +28,6 @@ public class wrapMisplacedTernaryOperatorInParens_QuickFix extends QuickFix_Runt
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$4_F0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
   }
 }

@@ -12,7 +12,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class NamingUtil {
   public static String getDescriptorName(SNode aspect) {
-    return NameUtil.capitalize(SPropertyOperations.getString(aspect, PROPS.name$tAp1)) + "Descriptor";
+    return NameUtil.capitalize(SPropertyOperations.getString(aspect, PROPS.name$lA7v)) + "Descriptor";
   }
 
   public static SNode getAspectDescriptor(SNode generator) {
@@ -20,7 +20,7 @@ public class NamingUtil {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

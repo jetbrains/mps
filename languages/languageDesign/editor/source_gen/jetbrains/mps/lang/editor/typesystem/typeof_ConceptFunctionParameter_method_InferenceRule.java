@@ -22,7 +22,7 @@ public class typeof_ConceptFunctionParameter_method_InferenceRule extends Abstra
   public typeof_ConceptFunctionParameter_method_InferenceRule() {
   }
   public void applyRule(final SNode parameterObject, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode expectedType = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(parameterObject, CONCEPTS.ParametersInformationQuery$_B, false, false), LINKS.type$bAu$);
+    SNode expectedType = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(parameterObject, CONCEPTS.ParametersInformationQuery$_B, false, false), LINKS.type$BCNs);
     if (expectedType == null) {
       {
         SNode _nodeToCheck_1029348928467 = parameterObject;
@@ -60,6 +60,6 @@ public class typeof_ConceptFunctionParameter_method_InferenceRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$bAu$ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a67a319ce06acceL, 0x717f1070bf01cfc9L, "type");
+    /*package*/ static final SContainmentLink type$BCNs = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a67a319ce06acceL, 0x717f1070bf01cfc9L, "type");
   }
 }

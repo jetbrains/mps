@@ -33,7 +33,7 @@ public class XmlSignature {
       addElement(SNodeOperations.cast(element, CONCEPTS.XmlElement$Pm));
     } else if (SNodeOperations.isInstanceOf(element, CONCEPTS.BwfPathReference$gi)) {
       sb.append("<pathref ");
-      sb.append(BwfPathDeclaration__BehaviorDescriptor.getPathId_id5KZfyKsWnkn.invoke(SLinkOperations.getTarget(SNodeOperations.cast(element, CONCEPTS.BwfPathReference$gi), LINKS.target$ezn0)));
+      sb.append(BwfPathDeclaration__BehaviorDescriptor.getPathId_id5KZfyKsWnkn.invoke(SLinkOperations.getTarget(SNodeOperations.cast(element, CONCEPTS.BwfPathReference$gi), LINKS.target$3890)));
       sb.append("/>");
     } else {
       hasErrors = true;
@@ -42,9 +42,9 @@ public class XmlSignature {
   }
   private XmlSignature addElement(SNode element) {
     sb.append("<");
-    sb.append(SPropertyOperations.getString(element, PROPS.tagName$U00C));
-    if (ListSequence.fromList(SLinkOperations.getChildren(element, LINKS.attributes$U009)).isNotEmpty()) {
-      for (SNode attr : SLinkOperations.getChildren(element, LINKS.attributes$U009)) {
+    sb.append(SPropertyOperations.getString(element, PROPS.tagName$60jo));
+    if (ListSequence.fromList(SLinkOperations.getChildren(element, LINKS.attributes$604n)).isNotEmpty()) {
+      for (SNode attr : SLinkOperations.getChildren(element, LINKS.attributes$604n)) {
         if (SNodeOperations.isInstanceOf(attr, CONCEPTS.XmlAttribute$UQ)) {
           sb.append(" ");
           addAttribute(SNodeOperations.cast(attr, CONCEPTS.XmlAttribute$UQ));
@@ -53,37 +53,37 @@ public class XmlSignature {
         }
       }
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(element, LINKS.content$$sMt)).isEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(element, LINKS.content$DWs3)).isEmpty()) {
       sb.append("/>");
       return this;
     }
     sb.append(">");
-    for (SNode content : SLinkOperations.getChildren(element, LINKS.content$$sMt)) {
+    for (SNode content : SLinkOperations.getChildren(element, LINKS.content$DWs3)) {
       if (SNodeOperations.isInstanceOf(content, CONCEPTS.XmlBaseElement$oX)) {
         add(SNodeOperations.cast(content, CONCEPTS.XmlElement$Pm));
-      } else if (SNodeOperations.isInstanceOf(content, CONCEPTS.XmlText$ZE) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(content, CONCEPTS.XmlText$ZE), PROPS.value$Wjv0))) {
+      } else if (SNodeOperations.isInstanceOf(content, CONCEPTS.XmlText$ZE) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(content, CONCEPTS.XmlText$ZE), PROPS.value$ds10))) {
         // ignore 
       } else {
         hasErrors = true;
       }
     }
     sb.append("</");
-    sb.append(SPropertyOperations.getString(element, PROPS.tagName$U00C));
+    sb.append(SPropertyOperations.getString(element, PROPS.tagName$60jo));
     sb.append(">");
     return this;
   }
   private void addAttribute(SNode attr) {
-    sb.append(SPropertyOperations.getString(attr, PROPS.attrName$j_5Y));
+    sb.append(SPropertyOperations.getString(attr, PROPS.attrName$uXT2));
     sb.append("=");
     sb.append('"');
-    for (SNode val : SLinkOperations.getChildren(attr, LINKS.value$RZKQ)) {
+    for (SNode val : SLinkOperations.getChildren(attr, LINKS.value$7SEa)) {
       if (SNodeOperations.isInstanceOf(val, CONCEPTS.XmlCharRefValue$_9)) {
         sb.append("&#");
-        sb.append(SPropertyOperations.getString(SNodeOperations.cast(val, CONCEPTS.XmlCharRefValue$_9), PROPS.charCode$Hh3$));
+        sb.append(SPropertyOperations.getString(SNodeOperations.cast(val, CONCEPTS.XmlCharRefValue$_9), PROPS.charCode$VgIs));
         sb.append(";");
       } else if (SNodeOperations.isInstanceOf(val, CONCEPTS.XmlEntityRefValue$MN)) {
         sb.append("&");
-        sb.append(SPropertyOperations.getString(SNodeOperations.cast(val, CONCEPTS.XmlEntityRefValue$MN), PROPS.entityName$EMB8));
+        sb.append(SPropertyOperations.getString(SNodeOperations.cast(val, CONCEPTS.XmlEntityRefValue$MN), PROPS.entityName$IwWS));
         sb.append(";");
       } else if (SNodeOperations.isInstanceOf(val, CONCEPTS.XmlNoSpaceValue$_m)) {
         // ignore 
@@ -92,7 +92,7 @@ public class XmlSignature {
         if ((boolean) XmlValuePart__BehaviorDescriptor.onNewLine_id2EZ251g0bS6.invoke(tv)) {
           sb.append("\n");
         }
-        sb.append(SPropertyOperations.getString(tv, PROPS.text$$xPb));
+        sb.append(SPropertyOperations.getString(tv, PROPS.text$GoKl));
         if ((boolean) XmlValuePart__BehaviorDescriptor.hasNewLineAfter_id2EZ251g0bSd.invoke(tv)) {
           if (SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(tv), CONCEPTS.XmlValuePart$Ad) && (boolean) XmlValuePart__BehaviorDescriptor.onNewLine_id2EZ251g0bS6.invoke(SNodeOperations.cast(SNodeOperations.getNextSibling(tv), CONCEPTS.XmlValuePart$Ad))) {
             return;
@@ -129,18 +129,18 @@ public class XmlSignature {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$ezn0 = MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cef4c1fL, 0x5c3f3e2c1cef4c20L, "target");
-    /*package*/ static final SContainmentLink attributes$U009 = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b5L, "attributes");
-    /*package*/ static final SContainmentLink content$$sMt = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x16838b3fce9a4922L, "content");
-    /*package*/ static final SContainmentLink value$RZKQ = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54cfd1eL, "value");
+    /*package*/ static final SReferenceLink target$3890 = MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cef4c1fL, 0x5c3f3e2c1cef4c20L, "target");
+    /*package*/ static final SContainmentLink attributes$604n = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b5L, "attributes");
+    /*package*/ static final SContainmentLink content$DWs3 = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x16838b3fce9a4922L, "content");
+    /*package*/ static final SContainmentLink value$7SEa = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54cfd1eL, "value");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty tagName$U00C = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName");
-    /*package*/ static final SProperty value$Wjv0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, 0x16838b3fce9aaa68L, "value");
-    /*package*/ static final SProperty attrName$j_5Y = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54b8df6L, "attrName");
-    /*package*/ static final SProperty charCode$Hh3$ = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffed7feL, 0x2abf08504ffed806L, "charCode");
-    /*package*/ static final SProperty entityName$EMB8 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd21L, 0x5c842a42c54d0258L, "entityName");
-    /*package*/ static final SProperty text$$xPb = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text");
+    /*package*/ static final SProperty tagName$60jo = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName");
+    /*package*/ static final SProperty value$ds10 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, 0x16838b3fce9aaa68L, "value");
+    /*package*/ static final SProperty attrName$uXT2 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54b8df6L, "attrName");
+    /*package*/ static final SProperty charCode$VgIs = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffed7feL, 0x2abf08504ffed806L, "charCode");
+    /*package*/ static final SProperty entityName$IwWS = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd21L, 0x5c842a42c54d0258L, "entityName");
+    /*package*/ static final SProperty text$GoKl = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text");
   }
 }

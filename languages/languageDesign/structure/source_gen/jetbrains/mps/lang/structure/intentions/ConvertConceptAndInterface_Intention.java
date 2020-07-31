@@ -65,13 +65,13 @@ public final class ConvertConceptAndInterface_Intention extends AbstractIntentio
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptDeclaration$qU)) {
         SNode icd = SModelOperations.createNewRootNode(SNodeOperations.getModel(node), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration"));
         ConceptConversionHelper.copy(node, icd);
-        ListSequence.fromList(SLinkOperations.getChildren(icd, LINKS.extends$3Y1p)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$qU), LINKS.implements$oQDh)));
+        ListSequence.fromList(SLinkOperations.getChildren(icd, LINKS.extends$V2F7)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$qU), LINKS.implements$2tZf)));
         // what to do with concept's "extends"? Copy to implements? 
         created = icd;
       } else {
         SNode cd = SModelOperations.createNewRootNode(SNodeOperations.getModel(node), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"));
         ConceptConversionHelper.copy(node, cd);
-        ListSequence.fromList(SLinkOperations.getChildren(cd, LINKS.implements$oQDh)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.InterfaceConceptDeclaration$MT), LINKS.extends$3Y1p)));
+        ListSequence.fromList(SLinkOperations.getChildren(cd, LINKS.implements$2tZf)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.InterfaceConceptDeclaration$MT), LINKS.extends$V2F7)));
         created = cd;
       }
       SNodeOperations.deleteNode(node);
@@ -90,7 +90,7 @@ public final class ConvertConceptAndInterface_Intention extends AbstractIntentio
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extends$3Y1p = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
-    /*package*/ static final SContainmentLink implements$oQDh = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
+    /*package*/ static final SContainmentLink extends$V2F7 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
+    /*package*/ static final SContainmentLink implements$2tZf = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
   }
 }

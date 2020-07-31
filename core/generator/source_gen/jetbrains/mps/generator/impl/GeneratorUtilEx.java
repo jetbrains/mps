@@ -24,19 +24,19 @@ import org.jetbrains.mps.openapi.language.SProperty;
 @GeneratedClass(node = "r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)/894226751621690778", model = "r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)")
 public final class GeneratorUtilEx {
   public static String getMappingName_NodeMacro(SNode node, String defaultValue) {
-    SNode mappingLabel = SLinkOperations.getTarget(node, LINKS.mappingLabel$yUiS);
-    String mappingName = (mappingLabel != null ? SPropertyOperations.getString(mappingLabel, PROPS.name$tAp1) : null);
+    SNode mappingLabel = SLinkOperations.getTarget(node, LINKS.mappingLabel$Uf98);
+    String mappingName = (mappingLabel != null ? SPropertyOperations.getString(mappingLabel, PROPS.name$lA7v) : null);
     if (mappingName == null) {
       return defaultValue;
     }
     return mappingName;
   }
   public static String getMappingName_TemplateFragment(SNode node, String defaultValue) {
-    SNode ld = SLinkOperations.getTarget(node, LINKS.labelDeclaration$SD8p);
+    SNode ld = SLinkOperations.getTarget(node, LINKS.labelDeclaration$rV47);
     if (ld == null) {
       return defaultValue;
     }
-    String v = SPropertyOperations.getString(ld, PROPS.name$tAp1);
+    String v = SPropertyOperations.getString(ld, PROPS.name$lA7v);
     return (v == null ? defaultValue : v);
   }
   public static String getPatternVariableName(SNode ref) {
@@ -51,7 +51,7 @@ public final class GeneratorUtilEx {
       SNode subnode = queue.removeFirst();
       // do not look for TemplateFragments in subnode's children as TFs couldn't be nested 
       boolean tfFound = false;
-      for (SNode attr : SLinkOperations.getChildren(subnode, LINKS.smodelAttribute$K8bJ)) {
+      for (SNode attr : SLinkOperations.getChildren(subnode, LINKS.smodelAttribute$jXFL)) {
         if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(attr)), SNodeOperations.asSConcept(conceptTemplateFragment))) {
           templateFragments.add((SNode) attr);
           tfFound = true;
@@ -80,7 +80,7 @@ public final class GeneratorUtilEx {
       // therefore, we shall look into original expression, instead. 
       // Indeed, at the moment we don't handle here any of expressions that are replaced with TypeHintExpression (i.e. GenerationContextOp operations) 
       //  nevertheless, I feel important to prevent future errors, i.e. when this function report different result during codegen (with TypeHintExpr) and at runtime (no TypeHintExpr). 
-      expr = SLinkOperations.getTarget(SNodeOperations.as(expr, CONCEPTS.TypeHintExpression$Yp), LINKS.expression$HY9J);
+      expr = SLinkOperations.getTarget(SNodeOperations.as(expr, CONCEPTS.TypeHintExpression$Yp), LINKS.expression$h6HL);
     }
     // For generated templates, assumptions here shall match switch_Argument, 
     // for interpreted, TemplateCall#toExpressionRuntime 
@@ -105,11 +105,11 @@ public final class GeneratorUtilEx {
 
   public static Object evaluateExpression(SNode expr) {
     if (SNodeOperations.isInstanceOf(expr, CONCEPTS.BooleanConstant$Ui)) {
-      return SPropertyOperations.getBoolean(SNodeOperations.cast(expr, CONCEPTS.BooleanConstant$Ui), PROPS.value$WIn0);
+      return SPropertyOperations.getBoolean(SNodeOperations.cast(expr, CONCEPTS.BooleanConstant$Ui), PROPS.value$qt90);
     } else if (SNodeOperations.isInstanceOf(expr, CONCEPTS.IntegerConstant$mo)) {
-      return SPropertyOperations.getInteger(SNodeOperations.cast(expr, CONCEPTS.IntegerConstant$mo), PROPS.value$ZeO0);
+      return SPropertyOperations.getInteger(SNodeOperations.cast(expr, CONCEPTS.IntegerConstant$mo), PROPS.value$Cbc0);
     } else if (SNodeOperations.isInstanceOf(expr, CONCEPTS.StringLiteral$4G)) {
-      return SPropertyOperations.getString(SNodeOperations.cast(expr, CONCEPTS.StringLiteral$4G), PROPS.value$kiE0);
+      return SPropertyOperations.getString(SNodeOperations.cast(expr, CONCEPTS.StringLiteral$4G), PROPS.value$P2m0);
     } else if (SNodeOperations.isInstanceOf(expr, CONCEPTS.NullLiteral$q4)) {
       return null;
     }
@@ -136,17 +136,17 @@ public final class GeneratorUtilEx {
     }
   }
   public static String getGeneratorMessage_text(SNode generatorMessage) {
-    return SPropertyOperations.getString(generatorMessage, PROPS.messageText$smIX);
+    return SPropertyOperations.getString(generatorMessage, PROPS.messageText$J0Jz);
   }
   public static DismissTopMappingRuleException.MessageType getGeneratorMessage_kind(SNode generatorMessage) {
     if (generatorMessage == null) {
       // this is how it used to be, although to me default to warn/info might be better 
       return null;
     }
-    if (SEnumOperations.isMember(SPropertyOperations.getEnum(generatorMessage, PROPS.messageType$d1y), 0x11055c831d8L)) {
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(generatorMessage, PROPS.messageType$6jJu), 0x11055c831d8L)) {
       return DismissTopMappingRuleException.MessageType.error;
     } else
-    if (SEnumOperations.isMember(SPropertyOperations.getEnum(generatorMessage, PROPS.messageType$d1y), 0x11055c81594L)) {
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(generatorMessage, PROPS.messageType$6jJu), 0x11055c81594L)) {
       return DismissTopMappingRuleException.MessageType.warning;
     } else {
       return DismissTopMappingRuleException.MessageType.info;
@@ -164,19 +164,19 @@ public final class GeneratorUtilEx {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink mappingLabel$yUiS = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, 0x1179bf24befL, "mappingLabel");
-    /*package*/ static final SReferenceLink labelDeclaration$SD8p = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, 0x1179c366b2fL, "labelDeclaration");
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
-    /*package*/ static final SContainmentLink expression$HY9J = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11763791866L, 0x117637931bcL, "expression");
+    /*package*/ static final SReferenceLink mappingLabel$Uf98 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, 0x1179bf24befL, "mappingLabel");
+    /*package*/ static final SReferenceLink labelDeclaration$rV47 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, 0x1179c366b2fL, "labelDeclaration");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink expression$h6HL = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11763791866L, 0x117637931bcL, "expression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty value$WIn0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
-    /*package*/ static final SProperty value$ZeO0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
-    /*package*/ static final SProperty value$kiE0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
-    /*package*/ static final SProperty messageText$smIX = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11055c63121L, 0x11055c67157L, "messageText");
-    /*package*/ static final SProperty messageType$d1y = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11055c63121L, 0x11055c93e57L, "messageType");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$Cbc0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
+    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty messageText$J0Jz = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11055c63121L, 0x11055c67157L, "messageText");
+    /*package*/ static final SProperty messageType$6jJu = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11055c63121L, 0x11055c93e57L, "messageType");
   }
 
   private static final class CONCEPTS {

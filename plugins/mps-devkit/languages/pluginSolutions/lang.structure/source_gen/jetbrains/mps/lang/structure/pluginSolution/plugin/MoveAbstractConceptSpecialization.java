@@ -57,9 +57,9 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
   public void confirm(List<RefactoringParticipant.Option> selectedOptions, SNodeReference initialState, SNodeReference finalState, SRepository repository, LanguageStructureMigrationParticipant.MigrationBuilder migrationBuilder, boolean updateModuleDependencies) {
     SNode from = SNodeOperations.cast(SPointerOperations.resolveNode(initialState, repository), CONCEPTS.AbstractConceptDeclaration$UN);
     SNode to = SNodeOperations.cast(SPointerOperations.resolveNode(finalState, repository), CONCEPTS.AbstractConceptDeclaration$UN);
-    SPropertyOperations.plusAssignStringProp(from, PROPS.name$tAp1, "_old");
+    SPropertyOperations.plusAssignStringProp(from, PROPS.name$lA7v, "_old");
     AttributeOperations.setAttribute(from, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$I8), createDeprecatedNodeAnnotation_c4c66o_a0d0b("The concept was moved to language \"" + SNodeOperations.getModel(to).getModule().getModuleName() + "\""));
-    SPropertyOperations.assign(to, PROPS.conceptId$TMc5, ConceptIdHelper.generateConceptId(SNodeOperations.getModel(to), to) + "");
+    SPropertyOperations.assign(to, PROPS.conceptId$ZjQr, ConceptIdHelper.generateConceptId(SNodeOperations.getModel(to), to) + "");
 
     SModule fromModule = SNodeOperations.getModel(from).getModule();
     assert fromModule instanceof Language;
@@ -68,9 +68,9 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
 
     if (ListSequence.fromList(selectedOptions).contains(WriteSubconceptMigrationParticipant.OPTION)) {
       if (SNodeOperations.isInstanceOf(from, CONCEPTS.ConceptDeclaration$qU) && SNodeOperations.isInstanceOf(to, CONCEPTS.ConceptDeclaration$qU)) {
-        SLinkOperations.setTarget(SNodeOperations.cast(to, CONCEPTS.ConceptDeclaration$qU), LINKS.extends$LQV3, SNodeOperations.cast(from, CONCEPTS.ConceptDeclaration$qU));
+        SLinkOperations.setTarget(SNodeOperations.cast(to, CONCEPTS.ConceptDeclaration$qU), LINKS.extends$9AAt, SNodeOperations.cast(from, CONCEPTS.ConceptDeclaration$qU));
       } else if (SNodeOperations.isInstanceOf(from, CONCEPTS.InterfaceConceptDeclaration$MT) && SNodeOperations.isInstanceOf(to, CONCEPTS.InterfaceConceptDeclaration$MT)) {
-        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(to, CONCEPTS.InterfaceConceptDeclaration$MT), LINKS.extends$3Y1p)).addElement(createInterfaceConceptReference_c4c66o_a0a0a0a0l0b(SNodeOperations.cast(from, CONCEPTS.InterfaceConceptDeclaration$MT)));
+        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(to, CONCEPTS.InterfaceConceptDeclaration$MT), LINKS.extends$V2F7)).addElement(createInterfaceConceptReference_c4c66o_a0a0a0a0l0b(SNodeOperations.cast(from, CONCEPTS.InterfaceConceptDeclaration$MT)));
       } else {
         throw new IllegalStateException();
       }
@@ -90,11 +90,11 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
   private void addEmptySubstituteMenu(SModel editorModel, final SNode from) {
     SNode existingSubstituteMenu = ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.SubstituteMenu_Default$hk)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.conceptDeclaration$acmt) == from;
+        return SLinkOperations.getTarget(it, LINKS.conceptDeclaration$VYS3) == from;
       }
     }).first();
     if (existingSubstituteMenu != null) {
-      List<SNode> parts = ListSequence.fromList(SLinkOperations.getChildren(existingSubstituteMenu, LINKS.parts$MxT3)).where(new IWhereFilter<SNode>() {
+      List<SNode> parts = ListSequence.fromList(SLinkOperations.getChildren(existingSubstituteMenu, LINKS.parts$uqCt)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return !(SNodeOperations.isInstanceOf(it, CONCEPTS.SubstituteMenuPart_Placeholder$n6));
         }
@@ -103,7 +103,7 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
     } else {
       existingSubstituteMenu = SModelOperations.addRootNode(editorModel, createSubstituteMenu_Default_c4c66o_a0a0a0a1a2(from));
     }
-    ListSequence.fromList(SLinkOperations.getChildren(existingSubstituteMenu, LINKS.parts$MxT3)).addElement(_quotation_createNode_c4c66o_a0a2a2());
+    ListSequence.fromList(SLinkOperations.getChildren(existingSubstituteMenu, LINKS.parts$uqCt)).addElement(_quotation_createNode_c4c66o_a0a2a2());
   }
   public Collection<SNode> findInstances(final SAbstractConcept concept, SearchScope searchScope) {
     {
@@ -126,23 +126,23 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
   }
   private static SNode createDeprecatedNodeAnnotation_c4c66o_a0d0b(Object p0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DeprecatedNodeAnnotation$I8);
-    rootBuilder1.setProperty(PROPS.comment$MxQb, PROPS.comment$MxQb.getType().toString(p0));
+    rootBuilder1.setProperty(PROPS.comment$upfl, PROPS.comment$upfl.getType().toString(p0));
     return rootBuilder1.getResult();
   }
   private static SNode createInterfaceConceptReference_c4c66o_a0a0a0a0l0b(SNode node0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptReference$Yh);
-    rootBuilder1.setReferenceTarget(LINKS.intfc$fO5, node0);
+    rootBuilder1.setReferenceTarget(LINKS.intfc$7Eer, node0);
     return rootBuilder1.getResult();
   }
   private static SNode createMoveConcept_c4c66o_c0a71a1(SNode node0, SNode node1) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MoveConcept$Zi);
-    rootBuilder1.forChild(LINKS.sourceId$NVp5).initNode(node0, CONCEPTS.ConceptId$5a, true);
-    rootBuilder1.forChild(LINKS.targetId$NVqy).initNode(node1, CONCEPTS.ConceptId$5a, true);
+    rootBuilder1.forChild(LINKS.sourceId$9L9r).initNode(node0, CONCEPTS.ConceptId$5a, true);
+    rootBuilder1.forChild(LINKS.targetId$9LQu).initNode(node1, CONCEPTS.ConceptId$5a, true);
     return rootBuilder1.getResult();
   }
   private static SNode createSubstituteMenu_Default_c4c66o_a0a0a0a1a2(SNode node0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SubstituteMenu_Default$hk);
-    rootBuilder1.setReferenceTarget(LINKS.conceptDeclaration$acmt, node0);
+    rootBuilder1.setReferenceTarget(LINKS.conceptDeclaration$VYS3, node0);
     return rootBuilder1.getResult();
   }
   private static SNode _quotation_createNode_c4c66o_a0a2a2() {
@@ -165,18 +165,18 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty conceptId$TMc5 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
-    /*package*/ static final SProperty comment$MxQb = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x11d0a70ae54L, 0x11d3ec760e8L, "comment");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty conceptId$ZjQr = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
+    /*package*/ static final SProperty comment$upfl = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x11d0a70ae54L, 0x11d3ec760e8L, "comment");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$LQV3 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
-    /*package*/ static final SContainmentLink extends$3Y1p = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
-    /*package*/ static final SReferenceLink conceptDeclaration$acmt = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
-    /*package*/ static final SContainmentLink parts$MxT3 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts");
-    /*package*/ static final SReferenceLink intfc$fO5 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
-    /*package*/ static final SContainmentLink sourceId$NVp5 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b6L, 0x74cb131f590ad6eaL, "sourceId");
-    /*package*/ static final SContainmentLink targetId$NVqy = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b6L, 0x74cb131f590ad6edL, "targetId");
+    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SContainmentLink extends$V2F7 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
+    /*package*/ static final SReferenceLink conceptDeclaration$VYS3 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
+    /*package*/ static final SContainmentLink parts$uqCt = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts");
+    /*package*/ static final SReferenceLink intfc$7Eer = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
+    /*package*/ static final SContainmentLink sourceId$9L9r = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b6L, 0x74cb131f590ad6eaL, "sourceId");
+    /*package*/ static final SContainmentLink targetId$9LQu = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b6L, 0x74cb131f590ad6edL, "targetId");
   }
 }

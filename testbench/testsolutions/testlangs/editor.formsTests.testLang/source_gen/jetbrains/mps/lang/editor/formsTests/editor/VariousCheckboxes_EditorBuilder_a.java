@@ -93,7 +93,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private boolean nodeCondition_3jyf1k_a0b0() {
-    return SPropertyOperations.getBoolean(myNode, PROPS.booleanProperty1$tXXw);
+    return SPropertyOperations.getBoolean(myNode, PROPS.booleanProperty1$x0Mw);
   }
   private EditorCell createConstant_1() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "true");
@@ -137,7 +137,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private boolean nodeCondition_3jyf1k_a0c0() {
-    return SPropertyOperations.getBoolean(myNode, PROPS.booleanProperty1$tXXw);
+    return SPropertyOperations.getBoolean(myNode, PROPS.booleanProperty1$x0Mw);
   }
   private EditorCell createConstant_4() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "true");
@@ -191,7 +191,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private boolean nodeCondition_3jyf1k_a0f0() {
-    return SPropertyOperations.getBoolean(myNode, PROPS.booleanProperty2$_LET);
+    return SPropertyOperations.getBoolean(myNode, PROPS.booleanProperty2$j3LB);
   }
   private EditorCell createConstant_8() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "[x]");
@@ -235,7 +235,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private boolean nodeCondition_3jyf1k_a0g0() {
-    return SPropertyOperations.getBoolean(myNode, PROPS.booleanProperty2$_LET);
+    return SPropertyOperations.getBoolean(myNode, PROPS.booleanProperty2$j3LB);
   }
   private EditorCell createImage_0() {
     EditorCell_Image editorCell = fromImageCellProvider0();
@@ -265,7 +265,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty booleanProperty1$tXXw = MetaAdapterFactory.getProperty(0xafb9a5fdbc5d4169L, 0xa22542d8823d623aL, 0x455f8dda63d636dL, 0x455f8dda63d636eL, "booleanProperty1");
-    /*package*/ static final SProperty booleanProperty2$_LET = MetaAdapterFactory.getProperty(0xafb9a5fdbc5d4169L, 0xa22542d8823d623aL, 0x455f8dda63d636dL, 0x3bf28179462bcb27L, "booleanProperty2");
+    /*package*/ static final SProperty booleanProperty1$x0Mw = MetaAdapterFactory.getProperty(0xafb9a5fdbc5d4169L, 0xa22542d8823d623aL, 0x455f8dda63d636dL, 0x455f8dda63d636eL, "booleanProperty1");
+    /*package*/ static final SProperty booleanProperty2$j3LB = MetaAdapterFactory.getProperty(0xafb9a5fdbc5d4169L, 0xa22542d8823d623aL, 0x455f8dda63d636dL, 0x3bf28179462bcb27L, "booleanProperty2");
   }
 }

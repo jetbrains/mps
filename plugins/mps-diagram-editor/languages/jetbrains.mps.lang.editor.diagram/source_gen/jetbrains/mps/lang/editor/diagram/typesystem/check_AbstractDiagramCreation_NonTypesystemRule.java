@@ -24,17 +24,17 @@ public class check_AbstractDiagramCreation_NonTypesystemRule extends AbstractNon
   public check_AbstractDiagramCreation_NonTypesystemRule() {
   }
   public void applyRule(final SNode abstractDiagramCreation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.query$ye1Z), CONCEPTS.DotExpression$6a) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.query$ye1Z), CONCEPTS.DotExpression$6a), LINKS.operation$X4R8), CONCEPTS.SLinkListAccess$nk)))) {
+    if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.query$$MXx), CONCEPTS.DotExpression$6a) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.query$$MXx), CONCEPTS.DotExpression$6a), LINKS.operation$_mGS), CONCEPTS.SLinkListAccess$nk)))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.query$ye1Z), "Use DotExpression to point to the containment LinkDeclaration", "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "8570854907291359968", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.query$$MXx), "Use DotExpression to point to the containment LinkDeclaration", "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "8570854907291359968", null, errorTarget);
       }
     } else {
-      SNode containmentLink = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.query$ye1Z), CONCEPTS.DotExpression$6a), LINKS.operation$X4R8), CONCEPTS.SLinkListAccess$nk), LINKS.link$4J5w);
-      if (SLinkOperations.getTarget(abstractDiagramCreation, LINKS.concept$yef4) != null && SLinkOperations.getTarget(containmentLink, LINKS.target$egp8) != null && !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.concept$yef4), SLinkOperations.getTarget(containmentLink, LINKS.target$egp8)))) {
+      SNode containmentLink = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.query$$MXx), CONCEPTS.DotExpression$6a), LINKS.operation$_mGS), CONCEPTS.SLinkListAccess$nk), LINKS.link$iNEw);
+      if (SLinkOperations.getTarget(abstractDiagramCreation, LINKS.concept$$TiW) != null && SLinkOperations.getTarget(containmentLink, LINKS.target$TWaS) != null && !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.concept$$TiW), SLinkOperations.getTarget(containmentLink, LINKS.target$TWaS)))) {
         {
-          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.concept$yef4);
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(abstractDiagramCreation, "Only subconcept of containment link target contept (" + SLinkOperations.getTarget(containmentLink, LINKS.target$egp8) + ") can be used here.", "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "1301388602725875172", null, errorTarget);
+          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.concept$$TiW);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(abstractDiagramCreation, "Only subconcept of containment link target contept (" + SLinkOperations.getTarget(containmentLink, LINKS.target$TWaS) + ") can be used here.", "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "1301388602725875172", null, errorTarget);
         }
       }
     }
@@ -50,11 +50,11 @@ public class check_AbstractDiagramCreation_NonTypesystemRule extends AbstractNon
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink query$ye1Z = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x120f760a04397296L, 0x120f760a0439bb2bL, "query");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SReferenceLink link$4J5w = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f970c119L, 0x108f974c962L, "link");
-    /*package*/ static final SReferenceLink concept$yef4 = MetaAdapterFactory.getReferenceLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x120f760a04397296L, 0x120f760a0439bb31L, "concept");
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SContainmentLink query$$MXx = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x120f760a04397296L, 0x120f760a0439bb2bL, "query");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SReferenceLink link$iNEw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f970c119L, 0x108f974c962L, "link");
+    /*package*/ static final SReferenceLink concept$$TiW = MetaAdapterFactory.getReferenceLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x120f760a04397296L, 0x120f760a0439bb31L, "concept");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 
   private static final class CONCEPTS {

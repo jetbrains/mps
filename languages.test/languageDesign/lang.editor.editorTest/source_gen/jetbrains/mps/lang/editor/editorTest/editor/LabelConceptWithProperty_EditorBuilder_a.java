@@ -71,7 +71,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.myProperty$IY30;
+      final SProperty property = PROPS.myProperty$K3t0;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no myProperty>");
@@ -101,14 +101,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
   }
   private boolean nodeCondition_ulii9q_a1a() {
-    return isEmptyString(SPropertyOperations.getString(myNode, PROPS.myProperty$IY30));
+    return isEmptyString(SPropertyOperations.getString(myNode, PROPS.myProperty$K3t0));
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty myProperty$IY30 = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x19a61c3cfece0e26L, 0x19a61c3cfed036bbL, "myProperty");
+    /*package*/ static final SProperty myProperty$K3t0 = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x19a61c3cfece0e26L, 0x19a61c3cfed036bbL, "myProperty");
   }
 
   private static final class CONCEPTS {

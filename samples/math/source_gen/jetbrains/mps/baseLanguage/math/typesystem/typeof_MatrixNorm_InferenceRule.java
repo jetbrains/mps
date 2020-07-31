@@ -33,7 +33,7 @@ public class typeof_MatrixNorm_InferenceRule extends AbstractInferenceRule_Runti
   }
   public void applyRule(final SNode norm, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      final SNode mT = typeCheckingContext.typeOf(SLinkOperations.getTarget(norm, LINKS.mat$RSf5), "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "3361677252835031830", true);
+      final SNode mT = typeCheckingContext.typeOf(SLinkOperations.getTarget(norm, LINKS.mat$4fjr), "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "3361677252835031830", true);
       typeCheckingContext.whenConcrete(mT, new Runnable() {
         public void run() {
           if (!(SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(mT), CONCEPTS.MatrixOrVectorType$Xr))) {
@@ -43,7 +43,7 @@ public class typeof_MatrixNorm_InferenceRule extends AbstractInferenceRule_Runti
             }
           } else {
             SNode t = MathUtil.getUnboxedElementType(typeCheckingContext.getExpandedNode(mT));
-            boolean floatResult = SPropertyOperations.getEnum(norm, PROPS.deg$cJOB) == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0xa87de0e72c56776L, "jetbrains.mps.baseLanguage.math.structure.MatrixNormKind"), 0xa87de0e72c56779L, "norm2F");
+            boolean floatResult = SPropertyOperations.getEnum(norm, PROPS.deg$bauT) == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0xa87de0e72c56776L, "jetbrains.mps.baseLanguage.math.structure.MatrixNormKind"), 0xa87de0e72c56779L, "norm2F");
             if (TypecheckingFacade.getFromContext().isSubtype(t, MathTypeUtil.qBigInteger)) {
               SNode f = null;
               SNode i = null;
@@ -160,7 +160,7 @@ public class typeof_MatrixNorm_InferenceRule extends AbstractInferenceRule_Runti
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink mat$RSf5 = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0xcc7e1ce69847db2L, 0xa87de0e72bc0fd1L, "mat");
+    /*package*/ static final SContainmentLink mat$4fjr = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0xcc7e1ce69847db2L, 0xa87de0e72bc0fd1L, "mat");
   }
 
   private static final class CONCEPTS {
@@ -172,6 +172,6 @@ public class typeof_MatrixNorm_InferenceRule extends AbstractInferenceRule_Runti
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty deg$cJOB = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0xcc7e1ce69847db2L, 0xa87de0e72c3a3efL, "deg");
+    /*package*/ static final SProperty deg$bauT = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0xcc7e1ce69847db2L, 0xa87de0e72c3a3efL, "deg");
   }
 }

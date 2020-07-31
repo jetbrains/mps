@@ -28,23 +28,23 @@ public class supertypesOfLowerBoundType_InequationReplacementRule extends Abstra
         SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "963887337803943195", 0, null);
         _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
-        typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(subtype, LINKS.bound$uJC_), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(supertype, CONCEPTS.LowerBoundType$Uz), LINKS.bound$uJC_), false, inequalityIsWeak, inequalityIsLessThan, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(subtype, LINKS.bound$T4DV), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(supertype, CONCEPTS.LowerBoundType$Uz), LINKS.bound$T4DV), false, inequalityIsWeak, inequalityIsLessThan, _info_12389875345);
       }
     } else {
       {
         SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5583776844526730218", 0, null);
         _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
-        typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(subtype, LINKS.bound$uJC_), (SNode) supertype, false, inequalityIsWeak, inequalityIsLessThan, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(subtype, LINKS.bound$T4DV), (SNode) supertype, false, inequalityIsWeak, inequalityIsLessThan, _info_12389875345);
       }
     }
   }
   public boolean checkInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     boolean result_14532009 = true;
     if (false && SNodeOperations.isInstanceOf(supertype, CONCEPTS.LowerBoundType$Uz)) {
-      result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) SLinkOperations.getTarget(subtype, LINKS.bound$uJC_), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(supertype, CONCEPTS.LowerBoundType$Uz), LINKS.bound$uJC_));
+      result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) SLinkOperations.getTarget(subtype, LINKS.bound$T4DV), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(supertype, CONCEPTS.LowerBoundType$Uz), LINKS.bound$T4DV));
     } else {
-      result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) SLinkOperations.getTarget(subtype, LINKS.bound$uJC_), (SNode) supertype);
+      result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) SLinkOperations.getTarget(subtype, LINKS.bound$T4DV), (SNode) supertype);
     }
     return result_14532009;
   }
@@ -71,6 +71,6 @@ public class supertypesOfLowerBoundType_InequationReplacementRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink bound$uJC_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, 0x110dae9f25bL, "bound");
+    /*package*/ static final SContainmentLink bound$T4DV = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, 0x110dae9f25bL, "bound");
   }
 }

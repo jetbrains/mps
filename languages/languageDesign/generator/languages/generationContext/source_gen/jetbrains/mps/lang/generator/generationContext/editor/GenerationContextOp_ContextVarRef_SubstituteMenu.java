@@ -88,7 +88,7 @@ public class GenerationContextOp_ContextVarRef_SubstituteMenu extends Substitute
         if (SNodeOperations.isInstanceOf(n, CONCEPTS.ContextVariableProvider$W7)) {
           ListSequence.fromList(rv).addSequence(ListSequence.fromList(ContextVariableProvider__BehaviorDescriptor.contextVariables_id6suuiWX_oN7.invoke(SNodeOperations.cast(n, CONCEPTS.ContextVariableProvider$W7))).select(new ISelector<SNode, String>() {
             public String select(SNode it) {
-              return SPropertyOperations.getString(it, PROPS.name$tAp1);
+              return SPropertyOperations.getString(it, PROPS.name$lA7v);
             }
           }));
         }
@@ -141,7 +141,7 @@ public class GenerationContextOp_ContextVarRef_SubstituteMenu extends Substitute
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode rv = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.GenerationContextOp_ContextVarRef$EO, null);
-          SPropertyOperations.assign(rv, PROPS.contextVarName$SNbV, myParameterObject);
+          SPropertyOperations.assign(rv, PROPS.contextVarName$wML_, myParameterObject);
           return rv;
         }
 
@@ -200,7 +200,7 @@ public class GenerationContextOp_ContextVarRef_SubstituteMenu extends Substitute
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty contextVarName$SNbV = MetaAdapterFactory.getProperty(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, 0x671e792f3dbdffa2L, "contextVarName");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty contextVarName$wML_ = MetaAdapterFactory.getProperty(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, 0x671e792f3dbdffa2L, "contextVarName");
   }
 }

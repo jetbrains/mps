@@ -25,9 +25,9 @@ public class RuleVariableDeclaration implements DataFlowConstructor {
     return CONCEPTS.VariableDeclaration$xe;
   }
   public void performActions(Program o, SNode node) {
-    if (SLinkOperations.getChildren(node, LINKS.annotation$oVP4) != null) {
-      for (SNode annotation : SLinkOperations.getChildren(node, LINKS.annotation$oVP4)) {
-        if (SLinkOperations.hasPointer(annotation, LINKS.annotation$zNxu, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~Nullable"))) {
+    if (SLinkOperations.getChildren(node, LINKS.annotation$4YGW) != null) {
+      for (SNode annotation : SLinkOperations.getChildren(node, LINKS.annotation$4YGW)) {
+        if (SLinkOperations.hasPointer(annotation, LINKS.annotation$lXdy, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~Nullable"))) {
           {
             Object object = node;
             if (((Program) o).contains(object)) {
@@ -40,7 +40,7 @@ public class RuleVariableDeclaration implements DataFlowConstructor {
             }
           }
         }
-        if (SLinkOperations.hasPointer(annotation, LINKS.annotation$zNxu, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull"))) {
+        if (SLinkOperations.hasPointer(annotation, LINKS.annotation$lXdy, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull"))) {
           {
             Object object = node;
             if (((Program) o).contains(object)) {
@@ -62,7 +62,7 @@ public class RuleVariableDeclaration implements DataFlowConstructor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
   }
 }

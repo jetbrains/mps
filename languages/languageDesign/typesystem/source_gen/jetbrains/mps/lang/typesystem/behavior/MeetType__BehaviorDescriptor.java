@@ -38,7 +38,7 @@ public final class MeetType__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     StringBuilder sb = new StringBuilder("meet(");
-    List<SNode> nodes = SLinkOperations.getChildren(__thisNode__, LINKS.argument$kHNt);
+    List<SNode> nodes = SLinkOperations.getChildren(__thisNode__, LINKS.argument$2bV3);
     for (SNode arg : nodes) {
       sb.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(arg));
       if (SNodeOperations.getIndexInParent(arg) < ListSequence.fromList(nodes).count() - 1) {
@@ -50,7 +50,7 @@ public final class MeetType__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static SNode eraseGenerics_id4qyz6djw13y(@NotNull SNode __thisNode__) {
     SNode copy = SNodeOperations.copyNode(__thisNode__);
-    for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(copy, LINKS.argument$kHNt)).toListSequence()) {
+    for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(copy, LINKS.argument$2bV3)).toListSequence()) {
       if (SNodeOperations.isInstanceOf(arg, CONCEPTS.IGenericType$$h)) {
         SNodeOperations.replaceWithAnother(arg, IGenericType__BehaviorDescriptor.eraseGenerics_id4qyz6djw13y.invoke(SNodeOperations.cast(arg, CONCEPTS.IGenericType$$h)));
       }
@@ -107,7 +107,7 @@ public final class MeetType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$kHNt = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
+    /*package*/ static final SContainmentLink argument$2bV3 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
   }
 
   private static final class CONCEPTS {

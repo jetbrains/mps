@@ -21,7 +21,7 @@ public class RightTransformActionDeprecated_NonTypesystemRule extends AbstractNo
   public RightTransformActionDeprecated_NonTypesystemRule() {
   }
   public void applyRule(final SNode cellActionMapItem, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SEnumOperations.isMember(SPropertyOperations.getEnum(cellActionMapItem, PROPS.actionId$TiJc), 0x10951993704L)) {
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(cellActionMapItem, PROPS.actionId$K4QO), 0x10951993704L)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(cellActionMapItem, "Right transform in action map is deprecated.", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "9215127012917439383", null, errorTarget);
@@ -39,7 +39,7 @@ public class RightTransformActionDeprecated_NonTypesystemRule extends AbstractNo
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty actionId$TiJc = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, 0x1095198c0daL, "actionId");
+    /*package*/ static final SProperty actionId$K4QO = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, 0x1095198c0daL, "actionId");
   }
 
   private static final class CONCEPTS {

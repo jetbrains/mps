@@ -20,7 +20,7 @@ public class check_BaseExecuteCommandStatement_NonTypesystemRule extends Abstrac
   public check_BaseExecuteCommandStatement_NonTypesystemRule() {
   }
   public void applyRule(final SNode baseExecuteCommandStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(baseExecuteCommandStatement, LINKS.repo$bGKu) == null)) {
+    if ((SLinkOperations.getTarget(baseExecuteCommandStatement, LINKS.repo$EFuy) == null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(baseExecuteCommandStatement, "Shall specify a repository to lock", "r:aad06b20-0a6a-42d7-81b8-671529c6126a(jetbrains.mps.lang.access.typesystem)", "1705896275416798528", null, errorTarget);
@@ -38,7 +38,7 @@ public class check_BaseExecuteCommandStatement_NonTypesystemRule extends Abstrac
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink repo$bGKu = MetaAdapterFactory.getContainmentLink(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20aL, 0x13bfe1ec0ded851eL, "repo");
+    /*package*/ static final SContainmentLink repo$EFuy = MetaAdapterFactory.getContainmentLink(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20aL, 0x13bfe1ec0ded851eL, "repo");
   }
 
   private static final class CONCEPTS {

@@ -48,7 +48,7 @@ public final class ModuleSuite__BehaviorDescriptor extends BaseBHDescriptor {
     return m.getModels();
   }
   /*package*/ static SModule module_id7A48itizp2R(@NotNull SNode __thisNode__) {
-    SModuleReference moduleReference = IModuleRef__BehaviorDescriptor.moduleReference_id173Z5qAOun8.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.moduleRef$cQ0V));
+    SModuleReference moduleReference = IModuleRef__BehaviorDescriptor.moduleReference_id173Z5qAOun8.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.moduleRef$eas_));
     if (moduleReference == null) {
       return null;
     }
@@ -56,9 +56,9 @@ public final class ModuleSuite__BehaviorDescriptor extends BaseBHDescriptor {
     return moduleReference.resolve(SNodeOperations.getModel(__thisNode__).getRepository());
   }
   /*package*/ static Iterable<SNode> getNotMutedTests_id7tF7F0nXrAX(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.testRef$fEbz)).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.testRef$_r_X)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(SPropertyOperations.getBoolean(it, PROPS.muted$Piv7));
+        return !(SPropertyOperations.getBoolean(it, PROPS.muted$NX4p));
       }
     });
   }
@@ -114,11 +114,11 @@ public final class ModuleSuite__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink moduleRef$cQ0V = MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x11c3fc56a6d1cc88L, "moduleRef");
-    /*package*/ static final SContainmentLink testRef$fEbz = MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x3e81ed1e2be77cbeL, "testRef");
+    /*package*/ static final SContainmentLink moduleRef$eas_ = MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x11c3fc56a6d1cc88L, "moduleRef");
+    /*package*/ static final SContainmentLink testRef$_r_X = MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x3e81ed1e2be77cbeL, "testRef");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty muted$Piv7 = MetaAdapterFactory.getProperty(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cbaL, 0x776b1eb017f5bc5eL, "muted");
+    /*package*/ static final SProperty muted$NX4p = MetaAdapterFactory.getProperty(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cbaL, 0x776b1eb017f5bc5eL, "muted");
   }
 }

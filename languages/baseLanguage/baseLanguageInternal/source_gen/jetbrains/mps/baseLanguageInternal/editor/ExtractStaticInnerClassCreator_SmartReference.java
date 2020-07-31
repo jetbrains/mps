@@ -50,7 +50,7 @@ public class ExtractStaticInnerClassCreator_SmartReference extends SubstituteMen
 
     public SMP_ReferenceScope_369k9v_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.ExtractStaticInnerClassCreator$cT, LINKS.baseMethodDeclaration$$A7i);
+      super((SAbstractConcept) CONCEPTS.ExtractStaticInnerClassCreator$cT, LINKS.baseMethodDeclaration$ItxI);
     }
     @NotNull
     @Override
@@ -82,7 +82,7 @@ public class ExtractStaticInnerClassCreator_SmartReference extends SubstituteMen
       }
       @Override
       public String getMatchingText(String pattern) {
-        return SPropertyOperations.getString(referencedNode, PROPS.name$tAp1);
+        return SPropertyOperations.getString(referencedNode, PROPS.name$lA7v);
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
@@ -101,10 +101,10 @@ public class ExtractStaticInnerClassCreator_SmartReference extends SubstituteMen
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

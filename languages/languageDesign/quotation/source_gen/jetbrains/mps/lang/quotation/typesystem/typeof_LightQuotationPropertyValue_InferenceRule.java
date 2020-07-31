@@ -20,7 +20,7 @@ public class typeof_LightQuotationPropertyValue_InferenceRule extends AbstractIn
   public typeof_LightQuotationPropertyValue_InferenceRule() {
   }
   public void applyRule(final SNode val, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode dataType = SLinkOperations.getTarget(SLinkOperations.getTarget(val, LINKS.property$NCMw), LINKS.dataType$fLUl);
+    SNode dataType = SLinkOperations.getTarget(SLinkOperations.getTarget(val, LINKS.property$Ktw), LINKS.dataType$Dbgb);
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
         SNode _nodeToCheck_1029348928467 = NodeBuilderInitProperty__BehaviorDescriptor.getInitValue_id1o$2SUuvKUZ.invoke(val);
@@ -40,8 +40,8 @@ public class typeof_LightQuotationPropertyValue_InferenceRule extends AbstractIn
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink property$NCMw = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x4bb51009d20b0326L, "property");
-    /*package*/ static final SReferenceLink dataType$fLUl = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SReferenceLink property$Ktw = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x4bb51009d20b0326L, "property");
+    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
   }
 
   private static final class CONCEPTS {

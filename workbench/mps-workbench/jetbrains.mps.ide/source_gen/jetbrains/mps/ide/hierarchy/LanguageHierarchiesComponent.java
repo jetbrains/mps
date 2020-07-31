@@ -241,7 +241,7 @@ outer:
           continue outer;
         }
         processed.put(parentConcept, newConceptContainer);
-        parentConcept = SLinkOperations.getTarget(parentConcept, LINKS.extends$LQV3);
+        parentConcept = SLinkOperations.getTarget(parentConcept, LINKS.extends$9AAt);
       }
       if (prevConceptContainer != null) {
         result.add(prevConceptContainer);
@@ -369,8 +369,8 @@ outer:
       if (myIsOtherLanguage) {
         myColor = ColorAndGraphicsUtil.saturateColor(Color.ORANGE, 0.5f);
       }
-      myRootable = SPropertyOperations.getBoolean(conceptDeclaration, PROPS.rootable$vg$g);
-      myIsAbstract = SPropertyOperations.getBoolean(conceptDeclaration, PROPS.abstract$moSU);
+      myRootable = SPropertyOperations.getBoolean(conceptDeclaration, PROPS.rootable$91zK);
+      myIsAbstract = SPropertyOperations.getBoolean(conceptDeclaration, PROPS.abstract$Q3$6);
       myNamespace = SModelUtil.getDeclaringLanguage(conceptDeclaration).getModuleName();
       myNodePointer = new SNodePointer(conceptDeclaration);
       addMouseListener(new MouseAdapter() {
@@ -432,7 +432,7 @@ outer:
           if (conceptDeclaration == null) {
             return "";
           }
-          String name = SPropertyOperations.getString(conceptDeclaration, PROPS.name$tAp1);
+          String name = SPropertyOperations.getString(conceptDeclaration, PROPS.name$lA7v);
           return (name != null ? name : "");
         }
       });
@@ -646,12 +646,12 @@ outer:
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$LQV3 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty rootable$vg$g = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
-    /*package*/ static final SProperty abstract$moSU = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty rootable$91zK = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
+    /*package*/ static final SProperty abstract$Q3$6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -18,22 +18,22 @@ public class RebalanceBaseAssignmentExpression_QuickFix extends QuickFix_Runtime
     super(new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8526811989163701675"));
   }
   public void execute(SNode node) {
-    if (SLinkOperations.getTarget(((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("parent")[0]), LINKS.leftExpression$rxLZ) == ((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("child")[0])) {
-      SLinkOperations.setTarget(((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("parent")[0]), LINKS.leftExpression$rxLZ, SLinkOperations.getTarget(((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("child")[0]), LINKS.rValue$J0E2));
+    if (SLinkOperations.getTarget(((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("parent")[0]), LINKS.leftExpression$lndx) == ((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("child")[0])) {
+      SLinkOperations.setTarget(((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("parent")[0]), LINKS.leftExpression$lndx, SLinkOperations.getTarget(((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("child")[0]), LINKS.rValue$LkmY));
       SNodeOperations.replaceWithAnother(((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("parent")[0]), ((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("child")[0]));
-      SLinkOperations.setTarget(((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("child")[0]), LINKS.rValue$J0E2, ((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("parent")[0]));
+      SLinkOperations.setTarget(((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("child")[0]), LINKS.rValue$LkmY, ((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("parent")[0]));
       ParenthesisUtil.checkOperationWRTPriority(((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("parent")[0]));
-    } else if (SLinkOperations.getTarget(((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("parent")[0]), LINKS.rightExpression$rxBl) == ((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("child")[0])) {
+    } else if (SLinkOperations.getTarget(((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("parent")[0]), LINKS.rightExpression$li3b) == ((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("child")[0])) {
       SNode paren = SNodeFactoryOperations.replaceWithNewChild(((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("child")[0]), CONCEPTS.ParenthesizedExpression$vE);
-      SLinkOperations.setTarget(paren, LINKS.expression$4_F0, ((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("child")[0]));
+      SLinkOperations.setTarget(paren, LINKS.expression$efP0, ((SNode) RebalanceBaseAssignmentExpression_QuickFix.this.getField("child")[0]));
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rValue$J0E2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
-    /*package*/ static final SContainmentLink expression$4_F0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
   }
 
   private static final class CONCEPTS {

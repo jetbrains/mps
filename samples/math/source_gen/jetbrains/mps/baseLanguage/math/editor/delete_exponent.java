@@ -23,7 +23,7 @@ public class delete_exponent {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.base$uESF));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.base$QLsP));
       }
 
     };
@@ -71,6 +71,6 @@ public class delete_exponent {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink base$uESF = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12052b2cdd3L, 0x12052b71f8bL, "base");
+    /*package*/ static final SContainmentLink base$QLsP = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12052b2cdd3L, 0x12052b71f8bL, "base");
   }
 }

@@ -64,7 +64,7 @@ public class MyConnectorCreationAction implements PaletteToggleAction {
           final Wrappers._boolean result = new Wrappers._boolean(false);
           repo.getModelAccess().runReadAction(new Runnable() {
             public void run() {
-              if (connectionInfo.isValid() && SNodeOperations.isInstanceOf(connectionInfo.getFromNode(), CONCEPTS.BlockInstance$_m) && connectionInfo.getFromId() instanceof SNode && SNodeOperations.isInstanceOf(connectionInfo.getToNode(), CONCEPTS.BlockInstance$_m) && connectionInfo.getToId() instanceof SNode && Objects.equals(SNodeOperations.getContainingLink(((SNode) connectionInfo.getToId())), LINKS.inMetaPorts$R6WG)) {
+              if (connectionInfo.isValid() && SNodeOperations.isInstanceOf(connectionInfo.getFromNode(), CONCEPTS.BlockInstance$_m) && connectionInfo.getFromId() instanceof SNode && SNodeOperations.isInstanceOf(connectionInfo.getToNode(), CONCEPTS.BlockInstance$_m) && connectionInfo.getToId() instanceof SNode && Objects.equals(SNodeOperations.getContainingLink(((SNode) connectionInfo.getToId())), LINKS.inMetaPorts$Gnpk)) {
                 result.value = true;
               }
             }
@@ -75,13 +75,13 @@ public class MyConnectorCreationAction implements PaletteToggleAction {
           repo.getModelAccess().executeCommand(new Runnable() {
             public void run() {
               SNode connectorInstance = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, "jetbrains.mps.testHybridEditor.structure.ConnectorInstance"));
-              SLinkOperations.setTarget(connectorInstance, LINKS.source$CgLa, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, "jetbrains.mps.testHybridEditor.structure.ConnectorEndInstance")));
-              SLinkOperations.setTarget(connectorInstance, LINKS.target$ClT$, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, "jetbrains.mps.testHybridEditor.structure.ConnectorEndInstance")));
-              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.source$CgLa), LINKS.block$JUWh, SNodeOperations.cast(connectionInfo.getFromNode(), CONCEPTS.BlockInstance$_m));
-              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.source$CgLa), LINKS.metaPort$JUWK, ((SNode) connectionInfo.getFromId()));
-              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.target$ClT$), LINKS.block$JUWh, SNodeOperations.cast(connectionInfo.getToNode(), CONCEPTS.BlockInstance$_m));
-              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.target$ClT$), LINKS.metaPort$JUWK, ((SNode) connectionInfo.getToId()));
-              ListSequence.fromList(SLinkOperations.getChildren(((SNode) myDiagramCell.getSNode()), LINKS.newConnectors$N9e$)).addElement(connectorInstance);
+              SLinkOperations.setTarget(connectorInstance, LINKS.source$w7NQ, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, "jetbrains.mps.testHybridEditor.structure.ConnectorEndInstance")));
+              SLinkOperations.setTarget(connectorInstance, LINKS.target$yASs, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, "jetbrains.mps.testHybridEditor.structure.ConnectorEndInstance")));
+              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.source$w7NQ), LINKS.block$dzcf, SNodeOperations.cast(connectionInfo.getFromNode(), CONCEPTS.BlockInstance$_m));
+              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.source$w7NQ), LINKS.metaPort$dzrg, ((SNode) connectionInfo.getFromId()));
+              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.target$yASs), LINKS.block$dzcf, SNodeOperations.cast(connectionInfo.getToNode(), CONCEPTS.BlockInstance$_m));
+              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.target$yASs), LINKS.metaPort$dzrg, ((SNode) connectionInfo.getToId()));
+              ListSequence.fromList(SLinkOperations.getChildren(((SNode) myDiagramCell.getSNode()), LINKS.newConnectors$Lu3s)).addElement(connectorInstance);
             }
           });
           event.consume();
@@ -115,11 +115,11 @@ public class MyConnectorCreationAction implements PaletteToggleAction {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink inMetaPorts$R6WG = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, 0x20a804e2ec410486L, "inMetaPorts");
-    /*package*/ static final SContainmentLink source$CgLa = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c0L, "source");
-    /*package*/ static final SContainmentLink target$ClT$ = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c6L, "target");
-    /*package*/ static final SReferenceLink block$JUWh = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, 0x49664459198225bcL, "block");
-    /*package*/ static final SReferenceLink metaPort$JUWK = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, 0x49664459198225bdL, "metaPort");
-    /*package*/ static final SContainmentLink newConnectors$N9e$ = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702ec1L, 0x20a804e2ec4425e0L, "newConnectors");
+    /*package*/ static final SContainmentLink inMetaPorts$Gnpk = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, 0x20a804e2ec410486L, "inMetaPorts");
+    /*package*/ static final SContainmentLink source$w7NQ = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c0L, "source");
+    /*package*/ static final SContainmentLink target$yASs = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c6L, "target");
+    /*package*/ static final SReferenceLink block$dzcf = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, 0x49664459198225bcL, "block");
+    /*package*/ static final SReferenceLink metaPort$dzrg = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, 0x49664459198225bdL, "metaPort");
+    /*package*/ static final SContainmentLink newConnectors$Lu3s = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702ec1L, 0x20a804e2ec4425e0L, "newConnectors");
   }
 }

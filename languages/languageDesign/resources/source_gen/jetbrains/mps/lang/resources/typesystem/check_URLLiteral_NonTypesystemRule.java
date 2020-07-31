@@ -17,10 +17,10 @@ public class check_URLLiteral_NonTypesystemRule extends AbstractNonTypesystemRul
   public check_URLLiteral_NonTypesystemRule() {
   }
   public void applyRule(final SNode url, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (isEmptyString(SPropertyOperations.getString(url, PROPS.url$QExt))) {
+    if (isEmptyString(SPropertyOperations.getString(url, PROPS.url$uAd3))) {
       return;
     }
-    URLCheckUtil.check(typeCheckingContext, url, SPropertyOperations.getString(url, PROPS.url$QExt));
+    URLCheckUtil.check(typeCheckingContext, url, SPropertyOperations.getString(url, PROPS.url$uAd3));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.BaseURLLiteral$ZV;
@@ -36,7 +36,7 @@ public class check_URLLiteral_NonTypesystemRule extends AbstractNonTypesystemRul
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty url$QExt = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e6a38b8L, 0x4197d5560e6a38f3L, "url");
+    /*package*/ static final SProperty url$uAd3 = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e6a38b8L, 0x4197d5560e6a38f3L, "url");
   }
 
   private static final class CONCEPTS {

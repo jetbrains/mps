@@ -91,14 +91,14 @@ public class AttributeOperations {
 
 
   private static Iterable<SNode> getAttributes(SNode node, final IAttributeDescriptor descriptor) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$K8bJ)).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return descriptor.match(it);
       }
     });
   }
   public static SNode addAttribute(SNode node, IAttributeDescriptor descriptor, SNode value) {
-    ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$K8bJ)).addElement(value);
+    ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL)).addElement(value);
     descriptor.update(value);
     return value;
   }
@@ -119,7 +119,7 @@ public class AttributeOperations {
     if (role == null) {
       return false;
     }
-    return role.equals(LINKS.smodelAttribute$K8bJ);
+    return role.equals(LINKS.smodelAttribute$jXFL);
   }
 
   public static boolean isNodeAttribute(SNode node) {
@@ -135,40 +135,40 @@ public class AttributeOperations {
     return isAttribute(node) && SNodeOperations.isInstanceOf(((SNode) node), CONCEPTS.ChildAttribute$XQ);
   }
   public static List<SNode> getAllAttributes(SNode node) {
-    return SLinkOperations.getChildren(node, LINKS.smodelAttribute$K8bJ);
+    return SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL);
   }
   public static Iterable<SNode> getNodeAttributes(SNode node) {
-    return SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$K8bJ), CONCEPTS.NodeAttribute$8K);
+    return SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL), CONCEPTS.NodeAttribute$8K);
   }
   public static Iterable<SNode> getPropertyAttributes(SNode node, final SProperty property) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$K8bJ), CONCEPTS.PropertyAttribute$jT)).where(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL), CONCEPTS.PropertyAttribute$jT)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Objects.equals(((SProperty) BHReflection.invoke0(it, CONCEPTS.PropertyAttribute$jT, SMethodTrimmedId.create("getProperty", CONCEPTS.PropertyAttribute$jT, "1avfQ4BBzOo"))), property);
       }
     });
   }
   public static Iterable<SNode> getLinkAttributes(SNode node, final SReferenceLink link) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$K8bJ), CONCEPTS.LinkAttribute$7j)).where(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL), CONCEPTS.LinkAttribute$7j)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Objects.equals(((SReferenceLink) BHReflection.invoke0(it, CONCEPTS.LinkAttribute$7j, SMethodTrimmedId.create("getLink", CONCEPTS.LinkAttribute$7j, "1avfQ4BEFo6"))), link);
       }
     });
   }
   public static Iterable<SNode> getChildAttributes(SNode node, final SContainmentLink link) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$K8bJ), CONCEPTS.ChildAttribute$XQ)).where(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL), CONCEPTS.ChildAttribute$XQ)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Objects.equals(((SContainmentLink) BHReflection.invoke0(it, CONCEPTS.ChildAttribute$XQ, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$XQ, "BpxLfMirzf"))), link);
       }
     });
   }
   public static boolean hasPropertyAttributes(SNode node) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$K8bJ), CONCEPTS.PropertyAttribute$jT)).isNotEmpty();
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL), CONCEPTS.PropertyAttribute$jT)).isNotEmpty();
   }
   public static boolean hasLinkAttributes(SNode node) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$K8bJ), CONCEPTS.LinkAttribute$7j)).isNotEmpty();
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL), CONCEPTS.LinkAttribute$7j)).isNotEmpty();
   }
   public static boolean hasChildAttributes(SNode node) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$K8bJ), CONCEPTS.ChildAttribute$XQ)).isNotEmpty();
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL), CONCEPTS.ChildAttribute$XQ)).isNotEmpty();
   }
   public static class AttributeList extends AbstractMutableChildrenList {
     private SNode myNode;
@@ -197,7 +197,7 @@ public class AttributeOperations {
 
     @Override
     protected void addFirst(SNode node) {
-      ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.smodelAttribute$K8bJ)).insertElement(0, SNodeOperations.cast(node, CONCEPTS.Attribute$RJ));
+      ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.smodelAttribute$jXFL)).insertElement(0, SNodeOperations.cast(node, CONCEPTS.Attribute$RJ));
       myDescriptor.update(node);
     }
 
@@ -228,6 +228,6 @@ public class AttributeOperations {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 }

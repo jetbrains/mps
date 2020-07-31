@@ -69,19 +69,19 @@ public final class CellModel_Collection__BehaviorDescriptor extends BaseBHDescri
     }
   }
   /*package*/ static boolean isVertical_idi0pAV23(@NotNull SNode __thisNode__) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.cellLayout$usNp), CONCEPTS.CellLayout_Vertical$vP);
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.cellLayout$JWT7), CONCEPTS.CellLayout_Vertical$vP);
   }
   /*package*/ static boolean isVerticalGrid_idi2IbWq8(@NotNull SNode __thisNode__) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.cellLayout$usNp), CONCEPTS.CellLayout_VerticalGrid$ae);
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.cellLayout$JWT7), CONCEPTS.CellLayout_VerticalGrid$ae);
   }
   /*package*/ static boolean isHorizontal_idi0pB4gH(@NotNull SNode __thisNode__) {
-    return (SLinkOperations.getTarget(__thisNode__, LINKS.cellLayout$usNp) == null) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.cellLayout$usNp), CONCEPTS.CellLayout_Horizontal$Ss);
+    return (SLinkOperations.getTarget(__thisNode__, LINKS.cellLayout$JWT7) == null) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.cellLayout$JWT7), CONCEPTS.CellLayout_Horizontal$Ss);
   }
   /*package*/ static boolean isIndentLayout_idi0pB9jQ(@NotNull SNode __thisNode__) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.cellLayout$usNp), CONCEPTS.CellLayout_Indent$tI);
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.cellLayout$JWT7), CONCEPTS.CellLayout_Indent$tI);
   }
   /*package*/ static boolean isFoldingEnabled_id1_9L3A4DrOF(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getBoolean(__thisNode__, PROPS.usesFolding$L3QX) || (SLinkOperations.getTarget(__thisNode__, LINKS.usesFoldingCondition$UESv) != null);
+    return SPropertyOperations.getBoolean(__thisNode__, PROPS.usesFolding$KRBz) || (SLinkOperations.getTarget(__thisNode__, LINKS.usesFoldingCondition$qLn1) != null);
   }
   /*package*/ static boolean isVerticalIndent_idi0tOX1j(@NotNull SNode __thisNode__) {
     if (!(((boolean) CellModel_Collection__BehaviorDescriptor.isIndentLayout_idi0pB9jQ.invoke(__thisNode__)))) {
@@ -90,7 +90,7 @@ public final class CellModel_Collection__BehaviorDescriptor extends BaseBHDescri
     if (((boolean) EditorCellModel__BehaviorDescriptor.isNewLineChildren_idi0pNGlC.invoke(__thisNode__))) {
       return true;
     }
-    for (SNode model : SLinkOperations.getChildren(__thisNode__, LINKS.childCellModel$3prw)) {
+    for (SNode model : SLinkOperations.getChildren(__thisNode__, LINKS.childCellModel$Dkkw)) {
       if ((boolean) EditorCellModel__BehaviorDescriptor.isNewLine_idi0pLPAc.invoke(model) || (boolean) EditorCellModel__BehaviorDescriptor.isNewLineChildren_idi0pNGlC.invoke(model) || (boolean) EditorCellModel__BehaviorDescriptor.isOnNewLine_idi0pUMOG.invoke(model)) {
         return true;
       }
@@ -101,21 +101,21 @@ public final class CellModel_Collection__BehaviorDescriptor extends BaseBHDescri
     return false;
   }
   /*package*/ static boolean shellBeSynchronized_id3TPTV99_TMT(@NotNull final SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.childCellModel$3prw)).any(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.childCellModel$Dkkw)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return ((boolean) CellModel_Collection__BehaviorDescriptor.shellBeSynchronized_id3TPTV99Aiv4.invoke(__thisNode__, it));
       }
-    }) || ((boolean) CellModel_Collection__BehaviorDescriptor.shellBeSynchronized_id3TPTV99Aiv4.invoke(__thisNode__, SLinkOperations.getTarget(__thisNode__, LINKS.foldedCellModel$YcIy)));
+    }) || ((boolean) CellModel_Collection__BehaviorDescriptor.shellBeSynchronized_id3TPTV99Aiv4.invoke(__thisNode__, SLinkOperations.getTarget(__thisNode__, LINKS.foldedCellModel$8ayu)));
   }
   /*package*/ static boolean shellBeSynchronized_id3TPTV99Aiv4(@NotNull SNode __thisNode__, SNode childCell) {
     return childCell != null && SNodeOperations.isInstanceOf(childCell, CONCEPTS.Synchronizeable$94) && (boolean) Synchronizeable__BehaviorDescriptor.shellBeSynchronized_id3TPTV99_TMT.invoke(SNodeOperations.cast(childCell, CONCEPTS.Synchronizeable$94));
   }
   /*package*/ static boolean canBeSynchronized_id3wXm3h1AYM7(@NotNull final SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.childCellModel$3prw)).all(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.childCellModel$Dkkw)).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return ((boolean) CellModel_Collection__BehaviorDescriptor.canBeSynchronized_id3wXm3h1BRps.invoke(__thisNode__, it));
       }
-    }) && ((boolean) CellModel_Collection__BehaviorDescriptor.canBeSynchronized_id3wXm3h1BRps.invoke(__thisNode__, SLinkOperations.getTarget(__thisNode__, LINKS.foldedCellModel$YcIy)));
+    }) && ((boolean) CellModel_Collection__BehaviorDescriptor.canBeSynchronized_id3wXm3h1BRps.invoke(__thisNode__, SLinkOperations.getTarget(__thisNode__, LINKS.foldedCellModel$8ayu)));
   }
   /*package*/ static boolean canBeSynchronized_id3wXm3h1BRps(@NotNull SNode __thisNode__, SNode childCell) {
     return childCell == null || (SNodeOperations.isInstanceOf(childCell, CONCEPTS.Synchronizeable$94) && (boolean) Synchronizeable__BehaviorDescriptor.canBeSynchronized_id3wXm3h1AYM7.invoke(SNodeOperations.cast(childCell, CONCEPTS.Synchronizeable$94)));
@@ -124,7 +124,7 @@ public final class CellModel_Collection__BehaviorDescriptor extends BaseBHDescri
     return true;
   }
   /*package*/ static SNode getLayout_iditlittTD4U(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.cellLayout$usNp);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.cellLayout$JWT7);
   }
 
   /*package*/ CellModel_Collection__BehaviorDescriptor() {
@@ -200,10 +200,10 @@ public final class CellModel_Collection__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cellLayout$usNp = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
-    /*package*/ static final SContainmentLink usesFoldingCondition$UESv = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x78de9e36d994f770L, "usesFoldingCondition");
-    /*package*/ static final SContainmentLink childCellModel$3prw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel");
-    /*package*/ static final SContainmentLink foldedCellModel$YcIy = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x6b2f47204d99c5f5L, "foldedCellModel");
+    /*package*/ static final SContainmentLink cellLayout$JWT7 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
+    /*package*/ static final SContainmentLink usesFoldingCondition$qLn1 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x78de9e36d994f770L, "usesFoldingCondition");
+    /*package*/ static final SContainmentLink childCellModel$Dkkw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel");
+    /*package*/ static final SContainmentLink foldedCellModel$8ayu = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x6b2f47204d99c5f5L, "foldedCellModel");
   }
 
   private static final class CONCEPTS {
@@ -216,6 +216,6 @@ public final class CellModel_Collection__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty usesFolding$L3QX = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10e3893660fL, "usesFolding");
+    /*package*/ static final SProperty usesFolding$KRBz = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10e3893660fL, "usesFolding");
   }
 }

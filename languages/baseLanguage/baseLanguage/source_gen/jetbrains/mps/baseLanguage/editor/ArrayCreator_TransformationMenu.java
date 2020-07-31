@@ -129,23 +129,23 @@ public class ArrayCreator_TransformationMenu extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        int numOfDimensions = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.dimensionExpression$uV5v)).count();
+        int numOfDimensions = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.dimensionExpression$YBE1)).count();
         SNode newNode = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.ArrayCreatorWithInitializer$aE);
-        SNode componentType = SLinkOperations.getTarget(_context.getNode(), LINKS.componentType$aKPo);
+        SNode componentType = SLinkOperations.getTarget(_context.getNode(), LINKS.componentType$dDQC);
         SNode init = null;
         while (numOfDimensions > 1) {
           componentType = _quotation_createNode_gy0ysa_a0a0e0a0b(componentType);
           SNode newArrayLiteral = SNodeFactoryOperations.createNewNode(CONCEPTS.ArrayLiteral$dK, null);
           if ((init != null)) {
-            ListSequence.fromList(SLinkOperations.getChildren(newArrayLiteral, LINKS.item$zjRO)).addElement(init);
+            ListSequence.fromList(SLinkOperations.getChildren(newArrayLiteral, LINKS.item$6C2c)).addElement(init);
           }
           init = newArrayLiteral;
           numOfDimensions--;
         }
 
-        SLinkOperations.setTarget(newNode, LINKS.componentType$5JdX, componentType);
+        SLinkOperations.setTarget(newNode, LINKS.componentType$LRKz, componentType);
         if ((init != null)) {
-          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.initValue$C3sh)).addElement(init);
+          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.initValue$pEGf)).addElement(init);
         }
 
         SelectionUtil.selectNode(_context.getEditorContext(), newNode);
@@ -195,10 +195,10 @@ public class ArrayCreator_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink dimensionExpression$uV5v = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e4b36742L, "dimensionExpression");
-    /*package*/ static final SContainmentLink componentType$aKPo = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e49578edL, "componentType");
-    /*package*/ static final SContainmentLink item$zjRO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a770dc0dL, 0x114a770fdbfL, "item");
-    /*package*/ static final SContainmentLink componentType$5JdX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01cf3c4L, "componentType");
-    /*package*/ static final SContainmentLink initValue$C3sh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01d19acL, "initValue");
+    /*package*/ static final SContainmentLink dimensionExpression$YBE1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e4b36742L, "dimensionExpression");
+    /*package*/ static final SContainmentLink componentType$dDQC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e49578edL, "componentType");
+    /*package*/ static final SContainmentLink item$6C2c = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a770dc0dL, 0x114a770fdbfL, "item");
+    /*package*/ static final SContainmentLink componentType$LRKz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01cf3c4L, "componentType");
+    /*package*/ static final SContainmentLink initValue$pEGf = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01d19acL, "initValue");
   }
 }

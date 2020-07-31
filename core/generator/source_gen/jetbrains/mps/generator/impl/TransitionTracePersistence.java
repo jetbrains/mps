@@ -41,7 +41,7 @@ public final class TransitionTracePersistence {
       SNodeId origin = originTrace.getOrigin(n);
       SNode nid = ((SNode) BHReflection.invoke0(SNodeOperations.asSConcept(CONCEPTS.ElementaryNodeId$ix), CONCEPTS.ElementaryNodeId$ix, SMethodTrimmedId.create("create", CONCEPTS.ElementaryNodeId$ix, "6UZRahyzeh3"), myCheckpointModel, origin));
       SNode ot = AttributeOperations.createAndSetAttrbiute(n, new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginTrace$D0), CONCEPTS.OriginTrace$D0);
-      SLinkOperations.setTarget(ot, LINKS.origin$zVxW, nid);
+      SLinkOperations.setTarget(ot, LINKS.origin$pPs4, nid);
     }
   }
 
@@ -51,7 +51,7 @@ public final class TransitionTracePersistence {
       if ((originTrace == null)) {
         continue;
       }
-      SNodeId value = ((SNodeId) BHReflection.invoke0(SLinkOperations.getTarget(originTrace, LINKS.origin$zVxW), CONCEPTS.NodeIdentity$K7, SMethodTrimmedId.create("getNodeId", null, "39TODbGsIdf")));
+      SNodeId value = ((SNodeId) BHReflection.invoke0(SLinkOperations.getTarget(originTrace, LINKS.origin$pPs4), CONCEPTS.NodeIdentity$K7, SMethodTrimmedId.create("getNodeId", null, "39TODbGsIdf")));
       into.setOrigin(n, value);
     }
   }
@@ -63,6 +63,6 @@ public final class TransitionTracePersistence {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink origin$zVxW = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x6ebfdca4628bfd48L, 0x6ebfdca4628bfd4dL, "origin");
+    /*package*/ static final SContainmentLink origin$pPs4 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x6ebfdca4628bfd48L, 0x6ebfdca4628bfd4dL, "origin");
   }
 }

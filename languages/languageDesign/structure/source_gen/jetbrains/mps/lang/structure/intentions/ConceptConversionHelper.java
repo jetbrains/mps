@@ -13,33 +13,33 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public abstract class ConceptConversionHelper {
   public static void copy(SNode from, SNode to) {
-    SPropertyOperations.assign(to, PROPS.name$tAp1, SPropertyOperations.getString(from, PROPS.name$tAp1));
-    SPropertyOperations.assign(to, PROPS.virtualPackage$j19t, SPropertyOperations.getString(from, PROPS.virtualPackage$j19t));
-    ListSequence.fromList(SLinkOperations.getChildren(to, LINKS.smodelAttribute$K8bJ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(from, LINKS.smodelAttribute$K8bJ)));
-    SPropertyOperations.assign(to, PROPS.conceptAlias$YIL2, SPropertyOperations.getString(from, PROPS.conceptAlias$YIL2));
-    SPropertyOperations.assign(to, PROPS.conceptShortDescription$RrvA, SPropertyOperations.getString(from, PROPS.conceptShortDescription$RrvA));
-    SPropertyOperations.assign(to, PROPS.conceptId$TMc5, SPropertyOperations.getString(from, PROPS.conceptId$TMc5));
-    SPropertyOperations.assign(to, PROPS.languageId$T8k_, SPropertyOperations.getString(from, PROPS.languageId$T8k_));
-    ListSequence.fromList(SLinkOperations.getChildren(to, LINKS.linkDeclaration$lL6$)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(from, LINKS.linkDeclaration$lL6$)));
-    ListSequence.fromList(SLinkOperations.getChildren(to, LINKS.propertyDeclaration$lL73)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(from, LINKS.propertyDeclaration$lL73)));
-    SLinkOperations.setTarget(to, LINKS.helpURL$Xrma, SLinkOperations.getTarget(from, LINKS.helpURL$Xrma));
-    SLinkOperations.setTarget(to, LINKS.sourceNode$pB4_, SLinkOperations.getTarget(from, LINKS.sourceNode$pB4_));
+    SPropertyOperations.assign(to, PROPS.name$lA7v, SPropertyOperations.getString(from, PROPS.name$lA7v));
+    SPropertyOperations.assign(to, PROPS.virtualPackage$dz_3, SPropertyOperations.getString(from, PROPS.virtualPackage$dz_3));
+    ListSequence.fromList(SLinkOperations.getChildren(to, LINKS.smodelAttribute$jXFL)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(from, LINKS.smodelAttribute$jXFL)));
+    SPropertyOperations.assign(to, PROPS.conceptAlias$oDJY, SPropertyOperations.getString(from, PROPS.conceptAlias$oDJY));
+    SPropertyOperations.assign(to, PROPS.conceptShortDescription$Qkjq, SPropertyOperations.getString(from, PROPS.conceptShortDescription$Qkjq));
+    SPropertyOperations.assign(to, PROPS.conceptId$ZjQr, SPropertyOperations.getString(from, PROPS.conceptId$ZjQr));
+    SPropertyOperations.assign(to, PROPS.languageId$F1XV, SPropertyOperations.getString(from, PROPS.languageId$F1XV));
+    ListSequence.fromList(SLinkOperations.getChildren(to, LINKS.linkDeclaration$yMbs)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(from, LINKS.linkDeclaration$yMbs)));
+    ListSequence.fromList(SLinkOperations.getChildren(to, LINKS.propertyDeclaration$yMqt)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(from, LINKS.propertyDeclaration$yMqt)));
+    SLinkOperations.setTarget(to, LINKS.helpURL$KfIQ, SLinkOperations.getTarget(from, LINKS.helpURL$KfIQ));
+    SLinkOperations.setTarget(to, LINKS.sourceNode$pVdV, SLinkOperations.getTarget(from, LINKS.sourceNode$pVdV));
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty virtualPackage$j19t = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
-    /*package*/ static final SProperty conceptAlias$YIL2 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x46ab0ad5826c74caL, "conceptAlias");
-    /*package*/ static final SProperty conceptShortDescription$RrvA = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772bbe20L, "conceptShortDescription");
-    /*package*/ static final SProperty conceptId$TMc5 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
-    /*package*/ static final SProperty languageId$T8k_ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x7cf94884f2237423L, "languageId");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty conceptAlias$oDJY = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x46ab0ad5826c74caL, "conceptAlias");
+    /*package*/ static final SProperty conceptShortDescription$Qkjq = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772bbe20L, "conceptShortDescription");
+    /*package*/ static final SProperty conceptId$ZjQr = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
+    /*package*/ static final SProperty languageId$F1XV = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x7cf94884f2237423L, "languageId");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
-    /*package*/ static final SContainmentLink linkDeclaration$lL6$ = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
-    /*package*/ static final SContainmentLink propertyDeclaration$lL73 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
-    /*package*/ static final SContainmentLink helpURL$Xrma = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x18b475a713ca55fbL, "helpURL");
-    /*package*/ static final SReferenceLink sourceNode$pB4_ = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x45b8a887cfd27b2cL, "sourceNode");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink linkDeclaration$yMbs = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
+    /*package*/ static final SContainmentLink propertyDeclaration$yMqt = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
+    /*package*/ static final SContainmentLink helpURL$KfIQ = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x18b475a713ca55fbL, "helpURL");
+    /*package*/ static final SReferenceLink sourceNode$pVdV = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x45b8a887cfd27b2cL, "sourceNode");
   }
 }

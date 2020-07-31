@@ -26,7 +26,7 @@ public class InlineRegexpExpression_removeI {
       public void execute_internal(EditorContext editorContext, SNode node) {
         EditorCell current = editorContext.getSelectedCell();
         EditorCell toSelect = CellTraversalUtil.getPrevLeaf(current, CellConditions.SELECTABLE);
-        SPropertyOperations.assign(node, PROPS.caseInsensitive$jAvf, false);
+        SPropertyOperations.assign(node, PROPS.caseInsensitive$vD8h, false);
         editorContext.getEditorComponent().changeSelection(toSelect);
       }
 
@@ -75,6 +75,6 @@ public class InlineRegexpExpression_removeI {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty caseInsensitive$jAvf = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117648961dL, 0x1119cf15020L, "caseInsensitive");
+    /*package*/ static final SProperty caseInsensitive$vD8h = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117648961dL, 0x1119cf15020L, "caseInsensitive");
   }
 }

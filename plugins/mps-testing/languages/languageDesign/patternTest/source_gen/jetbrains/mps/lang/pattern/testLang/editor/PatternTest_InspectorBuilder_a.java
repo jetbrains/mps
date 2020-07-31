@@ -84,9 +84,9 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       }
       public void setText(String text) {
         if (text.equals("true")) {
-          SPropertyOperations.assign(myNode, PROPS.canNotRunInProcess$QfFh, false);
+          SPropertyOperations.assign(myNode, PROPS.canNotRunInProcess$h_Xf, false);
         } else if (text.equals("false")) {
-          SPropertyOperations.assign(myNode, PROPS.canNotRunInProcess$QfFh, true);
+          SPropertyOperations.assign(myNode, PROPS.canNotRunInProcess$h_Xf, true);
         }
       }
       public boolean isValidText(String text) {
@@ -123,7 +123,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
 
     public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.canNotRunInProcess$QfFh, true);
+      SPropertyOperations.assign(node, PROPS.canNotRunInProcess$h_Xf, true);
     }
     public String getMatchingText() {
       return "false";
@@ -151,7 +151,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
 
     public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.canNotRunInProcess$QfFh, false);
+      SPropertyOperations.assign(node, PROPS.canNotRunInProcess$h_Xf, false);
     }
     public String getMatchingText() {
       return "true";
@@ -159,6 +159,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty canNotRunInProcess$QfFh = MetaAdapterFactory.getProperty(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, 0x59337dc8dffe0d9dL, "canNotRunInProcess");
+    /*package*/ static final SProperty canNotRunInProcess$h_Xf = MetaAdapterFactory.getProperty(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, 0x59337dc8dffe0d9dL, "canNotRunInProcess");
   }
 }

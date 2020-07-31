@@ -62,9 +62,9 @@ public final class IntroduceConstant_Intention extends AbstractIntentionDescript
       SNode constant = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x14be6cdec1861419L, "org.jetbrains.mps.samples.Constants.structure.Constant"));
       SNodeOperations.insertPrevSiblingChild(SNodeOperations.getNodeAncestor(node, CONCEPTS.Constant$9C, false, false), constant);
       SNode constantReference = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x37600150f5294665L, "org.jetbrains.mps.samples.Constants.structure.ConstantReference"));
-      SLinkOperations.setTarget(constantReference, LINKS.original$mmvb, constant);
+      SLinkOperations.setTarget(constantReference, LINKS.original$OT6l, constant);
       SNodeOperations.replaceWithAnother(node, constantReference);
-      SLinkOperations.setTarget(constant, LINKS.initializer$o06Y, node);
+      SLinkOperations.setTarget(constant, LINKS.initializer$C3o2, node);
       editorContext.selectWRTFocusPolicy(constant);
     }
     @Override
@@ -78,7 +78,7 @@ public final class IntroduceConstant_Intention extends AbstractIntentionDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink original$mmvb = MetaAdapterFactory.getReferenceLink(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x37600150f5294665L, 0x37600150f5294666L, "original");
-    /*package*/ static final SContainmentLink initializer$o06Y = MetaAdapterFactory.getContainmentLink(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x14be6cdec1861419L, 0x1bc7b724b7dec5e1L, "initializer");
+    /*package*/ static final SReferenceLink original$OT6l = MetaAdapterFactory.getReferenceLink(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x37600150f5294665L, 0x37600150f5294666L, "original");
+    /*package*/ static final SContainmentLink initializer$C3o2 = MetaAdapterFactory.getContainmentLink(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x14be6cdec1861419L, 0x1bc7b724b7dec5e1L, "initializer");
   }
 }

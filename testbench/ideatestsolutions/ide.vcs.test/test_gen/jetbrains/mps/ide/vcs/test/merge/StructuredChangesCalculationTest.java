@@ -41,7 +41,7 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public void f0a() {} 
     testDiffCorectness(0, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
-        return new ModelChange[]{new SetPropertyStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), PROPS.name$tAp1, "f0a")};
+        return new ModelChange[]{new SetPropertyStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), PROPS.name$lA7v, "f0a")};
       }
     });
   }
@@ -51,7 +51,7 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public final void f1() {} 
     testDiffCorectness(1, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
-        return new ModelChange[]{new SetPropertyStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), PROPS.isFinal$I$Qu, "true")};
+        return new ModelChange[]{new SetPropertyStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), PROPS.isFinal$zQoy, "true")};
       }
     });
   }
@@ -62,7 +62,7 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public string f2() {} 
     testDiffCorectness(2, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
-        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.returnType$WIkw, 0, 1, 0, 1)};
+        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.returnType$qrVw, 0, 1, 0, 1)};
       }
     });
   }
@@ -75,15 +75,15 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n1, CONCEPTS.LocalVariableDeclaration$Bf, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode n) {
-            return Objects.equals(SPropertyOperations.getString(n, PROPS.name$tAp1), "var");
+            return Objects.equals(SPropertyOperations.getString(n, PROPS.name$lA7v), "var");
           }
         });
         SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n2, CONCEPTS.LocalVariableDeclaration$Bf, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode n) {
-            return Objects.equals(SPropertyOperations.getString(n, PROPS.name$tAp1), "var");
+            return Objects.equals(SPropertyOperations.getString(n, PROPS.name$lA7v), "var");
           }
         });
-        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.initializer$KgD, 0, 1, 0, 0)};
+        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.initializer$no3R, 0, 1, 0, 0)};
       }
     });
   }
@@ -95,15 +95,15 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n1, CONCEPTS.LocalVariableDeclaration$Bf, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode n) {
-            return Objects.equals(SPropertyOperations.getString(n, PROPS.name$tAp1), "var");
+            return Objects.equals(SPropertyOperations.getString(n, PROPS.name$lA7v), "var");
           }
         });
         SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n2, CONCEPTS.LocalVariableDeclaration$Bf, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode n) {
-            return Objects.equals(SPropertyOperations.getString(n, PROPS.name$tAp1), "var");
+            return Objects.equals(SPropertyOperations.getString(n, PROPS.name$lA7v), "var");
           }
         });
-        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.initializer$KgD, 0, 0, 0, 1)};
+        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.initializer$no3R, 0, 0, 0, 1)};
       }
     });
   }
@@ -113,7 +113,7 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public void f5(int a, int c, int d) { } 
     testDiffCorectness(5, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
-        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$WIkZ, 1, 2, 1, 1)};
+        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$qsax, 1, 2, 1, 1)};
       }
     });
   }
@@ -123,7 +123,7 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public void f6(int a, int b, int e) { } 
     testDiffCorectness(6, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
-        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$WIkZ, 2, 4, 2, 2)};
+        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$qsax, 2, 4, 2, 2)};
       }
     });
   }
@@ -133,7 +133,7 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public void f7(int a, int b, int c, int d) { } 
     testDiffCorectness(7, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
-        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$WIkZ, 1, 1, 1, 2)};
+        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$qsax, 1, 1, 1, 2)};
       }
     });
   }
@@ -143,7 +143,7 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public void f8(int a, int b, int c, int d, int e) { } 
     testDiffCorectness(8, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
-        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$WIkZ, 1, 1, 1, 4)};
+        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$qsax, 1, 1, 1, 4)};
       }
     });
   }
@@ -153,7 +153,7 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public void f9() { //xx; int a = 5; a = 8; a++; a = a + 9; int d = 8; } 
     testDiffCorectness(9, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
-        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), SLinkOperations.getTarget(n1, LINKS.body$WIlu).getNodeId(), SLinkOperations.getTarget(n2, LINKS.body$WIlu).getNodeId(), LINKS.statement$WHn8, 2, 4, 2, 5)};
+        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), SLinkOperations.getTarget(n1, LINKS.body$qspy).getNodeId(), SLinkOperations.getTarget(n2, LINKS.body$qspy).getNodeId(), LINKS.statement$pYcS, 2, 4, 2, 5)};
       }
     });
   }
@@ -163,10 +163,10 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public void f10(int a, int b) { b = 10; } 
     testDiffCorectness(10, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
-        SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(n1, LINKS.body$WIlu), CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).first();
-        SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(n2, LINKS.body$WIlu), CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).first();
-        SNode target = ListSequence.fromList(SLinkOperations.getChildren(n2, LINKS.parameter$WIkZ)).getElement(1);
-        return new ModelChange[]{new SetReferenceStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.variableDeclaration$2ky6, SModelOperations.getPointer(SNodeOperations.getModel(target)), target.getNodeId(), "b")};
+        SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(n1, LINKS.body$qspy), CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).first();
+        SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(n2, LINKS.body$qspy), CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).first();
+        SNode target = ListSequence.fromList(SLinkOperations.getChildren(n2, LINKS.parameter$qsax)).getElement(1);
+        return new ModelChange[]{new SetReferenceStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.variableDeclaration$7WwU, SModelOperations.getPointer(SNodeOperations.getModel(target)), target.getNodeId(), "b")};
       }
     });
   }
@@ -187,10 +187,10 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public void f12() { n = 10; } 
     testDiffCorectness(12, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
-        SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(n1, LINKS.body$WIlu), CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).first();
-        SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(n2, LINKS.body$WIlu), CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).first();
-        SNode target = SLinkOperations.getTarget(n21, LINKS.variableDeclaration$2ky6);
-        return new ModelChange[]{new SetReferenceStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.variableDeclaration$2ky6, SModelOperations.getPointer(SNodeOperations.getModel(target)), target.getNodeId(), "n")};
+        SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(n1, LINKS.body$qspy), CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).first();
+        SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(n2, LINKS.body$qspy), CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).first();
+        SNode target = SLinkOperations.getTarget(n21, LINKS.variableDeclaration$7WwU);
+        return new ModelChange[]{new SetReferenceStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.variableDeclaration$7WwU, SModelOperations.getPointer(SNodeOperations.getModel(target)), target.getNodeId(), "n")};
       }
     });
   }
@@ -243,7 +243,7 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n1, CONCEPTS.LocalMethodCall$77, false, new SAbstractConcept[]{})).first();
         SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n2, CONCEPTS.LocalMethodCall$77, false, new SAbstractConcept[]{})).first();
-        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.actualArgument$$A7L, 1, 2, 1, 3), new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.actualArgument$$A7L, 5, 5, 6, 7)};
+        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.actualArgument$ItKJ, 1, 2, 1, 3), new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.actualArgument$ItKJ, 5, 5, 6, 7)};
       }
     });
   }
@@ -255,9 +255,9 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n1, CONCEPTS.LocalMethodCall$77, false, new SAbstractConcept[]{})).first();
         SNode n21 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n2, CONCEPTS.LocalMethodCall$77, false, new SAbstractConcept[]{})).first();
-        SNode n12 = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(n11, LINKS.actualArgument$$A7L)).getElement(1), CONCEPTS.PlusExpression$Re), LINKS.rightExpression$rxBl), CONCEPTS.IntegerConstant$mo);
-        SNode n22 = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(n21, LINKS.actualArgument$$A7L)).getElement(1), CONCEPTS.PlusExpression$Re), LINKS.rightExpression$rxBl), CONCEPTS.IntegerConstant$mo);
-        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.actualArgument$$A7L, 2, 2, 2, 3), new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.actualArgument$$A7L, 5, 5, 6, 7), new SetPropertyStructChange(getChangeSet(), n12.getNodeId(), n22.getNodeId(), PROPS.value$ZeO0, "2")};
+        SNode n12 = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(n11, LINKS.actualArgument$ItKJ)).getElement(1), CONCEPTS.PlusExpression$Re), LINKS.rightExpression$li3b), CONCEPTS.IntegerConstant$mo);
+        SNode n22 = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(n21, LINKS.actualArgument$ItKJ)).getElement(1), CONCEPTS.PlusExpression$Re), LINKS.rightExpression$li3b), CONCEPTS.IntegerConstant$mo);
+        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.actualArgument$ItKJ, 2, 2, 2, 3), new NodeGroupStructChange(getChangeSet(), n11.getNodeId(), n21.getNodeId(), LINKS.actualArgument$ItKJ, 5, 5, 6, 7), new SetPropertyStructChange(getChangeSet(), n12.getNodeId(), n22.getNodeId(), PROPS.value$Cbc0, "2")};
       }
     });
   }
@@ -267,7 +267,7 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public void f19(int a, /*int b*/) { } 
     testDiffCorectness(19, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
-        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$WIkZ, 1, 1, 1, 2)};
+        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$qsax, 1, 1, 1, 2)};
       }
     });
   }
@@ -277,7 +277,7 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public void f20(/*int a*/) { } 
     testDiffCorectness(20, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
-        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$WIkZ, 0, 1, 0, 1)};
+        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$qsax, 0, 1, 0, 1)};
       }
     });
   }
@@ -287,7 +287,7 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public /*int*/ long f21() {return 1; } 
     testDiffCorectness(21, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
-        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.returnType$WIkw, 0, 0, 0, 1)};
+        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.returnType$qrVw, 0, 0, 0, 1)};
       }
     });
   }
@@ -298,7 +298,7 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     // public long f22() {return 1; } 
     testDiffCorectness(22, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
-        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.smodelAttribute$K8bJ, 0, 0, 0, 1)};
+        return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.smodelAttribute$jXFL, 0, 0, 0, 1)};
       }
     });
   }
@@ -331,13 +331,13 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
     getProject().getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         // test with the same model 
-        SNode n1 = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:e71f8bf8-158e-40c6-bd90-ff2f1a21d867(jetbrains.mps.ide.vcs.test.testdiff)", "2193727838071558326"), LINKS.member$oYX5)).getElement(ix), CONCEPTS.MethodDeclaration$93);
-        SNode n2 = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:e71f8bf8-158e-40c6-bd90-ff2f1a21d867(jetbrains.mps.ide.vcs.test.testdiff)", "2193727838071561667"), LINKS.member$oYX5)).getElement(ix), CONCEPTS.MethodDeclaration$93);
+        SNode n1 = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:e71f8bf8-158e-40c6-bd90-ff2f1a21d867(jetbrains.mps.ide.vcs.test.testdiff)", "2193727838071558326"), LINKS.member$6v_r)).getElement(ix), CONCEPTS.MethodDeclaration$93);
+        SNode n2 = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:e71f8bf8-158e-40c6-bd90-ff2f1a21d867(jetbrains.mps.ide.vcs.test.testdiff)", "2193727838071561667"), LINKS.member$6v_r)).getElement(ix), CONCEPTS.MethodDeclaration$93);
         ModelChange[] changes = ch.invoke(n1, n2);
         testDiffCorrectness(n1, n2, changes);
 
         // test with other model 
-        SNode n3 = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:f9cefa7f-7dcc-422d-acd3-c452503bcca5(jetbrains.mps.ide.vcs.test.testdiff2)", "2193727838071561667"), LINKS.member$oYX5)).getElement(ix), CONCEPTS.MethodDeclaration$93);
+        SNode n3 = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:f9cefa7f-7dcc-422d-acd3-c452503bcca5(jetbrains.mps.ide.vcs.test.testdiff2)", "2193727838071561667"), LINKS.member$6v_r)).getElement(ix), CONCEPTS.MethodDeclaration$93);
         ModelChange[] changes2 = ch.invoke(n1, n3);
         testDiffCorrectness(n1, n3, changes2);
       }
@@ -345,22 +345,22 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isFinal$I$Qu = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
-    /*package*/ static final SProperty value$ZeO0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$zQoy = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
+    /*package*/ static final SProperty value$Cbc0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 
   private static final class CONCEPTS {
