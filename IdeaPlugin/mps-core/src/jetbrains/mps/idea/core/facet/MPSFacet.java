@@ -85,10 +85,6 @@ public class MPSFacet extends Facet<MPSFacetConfiguration> {
       LOG.info(MPSBundle.message("facet.module.loaded", MPSFacet.this.mySolution.getModuleName()));
       IdeaPluginDescriptor descriptor = PluginManager.getPlugin(PluginManager.getPluginByClassName(MPSFacet.class.getName()));
     });
-
-    String jHome = System.getProperty("java.home");
-    LOG.info("Java home for starting compiler is set to " + jHome);
-    Registry.get("compiler.process.jdk").setValue(jHome);
   }
 
   @Override
