@@ -10829,6 +10829,17 @@
                         <ref role="3TsBF5" to="tpce:5OIo7_R7SN0" resolve="conceptId" />
                       </node>
                     </node>
+                    <node concept="2OqwBi" id="6wrSswOrjkY" role="37wK5m">
+                      <node concept="2OqwBi" id="6wrSswOri8g" role="2Oq$k0">
+                        <node concept="30H73N" id="6wrSswOrhuM" role="2Oq$k0" />
+                        <node concept="2qgKlT" id="6wrSswOriEZ" role="2OqNvi">
+                          <ref role="37wK5l" to="tpcn:7jb4LXpbWaP" resolve="getConceptDeclaration" />
+                        </node>
+                      </node>
+                      <node concept="3TrcHB" id="6wrSswOrjR4" role="2OqNvi">
+                        <ref role="3TsBF5" to="tpce:7NTi8jM8Rgz" resolve="languageId" />
+                      </node>
+                    </node>
                   </node>
                 </node>
               </node>

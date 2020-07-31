@@ -516,7 +516,7 @@ public class QueriesGenerated {
   }
   public static Object propertyMacro_GetValue_64_10(final PropertyMacroContext _context) {
     // link ids might be equal... 
-    int hash = Objects.hash(SPropertyOperations.getString(_context.getNode(), PROPS.linkId$Uajt), SPropertyOperations.getString(LinkDeclaration__BehaviorDescriptor.getConceptDeclaration_id7jb4LXpbWaP.invoke(_context.getNode()), PROPS.conceptId$ZjQr)) & 0xFFFFFF;
+    int hash = Objects.hash(SPropertyOperations.getString(_context.getNode(), PROPS.linkId$Uajt), SPropertyOperations.getString(LinkDeclaration__BehaviorDescriptor.getConceptDeclaration_id7jb4LXpbWaP.invoke(_context.getNode()), PROPS.conceptId$ZjQr), SPropertyOperations.getString(LinkDeclaration__BehaviorDescriptor.getConceptDeclaration_id7jb4LXpbWaP.invoke(_context.getNode()), PROPS.languageId$F1XV)) & 0xFFFFFF;
     // 16^6 = 64^4 
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v) + "$" + new JavaFriendlyBase64().toString(hash);
   }
