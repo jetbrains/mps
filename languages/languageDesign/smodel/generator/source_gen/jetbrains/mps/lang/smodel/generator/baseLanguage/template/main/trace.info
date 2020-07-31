@@ -21077,7 +21077,7 @@
       <node id="3099391750892251407" at="1061,141,1062,159" concept="9" />
       <node id="3099391750892236467" at="1064,95,1065,117" concept="8" />
       <node id="3099391750892236473" at="1065,117,1066,159" concept="9" />
-      <node id="3099391750892236482" at="1312,80,1313,295" concept="9" />
+      <node id="3099391750892236482" at="1312,80,1313,294" concept="9" />
       <node id="3099391750892236406" at="2119,94,2120,147" concept="9" />
       <node id="3099391750892236517" at="2446,92,2447,91" concept="9" />
       <node id="3099391750892236480" at="1312,0,1315,0" concept="13" trace="ifMacro_Condition_108_0#(Ljetbrains/mps/generator/template/IfMacroContext;)Z" />
@@ -21087,7 +21087,7 @@
       <node id="3099391750892236501" at="837,0,841,0" concept="13" trace="propertyMacro_GetValue_108_1#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="3099391750892251397" at="1060,0,1064,0" concept="13" trace="referenceMacro_GetReferent_108_0#(Ljetbrains/mps/generator/template/ReferenceMacroContext;)Ljava/lang/Object;" />
       <node id="3099391750892236465" at="1064,0,1068,0" concept="13" trace="referenceMacro_GetReferent_108_1#(Ljetbrains/mps/generator/template/ReferenceMacroContext;)Ljava/lang/Object;" />
-      <scope id="3099391750892236481" at="1312,80,1313,295" />
+      <scope id="3099391750892236481" at="1312,80,1313,294" />
       <scope id="3099391750892236405" at="2119,94,2120,147" />
       <scope id="3099391750892236517" at="2446,92,2447,91" />
       <scope id="3099391750892236450" at="833,90,835,77">
@@ -21579,7 +21579,7 @@
       <node id="7939541470171874116" at="1069,117,1070,159" concept="9" />
       <node id="7939541470171862506" at="1072,95,1073,117" concept="8" />
       <node id="7939541470171862512" at="1073,117,1074,159" concept="9" />
-      <node id="7939541470171862521" at="1315,80,1316,295" concept="9" />
+      <node id="7939541470171862521" at="1315,80,1316,294" concept="9" />
       <node id="7939541470171862556" at="2452,92,2453,91" concept="9" />
       <node id="7939541470171862519" at="1315,0,1318,0" concept="13" trace="ifMacro_Condition_110_0#(Ljetbrains/mps/generator/template/IfMacroContext;)Z" />
       <node id="7939541470171862556" at="2452,0,2455,0" concept="13" trace="templateArgumentQuery_110_0#(Ljetbrains/mps/generator/template/TemplateArgumentContext;)Ljava/lang/Object;" />
@@ -21587,7 +21587,7 @@
       <node id="7939541470171862540" at="852,0,856,0" concept="13" trace="propertyMacro_GetValue_110_1#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="7939541470171874108" at="1068,0,1072,0" concept="13" trace="referenceMacro_GetReferent_110_0#(Ljetbrains/mps/generator/template/ReferenceMacroContext;)Ljava/lang/Object;" />
       <node id="7939541470171862504" at="1072,0,1076,0" concept="13" trace="referenceMacro_GetReferent_110_1#(Ljetbrains/mps/generator/template/ReferenceMacroContext;)Ljava/lang/Object;" />
-      <scope id="7939541470171862520" at="1315,80,1316,295" />
+      <scope id="7939541470171862520" at="1315,80,1316,294" />
       <scope id="7939541470171862556" at="2452,92,2453,91" />
       <scope id="7939541470171862489" at="848,90,850,77">
         <var name="conceptMethodDeclaration" id="7939541470171862491" />
